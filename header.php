@@ -31,7 +31,7 @@
 <![endif]-->
 <link rel="stylesheet" href="resources/swipebox/css/swipebox.css"><!-- Swipebox Temp -->
 </head>
-<?php if ($baseHOME!=false){ ?>
+<?php if ($baseHOME){ ?>
 <body id="home" url="<?php echo $baseURL; ?>">
 <?php } else { ?>
 <body url="<?php echo $baseURL; ?>">
