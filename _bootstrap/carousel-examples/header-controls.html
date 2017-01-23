@@ -1,0 +1,76 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Demo: Product Thumbnail - Bootstrap Carousel</title>
+<meta name="description" content="Produkt Thumbnail - Bootstrap Carousel - Collection by sevenXdemo - More Information: www.sevenX.de/blog" />
+<link href="//netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css" rel="stylesheet">
+<link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css" rel="stylesheet">
+
+
+<style>
+body { padding-top: 50px; }
+
+/*#####################
+Additional Styles (required)
+######################*/
+h3 {
+	color:#3276b1;
+	border-bottom:1px solid #3276b1;
+	margin-bottom:0;
+}
+.carousel-control {
+	color:#428BCA;
+	top:-25px;
+	left:auto;
+	bottom:auto;
+	opacity:1;
+	text-shadow:none;
+}
+.carousel-control:hover { color:#d9534f; }
+
+.carousel-control.left, .carousel-control.right {
+	background-image:none !important;
+}
+.carousel-control.right { right:-10px; }
+.carousel-control.left { right:15px; }
+
+</style>
+
+</head>
+
+<body>
+
+<div class="container">
+	<div class="row">
+    	<div class="col-md-3">
+        	<h3>Headline</h3>
+            <!-- Carousel
+            ================================================== -->
+            <div id="myCarousel" class="carousel slide">
+                <div class="carousel-inner">           
+                    <figure class="item active">
+                        <img class="thumbnail" src="http://placehold.it/300x200/" alt="Trikot">
+                    </figure>
+                    <figure class="item">
+                        <img class="thumbnail" src="http://placehold.it/300x200/" alt="Trikot">                                   
+                     </figure>  
+                    <figure class="item">
+                        <img class="thumbnail" src="http://placehold.it/300x200/" alt="Trikot">
+                    </figure>                                                                                   
+                </div>              
+                <a class="carousel-control left" href="#myCarousel" data-slide="prev"><i class="fa fa-angle-double-left"></i></a>
+                <a class="carousel-control right" href="#myCarousel" data-slide="next"><i class="fa fa-angle-double-right"></i></a>                                   
+            </div><!-- End Carousel -->  
+    	</div>
+    </div>
+</div>
+<script src="http://codeorigin.jquery.com/jquery-1.10.2.min.js"></script>
+<script src="//netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
+<script>
+	$('#myCarousel').carousel({
+		interval:   4000
+	});
+</script>
+</body>
+</html>

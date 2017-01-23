@@ -1,0 +1,95 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Demo: Fullsize Header - Bootstrap Carousel</title>
+<meta name="description" content="Fullsize Header - Bootstrap Carousel - Collection by sevenXdemo - More Information: www.sevenX.de/blog" />
+<link href="//netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css" rel="stylesheet">
+<link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css" rel="stylesheet">
+
+
+<style>
+body {
+	padding-top:50px;
+}
+/*#####################
+Additional Styles (required)
+#####################*/
+
+
+#myCarousel .carousel-indicators {
+    bottom: 0;
+    left: 10px;
+    margin-left: 5px;
+    width: 100%;
+}
+
+#myCarousel .carousel-indicators li {
+    border: medium none;
+    border-radius: 0;
+    float: left;
+    height: 44px;
+    margin-bottom: 5px;
+    margin-left: 0;
+    margin-right: 5px !important;
+    margin-top: 0;
+    width: 120px;
+}
+
+#myCarousel .carousel-indicators img {
+    border: 2px solid #FFFFFF;
+    float: left;
+    height: 44px;
+    left: 0;
+    width: 120px;
+}
+
+#myCarousel .carousel-indicators .active img {
+    border: 2px solid #39b3d7;
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="container">
+	<div class="carousel slide article-slide" id="myCarousel">
+      <div class="carousel-inner cont-slider">
+    
+        <div class="item active">
+          <img src="http://placehold.it/1200x440/cccccc/ffffff">
+        </div>
+        <div class="item">
+          <img src="http://placehold.it/1200x440/999999/cccccc">
+        </div>
+        <div class="item">
+          <img src="http://placehold.it/1200x440/dddddd/333333">
+        </div>               
+      </div>
+      
+      <!-- Indicators -->
+      <ol class="carousel-indicators visible-lg visible-md">
+        <li class="active" data-slide-to="0" data-target="#myCarousel">
+          <img alt="" title="" src="http://placehold.it/120x44/cccccc/ffffff">
+        </li>
+        <li class="" data-slide-to="1" data-target="#myCarousel">
+          <img alt="" title="" src="http://placehold.it/120x44/999999/cccccc">
+        </li>
+        <li class="" data-slide-to="2" data-target="#myCarousel">
+          <img alt="" title="" src="http://placehold.it/120x44/dddddd/333333">
+        </li>               
+      </ol>                 
+    </div>
+</div>
+<script src="http://codeorigin.jquery.com/jquery-1.10.2.min.js"></script>
+<script src="//netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
+<script>
+	$('#myCarousel').carousel({
+		interval:   4000
+	});
+</script>
+</body>
+</html>

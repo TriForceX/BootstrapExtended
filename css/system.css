@@ -1,0 +1,305 @@
+/*CSS Start*/
+
+/* ================================================= GLOBAL ================================================= */
+body{
+	background-color:#FFF;
+  	overflow-x:hidden !important;
+}
+body.modal-open{
+	padding-right: 0px !important;
+	overflow:auto !important;
+	overflow-x:hidden !important;
+}
+img{
+	border:0;
+}
+p, h1, h2, h3, h4, h5, h6{
+	margin:0;
+	padding:0;
+}
+a, a:visited, a:hover, a:active, a:focus {
+	text-decoration:none !important;
+	outline: 0 !important;
+}
+a:hover{
+	text-decoration:none !important;
+}
+ul{
+	padding-left:13px;
+}
+ol{
+	padding-left:16px;
+}
+/* ================================================= GLOBAL ================================================= */
+
+/* ================================================= BOOTSTRAP ================================================= */
+
+/*Drop Down Menu*/
+.theme-dropdown .dropdown-menu {
+  position: static;
+  display: block;
+  margin-bottom: 20px;
+}
+
+.theme-showcase > p > .btn {
+  margin: 5px 0;
+}
+
+.theme-showcase .navbar .container {
+  width: auto;
+}
+/*Drop Down Menu*/
+
+/*Panel - Modal Paragraph*/
+.modal-body p,
+.panel-body p{
+    margin-bottom: 27px;
+}
+.modal-body p:last-child,
+.panel-body p:last-child{
+	margin-bottom:0px;
+}
+/*Panel - Modal Paragraph*/
+
+/*Custom Body*/
+.container{
+	
+}
+.container-full{
+	
+}
+.container-fluid{
+	
+}
+/*Custom Body*/
+
+/*Custom Panel*/
+.modal-body{
+	text-align:justify;
+}
+.modal-backdrop{
+	position:fixed;
+}
+.panel-custom {
+    border-color: #azul-oscuro;
+	float:left;
+	width:100%;
+	margin-bottom:0px;
+}
+.panel-custom > .panel-heading {
+    background-color: #azul-oscuro;
+    border-color: #azul-oscuro;
+    color: #fff;
+}
+/*Custom Panel*/
+
+/*Title Fix*/
+.ellipsis {
+    position: relative;
+}
+.ellipsis:before {
+    content: '&nbsp;';
+    visibility: hidden;
+}
+.ellipsis span {
+    position: absolute;
+    left: 0;
+    right: 0;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+/*Title Fix*/
+
+/*UI Date Picker*/
+.ui-datepicker{
+	font-size:12px;
+}
+.ui-datepicker .ui-datepicker-header{
+	background: #azul-oscuro;
+	border-color: #azul-oscuro;
+}
+.ui-datepicker .ui-datepicker-next,
+.ui-datepicker .ui-datepicker-prev{
+	cursor:pointer;
+}
+.ui-datepicker .ui-datepicker-next-hover,
+.ui-datepicker .ui-datepicker-prev-hover{
+	background: #ca9e64;
+	border-color: #ca9e64;
+}
+.ui-datepicker .ui-datepicker-next-hover span,
+.ui-datepicker .ui-datepicker-prev-hover span{
+	background:url("images/ui-icons_ffffff_256x240.png");
+	background-position:-48px -192px;
+}
+.ui-state-default, .ui-widget-content .ui-state-default, .ui-widget-header .ui-state-default{
+	font-weight:normal;
+	color:#azul-oscuro;
+}
+/*UI Date Picker*/
+
+/*Swipe Box*/
+#swipebox-top-bar{
+	display:table !important;
+}
+#swipebox-title {
+    display: table-cell !important;
+	vertical-align:middle;
+    text-align: center;
+    width: 100%;
+	line-height:18px;
+	padding-right:45px;
+	padding-left:45px;
+}
+#swipebox-close {
+    right: 5px !important;
+}
+.hoverSwipebox{
+   background-color:#2e73b5;
+   border-radius:4px;
+   padding:3px 0px;
+   color:#FFF;
+   font-family:Arial, Helvetica, sans-serif;
+   font-size: 14px;
+   box-shadow: 1px 1px 2px #666;
+   z-index:999999;
+   position:absolute;
+   display:none;
+   width:275px;
+   text-align:center;
+   line-height:20px;
+   visibility:hidden;
+}
+.hoverSwipebox2{
+	background-image:url("../resources/swipebox/img/swipe_bg.png");
+	background-position:bottom center;
+	background-repeat:repeat-x;
+	width:170px;
+	height:50px;
+	z-index:999999999;
+	position:fixed;
+	display:none;
+	visibility:hidden;
+	left: 50%;
+    margin-left: -85px;
+	bottom:0;
+}
+@media (max-width: 480px) {
+	.hoverSwipebox{
+		display:none !important;
+		visibility:hidden !important;
+	}
+	.hoverSwipebox2{
+		visibility:visible !important;
+	}
+}
+/*Swipe Box*/
+
+/*Video Launch*/
+.videoLaunchText{
+	display:none !important;
+}
+.videoLaunchIframe{
+	display:inline-block;
+	width:100%;
+	height:488px;
+	border-radius:10px;
+}
+@media (max-width: 480px) {
+	.videoLaunchIframe{
+		height:270px;
+	}
+}
+/*Video Launch*/
+
+/*Carousel*/
+/* Fade transition for carousel items */
+.carousel-fade .carousel-inner .item {
+  -webkit-transition-property: opacity;
+  transition-property: opacity;
+}
+.carousel-fade .carousel-inner .item,
+.carousel-fade .carousel-inner .active.left,
+.carousel-fade .carousel-inner .active.right {
+  opacity: 0;
+}
+.carousel-fade .carousel-inner .active,
+.carousel-fade .carousel-inner .next.left,
+.carousel-fade .carousel-inner .prev.right {
+  opacity: 1;
+}
+.carousel-fade .carousel-inner .next,
+.carousel-fade .carousel-inner .prev,
+.carousel-fade .carousel-inner .active.left,
+.carousel-fade .carousel-inner .active.right {
+  left: 0;
+  -webkit-transform: translate3d(0, 0, 0);
+          transform: translate3d(0, 0, 0);
+}
+.carousel-fade .carousel-control {
+  z-index: 2;
+}
+
+/*Control Shadows*/
+.carousel-control.left,
+.carousel-control.right{
+	background:none !important;
+	background-image:none !important;
+	background-color:transparent !important;
+	filter:none !important;
+	width:10% !important;
+}
+
+/*Other*/
+.hoverOpacity{
+	/*CSS3*/
+	transition: opacity 0.4s ease;
+	-moz-transition: opacity 0.4s ease;
+	-webkit-transition: opacity 0.4s ease;
+	-o-transition: opacity 0.4s ease;
+}
+.hoverOpacity:hover{
+	opacity:0.6;
+	/*CSS3*/
+	transition: opacity 0.4s ease;
+	-moz-transition: opacity 0.4s ease;
+	-webkit-transition: opacity 0.4s ease;
+	-o-transition: opacity 0.4s ease;
+}
+
+/*Data Tables*/
+th[align='center'],
+td[align='center']{
+	text-align:center;
+}
+th[align='right'],
+td[align='right']{
+	text-align:right;
+}
+th[align='left'],
+td[align='left']{
+	text-align:left;
+}
+.dataTables_wrapper .glyphicon{
+	padding-top:0px !important;
+	padding-bottom:0px !important;
+}
+
+/* ================================================= BOOTSTRAP ================================================= */
+
+/* ================================================= FUENTES ================================================= */
+@font-face {
+    font-family: 'bebas_neueregular';
+    src: url('../fonts/bebasneue-webfont.eot');
+    src: url('../fonts/bebasneue-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/bebasneue-webfont.woff2') format('woff2'),
+         url('../fonts/bebasneue-webfont.woff') format('woff'),
+         url('../fonts/bebasneue-webfont.ttf') format('truetype'),
+         url('../fonts/bebasneue-webfont.svg#bebas_neueregular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+/* ================================================= FUENTES ================================================= */
+
+/*CSS End*/
