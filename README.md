@@ -1,5 +1,5 @@
 # Custom Bootstrap 3 Base
-Websites base structure with small reusable parts of source code or functions for HTML use.
+Websites responsive base structure with small reusable parts of source code or functions for HTML use.
 
 # Functions & Code Pieces
 * Lightbox Launch (SwipeboxInit)
@@ -51,12 +51,14 @@ Websites base structure with small reusable parts of source code or functions fo
 * Adobe Dreamweaver
 * NetBeans
 * Brackets
+* Atom
 * Notepad++
 
 # Recommended Tools for server
-* WAMP Server
-* MAMP Server
-* XAMPP Server
+* WAMP Server (Windows)
+* MAMP Server (Mac OSX)
+* LAMP Server (Linux)
+* XAMPP Server (All)
 
 # For Web Masters
-If you want to use some of the code pieces from above, just keep my code comments. If you have any question feel free to contact me at admin@gznetwork.com
+Im not the author of some plugins, but i try to let other people find the best way to use them. If you have any question feel free to contact me at admin@gznetwork.com
