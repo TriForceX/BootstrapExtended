@@ -82,7 +82,7 @@ else
 
 }
 
-if(isIExplorer){
+if(isOldIE){
 	//*** CODIGO SOLO EN OLD IEXPLORER ***//
 
 }
