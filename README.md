@@ -1,5 +1,5 @@
 # Custom Bootstrap 3 Base
-Websites responsive base structure with small reusable parts of source code or functions for HTML use.
+Websites base structure with small reusable parts of source code or functions for HTML use.
 
 # Functions & Code Pieces
 * Lightbox Launch (SwipeboxInit)
@@ -35,6 +35,7 @@ Websites responsive base structure with small reusable parts of source code or f
 
 # Features
 * Bootstrap 3
+* CSS Media Queries (Responsive)
 * Customizable CSS/JS Files with PHP
 * cURL PHP Library
 * Swipebox JS
