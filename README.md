@@ -9,6 +9,7 @@ Websites base structure with small reusable parts of source code or functions fo
 * Text Overflow Fix (TitleFix)
 * Text Width 100% (TextoFix)
 * Custom Alert Modal (alert2)
+* Custom Alert Modal Big (alert3)
 * E-Mail Validation (emailValido)
 * Empty Input Validation (checkEmpty)
 * Capitalize First Character on String (capitalizeFirstLetter)
@@ -32,6 +33,7 @@ Websites base structure with small reusable parts of source code or functions fo
 * Data Tables Setup
 * Navigator Cookies Setup
 * BootBox Modal Setup
+* Catch outerWidth and outerHeight properly
 
 # Features
 * Bootstrap 3
