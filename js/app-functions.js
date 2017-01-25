@@ -47,6 +47,12 @@ function swipeboxInit(swipeActive){
 $.fn.hasAttr = function(name) {  
    return this.attr(name) !== undefined;
 };
+$.fn.outerHeight2 = function () {
+	return this[0].getBoundingClientRect().height;
+};
+$.fn.outerWidth2 = function () {
+	return this[0].getBoundingClientRect().width;
+};
 function getMaxHeight(elems){
     return Math.max.apply(null, elems.map(function ()
     {
@@ -150,6 +156,16 @@ function alert2(titulo,mensaje){
 	$('#alert').find(".modal-title").html(titulo);
 	$('#alert').find(".modal-body").html(mensaje);
 	$('#alert').find(".modal-dialog").removeClass("modal-lg");//modal-sm
+	
+	$('#alert').modal({ 
+		show: 'true' 
+	}); 
+}
+function alert3(titulo,mensaje){
+	
+	$('#alert').find(".modal-title").html(titulo);
+	$('#alert').find(".modal-body").html(mensaje);
+	$('#alert').find(".modal-dialog").addClass("modal-lg");//modal-sm
 	
 	$('#alert').modal({ 
 		show: 'true' 
