@@ -20,6 +20,7 @@ Websites base structure with small reusable parts of source code or functions fo
 * Auto Page Scroll to Anchor Tags (Mover)
 * Disable Click on entire website (disableClick)
 * Get Method PHP Like (getUrlParameter)
+* Strip tags PHP like (stripTags)
 * Detect Element Height Changes (onElementHeightChange)
 * Detect Home Page (isHome)
 * Detect Mobile (isMovil)

@@ -297,6 +297,11 @@ function linkify(inputText) {
 
     return replacedText;
 }
+function stripTags(container, items){
+	container.find("*").not(items).each(function() {
+		$(this).remove();
+	});
+}
 /* ================================================= FUNCTIONS ================================================= */
 
 /*JS End*/
