@@ -28,6 +28,7 @@ Websites base structure with small reusable parts of source code or functions fo
 * Detect Navigators (isChrome,isExplorer,isSafari,isFirefox,isOpera)
 * Detect Scroll Method (scrollStarted)
 * Detect Responsive Media Query Like (ResponsiveCode)
+* Enhaced title attribute using PopOver (Title2 & Title2_pos)
 * Enable Touch Swipe on Bootstrap Carousel
 * Auto Lock anchor tags links
 * Simple Form Validation Setup
@@ -35,6 +36,7 @@ Websites base structure with small reusable parts of source code or functions fo
 * Navigator Cookies Setup
 * BootBox Modal Setup
 * Catch outerWidth and outerHeight properly
+* Select Text on click
 
 # Features
 * Bootstrap 3

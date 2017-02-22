@@ -237,6 +237,11 @@ $("#carousel-example-generic").swipeleft(function() {
 	$(this).carousel('next');  
 }); */
 
+//Text select on click
+/*$(document).on("click", ".clickSelect", function(e) {
+	$(this).select();
+});*/
+
 /* ================================================= DOCUMENT READY ================================================= */
 
 /*JS End*/
