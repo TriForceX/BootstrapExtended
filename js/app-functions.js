@@ -302,6 +302,51 @@ function stripTags(container, items){
 		$(this).remove();
 	});
 }
+function checkDisabledLink(string){
+	
+	var textoUrl = string;
+
+	//Sin Enlace
+	if(textoUrl=="#sinlink"){
+		//console.log('false');
+		return false;
+	}
+	else if(textoUrl=="#"){
+		//console.log('false');
+		return false;
+	}
+	else if(textoUrl=="#carousel-example-generic"){
+		//console.log('true');
+		return true;
+	}
+	/*else if (textoUrl.indexOf('#videoID=') >= 0){
+		var titulo = 'Video Title';
+		videoLaunch(titulo,textoUrl.replace("#videoID=",""));
+		console.log('false');
+		return false;
+	}*/
+	else{
+		if (textoUrl.indexOf(window.location.host) <= 0){
+		//if (textoUrl.indexOf('#') >= 0){
+			
+			var seccion = capitalizeFirstLetter(textoUrl.split('#')[1]/*.replace("#", "")*/);
+			//***
+			if(textoUrl.substr(textoUrl.length - 1, 1) == 's') {
+				alert2(seccion+" no disponibles","Este contenido no se encuentra disponible.");
+			}
+			else{
+				alert2(seccion+" no disponible","Este contenido no se encuentra disponible.");
+			}
+			//console.log('false');
+			return false;
+			//***
+		}
+		else{
+			//console.log('true');
+			return true;
+		}
+	}
+}
 /* ================================================= FUNCTIONS ================================================= */
 
 /*JS End*/

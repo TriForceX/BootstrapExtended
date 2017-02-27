@@ -237,6 +237,11 @@ $("#carousel-example-generic").swipeleft(function() {
 	$(this).carousel('next');  
 }); */
 
+//Carousel timer
+/*$('#carousel-example-generic').carousel({
+    interval: 3000
+});*/
+
 //Text select on click
 /*$(document).on("click", ".clickSelect", function(e) {
 	$(this).select();

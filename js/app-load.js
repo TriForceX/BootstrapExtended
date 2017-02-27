@@ -60,40 +60,13 @@ var urlMoDisp = "a[href*=#]";
 
 //$(String(urlMoDisp)).not(".carousel-control").click(function(e) {
 $(document).on("click", urlMoDisp, function(e) {
-
-	var textoUrl = $(this).attr("href");
-	var seccion = capitalizeFirstLetter(textoUrl.split('#')[1]/*.replace("#", "")*/);
-
-	//Sin Enlace
-	if(textoUrl=="#sinlink"){
+	
+	var itemURL =  $(this).attr("href");
+	
+	if(!(checkDisabledLink(itemURL))){
 		e.preventDefault();
 	}
-	else if(textoUrl=="#"){
-		e.preventDefault();
-	}
-	else if(textoUrl=="#carousel-example-generic"){
-
-	}
-	/*else if (textoUrl.indexOf('#videoID=') >= 0){
-		var titulo = 'Video Title';
-		videoLaunch(titulo,textoUrl.replace("#videoID=",""));
-		e.preventDefault();
-	}*/
-	else{
-		if (textoUrl.indexOf(window.location.host) >= 0){
-			//***
-			if(textoUrl.substr(textoUrl.length - 1, 1) == 's') {
-				alert2(seccion+" no disponibles","Este contenido se encuentra en desarrollo.");
-			}
-			else{
-				alert2(seccion+" no disponible","Este contenido se encuentra en desarrollo.");
-			}
-
-			e.preventDefault();
-			//***
-		}
-	}
-
+	
 });
 //Custom Clicks
 
@@ -128,6 +101,22 @@ if(!(isMovil))
 
 }
 //New Title Attr
+
+//Click Select Menu
+/*$("select").change(function(e) {
+
+	var itemURL =  $(this).find("option:selected").attr("value");
+
+	if( $(this).find("option:selected").attr("value")!="seleccione" )
+	{
+		if(checkDisabledLink(itemURL)){
+			window.location=itemURL;
+		}
+	
+	}
+
+});
+//Click Select Menu*/
 
 //Cookie
 /*
