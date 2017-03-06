@@ -278,6 +278,26 @@ function getUrlParameter(sParam) {
 		}
 	}
 }
+function getSrcParameter(sParam) {
+	var scripts = document.getElementsByTagName('script');
+	var index = scripts.length - 1;
+	var myScript = scripts[index];
+	// myScript now contains our script object
+	var queryString = myScript.src.replace(/^[^\?]+\??/,'');
+
+	var sPageURL = queryString,
+		sURLVariables = sPageURL.split('&'),
+		sParameterName,
+		i;
+
+	for (i = 0; i < sURLVariables.length; i++) {
+		sParameterName = sURLVariables[i].split('=');
+
+		if (sParameterName[0] === sParam) {
+			return sParameterName[1] === undefined ? true : sParameterName[1];
+		}
+	}
+}
 function linkify(inputText) {
     var replacedText, replacePattern1, replacePattern2, replacePattern3;
 
