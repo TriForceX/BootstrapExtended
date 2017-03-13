@@ -75,7 +75,7 @@ ol{
 
 /*Custom Panel*/
 .modal-body{
-	text-align:justify;
+	/*text-align:justify;*/
 }
 .modal-backdrop{
 	position:fixed;
