@@ -38,6 +38,7 @@ Websites base structure with small reusable parts of source code or functions fo
 * BootBox Modal Setup
 * Catch outerWidth and outerHeight properly
 * Select Text on click
+* Custom Navigation/Browser bar color
 
 # Features
 * Bootstrap 3

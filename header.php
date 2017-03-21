@@ -2,16 +2,20 @@
 <!DOCTYPE html>
 <html lang="en"><head>
 <meta charset="utf-8">
+<?php $navColor = array("#486ca5","black"); //iOs: default, black or black-translucent ?>
 <meta name="apple-mobile-web-app-capable" content="yes"><!-- iOS -->
-<link rel="apple-touch-icon" href="img/favicon_ios.png"/><!-- iOS -->
 <meta name="mobile-web-app-capable" content="yes">
+<meta name="theme-color" content="<?php echo $navColor[0]; ?>"><!-- Nav color Chrome, Firefox OS and Opera -->
+<meta name="msapplication-navbutton-color" content="<?php echo $navColor[0]; ?>"><!-- Nav color Windows Phone -->
+<meta name="apple-mobile-web-app-status-bar-style" content="<?php echo $navColor[1]; ?>"><!-- Nav color iOS Safari -->
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
 <meta name="description" content="ejemplo"/>
 <meta name="keywords" content="ejemplo" />
 <meta name="author" content="ejemplo" />
 <title>Site Title</title>
-<link href="img/favicon.png" rel="shortcut icon">
+<link href="img/favicon.png" rel="shortcut icon"><!-- Favicon -->
+<link rel="apple-touch-icon" href="img/favicon_ios.png"/><!-- Favicon iOS -->
 <!-- Bootstrap core CSS -->
 <link href="css/bootstrap.min.css" rel="stylesheet">
 <!-- Bootstrap theme -->
