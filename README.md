@@ -45,7 +45,7 @@ Websites base structure with small reusable parts of source code or functions fo
 * CSS Media Queries (Responsive)
 * Customizable CSS/JS Files with PHP
 * cURL PHP Library
-* Swipebox JS
+* LightGallery JS
 * BootBox Modal Box Enhanced
 * DataTables JS
 * Holder JS

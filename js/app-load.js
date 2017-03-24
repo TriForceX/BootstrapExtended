@@ -6,40 +6,10 @@
 $('#alert').on('hidden.bs.modal', function () {
 
 	$('#alert').find(".modal-body").html("");
-	$('#alert').removeClass("onlyVideo");
 	$('#alert').find(".modal-dialog").removeClass("modal-sm");
 	$('#alert').find(".modal-dialog").removeClass("modal-md");
 	$('#alert').find(".modal-dialog").removeClass("modal-lg");
 });
-
-
-//Lightbox Fixes
-$(document).mousemove(function(e){
-
-   $(".hoverSwipebox").css({
-		   left:e.pageX+15, //Posicion horizontal del mensaje
-		   top:e.pageY-30 //Posicion vertical del mensaje
-   });
-
-   $(".hoverSwipebox").css("visibility","visible");
-
-});
-$(document).keyup(function(e){
-	if (e.which == 37 || e.which == 39) {//Left - Rightå
-		$(".hoverSwipebox").css("visibility","hidden");
-	}
-});
-//Lightbox Fixes
-
-//Pruebas de contenido dinamico
-/*$(".class").click(function(){
-	$(".class").append("dsaaddsa<br>");
-});
-
-$(".class").click(function(){
-	$(".class").find("br:last").remove();
-});*/
-//Pruebas de contenido dinamico
 
 //Mobile
 if(isMovil)
@@ -102,21 +72,28 @@ if(!(isMovil))
 }
 //New Title Attr
 
-//Click Select Menu
-/*$("select").change(function(e) {
 
-	var itemURL =  $(this).find("option:selected").attr("value");
-
-	if( $(this).find("option:selected").attr("value")!="seleccione" )
-	{
-		if(checkDisabledLink(itemURL)){
-			window.location=itemURL;
-		}
+//LightGallery
+$("#lightgallery img").each(function(){ //search all images inside
 	
-	}
-
+  var imgSrc = $(this).attr("src"); 
+  
+  $(this).wrap('<a href="'+imgSrc+'" class="myImage"></a>'); 
+  
 });
-//Click Select Menu*/
+
+//load gallery after images get converted to links
+$("#lightgallery").lightGallery({ //this is the parent container of imgs
+  selector:'a', //this is the button to launch the lightbox
+  thumbnail:true //if u want use thumbs change it to true, so u need include an image inside the button container to get detected as thumb, in this case inside the "a", u can "uncomment" the hidden line above to try it
+}); 
+//LightGallery in content
+
+
+
+
+
+
 
 //Cookie
 /*

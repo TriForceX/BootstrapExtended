@@ -3,7 +3,6 @@
 /* ================================================= DOCUMENT READY ================================================= */
 
 //Cargar swipebox (lightbox)
-swipeboxInit(0);
 
 //******** DETECT HEIGHT CHANGE
 function onElementHeightChange(elm, callback){
@@ -29,6 +28,17 @@ function onElementHeightChange(elm, callback){
 		ResponsiveCode();
 	});
 }*/
+
+//Test height changes with click
+/*$(".class").click(function(){
+	$(".class").append("Sample text here...<br>");
+});
+
+$(".class").click(function(){
+	$(".class").find("br:last").remove();
+});*/
+//Test height changes with click
+
 //******** DETECT HEIGHT CHANGE
 
 //Main URL
@@ -52,10 +62,10 @@ else{
 }
 
 //OLD Internet Explorer Fixes
-if($.browser.msie  && parseInt($.browser.version, 10) === 6 || 
-   $.browser.msie  && parseInt($.browser.version, 10) === 7 || 
-   $.browser.msie  && parseInt($.browser.version, 10) === 8 /*||  
-   $.browser.msie  && parseInt($.browser.version, 10) === 9*/){
+if($.browser.msie && parseInt($.browser.version, 10) === 6 || 
+   $.browser.msie && parseInt($.browser.version, 10) === 7 || 
+   $.browser.msie && parseInt($.browser.version, 10) === 8 /*||  
+   $.browser.msie && parseInt($.browser.version, 10) === 9*/){
 	var isOldIE = true;
 }
 else{
@@ -169,14 +179,12 @@ function ResponsiveCode() {
 				$(".verticalAlign").css({"margin-top": -Math.abs(altoCaja / 2),
 										"position":"absolute",
 										"top":"50%" });
-
 			}
 			else
 			{
 				$(".verticalAlign").css({"margin-top": "0px",
 										"position":"relative",
 										"top":"0px" });
-
 			}
 		});*/
 
@@ -194,6 +202,25 @@ $(window).bind("load", ResponsiveCode);
 $(window).bind("resize", ResponsiveCode);
 $(window).bind("orientationchange", ResponsiveCode);
 //***** RESPONSIVE CODE ******
+
+
+
+
+//Click Select Menu
+/*$("select").change(function(e) {
+
+	var itemURL =  $(this).find("option:selected").attr("value");
+
+	if( $(this).find("option:selected").attr("value")!="seleccione" )
+	{
+		if(checkDisabledLink(itemURL)){
+			window.location=itemURL;
+		}
+	
+	}
+
+});
+//Click Select Menu*/
 
 //Form Validate
 /*$(".class form").find("input[type='submit']").click(function(e){ 

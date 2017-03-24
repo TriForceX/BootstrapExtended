@@ -54,8 +54,15 @@
 <script src="js/img-liquid.js"></script>
 <!-- jQuery Cookie -->
 <script src="js/jquery_cookie.js"></script>
-<!-- Swipebox Lightbox -->
-<script src="resources/swipebox/js/jquery.swipebox.js"></script>
+<!-- LightGallery Lightbox -->
+<script src="js/lightgallery/lightgallery.js"></script>
+<script src="js/lightgallery/lg-fullscreen.js"></script>
+<script src="js/lightgallery/lg-thumbnail.js"></script>
+<script src="js/lightgallery/lg-video.js"></script>
+<script src="js/lightgallery/lg-autoplay.js"></script>
+<script src="js/lightgallery/lg-zoom.js"></script>
+<script src="js/lightgallery/lg-hash.js"></script>
+<script src="js/lightgallery/lg-pager.js"></script>
 <!-- Custom APPs -->
 <script src="js/app.php?url=<?php echo $baseURL; ?>"></script>
 </body>

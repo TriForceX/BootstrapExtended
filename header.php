@@ -33,7 +33,8 @@
 <script src="js/html5shiv.min.js"></script>
 <script src="js/respond.min.js"></script>
 <![endif]-->
-<link rel="stylesheet" href="resources/swipebox/css/swipebox.css"><!-- Swipebox Temp -->
+<link rel="stylesheet" href="css/lightgallery.css"><!-- LightGallery Lightbox -->
+<link rel="stylesheet" href="css/lg-transitions.css"><!-- LightGallery Lightbox -->
 </head>
 <?php if ($baseHOME){ ?>
 <body id="home" url="<?php echo $baseURL; ?>">

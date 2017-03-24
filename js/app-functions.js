@@ -1,48 +1,6 @@
 /*JS Start*/
 
 /* ================================================= FUNCTIONS ================================================= */
-function swipeboxInit(swipeActive){
-	
-	$( '.swipebox' ).swipebox( {
-		useCSS : true, // false will force the use of jQuery for animations
-		useSVG : true, // false to force the use of png for buttons
-		initialIndexOnArray : 0, // which image index to init when a array is passed
-		hideCloseButtonOnMobile : false, // true will hide the close button on mobile devices
-		hideBarsDelay : 5000, // delay before hiding bars on desktop
-		videoMaxWidth : 1140, // videos max width
-		removeBarsOnMobile: false,
-		beforeOpen: function() { 
-		
-			//***
-			if((swipeActive == 0) & ($("a.swipebox").length > 1))
-			{
-				$("body").append('<div class="hoverSwipebox">Haga click para ver las siguientes fotos<br><i style="font-size:11px">Puede navegar con las flechas del teclado ← →</i></div><div class="hoverSwipebox2"></div>');
-				swipeActive = 1;
-			}
-			//***
-		
-		 }, // called before opening
-		afterOpen: function() { 
-			
-			//***
-			$(".hoverSwipebox").css("display","block"); 
-			$(".hoverSwipebox2").css("display","block"); 
-			$("body").css("overflow-x","hidden");
-			//***
-		
-		 }, // called after opening
-		afterClose: function() { 
-		
-			//***
-			$(".hoverSwipebox").css("display","none"); 
-			$(".hoverSwipebox2").css("display","none"); 
-			$("body").css("overflow-x","auto");
-			//***
-		
-		 }, // called after closing
-		loopAtEnd: false // true will return to the first image after the last image is reached
-	} );
-}
 
 $.fn.hasAttr = function(name) {  
    return this.attr(name) !== undefined;
