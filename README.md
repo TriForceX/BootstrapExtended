@@ -2,7 +2,6 @@
 Websites base structure with small reusable parts of source code or functions for HTML use.
 
 # Functions & Code Pieces
-* Lightbox Launch (SwipeboxInit)
 * Check attribute of an HTML element (hasAttr)
 * Get Maximum height of amount of elements (getMaxHeight)
 * Background Image Size Fix for IE+ (FotosFixV3)
@@ -39,6 +38,7 @@ Websites base structure with small reusable parts of source code or functions fo
 * Catch outerWidth and outerHeight properly
 * Select Text on click
 * Custom Navigation/Browser bar color
+* LightGallery content auto image conversion
 
 # Features
 * Bootstrap 3
