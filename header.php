@@ -19,7 +19,7 @@
 <meta name="author" content="ejemplo" />
 <!-- Tab & App Icons -->
 <link href="img/favicon.png" rel="shortcut icon">
-<link rel="apple-touch-icon" href="img/favicon_ios.png"/>
+<link href="img/favicon_ios.png" rel="apple-touch-icon"/>
 <!-- Bootstrap core CSS -->
 <link href="css/bootstrap.min.css" rel="stylesheet">
 <!-- Bootstrap theme -->
@@ -29,11 +29,11 @@
 <!-- jQuery UI CSS (Rename "images-dark" folder to "image" in css to use dark theme) -->
 <link href="css/jquery-ui.css" rel="stylesheet">
 <link href="css/jquery-ui.structure.css" rel="stylesheet">
-<link rel="stylesheet" href="css/jquery-ui.theme-light.css" >
+<link href="css/jquery-ui.theme-light.css" rel="stylesheet">
 <!-- LightGallery Lightbox -->
-<link rel="stylesheet" href="css/lightgallery.css">
-<link rel="stylesheet" href="css/lg-transitions.css">
-<link rel="stylesheet" href="css/lg-fb-comment-box.css">
+<link href="css/lightgallery.css" rel="stylesheet">
+<link href="css/lg-transitions.css" rel="stylesheet">
+<link href="css/lg-fb-comment-box.css" rel="stylesheet">
 <!-- CSS Dynamic -->
 <link href="css/main.php?url=<?php echo $baseURL; ?>" rel="stylesheet">
 <!-- IE8 support of HTML5 elements and media queries -->
