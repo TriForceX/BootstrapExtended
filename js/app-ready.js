@@ -2,8 +2,6 @@
 
 /* ================================================= DOCUMENT READY ================================================= */
 
-//Cargar swipebox (lightbox)
-
 //******** DETECT HEIGHT CHANGE
 function onElementHeightChange(elm, callback){
 	var lastHeight = $(elm).height(), newHeight;
@@ -44,7 +42,7 @@ $(".class").click(function(){
 //Main URL
 var mainUrl = $("body").attr("url");
 
-//Es Home
+//Is Home
 if ($("#home").length > 0){
 	var isHome = true;
 }
@@ -52,7 +50,7 @@ else{
 	var isHome = false;
 }
 
-//Es Movil
+//Is Mobile
 if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini|BB10|PlayBook|MeeGo/i.test(navigator.userAgent) ) //v2
 {
 	var isMovil = true;
@@ -73,32 +71,31 @@ else{
 }
 
 if(isHome){
-	//*** CODIGO SOLO EN HOME ***//
+	//*** IN HOME CODE ***//
 
 }
 else
 {
-	//*** CODIGO FUERA DEL HOME ***//
+	//*** NOT IN HOME CODE ***//
 
 }
 
 if(isMovil){
-	//*** CODIGO SOLO EN MOVIL ***//
+	//*** MOBILE CODE ***//
 
 }
-else
-{
-	//*** CODIGO FUERA DEL HMOVIL ***//
+else{
+	//*** NOT MOBILE CODE ***//
 
 }
 
 if(isOldIE){
-	//*** CODIGO SOLO EN OLD IEXPLORER ***//
+	//*** OLD IEXPLORER CODE ***//
 
 }
 else
 {
-	//*** CODIGO FUERA DE OLD IEXPLORER ***//
+	//*** NOT OLD IEXPLORER CODE ***//
 
 }
 
@@ -106,7 +103,6 @@ else
 $("*[fondo_pos]").each(function(){
 	FotosFixV3($(this));
 });
-
 
 //Detectar navegadores
 var isChrome = navigator.userAgent.indexOf('Chrome') > -1;
@@ -127,7 +123,6 @@ $(window).scroll(function () {
 
 });
 //***** SCROLLING CODE ******
-
 
 //Responsive
 var screen_phone_sm = 320; 
@@ -161,15 +156,17 @@ function ResponsiveCode() {
 		if(screen_orientation == 0)
 		{
 			screen_orientation = 1;
-			//*** CODIGO GENERAL ORIENTACION ***//
-
+			//*** ORIENTATION CHANGES ***//
+			
+			//*** ORIENTATION CHANGES ***//
 		}
 
 		$("body").attr("window-size",bodyWidth+" x "+bodyHeight);
 
-		//*** CODIGO GENERAL RESPONSIVE ***//
+		//*** RESPONSIVE CHANGES ***//
 
-		/*$("body").each(function(){ 
+		/*//Example Vertical Align Container
+		$("body").each(function(){ 
 
 			var altoBody = bodyHeight;
 			var altoCaja = $(".verticalAlign").find(".container").outerHeight(); 
@@ -187,7 +184,8 @@ function ResponsiveCode() {
 										"top":"0px" });
 			}
 		});*/
-
+		
+		//*** RESPONSIVE CHANGES ***//
 
 
 	 //*********
@@ -203,8 +201,44 @@ $(window).bind("resize", ResponsiveCode);
 $(window).bind("orientationchange", ResponsiveCode);
 //***** RESPONSIVE CODE ******
 
+//LightGallery
+$(".lightgallery").each(function(){ //search all images inside
+	
+	var galSelector = $(this).attr("lg-selector");
+	var galThumbnailVal = $(this).attr("lg-thumbnail");
+	var galAutoLink = $(this).attr("lg-autolink");
+	var galAutoTitle = $(this).attr("lg-autotitle");
+
+	if(galAutoLink == "true"){
+		var imgSrc = $(this).find("img").attr("src"); 
+		var imgClass = "myImage"; 
+		if(galAutoTitle!="false"){
+			var imgTitle = 'title="'+galAutoTitle+'"';
+		}
+		else{
+			var imgTitle = null;
+		}
+		$(this).find("img").wrap('<a '+imgTitle+' href="'+imgSrc+'" class="'+imgClass+'"></a>'); 
+	}
+	
+	
+	if(galThumbnailVal=="false"){
+		var galThumbnail = false;
+	}
+	else{
+		var galThumbnail = true;
+	}
+
+	//load gallery after images get converted to links
+	$(this).lightGallery({ //this is the parent container of imgs
+		selector: galSelector, //this is the button to launch the lightbox
+		thumbnail: galThumbnail //if u want use thumbs change it to true, so u need include an image inside the button container to get detected as thumb, in this case inside the "a", u can "uncomment" the hidden line above to try it
+	}); 
+	//LightGallery in content
 
 
+});
+//LightGallery
 
 //Click Select Menu
 /*$("select").change(function(e) {

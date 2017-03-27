@@ -8,7 +8,7 @@
 </div>
 <!-- ================================================= FOOTER ================================================= -->
 
-<!-- ================================================= ALERT ================================================= -->
+<!-- ================================================= MODAL BOX ================================================= -->
 <div style="z-index:9999" class="modal fade" id="alert" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
@@ -27,11 +27,11 @@
     </div>
     <!-- /.modal-dialog -->
 </div>
-<!-- ================================================= ALERT ================================================= -->
+<!-- ================================================= MODAL BOX ================================================= -->
 
-<!-- Bootstrap core JavaScript
-================================================== -->
-<!-- Placed at the end of the document so the pages load faster -->
+<!-- ================ Core JavaScript Placed at the end of the document so the pages load faster! ================ -->
+
+<!-- jQuery -->
 <script src="js/jquery.min.js"></script>
 <!-- Bootstrap 3 -->
 <script src="js/bootstrap.min.js"></script>

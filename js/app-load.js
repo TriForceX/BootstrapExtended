@@ -11,19 +11,7 @@ $('#alert').on('hidden.bs.modal', function () {
 	$('#alert').find(".modal-dialog").removeClass("modal-lg");
 });
 
-//Mobile
-if(isMovil)
-{
-	//*** CODIGO GENERAL MOVILES ***//
-
-}
-else{
-	//*** CODIGO GENERAL FUERA DE MOVILES ***//
-
-}
-//Mobile
-
-//*** CODIGO GENERAL DESPUES DEL SITIO CARGADO ***//
+//*** AFTER LOAD CODE ***//
 
 //Custom Clicks
 var urlMoDisp = "a[href*=#]";
@@ -71,29 +59,6 @@ if(!(isMovil))
 
 }
 //New Title Attr
-
-
-//LightGallery
-$("#lightgallery img").each(function(){ //search all images inside
-	
-  var imgSrc = $(this).attr("src"); 
-  
-  $(this).wrap('<a href="'+imgSrc+'" class="myImage"></a>'); 
-  
-});
-
-//load gallery after images get converted to links
-$("#lightgallery").lightGallery({ //this is the parent container of imgs
-  selector:'a', //this is the button to launch the lightbox
-  thumbnail:true //if u want use thumbs change it to true, so u need include an image inside the button container to get detected as thumb, in this case inside the "a", u can "uncomment" the hidden line above to try it
-}); 
-//LightGallery in content
-
-
-
-
-
-
 
 //Cookie
 /*

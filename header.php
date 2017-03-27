@@ -1,21 +1,25 @@
 <?php require_once('resources/info.php'); ?>
 <!DOCTYPE html>
-<html lang="en"><head>
+<html lang="en">
+<head>
+<title>Site Title</title>
 <meta charset="utf-8">
-<?php $navColor = array("#486ca5","black"); //iOs: default, black or black-translucent ?>
-<meta name="apple-mobile-web-app-capable" content="yes"><!-- iOS -->
+<!-- Mobile Enable -->
+<meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="mobile-web-app-capable" content="yes">
-<meta name="theme-color" content="<?php echo $navColor[0]; ?>"><!-- Nav color Chrome, Firefox OS and Opera -->
-<meta name="msapplication-navbutton-color" content="<?php echo $navColor[0]; ?>"><!-- Nav color Windows Phone -->
-<meta name="apple-mobile-web-app-status-bar-style" content="<?php echo $navColor[1]; ?>"><!-- Nav color iOS Safari -->
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<!-- Nav Bar Mobile Color -->
+<meta name="theme-color" content="#333333">
+<meta name="msapplication-navbutton-color" content="#333333">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<!-- Meta Details -->
 <meta name="description" content="ejemplo"/>
 <meta name="keywords" content="ejemplo" />
 <meta name="author" content="ejemplo" />
-<title>Site Title</title>
-<link href="img/favicon.png" rel="shortcut icon"><!-- Favicon -->
-<link rel="apple-touch-icon" href="img/favicon_ios.png"/><!-- Favicon iOS -->
+<!-- Tab & App Icons -->
+<link href="img/favicon.png" rel="shortcut icon">
+<link rel="apple-touch-icon" href="img/favicon_ios.png"/>
 <!-- Bootstrap core CSS -->
 <link href="css/bootstrap.min.css" rel="stylesheet">
 <!-- Bootstrap theme -->
@@ -25,44 +29,33 @@
 <!-- jQuery UI CSS (Rename "images-dark" folder to "image" in css to use dark theme) -->
 <link href="css/jquery-ui.css" rel="stylesheet">
 <link href="css/jquery-ui.structure.css" rel="stylesheet">
-<link href="css/jquery-ui.theme-light.css" rel="stylesheet">
-<!-- CSS Dinamico -->
+<link rel="stylesheet" href="css/jquery-ui.theme-light.css" >
+<!-- LightGallery Lightbox -->
+<link rel="stylesheet" href="css/lightgallery.css">
+<link rel="stylesheet" href="css/lg-transitions.css">
+<link rel="stylesheet" href="css/lg-fb-comment-box.css">
+<!-- CSS Dynamic -->
 <link href="css/main.php?url=<?php echo $baseURL; ?>" rel="stylesheet">
-<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+<!-- IE8 support of HTML5 elements and media queries -->
 <!--[if lt IE 9]>
 <script src="js/html5shiv.min.js"></script>
 <script src="js/respond.min.js"></script>
 <![endif]-->
-<link rel="stylesheet" href="css/lightgallery.css"><!-- LightGallery Lightbox -->
-<link rel="stylesheet" href="css/lg-transitions.css"><!-- LightGallery Lightbox -->
 </head>
-<?php if ($baseHOME){ ?>
+<?php if($baseHOME): ?>
 <body id="home" url="<?php echo $baseURL; ?>">
-<?php } else { ?>
+<?php else: ?>
 <body url="<?php echo $baseURL; ?>">
-<?php }  ?>
+<?php endif; ?>
 <!-- ================================================= ANALYTICS ================================================= -->
-
+<?php if($_SERVER['HTTP_HOST'] == 'localhost' OR filter_var($_SERVER['HTTP_HOST'], FILTER_VALIDATE_IP)): ?>
+<?php echo "\n"; //Dont track in localhost ?>
+<?php else: ?>
+<?php echo "\n"; ?>
+<?php endif; ?>
 <!-- ================================================= ANALYTICS ================================================= -->
 
 <!-- ================================================= HEADER ================================================= -->
-<?php 
-/*
-$menu_home = array($baseURL,"Home");
-$menu_1 = array("#link","Menu 1");
-$menu_2 = array("#link","Menu 2");
-$menu_3 = array("#link","Menu 3");
-$menu_4 = array("#link","Menu 4");
-$menu_5 = array("#link","Menu 5");
-
-echo '<a href="'.$menu_home[0].'" class="button first">'.$menu_home[1].'</a>'.
-	 '<a href="'.$menu_1[0].'" class="button">'.$menu_1[1].'</a>'.
-	 '<a href="'.$menu_2[0].'" class="button">'.$menu_2[1].'</a>'.
-	 '<a href="'.$menu_3[0].'" class="button">'.$menu_3[1].'</a>'.
-	 '<a href="'.$menu_4[0].'" class="button">'.$menu_4[1].'</a>'.
-	 '<a href="'.$menu_5[0].'" class="button last">'.$menu_5[1].'</a>';
-*/
-?>
 <div class="header">
 	<div class="container">
 		<!-- HEADER CONTAINER -->
