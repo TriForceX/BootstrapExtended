@@ -139,63 +139,6 @@ ol{
 }
 /*UI Date Picker*/
 
-/*Swipe Box*/
-#swipebox-top-bar{
-	display:table !important;
-}
-#swipebox-title {
-    display: table-cell !important;
-	vertical-align:middle;
-    text-align: center;
-    width: 100%;
-	line-height:18px;
-	padding-right:45px;
-	padding-left:45px;
-}
-#swipebox-close {
-    right: 5px !important;
-}
-.hoverSwipebox{
-   background-color:#2e73b5;
-   border-radius:4px;
-   padding:3px 0px;
-   color:#FFF;
-   font-family:Arial, Helvetica, sans-serif;
-   font-size: 14px;
-   box-shadow: 1px 1px 2px #666;
-   z-index:999999;
-   position:absolute;
-   display:none;
-   width:275px;
-   text-align:center;
-   line-height:20px;
-   visibility:hidden;
-}
-.hoverSwipebox2{
-	background-image:url("../resources/swipebox/img/swipe_bg.png");
-	background-position:bottom center;
-	background-repeat:repeat-x;
-	width:170px;
-	height:50px;
-	z-index:999999999;
-	position:fixed;
-	display:none;
-	visibility:hidden;
-	left: 50%;
-    margin-left: -85px;
-	bottom:0;
-}
-@media (max-width: 480px) {
-	.hoverSwipebox{
-		display:none !important;
-		visibility:hidden !important;
-	}
-	.hoverSwipebox2{
-		visibility:visible !important;
-	}
-}
-/*Swipe Box*/
-
 /*Video Launch*/
 .videoLaunchText{
 	display:none !important;
