@@ -2,6 +2,9 @@
 
 /* ================================================= DOCUMENT READY ================================================= */
 
+//Load LightGallery
+loadLightGallery();
+
 //******** DETECT HEIGHT CHANGE
 function onElementHeightChange(elm, callback){
 	var lastHeight = $(elm).height(), newHeight;
@@ -200,45 +203,6 @@ $(window).bind("load", ResponsiveCode);
 $(window).bind("resize", ResponsiveCode);
 $(window).bind("orientationchange", ResponsiveCode);
 //***** RESPONSIVE CODE ******
-
-//LightGallery
-$(".lightgallery").each(function(){ //search all images inside
-	
-	var galSelector = $(this).attr("lg-selector");
-	var galThumbnailVal = $(this).attr("lg-thumbnail");
-	var galAutoLink = $(this).attr("lg-autolink");
-	var galAutoTitle = $(this).attr("lg-autotitle");
-
-	if(galAutoLink == "true"){
-		var imgSrc = $(this).find("img").attr("src"); 
-		var imgClass = "myImage"; 
-		if(galAutoTitle!="false"){
-			var imgTitle = 'title="'+galAutoTitle+'"';
-		}
-		else{
-			var imgTitle = null;
-		}
-		$(this).find("img").wrap('<a '+imgTitle+' href="'+imgSrc+'" class="'+imgClass+'"></a>'); 
-	}
-	
-	
-	if(galThumbnailVal=="false"){
-		var galThumbnail = false;
-	}
-	else{
-		var galThumbnail = true;
-	}
-
-	//load gallery after images get converted to links
-	$(this).lightGallery({ //this is the parent container of imgs
-		selector: galSelector, //this is the button to launch the lightbox
-		thumbnail: galThumbnail //if u want use thumbs change it to true, so u need include an image inside the button container to get detected as thumb, in this case inside the "a", u can "uncomment" the hidden line above to try it
-	}); 
-	//LightGallery in content
-
-
-});
-//LightGallery
 
 //Click Select Menu
 /*$("select").change(function(e) {
