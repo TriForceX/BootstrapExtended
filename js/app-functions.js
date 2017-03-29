@@ -17,27 +17,47 @@ function getMaxHeight(elems){
         return $(this).outerHeight();
     }).get());
 }
+function destroyLightGallery(){
+	$(".lightgallery").lightGallery().data('lightGallery').destroy(true);
+}
 function loadLightGallery(){
-	//LightGallery
+	
+	
 	$(".lightgallery").each(function(){ //search all images inside
 
-		var galSelector = $(this).attr("lg-selector");
+		var getMainUrl = $("body").attr("url");
+		var galSelectorVal = $(this).attr("lg-selector");
 		var galThumbnailVal = $(this).attr("lg-thumbnail");
-		var galAutoLink = $(this).attr("lg-autolink");
 		var galAutoTitle = $(this).attr("lg-autotitle");
-
-		if(galAutoLink == "true"){
-			var imgSrc = $(this).find("img").attr("src"); 
-			var imgClass = "myImage"; 
-			if(galAutoTitle!="false"){
-				var imgTitle = 'title="'+galAutoTitle+'"';
-			}
-			else{
-				var imgTitle = null;
-			}
-			$(this).find("img").wrap('<a '+imgTitle+' href="'+imgSrc+'" class="'+imgClass+'"></a>'); 
+		var galGalleryMode = $(this).attr("lg-gallerymode");
+		var galLoadThumb = getMainUrl+"/css/lightgallery/lg-loading-icon.gif";
+		var galPrevThumb = getMainUrl+"/css/lightgallery/lg-loading-prev.png";
+		var galNextThumb = getMainUrl+"/css/lightgallery/lg-loading-next.png";
+		
+		if(galGalleryMode=="true"){
+			$(this).addClass("lightGalleryMode");
 		}
-
+		
+		if($(".lightgallery.lightGalleryMode .lg-prevthumb").length < 1 && $(".lightgallery.lightGalleryMode .lg-nextthumb").length < 1){
+			$(".lightgallery.lightGalleryMode").prepend("<div class='lg-prevthumb' href='"+galLoadThumb+"' title='Loading previous page ...'><img src='"+galPrevThumb+"'></div>");
+			$(".lightgallery.lightGalleryMode").append("<div class='lg-nextthumb' href='"+galLoadThumb+"' title='Loading next page ...'><img src='"+galNextThumb+"'></div>");
+		}
+		
+		
+		if($(this).find("img").parent().is("a")){
+			$(this).find("img").parent().addClass("lg-contentphoto");
+		}
+		
+		if(galAutoTitle!="false"){
+			$(this).find("img").parent().not(".lg-prevthumb, .lg-nextthumb").attr("title", galAutoTitle);
+		}
+		
+		if(galSelectorVal=="auto"){
+			var galSelector = ".lg-contentphoto";
+		}
+		else{
+			var galSelector = galSelectorVal;
+		}
 
 		if(galThumbnailVal=="false"){
 			var galThumbnail = false;
@@ -46,15 +66,52 @@ function loadLightGallery(){
 			var galThumbnail = true;
 		}
 
-		//load gallery after images get converted to links
-		$(this).lightGallery({ //this is the parent container of imgs
-			selector: galSelector, //this is the button to launch the lightbox
-			thumbnail: galThumbnail //if u want use thumbs change it to true, so u need include an image inside the button container to get detected as thumb, in this case inside the "a", u can "uncomment" the hidden line above to try it
+		$(this).lightGallery({
+			selector: galSelector+", .lg-prevthumb, .lg-nextthumb", 
+			thumbnail: galThumbnail,
+			loop: false,
 		}); 
-		//LightGallery in content
+		
+		$(".lightgallery.lightGalleryMode").on('onAfterOpen.lg',function(event){
+			console.log("abierta");
+			$(".lg-outer .lg-thumb .lg-thumb-item:first-child").addClass("noBorder");
+			$(".lg-outer .lg-thumb .lg-thumb-item:last-child").addClass("noBorder");
+		});
+
+		$(".lightgallery.lightGalleryMode").on('onAfterSlide.lg',function(event){
+			var total = parseInt($("#lg-counter-all").html());
+			var actual = parseInt($("#lg-counter-current").html());
+
+			console.log("abierta");
+			console.log("total: "+total+" actual: "+actual);
+
+			if(actual == total){
+				console.log("cerrando, pagina siguiente");
+				setTimeout(function(){ 
+					$(".lg-toolbar .lg-close").trigger("click");
+					$(".lightgallery").addClass("lightGalleryAuto");
+					//Stuff to do
+					window.location.href = $(".lg-next").attr("href"); //Example
+				}, 1500);
+			}
+			if(actual == 1){
+				console.log("cerrando, pagina anterior");
+				setTimeout(function(){ 
+					$(".lg-toolbar .lg-close").trigger("click");
+					$(".lightgallery").addClass("lightGalleryAuto");
+					//Stuff to do
+					window.location.href = $(".lg-prev").attr("href"); //Example
+				}, 1500);
+			}
+		});
+
+		//LightGallery Auto
+		if($(this).hasClass("lightGalleryAuto")){
+			$(this).removeClass("lightGalleryAuto");
+		}
 
 	});
-	//LightGallery
+	
 }
 function FotosFixV3(Contenedor){
 	
@@ -248,8 +305,8 @@ function Move(objetivo){
 	
 	 $('html, body').animate({
         scrollTop: ($(objetivo).offset().top - scrollAprox)//MenuFixed
-    }, 1000, function() {
-    	$(".menu").find("a").removeClass("menuChecked");
+    }, 500, function() {
+    	//Some stuff to do after
   });
 	
 }
