@@ -39,8 +39,8 @@ function loadLightGallery(){
 		}
 		
 		if($(".lightgallery.lightGalleryMode .lg-prevthumb").length < 1 && $(".lightgallery.lightGalleryMode .lg-nextthumb").length < 1){
-			$(".lightgallery.lightGalleryMode").prepend("<div class='lg-prevthumb' href='"+galLoadThumb+"' title='Loading previous page ...'><img src='"+galPrevThumb+"'></div>");
-			$(".lightgallery.lightGalleryMode").append("<div class='lg-nextthumb' href='"+galLoadThumb+"' title='Loading next page ...'><img src='"+galNextThumb+"'></div>");
+			$(".lightgallery.lightGalleryMode").prepend("<div class='lg-prevthumb' href='"+galLoadThumb+"' title='Cargando página anterior ...'><img src='"+galPrevThumb+"'></div>");
+			$(".lightgallery.lightGalleryMode").append("<div class='lg-nextthumb' href='"+galLoadThumb+"' title='Cargando siguiente página ...'><img src='"+galNextThumb+"'></div>");
 		}
 		
 		
@@ -87,34 +87,41 @@ function loadLightGallery(){
 
 			if(actual == total){
 				console.log("cerrando, pagina siguiente");
+				$(".lightgallery").addClass("lightGalleryAuto");
+				$(".lightgallery").addClass("lightGalleryAutoNext");
 				setTimeout(function(){ 
 					$(".lg-toolbar .lg-close").trigger("click");
-					$(".lightgallery").addClass("lightGalleryAuto");
-					//Stuff to do
-					window.location.href = $(".lg-next").attr("href"); //Example
 				}, 1500);
 			}
 			if(actual == 1){
 				console.log("cerrando, pagina anterior");
+				$(".lightgallery").addClass("lightGalleryAuto");
+				$(".lightgallery").addClass("lightGalleryAutoPrev");
 				setTimeout(function(){ 
 					$(".lg-toolbar .lg-close").trigger("click");
-					$(".lightgallery").addClass("lightGalleryAuto");
-					//Stuff to do
-					window.location.href = $(".lg-prev").attr("href"); //Example
 				}, 1500);
 			}
 		});
 
+		
 		//LightGallery Auto
 		$(".lightgallery.lightGalleryMode").on('onCloseAfter.lg',function(event){
 			if($(this).hasClass("lightGalleryAuto")){
+				if($(this).hasClass("lightGalleryAutoNext")){
+					//Stuff to do on close
+					window.location.href = $(".lg-next").attr("href"); //Example
+				}
+				else if($(this).hasClass("lightGalleryAutoPrev")){
+					//Stuff to do on close
+					window.location.href = $(".lg-prev").attr("href"); //Example
+				}
 				$(this).removeClass("lightGalleryAuto");
-				console.log("CLICK AUTO REMOVED");
+				$(this).removeClass("lightGalleryAutoPrev");
+				$(this).removeClass("lightGalleryAutoNext");
 			}
 		});
 
 	});
-	
 }
 function FotosFixV3(Contenedor){
 	
