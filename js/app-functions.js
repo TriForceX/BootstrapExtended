@@ -23,7 +23,7 @@ function destroyLightGallery(){
 function loadLightGallery(){
 	
 	
-	$(".lightgallery").each(function(){ //search all images inside
+	$(".lightgallery").each(function(){ 
 
 		var getMainUrl = $("body").attr("url");
 		var galSelectorVal = $(this).attr("lg-selector");
@@ -103,17 +103,15 @@ function loadLightGallery(){
 			}
 		});
 
-		
-		//LightGallery Auto
 		$(".lightgallery.lightGalleryMode").on('onCloseAfter.lg',function(event){
 			if($(this).hasClass("lightGalleryAuto")){
 				if($(this).hasClass("lightGalleryAutoNext")){
 					//Stuff to do on close
-					window.location.href = $(".lg-next").attr("href"); //Example
+					window.location.href = $(".lg-next").attr("href"); //Example Stuff
 				}
 				else if($(this).hasClass("lightGalleryAutoPrev")){
 					//Stuff to do on close
-					window.location.href = $(".lg-prev").attr("href"); //Example
+					window.location.href = $(".lg-prev").attr("href"); //Example Stuff
 				}
 				$(this).removeClass("lightGalleryAuto");
 				$(this).removeClass("lightGalleryAutoPrev");
