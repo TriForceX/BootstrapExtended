@@ -106,9 +106,12 @@ function loadLightGallery(){
 		});
 
 		//LightGallery Auto
-		if($(".lightgallery").hasClass("lightGalleryAuto")){
-			$(".lightgallery").removeClass("lightGalleryAuto");
-		}
+		$(".lightgallery.lightGalleryMode").on('onCloseAfter.lg',function(event){
+			if($(this).hasClass("lightGalleryAuto")){
+				$(this).removeClass("lightGalleryAuto");
+				console.log("CLICK AUTO REMOVED");
+			}
+		});
 
 	});
 	
