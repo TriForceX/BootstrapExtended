@@ -106,8 +106,8 @@ function loadLightGallery(){
 		});
 
 		//LightGallery Auto
-		if($(this).hasClass("lightGalleryAuto")){
-			$(this).removeClass("lightGalleryAuto");
+		if($(".lightgallery").hasClass("lightGalleryAuto")){
+			$(".lightgallery").removeClass("lightGalleryAuto");
 		}
 
 	});
