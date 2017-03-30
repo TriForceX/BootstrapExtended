@@ -34,7 +34,7 @@ ol{
 
 /* ================================================= LOADING ================================================= */
 body > .loading{
-	background-image:url("../img/loading_bg.png");
+	background-image:url("../img/loading-bg.png");
 	background-position:center center;
 	background-repeat:repeat;
 	background-color: transparent;
@@ -45,10 +45,8 @@ body > .loading{
 	top:0px;
 }
 body > .loading > span{
-	background-image:url("../img/loading_icon.gif");
 	background-position:center center;
 	background-repeat:no-repeat;
-	background-color:#azul-claro;
 	border-radius: 20px;
 	position:fixed;
 	width:100px;
@@ -57,6 +55,14 @@ body > .loading > span{
 	left:50%;
 	margin-top:-50px;
 	margin-left:-50px;
+}
+body > .loading.red > span{
+	background-image:url("../img/loading-icon-red.gif");
+	background-color:#d2040d;
+}
+body > .loading.blue > span{
+	background-image:url("../img/loading-icon-blue.gif");
+	background-color:#486ca5;
 }
 /* ================================================= LOADING ================================================= */
 
