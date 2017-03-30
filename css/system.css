@@ -34,7 +34,7 @@ ol{
 
 /* ================================================= LOADING ================================================= */
 body > .loading{
-	background-image:url("../img/loading-bg.png");
+	background-image:url("../loading/loading-bg.png");
 	background-position:center center;
 	background-repeat:repeat;
 	background-color: transparent;
@@ -57,11 +57,11 @@ body > .loading > span{
 	margin-left:-50px;
 }
 body > .loading.red > span{
-	background-image:url("../img/loading-icon-red.gif");
+	background-image:url("../loading/loading-icon-red.gif");
 	background-color:#d2040d;
 }
 body > .loading.blue > span{
-	background-image:url("../img/loading-icon-blue.gif");
+	background-image:url("../loading/loading-icon-blue.gif");
 	background-color:#486ca5;
 }
 /* ================================================= LOADING ================================================= */
