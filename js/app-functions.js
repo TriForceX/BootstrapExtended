@@ -49,7 +49,7 @@ function loadLightGallery(){
 		}
 		
 		if(galAutoTitle!="false"){
-			$(this).find("img").parent().not(".lg-prevthumb, .lg-nextthumb").attr("title", galAutoTitle);
+			$(this).find(galSelectorVal).not(".lg-prevthumb, .lg-nextthumb").attr("title", galAutoTitle);
 		}
 		
 		if(galSelectorVal=="auto"){
