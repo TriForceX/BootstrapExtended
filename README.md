@@ -4,6 +4,7 @@ Websites base structure with small reusable parts of source code or functions fo
 # Functions & Code Pieces
 * Check attribute of an HTML element (hasAttr)
 * Get Maximum height of amount of elements (getMaxHeight)
+* LightGallery custom methods (loadLightGallery & destroyLightGallery)
 * Background Image Size Fix for IE+ (FotosFixV3)
 * Text Overflow Fix (TitleFix)
 * Text Width 100% (TextoFix)
@@ -16,7 +17,7 @@ Websites base structure with small reusable parts of source code or functions fo
 * Convert string to Search Format (buscar)
 * Custom Modal Box (customInfo)
 * YouTube Video Modal Box (videoLaunch)
-* Auto Page Scroll to Anchor Tags (Mover)
+* Auto Page Scroll to element (Mover)
 * Disable Click on entire website (disableClick)
 * Get Method PHP Like (getUrlParameter)
 * Get Script Parameters (getSrcParameter)
@@ -38,7 +39,6 @@ Websites base structure with small reusable parts of source code or functions fo
 * Catch outerWidth and outerHeight properly
 * Select Text on click
 * Custom Navigation/Browser bar color
-* LightGallery content auto image conversion
 
 # Features
 * Bootstrap 3
