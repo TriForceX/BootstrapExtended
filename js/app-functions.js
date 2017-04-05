@@ -308,15 +308,16 @@ function videoLaunch(Titulo, ID){
 	
 	alert3(Titulo, contenido);
 }
-function Move(objetivo){		
-	var scrollAprox = 125;
-	
-	 $('html, body').animate({
-        scrollTop: ($(objetivo).offset().top - scrollAprox)//MenuFixed
-    }, 500, function() {
-    	//Some stuff to do after
-  });
-	
+function move(name,animated,distance){      
+    var scrollDistance = distance;
+    var scrollTarget = $("a[name='"+name+"']");
+
+    if(animated=="yes"){
+        $('html, body').animate({scrollTop: (scrollTarget.offset().top - scrollDistance)}, 500);
+    }
+    else{
+        $('html, body').scrollTop(scrollTarget.offset().top - scrollDistance);
+    }
 }
 function disableClick(tipo){
 	if(tipo==1){

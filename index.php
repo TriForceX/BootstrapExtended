@@ -62,6 +62,7 @@
 			<a class="lg-next" href="?page-2">Page 2 &raquo;</a>
 		</p>
    		<!-- LIGHTGALLERY CONTAINER AUTOMATICALLY -->
+   		
     </div>
 </div>
 <!-- ================================================= CONTENT ================================================= -->
