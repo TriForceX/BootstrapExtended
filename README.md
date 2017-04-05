@@ -17,7 +17,7 @@ Websites base structure with small reusable parts of source code or functions fo
 * Convert string to Search Format (buscar)
 * Custom Modal Box (customInfo)
 * YouTube Video Modal Box (videoLaunch)
-* Auto Page Scroll to element (Mover)
+* Auto Page Scroll to element (autoScroll)
 * Disable Click on entire website (disableClick)
 * Get Method PHP Like (getUrlParameter)
 * Get Script Parameters (getSrcParameter)

@@ -308,7 +308,7 @@ function videoLaunch(Titulo, ID){
 	
 	alert3(Titulo, contenido);
 }
-function move(name,animated,distance){      
+function autoScroll(name,animated,distance){      
     var scrollDistance = distance;
     var scrollTarget = $("a[name='"+name+"']");
 
