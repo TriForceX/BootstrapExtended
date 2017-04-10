@@ -22,6 +22,7 @@ Websites base structure with small reusable parts of source code or functions fo
 * Get Method PHP Like (getUrlParameter)
 * Get Script Parameters (getSrcParameter)
 * Strip tags PHP like (stripTags)
+* Custom Windows Popup function (windowsPopup)
 * Detect Element Height Changes (onElementHeightChange)
 * Detect Home Page (isHome)
 * Detect Mobile (isMovil)

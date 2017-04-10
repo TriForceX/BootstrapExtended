@@ -434,6 +434,37 @@ function checkDisabledLink(string){
 		}
 	}
 }
+function windowPopup(url, width, height, alignX, alignY,scroll) {
+	
+    var leftPosition;
+	var topPosition;
+	
+	//Horizontal Align
+	if(alignX=="right"){
+		leftPosition = window.screen.width;
+	}
+	else if(alignX=="left"){
+		leftPosition = 0;
+	}
+	else{
+		leftPosition = (window.screen.width / 2) - ((width / 2) + 10);//Allow for borders.
+	}
+
+	//Vertical Align
+	if(alignY=="top"){
+		topPosition = 0;
+	}
+	else if(alignY=="bottom"){
+		topPosition = window.screen.height;
+	}
+	else{
+		topPosition = (window.screen.height / 2) - ((height / 2) + 50);//Allow for title and status bars.
+	}
+	
+    //Open the window.
+    window.open(url, 
+				"WindowPopupJS",	"status=no,height="+height+",width="+width+",resizable=yes,left="+leftPosition+",top="+topPosition+",screenX="+leftPosition+",screenY="+topPosition+",toolbar=no,menubar=no,scrollbars="+scroll+",location=no,directories=no");
+}
 /* ================================================= FUNCTIONS ================================================= */
 
 /*JS End*/

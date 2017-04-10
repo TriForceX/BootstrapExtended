@@ -62,7 +62,8 @@
 			<a class="lg-next" href="?page-2">Page 2 &raquo;</a>
 		</p>
    		<!-- LIGHTGALLERY CONTAINER AUTOMATICALLY -->
-   		
+   		<br>
+		<a href="javascript:windowPopup('http://onlygolf.cl','320','480','center','center','yes')">Popup exmaple</a>
     </div>
 </div>
 <!-- ================================================= CONTENT ================================================= -->
