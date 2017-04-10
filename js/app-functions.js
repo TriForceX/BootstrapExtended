@@ -44,9 +44,13 @@ function loadLightGallery(){
 		}
 		
 		
-		if($(this).find("img").parent().is("a")){
-			$(this).find("img").parent().addClass("lg-contentphoto");
-		}
+		$(".lightgallery").find("img").each(function(){
+		
+			if($(this).parent().is("a") && !($(this).parent().hasAttr("target")) ){
+				$(this).parent().addClass("lg-contentphoto");
+			}
+			
+		});
 		
 		if(galAutoTitle!="false"){
 			$(this).find(galSelectorVal).not(".lg-prevthumb, .lg-nextthumb").attr("title", galAutoTitle);
