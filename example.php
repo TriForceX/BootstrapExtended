@@ -42,9 +42,27 @@
 			  <li><a href="http://getbootstrap.com/components/" target="_blank">Components</a></li>
 			  <li><a href="http://getbootstrap.com/javascript/" target="_blank">Javascript</a></li>
 			  <li class="divider"></li>
-			  <li><a href="#">Start Page</a></li>
-			  <li><a href="#">Elements Page</a></li>
-			  <li><a href="#">Carousel Examples</a></li>
+			  <li class="dropdown-header"><a href="examples/starter-template/index.html" target="_blank">Starter template</a></li>
+			  <li class="dropdown-header"><a href="examples/blog/index.html" target="_blank">Blog</a></li>
+			  <li class="dropdown-header"><a href="examples/carousel/index.html" target="_blank">Carousel</a></li>
+			  <li class="dropdown-header"><a href="examples/carousel-more/" target="_blank">Carousel More</a></li>
+			  <li class="dropdown-header"><a href="examples/cover/index.html" target="_blank">Cover</a></li>
+			  <li class="dropdown-header"><a href="examples/dashboard/index.html" target="_blank">Dashboard</a></li>
+			  <li class="dropdown-header"><a href="examples/grid/index.html" target="_blank">Grid</a></li>
+			  <li class="dropdown-header"><a href="examples/Jumbotron/index.html" target="_blank">Jumbotron</a></li>
+			  <li class="dropdown-header"><a href="examples/jumbotron-narrow/index.html" target="_blank">Jumbotron Narrow</a></li>
+			  <li class="dropdown-header"><a href="examples/justified-nav/index.html" target="_blank">Justified Nav</a></li>
+			  <li class="dropdown-header"><a href="examples/navbar/index.html" target="_blank">Navbar</a></li>
+			  <li class="dropdown-header"><a href="examples/navbar-fixed-top/index.html" target="_blank">Navbar Fixed Top</a></li>
+			  <li class="dropdown-header"><a href="examples/navbar-static-top/index.html" target="_blank">Navbar Static Top</a></li>
+			  <li class="dropdown-header"><a href="examples/non-responsive/index.html" target="_blank">Non Responsive</a></li>
+			  <li class="dropdown-header"><a href="examples/offcanvas/index.html" target="_blank">Off Canvas</a></li>
+			  <li class="dropdown-header"><a href="examples/screenshots/index.html" target="_blank">Screenshots</a></li>
+			  <li class="dropdown-header"><a href="examples/signin/index.html" target="_blank">Sign In</a></li>
+			  <li class="dropdown-header"><a href="examples/sticky-footer/index.html" target="_blank">Sticky Footer</a></li>
+			  <li class="dropdown-header"><a href="examples/sticky-footer-navbar/index.html" target="_blank">Sticky Footer Navbar</a></li>
+			  <li class="dropdown-header"><a href="examples/theme/index.html" target="_blank">Theme</a></li>
+			  <li class="dropdown-header"><a href="examples/tooltip-viewport/index.html" target="_blank">Tooltip Viewport</a></li>
 			</ul>
 		  </li>
 		</ul>
