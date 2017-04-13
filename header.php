@@ -59,7 +59,7 @@
 <div class="header">
 	<div class="container">
 		<!-- HEADER CONTAINER -->
-    	Header
+    	
 		<!-- HEADER CONTAINER -->
     </div>
 </div>

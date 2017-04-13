@@ -10,23 +10,23 @@
     <title>Theme Template for Ejemplo</title>
 
     <!-- Bootstrap core CSS -->
-    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="../css/bootstrap.min.css" rel="stylesheet">
     <!-- Bootstrap theme -->
-    <link href="css/bootstrap-theme.min.css" rel="stylesheet">
+    <link href="../css/bootstrap-theme.min.css" rel="stylesheet">
 
     <!-- Custom styles for this template -->
-    <link href="css/theme.css" rel="stylesheet">
+    <link href="../css/theme.css" rel="stylesheet">
     
     <!-- Custom styles for plugins -->
-    <link href="css/system.css" rel="stylesheet">
+    <link href="../css/system.css" rel="stylesheet">
     
     <!-- Responsive changes for this template -->
-    <link href="css/responsive.css" rel="stylesheet" type="text/css" media="all">
+    <link href="../css/responsive.css" rel="stylesheet" type="text/css" media="all">
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
-      <script src="js/html5shiv.min.js"></script>
-      <script src="js/respond.min.js"></script>
+      <script src="../js/html5shiv.min.js"></script>
+      <script src="../js/respond.min.js"></script>
     <![endif]-->
   </head>
 
@@ -639,15 +639,11 @@
     <!-- Bootstrap core JavaScript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
-    <script src="js/jquery.min.js"></script>
-    <script src="js/bootstrap.min.js"></script>
+    <script src="../js/jquery.min.js"></script>
+    <script src="../js/bootstrap.min.js"></script>
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-    <script src="js/ie10-viewport-bug-workaround.js"></script>
-	<!-- Custom Thumbnails -->
-    <script src="js/holder.js"></script>
-    <!-- Migrate older jQuery code to jQuery 1.9+ -->
-    <script src="js/jquery-migrate-1.2.1.js"></script>
+    <script src="../js/ie10-viewport-bug-workaround.js"></script>
     <!-- Custom APPs -->
-    <script src="js/app.js"></script>
+    <script src="../js/app.js"></script>
   </body>
 </html>
