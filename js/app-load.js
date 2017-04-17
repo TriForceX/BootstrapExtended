@@ -63,16 +63,16 @@ if(!(isMovil))
 //Cookie
 /*
 
-if ( !($.cookie('TEST_FirstTime') ) )
+if ( !(Cookies.get('TEST_FirstTime') ) )
 {
 	//Añadir la cookie
-	$.cookie("TEST_FirstTime", enlace, { expires: 365 });
+	Cookies.set("TEST_FirstTime", mainURL, { expires: 365 });
 
 }
 else
 {
 	//Actualizar cookie
-	$.cookie("TEST_FirstTime", enlace, { path: '/' });
+	Cookies.set("TEST_FirstTime", mainURL, { path: '/' });
 }
 
 */

@@ -31,7 +31,7 @@
 			  <li><a href="http://bootboxjs.com/" target="_blank">BootBox JS</a></li>
 			  <li><a href="https://github.com/karacas/imgLiquid" target="_blank">ImgLiquid JS</a></li>
 			  <li><a href="https://jqueryui.com/" target="_blank">jQuery UI</a></li>
-			  <li><a href="https://github.com/carhartl/jquery-cookie" target="_blank">jQuery Cookie</a></li>
+			  <li><a href="https://github.com/js-cookie/js-cookie" target="_blank">jQuery Cookie</a></li>
 			  <li><a href="https://jquerymobile.com/" target="_blank">jQuery Mobile</a></li>
 			</ul>
 		  </li>

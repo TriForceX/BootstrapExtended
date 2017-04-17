@@ -53,7 +53,7 @@
 <!-- imgLiquid Fix -->
 <script src="js/img-liquid.js"></script>
 <!-- jQuery Cookie -->
-<script src="js/jquery_cookie.js"></script>
+<script src="js/js.cookie.js"></script>
 <!-- LightGallery Lightbox -->
 <script src="js/lightgallery/lightgallery.js"></script>
 <script src="js/lightgallery/lg-fullscreen.js"></script>
