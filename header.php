@@ -1,4 +1,4 @@
-<?php require_once('resources/info.php'); ?>
+<?php require_once('resources/functions.php'); ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
