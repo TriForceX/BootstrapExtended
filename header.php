@@ -24,6 +24,8 @@
 <link href="css/bootstrap.min.css" rel="stylesheet">
 <!-- Bootstrap theme -->
 <link href="css/bootstrap-theme.min.css" rel="stylesheet">
+<!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+<link href="css/ie10-viewport-bug-workaround.css" rel="stylesheet">
 <!-- Bootstrap Data Tables -->
 <link href="css/dataTables.bootstrap.min.css" rel="stylesheet">
 <!-- jQuery UI CSS (Rename "images-dark" folder to "image" in css to use dark theme) -->
