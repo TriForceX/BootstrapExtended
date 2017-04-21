@@ -140,7 +140,9 @@
    		<br>
 		<a href="javascript:windowPopup('http://onlygolf.cl','320','480','center','center','yes')">Popup exmaple</a>
 		
-		
+		<p>
+			Date is: <?php echo showDate("2017/09/20", "F j l, Y, g:i a", "esp", true); ?>
+		</p>
 		
 		
 	<!-- MAIN CONTAINER -->

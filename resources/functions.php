@@ -5,7 +5,9 @@
 
 //Debug
 if(isset($_GET['debug'])){
-	error_reporting(E_ALL);
+	ini_set('display_errors', 1);
+	ini_set('display_startup_errors', 1);
+	error_reporting(E_ALL); //E_ERROR | E_STRICT | E_WARNING | E_NOTICE | E_ALL
 }
 
 //Base URL
@@ -69,7 +71,7 @@ function convertToUTF8($text) {
         chr(0xBB) => '&raquo;',
     );
     return html_entity_decode(mb_convert_encoding(strtr($text, $map), 'UTF-8', 'ISO-8859-2'), ENT_QUOTES, 'UTF-8');
-};
+}
 //UTF9 Conversion
 
 //Cut Excerpt
@@ -84,39 +86,47 @@ function cutExcerpt($getText,$num) {
 //Cut Excerpt
 
 //Date String WIP
-function dateString($show, $abbr, $date, &lang){
-	$fechaDato = $date;
-
-	$mesesPalabras = array("Enero","Febrero","Marzo","Abril","Mayo","Junio","Julio","Agosto","Septiembre","Octubre","Noviembre","Diciembre");
-	$mesesCortar = &abbr;
-
-	$fechaDia = date('d', strtotime($fechaDato));
-	if($mesesCortar){
-
-			$fechaMesPrev = $mesesPalabras[date('n', strtotime($fechaDato))-1];
-
-			if($fechaMesPrev == "Septiembre"){
-					$fechaMes = substr($fechaMesPrev, 0,4);
-			}
-			else{
-					$fechaMes = substr($fechaMesPrev, 0,3);
-			}
-	}
-	else{
-			$fechaMes = $mesesPalabras[date('n', strtotime($fechaDato))-1];
-	}
-	$fechaAnio = date('Y', strtotime($fechaDato));
+function showDate($date, $format, $lang, $abbr){
+	$newDate = strtotime($date);
 	
-	if($show == 'day'){
-		
+	$langDays = array(
+					array("Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"),
+					array("Domingo","Lunes","Martes","Miércoles","Jueves","Viernes","Sábado"),
+				);
+	
+	$langMonths = array(
+					array("January","February","March","April","May","June","July ","August", "September", "October",  "November","December"),
+					array("Enero","Febrero","Marzo","Abril","Mayo","Junio","Julio","Agosto","Septiembre","Octubre","Noviembre","Diciembre"),
+				  );
+	
+	$langSet1 = $lang == 'esp' ? 0 : 1; //esp
+	$langSet2 = $lang == 'esp' ? 1 : 0; //eng
+	
+	$finalDate = date($format, $newDate);
+	
+	for ($row = 0; $row < 7; $row++)
+	{
+		$finalDate = str_replace($langDays[$langSet1][$row],$langDays[$langSet2][$row], $finalDate);
 	}
-	elseif($show == 'month'){
-		
+	
+	for ($row = 0; $row < 12; $row++)
+	{
+		$finalDate = str_replace($langMonths[$langSet1][$row],$langMonths[$langSet2][$row], $finalDate);
+	}
+	
+	return $finalDate;
+	
+	
+	/*
+	ABBR TIP:
+	
+	if($fechaMesPrev == "Septiembre" OR $fechaMesPrev == "September"){
+		$fechaMes = substr($fechaMesPrev, 0,4);
 	}
 	else{
-		
+		$fechaMes = substr($fechaMesPrev, 0,3);
 	}
+	*/
 }
 //Date String WIP
 
-?>
