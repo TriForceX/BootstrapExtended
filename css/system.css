@@ -228,8 +228,8 @@ body > .loading.blue > span{
 }
 
 /*Control Shadows*/
-.carousel-control.left,
-.carousel-control.right{
+.carousel-noshadow .carousel-control.left,
+.carousel-noshadow .carousel-control.right{
 	background:none !important;
 	background-image:none !important;
 	background-color:transparent !important;

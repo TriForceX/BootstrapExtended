@@ -361,7 +361,7 @@
 					<td>alignY</td>
 					<td>string</td>
 					<td><code>center</code></td>
-					<td>Vertical alignment of the pop-ip, it can be <code>top</code>, <code>center</code> or <code>bottomt</code></td>
+					<td>Vertical alignment of the pop-ip, it can be <code>top</code>, <code>center</code> or <code>bottom</code></td>
 				</tr>
 				<tr>
 					<td>scroll</td>
