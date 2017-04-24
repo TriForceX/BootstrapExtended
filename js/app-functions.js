@@ -434,10 +434,18 @@ function checkDisabledLink(string){
 		}
 	}
 }
-function windowPopup(url, width, height, alignX, alignY,scroll) {
+function windowPopup(url, width, height, alignX, alignY, scroll) {
 	
     var leftPosition;
 	var topPosition;
+	
+	//Scrolling
+	if(scroll){
+		var getScroll = 'yes';
+	}
+	else{
+		var getScroll = 'no';
+	}
 	
 	//Horizontal Align
 	if(alignX=="right"){
@@ -463,7 +471,7 @@ function windowPopup(url, width, height, alignX, alignY,scroll) {
 	
     //Open the window.
     window.open(url, 
-				"WindowPopupJS",	"status=no,height="+height+",width="+width+",resizable=yes,left="+leftPosition+",top="+topPosition+",screenX="+leftPosition+",screenY="+topPosition+",toolbar=no,menubar=no,scrollbars="+scroll+",location=no,directories=no");
+				"WindowPopupJS",	"status=no,height="+height+",width="+width+",resizable=yes,left="+leftPosition+",top="+topPosition+",screenX="+leftPosition+",screenY="+topPosition+",toolbar=no,menubar=no,scrollbars="+getScroll+",location=no,directories=no");
 }
 /* ================================================= FUNCTIONS ================================================= */
 

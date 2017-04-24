@@ -1,6 +1,7 @@
 <?php include('header.php'); ?>
 
 <style type="text/css">
+	
 .content{
   padding-bottom: 30px;
 }
@@ -15,6 +16,158 @@
 .theme-showcase .navbar .container {
   width: auto;
 }
+.bs-example {
+  position: relative;
+  padding: 45px 15px 15px;
+  margin: 0 -15px 15px;
+  border-color: #e5e5e5 #eee #eee;
+  border-style: solid;
+  border-width: 1px 0;
+  -webkit-box-shadow: inset 0 3px 6px rgba(0,0,0,.05);
+          box-shadow: inset 0 3px 6px rgba(0,0,0,.05);
+}
+/* Echo out a label for the example */
+/*
+ * Examples
+ *
+ * Isolated sections of example content for each component or feature. Usually
+ * followed by a code snippet.
+ */
+
+.bs-example {
+  position: relative;
+  padding: 45px 15px 15px;
+  margin: 0 -15px 15px;
+  border-color: #e5e5e5 #eee #eee;
+  border-style: solid;
+  border-width: 1px 0;
+  -webkit-box-shadow: inset 0 3px 6px rgba(0,0,0,.05);
+          box-shadow: inset 0 3px 6px rgba(0,0,0,.05);
+}
+/* Echo out a label for the example */
+.bs-example:after {
+  position: absolute;
+  top: 15px;
+  left: 15px;
+  font-size: 12px;
+  font-weight: bold;
+  color: #959595;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  content: "Example";
+}
+
+.bs-example-padded-bottom {
+  padding-bottom: 24px;
+}
+
+/* Tweak display of the code snippets when following an example */
+.bs-example + .highlight,
+.bs-example + .zero-clipboard + .highlight {
+  margin: -15px -15px 15px;
+  border-width: 0 0 1px;
+  border-radius: 0;
+}
+
+/* Make the examples and snippets not full-width */
+@media (min-width: 768px) {
+  .bs-example {
+    margin-right: 0;
+    margin-left: 0;
+    background-color: #fff;
+    border-color: #ddd;
+    border-width: 1px;
+    border-radius: 4px 4px 0 0;
+    -webkit-box-shadow: none;
+            box-shadow: none;
+  }
+  .bs-example + .highlight,
+  .bs-example + .zero-clipboard + .highlight {
+    margin-top: -16px;
+    margin-right: 0;
+    margin-left: 0;
+    border-width: 1px;
+    border-bottom-right-radius: 4px;
+    border-bottom-left-radius: 4px;
+  }
+  .bs-example-standalone {
+    border-radius: 4px;
+  }
+}
+
+/* Undo width of container */
+.bs-example .container {
+  width: auto;
+}
+
+/* Tweak content of examples for optimum awesome */
+.bs-example > p:last-child,
+.bs-example > ul:last-child,
+.bs-example > ol:last-child,
+.bs-example > blockquote:last-child,
+.bs-example > .form-control:last-child,
+.bs-example > .table:last-child,
+.bs-example > .navbar:last-child,
+.bs-example > .jumbotron:last-child,
+.bs-example > .alert:last-child,
+.bs-example > .panel:last-child,
+.bs-example > .list-group:last-child,
+.bs-example > .well:last-child,
+.bs-example > .progress:last-child,
+.bs-example > .table-responsive:last-child > .table {
+  margin-bottom: 0;
+}
+.bs-example > p > .close {
+  float: none;
+}
+
+/* Contextual background colors */
+.bs-example-bg-classes p {
+  padding: 15px;
+}
+
+/* Images */
+.bs-example > .img-circle,
+.bs-example > .img-rounded,
+.bs-example > .img-thumbnail {
+  margin: 5px;
+}
+
+/* Buttons */
+.bs-example > .btn,
+.bs-example > .btn-group {
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+.bs-example > .btn-toolbar + .btn-toolbar {
+  margin-top: 10px;
+}
+	
+.highlight {
+  padding: 9px 14px;
+  margin-bottom: 14px;
+  background-color: #f7f7f9;
+  border: 1px solid #e1e1e8;
+  border-radius: 4px;
+}
+.highlight pre {
+  padding: 0;
+  margin-top: 0;
+  margin-bottom: 0;
+  word-break: normal;
+  white-space: nowrap;
+  background-color: transparent;
+  border: 0;
+}
+.highlight pre code {
+  font-size: inherit;
+  color: #333; /* Effectively the base text color */
+}
+.highlight pre code:first-child {
+  display: inline-block;
+  padding-right: 45px;
+}
+
 </style>
 
 <nav class="navbar navbar-inverse">
@@ -168,15 +321,70 @@
 		<div class="page-header">
 			<h1>Custom PopUp</h1>
 		</div>
-		<a href="javascript:windowPopup('http://onlygolf.cl','320','480','center','center','yes')">Popup exmaple</a>
+		<p>Launch a custom pop-up window via javascript, the function structure is <code>windowPopup(url, width, height, alignX, alignY, scroll)</code></p>
 		
+		<table class="table table-bordered table-striped js-options-table">
+			<thead>
+				<tr>
+					<th>Name</th>
+					<th>type</th>
+					<th>default</th>
+					<th>description</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td>url</td>
+					<td>string</td>
+					<td>null</td>
+					<td>Website URL to show in the pop-up</td>
+				</tr>
+				<tr>
+					<td>width</td>
+					<td>int</td>
+					<td>0</td>
+					<td>Width (in pixels) of the pop-up</td>
+				</tr>
+				<tr>
+					<td>height</td>
+					<td>int</td>
+					<td>0</td>
+					<td>Height (in pixels) of the pop-up</td>
+				</tr>
+				<tr>
+					<td>alignX</td>
+					<td>string</td>
+					<td><code>center</code></td>
+					<td>Horizontal alignment of the pop-ip, it can be <code>left</code>, <code>center</code> or <code>right</code></td>
+				</tr>
+				<tr>
+					<td>alignY</td>
+					<td>string</td>
+					<td><code>center</code></td>
+					<td>Vertical alignment of the pop-ip, it can be <code>top</code>, <code>center</code> or <code>bottomt</code></td>
+				</tr>
+				<tr>
+					<td>scroll</td>
+					<td>boolean</td>
+					<td>false</td>
+					<td>Enable or disable scrollbar in the pop-up</td>
+				</tr>
+			</tbody>
+		</table>
 		
-		
+		<div class="bs-example"> 
+			<button type="button" class="btn btn-primary" onclick="windowPopup('http://onlygolf.cl','640','480','center','center','yes')">Center Center 640 x 480</button>
+			<button type="button" class="btn btn-primary" onclick="windowPopup('http://onlygolf.cl','320','480','right','bottom','yes')">Right Bottom 320 x 480</button>
+			<button type="button" class="btn btn-primary" onclick="windowPopup('http://onlygolf.cl','320','480','left','top','yes')">Left Top 320 x 480</button>
+		</div>
+		<figure class="highlight">
+			<pre><code class="language-html" data-lang="html">windowPopup('http://onlygolf.cl','640','480','center','center','yes')</code></pre>
+		</figure>
 		
 		
 		
 		<div class="page-header">
-			<h1>showDate() Function PHP</h1>
+			<h1>Show Date Function PHP</h1>
 		</div>
 		
 		<p>
