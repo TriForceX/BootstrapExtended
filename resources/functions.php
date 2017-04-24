@@ -87,46 +87,53 @@ function cutExcerpt($getText,$num) {
 
 //Date String WIP
 function showDate($date, $format, $lang, $abbr){
+	
 	$newDate = strtotime($date);
+	$finalDate = date($format, $newDate);
+	$langSet = $lang == 'esp' ? 1 : 0;
 	
 	$langDays = array(
 					array("Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"),
 					array("Domingo","Lunes","Martes","Miércoles","Jueves","Viernes","Sábado"),
 				);
 	
+	$langDaysAbbr = array(
+						array("Sun","Mon","Tue","Wed","Thu","Fri","Sat"),
+						array("Dom","Lun","Mar","Mié","Jue","Vie","Sáb"),
+					);
+	
 	$langMonths = array(
-					array("January","February","March","April","May","June","July ","August", "September", "October",  "November","December"),
-					array("Enero","Febrero","Marzo","Abril","Mayo","Junio","Julio","Agosto","Septiembre","Octubre","Noviembre","Diciembre"),
+					array("January","February","March","April","May","June","July ","August","September","October","November","December"),
+					array("Enero","Febrero","Marzo","Abril","Mayo","Junio","Julio","Agosto","Septiembre","Octubre","Noviembre", "Diciembre"),
 				  );
 	
-	$langSet1 = $lang == 'esp' ? 0 : 1; //esp
-	$langSet2 = $lang == 'esp' ? 1 : 0; //eng
-	
-	$finalDate = date($format, $newDate);
+	$langMonthsAbbr = array(
+						array("Jan","Feb","Mar","Apr","May","Jun","Jul ","Aug","Sept","Oct","Nov","Dec"),
+						array("Ene","Feb","Mar","Abr","May","Jun","Jul","Ago","Sept","Oct","Nov","Dic"),
+					  );
+
 	
 	for ($row = 0; $row < 7; $row++)
 	{
-		$finalDate = str_replace($langDays[$langSet1][$row],$langDays[$langSet2][$row], $finalDate);
+		if($abbr){
+			$finalDate = str_replace($langDays[0][$row], $langDaysAbbr[$langSet][$row], $finalDate);
+		}
+		else{
+			$finalDate = str_replace($langDays[0][$row], $langDays[$langSet][$row], $finalDate);
+		}
 	}
 	
 	for ($row = 0; $row < 12; $row++)
 	{
-		$finalDate = str_replace($langMonths[$langSet1][$row],$langMonths[$langSet2][$row], $finalDate);
+		if($abbr){
+			$finalDate = str_replace($langMonths[0][$row], $langMonthsAbbr[$langSet][$row], $finalDate);
+		}
+		else{
+			$finalDate = str_replace($langMonths[0][$row], $langMonths[$langSet][$row], $finalDate);
+		}
 	}
 	
 	return $finalDate;
-	
-	
-	/*
-	ABBR TIP:
-	
-	if($fechaMesPrev == "Septiembre" OR $fechaMesPrev == "September"){
-		$fechaMes = substr($fechaMesPrev, 0,4);
-	}
-	else{
-		$fechaMes = substr($fechaMesPrev, 0,3);
-	}
-	*/
 }
 //Date String WIP
 
