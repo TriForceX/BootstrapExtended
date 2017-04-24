@@ -258,8 +258,8 @@
 		
 	<!-- Main jumbotron for a primary marketing message or call to action -->
       <div class="jumbotron">
-        <h1>Theme example</h1>
-        <p>This is a template showcasing the optional theme stylesheet included in Bootstrap. Use it as a starting point to create something more unique by building on or modifying it.</p>
+        <h1>Plugins Examples</h1>
+		  <p>Below you will find some useful code functions to use in <code>PHP</code> or <code>JS</code> using the included plugins in this repository.</p>
       </div>
 		
 		
@@ -268,48 +268,104 @@
   		
   		
 		<div class="page-header">
-			<h1>Light Gallery</h1>
+			<h1>Light Gallery <span class="label label-danger">JS</span></h1>
 		</div>
+		<p>A customizable, modular, responsive, lightbox gallery plugin for jQuery. There is an improved usage method via <code>data-attributes</code></p>
+  		
+  		
+  		
+  		<div class="bs-example"> 
+  		
+			<div class="row lightgallery" lg-selector="auto" lg-autotitle="false" lg-thumbnail="false" lg-gallerymode="false">
+			  <div class="col-md-3">
+				<a class="thumbnail" style="height:100px; overflow: hidden" title="My image 1" href="http://getbootstrap.com/examples/screenshots/theme.jpg">
+					<img style="width: 100%" src="http://getbootstrap.com/examples/screenshots/theme.jpg">
+				</a>
+			  </div>
+			  <div class="col-md-3">
+				<a class="thumbnail" style="height:100px; overflow: hidden" title="My image 2" href="http://getbootstrap.com/examples/screenshots/cover.jpg">
+					<img style="width: 100%" src="http://getbootstrap.com/examples/screenshots/cover.jpg">
+				</a>
+			  </div>
+			  <div class="col-md-3">
+				<a class="thumbnail" style="height:100px; overflow: hidden" title="My image 3" href="http://getbootstrap.com/examples/screenshots/justified-nav.jpg">
+					<img style="width: 100%" src="http://getbootstrap.com/examples/screenshots/justified-nav.jpg">
+				</a>
+			  </div>
+			  <div class="col-md-3">
+				<a class="thumbnail" style="height:100px; overflow: hidden" title="My image 3" href="http://getbootstrap.com/examples/screenshots/justified-nav.jpg">
+					<img style="width: 100%" src="http://getbootstrap.com/examples/screenshots/justified-nav.jpg">
+				</a>
+			  </div>
+			</div>
+			
+		</div>
+		<figure class="highlight">
+			<pre><code class="language-html" data-lang="html">&lt;div class="lightgallery" lg-selector="auto" lg-autotitle="false" lg-thumbnail="false" lg-gallerymode="false"&gt;<br>...<br>&lt;/div&gt;</code></pre>
+		</figure>
+  		
+  		
+  		
+  		
+  		
+  		
    		<!-- LIGHTGALLERY CONTAINER MANUALLY -->
-		<h3>Normal</h3>
-   		<p class="lightgallery" lg-selector="auto" lg-autotitle="false" lg-thumbnail="false" lg-gallerymode="false">
-   			<a title="My image 1" href="http://files.vladstudio.com/joy/where_tahrs_live/wall/vladstudio_where_tahrs_live_800x600_signed.jpg">
-   				<img style="width: 100px" src="http://www.dailymobile.net/wp-content/uploads/wallpapers/landscape-wallpapers-320x240/nokia-320x240-wallpaper-2363.jpg">
-			</a>
-			<a title="My image 2" href="http://www.hdfondos.eu/pictures/2014/0315/1/new-york-sunset-hd-wallpaper-4325.jpg">
-   				<img style="width: 100px" src="https://s-media-cache-ak0.pinimg.com/564x/2c/cd/16/2ccd161ecb5634004c17e489d053cb10.jpg">
-			</a>
-			<a title="My image 3" href="http://www.hdfondos.eu/pictures/2014/0322/1/blue-night-full-moon-scenery-wallpaper-3967.jpg">
-   				<img style="width: 100px" src="http://s1.picswalls.com/thumbs1/2014/02/08/summer-wallpaper_06311240_26.jpg">
-			</a>
-		</p>
+		
+		
+		
+		
+		
+		
 		<!-- LIGHTGALLERY CONTAINER MANUALLY -->
 		<br>
    		<!-- LIGHTGALLERY CONTAINER AUTOMATICALLY -->
-   		<h3>Gallery Mode (<?php echo isset($_GET["page-2"]) ? 'Page 2' : 'Page 1' ?>)</h3>
-		<p class="lightgallery" lg-selector="auto" lg-autotitle="My gallery" lg-thumbnail="true" lg-gallerymode="true">
-			<?php if(isset($_GET["page-2"])): ?>
-			<a title="My image 1" href="http://files.vladstudio.com/joy/where_tahrs_live/wall/vladstudio_where_tahrs_live_800x600_signed.jpg">
-   				<img style="width: 100px" src="http://www.dailymobile.net/wp-content/uploads/wallpapers/landscape-wallpapers-320x240/nokia-320x240-wallpaper-2363.jpg">
+   		<?php //echo isset($_GET["page-2"]) ? 'Page 2' : 'Page 1' ?>
+		<div class="row lightgallery" lg-selector="auto" lg-autotitle="My gallery" lg-thumbnail="true" lg-gallerymode="true">
+		  <?php if(!isset($_GET["page-2"])): ?>
+		  <div class="col-md-3">
+			<a class="thumbnail" style="height:100px; overflow: hidden" title="My image 1" href="http://getbootstrap.com/examples/screenshots/theme.jpg">
+   				<img style="width: 100%" src="http://getbootstrap.com/examples/screenshots/theme.jpg">
 			</a>
-			<a title="My image 2" href="http://www.hdfondos.eu/pictures/2014/0315/1/new-york-sunset-hd-wallpaper-4325.jpg">
-   				<img style="width: 100px" src="https://s-media-cache-ak0.pinimg.com/564x/2c/cd/16/2ccd161ecb5634004c17e489d053cb10.jpg">
+		  </div>
+		  <div class="col-md-3">
+			<a class="thumbnail" style="height:100px; overflow: hidden" title="My image 2" href="http://getbootstrap.com/examples/screenshots/cover.jpg">
+   				<img style="width: 100%" src="http://getbootstrap.com/examples/screenshots/cover.jpg">
 			</a>
-			<a title="My image 3" href="http://www.hdfondos.eu/pictures/2014/0322/1/blue-night-full-moon-scenery-wallpaper-3967.jpg">
-   				<img style="width: 100px" src="http://s1.picswalls.com/thumbs1/2014/02/08/summer-wallpaper_06311240_26.jpg">
+		  </div>
+		  <div class="col-md-3">
+			<a class="thumbnail" style="height:100px; overflow: hidden" title="My image 3" href="http://getbootstrap.com/examples/screenshots/justified-nav.jpg">
+   				<img style="width: 100%" src="http://getbootstrap.com/examples/screenshots/justified-nav.jpg">
 			</a>
-			<?php else: ?>
-			<a href="https://speckycdn-sdm.netdna-ssl.com/wp-content/uploads/2011/09/dualscreenwall13.jpg">
-   				<img style="width: 100px" src="https://speckycdn-sdm.netdna-ssl.com/wp-content/uploads/2011/09/dualscreenwall13.jpg">
+		  </div>
+		  <div class="col-md-3">
+			<a class="thumbnail" style="height:100px; overflow: hidden" title="My image 3" href="http://getbootstrap.com/examples/screenshots/justified-nav.jpg">
+   				<img style="width: 100%" src="http://getbootstrap.com/examples/screenshots/justified-nav.jpg">
 			</a>
-			<a href="https://i.stack.imgur.com/SiNEQ.jpg">
-   				<img style="width: 100px" src="https://i.stack.imgur.com/SiNEQ.jpg">
+		  </div>
+		  <?php else: ?>
+		  <div class="col-md-3">
+			<a class="thumbnail" style="height:100px; overflow: hidden" title="My image 1" href="http://getbootstrap.com/examples/screenshots/theme.jpg">
+   				<img style="width: 100%" src="http://getbootstrap.com/examples/screenshots/theme.jpg">
 			</a>
-			<a href="http://es.naturewallpaperfree.com/bosque-otono/wallpaper-naturaleza-640x480-4198-5e295eea.jpg">
-   				<img style="width: 100px" src="http://es.naturewallpaperfree.com/bosque-otono/wallpaper-naturaleza-640x480-4198-5e295eea.jpg">
+		  </div>
+		  <div class="col-md-3">
+			<a class="thumbnail" style="height:100px; overflow: hidden" title="My image 2" href="http://getbootstrap.com/examples/screenshots/cover.jpg">
+   				<img style="width: 100%" src="http://getbootstrap.com/examples/screenshots/cover.jpg">
 			</a>
-			<?php endif; ?>
-		</p>
+		  </div>
+		  <div class="col-md-3">
+			<a class="thumbnail" style="height:100px; overflow: hidden" title="My image 3" href="http://getbootstrap.com/examples/screenshots/justified-nav.jpg">
+   				<img style="width: 100%" src="http://getbootstrap.com/examples/screenshots/justified-nav.jpg">
+			</a>
+		  </div>
+		  <div class="col-md-3">
+			<a class="thumbnail" style="height:100px; overflow: hidden" title="My image 3" href="http://getbootstrap.com/examples/screenshots/justified-nav.jpg">
+   				<img style="width: 100%" src="http://getbootstrap.com/examples/screenshots/justified-nav.jpg">
+			</a>
+		  </div>
+		  <?php endif; ?>
+		</div>
+			
   		<p>
 			<a class="lg-prev" href="?page-1">&laquo; Page 1</a>
 			<a class="lg-next" href="?page-2">Page 2 &raquo;</a>
@@ -319,7 +375,7 @@
 		
 		
 		<div class="page-header">
-			<h1>Custom PopUp</h1>
+			<h1>Window Pop-Up <span class="label label-danger">JS</span></h1>
 		</div>
 		<p>Launch a custom pop-up window via javascript, the function structure is <code>windowPopup(url, width, height, alignX, alignY, scroll)</code></p>
 		
@@ -373,23 +429,65 @@
 		</table>
 		
 		<div class="bs-example"> 
-			<button type="button" class="btn btn-primary" onclick="windowPopup('http://onlygolf.cl','640','480','center','center','yes')">Center Center 640 x 480</button>
-			<button type="button" class="btn btn-primary" onclick="windowPopup('http://onlygolf.cl','320','480','right','bottom','yes')">Right Bottom 320 x 480</button>
-			<button type="button" class="btn btn-primary" onclick="windowPopup('http://onlygolf.cl','320','480','left','top','yes')">Left Top 320 x 480</button>
+			<button type="button" class="btn btn-primary" onclick="windowPopup('http://getbootstrap.com','640','480','center','center','yes')">Center Center 640 x 480</button>
+			<button type="button" class="btn btn-primary" onclick="windowPopup('http://getbootstrap.com','320','480','right','bottom','yes')">Right Bottom 320 x 480</button>
+			<button type="button" class="btn btn-primary" onclick="windowPopup('http://getbootstrap.com','320','480','left','top','yes')">Left Top 320 x 480</button>
 		</div>
 		<figure class="highlight">
-			<pre><code class="language-html" data-lang="html">windowPopup('http://onlygolf.cl','640','480','center','center','yes')</code></pre>
+			<pre><code class="language-html" data-lang="html">&lt;a onclick="windowPopup('http://getbootstrap.com','640','480','center','center','yes')">Click Here&lt;/a&gt;</code></pre>
 		</figure>
 		
 		
 		
 		<div class="page-header">
-			<h1>Show Date Function PHP</h1>
+			<h1>Show Date <span class="label label-danger">PHP</span></h1>
 		</div>
 		
-		<p>
-			Date is: <?php echo showDate("2017/09/20", "F j l, Y, g:i a", "esp", true); ?>
-		</p>
+		<p>Show a date in any format. the main function is <code>showDate($date, $format, $lang, $abbr)</code></p>
+		
+		<table class="table table-bordered table-striped js-options-table">
+			<thead>
+				<tr>
+					<th>Name</th>
+					<th>type</th>
+					<th>default</th>
+					<th>description</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td>date</td>
+					<td>string</td>
+					<td>null</td>
+					<td>Date in english format <code>YYYY/MM/DD</code> or <code>YYYY-MM-DD</code></td>
+				</tr>
+				<tr>
+					<td>format</td>
+					<td>string</td>
+					<td><code>Y-m-d</code></td>
+					<td>Date format in PHP, more info <a href="http://php.net/manual/es/function.date.php" target="_blank">here</a></td>
+				</tr>
+				<tr>
+					<td>lang</td>
+					<td>string</td>
+					<td><code>eng</code></td>
+					<td>Change the language of months and days, it can be <code>eng</code> for english, and <code>esp</code> for spanish</td>
+				</tr>
+				<tr>
+					<td>abbr</td>
+					<td>boolean</td>
+					<td>false</td>
+					<td>Apply an abbreviation to months and days</td>
+				</tr>
+			</tbody>
+		</table>
+		
+		<div class="bs-example"> 
+			<h4>The date is: <span class="label label-default"><?php echo showDate("2017/09/20", "F j l, Y, g:i a", "eng", true); ?></span></h4>
+		</div>
+		<figure class="highlight">
+			<pre><code class="language-html" data-lang="html">&lt;?php echo showDate("2017/09/20", "F j l, Y, g:i a", "eng", true); ?&gt;</code></pre>
+		</figure>
 		
 		
 		
@@ -399,9 +497,13 @@
 		
 		
 		
+		<p>&nbsp;</p>
 		
 		
-		
+	 <div class="jumbotron">
+        <h1>Theme example</h1>
+        <p>This is a template showcasing the optional theme stylesheet included in Bootstrap. Use it as a starting point to create something more unique by building on or modifying it.</p>
+      </div>
 	
 
 
