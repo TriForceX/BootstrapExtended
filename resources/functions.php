@@ -5,6 +5,10 @@
 
 //Debug
 if(isset($_GET['debug'])){
+	
+	ini_set('error_prepend_string','<div class="alert alert-danger" role="alert">');
+	ini_set('error_append_string','</div>');
+	ini_set('html_errors', 0);
 	ini_set('display_errors', 1);
 	ini_set('display_startup_errors', 1);
 	error_reporting(E_ALL); //E_ERROR | E_STRICT | E_WARNING | E_NOTICE | E_ALL
