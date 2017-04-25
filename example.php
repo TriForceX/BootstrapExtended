@@ -343,7 +343,7 @@
 			
 		</div>
 		<figure class="highlight">
-			<pre><code class="language-html" data-lang="html">&lt;div class="lightgallery" lg-selector="auto" lg-autotitle="false" lg-thumbnail="false" lg-gallerymode="false"&gt;<br>...<br>&lt;/div&gt;</code></pre>
+			<pre><code class="language-html" data-lang="html">&lt;div class="lightgallery" lg-selector="auto" lg-autotitle="false" lg-thumbnail="false" lg-gallerymode="false" lg-gallerymode="false"&gt;<br>...<br>&lt;/div&gt;</code></pre>
 		</figure>
   		
   		
@@ -430,7 +430,7 @@
 
 		</div>
   		<figure class="highlight">
-			<pre><code class="language-html" data-lang="html">&lt;div class="lightgallery" lg-selector="auto" lg-autotitle="My Custom Title" lg-thumbnail="true" lg-gallerymode="true"&gt;<br>...<br>&lt;/div&gt;</code></pre>
+			<pre><code class="language-html" data-lang="html">&lt;div class="lightgallery" lg-selector="auto" lg-autotitle="My Custom Title" lg-thumbnail="true" lg-gallerymode="true" lg-gallerymode="true"&gt;<br>...<br>&lt;/div&gt;</code></pre>
 		</figure>
    		
 		
