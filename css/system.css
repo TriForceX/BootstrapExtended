@@ -286,6 +286,42 @@ td[align='left']{
 }
 /*LightGallery*/
 
+/*Disable Margin*/
+.no-margin{
+	margin: 0px;
+}
+.no-margin-l{
+	margin-left: 0px;
+}
+.no-margin-r{
+	margin-right: 0px;
+}
+.no-margin-t{
+	margin-top: 0px;
+}
+.no-margin-b{
+	margin-bottom: 0px;
+}
+/*Disable Margin*/
+
+/*Disable Padding*/
+.no-padding{
+	padding: 0px;
+}
+.no-padding-l{
+	padding-left: 0px;
+}
+.no-padding-r{
+	padding-right: 0px;
+}
+.no-padding-t{
+	padding-top: 0px;
+}
+.no-padding-b{
+	padding-bottom: 0px;
+}
+/*Disable Padding*/
+
 /* ================================================= BOOTSTRAP ================================================= */
 
 /* ================================================= FUENTES ================================================= */

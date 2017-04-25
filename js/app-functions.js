@@ -28,6 +28,7 @@ function loadLightGallery(){
 		var getMainUrl = $("body").attr("url");
 		var galSelectorVal = $(this).attr("lg-selector");
 		var galThumbnailVal = $(this).attr("lg-thumbnail");
+		var galDownloadVal = $(this).attr("lg-download");
 		var galAutoTitle = $(this).attr("lg-autotitle");
 		var galGalleryMode = $(this).attr("lg-gallerymode");
 		var galLoadThumb = getMainUrl+"/css/lightgallery/lg-loading-icon.gif";
@@ -52,15 +53,15 @@ function loadLightGallery(){
 			
 		});
 		
-		if(galAutoTitle!="false"){
-			$(this).find(galSelectorVal).not(".lg-prevthumb, .lg-nextthumb").attr("title", galAutoTitle);
-		}
-		
 		if(galSelectorVal=="auto"){
 			var galSelector = ".lg-contentphoto";
 		}
 		else{
 			var galSelector = galSelectorVal;
+		}
+		
+		if(galAutoTitle!="false"){
+			$(this).find(galSelector).not(".lg-prevthumb, .lg-nextthumb").attr("title", galAutoTitle);
 		}
 
 		if(galThumbnailVal=="false"){
@@ -69,10 +70,18 @@ function loadLightGallery(){
 		else{
 			var galThumbnail = true;
 		}
+		
+		if(galDownloadVal=="false"){
+			var galDownload = false;
+		}
+		else{
+			var galDownload = true;
+		}
 
 		$(this).lightGallery({
 			selector: galSelector+", .lg-prevthumb, .lg-nextthumb", 
 			thumbnail: galThumbnail,
+			download: galDownload,
 			loop: false,
 		}); 
 		

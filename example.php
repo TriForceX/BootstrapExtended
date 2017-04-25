@@ -270,13 +270,55 @@
 		<div class="page-header">
 			<h1>Light Gallery <span class="label label-danger">JS</span></h1>
 		</div>
-		<p>A customizable, modular, responsive, lightbox gallery plugin for jQuery. There is an improved usage method via <code>data-attributes</code></p>
+		<p>A customizable, modular, responsive, lightbox gallery plugin for jQuery. Below you will find an improved usage method via <code>lg-attributes</code>. For more info visit the <a href="http://sachinchoolur.github.io/lightGallery/docs/api.html" target="_blank">API here</a></p>
   		
-  		
+  		<table class="table table-bordered table-striped js-options-table">
+			<thead>
+				<tr>
+					<th>Name</th>
+					<th>type</th>
+					<th>default</th>
+					<th>description</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td>lg-selector</td>
+					<td>string</td>
+					<td>auto</td>
+					<td>Defines which element contains the image <code>url</code> and the <code>thumbnail</code></td>
+				</tr>
+				<tr>
+					<td>lg-autotitle</td>
+					<td>boolean</td>
+					<td>false</td>
+					<td>Set a custom title to all images in the lightbox</td>
+				</tr>
+				<tr>
+					<td>lg-thumbnail</td>
+					<td>boolean</td>
+					<td>true</td>
+					<td>Defines if thumbnails will be shown when the lightbox is executed</td>
+				</tr>
+				<tr>
+					<td>lg-gallerymode</td>
+					<td>boolean</td>
+					<td>true</td>
+					<td>Execute custom functions when you get the <code>first</code> or <code>last</code> page</td>
+				</tr>
+				<tr>
+					<td>lg-download</td>
+					<td>boolean</td>
+					<td>true</td>
+					<td>Enables downloads, the download url will be taken from data-<code>src/href</code> attribute</td>
+				</tr>
+			</tbody>
+		</table>
+ 		
   		
   		<div class="bs-example"> 
   		
-			<div class="row lightgallery" lg-selector="auto" lg-autotitle="false" lg-thumbnail="false" lg-gallerymode="false">
+			<div class="row lightgallery" lg-selector="auto" lg-autotitle="false" lg-thumbnail="false" lg-gallerymode="false" lg-download="false">
 			  <div class="col-md-3">
 				<a class="thumbnail" style="height:100px; overflow: hidden" title="My image 1" href="http://getbootstrap.com/examples/screenshots/theme.jpg">
 					<img style="width: 100%" src="http://getbootstrap.com/examples/screenshots/theme.jpg">
@@ -293,8 +335,8 @@
 				</a>
 			  </div>
 			  <div class="col-md-3">
-				<a class="thumbnail" style="height:100px; overflow: hidden" title="My image 3" href="http://getbootstrap.com/examples/screenshots/justified-nav.jpg">
-					<img style="width: 100%" src="http://getbootstrap.com/examples/screenshots/justified-nav.jpg">
+				<a class="thumbnail" style="height:100px; overflow: hidden" title="My image 3" href="http://getbootstrap.com/examples/screenshots/dashboard.jpg">
+					<img style="width: 100%" src="http://getbootstrap.com/examples/screenshots/dashboard.jpg">
 				</a>
 			  </div>
 			</div>
@@ -317,60 +359,79 @@
 		
 		
 		<!-- LIGHTGALLERY CONTAINER MANUALLY -->
-		<br>
-   		<!-- LIGHTGALLERY CONTAINER AUTOMATICALLY -->
-   		<?php //echo isset($_GET["page-2"]) ? 'Page 2' : 'Page 1' ?>
-		<div class="row lightgallery" lg-selector="auto" lg-autotitle="My gallery" lg-thumbnail="true" lg-gallerymode="true">
-		  <?php if(!isset($_GET["page-2"])): ?>
-		  <div class="col-md-3">
-			<a class="thumbnail" style="height:100px; overflow: hidden" title="My image 1" href="http://getbootstrap.com/examples/screenshots/theme.jpg">
-   				<img style="width: 100%" src="http://getbootstrap.com/examples/screenshots/theme.jpg">
-			</a>
-		  </div>
-		  <div class="col-md-3">
-			<a class="thumbnail" style="height:100px; overflow: hidden" title="My image 2" href="http://getbootstrap.com/examples/screenshots/cover.jpg">
-   				<img style="width: 100%" src="http://getbootstrap.com/examples/screenshots/cover.jpg">
-			</a>
-		  </div>
-		  <div class="col-md-3">
-			<a class="thumbnail" style="height:100px; overflow: hidden" title="My image 3" href="http://getbootstrap.com/examples/screenshots/justified-nav.jpg">
-   				<img style="width: 100%" src="http://getbootstrap.com/examples/screenshots/justified-nav.jpg">
-			</a>
-		  </div>
-		  <div class="col-md-3">
-			<a class="thumbnail" style="height:100px; overflow: hidden" title="My image 3" href="http://getbootstrap.com/examples/screenshots/justified-nav.jpg">
-   				<img style="width: 100%" src="http://getbootstrap.com/examples/screenshots/justified-nav.jpg">
-			</a>
-		  </div>
-		  <?php else: ?>
-		  <div class="col-md-3">
-			<a class="thumbnail" style="height:100px; overflow: hidden" title="My image 1" href="http://getbootstrap.com/examples/screenshots/theme.jpg">
-   				<img style="width: 100%" src="http://getbootstrap.com/examples/screenshots/theme.jpg">
-			</a>
-		  </div>
-		  <div class="col-md-3">
-			<a class="thumbnail" style="height:100px; overflow: hidden" title="My image 2" href="http://getbootstrap.com/examples/screenshots/cover.jpg">
-   				<img style="width: 100%" src="http://getbootstrap.com/examples/screenshots/cover.jpg">
-			</a>
-		  </div>
-		  <div class="col-md-3">
-			<a class="thumbnail" style="height:100px; overflow: hidden" title="My image 3" href="http://getbootstrap.com/examples/screenshots/justified-nav.jpg">
-   				<img style="width: 100%" src="http://getbootstrap.com/examples/screenshots/justified-nav.jpg">
-			</a>
-		  </div>
-		  <div class="col-md-3">
-			<a class="thumbnail" style="height:100px; overflow: hidden" title="My image 3" href="http://getbootstrap.com/examples/screenshots/justified-nav.jpg">
-   				<img style="width: 100%" src="http://getbootstrap.com/examples/screenshots/justified-nav.jpg">
-			</a>
-		  </div>
-		  <?php endif; ?>
-		</div>
+		<h3>Gallery Mode</h3>
+		<p>This mode allows to improve the way to show paged galleries executing custom functions when you get the <code>first</code> or <code>last</code> page</p>
+  		
+  		<div class="bs-example"> 
 			
-  		<p>
-			<a class="lg-prev" href="?page-1">&laquo; Page 1</a>
-			<a class="lg-next" href="?page-2">Page 2 &raquo;</a>
-		</p>
-   		<!-- LIGHTGALLERY CONTAINER AUTOMATICALLY -->
+			<?php //echo isset($_GET["page-2"]) ? 'Page 2' : 'Page 1' ?>
+			<div class="row lightgallery" lg-selector="auto" lg-autotitle="My Custom Title" lg-thumbnail="true" lg-gallerymode="true">
+			  <?php if(!isset($_GET["page-2"])): ?>
+			  <div class="col-md-3">
+				<a class="thumbnail" style="height:100px; overflow: hidden" title="My image 1" href="http://getbootstrap.com/examples/screenshots/theme.jpg">
+					<img style="width: 100%" src="http://getbootstrap.com/examples/screenshots/theme.jpg">
+				</a>
+			  </div>
+			  <div class="col-md-3">
+				<a class="thumbnail" style="height:100px; overflow: hidden" title="My image 2" href="http://getbootstrap.com/examples/screenshots/cover.jpg">
+					<img style="width: 100%" src="http://getbootstrap.com/examples/screenshots/cover.jpg">
+				</a>
+			  </div>
+			  <div class="col-md-3">
+				<a class="thumbnail" style="height:100px; overflow: hidden" title="My image 3" href="http://getbootstrap.com/examples/screenshots/justified-nav.jpg">
+					<img style="width: 100%" src="http://getbootstrap.com/examples/screenshots/justified-nav.jpg">
+				</a>
+			  </div>
+			  <div class="col-md-3">
+				<a class="thumbnail" style="height:100px; overflow: hidden" title="My image 4" href="http://getbootstrap.com/examples/screenshots/dashboard.jpg">
+					<img style="width: 100%" src="http://getbootstrap.com/examples/screenshots/dashboard.jpg">
+				</a>
+			  </div>
+			  <?php else: ?>
+			  <div class="col-md-3">
+				<a class="thumbnail" style="height:100px; overflow: hidden" title="My image 5" href="http://getbootstrap.com/examples/screenshots/offcanvas.jpg">
+					<img style="width: 100%" src="http://getbootstrap.com/examples/screenshots/offcanvas.jpg">
+				</a>
+			  </div>
+			  <div class="col-md-3">
+				<a class="thumbnail" style="height:100px; overflow: hidden" title="My image 6" href="http://getbootstrap.com/examples/screenshots/sign-in.jpg">
+					<img style="width: 100%" src="http://getbootstrap.com/examples/screenshots/sign-in.jpg">
+				</a>
+			  </div>
+			  <div class="col-md-3">
+				<a class="thumbnail" style="height:100px; overflow: hidden" title="My image 7" href="http://getbootstrap.com/examples/screenshots/jumbotron-narrow.jpg">
+					<img style="width: 100%" src="http://getbootstrap.com/examples/screenshots/jumbotron-narrow.jpg">
+				</a>
+			  </div>
+			  <div class="col-md-3">
+				<a class="thumbnail" style="height:100px; overflow: hidden" title="My image 8" href="http://getbootstrap.com/examples/screenshots/blog.jpg">
+					<img style="width: 100%" src="http://getbootstrap.com/examples/screenshots/blog.jpg">
+				</a>
+			  </div>
+			  <?php endif; ?>
+			</div>
+			
+			<nav aria-label="Page navigation">
+			  <ul class="pagination no-margin">
+				<li>
+				  <a href="?page-1" aria-label="Previous" class="lg-prev">
+					<span aria-hidden="true">&laquo;</span>
+				  </a>
+				</li>
+				<li class="<?php echo !isset($_GET["page-2"]) ? 'active' : '' ?>"><a href="?page-1">1</a></li>
+				<li class="<?php echo isset($_GET["page-2"]) ? 'active' : '' ?>"><a href="?page-2">2</a></li>
+				<li>
+				  <a href="?page-2" aria-label="Next" class="lg-next">
+					<span aria-hidden="true">&raquo;</span>
+				  </a>
+				</li>
+			  </ul>
+			</nav>
+
+		</div>
+  		<figure class="highlight">
+			<pre><code class="language-html" data-lang="html">&lt;div class="lightgallery" lg-selector="auto" lg-autotitle="My Custom Title" lg-thumbnail="true" lg-gallerymode="true"&gt;<br>...<br>&lt;/div&gt;</code></pre>
+		</figure>
    		
 		
 		
