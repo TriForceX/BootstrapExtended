@@ -520,7 +520,7 @@
 					<td>date</td>
 					<td>string</td>
 					<td>null</td>
-					<td>Date in english format <code>YYYY/MM/DD</code> or <code>YYYY-MM-DD</code></td>
+					<td>Date in english format <code>YYYY-MM-DD</code> or <code>YYYY/MM/DD</code></td>
 				</tr>
 				<tr>
 					<td>format</td>
@@ -544,10 +544,10 @@
 		</table>
 		
 		<div class="bs-example"> 
-			<h4>The date is: <span class="label label-default"><?php echo showDate("2017/09/20", "F j l, Y, g:i a", "eng", true); ?></span></h4>
+			<h4>The date is: <span class="label label-default"><?php echo showDate("2017-09-20", "F j l, Y, g:i a", "eng", true); ?></span></h4>
 		</div>
 		<figure class="highlight">
-			<pre><code class="language-html" data-lang="html">&lt;?php echo showDate("2017/09/20", "F j l, Y, g:i a", "eng", true); ?&gt;</code></pre>
+			<pre><code class="language-html" data-lang="html">&lt;?php echo showDate("2017-09-20", "F j l, Y, g:i a", "eng", true); ?&gt;</code></pre>
 		</figure>
 		
 		

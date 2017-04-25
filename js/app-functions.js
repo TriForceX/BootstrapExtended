@@ -197,6 +197,20 @@ function FotosFixV3(Contenedor){
 		data-imgLiquid-verticalAlign="50%"
 	*/
 }
+function onElementHeightChange(elm, callback){
+	var lastHeight = $(elm).height(), newHeight;
+	(function run(){
+		newHeight = $(elm).height();
+		if( lastHeight != newHeight )
+			callback();
+		lastHeight = newHeight;
+
+		if( elm.onElementHeightChangeTimer )
+		  clearTimeout(elm.onElementHeightChangeTimer);
+
+		elm.onElementHeightChangeTimer = setTimeout(run, 200);
+	})();
+}
 function TitleFix(Contenedor){
 	$(Contenedor).each(function(){
 		$(this).addClass("ellipsis");
