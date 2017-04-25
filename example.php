@@ -179,7 +179,7 @@
 		  <span class="icon-bar"></span>
 		  <span class="icon-bar"></span>
 		</button>
-		<a class="navbar-brand" href="#">Features Examples</a>
+		<a class="navbar-brand" href="#">Website Base</a>
 	  </div>
 	  <div class="navbar-collapse collapse">
 		<ul class="nav navbar-nav">
@@ -259,7 +259,7 @@
 	<!-- Main jumbotron for a primary marketing message or call to action -->
       <div class="jumbotron">
         <h1>Plugins Examples</h1>
-		  <p>Below you will find some useful code functions to use in <code>PHP</code> or <code>JS</code> using the included plugins in this repository.</p>
+		  <p>Some useful code functions and improvments in <code>PHP</code> or <code>JS</code> using the included plugins in this repository.</p>
       </div>
 		
 		
