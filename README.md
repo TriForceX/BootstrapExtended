@@ -1,5 +1,5 @@
 # Custom Bootstrap 3 Base
-Websites base structure with small reusable parts of source code or functions for HTML use Based on Bootstrap. You can visit http://dev.gznetwork.com/website-base for a running example.
+Websites base structure with small reusable parts of source code or functions for HTML use Based on Bootstrap. You can visit http://dev.gznetwork.com/websitebase for a running example.
 
 # Functions & Code Pieces
 * Check attribute of an HTML element (hasAttr)
