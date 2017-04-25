@@ -240,25 +240,19 @@ function TextoFix(Contenedor, Maximo){
 
 	});
 }
-function alert2(titulo,mensaje){
+function showAlert(title,text,size){
 	
-	$('#alert').find(".modal-title").html(titulo);
-	$('#alert').find(".modal-body").html(mensaje);
-	$('#alert').find(".modal-dialog").removeClass("modal-lg");//modal-sm
+	if(typeof size === 'undefined' || size === null){
+		size = 'medium';
+	}
 	
-	$('#alert').modal({ 
-		show: 'true' 
-	}); 
-}
-function alert3(titulo,mensaje){
+	bootbox.alert({
+		title: title,
+        message: text,
+        size: size,
+		backdrop: true
+    });
 	
-	$('#alert').find(".modal-title").html(titulo);
-	$('#alert').find(".modal-body").html(mensaje);
-	$('#alert').find(".modal-dialog").addClass("modal-lg");//modal-sm
-	
-	$('#alert').modal({ 
-		show: 'true' 
-	}); 
 }
 function emailValido(email){
     
@@ -313,11 +307,11 @@ function Buscar(Contenedor){
 		 Boton.val() == null ||
 		 Boton.val() == "undefinied" )
 	{ 
-		alert2("Busqueda","Por favor ingrese su busqueda");
+		showAlert("Busqueda","Por favor ingrese su busqueda");
 	}
 	else
 	{
-		//alert2("Busqueda","Los contenidos no están completamente definidos.");
+		//showAlert("Busqueda","Los contenidos no están completamente definidos.");
 		//alert("Busqueda: "+Texto);
 		window.location=Enlace+'/articles?search='+Texto;
 	}
@@ -327,13 +321,78 @@ function customInfo(ID){
 	
 	var contenido = $(".container .customInfoText.customItem_"+ID).html();
 	
-	alert2("Custom Info", contenido);
+	showAlert("Custom Info", contenido);
 }
-function videoLaunch(Titulo, ID){
+function youTubeParser(url){
+    var regExp = /^.*((youtu.be\/)|(v\/)|(\/u\/\w\/)|(embed\/)|(watch\?))\??v?=?([^#\&\?]*).*/;
+    var match = url.match(regExp);
+    return (match&&match[7].length==11)? match[7] : false;
 	
-	var contenido = '<iframe class="videoLaunchIframe" src="https://www.youtube.com/embed/'+ID+'?rel=0" frameborder="0" allowfullscreen></iframe>';
+	// http://www.youtube.com/watch?v=0zM3nApSvMg&feature=feedrec_grec_index
+	// http://www.youtube.com/user/IngridMichaelsonVEVO#p/a/u/1/QdK8U-VIH_o
+	// http://www.youtube.com/v/0zM3nApSvMg?fs=1&amp;hl=en_US&amp;rel=0
+	// http://www.youtube.com/watch?v=0zM3nApSvMg#t=0m10s
+	// http://www.youtube.com/embed/0zM3nApSvMg?rel=0
+	// http://www.youtube.com/watch?v=0zM3nApSvMg
+	// http://youtu.be/0zM3nApSvMg
+}
+function vimeoParser(url){
+    var regExp = /^.*(vimeo\.com\/)((channels\/[A-z]+\/)|(groups\/[A-z]+\/videos\/))?([0-9]+)/;
+    var match = url.match(regExp);
+    return match[5];
 	
-	alert3(Titulo, contenido);
+	// http://vimeo.com/*
+	// http://vimeo.com/channels/*/*
+	// http://vimeo.com/groups/*/videos/*
+}
+function videoLaunch(url, share, title){
+	
+	if(typeof share === 'undefined' || share === null){
+		share = false;
+	}
+	
+	if(typeof title === 'undefined' || title === null){
+		title = null;
+	}
+	
+	
+	if (url.indexOf('youtube') >= 0){
+		var ID = youTubeParser(url);
+		var embedUrl = 'https://www.youtube.com/embed/'+ID+'?rel=0';
+		var embedShare = 'https://www.youtube.com/watch?v='+ID;
+	}
+	else if (url.indexOf('vimeo') >= 0){
+		var ID = vimeoParser(url);
+		var embedUrl = 'https://player.vimeo.com/video/'+ID;
+		var embedShare = 'https://vimeo.com/'+ID;
+	}
+	else if (url.indexOf('facebook') >= 0){
+		var ID = '';
+		var embedUrl = 'https://www.facebook.com/plugins/video.php?href='+url+'&show_text=0';
+		var embedShare = url;
+	}
+	
+	var content = '<iframe class="videoLaunchIframe" src="'+embedUrl+'" frameborder="0" allowfullscreen></iframe>';
+	
+	if(share){
+		content = content+'<div class="videoLaunchURL"><b>Compartir Enlace <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span></b><input class="clickSelect" type="text" value="'+embedShare+'" readonly title2="You can copy & paste this URL to share" title2_pos="bottom"></div>';
+	}
+	
+	bootbox.alert({
+		title: title,
+        message: content,
+        size: 'large',
+		backdrop: true
+    }).on("shown.bs.modal", function(e){
+		if (url.indexOf('facebook') >= 0){
+			var videoLaunchIframeSRC = $(".videoLaunchIframe").attr("src");
+			var videoLaunchIframeSRCwidth = $(".videoLaunchIframe").width();
+			var videoLaunchIframeSRCheight = $(".videoLaunchIframe").height();
+			$(".videoLaunchIframe").attr("src",videoLaunchIframeSRC+"&width="+videoLaunchIframeSRCwidth+"&height="+videoLaunchIframeSRCheight);
+		}
+	 });
+	
+	
 }
 function autoScroll(selector,animated,distance){      
     var scrollDistance = distance;
@@ -442,10 +501,10 @@ function checkDisabledLink(string){
 			var seccion = capitalizeFirstLetter(textoUrl.split('#')[1]/*.replace("#", "")*/);
 			//***
 			if(textoUrl.substr(textoUrl.length - 1, 1) == 's') {
-				alert2(seccion+" no disponibles","Este contenido no se encuentra disponible.");
+				showAlert(seccion+" no disponibles","Este contenido no se encuentra disponible.");
 			}
 			else{
-				alert2(seccion+" no disponible","Este contenido no se encuentra disponible.");
+				showAlert(seccion+" no disponible","Este contenido no se encuentra disponible.");
 			}
 			//console.log('false');
 			return false;

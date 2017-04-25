@@ -434,6 +434,38 @@
 		</figure>
    		
 		
+		<div class="page-header">
+			<h1>Show Alert BootBox <span class="label label-danger">JS</span></h1>
+		</div>
+		<p>Launch a custom modal box using BootBox Features, the function structure is <code>showAlert(title, text, size)</code> you can alternatively set a size</p>
+		
+		<div class="bs-example"> 
+			<button type="button" class="btn btn-primary" onclick="showAlert('Small Size Box','This is a text shown in a modal box','small')">Show Alert Small Size</button>
+			<button type="button" class="btn btn-primary" onclick="showAlert('Medium Size Box','This is a text shown in a modal box')">Show Alert Medium Size (By default)</button>
+			<button type="button" class="btn btn-primary" onclick="showAlert('Large Size Box','This is a text shown in a modal box','large')">Show Alert Large Size</button>
+		</div>
+		<figure class="highlight">
+			<pre><code class="language-html" data-lang="html">&lt;a onclick="showAlert('Small Size Box','This is a text shown in a modal box','small')">Click Here&lt;/a&gt;<br>&lt;a onclick="showAlert('Medium Size Box','This is a text shown in a modal box')">Click Here&lt;/a&gt;<br>&lt;a onclick="showAlert('Large Size Box','This is a text shown in a modal box','large')">Click Here&lt;/a&gt;</code></pre>
+		</figure>
+		
+		
+		
+		<div class="page-header">
+			<h1>Video Launch <span class="label label-danger">JS</span></h1>
+		</div>
+		<p>Launch a modal box with a basic video player, the function structure is <code>videoLaunch(url, share, title)</code></p>
+		
+		<div class="bs-example"> 
+			<button type="button" class="btn btn-primary" onclick="videoLaunch('https://www.youtube.com/watch?v=ae6aeo9-Kn8', true, 'My YouTube Video')">YouTube Video</button>
+			<button type="button" class="btn btn-primary" onclick="videoLaunch('https://vimeo.com/214352663', true, 'My Vimeo Video')">Vimeo Video</button>
+			<button type="button" class="btn btn-primary" onclick="videoLaunch('https://www.facebook.com/1399203336817784/videos/1470830192988431', false, 'My Facebook Video')">Facebook Video</button>
+		</div>
+		<figure class="highlight">
+			<pre><code class="language-html" data-lang="html">&lt;a onclick="videoLaunch('https://www.youtube.com/watch?v=ae6aeo9-Kn8', true, 'My YouTube Video')">Click Here&lt;/a&gt;<br>&lt;a onclick="videoLaunch('https://vimeo.com/214352663', true, 'My Vimeo Video')">Click Here&lt;/a&gt;<br>&lt;a onclick="'https://www.facebook.com/1399203336817784/videos/1470830192988431', false, 'My Facebook Video')">Click Here&lt;/a&gt;</code></pre>
+		</figure>
+		
+		
+		
 		
 		<div class="page-header">
 			<h1>Window Pop-Up <span class="label label-danger">JS</span></h1>
@@ -495,7 +527,7 @@
 			<button type="button" class="btn btn-primary" onclick="windowPopup('http://getbootstrap.com','320','480','left','top','yes')">Left Top 320 x 480</button>
 		</div>
 		<figure class="highlight">
-			<pre><code class="language-html" data-lang="html">&lt;a onclick="windowPopup('http://getbootstrap.com','640','480','center','center','yes')">Click Here&lt;/a&gt;</code></pre>
+			<pre><code class="language-html" data-lang="html">&lt;a onclick="windowPopup('http://getbootstrap.com','640','480','center','center','yes')">Click Here&lt;/a&gt;<br>&lt;a onclick="windowPopup('http://getbootstrap.com','320','480','right','bottom','yes')">Click Here&lt;/a&gt;<br>&lt;a onclick="windowPopup('http://getbootstrap.com','320','480','left','top','yes')">Click Here&lt;/a&gt;</code></pre>
 		</figure>
 		
 		
@@ -555,6 +587,13 @@
 		
 		
 		
+		
+		
+		
+		
+		
+		
+		<!-- ******** BOOTSTRAP THEME ******** -->
 		
 		
 		
@@ -1122,7 +1161,7 @@
 		
 		
 		
-		
+		<!-- ******** BOOTSTRAP THEME ******** -->
 		
 		
 	<!-- MAIN CONTAINER -->

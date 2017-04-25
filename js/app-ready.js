@@ -254,17 +254,17 @@ $(document).keyup(function(e){
 			!( checkEmpty($("#field1").val()) ) || 
 			!( checkEmpty($("#field1").val()) )  
 		){
-			alert2("Formulario de contacto","Hubo un problema al enviar, por favor complete todos los campos");
+			showAlert("Formulario de contacto","Hubo un problema al enviar, por favor complete todos los campos");
 			e.preventDefault();
 		}
 		else if( !(emailValido( $("#field1").val() )) )
 		{
-			alert2("Formulario de contacto","Hubo un problema al enviar, por favor ingrese un E-Mail válido");
+			showAlert("Formulario de contacto","Hubo un problema al enviar, por favor ingrese un E-Mail válido");
 			e.preventDefault();
 		}
 		else if( $.trim( $("#field1").val() ) == "" )
 		{
-			alert2("Formulario de contacto","Hubo un problema al enviar, por favor complete todos los campos");
+			showAlert("Formulario de contacto","Hubo un problema al enviar, por favor complete todos los campos");
 			e.preventDefault();
 		}
 		else
@@ -291,9 +291,9 @@ $("#carousel-example-generic").swipeleft(function() {
 });*/
 
 //Text select on click
-/*$(document).on("click", ".clickSelect", function(e) {
+$(document).on("click", ".clickSelect", function(e) {
 	$(this).select();
-});*/
+});
 
 /* ================================================= DOCUMENT READY ================================================= */
 

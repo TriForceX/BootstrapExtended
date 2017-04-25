@@ -3,13 +3,13 @@
 /* ================================================= WINDOWS LOAD ================================================= */
 		
 //Modal content delete
-$('#alert').on('hidden.bs.modal', function () {
+/*$('#alert').on('hidden.bs.modal', function () {
 
 	$('#alert').find(".modal-body").html("");
 	$('#alert').find(".modal-dialog").removeClass("modal-sm");
 	$('#alert').find(".modal-dialog").removeClass("modal-md");
 	$('#alert').find(".modal-dialog").removeClass("modal-lg");
-});
+});*/
 
 //*** AFTER LOAD CODE ***//
 

@@ -8,27 +8,6 @@
 </div>
 <!-- ================================================= FOOTER ================================================= -->
 
-<!-- ================================================= MODAL BOX ================================================= -->
-<div style="z-index:9999" class="modal fade" id="alert" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                <h4 class="modal-title" id="myModalLabel"> </h4>
-            </div>
-            <div class="modal-body">
-                
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-primary" data-dismiss="modal">Cerrar</button>
-            </div>
-        </div>
-        <!-- /.modal-content -->
-    </div>
-    <!-- /.modal-dialog -->
-</div>
-<!-- ================================================= MODAL BOX ================================================= -->
-
 <!-- ================ Core JavaScript Placed at the end of the document so the pages load faster! ================ -->
 
 <!-- jQuery -->
