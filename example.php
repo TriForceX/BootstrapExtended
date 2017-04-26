@@ -1,173 +1,171 @@
 <?php include('header.php'); ?>
 
 <style type="text/css">
-	
-.content{
-  padding-bottom: 30px;
-}
-.theme-dropdown .dropdown-menu {
-  position: static;
-  display: block;
-  margin-bottom: 20px;
-}
-.theme-showcase > p > .btn {
-  margin: 5px 0;
-}
-.theme-showcase .navbar .container {
-  width: auto;
-}
-.bs-example {
-  position: relative;
-  padding: 45px 15px 15px;
-  margin: 0 -15px 15px;
-  border-color: #e5e5e5 #eee #eee;
-  border-style: solid;
-  border-width: 1px 0;
-  -webkit-box-shadow: inset 0 3px 6px rgba(0,0,0,.05);
-          box-shadow: inset 0 3px 6px rgba(0,0,0,.05);
-}
-/* Echo out a label for the example */
-/*
- * Examples
- *
- * Isolated sections of example content for each component or feature. Usually
- * followed by a code snippet.
- */
+	.content{
+	  padding-bottom: 30px;
+	}
+	.theme-dropdown .dropdown-menu {
+	  position: static;
+	  display: block;
+	  margin-bottom: 20px;
+	}
+	.theme-showcase > p > .btn {
+	  margin: 5px 0;
+	}
+	.theme-showcase .navbar .container {
+	  width: auto;
+	}
+	.bs-example {
+	  position: relative;
+	  padding: 45px 15px 15px;
+	  margin: 0 -15px 15px;
+	  border-color: #e5e5e5 #eee #eee;
+	  border-style: solid;
+	  border-width: 1px 0;
+	  -webkit-box-shadow: inset 0 3px 6px rgba(0,0,0,.05);
+			  box-shadow: inset 0 3px 6px rgba(0,0,0,.05);
+	}
+	/* Echo out a label for the example */
+	/*
+	 * Examples
+	 *
+	 * Isolated sections of example content for each component or feature. Usually
+	 * followed by a code snippet.
+	 */
 
-.bs-example {
-  position: relative;
-  padding: 45px 15px 15px;
-  margin: 0 -15px 15px;
-  border-color: #e5e5e5 #eee #eee;
-  border-style: solid;
-  border-width: 1px 0;
-  -webkit-box-shadow: inset 0 3px 6px rgba(0,0,0,.05);
-          box-shadow: inset 0 3px 6px rgba(0,0,0,.05);
-}
-/* Echo out a label for the example */
-.bs-example:after {
-  position: absolute;
-  top: 15px;
-  left: 15px;
-  font-size: 12px;
-  font-weight: bold;
-  color: #959595;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  content: "Example";
-}
+	.bs-example {
+	  position: relative;
+	  padding: 45px 15px 15px;
+	  margin: 0 -15px 15px;
+	  border-color: #e5e5e5 #eee #eee;
+	  border-style: solid;
+	  border-width: 1px 0;
+	  -webkit-box-shadow: inset 0 3px 6px rgba(0,0,0,.05);
+			  box-shadow: inset 0 3px 6px rgba(0,0,0,.05);
+	}
+	/* Echo out a label for the example */
+	.bs-example:after {
+	  position: absolute;
+	  top: 15px;
+	  left: 15px;
+	  font-size: 12px;
+	  font-weight: bold;
+	  color: #959595;
+	  text-transform: uppercase;
+	  letter-spacing: 1px;
+	  content: "Example";
+	}
 
-.bs-example-padded-bottom {
-  padding-bottom: 24px;
-}
+	.bs-example-padded-bottom {
+	  padding-bottom: 24px;
+	}
 
-/* Tweak display of the code snippets when following an example */
-.bs-example + .highlight,
-.bs-example + .zero-clipboard + .highlight {
-  margin: -15px -15px 15px;
-  border-width: 0 0 1px;
-  border-radius: 0;
-}
+	/* Tweak display of the code snippets when following an example */
+	.bs-example + .highlight,
+	.bs-example + .zero-clipboard + .highlight {
+	  margin: -15px -15px 15px;
+	  border-width: 0 0 1px;
+	  border-radius: 0;
+	}
 
-/* Make the examples and snippets not full-width */
-@media (min-width: 768px) {
-  .bs-example {
-    margin-right: 0;
-    margin-left: 0;
-    background-color: #fff;
-    border-color: #ddd;
-    border-width: 1px;
-    border-radius: 4px 4px 0 0;
-    -webkit-box-shadow: none;
-            box-shadow: none;
-  }
-  .bs-example + .highlight,
-  .bs-example + .zero-clipboard + .highlight {
-    margin-top: -16px;
-    margin-right: 0;
-    margin-left: 0;
-    border-width: 1px;
-    border-bottom-right-radius: 4px;
-    border-bottom-left-radius: 4px;
-  }
-  .bs-example-standalone {
-    border-radius: 4px;
-  }
-}
+	/* Make the examples and snippets not full-width */
+	@media (min-width: 768px) {
+	  .bs-example {
+		margin-right: 0;
+		margin-left: 0;
+		background-color: #fff;
+		border-color: #ddd;
+		border-width: 1px;
+		border-radius: 4px 4px 0 0;
+		-webkit-box-shadow: none;
+				box-shadow: none;
+	  }
+	  .bs-example + .highlight,
+	  .bs-example + .zero-clipboard + .highlight {
+		margin-top: -16px;
+		margin-right: 0;
+		margin-left: 0;
+		border-width: 1px;
+		border-bottom-right-radius: 4px;
+		border-bottom-left-radius: 4px;
+	  }
+	  .bs-example-standalone {
+		border-radius: 4px;
+	  }
+	}
 
-/* Undo width of container */
-.bs-example .container {
-  width: auto;
-}
+	/* Undo width of container */
+	.bs-example .container {
+	  width: auto;
+	}
 
-/* Tweak content of examples for optimum awesome */
-.bs-example > p:last-child,
-.bs-example > ul:last-child,
-.bs-example > ol:last-child,
-.bs-example > blockquote:last-child,
-.bs-example > .form-control:last-child,
-.bs-example > .table:last-child,
-.bs-example > .navbar:last-child,
-.bs-example > .jumbotron:last-child,
-.bs-example > .alert:last-child,
-.bs-example > .panel:last-child,
-.bs-example > .list-group:last-child,
-.bs-example > .well:last-child,
-.bs-example > .progress:last-child,
-.bs-example > .table-responsive:last-child > .table {
-  margin-bottom: 0;
-}
-.bs-example > p > .close {
-  float: none;
-}
+	/* Tweak content of examples for optimum awesome */
+	.bs-example > p:last-child,
+	.bs-example > ul:last-child,
+	.bs-example > ol:last-child,
+	.bs-example > blockquote:last-child,
+	.bs-example > .form-control:last-child,
+	.bs-example > .table:last-child,
+	.bs-example > .navbar:last-child,
+	.bs-example > .jumbotron:last-child,
+	.bs-example > .alert:last-child,
+	.bs-example > .panel:last-child,
+	.bs-example > .list-group:last-child,
+	.bs-example > .well:last-child,
+	.bs-example > .progress:last-child,
+	.bs-example > .table-responsive:last-child > .table {
+	  margin-bottom: 0;
+	}
+	.bs-example > p > .close {
+	  float: none;
+	}
 
-/* Contextual background colors */
-.bs-example-bg-classes p {
-  padding: 15px;
-}
+	/* Contextual background colors */
+	.bs-example-bg-classes p {
+	  padding: 15px;
+	}
 
-/* Images */
-.bs-example > .img-circle,
-.bs-example > .img-rounded,
-.bs-example > .img-thumbnail {
-  margin: 5px;
-}
+	/* Images */
+	.bs-example > .img-circle,
+	.bs-example > .img-rounded,
+	.bs-example > .img-thumbnail {
+	  margin: 5px;
+	}
 
-/* Buttons */
-.bs-example > .btn,
-.bs-example > .btn-group {
-  margin-top: 5px;
-  margin-bottom: 5px;
-}
-.bs-example > .btn-toolbar + .btn-toolbar {
-  margin-top: 10px;
-}
-	
-.highlight {
-  padding: 9px 14px;
-  margin-bottom: 14px;
-  background-color: #f7f7f9;
-  border: 1px solid #e1e1e8;
-  border-radius: 4px;
-}
-.highlight pre {
-  padding: 0;
-  margin-top: 0;
-  margin-bottom: 0;
-  word-break: normal;
-  white-space: nowrap;
-  background-color: transparent;
-  border: 0;
-}
-.highlight pre code {
-  font-size: inherit;
-  color: #333; /* Effectively the base text color */
-}
-.highlight pre code:first-child {
-  display: inline-block;
-  padding-right: 45px;
-}
+	/* Buttons */
+	.bs-example > .btn,
+	.bs-example > .btn-group {
+	  margin-top: 5px;
+	  margin-bottom: 5px;
+	}
+	.bs-example > .btn-toolbar + .btn-toolbar {
+	  margin-top: 10px;
+	}
 
+	.highlight {
+	  padding: 9px 14px;
+	  margin-bottom: 14px;
+	  background-color: #f7f7f9;
+	  border: 1px solid #e1e1e8;
+	  border-radius: 4px;
+	}
+	.highlight pre {
+	  padding: 0;
+	  margin-top: 0;
+	  margin-bottom: 0;
+	  word-break: normal;
+	  white-space: nowrap;
+	  background-color: transparent;
+	  border: 0;
+	}
+	.highlight pre code {
+	  font-size: inherit;
+	  color: #333; /* Effectively the base text color */
+	}
+	.highlight pre code:first-child {
+	  display: inline-block;
+	  padding-right: 45px;
+	}
 </style>
 
 <nav class="navbar navbar-inverse">
@@ -365,7 +363,7 @@
   		<div class="bs-example"> 
 			
 			<?php //echo isset($_GET["page-2"]) ? 'Page 2' : 'Page 1' ?>
-			<div class="row lightgallery" lg-selector="auto" lg-autotitle="My Custom Title" lg-thumbnail="true" lg-gallerymode="true">
+			<div class="row lightgallery" lg-selector="auto" lg-autotitle="Gallery Title" lg-thumbnail="true" lg-gallerymode="true">
 			  <?php if(!isset($_GET["page-2"])): ?>
 			  <div class="col-md-3">
 				<a class="thumbnail" style="height:100px; overflow: hidden" title="My image 1" href="http://getbootstrap.com/examples/screenshots/theme.jpg">
@@ -430,7 +428,7 @@
 
 		</div>
   		<figure class="highlight">
-			<pre><code class="language-html" data-lang="html">&lt;div class="lightgallery" lg-selector="auto" lg-autotitle="My Custom Title" lg-thumbnail="true" lg-gallerymode="true" lg-download="true"&gt;<br>...<br>&lt;/div&gt;</code></pre>
+			<pre><code class="language-html" data-lang="html">&lt;div class="lightgallery" lg-selector="auto" lg-autotitle="Gallery Title" lg-thumbnail="true" lg-gallerymode="true" lg-download="true"&gt;<br>...<br>&lt;/div&gt;</code></pre>
 		</figure>
    		
 		
@@ -457,11 +455,11 @@
 		
 		<div class="bs-example"> 
 			<button type="button" class="btn btn-primary" onclick="videoLaunch('https://www.youtube.com/watch?v=ae6aeo9-Kn8', true, 'My YouTube Video')">YouTube Video</button>
-			<button type="button" class="btn btn-primary" onclick="videoLaunch('https://vimeo.com/214352663', true, 'My Vimeo Video')">Vimeo Video</button>
-			<button type="button" class="btn btn-primary" onclick="videoLaunch('https://www.facebook.com/1399203336817784/videos/1470830192988431', false, 'My Facebook Video')">Facebook Video</button>
+			<button type="button" class="btn btn-primary" onclick="videoLaunch('https://vimeo.com/214352663', false, 'My Vimeo Video')">Vimeo Video (No share URL)</button>
+			<button type="button" class="btn btn-primary" onclick="videoLaunch('https://www.facebook.com/1399203336817784/videos/1470830192988431',true, 'My Facebook Video')">Facebook Video</button>
 		</div>
 		<figure class="highlight">
-			<pre><code class="language-html" data-lang="html">&lt;a onclick="videoLaunch('https://www.youtube.com/watch?v=ae6aeo9-Kn8', true, 'My YouTube Video')">Click Here&lt;/a&gt;<br>&lt;a onclick="videoLaunch('https://vimeo.com/214352663', true, 'My Vimeo Video')">Click Here&lt;/a&gt;<br>&lt;a onclick="'https://www.facebook.com/1399203336817784/videos/1470830192988431', false, 'My Facebook Video')">Click Here&lt;/a&gt;</code></pre>
+			<pre><code class="language-html" data-lang="html">&lt;a onclick="videoLaunch('https://www.youtube.com/watch?v=ae6aeo9-Kn8', true, 'My YouTube Video')">Click Here&lt;/a&gt;<br>&lt;a onclick="videoLaunch('https://vimeo.com/214352663', false, 'My Vimeo Video')">Click Here&lt;/a&gt;<br>&lt;a onclick="videoLaunch('https://www.facebook.com/1399203336817784/videos/1470830192988431',true, 'My Facebook Video')">Click Here&lt;/a&gt;</code></pre>
 		</figure>
 		
 		

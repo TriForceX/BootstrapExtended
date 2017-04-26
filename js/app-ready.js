@@ -166,7 +166,8 @@ function ResponsiveCode() {
 				$(".verticalAlign").css({"margin-top": -Math.abs(altoCaja / 2),
 										 "position":"absolute",
 										 "top":"50%",
-										 "width":$(".verticalAlign").parent().width() });
+										 "width":$(".verticalAlign").parent().width(),
+										 "visibility":"visible"});
 			}
 			else
 			{

@@ -107,13 +107,19 @@ body > .loading.blue > span{
 }
 /*Custom Body*/
 
-/*Custom Panel*/
+/*Modal*/
 .modal-body{
 	/*text-align:justify;*/
 }
 .modal-backdrop{
 	position:fixed;
 }
+.modal-footer .btn{
+	outline: 0;
+}
+/*Modal*/
+
+/*Custom Panel*/
 .panel-custom {
     border-color: #azul-oscuro;
 	float:left;
@@ -126,6 +132,12 @@ body > .loading.blue > span{
     color: #fff;
 }
 /*Custom Panel*/
+
+/*Vertical Align*/
+.verticalAlign{
+	visibility: hidden;
+}
+/*Vertical Align*/
 
 /*Title Fix*/
 .ellipsis {
