@@ -506,11 +506,11 @@ function checkDisabledLink(string){
 			
 			var seccion = capitalizeFirstLetter(textoUrl.split('#')[1]/*.replace("#", "")*/);
 			//***
-			if(textoUrl.substr(textoUrl.length - 1, 1) == 's') {
-				showAlert(seccion+" no disponibles","Este contenido no se encuentra disponible.");
+			if(textoUrl.substr(textoUrl.length - 1, 1) == 's') { //Spanish case for 2 or more
+				showAlert(seccion+" disabled","This content is disabled or not available.");
 			}
 			else{
-				showAlert(seccion+" no disponible","Este contenido no se encuentra disponible.");
+				showAlert(seccion+" disabled","This content is disabled or not available.");
 			}
 			//console.log('false');
 			return false;
