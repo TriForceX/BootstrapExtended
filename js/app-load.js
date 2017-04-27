@@ -102,30 +102,7 @@ else
 	  },
 });*/
 
-//bootbox prompt
-/*bootbox.prompt({
-	  title: "What is your real name?",
-	  //value: "makeusabrew",
-	  callback: function(result) {
-			if (result === null) {
-			  $('#alert').show("Prompt dismissed");
-			} else {
-			  $('#alert').show("Hi <b>"+result+"</b>");
-			}
-	  }
-});*/
 
-//Bootbox confirm
-/*bootbox.confirm({ 
-	message: "¿Seguro que desea eliminar a este alumno?", 
-	callback: function(result) {
-		if (result == false) {
-			$('#alert').show("Prompt dismissed");
-		} else {
-			$('#alert').show("Hi <b>"+result+"</b>");
-		}
-	}
-});*/
 		
 /* ================================================= WINDOWS LOAD ================================================= */
 

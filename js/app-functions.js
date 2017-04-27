@@ -251,10 +251,35 @@ function showAlert(title,text,size){
         message: text,
         size: size,
 		backdrop: true
-    }).on("shown.bs.modal", function(e){
+    }).on("shown.bs.modal", function(){
 		//Disable button auto-focus
 		$(".modal .modal-footer .btn:focus").blur();
 	});
+	
+	//bootbox prompt
+	/*bootbox.prompt({
+		  title: "What is your real name?",
+		  //value: "makeusabrew",
+		  callback: function(result) {
+				if (result === null) {
+				  $('#alert').show("Prompt dismissed");
+				} else {
+				  $('#alert').show("Hi <b>"+result+"</b>");
+				}
+		  }
+	});*/
+
+	//Bootbox confirm
+	/*bootbox.confirm({ 
+		message: "¿Seguro que desea eliminar a este alumno?", 
+		callback: function(result) {
+			if (result == false) {
+				$('#alert').show("Prompt dismissed");
+			} else {
+				$('#alert').show("Hi <b>"+result+"</b>");
+			}
+		}
+	});*/
 	
 }
 function customInfo(ID){
@@ -323,7 +348,7 @@ function videoLaunch(url, share, title){
         message: content,
         size: 'large',
 		backdrop: true
-    }).on("shown.bs.modal", function(e){
+    }).on("shown.bs.modal", function(){
 		//Disable button auto-focus
 		$(".modal .modal-footer .btn:focus").blur();
 		//Modify facebook src
