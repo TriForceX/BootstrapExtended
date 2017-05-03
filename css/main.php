@@ -4,35 +4,40 @@
 	require_once('../resources/curl.php');
 
 	$cssUrl = $_GET['url'];
-	$cssFile1 = $cssUrl."/css/system.css";
-	$cssFile2 = $cssUrl."/css/theme.css";
-	$cssFile3 = $cssUrl."/css/responsive.css";
+	$cssFiles = array(
+				  $cssUrl."/css/main-fonts.css",
+				  $cssUrl."/css/main-base.css",
+				  $cssUrl."/css/main-theme.css",
+				);
 	$cssStart = '/*CSS Start*/';
 	$cssEnd = '/*CSS End*/';
+    $cssBuffer = '';
 
-	$cssGet1 = extract_unit(LoadCURLPage($cssFile1), $cssStart, $cssEnd);
-	$cssGet2 = extract_unit(LoadCURLPage($cssFile2), $cssStart, $cssEnd);
-	$cssGet3 = extract_unit(LoadCURLPage($cssFile3), $cssStart, $cssEnd);
+    foreach ($cssFiles as $cssFile) {
+    	$cssBuffer .= extract_unit(LoadCURLPage($cssFile), $cssStart, $cssEnd);
+    }
 
-	$cssVar = array(
-			  array("#azul-claro","#486ca5"),
-			  array("#azul-oscuro","#034074"),
-			  array("#gris-claro","#e9e9e9"),
-			  array("#gris-medio","#dddddd"),
-			  array("#gris-oscuro","#aeaeb3"),
-			  array("#negro-claro","#333333"),
-			  array("#negro-medio","#888888"),
-			  );
+	$cssVariables = array(
+						//Screen
+						"@screen-phone-sm" => "320px", 
+						"@screen-phone-md" => "360px",
+						"@screen-phone-lg" => "480px",
+						"@screen-tablet" => "768px",
+						"@screen-desktop-md" => "992px", 
+						"@screen-desktop-lg" => "1024px", 
+						"@screen-widescreen-md" => "1200px", 
+						"@screen-widescreen-lg" => "1400px", 
+						"@screen-full-hd" => "1920px", 
+						//Colors
+						"@color-red" => "#ff0000",
+						"@color-blue" => "#0000ff",
+						"@color-green" => "#00ff00",
+					);
 
-	for ($cssRow = 0; $cssRow < count($cssVar); $cssRow++)
-	{
-		$cssGet1 = str_replace($cssVar[$cssRow][0],$cssVar[$cssRow][1], $cssGet1);
-		$cssGet2 = str_replace($cssVar[$cssRow][0],$cssVar[$cssRow][1], $cssGet2);
-		$cssGet3 = str_replace($cssVar[$cssRow][0],$cssVar[$cssRow][1], $cssGet3);
+	foreach ($cssVariables as $cssKey => $cssValue){
+		
+		$cssBuffer = str_replace($cssKey, $cssValue, $cssBuffer);
 	}
-
-	echo $cssGet1."\n";
-	echo $cssGet2."\n";
-	echo $cssGet3."\n";
-
+	
+    echo $cssBuffer;
 ?>

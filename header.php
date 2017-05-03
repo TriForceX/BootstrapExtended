@@ -45,9 +45,9 @@
 <![endif]-->
 </head>
 <?php if($baseHOME): ?>
-<body id="home" url="<?php echo $baseURL; ?>">
+<body id="home">
 <?php else: ?>
-<body url="<?php echo $baseURL; ?>">
+<body>
 <?php endif; ?>
 <!-- ================================================= ANALYTICS ================================================= -->
 <?php if($_SERVER['HTTP_HOST'] == 'localhost' OR filter_var($_SERVER['HTTP_HOST'], FILTER_VALIDATE_IP)): ?>

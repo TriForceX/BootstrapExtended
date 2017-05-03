@@ -121,14 +121,14 @@ body > .loading.blue > span{
 
 /*Custom Panel*/
 .panel-custom {
-    border-color: #azul-oscuro;
+    border-color: @color-red;
 	float:left;
 	width:100%;
 	margin-bottom:0px;
 }
 .panel-custom > .panel-heading {
-    background-color: #azul-oscuro;
-    border-color: #azul-oscuro;
+    background-color:  @color-red;
+    border-color:  @color-red;
     color: #fff;
 }
 /*Custom Panel*/
@@ -162,8 +162,8 @@ body > .loading.blue > span{
 	font-size:12px;
 }
 .ui-datepicker .ui-datepicker-header{
-	background: #azul-oscuro;
-	border-color: #azul-oscuro;
+	/*background: @color-red;*/
+	/*border-color: @color-red;*/
 }
 .ui-datepicker .ui-datepicker-next,
 .ui-datepicker .ui-datepicker-prev{
@@ -171,8 +171,8 @@ body > .loading.blue > span{
 }
 .ui-datepicker .ui-datepicker-next-hover,
 .ui-datepicker .ui-datepicker-prev-hover{
-	background: #ca9e64;
-	border-color: #ca9e64;
+	/*background: @color-red;*/
+	/*border-color: @color-red;*/
 }
 .ui-datepicker .ui-datepicker-next-hover span,
 .ui-datepicker .ui-datepicker-prev-hover span{
@@ -181,7 +181,7 @@ body > .loading.blue > span{
 }
 .ui-state-default, .ui-widget-content .ui-state-default, .ui-widget-header .ui-state-default{
 	font-weight:normal;
-	color:#azul-oscuro;
+	/*color: @color-red;*/
 }
 /*UI Date Picker*/
 
@@ -205,7 +205,7 @@ body > .loading.blue > span{
 .videoLaunchURL b{
 	color: #FFF;
 	font-weight: normal;
-	background-color: #azul-claro;
+	background-color: @color-red;
 	border-radius: 3px;
 	font-size: 12px;
 	padding: 3px 5px;
@@ -220,7 +220,7 @@ body > .loading.blue > span{
 }
 .videoLaunchURL input{
 	display: inline-block;
-	border: 1px solid #gris-oscuro;
+	border: 1px solid #a0a0a0;
 	font-size: 12px;
 	font-weight: normal;
 	padding: 2px 5px;
@@ -231,7 +231,7 @@ body > .loading.blue > span{
 	margin-bottom: 10px;
 	cursor: pointer;
 }
-@media (max-width: 480px) {
+@media (max-width: @screen-phone-lg) {
 	.videoLaunchIframe{
 		height:270px;
 	}
@@ -371,19 +371,5 @@ td[align='left']{
 /*Disable Padding*/
 
 /* ================================================= BOOTSTRAP ================================================= */
-
-/* ================================================= FUENTES ================================================= */
-@font-face {
-    font-family: 'bebas_neueregular';
-    src: url('../fonts/bebasneue-webfont.eot');
-    src: url('../fonts/bebasneue-webfont.eot?#iefix') format('embedded-opentype'),
-         url('../fonts/bebasneue-webfont.woff2') format('woff2'),
-         url('../fonts/bebasneue-webfont.woff') format('woff'),
-         url('../fonts/bebasneue-webfont.ttf') format('truetype'),
-         url('../fonts/bebasneue-webfont.svg#bebas_neueregular') format('svg');
-    font-weight: normal;
-    font-style: normal;
-}
-/* ================================================= FUENTES ================================================= */
 
 /*CSS End*/

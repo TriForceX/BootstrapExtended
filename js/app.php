@@ -4,29 +4,38 @@
 	require_once('../resources/curl.php');
 
 	$jsUrl = $_GET['url'];
-	$jsFile1 = $jsUrl."/js/app-functions.js";
-	$jsFile2 = $jsUrl."/js/app-ready.js";
-	$jsFile3 = $jsUrl."/js/app-load.js";
+	$jsFiles = array(
+				  $jsUrl."/js/app-functions.js",
+				  $jsUrl."/js/app-ready.js",
+				  $jsUrl."/js/app-load.js",
+				);
 	$jsStart = '/*JS Start*/';
 	$jsEnd = '/*JS End*/';
+    $jsBuffer = '';
 
-	$jsGet1 = extract_unit(LoadCURLPage($jsFile1), $jsStart, $jsEnd);
-	$jsGet2 = extract_unit(LoadCURLPage($jsFile2), $jsStart, $jsEnd);
-	$jsGet3 = extract_unit(LoadCURLPage($jsFile3), $jsStart, $jsEnd);
+    foreach ($jsFiles as $jsFile) {
+    	$jsBuffer .= extract_unit(LoadCURLPage($jsFile), $jsStart, $jsEnd);
+    }
 
-	//Cargar Functions
-	echo $jsGet1."\n";
-	//Cargar Functions
-	echo '$(document).ready(function(){ '."\n";
-	//Cargar Document Ready
-	echo $jsGet2."\n";;
-	//Cargar Document Ready
-		echo '$(window).bind("load", function() {'."\n";
-		//Cargar Windows Load
-		echo $jsGet3."\n";
-		//Cargar Windows Load
-		echo '});'."\n";
-	echo '});';
+	$jsVariables = array(
+						//Screen
+						"@screen-phone-sm" => "320", 
+						"@screen-phone-md" => "360",
+						"@screen-phone-lg" => "480",
+						"@screen-tablet" => "768",
+						"@screen-desktop-md" => "992", 
+						"@screen-desktop-lg" => "1024", 
+						"@screen-widescreen-md" => "1200", 
+						"@screen-widescreen-lg" => "1400", 
+						"@screen-full-hd" => "1920", 
+						//Global
+						"@global-url" => $jsUrl,
+					);
 
+	foreach ($jsVariables as $jsKey => $jsValue){
+		
+		$jsBuffer = str_replace($jsKey, $jsValue, $jsBuffer);
+	}
 	
+    echo $jsBuffer;
 ?>

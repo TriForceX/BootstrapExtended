@@ -1,5 +1,7 @@
 /*JS Start*/
 
+$(document).ready(function(){
+
 /* ================================================= DOCUMENT READY ================================================= */
 
 //Load LightGallery
@@ -30,7 +32,7 @@ $(".class").click(function(){
 //******** DETECT HEIGHT CHANGE
 
 //Main URL
-var mainUrl = $("body").attr("url");
+var mainUrl = "@global-url";
 
 //Is Home
 if ($("#home").length > 0){
@@ -114,21 +116,20 @@ $(window).scroll(function () {
 });
 //***** SCROLLING CODE ******
 
-//Responsive
-var screen_phone_sm = 320; 
-var screen_phone_md = 360; 
-var screen_phone_lg = 480; 
-var screen_tablet = 768; 
-var screen_desktop = 992; 
-var screen_desktop_lg = 1024; 
-var screen_widescreen = 1200; 
-var screen_widescreen_lg = 1400; 
+//***** RESPONSIVE CODE ******
+
+//@screen-phone-sm => 320
+//@screen-phone-md => 360
+//@screen-phone-lg => 480
+//@screen-tablet => 768
+//@screen-desktop-md => 992
+//@screen-desktop-lg => 1024
+//@screen-widescreen-md => 1200
+//@screen-widescreen-lg => 1400
+//@screen-full-hd => 1920
 
 var screen_orientation = 0;
-var screen_css = 14; //excedente para calzar con resize del css al mismo tiempo
 
-
-//***** RESPONSIVE CODE ******
 function ResponsiveCode() {
 	var bodyWidth = document.body.clientWidth; //$(window).width();
 	var bodyHeight = $(window).height();
@@ -150,9 +151,9 @@ function ResponsiveCode() {
 			
 			//*** ORIENTATION CHANGES ***//
 		}
-
-		$("body").attr("window-size",bodyWidth+" x "+bodyHeight);
-
+		
+		//$("body").attr("window-size",bodyWidth+" x "+bodyHeight);
+		
 		//*** RESPONSIVE CHANGES ***//
 
 		//Example Vertical Align Container
@@ -297,5 +298,7 @@ $(document).on("click", ".clickSelect", function(e) {
 });
 
 /* ================================================= DOCUMENT READY ================================================= */
+
+});
 
 /*JS End*/
