@@ -254,6 +254,11 @@
 		?>
 		
 		
+		<!-- Load Test -->
+		<div class="progress loadProgressTest">
+			<div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%"><span class="sr-only">80% Complete (danger)</span></div>
+		 </div>
+		
 	<!-- Main jumbotron for a primary marketing message or call to action -->
       <div class="jumbotron">
         <h1>Plugins Examples</h1>

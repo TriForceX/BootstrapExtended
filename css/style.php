@@ -5,9 +5,9 @@
 
 	$cssUrl = $_GET['url'];
 	$cssFiles = array(
-				  $cssUrl.'/css/main-fonts.css',
-				  $cssUrl.'/css/main-base.css',
-				  $cssUrl.'/css/main-theme.css',
+				  $cssUrl.'/css/style-fonts.css',
+				  $cssUrl.'/css/style-base.css',
+				  $cssUrl.'/css/style-theme.css',
 				);
     $cssBuffer = '';
 	$cssMinify = true;

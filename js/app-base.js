@@ -1,4 +1,5 @@
 /* ================================================= FUNCTIONS ================================================= */
+
 var mainUrl = "@global-url";
 var isHome;
 var isMovil;
@@ -18,6 +19,66 @@ $.fn.outerHeight2 = function () {
 $.fn.outerWidth2 = function () {
 	return this[0].getBoundingClientRect().width;
 };
+
+//'@screen-small-phone' => '320', 
+//'@screen-medium-phone' => '360',
+//'@screen-phone' => '480',
+//'@screen-tablet' => '768',
+//'@screen-desktop' => '992',  
+//'@screen-widescreen' => '1200', 
+//'@screen-full-hd' => '1920', 
+
+function responsiveCode() {
+	var bodyWidth = document.body.clientWidth; //$(window).width();
+	var bodyHeight = $(window).height();
+	var bodyOrientation = bodyWidth > bodyHeight ? true : false;
+
+	if (bodyWidth)
+	{
+	//*********
+
+		//$("body").attr("window-size",bodyWidth+" x "+bodyHeight);
+		
+		//*** RESPONSIVE CHANGES ***//
+
+		//Example Vertical Align Container
+		$("body").each(function(){
+
+			var altoBody = bodyHeight;
+			var altoCaja = $(".verticalAlign").outerHeight(); 
+
+			if(altoBody > altoCaja)
+			{
+				$(".verticalAlign").css({"margin-top": -Math.abs(altoCaja / 2),
+										 "position":"absolute",
+										 "top":"50%",
+										 "width":$(".verticalAlign").parent().width(),
+										 "visibility":"visible"});
+			}
+			else
+			{
+				$(".verticalAlign").removeAttr("style");
+			}
+		});
+		//Example Vertical Align Container
+		
+		
+		//*** RESPONSIVE CHANGES ***//
+		
+		//Send data to event
+		$(document).trigger("responsiveCode", [bodyWidth, bodyHeight, bodyOrientation]);
+
+	 //*********
+	}else{
+		window.setTimeout(ResponsiveCode, 30);
+	}
+
+}
+
+$(window).bind("load", responsiveCode);
+$(window).bind("resize", responsiveCode);
+$(window).bind("orientationchange", responsiveCode);
+
 function getMaxHeight(elems){
     return Math.max.apply(null, elems.map(function ()
     {
@@ -593,4 +654,265 @@ function windowPopup(url, width, height, alignX, alignY, scroll) {
     window.open(url, 
 				"WindowPopupJS",	"status=no,height="+height+",width="+width+",resizable=yes,left="+leftPosition+",top="+topPosition+",screenX="+leftPosition+",screenY="+topPosition+",toolbar=no,menubar=no,scrollbars="+getScroll+",location=no,directories=no");
 }
+
 /* ================================================= FUNCTIONS ================================================= */
+
+$(document).ready(function(){
+
+/* ================================================= DOCUMENT READY ================================================= */
+
+	//Load Responsive Code
+	responsiveCode();
+
+	//Load LightGallery
+	loadLightGallery();
+
+	//******** DETECT HEIGHT CHANGE ********
+
+	//Sidebar
+	/*if($("CONTENT").length > 0)
+	{
+		onElementHeightChange(".verticalAlign", function(){
+			//console.log('la altura ha cambiado');
+			//pageContResize();
+			ResponsiveCode();
+		});
+	}*/
+
+	//Test height changes with click
+	/*$(".class").click(function(){
+		$(".class").append("Sample text here...<br>");
+	});
+
+	$(".class").click(function(){
+		$(".class").find("br:last").remove();
+	});*/
+	//Test height changes with click
+
+	//******** DETECT HEIGHT CHANGE ********
+
+	//Is Home
+	if ($("#home").length > 0){
+		isHome = true;
+	}
+	else{
+		isHome = false;
+	}
+
+	//Is Mobile
+	if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini|BB10|PlayBook|MeeGo/i.test(navigator.userAgent) ) //v2
+	{
+		isMovil = true;
+	}
+	else{
+		isMovil = false;
+	}
+
+	//OLD Internet Explorer Fixes
+	if($.browser.msie && parseInt($.browser.version, 10) === 6 || 
+	   $.browser.msie && parseInt($.browser.version, 10) === 7 || 
+	   $.browser.msie && parseInt($.browser.version, 10) === 8 /*||  
+	   $.browser.msie && parseInt($.browser.version, 10) === 9*/){
+		isOldIE = true;
+	}
+	else{
+		isOldIE = false;
+	}
+
+	//FotoFix
+	$("*[fondo_pos]").each(function(){
+		FotosFixV3($(this));
+	});
+
+	//Detectar navegadores
+	isChrome = navigator.userAgent.indexOf('Chrome') > -1;
+	isExplorer = navigator.userAgent.indexOf('MSIE') > -1;
+	isFirefox = navigator.userAgent.indexOf('Firefox') > -1;
+	isSafari = navigator.userAgent.indexOf("Safari") > -1;
+	isOpera = navigator.userAgent.toLowerCase().indexOf("op") > -1;
+	if ((isChrome)&&(isSafari)) {isSafari=false;}
+	if ((isChrome)&&(isOpera)) {isChrome=false;}
+
+
+	//***** SCROLLING CODE ******
+	var scrollStarted = 0;
+
+	$(window).scroll(function () {
+
+		scrollStarted = 1;
+
+	});
+	//***** SCROLLING CODE ******
+
+
+
+	
+
+	//Click Select Menu
+	/*$("select").change(function(e) {
+
+		var itemURL =  $(this).find("option:selected").attr("value");
+
+		if( $(this).find("option:selected").attr("value")!="seleccione" )
+		{
+			if(checkDisabledLink(itemURL)){
+				window.location=itemURL;
+			}
+
+		}
+
+	});
+	//Click Select Menu*/
+
+	//Form Validate
+	/*$(".class form").find("input[type='submit']").click(function(e){ 
+
+
+		$(this).parent().each(function(){
+
+			if( !( checkEmpty($("#field1").val()) ) || 
+				!( checkEmpty($("#field1").val()) ) || 
+				!( checkEmpty($("#field1").val()) ) || 
+				!( checkEmpty($("#field1").val()) )  
+			){
+				showAlert("Formulario de contacto","Hubo un problema al enviar, por favor complete todos los campos");
+				e.preventDefault();
+			}
+			else if( !(emailValido( $("#field1").val() )) )
+			{
+				showAlert("Formulario de contacto","Hubo un problema al enviar, por favor ingrese un E-Mail válido");
+				e.preventDefault();
+			}
+			else if( $.trim( $("#field1").val() ) == "" )
+			{
+				showAlert("Formulario de contacto","Hubo un problema al enviar, por favor complete todos los campos");
+				e.preventDefault();
+			}
+			else
+			{
+				$(this).submit();
+			}
+
+		});
+
+	});*/
+	//Form Validate
+
+	//Touch swipe bootstrap carousel
+	/*$("#carousel-example-generic").swiperight(function() {  
+		$(this).carousel('prev');  
+	});  
+	$("#carousel-example-generic").swipeleft(function() {  
+		$(this).carousel('next');  
+	}); */
+
+	//Carousel timer
+	/*$('#carousel-example-generic').carousel({
+		interval: 3000
+	});*/
+
+	//Text select on click
+	$(document).on("click", ".clickSelect", function(e) {
+		$(this).select();
+	});
+
+/* ================================================= DOCUMENT READY ================================================= */
+
+});
+
+$(window).bind("load", function() {
+
+/* ================================================= WINDOWS LOAD ================================================= */
+
+	//Custom Clicks
+	var urlMoDisp = "a[href*=#]";
+
+	//$(String(urlMoDisp)).not(".carousel-control").click(function(e) {
+	$(document).on("click", urlMoDisp, function(e) {
+
+		var itemURL =  $(this).attr("href");
+
+		if(!(checkDisabledLink(itemURL))){
+			e.preventDefault();
+		}
+
+	});
+	//Custom Clicks
+
+	//New Title Attr
+	if(!(isMovil))
+	{
+		//$("*[title2]").css("background-color","red");
+
+		$(document).on("mouseenter", "*[title2]", function() {
+
+			//console.log("tiene "+$(this).index());
+
+			$(this).popover({
+				container: 'body',
+				html: true,
+				placement: $(this).attr("title2_pos"),
+				content: function () {
+					return $(this).attr("title2");
+				}
+			});
+
+			$(this).popover('show');
+		});
+
+		$(document).on("mouseleave", "*[title2]", function() {
+
+			//console.log("no tiene "+$(this).index());
+
+			$(this).popover('destroy');
+
+		});
+
+	}
+	//New Title Attr
+
+	//Cookie
+	/*
+
+	if ( !(Cookies.get('TEST_FirstTime') ) )
+	{
+		//Añadir la cookie
+		Cookies.set("TEST_FirstTime", mainURL, { expires: 365 });
+
+	}
+	else
+	{
+		//Actualizar cookie
+		Cookies.set("TEST_FirstTime", mainURL, { path: '/' });
+	}
+
+	*/
+
+	//Data Tables
+	//$('#example').DataTable();
+
+	//Data Tables Mod
+	/*$('.listaAlumnos').DataTable( {
+		//"lengthMenu": [[5, 15, -1], [5, 15, "All"]]
+		paging: false,
+		"columnDefs": [ {
+		"targets": 'no-sort',
+		"orderable": false,
+		} ],
+		 "initComplete": function(settings, json) {
+			 //Ocultar cosas
+			$(".dataTables_wrapper").find(".row:first-child").find(".dataTables_filter").parent().prev().remove();
+			$(".dataTables_wrapper").find(".row:first-child").find(".dataTables_filter").parent().removeAttr("class");
+			$(".dataTables_wrapper").find(".row:first-child").find(".dataTables_filter").find("input").addClass("in-txt");
+
+			$(".dataTables_wrapper").find(".row:last-child").find(".dataTables_info").parent().removeAttr("class");
+			$(".dataTables_wrapper").find(".row:last-child").find(".dataTables_info").parent().next().remove();
+
+			//Funciones despues de aplicar todo
+
+		  },
+	});*/
+		
+/* ================================================= WINDOWS LOAD ================================================= */
+
+});

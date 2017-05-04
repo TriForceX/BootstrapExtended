@@ -37,7 +37,7 @@
 <link href="css/lg-transitions.css" rel="stylesheet">
 <link href="css/lg-fb-comment-box.css" rel="stylesheet">
 <!-- CSS Dynamic -->
-<link href="css/main.php?url=<?php echo $baseURL; ?>" rel="stylesheet">
+<link href="css/style.php?url=<?php echo $baseURL; ?>" rel="stylesheet">
 <!-- IE8 support of HTML5 elements and media queries -->
 <!--[if lt IE 9]>
 <script src="js/html5shiv.min.js"></script>

@@ -5,9 +5,10 @@
 
 	$jsUrl = $_GET['url'];
 	$jsFiles = array(
-				  $jsUrl.'/js/app-functions.js',
+				  $jsUrl.'/js/app-base.js',
 				  $jsUrl.'/js/app-ready.js',
 				  $jsUrl.'/js/app-load.js',
+				  $jsUrl.'/js/app-responsive.js',
 				);
     $jsBuffer = '';
 	$jsMinify = true;
