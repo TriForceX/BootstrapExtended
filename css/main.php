@@ -1,43 +1,39 @@
 <?php
-	header("Content-type: text/css; charset: UTF-8");
+	header('Content-type: text/css; charset: UTF-8');
 
-	require_once('../resources/curl.php');
+	require_once('../resources/minifier.php');
 
 	$cssUrl = $_GET['url'];
 	$cssFiles = array(
-				  $cssUrl."/css/main-fonts.css",
-				  $cssUrl."/css/main-base.css",
-				  $cssUrl."/css/main-theme.css",
+				  $cssUrl.'/css/main-fonts.css',
+				  $cssUrl.'/css/main-base.css',
+				  $cssUrl.'/css/main-theme.css',
 				);
-	$cssStart = '/*CSS Start*/';
-	$cssEnd = '/*CSS End*/';
     $cssBuffer = '';
+	$cssMinify = true;
 
-    foreach ($cssFiles as $cssFile) {
-    	$cssBuffer .= extract_unit(LoadCURLPage($cssFile), $cssStart, $cssEnd);
+    foreach($cssFiles as $cssFile){
+    	$cssBuffer .= file_get_contents($cssFile);
     }
 
 	$cssVariables = array(
 						//Screen
-						"@screen-phone-sm" => "320px", 
-						"@screen-phone-md" => "360px",
-						"@screen-phone-lg" => "480px",
-						"@screen-tablet" => "768px",
-						"@screen-desktop-md" => "992px", 
-						"@screen-desktop-lg" => "1024px", 
-						"@screen-widescreen-md" => "1200px", 
-						"@screen-widescreen-lg" => "1400px", 
-						"@screen-full-hd" => "1920px", 
+						'@screen-small-phone' => '320px', 
+						'@screen-medium-phone' => '360px',
+						'@screen-phone' => '480px',
+						'@screen-tablet' => '768px',
+						'@screen-desktop' => '992px',  
+						'@screen-widescreen' => '1200px', 
+						'@screen-full-hd' => '1920px', 
 						//Colors
-						"@color-red" => "#ff0000",
-						"@color-blue" => "#0000ff",
-						"@color-green" => "#00ff00",
+						'@color-red' => '#ff0000',
+						'@color-blue' => '#0000ff',
+						'@color-green' => '#00ff00',
+						'@color-yellow' => '#ffff00',
 					);
 
-	foreach ($cssVariables as $cssKey => $cssValue){
-		
-		$cssBuffer = str_replace($cssKey, $cssValue, $cssBuffer);
-	}
-	
-    echo $cssBuffer;
+	$cssKey = array_keys($cssVariables);
+  	$cssBuffer = str_replace($cssKey, $cssVariables, $cssBuffer);
+
+    echo $cssMinify == true ? minifyCSS($cssBuffer) : $cssBuffer;
 ?>

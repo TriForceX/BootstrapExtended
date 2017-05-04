@@ -1,41 +1,36 @@
 <?php
-	header("Content-type: text/javascript; charset: UTF-8");
+	header('Content-type: text/javascript; charset: UTF-8');
 
-	require_once('../resources/curl.php');
+	require_once('../resources/minifier.php');
 
 	$jsUrl = $_GET['url'];
 	$jsFiles = array(
-				  $jsUrl."/js/app-functions.js",
-				  $jsUrl."/js/app-ready.js",
-				  $jsUrl."/js/app-load.js",
+				  $jsUrl.'/js/app-functions.js',
+				  $jsUrl.'/js/app-ready.js',
+				  $jsUrl.'/js/app-load.js',
 				);
-	$jsStart = '/*JS Start*/';
-	$jsEnd = '/*JS End*/';
     $jsBuffer = '';
+	$jsMinify = true;
 
-    foreach ($jsFiles as $jsFile) {
-    	$jsBuffer .= extract_unit(LoadCURLPage($jsFile), $jsStart, $jsEnd);
+    foreach($jsFiles as $jsFile){
+    	$jsBuffer .= file_get_contents($jsFile);
     }
 
 	$jsVariables = array(
 						//Screen
-						"@screen-phone-sm" => "320", 
-						"@screen-phone-md" => "360",
-						"@screen-phone-lg" => "480",
-						"@screen-tablet" => "768",
-						"@screen-desktop-md" => "992", 
-						"@screen-desktop-lg" => "1024", 
-						"@screen-widescreen-md" => "1200", 
-						"@screen-widescreen-lg" => "1400", 
-						"@screen-full-hd" => "1920", 
+						'@screen-small-phone' => '320', 
+						'@screen-medium-phone' => '360',
+						'@screen-phone' => '480',
+						'@screen-tablet' => '768',
+						'@screen-desktop' => '992',  
+						'@screen-widescreen' => '1200', 
+						'@screen-full-hd' => '1920', 
 						//Global
-						"@global-url" => $jsUrl,
+						'@global-url' => $jsUrl,
 					);
 
-	foreach ($jsVariables as $jsKey => $jsValue){
-		
-		$jsBuffer = str_replace($jsKey, $jsValue, $jsBuffer);
-	}
+	$jsKey = array_keys($jsVariables);
+  	$jsBuffer = str_replace($jsKey, $jsVariables, $jsBuffer);
 	
-    echo $jsBuffer;
+    echo $jsMinify == true ? minifyJS($jsBuffer) : $jsBuffer;
 ?>

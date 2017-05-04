@@ -1,6 +1,13 @@
-/*JS Start*/
-
 /* ================================================= FUNCTIONS ================================================= */
+var mainUrl = "@global-url";
+var isHome;
+var isMovil;
+var isOldIE;
+var isChrome;
+var isExplorer;
+var isFirefox;
+var isSafari;
+var isOpera;
 
 $.fn.hasAttr = function(name) {  
    return this.attr(name) !== undefined;
@@ -587,5 +594,3 @@ function windowPopup(url, width, height, alignX, alignY, scroll) {
 				"WindowPopupJS",	"status=no,height="+height+",width="+width+",resizable=yes,left="+leftPosition+",top="+topPosition+",screenX="+leftPosition+",screenY="+topPosition+",toolbar=no,menubar=no,scrollbars="+getScroll+",location=no,directories=no");
 }
 /* ================================================= FUNCTIONS ================================================= */
-
-/*JS End*/

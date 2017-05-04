@@ -1,5 +1,3 @@
-/*JS Start*/
-
 $(document).ready(function(){
 
 /* ================================================= DOCUMENT READY ================================================= */
@@ -31,24 +29,21 @@ $(".class").click(function(){
 
 //******** DETECT HEIGHT CHANGE
 
-//Main URL
-var mainUrl = "@global-url";
-
 //Is Home
 if ($("#home").length > 0){
-	var isHome = true;
+	isHome = true;
 }
 else{
-	var isHome = false;
+	isHome = false;
 }
 
 //Is Mobile
 if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini|BB10|PlayBook|MeeGo/i.test(navigator.userAgent) ) //v2
 {
-	var isMovil = true;
+	isMovil = true;
 }
 else{
-	var isMovil = false;
+	isMovil = false;
 }
 
 //OLD Internet Explorer Fixes
@@ -56,39 +51,10 @@ if($.browser.msie && parseInt($.browser.version, 10) === 6 ||
    $.browser.msie && parseInt($.browser.version, 10) === 7 || 
    $.browser.msie && parseInt($.browser.version, 10) === 8 /*||  
    $.browser.msie && parseInt($.browser.version, 10) === 9*/){
-	var isOldIE = true;
+	isOldIE = true;
 }
 else{
-	var isOldIE = false;
-}
-
-if(isHome){
-	//*** IN HOME CODE ***//
-
-}
-else
-{
-	//*** NOT IN HOME CODE ***//
-
-}
-
-if(isMovil){
-	//*** MOBILE CODE ***//
-
-}
-else{
-	//*** NOT MOBILE CODE ***//
-
-}
-
-if(isOldIE){
-	//*** OLD IEXPLORER CODE ***//
-
-}
-else
-{
-	//*** NOT OLD IEXPLORER CODE ***//
-
+	isOldIE = false;
 }
 
 //FotoFix
@@ -97,11 +63,11 @@ $("*[fondo_pos]").each(function(){
 });
 
 //Detectar navegadores
-var isChrome = navigator.userAgent.indexOf('Chrome') > -1;
-var isExplorer = navigator.userAgent.indexOf('MSIE') > -1;
-var isFirefox = navigator.userAgent.indexOf('Firefox') > -1;
-var isSafari = navigator.userAgent.indexOf("Safari") > -1;
-var isOpera = navigator.userAgent.toLowerCase().indexOf("op") > -1;
+isChrome = navigator.userAgent.indexOf('Chrome') > -1;
+isExplorer = navigator.userAgent.indexOf('MSIE') > -1;
+isFirefox = navigator.userAgent.indexOf('Firefox') > -1;
+isSafari = navigator.userAgent.indexOf("Safari") > -1;
+isOpera = navigator.userAgent.toLowerCase().indexOf("op") > -1;
 if ((isChrome)&&(isSafari)) {isSafari=false;}
 if ((isChrome)&&(isOpera)) {isChrome=false;}
 
@@ -118,15 +84,13 @@ $(window).scroll(function () {
 
 //***** RESPONSIVE CODE ******
 
-//@screen-phone-sm => 320
-//@screen-phone-md => 360
-//@screen-phone-lg => 480
-//@screen-tablet => 768
-//@screen-desktop-md => 992
-//@screen-desktop-lg => 1024
-//@screen-widescreen-md => 1200
-//@screen-widescreen-lg => 1400
-//@screen-full-hd => 1920
+//'@screen-small-phone' => '320', 
+//'@screen-medium-phone' => '360',
+//'@screen-phone' => '480',
+//'@screen-tablet' => '768',
+//'@screen-desktop' => '992',  
+//'@screen-widescreen' => '1200', 
+//'@screen-full-hd' => '1920', 
 
 var screen_orientation = 0;
 
@@ -300,5 +264,3 @@ $(document).on("click", ".clickSelect", function(e) {
 /* ================================================= DOCUMENT READY ================================================= */
 
 });
-
-/*JS End*/

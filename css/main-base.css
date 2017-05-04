@@ -1,5 +1,3 @@
-/*CSS Start*/
-
 /* ================================================= GLOBAL ================================================= */
 body{
 	background-color:#FFF;
@@ -231,7 +229,7 @@ body > .loading.blue > span{
 	margin-bottom: 10px;
 	cursor: pointer;
 }
-@media (max-width: @screen-phone-lg) {
+@media (max-width: @screen-phone) {
 	.videoLaunchIframe{
 		height:270px;
 	}
@@ -371,5 +369,3 @@ td[align='left']{
 /*Disable Padding*/
 
 /* ================================================= BOOTSTRAP ================================================= */
-
-/*CSS End*/
