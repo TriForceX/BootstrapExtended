@@ -32,7 +32,7 @@ function loadLightGallery(){
 	
 	$(".lightgallery").each(function(){ 
 
-		var getMainUrl = $("body").attr("url");
+		var getMainUrl = mainUrl;
 		var galSelectorVal = $(this).attr("lg-selector");
 		var galThumbnailVal = $(this).attr("lg-thumbnail");
 		var galDownloadVal = $(this).attr("lg-download");
