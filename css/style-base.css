@@ -236,15 +236,6 @@ body > .loading.blue > span{
 }
 /*Video Launch*/
 
-/*popOver*/
-.popover{
-	z-index: 99999;
-}
-.popover-content{
-	color:#333;
-	padding: 8px 10px 8px;
-}
-
 /*Carousel*/
 /* Fade transition for carousel items */
 .carousel-fade .carousel-inner .item {

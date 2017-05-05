@@ -13,17 +13,51 @@ if(isset($_GET['debug'])){
 	ini_set('display_startup_errors', 1);
 	error_reporting(E_ALL); //E_ERROR | E_STRICT | E_WARNING | E_NOTICE | E_ALL
 }
+//Debug
 
-//Base URL
-if (empty($_SERVER['HTTPS']) || $_SERVER['HTTPS'] === 'off') {
-    $basePROTOCOL = 'http://';
-} else {
-    $basePROTOCOL = 'https://';
+//Check Home Page
+function is_home(){
+	
+	$baseProtocol = (empty($_SERVER['HTTPS']) || $_SERVER['HTTPS'] === 'off') ? 'http://' : 'https://';
+	$baseUrl = $baseProtocol.$_SERVER['SERVER_NAME'].dirname($_SERVER['PHP_SELF']);
+	
+	$scriptBase = $baseUrl.'/index.php';
+	$scriptTarget = $_SERVER['SCRIPT_NAME'];
+	
+	return strpos($scriptBase,$scriptTarget);
 }
+//Check Home Page
 
-$baseURL = $basePROTOCOL.$_SERVER['SERVER_NAME'].dirname($_SERVER['PHP_SELF']);
-$baseHOME = strpos($_SERVER['SCRIPT_NAME'],'index.php');
-//Base URL
+//Get info
+function get_siteinfo($info){
+	
+	$baseProtocol = (empty($_SERVER['HTTPS']) || $_SERVER['HTTPS'] === 'off') ? 'http://' : 'https://';
+	$baseUrl = $baseProtocol.$_SERVER['SERVER_NAME'].dirname($_SERVER['PHP_SELF']);
+	
+	switch($info){
+		case 'url':
+			echo $baseUrl;
+			break;
+		case 'protocol':
+			echo $baseUrl;
+			break;
+		case 'page':
+			if(strpos($_SERVER['SCRIPT_NAME'],'index.php')){
+				echo 'Home';
+			}
+			elseif(strpos($_SERVER['SCRIPT_NAME'],'example.php')){
+				echo 'Examples';
+			}
+			else{
+				echo 'Page';
+			}
+			break;
+		default: 
+			echo $baseUrl;
+			break;
+	}
+}
+//Get info
 
 //UTF9 Conversion
 function convertToUTF8($text) {

@@ -1,51 +1,66 @@
-<?php require_once('resources/functions.php'); ?>
+<?php 
+//Main Functions
+require_once('resources/functions.php'); 
+
+//HTML Data
+$htmlData = array('lang'=>'en',
+				  'charset'=>'utf-8',
+				  'title'=>'Website Base',
+				  'mobile-capable'=>'yes',
+				  'viewport'=>'width=device-width, initial-scale=1, user-scalable=no',
+				  'nav-color'=>'#333333',
+				  'nav-color-apple'=>'black',
+				  'description'=>'Website based on Bootstrap with some CSS/JS/PHP improvements',
+				  'keywords'=>'html, jquery, javascript, php, responsive, css3',
+				  'author'=>'TriForce');
+?>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="<?php echo $htmlData['lang']; ?>">
 <head>
-<title>Site Title</title>
-<meta charset="utf-8">
+<title><?php echo $htmlData['title']; ?> &raquo; <?php echo get_siteinfo('page'); ?></title>
+<meta charset="<?php echo $htmlData['charset']; ?>">
 <!-- Mobile Enable -->
-<meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="mobile-web-app-capable" content="yes">
-<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+<meta name="mobile-web-app-capable" content="<?php echo $htmlData['mobile-capable']; ?>">
+<meta name="apple-mobile-web-app-capable" content="<?php echo $htmlData['mobile-capable']; ?>">
+<meta name="viewport" content="<?php echo $htmlData['viewport']; ?>">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <!-- Nav Bar Mobile Color -->
-<meta name="theme-color" content="#333333">
-<meta name="msapplication-navbutton-color" content="#333333">
-<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta name="theme-color" content="<?php echo $htmlData['nav-color']; ?>">
+<meta name="msapplication-navbutton-color" content="<?php echo $htmlData['nav-color']; ?>">
+<meta name="apple-mobile-web-app-status-bar-style" content="<?php echo $htmlData['nav-color-apple']; ?>">
 <!-- Meta Details -->
-<meta name="description" content="ejemplo"/>
-<meta name="keywords" content="ejemplo" />
-<meta name="author" content="ejemplo" />
+<meta name="description" content="<?php echo $htmlData['description']; ?>"/>
+<meta name="keywords" content="<?php echo $htmlData['keywords']; ?>" />
+<meta name="author" content="<?php echo $htmlData['author']; ?>" />
 <!-- Tab & App Icons -->
-<link href="img/favicon.png" rel="shortcut icon">
-<link href="img/favicon_ios.png" rel="apple-touch-icon"/>
+<link href="<?php echo get_siteinfo('url'); ?>/img/favicon.png" rel="shortcut icon">
+<link href="<?php echo get_siteinfo('url'); ?>/img/favicon_ios.png" rel="apple-touch-icon"/>
 <!-- Bootstrap core CSS -->
-<link href="css/bootstrap.min.css" rel="stylesheet">
+<link href="<?php echo get_siteinfo('url'); ?>/css/bootstrap.min.css" rel="stylesheet">
 <!-- Bootstrap theme -->
-<link href="css/bootstrap-theme.min.css" rel="stylesheet">
+<link href="<?php echo get_siteinfo('url'); ?>/css/bootstrap-theme.min.css" rel="stylesheet">
 <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-<link href="css/ie10-viewport-bug-workaround.css" rel="stylesheet">
+<link href="<?php echo get_siteinfo('url'); ?>/css/ie10-viewport-bug-workaround.css" rel="stylesheet">
 <!-- Bootstrap Data Tables -->
-<link href="css/dataTables.bootstrap.min.css" rel="stylesheet">
+<link href="<?php echo get_siteinfo('url'); ?>/css/dataTables.bootstrap.min.css" rel="stylesheet">
 <!-- jQuery UI CSS (Rename "images-dark" folder to "image" in css to use dark theme) -->
-<link href="css/jquery-ui.css" rel="stylesheet">
-<link href="css/jquery-ui.structure.css" rel="stylesheet">
-<link href="css/jquery-ui.theme-light.css" rel="stylesheet">
+<link href="<?php echo get_siteinfo('url'); ?>/css/jquery-ui.css" rel="stylesheet">
+<link href="<?php echo get_siteinfo('url'); ?>/css/jquery-ui.structure.css" rel="stylesheet">
+<link href="<?php echo get_siteinfo('url'); ?>/css/jquery-ui.theme-light.css" rel="stylesheet">
 <!-- LightGallery Lightbox -->
-<link href="css/lightgallery.css" rel="stylesheet">
-<link href="css/lg-transitions.css" rel="stylesheet">
-<link href="css/lg-fb-comment-box.css" rel="stylesheet">
+<link href="<?php echo get_siteinfo('url'); ?>/css/lightgallery.css" rel="stylesheet">
+<link href="<?php echo get_siteinfo('url'); ?>/css/lg-transitions.css" rel="stylesheet">
+<link href="<?php echo get_siteinfo('url'); ?>/css/lg-fb-comment-box.css" rel="stylesheet">
 <!-- CSS Dynamic -->
-<link href="css/style.php?url=<?php echo $baseURL; ?>" rel="stylesheet">
+<link href="<?php echo get_siteinfo('url'); ?>/css/style.php?url=<?php echo get_siteinfo('url'); ?>" rel="stylesheet">
 <!-- IE8 support of HTML5 elements and media queries -->
 <!--[if lt IE 9]>
-<script src="js/html5shiv.min.js"></script>
-<script src="js/respond.min.js"></script>
+<script src="<?php echo get_siteinfo('url'); ?>/js/html5shiv.min.js"></script>
+<script src="<?php echo get_siteinfo('url'); ?>/js/respond.min.js"></script>
 <![endif]-->
 </head>
-<?php if($baseHOME): ?>
-<body id="home">
+<?php if(is_home()): ?>
+<body class="isHome">
 <?php else: ?>
 <body>
 <?php endif; ?>
