@@ -2,17 +2,34 @@
 
 var mainUrl = "@global-url";
 var isHome;
-var isMovil;
-var isOldIE;
-var isChrome;
-var isExplorer;
-var isExplorer6;
-var isExplorer7;
-var isExplorer8;
-var isFirefox;
-var isSafari;
-var isOpera;
+var isMobile;
+var isNavChrome;
+var isNavIE;
+var isNavIE6;
+var isNavIE7;
+var isNavIE8;
+var isMozilla;
+var isNavSafari;
+var isNavOpera;
+var isNavEdge;
 
+//IE10 viewport hack for Surface/desktop Windows 8 bug
+(function () {
+  'use strict';
+
+  if (navigator.userAgent.match(/IEMobile\/10\.0/)) {
+    var msViewportStyle = document.createElement('style');
+    msViewportStyle.appendChild(
+      document.createTextNode(
+        '@-ms-viewport{width:auto!important}'
+      )
+    );
+    document.querySelector('head').appendChild(msViewportStyle);
+  }
+
+})();
+
+//Extend Functions
 $.fn.hasAttr = function(name) {  
    return this.attr(name) !== undefined;
 };
@@ -22,6 +39,8 @@ $.fn.outerHeight2 = function () {
 $.fn.outerWidth2 = function () {
 	return this[0].getBoundingClientRect().width;
 };
+
+//Convert string to boolean
 function toBoolean(value) {
     var strValue = String(value).toLowerCase();
     strValue = ((!isNaN(strValue) && strValue !== '0') &&
@@ -31,14 +50,15 @@ function toBoolean(value) {
     return strValue === 'true' || strValue === '1' ? true : false
 };
 
-//'@screen-small-phone' => '320', 
-//'@screen-medium-phone' => '360',
-//'@screen-phone' => '480',
-//'@screen-tablet' => '768',
-//'@screen-desktop' => '992',  
-//'@screen-widescreen' => '1200', 
-//'@screen-full-hd' => '1920', 
+//Get max height from elements
+function getMaxHeight(elems){
+    return Math.max.apply(null, elems.map(function ()
+    {
+        return $(this).outerHeight();
+    }).get());
+}
 
+//Responsive Code
 function responsiveCode() {
 	var bodyWidth = document.body.clientWidth; //$(window).width();
 	var bodyHeight = $(window).height();
@@ -46,7 +66,13 @@ function responsiveCode() {
 
 	if (bodyWidth)
 	{
-	//*********
+		//'@screen-small-phone' => '320', 
+		//'@screen-medium-phone' => '360',
+		//'@screen-phone' => '480',
+		//'@screen-tablet' => '768',
+		//'@screen-desktop' => '992',  
+		//'@screen-widescreen' => '1200', 
+		//'@screen-full-hd' => '1920', 
 		
 		//*** RESPONSIVE CHANGES ***//
 
@@ -69,14 +95,12 @@ function responsiveCode() {
 				$(".verticalAlign").removeAttr("style");
 			}
 		});
-		//Example Vertical Align Container
-		
-		//*** RESPONSIVE CHANGES ***//
 		
 		//Send data to event
 		$(document).trigger("responsiveCode", [bodyWidth, bodyHeight, bodyOrientation]);
-
-	 //*********
+		
+		//*** RESPONSIVE CHANGES ***//
+		
 	}else{
 		window.setTimeout(ResponsiveCode, 30);
 	}
@@ -87,37 +111,33 @@ $(window).bind("load", responsiveCode);
 $(window).bind("resize", responsiveCode);
 $(window).bind("orientationchange", responsiveCode);
 
-function getMaxHeight(elems){
-    return Math.max.apply(null, elems.map(function ()
-    {
-        return $(this).outerHeight();
-    }).get());
-}
+//LightGallery functions
 function destroyLightGallery(){
 	$(".lightgallery").lightGallery().data('lightGallery').destroy(true);
 }
 function loadLightGallery(){
 	
-	
 	$(".lightgallery").each(function(){ 
 
 		var getMainUrl = mainUrl;
-		var galSelectorVal = $(this).attr("lg-selector");
+		var galSelectorVal = $(this).attr("lg-selector") == "auto" ? ".lg-contentphoto" : $(this).attr("lg-selector");
 		var galThumbnailVal = $(this).attr("lg-thumbnail");
 		var galDownloadVal = $(this).attr("lg-download");
 		var galAutoTitle = $(this).attr("lg-autotitle");
 		var galGalleryMode = $(this).attr("lg-gallerymode");
-		var galLoadThumb = getMainUrl+"/css/lightgallery/lg-loading-icon.gif";
-		var galPrevThumb = getMainUrl+"/css/lightgallery/lg-loading-prev.png";
-		var galNextThumb = getMainUrl+"/css/lightgallery/lg-loading-next.png";
+		var galPrevGalText = "Loading previous page ...";
+		var galNextGalText = "Loading next page ...";
+		var galLoadThumb = getMainUrl+"/plugins/lightgallery/img/lg-loading-icon.gif";
+		var galPrevThumb = getMainUrl+"/plugins/lightgallery/img/lg-loading-prev.png";
+		var galNextThumb = getMainUrl+"/plugins/lightgallery/img/lg-loading-next.png";
 		
 		if(galGalleryMode=="true"){
 			$(this).addClass("lightGalleryMode");
 		}
 		
 		if($(".lightgallery.lightGalleryMode .lg-prevthumb").length < 1 && $(".lightgallery.lightGalleryMode .lg-nextthumb").length < 1){
-			$(".lightgallery.lightGalleryMode").prepend("<div class='lg-prevthumb' href='"+galLoadThumb+"' title='Cargando página anterior ...'><img src='"+galPrevThumb+"'></div>");
-			$(".lightgallery.lightGalleryMode").append("<div class='lg-nextthumb' href='"+galLoadThumb+"' title='Cargando siguiente página ...'><img src='"+galNextThumb+"'></div>");
+			$(".lightgallery.lightGalleryMode").prepend("<div class='lg-prevthumb' href='"+galLoadThumb+"' title='"+galPrevGalText+"'><img src='"+galPrevThumb+"'></div>");
+			$(".lightgallery.lightGalleryMode").append("<div class='lg-nextthumb' href='"+galLoadThumb+"' title='"+galNextGalText+"'><img src='"+galNextThumb+"'></div>");
 		}
 		
 		
@@ -129,40 +149,19 @@ function loadLightGallery(){
 			
 		});
 		
-		if(galSelectorVal=="auto"){
-			var galSelector = ".lg-contentphoto";
-		}
-		else{
-			var galSelector = galSelectorVal;
-		}
-		
 		if(galAutoTitle!="false"){
-			$(this).find(galSelector).not(".lg-prevthumb, .lg-nextthumb").attr("title", galAutoTitle);
-		}
-
-		if(galThumbnailVal=="false"){
-			var galThumbnail = false;
-		}
-		else{
-			var galThumbnail = true;
-		}
-		
-		if(galDownloadVal=="false"){
-			var galDownload = false;
-		}
-		else{
-			var galDownload = true;
+			$(this).find(galSelectorVal).not(".lg-prevthumb, .lg-nextthumb").attr("title", galAutoTitle);
 		}
 
 		$(this).lightGallery({
-			selector: galSelector+", .lg-prevthumb, .lg-nextthumb", 
-			thumbnail: galThumbnail,
-			download: galDownload,
+			selector: galSelectorVal+", .lg-prevthumb, .lg-nextthumb", 
+			thumbnail: toBoolean(galThumbnailVal),
+			download: toBoolean(galDownloadVal),
 			loop: false,
 		}); 
 		
 		$(".lightgallery.lightGalleryMode").on('onAfterOpen.lg',function(event){
-			console.log("abierta");
+			//console.log("opened");
 			$(".lg-outer .lg-thumb .lg-thumb-item:first-child").addClass("noBorder");
 			$(".lg-outer .lg-thumb .lg-thumb-item:last-child").addClass("noBorder");
 		});
@@ -171,11 +170,11 @@ function loadLightGallery(){
 			var total = parseInt($("#lg-counter-all").html());
 			var actual = parseInt($("#lg-counter-current").html());
 
-			console.log("abierta");
-			console.log("total: "+total+" actual: "+actual);
+			//console.log("slide");
+			//console.log("total: "+total+" current: "+actual);
 
 			if(actual == total){
-				console.log("cerrando, pagina siguiente");
+				//console.log("closing... next page");
 				$(".lightgallery").addClass("lightGalleryAuto");
 				$(".lightgallery").addClass("lightGalleryAutoNext");
 				setTimeout(function(){ 
@@ -183,7 +182,7 @@ function loadLightGallery(){
 				}, 1500);
 			}
 			if(actual == 1){
-				console.log("cerrando, pagina anterior");
+				//console.log("closing... prev page");
 				$(".lightgallery").addClass("lightGalleryAuto");
 				$(".lightgallery").addClass("lightGalleryAutoPrev");
 				setTimeout(function(){ 
@@ -210,10 +209,12 @@ function loadLightGallery(){
 
 	});
 }
+
+//ImageLiquid Functions
 function autoBackground(container){
 	
 	var bgData = new Array();
-	var bgData = $(container).data("data-autobg").split(',');
+	var bgData = $(container).data("auto-bg").split(',');
 	
 	if (bgData[2] === undefined || bgData[2] === null)
 	{
@@ -255,6 +256,8 @@ function autoBackground(container){
 		$(this).removeAttr("style");
 	});
 }
+
+//Get element height changes
 function onElementHeightChange(elm, callback){
 	var lastHeight = $(elm).height(), newHeight;
 	(function run(){
@@ -278,6 +281,7 @@ function onElementHeightChange(elm, callback){
 		});
 	}*/
 }
+
 function TitleFix(Contenedor){
 	$(Contenedor).each(function(){
 		$(this).addClass("ellipsis");
@@ -466,24 +470,21 @@ function convertToSlug(Text){
 	    .replace(/ +/g,'-')
 	    ;
 }
-function Buscar(Contenedor){
+function searchInput(button){
 	
-	var Enlace = $(Contenedor).attr("url");
-	var Boton = $(Contenedor).find("input");
-	var Texto = $(Contenedor).find("input").val().replace(/(<([^>]+)>)/ig,"");
+	var page = $(Contenedor).data("search-page");
+	var test = $(Contenedor).val().replace(/(<([^>]+)>)/ig,"");
 	
 	
-	if ( Boton.val() == "" ||
-		 Boton.val() == null ||
-		 Boton.val() == "undefinied" )
+	if ( button.val() == "" ||
+		 button.val() == null ||
+		 button.val() == "undefinied" )
 	{ 
-		showAlert("Busqueda","Por favor ingrese su busqueda");
+		showAlert("Search","Please fill the search field.");
 	}
 	else
 	{
-		//showAlert("Busqueda","Los contenidos no están completamente definidos.");
-		//alert("Busqueda: "+Texto);
-		window.location=Enlace+'/articles?search='+Texto;
+		window.location=mainUrl+'/'+page+'/?search='+text;
 	}
 		
 }
@@ -661,46 +662,19 @@ $(document).ready(function(){
 		isHome = false;
 	}
 
-	//Is Mobile
-	if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini|BB10|PlayBook|MeeGo/i.test(navigator.userAgent) ) //v2
-	{
-		isMovil = true;
-	}
-	else{
-		isMovil = false;
-	}
-
-	//OLD Internet Explorer Fixes
-	if($.browser.msie && parseInt($.browser.version, 10) === 6 || 
-	   $.browser.msie && parseInt($.browser.version, 10) === 7 || 
-	   $.browser.msie && parseInt($.browser.version, 10) === 8 /*||  
-	   $.browser.msie && parseInt($.browser.version, 10) === 9*/){
-		isOldIE = true;
-	}
-	else{
-		isOldIE = false;
-	}
-
-	//Detectar navegadores
-	isChrome = navigator.userAgent.indexOf('Chrome') > -1;
-	isExplorer = navigator.userAgent.indexOf('MSIE') > -1;
-	isFirefox = navigator.userAgent.indexOf('Firefox') > -1;
-	isSafari = navigator.userAgent.indexOf("Safari") > -1;
-	isOpera = navigator.userAgent.toLowerCase().indexOf("op") > -1;
-	if ((isChrome)&&(isSafari)) {isSafari=false;}
-	if ((isChrome)&&(isOpera)) {isChrome=false;}
+	//Check mobile
+	isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini|BB10|PlayBook|MeeGo/i.test(navigator.userAgent);
 	
-	
-	var browserTest = ''
-					+'jQuery.browser.ua  = '+jQuery.browser.ua+'\n'
-					+'jQuery.browser.name  = '+jQuery.browser.name+'\n'
-					+'jQuery.browser.fullVersion  = '+jQuery.browser.fullVersion+'\n'
-					+'jQuery.browser.version = '+jQuery.browser.version+'\n'
-					+'jQuery.browser.msie = '+jQuery.browser.msie+'\n'
-					+'jQuery.browser.mozilla = '+jQuery.browser.mozilla+'\n'
-					+'jQuery.browser.opera = '+jQuery.browser.opera+'\n'
-					+'jQuery.browser.webkit = '+jQuery.browser.webkit+'\n';
-	console.log(browserTest);
+	//Check navigators
+	isNavChrome = jQuery.browser.name == 'Chrome' && jQuery.browser.webkit == true ? true : false;
+	isNavIE = jQuery.browser.name == 'Microsoft Internet Explorer' && jQuery.browser.msie == true ? true : false;
+	isNavIE6 = jQuery.browser.name == 'Microsoft Internet Explorer' && jQuery.browser.msie == true && jQuery.browser.version == 6 ? true : false;
+	isNavIE7 = jQuery.browser.name == 'Microsoft Internet Explorer' && jQuery.browser.msie == true && jQuery.browser.version == 7 ? true : false;
+	isNavIE8 =jQuery.browser.name == 'Microsoft Internet Explorer' && jQuery.browser.msie == true && jQuery.browser.version == 8 ? true : false;
+	isNavMozilla = jQuery.browser.name == 'Firefox' && jQuery.browser.mozilla == true ? true : false;
+	isNavSafari = jQuery.browser.name == 'Safari' && jQuery.browser.webkit == true ? true : false;
+	isNavOpera = jQuery.browser.name == 'Opera' && jQuery.browser.opera == true ? true : false;
+	isNavEdge = jQuery.browser.name == 'Microsoft Edge' ? true : false;
 
 	//Touch swipe bootstrap carousel
 	/*$("#carousel-example-generic").swiperight(function() {  
@@ -722,7 +696,7 @@ $(document).ready(function(){
 	});
 	
 	//Apply Auto Background
-	$("*[data-autobg]").each(function(){
+	$("*[data-auto-bg]").each(function(){
 		autoBackground($(this));
 	});
 	

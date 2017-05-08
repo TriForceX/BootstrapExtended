@@ -1,6 +1,6 @@
 <?php 
 //Main Functions
-require_once('resources/functions.php'); 
+require_once('plugins/index.php'); 
 
 //HTML Data
 $htmlData = array('lang'=>'en',
@@ -33,30 +33,28 @@ $htmlData = array('lang'=>'en',
 <meta name="keywords" content="<?php echo $htmlData['keywords']; ?>" />
 <meta name="author" content="<?php echo $htmlData['author']; ?>" />
 <!-- Tab & App Icons -->
-<link href="<?php echo get_siteinfo('url'); ?>/img/favicon.png" rel="shortcut icon">
-<link href="<?php echo get_siteinfo('url'); ?>/img/favicon-apple.png" rel="apple-touch-icon"/>
+<link href="<?php echo get_siteinfo('url'); ?>/css/icons/favicon/favicon.png" rel="shortcut icon">
+<link href="<?php echo get_siteinfo('url'); ?>/css/icons/favicon/favicon-apple.png" rel="apple-touch-icon"/>
 <!-- Bootstrap core CSS -->
-<link href="<?php echo get_siteinfo('url'); ?>/css/bootstrap.min.css" rel="stylesheet">
+<link href="<?php echo get_siteinfo('url'); ?>/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 <!-- Bootstrap theme -->
-<link href="<?php echo get_siteinfo('url'); ?>/css/bootstrap-theme.min.css" rel="stylesheet">
-<!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-<link href="<?php echo get_siteinfo('url'); ?>/css/ie10-viewport-bug-workaround.css" rel="stylesheet">
-<!-- jQuery UI CSS (Rename "images-dark" folder to "image" in css to use dark theme) -->
-<link href="<?php echo get_siteinfo('url'); ?>/css/jquery-ui.css" rel="stylesheet">
-<link href="<?php echo get_siteinfo('url'); ?>/css/jquery-ui.structure.css" rel="stylesheet">
-<link href="<?php echo get_siteinfo('url'); ?>/css/jquery-ui.theme-light.css" rel="stylesheet">
+<link href="<?php echo get_siteinfo('url'); ?>/plugins/bootstrap/css/bootstrap-theme.min.css" rel="stylesheet">
+<!-- jQuery UI CSS -->
+<link href="<?php echo get_siteinfo('url'); ?>/plugins/jquery-ui/css/jquery-ui.min.css" rel="stylesheet">
+<link href="<?php echo get_siteinfo('url'); ?>/plugins/jquery-ui/css/jquery-ui.structure.min.css" rel="stylesheet">
+<link href="<?php echo get_siteinfo('url'); ?>/plugins/jquery-ui/css/jquery-ui.theme.min.css" rel="stylesheet">
 <!-- Bootstrap Data Tables -->
 <link href="<?php echo get_siteinfo('url'); ?>/plugins/datatables/css/jquery.dataTables.min.css" rel="stylesheet">
 <!-- LightGallery Lightbox -->
-<link href="<?php echo get_siteinfo('url'); ?>/css/lightgallery.css" rel="stylesheet">
-<link href="<?php echo get_siteinfo('url'); ?>/css/lg-transitions.css" rel="stylesheet">
-<link href="<?php echo get_siteinfo('url'); ?>/css/lg-fb-comment-box.css" rel="stylesheet">
+<link href="<?php echo get_siteinfo('url'); ?>/plugins/lightgallery/css/lightgallery.css" rel="stylesheet">
+<link href="<?php echo get_siteinfo('url'); ?>/plugins/lightgallery/css/lg-transitions.css" rel="stylesheet">
+<link href="<?php echo get_siteinfo('url'); ?>/plugins/lightgallery/css/lg-fb-comment-box.css" rel="stylesheet">
 <!-- CSS Dynamic -->
-<link href="<?php echo get_siteinfo('url'); ?>/css/style.php?url=<?php echo get_siteinfo('url'); ?>" rel="stylesheet">
+<link href="<?php echo get_siteinfo('url'); ?>/css/index.php?url=<?php echo get_siteinfo('url'); ?>" rel="stylesheet">
 <!-- IE8 support of HTML5 elements and media queries -->
 <!--[if lt IE 9]>
-<script src="<?php echo get_siteinfo('url'); ?>/js/html5shiv.min.js"></script>
-<script src="<?php echo get_siteinfo('url'); ?>/js/respond.min.js"></script>
+<script src="<?php echo get_siteinfo('url'); ?>/plugins/bootstrap/js/html5shiv.min.js"></script>
+<script src="<?php echo get_siteinfo('url'); ?>/plugins/bootstrap/js/respond.min.js"></script>
 <![endif]-->
 </head>
 <?php if(is_home()): ?>

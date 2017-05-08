@@ -252,7 +252,7 @@
 		
 		<?php 
 		
-		/*require_once('resources/curl.php');
+		/*require_once('plugins/curl/php/curl.php');
 		$url = "http://www.examplesite.com";
 		$data = LoadCURLPage($url);
 		$string_one = '<!-- initContent -->';
@@ -329,22 +329,22 @@
 			<div class="row lightgallery" lg-selector="auto" lg-autotitle="false" lg-thumbnail="false" lg-gallerymode="false" lg-download="false">
 			  <div class="col-md-3">
 				<a class="thumbnail" style="height:100px; overflow: hidden" title="My image 1" href="http://getbootstrap.com/examples/screenshots/theme.jpg">
-					<img style="width: 100%" src="http://getbootstrap.com/examples/screenshots/theme.jpg">
+					<img src="http://getbootstrap.com/examples/screenshots/theme.jpg">
 				</a>
 			  </div>
 			  <div class="col-md-3">
 				<a class="thumbnail" style="height:100px; overflow: hidden" title="My image 2" href="http://getbootstrap.com/examples/screenshots/cover.jpg">
-					<img style="width: 100%" src="http://getbootstrap.com/examples/screenshots/cover.jpg">
+					<img src="http://getbootstrap.com/examples/screenshots/cover.jpg">
 				</a>
 			  </div>
 			  <div class="col-md-3">
 				<a class="thumbnail" style="height:100px; overflow: hidden" title="My image 3" href="http://getbootstrap.com/examples/screenshots/justified-nav.jpg">
-					<img style="width: 100%" src="http://getbootstrap.com/examples/screenshots/justified-nav.jpg">
+					<img src="http://getbootstrap.com/examples/screenshots/justified-nav.jpg">
 				</a>
 			  </div>
 			  <div class="col-md-3">
 				<a class="thumbnail" style="height:100px; overflow: hidden" title="My image 3" href="http://getbootstrap.com/examples/screenshots/dashboard.jpg">
-					<img style="width: 100%" src="http://getbootstrap.com/examples/screenshots/dashboard.jpg">
+					<img src="http://getbootstrap.com/examples/screenshots/dashboard.jpg">
 				</a>
 			  </div>
 			</div>
@@ -377,43 +377,43 @@
 			  <?php if(!isset($_GET["page-2"])): ?>
 			  <div class="col-md-3">
 				<a class="thumbnail" style="height:100px; overflow: hidden" title="My image 1" href="http://getbootstrap.com/examples/screenshots/theme.jpg">
-					<img style="width: 100%" src="http://getbootstrap.com/examples/screenshots/theme.jpg">
+					<img src="http://getbootstrap.com/examples/screenshots/theme.jpg">
 				</a>
 			  </div>
 			  <div class="col-md-3">
 				<a class="thumbnail" style="height:100px; overflow: hidden" title="My image 2" href="http://getbootstrap.com/examples/screenshots/cover.jpg">
-					<img style="width: 100%" src="http://getbootstrap.com/examples/screenshots/cover.jpg">
+					<img src="http://getbootstrap.com/examples/screenshots/cover.jpg">
 				</a>
 			  </div>
 			  <div class="col-md-3">
 				<a class="thumbnail" style="height:100px; overflow: hidden" title="My image 3" href="http://getbootstrap.com/examples/screenshots/justified-nav.jpg">
-					<img style="width: 100%" src="http://getbootstrap.com/examples/screenshots/justified-nav.jpg">
+					<img src="http://getbootstrap.com/examples/screenshots/justified-nav.jpg">
 				</a>
 			  </div>
 			  <div class="col-md-3">
 				<a class="thumbnail" style="height:100px; overflow: hidden" title="My image 4" href="http://getbootstrap.com/examples/screenshots/dashboard.jpg">
-					<img style="width: 100%" src="http://getbootstrap.com/examples/screenshots/dashboard.jpg">
+					<img src="http://getbootstrap.com/examples/screenshots/dashboard.jpg">
 				</a>
 			  </div>
 			  <?php else: ?>
 			  <div class="col-md-3">
 				<a class="thumbnail" style="height:100px; overflow: hidden" title="My image 5" href="http://getbootstrap.com/examples/screenshots/offcanvas.jpg">
-					<img style="width: 100%" src="http://getbootstrap.com/examples/screenshots/offcanvas.jpg">
+					<img src="http://getbootstrap.com/examples/screenshots/offcanvas.jpg">
 				</a>
 			  </div>
 			  <div class="col-md-3">
 				<a class="thumbnail" style="height:100px; overflow: hidden" title="My image 6" href="http://getbootstrap.com/examples/screenshots/sign-in.jpg">
-					<img style="width: 100%" src="http://getbootstrap.com/examples/screenshots/sign-in.jpg">
+					<img src="http://getbootstrap.com/examples/screenshots/sign-in.jpg">
 				</a>
 			  </div>
 			  <div class="col-md-3">
 				<a class="thumbnail" style="height:100px; overflow: hidden" title="My image 7" href="http://getbootstrap.com/examples/screenshots/jumbotron-narrow.jpg">
-					<img style="width: 100%" src="http://getbootstrap.com/examples/screenshots/jumbotron-narrow.jpg">
+					<img src="http://getbootstrap.com/examples/screenshots/jumbotron-narrow.jpg">
 				</a>
 			  </div>
 			  <div class="col-md-3">
 				<a class="thumbnail" style="height:100px; overflow: hidden" title="My image 8" href="http://getbootstrap.com/examples/screenshots/blog.jpg">
-					<img style="width: 100%" src="http://getbootstrap.com/examples/screenshots/blog.jpg">
+					<img src="http://getbootstrap.com/examples/screenshots/blog.jpg">
 				</a>
 			  </div>
 			  <?php endif; ?>
@@ -1661,7 +1661,7 @@
         <h1>Carousel</h1>
       </div>
 		<p>Note: A special class <code>carousel-swipe</code> was added to enable <b>touch gesture</b> on mobile <i>(right or left)</i>. Also there is another class <code>carousel-fade</code>to change the carousel transition. To manage the transition time interval an attribute <code>data-interval</code> was added to modify <i>(time in milliseconds)</i>.</p>
-      <div id="carousel-example-generic" class="carousel slide carousel-swipe" data-ride="carousel" data-interval="3000">
+      <div id="carousel-example-generic" class="carousel slide " data-ride="carousel" data-interval="3000">
         <ol class="carousel-indicators">
           <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
           <li data-target="#carousel-example-generic" data-slide-to="1"></li>
