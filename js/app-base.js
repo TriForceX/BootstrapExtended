@@ -22,6 +22,14 @@ $.fn.outerHeight2 = function () {
 $.fn.outerWidth2 = function () {
 	return this[0].getBoundingClientRect().width;
 };
+function toBoolean(value) {
+    var strValue = String(value).toLowerCase();
+    strValue = ((!isNaN(strValue) && strValue !== '0') &&
+        strValue !== '' &&
+        strValue !== 'null' &&
+        strValue !== 'undefined') ? '1' : strValue;
+    return strValue === 'true' || strValue === '1' ? true : false
+};
 
 //'@screen-small-phone' => '320', 
 //'@screen-medium-phone' => '360',
@@ -630,7 +638,7 @@ function windowPopup(url, width, height, alignX, alignY, scroll) {
 	
     //Open the window.
     window.open(url, 
-				"WindowPopupJS",	"status=no,height="+height+",width="+width+",resizable=yes,left="+leftPosition+",top="+topPosition+",screenX="+leftPosition+",screenY="+topPosition+",toolbar=no,menubar=no,scrollbars="+getScroll+",location=no,directories=no");
+				"WindowPopupJS", "status=no,height="+height+",width="+width+",resizable=yes,left="+leftPosition+",top="+topPosition+",screenX="+leftPosition+",screenY="+topPosition+",toolbar=no,menubar=no,scrollbars="+getScroll+",location=no,directories=no");
 }
 
 /* ================================================= FUNCTIONS ================================================= */
@@ -692,7 +700,7 @@ $(document).ready(function(){
 					+'jQuery.browser.mozilla = '+jQuery.browser.mozilla+'\n'
 					+'jQuery.browser.opera = '+jQuery.browser.opera+'\n'
 					+'jQuery.browser.webkit = '+jQuery.browser.webkit+'\n';
-	alert(browserTest);
+	console.log(browserTest);
 
 	//Touch swipe bootstrap carousel
 	/*$("#carousel-example-generic").swiperight(function() {  
@@ -701,6 +709,12 @@ $(document).ready(function(){
 	$("#carousel-example-generic").swipeleft(function() {  
 		$(this).carousel('next');  
 	});*/
+	
+	//Tooltip load
+	$('*[data-toggle="tooltip"]').tooltip();
+	
+	//Popover load
+	$('*[data-toggle="popover"]').popover();
 
 	//Carousel timer
 	$('*[data-interval]').carousel({
@@ -711,7 +725,18 @@ $(document).ready(function(){
 	$("*[data-autobg]").each(function(){
 		autoBackground($(this));
 	});
-
+	
+	//Applu Data Tables
+	$('.dataTable').each(function(){
+		$(this).DataTable({
+			paging: toBoolean($(this).data('paginator')),
+			searching: toBoolean($(this).data('filter')),
+			info: toBoolean($(this).data('info')),
+			ordering: toBoolean($(this).data('ordering')),
+		});
+	});
+	
+	
 	//Text select on click
 	$(document).on("click", ".clickSelect", function(e) {
 		$(this).select();
@@ -726,10 +751,9 @@ $(document).ready(function(){
 		}
 	});
 	
-	if(!(isMovil)){
-		$('*[data-toggle="tooltip"]').tooltip();
-		$('*[data-toggle="popover"]').popover();
-	}
+	
+		
+	
 
 /* ================================================= DOCUMENT READY ================================================= */
 
@@ -739,35 +763,7 @@ $(window).bind("load", function() {
 
 /* ================================================= WINDOWS LOAD ================================================= */
 	
-	//Tooltip & Popover Load
 	
-	
-	
-	
-	//Data Tables
-	//$('#example').DataTable();
-
-	//Data Tables Mod
-	/*$('.listaAlumnos').DataTable( {
-		//"lengthMenu": [[5, 15, -1], [5, 15, "All"]]
-		paging: false,
-		"columnDefs": [ {
-		"targets": 'no-sort',
-		"orderable": false,
-		} ],
-		 "initComplete": function(settings, json) {
-			 //Ocultar cosas
-			$(".dataTables_wrapper").find(".row:first-child").find(".dataTables_filter").parent().prev().remove();
-			$(".dataTables_wrapper").find(".row:first-child").find(".dataTables_filter").parent().removeAttr("class");
-			$(".dataTables_wrapper").find(".row:first-child").find(".dataTables_filter").find("input").addClass("in-txt");
-
-			$(".dataTables_wrapper").find(".row:last-child").find(".dataTables_info").parent().removeAttr("class");
-			$(".dataTables_wrapper").find(".row:last-child").find(".dataTables_info").parent().next().remove();
-
-			//Funciones despues de aplicar todo
-
-		  },
-	});*/
 		
 /* ================================================= WINDOWS LOAD ================================================= */
 

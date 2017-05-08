@@ -15,6 +15,15 @@ if(isset($_GET['debug'])){
 }
 //Debug
 
+//Check Local Host
+function is_localhost(){
+	
+	$isLocalHost = $_SERVER['HTTP_HOST'] == 'localhost' OR filter_var($_SERVER['HTTP_HOST'], FILTER_VALIDATE_IP) ? true : false;
+	
+	return $isLocalHost;
+}
+//Check Local Host
+
 //Check Home Page
 function is_home(){
 	

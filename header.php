@@ -34,19 +34,19 @@ $htmlData = array('lang'=>'en',
 <meta name="author" content="<?php echo $htmlData['author']; ?>" />
 <!-- Tab & App Icons -->
 <link href="<?php echo get_siteinfo('url'); ?>/img/favicon.png" rel="shortcut icon">
-<link href="<?php echo get_siteinfo('url'); ?>/img/favicon_ios.png" rel="apple-touch-icon"/>
+<link href="<?php echo get_siteinfo('url'); ?>/img/favicon-apple.png" rel="apple-touch-icon"/>
 <!-- Bootstrap core CSS -->
 <link href="<?php echo get_siteinfo('url'); ?>/css/bootstrap.min.css" rel="stylesheet">
 <!-- Bootstrap theme -->
 <link href="<?php echo get_siteinfo('url'); ?>/css/bootstrap-theme.min.css" rel="stylesheet">
 <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
 <link href="<?php echo get_siteinfo('url'); ?>/css/ie10-viewport-bug-workaround.css" rel="stylesheet">
-<!-- Bootstrap Data Tables -->
-<link href="<?php echo get_siteinfo('url'); ?>/css/dataTables.bootstrap.min.css" rel="stylesheet">
 <!-- jQuery UI CSS (Rename "images-dark" folder to "image" in css to use dark theme) -->
 <link href="<?php echo get_siteinfo('url'); ?>/css/jquery-ui.css" rel="stylesheet">
 <link href="<?php echo get_siteinfo('url'); ?>/css/jquery-ui.structure.css" rel="stylesheet">
 <link href="<?php echo get_siteinfo('url'); ?>/css/jquery-ui.theme-light.css" rel="stylesheet">
+<!-- Bootstrap Data Tables -->
+<link href="<?php echo get_siteinfo('url'); ?>/plugins/datatables/css/jquery.dataTables.min.css" rel="stylesheet">
 <!-- LightGallery Lightbox -->
 <link href="<?php echo get_siteinfo('url'); ?>/css/lightgallery.css" rel="stylesheet">
 <link href="<?php echo get_siteinfo('url'); ?>/css/lg-transitions.css" rel="stylesheet">
@@ -65,7 +65,7 @@ $htmlData = array('lang'=>'en',
 <body>
 <?php endif; ?>
 <!-- ================================================= ANALYTICS ================================================= -->
-<?php if($_SERVER['HTTP_HOST'] == 'localhost' OR filter_var($_SERVER['HTTP_HOST'], FILTER_VALIDATE_IP)): ?>
+<?php if(is_localhost()): ?>
 <?php echo "\n"; //Dont track in localhost ?>
 <?php else: ?>
 <?php echo "\n"; ?>

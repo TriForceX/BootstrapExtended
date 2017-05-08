@@ -24,8 +24,8 @@
 <script src="<?php echo get_siteinfo('url'); ?>/js/bootbox.min.js"></script>
 <!-- jQuery Cookie -->
 <script src="<?php echo get_siteinfo('url'); ?>/js/js.cookie.js"></script>
-<!-- Bootstrap 3 Data Tables
-<script src="<?php echo get_siteinfo('url'); ?>/js/dataTables.bootstrap.min.js"></script>-->
+<!-- Bootstrap 3 Data Tables -->
+<script src="<?php echo get_siteinfo('url'); ?>/plugins/datatables/js/jquery.dataTables.min.js"></script>
 <!-- Custom Thumbnails -->
 <script src="<?php echo get_siteinfo('url'); ?>/js/holder.js"></script>
 <!-- imgLiquid Fix -->
