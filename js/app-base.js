@@ -125,16 +125,12 @@ function loadLightGallery(){
 		var galThumbnailVal = $(this).attr("lg-thumbnail");
 		var galDownloadVal = $(this).attr("lg-download");
 		var galAutoTitle = $(this).attr("lg-autotitle");
-		var galGalleryMode = $(this).attr("lg-gallerymode");
+		var galGalleryMode = $(this).attr("lg-gallerymode") == "true" ? $(this).addClass("lightGalleryMode") : '';
 		var galPrevGalText = "Loading previous page ...";
 		var galNextGalText = "Loading next page ...";
 		var galLoadThumb = getMainUrl+"/plugins/lightgallery/img/lg-loading-icon.gif";
 		var galPrevThumb = getMainUrl+"/plugins/lightgallery/img/lg-loading-prev.png";
 		var galNextThumb = getMainUrl+"/plugins/lightgallery/img/lg-loading-next.png";
-		
-		if(galGalleryMode=="true"){
-			$(this).addClass("lightGalleryMode");
-		}
 		
 		if($(".lightgallery.lightGalleryMode .lg-prevthumb").length < 1 && $(".lightgallery.lightGalleryMode .lg-nextthumb").length < 1){
 			$(".lightgallery.lightGalleryMode").prepend("<div class='lg-prevthumb' href='"+galLoadThumb+"' title='"+galPrevGalText+"'><img src='"+galPrevThumb+"'></div>");
@@ -143,11 +139,9 @@ function loadLightGallery(){
 		
 		
 		$(".lightgallery").find("img").each(function(){
-		
 			if($(this).parent().is("a") && !($(this).parent().hasAttr("target")) ){
 				$(this).parent().addClass("lg-contentphoto");
 			}
-			
 		});
 		
 		if(galAutoTitle!="false"){
@@ -721,14 +715,6 @@ $(document).ready(function(){
 	
 	console.log(browserTest);*/
 
-	//Touch swipe bootstrap carousel
-	/*$("#carousel-example-generic").swiperight(function() {  
-		$(this).carousel('prev');  
-	});  
-	$("#carousel-example-generic").swipeleft(function() {  
-		$(this).carousel('next');  
-	});*/
-	
 	//Tooltip load
 	$('*[data-toggle="tooltip"]').tooltip();
 	
@@ -755,6 +741,17 @@ $(document).ready(function(){
 		});
 	});
 	
+	//Touch swipe bootstrap carousel
+	$("*[data-ride='carousel']").swipe({
+		swipe:function(event, direction, distance, duration, fingerCount, fingerData){
+				if(direction == "right"){
+					$(this).carousel('prev');  
+				}
+				else if(direction == "left"){
+					$(this).carousel('next');  
+				}
+			}
+	});
 	
 	//Text select on click
 	$(document).on("click", ".clickSelect", function(e) {
@@ -779,7 +776,7 @@ $(window).bind("load", function() {
 /* ================================================= WINDOWS LOAD ================================================= */
 	
 	
-		
+	
 /* ================================================= WINDOWS LOAD ================================================= */
 
 });

@@ -17,11 +17,8 @@ body.modal-open{
 }
 img{
 	border:0;
+	outline: 0 !important;
 }
-/*p,h1, h2, h3, h4, h5, h6{
-	margin:0;
-	padding:0;
-}*/ 
 a, a:visited, a:hover, a:active, a:focus {
 	text-decoration:none !important;
 	outline: 0 !important;
@@ -34,6 +31,18 @@ ul{
 }
 ol{
 	padding-left:16px;
+}
+th[align='center'],
+td[align='center']{
+	text-align:center;
+}
+th[align='right'],
+td[align='right']{
+	text-align:right;
+}
+th[align='left'],
+td[align='left']{
+	text-align:left;
 }
 /* ================================================= GLOBAL ================================================= */
 
@@ -71,7 +80,7 @@ body > .loading.blue > span{
 }
 /* ================================================= LOADING ================================================= */
 
-/* ================================================= BOOTSTRAP ================================================= */
+/* ================================================= PLUGINS ================================================= */
 
 /*Drop Down Menu*/
 .theme-dropdown .dropdown-menu {
@@ -256,6 +265,10 @@ body > .loading.blue > span{
 	filter:none !important;
 	width:10% !important;
 }
+.carousel-noshadow .carousel-control.left .glyphicon,
+.carousel-noshadow .carousel-control.right .glyphicon{
+	text-shadow:0px 3px 6px #000, 0px 3px 6px #000;
+}
 
 /*Other*/
 .hoverOpacity{
@@ -272,24 +285,6 @@ body > .loading.blue > span{
 	-moz-transition: opacity 0.4s ease;
 	-webkit-transition: opacity 0.4s ease;
 	-o-transition: opacity 0.4s ease;
-}
-
-/*Data Tables*/
-th[align='center'],
-td[align='center']{
-	text-align:center;
-}
-th[align='right'],
-td[align='right']{
-	text-align:right;
-}
-th[align='left'],
-td[align='left']{
-	text-align:left;
-}
-.dataTables_wrapper .glyphicon{
-	padding-top:0px !important;
-	padding-bottom:0px !important;
 }
 
 /*LightGallery*/
@@ -342,4 +337,4 @@ td[align='left']{
 }
 /*Disable Padding*/
 
-/* ================================================= BOOTSTRAP ================================================= */
+/* ================================================= PLUGINS ================================================= */

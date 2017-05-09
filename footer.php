@@ -18,12 +18,14 @@
 <script src="<?php echo get_siteinfo('url'); ?>/plugins/jquery-browser/js/jquery.mb.browser.min.js"></script>
 <!-- jQuery Cookie -->
 <script src="<?php echo get_siteinfo('url'); ?>/plugins/jquery-cookie/js/js.cookie.js"></script>
+<!-- Touch Swipe -->
+<script src="<?php echo get_siteinfo('url'); ?>/plugins/touchswipe/js/jquery.touchSwipe.min.js"></script>
 <!-- Bootstrap 3 -->
 <script src="<?php echo get_siteinfo('url'); ?>/plugins/bootstrap/js/bootstrap.min.js"></script>
 <!-- Bootstrap 3 Prompt y Confirm -->
 <script src="<?php echo get_siteinfo('url'); ?>/plugins/bootbox/js/bootbox.min.js"></script>
-<!-- Custom Thumbnails -->
-<script src="<?php echo get_siteinfo('url'); ?>/plugins/holder/js/holder.js"></script>
+<!-- Holder JS Images -->
+<script src="<?php echo get_siteinfo('url'); ?>/plugins/holder/js/holder.min.js"></script>
 <!-- Bootstrap 3 Data Tables -->
 <script src="<?php echo get_siteinfo('url'); ?>/plugins/datatables/js/jquery.dataTables.min.js"></script>
 <!-- imgLiquid Fix -->

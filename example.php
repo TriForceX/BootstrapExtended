@@ -170,88 +170,91 @@
 
 <nav class="navbar navbar-inverse">
 	<div class="container">
-	  <div class="navbar-header">
-		<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-collapse">
-		  <span class="sr-only">Toggle navigation</span>
-		  <span class="icon-bar"></span>
-		  <span class="icon-bar"></span>
-		  <span class="icon-bar"></span>
-		</button>
-		<a class="navbar-brand" href="#">Website Base</a>
-	  </div>
-	  <div class="navbar-collapse collapse">
-		<ul class="nav navbar-nav">
-		  <li class="active"><a href="index.php">Home</a></li>
-		  <li class="dropdown">
-			<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">About Me <span class="caret"></span></a>
-			<ul class="dropdown-menu" role="menu">
-			  <li><a href="https://github.com/TriForceX" target="_blank">GitHub</a></li>
-			  <li><a href="http://stackoverflow.com/users/7613382/triforce" target="_blank">StackOverflow</a></li>
+		<div class="navbar-header">
+			<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-collapse">
+				<span class="sr-only">Toggle navigation</span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+			</button>
+			<a class="navbar-brand" href="#">Website Base</a>
+		</div>
+		<div class="navbar-collapse collapse">
+			<ul class="nav navbar-nav">
+				<li class="active"><a href="index.php">Home</a></li>
+				<li class="dropdown">
+					<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">About Me <span class="caret"></span></a>
+					<ul class="dropdown-menu" role="menu">
+						<li><a href="https://github.com/TriForceX" target="_blank">GitHub</a></li>
+						<li><a href="http://stackoverflow.com/users/7613382/triforce" target="_blank">StackOverflow</a></li>
+					</ul>
+				</li>
+				<li class="dropdown">
+					<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Plugins <span class="caret"></span></a>
+					<ul class="dropdown-menu" role="menu">
+						<li><a href="https://datatables.net/examples/styling/bootstrap.html" target="_blank">Data Tables</a></li>
+						<li><a href="http://sachinchoolur.github.io/lightGallery/" target="_blank">Light Gallery</a></li>
+						<li><a href="http://holderjs.com/" target="_blank">Holder JS</a></li>
+						<li><a href="http://bootboxjs.com/" target="_blank">BootBox JS</a></li>
+						<li><a href="https://github.com/karacas/imgLiquid" target="_blank">ImgLiquid JS</a></li>
+						<li><a href="http://labs.rampinteractive.co.uk/touchSwipe/demos/" target="_blank">Touch Swipe</a></li>
+						<li><a href="https://jqueryui.com/" target="_blank">jQuery UI</a></li>
+						<li><a href="https://github.com/js-cookie/js-cookie" target="_blank">jQuery Cookie</a></li>
+						<li><a href="https://github.com/pupunzi/jquery.mb.browser" target="_blank">jQuery Browser</a></li>
+					</ul>
+				</li>
+				<li class="dropdown">
+					<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Bootstrap <span class="caret"></span></a>
+					<ul class="dropdown-menu" role="menu">
+						<li><a href="http://getbootstrap.com/css/" target="_blank">CSS</a></li>
+						<li><a href="http://getbootstrap.com/components/" target="_blank">Components</a></li>
+						<li><a href="http://getbootstrap.com/javascript/" target="_blank">Javascript</a></li>
+						<li class="divider"></li>
+						<li class="dropdown-header"><a href="http://getbootstrap.com/examples/starter-template/" target="_blank">Starter template</a></li>
+						<li class="dropdown-header"><a href="http://getbootstrap.com/examples/grid/" target="_blank">Grids</a></li>
+						<li class="dropdown-header"><a href="http://getbootstrap.com/examples/jumbotron/" target="_blank">Jumbotron</a></li>
+						<li class="dropdown-header"><a href="http://getbootstrap.com/examples/jumbotron-narrow/" target="_blank">Narrow jumbotron</a></li>
+						<li class="dropdown-header"><a href="http://getbootstrap.com/examples/navbar/" target="_blank">Navbar</a></li>
+						<li class="dropdown-header"><a href="http://getbootstrap.com/examples/navbar-static-top/" target="_blank">Static top navbar</a></li>
+						<li class="dropdown-header"><a href="http://getbootstrap.com/examples/navbar-fixed-top/" target="_blank">Fixed navbar</a></li>
+						<li class="dropdown-header"><a href="http://getbootstrap.com/examples/cover/" target="_blank">Cover</a></li>
+						<li class="dropdown-header"><a href="http://getbootstrap.com/examples/carousel/" target="_blank">Carousel</a></li>
+						<li class="dropdown-header"><a href="http://getbootstrap.com/examples/blog/" target="_blank">Blog</a></li>
+						<li class="dropdown-header"><a href="http://getbootstrap.com/examples/dashboard/" target="_blank">Dashboard</a></li>
+						<li class="dropdown-header"><a href="http://getbootstrap.com/examples/signin/" target="_blank">Sign-in page</a></li>
+						<li class="dropdown-header"><a href="http://getbootstrap.com/examples/justified-nav/" target="_blank">Justified nav</a></li>
+						<li class="dropdown-header"><a href="http://getbootstrap.com/examples/sticky-footer/" target="_blank">Sticky footer</a></li>
+						<li class="dropdown-header"><a href="http://getbootstrap.com/examples/sticky-footer-navbar/" target="_blank">Sticky footer fixed navbar</a></li>
+						<li class="dropdown-header"><a href="http://getbootstrap.com/examples/non-responsive/" target="_blank">Non-responsive Bootstrap</a></li>
+						<li class="dropdown-header"><a href="http://getbootstrap.com/examples/offcanvas/" target="_blank">Off-canvas</a></li>
+					</ul>
+				</li>
+				<li class="dropdown">
+					<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Utilities <span class="caret"></span></a>
+					<ul class="dropdown-menu" role="menu">
+						<li><a href="https://www.w3schools.com" target="_blank">W3 Schools Tutorials</a></li>
+						<li><a href="http://bootsnipp.com" target="_blank">Bootstrap Snippets</a></li>
+						<li><a href="https://libraries.io" target="_blank">Open Source Libraries</a></li>
+						<li><a href="https://api.jquery.com" target="_blank">jQuery API</a></li>
+						<li><a href="http://jqueryui.com" target="_blank">jQuery UI API</a></li>
+						<li><a href="http://php.net" target="_blank">PHP Documentation</a></li>
+					</ul>
+				</li>
 			</ul>
-		  </li>
-		  <li class="dropdown">
-			<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Plugins <span class="caret"></span></a>
-			<ul class="dropdown-menu" role="menu">
-			  <li><a href="https://datatables.net/examples/styling/bootstrap.html" target="_blank">Data Tables</a></li>
-			  <li><a href="http://sachinchoolur.github.io/lightGallery/" target="_blank">Light Gallery</a></li>
-			  <li><a href="http://holderjs.com/" target="_blank">Holder JS</a></li>
-			  <li class="dropdown-header"><a href="js/holder.html" target="_blank">Holder JS Examples</a></li>
-			  <li><a href="http://bootboxjs.com/" target="_blank">BootBox JS</a></li>
-			  <li><a href="https://github.com/karacas/imgLiquid" target="_blank">ImgLiquid JS</a></li>
-			  <li><a href="https://jqueryui.com/" target="_blank">jQuery UI</a></li>
-			  <li><a href="https://github.com/js-cookie/js-cookie" target="_blank">jQuery Cookie</a></li>
-			  <li><a href="https://jquerymobile.com/" target="_blank">jQuery Mobile</a></li>
-			</ul>
-		  </li>
-		  <li class="dropdown">
-			<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Bootstrap <span class="caret"></span></a>
-			<ul class="dropdown-menu" role="menu">
-			  <li><a href="http://getbootstrap.com/css/" target="_blank">CSS</a></li>
-			  <li><a href="http://getbootstrap.com/components/" target="_blank">Components</a></li>
-			  <li><a href="http://getbootstrap.com/javascript/" target="_blank">Javascript</a></li>
-			  <li class="divider"></li>
-			  <li class="dropdown-header"><a href="http://getbootstrap.com/examples/starter-template/" target="_blank">Starter template</a></li>
-			  <li class="dropdown-header"><a href="http://getbootstrap.com/examples/grid/" target="_blank">Grids</a></li>
-			  <li class="dropdown-header"><a href="http://getbootstrap.com/examples/jumbotron/" target="_blank">Jumbotron</a></li>
-			  <li class="dropdown-header"><a href="http://getbootstrap.com/examples/jumbotron-narrow/" target="_blank">Narrow jumbotron</a></li>
-			  <li class="dropdown-header"><a href="http://getbootstrap.com/examples/navbar/" target="_blank">Navbar</a></li>
-			  <li class="dropdown-header"><a href="http://getbootstrap.com/examples/navbar-static-top/" target="_blank">Static top navbar</a></li>
-			  <li class="dropdown-header"><a href="http://getbootstrap.com/examples/navbar-fixed-top/" target="_blank">Fixed navbar</a></li>
-			  <li class="dropdown-header"><a href="http://getbootstrap.com/examples/cover/" target="_blank">Cover</a></li>
-			  <li class="dropdown-header"><a href="http://getbootstrap.com/examples/carousel/" target="_blank">Carousel</a></li>
-			  <li class="dropdown-header"><a href="http://getbootstrap.com/examples/blog/" target="_blank">Blog</a></li>
-			  <li class="dropdown-header"><a href="http://getbootstrap.com/examples/dashboard/" target="_blank">Dashboard</a></li>
-			  <li class="dropdown-header"><a href="http://getbootstrap.com/examples/signin/" target="_blank">Sign-in page</a></li>
-			  <li class="dropdown-header"><a href="http://getbootstrap.com/examples/justified-nav/" target="_blank">Justified nav</a></li>
-			  <li class="dropdown-header"><a href="http://getbootstrap.com/examples/sticky-footer/" target="_blank">Sticky footer</a></li>
-			  <li class="dropdown-header"><a href="http://getbootstrap.com/examples/sticky-footer-navbar/" target="_blank">Sticky footer fixed navbar</a></li>
-			  <li class="dropdown-header"><a href="http://getbootstrap.com/examples/non-responsive/" target="_blank">Non-responsive Bootstrap</a></li>
-			  <li class="dropdown-header"><a href="http://getbootstrap.com/examples/offcanvas/" target="_blank">Off-canvas</a></li>
-			</ul>
-		  </li>
-		  <li class="dropdown">
-			<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Utilities <span class="caret"></span></a>
-			<ul class="dropdown-menu" role="menu">
-			  <li><a href="https://www.w3schools.com" target="_blank">W3 Schools Tutorials</a></li>
-			  <li><a href="http://bootsnipp.com" target="_blank">Bootstrap Snippets</a></li>
-			  <li><a href="https://libraries.io" target="_blank">Open Source Libraries</a></li>
-			  <li><a href="https://api.jquery.com" target="_blank">jQuery API</a></li>
-			  <li><a href="http://jqueryui.com" target="_blank">jQuery UI API</a></li>
-			  <li><a href="http://php.net" target="_blank">PHP Documentation</a></li>
-			</ul>
-		  </li>
-		</ul>
-	  </div><!--/.nav-collapse -->
+		</div>
+		<!--/.nav-collapse -->
 	</div>
 </nav>
 
 <!-- ================================================= CONTENT ================================================= -->
 <div class="content">
 	<div class="container theme-showcase" role="main">
-	<!-- MAIN CONTAINER -->
+		<!-- MAIN CONTAINER -->
 		
+		<!-- ******** PLUGINS EXAMPLES ******** -->
+
 		<?php 
-		
+
 		/*require_once('plugins/curl/php/curl.php');
 		$url = "http://www.examplesite.com";
 		$data = LoadCURLPage($url);
@@ -259,28 +262,28 @@
 		$string_two = '<!-- endContent -->';
 		$info = extract_unit($data, $string_one, $string_two);
 		echo $info;*/
-		
+
 		?>
-		
 		
 		<!-- Load Test -->
 		<div class="progress loadProgressTest">
-			<div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%"><span class="sr-only">80% Complete (danger)</span></div>
-		 </div>
-		
-	<!-- Main jumbotron for a primary marketing message or call to action -->
-      <div class="jumbotron">
-        <h1>Plugins Examples</h1>
-		  <p>Some useful code functions and improvments in <code>PHP</code> or <code>JS</code> using the included plugins in this repository.</p>
-      </div>
-  		
-  		
+			<div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%"><span class="sr-only">80% Complete (danger)</span>
+			</div>
+		</div>
+
+		<!-- Main jumbotron for a primary marketing message or call to action -->
+		<div class="jumbotron">
+			<h1>Plugins Examples</h1>
+			<p>Some useful code functions and improvments in <code>PHP</code> or <code>JS</code> using the included plugins in this repository.</p>
+		</div>
+
+		<!-- lightGallery examples -->
 		<div class="page-header">
 			<h1>Light Gallery <span class="label label-danger">JS</span></h1>
 		</div>
 		<p>A customizable, modular, responsive, lightbox gallery plugin for jQuery. Below you will find an improved usage method via <code>lg-attributes</code>. For more options visit the <a href="http://sachinchoolur.github.io/lightGallery/docs/api.html" target="_blank">Plugin's Page</a></p>
-  		
-  		<table class="table table-bordered table-striped js-options-table">
+
+		<table class="table table-bordered table-striped js-options-table">
 			<thead>
 				<tr>
 					<th>Name</th>
@@ -294,7 +297,8 @@
 					<td>lg-selector</td>
 					<td>string</td>
 					<td>auto</td>
-					<td>Defines which element contains the image <code>url</code> and the <code>thumbnail</code></td>
+					<td>Defines which element contains the image <code>url</code> and the <code>thumbnail</code>
+					</td>
 				</tr>
 				<tr>
 					<td>lg-autotitle</td>
@@ -322,135 +326,129 @@
 				</tr>
 			</tbody>
 		</table>
- 		
-  		
-  		<div class="bs-example"> 
-  		
+
+		<div class="bs-example">
 			<div class="row lightgallery" lg-selector="auto" lg-autotitle="false" lg-thumbnail="false" lg-gallerymode="false" lg-download="false">
-			  <div class="col-md-3">
-				<a class="thumbnail" style="height:100px; overflow: hidden" title="My image 1" href="http://getbootstrap.com/examples/screenshots/theme.jpg">
-					<img src="http://getbootstrap.com/examples/screenshots/theme.jpg">
-				</a>
-			  </div>
-			  <div class="col-md-3">
-				<a class="thumbnail" style="height:100px; overflow: hidden" title="My image 2" href="http://getbootstrap.com/examples/screenshots/cover.jpg">
-					<img src="http://getbootstrap.com/examples/screenshots/cover.jpg">
-				</a>
-			  </div>
-			  <div class="col-md-3">
-				<a class="thumbnail" style="height:100px; overflow: hidden" title="My image 3" href="http://getbootstrap.com/examples/screenshots/justified-nav.jpg">
-					<img src="http://getbootstrap.com/examples/screenshots/justified-nav.jpg">
-				</a>
-			  </div>
-			  <div class="col-md-3">
-				<a class="thumbnail" style="height:100px; overflow: hidden" title="My image 3" href="http://getbootstrap.com/examples/screenshots/dashboard.jpg">
-					<img src="http://getbootstrap.com/examples/screenshots/dashboard.jpg">
-				</a>
-			  </div>
+				<div class="col-md-3">
+					<a class="thumbnail" style="height:100px; overflow: hidden" title="My image 1" href="http://getbootstrap.com/examples/screenshots/theme.jpg">
+						<img src="http://getbootstrap.com/examples/screenshots/theme.jpg">
+					</a>
+				
+				</div>
+				<div class="col-md-3">
+					<a class="thumbnail" style="height:100px; overflow: hidden" title="My image 2" href="http://getbootstrap.com/examples/screenshots/cover.jpg">
+						<img src="http://getbootstrap.com/examples/screenshots/cover.jpg">
+					</a>
+				
+				</div>
+				<div class="col-md-3">
+					<a class="thumbnail" style="height:100px; overflow: hidden" title="My image 3" href="http://getbootstrap.com/examples/screenshots/justified-nav.jpg">
+						<img src="http://getbootstrap.com/examples/screenshots/justified-nav.jpg">
+					</a>
+				
+				</div>
+				<div class="col-md-3">
+					<a class="thumbnail" style="height:100px; overflow: hidden" title="My image 3" href="http://getbootstrap.com/examples/screenshots/dashboard.jpg">
+						<img src="http://getbootstrap.com/examples/screenshots/dashboard.jpg">
+					</a>
+				
+				</div>
 			</div>
-			
 		</div>
 		<figure class="highlight">
 			<pre><code class="language-html" data-lang="html">&lt;div class="lightgallery" lg-selector="auto" lg-autotitle="false" lg-thumbnail="false" lg-gallerymode="false" lg-download="false"&gt;<br>...<br>&lt;/div&gt;</code></pre>
 		</figure>
-  		
-  		
-  		
-  		
-  		
-  		
-   		<!-- LIGHTGALLERY CONTAINER MANUALLY -->
 		
-		
-		
-		
-		
-		
-		<!-- LIGHTGALLERY CONTAINER MANUALLY -->
 		<h3>Gallery Mode</h3>
 		<p>This mode allows to improve the way to show paged galleries executing custom functions when you get the <code>first</code> or <code>last</code> page</p>
-  		
-  		<div class="bs-example"> 
-			
+
+		<div class="bs-example">
+
 			<?php //echo isset($_GET["page-2"]) ? 'Page 2' : 'Page 1' ?>
 			<div class="row lightgallery" lg-selector="auto" lg-autotitle="Gallery Title" lg-thumbnail="true" lg-gallerymode="true">
-			  <?php if(!isset($_GET["page-2"])): ?>
-			  <div class="col-md-3">
-				<a class="thumbnail" style="height:100px; overflow: hidden" title="My image 1" href="http://getbootstrap.com/examples/screenshots/theme.jpg">
-					<img src="http://getbootstrap.com/examples/screenshots/theme.jpg">
-				</a>
-			  </div>
-			  <div class="col-md-3">
-				<a class="thumbnail" style="height:100px; overflow: hidden" title="My image 2" href="http://getbootstrap.com/examples/screenshots/cover.jpg">
-					<img src="http://getbootstrap.com/examples/screenshots/cover.jpg">
-				</a>
-			  </div>
-			  <div class="col-md-3">
-				<a class="thumbnail" style="height:100px; overflow: hidden" title="My image 3" href="http://getbootstrap.com/examples/screenshots/justified-nav.jpg">
-					<img src="http://getbootstrap.com/examples/screenshots/justified-nav.jpg">
-				</a>
-			  </div>
-			  <div class="col-md-3">
-				<a class="thumbnail" style="height:100px; overflow: hidden" title="My image 4" href="http://getbootstrap.com/examples/screenshots/dashboard.jpg">
-					<img src="http://getbootstrap.com/examples/screenshots/dashboard.jpg">
-				</a>
-			  </div>
-			  <?php else: ?>
-			  <div class="col-md-3">
-				<a class="thumbnail" style="height:100px; overflow: hidden" title="My image 5" href="http://getbootstrap.com/examples/screenshots/offcanvas.jpg">
-					<img src="http://getbootstrap.com/examples/screenshots/offcanvas.jpg">
-				</a>
-			  </div>
-			  <div class="col-md-3">
-				<a class="thumbnail" style="height:100px; overflow: hidden" title="My image 6" href="http://getbootstrap.com/examples/screenshots/sign-in.jpg">
-					<img src="http://getbootstrap.com/examples/screenshots/sign-in.jpg">
-				</a>
-			  </div>
-			  <div class="col-md-3">
-				<a class="thumbnail" style="height:100px; overflow: hidden" title="My image 7" href="http://getbootstrap.com/examples/screenshots/jumbotron-narrow.jpg">
-					<img src="http://getbootstrap.com/examples/screenshots/jumbotron-narrow.jpg">
-				</a>
-			  </div>
-			  <div class="col-md-3">
-				<a class="thumbnail" style="height:100px; overflow: hidden" title="My image 8" href="http://getbootstrap.com/examples/screenshots/blog.jpg">
-					<img src="http://getbootstrap.com/examples/screenshots/blog.jpg">
-				</a>
-			  </div>
-			  <?php endif; ?>
+				<?php if(!isset($_GET["page-2"])): ?>
+				<div class="col-md-3">
+					<a class="thumbnail" style="height:100px; overflow: hidden" title="My image 1" href="http://getbootstrap.com/examples/screenshots/theme.jpg">
+						<img src="http://getbootstrap.com/examples/screenshots/theme.jpg">
+					</a>
+				
+				</div>
+				<div class="col-md-3">
+					<a class="thumbnail" style="height:100px; overflow: hidden" title="My image 2" href="http://getbootstrap.com/examples/screenshots/cover.jpg">
+						<img src="http://getbootstrap.com/examples/screenshots/cover.jpg">
+					</a>
+				
+				</div>
+				<div class="col-md-3">
+					<a class="thumbnail" style="height:100px; overflow: hidden" title="My image 3" href="http://getbootstrap.com/examples/screenshots/justified-nav.jpg">
+						<img src="http://getbootstrap.com/examples/screenshots/justified-nav.jpg">
+					</a>
+				
+				</div>
+				<div class="col-md-3">
+					<a class="thumbnail" style="height:100px; overflow: hidden" title="My image 4" href="http://getbootstrap.com/examples/screenshots/dashboard.jpg">
+						<img src="http://getbootstrap.com/examples/screenshots/dashboard.jpg">
+					</a>
+				
+				</div>
+				<?php else: ?>
+				<div class="col-md-3">
+					<a class="thumbnail" style="height:100px; overflow: hidden" title="My image 5" href="http://getbootstrap.com/examples/screenshots/offcanvas.jpg">
+						<img src="http://getbootstrap.com/examples/screenshots/offcanvas.jpg">
+					</a>
+				
+				</div>
+				<div class="col-md-3">
+					<a class="thumbnail" style="height:100px; overflow: hidden" title="My image 6" href="http://getbootstrap.com/examples/screenshots/sign-in.jpg">
+						<img src="http://getbootstrap.com/examples/screenshots/sign-in.jpg">
+					</a>
+				
+				</div>
+				<div class="col-md-3">
+					<a class="thumbnail" style="height:100px; overflow: hidden" title="My image 7" href="http://getbootstrap.com/examples/screenshots/jumbotron-narrow.jpg">
+						<img src="http://getbootstrap.com/examples/screenshots/jumbotron-narrow.jpg">
+					</a>
+				
+				</div>
+				<div class="col-md-3">
+					<a class="thumbnail" style="height:100px; overflow: hidden" title="My image 8" href="http://getbootstrap.com/examples/screenshots/blog.jpg">
+						<img src="http://getbootstrap.com/examples/screenshots/blog.jpg">
+					</a>
+				
+				</div>
+				<?php endif; ?>
 			</div>
-			
-			<nav aria-label="Page navigation">
-			  <ul class="pagination no-margin">
-				<li>
-				  <a href="<?php echo get_siteinfo('url'); ?>/example.php" aria-label="Previous" class="lg-prev">
-					<span aria-hidden="true">&laquo;</span>
-				  </a>
-				</li>
-				<li class="<?php echo !isset($_GET["page-2"]) ? 'active' : '' ?>"><a href="<?php echo get_siteinfo('url'); ?>/example.php">1</a></li>
-				<li class="<?php echo isset($_GET["page-2"]) ? 'active' : '' ?>"><a href="?page-2">2</a></li>
-				<li>
-				  <a href="?page-2" aria-label="Next" class="lg-next">
-					<span aria-hidden="true">&raquo;</span>
-				  </a>
-				</li>
-			  </ul>
-			</nav>
 
+			<nav aria-label="Page navigation">
+				<ul class="pagination no-margin">
+					<li>
+						<a href="<?php echo get_siteinfo('url'); ?>/example.php" aria-label="Previous" class="lg-prev">
+							<span aria-hidden="true">&laquo;</span>
+						</a>
+					</li>
+					<li class="<?php echo !isset($_GET[" page-2 "]) ? 'active' : '' ?>"><a href="<?php echo get_siteinfo('url'); ?>/example.php">1</a></li>
+					<li class="<?php echo isset($_GET[" page-2 "]) ? 'active' : '' ?>"><a href="?page-2">2</a></li>
+					<li>
+						<a href="?page-2" aria-label="Next" class="lg-next">
+							<span aria-hidden="true">&raquo;</span>
+						</a>
+					</li>
+				</ul>
+			</nav>
 		</div>
-  		<figure class="highlight">
+		
+		<figure class="highlight">
 			<pre><code class="language-html" data-lang="html">&lt;div class="lightgallery" lg-selector="auto" lg-autotitle="Gallery Title" lg-thumbnail="true" lg-gallerymode="true" lg-download="true"&gt;<br>...<br>&lt;/div&gt;</code></pre>
 		</figure>
-        
-        
-        
-        
-        
-        <div class="page-header">
+
+		<!-- Data Tables example -->
+		<div class="page-header">
 			<h1>Data Tables <span class="label label-danger">JS</span></h1>
 		</div>
+		
 		<p>Improve the way to show plain html tables. Below you will find an improved usage method via <code>data-attributes</code>. For more options visit the <a href="https://datatables.net/examples/index" target="_blank">Plugin's Page</a></p>
-  		
-  		<table class="table table-bordered table-striped js-options-table">
+
+		<table class="table table-bordered table-striped js-options-table">
 			<thead>
 				<tr>
 					<th>Name</th>
@@ -466,19 +464,19 @@
 					<td>false</td>
 					<td>Enable a custom paginator with show amount option</td>
 				</tr>
-                <tr>
+				<tr>
 					<td>data-filter</td>
 					<td>boolean</td>
 					<td>false</td>
 					<td>Enables a search box to filter results</td>
 				</tr>
-                <tr>
+				<tr>
 					<td>data-info</td>
 					<td>boolean</td>
 					<td>falsee</td>
 					<td>Show info at the table footer</td>
 				</tr>
-                <tr>
+				<tr>
 					<td>data-ordering</td>
 					<td>boolean</td>
 					<td>false</td>
@@ -486,491 +484,490 @@
 				</tr>
 			</tbody>
 		</table>
-        
-        <div class="bs-example"> 
-        		<table class="dataTable table-striped cell-border" data-paginator="true" data-filter="false" data-info="false" data-ordering="true" cellspacing="0" cellpadding="0" border="0">
-					<thead>
-						<tr>
-							<th>Name</th>
-							<th>Position</th>
-							<th>Office</th>
-							<th>Age</th>
-							<th>Start date</th>
-							<th>Salary</th>
-						</tr>
-					</thead>
-					<tbody>
-						<tr>
-							<td>Tiger Nixon</td>
-							<td>System Architect</td>
-							<td>Edinburgh</td>
-							<td>61</td>
-							<td>2011/04/25</td>
-							<td>$320,800</td>
-						</tr>
-						<tr>
-							<td>Garrett Winters</td>
-							<td>Accountant</td>
-							<td>Tokyo</td>
-							<td>63</td>
-							<td>2011/07/25</td>
-							<td>$170,750</td>
-						</tr>
-						<tr>
-							<td>Ashton Cox</td>
-							<td>Junior Technical Author</td>
-							<td>San Francisco</td>
-							<td>66</td>
-							<td>2009/01/12</td>
-							<td>$86,000</td>
-						</tr>
-						<tr>
-							<td>Cedric Kelly</td>
-							<td>Senior Javascript Developer</td>
-							<td>Edinburgh</td>
-							<td>22</td>
-							<td>2012/03/29</td>
-							<td>$433,060</td>
-						</tr>
-						<tr>
-							<td>Airi Satou</td>
-							<td>Accountant</td>
-							<td>Tokyo</td>
-							<td>33</td>
-							<td>2008/11/28</td>
-							<td>$162,700</td>
-						</tr>
-						<tr>
-							<td>Brielle Williamson</td>
-							<td>Integration Specialist</td>
-							<td>New York</td>
-							<td>61</td>
-							<td>2012/12/02</td>
-							<td>$372,000</td>
-						</tr>
-						<tr>
-							<td>Herrod Chandler</td>
-							<td>Sales Assistant</td>
-							<td>San Francisco</td>
-							<td>59</td>
-							<td>2012/08/06</td>
-							<td>$137,500</td>
-						</tr>
-						<tr>
-							<td>Rhona Davidson</td>
-							<td>Integration Specialist</td>
-							<td>Tokyo</td>
-							<td>55</td>
-							<td>2010/10/14</td>
-							<td>$327,900</td>
-						</tr>
-						<tr>
-							<td>Colleen Hurst</td>
-							<td>Javascript Developer</td>
-							<td>San Francisco</td>
-							<td>39</td>
-							<td>2009/09/15</td>
-							<td>$205,500</td>
-						</tr>
-						<tr>
-							<td>Sonya Frost</td>
-							<td>Software Engineer</td>
-							<td>Edinburgh</td>
-							<td>23</td>
-							<td>2008/12/13</td>
-							<td>$103,600</td>
-						</tr>
-						<tr>
-							<td>Jena Gaines</td>
-							<td>Office Manager</td>
-							<td>London</td>
-							<td>30</td>
-							<td>2008/12/19</td>
-							<td>$90,560</td>
-						</tr>
-						<tr>
-							<td>Quinn Flynn</td>
-							<td>Support Lead</td>
-							<td>Edinburgh</td>
-							<td>22</td>
-							<td>2013/03/03</td>
-							<td>$342,000</td>
-						</tr>
-						<tr>
-							<td>Charde Marshall</td>
-							<td>Regional Director</td>
-							<td>San Francisco</td>
-							<td>36</td>
-							<td>2008/10/16</td>
-							<td>$470,600</td>
-						</tr>
-						<tr>
-							<td>Haley Kennedy</td>
-							<td>Senior Marketing Designer</td>
-							<td>London</td>
-							<td>43</td>
-							<td>2012/12/18</td>
-							<td>$313,500</td>
-						</tr>
-						<tr>
-							<td>Tatyana Fitzpatrick</td>
-							<td>Regional Director</td>
-							<td>London</td>
-							<td>19</td>
-							<td>2010/03/17</td>
-							<td>$385,750</td>
-						</tr>
-						<tr>
-							<td>Michael Silva</td>
-							<td>Marketing Designer</td>
-							<td>London</td>
-							<td>66</td>
-							<td>2012/11/27</td>
-							<td>$198,500</td>
-						</tr>
-						<tr>
-							<td>Paul Byrd</td>
-							<td>Chief Financial Officer (CFO)</td>
-							<td>New York</td>
-							<td>64</td>
-							<td>2010/06/09</td>
-							<td>$725,000</td>
-						</tr>
-						<tr>
-							<td>Gloria Little</td>
-							<td>Systems Administrator</td>
-							<td>New York</td>
-							<td>59</td>
-							<td>2009/04/10</td>
-							<td>$237,500</td>
-						</tr>
-						<tr>
-							<td>Bradley Greer</td>
-							<td>Software Engineer</td>
-							<td>London</td>
-							<td>41</td>
-							<td>2012/10/13</td>
-							<td>$132,000</td>
-						</tr>
-						<tr>
-							<td>Dai Rios</td>
-							<td>Personnel Lead</td>
-							<td>Edinburgh</td>
-							<td>35</td>
-							<td>2012/09/26</td>
-							<td>$217,500</td>
-						</tr>
-						<tr>
-							<td>Jenette Caldwell</td>
-							<td>Development Lead</td>
-							<td>New York</td>
-							<td>30</td>
-							<td>2011/09/03</td>
-							<td>$345,000</td>
-						</tr>
-						<tr>
-							<td>Yuri Berry</td>
-							<td>Chief Marketing Officer (CMO)</td>
-							<td>New York</td>
-							<td>40</td>
-							<td>2009/06/25</td>
-							<td>$675,000</td>
-						</tr>
-						<tr>
-							<td>Caesar Vance</td>
-							<td>Pre-Sales Support</td>
-							<td>New York</td>
-							<td>21</td>
-							<td>2011/12/12</td>
-							<td>$106,450</td>
-						</tr>
-						<tr>
-							<td>Doris Wilder</td>
-							<td>Sales Assistant</td>
-							<td>Sidney</td>
-							<td>23</td>
-							<td>2010/09/20</td>
-							<td>$85,600</td>
-						</tr>
-						<tr>
-							<td>Angelica Ramos</td>
-							<td>Chief Executive Officer (CEO)</td>
-							<td>London</td>
-							<td>47</td>
-							<td>2009/10/09</td>
-							<td>$1,200,000</td>
-						</tr>
-						<tr>
-							<td>Gavin Joyce</td>
-							<td>Developer</td>
-							<td>Edinburgh</td>
-							<td>42</td>
-							<td>2010/12/22</td>
-							<td>$92,575</td>
-						</tr>
-						<tr>
-							<td>Jennifer Chang</td>
-							<td>Regional Director</td>
-							<td>Singapore</td>
-							<td>28</td>
-							<td>2010/11/14</td>
-							<td>$357,650</td>
-						</tr>
-						<tr>
-							<td>Brenden Wagner</td>
-							<td>Software Engineer</td>
-							<td>San Francisco</td>
-							<td>28</td>
-							<td>2011/06/07</td>
-							<td>$206,850</td>
-						</tr>
-						<tr>
-							<td>Fiona Green</td>
-							<td>Chief Operating Officer (COO)</td>
-							<td>San Francisco</td>
-							<td>48</td>
-							<td>2010/03/11</td>
-							<td>$850,000</td>
-						</tr>
-						<tr>
-							<td>Shou Itou</td>
-							<td>Regional Marketing</td>
-							<td>Tokyo</td>
-							<td>20</td>
-							<td>2011/08/14</td>
-							<td>$163,000</td>
-						</tr>
-						<tr>
-							<td>Michelle House</td>
-							<td>Integration Specialist</td>
-							<td>Sidney</td>
-							<td>37</td>
-							<td>2011/06/02</td>
-							<td>$95,400</td>
-						</tr>
-						<tr>
-							<td>Suki Burks</td>
-							<td>Developer</td>
-							<td>London</td>
-							<td>53</td>
-							<td>2009/10/22</td>
-							<td>$114,500</td>
-						</tr>
-						<tr>
-							<td>Prescott Bartlett</td>
-							<td>Technical Author</td>
-							<td>London</td>
-							<td>27</td>
-							<td>2011/05/07</td>
-							<td>$145,000</td>
-						</tr>
-						<tr>
-							<td>Gavin Cortez</td>
-							<td>Team Leader</td>
-							<td>San Francisco</td>
-							<td>22</td>
-							<td>2008/10/26</td>
-							<td>$235,500</td>
-						</tr>
-						<tr>
-							<td>Martena Mccray</td>
-							<td>Post-Sales support</td>
-							<td>Edinburgh</td>
-							<td>46</td>
-							<td>2011/03/09</td>
-							<td>$324,050</td>
-						</tr>
-						<tr>
-							<td>Unity Butler</td>
-							<td>Marketing Designer</td>
-							<td>San Francisco</td>
-							<td>47</td>
-							<td>2009/12/09</td>
-							<td>$85,675</td>
-						</tr>
-						<tr>
-							<td>Howard Hatfield</td>
-							<td>Office Manager</td>
-							<td>San Francisco</td>
-							<td>51</td>
-							<td>2008/12/16</td>
-							<td>$164,500</td>
-						</tr>
-						<tr>
-							<td>Hope Fuentes</td>
-							<td>Secretary</td>
-							<td>San Francisco</td>
-							<td>41</td>
-							<td>2010/02/12</td>
-							<td>$109,850</td>
-						</tr>
-						<tr>
-							<td>Vivian Harrell</td>
-							<td>Financial Controller</td>
-							<td>San Francisco</td>
-							<td>62</td>
-							<td>2009/02/14</td>
-							<td>$452,500</td>
-						</tr>
-						<tr>
-							<td>Timothy Mooney</td>
-							<td>Office Manager</td>
-							<td>London</td>
-							<td>37</td>
-							<td>2008/12/11</td>
-							<td>$136,200</td>
-						</tr>
-						<tr>
-							<td>Jackson Bradshaw</td>
-							<td>Director</td>
-							<td>New York</td>
-							<td>65</td>
-							<td>2008/09/26</td>
-							<td>$645,750</td>
-						</tr>
-						<tr>
-							<td>Olivia Liang</td>
-							<td>Support Engineer</td>
-							<td>Singapore</td>
-							<td>64</td>
-							<td>2011/02/03</td>
-							<td>$234,500</td>
-						</tr>
-						<tr>
-							<td>Bruno Nash</td>
-							<td>Software Engineer</td>
-							<td>London</td>
-							<td>38</td>
-							<td>2011/05/03</td>
-							<td>$163,500</td>
-						</tr>
-						<tr>
-							<td>Sakura Yamamoto</td>
-							<td>Support Engineer</td>
-							<td>Tokyo</td>
-							<td>37</td>
-							<td>2009/08/19</td>
-							<td>$139,575</td>
-						</tr>
-						<tr>
-							<td>Thor Walton</td>
-							<td>Developer</td>
-							<td>New York</td>
-							<td>61</td>
-							<td>2013/08/11</td>
-							<td>$98,540</td>
-						</tr>
-						<tr>
-							<td>Finn Camacho</td>
-							<td>Support Engineer</td>
-							<td>San Francisco</td>
-							<td>47</td>
-							<td>2009/07/07</td>
-							<td>$87,500</td>
-						</tr>
-						<tr>
-							<td>Serge Baldwin</td>
-							<td>Data Coordinator</td>
-							<td>Singapore</td>
-							<td>64</td>
-							<td>2012/04/09</td>
-							<td>$138,575</td>
-						</tr>
-						<tr>
-							<td>Zenaida Frank</td>
-							<td>Software Engineer</td>
-							<td>New York</td>
-							<td>63</td>
-							<td>2010/01/04</td>
-							<td>$125,250</td>
-						</tr>
-						<tr>
-							<td>Zorita Serrano</td>
-							<td>Software Engineer</td>
-							<td>San Francisco</td>
-							<td>56</td>
-							<td>2012/06/01</td>
-							<td>$115,000</td>
-						</tr>
-						<tr>
-							<td>Jennifer Acosta</td>
-							<td>Junior Javascript Developer</td>
-							<td>Edinburgh</td>
-							<td>43</td>
-							<td>2013/02/01</td>
-							<td>$75,650</td>
-						</tr>
-						<tr>
-							<td>Cara Stevens</td>
-							<td>Sales Assistant</td>
-							<td>New York</td>
-							<td>46</td>
-							<td>2011/12/06</td>
-							<td>$145,600</td>
-						</tr>
-						<tr>
-							<td>Hermione Butler</td>
-							<td>Regional Director</td>
-							<td>London</td>
-							<td>47</td>
-							<td>2011/03/21</td>
-							<td>$356,250</td>
-						</tr>
-						<tr>
-							<td>Lael Greer</td>
-							<td>Systems Administrator</td>
-							<td>London</td>
-							<td>21</td>
-							<td>2009/02/27</td>
-							<td>$103,500</td>
-						</tr>
-						<tr>
-							<td>Jonas Alexander</td>
-							<td>Developer</td>
-							<td>San Francisco</td>
-							<td>30</td>
-							<td>2010/07/14</td>
-							<td>$86,500</td>
-						</tr>
-						<tr>
-							<td>Shad Decker</td>
-							<td>Regional Director</td>
-							<td>Edinburgh</td>
-							<td>51</td>
-							<td>2008/11/13</td>
-							<td>$183,000</td>
-						</tr>
-						<tr>
-							<td>Michael Bruce</td>
-							<td>Javascript Developer</td>
-							<td>Singapore</td>
-							<td>29</td>
-							<td>2011/06/27</td>
-							<td>$183,000</td>
-						</tr>
-						<tr>
-							<td>Donna Snider</td>
-							<td>Customer Support</td>
-							<td>New York</td>
-							<td>27</td>
-							<td>2011/01/25</td>
-							<td>$112,000</td>
-						</tr>
-					</tbody>
-				</table>
-        </div>
-        <figure class="highlight">
+
+		<div class="bs-example">
+			<table class="dataTable table-striped cell-border" data-paginator="true" data-filter="false" data-info="false" data-ordering="true" cellspacing="0" cellpadding="0" border="0">
+				<thead>
+					<tr>
+						<th>Name</th>
+						<th>Position</th>
+						<th>Office</th>
+						<th>Age</th>
+						<th>Start date</th>
+						<th>Salary</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>Tiger Nixon</td>
+						<td>System Architect</td>
+						<td>Edinburgh</td>
+						<td>61</td>
+						<td>2011/04/25</td>
+						<td>$320,800</td>
+					</tr>
+					<tr>
+						<td>Garrett Winters</td>
+						<td>Accountant</td>
+						<td>Tokyo</td>
+						<td>63</td>
+						<td>2011/07/25</td>
+						<td>$170,750</td>
+					</tr>
+					<tr>
+						<td>Ashton Cox</td>
+						<td>Junior Technical Author</td>
+						<td>San Francisco</td>
+						<td>66</td>
+						<td>2009/01/12</td>
+						<td>$86,000</td>
+					</tr>
+					<tr>
+						<td>Cedric Kelly</td>
+						<td>Senior Javascript Developer</td>
+						<td>Edinburgh</td>
+						<td>22</td>
+						<td>2012/03/29</td>
+						<td>$433,060</td>
+					</tr>
+					<tr>
+						<td>Airi Satou</td>
+						<td>Accountant</td>
+						<td>Tokyo</td>
+						<td>33</td>
+						<td>2008/11/28</td>
+						<td>$162,700</td>
+					</tr>
+					<tr>
+						<td>Brielle Williamson</td>
+						<td>Integration Specialist</td>
+						<td>New York</td>
+						<td>61</td>
+						<td>2012/12/02</td>
+						<td>$372,000</td>
+					</tr>
+					<tr>
+						<td>Herrod Chandler</td>
+						<td>Sales Assistant</td>
+						<td>San Francisco</td>
+						<td>59</td>
+						<td>2012/08/06</td>
+						<td>$137,500</td>
+					</tr>
+					<tr>
+						<td>Rhona Davidson</td>
+						<td>Integration Specialist</td>
+						<td>Tokyo</td>
+						<td>55</td>
+						<td>2010/10/14</td>
+						<td>$327,900</td>
+					</tr>
+					<tr>
+						<td>Colleen Hurst</td>
+						<td>Javascript Developer</td>
+						<td>San Francisco</td>
+						<td>39</td>
+						<td>2009/09/15</td>
+						<td>$205,500</td>
+					</tr>
+					<tr>
+						<td>Sonya Frost</td>
+						<td>Software Engineer</td>
+						<td>Edinburgh</td>
+						<td>23</td>
+						<td>2008/12/13</td>
+						<td>$103,600</td>
+					</tr>
+					<tr>
+						<td>Jena Gaines</td>
+						<td>Office Manager</td>
+						<td>London</td>
+						<td>30</td>
+						<td>2008/12/19</td>
+						<td>$90,560</td>
+					</tr>
+					<tr>
+						<td>Quinn Flynn</td>
+						<td>Support Lead</td>
+						<td>Edinburgh</td>
+						<td>22</td>
+						<td>2013/03/03</td>
+						<td>$342,000</td>
+					</tr>
+					<tr>
+						<td>Charde Marshall</td>
+						<td>Regional Director</td>
+						<td>San Francisco</td>
+						<td>36</td>
+						<td>2008/10/16</td>
+						<td>$470,600</td>
+					</tr>
+					<tr>
+						<td>Haley Kennedy</td>
+						<td>Senior Marketing Designer</td>
+						<td>London</td>
+						<td>43</td>
+						<td>2012/12/18</td>
+						<td>$313,500</td>
+					</tr>
+					<tr>
+						<td>Tatyana Fitzpatrick</td>
+						<td>Regional Director</td>
+						<td>London</td>
+						<td>19</td>
+						<td>2010/03/17</td>
+						<td>$385,750</td>
+					</tr>
+					<tr>
+						<td>Michael Silva</td>
+						<td>Marketing Designer</td>
+						<td>London</td>
+						<td>66</td>
+						<td>2012/11/27</td>
+						<td>$198,500</td>
+					</tr>
+					<tr>
+						<td>Paul Byrd</td>
+						<td>Chief Financial Officer (CFO)</td>
+						<td>New York</td>
+						<td>64</td>
+						<td>2010/06/09</td>
+						<td>$725,000</td>
+					</tr>
+					<tr>
+						<td>Gloria Little</td>
+						<td>Systems Administrator</td>
+						<td>New York</td>
+						<td>59</td>
+						<td>2009/04/10</td>
+						<td>$237,500</td>
+					</tr>
+					<tr>
+						<td>Bradley Greer</td>
+						<td>Software Engineer</td>
+						<td>London</td>
+						<td>41</td>
+						<td>2012/10/13</td>
+						<td>$132,000</td>
+					</tr>
+					<tr>
+						<td>Dai Rios</td>
+						<td>Personnel Lead</td>
+						<td>Edinburgh</td>
+						<td>35</td>
+						<td>2012/09/26</td>
+						<td>$217,500</td>
+					</tr>
+					<tr>
+						<td>Jenette Caldwell</td>
+						<td>Development Lead</td>
+						<td>New York</td>
+						<td>30</td>
+						<td>2011/09/03</td>
+						<td>$345,000</td>
+					</tr>
+					<tr>
+						<td>Yuri Berry</td>
+						<td>Chief Marketing Officer (CMO)</td>
+						<td>New York</td>
+						<td>40</td>
+						<td>2009/06/25</td>
+						<td>$675,000</td>
+					</tr>
+					<tr>
+						<td>Caesar Vance</td>
+						<td>Pre-Sales Support</td>
+						<td>New York</td>
+						<td>21</td>
+						<td>2011/12/12</td>
+						<td>$106,450</td>
+					</tr>
+					<tr>
+						<td>Doris Wilder</td>
+						<td>Sales Assistant</td>
+						<td>Sidney</td>
+						<td>23</td>
+						<td>2010/09/20</td>
+						<td>$85,600</td>
+					</tr>
+					<tr>
+						<td>Angelica Ramos</td>
+						<td>Chief Executive Officer (CEO)</td>
+						<td>London</td>
+						<td>47</td>
+						<td>2009/10/09</td>
+						<td>$1,200,000</td>
+					</tr>
+					<tr>
+						<td>Gavin Joyce</td>
+						<td>Developer</td>
+						<td>Edinburgh</td>
+						<td>42</td>
+						<td>2010/12/22</td>
+						<td>$92,575</td>
+					</tr>
+					<tr>
+						<td>Jennifer Chang</td>
+						<td>Regional Director</td>
+						<td>Singapore</td>
+						<td>28</td>
+						<td>2010/11/14</td>
+						<td>$357,650</td>
+					</tr>
+					<tr>
+						<td>Brenden Wagner</td>
+						<td>Software Engineer</td>
+						<td>San Francisco</td>
+						<td>28</td>
+						<td>2011/06/07</td>
+						<td>$206,850</td>
+					</tr>
+					<tr>
+						<td>Fiona Green</td>
+						<td>Chief Operating Officer (COO)</td>
+						<td>San Francisco</td>
+						<td>48</td>
+						<td>2010/03/11</td>
+						<td>$850,000</td>
+					</tr>
+					<tr>
+						<td>Shou Itou</td>
+						<td>Regional Marketing</td>
+						<td>Tokyo</td>
+						<td>20</td>
+						<td>2011/08/14</td>
+						<td>$163,000</td>
+					</tr>
+					<tr>
+						<td>Michelle House</td>
+						<td>Integration Specialist</td>
+						<td>Sidney</td>
+						<td>37</td>
+						<td>2011/06/02</td>
+						<td>$95,400</td>
+					</tr>
+					<tr>
+						<td>Suki Burks</td>
+						<td>Developer</td>
+						<td>London</td>
+						<td>53</td>
+						<td>2009/10/22</td>
+						<td>$114,500</td>
+					</tr>
+					<tr>
+						<td>Prescott Bartlett</td>
+						<td>Technical Author</td>
+						<td>London</td>
+						<td>27</td>
+						<td>2011/05/07</td>
+						<td>$145,000</td>
+					</tr>
+					<tr>
+						<td>Gavin Cortez</td>
+						<td>Team Leader</td>
+						<td>San Francisco</td>
+						<td>22</td>
+						<td>2008/10/26</td>
+						<td>$235,500</td>
+					</tr>
+					<tr>
+						<td>Martena Mccray</td>
+						<td>Post-Sales support</td>
+						<td>Edinburgh</td>
+						<td>46</td>
+						<td>2011/03/09</td>
+						<td>$324,050</td>
+					</tr>
+					<tr>
+						<td>Unity Butler</td>
+						<td>Marketing Designer</td>
+						<td>San Francisco</td>
+						<td>47</td>
+						<td>2009/12/09</td>
+						<td>$85,675</td>
+					</tr>
+					<tr>
+						<td>Howard Hatfield</td>
+						<td>Office Manager</td>
+						<td>San Francisco</td>
+						<td>51</td>
+						<td>2008/12/16</td>
+						<td>$164,500</td>
+					</tr>
+					<tr>
+						<td>Hope Fuentes</td>
+						<td>Secretary</td>
+						<td>San Francisco</td>
+						<td>41</td>
+						<td>2010/02/12</td>
+						<td>$109,850</td>
+					</tr>
+					<tr>
+						<td>Vivian Harrell</td>
+						<td>Financial Controller</td>
+						<td>San Francisco</td>
+						<td>62</td>
+						<td>2009/02/14</td>
+						<td>$452,500</td>
+					</tr>
+					<tr>
+						<td>Timothy Mooney</td>
+						<td>Office Manager</td>
+						<td>London</td>
+						<td>37</td>
+						<td>2008/12/11</td>
+						<td>$136,200</td>
+					</tr>
+					<tr>
+						<td>Jackson Bradshaw</td>
+						<td>Director</td>
+						<td>New York</td>
+						<td>65</td>
+						<td>2008/09/26</td>
+						<td>$645,750</td>
+					</tr>
+					<tr>
+						<td>Olivia Liang</td>
+						<td>Support Engineer</td>
+						<td>Singapore</td>
+						<td>64</td>
+						<td>2011/02/03</td>
+						<td>$234,500</td>
+					</tr>
+					<tr>
+						<td>Bruno Nash</td>
+						<td>Software Engineer</td>
+						<td>London</td>
+						<td>38</td>
+						<td>2011/05/03</td>
+						<td>$163,500</td>
+					</tr>
+					<tr>
+						<td>Sakura Yamamoto</td>
+						<td>Support Engineer</td>
+						<td>Tokyo</td>
+						<td>37</td>
+						<td>2009/08/19</td>
+						<td>$139,575</td>
+					</tr>
+					<tr>
+						<td>Thor Walton</td>
+						<td>Developer</td>
+						<td>New York</td>
+						<td>61</td>
+						<td>2013/08/11</td>
+						<td>$98,540</td>
+					</tr>
+					<tr>
+						<td>Finn Camacho</td>
+						<td>Support Engineer</td>
+						<td>San Francisco</td>
+						<td>47</td>
+						<td>2009/07/07</td>
+						<td>$87,500</td>
+					</tr>
+					<tr>
+						<td>Serge Baldwin</td>
+						<td>Data Coordinator</td>
+						<td>Singapore</td>
+						<td>64</td>
+						<td>2012/04/09</td>
+						<td>$138,575</td>
+					</tr>
+					<tr>
+						<td>Zenaida Frank</td>
+						<td>Software Engineer</td>
+						<td>New York</td>
+						<td>63</td>
+						<td>2010/01/04</td>
+						<td>$125,250</td>
+					</tr>
+					<tr>
+						<td>Zorita Serrano</td>
+						<td>Software Engineer</td>
+						<td>San Francisco</td>
+						<td>56</td>
+						<td>2012/06/01</td>
+						<td>$115,000</td>
+					</tr>
+					<tr>
+						<td>Jennifer Acosta</td>
+						<td>Junior Javascript Developer</td>
+						<td>Edinburgh</td>
+						<td>43</td>
+						<td>2013/02/01</td>
+						<td>$75,650</td>
+					</tr>
+					<tr>
+						<td>Cara Stevens</td>
+						<td>Sales Assistant</td>
+						<td>New York</td>
+						<td>46</td>
+						<td>2011/12/06</td>
+						<td>$145,600</td>
+					</tr>
+					<tr>
+						<td>Hermione Butler</td>
+						<td>Regional Director</td>
+						<td>London</td>
+						<td>47</td>
+						<td>2011/03/21</td>
+						<td>$356,250</td>
+					</tr>
+					<tr>
+						<td>Lael Greer</td>
+						<td>Systems Administrator</td>
+						<td>London</td>
+						<td>21</td>
+						<td>2009/02/27</td>
+						<td>$103,500</td>
+					</tr>
+					<tr>
+						<td>Jonas Alexander</td>
+						<td>Developer</td>
+						<td>San Francisco</td>
+						<td>30</td>
+						<td>2010/07/14</td>
+						<td>$86,500</td>
+					</tr>
+					<tr>
+						<td>Shad Decker</td>
+						<td>Regional Director</td>
+						<td>Edinburgh</td>
+						<td>51</td>
+						<td>2008/11/13</td>
+						<td>$183,000</td>
+					</tr>
+					<tr>
+						<td>Michael Bruce</td>
+						<td>Javascript Developer</td>
+						<td>Singapore</td>
+						<td>29</td>
+						<td>2011/06/27</td>
+						<td>$183,000</td>
+					</tr>
+					<tr>
+						<td>Donna Snider</td>
+						<td>Customer Support</td>
+						<td>New York</td>
+						<td>27</td>
+						<td>2011/01/25</td>
+						<td>$112,000</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+		<figure class="highlight">
 			<pre><code class="language-html" data-lang="html">&lt;table class="dataTable" data-paginator="true" data-filter="false" data-info="false" data-ordering="true"&gt;<br>...<br>&lt;/table&gt;</code></pre>
 		</figure>
-        
-   		
-		
+
+		<!-- Show alert example -->
 		<div class="page-header">
 			<h1>Show Alert BootBox <span class="label label-danger">JS</span></h1>
 		</div>
 		<p>Launch a custom modal box using BootBox Features, the function structure is <code>showAlert(title, text, size)</code> you can alternatively set a size</p>
-		
-		<div class="bs-example"> 
+
+		<div class="bs-example">
 			<button type="button" class="btn btn-primary" onclick="showAlert('Small Size Box','This is a text shown in a modal box','small')">Show Alert Small Size</button>
 			<button type="button" class="btn btn-primary" onclick="showAlert('Medium Size Box','This is a text shown in a modal box')">Show Alert Medium Size (By default)</button>
 			<button type="button" class="btn btn-primary" onclick="showAlert('Large Size Box','This is a text shown in a modal box','large')">Show Alert Large Size</button>
@@ -978,15 +975,14 @@
 		<figure class="highlight">
 			<pre><code class="language-html" data-lang="html">&lt;a onclick="showAlert('Small Size Box','This is a text shown in a modal box','small')">Click Here&lt;/a&gt;<br>&lt;a onclick="showAlert('Medium Size Box','This is a text shown in a modal box')">Click Here&lt;/a&gt;<br>&lt;a onclick="showAlert('Large Size Box','This is a text shown in a modal box','large')">Click Here&lt;/a&gt;</code></pre>
 		</figure>
-		
-		
-		
+
+		<!-- Video launch example -->
 		<div class="page-header">
 			<h1>Video Launch <span class="label label-danger">JS</span></h1>
 		</div>
 		<p>Launch a modal box with a basic video player, the function structure is <code>videoLaunch(url, share, title)</code></p>
-		
-		<div class="bs-example"> 
+
+		<div class="bs-example">
 			<button type="button" class="btn btn-primary" onclick="videoLaunch('https://www.youtube.com/watch?v=ae6aeo9-Kn8', true, 'My YouTube Video')">YouTube Video</button>
 			<button type="button" class="btn btn-primary" onclick="videoLaunch('https://vimeo.com/214352663', false, 'My Vimeo Video')">Vimeo Video (No share URL)</button>
 			<button type="button" class="btn btn-primary" onclick="videoLaunch('https://www.facebook.com/1399203336817784/videos/1470830192988431',true, 'My Facebook Video')">Facebook Video</button>
@@ -994,15 +990,13 @@
 		<figure class="highlight">
 			<pre><code class="language-html" data-lang="html">&lt;a onclick="videoLaunch('https://www.youtube.com/watch?v=ae6aeo9-Kn8', true, 'My YouTube Video')">Click Here&lt;/a&gt;<br>&lt;a onclick="videoLaunch('https://vimeo.com/214352663', false, 'My Vimeo Video')">Click Here&lt;/a&gt;<br>&lt;a onclick="videoLaunch('https://www.facebook.com/1399203336817784/videos/1470830192988431',true, 'My Facebook Video')">Click Here&lt;/a&gt;</code></pre>
 		</figure>
-		
-		
-		
-		
+
+		<!-- Window popup example -->
 		<div class="page-header">
 			<h1>Window Pop-Up <span class="label label-danger">JS</span></h1>
 		</div>
 		<p>Launch a custom pop-up window via javascript, the function structure is <code>windowPopup(url, width, height, alignX, alignY, scroll)</code></p>
-		
+
 		<table class="table table-bordered table-striped js-options-table">
 			<thead>
 				<tr>
@@ -1034,14 +1028,18 @@
 				<tr>
 					<td>alignX</td>
 					<td>string</td>
-					<td><code>center</code></td>
-					<td>Horizontal alignment of the pop-ip, it can be <code>left</code>, <code>center</code> or <code>right</code></td>
+					<td><code>center</code>
+					</td>
+					<td>Horizontal alignment of the pop-ip, it can be <code>left</code>, <code>center</code> or <code>right</code>
+					</td>
 				</tr>
 				<tr>
 					<td>alignY</td>
 					<td>string</td>
-					<td><code>center</code></td>
-					<td>Vertical alignment of the pop-ip, it can be <code>top</code>, <code>center</code> or <code>bottom</code></td>
+					<td><code>center</code>
+					</td>
+					<td>Vertical alignment of the pop-ip, it can be <code>top</code>, <code>center</code> or <code>bottom</code>
+					</td>
 				</tr>
 				<tr>
 					<td>scroll</td>
@@ -1051,8 +1049,8 @@
 				</tr>
 			</tbody>
 		</table>
-		
-		<div class="bs-example"> 
+
+		<div class="bs-example">
 			<button type="button" class="btn btn-primary" onclick="windowPopup('http://getbootstrap.com','640','480','center','center',true)">Center Center 640 x 480</button>
 			<button type="button" class="btn btn-primary" onclick="windowPopup('http://getbootstrap.com','320','480','right','bottom',true)">Right Bottom 320 x 480</button>
 			<button type="button" class="btn btn-primary" onclick="windowPopup('http://getbootstrap.com','320','480','left','top',true)">Left Top 320 x 480</button>
@@ -1060,15 +1058,13 @@
 		<figure class="highlight">
 			<pre><code class="language-html" data-lang="html">&lt;a onclick="windowPopup('http://getbootstrap.com','640','480','center','center',true)">Click Here&lt;/a&gt;<br>&lt;a onclick="windowPopup('http://getbootstrap.com','320','480','right','bottom',true)">Click Here&lt;/a&gt;<br>&lt;a onclick="windowPopup('http://getbootstrap.com','320','480','left','top',true)">Click Here&lt;/a&gt;</code></pre>
 		</figure>
-		
-		
-		
+
+		<!-- Show date example -->
 		<div class="page-header">
 			<h1>Show Date <span class="label label-danger">PHP</span></h1>
 		</div>
-		
 		<p>Show a date in any format. the main function is <code>showDate($date, $format, $lang, $abbr)</code></p>
-		
+
 		<table class="table table-bordered table-striped js-options-table">
 			<thead>
 				<tr>
@@ -1083,18 +1079,22 @@
 					<td>date</td>
 					<td>string</td>
 					<td>null</td>
-					<td>Date in english format <code>YYYY-MM-DD</code> or <code>YYYY/MM/DD</code></td>
+					<td>Date in english format <code>YYYY-MM-DD</code> or <code>YYYY/MM/DD</code>
+					</td>
 				</tr>
 				<tr>
 					<td>format</td>
 					<td>string</td>
-					<td><code>Y-m-d</code></td>
-					<td>Date format in PHP, more info <a href="http://php.net/manual/es/function.date.php" target="_blank">here</a></td>
+					<td><code>Y-m-d</code>
+					</td>
+					<td>Date format in PHP, more info <a href="http://php.net/manual/es/function.date.php" target="_blank">here</a>
+					</td>
 				</tr>
 				<tr>
 					<td>lang</td>
 					<td>string</td>
-					<td><code>eng</code></td>
+					<td><code>eng</code>
+					</td>
 					<td>Change the language of months and days, it can be <code>eng</code> for english, and <code>esp</code> for spanish</td>
 				</tr>
 				<tr>
@@ -1105,598 +1105,592 @@
 				</tr>
 			</tbody>
 		</table>
-		
-		<div class="bs-example"> 
+
+		<div class="bs-example">
 			<h4>The date is: <span class="label label-default"><?php echo showDate("2017-09-20", "F j l, Y, g:i a", "eng", true); ?></span></h4>
 		</div>
 		<figure class="highlight">
 			<pre><code class="language-html" data-lang="html">&lt;?php echo showDate("2017-09-20", "F j l, Y, g:i a", "eng", true); ?&gt;</code></pre>
 		</figure>
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		<!-- ******** BOOTSTRAP THEME ******** -->
-		
-		
+
+		<!-- ******** BOOTSTRAP THEME EXAMPLES ******** -->
 		
 		<p>&nbsp;</p>
+
+		<div class="jumbotron">
+			<h1>Theme example</h1>
+			<p>This is a template showcasing the optional theme stylesheet included in Bootstrap. Use it as a starting point to create something more unique by building on or modifying it.</p>
+		</div>
+
+		<div class="page-header">
+			<h1>Buttons</h1>
+		</div>
+		<p>
+			<button type="button" class="btn btn-lg btn-default">Default</button>
+			<button type="button" class="btn btn-lg btn-primary">Primary</button>
+			<button type="button" class="btn btn-lg btn-success">Success</button>
+			<button type="button" class="btn btn-lg btn-info">Info</button>
+			<button type="button" class="btn btn-lg btn-warning">Warning</button>
+			<button type="button" class="btn btn-lg btn-danger">Danger</button>
+			<button type="button" class="btn btn-lg btn-link">Link</button>
+		</p>
+		<p>
+			<button type="button" class="btn btn-default">Default</button>
+			<button type="button" class="btn btn-primary">Primary</button>
+			<button type="button" class="btn btn-success">Success</button>
+			<button type="button" class="btn btn-info">Info</button>
+			<button type="button" class="btn btn-warning">Warning</button>
+			<button type="button" class="btn btn-danger">Danger</button>
+			<button type="button" class="btn btn-link">Link</button>
+		</p>
+		<p>
+			<button type="button" class="btn btn-sm btn-default">Default</button>
+			<button type="button" class="btn btn-sm btn-primary">Primary</button>
+			<button type="button" class="btn btn-sm btn-success">Success</button>
+			<button type="button" class="btn btn-sm btn-info">Info</button>
+			<button type="button" class="btn btn-sm btn-warning">Warning</button>
+			<button type="button" class="btn btn-sm btn-danger">Danger</button>
+			<button type="button" class="btn btn-sm btn-link">Link</button>
+		</p>
+		<p>
+			<button type="button" class="btn btn-xs btn-default">Default</button>
+			<button type="button" class="btn btn-xs btn-primary">Primary</button>
+			<button type="button" class="btn btn-xs btn-success">Success</button>
+			<button type="button" class="btn btn-xs btn-info">Info</button>
+			<button type="button" class="btn btn-xs btn-warning">Warning</button>
+			<button type="button" class="btn btn-xs btn-danger">Danger</button>
+			<button type="button" class="btn btn-xs btn-link">Link</button>
+		</p>
+
+		<div class="page-header">
+			<h1>Tables</h1>
+		</div>
+		<div class="row">
+			<div class="col-md-6">
+				<table class="table">
+					<thead>
+						<tr>
+							<th>#</th>
+							<th>First Name</th>
+							<th>Last Name</th>
+							<th>Username</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td>1</td>
+							<td>Mark</td>
+							<td>Otto</td>
+							<td>@mdo</td>
+						</tr>
+						<tr>
+							<td>2</td>
+							<td>Jacob</td>
+							<td>Thornton</td>
+							<td>@fat</td>
+						</tr>
+						<tr>
+							<td>3</td>
+							<td>Larry</td>
+							<td>the Bird</td>
+							<td>@twitter</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+			<div class="col-md-6">
+				<table class="table table-striped">
+					<thead>
+						<tr>
+							<th>#</th>
+							<th>First Name</th>
+							<th>Last Name</th>
+							<th>Username</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td>1</td>
+							<td>Mark</td>
+							<td>Otto</td>
+							<td>@mdo</td>
+						</tr>
+						<tr>
+							<td>2</td>
+							<td>Jacob</td>
+							<td>Thornton</td>
+							<td>@fat</td>
+						</tr>
+						<tr>
+							<td>3</td>
+							<td>Larry</td>
+							<td>the Bird</td>
+							<td>@twitter</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="col-md-6">
+				<table class="table table-bordered">
+					<thead>
+						<tr>
+							<th>#</th>
+							<th>First Name</th>
+							<th>Last Name</th>
+							<th>Username</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td rowspan="2">1</td>
+							<td>Mark</td>
+							<td>Otto</td>
+							<td>@mdo</td>
+						</tr>
+						<tr>
+							<td>Mark</td>
+							<td>Otto</td>
+							<td>@TwBootstrap</td>
+						</tr>
+						<tr>
+							<td>2</td>
+							<td>Jacob</td>
+							<td>Thornton</td>
+							<td>@fat</td>
+						</tr>
+						<tr>
+							<td>3</td>
+							<td colspan="2">Larry the Bird</td>
+							<td>@twitter</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+			<div class="col-md-6">
+				<table class="table table-condensed">
+					<thead>
+						<tr>
+							<th>#</th>
+							<th>First Name</th>
+							<th>Last Name</th>
+							<th>Username</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td>1</td>
+							<td>Mark</td>
+							<td>Otto</td>
+							<td>@mdo</td>
+						</tr>
+						<tr>
+							<td>2</td>
+							<td>Jacob</td>
+							<td>Thornton</td>
+							<td>@fat</td>
+						</tr>
+						<tr>
+							<td>3</td>
+							<td colspan="2">Larry the Bird</td>
+							<td>@twitter</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+
+		<div class="page-header">
+			<h1>Thumbnails</h1>
+		</div>
+		<img data-src="holder.js/200x200" class="img-thumbnail" alt="A generic square placeholder image with a white border around it, making it resemble a photograph taken with an old instant camera">
+
+		<div class="page-header">
+			<h1>Labels</h1>
+		</div>
+		<h1>
+			<span class="label label-default">Default</span>
+			<span class="label label-primary">Primary</span>
+			<span class="label label-success">Success</span>
+			<span class="label label-info">Info</span>
+			<span class="label label-warning">Warning</span>
+			<span class="label label-danger">Danger</span>
+		</h1>
+		<h2>
+			<span class="label label-default">Default</span>
+			<span class="label label-primary">Primary</span>
+			<span class="label label-success">Success</span>
+			<span class="label label-info">Info</span>
+			<span class="label label-warning">Warning</span>
+			<span class="label label-danger">Danger</span>
+		</h2>
+		<h3>
+			<span class="label label-default">Default</span>
+			<span class="label label-primary">Primary</span>
+			<span class="label label-success">Success</span>
+			<span class="label label-info">Info</span>
+			<span class="label label-warning">Warning</span>
+			<span class="label label-danger">Danger</span>
+		</h3>
+		<h4>
+			<span class="label label-default">Default</span>
+			<span class="label label-primary">Primary</span>
+			<span class="label label-success">Success</span>
+			<span class="label label-info">Info</span>
+			<span class="label label-warning">Warning</span>
+			<span class="label label-danger">Danger</span>
+		</h4>
+		<h5>
+			<span class="label label-default">Default</span>
+			<span class="label label-primary">Primary</span>
+			<span class="label label-success">Success</span>
+			<span class="label label-info">Info</span>
+			<span class="label label-warning">Warning</span>
+			<span class="label label-danger">Danger</span>
+		</h5>
+		<h6>
+			<span class="label label-default">Default</span>
+			<span class="label label-primary">Primary</span>
+			<span class="label label-success">Success</span>
+			<span class="label label-info">Info</span>
+			<span class="label label-warning">Warning</span>
+			<span class="label label-danger">Danger</span>
+		</h6>
+		<p>
+			<span class="label label-default">Default</span>
+			<span class="label label-primary">Primary</span>
+			<span class="label label-success">Success</span>
+			<span class="label label-info">Info</span>
+			<span class="label label-warning">Warning</span>
+			<span class="label label-danger">Danger</span>
+		</p>
 		
-		
-	 <div class="jumbotron">
-        <h1>Theme example</h1>
-        <p>This is a template showcasing the optional theme stylesheet included in Bootstrap. Use it as a starting point to create something more unique by building on or modifying it.</p>
-      </div>
-	
+		<div class="page-header">
+			<h1>Badges</h1>
+		</div>
+		<p>
+			<a href="#">Inbox <span class="badge">42</span></a>
+		</p>
+		<ul class="nav nav-pills" role="tablist">
+			<li role="presentation" class="active"><a href="#">Home <span class="badge">42</span></a></li>
+			<li role="presentation"><a href="#">Profile</a></li>
+			<li role="presentation"><a href="#">Messages <span class="badge">3</span></a></li>
+		</ul>
+
+		<div class="page-header">
+			<h1>Dropdown menus</h1>
+		</div>
+		<div class="dropdown theme-dropdown clearfix">
+			<a id="dropdownMenu1" href="#" class="sr-only dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
+			<ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+				<li class="active"><a href="#">Action</a></li>
+				<li><a href="#">Another action</a></li>
+				<li><a href="#">Something else here</a></li>
+				<li role="separator" class="divider"></li>
+				<li><a href="#">Separated link</a></li>
+			</ul>
+		</div>
+
+		<div class="page-header">
+			<h1>Navs</h1>
+		</div>
+		<ul class="nav nav-tabs" role="tablist">
+			<li role="presentation" class="active"><a href="#">Home</a></li>
+			<li role="presentation"><a href="#">Profile</a></li>
+			<li role="presentation"><a href="#">Messages</a></li>
+		</ul>
+		<ul class="nav nav-pills" role="tablist">
+			<li role="presentation" class="active"><a href="#">Home</a></li>
+			<li role="presentation"><a href="#">Profile</a></li>
+			<li role="presentation"><a href="#">Messages</a></li>
+		</ul>
+
+		<div class="page-header">
+			<h1>Navbars</h1>
+		</div>
+
+		<nav class="navbar navbar-default">
+			<div class="container">
+				<div class="navbar-header">
+					<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-collapse">
+						<span class="sr-only">Toggle navigation</span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+					</button>
+					<a class="navbar-brand" href="#">Project name</a>
+				</div>
+				<div class="navbar-collapse collapse">
+					<ul class="nav navbar-nav">
+						<li class="active"><a href="#">Home</a></li>
+						<li><a href="#about">About</a></li>
+						<li><a href="#contact">Contact</a></li>
+						<li class="dropdown">
+							<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
+							<ul class="dropdown-menu">
+								<li><a href="#">Action</a></li>
+								<li><a href="#">Another action</a></li>
+								<li><a href="#">Something else here</a></li>
+								<li role="separator" class="divider"></li>
+								<li class="dropdown-header">Nav header</li>
+								<li><a href="#">Separated link</a></li>
+								<li><a href="#">One more separated link</a></li>
+							</ul>
+						</li>
+					</ul>
+				</div>
+				<!--/.nav-collapse -->
+			</div>
+		</nav>
+
+		<nav class="navbar navbar-inverse">
+			<div class="container">
+				<div class="navbar-header">
+					<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-collapse">
+						<span class="sr-only">Toggle navigation</span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+					</button>
+					<a class="navbar-brand" href="#">Project name</a>
+				</div>
+				<div class="navbar-collapse collapse">
+					<ul class="nav navbar-nav">
+						<li class="active"><a href="#">Home</a></li>
+						<li><a href="#about">About</a></li>
+						<li><a href="#contact">Contact</a></li>
+						<li class="dropdown">
+							<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
+							<ul class="dropdown-menu">
+								<li><a href="#">Action</a></li>
+								<li><a href="#">Another action</a></li>
+								<li><a href="#">Something else here</a></li>
+								<li role="separator" class="divider"></li>
+								<li class="dropdown-header">Nav header</li>
+								<li><a href="#">Separated link</a></li>
+								<li><a href="#">One more separated link</a></li>
+							</ul>
+						</li>
+					</ul>
+				</div>
+				<!--/.nav-collapse -->
+			</div>
+		</nav>
+
+		<div class="page-header">
+			<h1>Alerts</h1>
+		</div>
+		<div class="alert alert-success" role="alert">
+			<strong>Well done!</strong> You successfully read this important alert message.
+		</div>
+		<div class="alert alert-info" role="alert">
+			<strong>Heads up!</strong> This alert needs your attention, but it's not super important.
+		</div>
+		<div class="alert alert-warning" role="alert">
+			<strong>Warning!</strong> Best check yo self, you're not looking too good.
+		</div>
+		<div class="alert alert-danger" role="alert">
+			<strong>Oh snap!</strong> Change a few things up and try submitting again.
+		</div>
 
 
-      <div class="page-header">
-        <h1>Buttons</h1>
-      </div>
-      <p>
-        <button type="button" class="btn btn-lg btn-default">Default</button>
-        <button type="button" class="btn btn-lg btn-primary">Primary</button>
-        <button type="button" class="btn btn-lg btn-success">Success</button>
-        <button type="button" class="btn btn-lg btn-info">Info</button>
-        <button type="button" class="btn btn-lg btn-warning">Warning</button>
-        <button type="button" class="btn btn-lg btn-danger">Danger</button>
-        <button type="button" class="btn btn-lg btn-link">Link</button>
-      </p>
-      <p>
-        <button type="button" class="btn btn-default">Default</button>
-        <button type="button" class="btn btn-primary">Primary</button>
-        <button type="button" class="btn btn-success">Success</button>
-        <button type="button" class="btn btn-info">Info</button>
-        <button type="button" class="btn btn-warning">Warning</button>
-        <button type="button" class="btn btn-danger">Danger</button>
-        <button type="button" class="btn btn-link">Link</button>
-      </p>
-      <p>
-        <button type="button" class="btn btn-sm btn-default">Default</button>
-        <button type="button" class="btn btn-sm btn-primary">Primary</button>
-        <button type="button" class="btn btn-sm btn-success">Success</button>
-        <button type="button" class="btn btn-sm btn-info">Info</button>
-        <button type="button" class="btn btn-sm btn-warning">Warning</button>
-        <button type="button" class="btn btn-sm btn-danger">Danger</button>
-        <button type="button" class="btn btn-sm btn-link">Link</button>
-      </p>
-      <p>
-        <button type="button" class="btn btn-xs btn-default">Default</button>
-        <button type="button" class="btn btn-xs btn-primary">Primary</button>
-        <button type="button" class="btn btn-xs btn-success">Success</button>
-        <button type="button" class="btn btn-xs btn-info">Info</button>
-        <button type="button" class="btn btn-xs btn-warning">Warning</button>
-        <button type="button" class="btn btn-xs btn-danger">Danger</button>
-        <button type="button" class="btn btn-xs btn-link">Link</button>
-      </p>
+		<div class="page-header">
+			<h1>Progress bars</h1>
+		</div>
+		<div class="progress">
+			<div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%;">
+				<span class="sr-only">60% Complete</span>
+			</div>
+		</div>
+		<div class="progress">
+			<div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: 40%">
+				<span class="sr-only">40% Complete (success)</span>
+			</div>
+		</div>
+		<div class="progress">
+			<div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100" style="width: 20%">
+				<span class="sr-only">20% Complete</span>
+			</div>
+		</div>
+		<div class="progress">
+			<div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%">
+				<span class="sr-only">60% Complete (warning)</span>
+			</div>
+		</div>
+		<div class="progress">
+			<div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100" style="width: 80%">
+				<span class="sr-only">80% Complete (danger)</span>
+			</div>
+		</div>
+		<div class="progress">
+			<div class="progress-bar progress-bar-striped" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%">
+				<span class="sr-only">60% Complete</span>
+			</div>
+		</div>
+		<div class="progress">
+			<div class="progress-bar progress-bar-success" style="width: 35%">
+				<span class="sr-only">35% Complete (success)</span>
+			</div>
+			<div class="progress-bar progress-bar-warning" style="width: 20%">
+				<span class="sr-only">20% Complete (warning)</span>
+			</div>
+			<div class="progress-bar progress-bar-danger" style="width: 10%">
+				<span class="sr-only">10% Complete (danger)</span>
+			</div>
+		</div>
 
+		<div class="page-header">
+			<h1>List groups</h1>
+		</div>
+		<div class="row">
+			<div class="col-sm-4">
+				<ul class="list-group">
+					<li class="list-group-item">Cras justo odio</li>
+					<li class="list-group-item">Dapibus ac facilisis in</li>
+					<li class="list-group-item">Morbi leo risus</li>
+					<li class="list-group-item">Porta ac consectetur ac</li>
+					<li class="list-group-item">Vestibulum at eros</li>
+				</ul>
+			</div>
+			<!-- /.col-sm-4 -->
+			<div class="col-sm-4">
+				<div class="list-group">
+					<a href="#" class="list-group-item active">Cras justo odio</a>
+					<a href="#" class="list-group-item">Dapibus ac facilisis in</a>
+					<a href="#" class="list-group-item">Morbi leo risus</a>
+					<a href="#" class="list-group-item">Porta ac consectetur ac</a>
+					<a href="#" class="list-group-item">Vestibulum at eros</a>
+				</div>
+			</div>
+			<!-- /.col-sm-4 -->
+			<div class="col-sm-4">
+				<div class="list-group">
+					<a href="#" class="list-group-item active">
+						<h4 class="list-group-item-heading">List group item heading</h4>
+						<p class="list-group-item-text">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p>
+					</a>
+					<a href="#" class="list-group-item">
+						<h4 class="list-group-item-heading">List group item heading</h4>
+						<p class="list-group-item-text">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p>
+					</a>
+					<a href="#" class="list-group-item">
+						<h4 class="list-group-item-heading">List group item heading</h4>
+						<p class="list-group-item-text">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p>
+					</a>
+				</div>
+			</div>
+			<!-- /.col-sm-4 -->
+		</div>
 
-      <div class="page-header">
-        <h1>Tables</h1>
-      </div>
-      <div class="row">
-        <div class="col-md-6">
-          <table class="table">
-            <thead>
-              <tr>
-                <th>#</th>
-                <th>First Name</th>
-                <th>Last Name</th>
-                <th>Username</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>1</td>
-                <td>Mark</td>
-                <td>Otto</td>
-                <td>@mdo</td>
-              </tr>
-              <tr>
-                <td>2</td>
-                <td>Jacob</td>
-                <td>Thornton</td>
-                <td>@fat</td>
-              </tr>
-              <tr>
-                <td>3</td>
-                <td>Larry</td>
-                <td>the Bird</td>
-                <td>@twitter</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-        <div class="col-md-6">
-          <table class="table table-striped">
-            <thead>
-              <tr>
-                <th>#</th>
-                <th>First Name</th>
-                <th>Last Name</th>
-                <th>Username</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>1</td>
-                <td>Mark</td>
-                <td>Otto</td>
-                <td>@mdo</td>
-              </tr>
-              <tr>
-                <td>2</td>
-                <td>Jacob</td>
-                <td>Thornton</td>
-                <td>@fat</td>
-              </tr>
-              <tr>
-                <td>3</td>
-                <td>Larry</td>
-                <td>the Bird</td>
-                <td>@twitter</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      </div>
+		<div class="page-header">
+			<h1>Panels</h1>
+		</div>
+		<div class="row">
+			<div class="col-sm-4">
+				<div class="panel panel-default">
+					<div class="panel-heading">
+						<h3 class="panel-title">Panel title</h3>
+					</div>
+					<div class="panel-body">
+						Panel content
+					</div>
+				</div>
+				<div class="panel panel-primary">
+					<div class="panel-heading">
+						<h3 class="panel-title">Panel title</h3>
+					</div>
+					<div class="panel-body">
+						Panel content
+					</div>
+				</div>
+			</div>
+			<!-- /.col-sm-4 -->
+			<div class="col-sm-4">
+				<div class="panel panel-success">
+					<div class="panel-heading">
+						<h3 class="panel-title">Panel title</h3>
+					</div>
+					<div class="panel-body">
+						Panel content
+					</div>
+				</div>
+				<div class="panel panel-info">
+					<div class="panel-heading">
+						<h3 class="panel-title">Panel title</h3>
+					</div>
+					<div class="panel-body">
+						Panel content
+					</div>
+				</div>
+			</div>
+			<!-- /.col-sm-4 -->
+			<div class="col-sm-4">
+				<div class="panel panel-warning">
+					<div class="panel-heading">
+						<h3 class="panel-title">Panel title</h3>
+					</div>
+					<div class="panel-body">
+						Panel content
+					</div>
+				</div>
+				<div class="panel panel-danger">
+					<div class="panel-heading">
+						<h3 class="panel-title">Panel title</h3>
+					</div>
+					<div class="panel-body">
+						Panel content
+					</div>
+				</div>
+			</div>
+			<!-- /.col-sm-4 -->
+		</div>
 
-      <div class="row">
-        <div class="col-md-6">
-          <table class="table table-bordered">
-            <thead>
-              <tr>
-                <th>#</th>
-                <th>First Name</th>
-                <th>Last Name</th>
-                <th>Username</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td rowspan="2">1</td>
-                <td>Mark</td>
-                <td>Otto</td>
-                <td>@mdo</td>
-              </tr>
-              <tr>
-                <td>Mark</td>
-                <td>Otto</td>
-                <td>@TwBootstrap</td>
-              </tr>
-              <tr>
-                <td>2</td>
-                <td>Jacob</td>
-                <td>Thornton</td>
-                <td>@fat</td>
-              </tr>
-              <tr>
-                <td>3</td>
-                <td colspan="2">Larry the Bird</td>
-                <td>@twitter</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-        <div class="col-md-6">
-          <table class="table table-condensed">
-            <thead>
-              <tr>
-                <th>#</th>
-                <th>First Name</th>
-                <th>Last Name</th>
-                <th>Username</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>1</td>
-                <td>Mark</td>
-                <td>Otto</td>
-                <td>@mdo</td>
-              </tr>
-              <tr>
-                <td>2</td>
-                <td>Jacob</td>
-                <td>Thornton</td>
-                <td>@fat</td>
-              </tr>
-              <tr>
-                <td>3</td>
-                <td colspan="2">Larry the Bird</td>
-                <td>@twitter</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      </div>
+		<div class="page-header">
+			<h1>Wells</h1>
+		</div>
+		<div class="well">
+			<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas sed diam eget risus varius blandit sit amet non magna. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Cras mattis consectetur purus sit amet fermentum. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Aenean lacinia bibendum nulla sed consectetur.</p>
+		</div>
 
-
-      <div class="page-header">
-        <h1>Thumbnails</h1>
-      </div>
-      <img data-src="holder.js/200x200" class="img-thumbnail" alt="A generic square placeholder image with a white border around it, making it resemble a photograph taken with an old instant camera">
-
-
-      <div class="page-header">
-        <h1>Labels</h1>
-      </div>
-      <h1>
-        <span class="label label-default">Default</span>
-        <span class="label label-primary">Primary</span>
-        <span class="label label-success">Success</span>
-        <span class="label label-info">Info</span>
-        <span class="label label-warning">Warning</span>
-        <span class="label label-danger">Danger</span>
-      </h1>
-      <h2>
-        <span class="label label-default">Default</span>
-        <span class="label label-primary">Primary</span>
-        <span class="label label-success">Success</span>
-        <span class="label label-info">Info</span>
-        <span class="label label-warning">Warning</span>
-        <span class="label label-danger">Danger</span>
-      </h2>
-      <h3>
-        <span class="label label-default">Default</span>
-        <span class="label label-primary">Primary</span>
-        <span class="label label-success">Success</span>
-        <span class="label label-info">Info</span>
-        <span class="label label-warning">Warning</span>
-        <span class="label label-danger">Danger</span>
-      </h3>
-      <h4>
-        <span class="label label-default">Default</span>
-        <span class="label label-primary">Primary</span>
-        <span class="label label-success">Success</span>
-        <span class="label label-info">Info</span>
-        <span class="label label-warning">Warning</span>
-        <span class="label label-danger">Danger</span>
-      </h4>
-      <h5>
-        <span class="label label-default">Default</span>
-        <span class="label label-primary">Primary</span>
-        <span class="label label-success">Success</span>
-        <span class="label label-info">Info</span>
-        <span class="label label-warning">Warning</span>
-        <span class="label label-danger">Danger</span>
-      </h5>
-      <h6>
-        <span class="label label-default">Default</span>
-        <span class="label label-primary">Primary</span>
-        <span class="label label-success">Success</span>
-        <span class="label label-info">Info</span>
-        <span class="label label-warning">Warning</span>
-        <span class="label label-danger">Danger</span>
-      </h6>
-      <p>
-        <span class="label label-default">Default</span>
-        <span class="label label-primary">Primary</span>
-        <span class="label label-success">Success</span>
-        <span class="label label-info">Info</span>
-        <span class="label label-warning">Warning</span>
-        <span class="label label-danger">Danger</span>
-      </p>
-
-
-      <div class="page-header">
-        <h1>Badges</h1>
-      </div>
-      <p>
-        <a href="#">Inbox <span class="badge">42</span></a>
-      </p>
-      <ul class="nav nav-pills" role="tablist">
-        <li role="presentation" class="active"><a href="#">Home <span class="badge">42</span></a></li>
-        <li role="presentation"><a href="#">Profile</a></li>
-        <li role="presentation"><a href="#">Messages <span class="badge">3</span></a></li>
-      </ul>
-
-
-      <div class="page-header">
-        <h1>Dropdown menus</h1>
-      </div>
-      <div class="dropdown theme-dropdown clearfix">
-        <a id="dropdownMenu1" href="#" class="sr-only dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
-        <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-          <li class="active"><a href="#">Action</a></li>
-          <li><a href="#">Another action</a></li>
-          <li><a href="#">Something else here</a></li>
-          <li role="separator" class="divider"></li>
-          <li><a href="#">Separated link</a></li>
-        </ul>
-      </div>
-
-
-      <div class="page-header">
-        <h1>Navs</h1>
-      </div>
-      <ul class="nav nav-tabs" role="tablist">
-        <li role="presentation" class="active"><a href="#">Home</a></li>
-        <li role="presentation"><a href="#">Profile</a></li>
-        <li role="presentation"><a href="#">Messages</a></li>
-      </ul>
-      <ul class="nav nav-pills" role="tablist">
-        <li role="presentation" class="active"><a href="#">Home</a></li>
-        <li role="presentation"><a href="#">Profile</a></li>
-        <li role="presentation"><a href="#">Messages</a></li>
-      </ul>
-
-
-      <div class="page-header">
-        <h1>Navbars</h1>
-      </div>
-
-      <nav class="navbar navbar-default">
-        <div class="container">
-          <div class="navbar-header">
-            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-collapse">
-              <span class="sr-only">Toggle navigation</span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-            </button>
-            <a class="navbar-brand" href="#">Project name</a>
-          </div>
-          <div class="navbar-collapse collapse">
-            <ul class="nav navbar-nav">
-              <li class="active"><a href="#">Home</a></li>
-              <li><a href="#about">About</a></li>
-              <li><a href="#contact">Contact</a></li>
-              <li class="dropdown">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
-                <ul class="dropdown-menu">
-                  <li><a href="#">Action</a></li>
-                  <li><a href="#">Another action</a></li>
-                  <li><a href="#">Something else here</a></li>
-                  <li role="separator" class="divider"></li>
-                  <li class="dropdown-header">Nav header</li>
-                  <li><a href="#">Separated link</a></li>
-                  <li><a href="#">One more separated link</a></li>
-                </ul>
-              </li>
-            </ul>
-          </div><!--/.nav-collapse -->
-        </div>
-      </nav>
-
-      <nav class="navbar navbar-inverse">
-        <div class="container">
-          <div class="navbar-header">
-            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-collapse">
-              <span class="sr-only">Toggle navigation</span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-            </button>
-            <a class="navbar-brand" href="#">Project name</a>
-          </div>
-          <div class="navbar-collapse collapse">
-            <ul class="nav navbar-nav">
-              <li class="active"><a href="#">Home</a></li>
-              <li><a href="#about">About</a></li>
-              <li><a href="#contact">Contact</a></li>
-              <li class="dropdown">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
-                <ul class="dropdown-menu">
-                  <li><a href="#">Action</a></li>
-                  <li><a href="#">Another action</a></li>
-                  <li><a href="#">Something else here</a></li>
-                  <li role="separator" class="divider"></li>
-                  <li class="dropdown-header">Nav header</li>
-                  <li><a href="#">Separated link</a></li>
-                  <li><a href="#">One more separated link</a></li>
-                </ul>
-              </li>
-            </ul>
-          </div><!--/.nav-collapse -->
-        </div>
-      </nav>
-
-
-      <div class="page-header">
-        <h1>Alerts</h1>
-      </div>
-      <div class="alert alert-success" role="alert">
-        <strong>Well done!</strong> You successfully read this important alert message.
-      </div>
-      <div class="alert alert-info" role="alert">
-        <strong>Heads up!</strong> This alert needs your attention, but it's not super important.
-      </div>
-      <div class="alert alert-warning" role="alert">
-        <strong>Warning!</strong> Best check yo self, you're not looking too good.
-      </div>
-      <div class="alert alert-danger" role="alert">
-        <strong>Oh snap!</strong> Change a few things up and try submitting again.
-      </div>
-
-
-      <div class="page-header">
-        <h1>Progress bars</h1>
-      </div>
-      <div class="progress">
-        <div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%;"><span class="sr-only">60% Complete</span></div>
-      </div>
-      <div class="progress">
-        <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: 40%"><span class="sr-only">40% Complete (success)</span></div>
-      </div>
-      <div class="progress">
-        <div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100" style="width: 20%"><span class="sr-only">20% Complete</span></div>
-      </div>
-      <div class="progress">
-        <div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%"><span class="sr-only">60% Complete (warning)</span></div>
-      </div>
-      <div class="progress">
-        <div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100" style="width: 80%"><span class="sr-only">80% Complete (danger)</span></div>
-      </div>
-      <div class="progress">
-        <div class="progress-bar progress-bar-striped" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%"><span class="sr-only">60% Complete</span></div>
-      </div>
-      <div class="progress">
-        <div class="progress-bar progress-bar-success" style="width: 35%"><span class="sr-only">35% Complete (success)</span></div>
-        <div class="progress-bar progress-bar-warning" style="width: 20%"><span class="sr-only">20% Complete (warning)</span></div>
-        <div class="progress-bar progress-bar-danger" style="width: 10%"><span class="sr-only">10% Complete (danger)</span></div>
-      </div>
-
-
-      <div class="page-header">
-        <h1>List groups</h1>
-      </div>
-      <div class="row">
-        <div class="col-sm-4">
-          <ul class="list-group">
-            <li class="list-group-item">Cras justo odio</li>
-            <li class="list-group-item">Dapibus ac facilisis in</li>
-            <li class="list-group-item">Morbi leo risus</li>
-            <li class="list-group-item">Porta ac consectetur ac</li>
-            <li class="list-group-item">Vestibulum at eros</li>
-          </ul>
-        </div><!-- /.col-sm-4 -->
-        <div class="col-sm-4">
-          <div class="list-group">
-            <a href="#" class="list-group-item active">
-              Cras justo odio
-            </a>
-            <a href="#" class="list-group-item">Dapibus ac facilisis in</a>
-            <a href="#" class="list-group-item">Morbi leo risus</a>
-            <a href="#" class="list-group-item">Porta ac consectetur ac</a>
-            <a href="#" class="list-group-item">Vestibulum at eros</a>
-          </div>
-        </div><!-- /.col-sm-4 -->
-        <div class="col-sm-4">
-          <div class="list-group">
-            <a href="#" class="list-group-item active">
-              <h4 class="list-group-item-heading">List group item heading</h4>
-              <p class="list-group-item-text">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p>
-            </a>
-            <a href="#" class="list-group-item">
-              <h4 class="list-group-item-heading">List group item heading</h4>
-              <p class="list-group-item-text">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p>
-            </a>
-            <a href="#" class="list-group-item">
-              <h4 class="list-group-item-heading">List group item heading</h4>
-              <p class="list-group-item-text">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p>
-            </a>
-          </div>
-        </div><!-- /.col-sm-4 -->
-      </div>
-
-
-      <div class="page-header">
-        <h1>Panels</h1>
-      </div>
-      <div class="row">
-        <div class="col-sm-4">
-          <div class="panel panel-default">
-            <div class="panel-heading">
-              <h3 class="panel-title">Panel title</h3>
-            </div>
-            <div class="panel-body">
-              Panel content
-            </div>
-          </div>
-          <div class="panel panel-primary">
-            <div class="panel-heading">
-              <h3 class="panel-title">Panel title</h3>
-            </div>
-            <div class="panel-body">
-              Panel content
-            </div>
-          </div>
-        </div><!-- /.col-sm-4 -->
-        <div class="col-sm-4">
-          <div class="panel panel-success">
-            <div class="panel-heading">
-              <h3 class="panel-title">Panel title</h3>
-            </div>
-            <div class="panel-body">
-              Panel content
-            </div>
-          </div>
-          <div class="panel panel-info">
-            <div class="panel-heading">
-              <h3 class="panel-title">Panel title</h3>
-            </div>
-            <div class="panel-body">
-              Panel content
-            </div>
-          </div>
-        </div><!-- /.col-sm-4 -->
-        <div class="col-sm-4">
-          <div class="panel panel-warning">
-            <div class="panel-heading">
-              <h3 class="panel-title">Panel title</h3>
-            </div>
-            <div class="panel-body">
-              Panel content
-            </div>
-          </div>
-          <div class="panel panel-danger">
-            <div class="panel-heading">
-              <h3 class="panel-title">Panel title</h3>
-            </div>
-            <div class="panel-body">
-              Panel content
-            </div>
-          </div>
-        </div><!-- /.col-sm-4 -->
-      </div>
-
-
-      <div class="page-header">
-        <h1>Wells</h1>
-      </div>
-      <div class="well">
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas sed diam eget risus varius blandit sit amet non magna. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Cras mattis consectetur purus sit amet fermentum. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Aenean lacinia bibendum nulla sed consectetur.</p>
-      </div>
-
-
-      <div class="page-header">
-        <h1>Carousel</h1>
-      </div>
+		<div class="page-header">
+			<h1>Carousel</h1>
+		</div>
 		<p>Note: A special class <code>carousel-swipe</code> was added to enable <b>touch gesture</b> on mobile <i>(right or left)</i>. Also there is another class <code>carousel-fade</code>to change the carousel transition. To manage the transition time interval an attribute <code>data-interval</code> was added to modify <i>(time in milliseconds)</i>. To disable shadows on controls just add <code>carousel-noshadow</code> class.</p>
-      <div id="carousel-example-generic" class="carousel slide " data-ride="carousel" data-interval="3000">
-        <ol class="carousel-indicators">
-          <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
-          <li data-target="#carousel-example-generic" data-slide-to="1"></li>
-          <li data-target="#carousel-example-generic" data-slide-to="2"></li>
-        </ol>
-        <div class="carousel-inner" role="listbox">
-          <div class="item active">
-            <img data-src="holder.js/1140x500/auto/#777:#555/text:First slide" alt="First slide">
-          </div>
-          <div class="item">
-            <img data-src="holder.js/1140x500/auto/#666:#444/text:Second slide" alt="Second slide">
-          </div>
-          <div class="item">
-            <img data-src="holder.js/1140x500/auto/#555:#333/text:Third slide" alt="Third slide">
-          </div>
-        </div>
-        <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
-          <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
-          <span class="sr-only">Previous</span>
-        </a>
-        <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
-          <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
-          <span class="sr-only">Next</span>
-        </a>
-      </div>
 		
+		<div id="carousel-example-generic" class="carousel slide" data-ride="carousel" data-interval="3000">
+			<ol class="carousel-indicators">
+				<li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+				<li data-target="#carousel-example-generic" data-slide-to="1"></li>
+				<li data-target="#carousel-example-generic" data-slide-to="2"></li>
+			</ol>
+			<div class="carousel-inner" role="listbox">
+				<div class="item active">
+					<img data-src="holder.js/1140x500/auto/#777:#555/text:First slide" alt="First slide">
+				</div>
+				<div class="item">
+					<img data-src="holder.js/1140x500/auto/#666:#444/text:Second slide" alt="Second slide">
+				</div>
+				<div class="item">
+					<img data-src="holder.js/1140x500/auto/#555:#333/text:Third slide" alt="Third slide">
+				</div>
+			</div>
+			<a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
+				<span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+				<span class="sr-only">Previous</span>
+			</a>
 		
-		
-		
-		
+			<a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
+				<span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+				<span class="sr-only">Next</span>
+			</a>
+		</div>
+
 		<!-- ******** BOOTSTRAP THEME ******** -->
-		
-		
-	<!-- MAIN CONTAINER -->
-    </div>
+
+		<!-- MAIN CONTAINER -->
+	</div>
 </div>
 <!-- ================================================= CONTENT ================================================= -->
 

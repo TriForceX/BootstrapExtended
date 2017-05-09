@@ -1,12 +1,12 @@
 /*!
 
 Holder - client side image placeholders
-Version 2.9.0+f2dkw
+Version 2.7.1+6hydf
 © 2015 Ivan Malopinsky - http://imsky.co
 
 Site:     http://holderjs.com
 Issues:   https://github.com/imsky/holder/issues
-License:  MIT
+License:  http://opensource.org/licenses/MIT
 
 */
 (function (window) {
@@ -61,25 +61,6 @@ License:  MIT
         }
       }
       return ret;
-    };
-  }
-
-  // ES5 15.4.4.18 Array.prototype.forEach ( callbackfn [ , thisArg ] )
-  // From https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Array/forEach
-  if (!Array.prototype.forEach) {
-    Array.prototype.forEach = function (fun /*, thisp */) {
-      if (this === void 0 || this === null) { throw TypeError(); }
-
-      var t = Object(this);
-      var len = t.length >>> 0;
-      if (typeof fun !== "function") { throw TypeError(); }
-
-      var thisp = arguments[1], i;
-      for (i = 0; i < len; i++) {
-        if (i in t) {
-          fun.call(thisp, t[i], i, t);
-        }
-      }
     };
   }
 
@@ -252,7 +233,7 @@ License:  MIT
 	if(typeof exports === 'object' && typeof module === 'object')
 		module.exports = factory();
 	else if(typeof define === 'function' && define.amd)
-		define([], factory);
+		define(factory);
 	else if(typeof exports === 'object')
 		exports["Holder"] = factory();
 	else
@@ -304,45 +285,32 @@ return /******/ (function(modules) { // webpackBootstrap
 /* 0 */
 /***/ function(module, exports, __webpack_require__) {
 
-	/*
-	Holder.js - client side image placeholders
-	(c) 2012-2015 Ivan Malopinsky - http://imsky.co
-	*/
-
-	module.exports = __webpack_require__(1);
-
-
-/***/ },
-/* 1 */
-/***/ function(module, exports, __webpack_require__) {
-
 	/* WEBPACK VAR INJECTION */(function(global) {/*
 	Holder.js - client side image placeholders
-	(c) 2012-2015 Ivan Malopinsky - http://imsky.co
+	© 2012-2015 Ivan Malopinsky - http://imsky.co
 	*/
 
 	//Libraries and functions
-	var onDomReady = __webpack_require__(2);
-	var querystring = __webpack_require__(3);
-
-	var SceneGraph = __webpack_require__(6);
-	var utils = __webpack_require__(7);
-	var SVG = __webpack_require__(8);
-	var DOM = __webpack_require__(9);
-	var Color = __webpack_require__(10);
-	var constants = __webpack_require__(11);
-
-	var svgRenderer = __webpack_require__(12);
-	var sgCanvasRenderer = __webpack_require__(15);
+	var onDomReady = __webpack_require__(1);
+	var SceneGraph = __webpack_require__(2);
+	var utils = __webpack_require__(3);
+	var querystring = __webpack_require__(4);
 
 	var extend = utils.extend;
+	var getNodeArray = utils.getNodeArray;
 	var dimensionCheck = utils.dimensionCheck;
 
 	//Constants and definitions
-	var SVG_NS = constants.svg_ns;
+	var SVG_NS = 'http://www.w3.org/2000/svg';
+	var NODE_TYPE_COMMENT = 8;
+	var version = '2.7.1';
+	var generatorComment = '\n' +
+	    'Created with Holder.js ' + version + '.\n' +
+	    'Learn more at http://holderjs.com\n' +
+	    '(c) 2012-2015 Ivan Malopinsky - http://imsky.co\n';
 
 	var Holder = {
-	    version: constants.version,
+	    version: version,
 
 	    /**
 	     * Adds a theme to default settings
@@ -360,18 +328,19 @@ return /******/ (function(modules) { // webpackBootstrap
 	     * Appends a placeholder to an element
 	     *
 	     * @param {string} src Placeholder URL string
-	     * @param el A selector or a reference to a DOM node
+	     * @param {string} el Selector of target element(s)
 	     */
 	    addImage: function(src, el) {
-	        //todo: use jquery fallback if available for all QSA references
-	        var nodes = DOM.getNodeArray(el);
-	        nodes.forEach(function (node) {
-	            var img = DOM.newEl('img');
-	            var domProps = {};
-	            domProps[App.setup.dataAttr] = src;
-	            DOM.setAttr(img, domProps);
-	            node.appendChild(img);
-	        });
+	        var node = document.querySelectorAll(el);
+	        if (node.length) {
+	            for (var i = 0, l = node.length; i < l; i++) {
+	                var img = newEl('img');
+	                var domProps = {};
+	                domProps[App.vars.dataAttr] = src;
+	                setAttr(img, domProps);
+	                node[i].appendChild(img);
+	            }
+	        }
 	        return this;
 	    },
 
@@ -397,60 +366,63 @@ return /******/ (function(modules) { // webpackBootstrap
 	     * @param {Object} userOptions Options object, can contain domain, themes, images, and bgnodes properties
 	     */
 	    run: function(userOptions) {
-	        //todo: split processing into separate queues
 	        userOptions = userOptions || {};
 	        var engineSettings = {};
 	        var options = extend(App.settings, userOptions);
 
 	        App.vars.preempted = true;
-	        App.vars.dataAttr = options.dataAttr || App.setup.dataAttr;
+	        App.vars.dataAttr = options.dataAttr || App.vars.dataAttr;
 
 	        engineSettings.renderer = options.renderer ? options.renderer : App.setup.renderer;
 	        if (App.setup.renderers.join(',').indexOf(engineSettings.renderer) === -1) {
 	            engineSettings.renderer = App.setup.supportsSVG ? 'svg' : (App.setup.supportsCanvas ? 'canvas' : 'html');
 	        }
 
-	        var images = DOM.getNodeArray(options.images);
-	        var bgnodes = DOM.getNodeArray(options.bgnodes);
-	        var stylenodes = DOM.getNodeArray(options.stylenodes);
-	        var objects = DOM.getNodeArray(options.objects);
+	        var images = getNodeArray(options.images);
+	        var bgnodes = getNodeArray(options.bgnodes);
+	        var stylenodes = getNodeArray(options.stylenodes);
+	        var objects = getNodeArray(options.objects);
 
 	        engineSettings.stylesheets = [];
 	        engineSettings.svgXMLStylesheet = true;
 	        engineSettings.noFontFallback = options.noFontFallback ? options.noFontFallback : false;
 
-	        stylenodes.forEach(function (styleNode) {
+	        for (var i = 0; i < stylenodes.length; i++) {
+	            var styleNode = stylenodes[i];
 	            if (styleNode.attributes.rel && styleNode.attributes.href && styleNode.attributes.rel.value == 'stylesheet') {
 	                var href = styleNode.attributes.href.value;
 	                //todo: write isomorphic relative-to-absolute URL function
-	                var proxyLink = DOM.newEl('a');
+	                var proxyLink = newEl('a');
 	                proxyLink.href = href;
 	                var stylesheetURL = proxyLink.protocol + '//' + proxyLink.host + proxyLink.pathname + proxyLink.search;
 	                engineSettings.stylesheets.push(stylesheetURL);
 	            }
-	        });
+	        }
 
-	        bgnodes.forEach(function (bgNode) {
+	        for (i = 0; i < bgnodes.length; i++) {
 	            //Skip processing background nodes if getComputedStyle is unavailable, since only modern browsers would be able to use canvas or SVG to render to background
-	            if (!global.getComputedStyle) return;
-	            var backgroundImage = global.getComputedStyle(bgNode, null).getPropertyValue('background-image');
-	            var dataBackgroundImage = bgNode.getAttribute('data-background-src');
-	            var rawURL = dataBackgroundImage || backgroundImage;
+	            if (!global.getComputedStyle) continue;
+	            var backgroundImage = global.getComputedStyle(bgnodes[i], null).getPropertyValue('background-image');
+	            var dataBackgroundImage = bgnodes[i].getAttribute('data-background-src');
+	            var rawURL = null;
+
+	            if (dataBackgroundImage == null) {
+	                rawURL = backgroundImage;
+	            } else {
+	                rawURL = dataBackgroundImage;
+	            }
 
 	            var holderURL = null;
-	            var holderString = options.domain + '/';
-	            var holderStringIndex = rawURL.indexOf(holderString);
+	            var holderString = '?' + options.domain + '/';
 
-	            if (holderStringIndex === 0) {
-	                holderURL = rawURL;
-	            } else if (holderStringIndex === 1 && rawURL[0] === '?') {
+	            if (rawURL.indexOf(holderString) === 0) {
 	                holderURL = rawURL.slice(1);
-	            } else {
-	                var fragment = rawURL.substr(holderStringIndex).match(/([^\"]*)"?\)/);
-	                if (fragment !== null) {
-	                    holderURL = fragment[1];
-	                } else if (rawURL.indexOf('url(') === 0) {
-	                    throw 'Holder: unable to parse background URL: ' + rawURL;
+	            } else if (rawURL.indexOf(holderString) != -1) {
+	                var fragment = rawURL.substr(rawURL.indexOf(holderString)).slice(1);
+	                var fragmentMatch = fragment.match(/([^\"]*)"?\)/);
+
+	                if (fragmentMatch != null) {
+	                    holderURL = fragmentMatch[1];
 	                }
 	            }
 
@@ -459,15 +431,16 @@ return /******/ (function(modules) { // webpackBootstrap
 	                if (holderFlags) {
 	                    prepareDOMElement({
 	                        mode: 'background',
-	                        el: bgNode,
+	                        el: bgnodes[i],
 	                        flags: holderFlags,
 	                        engineSettings: engineSettings
 	                    });
 	                }
 	            }
-	        });
+	        }
 
-	        objects.forEach(function (object) {
+	        for (i = 0; i < objects.length; i++) {
+	            var object = objects[i];
 	            var objectAttr = {};
 
 	            try {
@@ -483,9 +456,10 @@ return /******/ (function(modules) { // webpackBootstrap
 	            } else if (objectHasDataSrcURL) {
 	                prepareImageElement(options, engineSettings, objectAttr.dataSrc, object);
 	            }
-	        });
+	        }
 
-	        images.forEach(function (image) {
+	        for (i = 0; i < images.length; i++) {
+	            var image = images[i];
 	            var imageAttr = {};
 
 	            try {
@@ -520,7 +494,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	            } else if (imageHasDataSrcURL) {
 	                prepareImageElement(options, engineSettings, imageAttr.dataSrc, image);
 	            }
-	        });
+	        }
 
 	        return this;
 	    }
@@ -533,30 +507,31 @@ return /******/ (function(modules) { // webpackBootstrap
 	        objects: 'object',
 	        bgnodes: 'body .holderjs',
 	        stylenodes: 'head link.holderjs',
+	        stylesheets: [],
 	        themes: {
 	            'gray': {
-	                bg: '#EEEEEE',
-	                fg: '#AAAAAA'
+	                background: '#EEEEEE',
+	                foreground: '#AAAAAA'
 	            },
 	            'social': {
-	                bg: '#3a5a97',
-	                fg: '#FFFFFF'
+	                background: '#3a5a97',
+	                foreground: '#FFFFFF'
 	            },
 	            'industrial': {
-	                bg: '#434A52',
-	                fg: '#C2F200'
+	                background: '#434A52',
+	                foreground: '#C2F200'
 	            },
 	            'sky': {
-	                bg: '#0D8FDB',
-	                fg: '#FFFFFF'
+	                background: '#0D8FDB',
+	                foreground: '#FFFFFF'
 	            },
 	            'vine': {
-	                bg: '#39DBAC',
-	                fg: '#1E292C'
+	                background: '#39DBAC',
+	                foreground: '#1E292C'
 	            },
 	            'lava': {
-	                bg: '#F8591A',
-	                fg: '#1C2846'
+	                background: '#F8591A',
+	                foreground: '#1C2846'
 	            }
 	        }
 	    },
@@ -564,6 +539,69 @@ return /******/ (function(modules) { // webpackBootstrap
 	        size: 10,
 	        units: 'pt',
 	        scale: 1 / 16
+	    },
+	    //todo: remove in 2.8
+	    flags: {
+	        dimensions: {
+	            regex: /^(\d+)x(\d+)$/,
+	            output: function(val) {
+	                var exec = this.regex.exec(val);
+	                return {
+	                    width: +exec[1],
+	                    height: +exec[2]
+	                };
+	            }
+	        },
+	        fluid: {
+	            regex: /^([0-9]+%?)x([0-9]+%?)$/,
+	            output: function(val) {
+	                var exec = this.regex.exec(val);
+	                return {
+	                    width: exec[1],
+	                    height: exec[2]
+	                };
+	            }
+	        },
+	        colors: {
+	            regex: /(?:#|\^)([0-9a-f]{3,})\:(?:#|\^)([0-9a-f]{3,})/i,
+	            output: function(val) {
+	                var exec = this.regex.exec(val);
+	                return {
+	                    foreground: '#' + exec[2],
+	                    background: '#' + exec[1]
+	                };
+	            }
+	        },
+	        text: {
+	            regex: /text\:(.*)/,
+	            output: function(val) {
+	                return this.regex.exec(val)[1].replace('\\/', '/');
+	            }
+	        },
+	        font: {
+	            regex: /font\:(.*)/,
+	            output: function(val) {
+	                return this.regex.exec(val)[1];
+	            }
+	        },
+	        auto: {
+	            regex: /^auto$/
+	        },
+	        textmode: {
+	            regex: /textmode\:(.*)/,
+	            output: function(val) {
+	                return this.regex.exec(val)[1];
+	            }
+	        },
+	        random: {
+	            regex: /^random$/
+	        },
+	        size: {
+	            regex: /size\:(\d+)/,
+	            output: function(val) {
+	                return this.regex.exec(val)[1];
+	            }
+	        }
 	    }
 	};
 
@@ -589,19 +627,34 @@ return /******/ (function(modules) { // webpackBootstrap
 	}
 
 	/**
+	 * Processes a Holder URL
+	 *
+	 * @private
+	 * @param url URL
+	 * @param options Instance options from Holder.run
+	 */
+	function parseURL(url, options) {
+	    var holder = {
+	        theme: extend(App.settings.themes.gray, null),
+	        stylesheets: options.stylesheets,
+	        instanceOptions: options
+	    };
+
+	    if (url.match(/([\d]+p?)x([\d]+p?)(?:\?|$)/)) {
+	        return parseQueryString(url, holder);
+	    } else {
+	        return parseFlags(url, holder);
+	    }
+	}
+
+	/**
 	 * Processes a Holder URL and extracts configuration from query string
 	 *
 	 * @private
 	 * @param url URL
-	 * @param instanceOptions Instance options from Holder.run
+	 * @param holder Staging Holder object
 	 */
-	function parseURL(url, instanceOptions) {
-	    var holder = {
-	        theme: extend(App.settings.themes.gray, null),
-	        stylesheets: instanceOptions.stylesheets,
-	        instanceOptions: instanceOptions
-	    };
-
+	function parseQueryString(url, holder) {
 	    var parts = url.split('?');
 	    var basics = parts[0].split('/');
 
@@ -625,16 +678,11 @@ return /******/ (function(modules) { // webpackBootstrap
 	        // Colors
 
 	        if (options.bg) {
-	            holder.theme.bg = utils.parseColor(options.bg);
+	            holder.theme.background = (options.bg.indexOf('#') === -1 ? '#' : '') + options.bg;
 	        }
 
 	        if (options.fg) {
-	            holder.theme.fg = utils.parseColor(options.fg);
-	        }
-
-	        //todo: add automatic foreground to themes without foreground
-	        if (options.bg && !options.fg) {
-	            holder.autoFg = true;
+	            holder.theme.foreground = (options.fg.indexOf('#') === -1 ? '#' : '') + options.fg;
 	        }
 
 	        if (options.theme && holder.instanceOptions.themes.hasOwnProperty(options.theme)) {
@@ -663,17 +711,11 @@ return /******/ (function(modules) { // webpackBootstrap
 	            holder.align = options.align;
 	        }
 
-	        if (options.lineWrap) {
-	            holder.lineWrap = options.lineWrap;
-	        }
-
 	        holder.nowrap = utils.truthy(options.nowrap);
 
 	        // Miscellaneous
 
 	        holder.auto = utils.truthy(options.auto);
-
-	        holder.outline = utils.truthy(options.outline);
 
 	        if (utils.truthy(options.random)) {
 	            App.vars.cache.themeKeys = App.vars.cache.themeKeys || Object.keys(holder.instanceOptions.themes);
@@ -683,6 +725,88 @@ return /******/ (function(modules) { // webpackBootstrap
 	    }
 
 	    return holder;
+	}
+
+	//todo: remove in 2.8
+	/**
+	 * Processes a Holder URL and extracts flags
+	 *
+	 * @private
+	 * @deprecated
+	 * @param url URL
+	 * @param holder Staging Holder object
+	 */
+	function parseFlags(url, holder) {
+	    var render = false;
+	    var vtab = String.fromCharCode(11);
+	    var flags = url.replace(/([^\\])\//g, '$1' + vtab).split(vtab);
+	    var uriRegex = /%[0-9a-f]{2}/gi;
+	    var options = holder.instanceOptions;
+
+	    holder.holderURL = [];
+
+	    for (var fl = flags.length, j = 0; j < fl; j++) {
+	        var flag = flags[j];
+	        if (flag.match(uriRegex)) {
+	            try {
+	                flag = decodeURIComponent(flag);
+	            } catch (e) {
+	                flag = flags[j];
+	            }
+	        }
+
+	        var push = false;
+
+	        if (App.flags.dimensions.match(flag)) {
+	            render = true;
+	            holder.dimensions = App.flags.dimensions.output(flag);
+	            push = true;
+	        } else if (App.flags.fluid.match(flag)) {
+	            render = true;
+	            holder.dimensions = App.flags.fluid.output(flag);
+	            holder.fluid = true;
+	            push = true;
+	        } else if (App.flags.textmode.match(flag)) {
+	            holder.textmode = App.flags.textmode.output(flag);
+	            push = true;
+	        } else if (App.flags.colors.match(flag)) {
+	            var colors = App.flags.colors.output(flag);
+	            holder.theme = extend(holder.theme, colors);
+	            push = true;
+	        } else if (options.themes[flag]) {
+	            //If a theme is specified, it will override custom colors
+	            if (options.themes.hasOwnProperty(flag)) {
+	                holder.theme = extend(options.themes[flag], null);
+	            }
+	            push = true;
+	        } else if (App.flags.font.match(flag)) {
+	            holder.font = App.flags.font.output(flag);
+	            push = true;
+	        } else if (App.flags.auto.match(flag)) {
+	            holder.auto = true;
+	            push = true;
+	        } else if (App.flags.text.match(flag)) {
+	            holder.text = App.flags.text.output(flag);
+	            push = true;
+	        } else if (App.flags.size.match(flag)) {
+	            holder.size = App.flags.size.output(flag);
+	            push = true;
+	        } else if (App.flags.random.match(flag)) {
+	            if (App.vars.cache.themeKeys == null) {
+	                App.vars.cache.themeKeys = Object.keys(options.themes);
+	            }
+	            var theme = App.vars.cache.themeKeys[0 | Math.random() * App.vars.cache.themeKeys.length];
+	            holder.theme = extend(options.themes[theme], null);
+	            push = true;
+	        }
+
+	        if (push) {
+	            holder.holderURL.push(flag);
+	        }
+	    }
+	    holder.holderURL.unshift(options.domain);
+	    holder.holderURL = holder.holderURL.join('/');
+	    return render ? holder : false;
 	}
 
 	/**
@@ -700,8 +824,6 @@ return /******/ (function(modules) { // webpackBootstrap
 	        theme = flags.theme;
 	    var dimensionsCaption = dimensions.width + 'x' + dimensions.height;
 	    mode = mode == null ? (flags.fluid ? 'fluid' : 'image') : mode;
-	    var holderTemplateRe = /holder_([a-z]+)/g;
-	    var dimensionsInText = false;
 
 	    if (flags.text != null) {
 	        theme.text = flags.text;
@@ -716,30 +838,12 @@ return /******/ (function(modules) { // webpackBootstrap
 	        }
 	    }
 
-	    if (theme.text) {
-	        var holderTemplateMatches = theme.text.match(holderTemplateRe);
-
-	        if (holderTemplateMatches !== null) {
-	            //todo: optimize template replacement
-	            holderTemplateMatches.forEach(function (match) {
-	                if (match === 'holder_dimensions') {
-	                    theme.text = theme.text.replace(match, dimensionsCaption);
-	                }
-	            });
-	        }
-	    }
-
 	    var holderURL = flags.holderURL;
 	    var engineSettings = extend(_engineSettings, null);
 
 	    if (flags.font) {
-	        /*
-	        If external fonts are used in a <img> placeholder rendered with SVG, Holder falls back to canvas.
-
-	        This is done because Firefox and Chrome disallow embedded SVGs from referencing external assets.
-	        The workaround is either to change the placeholder tag from <img> to <object> or to use the canvas renderer.
-	        */
 	        theme.font = flags.font;
+	        //Only run the <canvas> webfont fallback if noFontFallback is false, if the node is not an image, and if canvas is supported
 	        if (!engineSettings.noFontFallback && el.nodeName.toLowerCase() === 'img' && App.setup.supportsCanvas && engineSettings.renderer === 'svg') {
 	            engineSettings = extend(engineSettings, {
 	                renderer: 'canvas'
@@ -754,14 +858,14 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	    if (mode == 'background') {
 	        if (el.getAttribute('data-background-src') == null) {
-	            DOM.setAttr(el, {
+	            setAttr(el, {
 	                'data-background-src': holderURL
 	            });
 	        }
 	    } else {
 	        var domProps = {};
 	        domProps[App.vars.dataAttr] = holderURL;
-	        DOM.setAttr(el, domProps);
+	        setAttr(el, domProps);
 	    }
 
 	    flags.theme = theme;
@@ -773,8 +877,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	    };
 
 	    if (mode == 'image' || mode == 'fluid') {
-	        DOM.setAttr(el, {
-	            'alt': theme.text ? (dimensionsInText ? theme.text : theme.text + ' [' + dimensionsCaption + ']') : dimensionsCaption
+	        setAttr(el, {
+	            'alt': (theme.text ? theme.text + ' [' + dimensionsCaption + ']' : dimensionsCaption)
 	        });
 	    }
 
@@ -790,11 +894,10 @@ return /******/ (function(modules) { // webpackBootstrap
 	    };
 
 	    if (mode == 'image') {
-	        if (!flags.auto) {
+	        if (engineSettings.renderer == 'html' || !flags.auto) {
 	            el.style.width = dimensions.width + 'px';
 	            el.style.height = dimensions.height + 'px';
 	        }
-
 	        if (engineSettings.renderer == 'html') {
 	            el.style.backgroundColor = theme.background;
 	        } else {
@@ -845,8 +948,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	function render(renderSettings) {
 	    var image = null;
 	    var mode = renderSettings.mode;
-	    var el = renderSettings.el;
 	    var holderSettings = renderSettings.holderSettings;
+	    var el = renderSettings.el;
 	    var engineSettings = renderSettings.engineSettings;
 
 	    switch (engineSettings.renderer) {
@@ -877,7 +980,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	                image = sgCanvasRenderer(sceneGraph, renderSettings);
 	                break;
 	            case 'svg':
-	                image = svgRenderer(sceneGraph, renderSettings);
+	                image = sgSVGRenderer(sceneGraph, renderSettings);
 	                break;
 	            default:
 	                throw 'Holder: invalid renderer: ' + engineSettings.renderer;
@@ -898,37 +1001,41 @@ return /******/ (function(modules) { // webpackBootstrap
 	        el.style.backgroundSize = scene.width + 'px ' + scene.height + 'px';
 	    } else {
 	        if (el.nodeName.toLowerCase() === 'img') {
-	            DOM.setAttr(el, {
+	            setAttr(el, {
 	                'src': image
 	            });
 	        } else if (el.nodeName.toLowerCase() === 'object') {
-	            DOM.setAttr(el, {
-	                'data': image,
+	            setAttr(el, {
+	                'data': image
+	            });
+	            setAttr(el, {
 	                'type': 'image/svg+xml'
 	            });
 	        }
 	        if (engineSettings.reRender) {
-	            global.setTimeout(function () {
+	            global.setTimeout(function() {
 	                var image = getRenderedImage();
 	                if (image == null) {
 	                    throw 'Holder: couldn\'t render placeholder';
 	                }
 	                //todo: refactor this code into a function
 	                if (el.nodeName.toLowerCase() === 'img') {
-	                    DOM.setAttr(el, {
+	                    setAttr(el, {
 	                        'src': image
 	                    });
 	                } else if (el.nodeName.toLowerCase() === 'object') {
-	                    DOM.setAttr(el, {
-	                        'data': image,
+	                    setAttr(el, {
+	                        'data': image
+	                    });
+	                    setAttr(el, {
 	                        'type': 'image/svg+xml'
 	                    });
 	                }
-	            }, 150);
+	            }, 100);
 	        }
 	    }
 	    //todo: account for re-rendering
-	    DOM.setAttr(el, {
+	    setAttr(el, {
 	        'data-holder-rendered': true
 	    });
 	}
@@ -951,7 +1058,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	    scene.font = {
 	        family: scene.theme.font ? scene.theme.font : 'Arial, Helvetica, Open Sans, sans-serif',
-	        size: textSize(scene.width, scene.height, fontSize, App.defaults.scale),
+	        size: textSize(scene.width, scene.height, fontSize),
 	        units: scene.theme.units ? scene.theme.units : App.defaults.units,
 	        weight: scene.theme.fontweight ? scene.theme.fontweight : 'bold'
 	    };
@@ -972,10 +1079,6 @@ return /******/ (function(modules) { // webpackBootstrap
 	            break;
 	    }
 
-	    var lineWrap = scene.flags.lineWrap || App.setup.lineWrapRatio;
-	    var sceneMargin = scene.width * lineWrap;
-	    var maxLineWidth = sceneMargin;
-
 	    var sceneGraph = new SceneGraph({
 	        width: scene.width,
 	        height: scene.height
@@ -984,38 +1087,17 @@ return /******/ (function(modules) { // webpackBootstrap
 	    var Shape = sceneGraph.Shape;
 
 	    var holderBg = new Shape.Rect('holderBg', {
-	        fill: scene.theme.bg
+	        fill: scene.theme.background
 	    });
 
 	    holderBg.resize(scene.width, scene.height);
 	    sceneGraph.root.add(holderBg);
 
-	    if (scene.flags.outline) {
-	        var outlineColor = new Color(holderBg.properties.fill);
-	        outlineColor = outlineColor.lighten(outlineColor.lighterThan('7f7f7f') ? -0.1 : 0.1);
-	        holderBg.properties.outline = {
-	            fill: outlineColor.toHex(true),
-	            width: 2
-	        };
-	    }
-
-	    var holderTextColor = scene.theme.fg;
-
-	    if (scene.flags.autoFg) {
-	        var holderBgColor = new Color(holderBg.properties.fill);
-	        var lightColor = new Color('fff');
-	        var darkColor = new Color('000', {
-	            'alpha': 0.285714
-	        });
-
-	        holderTextColor = holderBgColor.blendAlpha(holderBgColor.lighterThan('7f7f7f') ? darkColor : lightColor).toHex(true);
-	    }
-
 	    var holderTextGroup = new Shape.Group('holderTextGroup', {
 	        text: scene.text,
 	        align: scene.align,
 	        font: scene.font,
-	        fill: holderTextColor
+	        fill: scene.theme.foreground
 	    });
 
 	    holderTextGroup.moveTo(null, null, 1);
@@ -1037,6 +1119,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	        parent.height += line.height;
 	    }
 
+	    var sceneMargin = scene.width * App.setup.lineWrapRatio;
+	    var maxLineWidth = sceneMargin;
+
 	    if (tpdata.lineCount > 1) {
 	        var offsetX = 0;
 	        var offsetY = 0;
@@ -1046,7 +1131,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	        //Double margin so that left/right-aligned next is not flush with edge of image
 	        if (scene.align === 'left' || scene.align === 'right') {
-	            maxLineWidth = scene.width * (1 - (1 - lineWrap) * 2);
+	            maxLineWidth = scene.width * (1 - (1 - (App.setup.lineWrapRatio)) * 2);
 	        }
 
 	        for (var i = 0; i < tpdata.words.length; i++) {
@@ -1115,6 +1200,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	    }
 
 	    //todo: renderlist
+
 	    return sceneGraph;
 	}
 
@@ -1125,16 +1211,15 @@ return /******/ (function(modules) { // webpackBootstrap
 	 * @param width Parent width
 	 * @param height Parent height
 	 * @param fontSize Requested text size
-	 * @param scale Proportional scale of text
 	 */
-	function textSize(width, height, fontSize, scale) {
+	function textSize(width, height, fontSize) {
 	    var stageWidth = parseInt(width, 10);
 	    var stageHeight = parseInt(height, 10);
 
 	    var bigSide = Math.max(stageWidth, stageHeight);
 	    var smallSide = Math.min(stageWidth, stageHeight);
 
-	    var newHeight = 0.8 * Math.min(smallSide, bigSide * scale);
+	    var newHeight = 0.8 * Math.min(smallSide, bigSide * App.defaults.scale);
 	    return Math.round(Math.max(fontSize, newHeight));
 	}
 
@@ -1240,14 +1325,13 @@ return /******/ (function(modules) { // webpackBootstrap
 	    var renderableImages = [];
 	    var keys = Object.keys(App.vars.invisibleImages);
 	    var el;
-
-	    keys.forEach(function (key) {
-	        el = App.vars.invisibleImages[key];
+	    for (var i = 0, l = keys.length; i < l; i++) {
+	        el = App.vars.invisibleImages[keys[i]];
 	        if (dimensionCheck(el) && el.nodeName.toLowerCase() == 'img') {
 	            renderableImages.push(el);
-	            delete App.vars.invisibleImages[key];
+	            delete App.vars.invisibleImages[keys[i]];
 	        }
-	    });
+	    }
 
 	    if (renderableImages.length) {
 	        Holder.run({
@@ -1255,10 +1339,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	        });
 	    }
 
-	    // Done to prevent 100% CPU usage via aggressive calling of requestAnimationFrame
-	    setTimeout(function () {
-	        global.requestAnimationFrame(visibilityCheck);
-	    }, 10);
+	    global.requestAnimationFrame(visibilityCheck);
 	}
 
 	/**
@@ -1303,14 +1384,14 @@ return /******/ (function(modules) { // webpackBootstrap
 	                firstTimeSetup = true;
 	            }
 
-	            svg = SVG.initSVG(svg, rootNode.properties.width, rootNode.properties.height);
+	            svg = initSVG(svg, rootNode.properties.width, rootNode.properties.height);
 	            //Show staging element before staging
 	            svg.style.display = 'block';
 
 	            if (firstTimeSetup) {
-	                stagingText = DOM.newEl('text', SVG_NS);
+	                stagingText = newEl('text', SVG_NS);
 	                stagingTextNode = tnode(null);
-	                DOM.setAttr(stagingText, {
+	                setAttr(stagingText, {
 	                    x: 0
 	                });
 	                stagingText.appendChild(stagingTextNode);
@@ -1327,7 +1408,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	            var holderTextGroup = rootNode.children.holderTextGroup;
 	            var htgProps = holderTextGroup.properties;
-	            DOM.setAttr(stagingText, {
+	            setAttr(stagingText, {
 	                'y': htgProps.font.size,
 	                'style': utils.cssProps({
 	                    'font-weight': htgProps.font.weight,
@@ -1341,7 +1422,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	            var stagingTextBBox = stagingText.getBBox();
 
 	            //Get line count and split the string into words
-	            var lineCount = Math.ceil(stagingTextBBox.width / rootNode.properties.width);
+	            var lineCount = Math.ceil(stagingTextBBox.width / (rootNode.properties.width * App.setup.lineWrapRatio));
 	            var words = htgProps.text.split(' ');
 	            var newlines = htgProps.text.match(/\\n/g);
 	            lineCount += newlines == null ? 0 : newlines.length;
@@ -1385,7 +1466,267 @@ return /******/ (function(modules) { // webpackBootstrap
 	    };
 	})();
 
+	var sgCanvasRenderer = (function() {
+	    var canvas = newEl('canvas');
+	    var ctx = null;
+
+	    return function(sceneGraph) {
+	        if (ctx == null) {
+	            ctx = canvas.getContext('2d');
+	        }
+	        var root = sceneGraph.root;
+	        canvas.width = App.dpr(root.properties.width);
+	        canvas.height = App.dpr(root.properties.height);
+	        ctx.textBaseline = 'middle';
+
+	        ctx.fillStyle = root.children.holderBg.properties.fill;
+	        ctx.fillRect(0, 0, App.dpr(root.children.holderBg.width), App.dpr(root.children.holderBg.height));
+
+	        var textGroup = root.children.holderTextGroup;
+	        var tgProps = textGroup.properties;
+	        ctx.font = textGroup.properties.font.weight + ' ' + App.dpr(textGroup.properties.font.size) + textGroup.properties.font.units + ' ' + textGroup.properties.font.family + ', monospace';
+	        ctx.fillStyle = textGroup.properties.fill;
+
+	        for (var lineKey in textGroup.children) {
+	            var line = textGroup.children[lineKey];
+	            for (var wordKey in line.children) {
+	                var word = line.children[wordKey];
+	                var x = App.dpr(textGroup.x + line.x + word.x);
+	                var y = App.dpr(textGroup.y + line.y + word.y + (textGroup.properties.leading / 2));
+
+	                ctx.fillText(word.properties.text, x, y);
+	            }
+	        }
+
+	        return canvas.toDataURL('image/png');
+	    };
+	})();
+
+	var sgSVGRenderer = (function() {
+	    //Prevent IE <9 from initializing SVG renderer
+	    if (!global.XMLSerializer) return;
+	    var xml = createXML();
+	    var svg = initSVG(null, 0, 0);
+	    var bgEl = newEl('rect', SVG_NS);
+	    svg.appendChild(bgEl);
+
+	    //todo: create a reusable pool for textNodes, resize if more words present
+
+	    return function(sceneGraph, renderSettings) {
+	        var root = sceneGraph.root;
+
+	        initSVG(svg, root.properties.width, root.properties.height);
+
+	        var groups = svg.querySelectorAll('g');
+
+	        for (var i = 0; i < groups.length; i++) {
+	            groups[i].parentNode.removeChild(groups[i]);
+	        }
+
+	        var holderURL = renderSettings.holderSettings.flags.holderURL;
+	        var holderId = 'holder_' + (Number(new Date()) + 32768 + (0 | Math.random() * 32768)).toString(16);
+	        var sceneGroupEl = newEl('g', SVG_NS);
+	        var textGroup = root.children.holderTextGroup;
+	        var tgProps = textGroup.properties;
+	        var textGroupEl = newEl('g', SVG_NS);
+	        var tpdata = textGroup.textPositionData;
+	        var textCSSRule = '#' + holderId + ' text { ' +
+	            utils.cssProps({
+	                'fill': tgProps.fill,
+	                'font-weight': tgProps.font.weight,
+	                'font-family': tgProps.font.family + ', monospace',
+	                'font-size': tgProps.font.size + tgProps.font.units
+	            }) + ' } ';
+	        var commentNode = xml.createComment('\n' + 'Source URL: ' + holderURL + generatorComment);
+	        var holderCSS = xml.createCDATASection(textCSSRule);
+	        var styleEl = svg.querySelector('style');
+
+	        setAttr(sceneGroupEl, {
+	            id: holderId
+	        });
+
+	        svg.insertBefore(commentNode, svg.firstChild);
+	        styleEl.appendChild(holderCSS);
+
+	        sceneGroupEl.appendChild(bgEl);
+	        sceneGroupEl.appendChild(textGroupEl);
+	        svg.appendChild(sceneGroupEl);
+
+	        setAttr(bgEl, {
+	            'width': root.children.holderBg.width,
+	            'height': root.children.holderBg.height,
+	            'fill': root.children.holderBg.properties.fill
+	        });
+
+	        textGroup.y += tpdata.boundingBox.height * 0.8;
+
+	        for (var lineKey in textGroup.children) {
+	            var line = textGroup.children[lineKey];
+	            for (var wordKey in line.children) {
+	                var word = line.children[wordKey];
+	                var x = textGroup.x + line.x + word.x;
+	                var y = textGroup.y + line.y + word.y;
+
+	                var textEl = newEl('text', SVG_NS);
+	                var textNode = document.createTextNode(null);
+
+	                setAttr(textEl, {
+	                    'x': x,
+	                    'y': y
+	                });
+
+	                textNode.nodeValue = word.properties.text;
+	                textEl.appendChild(textNode);
+	                textGroupEl.appendChild(textEl);
+	            }
+	        }
+
+	        //todo: factor the background check up the chain, perhaps only return reference
+	        var svgString = svgStringToDataURI(serializeSVG(svg, renderSettings.engineSettings), renderSettings.mode === 'background');
+	        return svgString;
+	    };
+	})();
+
 	//Helpers
+
+	//todo: move svg-related helpers to a dedicated file
+
+	/**
+	 * Converts serialized SVG to a string suitable for data URI use
+	 * @param svgString Serialized SVG string
+	 * @param [base64] Use base64 encoding for data URI
+	 */
+	var svgStringToDataURI = function() {
+	    var rawPrefix = 'data:image/svg+xml;charset=UTF-8,';
+	    var base64Prefix = 'data:image/svg+xml;charset=UTF-8;base64,';
+
+	    return function(svgString, base64) {
+	        if (base64) {
+	            return base64Prefix + btoa(unescape(encodeURIComponent(svgString)));
+	        } else {
+	            return rawPrefix + encodeURIComponent(svgString);
+	        }
+	    };
+	}();
+
+	/**
+	 * Generic new DOM element function
+	 *
+	 * @private
+	 * @param tag Tag to create
+	 * @param namespace Optional namespace value
+	 */
+	function newEl(tag, namespace) {
+	    if (namespace == null) {
+	        return document.createElement(tag);
+	    } else {
+	        return document.createElementNS(namespace, tag);
+	    }
+	}
+
+	/**
+	 * Generic setAttribute function
+	 *
+	 * @private
+	 * @param el Reference to DOM element
+	 * @param attrs Object with attribute keys and values
+	 */
+	function setAttr(el, attrs) {
+	    for (var a in attrs) {
+	        el.setAttribute(a, attrs[a]);
+	    }
+	}
+
+	/**
+	 * Generic SVG element creation function
+	 *
+	 * @private
+	 * @param svg SVG context, set to null if new
+	 * @param width Document width
+	 * @param height Document height
+	 */
+	function initSVG(svg, width, height) {
+	    var defs, style;
+
+	    if (svg == null) {
+	        svg = newEl('svg', SVG_NS);
+	        defs = newEl('defs', SVG_NS);
+	        style = newEl('style', SVG_NS);
+	        setAttr(style, {
+	            'type': 'text/css'
+	        });
+	        defs.appendChild(style);
+	        svg.appendChild(defs);
+	    } else {
+	        style = svg.querySelector('style');
+	    }
+
+	    //IE throws an exception if this is set and Chrome requires it to be set
+	    if (svg.webkitMatchesSelector) {
+	        svg.setAttribute('xmlns', SVG_NS);
+	    }
+
+	    //Remove comment nodes
+	    for (var i = 0; i < svg.childNodes.length; i++) {
+	        if (svg.childNodes[i].nodeType === NODE_TYPE_COMMENT) {
+	            svg.removeChild(svg.childNodes[i]);
+	        }
+	    }
+
+	    //Remove CSS
+	    while (style.childNodes.length) {
+	        style.removeChild(style.childNodes[0]);
+	    }
+
+	    setAttr(svg, {
+	        'width': width,
+	        'height': height,
+	        'viewBox': '0 0 ' + width + ' ' + height,
+	        'preserveAspectRatio': 'none'
+	    });
+
+	    return svg;
+	}
+
+	/**
+	 * Returns serialized SVG with XML processing instructions
+	 *
+	 * @private
+	 * @param svg SVG context
+	 * @param stylesheets CSS stylesheets to include
+	 */
+	function serializeSVG(svg, engineSettings) {
+	    if (!global.XMLSerializer) return;
+	    var serializer = new XMLSerializer();
+	    var svgCSS = '';
+	    var stylesheets = engineSettings.stylesheets;
+
+	    //External stylesheets: Processing Instruction method
+	    if (engineSettings.svgXMLStylesheet) {
+	        var xml = createXML();
+	        //Add <?xml-stylesheet ?> directives
+	        for (var i = stylesheets.length - 1; i >= 0; i--) {
+	            var csspi = xml.createProcessingInstruction('xml-stylesheet', 'href="' + stylesheets[i] + '" rel="stylesheet"');
+	            xml.insertBefore(csspi, xml.firstChild);
+	        }
+
+	        xml.removeChild(xml.documentElement);
+	        svgCSS = serializer.serializeToString(xml);
+	    }
+
+	    var svgText = serializer.serializeToString(svg);
+	    svgText = svgText.replace(/\&amp;(\#[0-9]{2,}\;)/g, '&$1');
+	    return svgCSS + svgText;
+	}
+
+	/**
+	 * Creates a XML document
+	 * @private
+	 */
+	function createXML() {
+	    if (!global.DOMParser) return;
+	    return new DOMParser().parseFromString('<xml />', 'application/xml');
+	}
 
 	/**
 	 * Prevents a function from being called too often, waits until a timer elapses to call it again
@@ -1428,8 +1769,11 @@ return /******/ (function(modules) { // webpackBootstrap
 	    supportsCanvas: false,
 	    supportsSVG: false,
 	    lineWrapRatio: 0.9,
-	    dataAttr: 'data-src',
 	    renderers: ['html', 'canvas', 'svg']
+	};
+
+	App.dpr = function(val) {
+	    return val * App.setup.ratio;
 	};
 
 	//Properties modified during runtime
@@ -1441,20 +1785,33 @@ return /******/ (function(modules) { // webpackBootstrap
 	    invisibleId: 0,
 	    visibilityCheckStarted: false,
 	    debounceTimer: null,
-	    cache: {}
+	    cache: {},
+	    dataAttr: 'data-src'
 	};
 
 	//Pre-flight
 
 	(function() {
-	    var canvas = DOM.newEl('canvas');
+	    var devicePixelRatio = 1,
+	        backingStoreRatio = 1;
+
+	    var canvas = newEl('canvas');
+	    var ctx = null;
 
 	    if (canvas.getContext) {
 	        if (canvas.toDataURL('image/png').indexOf('data:image/png') != -1) {
 	            App.setup.renderer = 'canvas';
+	            ctx = canvas.getContext('2d');
 	            App.setup.supportsCanvas = true;
 	        }
 	    }
+
+	    if (App.setup.supportsCanvas) {
+	        devicePixelRatio = global.devicePixelRatio || 1;
+	        backingStoreRatio = ctx.webkitBackingStorePixelRatio || ctx.mozBackingStorePixelRatio || ctx.msBackingStorePixelRatio || ctx.oBackingStorePixelRatio || ctx.backingStorePixelRatio || 1;
+	    }
+
+	    App.setup.ratio = devicePixelRatio / backingStoreRatio;
 
 	    if (!!document.createElementNS && !!document.createElementNS(SVG_NS, 'svg').createSVGRect) {
 	        App.setup.renderer = 'svg';
@@ -1490,8 +1847,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	/* WEBPACK VAR INJECTION */}.call(exports, (function() { return this; }())))
 
 /***/ },
-/* 2 */
-/***/ function(module, exports) {
+/* 1 */
+/***/ function(module, exports, __webpack_require__) {
 
 	/*!
 	 * onDomReady.js 1.4.0 (c) 2013 Tubal Martin - MIT license
@@ -1650,7 +2007,261 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = typeof window !== "undefined" && _onDomReady(window);
 
 /***/ },
+/* 2 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var augment = __webpack_require__(5);
+
+	var SceneGraph = function(sceneProperties) {
+	    var nodeCount = 1;
+
+	    //todo: move merge to helpers section
+	    function merge(parent, child) {
+	        for (var prop in child) {
+	            parent[prop] = child[prop];
+	        }
+	        return parent;
+	    }
+
+	    var SceneNode = augment.defclass({
+	        constructor: function(name) {
+	            nodeCount++;
+	            this.parent = null;
+	            this.children = {};
+	            this.id = nodeCount;
+	            this.name = 'n' + nodeCount;
+	            if (name != null) {
+	                this.name = name;
+	            }
+	            this.x = 0;
+	            this.y = 0;
+	            this.z = 0;
+	            this.width = 0;
+	            this.height = 0;
+	        },
+	        resize: function(width, height) {
+	            if (width != null) {
+	                this.width = width;
+	            }
+	            if (height != null) {
+	                this.height = height;
+	            }
+	        },
+	        moveTo: function(x, y, z) {
+	            this.x = x != null ? x : this.x;
+	            this.y = y != null ? y : this.y;
+	            this.z = z != null ? z : this.z;
+	        },
+	        add: function(child) {
+	            var name = child.name;
+	            if (this.children[name] == null) {
+	                this.children[name] = child;
+	                child.parent = this;
+	            } else {
+	                throw 'SceneGraph: child with that name already exists: ' + name;
+	            }
+	        }
+	    });
+
+	    var RootNode = augment(SceneNode, function(uber) {
+	        this.constructor = function() {
+	            uber.constructor.call(this, 'root');
+	            this.properties = sceneProperties;
+	        };
+	    });
+
+	    var Shape = augment(SceneNode, function(uber) {
+	        function constructor(name, props) {
+	            uber.constructor.call(this, name);
+	            this.properties = {
+	                fill: '#000'
+	            };
+	            if (props != null) {
+	                merge(this.properties, props);
+	            } else if (name != null && typeof name !== 'string') {
+	                throw 'SceneGraph: invalid node name';
+	            }
+	        }
+
+	        this.Group = augment.extend(this, {
+	            constructor: constructor,
+	            type: 'group'
+	        });
+
+	        this.Rect = augment.extend(this, {
+	            constructor: constructor,
+	            type: 'rect'
+	        });
+
+	        this.Text = augment.extend(this, {
+	            constructor: function(text) {
+	                constructor.call(this);
+	                this.properties.text = text;
+	            },
+	            type: 'text'
+	        });
+	    });
+
+	    var root = new RootNode();
+
+	    this.Shape = Shape;
+	    this.root = root;
+
+	    return this;
+	};
+
+	module.exports = SceneGraph;
+
+
+/***/ },
 /* 3 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/* WEBPACK VAR INJECTION */(function(global) {/**
+	 * Shallow object clone and merge
+	 *
+	 * @param a Object A
+	 * @param b Object B
+	 * @returns {Object} New object with all of A's properties, and all of B's properties, overwriting A's properties
+	 */
+	exports.extend = function(a, b) {
+	    var c = {};
+	    for (var x in a) {
+	        if (a.hasOwnProperty(x)) {
+	            c[x] = a[x];
+	        }
+	    }
+	    if (b != null) {
+	        for (var y in b) {
+	            if (b.hasOwnProperty(y)) {
+	                c[y] = b[y];
+	            }
+	        }
+	    }
+	    return c;
+	};
+
+	/**
+	 * Takes a k/v list of CSS properties and returns a rule
+	 *
+	 * @param props CSS properties object
+	 */
+	exports.cssProps = function(props) {
+	    var ret = [];
+	    for (var p in props) {
+	        if (props.hasOwnProperty(p)) {
+	            ret.push(p + ':' + props[p]);
+	        }
+	    }
+	    return ret.join(';');
+	};
+
+	/**
+	 * Encodes HTML entities in a string
+	 *
+	 * @param str Input string
+	 */
+	exports.encodeHtmlEntity = function(str) {
+	    var buf = [];
+	    var charCode = 0;
+	    for (var i = str.length - 1; i >= 0; i--) {
+	        charCode = str.charCodeAt(i);
+	        if (charCode > 128) {
+	            buf.unshift(['&#', charCode, ';'].join(''));
+	        } else {
+	            buf.unshift(str[i]);
+	        }
+	    }
+	    return buf.join('');
+	};
+
+
+	/**
+	 * Converts a value into an array of DOM nodes
+	 *
+	 * @param val A string, a NodeList, a Node, or an HTMLCollection
+	 */
+	exports.getNodeArray = function(val) {
+	    var retval = null;
+	    if (typeof(val) == 'string') {
+	        retval = document.querySelectorAll(val);
+	    } else if (global.NodeList && val instanceof global.NodeList) {
+	        retval = val;
+	    } else if (global.Node && val instanceof global.Node) {
+	        retval = [val];
+	    } else if (global.HTMLCollection && val instanceof global.HTMLCollection) {
+	        retval = val;
+	    } else if (val instanceof Array) {
+	        retval = val;
+	    } else if (val === null) {
+	        retval = [];
+	    }
+	    return retval;
+	};
+
+	/**
+	 * Checks if an image exists
+	 *
+	 * @param src URL of image
+	 * @param callback Callback to call once image status has been found
+	 */
+	exports.imageExists = function(src, callback) {
+	    var image = new Image();
+	    image.onerror = function() {
+	        callback.call(this, false);
+	    };
+	    image.onload = function() {
+	        callback.call(this, true);
+	    };
+	    image.src = src;
+	};
+
+	/**
+	 * Decodes HTML entities in a string
+	 *
+	 * @param str Input string
+	 */
+	exports.decodeHtmlEntity = function(str) {
+	    return str.replace(/&#(\d+);/g, function(match, dec) {
+	        return String.fromCharCode(dec);
+	    });
+	};
+
+
+	/**
+	 * Returns an element's dimensions if it's visible, `false` otherwise.
+	 *
+	 * @param el DOM element
+	 */
+	exports.dimensionCheck = function(el) {
+	    var dimensions = {
+	        height: el.clientHeight,
+	        width: el.clientWidth
+	    };
+
+	    if (dimensions.height && dimensions.width) {
+	        return dimensions;
+	    } else {
+	        return false;
+	    }
+	};
+
+
+	/**
+	 * Returns true if value is truthy or if it is "semantically truthy"
+	 * @param val
+	 */
+	exports.truthy = function(val) {
+	    if (typeof val === 'string') {
+	        return val === 'true' || val === 'yes' || val === '1' || val === 'on' || val === '✓';
+	    }
+	    return !!val;
+	};
+
+	/* WEBPACK VAR INJECTION */}.call(exports, (function() { return this; }())))
+
+/***/ },
+/* 4 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//Modified version of component/querystring
@@ -1663,8 +2274,8 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	var encode = encodeURIComponent;
 	var decode = decodeURIComponent;
-	var trim = __webpack_require__(4);
-	var type = __webpack_require__(5);
+	var trim = __webpack_require__(6);
+	var type = __webpack_require__(7);
 
 	var arrayRegex = /(\w+)\[(\d+)\]/;
 	var objectRegex = /\w+\.\w+/;
@@ -1758,8 +2369,40 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 4 */
-/***/ function(module, exports) {
+/* 5 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var Factory = function () {};
+	var slice = Array.prototype.slice;
+
+	var augment = function (base, body) {
+		var uber = Factory.prototype = typeof base === "function" ? base.prototype : base;
+		var prototype = new Factory(), properties = body.apply(prototype, slice.call(arguments, 2).concat(uber));
+		if (typeof properties === "object") for (var key in properties) prototype[key] = properties[key];
+		if (!prototype.hasOwnProperty("constructor")) return prototype;
+		var constructor = prototype.constructor;
+		constructor.prototype = prototype;
+		return constructor;
+	};
+
+	augment.defclass = function (prototype) {
+		var constructor = prototype.constructor;
+		constructor.prototype = prototype;
+		return constructor;
+	};
+
+	augment.extend = function (base, body) {
+		return augment(base, function (uber) {
+			this.uber = uber;
+			return body;
+		});
+	};
+
+	module.exports = augment;
+
+/***/ },
+/* 6 */
+/***/ function(module, exports, __webpack_require__) {
 
 	
 	exports = module.exports = trim;
@@ -1778,8 +2421,8 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 5 */
-/***/ function(module, exports) {
+/* 7 */
+/***/ function(module, exports, __webpack_require__) {
 
 	/**
 	 * toString ref.
@@ -1816,1158 +2459,6 @@ return /******/ (function(modules) { // webpackBootstrap
 	  return typeof val;
 	};
 
-
-/***/ },
-/* 6 */
-/***/ function(module, exports) {
-
-	var SceneGraph = function(sceneProperties) {
-	    var nodeCount = 1;
-
-	    //todo: move merge to helpers section
-	    function merge(parent, child) {
-	        for (var prop in child) {
-	            parent[prop] = child[prop];
-	        }
-	        return parent;
-	    }
-
-	    var SceneNode = function(name) {
-	        nodeCount++;
-	        this.parent = null;
-	        this.children = {};
-	        this.id = nodeCount;
-	        this.name = 'n' + nodeCount;
-	        if (typeof name !== 'undefined') {
-	            this.name = name;
-	        }
-	        this.x = this.y = this.z = 0;
-	        this.width = this.height = 0;
-	    };
-
-	    SceneNode.prototype.resize = function(width, height) {
-	        if (width != null) {
-	            this.width = width;
-	        }
-	        if (height != null) {
-	            this.height = height;
-	        }
-	    };
-
-	    SceneNode.prototype.moveTo = function(x, y, z) {
-	        this.x = x != null ? x : this.x;
-	        this.y = y != null ? y : this.y;
-	        this.z = z != null ? z : this.z;
-	    };
-
-	    SceneNode.prototype.add = function(child) {
-	        var name = child.name;
-	        if (typeof this.children[name] === 'undefined') {
-	            this.children[name] = child;
-	            child.parent = this;
-	        } else {
-	            throw 'SceneGraph: child already exists: ' + name;
-	        }
-	    };
-
-	    var RootNode = function() {
-	        SceneNode.call(this, 'root');
-	        this.properties = sceneProperties;
-	    };
-
-	    RootNode.prototype = new SceneNode();
-
-	    var Shape = function(name, props) {
-	        SceneNode.call(this, name);
-	        this.properties = {
-	            'fill': '#000000'
-	        };
-	        if (typeof props !== 'undefined') {
-	            merge(this.properties, props);
-	        } else if (typeof name !== 'undefined' && typeof name !== 'string') {
-	            throw 'SceneGraph: invalid node name';
-	        }
-	    };
-
-	    Shape.prototype = new SceneNode();
-
-	    var Group = function() {
-	        Shape.apply(this, arguments);
-	        this.type = 'group';
-	    };
-
-	    Group.prototype = new Shape();
-
-	    var Rect = function() {
-	        Shape.apply(this, arguments);
-	        this.type = 'rect';
-	    };
-
-	    Rect.prototype = new Shape();
-
-	    var Text = function(text) {
-	        Shape.call(this);
-	        this.type = 'text';
-	        this.properties.text = text;
-	    };
-
-	    Text.prototype = new Shape();
-
-	    var root = new RootNode();
-
-	    this.Shape = {
-	        'Rect': Rect,
-	        'Text': Text,
-	        'Group': Group
-	    };
-
-	    this.root = root;
-	    return this;
-	};
-
-	module.exports = SceneGraph;
-
-
-/***/ },
-/* 7 */
-/***/ function(module, exports) {
-
-	/* WEBPACK VAR INJECTION */(function(global) {/**
-	 * Shallow object clone and merge
-	 *
-	 * @param a Object A
-	 * @param b Object B
-	 * @returns {Object} New object with all of A's properties, and all of B's properties, overwriting A's properties
-	 */
-	exports.extend = function(a, b) {
-	    var c = {};
-	    for (var x in a) {
-	        if (a.hasOwnProperty(x)) {
-	            c[x] = a[x];
-	        }
-	    }
-	    if (b != null) {
-	        for (var y in b) {
-	            if (b.hasOwnProperty(y)) {
-	                c[y] = b[y];
-	            }
-	        }
-	    }
-	    return c;
-	};
-
-	/**
-	 * Takes a k/v list of CSS properties and returns a rule
-	 *
-	 * @param props CSS properties object
-	 */
-	exports.cssProps = function(props) {
-	    var ret = [];
-	    for (var p in props) {
-	        if (props.hasOwnProperty(p)) {
-	            ret.push(p + ':' + props[p]);
-	        }
-	    }
-	    return ret.join(';');
-	};
-
-	/**
-	 * Encodes HTML entities in a string
-	 *
-	 * @param str Input string
-	 */
-	exports.encodeHtmlEntity = function(str) {
-	    var buf = [];
-	    var charCode = 0;
-	    for (var i = str.length - 1; i >= 0; i--) {
-	        charCode = str.charCodeAt(i);
-	        if (charCode > 128) {
-	            buf.unshift(['&#', charCode, ';'].join(''));
-	        } else {
-	            buf.unshift(str[i]);
-	        }
-	    }
-	    return buf.join('');
-	};
-
-	/**
-	 * Checks if an image exists
-	 *
-	 * @param src URL of image
-	 * @param callback Callback to call once image status has been found
-	 */
-	exports.imageExists = function(src, callback) {
-	    var image = new Image();
-	    image.onerror = function() {
-	        callback.call(this, false);
-	    };
-	    image.onload = function() {
-	        callback.call(this, true);
-	    };
-	    image.src = src;
-	};
-
-	/**
-	 * Decodes HTML entities in a string
-	 *
-	 * @param str Input string
-	 */
-	exports.decodeHtmlEntity = function(str) {
-	    return str.replace(/&#(\d+);/g, function(match, dec) {
-	        return String.fromCharCode(dec);
-	    });
-	};
-
-
-	/**
-	 * Returns an element's dimensions if it's visible, `false` otherwise.
-	 *
-	 * @param el DOM element
-	 */
-	exports.dimensionCheck = function(el) {
-	    var dimensions = {
-	        height: el.clientHeight,
-	        width: el.clientWidth
-	    };
-
-	    if (dimensions.height && dimensions.width) {
-	        return dimensions;
-	    } else {
-	        return false;
-	    }
-	};
-
-
-	/**
-	 * Returns true if value is truthy or if it is "semantically truthy"
-	 * @param val
-	 */
-	exports.truthy = function(val) {
-	    if (typeof val === 'string') {
-	        return val === 'true' || val === 'yes' || val === '1' || val === 'on' || val === '✓';
-	    }
-	    return !!val;
-	};
-
-	/**
-	 * Parses input into a well-formed CSS color
-	 * @param val
-	 */
-	exports.parseColor = function(val) {
-	    var hexre = /(^(?:#?)[0-9a-f]{6}$)|(^(?:#?)[0-9a-f]{3}$)/i;
-	    var rgbre = /^rgb\((\d{1,3})\s*,\s*(\d{1,3})\s*,\s*(\d{1,3})\s*\)$/;
-	    var rgbare = /^rgba\((\d{1,3})\s*,\s*(\d{1,3})\s*,\s*(\d{1,3})\s*,\s*(0\.\d{1,}|1)\)$/;
-
-	    var match = val.match(hexre);
-	    var retval;
-
-	    if (match !== null) {
-	        retval = match[1] || match[2];
-	        if (retval[0] !== '#') {
-	            return '#' + retval;
-	        } else {
-	            return retval;
-	        }
-	    }
-
-	    match = val.match(rgbre);
-
-	    if (match !== null) {
-	        retval = 'rgb(' + match.slice(1).join(',') + ')';
-	        return retval;
-	    }
-
-	    match = val.match(rgbare);
-
-	    if (match !== null) {
-	        retval = 'rgba(' + match.slice(1).join(',') + ')';
-	        return retval;
-	    }
-
-	    return null;
-	};
-
-	/**
-	 * Provides the correct scaling ratio for canvas drawing operations on HiDPI screens (e.g. Retina displays)
-	 */
-	exports.canvasRatio = function () {
-	    var devicePixelRatio = 1;
-	    var backingStoreRatio = 1;
-
-	    if (global.document) {
-	        var canvas = global.document.createElement('canvas');
-	        if (canvas.getContext) {
-	            var ctx = canvas.getContext('2d');
-	            devicePixelRatio = global.devicePixelRatio || 1;
-	            backingStoreRatio = ctx.webkitBackingStorePixelRatio || ctx.mozBackingStorePixelRatio || ctx.msBackingStorePixelRatio || ctx.oBackingStorePixelRatio || ctx.backingStorePixelRatio || 1;
-	        }
-	    }
-
-	    return devicePixelRatio / backingStoreRatio;
-	};
-	/* WEBPACK VAR INJECTION */}.call(exports, (function() { return this; }())))
-
-/***/ },
-/* 8 */
-/***/ function(module, exports, __webpack_require__) {
-
-	/* WEBPACK VAR INJECTION */(function(global) {var DOM = __webpack_require__(9);
-
-	var SVG_NS = 'http://www.w3.org/2000/svg';
-	var NODE_TYPE_COMMENT = 8;
-
-	/**
-	 * Generic SVG element creation function
-	 *
-	 * @param svg SVG context, set to null if new
-	 * @param width Document width
-	 * @param height Document height
-	 */
-	exports.initSVG = function(svg, width, height) {
-	    var defs, style, initialize = false;
-
-	    if (svg && svg.querySelector) {
-	        style = svg.querySelector('style');
-	        if (style === null) {
-	            initialize = true;
-	        }
-	    } else {
-	        svg = DOM.newEl('svg', SVG_NS);
-	        initialize = true;
-	    }
-
-	    if (initialize) {
-	        defs = DOM.newEl('defs', SVG_NS);
-	        style = DOM.newEl('style', SVG_NS);
-	        DOM.setAttr(style, {
-	            'type': 'text/css'
-	        });
-	        defs.appendChild(style);
-	        svg.appendChild(defs);
-	    }
-
-	    //IE throws an exception if this is set and Chrome requires it to be set
-	    if (svg.webkitMatchesSelector) {
-	        svg.setAttribute('xmlns', SVG_NS);
-	    }
-
-	    //Remove comment nodes
-	    for (var i = 0; i < svg.childNodes.length; i++) {
-	        if (svg.childNodes[i].nodeType === NODE_TYPE_COMMENT) {
-	            svg.removeChild(svg.childNodes[i]);
-	        }
-	    }
-
-	    //Remove CSS
-	    while (style.childNodes.length) {
-	        style.removeChild(style.childNodes[0]);
-	    }
-
-	    DOM.setAttr(svg, {
-	        'width': width,
-	        'height': height,
-	        'viewBox': '0 0 ' + width + ' ' + height,
-	        'preserveAspectRatio': 'none'
-	    });
-
-	    return svg;
-	};
-
-	/**
-	 * Converts serialized SVG to a string suitable for data URI use
-	 * @param svgString Serialized SVG string
-	 * @param [base64] Use base64 encoding for data URI
-	 */
-	exports.svgStringToDataURI = function() {
-	    var rawPrefix = 'data:image/svg+xml;charset=UTF-8,';
-	    var base64Prefix = 'data:image/svg+xml;charset=UTF-8;base64,';
-
-	    return function(svgString, base64) {
-	        if (base64) {
-	            return base64Prefix + btoa(global.unescape(encodeURIComponent(svgString)));
-	        } else {
-	            return rawPrefix + encodeURIComponent(svgString);
-	        }
-	    };
-	}();
-
-	/**
-	 * Returns serialized SVG with XML processing instructions
-	 *
-	 * @param svg SVG context
-	 * @param stylesheets CSS stylesheets to include
-	 */
-	exports.serializeSVG = function(svg, engineSettings) {
-	    if (!global.XMLSerializer) return;
-	    var serializer = new XMLSerializer();
-	    var svgCSS = '';
-	    var stylesheets = engineSettings.stylesheets;
-
-	    //External stylesheets: Processing Instruction method
-	    if (engineSettings.svgXMLStylesheet) {
-	        var xml = DOM.createXML();
-	        //Add <?xml-stylesheet ?> directives
-	        for (var i = stylesheets.length - 1; i >= 0; i--) {
-	            var csspi = xml.createProcessingInstruction('xml-stylesheet', 'href="' + stylesheets[i] + '" rel="stylesheet"');
-	            xml.insertBefore(csspi, xml.firstChild);
-	        }
-
-	        xml.removeChild(xml.documentElement);
-	        svgCSS = serializer.serializeToString(xml);
-	    }
-
-	    var svgText = serializer.serializeToString(svg);
-	    svgText = svgText.replace(/\&amp;(\#[0-9]{2,}\;)/g, '&$1');
-	    return svgCSS + svgText;
-	};
-
-	/* WEBPACK VAR INJECTION */}.call(exports, (function() { return this; }())))
-
-/***/ },
-/* 9 */
-/***/ function(module, exports) {
-
-	/* WEBPACK VAR INJECTION */(function(global) {/**
-	 * Generic new DOM element function
-	 *
-	 * @param tag Tag to create
-	 * @param namespace Optional namespace value
-	 */
-	exports.newEl = function(tag, namespace) {
-	    if (!global.document) return;
-
-	    if (namespace == null) {
-	        return global.document.createElement(tag);
-	    } else {
-	        return global.document.createElementNS(namespace, tag);
-	    }
-	};
-
-	/**
-	 * Generic setAttribute function
-	 *
-	 * @param el Reference to DOM element
-	 * @param attrs Object with attribute keys and values
-	 */
-	exports.setAttr = function (el, attrs) {
-	    for (var a in attrs) {
-	        el.setAttribute(a, attrs[a]);
-	    }
-	};
-
-	/**
-	 * Creates a XML document
-	 * @private
-	 */
-	exports.createXML = function() {
-	    if (!global.DOMParser) return;
-	    return new DOMParser().parseFromString('<xml />', 'application/xml');
-	};
-
-	/**
-	 * Converts a value into an array of DOM nodes
-	 *
-	 * @param val A string, a NodeList, a Node, or an HTMLCollection
-	 */
-	exports.getNodeArray = function(val) {
-	    var retval = null;
-	    if (typeof(val) == 'string') {
-	        retval = document.querySelectorAll(val);
-	    } else if (global.NodeList && val instanceof global.NodeList) {
-	        retval = val;
-	    } else if (global.Node && val instanceof global.Node) {
-	        retval = [val];
-	    } else if (global.HTMLCollection && val instanceof global.HTMLCollection) {
-	        retval = val;
-	    } else if (val instanceof Array) {
-	        retval = val;
-	    } else if (val === null) {
-	        retval = [];
-	    }
-
-	    retval = Array.prototype.slice.call(retval);
-
-	    return retval;
-	};
-
-	/* WEBPACK VAR INJECTION */}.call(exports, (function() { return this; }())))
-
-/***/ },
-/* 10 */
-/***/ function(module, exports) {
-
-	var Color = function(color, options) {
-	    //todo: support rgba, hsla, and rrggbbaa notation
-	    //todo: use CIELAB internally
-	    //todo: add clamp function (with sign)
-	    if (typeof color !== 'string') return;
-
-	    this.original = color;
-
-	    if (color.charAt(0) === '#') {
-	        color = color.slice(1);
-	    }
-
-	    if (/[^a-f0-9]+/i.test(color)) return;
-
-	    if (color.length === 3) {
-	        color = color.replace(/./g, '$&$&');
-	    }
-
-	    if (color.length !== 6) return;
-
-	    this.alpha = 1;
-
-	    if (options && options.alpha) {
-	        this.alpha = options.alpha;
-	    }
-
-	    this.set(parseInt(color, 16));
-	};
-
-	//todo: jsdocs
-	Color.rgb2hex = function(r, g, b) {
-	    function format (decimal) {
-	        var hex = (decimal | 0).toString(16);
-	        if (decimal < 16) {
-	            hex = '0' + hex;
-	        }
-	        return hex;
-	    }
-
-	    return [r, g, b].map(format).join('');
-	};
-
-	//todo: jsdocs
-	Color.hsl2rgb = function (h, s, l) {
-	    var H = h / 60;
-	    var C = (1 - Math.abs(2 * l - 1)) * s;
-	    var X = C * (1 - Math.abs(parseInt(H) % 2 - 1));
-	    var m = l - (C / 2);
-
-	    var r = 0, g = 0, b = 0;
-
-	    if (H >= 0 && H < 1) {
-	        r = C;
-	        g = X;
-	    } else if (H >= 1 && H < 2) {
-	        r = X;
-	        g = C;
-	    } else if (H >= 2 && H < 3) {
-	        g = C;
-	        b = X;
-	    } else if (H >= 3 && H < 4) {
-	        g = X;
-	        b = C;
-	    } else if (H >= 4 && H < 5) {
-	        r = X;
-	        b = C;
-	    } else if (H >= 5 && H < 6) {
-	        r = C;
-	        b = X;
-	    }
-
-	    r += m;
-	    g += m;
-	    b += m;
-
-	    r = parseInt(r * 255);
-	    g = parseInt(g * 255);
-	    b = parseInt(b * 255);
-
-	    return [r, g, b];
-	};
-
-	/**
-	 * Sets the color from a raw RGB888 integer
-	 * @param raw RGB888 representation of color
-	 */
-	//todo: refactor into a static method
-	//todo: factor out individual color spaces
-	//todo: add HSL, CIELAB, and CIELUV
-	Color.prototype.set = function (val) {
-	    this.raw = val;
-
-	    var r = (this.raw & 0xFF0000) >> 16;
-	    var g = (this.raw & 0x00FF00) >> 8;
-	    var b = (this.raw & 0x0000FF);
-
-	    // BT.709
-	    var y = 0.2126 * r + 0.7152 * g + 0.0722 * b;
-	    var u = -0.09991 * r - 0.33609 * g + 0.436 * b;
-	    var v = 0.615 * r - 0.55861 * g - 0.05639 * b;
-
-	    this.rgb = {
-	        r: r,
-	        g: g,
-	        b: b
-	    };
-
-	    this.yuv = {
-	        y: y,
-	        u: u,
-	        v: v
-	    };
-
-	    return this;
-	};
-
-	/**
-	 * Lighten or darken a color
-	 * @param multiplier Amount to lighten or darken (-1 to 1)
-	 */
-	Color.prototype.lighten = function(multiplier) {
-	    var cm = Math.min(1, Math.max(0, Math.abs(multiplier))) * (multiplier < 0 ? -1 : 1);
-	    var bm = (255 * cm) | 0;
-	    var cr = Math.min(255, Math.max(0, this.rgb.r + bm));
-	    var cg = Math.min(255, Math.max(0, this.rgb.g + bm));
-	    var cb = Math.min(255, Math.max(0, this.rgb.b + bm));
-	    var hex = Color.rgb2hex(cr, cg, cb);
-	    return new Color(hex);
-	};
-
-	/**
-	 * Output color in hex format
-	 * @param addHash Add a hash character to the beginning of the output
-	 */
-	Color.prototype.toHex = function(addHash) {
-	    return (addHash ? '#' : '') + this.raw.toString(16);
-	};
-
-	/**
-	 * Returns whether or not current color is lighter than another color
-	 * @param color Color to compare against
-	 */
-	Color.prototype.lighterThan = function(color) {
-	    if (!(color instanceof Color)) {
-	        color = new Color(color);
-	    }
-
-	    return this.yuv.y > color.yuv.y;
-	};
-
-	/**
-	 * Returns the result of mixing current color with another color
-	 * @param color Color to mix with
-	 * @param multiplier How much to mix with the other color
-	 */
-	/*
-	Color.prototype.mix = function (color, multiplier) {
-	    if (!(color instanceof Color)) {
-	        color = new Color(color);
-	    }
-
-	    var r = this.rgb.r;
-	    var g = this.rgb.g;
-	    var b = this.rgb.b;
-	    var a = this.alpha;
-
-	    var m = typeof multiplier !== 'undefined' ? multiplier : 0.5;
-
-	    //todo: write a lerp function
-	    r = r + m * (color.rgb.r - r);
-	    g = g + m * (color.rgb.g - g);
-	    b = b + m * (color.rgb.b - b);
-	    a = a + m * (color.alpha - a);
-
-	    return new Color(Color.rgbToHex(r, g, b), {
-	        'alpha': a
-	    });
-	};
-	*/
-
-	/**
-	 * Returns the result of blending another color on top of current color with alpha
-	 * @param color Color to blend on top of current color, i.e. "Ca"
-	 */
-	//todo: see if .blendAlpha can be merged into .mix
-	Color.prototype.blendAlpha = function(color) {
-	    if (!(color instanceof Color)) {
-	        color = new Color(color);
-	    }
-
-	    var Ca = color;
-	    var Cb = this;
-
-	    //todo: write alpha blending function
-	    var r = Ca.alpha * Ca.rgb.r + (1 - Ca.alpha) * Cb.rgb.r;
-	    var g = Ca.alpha * Ca.rgb.g + (1 - Ca.alpha) * Cb.rgb.g;
-	    var b = Ca.alpha * Ca.rgb.b + (1 - Ca.alpha) * Cb.rgb.b;
-
-	    return new Color(Color.rgb2hex(r, g, b));
-	};
-
-	module.exports = Color;
-
-
-/***/ },
-/* 11 */
-/***/ function(module, exports) {
-
-	module.exports = {
-	  'version': '2.9.0',
-	  'svg_ns': 'http://www.w3.org/2000/svg'
-	};
-
-/***/ },
-/* 12 */
-/***/ function(module, exports, __webpack_require__) {
-
-	var shaven = __webpack_require__(13);
-
-	var SVG = __webpack_require__(8);
-	var constants = __webpack_require__(11);
-	var utils = __webpack_require__(7);
-
-	var SVG_NS = constants.svg_ns;
-
-	var templates = {
-	  'element': function (options) {
-	    var tag = options.tag;
-	    var content = options.content || '';
-	    delete options.tag;
-	    delete options.content;
-	    return  [tag, content, options];
-	  }
-	};
-
-	//todo: deprecate tag arg, infer tag from shape object
-	function convertShape (shape, tag) {
-	  return templates.element({
-	    'tag': tag,
-	    'width': shape.width,
-	    'height': shape.height,
-	    'fill': shape.properties.fill
-	  });
-	}
-
-	function textCss (properties) {
-	  return utils.cssProps({
-	    'fill': properties.fill,
-	    'font-weight': properties.font.weight,
-	    'font-family': properties.font.family + ', monospace',
-	    'font-size': properties.font.size + properties.font.units
-	  });
-	}
-
-	function outlinePath (bgWidth, bgHeight, outlineWidth) {
-	  var outlineOffsetWidth = outlineWidth / 2;
-
-	  return [
-	    'M', outlineOffsetWidth, outlineOffsetWidth,
-	    'H', bgWidth - outlineOffsetWidth,
-	    'V', bgHeight - outlineOffsetWidth,
-	    'H', outlineOffsetWidth,
-	    'V', 0,
-	    'M', 0, outlineOffsetWidth,
-	    'L', bgWidth, bgHeight - outlineOffsetWidth,
-	    'M', 0, bgHeight - outlineOffsetWidth,
-	    'L', bgWidth, outlineOffsetWidth
-	  ].join(' ');
-	}
-
-	module.exports = function (sceneGraph, renderSettings) {
-	  var engineSettings = renderSettings.engineSettings;
-	  var stylesheets = engineSettings.stylesheets;
-	  var stylesheetXml = stylesheets.map(function (stylesheet) {
-	    return '<?xml-stylesheet rel="stylesheet" href="' + stylesheet + '"?>';
-	  }).join('\n');
-
-	  var holderId = 'holder_' + Number(new Date()).toString(16);
-
-	  var root = sceneGraph.root;
-	  var textGroup = root.children.holderTextGroup;
-
-	  var css = '#' + holderId + ' text { ' + textCss(textGroup.properties) + ' } ';
-
-	  // push text down to be equally vertically aligned with canvas renderer
-	  textGroup.y += textGroup.textPositionData.boundingBox.height * 0.8;
-
-	  var wordTags = [];
-
-	  Object.keys(textGroup.children).forEach(function (lineKey) {
-	    var line = textGroup.children[lineKey];
-
-	    Object.keys(line.children).forEach(function (wordKey) {
-	      var word = line.children[wordKey];
-	      var x = textGroup.x + line.x + word.x;
-	      var y = textGroup.y + line.y + word.y;
-
-	      var wordTag = templates.element({
-	        'tag': 'text',
-	        'content': word.properties.text,
-	        'x': x,
-	        'y': y
-	      });
-
-	      wordTags.push(wordTag);
-	    });
-	  });
-
-	  var text = templates.element({
-	    'tag': 'g',
-	    'content': wordTags
-	  });
-
-	  var outline = null;
-
-	  if (root.children.holderBg.properties.outline) {
-	    var outlineProperties = root.children.holderBg.properties.outline;
-	    outline = templates.element({
-	      'tag': 'path',
-	      'd': outlinePath(root.children.holderBg.width, root.children.holderBg.height, outlineProperties.width),
-	      'stroke-width': outlineProperties.width,
-	      'stroke': outlineProperties.fill,
-	      'fill': 'none'
-	    });
-	  }
-
-	  var bg = convertShape(root.children.holderBg, 'rect');
-
-	  var sceneContent = [];
-
-	  sceneContent.push(bg);
-	  if (outlineProperties) {
-	    sceneContent.push(outline);
-	  }
-	  sceneContent.push(text);
-
-	  var scene = templates.element({
-	    'tag': 'g',
-	    'id': holderId,
-	    'content': sceneContent
-	  });
-
-	  var style = templates.element({
-	    'tag': 'style',
-	    //todo: figure out how to add CDATA directive
-	    'content': css,
-	    'type': 'text/css'
-	  });
-
-	  var defs = templates.element({
-	    'tag': 'defs',
-	    'content': style
-	  });
-
-	  var svg = templates.element({
-	    'tag': 'svg',
-	    'content': [defs, scene],
-	    'width': root.properties.width,
-	    'height': root.properties.height,
-	    'xmlns': SVG_NS,
-	    'viewBox': [0, 0, root.properties.width, root.properties.height].join(' '),
-	    'preserveAspectRatio': 'none'
-	  });
-
-	  var output = shaven(svg);
-	  
-	  output = stylesheetXml + output[0];
-
-	  var svgString = SVG.svgStringToDataURI(output, renderSettings.mode === 'background');
-	  return svgString;
-	};
-
-/***/ },
-/* 13 */
-/***/ function(module, exports, __webpack_require__) {
-
-	var escape = __webpack_require__(14)
-
-	// TODO: remove namespace
-
-	module.exports = function shaven (array, namespace, returnObject) {
-
-		'use strict'
-
-		var i = 1,
-			doesEscape = true,
-			HTMLString,
-			attributeKey,
-			callback,
-			key
-
-
-		returnObject = returnObject || {}
-
-
-		function createElement (sugarString) {
-
-			var tags = sugarString.match(/^\w+/),
-				element = {
-					tag: tags ? tags[0] : 'div',
-					attr: {},
-					children: []
-				},
-				id = sugarString.match(/#([\w-]+)/),
-				reference = sugarString.match(/\$([\w-]+)/),
-				classNames = sugarString.match(/\.[\w-]+/g)
-
-
-			// Assign id if is set
-			if (id) {
-				element.attr.id = id[1]
-
-				// Add element to the return object
-				returnObject[id[1]] = element
-			}
-
-			if (reference)
-				returnObject[reference[1]] = element
-
-			if (classNames)
-				element.attr.class = classNames.join(' ').replace(/\./g, '')
-
-			if (sugarString.match(/&$/g))
-				doesEscape = false
-
-			return element
-		}
-
-		function replacer (key, value) {
-
-			if (value === null || value === false || value === undefined)
-				return
-
-			if (typeof value !== 'string' && typeof value !== 'object')
-				return String(value)
-
-			return value
-		}
-
-		function escapeAttribute (string) {
-			return String(string)
-				.replace(/&/g, '&amp;')
-				.replace(/"/g, '&quot;')
-		}
-
-		function escapeHTML (string) {
-			return String(string)
-				.replace(/&/g, '&amp;')
-				.replace(/"/g, '&quot;')
-				.replace(/'/g, '&apos;')
-				.replace(/</g, '&lt;')
-				.replace(/>/g, '&gt;')
-		}
-
-
-		if (typeof array[0] === 'string')
-			array[0] = createElement(array[0])
-
-		else if (Array.isArray(array[0]))
-			i = 0
-
-		else
-			throw new Error(
-				'First element of array must be a string, ' +
-				'or an array and not ' + JSON.stringify(array[0])
-			)
-
-
-		for (; i < array.length; i++) {
-
-			// Don't render element if value is false or null
-			if (array[i] === false || array[i] === null) {
-				array[0] = false
-				break
-			}
-
-			// Continue with next array value if current value is undefined or true
-			else if (array[i] === undefined || array[i] === true) {
-				continue
-			}
-
-			else if (typeof array[i] === 'string') {
-				if (doesEscape)
-					array[i] = escapeHTML(array[i])
-
-				array[0].children.push(array[i])
-			}
-
-			else if (typeof array[i] === 'number') {
-
-				array[0].children.push(array[i])
-			}
-
-			else if (Array.isArray(array[i])) {
-
-				if (Array.isArray(array[i][0])) {
-					array[i].reverse().forEach(function (subArray) {
-						array.splice(i + 1, 0, subArray)
-					})
-
-					if (i !== 0)
-						continue
-					i++
-				}
-
-				shaven(array[i], namespace, returnObject)
-
-				if (array[i][0])
-					array[0].children.push(array[i][0])
-			}
-
-			else if (typeof array[i] === 'function')
-				callback = array[i]
-
-
-			else if (typeof array[i] === 'object') {
-				for (attributeKey in array[i])
-					if (array[i].hasOwnProperty(attributeKey))
-						if (array[i][attributeKey] !== null &&
-							array[i][attributeKey] !== false)
-							if (attributeKey === 'style' &&
-								typeof array[i][attributeKey] === 'object')
-								array[0].attr[attributeKey] = JSON
-									.stringify(array[i][attributeKey], replacer)
-									.slice(2, -2)
-									.replace(/","/g, ';')
-									.replace(/":"/g, ':')
-									.replace(/\\"/g, '\'')
-
-							else
-								array[0].attr[attributeKey] = array[i][attributeKey]
-			}
-
-			else
-				throw new TypeError('"' + array[i] + '" is not allowed as a value.')
-		}
-
-
-		if (array[0] !== false) {
-
-			HTMLString = '<' + array[0].tag
-
-			for (key in array[0].attr)
-				if (array[0].attr.hasOwnProperty(key))
-					HTMLString += ' ' + key + '="' +
-						escapeAttribute(array[0].attr[key] || '') + '"'
-
-			HTMLString += '>'
-
-			array[0].children.forEach(function (child) {
-				HTMLString += child
-			})
-
-			HTMLString += '</' + array[0].tag + '>'
-
-			array[0] = HTMLString
-		}
-
-		// Return root element on index 0
-		returnObject[0] = array[0]
-
-		if (callback)
-			callback(array[0])
-
-		// returns object containing all elements with an id and the root element
-		return returnObject
-	}
-
-
-/***/ },
-/* 14 */
-/***/ function(module, exports) {
-
-	/*!
-	 * escape-html
-	 * Copyright(c) 2012-2013 TJ Holowaychuk
-	 * MIT Licensed
-	 */
-
-	/**
-	 * Module exports.
-	 * @public
-	 */
-
-	module.exports = escapeHtml;
-
-	/**
-	 * Escape special characters in the given string of html.
-	 *
-	 * @param  {string} str The string to escape for inserting into HTML
-	 * @return {string}
-	 * @public
-	 */
-
-	function escapeHtml(html) {
-	  return String(html)
-	    .replace(/&/g, '&amp;')
-	    .replace(/"/g, '&quot;')
-	    .replace(/'/g, '&#39;')
-	    .replace(/</g, '&lt;')
-	    .replace(/>/g, '&gt;');
-	}
-
-
-/***/ },
-/* 15 */
-/***/ function(module, exports, __webpack_require__) {
-
-	var DOM = __webpack_require__(9);
-	var utils = __webpack_require__(7);
-
-	module.exports = (function() {
-	    var canvas = DOM.newEl('canvas');
-	    var ctx = null;
-
-	    return function(sceneGraph) {
-	        if (ctx == null) {
-	            ctx = canvas.getContext('2d');
-	        }
-
-	        var dpr = utils.canvasRatio();
-	        var root = sceneGraph.root;
-	        canvas.width = dpr * root.properties.width;
-	        canvas.height = dpr * root.properties.height ;
-	        ctx.textBaseline = 'middle';
-
-	        var bg = root.children.holderBg;
-	        var bgWidth = dpr * bg.width;
-	        var bgHeight = dpr * bg.height;
-	        //todo: parametrize outline width (e.g. in scene object)
-	        var outlineWidth = 2;
-	        var outlineOffsetWidth = outlineWidth / 2;
-
-	        ctx.fillStyle = bg.properties.fill;
-	        ctx.fillRect(0, 0, bgWidth, bgHeight);
-
-	        if (bg.properties.outline) {
-	            //todo: abstract this into a method
-	            ctx.strokeStyle = bg.properties.outline.fill;
-	            ctx.lineWidth = bg.properties.outline.width;
-	            ctx.moveTo(outlineOffsetWidth, outlineOffsetWidth);
-	            // TL, TR, BR, BL
-	            ctx.lineTo(bgWidth - outlineOffsetWidth, outlineOffsetWidth);
-	            ctx.lineTo(bgWidth - outlineOffsetWidth, bgHeight - outlineOffsetWidth);
-	            ctx.lineTo(outlineOffsetWidth, bgHeight - outlineOffsetWidth);
-	            ctx.lineTo(outlineOffsetWidth, outlineOffsetWidth);
-	            // Diagonals
-	            ctx.moveTo(0, outlineOffsetWidth);
-	            ctx.lineTo(bgWidth, bgHeight - outlineOffsetWidth);
-	            ctx.moveTo(0, bgHeight - outlineOffsetWidth);
-	            ctx.lineTo(bgWidth, outlineOffsetWidth);
-	            ctx.stroke();
-	        }
-
-	        var textGroup = root.children.holderTextGroup;
-	        ctx.font = textGroup.properties.font.weight + ' ' + (dpr * textGroup.properties.font.size) + textGroup.properties.font.units + ' ' + textGroup.properties.font.family + ', monospace';
-	        ctx.fillStyle = textGroup.properties.fill;
-
-	        for (var lineKey in textGroup.children) {
-	            var line = textGroup.children[lineKey];
-	            for (var wordKey in line.children) {
-	                var word = line.children[wordKey];
-	                var x = dpr * (textGroup.x + line.x + word.x);
-	                var y = dpr * (textGroup.y + line.y + word.y + (textGroup.properties.leading / 2));
-
-	                ctx.fillText(word.properties.text, x, y);
-	            }
-	        }
-
-	        return canvas.toDataURL('image/png');
-	    };
-	})();
 
 /***/ }
 /******/ ])
