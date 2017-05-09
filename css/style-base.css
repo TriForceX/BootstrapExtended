@@ -138,30 +138,6 @@ body > .loading.blue > span{
 }
 /*Custom Panel*/
 
-/*Vertical Align*/
-.verticalAlign{
-	visibility: hidden;
-}
-/*Vertical Align*/
-
-/*Title Fix*/
-.ellipsis {
-    position: relative;
-}
-.ellipsis:before {
-    content: '&nbsp;';
-    visibility: hidden;
-}
-.ellipsis span {
-    position: absolute;
-    left: 0;
-    right: 0;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-}
-/*Title Fix*/
-
 /*UI Date Picker*/
 .ui-datepicker{
 	font-size:12px;
@@ -181,8 +157,8 @@ body > .loading.blue > span{
 }
 .ui-datepicker .ui-datepicker-next-hover span,
 .ui-datepicker .ui-datepicker-prev-hover span{
-	background:url("images/ui-icons_ffffff_256x240.png");
-	background-position:-48px -192px;
+	/*background:url("images/ui-icons_ffffff_256x240.png");*/
+	/*background-position:-48px -192px;*/
 }
 .ui-state-default, .ui-widget-content .ui-state-default, .ui-widget-header .ui-state-default{
 	font-weight:normal;

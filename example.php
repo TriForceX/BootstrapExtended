@@ -1053,12 +1053,12 @@
 		</table>
 		
 		<div class="bs-example"> 
-			<button type="button" class="btn btn-primary" onclick="windowPopup('http://getbootstrap.com','640','480','center','center','yes')">Center Center 640 x 480</button>
-			<button type="button" class="btn btn-primary" onclick="windowPopup('http://getbootstrap.com','320','480','right','bottom','yes')">Right Bottom 320 x 480</button>
-			<button type="button" class="btn btn-primary" onclick="windowPopup('http://getbootstrap.com','320','480','left','top','yes')">Left Top 320 x 480</button>
+			<button type="button" class="btn btn-primary" onclick="windowPopup('http://getbootstrap.com','640','480','center','center',true)">Center Center 640 x 480</button>
+			<button type="button" class="btn btn-primary" onclick="windowPopup('http://getbootstrap.com','320','480','right','bottom',true)">Right Bottom 320 x 480</button>
+			<button type="button" class="btn btn-primary" onclick="windowPopup('http://getbootstrap.com','320','480','left','top',true)">Left Top 320 x 480</button>
 		</div>
 		<figure class="highlight">
-			<pre><code class="language-html" data-lang="html">&lt;a onclick="windowPopup('http://getbootstrap.com','640','480','center','center','yes')">Click Here&lt;/a&gt;<br>&lt;a onclick="windowPopup('http://getbootstrap.com','320','480','right','bottom','yes')">Click Here&lt;/a&gt;<br>&lt;a onclick="windowPopup('http://getbootstrap.com','320','480','left','top','yes')">Click Here&lt;/a&gt;</code></pre>
+			<pre><code class="language-html" data-lang="html">&lt;a onclick="windowPopup('http://getbootstrap.com','640','480','center','center',true)">Click Here&lt;/a&gt;<br>&lt;a onclick="windowPopup('http://getbootstrap.com','320','480','right','bottom',true)">Click Here&lt;/a&gt;<br>&lt;a onclick="windowPopup('http://getbootstrap.com','320','480','left','top',true)">Click Here&lt;/a&gt;</code></pre>
 		</figure>
 		
 		
@@ -1660,7 +1660,7 @@
       <div class="page-header">
         <h1>Carousel</h1>
       </div>
-		<p>Note: A special class <code>carousel-swipe</code> was added to enable <b>touch gesture</b> on mobile <i>(right or left)</i>. Also there is another class <code>carousel-fade</code>to change the carousel transition. To manage the transition time interval an attribute <code>data-interval</code> was added to modify <i>(time in milliseconds)</i>.</p>
+		<p>Note: A special class <code>carousel-swipe</code> was added to enable <b>touch gesture</b> on mobile <i>(right or left)</i>. Also there is another class <code>carousel-fade</code>to change the carousel transition. To manage the transition time interval an attribute <code>data-interval</code> was added to modify <i>(time in milliseconds)</i>. To disable shadows on controls just add <code>carousel-noshadow</code> class.</p>
       <div id="carousel-example-generic" class="carousel slide " data-ride="carousel" data-interval="3000">
         <ol class="carousel-indicators">
           <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>

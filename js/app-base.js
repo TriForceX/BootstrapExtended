@@ -1,5 +1,6 @@
 /* ================================================= FUNCTIONS ================================================= */
 
+//Global variables
 var mainUrl = "@global-url";
 var isHome;
 var isMobile;
@@ -100,7 +101,6 @@ function responsiveCode() {
 		$(document).trigger("responsiveCode", [bodyWidth, bodyHeight, bodyOrientation]);
 		
 		//*** RESPONSIVE CHANGES ***//
-		
 	}else{
 		window.setTimeout(ResponsiveCode, 30);
 	}
@@ -111,10 +111,11 @@ $(window).bind("load", responsiveCode);
 $(window).bind("resize", responsiveCode);
 $(window).bind("orientationchange", responsiveCode);
 
-//LightGallery functions
+//LightGallery destroy function
 function destroyLightGallery(){
 	$(".lightgallery").lightGallery().data('lightGallery').destroy(true);
 }
+//Lightgallery load function
 function loadLightGallery(){
 	
 	$(".lightgallery").each(function(){ 
@@ -210,7 +211,7 @@ function loadLightGallery(){
 	});
 }
 
-//ImageLiquid Functions
+//ImageLiquid image function
 function autoBackground(container){
 	
 	var bgData = new Array();
@@ -282,35 +283,58 @@ function onElementHeightChange(elm, callback){
 	}*/
 }
 
-function TitleFix(Contenedor){
-	$(Contenedor).each(function(){
+//Text cut function
+function textCut(container){
+	/*jshint multistr: true */
+	var css = '.ellipsis > div{'+
+				'	position: relative;'+
+				'}'+
+				'.ellipsis > div:before {'+
+				'	content: "&nbsp;";'+
+				'	visibility: hidden;'+
+				'}'+
+				'.ellipsis > div > div {'+
+				'	position: absolute;'+
+				'	left: 0;'+
+				'	right: 0;'+
+				'	top: 0;'+
+				'	white-space: nowrap;'+
+				'	overflow: hidden;'+
+				'	text-overflow: ellipsis;'+
+				'}';
+	
+	$('head').append('<style type="text/css">'+css+'</style>');
+	
+	$(container).each(function(){
 		$(this).addClass("ellipsis");
-		$(this).html("<span>"+$(this).html()+"</span>");
+		$(this).html("<div><div>"+$(this).html()+"</div></div>");
 	});
 }
-function TextoFix(Contenedor, Maximo){
 
-	$(Contenedor).each(function ( i, box ) {
-
-		var width = $( box ).width(),
+//Text auto size function (Note: Use this on responsive code to better results)
+function textAutoSize(container, max){
+	$(container).each(function (i,box){
+		
+		var width = $(box).width(),
 			html = '<span style="white-space:nowrap"></span>',
-			line = $( box ).wrapInner( html ).children()[ 0 ],
-			n = Maximo;
+			line = $(box).wrapInner(html).children()[0],
+			n = max;
 
-		$( box ).css( 'font-size', n );
+		$(box).css('font-size',n);
 
-		while ( $( line ).width() > width ) {
-			$( box ).css( 'font-size', --n );
+		while ($(line).width() > width) {
+			$(box).css('font-size', --n);
 
 		}
 
-		$( box ).text( $( line ).text() );
+		$(box).text($(line).text());
 
 		//Example
 		//TextoFix(".container", 40); //Real Size in pixels
 
 	});
 }
+//Show alert modal box using BootBox plugin
 function showAlert(title,text,size){
 	
 	if(typeof size === 'undefined' || size === null){
@@ -354,6 +378,8 @@ function showAlert(title,text,size){
 	});*/
 	
 }
+
+//YouTube get ID from URL
 function youTubeParser(url){
     var regExp = /^.*((youtu.be\/)|(v\/)|(\/u\/\w\/)|(embed\/)|(watch\?))\??v?=?([^#\&\?]*).*/;
     var match = url.match(regExp);
@@ -367,6 +393,7 @@ function youTubeParser(url){
 	// http://www.youtube.com/watch?v=0zM3nApSvMg
 	// http://youtu.be/0zM3nApSvMg
 }
+//Vimemo get ID from URL
 function vimeoParser(url){
     var regExp = /^.*(vimeo\.com\/)((channels\/[A-z]+\/)|(groups\/[A-z]+\/videos\/))?([0-9]+)/;
     var match = url.match(regExp);
@@ -376,7 +403,15 @@ function vimeoParser(url){
 	// http://vimeo.com/channels/*/*
 	// http://vimeo.com/groups/*/videos/*
 }
+
+//Video launch modal box function
 function videoLaunch(url, share, title){
+	
+	var ID;
+	var embedUrl;
+	var embedShare;
+	var embedShareTitle = 'Share Link';
+	var embedShareText = 'Copy & paste this URL to share';
 	
 	if(typeof share === 'undefined' || share === null){
 		share = false;
@@ -386,27 +421,29 @@ function videoLaunch(url, share, title){
 		title = null;
 	}
 	
-	
 	if (url.indexOf('youtube') >= 0){
-		var ID = youTubeParser(url);
-		var embedUrl = 'https://www.youtube.com/embed/'+ID+'?rel=0';
-		var embedShare = 'https://www.youtube.com/watch?v='+ID;
+		ID = youTubeParser(url);
+		embedUrl = 'https://www.youtube.com/embed/'+ID+'?rel=0';
+		embedShare = 'https://youtu.be/'+ID;
 	}
 	else if (url.indexOf('vimeo') >= 0){
-		var ID = vimeoParser(url);
-		var embedUrl = 'https://player.vimeo.com/video/'+ID;
-		var embedShare = 'https://vimeo.com/'+ID;
+		ID = vimeoParser(url);
+		embedUrl = 'https://player.vimeo.com/video/'+ID;
+		embedShare = 'https://vimeo.com/'+ID;
 	}
 	else if (url.indexOf('facebook') >= 0){
-		var ID = '';
-		var embedUrl = 'https://www.facebook.com/plugins/video.php?href='+url+'&show_text=0';
-		var embedShare = url;
+		ID = '';
+		embedUrl = 'https://www.facebook.com/plugins/video.php?href='+url+'&show_text=0';
+		embedShare = url;
 	}
 	
 	var content = '<iframe class="videoLaunchIframe" src="'+embedUrl+'" frameborder="0" allowfullscreen></iframe>';
 	
 	if(share){
-		content = content+'<div class="videoLaunchURL"><b>Compartir Enlace <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span></b><input class="clickSelect" type="text" value="'+embedShare+'" readonly title2="You can copy & paste this URL to share" title2_pos="bottom"></div>';
+		content = content+'<div class="videoLaunchURL">'+
+							'	<b>'+embedShareTitle+' <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span></b>'+
+							'	<input class="clickSelect" type="text" value="'+embedShare+'" readonly title="'+embedShareText+'" data-toggle="tooltip" data-placement="bottom">'+
+							'</div>';
 	}
 	
 	bootbox.alert({
@@ -424,45 +461,19 @@ function videoLaunch(url, share, title){
 			var videoLaunchIframeSRCheight = $(".videoLaunchIframe").height();
 			$(".videoLaunchIframe").attr("src",videoLaunchIframeSRC+"&width="+videoLaunchIframeSRCwidth+"&height="+videoLaunchIframeSRCheight);
 		}
-	 });
+	});
 	
+	//Tooltip load
+	$('*[data-toggle="tooltip"]').tooltip();
 	
 }
-function emailValido(email){
-    
-    var emailReg = /^([\w-\.]+@([\w-]+\.)+[\w-]{2,4})?$/;
-    
-    if (email == ''){
-        return false;
-    }
-    
-    if (emailReg.test(email)){
-        return true;
-        
-    }else{
-        return false;
-    }
-}
-function checkEmpty(campo){
-	if ( campo == "" ||
-		 campo == "--" ||
-		 campo == null ||
-		 campo == "undefinied" ){
-			 //console.log('false');
-			 return false;
-		 }
-		 else if(/^\s*$/.test(campo)){
-			 //console.log('false');
-			 return false;
-		 }
-		 else{
-			 //console.log('true');
-			 return true;
-		 }
-}
+
+//Capitalize first function
 function capitalizeFirstLetter(string) {
     return string.charAt(0).toUpperCase() + string.slice(1);
 }
+
+//Convert to slug function
 function convertToSlug(Text){
 	return Text
 	    .toLowerCase()
@@ -470,6 +481,8 @@ function convertToSlug(Text){
 	    .replace(/ +/g,'-')
 	    ;
 }
+
+//Serach input function
 function searchInput(button){
 	
 	var page = $(Contenedor).data("search-page");
@@ -488,6 +501,8 @@ function searchInput(button){
 	}
 		
 }
+
+//Auto scroll function
 function autoScroll(selector,animated,distance){      
     var scrollDistance = distance;
     var scrollTarget = $(selector);
@@ -499,15 +514,19 @@ function autoScroll(selector,animated,distance){
         $('html, body').scrollTop(scrollTarget.offset().top - scrollDistance);
     }
 }
-function disableClick(tipo){
-	if(tipo==1){
+
+//Disable right click menu
+function disableClick(enable){
+	if(enable){
 		$("body").attr("oncontextmenu","return false");
 	}
 	else{
 		$("body").removeAttr("oncontextmenu");
 	}
 }
-function getUrlParameter(sParam) {
+
+//Get URL parameter from URL (PHP $_GET like)
+function getUrlParameter(sParam){
 	var sPageURL = decodeURIComponent(window.location.search.substring(1)),
 		sURLVariables = sPageURL.split('&'),
 		sParameterName,
@@ -521,7 +540,8 @@ function getUrlParameter(sParam) {
 		}
 	}
 }
-function getSrcParameter(sParam) {
+//Get URL parameter from Script SRC (PHP $_GET like)
+function getSrcParameter(sParam){
 	var scripts = document.getElementsByTagName('script');
 	var index = scripts.length - 1;
 	var myScript = scripts[index];
@@ -541,6 +561,8 @@ function getSrcParameter(sParam) {
 		}
 	}
 }
+
+//Convert strings to links function
 function linkify(inputText) {
     var replacedText, replacePattern1, replacePattern2, replacePattern3;
 
@@ -560,11 +582,15 @@ function linkify(inputText) {
 
     return replacedText;
 }
+
+//Remove HTML tags function
 function stripTags(container, items){
 	container.find("*").not(items).each(function() {
 		$(this).remove();
 	});
 }
+
+//Check hasthag disabled links function
 function checkDisabledLink(string){
 	
 	var textoUrl = string;
@@ -579,7 +605,7 @@ function checkDisabledLink(string){
 	else if(textoUrl=="#carousel-example-generic"){
 		return true;
 	}
-	else if (textoUrl.indexOf('some-string') >= 0){
+	else if(textoUrl.indexOf('some-string') >= 0){
 		//Stuff to do
 		return false;
 	}
@@ -602,18 +628,13 @@ function checkDisabledLink(string){
 		}
 	}
 }
+
+//Window pop-up function
 function windowPopup(url, width, height, alignX, alignY, scroll) {
 	
     var leftPosition;
 	var topPosition;
-	
-	//Scrolling
-	if(scroll){
-		var getScroll = 'yes';
-	}
-	else{
-		var getScroll = 'no';
-	}
+	var getScroll = scroll == true ? 'yes' : 'no';
 	
 	//Horizontal Align
 	if(alignX=="right"){
@@ -638,8 +659,19 @@ function windowPopup(url, width, height, alignX, alignY, scroll) {
 	}
 	
     //Open the window.
-    window.open(url, 
-				"WindowPopupJS", "status=no,height="+height+",width="+width+",resizable=yes,left="+leftPosition+",top="+topPosition+",screenX="+leftPosition+",screenY="+topPosition+",toolbar=no,menubar=no,scrollbars="+getScroll+",location=no,directories=no");
+    window.open(url,"WindowPopupJS","status=no,"+
+									"height="+height+","+
+									"width="+width+","+
+									"resizable=yes,"+
+									"left="+leftPosition+","+
+									"top="+topPosition+","+
+									"screenX="+leftPosition+","+
+									"screenY="+topPosition+","+
+									"toolbar=no,"+
+									"menubar=no,"+
+									"scrollbars="+getScroll+","+
+									"location=no,"+
+									"directories=no");
 }
 
 /* ================================================= FUNCTIONS ================================================= */
@@ -666,15 +698,28 @@ $(document).ready(function(){
 	isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini|BB10|PlayBook|MeeGo/i.test(navigator.userAgent);
 	
 	//Check navigators
-	isNavChrome = jQuery.browser.name == 'Chrome' && jQuery.browser.webkit == true ? true : false;
-	isNavIE = jQuery.browser.name == 'Microsoft Internet Explorer' && jQuery.browser.msie == true ? true : false;
-	isNavIE6 = jQuery.browser.name == 'Microsoft Internet Explorer' && jQuery.browser.msie == true && jQuery.browser.version == 6 ? true : false;
-	isNavIE7 = jQuery.browser.name == 'Microsoft Internet Explorer' && jQuery.browser.msie == true && jQuery.browser.version == 7 ? true : false;
-	isNavIE8 =jQuery.browser.name == 'Microsoft Internet Explorer' && jQuery.browser.msie == true && jQuery.browser.version == 8 ? true : false;
-	isNavMozilla = jQuery.browser.name == 'Firefox' && jQuery.browser.mozilla == true ? true : false;
-	isNavSafari = jQuery.browser.name == 'Safari' && jQuery.browser.webkit == true ? true : false;
-	isNavOpera = jQuery.browser.name == 'Opera' && jQuery.browser.opera == true ? true : false;
-	isNavEdge = jQuery.browser.name == 'Microsoft Edge' ? true : false;
+	isNavChrome = $.browser.name == 'Chrome' && $.browser.webkit == true ? true : false;
+	isNavIE = $.browser.name == 'Microsoft Internet Explorer' && $.browser.msie == true ? true : false;
+	isNavIE6 = $.browser.name == 'Microsoft Internet Explorer' && $.browser.msie == true && $.browser.version == 6 ? true : false;
+	isNavIE7 = $.browser.name == 'Microsoft Internet Explorer' && $.browser.msie == true && $.browser.version == 7 ? true : false;
+	isNavIE8 =$.browser.name == 'Microsoft Internet Explorer' && $.browser.msie == true && $.browser.version == 8 ? true : false;
+	isNavMozilla = $.browser.name == 'Firefox' && $.browser.mozilla == true ? true : false;
+	isNavSafari = $.browser.name == 'Safari' && $.browser.webkit == true ? true : false;
+	isNavOpera = $.browser.name == 'Opera' && $.browser.opera == true ? true : false;
+	isNavEdge = $.browser.name == 'Microsoft Edge' ? true : false;
+	
+	/*var browserTest = ''		
+					+'Chrome  = '+isNavChrome+'\n'		
+					+'Microsoft Internet Explorer = '+isNavIE+'\n'		
+					+'Microsoft Internet Explorer 6 = '+isNavIE6+'\n'		
+					+'Microsoft Internet Explorer 7 = '+isNavIE7+'\n'		
+					+'Microsoft Internet Explorer 8 = '+isNavIE8+'\n'		
+ 					+'Mozilla = '+isNavMozilla+'\n'		
+					+'Safari = '+isNavSafari+'\n'			
+					+'Opera = '+isNavOpera+'\n'		
+ 					+'Microsoft Edge = '+isNavEdge+'\n';		
+	
+	console.log(browserTest);*/
 
 	//Touch swipe bootstrap carousel
 	/*$("#carousel-example-generic").swiperight(function() {  
@@ -725,10 +770,6 @@ $(document).ready(function(){
 		}
 	});
 	
-	
-		
-	
-
 /* ================================================= DOCUMENT READY ================================================= */
 
 });
