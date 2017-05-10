@@ -4,11 +4,11 @@ $(document).ready(function(){
 
 	
 	//Example lightGallery Prev/Next functions
-	$(document).on("lightGalleryNext", function(event, element){
+	$(document).on("onNextPageChange.lg", function(event){
 		window.location.href = $(".lg-next").attr("href"); 
 	});
 	
-	$(document).on("lightGalleryPrev", function(event, element){
+	$(document).on("onPrevPageChange.lg", function(event){
 		window.location.href = $(".lg-prev").attr("href");
 	});
 	//Example lightGallery Prev/Next functions
@@ -48,6 +48,10 @@ $(document).ready(function(){
 
 	});
 	//Example keyboard input text
+	
+	//Form validation
+	$(".JSformExample").validateForm();
+	//Form validation
 	
 /* ================================================= DOCUMENT READY ================================================= */
 

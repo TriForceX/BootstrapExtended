@@ -208,8 +208,8 @@ td[align='left']{
 .lg-outer .lg-thumb .lg-thumb-item.noBorder{
 	border-color: transparent !important;
 }
-.lightgallery .lg-prevthumb,
-.lightgallery .lg-nextthumb{
+.JSlightGallery .lg-prevthumb,
+.JSlightGallery .lg-nextthumb{
 	display: none;
 }
 /*LightGallery*/
@@ -329,6 +329,12 @@ td[align='left']{
 }
 /*JS Loading*/
 
+/*JS Validate Error*/
+.JSvalidateError{
+	border:1px solid #FF0000 !important;
+	box-shadow:0px 0px 6px rgb(200,0,0,0.50);
+}
+
 /* ================================================= JAVASCRIPT ================================================= */
 
 /* ================================================= CUSTOM ================================================= */
@@ -368,5 +374,12 @@ td[align='left']{
 	padding-bottom: 0px;
 }
 /*Disable Padding*/
+.negritas{
+	font-weight: bold;
+	color:red;
+}
+.mensaje{
+	background:yellow;
+}
 
 /* ================================================= CUSTOM ================================================= */

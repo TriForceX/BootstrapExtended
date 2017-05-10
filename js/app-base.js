@@ -40,6 +40,60 @@ $.fn.outerHeight2 = function () {
 $.fn.outerWidth2 = function () {
 	return this[0].getBoundingClientRect().width;
 };
+$.fn.validateForm = function() {
+	
+	$(this).submit(function(event){ 
+		
+		var formError = true;
+
+		$(this).find( 'input[type="text"]').each(function(){
+			if ($(this).val() === '' ) { 
+				$(this).addClass("JSvalidateError");
+				formError = false;
+			}
+			else{
+				$(this).removeClass("JSvalidateError");
+			}
+		});
+
+		if (formError == false){
+			showAlert('Form Error','Please fill the fields');
+			event.preventDefault();
+		}
+				
+	});
+};
+
+function emailValido(email){
+    
+    var emailReg = /^([\w-\.]+@([\w-]+\.)+[\w-]{2,4})?$/;
+    
+    if (email == ''){
+        return false;
+    }
+    
+    if (emailReg.test(email)){
+        return true;
+        
+    }else{
+        return false;
+    }
+}
+function checkEmpty(field){
+    if (field == "" ||
+        field == null ||
+        field == "undefinied"){
+
+        return false;
+    }
+    else if(/^\s*$/.test(field)){
+        return false;
+    }
+    else{
+        return true;
+    }
+}
+
 
 //Convert string to boolean
 function toBoolean(value) {
@@ -53,7 +107,7 @@ function toBoolean(value) {
 
 //Get max height from elements
 function getMaxHeight(elems){
-    return Math.max.apply(null, elems.map(function ()
+    return Math.max.apply(null, elems.map(function()
     {
         return $(this).outerHeight();
     }).get());
@@ -113,12 +167,12 @@ $(window).bind("orientationchange", responsiveCode);
 
 //LightGallery destroy function
 function destroyLightGallery(){
-	$(".lightgallery").lightGallery().data('lightGallery').destroy(true);
+	$(".JSlightGallery").lightGallery().data('lightGallery').destroy(true);
 }
 //Lightgallery load function
 function loadLightGallery(){
 	
-	$(".lightgallery").each(function(){ 
+	$(".JSlightGallery").each(function(){ 
 
 		var getMainUrl = mainUrl;
 		var galSelectorVal = $(this).attr("lg-selector") == "auto" ? ".lg-contentphoto" : $(this).attr("lg-selector");
@@ -132,13 +186,13 @@ function loadLightGallery(){
 		var galPrevThumb = getMainUrl+"/plugins/lightgallery/img/lg-loading-prev.png";
 		var galNextThumb = getMainUrl+"/plugins/lightgallery/img/lg-loading-next.png";
 		
-		if($(".lightgallery.lightGalleryMode .lg-prevthumb").length < 1 && $(".lightgallery.lightGalleryMode .lg-nextthumb").length < 1){
-			$(".lightgallery.lightGalleryMode").prepend("<div class='lg-prevthumb' href='"+galLoadThumb+"' title='"+galPrevGalText+"'><img src='"+galPrevThumb+"'></div>");
-			$(".lightgallery.lightGalleryMode").append("<div class='lg-nextthumb' href='"+galLoadThumb+"' title='"+galNextGalText+"'><img src='"+galNextThumb+"'></div>");
+		if($(".JSlightGallery.lightGalleryMode .lg-prevthumb").length < 1 && $(".JSlightGallery.lightGalleryMode .lg-nextthumb").length < 1){
+			$(".JSlightGallery.lightGalleryMode").prepend("<div class='lg-prevthumb' href='"+galLoadThumb+"' title='"+galPrevGalText+"'><img src='"+galPrevThumb+"'></div>");
+			$(".JSlightGallery.lightGalleryMode").append("<div class='lg-nextthumb' href='"+galLoadThumb+"' title='"+galNextGalText+"'><img src='"+galNextThumb+"'></div>");
 		}
 		
 		
-		$(".lightgallery").find("img").each(function(){
+		$(".JSlightGallery").find("img").each(function(){
 			if($(this).parent().is("a") && !($(this).parent().hasAttr("target")) ){
 				$(this).parent().addClass("lg-contentphoto");
 			}
@@ -155,13 +209,13 @@ function loadLightGallery(){
 			loop: false,
 		}); 
 		
-		$(".lightgallery.lightGalleryMode").on('onAfterOpen.lg',function(event){
+		$(".JSlightGallery.lightGalleryMode").on('onAfterOpen.lg',function(event){
 			//console.log("opened");
 			$(".lg-outer .lg-thumb .lg-thumb-item:first-child").addClass("noBorder");
 			$(".lg-outer .lg-thumb .lg-thumb-item:last-child").addClass("noBorder");
 		});
 
-		$(".lightgallery.lightGalleryMode").on('onAfterSlide.lg',function(event){
+		$(".JSlightGallery.lightGalleryMode").on('onAfterSlide.lg',function(event){
 			var total = parseInt($("#lg-counter-all").html());
 			var actual = parseInt($("#lg-counter-current").html());
 
@@ -170,31 +224,31 @@ function loadLightGallery(){
 
 			if(actual == total){
 				//console.log("closing... next page");
-				$(".lightgallery").addClass("lightGalleryAuto");
-				$(".lightgallery").addClass("lightGalleryAutoNext");
+				$(".JSlightGallery").addClass("lightGalleryAuto");
+				$(".JSlightGallery").addClass("lightGalleryAutoNext");
 				setTimeout(function(){ 
 					$(".lg-toolbar .lg-close").trigger("click");
 				}, 1500);
 			}
 			if(actual == 1){
 				//console.log("closing... prev page");
-				$(".lightgallery").addClass("lightGalleryAuto");
-				$(".lightgallery").addClass("lightGalleryAutoPrev");
+				$(".JSlightGallery").addClass("lightGalleryAuto");
+				$(".JSlightGallery").addClass("lightGalleryAutoPrev");
 				setTimeout(function(){ 
 					$(".lg-toolbar .lg-close").trigger("click");
 				}, 1500);
 			}
 		});
 
-		$(".lightgallery.lightGalleryMode").on('onCloseAfter.lg',function(event){
+		$(".JSlightGallery.lightGalleryMode").on('onCloseAfter.lg',function(event){
 			if($(this).hasClass("lightGalleryAuto")){
 				if($(this).hasClass("lightGalleryAutoNext")){
 					//Stuff to do on close
-					$(document).trigger("lightGalleryNext", [this]); ////Send data to event
+					$(document).trigger("onNextPageChange.lg"); ////Send data to event
 				}
 				else if($(this).hasClass("lightGalleryAutoPrev")){
 					//Stuff to do on close
-					$(document).trigger("lightGalleryPrev", [this]); ////Send data to event
+					$(document).trigger("onPrevPageChange.lg"); ////Send data to event
 				}
 				$(this).removeClass("lightGalleryAuto");
 				$(this).removeClass("lightGalleryAutoPrev");

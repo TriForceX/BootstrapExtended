@@ -88,7 +88,7 @@
 		
 		<!-- ******** LOADING BAR ******** -->
 		
-		<div class="progress loadProgressTest">
+		<div class="progress JSloadProgressTest">
 			<div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%"><span class="sr-only">80% Complete (danger)</span>
 			</div>
 		</div>
@@ -359,7 +359,7 @@ $htmlData = array('lang'=>'en',
 		</table>
 
 		<div class="bs-example">
-			<div class="row lightgallery" lg-selector="auto" lg-autotitle="false" lg-thumbnail="false" lg-gallerymode="false" lg-download="false">
+			<div class="row JSlightGallery" lg-selector="auto" lg-autotitle="false" lg-thumbnail="false" lg-gallerymode="false" lg-download="false">
 				<div class="col-md-3">
 					<a class="thumbnail" style="height:100px; overflow: hidden" title="My image 1" href="http://getbootstrap.com/examples/screenshots/theme.jpg">
 						<img src="http://getbootstrap.com/examples/screenshots/theme.jpg">
@@ -387,7 +387,7 @@ $htmlData = array('lang'=>'en',
 			</div>
 		</div>
 		<figure class="highlight">
-			<pre><code class="language-html" data-lang="html">&lt;div class="lightgallery" lg-selector="auto" lg-autotitle="false" lg-thumbnail="false" lg-gallerymode="false" lg-download="false"&gt;<br>...<br>&lt;/div&gt;</code></pre>
+			<pre><code class="language-html" data-lang="html">&lt;div class="JSlightGallery" lg-selector="auto" lg-autotitle="false" lg-thumbnail="false" lg-gallerymode="false" lg-download="false"&gt;<br>...<br>&lt;/div&gt;</code></pre>
 		</figure>
 		
 		<h3>Gallery Mode</h3>
@@ -396,7 +396,7 @@ $htmlData = array('lang'=>'en',
 		<div class="bs-example">
 
 			<?php //echo isset($_GET["page-2"]) ? 'Page 2' : 'Page 1' ?>
-			<div class="row lightgallery" lg-selector="auto" lg-autotitle="Gallery Title" lg-thumbnail="true" lg-gallerymode="true">
+			<div class="row JSlightGallery" lg-selector="auto" lg-autotitle="Gallery Title" lg-thumbnail="true" lg-gallerymode="true">
 				<?php if(!isset($_GET["page-2"])): ?>
 				<div class="col-md-3">
 					<a class="thumbnail" style="height:100px; overflow: hidden" title="My image 1" href="http://getbootstrap.com/examples/screenshots/theme.jpg">
@@ -469,7 +469,7 @@ $htmlData = array('lang'=>'en',
 		</div>
 		
 		<figure class="highlight">
-			<pre><code class="language-html" data-lang="html">&lt;div class="lightgallery" lg-selector="auto" lg-autotitle="Gallery Title" lg-thumbnail="true" lg-gallerymode="true" lg-download="true"&gt;<br>...<br>&lt;/div&gt;</code></pre>
+			<pre><code class="language-html" data-lang="html">&lt;div class="JSlightGallery" lg-selector="auto" lg-autotitle="Gallery Title" lg-thumbnail="true" lg-gallerymode="true" lg-download="true"&gt;<br>...<br>&lt;/div&gt;</code></pre>
 		</figure>
 
 		<!-- Data Tables example -->
@@ -1143,6 +1143,54 @@ $htmlData = array('lang'=>'en',
 		<figure class="highlight">
 			<pre><code class="language-html" data-lang="html">&lt;?php echo showDate("2017-09-20", "F j l, Y, g:i a", "eng", true); ?&gt;</code></pre>
 		</figure>
+		
+		<!-- Form validation -->
+		<div class="page-header">
+			<h1>Form Validation <span class="label label-danger">JS</span></h1>
+		</div>
+		<p>Basic validation for <code>input</code>, <code>select</code>, <code>checkbox</code> and <code>textarea</code> elements.</p>
+		
+		<div class="bs-example">
+			<form class="JSformExample" action="javascript:showAlert('Form Success!','The form passed sucessfully! Thanks!');">
+				<div class="form-group">
+					<label for="example-input-name">Name</label>
+					<input type="text" class="form-control" id="example-input-name" placeholder="Type your Name">
+				</div>
+				<div class="form-group">
+					<label for="example-input-lastname">Last Name</label>
+					<input type="text" class="form-control" id="example-input-lastname" placeholder="Type your Last Name">
+				</div>
+				<div class="form-group">
+					<label for="example-input-email">E-Mail address</label>
+					<input type="email" class="form-control" id="example-input-email" placeholder="Type your E-Mail">
+				</div>
+				<div class="form-group">
+					<label for="example-input-password">Password</label>
+					<input type="password" class="form-control" id="example-input-password" placeholder="Type your Password">
+				</div>
+				<div class="form-group">
+					<label for="example-select">Select Item</label>
+					<select class="form-control" id="example-select">
+						<option>Select an item</option>
+						<option value="1">Item 1</option>
+						<option value="2">Item 2</option>
+						<option value="3">Item 3</option>
+						<option value="4">Item 4</option>
+						<option value="5">Item 5</option>
+					</select>
+				</div>
+				<div class="form-group">
+					<label for="example-textarea">Message</label>
+					<textarea class="form-control" rows="3" id="example-textarea" placeholder="Write a Message"></textarea>
+				</div>
+				<div class="checkbox">
+					<label>
+						<input type="checkbox"> Check me out
+					</label>
+				</div>
+				<button type="submit" class="btn btn-default">Submit</button>
+			</form>
+		</div>
 
 		<!-- ******** BOOTSTRAP THEME EXAMPLES ******** -->
 		
