@@ -15,56 +15,45 @@ if(isset($_GET['debug'])){
 }
 //Debug
 
-//Check Local Host
-function is_localhost(){
-	
-	$isLocalHost = $_SERVER['HTTP_HOST'] == 'localhost' OR filter_var($_SERVER['HTTP_HOST'], FILTER_VALIDATE_IP) ? true : false;
-	
-	return $isLocalHost;
-}
-//Check Local Host
-
-//Check Home Page
-function is_home(){
-	
-	$baseProtocol = (empty($_SERVER['HTTPS']) || $_SERVER['HTTPS'] === 'off') ? 'http://' : 'https://';
-	$baseUrl = $baseProtocol.$_SERVER['SERVER_NAME'].dirname($_SERVER['PHP_SELF']);
-	
-	$scriptBase = $baseUrl.'/index.php';
-	$scriptTarget = $_SERVER['SCRIPT_NAME'];
-	
-	return strpos($scriptBase,$scriptTarget);
-}
-//Check Home Page
-
 //Get info
 function get_siteinfo($info){
 	
-	$baseProtocol = (empty($_SERVER['HTTPS']) || $_SERVER['HTTPS'] === 'off') ? 'http://' : 'https://';
+	$baseProtocol = empty($_SERVER['HTTPS']) || $_SERVER['HTTPS'] === 'off' ? 'http://' : 'https://';
 	$baseUrl = $baseProtocol.$_SERVER['SERVER_NAME'].dirname($_SERVER['PHP_SELF']);
 	
 	switch($info){
 		case 'url':
-			echo $baseUrl;
+			$finalResult = $baseUrl;
 			break;
 		case 'protocol':
-			echo $baseUrl;
+			$finalResult = $baseUrl;
+			break;
+		case 'localhost':
+			$isLocalHost = $_SERVER['HTTP_HOST'] == 'localhost' || filter_var($_SERVER['HTTP_HOST'], FILTER_VALIDATE_IP) ? true : false;
+			$finalResult = $isLocalHost;
+			break;
+		case 'home':
+			$scriptBase = $baseUrl.'/index.php';
+			$scriptTarget = $_SERVER['SCRIPT_NAME'];
+			$finalResult = strpos($scriptBase,$scriptTarget);
 			break;
 		case 'page':
 			if(strpos($_SERVER['SCRIPT_NAME'],'index.php')){
-				echo 'Home';
+				$finalResult = 'Home';
 			}
 			elseif(strpos($_SERVER['SCRIPT_NAME'],'example.php')){
-				echo 'Examples';
+				$finalResult = 'Examples';
 			}
 			else{
-				echo 'Page';
+				$finalResult = 'Page';
 			}
 			break;
 		default: 
-			echo $baseUrl;
+			$finalResult = $baseUrl;
 			break;
 	}
+	
+	return $finalResult;
 }
 //Get info
 

@@ -81,19 +81,19 @@ function responsiveCode() {
 		$("body").each(function(){
 
 			var altoBody = bodyHeight;
-			var altoCaja = $(".verticalAlign").outerHeight(); 
+			var altoCaja = $(".JSverticalAlign").outerHeight(); 
 
 			if(altoBody > altoCaja)
 			{
-				$(".verticalAlign").css({"margin-top": -Math.abs(altoCaja / 2),
+				$(".JSverticalAlign").css({"margin-top": -Math.abs(altoCaja / 2),
 										 "position":"absolute",
 										 "top":"50%",
-										 "width":$(".verticalAlign").parent().width(),
+										 "width":$(".JSverticalAlign").parent().width(),
 										 "visibility":"visible"});
 			}
 			else
 			{
-				$(".verticalAlign").removeAttr("style");
+				$(".JSverticalAlign").removeAttr("style");
 			}
 		});
 		
@@ -190,11 +190,11 @@ function loadLightGallery(){
 			if($(this).hasClass("lightGalleryAuto")){
 				if($(this).hasClass("lightGalleryAutoNext")){
 					//Stuff to do on close
-					window.location.href = $(".lg-next").attr("href"); //Example Stuff
+					$(document).trigger("lightGalleryNext", [this]); ////Send data to event
 				}
 				else if($(this).hasClass("lightGalleryAutoPrev")){
 					//Stuff to do on close
-					window.location.href = $(".lg-prev").attr("href"); //Example Stuff
+					$(document).trigger("lightGalleryPrev", [this]); ////Send data to event
 				}
 				$(this).removeClass("lightGalleryAuto");
 				$(this).removeClass("lightGalleryAutoPrev");
@@ -279,28 +279,7 @@ function onElementHeightChange(elm, callback){
 
 //Text cut function
 function textCut(container){
-	/*jshint multistr: true */
-	var css = '.ellipsis > div{'+
-				'	position: relative;'+
-				'}'+
-				'.ellipsis > div:before {'+
-				'	content: "&nbsp;";'+
-				'	visibility: hidden;'+
-				'}'+
-				'.ellipsis > div > div {'+
-				'	position: absolute;'+
-				'	left: 0;'+
-				'	right: 0;'+
-				'	top: 0;'+
-				'	white-space: nowrap;'+
-				'	overflow: hidden;'+
-				'	text-overflow: ellipsis;'+
-				'}';
-	
-	$('head').append('<style type="text/css">'+css+'</style>');
-	
 	$(container).each(function(){
-		$(this).addClass("ellipsis");
 		$(this).html("<div><div>"+$(this).html()+"</div></div>");
 	});
 }
@@ -431,10 +410,10 @@ function videoLaunch(url, share, title){
 		embedShare = url;
 	}
 	
-	var content = '<iframe class="videoLaunchIframe" src="'+embedUrl+'" frameborder="0" allowfullscreen></iframe>';
+	var content = '<iframe class="JSvideoLaunchIframe" src="'+embedUrl+'" frameborder="0" allowfullscreen></iframe>';
 	
 	if(share){
-		content = content+'<div class="videoLaunchURL">'+
+		content = content+'<div class="JSvideoLaunchURL">'+
 							'	<b>'+embedShareTitle+' <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span></b>'+
 							'	<input class="clickSelect" type="text" value="'+embedShare+'" readonly title="'+embedShareText+'" data-toggle="tooltip" data-placement="bottom">'+
 							'</div>';
@@ -450,10 +429,10 @@ function videoLaunch(url, share, title){
 		$(".modal .modal-footer .btn:focus").blur();
 		//Modify facebook src
 		if (url.indexOf('facebook') >= 0){
-			var videoLaunchIframeSRC = $(".videoLaunchIframe").attr("src");
-			var videoLaunchIframeSRCwidth = $(".videoLaunchIframe").width();
-			var videoLaunchIframeSRCheight = $(".videoLaunchIframe").height();
-			$(".videoLaunchIframe").attr("src",videoLaunchIframeSRC+"&width="+videoLaunchIframeSRCwidth+"&height="+videoLaunchIframeSRCheight);
+			var videoLaunchIframeSRC = $(".JSvideoLaunchIframe").attr("src");
+			var videoLaunchIframeSRCwidth = $(".JSvideoLaunchIframe").width();
+			var videoLaunchIframeSRCheight = $(".JSvideoLaunchIframe").height();
+			$(".JSvideoLaunchIframe").attr("src",videoLaunchIframeSRC+"&width="+videoLaunchIframeSRCwidth+"&height="+videoLaunchIframeSRCheight);
 		}
 	});
 	
@@ -731,16 +710,6 @@ $(document).ready(function(){
 		autoBackground($(this));
 	});
 	
-	//Applu Data Tables
-	$('.dataTable').each(function(){
-		$(this).DataTable({
-			paging: toBoolean($(this).data('paginator')),
-			searching: toBoolean($(this).data('filter')),
-			info: toBoolean($(this).data('info')),
-			ordering: toBoolean($(this).data('ordering')),
-		});
-	});
-	
 	//Touch swipe bootstrap carousel
 	$("*[data-ride='carousel']").swipe({
 		swipe:function(event, direction, distance, duration, fingerCount, fingerData){
@@ -753,8 +722,25 @@ $(document).ready(function(){
 			}
 	});
 	
+	//Apply Text Cur
+	$(".JStextCut").each(function(){
+		textCut($(this));
+	});
+	
+	//Applu Data Tables
+	$('.JSdataTables').each(function(){
+		$(this).DataTable({
+			paging: toBoolean($(this).data('pages')),
+			searching: toBoolean($(this).data('filter')),
+			info: toBoolean($(this).data('info')),
+			ordering: toBoolean($(this).data('order')),
+		});
+	});
+	
+	
+	
 	//Text select on click
-	$(document).on("click", ".clickSelect", function(e) {
+	$(document).on("click", ".JSclickSelect", function(e) {
 		$(this).select();
 	});
 	

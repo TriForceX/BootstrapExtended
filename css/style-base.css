@@ -46,40 +46,6 @@ td[align='left']{
 }
 /* ================================================= GLOBAL ================================================= */
 
-/* ================================================= LOADING ================================================= */
-body > .loading{
-	background-image:url("icons/loading/loading-bg.png");
-	background-position:center center;
-	background-repeat:repeat;
-	background-color: transparent;
-	position:fixed;
-	width:100%;
-	height:100%;
-	z-index:999;
-	top:0px;
-}
-body > .loading > span{
-	background-position:center center;
-	background-repeat:no-repeat;
-	border-radius: 20px;
-	position:fixed;
-	width:100px;
-	height:100px;
-	top:50%;
-	left:50%;
-	margin-top:-50px;
-	margin-left:-50px;
-}
-body > .loading.red > span{
-	background-image:url("icons/loading/loading-icon-red.gif");
-	background-color:#d2040d;
-}
-body > .loading.blue > span{
-	background-image:url("icons/loading/loading-icon-blue.gif");
-	background-color:#486ca5;
-}
-/* ================================================= LOADING ================================================= */
-
 /* ================================================= PLUGINS ================================================= */
 
 /*Drop Down Menu*/
@@ -175,59 +141,6 @@ body > .loading.blue > span{
 }
 /*UI Date Picker*/
 
-/*Video Launch*/
-.videoLaunchText{
-	display:none !important;
-}
-.videoLaunchIframe{
-	display:inline-block;
-	width:100%;
-	height:488px;
-	border-radius:10px;
-	margin-bottom: 10px;
-}
-.videoLaunchURL{
-	display:inline-block;
-	width:100%;
-	text-align: center;
-	margin-bottom: -10px;
-}
-.videoLaunchURL b{
-	color: #FFF;
-	font-weight: normal;
-	background-color: @color-red;
-	border-radius: 3px;
-	font-size: 12px;
-	padding: 3px 5px;
-	margin-right: 5px;
-	padding-left: 8px;
-	display: inline-block;
-	margin-bottom: 10px;
-}
-.videoLaunchURL b span{
-	vertical-align: initial;
-	font-size: 11px;
-}
-.videoLaunchURL input{
-	display: inline-block;
-	border: 1px solid #a0a0a0;
-	font-size: 12px;
-	font-weight: normal;
-	padding: 2px 5px;
-	background-color: #FFF;
-	border-radius: 3px;
-	width: 285px;
-	max-width: 100%;
-	margin-bottom: 10px;
-	cursor: pointer;
-}
-@media (max-width: @screen-phone) {
-	.videoLaunchIframe{
-		height:270px;
-	}
-}
-/*Video Launch*/
-
 /*Carousel*/
 /* Fade transition for carousel items */
 .carousel-fade .carousel-inner .item {
@@ -301,6 +214,125 @@ body > .loading.blue > span{
 }
 /*LightGallery*/
 
+/* ================================================= PLUGINS ================================================= */
+
+/* ================================================= JAVASCRIPT ================================================= */
+
+/*JS Vertical Align*/
+.JSverticalAlign{
+	visibility: hidden;
+}
+/*JS Vertical Align*/
+
+/*JS Text Cut*/
+.JStextCut > div{
+	position: relative;
+}
+.JStextCut > div:before {
+	content: "&nbsp;";
+	visibility: hidden;
+}
+.JStextCut > div > div {
+	position: absolute;
+	left: 0;
+	right: 0;
+	top: 0;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+/*JS Text Cut*/
+
+/*JS Video Launch*/
+.JSvideoLaunchIframe{
+	background-color: #DDD;
+	display:inline-block;
+	width:100%;
+	height:488px;
+	border-radius:10px;
+	margin-bottom: 10px;
+}
+.JSvideoLaunchURL{
+	display:inline-block;
+	width:100%;
+	text-align: center;
+	margin-bottom: -10px;
+}
+.JSvideoLaunchURL b{
+	color: #FFF;
+	font-weight: normal;
+	background-color: @color-red;
+	border-radius: 3px;
+	font-size: 12px;
+	padding: 3px 5px;
+	margin-right: 5px;
+	padding-left: 8px;
+	display: inline-block;
+	margin-bottom: 10px;
+}
+.JSvideoLaunchURL b span{
+	vertical-align: initial;
+	font-size: 11px;
+}
+.JSvideoLaunchURL input{
+	display: inline-block;
+	border: 1px solid #a0a0a0;
+	font-size: 12px;
+	font-weight: normal;
+	padding: 2px 5px;
+	background-color: #FFF;
+	border-radius: 3px;
+	width: 285px;
+	max-width: 100%;
+	margin-bottom: 10px;
+	cursor: pointer;
+	text-align: center;
+}
+@media (max-width: @screen-phone) {
+	.JSvideoLaunchIframe{
+		height:270px;
+	}
+}
+/*JS Video Launch*/
+
+/*JS Loading*/
+.JSloading{
+	background-image:url("icons/loading/loading-bg.png");
+	background-position:center center;
+	background-repeat:repeat;
+	background-color: transparent;
+	position:fixed;
+	width:100%;
+	height:100%;
+	z-index:999;
+	top:0px;
+}
+.JSloading > span{
+	background-position:center center;
+	background-repeat:no-repeat;
+	border-radius: 20px;
+	position:fixed;
+	width:100px;
+	height:100px;
+	top:50%;
+	left:50%;
+	margin-top:-50px;
+	margin-left:-50px;
+}
+.JSloading.red > span{
+	background-image:url("icons/loading/loading-icon-red.gif");
+	background-color:#d2040d;
+}
+.JSloading.blue > span{
+	background-image:url("icons/loading/loading-icon-blue.gif");
+	background-color:#486ca5;
+}
+/*JS Loading*/
+
+/* ================================================= JAVASCRIPT ================================================= */
+
+/* ================================================= CUSTOM ================================================= */
+
 /*Disable Margin*/
 .no-margin{
 	margin: 0px;
@@ -337,4 +369,4 @@ body > .loading.blue > span{
 }
 /*Disable Padding*/
 
-/* ================================================= PLUGINS ================================================= */
+/* ================================================= CUSTOM ================================================= */

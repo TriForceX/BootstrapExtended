@@ -2,6 +2,17 @@ $(document).ready(function(){
 
 /* ================================================= DOCUMENT READY ================================================= */
 
+	
+	//Example lightGallery Prev/Next functions
+	$(document).on("lightGalleryNext", function(event, element){
+		window.location.href = $(".lg-next").attr("href"); 
+	});
+	
+	$(document).on("lightGalleryPrev", function(event, element){
+		window.location.href = $(".lg-prev").attr("href");
+	});
+	//Example lightGallery Prev/Next functions
+	
 	//Example keyboard input text
 	var exampleInput = 0;
 	$(document).keyup(function(e){

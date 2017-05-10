@@ -1,172 +1,6 @@
 <?php include('header.php'); ?>
 
-<style type="text/css">
-	.content{
-	  padding-bottom: 30px;
-	}
-	.theme-dropdown .dropdown-menu {
-	  position: static;
-	  display: block;
-	  margin-bottom: 20px;
-	}
-	.theme-showcase > p > .btn {
-	  margin: 5px 0;
-	}
-	.theme-showcase .navbar .container {
-	  width: auto;
-	}
-	.bs-example {
-	  position: relative;
-	  padding: 45px 15px 15px;
-	  margin: 0 -15px 15px;
-	  border-color: #e5e5e5 #eee #eee;
-	  border-style: solid;
-	  border-width: 1px 0;
-	  -webkit-box-shadow: inset 0 3px 6px rgba(0,0,0,.05);
-			  box-shadow: inset 0 3px 6px rgba(0,0,0,.05);
-	}
-	/* Echo out a label for the example */
-	/*
-	 * Examples
-	 *
-	 * Isolated sections of example content for each component or feature. Usually
-	 * followed by a code snippet.
-	 */
-
-	.bs-example {
-	  position: relative;
-	  padding: 45px 15px 15px;
-	  margin: 0 -15px 15px;
-	  border-color: #e5e5e5 #eee #eee;
-	  border-style: solid;
-	  border-width: 1px 0;
-	  -webkit-box-shadow: inset 0 3px 6px rgba(0,0,0,.05);
-			  box-shadow: inset 0 3px 6px rgba(0,0,0,.05);
-	}
-	/* Echo out a label for the example */
-	.bs-example:after {
-	  position: absolute;
-	  top: 15px;
-	  left: 15px;
-	  font-size: 12px;
-	  font-weight: bold;
-	  color: #959595;
-	  text-transform: uppercase;
-	  letter-spacing: 1px;
-	  content: "Example";
-	}
-
-	.bs-example-padded-bottom {
-	  padding-bottom: 24px;
-	}
-
-	/* Tweak display of the code snippets when following an example */
-	.bs-example + .highlight,
-	.bs-example + .zero-clipboard + .highlight {
-	  margin: -15px -15px 15px;
-	  border-width: 0 0 1px;
-	  border-radius: 0;
-	}
-
-	/* Make the examples and snippets not full-width */
-	@media (min-width: 768px) {
-	  .bs-example {
-		margin-right: 0;
-		margin-left: 0;
-		background-color: #fff;
-		border-color: #ddd;
-		border-width: 1px;
-		border-radius: 4px 4px 0 0;
-		-webkit-box-shadow: none;
-				box-shadow: none;
-	  }
-	  .bs-example + .highlight,
-	  .bs-example + .zero-clipboard + .highlight {
-		margin-top: -16px;
-		margin-right: 0;
-		margin-left: 0;
-		border-width: 1px;
-		border-bottom-right-radius: 4px;
-		border-bottom-left-radius: 4px;
-	  }
-	  .bs-example-standalone {
-		border-radius: 4px;
-	  }
-	}
-
-	/* Undo width of container */
-	.bs-example .container {
-	  width: auto;
-	}
-
-	/* Tweak content of examples for optimum awesome */
-	.bs-example > p:last-child,
-	.bs-example > ul:last-child,
-	.bs-example > ol:last-child,
-	.bs-example > blockquote:last-child,
-	.bs-example > .form-control:last-child,
-	.bs-example > .table:last-child,
-	.bs-example > .navbar:last-child,
-	.bs-example > .jumbotron:last-child,
-	.bs-example > .alert:last-child,
-	.bs-example > .panel:last-child,
-	.bs-example > .list-group:last-child,
-	.bs-example > .well:last-child,
-	.bs-example > .progress:last-child,
-	.bs-example > .table-responsive:last-child > .table {
-	  margin-bottom: 0;
-	}
-	.bs-example > p > .close {
-	  float: none;
-	}
-
-	/* Contextual background colors */
-	.bs-example-bg-classes p {
-	  padding: 15px;
-	}
-
-	/* Images */
-	.bs-example > .img-circle,
-	.bs-example > .img-rounded,
-	.bs-example > .img-thumbnail {
-	  margin: 5px;
-	}
-
-	/* Buttons */
-	.bs-example > .btn,
-	.bs-example > .btn-group {
-	  margin-top: 5px;
-	  margin-bottom: 5px;
-	}
-	.bs-example > .btn-toolbar + .btn-toolbar {
-	  margin-top: 10px;
-	}
-
-	.highlight {
-	  padding: 9px 14px;
-	  margin-bottom: 14px;
-	  background-color: #f7f7f9;
-	  border: 1px solid #e1e1e8;
-	  border-radius: 4px;
-	}
-	.highlight pre {
-	  padding: 0;
-	  margin-top: 0;
-	  margin-bottom: 0;
-	  word-break: normal;
-	  white-space: nowrap;
-	  background-color: transparent;
-	  border: 0;
-	}
-	.highlight pre code {
-	  font-size: inherit;
-	  color: #333; /* Effectively the base text color */
-	}
-	.highlight pre code:first-child {
-	  display: inline-block;
-	  padding-right: 45px;
-	}
-</style>
+<!-- ================================================= NAV MENU ================================================= -->
 
 <nav class="navbar navbar-inverse">
 	<div class="container">
@@ -245,11 +79,214 @@
 		<!--/.nav-collapse -->
 	</div>
 </nav>
+<!-- ================================================= NAV MENU ================================================= -->
 
 <!-- ================================================= CONTENT ================================================= -->
 <div class="content">
 	<div class="container theme-showcase" role="main">
 		<!-- MAIN CONTAINER -->
+		
+		<!-- ******** LOADING BAR ******** -->
+		
+		<div class="progress loadProgressTest">
+			<div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%"><span class="sr-only">80% Complete (danger)</span>
+			</div>
+		</div>
+		
+		<!-- ******** LOADING BAR ******** -->
+		
+		<!-- ******** STRUCTURE EXAMPLES ******** -->
+		
+		<div class="jumbotron">
+			<h1>Main Structure</h1>
+			<p>This template consists of two main parts, <code>header</code> and <code>footer</code>, which are called from the <code>index</code> (or pages). The <code>CSS</code> and <code>JS</code> files are called from a <code>PHP</code> file.</p>
+		</div>
+		
+		<!-- Header example -->
+		<div class="page-header">
+			<h1>Header <span class="label label-primary">Template</span></h1>
+		</div>
+		<p>The main header structure contains the access to main <code>PHP</code> functions, website data, <code>META</code> tags, <code>CSS</code> files (and the base one) and <code>HTML</code> header containers.</p>
+		
+		<figure class="highlight">
+			<pre><code class="language-html" data-lang="html">&lt;?php 
+//Main Functions
+require_once('plugins/index.php'); 
+
+//HTML Data
+$htmlData = array('lang'=>'en',
+		  'charset'=>'utf-8',
+		  'title'=>'Website Base',
+		  'mobile-capable'=>'yes',
+		  'viewport'=>'width=device-width, initial-scale=1, user-scalable=no',
+		  'nav-color'=>'#333333',
+		  'nav-color-apple'=>'black',
+		  'description'=>'Website based on Bootstrap with some CSS/JS/PHP improvements',
+		  'keywords'=>'html, jquery, javascript, php, responsive, css3',
+		  'author'=>'TriForce');
+?&gt;<br>&lt;!DOCTYPE html&gt;<br>...<br>&lt;!-- Main CSS File --&gt;<br>&lt;link href="&lt;?php echo get_siteinfo('url'); ?&gt;/css/index.php?url=&lt;?php echo get_siteinfo('url'); ?&gt;" rel="stylesheet"&gt;<br>...</code></pre>
+		</figure>
+		
+		<p>
+		<div class="panel panel-default">
+			<div class="panel-heading">
+				<h3 class="panel-title">Note for main PHP Functions</h3>
+			</div>
+			<div class="panel-body">
+				If you will use <code>Wordpress</code> or another <i>CMS</i> is recommended to use their functions (if exists) instead the included ones (in functions/index.php). The function <code>get_bloginfo()</code> is only for test purposes in this template.
+			</div>
+		</div>
+		</p>
+		
+		<!-- Index/page example -->
+		<div class="page-header">
+			<h1>Page <span class="label label-primary">Template</span></h1>
+		</div>
+		<p>The main page (or index) structure contains <code>HTML</code> contents and access to the main <code>header</code> and <code>footer</code> files.</p>
+		
+		<figure class="highlight">
+			<pre><code class="language-html" data-lang="html">&lt;?php include('header.php'); ?&gt;<br>&lt;div class="content"&gt;<br>...<br>&lt;/div&gt;<br>&lt;?php include('footer.php'); ?&gt;</code></pre>
+		</figure>
+		
+		<!-- Footer example -->
+		<div class="page-header">
+			<h1>Footer <span class="label label-primary">Template</span></h1>
+		</div>
+		<p>The main footer structure contains the access to <code>JS</code> files (and the base one) and <code>HTML</code> footer containers.</p>
+		
+		<figure class="highlight">
+			<pre><code class="language-html" data-lang="html">...<br>&lt;!-- Main JS File --&gt;<br>&lt;script src="&lt;?php echo get_siteinfo('url'); ?&gt;/js/index.php?url=&lt;?php echo get_siteinfo('url'); ?&gt;"&gt;&lt;/script&gt;<br>&lt;/body&gt;<br>&lt;/html&gt;</code></pre>
+		</figure>
+		
+		<!-- ******** STRUCTURE EXAMPLES ******** -->
+		
+		<p>&nbsp;</p>
+		
+		<!-- ******** CSS/JS EXAMPLES ******** -->
+		
+		<div class="jumbotron">
+			<h1>CSS & JS</h1>
+			<p>This template contains a <code>PHP</code> files to call <code>JS</code> and <code>CSS</code> files which are ordered and minified for a better reading.</p>
+		</div>
+		
+		<!-- CSS example -->
+		<div class="page-header">
+			<h1>CSS <span class="label label-success">Template</span></h1>
+		</div>
+		<p>The main file structure contains the access to <code>CSS</code> files and <code>Variables</code> to improve the use.</p>
+		
+		<table class="table table-bordered table-striped js-options-table">
+			<thead>
+				<tr>
+					<th>variable</th>
+					<th>description</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td>$cssFiles</td>
+					<td>Defines which <code>CSS</code> files will be called, you can add more to the array. The <code>style-fonts.css</code> is used to call <i>Fonts Files</i>, <code>style-theme.css</code> is used to define <i>Theme Styles</i>
+					</td>
+				</tr>
+				<tr>
+					<td>$cssMinify</td>
+					<td>Defines if the <code>CSS</code> code will be minified, this will reduce the size of the file to the client.
+					</td>
+				</tr>
+				<tr>
+					<td>$cssVariables</td>
+					<td>Defines custom variables to replace inside the <code>CSS</code>files, such as colors, sizes and another data.
+					</td>
+				</tr>
+			</tbody>
+		</table>
+		<figure class="highlight">
+			<pre><code class="language-html" data-lang="html">$cssFiles = array(
+		  $cssUrl.'/css/style-base.css',
+		  $cssUrl.'/css/style-fonts.css',
+		  $cssUrl.'/css/style-theme.css',
+		);<br>...<br>$cssVariables = array(
+			//Screen
+			'@screen-small-phone' => '320px', 
+			'@screen-medium-phone' => '360px',
+			'@screen-phone' => '480px',
+			'@screen-tablet' => '768px',
+			'@screen-desktop' => '992px',  
+			'@screen-widescreen' => '1200px', 
+			'@screen-full-hd' => '1920px', 
+			//Colors
+			'@color-red' => '#ff0000',
+			'@color-blue' => '#0000ff',
+			'@color-green' => '#00ff00',
+			'@color-yellow' => '#ffff00',
+		);</code></pre>
+		</figure>
+		
+		<!-- JS example -->
+		<div class="page-header">
+			<h1>JS <span class="label label-success">Template</span></h1>
+		</div>
+		<p>The main file structure contains the access to <code>JS</code> files and <code>Variables</code> to improve the use.</p>
+		
+		<table class="table table-bordered table-striped js-options-table">
+			<thead>
+				<tr>
+					<th>variable</th>
+					<th>description</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td>$jsFiles</td>
+					<td>Defines which <code>JS</code> files will be called, you can add more to the array. The <code>app-ready.js</code> is used to be executed on <i>DOM Ready</i>, <code>app-load.js</code> is used to be executed on <i>Window Load</i> and <code>app-responsive.js</code> is used to be executed on <i>Responsive Changes</i>
+					</td>
+				</tr>
+				<tr>
+					<td>$jsMinify</td>
+					<td>Defines if the <code>JS</code> code will be minified, this will reduce the size of the file to the client.
+					</td>
+				</tr>
+				<tr>
+					<td>$jsVariables</td>
+					<td>Defines custom variables to replace inside the <code>JS</code>files, such as colors, sizes and another data. <b>Note:</b> is important to keep the <code>@global-url</code> variable and the <code>@screen</code> ones, because are used in the <i>Base</i> code.
+					</td>
+				</tr>
+			</tbody>
+		</table>
+		<figure class="highlight">
+			<pre><code class="language-html" data-lang="html">$jsFiles = array(
+		  $jsUrl.'/js/app-base.js',
+		  $jsUrl.'/js/app-ready.js',
+		  $jsUrl.'/js/app-load.js',
+		  $jsUrl.'/js/app-responsive.js',
+		);<br>...<br>$jsVariables = array(
+			//Screen
+			'@screen-small-phone' => '320', 
+			'@screen-medium-phone' => '360',
+			'@screen-phone' => '480',
+			'@screen-tablet' => '768',
+			'@screen-desktop' => '992',  
+			'@screen-widescreen' => '1200', 
+			'@screen-full-hd' => '1920', 
+			//Global
+			'@global-url' => $jsUrl,
+		);</code></pre>
+		</figure>
+		
+		<p>
+		<div class="panel panel-default">
+			<div class="panel-heading">
+				<h3 class="panel-title">Note for CSS and JS files</h3>
+			</div>
+			<div class="panel-body">
+				The main <code>CSS</code> and JS</code> files are placed in their <i>CSS/JS</i> folders (called <i>index.php</i>), this also applies to <code>Plugins</code> or <code>Code Snippets</code> in the <i>Plugins</i> folder.
+			</div>
+		</div>
+		</p>
+		
+		<!-- ******** CSS/JS EXAMPLES ******** -->
+		
+		<p>&nbsp;</p>
 		
 		<!-- ******** PLUGINS EXAMPLES ******** -->
 
@@ -264,14 +301,8 @@
 		echo $info;*/
 
 		?>
-		
-		<!-- Load Test -->
-		<div class="progress loadProgressTest">
-			<div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%"><span class="sr-only">80% Complete (danger)</span>
-			</div>
-		</div>
 
-		<!-- Main jumbotron for a primary marketing message or call to action -->
+		<!-- Section description -->
 		<div class="jumbotron">
 			<h1>Plugins Examples</h1>
 			<p>Some useful code functions and improvments in <code>PHP</code> or <code>JS</code> using the included plugins in this repository.</p>
@@ -486,7 +517,7 @@
 		</table>
 
 		<div class="bs-example">
-			<table class="dataTable table-striped cell-border" data-paginator="true" data-filter="false" data-info="false" data-ordering="true" cellspacing="0" cellpadding="0" border="0">
+			<table class="table-striped cell-border JSdataTables" data-pages="true" data-filter="false" data-info="false" data-order="true" cellspacing="0" cellpadding="0" border="0">
 				<thead>
 					<tr>
 						<th>Name</th>
@@ -958,7 +989,7 @@
 			</table>
 		</div>
 		<figure class="highlight">
-			<pre><code class="language-html" data-lang="html">&lt;table class="dataTable" data-paginator="true" data-filter="false" data-info="false" data-ordering="true"&gt;<br>...<br>&lt;/table&gt;</code></pre>
+			<pre><code class="language-html" data-lang="html">&lt;table class="JSdataTables" data-pages="true" data-filter="false" data-info="false" data-order="true"&gt;<br>...<br>&lt;/table&gt;</code></pre>
 		</figure>
 
 		<!-- Show alert example -->

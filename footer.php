@@ -2,7 +2,7 @@
 <div class="footer">
 	<div class="container">
 		<!-- FOOTER CONTAINER -->
-    	
+		
 		<!-- FOOTER CONTAINER -->
     </div>
 </div>
@@ -39,7 +39,7 @@
 <script src="<?php echo get_siteinfo('url'); ?>/plugins/lightgallery/js/lg-zoom.js"></script>
 <script src="<?php echo get_siteinfo('url'); ?>/plugins/lightgallery/js/lg-hash.js"></script>
 <script src="<?php echo get_siteinfo('url'); ?>/plugins/lightgallery/js/lg-pager.js"></script>
-<!-- Custom APPs -->
+<!-- Main JS File -->
 <script src="<?php echo get_siteinfo('url'); ?>/js/index.php?url=<?php echo get_siteinfo('url'); ?>"></script>
 </body>
 </html>

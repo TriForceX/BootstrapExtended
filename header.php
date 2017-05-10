@@ -18,6 +18,10 @@ $htmlData = array('lang'=>'en',
 <html lang="<?php echo $htmlData['lang']; ?>">
 <head>
 	<title><?php echo $htmlData['title']; ?> &raquo; <?php echo get_siteinfo('page'); ?></title>
+	
+	<!-- ******** META TAGS ******** -->
+	
+	<!-- HTML Charset -->
 	<meta charset="<?php echo $htmlData['charset']; ?>">
 	<!-- Mobile Enable -->
 	<meta name="mobile-web-app-capable" content="<?php echo $htmlData['mobile-capable']; ?>">
@@ -32,6 +36,11 @@ $htmlData = array('lang'=>'en',
 	<meta name="description" content="<?php echo $htmlData['description']; ?>"/>
 	<meta name="keywords" content="<?php echo $htmlData['keywords']; ?>" />
 	<meta name="author" content="<?php echo $htmlData['author']; ?>" />
+	
+	<!-- ******** META TAGS ******** -->
+	
+	<!-- ******** CSS FILES ******** -->
+	
 	<!-- Tab & App Icons -->
 	<link href="<?php echo get_siteinfo('url'); ?>/css/icons/favicon/favicon.png" rel="shortcut icon">
 	<link href="<?php echo get_siteinfo('url'); ?>/css/icons/favicon/favicon-apple.png" rel="apple-touch-icon"/>
@@ -49,21 +58,23 @@ $htmlData = array('lang'=>'en',
 	<link href="<?php echo get_siteinfo('url'); ?>/plugins/lightgallery/css/lightgallery.css" rel="stylesheet">
 	<link href="<?php echo get_siteinfo('url'); ?>/plugins/lightgallery/css/lg-transitions.css" rel="stylesheet">
 	<link href="<?php echo get_siteinfo('url'); ?>/plugins/lightgallery/css/lg-fb-comment-box.css" rel="stylesheet">
-	<!-- CSS Dynamic -->
+	<!-- Main CSS File -->
 	<link href="<?php echo get_siteinfo('url'); ?>/css/index.php?url=<?php echo get_siteinfo('url'); ?>" rel="stylesheet">
 	<!-- IE8 support of HTML5 elements and media queries -->
 	<!--[if lt IE 9]>
 	<script src="<?php echo get_siteinfo('url'); ?>/plugins/bootstrap/js/html5shiv.min.js"></script>
 	<script src="<?php echo get_siteinfo('url'); ?>/plugins/bootstrap/js/respond.min.js"></script>
 	<![endif]-->
+	
+	<!-- ******** CSS FILES ******** -->
 </head>
-<?php if(is_home()): ?>
+<?php if(get_siteinfo('home')): ?>
 <body class="isHome">
 <?php else: ?>
 <body>
 <?php endif; ?>
 <!-- ================================================= ANALYTICS ================================================= -->
-<?php if(is_localhost()): ?>
+<?php if(get_siteinfo('localhost')): ?>
 <?php echo "\n"; //Dont track in localhost ?>
 <?php else: ?>
 <?php echo "\n"; ?>
