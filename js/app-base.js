@@ -30,17 +30,28 @@ var isNavEdge;
 
 })();
 
-//Extend Functions
+//Check attr function
 $.fn.hasAttr = function(name) {  
    return this.attr(name) !== undefined;
 };
+
+//Check outer height with padding/margin
 $.fn.outerHeight2 = function () {
 	return this[0].getBoundingClientRect().height;
 };
+
+//Check outer width with padding/margin
 $.fn.outerWidth2 = function () {
 	return this[0].getBoundingClientRect().width;
 };
-$.fn.validateForm = function() {
+
+//Form validate
+$.fn.validateForm = function(options) {
+	
+	var settings = $.extend({
+		noValidate: '',
+		searchMode: false,
+	}, options);
 	
 	$(this).submit(function(event){ 
 		
@@ -49,12 +60,13 @@ $.fn.validateForm = function() {
 		var formErrorText = [{'text': '@validate-text', 
 							  'pass': '@validate-pass', 
 							  'email': '@validate-email',
+							  'search': '@validate-search',
 							  'checkbox':'@validate-checkbox',
 							  'textarea':'@validate-textarea',
 							  'select':'@validate-select'}];
 
 		//Select inputs
-		$(this).find('select').not('.JSvalidateNotRequired').each(function(){
+		$(this).find('select').not(settings.noValidate).each(function(){
 			if (!validateEmpty($(this).find("option:selected").attr("value"))) { 
 				$(this).addClass("JSvalidateError");
 				formError = formErrorText[0]['select'];
@@ -65,7 +77,7 @@ $.fn.validateForm = function() {
 		});
 		
 		//Textarea inputs
-		$(this).find('textarea').not('.JSvalidateNotRequired').each(function(){
+		$(this).find('textarea').not(settings.noValidate).each(function(){
 			if (!validateEmpty($.trim($(this).val()))) { 
 				$(this).addClass("JSvalidateError");
 				formError = formErrorText[0]['textarea'];
@@ -76,7 +88,7 @@ $.fn.validateForm = function() {
 		});
 
 		//Checkbox inputs
-		$(this).find('input[type="checkbox"]').not('.JSvalidateNotRequired').each(function(){
+		$(this).find('input[type="checkbox"]').not(settings.noValidate).each(function(){
 			if (!$(this).is(':checked')) { 
 				$(this).addClass("JSvalidateError");
 				formError = formErrorText[0]['checkbox'];
@@ -85,9 +97,20 @@ $.fn.validateForm = function() {
 				$(this).removeClass("JSvalidateError");
 			}
 		});
+		
+		//Search inputs
+		$(this).find('input[type="search"]').not(settings.noValidate).each(function(){
+			if (!validateEmpty($(this).val())) { 
+				$(this).addClass("JSvalidateError");
+				formError = formErrorText[0]['search'];
+			}
+			else{
+				$(this).removeClass("JSvalidateError");
+			}
+		});
 
 		//Email inputs
-		$(this).find('input[type="email"]').not('.JSvalidateNotRequired').each(function(){
+		$(this).find('input[type="email"]').not(settings.noValidate).each(function(){
 			if (!validateEmpty($(this).val()) || !validateEmail($(this).val())) { 
 				$(this).addClass("JSvalidateError");
 				formError = formErrorText[0]['email'];
@@ -98,7 +121,7 @@ $.fn.validateForm = function() {
 		});
 
 		//Text inputs (password)
-		$(this).find('input[type="password"]').not('.JSvalidateNotRequired').each(function(){
+		$(this).find('input[type="password"]').not(settings.noValidate).each(function(){
 			if (!validateEmpty($(this).val())) { 
 				$(this).addClass("JSvalidateError");
 				formError = formErrorText[0]['pass'];
@@ -109,7 +132,7 @@ $.fn.validateForm = function() {
 		});
 
 		//Text inputs
-		$(this).find('input[type="text"]').not('.JSvalidateNotRequired').each(function(){
+		$(this).find('input[type="text"]').not(settings.noValidate).each(function(){
 			if (!validateEmpty($(this).val())) { 
 				$(this).addClass("JSvalidateError");
 				formError = formErrorText[0]['text'];
@@ -124,7 +147,11 @@ $.fn.validateForm = function() {
 			showAlert(formErrorTitle,formError);
 			event.preventDefault();
 		}
-				
+		//Check search mode
+		if(settings.searchMode){
+			var searchValue = $(this).find('input[type="search"]').val().replace(/ /g,'+');
+			$(this).attr("action", $(this).attr("action")+searchValue);
+		}
 	});
 };
 
@@ -496,8 +523,8 @@ function videoLaunch(url, share, title){
 	var ID;
 	var embedUrl;
 	var embedShare;
-	var embedShareTitle = 'Share Link';
-	var embedShareText = 'Copy & paste this URL to share';
+	var embedShareTitle = '@videolaunch-title';
+	var embedShareText = '@videolaunch-text';
 	
 	if(typeof share === 'undefined' || share === null){
 		share = false;
@@ -566,26 +593,6 @@ function convertToSlug(Text){
 	    .replace(/[^\w ]+/g,'')
 	    .replace(/ +/g,'-')
 	    ;
-}
-
-//Serach input function
-function searchInput(button){
-	
-	var page = $(Contenedor).data("search-page");
-	var test = $(Contenedor).val().replace(/(<([^>]+)>)/ig,"");
-	
-	
-	if ( button.val() == "" ||
-		 button.val() == null ||
-		 button.val() == "undefinied" )
-	{ 
-		showAlert("Search","Please fill the search field.");
-	}
-	else
-	{
-		window.location=mainUrl+'/'+page+'/?search='+text;
-	}
-		
 }
 
 //Auto scroll function
@@ -849,8 +856,6 @@ $(document).ready(function(){
 			ordering: toBoolean($(this).data('order')),
 		});
 	});
-	
-	
 	
 	//Text select on click
 	$(document).on("click", ".JSclickSelect", function(e) {

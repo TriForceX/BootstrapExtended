@@ -111,7 +111,7 @@
 		<figure class="highlight">
 			<pre><code class="language-html" data-lang="html">&lt;?php 
 //Main Functions
-require_once('plugins/index.php'); 
+require_once('plugins/functions.php'); 
 
 //HTML Data
 $htmlData = array('lang'=>'en',
@@ -124,7 +124,7 @@ $htmlData = array('lang'=>'en',
 		  'description'=>'Website based on Bootstrap with some CSS/JS/PHP improvements',
 		  'keywords'=>'html, jquery, javascript, php, responsive, css3',
 		  'author'=>'TriForce');
-?&gt;<br>&lt;!DOCTYPE html&gt;<br>...<br>&lt;!-- Main CSS File --&gt;<br>&lt;link href="&lt;?php echo get_siteinfo('url'); ?&gt;/css/index.php?url=&lt;?php echo get_siteinfo('url'); ?&gt;" rel="stylesheet"&gt;<br>...</code></pre>
+?&gt;<br>&lt;!DOCTYPE html&gt;<br>...<br>&lt;!-- Main CSS File --&gt;<br>&lt;link href="&lt;?php echo get_siteinfo('url'); ?&gt;/css/style.php?url=&lt;?php echo get_siteinfo('url'); ?&gt;" rel="stylesheet"&gt;<br>...</code></pre>
 		</figure>
 		
 		<p>
@@ -133,7 +133,7 @@ $htmlData = array('lang'=>'en',
 				<h3 class="panel-title">Note for main PHP Functions</h3>
 			</div>
 			<div class="panel-body">
-				If you will use <code>Wordpress</code> or another <i>CMS</i> is recommended to use their functions (if exists) instead the included ones (in functions/index.php). The function <code>get_bloginfo()</code> is only for test purposes in this template.
+				If you will use <code>Wordpress</code> or another <i>CMS</i> is recommended to use their functions (if exists) instead the included ones (in plugins/functions.php). The function <code>get_bloginfo()</code> is only for test purposes in this template.
 			</div>
 		</div>
 		</p>
@@ -155,7 +155,7 @@ $htmlData = array('lang'=>'en',
 		<p>The main footer structure contains the access to <code>JS</code> files (and the base one) and <code>HTML</code> footer containers.</p>
 		
 		<figure class="highlight">
-			<pre><code class="language-html" data-lang="html">...<br>&lt;!-- Main JS File --&gt;<br>&lt;script src="&lt;?php echo get_siteinfo('url'); ?&gt;/js/index.php?url=&lt;?php echo get_siteinfo('url'); ?&gt;"&gt;&lt;/script&gt;<br>&lt;/body&gt;<br>&lt;/html&gt;</code></pre>
+			<pre><code class="language-html" data-lang="html">...<br>&lt;!-- Main JS File --&gt;<br>&lt;script src="&lt;?php echo get_siteinfo('url'); ?&gt;/js/app.php?url=&lt;?php echo get_siteinfo('url'); ?&gt;"&gt;&lt;/script&gt;<br>&lt;/body&gt;<br>&lt;/html&gt;</code></pre>
 		</figure>
 		
 		<!-- ******** STRUCTURE EXAMPLES ******** -->
@@ -1151,14 +1151,14 @@ $htmlData = array('lang'=>'en',
 		<p>Basic validation for <code>input</code>, <code>select</code>, <code>checkbox</code> and <code>textarea</code> elements.</p>
 		
 		<div class="bs-example">
-			<form class="JSformExample" action="javascript:showAlert('Form Success!','The form passed sucessfully! Thanks!');">
+			<form class="JSformExample" method="post" action="javascript:showAlert('Form Success!','The form passed sucessfully! Thanks!');">
 				<div class="form-group">
 					<label for="example-input-name">Name</label>
 					<input type="text" class="form-control" id="example-input-name" placeholder="Type your Name">
 				</div>
 				<div class="form-group">
 					<label for="example-input-lastname">Last Name</label>
-					<input type="text" class="form-control JSvalidateNotRequired" id="example-input-lastname" placeholder="Type your Last Name">
+					<input type="text" class="form-control" id="example-input-lastname" placeholder="Type your Last Name (Optional)">
 				</div>
 				<div class="form-group">
 					<label for="example-input-email">E-Mail address</label>
@@ -1191,6 +1191,32 @@ $htmlData = array('lang'=>'en',
 				<button type="submit" class="btn btn-default">Submit</button>
 			</form>
 		</div>
+		<figure class="highlight">
+			<pre><code class="language-html" data-lang="html">$(".JSformExample").validateForm({
+	noValidate: "#example-input-lastname",
+	searchMode: false,
+});</code></pre>
+		</figure>
+		
+		<h3>Search form</h3>
+		<p>This mode allows to change the functionallity to search inputs</p>
+
+		<div class="bs-example">
+			<form class="JSformExampleSearch" method="post" action="<?php echo get_siteinfo('url'); ?>/example.php?search=">
+				<div class="input-group">
+				  <input type="search" class="form-control" placeholder="Search for...">
+				  <span class="input-group-btn">
+					<input class="btn btn-default" type="submit" value="Go!">
+				  </span>
+				</div>
+			</form>
+		</div>
+		<figure class="highlight">
+			<pre><code class="language-html" data-lang="html">$(".JSformExample").validateForm({
+	noValidate: "#example-input-lastname",
+	searchMode: true,
+});</code></pre>
+		</figure>
 
 		<!-- ******** BOOTSTRAP THEME EXAMPLES ******** -->
 		

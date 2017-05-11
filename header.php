@@ -1,6 +1,6 @@
 <?php 
 //Main Functions
-require_once('plugins/index.php'); 
+require_once('plugins/functions.php'); 
 
 //HTML Data
 $htmlData = array('lang'=>'en',
@@ -59,7 +59,7 @@ $htmlData = array('lang'=>'en',
 	<link href="<?php echo get_siteinfo('url'); ?>/plugins/lightgallery/css/lg-transitions.css" rel="stylesheet">
 	<link href="<?php echo get_siteinfo('url'); ?>/plugins/lightgallery/css/lg-fb-comment-box.css" rel="stylesheet">
 	<!-- Main CSS File -->
-	<link href="<?php echo get_siteinfo('url'); ?>/css/index.php?url=<?php echo get_siteinfo('url'); ?>" rel="stylesheet">
+	<link href="<?php echo get_siteinfo('url'); ?>/css/style.php?url=<?php echo get_siteinfo('url'); ?>" rel="stylesheet">
 	<!-- IE8 support of HTML5 elements and media queries -->
 	<!--[if lt IE 9]>
 	<script src="<?php echo get_siteinfo('url'); ?>/plugins/bootstrap/js/html5shiv.min.js"></script>
