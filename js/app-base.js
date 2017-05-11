@@ -44,47 +44,107 @@ $.fn.validateForm = function() {
 	
 	$(this).submit(function(event){ 
 		
-		var formError = true;
+		var formError = false;
+		var formErrorTitle = '@validate-title';
+		var formErrorText = [{'text': '@validate-text', 
+							  'pass': '@validate-pass', 
+							  'email': '@validate-email',
+							  'checkbox':'@validate-checkbox',
+							  'textarea':'@validate-textarea',
+							  'select':'@validate-select'}];
 
-		$(this).find( 'input[type="text"]').each(function(){
-			if ($(this).val() === '' ) { 
+		//Select inputs
+		$(this).find('select').not('.JSvalidateNotRequired').each(function(){
+			if (!validateEmpty($(this).find("option:selected").attr("value"))) { 
 				$(this).addClass("JSvalidateError");
-				formError = false;
+				formError = formErrorText[0]['select'];
+			}
+			else{
+				$(this).removeClass("JSvalidateError");
+			}
+		});
+		
+		//Textarea inputs
+		$(this).find('textarea').not('.JSvalidateNotRequired').each(function(){
+			if (!validateEmpty($.trim($(this).val()))) { 
+				$(this).addClass("JSvalidateError");
+				formError = formErrorText[0]['textarea'];
 			}
 			else{
 				$(this).removeClass("JSvalidateError");
 			}
 		});
 
-		if (formError == false){
-			showAlert('Form Error','Please fill the fields');
+		//Checkbox inputs
+		$(this).find('input[type="checkbox"]').not('.JSvalidateNotRequired').each(function(){
+			if (!$(this).is(':checked')) { 
+				$(this).addClass("JSvalidateError");
+				formError = formErrorText[0]['checkbox'];
+			}
+			else{
+				$(this).removeClass("JSvalidateError");
+			}
+		});
+
+		//Email inputs
+		$(this).find('input[type="email"]').not('.JSvalidateNotRequired').each(function(){
+			if (!validateEmpty($(this).val()) || !validateEmail($(this).val())) { 
+				$(this).addClass("JSvalidateError");
+				formError = formErrorText[0]['email'];
+			}
+			else{
+				$(this).removeClass("JSvalidateError");
+			}
+		});
+
+		//Text inputs (password)
+		$(this).find('input[type="password"]').not('.JSvalidateNotRequired').each(function(){
+			if (!validateEmpty($(this).val())) { 
+				$(this).addClass("JSvalidateError");
+				formError = formErrorText[0]['pass'];
+			}
+			else{
+				$(this).removeClass("JSvalidateError");
+			}
+		});
+
+		//Text inputs
+		$(this).find('input[type="text"]').not('.JSvalidateNotRequired').each(function(){
+			if (!validateEmpty($(this).val())) { 
+				$(this).addClass("JSvalidateError");
+				formError = formErrorText[0]['text'];
+			}
+			else{
+				$(this).removeClass("JSvalidateError");
+			}
+		});
+
+		//Send error
+		if(formError != false){
+			showAlert(formErrorTitle,formError);
 			event.preventDefault();
 		}
 				
 	});
 };
 
-function emailValido(email){
-    
+//Form validate email
+function validateEmail(field){
     var emailReg = /^([\w-\.]+@([\w-]+\.)+[\w-]{2,4})?$/;
     
-    if (email == ''){
+	if (!emailReg.test(field)){
         return false;
-    }
-    
-    if (emailReg.test(email)){
-        return true;
-        
     }else{
-        return false;
+        return true;
     }
 }
-function checkEmpty(field){
-    if (field == "" ||
-        field == null ||
-        field == "undefinied"){
 
-        return false;
+//Form validate empty
+function validateEmpty(field){
+    if(field == "" ||
+       field == null ||
+       field == "undefinied"){
+    	return false;
     }
     else if(/^\s*$/.test(field)){
         return false;
@@ -93,7 +153,6 @@ function checkEmpty(field){
         return true;
     }
 }
-
 
 //Convert string to boolean
 function toBoolean(value) {

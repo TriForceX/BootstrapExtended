@@ -1158,7 +1158,7 @@ $htmlData = array('lang'=>'en',
 				</div>
 				<div class="form-group">
 					<label for="example-input-lastname">Last Name</label>
-					<input type="text" class="form-control" id="example-input-lastname" placeholder="Type your Last Name">
+					<input type="text" class="form-control JSvalidateNotRequired" id="example-input-lastname" placeholder="Type your Last Name">
 				</div>
 				<div class="form-group">
 					<label for="example-input-email">E-Mail address</label>

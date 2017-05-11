@@ -28,6 +28,14 @@
 						'@screen-full-hd' => '1920', 
 						//Global
 						'@global-url' => $jsUrl,
+						//Validation
+						'@validate-title' => 'Form Alert', 
+						'@validate-text' => 'Please fill the fields.', 
+						'@validate-pass' => 'Please fill your password.', 
+						'@validate-email' => 'Please type a correct E-Mail.',
+						'@validate-checkbox' => 'Please check an option.',
+						'@validate-textarea' => 'Please write a message.',
+						'@validate-select' => 'Please select an option.',
 					);
 
 	$jsKey = array_keys($jsVariables);
