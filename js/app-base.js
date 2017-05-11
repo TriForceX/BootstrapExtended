@@ -260,7 +260,6 @@ function loadLightGallery(){
 	
 	$(".JSlightGallery").each(function(){ 
 
-		var getMainUrl = mainUrl;
 		var galSelectorVal = $(this).attr("lg-selector") == "auto" ? ".lg-contentphoto" : $(this).attr("lg-selector");
 		var galThumbnailVal = $(this).attr("lg-thumbnail");
 		var galDownloadVal = $(this).attr("lg-download");
@@ -268,9 +267,9 @@ function loadLightGallery(){
 		var galGalleryMode = $(this).attr("lg-gallerymode") == "true" ? $(this).addClass("lightGalleryMode") : '';
 		var galPrevGalText = "Loading previous page ...";
 		var galNextGalText = "Loading next page ...";
-		var galLoadThumb = getMainUrl+"/plugins/lightgallery/img/lg-loading-icon.gif";
-		var galPrevThumb = getMainUrl+"/plugins/lightgallery/img/lg-loading-prev.png";
-		var galNextThumb = getMainUrl+"/plugins/lightgallery/img/lg-loading-next.png";
+		var galLoadThumb = mainUrl+"/plugins/lightgallery/img/lg-loading-icon.gif";
+		var galPrevThumb = mainUrl+"/plugins/lightgallery/img/lg-loading-prev.png";
+		var galNextThumb = mainUrl+"/plugins/lightgallery/img/lg-loading-next.png";
 		
 		if($(".JSlightGallery.lightGalleryMode .lg-prevthumb").length < 1 && $(".JSlightGallery.lightGalleryMode .lg-nextthumb").length < 1){
 			$(".JSlightGallery.lightGalleryMode").prepend("<div class='lg-prevthumb' href='"+galLoadThumb+"' title='"+galPrevGalText+"'><img src='"+galPrevThumb+"'></div>");
@@ -723,38 +722,41 @@ function checkDisabledLink(string){
 }
 
 //Window pop-up function
-function windowPopup(url, width, height, alignX, alignY, scroll) {
+function windowPopup(element){
 	
     var leftPosition;
 	var topPosition;
-	var getScroll = scroll == true ? 'yes' : 'no';
+	var getUrl = $(element).data('url');
+	var getSize = $(element).data('size').split('x');
+	var getAlign = $(element).data('align').split(',');
+	var getScroll = $(element).data('scroll');
 	
 	//Horizontal Align
-	if(alignX=="right"){
+	if(getAlign[0]=="right"){
 		leftPosition = window.screen.width;
 	}
-	else if(alignX=="left"){
+	else if(getAlign[0]=="left"){
 		leftPosition = 0;
 	}
 	else{
-		leftPosition = (window.screen.width / 2) - ((width / 2) + 10);//Allow for borders.
+		leftPosition = (window.screen.width / 2) - ((getSize[0] / 2) + 10);//Allow for borders.
 	}
 
 	//Vertical Align
-	if(alignY=="top"){
+	if(getAlign[1]=="top"){
 		topPosition = 0;
 	}
-	else if(alignY=="bottom"){
+	else if(getAlign[1]=="bottom"){
 		topPosition = window.screen.height;
 	}
 	else{
-		topPosition = (window.screen.height / 2) - ((height / 2) + 50);//Allow for title and status bars.
+		topPosition = (window.screen.height / 2) - ((getSize[0] / 2) + 50);//Allow for title and status bars.
 	}
 	
     //Open the window.
-    window.open(url,"WindowPopupJS","status=no,"+
-									"height="+height+","+
-									"width="+width+","+
+    window.open(getUrl,"WindowPopupJS","status=no,"+
+									"width="+getSize[0]+","+
+									"height="+getSize[1]+","+
 									"resizable=yes,"+
 									"left="+leftPosition+","+
 									"top="+topPosition+","+
@@ -767,6 +769,37 @@ function windowPopup(url, width, height, alignX, alignY, scroll) {
 									"directories=no");
 }
 
+//Map launch function
+function mapLaunch(element){
+	
+	var mapContent;
+	var mapTitle = "@maplaunch-title";
+	var mapText = "@maplaunch-text";
+	var mapIcon1 = mainUrl+"/css/icons/maplaunch/google-maps.png";
+	var mapIcon2 = mainUrl+"/css/icons/maplaunch/waze.png";
+	var mapCoords = $(element).data('map-coords').split(',');
+	var mapAddress = $(element).data('map-address');
+	var mapAddressUrl = encodeURI(mapAddress).replace(/%20/g,'+');
+	var mapLaunchUrl1 = isMobile == true ? 'http://maps.google.com/maps?q='+mapCoords[0]+','+mapCoords[1]+','+mapCoords[2]+'z' : 
+										   'https://www.google.cl/maps/search/'+mapAddressUrl+'/@'+mapCoords[0]+','+mapCoords[1]+','+mapCoords[2]+'z';
+	var mapLaunchUrl2 = isMobile == true ? 'waze://?ll='+mapCoords[0]+','+mapCoords[1]+'&navigate=yes' : 
+										   'https://www.waze.com/livemap?zoom='+mapCoords[2]+'&lat='+mapCoords[0]+'&lon='+mapCoords[1];
+	
+	mapContent = '<div class="JSmapLaunchInfo">'+
+				'	<span class="label label-primary">'+mapText+'</span>'+
+				'	<div class="JSmapLaunchIcons">'+
+				'		<a href="'+mapLaunchUrl1+'" target="_blank">'+
+				'			<img src="'+mapIcon1+'">'+
+				'		</a>'+
+				'		<a href="'+mapLaunchUrl2+'" target="_blank">'+
+				'			<img src="'+mapIcon2+'">'+
+				'		</a>'+
+				'	</div>'+
+				'	<div class="well">'+mapAddress+'</div>'+
+				'</div>';
+	
+	showAlert(mapTitle, mapContent, 'small');
+}
 /* ================================================= FUNCTIONS ================================================= */
 
 $(document).ready(function(){
@@ -779,13 +812,8 @@ $(document).ready(function(){
 	//Load LightGallery
 	loadLightGallery();
 
-	//Is Home
-	if ($(".isHome").length > 0){
-		isHome = true;
-	}
-	else{
-		isHome = false;
-	}
+	//Check home
+	isHome = $(".isHome").length > 0 ? true : false;
 
 	//Check mobile
 	isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini|BB10|PlayBook|MeeGo/i.test(navigator.userAgent);
@@ -815,19 +843,19 @@ $(document).ready(function(){
 	console.log(browserTest);*/
 
 	//Tooltip load
-	$('*[data-toggle="tooltip"]').tooltip();
+	$("*[data-toggle='tooltip']").tooltip();
 	
 	//Popover load
-	$('*[data-toggle="popover"]').popover();
+	$("*[data-toggle='popover']").popover();
 
-	//Carousel timer
-	$('*[data-interval]').carousel({
-		interval: $(this).data('interval');
-	});
-	
 	//Apply Auto Background
 	$("*[data-auto-bg]").each(function(){
 		autoBackground($(this));
+	});
+	
+	//Carousel timer
+	$("*[data-ride='carousel']").carousel({
+		interval: (validateEmpty($(this).data('interval'))) ? $(this).data('interval') : '2222',
 	});
 	
 	//Touch swipe bootstrap carousel
@@ -857,13 +885,23 @@ $(document).ready(function(){
 		});
 	});
 	
+	//Map Launch on click
+	$(document).on("click", ".JSwindowPopup", function(e){
+		windowPopup($(this));
+	});
+	
+	//Map Launch on click
+	$(document).on("click", ".JSmapLaunch", function(e){
+		mapLaunch($(this));
+	});
+	
 	//Text select on click
-	$(document).on("click", ".JSclickSelect", function(e) {
+	$(document).on("click", ".JSclickSelect", function(e){
 		$(this).select();
 	});
 	
 	//Modal on disabled links
-	$(document).on("click", "a[href*=#]", function(e) {
+	$(document).on("click", "a[href*=#]", function(e){
 		var source =  $(this).attr("href");
 
 		if(!(checkDisabledLink(source))){

@@ -334,6 +334,37 @@ td[align='left']{
 	border:1px solid #FF0000 !important;
 	box-shadow:0px 0px 6px rgb(200,0,0,0.50);
 }
+/*JS Validate Error*/
+
+/*JS Map Launch*/
+.JSmapLaunchInfo{
+	display:inline-block;
+	width:100%;
+	height:auto;
+	text-align:center;
+}
+.JSmapLaunchInfo span{
+	font-size: 14px;
+}
+.JSmapLaunchInfo .well{
+	padding: 10px;
+	font-style: italic;
+	margin-bottom: 0px;
+	margin-top: 10px;
+}
+.JSmapLaunchInfo > .JSmapLaunchIcons{
+	display:inline-block;
+	width:100%;
+	height:auto;
+	margin-top:15px;
+}
+.JSmapLaunchInfo > .JSmapLaunchIcons img{
+	width:100%;
+	max-width:90px;
+	vertical-align:middle;
+	margin:0px 5px;
+}
+/*JS Map Launch*/
 
 /* ================================================= JAVASCRIPT ================================================= */
 

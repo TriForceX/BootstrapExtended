@@ -11,7 +11,7 @@
 				  $jsUrl.'/js/app-responsive.js',
 				);
     $jsBuffer = '';
-	$jsMinify = true;
+	$jsMinify = false;
 
     foreach($jsFiles as $jsFile){
     	$jsBuffer .= file_get_contents($jsFile);
@@ -43,6 +43,9 @@
 						//Search input
 						'@searchinput-title' => 'Search', 
 						'@searchinput-text' => 'Please fill the search field.', 
+						//Map launch
+						'@maplaunch-title' => 'Map Select',
+						'@maplaunch-text' => 'Select one of option above',
 					);
 
 	$jsKey = array_keys($jsVariables);

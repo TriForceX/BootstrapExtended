@@ -319,7 +319,6 @@ $htmlData = array('lang'=>'en',
 				<tr>
 					<th>Name</th>
 					<th>type</th>
-					<th>default</th>
 					<th>description</th>
 				</tr>
 			</thead>
@@ -327,32 +326,27 @@ $htmlData = array('lang'=>'en',
 				<tr>
 					<td>lg-selector</td>
 					<td>string</td>
-					<td>auto</td>
 					<td>Defines which element contains the image <code>url</code> and the <code>thumbnail</code>
 					</td>
 				</tr>
 				<tr>
 					<td>lg-autotitle</td>
 					<td>boolean</td>
-					<td>false</td>
 					<td>Set a custom title to all images in the lightbox</td>
 				</tr>
 				<tr>
 					<td>lg-thumbnail</td>
 					<td>boolean</td>
-					<td>true</td>
 					<td>Defines if thumbnails will be shown when the lightbox is executed</td>
 				</tr>
 				<tr>
 					<td>lg-gallerymode</td>
 					<td>boolean</td>
-					<td>true</td>
 					<td>Execute custom functions when you get the <code>first</code> or <code>last</code> page</td>
 				</tr>
 				<tr>
 					<td>lg-download</td>
 					<td>boolean</td>
-					<td>true</td>
 					<td>Enables downloads, the download url will be taken from data-<code>src/href</code> attribute</td>
 				</tr>
 			</tbody>
@@ -484,7 +478,6 @@ $htmlData = array('lang'=>'en',
 				<tr>
 					<th>Name</th>
 					<th>type</th>
-					<th>default</th>
 					<th>description</th>
 				</tr>
 			</thead>
@@ -492,25 +485,21 @@ $htmlData = array('lang'=>'en',
 				<tr>
 					<td>data-paginator</td>
 					<td>boolean</td>
-					<td>false</td>
 					<td>Enable a custom paginator with show amount option</td>
 				</tr>
 				<tr>
 					<td>data-filter</td>
 					<td>boolean</td>
-					<td>false</td>
 					<td>Enables a search box to filter results</td>
 				</tr>
 				<tr>
 					<td>data-info</td>
 					<td>boolean</td>
-					<td>falsee</td>
 					<td>Show info at the table footer</td>
 				</tr>
 				<tr>
 					<td>data-ordering</td>
 					<td>boolean</td>
-					<td>false</td>
 					<td>Enables ordering by column</td>
 				</tr>
 			</tbody>
@@ -1026,68 +1015,42 @@ $htmlData = array('lang'=>'en',
 		<div class="page-header">
 			<h1>Window Pop-Up <span class="label label-danger">JS</span></h1>
 		</div>
-		<p>Launch a custom pop-up window via javascript, the function structure is <code>windowPopup(url, width, height, alignX, alignY, scroll)</code></p>
+		<p>Launch a custom pop-up window via javascript, the function structure is <code>windowPopup(element)</code></p>
 
 		<table class="table table-bordered table-striped js-options-table">
 			<thead>
 				<tr>
 					<th>Name</th>
-					<th>type</th>
-					<th>default</th>
 					<th>description</th>
 				</tr>
 			</thead>
 			<tbody>
 				<tr>
-					<td>url</td>
-					<td>string</td>
-					<td>null</td>
+					<td>data-url</td>
 					<td>Website URL to show in the pop-up</td>
 				</tr>
 				<tr>
-					<td>width</td>
-					<td>int</td>
-					<td>0</td>
-					<td>Width (in pixels) of the pop-up</td>
+					<td>data-size</td>
+					<td>Width & Height (in pixels) of the pop-up, Need to be written like <code>width<code>x<code>height</code></td>
 				</tr>
 				<tr>
-					<td>height</td>
-					<td>int</td>
-					<td>0</td>
-					<td>Height (in pixels) of the pop-up</td>
+					<td>data-align</td>
+					<td>Horizontal & Vertical alignment (in pixels) of the pop-up, Need to be written like <code>horizontal<code>,<code>vertical</code> and the values can be <code>left</code>, <code>center</code> or <code>right</code></td>
 				</tr>
 				<tr>
-					<td>alignX</td>
-					<td>string</td>
-					<td><code>center</code>
-					</td>
-					<td>Horizontal alignment of the pop-ip, it can be <code>left</code>, <code>center</code> or <code>right</code>
-					</td>
-				</tr>
-				<tr>
-					<td>alignY</td>
-					<td>string</td>
-					<td><code>center</code>
-					</td>
-					<td>Vertical alignment of the pop-ip, it can be <code>top</code>, <code>center</code> or <code>bottom</code>
-					</td>
-				</tr>
-				<tr>
-					<td>scroll</td>
-					<td>boolean</td>
-					<td>false</td>
+					<td>data-scroll</td>
 					<td>Enable or disable scrollbar in the pop-up</td>
 				</tr>
 			</tbody>
 		</table>
 
 		<div class="bs-example">
-			<button type="button" class="btn btn-primary" onclick="windowPopup('http://getbootstrap.com','640','480','center','center',true)">Center Center 640 x 480</button>
-			<button type="button" class="btn btn-primary" onclick="windowPopup('http://getbootstrap.com','320','480','right','bottom',true)">Right Bottom 320 x 480</button>
-			<button type="button" class="btn btn-primary" onclick="windowPopup('http://getbootstrap.com','320','480','left','top',true)">Left Top 320 x 480</button>
+			<button type="button" class="btn btn-primary JSwindowPopup" data-url="http://getbootstrap.com" data-size="640x480" data-align="center,center" data-scroll="yes">Center Center 640 x 480</button>
+			<button type="button" class="btn btn-primary JSwindowPopup" data-url="http://getbootstrap.com" data-size="320x480" data-align="right,bottom" data-scroll="yes">Right Bottom 320 x 480</button>
+			<button type="button" class="btn btn-primary JSwindowPopup" data-url="http://getbootstrap.com" data-size="320x480" data-align="left,top" data-scroll="yes">Left Top 320 x 480</button>
 		</div>
 		<figure class="highlight">
-			<pre><code class="language-html" data-lang="html">&lt;a onclick="windowPopup('http://getbootstrap.com','640','480','center','center',true)">Click Here&lt;/a&gt;<br>&lt;a onclick="windowPopup('http://getbootstrap.com','320','480','right','bottom',true)">Click Here&lt;/a&gt;<br>&lt;a onclick="windowPopup('http://getbootstrap.com','320','480','left','top',true)">Click Here&lt;/a&gt;</code></pre>
+			<pre><code class="language-html" data-lang="html">&lt;a class="JSwindowPopup" data-url="http://getbootstrap.com" data-size="640x480" data-align="center,center" data-scroll="yes">Click Here&lt;/a&gt;<br>&lt;a class="JSwindowPopup" data-url="http://getbootstrap.com" data-size="320x480" data-align="right,bottom" data-scroll="yes">Click Here&lt;/a&gt;<br>&lt;a class="JSwindowPopup" data-url="http://getbootstrap.com" data-size="320x480" data-align="left,top" data-scroll="yes">Click Here&lt;/a&gt;</code></pre>
 		</figure>
 
 		<!-- Show date example -->
@@ -1101,7 +1064,6 @@ $htmlData = array('lang'=>'en',
 				<tr>
 					<th>Name</th>
 					<th>type</th>
-					<th>default</th>
 					<th>description</th>
 				</tr>
 			</thead>
@@ -1109,29 +1071,21 @@ $htmlData = array('lang'=>'en',
 				<tr>
 					<td>date</td>
 					<td>string</td>
-					<td>null</td>
-					<td>Date in english format <code>YYYY-MM-DD</code> or <code>YYYY/MM/DD</code>
-					</td>
+					<td>Date in english format <code>YYYY-MM-DD</code> or <code>YYYY/MM/DD</code></td>
 				</tr>
 				<tr>
 					<td>format</td>
 					<td>string</td>
-					<td><code>Y-m-d</code>
-					</td>
-					<td>Date format in PHP, more info <a href="http://php.net/manual/es/function.date.php" target="_blank">here</a>
-					</td>
+					<td>Date format in PHP, more info <a href="http://php.net/manual/es/function.date.php" target="_blank">here</a></td>
 				</tr>
 				<tr>
 					<td>lang</td>
 					<td>string</td>
-					<td><code>eng</code>
-					</td>
 					<td>Change the language of months and days, it can be <code>eng</code> for english, and <code>esp</code> for spanish</td>
 				</tr>
 				<tr>
 					<td>abbr</td>
 					<td>boolean</td>
-					<td>false</td>
 					<td>Apply an abbreviation to months and days</td>
 				</tr>
 			</tbody>
@@ -1199,7 +1153,7 @@ $htmlData = array('lang'=>'en',
 		</figure>
 		
 		<h3>Search form</h3>
-		<p>This mode allows to change the functionallity to search inputs</p>
+		<p>This mode allows to change the functionality to search inputs</p>
 
 		<div class="bs-example">
 			<form class="JSformExampleSearch" method="post" action="<?php echo get_siteinfo('url'); ?>/example.php?search=">
@@ -1216,6 +1170,43 @@ $htmlData = array('lang'=>'en',
 	noValidate: "#example-input-lastname",
 	searchMode: true,
 });</code></pre>
+		</figure>
+		
+		<!-- Map launch example -->
+		<div class="page-header">
+			<h1>Map Launch <span class="label label-danger">JS</span></h1>
+		</div>
+		<p>Show a modal box with map options such as <code>Google Maps</code> and <code>Waze</code>.</p>
+
+		<table class="table table-bordered table-striped js-options-table">
+			<thead>
+				<tr>
+					<th>Name</th>
+					<th>type</th>
+					<th>description</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td>data-address</td>
+					<td>string</td>
+					<td>Desired address to search</code>
+					</td>
+				</tr>
+				<tr>
+					<td>data-coords</td>
+					<td>string</td>
+					<td>Desired address coords <code>Latitude</code>, <code>Longitude</code>, <code>Zoom</code>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+
+		<div class="bs-example">
+			<button type="button" class="btn btn-primary JSmapLaunch" data-map-address="Renato Sánchez 4265, Las Condes, Santiago, Chile" data-map-coords="-33.4176466,-70.585256,17">Show Map Launch</button>
+		</div>
+		<figure class="highlight">
+			<pre><code class="language-html" data-lang="html">&lt;button type="button" class="btn btn-primary JSmapLaunch" data-map-address="Renato Sánchez 4265, Las Condes, Santiago, Chile" data-map-coords="-33.4176466,-70.585256,17"&gt;Show Map Launch&lt;/button&gt;</code></pre>
 		</figure>
 
 		<!-- ******** BOOTSTRAP THEME EXAMPLES ******** -->
