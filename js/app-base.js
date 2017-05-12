@@ -147,6 +147,7 @@ $.fn.validateForm = function(options) {
 			showAlert(formErrorTitle,formError);
 			event.preventDefault();
 		}
+		
 		//Check search mode
 		if(settings.searchMode){
 			var searchValue = $(this).find('input[type="search"]').val().replace(/ /g,'+');
@@ -549,11 +550,13 @@ function videoLaunch(url, share, title){
 		embedShare = url;
 	}
 	
-	var content = '<iframe class="JSvideoLaunchIframe" src="'+embedUrl+'" frameborder="0" allowfullscreen></iframe>';
+	var content = '<div class="JSvideoLaunchIframe embed-responsive embed-responsive-16by9">'+
+			  		'	<iframe class="embed-responsive-item" src="'+embedUrl+'" frameborder="0" allowfullscreen></iframe>'+
+			  		'</div>';
 	
 	if(share){
 		content = content+'<div class="JSvideoLaunchURL">'+
-							'	<b>'+embedShareTitle+' <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span></b>'+
+						'	<b>'+embedShareTitle+' <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span></b>'+
 							'	<input class="clickSelect" type="text" value="'+embedShare+'" readonly title="'+embedShareText+'" data-toggle="tooltip" data-placement="bottom">'+
 							'</div>';
 	}
@@ -568,10 +571,10 @@ function videoLaunch(url, share, title){
 		$(".modal .modal-footer .btn:focus").blur();
 		//Modify facebook src
 		if (url.indexOf('facebook') >= 0){
-			var videoLaunchIframeSRC = $(".JSvideoLaunchIframe").attr("src");
-			var videoLaunchIframeSRCwidth = $(".JSvideoLaunchIframe").width();
-			var videoLaunchIframeSRCheight = $(".JSvideoLaunchIframe").height();
-			$(".JSvideoLaunchIframe").attr("src",videoLaunchIframeSRC+"&width="+videoLaunchIframeSRCwidth+"&height="+videoLaunchIframeSRCheight);
+			var videoLaunchIframeSRC = $(".JSvideoLaunchIframe iframe").attr("src");
+			var videoLaunchIframeSRCwidth = $(".JSvideoLaunchIframe iframe").width();
+			var videoLaunchIframeSRCheight = $(".JSvideoLaunchIframe iframe").height();
+			$(".JSvideoLaunchIframe iframe").attr("src",videoLaunchIframeSRC+"&width="+videoLaunchIframeSRCwidth+"&height="+videoLaunchIframeSRCheight);
 		}
 	});
 	
@@ -777,12 +780,12 @@ function mapLaunch(element){
 	var mapText = "@maplaunch-text";
 	var mapIcon1 = mainUrl+"/css/icons/maplaunch/google-maps.png";
 	var mapIcon2 = mainUrl+"/css/icons/maplaunch/waze.png";
-	var mapCoords = $(element).data('map-coords').split(',');
-	var mapAddress = $(element).data('map-address');
+	var mapCoords = $(element).data('coords').split(',');
+	var mapAddress = $(element).data('address');
 	var mapAddressUrl = encodeURI(mapAddress).replace(/%20/g,'+');
-	var mapLaunchUrl1 = isMobile == true ? 'http://maps.google.com/maps?q='+mapCoords[0]+','+mapCoords[1]+','+mapCoords[2]+'z' : 
+	var mapLaunchUrl1 = isMobile ? 'http://maps.google.com/maps?q='+mapCoords[0]+','+mapCoords[1]+','+mapCoords[2]+'z' : 
 										   'https://www.google.cl/maps/search/'+mapAddressUrl+'/@'+mapCoords[0]+','+mapCoords[1]+','+mapCoords[2]+'z';
-	var mapLaunchUrl2 = isMobile == true ? 'waze://?ll='+mapCoords[0]+','+mapCoords[1]+'&navigate=yes' : 
+	var mapLaunchUrl2 = isMobile ? 'waze://?ll='+mapCoords[0]+','+mapCoords[1]+'&navigate=yes' : 
 										   'https://www.waze.com/livemap?zoom='+mapCoords[2]+'&lat='+mapCoords[0]+'&lon='+mapCoords[1];
 	
 	mapContent = '<div class="JSmapLaunchInfo">'+
@@ -851,11 +854,6 @@ $(document).ready(function(){
 	//Apply Auto Background
 	$("*[data-auto-bg]").each(function(){
 		autoBackground($(this));
-	});
-	
-	//Carousel timer
-	$("*[data-ride='carousel']").carousel({
-		interval: (validateEmpty($(this).data('interval'))) ? $(this).data('interval') : '2222',
 	});
 	
 	//Touch swipe bootstrap carousel

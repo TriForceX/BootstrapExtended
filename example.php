@@ -2,7 +2,7 @@
 
 <!-- ================================================= NAV MENU ================================================= -->
 
-<nav class="navbar navbar-inverse">
+<nav class="navbar navbar-inverse navbar-fixed-top">
 	<div class="container">
 		<div class="navbar-header">
 			<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-collapse">
@@ -1166,7 +1166,7 @@ $htmlData = array('lang'=>'en',
 			</form>
 		</div>
 		<figure class="highlight">
-			<pre><code class="language-html" data-lang="html">$(".JSformExample").validateForm({
+			<pre><code class="language-html" data-lang="html">$(".JSformExampleSearch").validateForm({
 	noValidate: "#example-input-lastname",
 	searchMode: true,
 });</code></pre>
@@ -1176,34 +1176,31 @@ $htmlData = array('lang'=>'en',
 		<div class="page-header">
 			<h1>Map Launch <span class="label label-danger">JS</span></h1>
 		</div>
-		<p>Show a modal box with map options such as <code>Google Maps</code> and <code>Waze</code>.</p>
+		<p>Show a modal box with map options such as <code>Google Maps</code> and <code>Waze</code> using <i>Class</i> and <i>Data attributes</i>.</p>
 
 		<table class="table table-bordered table-striped js-options-table">
 			<thead>
 				<tr>
 					<th>Name</th>
-					<th>type</th>
 					<th>description</th>
 				</tr>
 			</thead>
 			<tbody>
 				<tr>
 					<td>data-address</td>
-					<td>string</td>
-					<td>Desired address to search</code>
+					<td>The map address to search</code>
 					</td>
 				</tr>
 				<tr>
 					<td>data-coords</td>
-					<td>string</td>
-					<td>Desired address coords <code>Latitude</code>, <code>Longitude</code>, <code>Zoom</code>
+					<td>Desired address coords <code>latitude</code>, <code>longitude</code>, <code>zoom</code>
 					</td>
 				</tr>
 			</tbody>
 		</table>
 
 		<div class="bs-example">
-			<button type="button" class="btn btn-primary JSmapLaunch" data-map-address="Renato Sánchez 4265, Las Condes, Santiago, Chile" data-map-coords="-33.4176466,-70.585256,17">Show Map Launch</button>
+			<button type="button" class="btn btn-primary JSmapLaunch" data-address="Renato Sánchez 4265, Las Condes, Santiago, Chile" data-coords="-33.4176466,-70.585256,17">Show Map Launch</button>
 		</div>
 		<figure class="highlight">
 			<pre><code class="language-html" data-lang="html">&lt;button type="button" class="btn btn-primary JSmapLaunch" data-map-address="Renato Sánchez 4265, Las Condes, Santiago, Chile" data-map-coords="-33.4176466,-70.585256,17"&gt;Show Map Launch&lt;/button&gt;</code></pre>
