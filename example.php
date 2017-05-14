@@ -32,6 +32,7 @@
 						<li><a href="http://bootboxjs.com/" target="_blank">BootBox JS</a></li>
 						<li><a href="https://github.com/karacas/imgLiquid" target="_blank">ImgLiquid JS</a></li>
 						<li><a href="http://labs.rampinteractive.co.uk/touchSwipe/demos/" target="_blank">Touch Swipe</a></li>
+                        <li><a href="http://ianlunn.github.io/Hover/" target="_blank">Hover CSS</a></li>
 						<li><a href="https://jqueryui.com/" target="_blank">jQuery UI</a></li>
 						<li><a href="https://github.com/js-cookie/js-cookie" target="_blank">jQuery Cookie</a></li>
 						<li><a href="https://github.com/pupunzi/jquery.mb.browser" target="_blank">jQuery Browser</a></li>
@@ -133,7 +134,7 @@ $htmlData = array('lang'=>'en',
 				<h3 class="panel-title">Note for main PHP Functions</h3>
 			</div>
 			<div class="panel-body">
-				If you will use <code>Wordpress</code> or another <i>CMS</i> is recommended to use their functions (if exists) instead the included ones (in plugins/functions.php). The function <code>get_bloginfo()</code> is only for test purposes in this template.
+				If you will use <code>Wordpress</code> or another <i>CMS</i> is recommended to use their functions (if exists) instead the included ones (in plugins/functions.php). The function <code>get_siteinfo()</code> is only for test purposes in this template.
 			</div>
 		</div>
 		</p>
@@ -221,6 +222,17 @@ $htmlData = array('lang'=>'en',
 			'@color-yellow' => '#ffff00',
 		);</code></pre>
 		</figure>
+        
+        <p>
+		<div class="panel panel-default">
+			<div class="panel-heading">
+				<h3 class="panel-title">Note for included CSS files</h3>
+			</div>
+			<div class="panel-body">
+				The file <code>style-examples.css</code> is only for test purposes in this page, don't add this file to your website. Is not recomemded to modify the <code>style-base.css</code> because contains the main functions inside.
+			</div>
+		</div>
+		</p>
 		
 		<!-- JS example -->
 		<div class="page-header">
@@ -276,10 +288,10 @@ $htmlData = array('lang'=>'en',
 		<p>
 		<div class="panel panel-default">
 			<div class="panel-heading">
-				<h3 class="panel-title">Note for CSS and JS files</h3>
+				<h3 class="panel-title">Note for included JS files</h3>
 			</div>
 			<div class="panel-body">
-				The main <code>CSS</code> and JS</code> files are placed in their <i>CSS/JS</i> folders (called <i>index.php</i>), this also applies to <code>Plugins</code> or <code>Code Snippets</code> in the <i>Plugins</i> folder.
+				The file <code>app-ready.js</code>, <code>app-load.js</code> and <code>app-responsive.js</code> contains some code pieces for test/examples purposes you can delete with no problems. Is not recomemded to modify the <code>app-base.js</code> because contains the main functions inside.
 			</div>
 		</div>
 		</p>
@@ -289,18 +301,6 @@ $htmlData = array('lang'=>'en',
 		<p>&nbsp;</p>
 		
 		<!-- ******** PLUGINS EXAMPLES ******** -->
-
-		<?php 
-
-		/*require_once('plugins/curl/php/curl.php');
-		$url = "http://www.examplesite.com";
-		$data = LoadCURLPage($url);
-		$string_one = '<!-- initContent -->';
-		$string_two = '<!-- endContent -->';
-		$info = extract_unit($data, $string_one, $string_two);
-		echo $info;*/
-
-		?>
 
 		<!-- Section description -->
 		<div class="jumbotron">
@@ -472,7 +472,7 @@ $htmlData = array('lang'=>'en',
 		</div>
 		
 		<p>Improve the way to show plain html tables. Below you will find an improved usage method via <code>data-attributes</code>. For more options visit the <a href="https://datatables.net/examples/index" target="_blank">Plugin's Page</a></p>
-
+		
 		<table class="table table-bordered table-striped js-options-table">
 			<thead>
 				<tr>
@@ -505,7 +505,7 @@ $htmlData = array('lang'=>'en',
 			</tbody>
 		</table>
 
-		<div class="bs-example">
+		<div class="bs-example table-responsive">
 			<table class="table-striped cell-border JSdataTables" data-pages="true" data-filter="false" data-info="false" data-order="true" cellspacing="0" cellpadding="0" border="0">
 				<thead>
 					<tr>
@@ -1149,6 +1149,7 @@ $htmlData = array('lang'=>'en',
 			<pre><code class="language-html" data-lang="html">$(".JSformExample").validateForm({
 	noValidate: "#example-input-lastname",
 	searchMode: false,
+	hasConfirm: true,
 });</code></pre>
 		</figure>
 		
@@ -1169,6 +1170,7 @@ $htmlData = array('lang'=>'en',
 			<pre><code class="language-html" data-lang="html">$(".JSformExampleSearch").validateForm({
 	noValidate: "#example-input-lastname",
 	searchMode: true,
+	hasConfirm: false,
 });</code></pre>
 		</figure>
 		

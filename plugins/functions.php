@@ -1,8 +1,5 @@
 <?php
 
-//Redirect
-//header('Location: http://url'); exit;
-
 //Debug
 if(isset($_GET['debug'])){
 	
@@ -26,7 +23,7 @@ function get_siteinfo($info){
 			$finalResult = $baseUrl;
 			break;
 		case 'protocol':
-			$finalResult = $baseUrl;
+			$finalResult = $baseProtocol;
 			break;
 		case 'localhost':
 			$isLocalHost = $_SERVER['HTTP_HOST'] == 'localhost' || filter_var($_SERVER['HTTP_HOST'], FILTER_VALIDATE_IP) ? true : false;
@@ -57,7 +54,18 @@ function get_siteinfo($info){
 }
 //Get info
 
-//UTF9 Conversion
+//Get Website part
+function getWebsitePart($url,$start,$end){
+	require_once('curl/php/curl.php');
+	
+	$data = LoadCURLPage($url);
+	$info = extract_unit($data, $start, $endo);
+	
+	return $info;
+}
+//Get Website part
+
+//UTF8 string conversion
 function convertToUTF8($text) {
     // map based on:
     // http://konfiguracja.c0.pl/iso02vscp1250en.html
@@ -108,9 +116,9 @@ function convertToUTF8($text) {
     );
     return html_entity_decode(mb_convert_encoding(strtr($text, $map), 'UTF-8', 'ISO-8859-2'), ENT_QUOTES, 'UTF-8');
 }
-//UTF9 Conversion
+//UTF8 string conversion
 
-//Cut Excerpt
+//Cut excerpt
 function cutExcerpt($getText,$num) {
     
     if(strlen($getText) > $num){
@@ -119,9 +127,9 @@ function cutExcerpt($getText,$num) {
     
     return $getText;
 }
-//Cut Excerpt
+//Cut excerpt
 
-//Date String WIP
+//Custom get date format
 function showDate($date, $format, $lang, $abbr){
 	
 	$newDate = strtotime($date);
@@ -171,5 +179,5 @@ function showDate($date, $format, $lang, $abbr){
 	
 	return $finalDate;
 }
-//Date String WIP
+//Custom get date format
 

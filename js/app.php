@@ -11,7 +11,7 @@
 				  $jsUrl.'/js/app-responsive.js',
 				);
     $jsBuffer = '';
-	$jsMinify = false;
+	$jsMinify = true;
 
     foreach($jsFiles as $jsFile){
     	$jsBuffer .= file_get_contents($jsFile);
@@ -30,13 +30,15 @@
 						'@global-url' => $jsUrl,
 						//Validation
 						'@validate-title' => 'Form Alert', 
-						'@validate-text' => 'Please fill the fields.', 
+						'@validate-normal' => 'Please fill the fields.', 
 						'@validate-pass' => 'Please fill your password.', 
 						'@validate-email' => 'Please type a correct E-Mail.',
 						'@validate-search' => 'Please fill the search field.', 
 						'@validate-checkbox' => 'Please check an option.',
 						'@validate-textarea' => 'Please write a message.',
 						'@validate-select' => 'Please select an option.',
+						'@validate-confirm-title' => 'Form Confirm', 
+						'@validate-confirm-text' => 'Are you sure you want to send the previous info?', 
 						//Video launch
 						'@videolaunch-title' => 'Share Link', 
 						'@videolaunch-text' => 'Copy & paste this URL to share',

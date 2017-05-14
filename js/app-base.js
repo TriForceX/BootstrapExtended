@@ -51,13 +51,16 @@ $.fn.validateForm = function(options) {
 	var settings = $.extend({
 		noValidate: '',
 		searchMode: false,
+		hasConfirm: false,
 	}, options);
 	
 	$(this).submit(function(event){ 
 		
 		var formError = false;
+		var formConfirmTitle = '@validate-confirm-title';
+		var formConfirmText = '@validate-confirm-text';
 		var formErrorTitle = '@validate-title';
-		var formErrorText = [{'text': '@validate-text', 
+		var formErrorText = [{'text': '@validate-normal', 
 							  'pass': '@validate-pass', 
 							  'email': '@validate-email',
 							  'search': '@validate-search',
@@ -144,8 +147,36 @@ $.fn.validateForm = function(options) {
 
 		//Send error
 		if(formError != false){
-			showAlert(formErrorTitle,formError);
+			showAlert(formErrorTitle,formError,'medium');
 			event.preventDefault();
+		}
+		
+		//Check Confirm mode
+		if(settings.hasConfirm && formError == false){
+			formElement = $(this);
+			event.preventDefault();
+			
+			//Bootbox alert
+			bootbox.confirm({
+				title: formConfirmTitle,
+				message: formConfirmText,
+				size: 'medium',
+				backdrop: true,
+				callback: function(result){
+					if(result){
+						formElement.unbind("submit").submit();
+						formElement.trigger('reset');
+						formElement.validateForm({
+							noValidate: settings.noValidate,
+							searchMode: settings.searchMode,
+							hasConfirm: settings.hasConfirm,
+						});
+					}
+				}
+			}).on("shown.bs.modal", function(){
+				//Disable button auto-focus
+				$(".modal .modal-footer .btn:focus").blur();
+			});
 		}
 		
 		//Check search mode
@@ -221,12 +252,12 @@ function responsiveCode() {
 		//Example Vertical Align Container
 		$("body").each(function(){
 
-			var altoBody = bodyHeight;
-			var altoCaja = $(".JSverticalAlign").outerHeight(); 
+			var valignBody = bodyHeight;
+			var valignContainer = $(".JSverticalAlign").outerHeight(); 
 
-			if(altoBody > altoCaja)
+			if(valignBody > valignContainer)
 			{
-				$(".JSverticalAlign").css({"margin-top": -Math.abs(altoCaja / 2),
+				$(".JSverticalAlign").css({"margin-top": -Math.abs(valignContainer / 2),
 										 "position":"absolute",
 										 "top":"50%",
 										 "width":$(".JSverticalAlign").parent().width(),
@@ -345,7 +376,7 @@ function loadLightGallery(){
 	});
 }
 
-//ImageLiquid image function
+//ImgLiquid auto-fill background function
 function autoBackground(container){
 	
 	var bgData = new Array();
@@ -447,6 +478,7 @@ function textAutoSize(container, max){
 
 	});
 }
+
 //Show alert modal box using BootBox plugin
 function showAlert(title,text,size){
 	
