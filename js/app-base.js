@@ -61,6 +61,7 @@ $.fn.validateForm = function(options) {
 		var formConfirmText = '@validate-confirm-text';
 		var formErrorTitle = '@validate-title';
 		var formErrorText = [{'text': '@validate-normal', 
+							  'number': '@validate-number', 
 							  'pass': '@validate-pass', 
 							  'email': '@validate-email',
 							  'search': '@validate-search',
@@ -134,6 +135,17 @@ $.fn.validateForm = function(options) {
 			}
 		});
 
+		//Text number
+		$(this).find('input[type="number"]').not(settings.noValidate).each(function(){
+			if (!validateEmpty($(this).val()) || !validateNumber($(this).val())) { 
+				$(this).addClass("JSvalidateError");
+				formError = formErrorText[0]['number'];
+			}
+			else{
+				$(this).removeClass("JSvalidateError");
+			}
+		});
+		
 		//Text inputs
 		$(this).find('input[type="text"]').not(settings.noValidate).each(function(){
 			if (!validateEmpty($(this).val())) { 
@@ -192,6 +204,17 @@ function validateEmail(field){
     var emailReg = /^([\w-\.]+@([\w-]+\.)+[\w-]{2,4})?$/;
     
 	if (!emailReg.test(field)){
+        return false;
+    }else{
+        return true;
+    }
+}
+
+//Form validate numbers
+function validateNumber(field){
+    var numberReg = /^-?\d+(\.\d+)?$/;
+    
+	if (!numberReg.test(field)){
         return false;
     }else{
         return true;

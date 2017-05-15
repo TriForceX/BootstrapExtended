@@ -31,6 +31,7 @@
 						//Validation
 						'@validate-title' => 'Form Alert', 
 						'@validate-normal' => 'Please fill the fields.', 
+						'@validate-number' => 'Please type a valid number.', 
 						'@validate-pass' => 'Please fill your password.', 
 						'@validate-email' => 'Please type a correct E-Mail.',
 						'@validate-search' => 'Please fill the search field.', 
@@ -42,9 +43,6 @@
 						//Video launch
 						'@videolaunch-title' => 'Share Link', 
 						'@videolaunch-text' => 'Copy & paste this URL to share',
-						//Search input
-						'@searchinput-title' => 'Search', 
-						'@searchinput-text' => 'Please fill the search field.', 
 						//Map launch
 						'@maplaunch-title' => 'Map Select',
 						'@maplaunch-text' => 'Select one of option above',

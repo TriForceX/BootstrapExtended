@@ -1115,6 +1115,10 @@ $htmlData = array('lang'=>'en',
 					<input type="text" class="form-control" id="example-input-lastname" placeholder="Type your Last Name (Optional)">
 				</div>
 				<div class="form-group">
+					<label for="example-input-age">Age</label>
+					<input type="number" step="any" class="form-control" id="example-input-age" placeholder="Type your Age">
+				</div>
+				<div class="form-group">
 					<label for="example-input-email">E-Mail address</label>
 					<input type="email" class="form-control" id="example-input-email" placeholder="Type your E-Mail">
 				</div>
