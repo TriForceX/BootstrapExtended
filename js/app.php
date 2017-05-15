@@ -36,6 +36,7 @@
 						'@validate-email' => 'Please type a correct E-Mail.',
 						'@validate-search' => 'Please fill the search field.', 
 						'@validate-checkbox' => 'Please check an option.',
+						'@validate-radio' => 'Please check one of the options.',
 						'@validate-textarea' => 'Please write a message.',
 						'@validate-select' => 'Please select an option.',
 						'@validate-confirm-title' => 'Form Confirm', 

@@ -1107,8 +1107,12 @@ $htmlData = array('lang'=>'en',
 		<div class="bs-example">
 			<form class="JSformExample" method="post" action="javascript:showAlert('Form Success!','The form passed sucessfully! Thanks!');">
 				<div class="form-group">
-					<label for="example-input-name">Name</label>
-					<input type="text" class="form-control" id="example-input-name" placeholder="Type your Name">
+					<label for="example-input-username">User Name</label>
+					<input type="text" class="form-control" id="example-input-username" placeholder="Type your User Name">
+				</div>
+				<div class="form-group">
+					<label for="example-input-firstname">First Name</label>
+					<input type="text" class="form-control" id="example-input-firstname" placeholder="Type your First Name">
 				</div>
 				<div class="form-group">
 					<label for="example-input-lastname">Last Name</label>
@@ -1141,40 +1145,43 @@ $htmlData = array('lang'=>'en',
 					<label for="example-textarea">Message</label>
 					<textarea class="form-control" rows="3" id="example-textarea" placeholder="Write a Message"></textarea>
 				</div>
-				<div class="checkbox">
-					<label>
-						<input type="checkbox"> Check me out
+				<div class="form-group" data-toggle="buttons" data-group="checkbox">
+					<p class="no-margin-b">
+						<label>Check items</label>
+					</p>
+					<label class="btn btn-primary">
+						<input type="checkbox" autocomplete="off" name="example-checkbox-1" value="Selected 1"> Checkbox Item 1
+					</label>
+					<label class="btn btn-primary">
+						<input type="checkbox" autocomplete="off" name="example-checkbox-2" value="Selected 2"> Checkbox Item 2
+					</label>
+					<label class="btn btn-primary">
+						<input type="checkbox" autocomplete="off" name="example-checkbox-3" value="Selected 3"> Checkbox Item 3
 					</label>
 				</div>
-				<button type="submit" class="btn btn-default">Submit</button>
+				<div class="form-group" data-toggle="buttons" data-group="radio">
+					<p class="no-margin-b">
+						<label>Radio items</label>
+					</p>
+					<label class="btn btn-primary">
+						<input type="radio" name="example-radio" id="example-radio-1" autocomplete="off" value="Choosen 1"> Radio Item 1
+					</label>
+					<label class="btn btn-primary">
+						<input type="radio" name="example-radio" id="example-radio-2" autocomplete="off" value="Choosen 2"> Radio Item 2
+					</label>
+					<label class="btn btn-primary">
+						<input type="radio" name="example-radio" id="example-radio-3" autocomplete="off" value="Choosen 3"> Radio Item 3
+					</label>
+				</div>
+				<div class="form-group no-margin-b">
+					<button type="submit" class="btn btn-default">Submit</button>
+				</div>
 			</form>
 		</div>
 		<figure class="highlight">
 			<pre><code class="language-html" data-lang="html">$(".JSformExample").validateForm({
 	noValidate: "#example-input-lastname",
-	searchMode: false,
 	hasConfirm: true,
-});</code></pre>
-		</figure>
-		
-		<h3>Search form</h3>
-		<p>This mode allows to change the functionality to search inputs</p>
-
-		<div class="bs-example">
-			<form class="JSformExampleSearch" method="post" action="<?php echo get_siteinfo('url'); ?>/example.php?search=">
-				<div class="input-group">
-				  <input type="search" class="form-control" placeholder="Search for...">
-				  <span class="input-group-btn">
-					<input class="btn btn-default" type="submit" value="Go!">
-				  </span>
-				</div>
-			</form>
-		</div>
-		<figure class="highlight">
-			<pre><code class="language-html" data-lang="html">$(".JSformExampleSearch").validateForm({
-	noValidate: "#example-input-lastname",
-	searchMode: true,
-	hasConfirm: false,
 });</code></pre>
 		</figure>
 		

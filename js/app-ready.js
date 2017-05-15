@@ -16,15 +16,7 @@ $(document).ready(function(){
 	//Form validation
 	$(".JSformExample").validateForm({
 		noValidate: "#example-input-lastname",
-		searchMode: false,
 		hasConfirm: true,
-	});
-	
-	//Form validation
-	$(".JSformExampleSearch").validateForm({
-		noValidate: "#example-input-lastname",
-		searchMode: true,
-		hasConfirm: false,
 	});
 	
 /* ================================================= DOCUMENT READY ================================================= */

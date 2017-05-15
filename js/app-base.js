@@ -50,7 +50,6 @@ $.fn.validateForm = function(options) {
 	
 	var settings = $.extend({
 		noValidate: '',
-		searchMode: false,
 		hasConfirm: false,
 	}, options);
 	
@@ -66,6 +65,7 @@ $.fn.validateForm = function(options) {
 							  'email': '@validate-email',
 							  'search': '@validate-search',
 							  'checkbox':'@validate-checkbox',
+							  'radio':'@validate-radio',
 							  'textarea':'@validate-textarea',
 							  'select':'@validate-select'}];
 
@@ -90,70 +90,81 @@ $.fn.validateForm = function(options) {
 				$(this).removeClass("JSvalidateError");
 			}
 		});
-
-		//Checkbox inputs
-		$(this).find('input[type="checkbox"]').not(settings.noValidate).each(function(){
-			if (!$(this).is(':checked')) { 
-				$(this).addClass("JSvalidateError");
-				formError = formErrorText[0]['checkbox'];
+		
+		//Checkbox & radio group inputs
+		$(this).find('[data-group]').each(function(){
+			var type = $(this).data('group');
+			var item = $(this).find("input[type='"+type+"']");
+			var check = false;
+		
+			for (var i = item.length -1; i >= 0; i--){
+				if(item.eq(i).is(":checked")){
+					check = true;
+				}
+			}
+			
+			if(!check){
+				item.addClass("JSvalidateError");
+				item.parent('label.btn').addClass("JSvalidateError");
+				formError = formErrorText[0][type];
 			}
 			else{
-				$(this).removeClass("JSvalidateError");
+				item.removeClass("JSvalidateError");
+				item.parent('label.btn').removeClass("JSvalidateError");
 			}
+			
 		});
 		
-		//Search inputs
-		$(this).find('input[type="search"]').not(settings.noValidate).each(function(){
-			if (!validateEmpty($(this).val())) { 
-				$(this).addClass("JSvalidateError");
-				formError = formErrorText[0]['search'];
-			}
-			else{
-				$(this).removeClass("JSvalidateError");
-			}
-		});
-
-		//Email inputs
-		$(this).find('input[type="email"]').not(settings.noValidate).each(function(){
-			if (!validateEmpty($(this).val()) || !validateEmail($(this).val())) { 
-				$(this).addClass("JSvalidateError");
-				formError = formErrorText[0]['email'];
-			}
-			else{
-				$(this).removeClass("JSvalidateError");
-			}
-		});
-
-		//Text inputs (password)
-		$(this).find('input[type="password"]').not(settings.noValidate).each(function(){
-			if (!validateEmpty($(this).val())) { 
-				$(this).addClass("JSvalidateError");
-				formError = formErrorText[0]['pass'];
-			}
-			else{
-				$(this).removeClass("JSvalidateError");
-			}
-		});
-
-		//Text number
-		$(this).find('input[type="number"]').not(settings.noValidate).each(function(){
-			if (!validateEmpty($(this).val()) || !validateNumber($(this).val())) { 
-				$(this).addClass("JSvalidateError");
-				formError = formErrorText[0]['number'];
-			}
-			else{
-				$(this).removeClass("JSvalidateError");
-			}
-		});
-		
-		//Text inputs
-		$(this).find('input[type="text"]').not(settings.noValidate).each(function(){
-			if (!validateEmpty($(this).val())) { 
-				$(this).addClass("JSvalidateError");
-				formError = formErrorText[0]['text'];
-			}
-			else{
-				$(this).removeClass("JSvalidateError");
+		//Input tags
+		$(this).find('input').not(settings.noValidate).each(function(){
+			switch($(this).attr("type")){
+				case 'text':
+					if (!validateEmpty($(this).val())) { 
+						$(this).addClass("JSvalidateError");
+						formError = formErrorText[0]['text'];
+					}
+					else{
+						$(this).removeClass("JSvalidateError");
+					}
+					break;
+				case 'number':
+					if (!validateEmpty($(this).val()) || !validateNumber($(this).val())) { 
+						$(this).addClass("JSvalidateError");
+						formError = formErrorText[0]['number'];
+					}
+					else{
+						$(this).removeClass("JSvalidateError");
+					}
+					break;
+				case 'email':
+					if (!validateEmpty($(this).val()) || !validateEmail($(this).val())) { 
+						$(this).addClass("JSvalidateError");
+						formError = formErrorText[0]['email'];
+					}
+					else{
+						$(this).removeClass("JSvalidateError");
+					}
+					break;
+				case 'password':
+					if (!validateEmpty($(this).val())) { 
+						$(this).addClass("JSvalidateError");
+						formError = formErrorText[0]['pass'];
+					}
+					else{
+						$(this).removeClass("JSvalidateError");
+					}
+					break;
+				case 'search':
+					if (!validateEmpty($(this).val())) { 
+						$(this).addClass("JSvalidateError");
+						formError = formErrorText[0]['search'];
+					}
+					else{
+						$(this).removeClass("JSvalidateError");
+					}
+					break;
+				default:
+					$(this).removeClass("JSvalidateError");
 			}
 		});
 
@@ -178,9 +189,10 @@ $.fn.validateForm = function(options) {
 					if(result){
 						formElement.unbind("submit").submit();
 						formElement.trigger('reset');
+						formElement.find("input[type='checkbox']").prop('checked', false).parent().removeClass('active');
+						formElement.find("input[type='radio']").prop('checked', false).parent().removeClass('active');
 						formElement.validateForm({
 							noValidate: settings.noValidate,
-							searchMode: settings.searchMode,
 							hasConfirm: settings.hasConfirm,
 						});
 					}
@@ -191,11 +203,6 @@ $.fn.validateForm = function(options) {
 			});
 		}
 		
-		//Check search mode
-		if(settings.searchMode){
-			var searchValue = $(this).find('input[type="search"]').val().replace(/ /g,'+');
-			$(this).attr("action", $(this).attr("action")+searchValue);
-		}
 	});
 };
 
