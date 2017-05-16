@@ -315,7 +315,10 @@ td[align='left']{
 /*JS Validate Error*/
 .JSvalidateError{
 	border:1px solid #FF0000 !important;
-	box-shadow:0px 0px 6px rgb(200,0,0,0.50);
+	-webkit-box-shadow:0px 0px 6px rgba(200,0,0,0.5);
+	-moz-box-shadow:0px 0px 6px rgba(200,0,0,0.5);
+	-o-box-shadow:0px 0px 6px rgba(200,0,0,0.5);
+	box-shadow:0px 0px 6px rgba(200,0,0,0.5);
 }
 /*JS Validate Error*/
 
