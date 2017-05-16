@@ -243,7 +243,9 @@ td[align='left']{
 	text-align: center;
 	margin-bottom: -10px;
 }
-.JSvideoLaunchURL b{
+.JSvideoLaunchURL a,
+.JSvideoLaunchURL a:visited,
+.JSvideoLaunchURL a:hover{
 	color: #FFF;
 	font-weight: normal;
 	background-color: @color-red;
@@ -254,8 +256,9 @@ td[align='left']{
 	padding-left: 8px;
 	display: inline-block;
 	margin-bottom: 10px;
+	cursor: pointer;
 }
-.JSvideoLaunchURL b span{
+.JSvideoLaunchURL a span{
 	vertical-align: initial;
 	font-size: 11px;
 }

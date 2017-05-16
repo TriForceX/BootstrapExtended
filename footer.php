@@ -39,6 +39,8 @@
 <script src="<?php echo get_siteinfo('url'); ?>/plugins/lightgallery/js/lg-zoom.js"></script>
 <script src="<?php echo get_siteinfo('url'); ?>/plugins/lightgallery/js/lg-hash.js"></script>
 <script src="<?php echo get_siteinfo('url'); ?>/plugins/lightgallery/js/lg-pager.js"></script>
+<!-- Clipboard JS -->
+<script src="<?php echo get_siteinfo('url'); ?>/plugins/clipboard/js/clipboard.min.js"></script>
 <!-- Main JS File -->
 <script src="<?php echo get_siteinfo('url'); ?>/js/app.php?url=<?php echo get_siteinfo('url'); ?>"></script>
 </body>

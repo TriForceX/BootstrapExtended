@@ -43,7 +43,7 @@
 						'@validate-confirm-text' => 'Are you sure you want to send the previous info?', 
 						//Video launch
 						'@videolaunch-title' => 'Share Link', 
-						'@videolaunch-text' => 'Copy & paste this URL to share',
+						'@videolaunch-text' => 'The share link has been copied!',
 						//Map launch
 						'@maplaunch-title' => 'Map Select',
 						'@maplaunch-text' => 'Select one of option above',

@@ -511,7 +511,6 @@ function textAutoSize(container, max){
 
 //Show alert modal box using BootBox plugin
 function showAlert(title,text,size){
-	
 	if(typeof size === 'undefined' || size === null){
 		size = 'medium';
 	}
@@ -526,32 +525,6 @@ function showAlert(title,text,size){
 		//Disable button auto-focus
 		$(".modal .modal-footer .btn:focus").blur();
 	});
-	
-	//Bootbox prompt
-	/*bootbox.prompt({
-		  title: "What is your real name?",
-		  //value: "makeusabrew",
-		  callback: function(result) {
-				if (result === null) {
-				  $('#alert').show("Prompt dismissed");
-				} else {
-				  $('#alert').show("Hi <b>"+result+"</b>");
-				}
-		  }
-	});*/
-
-	//Bootbox confirm
-	/*bootbox.confirm({ 
-		message: "¿Seguro que desea eliminar a este alumno?", 
-		callback: function(result) {
-			if (result == false) {
-				$('#alert').show("Prompt dismissed");
-			} else {
-				$('#alert').show("Hi <b>"+result+"</b>");
-			}
-		}
-	});*/
-	
 }
 
 //YouTube get ID from URL
@@ -618,8 +591,8 @@ function videoLaunch(url, share, title){
 	
 	if(share){
 		content = content+'<div class="JSvideoLaunchURL">'+
-						'	<b>'+embedShareTitle+' <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span></b>'+
-							'	<input class="clickSelect" type="text" value="'+embedShare+'" readonly title="'+embedShareText+'" data-toggle="tooltip" data-placement="bottom">'+
+							'	<a data-clipboard-action="copy" data-clipboard-target="#foo">'+embedShareTitle+' <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span></a>'+
+							'	<input id="foo" data-clipboard-text="'+embedShare+'" type="text" value="'+embedShare+'" readonly title="'+embedShareText+'">'+
 							'</div>';
 	}
 	
@@ -641,8 +614,18 @@ function videoLaunch(url, share, title){
 	});
 	
 	//Tooltip load
-	$('*[data-toggle="tooltip"]').tooltip();
+	$('.JSvideoLaunchURL input').tooltip({
+		title: embedShareText,
+		placement: 'bottom',
+		trigger: 'manual',
+	});
 	
+	//Clipboard
+	var clipboard = new Clipboard('.JSvideoLaunchURL a');
+
+    clipboard.on('success', function(e) {
+		$('.JSvideoLaunchURL input').tooltip('show');
+    });
 }
 
 //Capitalize first function
@@ -953,11 +936,6 @@ $(document).ready(function(){
 	//Map Launch on click
 	$(document).on("click", ".JSmapLaunch", function(e){
 		mapLaunch($(this));
-	});
-	
-	//Text select on click
-	$(document).on("click", ".JSclickSelect", function(e){
-		$(this).select();
 	});
 	
 	//Modal on disabled links

@@ -9,6 +9,7 @@ Website base structure with small reusable parts of source code or functions for
 * BootBox JS
 * ImgLiquid JS
 * Touch Swipe
+* Clipboard JS
 * jQuery UI
 * jQuery Cookie
 * jQuery Browser
