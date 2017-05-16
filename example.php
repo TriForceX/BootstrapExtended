@@ -313,41 +313,35 @@ $htmlData = array('lang'=>'en',
 		<div class="page-header">
 			<h1>Light Gallery <span class="label label-danger">JS</span></h1>
 		</div>
-		<p>A customizable, modular, responsive, lightbox gallery plugin for jQuery. Below you will find an improved usage method via <code>lg-attributes</code>. For more options visit the <a href="http://sachinchoolur.github.io/lightGallery/docs/api.html" target="_blank">Plugin's Page</a></p>
+		<p>A customizable, modular, responsive, lightbox gallery plugin for jQuery. Below you will find an improved usage method via <code>lg-attributes</code> applied to the main gallery container.
 
 		<table class="table table-bordered table-striped js-options-table">
 			<thead>
 				<tr>
 					<th>Name</th>
-					<th>type</th>
-					<th>description</th>
+					<th>Description</th>
 				</tr>
 			</thead>
 			<tbody>
 				<tr>
 					<td>lg-selector</td>
-					<td>string</td>
 					<td>Defines which element contains the image <code>url</code> and the <code>thumbnail</code>
 					</td>
 				</tr>
 				<tr>
 					<td>lg-autotitle</td>
-					<td>boolean</td>
 					<td>Set a custom title to all images in the lightbox</td>
 				</tr>
 				<tr>
 					<td>lg-thumbnail</td>
-					<td>boolean</td>
 					<td>Defines if thumbnails will be shown when the lightbox is executed</td>
 				</tr>
 				<tr>
 					<td>lg-gallerymode</td>
-					<td>boolean</td>
 					<td>Execute custom functions when you get the <code>first</code> or <code>last</code> page</td>
 				</tr>
 				<tr>
 					<td>lg-download</td>
-					<td>boolean</td>
 					<td>Enables downloads, the download url will be taken from data-<code>src/href</code> attribute</td>
 				</tr>
 			</tbody>
@@ -478,29 +472,24 @@ $htmlData = array('lang'=>'en',
 			<thead>
 				<tr>
 					<th>Name</th>
-					<th>type</th>
-					<th>description</th>
+					<th>Description</th>
 				</tr>
 			</thead>
 			<tbody>
 				<tr>
 					<td>data-paginator</td>
-					<td>boolean</td>
 					<td>Enable a custom paginator with show amount option</td>
 				</tr>
 				<tr>
 					<td>data-filter</td>
-					<td>boolean</td>
 					<td>Enables a search box to filter results</td>
 				</tr>
 				<tr>
 					<td>data-info</td>
-					<td>boolean</td>
 					<td>Show info at the table footer</td>
 				</tr>
 				<tr>
 					<td>data-ordering</td>
-					<td>boolean</td>
 					<td>Enables ordering by column</td>
 				</tr>
 			</tbody>
@@ -1022,7 +1011,7 @@ $htmlData = array('lang'=>'en',
 			<thead>
 				<tr>
 					<th>Name</th>
-					<th>description</th>
+					<th>Description</th>
 				</tr>
 			</thead>
 			<tbody>
@@ -1058,35 +1047,30 @@ $htmlData = array('lang'=>'en',
 		<div class="page-header">
 			<h1>Show Date <span class="label label-danger">PHP</span></h1>
 		</div>
-		<p>Show a date in any format. the main function is <code>showDate($date, $format, $lang, $abbr)</code></p>
+		<p>Show a date in any format. The main function is <code>showDate($date, $format, $lang, $abbr)</code></p>
 
 		<table class="table table-bordered table-striped js-options-table">
 			<thead>
 				<tr>
 					<th>Name</th>
-					<th>type</th>
-					<th>description</th>
+					<th>Description</th>
 				</tr>
 			</thead>
 			<tbody>
 				<tr>
 					<td>date</td>
-					<td>string</td>
 					<td>Date in english format <code>YYYY-MM-DD</code> or <code>YYYY/MM/DD</code></td>
 				</tr>
 				<tr>
 					<td>format</td>
-					<td>string</td>
 					<td>Date format in PHP, more info <a href="http://php.net/manual/es/function.date.php" target="_blank">here</a></td>
 				</tr>
 				<tr>
 					<td>lang</td>
-					<td>string</td>
 					<td>Change the language of months and days, it can be <code>eng</code> for english, and <code>esp</code> for spanish</td>
 				</tr>
 				<tr>
 					<td>abbr</td>
-					<td>boolean</td>
 					<td>Apply an abbreviation to months and days</td>
 				</tr>
 			</tbody>
@@ -1103,7 +1087,7 @@ $htmlData = array('lang'=>'en',
 		<div class="page-header">
 			<h1>Form Validation <span class="label label-danger">JS</span></h1>
 		</div>
-		<p>Basic validation for <code>input</code>, <code>select</code>, <code>checkbox</code> and <code>textarea</code> elements.</p>
+		<p>Basic validation for <code>input</code>, <code>select</code>, <code>checkbox</code> and <code>textarea</code> elements. The main function is <code>$()validateForm(options);</code></p></p>
 		
 		<div class="bs-example">
 			<form class="JSformExample" method="post" action="javascript:showAlert('Form Success!','The form passed sucessfully! Thanks!');">
