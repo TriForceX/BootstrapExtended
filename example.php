@@ -466,7 +466,7 @@ $htmlData = array('lang'=>'en',
 			<h1>Data Tables <span class="label label-danger">JS</span></h1>
 		</div>
 		
-		<p>Improve the way to show plain html tables. Below you will find an improved usage method via <code>data-attributes</code>. For more options visit the <a href="https://datatables.net/examples/index" target="_blank">Plugin's Page</a></p>
+		<p>Improve the way to show plain html tables. Below you will find an improved usage method via <code>data-table-attributes</code>. For more options visit the <a href="https://datatables.net/examples/index" target="_blank">Plugin's Page</a></p>
 		
 		<table class="table table-bordered table-striped js-options-table">
 			<thead>
@@ -477,26 +477,26 @@ $htmlData = array('lang'=>'en',
 			</thead>
 			<tbody>
 				<tr>
-					<td>data-paginator</td>
+					<td>data-table-paginator</td>
 					<td>Enable a custom paginator with show amount option</td>
 				</tr>
 				<tr>
-					<td>data-filter</td>
+					<td>data-table-search</td>
 					<td>Enables a search box to filter results</td>
 				</tr>
 				<tr>
-					<td>data-info</td>
+					<td>data-table-info</td>
 					<td>Show info at the table footer</td>
 				</tr>
 				<tr>
-					<td>data-ordering</td>
+					<td>data-table-sorting</td>
 					<td>Enables ordering by column</td>
 				</tr>
 			</tbody>
 		</table>
 
 		<div class="bs-example table-responsive">
-			<table class="table-striped cell-border JSdataTables" data-pages="true" data-filter="false" data-info="false" data-order="true" cellspacing="0" cellpadding="0" border="0">
+			<table class="table-striped cell-border JSdataTables" data-table-pages="true" data-table-search="false" data-table-info="false" data-table-sort="true" cellspacing="0" cellpadding="0" border="0">
 				<thead>
 					<tr>
 						<th>Name</th>
@@ -968,7 +968,7 @@ $htmlData = array('lang'=>'en',
 			</table>
 		</div>
 		<figure class="highlight">
-			<pre><code class="language-html" data-lang="html">&lt;table class="JSdataTables" data-pages="true" data-filter="false" data-info="false" data-order="true"&gt;<br>...<br>&lt;/table&gt;</code></pre>
+			<pre><code class="language-html" data-lang="html">&lt;table class="JSdataTables" data-table-pages="true" data-table-search="false" data-table-info="false" data-table-sort="true"&gt;<br>...<br>&lt;/table&gt;</code></pre>
 		</figure>
 
 		<!-- Show alert example -->
@@ -1180,17 +1180,17 @@ $htmlData = array('lang'=>'en',
 			<thead>
 				<tr>
 					<th>Name</th>
-					<th>description</th>
+					<th>Description</th>
 				</tr>
 			</thead>
 			<tbody>
 				<tr>
-					<td>data-address</td>
+					<td>data-map-address</td>
 					<td>The map address to search</code>
 					</td>
 				</tr>
 				<tr>
-					<td>data-coords</td>
+					<td>data-map-coords</td>
 					<td>Desired address coords <code>latitude</code>, <code>longitude</code>, <code>zoom</code>
 					</td>
 				</tr>
@@ -1198,7 +1198,7 @@ $htmlData = array('lang'=>'en',
 		</table>
 
 		<div class="bs-example">
-			<button type="button" class="btn btn-primary JSmapLaunch" data-address="Renato Sánchez 4265, Las Condes, Santiago, Chile" data-coords="-33.4176466,-70.585256,17">Show Map Launch</button>
+			<button type="button" class="btn btn-primary JSmapLaunch" data-map-address="Renato Sánchez 4265, Las Condes, Santiago, Chile" data-map-coords="-33.4176466,-70.585256,17">Show Map Launch</button>
 		</div>
 		<figure class="highlight">
 			<pre><code class="language-html" data-lang="html">&lt;button type="button" class="btn btn-primary JSmapLaunch" data-map-address="Renato Sánchez 4265, Las Condes, Santiago, Chile" data-map-coords="-33.4176466,-70.585256,17"&gt;Show Map Launch&lt;/button&gt;</code></pre>

@@ -825,8 +825,8 @@ function mapLaunch(element){
 	var mapText = "@maplaunch-text";
 	var mapIcon1 = mainUrl+"/css/icons/maplaunch/google-maps.png";
 	var mapIcon2 = mainUrl+"/css/icons/maplaunch/waze.png";
-	var mapCoords = $(element).data('coords').split(',');
-	var mapAddress = $(element).data('address');
+	var mapCoords = $(element).data('map-coords').split(',');
+	var mapAddress = $(element).data('map-address');
 	var mapAddressUrl = encodeURI(mapAddress).replace(/%20/g,'+');
 	var mapLaunchUrl1 = isMobile ? 'http://maps.google.com/maps?q='+mapCoords[0]+','+mapCoords[1]+','+mapCoords[2]+'z' : 
 										   'https://www.google.cl/maps/search/'+mapAddressUrl+'/@'+mapCoords[0]+','+mapCoords[1]+','+mapCoords[2]+'z';
@@ -921,10 +921,10 @@ $(document).ready(function(){
 	//Applu Data Tables
 	$('.JSdataTables').each(function(){
 		$(this).DataTable({
-			paging: toBoolean($(this).data('pages')),
-			searching: toBoolean($(this).data('filter')),
-			info: toBoolean($(this).data('info')),
-			ordering: toBoolean($(this).data('order')),
+			paging: toBoolean($(this).data('table-pages')),
+			searching: toBoolean($(this).data('table-search')),
+			info: toBoolean($(this).data('table-info')),
+			ordering: toBoolean($(this).data('table-sort')),
 		});
 	});
 	
