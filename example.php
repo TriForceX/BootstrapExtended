@@ -313,7 +313,7 @@ $htmlData = array('lang'=>'en',
 		<div class="page-header">
 			<h1>Light Gallery <span class="label label-danger">JS</span></h1>
 		</div>
-		<p>A customizable, modular, responsive, lightbox gallery plugin for jQuery. Below you will find an improved usage method via <code>lg-attributes</code> applied to the main gallery container.
+		<p>A customizable, modular, responsive, lightbox gallery plugin for jQuery. Below you will find an improved usage method via <code>data-lg-attributes</code> applied to the main gallery container.
 
 		<table class="table table-bordered table-striped js-options-table">
 			<thead>
@@ -324,54 +324,50 @@ $htmlData = array('lang'=>'en',
 			</thead>
 			<tbody>
 				<tr>
-					<td>lg-selector</td>
+					<td>data-lg-item</td>
 					<td>Defines which element contains the image <code>url</code> and the <code>thumbnail</code>
 					</td>
 				</tr>
 				<tr>
-					<td>lg-autotitle</td>
+					<td>data-lg-title</td>
 					<td>Set a custom title to all images in the lightbox</td>
 				</tr>
 				<tr>
-					<td>lg-thumbnail</td>
+					<td>data-lg-thumb</td>
 					<td>Defines if thumbnails will be shown when the lightbox is executed</td>
 				</tr>
 				<tr>
-					<td>lg-gallerymode</td>
+					<td>data-lg-gallery</td>
 					<td>Execute custom functions when you get the <code>first</code> or <code>last</code> page</td>
 				</tr>
 				<tr>
-					<td>lg-download</td>
+					<td>data-lg-download</td>
 					<td>Enables downloads, the download url will be taken from data-<code>src/href</code> attribute</td>
 				</tr>
 			</tbody>
 		</table>
 
 		<div class="bs-example">
-			<div class="row JSlightGallery" lg-selector="auto" lg-autotitle="false" lg-thumbnail="false" lg-gallerymode="false" lg-download="false">
+			<div class="row JSlightGallery" data-lg-item="auto" data-lg-title="false" data-lg-thumb="false" data-lg-gallery="false" data-lg-download="false">
 				<div class="col-md-3">
 					<a class="thumbnail" style="height:100px; overflow: hidden" title="My image 1" href="http://getbootstrap.com/examples/screenshots/theme.jpg">
 						<img src="http://getbootstrap.com/examples/screenshots/theme.jpg">
 					</a>
-				
 				</div>
 				<div class="col-md-3">
 					<a class="thumbnail" style="height:100px; overflow: hidden" title="My image 2" href="http://getbootstrap.com/examples/screenshots/cover.jpg">
 						<img src="http://getbootstrap.com/examples/screenshots/cover.jpg">
 					</a>
-				
 				</div>
 				<div class="col-md-3">
 					<a class="thumbnail" style="height:100px; overflow: hidden" title="My image 3" href="http://getbootstrap.com/examples/screenshots/justified-nav.jpg">
 						<img src="http://getbootstrap.com/examples/screenshots/justified-nav.jpg">
 					</a>
-				
 				</div>
 				<div class="col-md-3">
 					<a class="thumbnail" style="height:100px; overflow: hidden" title="My image 3" href="http://getbootstrap.com/examples/screenshots/dashboard.jpg">
 						<img src="http://getbootstrap.com/examples/screenshots/dashboard.jpg">
 					</a>
-				
 				</div>
 			</div>
 		</div>
@@ -385,56 +381,48 @@ $htmlData = array('lang'=>'en',
 		<div class="bs-example">
 
 			<?php //echo isset($_GET["page-2"]) ? 'Page 2' : 'Page 1' ?>
-			<div class="row JSlightGallery" lg-selector="auto" lg-autotitle="Gallery Title" lg-thumbnail="true" lg-gallerymode="true">
+			<div class="row JSlightGallery" data-lg-item="auto" data-lg-title="Gallery Title" data-lg-thumb="true" data-lg-gallery="true" data-lg-download="true">
 				<?php if(!isset($_GET["page-2"])): ?>
 				<div class="col-md-3">
 					<a class="thumbnail" style="height:100px; overflow: hidden" title="My image 1" href="http://getbootstrap.com/examples/screenshots/theme.jpg">
 						<img src="http://getbootstrap.com/examples/screenshots/theme.jpg">
 					</a>
-				
 				</div>
 				<div class="col-md-3">
 					<a class="thumbnail" style="height:100px; overflow: hidden" title="My image 2" href="http://getbootstrap.com/examples/screenshots/cover.jpg">
 						<img src="http://getbootstrap.com/examples/screenshots/cover.jpg">
 					</a>
-				
 				</div>
 				<div class="col-md-3">
 					<a class="thumbnail" style="height:100px; overflow: hidden" title="My image 3" href="http://getbootstrap.com/examples/screenshots/justified-nav.jpg">
 						<img src="http://getbootstrap.com/examples/screenshots/justified-nav.jpg">
 					</a>
-				
 				</div>
 				<div class="col-md-3">
 					<a class="thumbnail" style="height:100px; overflow: hidden" title="My image 4" href="http://getbootstrap.com/examples/screenshots/dashboard.jpg">
 						<img src="http://getbootstrap.com/examples/screenshots/dashboard.jpg">
 					</a>
-				
 				</div>
 				<?php else: ?>
 				<div class="col-md-3">
 					<a class="thumbnail" style="height:100px; overflow: hidden" title="My image 5" href="http://getbootstrap.com/examples/screenshots/offcanvas.jpg">
 						<img src="http://getbootstrap.com/examples/screenshots/offcanvas.jpg">
 					</a>
-				
 				</div>
 				<div class="col-md-3">
 					<a class="thumbnail" style="height:100px; overflow: hidden" title="My image 6" href="http://getbootstrap.com/examples/screenshots/sign-in.jpg">
 						<img src="http://getbootstrap.com/examples/screenshots/sign-in.jpg">
 					</a>
-				
 				</div>
 				<div class="col-md-3">
 					<a class="thumbnail" style="height:100px; overflow: hidden" title="My image 7" href="http://getbootstrap.com/examples/screenshots/jumbotron-narrow.jpg">
 						<img src="http://getbootstrap.com/examples/screenshots/jumbotron-narrow.jpg">
 					</a>
-				
 				</div>
 				<div class="col-md-3">
 					<a class="thumbnail" style="height:100px; overflow: hidden" title="My image 8" href="http://getbootstrap.com/examples/screenshots/blog.jpg">
 						<img src="http://getbootstrap.com/examples/screenshots/blog.jpg">
 					</a>
-				
 				</div>
 				<?php endif; ?>
 			</div>
@@ -1130,32 +1118,60 @@ $htmlData = array('lang'=>'en',
 					<label for="example-textarea">Message</label>
 					<textarea class="form-control" rows="3" id="example-textarea" placeholder="Write a Message"></textarea>
 				</div>
-				<div class="form-group" data-toggle="buttons" data-group="checkbox">
+				<div class="form-group" data-group="checkbox">
 					<p class="no-margin-b">
 						<label>Check items</label>
 					</p>
-					<label class="btn btn-primary">
-						<input type="checkbox" autocomplete="off" name="example-checkbox-1" value="Selected 1"> Checkbox Item 1
+					<label for="example-checkbox-1">
+						<input type="checkbox" autocomplete="off" name="example-checkbox-1" id="example-checkbox-1" value="Selected 1"> Checkbox Item 1
 					</label>
-					<label class="btn btn-primary">
-						<input type="checkbox" autocomplete="off" name="example-checkbox-2" value="Selected 2"> Checkbox Item 2
+					<label for="example-checkbox-2">
+						<input type="checkbox" autocomplete="off" name="example-checkbox-2" id="example-checkbox-2" value="Selected 2"> Checkbox Item 2
 					</label>
-					<label class="btn btn-primary">
-						<input type="checkbox" autocomplete="off" name="example-checkbox-3" value="Selected 3"> Checkbox Item 3
+					<label for="example-checkbox-3">
+						<input type="checkbox" autocomplete="off" name="example-checkbox-3" id="example-checkbox-3" value="Selected 3"> Checkbox Item 3
+					</label>
+				</div>
+				<div class="form-group" data-group="radio">
+					<p class="no-margin-b">
+						<label>Radio items</label>
+					</p>
+					<label for="example-radio-1">
+						<input type="radio" name="example-radio" id="example-radio-1" autocomplete="off" value="Choosen 1"> Radio Item 1
+					</label>
+					<label for="example-radio-2">
+						<input type="radio" name="example-radio" id="example-radio-2" autocomplete="off" value="Choosen 2"> Radio Item 2
+					</label>
+					<label for="example-radio-3">
+						<input type="radio" name="example-radio" id="example-radio-3" autocomplete="off" value="Choosen 3"> Radio Item 3
+					</label>
+				</div>
+				<div class="form-group" data-toggle="buttons" data-group="checkbox">
+					<p class="no-margin-b">
+						<label>Check items (Button style)</label>
+					</p>
+					<label class="btn btn-primary" for="example-checkbox-1-style">
+						<input type="checkbox" autocomplete="off" name="example-checkbox-1-style" id="example-checkbox-1-style" value="Selected 1 style"> Checkbox Item 1
+					</label>
+					<label class="btn btn-primary" for="example-checkbox-2-style">
+						<input type="checkbox" autocomplete="off" name="example-checkbox-2-style" id="example-checkbox-2-style" value="Selected 2 style"> Checkbox Item 2
+					</label>
+					<label class="btn btn-primary" for="example-checkbox-3-style">
+						<input type="checkbox" autocomplete="off" name="example-checkbox-3-style" id="example-checkbox-3-style" value="Selected 3 style"> Checkbox Item 3
 					</label>
 				</div>
 				<div class="form-group" data-toggle="buttons" data-group="radio">
 					<p class="no-margin-b">
-						<label>Radio items</label>
+						<label>Radio items (Button style)</label>
 					</p>
-					<label class="btn btn-primary">
-						<input type="radio" name="example-radio" id="example-radio-1" autocomplete="off" value="Choosen 1"> Radio Item 1
+					<label class="btn btn-primary" for="example-radio-1-style">
+						<input type="radio" name="example-radio" id="example-radio-1-style" autocomplete="off" value="Choosen 1 style"> Radio Item 1
 					</label>
-					<label class="btn btn-primary">
-						<input type="radio" name="example-radio" id="example-radio-2" autocomplete="off" value="Choosen 2"> Radio Item 2
+					<label class="btn btn-primary" for="example-radio-2-style">
+						<input type="radio" name="example-radio" id="example-radio-2-style" autocomplete="off" value="Choosen 2 style"> Radio Item 2
 					</label>
-					<label class="btn btn-primary">
-						<input type="radio" name="example-radio" id="example-radio-3" autocomplete="off" value="Choosen 3"> Radio Item 3
+					<label class="btn btn-primary" for="example-radio-3-style">
+						<input type="radio" name="example-radio" id="example-radio-3-style" autocomplete="off" value="Choosen 3 style"> Radio Item 3
 					</label>
 				</div>
 				<div class="form-group no-margin-b">

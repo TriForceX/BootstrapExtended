@@ -188,12 +188,12 @@ td[align='left']{
 	margin-left: auto !important;
 	margin-right: auto !important;
 }
-.lg-outer .lg-thumb .lg-thumb-item.noBorder{
-	border-color: transparent !important;
-}
-.JSlightGallery .lg-prevthumb,
-.JSlightGallery .lg-nextthumb{
+.JSlightGallery .lg-thumb-prev,
+.JSlightGallery .lg-thumb-next{
 	display: none;
+}
+.JSlightGalleryNoBorder{
+	border-color: transparent !important;
 }
 /*LightGallery*/
 
@@ -313,12 +313,26 @@ td[align='left']{
 /*JS Loading*/
 
 /*JS Validate Error*/
-.JSvalidateError{
-	border:1px solid #FF0000 !important;
+input.JSvalidateError,
+select.JSvalidateError,
+textarea.JSvalidateError,
+label.JSvalidateError.btn{
+	border:1px solid #FF0000;
 	-webkit-box-shadow:0px 0px 6px rgba(200,0,0,0.5);
 	-moz-box-shadow:0px 0px 6px rgba(200,0,0,0.5);
 	-o-box-shadow:0px 0px 6px rgba(200,0,0,0.5);
 	box-shadow:0px 0px 6px rgba(200,0,0,0.5);
+}
+label.JSvalidateError input[type="checkbox"],
+label.JSvalidateError input[type="radio"]{
+	border:1px solid #FF0000;
+	-webkit-box-shadow:0px 0px 6px #FF0000;
+	-moz-box-shadow:0px 0px 6px #FF0000;
+	-o-box-shadow:0px 0px 6px #FF0000;
+	box-shadow:0px 0px 6px #FF0000;
+}
+label.JSvalidateError input[type="radio"]{
+	border-radius: 500px;
 }
 /*JS Validate Error*/
 

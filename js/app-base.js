@@ -73,7 +73,7 @@ $.fn.validateForm = function(options) {
 		$(this).find('select').not(settings.noValidate).each(function(){
 			if (!validateEmpty($(this).find("option:selected").attr("value"))) { 
 				$(this).addClass("JSvalidateError");
-				formError = formErrorText[0]['select'];
+				formError = formErrorText[0].select;
 			}
 			else{
 				$(this).removeClass("JSvalidateError");
@@ -84,7 +84,7 @@ $.fn.validateForm = function(options) {
 		$(this).find('textarea').not(settings.noValidate).each(function(){
 			if (!validateEmpty($.trim($(this).val()))) { 
 				$(this).addClass("JSvalidateError");
-				formError = formErrorText[0]['textarea'];
+				formError = formErrorText[0].textarea;
 			}
 			else{
 				$(this).removeClass("JSvalidateError");
@@ -105,12 +105,12 @@ $.fn.validateForm = function(options) {
 			
 			if(!check){
 				item.addClass("JSvalidateError");
-				item.parent('label.btn').addClass("JSvalidateError");
+				item.parent('label').addClass("JSvalidateError");
 				formError = formErrorText[0][type];
 			}
 			else{
 				item.removeClass("JSvalidateError");
-				item.parent('label.btn').removeClass("JSvalidateError");
+				item.parent('label').removeClass("JSvalidateError");
 			}
 			
 		});
@@ -121,7 +121,7 @@ $.fn.validateForm = function(options) {
 				case 'text':
 					if (!validateEmpty($(this).val())) { 
 						$(this).addClass("JSvalidateError");
-						formError = formErrorText[0]['text'];
+						formError = formErrorText[0].text;
 					}
 					else{
 						$(this).removeClass("JSvalidateError");
@@ -130,7 +130,7 @@ $.fn.validateForm = function(options) {
 				case 'number':
 					if (!validateEmpty($(this).val()) || !validateNumber($(this).val())) { 
 						$(this).addClass("JSvalidateError");
-						formError = formErrorText[0]['number'];
+						formError = formErrorText[0].number;
 					}
 					else{
 						$(this).removeClass("JSvalidateError");
@@ -139,7 +139,7 @@ $.fn.validateForm = function(options) {
 				case 'email':
 					if (!validateEmpty($(this).val()) || !validateEmail($(this).val())) { 
 						$(this).addClass("JSvalidateError");
-						formError = formErrorText[0]['email'];
+						formError = formErrorText[0].email;
 					}
 					else{
 						$(this).removeClass("JSvalidateError");
@@ -148,7 +148,7 @@ $.fn.validateForm = function(options) {
 				case 'password':
 					if (!validateEmpty($(this).val())) { 
 						$(this).addClass("JSvalidateError");
-						formError = formErrorText[0]['pass'];
+						formError = formErrorText[0].pass;
 					}
 					else{
 						$(this).removeClass("JSvalidateError");
@@ -157,7 +157,7 @@ $.fn.validateForm = function(options) {
 				case 'search':
 					if (!validateEmpty($(this).val())) { 
 						$(this).addClass("JSvalidateError");
-						formError = formErrorText[0]['search'];
+						formError = formErrorText[0].search;
 					}
 					else{
 						$(this).removeClass("JSvalidateError");
@@ -169,14 +169,14 @@ $.fn.validateForm = function(options) {
 		});
 
 		//Send error
-		if(formError != false){
+		if(formError !== false){
 			showAlert(formErrorTitle,formError,'medium');
 			event.preventDefault();
 		}
 		
 		//Check Confirm mode
-		if(settings.hasConfirm && formError == false){
-			formElement = $(this);
+		if(settings.hasConfirm && formError === false){
+			var formElement = $(this);
 			event.preventDefault();
 			
 			//Bootbox alert
@@ -230,9 +230,9 @@ function validateNumber(field){
 
 //Form validate empty
 function validateEmpty(field){
-    if(field == "" ||
-       field == null ||
-       field == "undefinied"){
+    if(field === "" ||
+       field === null ||
+       field === undefined){
     	return false;
     }
     else if(/^\s*$/.test(field)){
@@ -250,8 +250,8 @@ function toBoolean(value) {
         strValue !== '' &&
         strValue !== 'null' &&
         strValue !== 'undefined') ? '1' : strValue;
-    return strValue === 'true' || strValue === '1' ? true : false
-};
+    return strValue === 'true' || strValue === '1' ? true : false;
+}
 
 //Get max height from elements
 function getMaxHeight(elems){
@@ -322,54 +322,52 @@ function loadLightGallery(){
 	
 	$(".JSlightGallery").each(function(){ 
 
-		var galSelectorVal = $(this).attr("lg-selector") == "auto" ? ".lg-contentphoto" : $(this).attr("lg-selector");
-		var galThumbnailVal = $(this).attr("lg-thumbnail");
-		var galDownloadVal = $(this).attr("lg-download");
-		var galAutoTitle = $(this).attr("lg-autotitle");
-		var galGalleryMode = $(this).attr("lg-gallerymode") == "true" ? $(this).addClass("lightGalleryMode") : '';
+		var galSelectorVal = $(this).data("lg-item") === "auto" ? ".JSlightGallerySelector" : $(this).data("lg-item");
+		var galThumbnailVal = $(this).data("lg-thumb");
+		var galDownloadVal = $(this).data("lg-download");
 		var galPrevGalText = "Loading previous page ...";
 		var galNextGalText = "Loading next page ...";
 		var galLoadThumb = mainUrl+"/plugins/lightgallery/img/lg-loading-icon.gif";
 		var galPrevThumb = mainUrl+"/plugins/lightgallery/img/lg-loading-prev.png";
 		var galNextThumb = mainUrl+"/plugins/lightgallery/img/lg-loading-next.png";
 		
-		if($(".JSlightGallery.lightGalleryMode .lg-prevthumb").length < 1 && $(".JSlightGallery.lightGalleryMode .lg-nextthumb").length < 1){
-			$(".JSlightGallery.lightGalleryMode").prepend("<div class='lg-prevthumb' href='"+galLoadThumb+"' title='"+galPrevGalText+"'><img src='"+galPrevThumb+"'></div>");
-			$(".JSlightGallery.lightGalleryMode").append("<div class='lg-nextthumb' href='"+galLoadThumb+"' title='"+galNextGalText+"'><img src='"+galNextThumb+"'></div>");
+		if(toBoolean($(this).data("lg-title")) === false){
+			$(this).find(galSelectorVal).not(".lg-thumb-prev, .lg-thumb-next").attr("title", $(this).data("lg-title"));
 		}
 		
+		if(toBoolean($(this).data("lg-gallery")) === true){
+			$(this).addClass("JSlightGalleryMode");
+		}
+		
+		if($(".JSlightGallery.JSlightGalleryMode .lg-thumb-prev").length < 1 && $(".JSlightGallery.JSlightGalleryMode .lg-thumb-next").length < 1){
+			$(".JSlightGallery.JSlightGalleryMode").prepend("<div class='lg-thumb-prev' href='"+galLoadThumb+"' title='"+galPrevGalText+"'><img src='"+galPrevThumb+"'></div>");
+			$(".JSlightGallery.JSlightGalleryMode").append("<div class='lg-thumb-next' href='"+galLoadThumb+"' title='"+galNextGalText+"'><img src='"+galNextThumb+"'></div>");
+		}
 		
 		$(".JSlightGallery").find("img").each(function(){
 			if($(this).parent().is("a") && !($(this).parent().hasAttr("target")) ){
-				$(this).parent().addClass("lg-contentphoto");
+				$(this).parent().addClass("JSlightGallerySelector");
 			}
 		});
 		
-		if(galAutoTitle!="false"){
-			$(this).find(galSelectorVal).not(".lg-prevthumb, .lg-nextthumb").attr("title", galAutoTitle);
-		}
-
 		$(this).lightGallery({
-			selector: galSelectorVal+", .lg-prevthumb, .lg-nextthumb", 
+			selector: galSelectorVal+", .lg-thumb-prev, .lg-thumb-next", 
 			thumbnail: toBoolean(galThumbnailVal),
 			download: toBoolean(galDownloadVal),
 			loop: false,
 		}); 
 		
-		$(".JSlightGallery.lightGalleryMode").on('onAfterOpen.lg',function(event){
+		$(".JSlightGallery.JSlightGalleryMode").on('onAfterOpen.lg',function(){
 			//console.log("opened");
-			$(".lg-outer .lg-thumb .lg-thumb-item:first-child").addClass("noBorder");
-			$(".lg-outer .lg-thumb .lg-thumb-item:last-child").addClass("noBorder");
+			$(".lg-outer .lg-thumb .lg-thumb-item:first-child").addClass("JSlightGalleryNoBorder");
+			$(".lg-outer .lg-thumb .lg-thumb-item:last-child").addClass("JSlightGalleryNoBorder");
 		});
 
-		$(".JSlightGallery.lightGalleryMode").on('onAfterSlide.lg',function(event){
+		$(".JSlightGallery.JSlightGalleryMode").on('onAfterSlide.lg',function(){
 			var total = parseInt($("#lg-counter-all").html());
-			var actual = parseInt($("#lg-counter-current").html());
+			var current = parseInt($("#lg-counter-current").html());
 
-			//console.log("slide");
-			//console.log("total: "+total+" current: "+actual);
-
-			if(actual == total){
+			if(current === total){
 				//console.log("closing... next page");
 				$(".JSlightGallery").addClass("lightGalleryAuto");
 				$(".JSlightGallery").addClass("lightGalleryAutoNext");
@@ -377,7 +375,7 @@ function loadLightGallery(){
 					$(".lg-toolbar .lg-close").trigger("click");
 				}, 1500);
 			}
-			if(actual == 1){
+			if(current === 1){
 				//console.log("closing... prev page");
 				$(".JSlightGallery").addClass("lightGalleryAuto");
 				$(".JSlightGallery").addClass("lightGalleryAutoPrev");
@@ -387,7 +385,7 @@ function loadLightGallery(){
 			}
 		});
 
-		$(".JSlightGallery.lightGalleryMode").on('onCloseAfter.lg',function(event){
+		$(".JSlightGallery.JSlightGalleryMode").on('onCloseAfter.lg',function(){
 			if($(this).hasClass("lightGalleryAuto")){
 				if($(this).hasClass("lightGalleryAutoNext")){
 					//Stuff to do on close
@@ -410,7 +408,7 @@ function loadLightGallery(){
 function autoBackground(container){
 	
 	var bgData = new Array();
-	var bgData = $(container).data("auto-bg").split(',');
+	bgData = $(container).data("auto-bg").split(',');
 	
 	if (bgData[2] === undefined || bgData[2] === null)
 	{
@@ -429,7 +427,7 @@ function autoBackground(container){
 	
 	$(container).imgLiquid({ verticalAlign: bgData[0], horizontalAlign: bgData[1] });
 	
-	if(bgData[2].substr(bgData[2].length - 1, 1) == '%')
+	if(bgData[2].substr(bgData[2].length - 1, 1) === '%')
 	{
 		var bgSize = parseInt(bgData[2].replace(/\x25/g, '')); //%
 		
@@ -440,7 +438,7 @@ function autoBackground(container){
 	}
 	else
 	{
-		if(bgData[2]!="cover")
+		if(bgData[2]!=="cover")
 		{
 			$(container).css("background-size",bgData[2]);
 		}
@@ -458,12 +456,15 @@ function onElementHeightChange(elm, callback){
 	var lastHeight = $(elm).height(), newHeight;
 	(function run(){
 		newHeight = $(elm).height();
-		if( lastHeight != newHeight )
+		if(lastHeight !== newHeight){
 			callback();
+		}
+		
 		lastHeight = newHeight;
 
-		if( elm.onElementHeightChangeTimer )
+		if(elm.onElementHeightChangeTimer){
 		  clearTimeout(elm.onElementHeightChangeTimer);
+		}
 
 		elm.onElementHeightChangeTimer = setTimeout(run, 200);
 	})();
@@ -511,7 +512,7 @@ function textAutoSize(container, max){
 
 //Show alert modal box using BootBox plugin
 function showAlert(title,text,size){
-	if(typeof size === 'undefined' || size === null){
+	if(typeof size === undefined || size === null){
 		size = 'medium';
 	}
 	
@@ -561,11 +562,11 @@ function videoLaunch(url, share, title){
 	var embedShareTitle = '@videolaunch-title';
 	var embedShareText = '@videolaunch-text';
 	
-	if(typeof share === 'undefined' || share === null){
+	if(typeof share === undefined || share === null){
 		share = false;
 	}
 	
-	if(typeof title === 'undefined' || title === null){
+	if(typeof title === undefined || title === null){
 		title = null;
 	}
 	
@@ -623,7 +624,7 @@ function videoLaunch(url, share, title){
 	//Clipboard
 	var clipboard = new Clipboard('.JSvideoLaunchURL a');
 
-    clipboard.on('success', function(e) {
+    clipboard.on('success', function() {
 		$('.JSvideoLaunchURL input').tooltip('show');
     });
 }
@@ -635,11 +636,7 @@ function capitalizeFirstLetter(string) {
 
 //Convert to slug function
 function convertToSlug(Text){
-	return Text
-	    .toLowerCase()
-	    .replace(/[^\w ]+/g,'')
-	    .replace(/ +/g,'-')
-	    ;
+	return Text.toLowerCase().replace(/[^\w ]+/g,'').replace(/ +/g,'-');
 }
 
 //Auto scroll function
@@ -647,7 +644,7 @@ function autoScroll(selector,animated,distance){
     var scrollDistance = distance;
     var scrollTarget = $(selector);
 
-    if(animated=="yes"){
+    if(animated){
         $('html, body').animate({scrollTop: (scrollTarget.offset().top - scrollDistance)}, 500);
     }
     else{
@@ -669,8 +666,8 @@ function disableClick(enable){
 function getUrlParameter(sParam){
 	var sPageURL = decodeURIComponent(window.location.search.substring(1)),
 		sURLVariables = sPageURL.split('&'),
-		sParameterName,
-		i;
+						sParameterName,
+						i;
 
 	for (i = 0; i < sURLVariables.length; i++) {
 		sParameterName = sURLVariables[i].split('=');
@@ -708,17 +705,17 @@ function linkify(inputText) {
 
     //URLs starting with http://, https://, or ftp://
     replacePattern1 = /(\b(https?|ftp):\/\/[-A-Z0-9+&@#\/%?=~_|!:,.;]*[-A-Z0-9+&@#\/%=~_|])/gim;
-    replacedText = inputText.replace(replacePattern1, '<a href="$1" target="_blank" style="color:#385086; text-decoration: underline">$1</a>');
+    replacedText = inputText.replace(replacePattern1, '<a href="$1" target="_blank">$1</a>');
 
     //URLs starting with "www." (without // before it, or itd re-link the ones done above).
     replacePattern2 = /(^|[^\/])(www\.[\S]+(\b|$))/gim;
-    replacedText = replacedText.replace(replacePattern2, '$1<a href="http://$2" target="_blank" style="color:#385086; text-decoration: underline">$2</a>');
+    replacedText = replacedText.replace(replacePattern2, '$1<a href="http://$2" target="_blank">$2</a>');
 
     //Change email addresses to mailto:: links.
     replacePattern3 = /(([a-zA-Z0-9\-\_\.])+@[a-zA-Z\_]+?(\.[a-zA-Z]{2,6})+)/gim;
 	//replacePattern3 = /(^[a-zA-Z0-9_\-\.]+@[a-zA-Z0-9\-\.]+?\.[a-zA-Z]{2,6}$)/gim;
 	//replacePattern3 = /(\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,6})/gim;
-    replacedText = replacedText.replace(replacePattern3, '<a href="mailto:$1" style="color:#385086; text-decoration: underline">$1</a>');
+    replacedText = replacedText.replace(replacePattern3, '<a href="mailto:$1">$1</a>');
 
     return replacedText;
 }
@@ -736,13 +733,13 @@ function checkDisabledLink(string){
 	var textoUrl = string;
 
 	//Sin Enlace
-	if(textoUrl=="#no-link"){
+	if(textoUrl==="#no-link"){
 		return false;
 	}
-	else if(textoUrl=="#"){
+	else if(textoUrl==="#"){
 		return false;
 	}
-	else if(textoUrl=="#carousel-example-generic"){
+	else if(textoUrl==="#carousel-example-generic"){
 		return true;
 	}
 	else if(textoUrl.indexOf('some-string') >= 0){
@@ -754,7 +751,7 @@ function checkDisabledLink(string){
 			
 			var seccion = capitalizeFirstLetter(textoUrl.split('#')[1]/*.replace("#", "")*/);
 			//***
-			if(textoUrl.substr(textoUrl.length - 1, 1) == 's') { //Spanish case for 2 or more
+			if(textoUrl.substr(textoUrl.length - 1, 1) === 's') { //Spanish case for 2 or more
 				showAlert(seccion+" disabled","This content is disabled or not available.");
 			}
 			else{
@@ -780,10 +777,10 @@ function windowPopup(element){
 	var getScroll = $(element).data('scroll');
 	
 	//Horizontal Align
-	if(getAlign[0]=="right"){
+	if(getAlign[0]==="right"){
 		leftPosition = window.screen.width;
 	}
-	else if(getAlign[0]=="left"){
+	else if(getAlign[0]==="left"){
 		leftPosition = 0;
 	}
 	else{
@@ -791,10 +788,10 @@ function windowPopup(element){
 	}
 
 	//Vertical Align
-	if(getAlign[1]=="top"){
+	if(getAlign[1]==="top"){
 		topPosition = 0;
 	}
-	else if(getAlign[1]=="bottom"){
+	else if(getAlign[1]==="bottom"){
 		topPosition = window.screen.height;
 	}
 	else{
@@ -867,15 +864,15 @@ $(document).ready(function(){
 	isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini|BB10|PlayBook|MeeGo/i.test(navigator.userAgent);
 	
 	//Check navigators
-	isNavChrome = $.browser.name == 'Chrome' && $.browser.webkit == true ? true : false;
-	isNavIE = $.browser.name == 'Microsoft Internet Explorer' && $.browser.msie == true ? true : false;
-	isNavIE6 = $.browser.name == 'Microsoft Internet Explorer' && $.browser.msie == true && $.browser.version == 6 ? true : false;
-	isNavIE7 = $.browser.name == 'Microsoft Internet Explorer' && $.browser.msie == true && $.browser.version == 7 ? true : false;
-	isNavIE8 =$.browser.name == 'Microsoft Internet Explorer' && $.browser.msie == true && $.browser.version == 8 ? true : false;
-	isNavMozilla = $.browser.name == 'Firefox' && $.browser.mozilla == true ? true : false;
-	isNavSafari = $.browser.name == 'Safari' && $.browser.webkit == true ? true : false;
-	isNavOpera = $.browser.name == 'Opera' && $.browser.opera == true ? true : false;
-	isNavEdge = $.browser.name == 'Microsoft Edge' ? true : false;
+	isNavChrome = $.browser.name === 'Chrome' && $.browser.webkit === true ? true : false;
+	isNavIE = $.browser.name === 'Microsoft Internet Explorer' && $.browser.msie === true ? true : false;
+	isNavIE6 = $.browser.name === 'Microsoft Internet Explorer' && $.browser.msie === true && $.browser.version === 6 ? true : false;
+	isNavIE7 = $.browser.name === 'Microsoft Internet Explorer' && $.browser.msie === true && $.browser.version === 7 ? true : false;
+	isNavIE8 =$.browser.name === 'Microsoft Internet Explorer' && $.browser.msie === true && $.browser.version === 8 ? true : false;
+	isNavMozilla = $.browser.name === 'Firefox' && $.browser.mozilla === true ? true : false;
+	isNavSafari = $.browser.name === 'Safari' && $.browser.webkit === true ? true : false;
+	isNavOpera = $.browser.name === 'Opera' && $.browser.opera === true ? true : false;
+	isNavEdge = $.browser.name === 'Microsoft Edge' ? true : false;
 	
 	/*var browserTest = ''		
 					+'Chrome  = '+isNavChrome+'\n'		
@@ -904,18 +901,13 @@ $(document).ready(function(){
 	//Touch swipe bootstrap carousel
 	$("*[data-ride='carousel']").swipe({
 		swipe:function(event, direction, distance, duration, fingerCount, fingerData){
-				if(direction == "right"){
+				if(direction === "right"){
 					$(this).carousel('prev');  
 				}
-				else if(direction == "left"){
+				else if(direction === "left"){
 					$(this).carousel('next');  
 				}
 			}
-	});
-	
-	//Apply Text Cur
-	$(".JStextCut").each(function(){
-		textCut($(this));
 	});
 	
 	//Applu Data Tables
@@ -928,18 +920,23 @@ $(document).ready(function(){
 		});
 	});
 	
+	//Apply Text Cur
+	$(".JStextCut").each(function(){
+		textCut($(this));
+	});
+	
 	//Map Launch on click
-	$(document).on("click", ".JSwindowPopup", function(e){
+	$(document).on("click", ".JSwindowPopup", function(){
 		windowPopup($(this));
 	});
 	
 	//Map Launch on click
-	$(document).on("click", ".JSmapLaunch", function(e){
+	$(document).on("click", ".JSmapLaunch", function(){
 		mapLaunch($(this));
 	});
 	
 	//Modal on disabled links
-	$(document).on("click", "a[href*=#]", function(e){
+	$(document).on("click", "a[href*=#]", function(){
 		var source =  $(this).attr("href");
 
 		if(!(checkDisabledLink(source))){
