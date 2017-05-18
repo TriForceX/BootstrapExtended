@@ -454,7 +454,7 @@ $htmlData = array('lang'=>'en',
 			<h1>Data Tables <span class="label label-danger">JS</span></h1>
 		</div>
 		
-		<p>Improve the way to show plain html tables. Below you will find an improved usage method via <code>data-table-attributes</code>. For more options visit the <a href="https://datatables.net/examples/index" target="_blank">Plugin's Page</a></p>
+		<p>Improve the way to show plain html tables. Below you will find an improved usage method via <code>data-table-attributes</code>.</p>
 		
 		<table class="table table-bordered table-striped js-options-table">
 			<thead>
@@ -993,7 +993,7 @@ $htmlData = array('lang'=>'en',
 		<div class="page-header">
 			<h1>Window Pop-Up <span class="label label-danger">JS</span></h1>
 		</div>
-		<p>Launch a custom pop-up window via javascript, the function structure is <code>windowPopup(element)</code></p>
+		<p>Launch a custom pop-up window via javascript. Below you will find an improved usage method via <code>data-win-attributes</code>.</p>
 
 		<table class="table table-bordered table-striped js-options-table">
 			<thead>
@@ -1004,31 +1004,31 @@ $htmlData = array('lang'=>'en',
 			</thead>
 			<tbody>
 				<tr>
-					<td>data-url</td>
+					<td>data-win-url</td>
 					<td>Website URL to show in the pop-up</td>
 				</tr>
 				<tr>
-					<td>data-size</td>
+					<td>data-win-size</td>
 					<td>Width & Height (in pixels) of the pop-up, Need to be written like <code>width<code>x<code>height</code></td>
 				</tr>
 				<tr>
-					<td>data-align</td>
+					<td>data-win-align</td>
 					<td>Horizontal & Vertical alignment (in pixels) of the pop-up, Need to be written like <code>horizontal<code>,<code>vertical</code> and the values can be <code>left</code>, <code>center</code> or <code>right</code></td>
 				</tr>
 				<tr>
-					<td>data-scroll</td>
+					<td>data-win-scroll</td>
 					<td>Enable or disable scrollbar in the pop-up</td>
 				</tr>
 			</tbody>
 		</table>
 
 		<div class="bs-example">
-			<button type="button" class="btn btn-primary JSwindowPopup" data-url="http://getbootstrap.com" data-size="640x480" data-align="center,center" data-scroll="yes">Center Center 640 x 480</button>
-			<button type="button" class="btn btn-primary JSwindowPopup" data-url="http://getbootstrap.com" data-size="320x480" data-align="right,bottom" data-scroll="yes">Right Bottom 320 x 480</button>
-			<button type="button" class="btn btn-primary JSwindowPopup" data-url="http://getbootstrap.com" data-size="320x480" data-align="left,top" data-scroll="yes">Left Top 320 x 480</button>
+			<button type="button" class="btn btn-primary JSwindowPopup" data-win-url="http://getbootstrap.com" data-win-size="640x480" data-win-align="center,center" data-win-scroll="yes">Center Center 640 x 480</button>
+			<button type="button" class="btn btn-primary JSwindowPopup" data-win-url="http://getbootstrap.com" data-win-size="320x480" data-win-align="right,bottom" data-win-scroll="yes">Right Bottom 320 x 480</button>
+			<button type="button" class="btn btn-primary JSwindowPopup" data-win-url="http://getbootstrap.com" data-win-size="320x480" data-win-align="left,top" data-win-scroll="yes">Left Top 320 x 480</button>
 		</div>
 		<figure class="highlight">
-			<pre><code class="language-html" data-lang="html">&lt;a class="JSwindowPopup" data-url="http://getbootstrap.com" data-size="640x480" data-align="center,center" data-scroll="yes">Click Here&lt;/a&gt;<br>&lt;a class="JSwindowPopup" data-url="http://getbootstrap.com" data-size="320x480" data-align="right,bottom" data-scroll="yes">Click Here&lt;/a&gt;<br>&lt;a class="JSwindowPopup" data-url="http://getbootstrap.com" data-size="320x480" data-align="left,top" data-scroll="yes">Click Here&lt;/a&gt;</code></pre>
+			<pre><code class="language-html" data-lang="html">&lt;a class="JSwindowPopup" data-win-url="http://getbootstrap.com" data-win-size="640x480" data-win-align="center,center" data-win-scroll="yes">Click Here&lt;/a&gt;<br>&lt;a class="JSwindowPopup" data-win-url="http://getbootstrap.com" data-win-size="320x480" data-win-align="right,bottom" data-win-scroll="yes">Click Here&lt;/a&gt;<br>&lt;a class="JSwindowPopup" data-win-url="http://getbootstrap.com" data-win-size="320x480" data-win-align="left,top" data-win-scroll="yes">Click Here&lt;/a&gt;</code></pre>
 		</figure>
 
 		<!-- Show date example -->
@@ -1190,7 +1190,7 @@ $htmlData = array('lang'=>'en',
 		<div class="page-header">
 			<h1>Map Launch <span class="label label-danger">JS</span></h1>
 		</div>
-		<p>Show a modal box with map options such as <code>Google Maps</code> and <code>Waze</code> using <i>Class</i> and <i>Data attributes</i>.</p>
+		<p>Show a modal box with map options such as <i>Google Maps</i> and <i>Waze</i>. Below you will find an improved usage method via <code>data-map-attributes</code>.</p>
 
 		<table class="table table-bordered table-striped js-options-table">
 			<thead>

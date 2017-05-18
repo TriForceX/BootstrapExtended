@@ -312,7 +312,18 @@ td[align='left']{
 }
 /*JS Loading*/
 
-/*JS Validate Error*/
+/*JS Validate*/
+.form-group input[type="checkbox"],
+.form-group input[type="radio"]{
+	-webkit-appearance: none;
+	width: 20px;
+	height: 20px;
+	border:1px solid #a0a0a0;
+	vertical-align: middle;
+}
+.form-group input[type="radio"]{
+	border-radius: 500px;
+}
 input.JSvalidateError,
 select.JSvalidateError,
 textarea.JSvalidateError,
@@ -331,10 +342,7 @@ label.JSvalidateError input[type="radio"]{
 	-o-box-shadow:0px 0px 6px #FF0000;
 	box-shadow:0px 0px 6px #FF0000;
 }
-label.JSvalidateError input[type="radio"]{
-	border-radius: 500px;
-}
-/*JS Validate Error*/
+/*JS Validate*/
 
 /*JS Map Launch*/
 .JSmapLaunchInfo{

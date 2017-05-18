@@ -112,7 +112,6 @@ $.fn.validateForm = function(options) {
 				item.removeClass("JSvalidateError");
 				item.parent('label').removeClass("JSvalidateError");
 			}
-			
 		});
 		
 		//Input tags
@@ -771,10 +770,10 @@ function windowPopup(element){
 	
     var leftPosition;
 	var topPosition;
-	var getUrl = $(element).data('url');
-	var getSize = $(element).data('size').split('x');
-	var getAlign = $(element).data('align').split(',');
-	var getScroll = $(element).data('scroll');
+	var getUrl = $(element).data('win-url');
+	var getSize = $(element).data('win-size').split('x');
+	var getAlign = $(element).data('win-align').split(',');
+	var getScroll = $(element).data('win-scroll');
 	
 	//Horizontal Align
 	if(getAlign[0]==="right"){
