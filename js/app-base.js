@@ -104,12 +104,12 @@ $.fn.validateForm = function(options) {
 			}
 			
 			if(!check){
-				item.addClass("JSvalidateError");
+				item.addClass("JSvalidateErrorCheck");
 				item.parent('label').addClass("JSvalidateError");
 				formError = formErrorText[0][type];
 			}
 			else{
-				item.removeClass("JSvalidateError");
+				item.removeClass("JSvalidateErrorCheck");
 				item.parent('label').removeClass("JSvalidateError");
 			}
 		});

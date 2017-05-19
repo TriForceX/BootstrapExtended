@@ -207,6 +207,7 @@ $htmlData = array('lang'=>'en',
 		  $cssUrl.'/css/style-base.css',
 		  $cssUrl.'/css/style-fonts.css',
 		  $cssUrl.'/css/style-theme.css',
+		  ...
 		);<br>...<br>$cssVariables = array(
 			//Screen
 			'@screen-small-phone' => '320px', 
@@ -221,6 +222,7 @@ $htmlData = array('lang'=>'en',
 			'@color-blue' => '#0000ff',
 			'@color-green' => '#00ff00',
 			'@color-yellow' => '#ffff00',
+			...
 		);</code></pre>
 		</figure>
         
@@ -272,6 +274,7 @@ $htmlData = array('lang'=>'en',
 		  $jsUrl.'/js/app-ready.js',
 		  $jsUrl.'/js/app-load.js',
 		  $jsUrl.'/js/app-responsive.js',
+		  ...
 		);<br>...<br>$jsVariables = array(
 			//Screen
 			'@screen-small-phone' => '320', 
@@ -283,6 +286,7 @@ $htmlData = array('lang'=>'en',
 			'@screen-full-hd' => '1920', 
 			//Global
 			'@global-url' => $jsUrl,
+			...
 		);</code></pre>
 		</figure>
 		
@@ -372,7 +376,7 @@ $htmlData = array('lang'=>'en',
 			</div>
 		</div>
 		<figure class="highlight">
-			<pre><code class="language-html" data-lang="html">&lt;div class="JSlightGallery" lg-selector="auto" lg-autotitle="false" lg-thumbnail="false" lg-gallerymode="false" lg-download="false"&gt;<br>...<br>&lt;/div&gt;</code></pre>
+			<pre><code class="language-html" data-lang="html">&lt;div class="JSlightGallery" data-lg-item="auto" data-lg-title="false" data-lg-thumb="false" data-lg-gallery="false" data-lg-download="false"&gt;<br>...<br>&lt;/div&gt;</code></pre>
 		</figure>
 		
 		<h3>Gallery Mode</h3>
@@ -446,7 +450,7 @@ $htmlData = array('lang'=>'en',
 		</div>
 		
 		<figure class="highlight">
-			<pre><code class="language-html" data-lang="html">&lt;div class="JSlightGallery" lg-selector="auto" lg-autotitle="Gallery Title" lg-thumbnail="true" lg-gallerymode="true" lg-download="true"&gt;<br>...<br>&lt;/div&gt;</code></pre>
+			<pre><code class="language-html" data-lang="html">&lt;div class="JSlightGallery" data-lg-item="auto" data-lg-title="Gallery Title" data-lg-thumb="true" data-lg-gallery="true" data-lg-download="true"&gt;<br>...<br>&lt;/div&gt;</code></pre>
 		</figure>
 
 		<!-- Data Tables example -->
@@ -1122,29 +1126,43 @@ $htmlData = array('lang'=>'en',
 					<p class="no-margin-b">
 						<label>Check items</label>
 					</p>
-					<label for="example-checkbox-1">
-						<input type="checkbox" autocomplete="off" name="example-checkbox-1" id="example-checkbox-1" value="Selected 1"> Checkbox Item 1
-					</label>
-					<label for="example-checkbox-2">
-						<input type="checkbox" autocomplete="off" name="example-checkbox-2" id="example-checkbox-2" value="Selected 2"> Checkbox Item 2
-					</label>
-					<label for="example-checkbox-3">
-						<input type="checkbox" autocomplete="off" name="example-checkbox-3" id="example-checkbox-3" value="Selected 3"> Checkbox Item 3
-					</label>
+					<div class="checkbox">
+						<input type="checkbox" autocomplete="off" name="example-checkbox-1" id="example-checkbox-1" value="Selected 1"> 
+						<label for="example-checkbox-1">Checkbox Item 1</label>
+					</div>
+					<div class="checkbox checkbox-primary">
+						<input type="checkbox" autocomplete="off" name="example-checkbox-2" id="example-checkbox-2" value="Selected 2"> 
+						<label for="example-checkbox-2">Checkbox Item 2</label>
+					</div>
+					<div class="checkbox checkbox-success">
+						<input type="checkbox" autocomplete="off" name="example-checkbox-3" id="example-checkbox-3" value="Selected 3"> 
+						<label for="example-checkbox-3">Checkbox Item 3</label>
+					</div>
+					<div class="checkbox checkbox-danger">
+						<input type="checkbox" autocomplete="off" name="example-checkbox-4" id="example-checkbox-4" value="Selected 3"> 
+						<label for="example-checkbox-4">Checkbox Item 4</label>
+					</div>
 				</div>
 				<div class="form-group" data-group="radio">
 					<p class="no-margin-b">
 						<label>Radio items</label>
 					</p>
-					<label for="example-radio-1">
-						<input type="radio" name="example-radio" id="example-radio-1" autocomplete="off" value="Choosen 1"> Radio Item 1
-					</label>
-					<label for="example-radio-2">
-						<input type="radio" name="example-radio" id="example-radio-2" autocomplete="off" value="Choosen 2"> Radio Item 2
-					</label>
-					<label for="example-radio-3">
-						<input type="radio" name="example-radio" id="example-radio-3" autocomplete="off" value="Choosen 3"> Radio Item 3
-					</label>
+					<div class="radio">
+						<input type="radio" name="example-radio" id="example-radio-1" autocomplete="off" value="Choosen 1"> 
+						<label for="example-radio-1">Radio Item 1</label>
+					</div>
+					<div class="radio radio-primary">
+						<input type="radio" name="example-radio" id="example-radio-2" autocomplete="off" value="Choosen 2"> 
+						<label for="example-radio-2">Radio Item 2</label>
+					</div>
+					<div class="radio radio-success">
+						<input type="radio" name="example-radio" id="example-radio-3" autocomplete="off" value="Choosen 3"> 
+						<label for="example-radio-3">Radio Item 3</label>
+					</div>
+					<div class="radio radio-danger">
+						<input type="radio" name="example-radio" id="example-radio-4" autocomplete="off" value="Choosen 3"> 
+						<label for="example-radio-4">Radio Item 4</label>
+					</div>
 				</div>
 				<div class="form-group" data-toggle="buttons" data-group="checkbox">
 					<p class="no-margin-b">
@@ -1153,10 +1171,10 @@ $htmlData = array('lang'=>'en',
 					<label class="btn btn-primary" for="example-checkbox-1-style">
 						<input type="checkbox" autocomplete="off" name="example-checkbox-1-style" id="example-checkbox-1-style" value="Selected 1 style"> Checkbox Item 1
 					</label>
-					<label class="btn btn-primary" for="example-checkbox-2-style">
+					<label class="btn btn-success" for="example-checkbox-2-style">
 						<input type="checkbox" autocomplete="off" name="example-checkbox-2-style" id="example-checkbox-2-style" value="Selected 2 style"> Checkbox Item 2
 					</label>
-					<label class="btn btn-primary" for="example-checkbox-3-style">
+					<label class="btn btn-danger" for="example-checkbox-3-style">
 						<input type="checkbox" autocomplete="off" name="example-checkbox-3-style" id="example-checkbox-3-style" value="Selected 3 style"> Checkbox Item 3
 					</label>
 				</div>
@@ -1167,10 +1185,10 @@ $htmlData = array('lang'=>'en',
 					<label class="btn btn-primary" for="example-radio-1-style">
 						<input type="radio" name="example-radio" id="example-radio-1-style" autocomplete="off" value="Choosen 1 style"> Radio Item 1
 					</label>
-					<label class="btn btn-primary" for="example-radio-2-style">
+					<label class="btn btn-success" for="example-radio-2-style">
 						<input type="radio" name="example-radio" id="example-radio-2-style" autocomplete="off" value="Choosen 2 style"> Radio Item 2
 					</label>
-					<label class="btn btn-primary" for="example-radio-3-style">
+					<label class="btn btn-danger" for="example-radio-3-style">
 						<input type="radio" name="example-radio" id="example-radio-3-style" autocomplete="off" value="Choosen 3 style"> Radio Item 3
 					</label>
 				</div>
