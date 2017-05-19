@@ -590,10 +590,11 @@ function videoLaunch(url, share, title){
 			  		'</div>';
 	
 	if(share){
-		content = content+'<div class="JSvideoLaunchURL">'+
-							'	<a data-clipboard-action="copy" data-clipboard-target="#foo">'+embedShareTitle+' <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span></a>'+
-							'	<input id="foo" data-clipboard-text="'+embedShare+'" type="text" value="'+embedShare+'" readonly title="'+embedShareText+'">'+
-							'</div>';
+		content = content+'<a class="JSvideoLaunchURL" data-clipboard-action="copy" data-clipboard-target=".JSvideoLaunchCopy">'+
+							'	<div class="JSvideoLaunchButton">'+embedShareTitle+' <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span></div>'+
+							'	<div class="JSvideoLaunchText">'+embedShare+'</div>'+
+							'	<div class="JSvideoLaunchCopy">'+embedShare+'</div>'+
+							'</a>';
 	}
 	
 	bootbox.alert({
@@ -614,17 +615,17 @@ function videoLaunch(url, share, title){
 	});
 	
 	//Tooltip load
-	$('.JSvideoLaunchURL input').tooltip({
+	$('.JSvideoLaunchText').tooltip({
 		title: embedShareText,
 		placement: 'bottom',
 		trigger: 'manual',
 	});
 	
 	//Clipboard
-	var clipboard = new Clipboard('.JSvideoLaunchURL a');
+	var clipboard = new Clipboard('.JSvideoLaunchURL');
 
     clipboard.on('success', function() {
-		$('.JSvideoLaunchURL input').tooltip('show');
+		$('.JSvideoLaunchText').tooltip('show');
     });
 }
 
