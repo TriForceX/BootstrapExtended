@@ -56,6 +56,8 @@ Website base structure with small reusable parts of source code or functions for
 	* Custom loading container
 	* Disable margin & padding for all sides
 	* Collection of CSS3 powered hover effects
+	* Custom form checkbox & radio style
+	* Custom form icons for input and select
 
 # Recommended Tools for editing
 * Adobe Dreamweaver
