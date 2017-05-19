@@ -639,9 +639,7 @@ function videoLaunch(url, share, title){
     });
 	
 	clipboard.on('error', function() {
-		$(document).on("click", ".JSvideoLaunchURL", function(){
-			 window.open(embedShare, '_blank');
-		});
+		window.open(embedShare, '_blank');
     });
 }
 
