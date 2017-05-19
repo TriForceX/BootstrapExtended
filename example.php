@@ -1183,13 +1183,13 @@ $htmlData = array('lang'=>'en',
 						<label>Radio items (Button style)</label>
 					</p>
 					<label class="btn btn-primary" for="example-radio-1-style">
-						<input type="radio" name="example-radio" id="example-radio-1-style" autocomplete="off" value="Choosen 1 style"> Radio Item 1
+						<input type="radio" name="example-radio-style" id="example-radio-1-style" autocomplete="off" value="Choosen 1 style"> Radio Item 1
 					</label>
 					<label class="btn btn-success" for="example-radio-2-style">
-						<input type="radio" name="example-radio" id="example-radio-2-style" autocomplete="off" value="Choosen 2 style"> Radio Item 2
+						<input type="radio" name="example-radio-style" id="example-radio-2-style" autocomplete="off" value="Choosen 2 style"> Radio Item 2
 					</label>
 					<label class="btn btn-danger" for="example-radio-3-style">
-						<input type="radio" name="example-radio" id="example-radio-3-style" autocomplete="off" value="Choosen 3 style"> Radio Item 3
+						<input type="radio" name="example-radio-style" id="example-radio-3-style" autocomplete="off" value="Choosen 3 style"> Radio Item 3
 					</label>
 				</div>
 				<div class="form-group no-margin-b">
