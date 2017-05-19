@@ -197,7 +197,7 @@ td[align='left']{
 }
 /*LightGallery*/
 
-/*FOrm group radio & checkbox*/
+/*Form group radio & checkbox*/
 .form-group .checkbox {
 	  padding-left: 20px; 
 }
@@ -528,7 +528,30 @@ td[align='left']{
 .form-group input[type="radio"] .styled:checked + label::after {
 	color: #fff; 
 }
-/*FOrm group radio & checkbox*/
+/*Form group radio & checkbox*/
+
+/*Form group select*/
+.form-group-icon input,
+.form-group-icon select{
+	padding-right: 42.5px;
+	-webkit-appearance: none; 
+	-moz-appearance: none; 
+	-o-appearance: none; 
+	appearance: none;
+}
+.form-group-icon .glyphicon{
+	position: relative;
+	top: -34px;
+	float: right;
+	z-index: 2;
+	display: block;
+	width: 34px;
+	height: 34px;
+	line-height: 34px;
+	text-align: center;
+	pointer-events: none;
+}
+/*Form group select*/
 
 /* ================================================= PLUGINS ================================================= */
 

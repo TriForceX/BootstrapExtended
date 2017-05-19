@@ -1107,7 +1107,7 @@ $htmlData = array('lang'=>'en',
 					<label for="example-input-password">Password</label>
 					<input type="password" class="form-control" id="example-input-password" placeholder="Type your Password">
 				</div>
-				<div class="form-group">
+				<div class="form-group form-group-icon">
 					<label for="example-select">Select Item</label>
 					<select class="form-control" id="example-select">
 						<option>Select an item</option>
@@ -1117,6 +1117,7 @@ $htmlData = array('lang'=>'en',
 						<option value="4">Item 4</option>
 						<option value="5">Item 5</option>
 					</select>
+					<span class="glyphicon glyphicon-chevron-down" aria-hidden="true"></span>
 				</div>
 				<div class="form-group">
 					<label for="example-textarea">Message</label>
