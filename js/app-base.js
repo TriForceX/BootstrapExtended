@@ -627,6 +627,12 @@ function videoLaunch(url, share, title){
     clipboard.on('success', function() {
 		$('.JSvideoLaunchText').tooltip('show');
     });
+	
+	clipboard.on('error', function() {
+		$(document).on("click", ".JSvideoLaunchURL", function(){
+			 window.open(embedShare, '_blank');
+		});
+    });
 }
 
 //Capitalize first function
