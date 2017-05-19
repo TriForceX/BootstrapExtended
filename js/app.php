@@ -32,6 +32,7 @@
 						'@validate-title' => 'Form Alert', 
 						'@validate-normal' => 'Please fill the fields.', 
 						'@validate-number' => 'Please type a valid number.', 
+						'@validate-tel' => 'Please type a phone number.', 
 						'@validate-pass' => 'Please fill your password.', 
 						'@validate-email' => 'Please type a correct E-Mail.',
 						'@validate-search' => 'Please fill the search field.', 

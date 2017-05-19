@@ -61,6 +61,7 @@ $.fn.validateForm = function(options) {
 		var formErrorTitle = '@validate-title';
 		var formErrorText = [{'text': '@validate-normal', 
 							  'number': '@validate-number', 
+							  'tel': '@validate-tel', 
 							  'pass': '@validate-pass', 
 							  'email': '@validate-email',
 							  'search': '@validate-search',
@@ -130,6 +131,15 @@ $.fn.validateForm = function(options) {
 					if (!validateEmpty($(this).val()) || !validateNumber($(this).val())) { 
 						$(this).addClass("JSvalidateError");
 						formError = formErrorText[0].number;
+					}
+					else{
+						$(this).removeClass("JSvalidateError");
+					}
+					break;
+				case 'tel':
+					if (!validateEmpty($(this).val())) { 
+						$(this).addClass("JSvalidateError");
+						formError = formErrorText[0].tel;
 					}
 					else{
 						$(this).removeClass("JSvalidateError");

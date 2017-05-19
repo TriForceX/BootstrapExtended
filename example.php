@@ -1104,6 +1104,10 @@ $htmlData = array('lang'=>'en',
 					<input type="email" class="form-control" id="example-input-email" placeholder="Type your E-Mail">
 				</div>
 				<div class="form-group">
+					<label for="example-input-tel">Phone Number</label>
+					<input type="tel" class="form-control" id="example-input-tel" placeholder="Type your Phone Number">
+				</div>
+				<div class="form-group">
 					<label for="example-input-password">Password</label>
 					<input type="password" class="form-control" id="example-input-password" placeholder="Type your Password">
 				</div>
