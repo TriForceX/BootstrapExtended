@@ -17,7 +17,7 @@ $htmlData = array('lang'=>'en',
 <!DOCTYPE html>
 <html lang="<?php echo $htmlData['lang']; ?>">
 <head>
-	<title><?php echo $htmlData['title']; ?> &raquo; <?php echo get_siteinfo('page'); ?></title>
+	<title><?php echo $htmlData['title']; ?> &raquo; <?php echo get_custominfo('page'); ?></title>
 	
 	<!-- ******** META TAGS ******** -->
 	
@@ -42,41 +42,41 @@ $htmlData = array('lang'=>'en',
 	<!-- ******** CSS FILES ******** -->
 	
 	<!-- Tab & App Icons -->
-	<link href="<?php echo get_siteinfo('url'); ?>/css/icons/favicon/favicon.png" rel="shortcut icon">
-	<link href="<?php echo get_siteinfo('url'); ?>/css/icons/favicon/favicon-apple.png" rel="apple-touch-icon"/>
+	<link href="<?php echo get_custominfo('url'); ?>/css/icons/favicon/favicon.png" rel="shortcut icon">
+	<link href="<?php echo get_custominfo('url'); ?>/css/icons/favicon/favicon-apple.png" rel="apple-touch-icon"/>
 	<!-- jQuery UI CSS -->
-	<link href="<?php echo get_siteinfo('url'); ?>/plugins/jquery-ui/css/jquery-ui.min.css" rel="stylesheet">
-	<link href="<?php echo get_siteinfo('url'); ?>/plugins/jquery-ui/css/jquery-ui.structure.min.css" rel="stylesheet">
-	<link href="<?php echo get_siteinfo('url'); ?>/plugins/jquery-ui/css/jquery-ui.theme.min.css" rel="stylesheet">
+	<link href="<?php echo get_custominfo('url'); ?>/plugins/jquery-ui/css/jquery-ui.min.css" rel="stylesheet">
+	<link href="<?php echo get_custominfo('url'); ?>/plugins/jquery-ui/css/jquery-ui.structure.min.css" rel="stylesheet">
+	<link href="<?php echo get_custominfo('url'); ?>/plugins/jquery-ui/css/jquery-ui.theme.min.css" rel="stylesheet">
 	<!-- Bootstrap core CSS -->
-	<link href="<?php echo get_siteinfo('url'); ?>/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+	<link href="<?php echo get_custominfo('url'); ?>/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 	<!-- Bootstrap theme -->
-	<link href="<?php echo get_siteinfo('url'); ?>/plugins/bootstrap/css/bootstrap-theme.min.css" rel="stylesheet">
+	<link href="<?php echo get_custominfo('url'); ?>/plugins/bootstrap/css/bootstrap-theme.min.css" rel="stylesheet">
 	<!-- Bootstrap Data Tables -->
-	<link href="<?php echo get_siteinfo('url'); ?>/plugins/datatables/css/jquery.dataTables.min.css" rel="stylesheet">
+	<link href="<?php echo get_custominfo('url'); ?>/plugins/datatables/css/jquery.dataTables.min.css" rel="stylesheet">
 	<!-- LightGallery Lightbox -->
-	<link href="<?php echo get_siteinfo('url'); ?>/plugins/lightgallery/css/lightgallery.css" rel="stylesheet">
-	<link href="<?php echo get_siteinfo('url'); ?>/plugins/lightgallery/css/lg-transitions.css" rel="stylesheet">
-	<link href="<?php echo get_siteinfo('url'); ?>/plugins/lightgallery/css/lg-fb-comment-box.css" rel="stylesheet">
+	<link href="<?php echo get_custominfo('url'); ?>/plugins/lightgallery/css/lightgallery.css" rel="stylesheet">
+	<link href="<?php echo get_custominfo('url'); ?>/plugins/lightgallery/css/lg-transitions.css" rel="stylesheet">
+	<link href="<?php echo get_custominfo('url'); ?>/plugins/lightgallery/css/lg-fb-comment-box.css" rel="stylesheet">
     <!-- Hover CSS -->
-	<link href="<?php echo get_siteinfo('url'); ?>/plugins/hover/css/hover.min.css" rel="stylesheet">
+	<link href="<?php echo get_custominfo('url'); ?>/plugins/hover/css/hover.min.css" rel="stylesheet">
 	<!-- Main CSS File -->
-	<link href="<?php echo get_siteinfo('url'); ?>/css/style.php?url=<?php echo get_siteinfo('url'); ?>" rel="stylesheet">
+	<link href="<?php echo get_custominfo('url'); ?>/css/style.php?url=<?php echo get_custominfo('url'); ?>" rel="stylesheet">
 	<!-- IE8 support of HTML5 elements and media queries -->
 	<!--[if lt IE 9]>
-	<script src="<?php echo get_siteinfo('url'); ?>/plugins/bootstrap/js/html5shiv.min.js"></script>
-	<script src="<?php echo get_siteinfo('url'); ?>/plugins/bootstrap/js/respond.min.js"></script>
+	<script src="<?php echo get_custominfo('url'); ?>/plugins/bootstrap/js/html5shiv.min.js"></script>
+	<script src="<?php echo get_custominfo('url'); ?>/plugins/bootstrap/js/respond.min.js"></script>
 	<![endif]-->
 	
 	<!-- ******** CSS FILES ******** -->
 </head>
-<?php if(get_siteinfo('home')): ?>
+<?php if(get_custominfo('home')): ?>
 <body class="isHome">
 <?php else: ?>
 <body>
 <?php endif; ?>
 <!-- ================================================= ANALYTICS ================================================= -->
-<?php if(get_siteinfo('localhost')): ?>
+<?php if(get_custominfo('localhost')): ?>
 <?php echo "\n"; //Dont track in localhost ?>
 <?php else: ?>
 <?php echo "\n"; ?>

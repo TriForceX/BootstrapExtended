@@ -13,7 +13,7 @@ if(isset($_GET['debug'])){
 //Debug
 
 //Get info
-function get_siteinfo($info){
+function get_custominfo($info){
 	
 	$baseProtocol = empty($_SERVER['HTTPS']) || $_SERVER['HTTPS'] === 'off' ? 'http://' : 'https://';
 	$baseUrl = $baseProtocol.$_SERVER['SERVER_NAME'].dirname($_SERVER['PHP_SELF']);
@@ -136,6 +136,55 @@ function showDate($date, $format, $lang, $abbr){
 	$finalDate = date($format, $newDate);
 	$langSet = $lang == 'esp' ? 1 : 0;
 	
+	/*$langDays = array(
+					//English
+					array("Sun" => "Sunday",
+						  "Mon" => "Monday",
+						  "Tue" => "Tuesday",
+						  "Wed" => "Wednesday",
+						  "Thu" => "Thursday",
+						  "Fri" => "Friday",
+						  "Sat" => "Saturday"),
+					//Spanish
+					array("Dom" => "Domingo",
+						  "Lun" => "Lunes",
+						  "Mar" => "Martes",
+						  "Mié" => "Miércoles",
+						  "Jue" => "Jueves",
+						  "Vie" => "Viernes",
+						  "Sáb" => "Sábado"),
+				);
+	
+	$langMonths = array(
+					//English
+					array("Jan" => "January",
+						  "Feb" => "February",
+						  "Mar" => "March",
+						  "Apr" => "April",
+						  "May" => "May",
+						  "Jun" => "June",
+						  "Jul" => "July ",
+						  "Aug" => "August",
+						  "Sept" => "September",
+						  "Oct" => "October",
+						  "Nov" => "November",
+						  "Dec" => "December"),
+					//Spanish
+					array("Ene" => "Enero",
+						  "Feb" => "Febrero",
+						  "Mar" => "Marzo",
+						  "Abr" => "Abril",
+						  "May" => "Mayo",
+						  "Jun" => "Junio",
+						  "Jul" => "Julio",
+						  "Ago" => "Agosto",
+						  "Sept" => "Septiembre",
+						  "Oct" => "Octubre",
+						  "Nov" => "Noviembre",
+						  "Dic" => "Diciembre"),
+				  );*/
+	
+	
 	$langDays = array(
 					array("Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"),
 					array("Domingo","Lunes","Martes","Miércoles","Jueves","Viernes","Sábado"),
@@ -152,7 +201,7 @@ function showDate($date, $format, $lang, $abbr){
 				  );
 	
 	$langMonthsAbbr = array(
-						array("Jan","Feb","Mar","Apr","May","Jun","Jul ","Aug","Sept","Oct","Nov","Dec"),
+						array("Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sept","Oct","Nov","Dec"),
 						array("Ene","Feb","Mar","Abr","May","Jun","Jul","Ago","Sept","Oct","Nov","Dic"),
 					  );
 

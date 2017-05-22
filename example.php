@@ -126,7 +126,7 @@ $htmlData = array('lang'=>'en',
 		  'description'=>'Website based on Bootstrap with some CSS/JS/PHP improvements',
 		  'keywords'=>'html, jquery, javascript, php, responsive, css3',
 		  'author'=>'TriForce');
-?&gt;<br>&lt;!DOCTYPE html&gt;<br>...<br>&lt;!-- Main CSS File --&gt;<br>&lt;link href="&lt;?php echo get_siteinfo('url'); ?&gt;/css/style.php?url=&lt;?php echo get_siteinfo('url'); ?&gt;" rel="stylesheet"&gt;<br>...</code></pre>
+?&gt;<br>&lt;!DOCTYPE html&gt;<br>...<br>&lt;!-- Main CSS File --&gt;<br>&lt;link href="&lt;?php echo get_custominfo('url'); ?&gt;/css/style.php?url=&lt;?php echo get_custominfo('url'); ?&gt;" rel="stylesheet"&gt;<br>...</code></pre>
 		</figure>
 		
 		<p>
@@ -135,7 +135,7 @@ $htmlData = array('lang'=>'en',
 				<h3 class="panel-title">Note for main PHP Functions</h3>
 			</div>
 			<div class="panel-body">
-				If you will use <code>Wordpress</code> or another <i>CMS</i> is recommended to use their functions (if exists) instead the included ones (in plugins/functions.php). The function <code>get_siteinfo()</code> is only for test purposes in this template.
+				If you will use <code>Wordpress</code> or another <i>CMS</i> is recommended to use their functions (if exists) instead the included ones (in plugins/functions.php). The function <code>get_custominfo()</code> is only for test purposes in this template.
 			</div>
 		</div>
 		</p>
@@ -157,7 +157,7 @@ $htmlData = array('lang'=>'en',
 		<p>The main footer structure contains the access to <code>JS</code> files (and the base one) and <code>HTML</code> footer containers.</p>
 		
 		<figure class="highlight">
-			<pre><code class="language-html" data-lang="html">...<br>&lt;!-- Main JS File --&gt;<br>&lt;script src="&lt;?php echo get_siteinfo('url'); ?&gt;/js/app.php?url=&lt;?php echo get_siteinfo('url'); ?&gt;"&gt;&lt;/script&gt;<br>&lt;/body&gt;<br>&lt;/html&gt;</code></pre>
+			<pre><code class="language-html" data-lang="html">...<br>&lt;!-- Main JS File --&gt;<br>&lt;script src="&lt;?php echo get_custominfo('url'); ?&gt;/js/app.php?url=&lt;?php echo get_custominfo('url'); ?&gt;"&gt;&lt;/script&gt;<br>&lt;/body&gt;<br>&lt;/html&gt;</code></pre>
 		</figure>
 		
 		<!-- ******** STRUCTURE EXAMPLES ******** -->
@@ -434,12 +434,12 @@ $htmlData = array('lang'=>'en',
 			<nav aria-label="Page navigation">
 				<ul class="pagination no-margin">
 					<li>
-						<a href="<?php echo get_siteinfo('url'); ?>/example.php" aria-label="Previous" class="lg-prev">
+						<a href="<?php echo get_custominfo('url'); ?>/example.php" aria-label="Previous" class="lg-prev">
 							<span aria-hidden="true">&laquo;</span>
 						</a>
 					</li>
-					<li class="<?php echo !isset($_GET[" page-2 "]) ? 'active' : '' ?>"><a href="<?php echo get_siteinfo('url'); ?>/example.php">1</a></li>
-					<li class="<?php echo isset($_GET[" page-2 "]) ? 'active' : '' ?>"><a href="?page-2">2</a></li>
+					<li class="<?php echo !isset($_GET["page-2 "]) ? 'active' : '' ?>"><a href="<?php echo get_custominfo('url'); ?>/example.php">1</a></li>
+					<li class="<?php echo isset($_GET["page-2 "]) ? 'active' : '' ?>"><a href="?page-2">2</a></li>
 					<li>
 						<a href="?page-2" aria-label="Next" class="lg-next">
 							<span aria-hidden="true">&raquo;</span>
