@@ -1,0 +1,36 @@
+# BEGIN WordPress 
+
+<IfModule mod_rewrite.c> 
+RewriteEngine On 
+# If (SITE A DOMAIN or SITE A SUBDOMAIN) 
+RewriteCond %{HTTP_HOST} ^192\.168\.1\..*$ [NC,OR]
+RewriteCond %{HTTP_HOST} ^localhost$ [NC]
+# make sure we haven't already rewritten this URI
+RewriteCond %{REQUEST_URI} !/website_base/wordpress/index.php
+# don't rewrite if the resource already exists
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+# rewrite
+RewriteBase /website_base/wordpress/ 
+RewriteRule ^(.*)$ /website_base/wordpress/index.php/$1 [L]
+
+# IF !(SITE A DOMAIN or SITE A SUBDOMAIN) 
+RewriteCond %{HTTP_HOST} !^192\.168\.1\..*$ [NC]
+RewriteCond %{HTTP_HOST} !^localhost$ [NC]
+# make sure we haven't already rewritten this URI
+RewriteCond %{REQUEST_URI} !/index.php
+# don't rewrite if the resource already exists
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+# rewrite
+RewriteBase /
+RewriteRule ^(.*)$ /index.php/$1 [L]
+# force www
+RewriteCond %{HTTP_HOST} ^www\.(.*)$ [NC]
+RewriteRule ^(.*)$ http://%1/$1 [R=301,L]
+
+# TEST redireccion (no permanente) RewriteRule ^(.*)$ http://www.example.com/ 
+# TEST redireccion (permanente) RedirectMatch 301 ^(.*)$ http://www.example.com/ 
+</IfModule> 
+
+# END WordPress 
