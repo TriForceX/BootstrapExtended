@@ -639,8 +639,8 @@ function videoLaunch(url, share, title){
     });
 	
 	clipboard.on('error', function() {
-		window.open(embedShare, '_blank');
-		//This is opening multiple tabs on safari, need fix
+		$('.JSvideoLaunchURL').attr('target','blank');
+		$('.JSvideoLaunchURL').attr('href',embedShare);
     });
 }
 
