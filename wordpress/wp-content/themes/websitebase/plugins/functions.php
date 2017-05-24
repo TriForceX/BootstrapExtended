@@ -13,44 +13,64 @@ if(isset($_GET['debug'])){
 //Debug
 
 //Get info
-function get_custominfo($info){
-	
-	$baseProtocol = empty($_SERVER['HTTPS']) || $_SERVER['HTTPS'] === 'off' ? 'http://' : 'https://';
-	$baseUrl = $baseProtocol.$_SERVER['SERVER_NAME'].dirname($_SERVER['PHP_SELF']);
-	
-	switch($info){
-		case 'url':
-			$finalResult = $baseUrl;
-			break;
-		case 'protocol':
-			$finalResult = $baseProtocol;
-			break;
-		case 'localhost':
-			$isLocalHost = $_SERVER['HTTP_HOST'] == 'localhost' || filter_var($_SERVER['HTTP_HOST'], FILTER_VALIDATE_IP) ? true : false;
-			$finalResult = $isLocalHost;
-			break;
-		case 'home':
-			$scriptBase = $baseUrl.'/index.php';
-			$scriptTarget = $_SERVER['SCRIPT_NAME'];
-			$finalResult = strpos($scriptBase,$scriptTarget);
-			break;
-		case 'page':
-			if(strpos($_SERVER['SCRIPT_NAME'],'index.php')){
-				$finalResult = 'Home';
-			}
-			elseif(strpos($_SERVER['SCRIPT_NAME'],'example.php')){
-				$finalResult = 'Examples';
-			}
-			else{
-				$finalResult = 'Page';
-			}
-			break;
-		default: 
-			$finalResult = $baseUrl;
-			break;
+if (!function_exists('get_bloginfo')){
+	echo "IS NOT WORDPRESS";
+	function get_bloginfo($info){
+
+		$baseProtocol = empty($_SERVER['HTTPS']) || $_SERVER['HTTPS'] === 'off' ? 'http://' : 'https://';
+		$baseUrl = $baseProtocol.$_SERVER['SERVER_NAME'].dirname($_SERVER['PHP_SELF']);
+
+		switch($info){
+			case 'url':
+				$finalResult = $baseUrl;
+				break;
+			case 'template-url':
+				$finalResult = $baseUrl;
+				break;
+			case 'protocol':
+				$finalResult = $baseProtocol;
+				break;
+			case 'localhost':
+				$isLocalHost = $_SERVER['HTTP_HOST'] == 'localhost' || filter_var($_SERVER['HTTP_HOST'], FILTER_VALIDATE_IP) ? true : false;
+				$finalResult = $isLocalHost;
+				break;
+			case 'home':
+				$scriptBase = $baseUrl.'/index.php';
+				$scriptTarget = $_SERVER['SCRIPT_NAME'];
+				$finalResult = strpos($scriptBase,$scriptTarget);
+				break;
+			case 'page':
+				if(strpos($_SERVER['SCRIPT_NAME'],'index.php')){
+					$finalResult = 'Home';
+				}
+				elseif(strpos($_SERVER['SCRIPT_NAME'],'example.php')){
+					$finalResult = 'Examples';
+				}
+				else{
+					$finalResult = 'Page';
+				}
+				break;
+			default: 
+				$finalResult = $baseUrl;
+				break;
+		}
+
+		return $finalResult;
 	}
-	
-	return $finalResult;
+}
+else{
+	echo "IS WORDPRESS";
+}
+
+if (!function_exists('is_home')){
+	function is_home(){
+		get_bloginfo('home');
+	}
+}
+if (!function_exists('is_localhost')){
+	function is_localhost(){
+		get_bloginfo('localhost');
+	}
 }
 //Get info
 

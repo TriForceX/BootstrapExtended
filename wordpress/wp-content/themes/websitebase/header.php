@@ -1,6 +1,6 @@
 <?php 
 //Main Functions
-require_once('plugins/functions.php?type=wordpress'); 
+require_once('plugins/functions.php'); 
 
 //Get Current Page
 if(is_page()){
@@ -100,7 +100,7 @@ $htmlData = array('lang'=>'en',
 <body>
 <?php endif; ?>
 <!-- ================================================= ANALYTICS ================================================= -->
-<?php if(get_bloginfo('localhost')): ?>
+<?php if(is_localhost()): ?>
 <?php echo "\n"; //Dont track in localhost ?>
 <?php else: ?>
 <?php echo "\n"; ?>

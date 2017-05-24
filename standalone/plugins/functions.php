@@ -3,9 +3,9 @@
 //Debug
 if(isset($_GET['debug'])){
 	
-	ini_set('error_prepend_string','<div class="alert alert-danger" role="alert">');
-	ini_set('error_append_string','</div>');
-	ini_set('html_errors', 0);
+	//ini_set('error_prepend_string','<div class="alert alert-danger" role="alert">');
+	//ini_set('error_append_string','</div>');
+	//ini_set('html_errors', 0);
 	ini_set('display_errors', 1);
 	ini_set('display_startup_errors', 1);
 	error_reporting(E_ALL); //E_ERROR | E_STRICT | E_WARNING | E_NOTICE | E_ALL
@@ -13,46 +13,61 @@ if(isset($_GET['debug'])){
 //Debug
 
 //Get info
-function get_custominfo($info){
-	
-	$baseProtocol = empty($_SERVER['HTTPS']) || $_SERVER['HTTPS'] === 'off' ? 'http://' : 'https://';
-	$baseUrl = $baseProtocol.$_SERVER['SERVER_NAME'].dirname($_SERVER['PHP_SELF']);
-	
-	switch($info){
-		case 'url':
-			$finalResult = $baseUrl;
-			break;
-		case 'protocol':
-			$finalResult = $baseProtocol;
-			break;
-		case 'localhost':
-			$isLocalHost = $_SERVER['HTTP_HOST'] == 'localhost' || filter_var($_SERVER['HTTP_HOST'], FILTER_VALIDATE_IP) ? true : false;
-			$finalResult = $isLocalHost;
-			break;
-		case 'home':
-			$scriptBase = $baseUrl.'/index.php';
-			$scriptTarget = $_SERVER['SCRIPT_NAME'];
-			$finalResult = strpos($scriptBase,$scriptTarget);
-			break;
-		case 'page':
-			if(strpos($_SERVER['SCRIPT_NAME'],'index.php')){
-				$finalResult = ' &raquo; Home';
-			}
-			elseif(strpos($_SERVER['SCRIPT_NAME'],'example.php')){
-				$finalResult = ' &raquo; Examples';
-			}
-			else{
-				$finalResult = ' &raquo; Page';
-			}
-			break;
-		default: 
-			$finalResult = $baseUrl;
-			break;
+if (!function_exists('get_bloginfo')){
+	function get_bloginfo($info){
+
+		$baseProtocol = empty($_SERVER['HTTPS']) || $_SERVER['HTTPS'] === 'off' ? 'http://' : 'https://';
+		$baseUrl = $baseProtocol.$_SERVER['SERVER_NAME'].dirname($_SERVER['PHP_SELF']);
+
+		switch($info){
+			case 'url':
+				$finalResult = $baseUrl;
+				break;
+			case 'template-url':
+				$finalResult = $baseUrl;
+				break;
+			case 'protocol':
+				$finalResult = $baseProtocol;
+				break;
+			case 'localhost':
+				$isLocalHost = $_SERVER['HTTP_HOST'] == 'localhost' || filter_var($_SERVER['HTTP_HOST'], FILTER_VALIDATE_IP) ? true : false;
+				$finalResult = $isLocalHost;
+				break;
+			case 'home':
+				$scriptBase = $baseUrl.'/index.php';
+				$scriptTarget = $_SERVER['SCRIPT_NAME'];
+				$finalResult = strpos($scriptBase,$scriptTarget);
+				break;
+			case 'page':
+				if(strpos($_SERVER['SCRIPT_NAME'],'index.php')){
+					$finalResult = 'Home';
+				}
+				elseif(strpos($_SERVER['SCRIPT_NAME'],'example.php')){
+					$finalResult = 'Examples';
+				}
+				else{
+					$finalResult = 'Page';
+				}
+				break;
+			default: 
+				$finalResult = $baseUrl;
+				break;
+		}
+
+		return $finalResult;
 	}
-	
-	return $finalResult;
 }
-//Get info
+
+if (!function_exists('is_home')){
+	function is_home(){
+		get_bloginfo('home');
+	}
+}
+if (!function_exists('is_localhost')){
+	function is_localhost(){
+		get_bloginfo('localhost');
+	}
+}
 
 //Get Website part
 function getWebsitePart($url,$start,$end){
