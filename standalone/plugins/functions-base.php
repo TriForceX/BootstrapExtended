@@ -1,84 +1,105 @@
 <?php
 
-//Debug
+//PHP Error Handler
 if(isset($_GET['debug'])){
-	
-	//ini_set('error_prepend_string','<div class="alert alert-danger" role="alert">');
-	//ini_set('error_append_string','</div>');
-	//ini_set('html_errors', 0);
-	ini_set('display_errors', 1);
-	ini_set('display_startup_errors', 1);
-	error_reporting(E_ALL); //E_ERROR | E_STRICT | E_WARNING | E_NOTICE | E_ALL
+	function error_handler($output)
+	{
+		$error = error_get_last();
+		$output = "";
+		foreach ($error as $info => $string)
+			$output .= "{$info}: {$string}<br>";
+		return $output;
+	}
+	ob_start('error_handler');
 }
-//Debug
 
 //Get info
 if (!function_exists('get_bloginfo')){
 	function get_bloginfo($info){
-
+		//Main Url
 		$baseProtocol = empty($_SERVER['HTTPS']) || $_SERVER['HTTPS'] === 'off' ? 'http://' : 'https://';
 		$baseUrl = $baseProtocol.$_SERVER['SERVER_NAME'].dirname($_SERVER['PHP_SELF']);
-
+		//Check Url
 		switch($info){
 			case 'url':
-				$finalResult = $baseUrl;
-				break;
-			case 'template-url':
 				$finalResult = $baseUrl;
 				break;
 			case 'protocol':
 				$finalResult = $baseProtocol;
 				break;
-			case 'localhost':
-				$isLocalHost = $_SERVER['HTTP_HOST'] == 'localhost' || filter_var($_SERVER['HTTP_HOST'], FILTER_VALIDATE_IP) ? true : false;
-				$finalResult = $isLocalHost;
-				break;
-			case 'home':
-				$scriptBase = $baseUrl.'/index.php';
-				$scriptTarget = $_SERVER['SCRIPT_NAME'];
-				$finalResult = strpos($scriptBase,$scriptTarget);
-				break;
-			case 'page':
-				if(strpos($_SERVER['SCRIPT_NAME'],'index.php')){
-					$finalResult = 'Home';
-				}
-				elseif(strpos($_SERVER['SCRIPT_NAME'],'example.php')){
-					$finalResult = 'Examples';
-				}
-				else{
-					$finalResult = 'Page';
-				}
+			case 'template_url':
+				$finalResult = $baseUrl;
 				break;
 			default: 
 				$finalResult = $baseUrl;
 				break;
 		}
-
 		return $finalResult;
 	}
 }
 
+//Check Home
 if (!function_exists('is_home')){
 	function is_home(){
-		get_bloginfo('home');
-	}
-}
-if (!function_exists('is_localhost')){
-	function is_localhost(){
-		get_bloginfo('localhost');
+		//Main url
+		$baseProtocol = empty($_SERVER['HTTPS']) || $_SERVER['HTTPS'] === 'off' ? 'http://' : 'https://';
+		$baseUrl = $baseProtocol.$_SERVER['SERVER_NAME'].dirname($_SERVER['PHP_SELF']);
+		//Check Home
+		$scriptBase = $baseUrl.'/index.php';
+		$scriptTarget = $_SERVER['SCRIPT_NAME'];
+		$finalResult = strpos($scriptBase,$scriptTarget);
+		return $finalResult;
 	}
 }
 
-//Get Website part
+//Check Localhost
+if (!function_exists('is_localhost')){
+	function is_localhost(){
+		$isLocalHost = $_SERVER['HTTP_HOST'] == 'localhost' || filter_var($_SERVER['HTTP_HOST'], FILTER_VALIDATE_IP) ? true : false;
+		$finalResult = $isLocalHost;
+		return $finalResult;
+	}
+}
+
+//Check Current Page
+function get_pagetitle(){
+	//Wordpress
+	if (function_exists('is_page') AND
+	    function_exists('is_single') AND
+	    function_exists('is_archive') AND
+	    function_exists('is_404')){
+		if(is_page()){
+			$finalResult = ' &raquo; '.get_the_title(get_page_by_path(get_query_var('pagename')));
+		}
+		else if(is_single() OR is_archive()){
+			$finalResult = ' &raquo; '.get_post_type_object(get_query_var('post_type'))->label;
+		}
+		else if(is_404()){
+			$finalResult = ' &raquo; Error';
+		}
+		else{
+			$finalResult = '';
+		}
+	}
+	//Standalone
+	else{
+		if(strpos($_SERVER['SCRIPT_NAME'],'example.php')){
+			$finalResult = ' &raquo; Example';
+		}
+		else{
+			$finalResult = '';
+		}
+	}
+	return $finalResult;
+}
+
+//Get W~bsite part
 function getWebsitePart($url,$start,$end){
 	require_once('curl/php/curl.php');
-	
 	$data = LoadCURLPage($url);
 	$info = extract_unit($data, $start, $endo);
-	
 	return $info;
 }
-//Get Website part
 
 //UTF8 string conversion
 function convertToUTF8($text) {
@@ -131,7 +152,6 @@ function convertToUTF8($text) {
     );
     return html_entity_decode(mb_convert_encoding(strtr($text, $map), 'UTF-8', 'ISO-8859-2'), ENT_QUOTES, 'UTF-8');
 }
-//UTF8 string conversion
 
 //Cut excerpt
 function cutExcerpt($getText,$num) {
@@ -142,7 +162,6 @@ function cutExcerpt($getText,$num) {
     
     return $getText;
 }
-//Cut excerpt
 
 //Custom get date format
 function showDate($date, $format, $lang, $abbr){
@@ -204,17 +223,14 @@ function showDate($date, $format, $lang, $abbr){
 					array("Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"),
 					array("Domingo","Lunes","Martes","Miércoles","Jueves","Viernes","Sábado"),
 				);
-	
 	$langDaysAbbr = array(
 						array("Sun","Mon","Tue","Wed","Thu","Fri","Sat"),
 						array("Dom","Lun","Mar","Mié","Jue","Vie","Sáb"),
 					);
-	
 	$langMonths = array(
 					array("January","February","March","April","May","June","July ","August","September","October","November","December"),
 					array("Enero","Febrero","Marzo","Abril","Mayo","Junio","Julio","Agosto","Septiembre","Octubre","Noviembre", "Diciembre"),
 				  );
-	
 	$langMonthsAbbr = array(
 						array("Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sept","Oct","Nov","Dec"),
 						array("Ene","Feb","Mar","Abr","May","Jun","Jul","Ago","Sept","Oct","Nov","Dic"),
@@ -230,7 +246,6 @@ function showDate($date, $format, $lang, $abbr){
 			$finalDate = str_replace($langDays[0][$row], $langDays[$langSet][$row], $finalDate);
 		}
 	}
-	
 	for ($row = 0; $row < 12; $row++)
 	{
 		if($abbr){
@@ -240,8 +255,5 @@ function showDate($date, $format, $lang, $abbr){
 			$finalDate = str_replace($langMonths[0][$row], $langMonths[$langSet][$row], $finalDate);
 		}
 	}
-	
 	return $finalDate;
 }
-//Custom get date format
-

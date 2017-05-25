@@ -1,26 +1,11 @@
 <?php 
 //Main Functions
-require_once('plugins/functions.php'); 
-
-//Get Current Page
-if(is_page()){
-	$wpCurrentPage = ' &raquo; '.get_the_title(get_page_by_path(get_query_var('pagename')));
-}
-else if(is_single() OR is_archive()){
-	$wpCurrentPage = ' &raquo; '.get_post_type_object(get_query_var('post_type'))->label;
-}
-else if(is_404()){
-	$wpCurrentPage = ' &raquo; Error';
-}
-else{
-	$wpCurrentPage = '';
-}
+require_once('plugins/functions-base.php');
 
 //HTML Data
 $htmlData = array('lang'=>'en',
 				  'charset'=>'utf-8',
 				  'title'=>'Website Base',
-				  'page-title'=>$wpCurrentPage,
 				  'mobile-capable'=>'yes',
 				  'viewport'=>'width=device-width, initial-scale=1, user-scalable=no',
 				  'nav-color'=>'#333333',
@@ -32,7 +17,7 @@ $htmlData = array('lang'=>'en',
 <!DOCTYPE html>
 <html lang="<?php echo $htmlData['lang']; ?>">
 <head>
-	<title><?php echo $htmlData['title']; ?><?php echo $wpCurrentPage; ?></title>
+	<title><?php echo $htmlData['title']; ?><?php echo get_pagetitle(); ?></title>
 	
 	<!-- ******** META TAGS ******** -->
 	
@@ -83,16 +68,18 @@ $htmlData = array('lang'=>'en',
 	<script src="<?php echo get_bloginfo('template_url'); ?>/plugins/bootstrap/js/respond.min.js"></script>
 	<![endif]-->
 	
+	<!-- ******** CSS FILES ******** -->
+	
 	<?php
 	/* Always have wp_head() just before the closing </head>
 	 * tag of your theme, or you will break many plugins, which
 	 * generally use this hook to add elements to <head> such
 	 * as styles, scripts, and meta tags.
 	 */
-	wp_head();
+	if (function_exists('wp_head')){
+		wp_head();
+	}
 	?>
-	
-	<!-- ******** CSS FILES ******** -->
 </head>
 <?php if(is_home()): ?>
 <body class="isHome">

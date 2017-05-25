@@ -1,4 +1,4 @@
-<?php get_header(); ?>
+<?php if(function_exists('get_header')): get_header(); else: include('header.php'); endif; ?>
 
 <!-- ================================================= NAV MENU ================================================= -->
 
@@ -434,14 +434,14 @@ $htmlData = array('lang'=>'en',
 			<nav aria-label="Page navigation">
 				<ul class="pagination no-margin">
 					<li>
-						<a href="<?php echo get_bloginfo('url'); ?>/example.php" aria-label="Previous" class="lg-prev">
+						<a href="<?php echo get_bloginfo('url'); ?>" aria-label="Previous" class="lg-prev">
 							<span aria-hidden="true">&laquo;</span>
 						</a>
 					</li>
-					<li class="<?php echo !isset($_GET["page-2 "]) ? 'active' : '' ?>"><a href="<?php echo get_bloginfo('url'); ?>/example.php">1</a></li>
-					<li class="<?php echo isset($_GET["page-2 "]) ? 'active' : '' ?>"><a href="?page-2">2</a></li>
+					<li class="<?php echo !isset($_GET["page-2 "]) ? 'active' : '' ?>"><a href="<?php echo get_bloginfo('url'); ?>">1</a></li>
+					<li class="<?php echo isset($_GET["page-2 "]) ? 'active' : '' ?>"><a href="<?php echo get_bloginfo('url'); ?>/?page-2">2</a></li>
 					<li>
-						<a href="?page-2" aria-label="Next" class="lg-next">
+						<a href="<?php echo get_bloginfo('url'); ?>/?page-2" aria-label="Next" class="lg-next">
 							<span aria-hidden="true">&raquo;</span>
 						</a>
 					</li>
@@ -1824,4 +1824,4 @@ $htmlData = array('lang'=>'en',
 </div>
 <!-- ================================================= CONTENT ================================================= -->
 
-<?php get_footer(); ?>
+<?php if(function_exists('get_footer')): get_footer(); else: include('footer.php'); endif; ?>

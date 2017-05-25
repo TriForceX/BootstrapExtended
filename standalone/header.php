@@ -1,12 +1,11 @@
 <?php 
 //Main Functions
-require_once('functions.php'); 
+require_once('plugins/functions-base.php');
 
 //HTML Data
 $htmlData = array('lang'=>'en',
 				  'charset'=>'utf-8',
 				  'title'=>'Website Base',
-				  'page-title'=>get_bloginfo('page'),
 				  'mobile-capable'=>'yes',
 				  'viewport'=>'width=device-width, initial-scale=1, user-scalable=no',
 				  'nav-color'=>'#333333',
@@ -18,7 +17,7 @@ $htmlData = array('lang'=>'en',
 <!DOCTYPE html>
 <html lang="<?php echo $htmlData['lang']; ?>">
 <head>
-	<title><?php echo $htmlData['title']; ?><?php echo $htmlData['page-title']; ?></title>
+	<title><?php echo $htmlData['title']; ?><?php echo get_pagetitle(); ?></title>
 	
 	<!-- ******** META TAGS ******** -->
 	
@@ -43,30 +42,30 @@ $htmlData = array('lang'=>'en',
 	<!-- ******** CSS FILES ******** -->
 	
 	<!-- Tab & App Icons -->
-	<link href="<?php echo get_bloginfo('template-url'); ?>/css/icons/favicon/favicon.png" rel="shortcut icon">
-	<link href="<?php echo get_bloginfo('template-url'); ?>/css/icons/favicon/favicon-apple.png" rel="apple-touch-icon"/>
+	<link href="<?php echo get_bloginfo('template_url'); ?>/css/icons/favicon/favicon.png" rel="shortcut icon">
+	<link href="<?php echo get_bloginfo('template_url'); ?>/css/icons/favicon/favicon-apple.png" rel="apple-touch-icon"/>
 	<!-- jQuery UI CSS -->
-	<link href="<?php echo get_bloginfo('template-url'); ?>/plugins/jquery-ui/css/jquery-ui.min.css" rel="stylesheet">
-	<link href="<?php echo get_bloginfo('template-url'); ?>/plugins/jquery-ui/css/jquery-ui.structure.min.css" rel="stylesheet">
-	<link href="<?php echo get_bloginfo('template-url'); ?>/plugins/jquery-ui/css/jquery-ui.theme.min.css" rel="stylesheet">
+	<link href="<?php echo get_bloginfo('template_url'); ?>/plugins/jquery-ui/css/jquery-ui.min.css" rel="stylesheet">
+	<link href="<?php echo get_bloginfo('template_url'); ?>/plugins/jquery-ui/css/jquery-ui.structure.min.css" rel="stylesheet">
+	<link href="<?php echo get_bloginfo('template_url'); ?>/plugins/jquery-ui/css/jquery-ui.theme.min.css" rel="stylesheet">
 	<!-- Bootstrap core CSS -->
-	<link href="<?php echo get_bloginfo('template-url'); ?>/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+	<link href="<?php echo get_bloginfo('template_url'); ?>/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 	<!-- Bootstrap theme -->
-	<link href="<?php echo get_bloginfo('template-url'); ?>/plugins/bootstrap/css/bootstrap-theme.min.css" rel="stylesheet">
+	<link href="<?php echo get_bloginfo('template_url'); ?>/plugins/bootstrap/css/bootstrap-theme.min.css" rel="stylesheet">
 	<!-- Bootstrap Data Tables -->
-	<link href="<?php echo get_bloginfo('template-url'); ?>/plugins/datatables/css/jquery.dataTables.min.css" rel="stylesheet">
+	<link href="<?php echo get_bloginfo('template_url'); ?>/plugins/datatables/css/jquery.dataTables.min.css" rel="stylesheet">
 	<!-- LightGallery Lightbox -->
-	<link href="<?php echo get_bloginfo('template-url'); ?>/plugins/lightgallery/css/lightgallery.css" rel="stylesheet">
-	<link href="<?php echo get_bloginfo('template-url'); ?>/plugins/lightgallery/css/lg-transitions.css" rel="stylesheet">
-	<link href="<?php echo get_bloginfo('template-url'); ?>/plugins/lightgallery/css/lg-fb-comment-box.css" rel="stylesheet">
+	<link href="<?php echo get_bloginfo('template_url'); ?>/plugins/lightgallery/css/lightgallery.css" rel="stylesheet">
+	<link href="<?php echo get_bloginfo('template_url'); ?>/plugins/lightgallery/css/lg-transitions.css" rel="stylesheet">
+	<link href="<?php echo get_bloginfo('template_url'); ?>/plugins/lightgallery/css/lg-fb-comment-box.css" rel="stylesheet">
     <!-- Hover CSS -->
-	<link href="<?php echo get_bloginfo('template-url'); ?>/plugins/hover/css/hover.min.css" rel="stylesheet">
+	<link href="<?php echo get_bloginfo('template_url'); ?>/plugins/hover/css/hover.min.css" rel="stylesheet">
 	<!-- Main CSS File -->
-	<link href="<?php echo get_bloginfo('template-url'); ?>/css/style.php?url=<?php echo get_bloginfo('template-url'); ?>" rel="stylesheet">
+	<link href="<?php echo get_bloginfo('template_url'); ?>/css/style.php?url=<?php echo get_bloginfo('template_url'); ?>" rel="stylesheet">
 	<!-- IE8 support of HTML5 elements and media queries -->
 	<!--[if lt IE 9]>
-	<script src="<?php echo get_bloginfo('template-url'); ?>/plugins/bootstrap/js/html5shiv.min.js"></script>
-	<script src="<?php echo get_bloginfo('template-url'); ?>/plugins/bootstrap/js/respond.min.js"></script>
+	<script src="<?php echo get_bloginfo('template_url'); ?>/plugins/bootstrap/js/html5shiv.min.js"></script>
+	<script src="<?php echo get_bloginfo('template_url'); ?>/plugins/bootstrap/js/respond.min.js"></script>
 	<![endif]-->
 	
 	<!-- ******** CSS FILES ******** -->
