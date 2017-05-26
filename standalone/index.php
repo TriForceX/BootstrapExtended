@@ -1,4 +1,8 @@
-<?php if(function_exists('get_header')): get_header(); else: include('header.php'); endif; ?>
+<?php include('header.php'); ?>
+
+<?php
+echo php::strip_space(' Hola mundo este es un mensaje ');
+?>
 
 <!-- ================================================= NAV MENU ================================================= -->
 
@@ -434,14 +438,14 @@ $htmlData = array('lang'=>'en',
 			<nav aria-label="Page navigation">
 				<ul class="pagination no-margin">
 					<li>
-						<a href="<?php echo get_bloginfo('url'); ?>" aria-label="Previous" class="lg-prev">
+						<a href="<?php echo php::get_main_url(); ?>" aria-label="Previous" class="lg-prev">
 							<span aria-hidden="true">&laquo;</span>
 						</a>
 					</li>
-					<li class="<?php echo !isset($_GET["page-2 "]) ? 'active' : '' ?>"><a href="<?php echo get_bloginfo('url'); ?>">1</a></li>
-					<li class="<?php echo isset($_GET["page-2 "]) ? 'active' : '' ?>"><a href="<?php echo get_bloginfo('url'); ?>/?page-2">2</a></li>
+					<li class="<?php echo !isset($_GET["page-2 "]) ? 'active' : '' ?>"><a href="<?php echo php::get_main_url(); ?>">1</a></li>
+					<li class="<?php echo isset($_GET["page-2 "]) ? 'active' : '' ?>"><a href="<?php echo php::get_main_url(); ?>/?page-2">2</a></li>
 					<li>
-						<a href="<?php echo get_bloginfo('url'); ?>/?page-2" aria-label="Next" class="lg-next">
+						<a href="<?php echo php::get_main_url(); ?>/?page-2" aria-label="Next" class="lg-next">
 							<span aria-hidden="true">&raquo;</span>
 						</a>
 					</li>
@@ -1035,46 +1039,6 @@ $htmlData = array('lang'=>'en',
 			<pre><code class="language-html" data-lang="html">&lt;a class="JSwindowPopup" data-win-url="http://getbootstrap.com" data-win-size="640x480" data-win-align="center,center" data-win-scroll="yes">Click Here&lt;/a&gt;<br>&lt;a class="JSwindowPopup" data-win-url="http://getbootstrap.com" data-win-size="320x480" data-win-align="right,bottom" data-win-scroll="yes">Click Here&lt;/a&gt;<br>&lt;a class="JSwindowPopup" data-win-url="http://getbootstrap.com" data-win-size="320x480" data-win-align="left,top" data-win-scroll="yes">Click Here&lt;/a&gt;</code></pre>
 		</figure>
 
-		<!-- Show date example -->
-		<div class="page-header">
-			<h1>Show Date <span class="label label-danger">PHP</span></h1>
-		</div>
-		<p>Show a date in any format. The main function is <code>showDate($date, $format, $lang, $abbr)</code></p>
-
-		<table class="table table-bordered table-striped js-options-table">
-			<thead>
-				<tr>
-					<th>Name</th>
-					<th>Description</th>
-				</tr>
-			</thead>
-			<tbody>
-				<tr>
-					<td>date</td>
-					<td>Date in english format <code>YYYY-MM-DD</code> or <code>YYYY/MM/DD</code></td>
-				</tr>
-				<tr>
-					<td>format</td>
-					<td>Date format in PHP, more info <a href="http://php.net/manual/es/function.date.php" target="_blank">here</a></td>
-				</tr>
-				<tr>
-					<td>lang</td>
-					<td>Change the language of months and days, it can be <code>eng</code> for english, and <code>esp</code> for spanish</td>
-				</tr>
-				<tr>
-					<td>abbr</td>
-					<td>Apply an abbreviation to months and days</td>
-				</tr>
-			</tbody>
-		</table>
-
-		<div class="bs-example">
-			<h4>The date is: <span class="label label-default"><?php echo showDate("2017-09-20", "F j l, Y, g:i a", "eng", true); ?></span></h4>
-		</div>
-		<figure class="highlight">
-			<pre><code class="language-html" data-lang="html">&lt;?php echo showDate("2017-09-20", "F j l, Y, g:i a", "eng", true); ?&gt;</code></pre>
-		</figure>
-		
 		<!-- Form validation -->
 		<div class="page-header">
 			<h1>Form Validation <span class="label label-danger">JS</span></h1>
@@ -1824,4 +1788,4 @@ $htmlData = array('lang'=>'en',
 </div>
 <!-- ================================================= CONTENT ================================================= -->
 
-<?php if(function_exists('get_footer')): get_footer(); else: include('footer.php'); endif; ?>
+<?php include('footer.php'); ?>

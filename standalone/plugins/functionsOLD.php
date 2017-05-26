@@ -2,15 +2,22 @@
 
 //PHP Error Handler
 if(isset($_GET['debug'])){
-	function error_handler($output)
-	{
-		$error = error_get_last();
-		$output = "";
-		foreach ($error as $info => $string)
-			$output .= "{$info}: {$string}<br>";
-		return $output;
+	if($_GET['debug']=='fatal'){
+		function error_handler($output)
+		{
+			$error = error_get_last();
+			$output = "";
+			foreach ($error as $info => $string)
+				$output .= "{$info}: {$string}<br>";
+			return $output;
+		}
+		ob_start('error_handler');
 	}
-	ob_start('error_handler');
+	else{
+		ini_set('display_errors', 1);
+		ini_set('display_startup_errors', 1);
+		error_reporting(E_ALL);
+	}
 }
 
 //Get info
@@ -163,97 +170,80 @@ function cutExcerpt($getText,$num) {
     return $getText;
 }
 
-//Custom get date format
-function showDate($date, $format, $lang, $abbr){
+class showDate
+{
+	public $date;
+	public $format;
+	public $lang;
+	public $abbr;
 	
-	$newDate = strtotime($date);
-	$finalDate = date($format, $newDate);
-	$langSet = $lang == 'esp' ? 1 : 0;
+	public function __construct($date=false, $format='Y-m-d', $lang='eng', $abbr=false)
+    {
+		if(!$date){
+			$date = date('Y-m-d');
+		}
+		
+        $this->date = $date;
+        $this->format = $format;
+        $this->lang = $lang;
+        $this->abbr = $abbr;
+    }
 	
-	/*$langDays = array(
-					//English
-					array("Sun" => "Sunday",
-						  "Mon" => "Monday",
-						  "Tue" => "Tuesday",
-						  "Wed" => "Wednesday",
-						  "Thu" => "Thursday",
-						  "Fri" => "Friday",
-						  "Sat" => "Saturday"),
-					//Spanish
-					array("Dom" => "Domingo",
-						  "Lun" => "Lunes",
-						  "Mar" => "Martes",
-						  "Mié" => "Miércoles",
-						  "Jue" => "Jueves",
-						  "Vie" => "Viernes",
-						  "Sáb" => "Sábado"),
-				);
-	
-	$langMonths = array(
-					//English
-					array("Jan" => "January",
-						  "Feb" => "February",
-						  "Mar" => "March",
-						  "Apr" => "April",
-						  "May" => "May",
-						  "Jun" => "June",
-						  "Jul" => "July ",
-						  "Aug" => "August",
-						  "Sept" => "September",
-						  "Oct" => "October",
-						  "Nov" => "November",
-						  "Dec" => "December"),
-					//Spanish
-					array("Ene" => "Enero",
-						  "Feb" => "Febrero",
-						  "Mar" => "Marzo",
-						  "Abr" => "Abril",
-						  "May" => "Mayo",
-						  "Jun" => "Junio",
-						  "Jul" => "Julio",
-						  "Ago" => "Agosto",
-						  "Sept" => "Septiembre",
-						  "Oct" => "Octubre",
-						  "Nov" => "Noviembre",
-						  "Dic" => "Diciembre"),
-				  );*/
-	
-	
-	$langDays = array(
-					array("Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"),
-					array("Domingo","Lunes","Martes","Miércoles","Jueves","Viernes","Sábado"),
-				);
-	$langDaysAbbr = array(
-						array("Sun","Mon","Tue","Wed","Thu","Fri","Sat"),
-						array("Dom","Lun","Mar","Mié","Jue","Vie","Sáb"),
-					);
-	$langMonths = array(
-					array("January","February","March","April","May","June","July ","August","September","October","November","December"),
-					array("Enero","Febrero","Marzo","Abril","Mayo","Junio","Julio","Agosto","Septiembre","Octubre","Noviembre", "Diciembre"),
-				  );
-	$langMonthsAbbr = array(
-						array("Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sept","Oct","Nov","Dec"),
-						array("Ene","Feb","Mar","Abr","May","Jun","Jul","Ago","Sept","Oct","Nov","Dic"),
-					  );
+    public function getDate()
+    {
+		$newDate = strtotime($this->date);
+		$finalDate = date($this->format, $newDate);
+		$langSet = $this->lang == 'esp' ? 1 : 0;
+		$langAbbr = $this->abbr ? 1 : 0;
 
-	
-	for ($row = 0; $row < 7; $row++)
-	{
-		if($abbr){
-			$finalDate = str_replace($langDays[0][$row], $langDaysAbbr[$langSet][$row], $finalDate);
+		$langDays = array(
+						array(
+							["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"],
+							["Domingo","Lunes","Martes","Miércoles","Jueves","Viernes","Sábado"],
+						),
+						array(
+							["Sun","Mon","Tue","Wed","Thu","Fri","Sat"],
+							["Dom","Lun","Mar","Mié","Jue","Vie","Sáb"],
+						)
+					);
+		
+		$langMonths = array(
+							array(
+								["January","February","March","April","May","June","July ","August","September","October","November","December"],
+								["Enero","Febrero","Marzo","Abril","Mayo","Junio","Julio","Agosto","Septiembre","Octubre","Noviembre", "Diciembre"],
+							),
+							array(
+								["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sept","Oct","Nov","Dec"],
+								["Ene","Feb","Mar","Abr","May","Jun","Jul","Ago","Sept","Oct","Nov","Dic"],
+							)
+						);
+
+
+		for ($day = 0; $day < 7; $day++)
+		{
+			$finalDate = str_replace($langDays[0][0][$day], $langDays[$langAbbr][$langSet][$day] , $finalDate);
 		}
-		else{
-			$finalDate = str_replace($langDays[0][$row], $langDays[$langSet][$row], $finalDate);
+		for ($month = 0; $month < 12; $month++)
+		{
+			$finalDate = str_replace($langMonths[0][0][$month], $langMonths[$langAbbr][$langSet][$month], $finalDate);
 		}
-	}
-	for ($row = 0; $row < 12; $row++)
-	{
-		if($abbr){
-			$finalDate = str_replace($langMonths[0][$row], $langMonthsAbbr[$langSet][$row], $finalDate);
-		}
-		else{
-			$finalDate = str_replace($langMonths[0][$row], $langMonths[$langSet][$row], $finalDate);
-		}
-	}
-	return $finalDate;
+		
+		return $finalDate;
+    }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
