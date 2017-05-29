@@ -97,8 +97,8 @@ CREATE TABLE `wp_options` (
 --
 
 INSERT INTO `wp_options` (`option_id`, `option_name`, `option_value`, `autoload`) VALUES
-(1, 'siteurl', 'http://localhost/_websitebase/wordpress', 'yes'),
-(2, 'home', 'http://localhost/_websitebase/wordpress', 'yes'),
+(1, 'siteurl', 'http://localhost/websitebase/wordpress', 'yes'),
+(2, 'home', 'http://localhost/websitebase/wordpress', 'yes'),
 (3, 'blogname', 'Website Base', 'yes'),
 (4, 'blogdescription', 'Website based on Bootstrap with some CSS/JS/PHP improvements', 'yes'),
 (5, 'users_can_register', '0', 'yes'),
@@ -299,7 +299,7 @@ CREATE TABLE `wp_posts` (
 --
 
 INSERT INTO `wp_posts` (`ID`, `post_author`, `post_date`, `post_date_gmt`, `post_content`, `post_title`, `post_excerpt`, `post_status`, `comment_status`, `ping_status`, `post_password`, `post_name`, `to_ping`, `pinged`, `post_modified`, `post_modified_gmt`, `post_content_filtered`, `post_parent`, `guid`, `menu_order`, `post_type`, `post_mime_type`, `comment_count`) VALUES
-(3, 1, '2017-05-22 20:10:45', '0000-00-00 00:00:00', '', 'Borrador automático', '', 'auto-draft', 'open', 'open', '', '', '', '', '2017-05-22 20:10:45', '0000-00-00 00:00:00', '', 0, 'http://localhost/_websitebase/wordpress/?p=3', 0, 'post', '', 0);
+(3, 1, '2017-05-22 20:10:45', '0000-00-00 00:00:00', '', 'Borrador automático', '', 'auto-draft', 'open', 'open', '', '', '', '', '2017-05-22 20:10:45', '0000-00-00 00:00:00', '', 0, 'http://localhost/websitebase/wordpress/?p=3', 0, 'post', '', 0);
 
 -- --------------------------------------------------------
 
