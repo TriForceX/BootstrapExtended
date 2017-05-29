@@ -34,7 +34,7 @@ class php extends utilities\php {
 				return get_option('blogkeywords'); 
 				break;
 			case 'author': 
-				return get_option('blogname'); 
+				return get_option('blogauthor'); 
 				break;
 			case 'mobile-capable': 
 				return 'yes'; 
@@ -96,10 +96,13 @@ class new_general_setting
 	{
 		$new_field_1 = array("blogkeywords","Site Keywords","Words to let search engines to found this site","new_field_1_html");
 		$new_field_2 = array("bloganalytics","Analytics Code","Code placed in the HTML head to track site analytics","new_field_2_html");
+		$new_field_3 = array("blogauthor","Site Author","Defines the website author","new_field_3_html");
         register_setting( 'general', $new_field_1[0], 'esc_attr' );
         register_setting( 'general', $new_field_2[0], 'esc_attr' );
+        register_setting( 'general', $new_field_3[0], 'esc_attr' );
         add_settings_field($new_field_1[0], '<label for="'.$new_field_1[0].'">'.$new_field_1[1].'</label>' , array(&$this, $new_field_1[3]) , 'general' );
         add_settings_field($new_field_2[0], '<label for="'.$new_field_2[0].'">'.$new_field_2[1].'</label>' , array(&$this, $new_field_2[3]) , 'general' );
+        add_settings_field($new_field_3[0], '<label for="'.$new_field_3[0].'">'.$new_field_3[1].'</label>' , array(&$this, $new_field_3[3]) , 'general' );
     }
     function new_field_1_html() 
 	{
@@ -110,8 +113,22 @@ class new_general_setting
     }
 	function new_field_2_html() 
 	{
-		$new_field_data = array("bloganalytics","Analytics Code","Code placed in the HTML head to track site analytics","new_field_1_html");
+		$new_field_data = array("bloganalytics","Analytics Code","Code placed in the HTML head to track site analytics","new_field_2_html");
         echo '<textarea style="max-width: 350px;min-height: 100px;width: 100%;" id="'.$new_field_data[0].'" name="'.$new_field_data[0].'">' . get_option( $new_field_data[0], '' ) . '</textarea>';
 		echo '<p class="description" id="'.$new_field_data[0].'-description">'.$new_field_data[2].'</p>';
     }
+	function new_field_3_html() 
+	{
+		$new_field_data = array("blogauthor","Site Author","Defines the website author","new_field_3_html");
+        echo '<input style="max-width: 350px;width: 100%;" id="'.$new_field_data[0].'" name="'.$new_field_data[0].'" value="' . get_option( $new_field_data[0], '' ) . '"/>';
+		echo '<p class="description" id="'.$new_field_data[0].'-description">'.$new_field_data[2].'</p>';
+    }
+}
+
+//Show admin bar in front-end
+if(isset($_GET['adminbar'])){
+	show_admin_bar(true);
+}
+else{
+	show_admin_bar(false);
 }
