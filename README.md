@@ -19,11 +19,21 @@ Website base structure with small reusable parts of source code or functions for
 * CSS & JS files built in PHP (with code minification)
 * Features in PHP:
 	* Global variables for CSS & JS usage
-	* Debug mode for PHP warnings
+	* Minify CSS, JS and HTML
+	* PHP error handle & warnings
 	* Get Website part with cURL
-	* UTF8 string conversion
-	* Cut Excerpt
-	* Custom get date format
+	* Send E-Mails with PHPMailer
+	* Check ends/start of string
+	* Check string contains another string
+	* Strip all witespaces to string
+	* Convert string to boolean
+	* Remove accents
+	* Sanitize Strings
+	* Convert to slug
+	* Limit character/words
+	* Get main url, protocol, https, current page, and more...
+	* Convert string to UTF-8
+	* Custom show date format
 * Features in JS:
 	* Check attr function
 	* Check outer width & height with padding/margin
