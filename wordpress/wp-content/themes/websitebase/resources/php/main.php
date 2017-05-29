@@ -335,23 +335,23 @@ class php
 
 		$langDays = array(
 						array(
-							["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"],
-							["Domingo","Lunes","Martes","Miércoles","Jueves","Viernes","Sábado"],
+							array("Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"),
+							array("Domingo","Lunes","Martes","Miércoles","Jueves","Viernes","Sábado"),
 						),
 						array(
-							["Sun","Mon","Tue","Wed","Thu","Fri","Sat"],
-							["Dom","Lun","Mar","Mié","Jue","Vie","Sáb"],
+							array("Sun","Mon","Tue","Wed","Thu","Fri","Sat"),
+							array("Dom","Lun","Mar","Mié","Jue","Vie","Sáb"),
 						)
 					);
 		
 		$langMonths = array(
 							array(
-								["January","February","March","April","May","June","July ","August","September","October","November","December"],
-								["Enero","Febrero","Marzo","Abril","Mayo","Junio","Julio","Agosto","Septiembre","Octubre","Noviembre", "Diciembre"],
+								array("January","February","March","April","May","June","July ","August","September","October","November","December"),
+								array("Enero","Febrero","Marzo","Abril","Mayo","Junio","Julio","Agosto","Septiembre","Octubre","Noviembre", "Diciembre"),
 							),
 							array(
-								["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sept","Oct","Nov","Dec"],
-								["Ene","Feb","Mar","Abr","May","Jun","Jul","Ago","Sept","Oct","Nov","Dic"],
+								array("Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sept","Oct","Nov","Dec"),
+								array("Ene","Feb","Mar","Abr","May","Jun","Jul","Ago","Sept","Oct","Nov","Dic"),
 							)
 						);
 
@@ -367,5 +367,4 @@ class php
 		
 		return $finalDate;
 	}
-	
 }
