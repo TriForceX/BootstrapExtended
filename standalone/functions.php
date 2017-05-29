@@ -19,13 +19,22 @@ class php extends utilities\php {
     {
 		switch($type){
 			case 'lang': 
-				return 'en'; 
+				return 'en-US'; 
 				break;
 			case 'charset': 
-				return 'utf-8'; 
+				return 'UTF-8'; 
 				break;
 			case 'title': 
 				return 'Website Base'; 
+				break;
+			case 'description': 
+				return 'Website based on Bootstrap with some CSS/JS/PHP improvements'; 
+				break;
+			case 'keywords': 
+				return 'html, jquery, javascript, php, responsive, css3'; 
+				break;
+			case 'author': 
+				return 'TriForce'; 
 				break;
 			case 'mobile-capable': 
 				return 'yes'; 
@@ -38,15 +47,6 @@ class php extends utilities\php {
 				break;
 			case 'nav-color-apple': 
 				return 'black'; 
-				break;
-			case 'description': 
-				return 'Website based on Bootstrap with some CSS/JS/PHP improvements'; 
-				break;
-			case 'keywords': 
-				return 'html, jquery, javascript, php, responsive, css3'; 
-				break;
-			case 'author': 
-				return 'TriForce'; 
 				break;
 			default: break;
 		}
@@ -62,7 +62,7 @@ if(isset($_GET['debug'])){
  * PHP Aditional Stuff
  * 
  * You can add more stuff above such as more functions, 
- * global variables, etc...
+ * global variables, wordpress stuff, etc...
  * 
  */
 

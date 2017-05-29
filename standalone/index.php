@@ -111,31 +111,22 @@
 		<p>The main header structure contains the access to main <code>PHP</code> functions, website data, <code>META</code> tags, <code>CSS</code> files (and the base one) and <code>HTML</code> header containers.</p>
 		
 		<figure class="highlight">
-			<pre><code class="language-html" data-lang="html">&lt;?php 
-//Main Functions
-require_once('plugins/functions.php'); 
-
-//HTML Data
-$htmlData = array('lang'=>'en',
-		  'charset'=>'utf-8',
-		  'title'=>'Website Base',
-		  'mobile-capable'=>'yes',
-		  'viewport'=>'width=device-width, initial-scale=1, user-scalable=no',
-		  'nav-color'=>'#333333',
-		  'nav-color-apple'=>'black',
-		  'description'=>'Website based on Bootstrap with some CSS/JS/PHP improvements',
-		  'keywords'=>'html, jquery, javascript, php, responsive, css3',
-		  'author'=>'TriForce');
-?&gt;<br>&lt;!DOCTYPE html&gt;<br>...<br>&lt;!-- Main CSS File --&gt;<br>&lt;link href="&lt;?php echo get_bloginfo('template_url'); ?&gt;/css/style.php?url=&lt;?php echo get_bloginfo('template_url'); ?&gt;" rel="stylesheet"&gt;<br>...</code></pre>
+			<pre><code class="language-html" data-lang="html">&lt;!DOCTYPE html&gt;
+&lt;html lang="&lt;?php echo php::get_html_data('lang'); ?&gt;"&gt;
+&lt;head&gt;
+	...
+	&lt;link href="&lt;?php echo get_bloginfo('template_url'); ?&gt;/css/style.php" rel="stylesheet"&gt;
+	...
+&lt;/head&gt;<br>&lt;body&gt;<br>...</code></pre>
 		</figure>
 		
 		<p>
 		<div class="panel panel-default">
 			<div class="panel-heading">
-				<h3 class="panel-title">Note for main PHP Functions</h3>
+				<h3 class="panel-title">Note for HTML data</h3>
 			</div>
 			<div class="panel-body">
-				If you will use <code>Wordpress</code> or another <i>CMS</i> is recommended to use their functions (if exists) instead the included ones (in plugins/functions.php). The function <code>get_bloginfo()</code> is only for test purposes in this template.
+				Main HTML data for <i>meta tags</i> are located in <code>functions.php</code> using an extended function from PHP utilities. <i>php::get_html_data()</i>
 			</div>
 		</div>
 		</p>
@@ -157,8 +148,37 @@ $htmlData = array('lang'=>'en',
 		<p>The main footer structure contains the access to <code>JS</code> files (and the base one) and <code>HTML</code> footer containers.</p>
 		
 		<figure class="highlight">
-			<pre><code class="language-html" data-lang="html">...<br>&lt;!-- Main JS File --&gt;<br>&lt;script src="&lt;?php echo get_bloginfo('template_url'); ?&gt;/js/app.php?url=&lt;?php echo get_bloginfo('template_url'); ?&gt;"&gt;&lt;/script&gt;<br>&lt;/body&gt;<br>&lt;/html&gt;</code></pre>
+			<pre><code class="language-html" data-lang="html">...<br>&lt;!-- Main JS File --&gt;
+&lt;script src="&lt;?php echo get_bloginfo('template_url'); ?&gt;/js/app.php"&gt;&lt;/script&gt;
+...
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
 		</figure>
+		
+		<p>
+		<div class="panel panel-default">
+			<div class="panel-heading">
+				<h3 class="panel-title">Note for main PHP Functions</h3>
+			</div>
+			<div class="panel-body">
+				You can use the PHP functions from the main library like <i>php::function()</i>, If you will use Wordpress (or another CMS) is highly recommended to use their main functions instead the base here. For example use <code>get_bloginfo('template_url')</code> instead <code>php::get_main_url()</code>
+			</div>
+		</div>
+		</p>
+		
+		<!-- Utilities example -->
+		<div class="page-header">
+			<h1>Utilities <span class="label label-primary">Functions</span></h1>
+		</div>
+		<p>The main php functions are located in <code>resources/php/main.php</code> and contains a bunch of useful functions to use in PHP</p>
+		
+		<div class="bs-example">
+			<figure class="highlight">
+				<pre><code class="language-html" data-lang="html">//Get the main URL will return: <?php echo php::get_main_url(); ?><br>&lt;?php echo php::get_main_url(); ?&gt;
+			
+//Show current date will return: <?php echo php::show_date(false,'F j l, Y, g:i a'); ?><br>&lt;?php echo php::show_date(false,'F j l, Y, g:i a'); ?&gt;</code></pre>
+			</figure>
+		</div>
 		
 		<!-- ******** STRUCTURE EXAMPLES ******** -->
 		
@@ -221,7 +241,6 @@ $htmlData = array('lang'=>'en',
 			'@color-red' => '#ff0000',
 			'@color-blue' => '#0000ff',
 			'@color-green' => '#00ff00',
-			'@color-yellow' => '#ffff00',
 			...
 		);</code></pre>
 		</figure>

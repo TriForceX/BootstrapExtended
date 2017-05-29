@@ -336,9 +336,9 @@ function loadLightGallery(){
 		var galDownloadVal = $(this).data("lg-download");
 		var galPrevGalText = "Loading previous page ...";
 		var galNextGalText = "Loading next page ...";
-		var galLoadThumb = mainUrl+"/plugins/lightgallery/img/lg-loading-icon.gif";
-		var galPrevThumb = mainUrl+"/plugins/lightgallery/img/lg-loading-prev.png";
-		var galNextThumb = mainUrl+"/plugins/lightgallery/img/lg-loading-next.png";
+		var galLoadThumb = mainUrl+"/resources/lightgallery/img/lg-loading-icon.gif";
+		var galPrevThumb = mainUrl+"/resources/lightgallery/img/lg-loading-prev.png";
+		var galNextThumb = mainUrl+"/resources/lightgallery/img/lg-loading-next.png";
 		
 		if(toBoolean($(this).data("lg-title")) === false){
 			$(this).find(galSelectorVal).not(".lg-thumb-prev, .lg-thumb-next").attr("title", $(this).data("lg-title"));
@@ -658,9 +658,10 @@ function convertToSlug(Text){
 function autoScroll(selector,animated,distance){      
     var scrollDistance = distance;
     var scrollTarget = $(selector);
+	var scrollAnimated = animated == true ? 500 : animated;
 
-    if(animated){
-        $('html, body').animate({scrollTop: (scrollTarget.offset().top - scrollDistance)}, 500);
+    if(scrollAnimated){
+        $('html, body').animate({scrollTop: (scrollTarget.offset().top - scrollDistance)}, scrollAnimated);
     }
     else{
         $('html, body').scrollTop(scrollTarget.offset().top - scrollDistance);

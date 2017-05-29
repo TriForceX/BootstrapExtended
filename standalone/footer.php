@@ -42,7 +42,7 @@
 <!-- Clipboard JS -->
 <script src="<?php echo php::get_main_url(); ?>/resources/clipboard/js/clipboard.min.js"></script>
 <!-- Main JS File -->
-<script src="<?php echo php::get_main_url(); ?>/js/app.php?url=<?php echo php::get_main_url(); ?>"></script>
+<script src="<?php echo php::get_main_url(); ?>/js/app.php"></script>
 
 </body>
 </html>

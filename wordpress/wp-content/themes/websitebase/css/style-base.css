@@ -7,7 +7,7 @@
 
 /*General HTML*/
 body{
-	background-color:#FFF;
+	background-color:@color-white;
   	overflow-x:hidden !important;
 }
 body.modal-open{

@@ -6,13 +6,13 @@ RewriteEngine On
 RewriteCond %{HTTP_HOST} ^192\.168\.1\..*$ [NC,OR]
 RewriteCond %{HTTP_HOST} ^localhost$ [NC]
 # make sure we haven't already rewritten this URI
-RewriteCond %{REQUEST_URI} !/website_base/wordpress/index.php
+RewriteCond %{REQUEST_URI} !/websitebase/wordpress/index.php
 # don't rewrite if the resource already exists
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
 # rewrite
-RewriteBase /website_base/wordpress/ 
-RewriteRule ^(.*)$ /website_base/wordpress/index.php/$1 [L]
+RewriteBase /websitebase/wordpress/ 
+RewriteRule ^(.*)$ /websitebase/wordpress/index.php/$1 [L]
 
 # IF !(SITE A DOMAIN or SITE A SUBDOMAIN) 
 RewriteCond %{HTTP_HOST} !^192\.168\.1\..*$ [NC]

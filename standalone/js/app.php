@@ -14,7 +14,7 @@ echo '/*
 
 require_once('../resources/php/minifier/minifier.php');
 
-$jsUrl = $_GET['url'];
+$jsUrl = minifyGetURL('js');
 $jsFiles = array(
 			  $jsUrl.'/js/app-base.js',
 			  $jsUrl.'/js/app-ready.js',

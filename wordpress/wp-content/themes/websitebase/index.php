@@ -1,4 +1,4 @@
-<?php if(function_exists('get_header')): get_header(); else: include('header.php'); endif; ?>
+<?php get_header(); ?>
 
 <!-- ================================================= NAV MENU ================================================= -->
 
@@ -111,31 +111,30 @@
 		<p>The main header structure contains the access to main <code>PHP</code> functions, website data, <code>META</code> tags, <code>CSS</code> files (and the base one) and <code>HTML</code> header containers.</p>
 		
 		<figure class="highlight">
-			<pre><code class="language-html" data-lang="html">&lt;?php 
-//Main Functions
-require_once('plugins/functions.php'); 
-
-//HTML Data
-$htmlData = array('lang'=>'en',
-		  'charset'=>'utf-8',
-		  'title'=>'Website Base',
-		  'mobile-capable'=>'yes',
-		  'viewport'=>'width=device-width, initial-scale=1, user-scalable=no',
-		  'nav-color'=>'#333333',
-		  'nav-color-apple'=>'black',
-		  'description'=>'Website based on Bootstrap with some CSS/JS/PHP improvements',
-		  'keywords'=>'html, jquery, javascript, php, responsive, css3',
-		  'author'=>'TriForce');
-?&gt;<br>&lt;!DOCTYPE html&gt;<br>...<br>&lt;!-- Main CSS File --&gt;<br>&lt;link href="&lt;?php echo get_bloginfo('template_url'); ?&gt;/css/style.php?url=&lt;?php echo get_bloginfo('template_url'); ?&gt;" rel="stylesheet"&gt;<br>...</code></pre>
+			<pre><code class="language-html" data-lang="html">&lt;!DOCTYPE html&gt;
+&lt;html lang="&lt;?php echo php::get_html_data('lang'); ?&gt;"&gt;
+&lt;head&gt;
+	...
+	&lt;link href="&lt;?php echo get_bloginfo('template_url'); ?&gt;/css/style.php" rel="stylesheet"&gt;
+	...
+	&lt;?php
+	/* Always have wp_head() just before the closing &lt;/head&gt;
+	 * tag of your theme, or you will break many plugins, which
+	 * generally use this hook to add elements to &lt;head&gt; such
+	 * as styles, scripts, and meta tags.
+	 */
+	wp_head();
+	?>
+&lt;/head&gt;<br>&lt;body&gt;<br>...</code></pre>
 		</figure>
 		
 		<p>
 		<div class="panel panel-default">
 			<div class="panel-heading">
-				<h3 class="panel-title">Note for main PHP Functions</h3>
+				<h3 class="panel-title">Note for HTML data</h3>
 			</div>
 			<div class="panel-body">
-				If you will use <code>Wordpress</code> or another <i>CMS</i> is recommended to use their functions (if exists) instead the included ones (in plugins/functions.php). The function <code>get_bloginfo()</code> is only for test purposes in this template.
+				Main HTML data for <i>meta tags</i> are located in <code>functions.php</code> using an extended function from PHP utilities. <i>php::get_html_data()</i>
 			</div>
 		</div>
 		</p>
@@ -147,7 +146,7 @@ $htmlData = array('lang'=>'en',
 		<p>The main page (or index) structure contains <code>HTML</code> contents and access to the main <code>header</code> and <code>footer</code> files.</p>
 		
 		<figure class="highlight">
-			<pre><code class="language-html" data-lang="html">&lt;?php include('header.php'); ?&gt;<br>&lt;div class="content"&gt;<br>...<br>&lt;/div&gt;<br>&lt;?php include('footer.php'); ?&gt;</code></pre>
+			<pre><code class="language-html" data-lang="html">&lt;?php get_header(); ?&gt;<br>&lt;div class="content"&gt;<br>...<br>&lt;/div&gt;<br>&lt;?php get_footer(); ?&gt;</code></pre>
 		</figure>
 		
 		<!-- Footer example -->
@@ -157,8 +156,44 @@ $htmlData = array('lang'=>'en',
 		<p>The main footer structure contains the access to <code>JS</code> files (and the base one) and <code>HTML</code> footer containers.</p>
 		
 		<figure class="highlight">
-			<pre><code class="language-html" data-lang="html">...<br>&lt;!-- Main JS File --&gt;<br>&lt;script src="&lt;?php echo get_bloginfo('template_url'); ?&gt;/js/app.php?url=&lt;?php echo get_bloginfo('template_url'); ?&gt;"&gt;&lt;/script&gt;<br>&lt;/body&gt;<br>&lt;/html&gt;</code></pre>
+			<pre><code class="language-html" data-lang="html">...<br>&lt;!-- Main JS File --&gt;
+&lt;script src="&lt;?php echo get_bloginfo('template_url'); ?&gt;/js/app.php"&gt;&lt;/script&gt;
+...
+&lt;?php
+/* Always have wp_footer() just before the closing &lt;/body&gt;
+ * tag of your theme, or you will break many plugins, which
+ * generally use this hook to reference JavaScript files.
+ */
+wp_footer();
+?>
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
 		</figure>
+		
+		<p>
+		<div class="panel panel-default">
+			<div class="panel-heading">
+				<h3 class="panel-title">Note for main PHP Functions</h3>
+			</div>
+			<div class="panel-body">
+				You can use the PHP functions from the main library like <i>php::function()</i>, If you will use Wordpress (or another CMS) is highly recommended to use their main functions instead the base here. For example use <code>get_bloginfo('template_url')</code> instead <code>php::get_main_url()</code>
+			</div>
+		</div>
+		</p>
+		
+		<!-- Utilities example -->
+		<div class="page-header">
+			<h1>Utilities <span class="label label-primary">Functions</span></h1>
+		</div>
+		<p>The main php functions are located in <code>resources/php/main.php</code> and contains a bunch of useful functions to use in PHP</p>
+		
+		<div class="bs-example">
+			<figure class="highlight">
+				<pre><code class="language-html" data-lang="html">//Get the main URL will return: <?php echo php::get_main_url(); ?><br>&lt;?php echo php::get_main_url(); ?&gt;
+			
+//Show current date will return: <?php echo php::show_date(false,'F j l, Y, g:i a'); ?><br>&lt;?php echo php::show_date(false,'F j l, Y, g:i a'); ?&gt;</code></pre>
+			</figure>
+		</div>
 		
 		<!-- ******** STRUCTURE EXAMPLES ******** -->
 		
@@ -221,7 +256,6 @@ $htmlData = array('lang'=>'en',
 			'@color-red' => '#ff0000',
 			'@color-blue' => '#0000ff',
 			'@color-green' => '#00ff00',
-			'@color-yellow' => '#ffff00',
 			...
 		);</code></pre>
 		</figure>
@@ -315,7 +349,7 @@ $htmlData = array('lang'=>'en',
 
 		<!-- lightGallery examples -->
 		<div class="page-header">
-			<h1>Light Gallery <span class="label label-danger">JS</span></h1>
+			<h1>Light Gallery <span class="label label-danger">Plugin</span></h1>
 		</div>
 		<p>A customizable, modular, responsive, lightbox gallery plugin for jQuery. Below you will find an improved usage method via <code>data-lg-attributes</code> applied to the main gallery container.
 
@@ -386,7 +420,7 @@ $htmlData = array('lang'=>'en',
 
 			<?php //echo isset($_GET["page-2"]) ? 'Page 2' : 'Page 1' ?>
 			<div class="row JSlightGallery" data-lg-item="auto" data-lg-title="Gallery Title" data-lg-thumb="true" data-lg-gallery="true" data-lg-download="true">
-				<?php if(!isset($_GET["page-2"])): ?>
+				<?php if($_GET["page"]!="2"): ?>
 				<div class="col-md-3">
 					<a class="thumbnail" style="height:100px; overflow: hidden" title="My image 1" href="http://getbootstrap.com/examples/screenshots/theme.jpg">
 						<img src="http://getbootstrap.com/examples/screenshots/theme.jpg">
@@ -434,14 +468,14 @@ $htmlData = array('lang'=>'en',
 			<nav aria-label="Page navigation">
 				<ul class="pagination no-margin">
 					<li>
-						<a href="<?php echo get_bloginfo('url'); ?>" aria-label="Previous" class="lg-prev">
+						<a href="?page=1" aria-label="Previous" class="lg-prev">
 							<span aria-hidden="true">&laquo;</span>
 						</a>
 					</li>
-					<li class="<?php echo !isset($_GET["page-2 "]) ? 'active' : '' ?>"><a href="<?php echo get_bloginfo('url'); ?>">1</a></li>
-					<li class="<?php echo isset($_GET["page-2 "]) ? 'active' : '' ?>"><a href="<?php echo get_bloginfo('url'); ?>/?page-2">2</a></li>
+					<li class="<?php echo $_GET["page"]!="2" ? 'active' : '' ?>"><a href="?page=1">1</a></li>
+					<li class="<?php echo $_GET["page"]=="2" ? 'active' : '' ?>"><a href="?page=2">2</a></li>
 					<li>
-						<a href="<?php echo get_bloginfo('url'); ?>/?page-2" aria-label="Next" class="lg-next">
+						<a href="?page=2" aria-label="Next" class="lg-next">
 							<span aria-hidden="true">&raquo;</span>
 						</a>
 					</li>
@@ -455,7 +489,7 @@ $htmlData = array('lang'=>'en',
 
 		<!-- Data Tables example -->
 		<div class="page-header">
-			<h1>Data Tables <span class="label label-danger">JS</span></h1>
+			<h1>Data Tables <span class="label label-danger">Plugin</span></h1>
 		</div>
 		
 		<p>Improve the way to show plain html tables. Below you will find an improved usage method via <code>data-table-attributes</code>.</p>
@@ -965,7 +999,7 @@ $htmlData = array('lang'=>'en',
 
 		<!-- Show alert example -->
 		<div class="page-header">
-			<h1>Show Alert BootBox <span class="label label-danger">JS</span></h1>
+			<h1>Show Alert BootBox <span class="label label-danger">Plugin</span></h1>
 		</div>
 		<p>Launch a custom modal box using BootBox Features, the function structure is <code>showAlert(title, text, size)</code> you can alternatively set a size</p>
 
@@ -980,7 +1014,7 @@ $htmlData = array('lang'=>'en',
 
 		<!-- Video launch example -->
 		<div class="page-header">
-			<h1>Video Launch <span class="label label-danger">JS</span></h1>
+			<h1>Video Launch <span class="label label-danger">Custom</span></h1>
 		</div>
 		<p>Launch a modal box with a basic video player, the function structure is <code>videoLaunch(url, share, title)</code></p>
 
@@ -995,7 +1029,7 @@ $htmlData = array('lang'=>'en',
 
 		<!-- Window popup example -->
 		<div class="page-header">
-			<h1>Window Pop-Up <span class="label label-danger">JS</span></h1>
+			<h1>Window Pop-Up <span class="label label-danger">Custom</span></h1>
 		</div>
 		<p>Launch a custom pop-up window via javascript. Below you will find an improved usage method via <code>data-win-attributes</code>.</p>
 
@@ -1035,49 +1069,9 @@ $htmlData = array('lang'=>'en',
 			<pre><code class="language-html" data-lang="html">&lt;a class="JSwindowPopup" data-win-url="http://getbootstrap.com" data-win-size="640x480" data-win-align="center,center" data-win-scroll="yes">Click Here&lt;/a&gt;<br>&lt;a class="JSwindowPopup" data-win-url="http://getbootstrap.com" data-win-size="320x480" data-win-align="right,bottom" data-win-scroll="yes">Click Here&lt;/a&gt;<br>&lt;a class="JSwindowPopup" data-win-url="http://getbootstrap.com" data-win-size="320x480" data-win-align="left,top" data-win-scroll="yes">Click Here&lt;/a&gt;</code></pre>
 		</figure>
 
-		<!-- Show date example -->
-		<div class="page-header">
-			<h1>Show Date <span class="label label-danger">PHP</span></h1>
-		</div>
-		<p>Show a date in any format. The main function is <code>showDate($date, $format, $lang, $abbr)</code></p>
-
-		<table class="table table-bordered table-striped js-options-table">
-			<thead>
-				<tr>
-					<th>Name</th>
-					<th>Description</th>
-				</tr>
-			</thead>
-			<tbody>
-				<tr>
-					<td>date</td>
-					<td>Date in english format <code>YYYY-MM-DD</code> or <code>YYYY/MM/DD</code></td>
-				</tr>
-				<tr>
-					<td>format</td>
-					<td>Date format in PHP, more info <a href="http://php.net/manual/es/function.date.php" target="_blank">here</a></td>
-				</tr>
-				<tr>
-					<td>lang</td>
-					<td>Change the language of months and days, it can be <code>eng</code> for english, and <code>esp</code> for spanish</td>
-				</tr>
-				<tr>
-					<td>abbr</td>
-					<td>Apply an abbreviation to months and days</td>
-				</tr>
-			</tbody>
-		</table>
-
-		<div class="bs-example">
-			<h4>The date is: <span class="label label-default"><?php echo showDate("2017-09-20", "F j l, Y, g:i a", "eng", true); ?></span></h4>
-		</div>
-		<figure class="highlight">
-			<pre><code class="language-html" data-lang="html">&lt;?php echo showDate("2017-09-20", "F j l, Y, g:i a", "eng", true); ?&gt;</code></pre>
-		</figure>
-		
 		<!-- Form validation -->
 		<div class="page-header">
-			<h1>Form Validation <span class="label label-danger">JS</span></h1>
+			<h1>Form Validation <span class="label label-danger">Custom</span></h1>
 		</div>
 		<p>Basic validation for <code>input</code>, <code>select</code>, <code>checkbox</code> and <code>textarea</code> elements. The main function is <code>$()validateForm(options);</code></p></p>
 		
@@ -1211,7 +1205,7 @@ $htmlData = array('lang'=>'en',
 		
 		<!-- Map launch example -->
 		<div class="page-header">
-			<h1>Map Launch <span class="label label-danger">JS</span></h1>
+			<h1>Map Launch <span class="label label-danger">Custom</span></h1>
 		</div>
 		<p>Show a modal box with map options such as <i>Google Maps</i> and <i>Waze</i>. Below you will find an improved usage method via <code>data-map-attributes</code>.</p>
 
@@ -1824,4 +1818,4 @@ $htmlData = array('lang'=>'en',
 </div>
 <!-- ================================================= CONTENT ================================================= -->
 
-<?php if(function_exists('get_footer')): get_footer(); else: include('footer.php'); endif; ?>
+<?php get_footer(); ?>

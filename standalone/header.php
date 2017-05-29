@@ -47,7 +47,7 @@
     <!-- Hover CSS -->
 	<link href="<?php echo php::get_main_url(); ?>/resources/hover/css/hover.min.css" rel="stylesheet">
 	<!-- Main CSS File -->
-	<link href="<?php echo php::get_main_url(); ?>/css/style.php?url=<?php echo php::get_main_url(); ?>" rel="stylesheet">
+	<link href="<?php echo php::get_main_url(); ?>/css/style.php" rel="stylesheet">
 	<!-- IE8 support of HTML5 elements and media queries -->
 	<!--[if lt IE 9]>
 	<script src="<?php echo php::get_main_url(); ?>/resources/bootstrap/js/html5shiv.min.js"></script>
@@ -65,7 +65,7 @@
 <?php if(php::is_localhost()): ?>
 <?php echo "\n"; //Dont track in localhost ?>
 <?php else: ?>
-<?php echo "\n"; ?>
+<?php echo php::convert_to_utf8('<script></script>')."\n"; ?>
 <?php endif; ?>
 <!-- ================================================= ANALYTICS ================================================= -->
 

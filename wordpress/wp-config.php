@@ -15,14 +15,32 @@
  */
 
 // ** Ajustes de MySQL. Solicita estos datos a tu proveedor de alojamiento web. ** //
+if($_SERVER['HTTP_HOST'] == 'localhost' OR filter_var($_SERVER['HTTP_HOST'], FILTER_VALIDATE_IP)):
+	 //Localhost
+	$dbname = 'websitebase';
+	$dbuser = 'root';
+	$dbpass = 'root';
+elseif($_SERVER['HTTP_HOST'] == 'domain.com'):
+	//Develop
+	$dbname = 'websitebase';
+	$dbuser = 'root';
+	$dbpass = 'root';
+else:
+	//Production
+	$dbname = 'websitebase';
+	$dbuser = 'root';
+	$dbpass = 'root';
+endif;
+
+// ** Ajustes de MySQL. Solicita estos datos a tu proveedor de alojamiento web. ** //
 /** El nombre de tu base de datos de WordPress */
-define('DB_NAME', 'website_base');
+define('DB_NAME', $dbname);
 
 /** Tu nombre de usuario de MySQL */
-define('DB_USER', 'root');
+define('DB_USER', $dbuser);
 
 /** Tu contraseña de MySQL */
-define('DB_PASSWORD', 'root');
+define('DB_PASSWORD', $dbpass);
 
 /** Host de MySQL (es muy probable que no necesites cambiarlo) */
 define('DB_HOST', 'localhost');
@@ -32,6 +50,9 @@ define('DB_CHARSET', 'utf8mb4');
 
 /** Cotejamiento de la base de datos. No lo modifiques si tienes dudas. */
 define('DB_COLLATE', '');
+
+/** Deshabilitar CRON para tareas programadas */
+define('DISABLE_WP_CRON', 'true');
 
 /**#@+
  * Claves únicas de autentificación.

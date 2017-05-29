@@ -14,7 +14,7 @@ echo '/*
 
 require_once('../resources/php/minifier/minifier.php');
 
-$cssUrl = $_GET['url'];
+$cssUrl = minifyGetURL('css');
 $cssFiles = array(
 			  $cssUrl.'/css/style-base.css',
 			  $cssUrl.'/css/style-fonts.css',
