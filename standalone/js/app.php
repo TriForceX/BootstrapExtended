@@ -3,17 +3,16 @@
 header('Content-type: text/javascript; charset: UTF-8');
 
 echo '/*
+ * App.php JavaScript File Parser
+ * Version 1.0
+ * © 2017 TriForce - Matías Silva
+ * 
+ * Site:     http://dev.gznetwork.com/websitebase
+ * Issues:   https://github.com/triforcex/websitebase
+ * 
+ */';
 
-App.php JavaScript File Parser
-Version 1.0
-© 2017 TriForce - Matías Silva
-
-Site:     http://dev.gznetwork.com/websitebase
-Issues:   https://github.com/triforcex/websitebase
-
-*/';
-
-require_once('../plugins/minifier/php/minifier.php');
+require_once('../resources/php/minifier/minifier.php');
 
 $jsUrl = $_GET['url'];
 $jsFiles = array(

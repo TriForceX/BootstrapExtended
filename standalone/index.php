@@ -1,9 +1,5 @@
 <?php include('header.php'); ?>
 
-<?php
-echo php::strip_space(' Hola mundo este es un mensaje ');
-?>
-
 <!-- ================================================= NAV MENU ================================================= -->
 
 <nav class="navbar navbar-inverse navbar-fixed-top">
@@ -319,7 +315,7 @@ $htmlData = array('lang'=>'en',
 
 		<!-- lightGallery examples -->
 		<div class="page-header">
-			<h1>Light Gallery <span class="label label-danger">JS</span></h1>
+			<h1>Light Gallery <span class="label label-danger">Plugin</span></h1>
 		</div>
 		<p>A customizable, modular, responsive, lightbox gallery plugin for jQuery. Below you will find an improved usage method via <code>data-lg-attributes</code> applied to the main gallery container.
 
@@ -390,7 +386,7 @@ $htmlData = array('lang'=>'en',
 
 			<?php //echo isset($_GET["page-2"]) ? 'Page 2' : 'Page 1' ?>
 			<div class="row JSlightGallery" data-lg-item="auto" data-lg-title="Gallery Title" data-lg-thumb="true" data-lg-gallery="true" data-lg-download="true">
-				<?php if(!isset($_GET["page-2"])): ?>
+				<?php if($_GET["page"]!="2"): ?>
 				<div class="col-md-3">
 					<a class="thumbnail" style="height:100px; overflow: hidden" title="My image 1" href="http://getbootstrap.com/examples/screenshots/theme.jpg">
 						<img src="http://getbootstrap.com/examples/screenshots/theme.jpg">
@@ -438,14 +434,14 @@ $htmlData = array('lang'=>'en',
 			<nav aria-label="Page navigation">
 				<ul class="pagination no-margin">
 					<li>
-						<a href="<?php echo php::get_main_url(); ?>" aria-label="Previous" class="lg-prev">
+						<a href="?page=1" aria-label="Previous" class="lg-prev">
 							<span aria-hidden="true">&laquo;</span>
 						</a>
 					</li>
-					<li class="<?php echo !isset($_GET["page-2 "]) ? 'active' : '' ?>"><a href="<?php echo php::get_main_url(); ?>">1</a></li>
-					<li class="<?php echo isset($_GET["page-2 "]) ? 'active' : '' ?>"><a href="<?php echo php::get_main_url(); ?>/?page-2">2</a></li>
+					<li class="<?php echo $_GET["page"]!="2" ? 'active' : '' ?>"><a href="?page=1">1</a></li>
+					<li class="<?php echo $_GET["page"]=="2" ? 'active' : '' ?>"><a href="?page=2">2</a></li>
 					<li>
-						<a href="<?php echo php::get_main_url(); ?>/?page-2" aria-label="Next" class="lg-next">
+						<a href="?page=2" aria-label="Next" class="lg-next">
 							<span aria-hidden="true">&raquo;</span>
 						</a>
 					</li>
@@ -459,7 +455,7 @@ $htmlData = array('lang'=>'en',
 
 		<!-- Data Tables example -->
 		<div class="page-header">
-			<h1>Data Tables <span class="label label-danger">JS</span></h1>
+			<h1>Data Tables <span class="label label-danger">Plugin</span></h1>
 		</div>
 		
 		<p>Improve the way to show plain html tables. Below you will find an improved usage method via <code>data-table-attributes</code>.</p>
@@ -969,7 +965,7 @@ $htmlData = array('lang'=>'en',
 
 		<!-- Show alert example -->
 		<div class="page-header">
-			<h1>Show Alert BootBox <span class="label label-danger">JS</span></h1>
+			<h1>Show Alert BootBox <span class="label label-danger">Plugin</span></h1>
 		</div>
 		<p>Launch a custom modal box using BootBox Features, the function structure is <code>showAlert(title, text, size)</code> you can alternatively set a size</p>
 
@@ -984,7 +980,7 @@ $htmlData = array('lang'=>'en',
 
 		<!-- Video launch example -->
 		<div class="page-header">
-			<h1>Video Launch <span class="label label-danger">JS</span></h1>
+			<h1>Video Launch <span class="label label-danger">Custom</span></h1>
 		</div>
 		<p>Launch a modal box with a basic video player, the function structure is <code>videoLaunch(url, share, title)</code></p>
 
@@ -999,7 +995,7 @@ $htmlData = array('lang'=>'en',
 
 		<!-- Window popup example -->
 		<div class="page-header">
-			<h1>Window Pop-Up <span class="label label-danger">JS</span></h1>
+			<h1>Window Pop-Up <span class="label label-danger">Custom</span></h1>
 		</div>
 		<p>Launch a custom pop-up window via javascript. Below you will find an improved usage method via <code>data-win-attributes</code>.</p>
 
@@ -1041,7 +1037,7 @@ $htmlData = array('lang'=>'en',
 
 		<!-- Form validation -->
 		<div class="page-header">
-			<h1>Form Validation <span class="label label-danger">JS</span></h1>
+			<h1>Form Validation <span class="label label-danger">Custom</span></h1>
 		</div>
 		<p>Basic validation for <code>input</code>, <code>select</code>, <code>checkbox</code> and <code>textarea</code> elements. The main function is <code>$()validateForm(options);</code></p></p>
 		
@@ -1175,7 +1171,7 @@ $htmlData = array('lang'=>'en',
 		
 		<!-- Map launch example -->
 		<div class="page-header">
-			<h1>Map Launch <span class="label label-danger">JS</span></h1>
+			<h1>Map Launch <span class="label label-danger">Custom</span></h1>
 		</div>
 		<p>Show a modal box with map options such as <i>Google Maps</i> and <i>Waze</i>. Below you will find an improved usage method via <code>data-map-attributes</code>.</p>
 

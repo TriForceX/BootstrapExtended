@@ -13,6 +13,11 @@ $(document).ready(function(){
 		window.location.href = $(".lg-prev").attr("href");
 	});
 	
+	//Scroll to gallery page
+	if (getUrlParameter('page')){
+		autoScroll(".JSlightGallery",true,0);
+	}
+	
 	//Form validation
 	$(".JSformExample").validateForm({
 		noValidate: "#example-input-lastname",

@@ -658,9 +658,10 @@ function convertToSlug(Text){
 function autoScroll(selector,animated,distance){      
     var scrollDistance = distance;
     var scrollTarget = $(selector);
+	var scrollAnimated = animated == true ? 500 : animated;
 
-    if(animated){
-        $('html, body').animate({scrollTop: (scrollTarget.offset().top - scrollDistance)}, 500);
+    if(scrollAnimated){
+        $('html, body').animate({scrollTop: (scrollTarget.offset().top - scrollDistance)}, scrollAnimated);
     }
     else{
         $('html, body').scrollTop(scrollTarget.offset().top - scrollDistance);
