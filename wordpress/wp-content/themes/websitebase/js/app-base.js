@@ -45,6 +45,21 @@ $.fn.outerWidth2 = function () {
 	return this[0].getBoundingClientRect().width;
 };
 
+//Remove whitespaces between elements
+$.fn.htmlClean = function() {
+    this.contents().filter(function() {
+        if (this.nodeType !== 3) {
+            $(this).htmlClean();
+            return false;
+        }
+        else {
+            this.textContent = $.trim(this.textContent);
+            return !/\S/.test(this.nodeValue);
+        }
+    }).remove();
+    return this;
+};
+
 //Form validate
 $.fn.validateForm = function(options) {
 	

@@ -42,6 +42,7 @@ Website base structure with small reusable parts of source code or functions for
 * Features in JS:
 	* Check attr function
 	* Check outer width & height with padding/margin
+	* Remove whitespaces between elements
 	* Form validate
 	* Convert string to boolean
 	* Get max height from elements
