@@ -345,7 +345,7 @@ wp_footer();
 		<!-- Section description -->
 		<div class="jumbotron">
 			<h1>Resources Examples</h1>
-			<p>Some useful code functions and improvments in <code>PHP</code> or <code>JS</code> using the included plugins in this repository.</p>
+			<p>Some useful code functions and improvments in <code>PHP</code> or <code>JS</code> using the included resources in this repository.</p>
 		</div>
 
 		<!-- lightGallery examples -->
