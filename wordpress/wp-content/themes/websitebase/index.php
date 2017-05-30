@@ -24,7 +24,7 @@
 					</ul>
 				</li>
 				<li class="dropdown">
-					<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Plugins <span class="caret"></span></a>
+					<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Resources <span class="caret"></span></a>
 					<ul class="dropdown-menu" role="menu">
 						<li><a href="https://datatables.net/examples/styling/bootstrap.html" target="_blank">Data Tables</a></li>
 						<li><a href="http://sachinchoolur.github.io/lightGallery/" target="_blank">Light Gallery</a></li>
@@ -37,6 +37,7 @@
 						<li><a href="https://jqueryui.com/" target="_blank">jQuery UI</a></li>
 						<li><a href="https://github.com/js-cookie/js-cookie" target="_blank">jQuery Cookie</a></li>
 						<li><a href="https://github.com/pupunzi/jquery.mb.browser" target="_blank">jQuery Browser</a></li>
+						<li><a href="https://github.com/PHPMailer/PHPMailer/" target="_blank">PHP Mailer</a></li>
 					</ul>
 				</li>
 				<li class="dropdown">
@@ -343,7 +344,7 @@ wp_footer();
 
 		<!-- Section description -->
 		<div class="jumbotron">
-			<h1>Plugins Examples</h1>
+			<h1>Resources Examples</h1>
 			<p>Some useful code functions and improvments in <code>PHP</code> or <code>JS</code> using the included plugins in this repository.</p>
 		</div>
 
