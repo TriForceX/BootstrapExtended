@@ -38,15 +38,7 @@ $cssVariables = array(
 					'@screen-widescreen' => '1200px', 
 					'@screen-full-hd' => '1920px', 
 					//Colors
-					'@color-black' => '#000000',
-					'@color-white' => '#ffffff',
-					'@color-red' => '#ff0000',
-					'@color-blue' => '#0000ff',
-					'@color-green' => '#008000',
-					'@color-lime' => '#00ff00',
-					'@color-yellow' => '#ffff00',
-					'@color-cyan' => '#00ffff',
-					'@color-magenta' => '#ff00ff',
+					'@color-custom' => '#ffffff',
 				);
 
 $cssKey = array_keys($cssVariables);

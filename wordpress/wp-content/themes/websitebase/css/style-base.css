@@ -7,13 +7,13 @@
 
 /*General HTML*/
 body{
-	background-color:@color-white;
-  	overflow-x:hidden !important;
+	background-color: white;
+  	overflow-x: hidden !important;
 }
 body.modal-open{
 	padding-right: 0px !important;
-	overflow:auto !important;
-	overflow-x:hidden !important;
+	overflow: auto !important;
+	overflow-x: hidden !important;
 }
 img{
 	border:0;
@@ -101,14 +101,14 @@ td[align='left']{
 
 /*Custom Panel*/
 .panel-custom {
-    border-color: @color-red;
+    border-color: red;
 	float:left;
 	width:100%;
 	margin-bottom:0px;
 }
 .panel-custom > .panel-heading {
-    background-color:  @color-red;
-    border-color:  @color-red;
+    background-color:  red;
+    border-color:  red;
     color: #fff;
 }
 /*Custom Panel*/
@@ -118,8 +118,8 @@ td[align='left']{
 	font-size:12px;
 }
 .ui-datepicker .ui-datepicker-header{
-	/*background: @color-red;*/
-	/*border-color: @color-red;*/
+	/*background: red;*/
+	/*border-color: red;*/
 }
 .ui-datepicker .ui-datepicker-next,
 .ui-datepicker .ui-datepicker-prev{
@@ -127,8 +127,8 @@ td[align='left']{
 }
 .ui-datepicker .ui-datepicker-next-hover,
 .ui-datepicker .ui-datepicker-prev-hover{
-	/*background: @color-red;*/
-	/*border-color: @color-red;*/
+	/*background: red;*/
+	/*border-color: red;*/
 }
 .ui-datepicker .ui-datepicker-next-hover span,
 .ui-datepicker .ui-datepicker-prev-hover span{
@@ -137,7 +137,7 @@ td[align='left']{
 }
 .ui-state-default, .ui-widget-content .ui-state-default, .ui-widget-header .ui-state-default{
 	font-weight:normal;
-	/*color: @color-red;*/
+	/*color: red;*/
 }
 /*UI Date Picker*/
 
@@ -602,7 +602,7 @@ td[align='left']{
 .JSvideoLaunchButton{
 	color: #FFF;
 	font-weight: normal;
-	background-color: @color-red;
+	background-color: red;
 	border-radius: 3px;
 	font-size: 12px;
 	padding: 3px 5px;

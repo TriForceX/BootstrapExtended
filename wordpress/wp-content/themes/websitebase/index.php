@@ -254,9 +254,7 @@ wp_footer();
 			'@screen-widescreen' => '1200px', 
 			'@screen-full-hd' => '1920px', 
 			//Colors
-			'@color-red' => '#ff0000',
-			'@color-blue' => '#0000ff',
-			'@color-green' => '#00ff00',
+			'@color-custom' => '#ffffff',
 			...
 		);</code></pre>
 		</figure>
