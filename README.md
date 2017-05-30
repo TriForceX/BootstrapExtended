@@ -1,8 +1,10 @@
 # Custom Bootstrap 3 Base
 Website base structure with small reusable parts of source code or functions for HTML use Based on Bootstrap. You can visit http://dev.gznetwork.com/websitebase for a running example.
 
-# Plugins Features
-* Bootstrap 3 Framework
+# Resources
+* Standalone (PHP 5.4+ & HTML)
+* Wordpress (Ver 4.7.5)
+* Bootstrap 3 Framework (Ver 3.3.7)
 * Data Tables
 * Light Gallery
 * Holder JS
@@ -10,12 +12,15 @@ Website base structure with small reusable parts of source code or functions for
 * ImgLiquid JS
 * Touch Swipe
 * Clipboard JS
+* Hover CSS
 * jQuery UI
 * jQuery Cookie
 * jQuery Browser
+* PHP Mailer
 
 # Functions & Code Snippets
-* HTML header data arrays
+* HTML header data class
+* PHP main utility class
 * CSS & JS files built in PHP (with code minification)
 * Features in PHP:
 	* Global variables for CSS & JS usage
@@ -68,12 +73,18 @@ Website base structure with small reusable parts of source code or functions for
 	* Collection of CSS3 powered hover effects
 	* Custom form checkbox & radio style
 	* Custom form icons for input and select
+* Wordpress Features:
+	* Custom database configuration for wp-config
+	* Custom htaccess file to work local/production
+	* Cron enable/disable
+	* Added custom general options fields
+	* Admin bar enable/disable
 
 # Recommended Tools for editing
 * Adobe Dreamweaver
 * NetBeans
-* Brackets
 * Visual Studio Code
+* Brackets
 * Notepad++
 
 # Recommended Tools for server

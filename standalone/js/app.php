@@ -58,7 +58,7 @@ $jsVariables = array(
 					'@videolaunch-text' => 'The share link has been copied!',
 					//Map launch
 					'@maplaunch-title' => 'Map Select',
-					'@maplaunch-text' => 'Select one of option below',
+					'@maplaunch-text' => 'Select one of options below',
 				);
 
 $jsKey = array_keys($jsVariables);
