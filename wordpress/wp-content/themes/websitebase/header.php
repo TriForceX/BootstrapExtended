@@ -70,9 +70,9 @@
 <?php endif; ?>
 <!-- ================================================= ANALYTICS ================================================= -->
 <?php if(php::is_localhost()): ?>
-<?php echo php::convert_to_utf8(get_option('bloganalytics'))."\n"; //Dont track in localhost ?>
+<?php echo "\n"; //Dont track in localhost ?>
 <?php else: ?>
-<?php echo "\n"; ?>
+<?php echo php::convert_to_utf8(get_option('bloganalytics'))."\n"; ?>
 <?php endif; ?>
 <!-- ================================================= ANALYTICS ================================================= -->
 

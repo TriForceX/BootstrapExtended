@@ -12,7 +12,6 @@ $(document).on("responsiveCode", function(event, bodyWidth, bodyHeight, bodyOrie
 	else{ 
 		$("body").attr("window-orientation","vertical");
 	}
-	//Example orientation
 
 /* ================================================= RESPONSIVE CODE ================================================= */
 

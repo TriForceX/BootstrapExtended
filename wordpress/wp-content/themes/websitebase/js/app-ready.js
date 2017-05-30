@@ -2,7 +2,6 @@ $(document).ready(function(){
 
 /* ================================================= DOCUMENT READY ================================================= */
 
-	
 	//Example lightGallery next page
 	$(document).on("onNextPageChange.lg", function(event){
 		window.location.href = $(".lg-next").attr("href"); 
