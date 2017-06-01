@@ -7,10 +7,10 @@ $(document).on("responsiveCode", function(event, bodyWidth, bodyHeight, bodyOrie
 	
 	//Example orientation
 	if(bodyOrientation){ 
-		$("body").attr("window-orientation","horizontal");
+		$("body").attr("window-orientation","landscape");
 	}
 	else{ 
-		$("body").attr("window-orientation","vertical");
+		$("body").attr("window-orientation","portrait");
 	}
 
 /* ================================================= RESPONSIVE CODE ================================================= */
