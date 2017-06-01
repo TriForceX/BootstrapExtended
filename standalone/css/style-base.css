@@ -740,33 +740,45 @@ input.JSvalidateErrorCheck + label::before {
 /* ================================================= CUSTOM ================================================= */
 
 /*Set margin top and bottom*/
-.margin-t-5{  margin-top: 5px !important; }
-.margin-t-10{  margin-top: 10px !important; }
-.margin-t-15{  margin-top: 15px !important; }
-.margin-t-20{  margin-top: 20px !important; }
-.margin-t-25{  margin-top: 25px !important; }
-.margin-t-30{  margin-top: 30px !important; }
-.margin-b-5{  margin-bottom: 5px !important; }
-.margin-b-10{  margin-bottom: 10px !important; }
-.margin-b-15{  margin-bottom: 15px !important; }
-.margin-b-20{  margin-bottom: 20px !important; }
-.margin-b-25{  margin-bottom: 25px !important; }
-.margin-b-30{  margin-bottom: 30px !important; }
+.margin-5{ margin: 5px !important; }
+.margin-10{ margin: 10px !important; }
+.margin-15{ margin: 15px !important; }
+.margin-20{ margin: 20px !important; }
+.margin-25{ margin: 25px !important; }
+.margin-30{ margin: 30px !important; }
+.margin-t-5{ margin-top: 5px !important; }
+.margin-t-10{ margin-top: 10px !important; }
+.margin-t-15{ margin-top: 15px !important; }
+.margin-t-20{ margin-top: 20px !important; }
+.margin-t-25{ margin-top: 25px !important; }
+.margin-t-30{ margin-top: 30px !important; }
+.margin-b-5{ margin-bottom: 5px !important; }
+.margin-b-10{ margin-bottom: 10px !important; }
+.margin-b-15{ margin-bottom: 15px !important; }
+.margin-b-20{ margin-bottom: 20px !important; }
+.margin-b-25{ margin-bottom: 25px !important; }
+.margin-b-30{ margin-bottom: 30px !important; }
 /*Set margin top and bottom*/
 
 /*Set padding top and bottom*/
-.padding-t-5{  padding-top: 5px !important; }
-.padding-t-10{  padding-top: 10px !important; }
-.padding-t-15{  padding-top: 15px !important; }
-.padding-t-20{  padding-top: 20px !important; }
-.padding-t-25{  padding-top: 25px !important; }
-.padding-t-30{  padding-top: 30px !important; }
-.padding-b-5{  padding-bottom: 5px !important; }
-.padding-b-10{  padding-bottom: 10px !important; }
-.padding-b-15{  padding-bottom: 15px !important; }
-.padding-b-20{  padding-bottom: 20px !important; }
-.padding-b-25{  padding-bottom: 25px !important; }
-.padding-b-30{  padding-bottom: 30px !important; }
+.padding-5{ padding: 5px !important; }
+.padding-10{ padding: 10px !important; }
+.padding-15{ padding: 15px !important; }
+.padding-20{ padding: 20px !important; }
+.padding-25{ padding: 25px !important; }
+.padding-30{ padding: 30px !important; }
+.padding-t-5{ padding-top: 5px !important; }
+.padding-t-10{ padding-top: 10px !important; }
+.padding-t-15{ padding-top: 15px !important; }
+.padding-t-20{ padding-top: 20px !important; }
+.padding-t-25{ padding-top: 25px !important; }
+.padding-t-30{ padding-top: 30px !important; }
+.padding-b-5{ padding-bottom: 5px !important; }
+.padding-b-10{ padding-bottom: 10px !important; }
+.padding-b-15{ padding-bottom: 15px !important; }
+.padding-b-20{ padding-bottom: 20px !important; }
+.padding-b-25{ padding-bottom: 25px !important; }
+.padding-b-30{ padding-bottom: 30px !important; }
 /*Set margin top and bottom*/
 
 /*Disable Margin*/
@@ -789,5 +801,36 @@ input.JSvalidateErrorCheck + label::before {
 .no-padding-b{ padding-bottom: 0px !important; }
 /*Disable Padding*/
 
+/*Vertical align*/
+.v-align,
+.v-align,
+.v-align{
+	display: table;
+}
+.v-align-top{
+	display: table-cell !important;
+	vertical-align: top !important;
+}
+.v-align-middle{
+	display: table-cell !important;
+	vertical-align: middle !important;
+}
+.v-align-bottom{
+	display: table-cell !important;
+	vertical-align: bottom !important;
+}
+/*Vertical align*/
+
+/*Width percentage*/
+.width-33{
+	width:33.3% !important;
+}
+.width-50{
+	width:50% !important;
+}
+.width-100{
+	width:100% !important;
+}
+/*Width percentage*/
 
 /* ================================================= CUSTOM ================================================= */
