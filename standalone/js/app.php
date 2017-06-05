@@ -59,6 +59,8 @@ $jsVariables = array(
 					//Map launch
 					'@maplaunch-title' => 'Map Select',
 					'@maplaunch-text' => 'Select one of options below',
+					//Check disabled
+					'@disabled-text' => 'This content is disabled or not available.',
 				);
 
 $jsKey = array_keys($jsVariables);

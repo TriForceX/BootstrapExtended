@@ -779,16 +779,9 @@ function checkDisabledLink(string){
 	}
 	else{
 		if(textoUrl.indexOf(window.location.host) <= 0){
-			
-			var seccion = capitalizeFirstLetter(textoUrl.split('#')[1]/*.replace("#", "")*/);
-			//***
-			if(textoUrl.substr(textoUrl.length - 1, 1) === 's') { //Spanish case for 2 or more
-				showAlert(seccion+" disabled","This content is disabled or not available.");
-			}
-			else{
-				showAlert(seccion+" disabled","This content is disabled or not available.");
-			}
-			
+			//Show alert
+			var seccion = textoUrl.split('#')[1].replace(/-/g,' ');
+			showAlert(seccion,"@disabled-text");
 			return false;
 		}
 		else{
