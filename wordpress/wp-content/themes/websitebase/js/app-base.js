@@ -761,27 +761,21 @@ function stripTags(container, items){
 //Check hasthag disabled links function
 function checkDisabledLink(string){
 	
-	var textoUrl = string;
+	var textUrl = string;
 
-	//Sin Enlace
-	if(textoUrl==="#no-link"){
+	//Exception 1
+	if(textUrl==="#"){
 		return false;
 	}
-	else if(textoUrl==="#"){
-		return false;
-	}
-	else if(textoUrl==="#carousel-example-generic"){
+	//Exception 2
+	else if(textUrl.indexOf('#carousel') >= 0){
 		return true;
 	}
-	else if(textoUrl.indexOf('some-string') >= 0){
-		//Stuff to do
-		return false;
-	}
 	else{
-		if(textoUrl.indexOf(window.location.host) <= 0){
+		if(textUrl.indexOf(window.location.host) <= 0){
 			//Show alert
-			var seccion = textoUrl.split('#')[1].replace(/-/g,' ');
-			showAlert(seccion,"@disabled-text");
+			var section = textUrl.split('#')[1].replace(/-/g,' ');
+			showAlert(section,"@disabled-text");
 			return false;
 		}
 		else{
