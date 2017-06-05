@@ -758,6 +758,18 @@ input.JSvalidateErrorCheck + label::before {
 .margin-b-20{ margin-bottom: 20px !important; }
 .margin-b-25{ margin-bottom: 25px !important; }
 .margin-b-30{ margin-bottom: 30px !important; }
+.margin-l-5{ margin-left: 5px !important; }
+.margin-l-10{ margin-left: 10px !important; }
+.margin-l-15{ margin-left: 15px !important; }
+.margin-l-20{ margin-left: 20px !important; }
+.margin-l-25{ margin-left: 25px !important; }
+.margin-l-30{ margin-left: 30px !important; }
+.margin-r-5{ margin-right: 5px !important; }
+.margin-r-10{ margin-right: 10px !important; }
+.margin-r-15{ margin-right: 15px !important; }
+.margin-r-20{ margin-right: 20px !important; }
+.margin-r-25{ margin-right: 25px !important; }
+.margin-r-30{ margin-right: 30px !important; }
 /*Set margin top and bottom*/
 
 /*Set padding top and bottom*/
@@ -779,6 +791,18 @@ input.JSvalidateErrorCheck + label::before {
 .padding-b-20{ padding-bottom: 20px !important; }
 .padding-b-25{ padding-bottom: 25px !important; }
 .padding-b-30{ padding-bottom: 30px !important; }
+.padding-l-5{ padding-left: 5px !important; }
+.padding-l-10{ padding-left: 10px !important; }
+.padding-l-15{ padding-left: 15px !important; }
+.padding-l-20{ padding-left: 20px !important; }
+.padding-l-25{ padding-left: 25px !important; }
+.padding-l-30{ padding-left: 30px !important; }
+.padding-r-5{ padding-right: 5px !important; }
+.padding-r-10{ padding-right: 10px !important; }
+.padding-r-15{ padding-right: 15px !important; }
+.padding-r-20{ padding-right: 20px !important; }
+.padding-r-25{ padding-right: 25px !important; }
+.padding-r-30{ padding-right: 30px !important; }
 /*Set margin top and bottom*/
 
 /*Disable Margin*/
