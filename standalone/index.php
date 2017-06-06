@@ -1766,7 +1766,7 @@
 		<div class="page-header">
 			<h1>Carousel</h1>
 		</div>
-		<p>Note: A special class <code>carousel-swipe</code> was added to enable <b>touch gesture</b> on mobile <i>(right or left)</i>. Also there is another class <code>carousel-fade</code>to change the carousel transition. To manage the transition time interval an attribute <code>data-interval</code> was added to modify <i>(time in milliseconds)</i>. To disable shadows on controls just add <code>carousel-noshadow</code> class.</p>
+		<p>A new class <code>carousel-fade</code> was added to change the carousel transition. To manage the transition time interval you can use the attribute <code>data-interval</code> to modify <i>(time in milliseconds)</i>. ALso to disable shadows on controls just add <code>carousel-noshadow</code> class. <i>Note: Touch gestures was added (right or left) on mobile devices</i></p>
 		
 		<div id="carousel-example-generic" class="carousel slide" data-ride="carousel" data-interval="3000">
 			<ol class="carousel-indicators">
