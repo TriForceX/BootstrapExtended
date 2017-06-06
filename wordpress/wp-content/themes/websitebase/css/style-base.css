@@ -564,6 +564,12 @@ td[align='left']{
 }
 /*JS Vertical Align*/
 
+/*JS Rotate*/
+.JSrotate{
+	visibility: hidden;
+}
+/*JS Rotate*/
+
 /*JS Text Cut*/
 .JStextCut > div{
 	position: relative;

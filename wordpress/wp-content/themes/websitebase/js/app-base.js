@@ -943,6 +943,14 @@ $(document).ready(function(){
 		textCut($(this));
 	});
 	
+	//Apply Rotation
+	$(".JSrotate").each(function(){
+		$(this).rotate({
+			angle: $(this).data('rotate-angle')
+		});
+		$(this).css('visibility','visible');
+	});
+	
 	//Map Launch on click
 	$(document).on("click", ".JSwindowPopup", function(){
 		windowPopup($(this));
