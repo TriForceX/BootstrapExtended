@@ -16,6 +16,7 @@ Website base structure with small reusable parts of source code or functions for
 * jQuery UI
 * jQuery Cookie
 * jQuery Browser
+* jQuery Rotate
 * PHP Mailer
 
 # Functions & Code Snippets
