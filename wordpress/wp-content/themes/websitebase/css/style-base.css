@@ -74,6 +74,10 @@ td[align='left']{
 .panel-body p:last-child{
 	margin-bottom:0px;
 }
+.modal-footer,
+.modal-header{
+	border-color: #a0a0a0;
+}
 /*Panel - Modal Paragraph*/
 
 /*Custom Body*/
