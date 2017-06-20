@@ -1,7 +1,7 @@
 <?php
 
 /*
- * Functions PHP
+ * PHP Main Stuff
  * © 2017 TriForce - Matías Silva
  *
  * This file calls the main PHP utilities and sets the main HTML data
@@ -13,8 +13,8 @@
 require('resources/php/main.php');
 
 //Call the main class
-class php extends utilities\php { 
-
+class php extends utilities\php 
+{ 
 	public static function get_html_data($type)
     {
 		switch($type){
@@ -43,7 +43,7 @@ class php extends utilities\php {
 				return 'width=device-width, initial-scale=1, user-scalable=no'; 
 				break;
 			case 'nav-color': 
-				return '#333333'; 
+				return '#f46016'; 
 				break;
 			case 'nav-color-apple': 
 				return 'black'; 
@@ -66,22 +66,113 @@ if(isset($_GET['debug'])){
  * 
  */
 
+
+
+
+
+/*
+ * Wordpress Main Stuff
+ * 
+ * You can add more stuff above such as more functions, 
+ * global variables, wordpress stuff, etc...
+ * 
+ */
+
 //St current page title
-function get_page_title($separator){
+function get_page_title($separator)
+{
     if(is_page()){
-        $result = ' '.$separator.' '.get_the_title(get_page_by_path(get_query_var('pagename')));
+		$text = get_the_title(get_page_by_path(get_query_var('pagename')));
+        $result = ' '.$separator.' '.$text;
     }
     else if(is_single() OR is_archive()){
-        $result = ' '.$separator.' '.get_post_type_object(get_query_var('post_type'))->label;
+		$text = !empty(get_taxonomy_data('name')) ? get_taxonomy_data('name') : get_post_type_object(get_query_var('post_type'))->label;
+        $result = ' '.$separator.' '.$text;
+    }
+	else if(is_tax() OR is_tag() OR is_category()){
+		$text = ''; //WIP
+        $result = ' '/*.$separator.' '.$text*/; //WIP
     }
     else if(is_404()){
-        $result = ' '.$separator.' Error';
+		$text = 'Disabled';
+        $result = ' '.$separator.' '.$text;
+    }
+	else if(is_home()){
+		$result = '';
     }
     else{
         $result = '';
     }
     return $result;
 }
+
+//Hide menu items
+function hide_menu_items() 
+{ 
+	//remove_menu_page( 'edit.php' ); //Posts
+	//remove_menu_page( 'tools.php' ); //Tools
+}
+add_action( 'admin_menu', 'hide_menu_items' ); 
+
+//Custom menu items order
+/*function admin_menu_items_order()
+{
+    global $menu;
+    foreach ( $menu as $key => $value ) {
+        if ( 'upload.php' == $value[2] ) {
+            $oldkey = $key;
+        }
+    }
+    $newkey = 24; // use whatever index gets you the position you want
+    // if this key is in use you will write over a menu item!
+    $menu[$newkey]=$menu[$oldkey];
+    $menu[$oldkey]=array();
+}
+add_action('admin_menu', 'admin_menu_items_order');
+
+//Custom menu items order
+function admin_menu_items_order_2()
+{
+    global $menu;
+    foreach ( $menu as $key => $value ) {
+        if ( 'edit.php?post_type=page' == $value[2] ) {
+            $oldkey = $key;
+        }
+    }
+    $newkey = 23; // use whatever index gets you the position you want
+    // if this key is in use you will write over a menu item!
+    $menu[$newkey]=$menu[$oldkey];
+    $menu[$oldkey]=array();
+}
+add_action('admin_menu', 'admin_menu_items_order_2');*/
+
+//Remove dashboard widgets
+function remove_dashboard_widgets() 
+{
+	remove_action( 'welcome_panel', 'wp_welcome_panel' );
+	remove_meta_box( 'dashboard_right_now', 'dashboard', 'normal' );   // Right Now
+	remove_meta_box( 'dashboard_recent_comments', 'dashboard', 'normal' ); // Recent Comments
+	remove_meta_box( 'dashboard_incoming_links', 'dashboard', 'normal' );  // Incoming Links
+	remove_meta_box( 'dashboard_plugins', 'dashboard', 'normal' );   // Plugins
+	remove_meta_box( 'dashboard_quick_press', 'dashboard', 'side' );  // Quick Press
+	remove_meta_box( 'dashboard_recent_drafts', 'dashboard', 'side' );  // Recent Drafts
+	remove_meta_box( 'dashboard_primary', 'dashboard', 'side' );   // WordPress blog
+	remove_meta_box( 'dashboard_secondary', 'dashboard', 'side' );   // Other WordPress News
+	remove_meta_box( 'dashboard_activity', 'dashboard', 'normal' ); //Activity
+	
+}
+add_action( 'wp_dashboard_setup', 'remove_dashboard_widgets' );
+
+//Remove from adminbar
+function remove_from_adminbar($wp_admin_bar) 
+{
+	$wp_admin_bar->remove_node('wp-logo');
+	$wp_admin_bar->remove_node('new-post');
+	$wp_admin_bar->remove_node('new-page');
+	$wp_admin_bar->remove_node('new-media');
+	$wp_admin_bar->remove_node('archive');
+}
+add_action( 'admin_bar_menu', 'remove_from_adminbar', 999 );
 
 //Custom general fields
 $new_general_setting = new new_general_setting();
@@ -132,3 +223,168 @@ if(isset($_GET['adminbar'])){
 else{
 	show_admin_bar(false);
 }
+
+//Add custom CSS & JS to admin
+function add_custom_admin() 
+{
+	echo '<link href="'.get_bloginfo('template_url').'/css/style-admin.css" rel="stylesheet" />';
+	echo '<script src="'.get_bloginfo('template_url').'/js/app-admin.js"></script>';
+}
+//add_action(array('admin_footer','login_footer','wp_footer'), 'add_custom_admin');
+add_action('admin_footer', 'add_custom_admin');
+add_action('login_footer', 'add_custom_admin');
+add_action('wp_footer', 'add_custom_admin');
+
+//Enable page excerpt
+add_post_type_support('page', 'excerpt');
+
+//Enable post thumbnails
+add_theme_support( 'post-thumbnails' );
+
+//Dont show auto-galleries on content (Easy Gallery plugin)
+remove_filter( 'the_content', 'easy_image_gallery_append_to_content' );
+
+//Show future posts
+function show_future_posts( $data ) 
+{
+    if ( $data['post_status'] == 'future' && 
+		 $data['post_type'] == 'calendarios'
+		 //$data['post_type'] == 'post-type' 
+	   ){
+		
+        $data['post_status'] = 'publish';
+	}
+    return $data;
+}
+add_filter( 'wp_insert_post_data', 'show_future_posts' );
+
+//Get the slug inside post
+function get_the_slug( $id=null )
+{
+  if( empty($id) ):
+    global $post;
+    if( empty($post) )
+      return ''; // No global $post var available.
+    $id = $post->ID;
+  endif;
+
+  $slug = basename( get_permalink($id) );
+  return $slug;
+}
+
+//Get the category inside post
+function get_category_name( $tipo )
+{
+	if($tipo=='category'){
+		return get_the_category()[0]->name;
+	}
+	else{//Custom tax
+		return get_the_terms( get_the_ID(), $tipo )[0]->name;
+	}
+}
+
+//Get the category slug inside post
+function get_category_slug( $tipo )
+{
+	if($tipo=='category'){
+		return get_the_category()[0]->slug;
+	}
+	else{//Custom tax
+		return get_the_terms( get_the_ID(), $tipo )[0]->slug;
+	}
+}
+
+//Get the category name by id
+function get_category_name_by_id( $name, $tipo )
+{
+	$term = get_term_by('slug', $name,  $tipo); 
+    $name = $term->name; 
+    //$id = $term->term_id;
+	return $name;
+}
+
+//Get the id by name
+function get_id_by_name($post_name)
+{
+	global $wpdb;
+	$id = $wpdb->get_var("SELECT ID FROM $wpdb->posts WHERE post_name = '".$post_name."'");
+	return $id;
+}
+
+//Get taxonomy data
+function get_taxonomy_data($type)
+{
+	/*
+	term_id
+	name
+	slug
+	term_group
+	term_taxonomy_id
+	taxonomy
+	description
+	parent
+	count
+	*/
+	$term = get_term_by( 'slug', get_query_var( 'term' ), get_query_var( 'taxonomy' ) );
+	return $term->$type; 
+}
+
+//Image Featured
+function imageFeatured($featuredPost)
+{
+    $src = wp_get_attachment_image_src( get_post_thumbnail_id( $featuredPost ), 'full', false ); //$post->ID
+    //echo $src[0];
+    return $src[0];
+}
+
+//Image Featured
+function imageFeaturedSize($tipo,$featuredPost)
+{
+    $src = wp_get_attachment_image_src( get_post_thumbnail_id( $featuredPost ), 'full', false ); //$post->ID
+    //echo $src[0];
+	if($tipo=="width"){
+		$srcFinal = $src[1];
+	}else{
+		$srcFinal = $src[2];
+	}
+    return $srcFinal;
+}
+
+//Image Featured Data
+function imageFeaturedData($featuredField,$featuredPost)
+{
+    $value = get_post_meta(get_post_thumbnail_id( $featuredPost ), $featuredField, true);
+    return $value;
+}
+
+//for dynamic-featured-image.3.5.2
+function dinamicFeatured($dynamicItem,$dynamicPost)
+{
+	if( class_exists('Dynamic_Featured_Image') ) {
+		 global $dynamic_featured_image;
+		 $featured_images = $dynamic_featured_image->get_featured_images( $dynamicPost );
+		 return $featured_images[$dynamicItem]['full'];//[0]['full']
+		//You can now loop through the image to display them as required
+	 }
+}
+
+//
+function dinamicFeaturedData($dynamicField,$dynamicItem,$dynamicPost)
+{
+	if( class_exists('Dynamic_Featured_Image') ) {
+		 global $dynamic_featured_image;
+		 $featured_images = $dynamic_featured_image->get_featured_images( $dynamicPost );
+		 $dynamicID = $featured_images[$dynamicItem]['attachment_id'];//[0]['full']
+		//You can now loop through the image to display them as required
+		 $value = get_post_meta($dynamicID, $dynamicField, true);
+   		 return $value;
+	 }
+}
+
+/*
+ * Wordpress Aditional Stuff
+ * 
+ * You can add more stuff above such as more functions, 
+ * global variables, wordpress stuff, etc...
+ * 
+ */

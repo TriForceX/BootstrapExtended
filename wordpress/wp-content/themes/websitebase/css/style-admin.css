@@ -1,0 +1,31 @@
+/* ================================================= ADMIN ================================================= */
+
+/*Font size*/
+#adminmenu div.wp-menu-name{
+	font-size:12px;
+}
+#adminmenu .wp-submenu > li > a{
+	font-size:12px;
+}
+#wpadminbar .ab-top-menu > .menupop > .ab-sub-wrapper .ab-item{
+	font-size:12px;
+}
+
+/*Sidebar separator*/
+#adminmenu li.wp-menu-separator{
+	border-top: 2px dashed gray;
+	height: 0px;
+	margin: 10px 0px;
+}
+
+/*Login Logo*/
+.login #login h1 a{
+	background-image: url('icons/login/logo.png');
+    background-position: center center;
+    background-repeat: no-repeat;
+	background-size:contain;
+	width:100%;
+	height: 90px;
+}
+
+/* ================================================= ADMIN ================================================= */

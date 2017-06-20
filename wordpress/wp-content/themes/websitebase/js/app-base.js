@@ -346,7 +346,7 @@ function loadLightGallery(){
 	
 	$(".JSlightGallery").each(function(){ 
 
-		var galSelectorVal = $(this).data("lg-item") === "auto" ? ".JSlightGallerySelector" : $(this).data("lg-item");
+		var galSelectorVal = $(this).data("lg-item") === "auto" ? "a" : $(this).data("lg-item");
 		var galThumbnailVal = $(this).data("lg-thumb");
 		var galDownloadVal = $(this).data("lg-download");
 		var galPrevGalText = "Loading previous page ...";
@@ -429,50 +429,55 @@ function loadLightGallery(){
 }
 
 //ImgLiquid auto-fill background function
-function autoBackground(container){
+function imageFill(container){
 	
 	var bgData = new Array();
-	bgData = $(container).data("auto-bg").split(',');
+	var bgVertical;
+	var bgHorizontal;
+	var bgFill;
+	var bgFillSize;
 	
-	if (bgData[2] === undefined || bgData[2] === null)
+	bgData = $(container).data('img-fill').split(',');
+	
+	//Check vertical align
+	if(bgData[0] === undefined || bgData[0] === null)
 	{
-		bgData[2]="100%";
+		bgData[0] = 'center';
 	}
 	
-	$(container).find("img").each(function(){
+	//Check horizontal align
+	if(bgData[1] === undefined || bgData[1] === null)
+	{
+		bgData[1] = 'center';
+	}
 	
-		$(this).css('width','auto');
-		$(this).css('height','auto');
-		$(this).css('min-width','inherit');
-		$(this).css('min-height','inherit');
-		$(this).addClass('FotosFix');
+	//Check fill
+	if(bgData[2] === undefined || bgData[2] === null)
+	{
+		bgData[2] = 'true';
+	}
 	
+	//Set variables
+	bgVertical = bgData[0];
+	bgHorizontal = bgData[1];
+	bgFill = bgData[2].indexOf('%') >= 0 || bgData[2].indexOf('px') >= 0 ||  bgData[2] === 'contain' ? false : true;
+	bgFillSize = bgData[2].indexOf('%') >= 0 || bgData[2].indexOf('px') >= 0 ? parseInt(bgData[2].replace(/\x25|px/g, '')) : false;
+	
+	//Set changes
+	$(container).imgLiquid({ 
+		fill: bgFill,
+		verticalAlign: bgVertical, 
+		horizontalAlign: bgHorizontal,
 	});
 	
-	$(container).imgLiquid({ verticalAlign: bgData[0], horizontalAlign: bgData[1] });
-	
-	if(bgData[2].substr(bgData[2].length - 1, 1) === '%')
+	//Set alternative fill
+	if(bgFillSize)
 	{
-		var bgSize = parseInt(bgData[2].replace(/\x25/g, '')); //%
-		
-		if(bgSize > 100 || bgSize < 100)
+		if(bgFillSize > 100 || bgFillSize < 100)
 		{
-			$(container).css("background-size",bgSize+"%");
+			$(container).css('background-size',bgData[2]);
 		}
 	}
-	else
-	{
-		if(bgData[2]!=="cover")
-		{
-			$(container).css("background-size",bgData[2]);
-		}
-	}
-	
-	$(container).find(".FotosFixInline").each(function(){ //.find("img").not(":first")
-		
-		$(this).removeClass("FotosFix");
-		$(this).removeAttr("style");
-	});
 }
 
 //Get element height changes
@@ -624,10 +629,10 @@ function videoLaunch(url, share, title){
 	
 	bootbox.alert({
 		title: title,
-        message: content,
-        size: 'large',
+		message: content,
+		size: 'large',
 		backdrop: true
-    }).on("shown.bs.modal", function(){
+	}).on("shown.bs.modal", function(){
 		//Disable button auto-focus
 		$(".modal .modal-footer .btn:focus").blur();
 		//Modify facebook src
@@ -638,25 +643,25 @@ function videoLaunch(url, share, title){
 			$(".JSvideoLaunchIframe iframe").attr("src",videoLaunchIframeSRC+"&width="+videoLaunchIframeSRCwidth+"&height="+videoLaunchIframeSRCheight);
 		}
 	});
-	
+
 	//Tooltip load
 	$('.JSvideoLaunchText').tooltip({
 		title: embedShareText,
 		placement: 'bottom',
 		trigger: 'manual',
 	});
-	
+
 	//Clipboard
 	var clipboard = new Clipboard('.JSvideoLaunchURL');
 
-    clipboard.on('success', function() {
+	clipboard.on('success', function() {
 		$('.JSvideoLaunchText').tooltip('show');
-    });
-	
+	});
+
 	clipboard.on('error', function() {
 		$('.JSvideoLaunchURL').attr('target','blank');
 		$('.JSvideoLaunchURL').attr('href',embedShare);
-    });
+	});
 }
 
 //Capitalize first function
@@ -813,7 +818,7 @@ function windowPopup(element){
 		topPosition = window.screen.height;
 	}
 	else{
-		topPosition = (window.screen.height / 2) - ((getSize[0] / 2) + 50);//Allow for title and status bars.
+		topPosition = (window.screen.height / 2) - ((getSize[1] / 2) + 50);//Allow for title and status bars.
 	}
 	
     //Open the window.
@@ -876,7 +881,7 @@ $(document).ready(function(){
 	loadLightGallery();
 
 	//Check home
-	isHome = $(".isHome").length > 0 ? true : false;
+	isHome = $('.isHome').length > 0 ? true : false;
 
 	//Check mobile
 	isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini|BB10|PlayBook|MeeGo/i.test(navigator.userAgent);
@@ -906,23 +911,18 @@ $(document).ready(function(){
 	console.log(browserTest);*/
 
 	//Tooltip load
-	$("*[data-toggle='tooltip']").tooltip();
+	$('*[data-toggle="tooltip"]').tooltip();
 	
 	//Popover load
-	$("*[data-toggle='popover']").popover();
-
-	//Apply Auto Background
-	$("*[data-auto-bg]").each(function(){
-		autoBackground($(this));
-	});
+	$('*[data-toggle="popover"]').popover();
 	
 	//Touch swipe bootstrap carousel
-	$("*[data-ride='carousel']").swipe({
+	$('*[data-ride="carousel"]').swipe({
 		swipe:function(event, direction, distance, duration, fingerCount, fingerData){
-				if(direction === "right"){
+				if(direction === 'right'){
 					$(this).carousel('prev');  
 				}
-				else if(direction === "left"){
+				else if(direction === 'left'){
 					$(this).carousel('next');  
 				}
 			}
@@ -936,6 +936,11 @@ $(document).ready(function(){
 			info: toBoolean($(this).data('table-info')),
 			ordering: toBoolean($(this).data('table-sort')),
 		});
+	});
+	
+	//Apply Image Fill
+	$('.JSimgFill').each(function(){
+		imageFill($(this));
 	});
 	
 	//Apply Text Cur

@@ -574,6 +574,12 @@ td[align='left']{
 }
 /*JS Rotate*/
 
+/*JS Auto Background*/
+.JSimgFill img{
+	display: none;
+}
+/*JS Auto Background*/
+
 /*JS Text Cut*/
 .JStextCut > div{
 	position: relative;
@@ -867,5 +873,17 @@ input.JSvalidateErrorCheck + label::before {
 	width:100% !important;
 }
 /*Width percentage*/
+
+/*Height percentage*/
+.height-33{
+	height:33.3% !important;
+}
+.height-50{
+	height:50% !important;
+}
+.height-100{
+	height:100% !important;
+}
+/*Height percentage*/
 
 /* ================================================= CUSTOM ================================================= */
