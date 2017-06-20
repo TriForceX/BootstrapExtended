@@ -60,7 +60,10 @@ $jsVariables = array(
 					'@maplaunch-title' => 'Map Select',
 					'@maplaunch-text' => 'Select one of options below',
 					//Check disabled
-					'@disabled-text' => 'This content is disabled or not available.',
+					'@disabled-text' => 'Este contenido esta deshabilitado por el momento.',
+					//Lightgallery
+					'@lgtitle-prev' => 'Loading previous page ...',
+					'@lgtitle-next' => 'Loading next page ...',
 				);
 
 $jsKey = array_keys($jsVariables);

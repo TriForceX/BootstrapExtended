@@ -349,13 +349,13 @@ function loadLightGallery(){
 		var galSelectorVal = $(this).data("lg-item") === "auto" ? "a" : $(this).data("lg-item");
 		var galThumbnailVal = $(this).data("lg-thumb");
 		var galDownloadVal = $(this).data("lg-download");
-		var galPrevGalText = "Loading previous page ...";
-		var galNextGalText = "Loading next page ...";
+		var galPrevGalText = "@lgtitle-prev";
+		var galNextGalText = "@lgtitle-next";
 		var galLoadThumb = mainUrl+"/resources/lightgallery/img/lg-loading-icon.gif";
 		var galPrevThumb = mainUrl+"/resources/lightgallery/img/lg-loading-prev.png";
 		var galNextThumb = mainUrl+"/resources/lightgallery/img/lg-loading-next.png";
 		
-		if(toBoolean($(this).data("lg-title")) === false){
+		if(String($(this).data("lg-title")) != "false"){
 			$(this).find(galSelectorVal).not(".lg-thumb-prev, .lg-thumb-next").attr("title", $(this).data("lg-title"));
 		}
 		
@@ -367,12 +367,6 @@ function loadLightGallery(){
 			$(".JSlightGallery.JSlightGalleryMode").prepend("<div class='lg-thumb-prev' href='"+galLoadThumb+"' title='"+galPrevGalText+"'><img src='"+galPrevThumb+"'></div>");
 			$(".JSlightGallery.JSlightGalleryMode").append("<div class='lg-thumb-next' href='"+galLoadThumb+"' title='"+galNextGalText+"'><img src='"+galNextThumb+"'></div>");
 		}
-		
-		$(".JSlightGallery").find("img").each(function(){
-			if($(this).parent().is("a") && !($(this).parent().hasAttr("target")) ){
-				$(this).parent().addClass("JSlightGallerySelector");
-			}
-		});
 		
 		$(this).lightGallery({
 			selector: galSelectorVal+", .lg-thumb-prev, .lg-thumb-next", 
