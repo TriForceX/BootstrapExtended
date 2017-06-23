@@ -29,7 +29,7 @@
 <!-- Bootstrap 3 Data Tables -->
 <script src="<?php echo get_bloginfo('template_url'); ?>/resources/datatables/js/jquery.dataTables.min.js"></script>
 <!-- imgLiquid Fix -->
-<script src="<?php echo get_bloginfo('template_url'); ?>/resources/imgliquid/js/imgLiquid-min.js"></script>
+<script src="<?php echo get_bloginfo('template_url'); ?>/resources/imgliquid/js/imgliquid.min.js"></script>
 <!-- LightGallery Lightbox -->
 <script src="<?php echo get_bloginfo('template_url'); ?>/resources/lightgallery/js/lightgallery.js"></script>
 <script src="<?php echo get_bloginfo('template_url'); ?>/resources/lightgallery/js/lg-fullscreen.js"></script>
