@@ -28,4 +28,57 @@
 	height: 90px;
 }
 
+/*Attachment Fields*/
+@media (min-width: 992px) { 
+	.attachment-details .setting .value, 
+	.attachment-details .setting input[type="tel"], 
+	.attachment-details .setting input[type="text"], 
+	.attachment-details .setting input[type="password"], 
+	.attachment-details .setting input[type="number"], 
+	.attachment-details .setting input[type="search"], 
+	.attachment-details .setting input[type="email"], 
+	.attachment-details .setting input[type="url"], 
+	.attachment-details .setting textarea, 
+	.media-sidebar .setting .value, 
+	.media-sidebar .setting input[type="tel"], 
+	.media-sidebar .setting input[type="text"], 
+	.media-sidebar .setting input[type="password"], 
+	.media-sidebar .setting input[type="number"], 
+	.media-sidebar .setting input[type="search"], 
+	.media-sidebar .setting input[type="email"], 
+	.media-sidebar .setting input[type="url"], 
+	.media-sidebar .setting textarea {
+		width:62%;
+	}
+	.compat-item .field{
+		width:62%;
+	}
+}
+@media (max-width: 992px) { 
+	.compat-item .field{
+		width:99%;
+	}
+}
+.attachment-details .setting span, 
+.compat-item label span, 
+.media-sidebar .setting span{
+	display: inline-block;
+    float: none;
+    line-height: 12px;
+    padding-top: 4px;
+}
+.media-modal label br.clear, 
+.media-modal legend br.clear{
+    display:none;
+}
+.media-types-required-info{
+    display:none;
+}
+
 /* ================================================= ADMIN ================================================= */
+
+/* ================================================= WORDPRESS PLUGINS ================================================= */
+.gallery_images .details.attachment{
+	width: auto;
+}
+/* ================================================= WORDPRESS PLUGINS ================================================= */
