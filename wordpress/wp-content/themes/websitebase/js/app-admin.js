@@ -13,6 +13,9 @@ jQuery(document).ready(function(){
 	//Replace admin bar buttons
 	jQuery("#wp-admin-bar-view-site").find("a").attr("target","_blank");
 	
+	//Remove Easy Gallery Plugin Select
+	jQuery(".form-table td select[name='easy-image-gallery[lightbox]']").parent().parent().addClass("hidden");
+	
 /* ================================================= DOCUMENT READY ================================================= */
 
 });

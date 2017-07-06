@@ -13,6 +13,7 @@ Website base structure with small reusable parts of source code or functions for
 * Touch Swipe
 * Clipboard JS
 * Hover CSS
+* Masonry JS
 * jQuery UI
 * jQuery Cookie
 * jQuery Browser
@@ -40,6 +41,8 @@ Website base structure with small reusable parts of source code or functions for
 	* Get main url, protocol, https, current page, and more...
 	* Convert string to UTF-8
 	* Custom show date format
+	* Get YouTube, Vimeo and Facebook ID from URL (to embed code)
+	* Custom Paginator
 * Features in JS:
 	* Check attr function
 	* Check outer width & height with padding/margin
@@ -54,7 +57,7 @@ Website base structure with small reusable parts of source code or functions for
 	* Text cut function
 	* Text auto size function
 	* Show alert modal box using BootBox plugin
-	* Video launch modal box function for youtube, vimeo and facebook
+	* Video launch modal box function for YouTube, Vimeo and Facebook
 	* Capitalize first function
 	* Convert to slug function
 	* Auto scroll function
@@ -81,6 +84,9 @@ Website base structure with small reusable parts of source code or functions for
 	* Cron enable/disable
 	* Added custom general options fields
 	* Admin bar enable/disable
+	* Base Admin Panel CSS & JS injection
+	* Pre-Configured useful plugins
+	* A bunch of Wordpress functions and snippets
 
 # Recommended Tools for editing
 * Adobe Dreamweaver

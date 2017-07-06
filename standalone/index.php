@@ -34,6 +34,7 @@
 						<li><a href="http://labs.rampinteractive.co.uk/touchSwipe/demos/" target="_blank">Touch Swipe</a></li>
 						<li><a href="https://clipboardjs.com/" target="_blank">Clipboard JS</a></li>
                         <li><a href="http://ianlunn.github.io/Hover/" target="_blank">Hover CSS</a></li>
+                        <li><a href="https://masonry.desandro.com/" target="_blank">Masonry JS</a></li>
 						<li><a href="https://jqueryui.com/" target="_blank">jQuery UI</a></li>
 						<li><a href="https://github.com/js-cookie/js-cookie" target="_blank">jQuery Cookie</a></li>
 						<li><a href="https://github.com/pupunzi/jquery.mb.browser" target="_blank">jQuery Browser</a></li>
@@ -147,7 +148,7 @@
 		<div class="page-header">
 			<h1>Footer <span class="label label-primary">Template</span></h1>
 		</div>
-		<p>The main footer structure contains the access to <code>JS</code> files (and the base one) and <code>HTML</code> footer containers.</p>
+	<p>The main footer structure contains the access to <code>JS</code> files (and the base one) and <code>HTML</code> footer containers. If you want use another language for JS messages, just add <code>?lang=Number</code> after <b>app.php</b> <i>(For example: app.php?lang=1)</i>. For more info read the file <b>app.php</b></p>
 		
 		<figure class="highlight">
 			<pre><code class="language-html" data-lang="html">...<br>&lt;!-- Main JS File --&gt;
@@ -232,13 +233,13 @@
 		  ...
 		);<br>...<br>$cssVariables = array(
 			//Screen
-			'@screen-small-phone' => '320px', 
-			'@screen-medium-phone' => '360px',
-			'@screen-phone' => '480px',
-			'@screen-tablet' => '768px',
-			'@screen-desktop' => '992px',  
-			'@screen-widescreen' => '1200px', 
-			'@screen-full-hd' => '1920px', 
+			'@screen-small-phone' 	=> '320px', 
+			'@screen-medium-phone' 	=> '360px',
+			'@screen-phone' 		=> '480px',
+			'@screen-tablet' 	=> '768px',
+			'@screen-desktop' 	=> '992px',  
+			'@screen-widescreen' 	=> '1200px', 
+			'@screen-full-hd' 	=> '1920px', 
 			//Colors
 			'@color-custom' => '#ffffff',
 			...
@@ -296,13 +297,13 @@
 		  ...
 		);<br>...<br>$jsVariables = array(
 			//Screen
-			'@screen-small-phone' => '320', 
-			'@screen-medium-phone' => '360',
-			'@screen-phone' => '480',
-			'@screen-tablet' => '768',
-			'@screen-desktop' => '992',  
-			'@screen-widescreen' => '1200', 
-			'@screen-full-hd' => '1920', 
+			'@screen-small-phone' 	=> '320', 
+			'@screen-medium-phone' 	=> '360',
+			'@screen-phone' 		=> '480',
+			'@screen-tablet' 	=> '768',
+			'@screen-desktop' 	=> '992',  
+			'@screen-widescreen' 	=> '1200', 
+			'@screen-full-hd' 	=> '1920', 
 			//Global
 			'@global-url' => $jsUrl,
 			...
@@ -399,7 +400,7 @@
 		</figure>
 		
 		<h3>Gallery Mode</h3>
-		<p>This mode allows to improve the way to show paged galleries executing custom functions when you get the <code>first</code> or <code>last</code> page</p>
+		<p>This mode allows to improve the way to show paged galleries executing custom functions when you get the <code>first</code> or <code>last</code> page.<br><i>Note: You need to add the class <code>lg-gallery-paginator</code> to the paginator to get the <b>prev></b> and <b>next</b> control working</i></p>
 
 		<div class="bs-example">
 
@@ -451,7 +452,7 @@
 			</div>
 
 			<nav aria-label="Page navigation">
-				<ul class="pagination no-margin">
+				<ul class="pagination no-margin lg-gallery-paginator">
 					<li>
 						<a href="?page=1" aria-label="Previous" class="lg-prev">
 							<span aria-hidden="true">&laquo;</span>
@@ -996,20 +997,38 @@
 		<figure class="highlight">
 			<pre><code class="language-html" data-lang="html">&lt;a onclick="showAlert('Small Size Box','This is a text shown in a modal box','small')">Click Here&lt;/a&gt;<br>&lt;a onclick="showAlert('Medium Size Box','This is a text shown in a modal box')">Click Here&lt;/a&gt;<br>&lt;a onclick="showAlert('Large Size Box','This is a text shown in a modal box','large')">Click Here&lt;/a&gt;</code></pre>
 		</figure>
+		
+		<!-- Show alert example -->
+		<div class="page-header">
+			<h1>Show Content BootBox <span class="label label-danger">Plugin</span></h1>
+		</div>
+		<p>Launch a custom modal box using BootBox Features, the function shows the content from an element, the structure is <code>showContent(title, element, size)</code> you can alternatively set a size</p>
+
+		<div class="bs-example">
+			<button type="button" class="btn btn-primary" onclick="showContent('Small Size Box','.showContentExample','small')">Show Content Small Size</button>
+			<button type="button" class="btn btn-primary" onclick="showContent('Medium Size Box','.showContentExample')">Show Content Medium Size (By default)</button>
+			<button type="button" class="btn btn-primary" onclick="showContent('Large Size Box','.showContentExample','large')">Show Content Large Size</button>
+			<div class="showContentExample hidden">
+				Hello <b>World!</b><br><i><u>This is my message in HTML</u> from a hidden element...</i>
+			</div>
+		</div>
+		<figure class="highlight">
+			<pre><code class="language-html" data-lang="html">&lt;a onclick="showContent('Small Size Box','.showContentExample','small')">Click Here&lt;/a&gt;<br>&lt;a onclick="showContent('Medium Size Box','.showContentExample')">Click Here&lt;/a&gt;<br>&lt;a onclick="showContent('Large Size Box','.showContentExample','large')">Click Here&lt;/a&gt;</code></pre>
+		</figure>
 
 		<!-- Video launch example -->
 		<div class="page-header">
 			<h1>Video Launch <span class="label label-danger">Custom</span></h1>
 		</div>
-		<p>Launch a modal box with a basic video player, the function structure is <code>videoLaunch(url, share, title)</code></p>
+		<p>Launch a modal box with a basic video player, the function structure is <code>videoLaunch(url, share, title, autoplay)</code></p>
 
 		<div class="bs-example">
-			<button type="button" class="btn btn-primary" onclick="videoLaunch('https://www.youtube.com/watch?v=ae6aeo9-Kn8', true, 'My YouTube Video')">YouTube Video</button>
-			<button type="button" class="btn btn-primary" onclick="videoLaunch('https://vimeo.com/214352663', false, 'My Vimeo Video')">Vimeo Video (No share URL)</button>
-			<button type="button" class="btn btn-primary" onclick="videoLaunch('https://www.facebook.com/1399203336817784/videos/1470830192988431',true, 'My Facebook Video')">Facebook Video</button>
+			<button type="button" class="btn btn-primary" onclick="videoLaunch('https://www.youtube.com/watch?v=ae6aeo9-Kn8', true, 'My YouTube Video', true)">YouTube Video</button>
+			<button type="button" class="btn btn-primary" onclick="videoLaunch('https://vimeo.com/214352663', false, 'My Vimeo Video', false)">Vimeo Video (No share URL + No AutoPlay)</button>
+			<button type="button" class="btn btn-primary" onclick="videoLaunch('https://www.facebook.com/1399203336817784/videos/1470830192988431',true, 'My Facebook Video',false)">Facebook Video (No AutoPlay)</button>
 		</div>
 		<figure class="highlight">
-			<pre><code class="language-html" data-lang="html">&lt;a onclick="videoLaunch('https://www.youtube.com/watch?v=ae6aeo9-Kn8', true, 'My YouTube Video')">Click Here&lt;/a&gt;<br>&lt;a onclick="videoLaunch('https://vimeo.com/214352663', false, 'My Vimeo Video')">Click Here&lt;/a&gt;<br>&lt;a onclick="videoLaunch('https://www.facebook.com/1399203336817784/videos/1470830192988431',true, 'My Facebook Video')">Click Here&lt;/a&gt;</code></pre>
+			<pre><code class="language-html" data-lang="html">&lt;a onclick="videoLaunch('https://www.youtube.com/watch?v=ae6aeo9-Kn8', true, 'My YouTube Video', true)">Click Here&lt;/a&gt;<br>&lt;a onclick="videoLaunch('https://vimeo.com/214352663', false, 'My Vimeo Video', false)">Click Here&lt;/a&gt;<br>&lt;a onclick="videoLaunch('https://www.facebook.com/1399203336817784/videos/1470830192988431',true, 'My Facebook Video', false)">Click Here&lt;/a&gt;</code></pre>
 		</figure>
 
 		<!-- Window popup example -->
@@ -1077,6 +1096,10 @@
 				<div class="form-group">
 					<label for="example-input-age">Age</label>
 					<input type="number" step="any" class="form-control" id="example-input-age" placeholder="Type your Age">
+				</div>
+				<div class="form-group">
+					<label for="example-input-custom">Custom Input</label>
+					<input type="text" class="form-control" id="example-input-custom" placeholder="Type the word 'Custom'">
 				</div>
 				<div class="form-group">
 					<label for="example-input-email">E-Mail address</label>
@@ -1185,6 +1208,7 @@
 			<pre><code class="language-html" data-lang="html">$(".JSformExample").validateForm({
 	noValidate: "#example-input-lastname",
 	hasConfirm: true,
+	customValidate: null,
 });</code></pre>
 		</figure>
 		
@@ -1208,18 +1232,23 @@
 					</td>
 				</tr>
 				<tr>
-					<td>data-map-coords</td>
-					<td>Desired address coords <code>latitude</code>, <code>longitude</code>, <code>zoom</code>
+					<td>data-map-coords-1</td>
+					<td>Desired address coords from <b>Google Maps</b> <code>latitude</code>, <code>longitude</code>, <code>zoom</code>
+					</td>
+				</tr>
+				<tr>
+					<td>data-map-coords-2</td>
+					<td>Desired address coords from <b>Waze</b> <code>latitude</code>, <code>longitude</code>, <code>zoom</code>
 					</td>
 				</tr>
 			</tbody>
 		</table>
 
 		<div class="bs-example">
-			<button type="button" class="btn btn-primary JSmapLaunch" data-map-address="Renato Sánchez 4265, Las Condes, Santiago, Chile" data-map-coords="-33.4176466,-70.585256,17">Show Map Launch</button>
+			<button type="button" class="btn btn-primary JSmapLaunch" data-map-address="Renato Sánchez 4265, Las Condes, Santiago, Chile" data-map-coords-1="-33.4176466,-70.585256,17" data-map-coords-2="-33.41748,-70.58519,17">Show Map Launch</button>
 		</div>
 		<figure class="highlight">
-			<pre><code class="language-html" data-lang="html">&lt;button type="button" class="btn btn-primary JSmapLaunch" data-map-address="Renato Sánchez 4265, Las Condes, Santiago, Chile" data-map-coords="-33.4176466,-70.585256,17"&gt;Show Map Launch&lt;/button&gt;</code></pre>
+			<pre><code class="language-html" data-lang="html">&lt;button type="button" class="btn btn-primary JSmapLaunch" data-map-address="Renato Sánchez 4265, Las Condes, Santiago, Chile" data-map-coords-1="-33.4176466,-70.585256,17" data-map-coords-2="-33.41748,-70.58519,17"&gt;Show Map Launch&lt;/button&gt;</code></pre>
 		</figure>
 
 		<!-- ******** BOOTSTRAP THEME EXAMPLES ******** -->

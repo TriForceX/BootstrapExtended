@@ -41,6 +41,8 @@
 <script src="<?php echo get_bloginfo('template_url'); ?>/resources/lightgallery/js/lg-pager.js"></script>
 <!-- Clipboard JS -->
 <script src="<?php echo get_bloginfo('template_url'); ?>/resources/clipboard/js/clipboard.min.js"></script>
+<!-- Masonry -->
+<script src="<?php echo get_bloginfo('template_url'); ?>/resources/masonry/js/masonry.min.js"></script>
 <!-- Main JS File -->
 <script src="<?php echo get_bloginfo('template_url'); ?>/js/app.php"></script>
 

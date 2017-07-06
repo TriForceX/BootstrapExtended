@@ -1,0 +1,86 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Easy Image Gallery\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/easy-image-"
+"gallery\n"
+"POT-Creation-Date: 2015-10-07 08:50+0200\n"
+"PO-Revision-Date: 2015-10-07 08:51+0200\n"
+"Last-Translator: fxbenard | FxB <fx@fxbenard.com>\n"
+"Language-Team: FX Bénard <fx@fxbenard.com>\n"
+"Language: fr_FR\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.8.5\n"
+"X-Poedit-KeywordsList: __;_e\n"
+"X-Poedit-Basepath: .\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-SearchPath-0: ..\n"
+
+#. Plugin Name of the plugin/theme
+#: includes/admin-page.php:11
+msgid "Easy Image Gallery"
+msgstr "Easy Image Gallery"
+
+#: includes/admin-page.php:12
+msgid "Lightbox"
+msgstr "Lightbox"
+
+#: includes/admin-page.php:13
+msgid "Post Types"
+msgstr "Types de contenu"
+
+#: includes/admin-page.php:113
+msgid "Settings"
+msgstr "Réglages"
+
+#: includes/metabox.php:19
+msgid "Image Gallery"
+msgstr "Galerie d'image"
+
+#: includes/metabox.php:48 includes/metabox.php:136
+msgid "Remove image"
+msgstr "Supprimer l&rsquo;image"
+
+#: includes/metabox.php:62
+msgid "Add gallery images"
+msgstr "Ajouter une galerie d'images"
+
+#: includes/metabox.php:77
+msgid "Link images to larger sizes"
+msgstr "Lier les images aux plus grandes dimensions"
+
+#: includes/metabox.php:111
+msgid "Add Images to Gallery"
+msgstr "Ajouter des images à la galerie"
+
+#: includes/metabox.php:113
+msgid "Add to gallery"
+msgstr "Ajouter à la galerie"
+
+#: includes/template-functions.php:65
+msgid "fancyBox"
+msgstr "fancyBox"
+
+#: includes/template-functions.php:66
+msgid "prettyPhoto"
+msgstr "prettyPhoto"
+
+#. Plugin URI of the plugin/theme
+msgid "http://devrix.com/"
+msgstr "http://devrix.com/"
+
+#. Description of the plugin/theme
+msgid "An easy to use image gallery with drag & drop re-ordering"
+msgstr ""
+"Une galerie d'image facile à utiliser avec une réorganisation par glisser/"
+"déposer"
+
+#. Author of the plugin/theme
+msgid "DevriX"
+msgstr "DevriX"
+
+#. Author URI of the plugin/theme
+msgid "http://devrix.com/"
+msgstr "http://devrix.com/"

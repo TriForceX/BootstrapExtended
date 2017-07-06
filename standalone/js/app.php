@@ -14,6 +14,7 @@ echo '/*
 
 require_once('../resources/php/minifier/minifier.php');
 
+$jsLang = isset($_GET['lang']) ? $_GET['lang'] : 0; //0 = English, 1 = Spanish
 $jsUrl = minifyGetURL('js');
 $jsFiles = array(
 			  $jsUrl.'/js/app-base.js',
@@ -30,40 +31,40 @@ foreach($jsFiles as $jsFile){
 
 $jsVariables = array(
 					//Screen
-					'@screen-small-phone' => '320', 
-					'@screen-medium-phone' => '360',
-					'@screen-phone' => '480',
-					'@screen-tablet' => '768',
-					'@screen-desktop' => '992',  
-					'@screen-widescreen' => '1200', 
-					'@screen-full-hd' => '1920', 
+					'@screen-small-phone' 	=> '320', 
+					'@screen-medium-phone' 	=> '360',
+					'@screen-phone' 		=> '480',
+					'@screen-tablet' 		=> '768',
+					'@screen-desktop' 		=> '992',  
+					'@screen-widescreen' 	=> '1200', 
+					'@screen-full-hd' 		=> '1920', 
 					//Global
 					'@global-url' => $jsUrl,
 					//Validation
-					'@validate-title' => 'Form Alert', 
-					'@validate-normal' => 'Please fill the fields.', 
-					'@validate-number' => 'Please type a valid number.', 
-					'@validate-tel' => 'Please type a phone number.', 
-					'@validate-pass' => 'Please fill your password.', 
-					'@validate-email' => 'Please type a correct E-Mail.',
-					'@validate-search' => 'Please fill the search field.', 
-					'@validate-checkbox' => 'Please check an option.',
-					'@validate-radio' => 'Please check one of the options.',
-					'@validate-textarea' => 'Please write a message.',
-					'@validate-select' => 'Please select an option.',
-					'@validate-confirm-title' => 'Form Confirm', 
-					'@validate-confirm-text' => 'Are you sure you want to send the previous info?', 
+					'@validate-title' 			=> array('Form Alert', 'Alerta Formulario')[$jsLang], 
+					'@validate-normal' 			=> array('Please fill the fields.', 'Por favor complete los campos.')[$jsLang], 
+					'@validate-number'	 		=> array('Please type a valid number.', 'Por favor escriba un número válido.')[$jsLang], 
+					'@validate-tel' 			=> array('Please type a phone number.', 'Por favor escriba un teléfono válido.')[$jsLang], 
+					'@validate-pass' 			=> array('Please fill your password.', 'Por favor complete su clave.')[$jsLang], 
+					'@validate-email' 			=> array('Please type a correct E-Mail.', 'Por favor escriba un E-Mail válido.')[$jsLang],
+					'@validate-search' 			=> array('Please fill the search field.', 'Por favor complete el campo de busqueda.')[$jsLang], 
+					'@validate-checkbox' 		=> array('Please check an option.', 'Por favor elija una(s) opción(es).')[$jsLang],
+					'@validate-radio' 			=> array('Please check one of the options.')[$jsLang],
+					'@validate-textarea' 		=> array('Please write a message.', 'Por favor escriba un mensaje.')[$jsLang],
+					'@validate-select' 			=> array('Please select an option.' ,'Por favor seleccione una opción.')[$jsLang],
+					'@validate-confirm-title' 	=> array('Form Confirm')[$jsLang], 
+					'@validate-confirm-text' 	=> array('Are you sure you want to send the previous info?', '¿Estas seguro de que deseas enviar el formulario?')[$jsLang], 
 					//Video launch
-					'@videolaunch-title' => 'Share Link', 
-					'@videolaunch-text' => 'The share link has been copied!',
+					'@videolaunch-title' 		=> array('Share Link', 'Compartir Enlace')[$jsLang], 
+					'@videolaunch-text' 		=> array('The share link has been copied!', '¡El enlace ha sido copiado!')[$jsLang],
 					//Map launch
-					'@maplaunch-title' => 'Map Select',
-					'@maplaunch-text' => 'Select one of options below',
+					'@maplaunch-title' 			=> array('Map Select', 'Mapa Dirección')[$jsLang],
+					'@maplaunch-text' 			=> array('Select one of options below', 'Seleccione una de las opciones')[$jsLang],
 					//Check disabled
-					'@disabled-text' => 'Este contenido esta deshabilitado por el momento.',
+					'@disabled-text' 			=> array('Este contenido esta deshabilitado por el momento.', 'Este contenido esta deshabilitado por el momento.')[$jsLang],
 					//Lightgallery
-					'@lgtitle-prev' => 'Loading previous page ...',
-					'@lgtitle-next' => 'Loading next page ...',
+					'@lgtitle-prev' 			=> array('Loading previous page ...', 'Cargando página anterior ...')[$jsLang],
+					'@lgtitle-next' 			=> array('Loading next page ...', 'Cargando siguiente página ...')[$jsLang],
 				);
 
 $jsKey = array_keys($jsVariables);

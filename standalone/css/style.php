@@ -30,13 +30,13 @@ foreach($cssFiles as $cssFile){
 
 $cssVariables = array(
 					//Screen
-					'@screen-small-phone' => '320px', 
-					'@screen-medium-phone' => '360px',
-					'@screen-phone' => '480px',
-					'@screen-tablet' => '768px',
-					'@screen-desktop' => '992px',  
-					'@screen-widescreen' => '1200px', 
-					'@screen-full-hd' => '1920px', 
+					'@screen-small-phone' 	=> '320px', 
+					'@screen-medium-phone' 	=> '360px',
+					'@screen-phone' 		=> '480px',
+					'@screen-tablet' 		=> '768px',
+					'@screen-desktop' 		=> '992px',  
+					'@screen-widescreen' 	=> '1200px', 
+					'@screen-full-hd' 		=> '1920px', 
 					//Colors
 					'@color-custom' => '#ffffff',
 				);

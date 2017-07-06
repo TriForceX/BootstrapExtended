@@ -1,0 +1,56 @@
+#the-list.ui-sortable tr {-webkit-transition: all 0s;-moz-transition: all 0s;-ms-transition: all 0s;-o-transition: all 0s;transition: all 0s;}
+.wp-list-table th#a_order_drag {width: 1.3em;}
+td.column-a_order_drag .dashicons-sort {
+    cursor: move;
+}
+
+div#so_notice {
+    display: block;
+    font: 400 13px/32px "Open Sans",sans-serif;
+
+    text-decoration: none;
+    z-index: 900;
+
+    -webkit-box-shadow: 0 1px 1px -1px rgba(0,0,0,.1);
+    box-shadow: 0 1px 1px -1px rgba(0,0,0,.1);
+
+    position: fixed;
+    top: 32px;
+
+    color: #fff;
+    background: #363b3f;
+    margin-left: 40%;
+
+    -webkit-border-bottom-right-radius: 2px;
+    -webkit-border-bottom-left-radius: 2px;
+    -moz-border-radius-bottomright: 2px;
+    -moz-border-radius-bottomleft: 2px;
+    border-bottom-right-radius: 2px;
+    border-bottom-left-radius: 2px;
+
+
+    font: 400 13px/32px "Open Sans",sans-serif;
+}
+div#so_notice p {
+    margin: 0;
+    padding: 3px 20px;
+    line-height: 22px;
+}
+
+.a_order_drag_helper {
+    border: 1px solid #e1e1e1;
+    background: #f9f9f9 !important;
+    -webkit-box-shadow: 0 0px 5px rgba(0,0,0,.2);
+    box-shadow: 0 0px 5px rgba(0,0,0,.2);
+}
+tr.a_order_drag_placeholder {
+
+    background-attachment:fixed;
+
+    background: #eaeaea;
+    background: -moz-linear-gradient(top, #eaeaea 0%, #ffffff 10%, #f6f6f6 90%, #eaeaea 100%);
+    background: -webkit-linear-gradient(top, #eaeaea 0%,#ffffff 10%,#f6f6f6 90%,#eaeaea 100%);
+    background: linear-gradient(to bottom, #eaeaea 0%,#ffffff 10%,#f6f6f6 90%,#eaeaea 100%);
+
+
+}

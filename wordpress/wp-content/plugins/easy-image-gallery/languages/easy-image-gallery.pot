@@ -1,0 +1,86 @@
+#, fuzzy
+msgid ""
+msgstr ""
+"Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
+"Project-Id-Version: Easy Image Gallery\n"
+"POT-Creation-Date: 2015-10-07 08:49+0200\n"
+"PO-Revision-Date: 2015-10-07 08:49+0200\n"
+"Last-Translator: fxbenard | FxB <fx@fxbenard.com>\n"
+"Language-Team: fxbenard | FxB <fx@fxbenard.com>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.8.5\n"
+"X-Poedit-Basepath: ..\n"
+"X-Poedit-WPHeader: easy-image-gallery.php\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-KeywordsList: __;_e;_n:1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;esc_attr__;"
+"esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c;_n_noop:1,2;"
+"_nx_noop:3c,1,2;__ngettext_noop:1,2\n"
+"X-Poedit-SearchPath-0: .\n"
+"X-Poedit-SearchPathExcluded-0: *.js\n"
+
+#. Plugin Name of the plugin/theme
+#: includes/admin-page.php:11
+msgid "Easy Image Gallery"
+msgstr ""
+
+#: includes/admin-page.php:12
+msgid "Lightbox"
+msgstr ""
+
+#: includes/admin-page.php:13
+msgid "Post Types"
+msgstr ""
+
+#: includes/admin-page.php:113
+msgid "Settings"
+msgstr ""
+
+#: includes/metabox.php:19
+msgid "Image Gallery"
+msgstr ""
+
+#: includes/metabox.php:48 includes/metabox.php:136
+msgid "Remove image"
+msgstr ""
+
+#: includes/metabox.php:62
+msgid "Add gallery images"
+msgstr ""
+
+#: includes/metabox.php:77
+msgid "Link images to larger sizes"
+msgstr ""
+
+#: includes/metabox.php:111
+msgid "Add Images to Gallery"
+msgstr ""
+
+#: includes/metabox.php:113
+msgid "Add to gallery"
+msgstr ""
+
+#: includes/template-functions.php:65
+msgid "fancyBox"
+msgstr ""
+
+#: includes/template-functions.php:66
+msgid "prettyPhoto"
+msgstr ""
+
+#. Plugin URI of the plugin/theme
+msgid "http://devrix.com/"
+msgstr ""
+
+#. Description of the plugin/theme
+msgid "An easy to use image gallery with drag & drop re-ordering"
+msgstr ""
+
+#. Author of the plugin/theme
+msgid "DevriX"
+msgstr ""
+
+#. Author URI of the plugin/theme
+msgid "http://devrix.com/"
+msgstr ""
