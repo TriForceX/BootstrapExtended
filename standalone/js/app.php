@@ -29,9 +29,6 @@ foreach($jsFiles as $jsFile){
 	$jsBuffer .= file_get_contents($jsFile);
 }
 
-$jsLanguage = array(
-				);
-
 $jsVariables = array(
 					//Screen
 					'@screen-small-phone' 	=> '320', 
