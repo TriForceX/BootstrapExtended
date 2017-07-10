@@ -240,8 +240,6 @@
 			'@screen-desktop' 	=> '992px',  
 			'@screen-widescreen' 	=> '1200px', 
 			'@screen-full-hd' 	=> '1920px', 
-			//Colors
-			'@color-custom' => '#ffffff',
 			...
 		);</code></pre>
 		</figure>
@@ -252,7 +250,7 @@
 				<h3 class="panel-title">Note for included CSS files</h3>
 			</div>
 			<div class="panel-body">
-				The file <code>style-examples.css</code> is only for test purposes in this page, don't add this file to your website. Is not recomemded to modify the <code>style-base.css</code> because contains the main functions inside.
+				The file <code>style-examples.css</code> is only for test purposes in this page, don't add this file to your website. Is not recomemded to modify the <code>style-base.css</code> because contains the main functions inside. <b>If you want add extra variables to replace, just add it in</b> <code>style-extras.php</code>
 			</div>
 		</div>
 		</p>
@@ -316,7 +314,7 @@
 				<h3 class="panel-title">Note for included JS files</h3>
 			</div>
 			<div class="panel-body">
-				The file <code>app-ready.js</code>, <code>app-load.js</code> and <code>app-responsive.js</code> contains some code pieces for test/examples purposes you can delete with no problems. Is not recomemded to modify the <code>app-base.js</code> because contains the main functions inside.
+				The file <code>app-ready.js</code>, <code>app-load.js</code> and <code>app-responsive.js</code> contains some code pieces for test/examples purposes you can delete with no problems. Is not recomemded to modify the <code>app-base.js</code> because contains the main functions inside. <b>If you want add extra variables to replace, just add it in</b> <code>app-extras.php</code>
 			</div>
 		</div>
 		</p>

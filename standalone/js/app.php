@@ -16,18 +16,15 @@ require_once('../resources/php/minifier/minifier.php');
 
 $jsLang = isset($_GET['lang']) ? $_GET['lang'] : 0; //0 = English, 1 = Spanish
 $jsUrl = minifyGetURL('js');
+$jsMinify = true;
+$jsBuffer = '';
+
 $jsFiles = array(
 			  $jsUrl.'/js/app-base.js',
 			  $jsUrl.'/js/app-ready.js',
 			  $jsUrl.'/js/app-load.js',
 			  $jsUrl.'/js/app-responsive.js',
 			);
-$jsBuffer = '';
-$jsMinify = true;
-
-foreach($jsFiles as $jsFile){
-	$jsBuffer .= file_get_contents($jsFile);
-}
 
 $jsVariables = array(
 					//Screen
@@ -66,6 +63,15 @@ $jsVariables = array(
 					'@lgtitle-prev' 			=> $jsLang == 1 ? 'Cargando página anterior ...' : 'Loading previous page ...',
 					'@lgtitle-next' 			=> $jsLang == 1 ? 'Cargando siguiente página ...' : 'Loading next page ...',
 				);
+
+include('app-extras.php');
+
+$jsFiles = array_merge($jsFiles, $jsFilesExtras);
+$jsVariables = array_merge($jsVariables, $jsVariablesExtras);
+
+foreach($jsFiles as $jsFile){
+	$jsBuffer .= file_get_contents($jsFile);
+}
 
 $jsKey = array_keys($jsVariables);
 $jsBuffer = str_replace($jsKey, $jsVariables, $jsBuffer);

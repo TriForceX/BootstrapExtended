@@ -15,18 +15,14 @@ echo '/*
 require_once('../resources/php/minifier/minifier.php');
 
 $cssUrl = minifyGetURL('css');
+$cssMinify = true;
+$cssBuffer = '';
+
 $cssFiles = array(
 			  $cssUrl.'/css/style-base.css',
 			  $cssUrl.'/css/style-fonts.css',
 			  $cssUrl.'/css/style-theme.css',
-			  $cssUrl.'/css/style-example.css',
 			);
-$cssBuffer = '';
-$cssMinify = true;
-
-foreach($cssFiles as $cssFile){
-	$cssBuffer .= file_get_contents($cssFile);
-}
 
 $cssVariables = array(
 					//Screen
@@ -37,9 +33,16 @@ $cssVariables = array(
 					'@screen-desktop' 		=> '992px',  
 					'@screen-widescreen' 	=> '1200px', 
 					'@screen-full-hd' 		=> '1920px', 
-					//Colors
-					'@color-custom' => '#ffffff',
 				);
+
+include('style-extras.php');
+
+$cssFiles = array_merge($cssFiles, $cssFilesExtras);
+$cssVariables = array_merge($cssVariables, $cssVariablesExtras);
+
+foreach($cssFiles as $cssFile){
+	$cssBuffer .= file_get_contents($cssFile);
+}
 
 $cssKey = array_keys($cssVariables);
 $cssBuffer = str_replace($cssKey, $cssVariables, $cssBuffer);
