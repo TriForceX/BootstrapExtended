@@ -664,6 +664,14 @@ function videoLaunch(url, share, title, autoplay){
 		embedUrl = 'https://www.facebook.com/plugins/video.php?href='+url+'&show_text=0'+embedAutoPlay;
 		embedShare = url;
 	}
+	else { //Only ID will take YouTube as default
+		ID = url;
+		if(autoplay){
+			embedAutoPlay = '&autoplay=1';
+		}
+		embedUrl = 'https://www.youtube.com/embed/'+ID+'?rel=0'+embedAutoPlay;
+		embedShare = 'https://youtu.be/'+ID;
+	}
 	
 	var content = '<div class="JSvideoLaunchIframe embed-responsive embed-responsive-16by9">'+
 			  		'	<iframe class="embed-responsive-item" src="'+embedUrl+'" frameborder="0" allowfullscreen></iframe>'+
