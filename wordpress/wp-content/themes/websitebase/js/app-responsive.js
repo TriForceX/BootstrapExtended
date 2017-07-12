@@ -1,9 +1,15 @@
-$(document).on("responsiveCode", function(event, bodyWidth, bodyHeight, bodyOrientation){
+$(document).on("responsiveCode", function(event, bodyWidth, bodyHeight, bodyOrientation, bodyScreen){
 	
 /* ================================================= RESPONSIVE CODE ================================================= */
 	
 	//Example size
 	$("body").attr("window-size",bodyWidth+"x"+bodyHeight);
+	
+	//Example lower than tablet
+	if (bodyWidth < bodyScreen[0].tablet)
+	{
+		console.log('Tablet size and lower!');
+	}
 	
 	//Example orientation
 	if(bodyOrientation){ 

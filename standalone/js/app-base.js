@@ -75,16 +75,16 @@ $.fn.validateForm = function(options) {
 		var formConfirmTitle = '@validate-confirm-title';
 		var formConfirmText = '@validate-confirm-text';
 		var formErrorTitle = '@validate-title';
-		var formErrorText = [{'text': '@validate-normal', 
-							  'number': '@validate-number', 
-							  'tel': '@validate-tel', 
-							  'pass': '@validate-pass', 
-							  'email': '@validate-email',
-							  'search': '@validate-search',
-							  'checkbox':'@validate-checkbox',
-							  'radio':'@validate-radio',
-							  'textarea':'@validate-textarea',
-							  'select':'@validate-select'}];
+		var formErrorText = [{'text': 		'@validate-normal', 
+							  'number': 	'@validate-number', 
+							  'tel': 		'@validate-tel', 
+							  'pass': 		'@validate-pass', 
+							  'email': 		'@validate-email',
+							  'search': 	'@validate-search',
+							  'checkbox':	'@validate-checkbox',
+							  'radio':		'@validate-radio',
+							  'textarea':	'@validate-textarea',
+							  'select':		'@validate-select'}];
 
 		//Select inputs
 		$(this).find('select').not(settings.noValidate).each(function(){
@@ -307,17 +307,16 @@ function responsiveCode() {
 	var bodyWidth = document.body.clientWidth; //$(window).width();
 	var bodyHeight = $(window).height();
 	var bodyOrientation = bodyWidth > bodyHeight ? true : false;
+	var bodyScreen = [{'small-phone'	: '@screen-small-phone', //320
+					   'medium-phone'	: '@screen-medium-phone', //360
+					   'phone'			: '@screen-phone', //480
+					   'tablet'			: '@screen-tablet', //768
+					   'desktop'		: '@screen-desktop', //992
+					   'widescreen'		: '@screen-widescreen', //1200
+					   'full-hd'		: '@screen-full-hd'}]; //1920
 
 	if (bodyWidth)
 	{
-		//'@screen-small-phone' 	=> '320', 
-		//'@screen-medium-phone' 	=> '360',
-		//'@screen-phone' 			=> '480',
-		//'@screen-tablet' 			=> '768',
-		//'@screen-desktop' 		=> '992',  
-		//'@screen-widescreen' 		=> '1200', 
-		//'@screen-full-hd' 		=> '1920', 
-		
 		//*** RESPONSIVE CHANGES ***//
 
 		//Example Vertical Align Container
@@ -341,7 +340,7 @@ function responsiveCode() {
 		});
 		
 		//Send data to event
-		$(document).trigger("responsiveCode", [bodyWidth, bodyHeight, bodyOrientation]);
+		$(document).trigger("responsiveCode", [bodyWidth, bodyHeight, bodyOrientation, bodyScreen]);
 		
 		//*** RESPONSIVE CHANGES ***//
 	}else{
@@ -447,7 +446,7 @@ function loadLightGallery(){
 }
 
 //ImgLiquid auto-fill background function
-function imageFill(container){
+function imageFill(container, alignment){
 	
 	var bgData = new Array();
 	var bgVertical;
@@ -455,7 +454,18 @@ function imageFill(container){
 	var bgFill;
 	var bgFillSize;
 	
-	bgData = $(container).data('img-fill').split(',');
+	if(typeof alignment === undefined || alignment === null)
+	{
+		alignment = '';
+	}
+	
+	if($(container).hasAttr('data-img-fill')){
+		bgData = $(container).data('img-fill').split(',');
+	}
+	else{
+		bgData = alignment.split(',');
+	}
+	
 	
 	//Check vertical align
 	if(bgData[0] === undefined || bgData[0] === null)
@@ -528,6 +538,9 @@ function onElementHeightChange(elm, callback){
 
 //Text cut function
 function textCut(container){
+	if(!$(container).hasClass('JStextCut')){
+		$(container).addClass('JStextCut');
+	}
 	$(container).each(function(){
 		$(this).html("<div><div>"+$(this).html()+"</div></div>");
 	});
