@@ -38,7 +38,7 @@ $jsVariables = array(
 					//Global
 					'@global-url' => $jsUrl,
 					//Form Validation
-					'@validate-title' 			=> $jsLang == 1 ? 'Alerta Formulario' :  'Form Alert', 
+					'@validate-title' 			=> $jsLang == 1 ? 'Alerta Formulario' : 'Form Alert', 
 					'@validate-normal' 			=> $jsLang == 1 ? 'Por favor complete los campos.' : 'Please fill the fields.', 
 					'@validate-number'	 		=> $jsLang == 1 ? 'Por favor escriba un número válido.' : 'Please type a valid number.', 
 					'@validate-tel' 			=> $jsLang == 1 ? 'Por favor escriba un teléfono válido.' : 'Please type a phone number.', 
