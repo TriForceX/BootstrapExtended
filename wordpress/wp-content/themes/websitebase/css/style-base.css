@@ -106,15 +106,12 @@ td[align='left']{
 
 /*Custom Panel*/
 .panel-custom {
-    border-color: red;
-	float:left;
-	width:100%;
-	margin-bottom:0px;
+   /* border-color: red;*/
 }
 .panel-custom > .panel-heading {
-    background-color:  red;
-    border-color:  red;
-    color: #fff;
+    /*background-color: red;
+    border-color: red;
+    color: #fff;*/
 }
 /*Custom Panel*/
 

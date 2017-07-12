@@ -24,8 +24,6 @@ $(document).ready(function(){
 		customValidate: ['validateCustom', '#example-input-custom', 'Fill the custom field'],
 	});
 	
-	
-	
 /* ================================================= DOCUMENT READY ================================================= */
 
 });
