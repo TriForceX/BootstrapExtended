@@ -446,7 +446,7 @@ function loadLightGallery(){
 }
 
 //ImgLiquid auto-fill background function
-function imageFill(container, alignment){
+function imageFill(container){
 	
 	var bgData = new Array();
 	var bgVertical;
@@ -454,18 +454,7 @@ function imageFill(container, alignment){
 	var bgFill;
 	var bgFillSize;
 	
-	if(typeof alignment === undefined || alignment === null)
-	{
-		alignment = '';
-	}
-	
-	if($(container).hasAttr('data-img-fill')){
-		bgData = $(container).data('img-fill').split(',');
-	}
-	else{
-		bgData = alignment.split(',');
-	}
-	
+	bgData = $(container).data('img-fill').split(',');
 	
 	//Check vertical align
 	if(bgData[0] === undefined || bgData[0] === null)
@@ -538,9 +527,6 @@ function onElementHeightChange(elm, callback){
 
 //Text cut function
 function textCut(container){
-	if(!$(container).hasClass('JStextCut')){
-		$(container).addClass('JStextCut');
-	}
 	$(container).each(function(){
 		$(this).html("<div><div>"+$(this).html()+"</div></div>");
 	});

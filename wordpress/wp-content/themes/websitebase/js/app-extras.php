@@ -4,6 +4,6 @@ $jsFilesExtras = array(
 				);
 
 $jsVariablesExtras = array(
-					//'@color-custom' 	=> '#ffffff',
+					//'@color-custom' => '#ffffff',
 				);
 ?>
