@@ -119,33 +119,58 @@ td[align='left']{
 .ui-datepicker{
 	font-size:12px;
 }
-.ui-datepicker .ui-datepicker-next,
-.ui-datepicker .ui-datepicker-prev{
+.ui-datepicker .ui-datepicker-next{
 	cursor:pointer;
 }
-
-.ui-datepicker .ui-datepicker-header{
-	/*background: red;*/
-	/*border-color: red;*/
+.ui-datepicker .ui-datepicker-prev{
+	cursor:pointer;
 }
 .ui-datepicker .ui-datepicker-next-hover,
 .ui-datepicker .ui-datepicker-prev-hover{
 	background: transparent !important;
 	border: none;
 }
-.ui-datepicker .ui-datepicker-next-hover span{
-	background:url("images/ui-icons_ffffff_256x240.png");
+.ui-state-active, .ui-widget-content .ui-state-active, .ui-widget-header .ui-state-active, a.ui-button:active, .ui-button:active, .ui-button.ui-state-active:hover{
+	font-weight: bold;
+}
+/*UI Date Picker*/
+
+/*UI Date Picker Custom*/
+/*.ui-datepicker .ui-datepicker-header{
+	background: red;
+	border-color: red;
+}
+.ui-datepicker .ui-datepicker-prev span{
+	background:url("@global-url/resources/jquery-ui/css/images/ui-icons_ffffff_256x240.png");
+	background-position:-80px -192px;
+}
+.ui-datepicker .ui-datepicker-next span{
+	background:url("@global-url/resources/jquery-ui/css/images/ui-icons_ffffff_256x240.png");
 	background-position:-48px -192px;
 }
 .ui-datepicker .ui-datepicker-prev-hover span{
-	background:url("images/ui-icons_ffffff_256x240.png");
+	background:url("@global-url/resources/jquery-ui/css/images/ui-icons_ffffff_256x240.png");
 	background-position:-80px -192px;
+}
+.ui-datepicker .ui-datepicker-next-hover span{
+	background:url("@global-url/resources/jquery-ui/css/images/ui-icons_ffffff_256x240.png");
+	background-position:-48px -192px;
+}
+.ui-state-active, .ui-widget-content .ui-state-active, .ui-widget-header .ui-state-active, a.ui-button:active, .ui-button:active, .ui-button.ui-state-active:hover {
+    border: 1px solid red;
+    background: red;
+    color: black;
+}
+.ui-state-hover, .ui-widget-content .ui-state-hover, .ui-widget-header .ui-state-hover, .ui-state-focus, .ui-widget-content .ui-state-focus, .ui-widget-header .ui-state-focus, .ui-button:hover, .ui-button:focus {
+   border: 1px solid red;
+    background: red;
+    color: black;
 }
 .ui-datepicker-title select,
 .ui-datepicker-title select option{
 	color: black;
-}
-/*UI Date Picker*/
+}*/
+/*UI Date Picker Custom*/
 
 /*Carousel*/
 /* Fade transition for carousel items */
