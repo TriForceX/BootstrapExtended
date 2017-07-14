@@ -139,6 +139,7 @@ td[align='left']{
 /*.ui-datepicker .ui-datepicker-header{
 	background: red;
 	border-color: red;
+	color: white;
 }
 .ui-datepicker .ui-datepicker-prev span{
 	background:url("@global-url/resources/jquery-ui/css/images/ui-icons_ffffff_256x240.png");
@@ -165,6 +166,12 @@ td[align='left']{
    border: 1px solid red;
     background: red;
     color: black;
+}
+.ui-datepicker .ui-datepicker-prev-hover.ui-state-hover{
+	border:none;
+}
+.ui-datepicker .ui-datepicker-next-hover.ui-state-hover{
+	border:none;
 }
 .ui-datepicker-title select,
 .ui-datepicker-title select option{
