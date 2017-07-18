@@ -20,7 +20,7 @@ $(document).ready(function(){
 	//Form validation
 	$('.JSformExample').validateForm({
 		noValidate: '#example-input-lastname',
-		hasConfirm: false,
+		hasConfirm: true,
 		customValidate: ['validateCustom', '#example-input-custom', 'Fill the custom field'],
 	});
 	

@@ -6,7 +6,7 @@ $(document).on("responsiveCode", function(event, bodyWidth, bodyHeight, bodyOrie
 	$("body").attr("window-size",bodyWidth+"x"+bodyHeight);
 	
 	//Example lower than tablet
-	if (bodyWidth < bodyScreen[0].tablet)
+	if (bodyWidth < bodyScreen.tablet)
 	{
 		console.log('Tablet size and lower!');
 	}

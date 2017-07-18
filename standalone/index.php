@@ -1198,6 +1198,7 @@
 					</label>
 				</div>
 				<div class="form-group no-margin-b">
+					<button type="reset" class="btn btn-default">Reset</button>
 					<button type="submit" class="btn btn-default">Submit</button>
 				</div>
 			</form>

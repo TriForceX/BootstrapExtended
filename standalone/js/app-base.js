@@ -75,22 +75,22 @@ $.fn.validateForm = function(options) {
 		var formConfirmTitle = '@validate-confirm-title';
 		var formConfirmText = '@validate-confirm-text';
 		var formErrorTitle = '@validate-title';
-		var formErrorText = [{'text': 		'@validate-normal', 
-							  'number': 	'@validate-number', 
-							  'tel': 		'@validate-tel', 
-							  'pass': 		'@validate-pass', 
-							  'email': 		'@validate-email',
-							  'search': 	'@validate-search',
-							  'checkbox':	'@validate-checkbox',
-							  'radio':		'@validate-radio',
-							  'textarea':	'@validate-textarea',
-							  'select':		'@validate-select'}];
+		var formErrorText = {'text': 		'@validate-normal', 
+							 'number': 		'@validate-number', 
+							 'tel': 		'@validate-tel', 
+							 'pass': 		'@validate-pass', 
+							 'email': 		'@validate-email',
+							 'search': 		'@validate-search',
+							 'checkbox':	'@validate-checkbox',
+							 'radio':		'@validate-radio',
+							 'textarea':	'@validate-textarea',
+							 'select':		'@validate-select'};
 
 		//Select inputs
 		$(this).find('select').not(settings.noValidate).each(function(){
 			if (!validateEmpty($(this).find("option:selected").attr("value"))) { 
 				$(this).addClass("JSvalidateError");
-				formError = formErrorText[0].select;
+				formError = formErrorText.select;
 			}
 			else{
 				$(this).removeClass("JSvalidateError");
@@ -101,7 +101,7 @@ $.fn.validateForm = function(options) {
 		$(this).find('textarea').not(settings.noValidate).each(function(){
 			if (!validateEmpty($.trim($(this).val()))) { 
 				$(this).addClass("JSvalidateError");
-				formError = formErrorText[0].textarea;
+				formError = formErrorText.textarea;
 			}
 			else{
 				$(this).removeClass("JSvalidateError");
@@ -123,7 +123,7 @@ $.fn.validateForm = function(options) {
 			if(!check){
 				item.addClass("JSvalidateErrorCheck");
 				item.parent('label').addClass("JSvalidateError");
-				formError = formErrorText[0][type];
+				formError = formErrorText[type];
 			}
 			else{
 				item.removeClass("JSvalidateErrorCheck");
@@ -137,7 +137,7 @@ $.fn.validateForm = function(options) {
 				case 'text':
 					if (!validateEmpty($(this).val())) { 
 						$(this).addClass("JSvalidateError");
-						formError = formErrorText[0].text;
+						formError = formErrorText.text;
 					}
 					else{
 						$(this).removeClass("JSvalidateError");
@@ -146,7 +146,7 @@ $.fn.validateForm = function(options) {
 				case 'number':
 					if (!validateEmpty($(this).val()) || !validateNumber($(this).val())) { 
 						$(this).addClass("JSvalidateError");
-						formError = formErrorText[0].number;
+						formError = formErrorText.number;
 					}
 					else{
 						$(this).removeClass("JSvalidateError");
@@ -155,7 +155,7 @@ $.fn.validateForm = function(options) {
 				case 'tel':
 					if (!validateEmpty($(this).val())) { 
 						$(this).addClass("JSvalidateError");
-						formError = formErrorText[0].tel;
+						formError = formErrorText.tel;
 					}
 					else{
 						$(this).removeClass("JSvalidateError");
@@ -164,7 +164,7 @@ $.fn.validateForm = function(options) {
 				case 'email':
 					if (!validateEmpty($(this).val()) || !validateEmail($(this).val())) { 
 						$(this).addClass("JSvalidateError");
-						formError = formErrorText[0].email;
+						formError = formErrorText.email;
 					}
 					else{
 						$(this).removeClass("JSvalidateError");
@@ -173,7 +173,7 @@ $.fn.validateForm = function(options) {
 				case 'password':
 					if (!validateEmpty($(this).val())) { 
 						$(this).addClass("JSvalidateError");
-						formError = formErrorText[0].pass;
+						formError = formErrorText.pass;
 					}
 					else{
 						$(this).removeClass("JSvalidateError");
@@ -182,7 +182,7 @@ $.fn.validateForm = function(options) {
 				case 'search':
 					if (!validateEmpty($(this).val())) { 
 						$(this).addClass("JSvalidateError");
-						formError = formErrorText[0].search;
+						formError = formErrorText.search;
 					}
 					else{
 						$(this).removeClass("JSvalidateError");
@@ -307,13 +307,13 @@ function responsiveCode() {
 	var bodyWidth = document.body.clientWidth; //$(window).width();
 	var bodyHeight = $(window).height();
 	var bodyOrientation = bodyWidth > bodyHeight ? true : false;
-	var bodyScreen = [{'small-phone'	: '@screen-small-phone', //320
-					   'medium-phone'	: '@screen-medium-phone', //360
-					   'phone'			: '@screen-phone', //480
-					   'tablet'			: '@screen-tablet', //768
-					   'desktop'		: '@screen-desktop', //992
-					   'widescreen'		: '@screen-widescreen', //1200
-					   'full-hd'		: '@screen-full-hd'}]; //1920
+	var bodyScreen = {'small-phone'		: '@screen-small-phone', //320
+					  'medium-phone'	: '@screen-medium-phone', //360
+					  'phone'			: '@screen-phone', //480
+					  'tablet'			: '@screen-tablet', //768
+					  'desktop'			: '@screen-desktop', //992
+					  'widescreen'		: '@screen-widescreen', //1200
+					  'full-hd'			: '@screen-full-hd'}; //1920
 
 	if (bodyWidth)
 	{
