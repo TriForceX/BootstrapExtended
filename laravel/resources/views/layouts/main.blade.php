@@ -1,25 +1,25 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en-US">
 <head>
-    <title>Prince of Wales Country Club</title>
+    <title>Website Base</title>
     
     <!-- ******** META TAGS ******** -->
 	
 	<!-- HTML Charset -->
-	<meta charset="utf-8">
+	<meta charset="UTF-8">
 	<!-- Mobile Enable -->
 	<meta name="mobile-web-app-capable" content="yes">
 	<meta name="apple-mobile-web-app-capable" content="yes">
 	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<!-- Nav Bar Mobile Color -->
-	<meta name="theme-color" content="#385086">
-	<meta name="msapplication-navbutton-color" content="#385086">
+	<meta name="theme-color" content="#FF0000">
+	<meta name="msapplication-navbutton-color" content="#FF0000">
 	<meta name="apple-mobile-web-app-status-bar-style" content="black">
 	<!-- Meta Details -->
-	<meta name="description" content="Prince of Wales Country Club"/>
-	<meta name="keywords" content="PWCC" />
-	<meta name="author" content="PWCC" />
+	<meta name="description" content="Website based on Bootstrap with some CSS/JS/PHP improvements"/>
+	<meta name="keywords" content="html, jquery, javascript, php, responsive, css3" />
+	<meta name="author" content="TriForce" />
 	
 	<!-- ******** META TAGS ******** -->
 	
