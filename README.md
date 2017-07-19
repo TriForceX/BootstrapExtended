@@ -2,9 +2,10 @@
 Website base structure with small reusable parts of source code or functions for HTML use Based on Bootstrap. You can visit http://dev.gznetwork.com/websitebase for a running example.
 
 # Resources
-* Standalone (PHP 5.4+ & HTML)
-* Wordpress (Ver 4.7.5)
-* Bootstrap 3 Framework (Ver 3.3.7)
+* Standalone Support (PHP 5.6+)
+* Wordpress Support (Ver 4.7.5)
+* Laravel Support (Ver 5.2)
+* Bootstrap 3 (Ver 3.3.7)
 * Data Tables
 * Light Gallery
 * Holder JS

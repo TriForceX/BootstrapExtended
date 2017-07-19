@@ -160,9 +160,19 @@ class php
     }
 	
 	//Check if the current domain is localhost
-	public static function is_localhost()
+	public static function is_localhost($custom = null)
     {
-        return $_SERVER['HTTP_HOST'] == 'localhost' || filter_var($_SERVER['HTTP_HOST'], FILTER_VALIDATE_IP) ? true : false;
+		$whitelist = array('127.0.0.', '192.168.', '::1', 'localhost');
+		$passed = false;
+		if($custom != null){
+			$whitelist[] = $custom;
+		}
+		foreach ($whitelist as $item) {
+			if (stripos($_SERVER['REMOTE_ADDR'], $item) !== false) {
+				$passed = true;
+			}
+		}
+        return $passed;
     }
 	
 	//Checks to see if the page is being server over SSL or not
