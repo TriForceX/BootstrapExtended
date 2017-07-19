@@ -1,4 +1,4 @@
-# Custom Bootstrap 3 Base
+# Custom Bootstrap Website Base
 Website base structure with small reusable parts of source code or functions for HTML use Based on Bootstrap. You can visit http://dev.gznetwork.com/websitebase for a running example.
 
 # Resources
