@@ -983,7 +983,8 @@ $(document).ready(function(){
 				else if(direction === 'left'){
 					$(this).carousel('next');  
 				}
-			}
+			},
+		allowPageScroll:'vertical',
 	});
 	
 	//Applu Data Tables
