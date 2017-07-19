@@ -65,9 +65,13 @@
 
 <!-- ================================================= ANALYTICS ================================================= -->
 @if(stripos(Request::ip(), '192.168.') !== false)
-<!-- Dont track in localhost -->
+<script>
+	function ga(){ console.log('Google Analytics:\n',arguments); } //Dont track in localhost
+</script>
 @else
-<!-- Script here -->
+<script>
+	//Script here
+</script>
 @endif
 <!-- ================================================= ANALYTICS ================================================= -->
 

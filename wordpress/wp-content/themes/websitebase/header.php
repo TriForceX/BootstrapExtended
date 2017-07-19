@@ -70,7 +70,9 @@
 <?php endif; ?>
 <!-- ================================================= ANALYTICS ================================================= -->
 <?php if(php::is_localhost()): ?>
-<?php echo "\n"; //Dont track in localhost ?>
+<script>
+	function ga(){ console.log('Google Analytics:\n',arguments); } //Dont track in localhost
+</script>
 <?php else: ?>
 <?php echo php::convert_to_utf8(get_option('bloganalytics'))."\n"; ?>
 <?php endif; ?>
