@@ -4,7 +4,7 @@ header('Content-type: text/css; charset: UTF-8');
 
 echo '/*
  * Style.php CSS File Parser
- * Version 1.0
+ * Version 2.0
  * © 2017 TriForce - Matías Silva
  * 
  * Site:     http://dev.gznetwork.com/websitebase
@@ -12,41 +12,53 @@ echo '/*
  * 
  */';
 
-require_once('../resources/php/minifier/minifier.php');
+$cssDevelopMode = false;
 
-$cssUrl = minifyGetURL('css');
-$cssMinify = true;
-$cssBuffer = '';
+if($cssDevelopMode):
 
-$cssFiles = array(
-			  $cssUrl.'/css/style-base.css',
-			  $cssUrl.'/css/style-fonts.css',
-			  $cssUrl.'/css/style-theme.css',
-			);
+	require_once('../resources/php/minifier/minifier.php');
 
-$cssVariables = array(
-					//Screen
-					'@screen-small-phone' 	=> '320px', 
-					'@screen-medium-phone' 	=> '360px',
-					'@screen-phone' 		=> '480px',
-					'@screen-tablet' 		=> '768px',
-					'@screen-desktop' 		=> '992px',  
-					'@screen-widescreen' 	=> '1200px', 
-					'@screen-full-hd' 		=> '1920px', 
+	$cssUrl = minifyGetURL('css');
+	$cssMinify = true;
+	$cssBuffer = '';
+
+	$cssFiles = array(
+				  $cssUrl.'/css/style-base.css',
+				  $cssUrl.'/css/style-fonts.css',
+				  $cssUrl.'/css/style-theme.css',
 				);
 
-include('style-extras.php');
+	$cssVariables = array(
+						//Screen
+						'@screen-small-phone' 	=> '320px', 
+						'@screen-medium-phone' 	=> '360px',
+						'@screen-phone' 		=> '480px',
+						'@screen-tablet' 		=> '768px',
+						'@screen-desktop' 		=> '992px',  
+						'@screen-widescreen' 	=> '1200px', 
+						'@screen-full-hd' 		=> '1920px', 
+					);
 
-$cssFiles = array_merge($cssFiles, $cssFilesExtras);
-$cssVariables = array_merge($cssVariables, $cssVariablesExtras);
+	include('style-extras.php');
 
-foreach($cssFiles as $cssFile){
-	$cssBuffer .= file_get_contents($cssFile);
-}
+	$cssFiles = array_merge($cssFiles, $cssFilesExtras);
+	$cssVariables = array_merge($cssVariables, $cssVariablesExtras);
 
-$cssKey = array_keys($cssVariables);
-$cssBuffer = str_replace($cssKey, $cssVariables, $cssBuffer);
+	foreach($cssFiles as $cssFile){
+		$cssBuffer .= file_get_contents($cssFile);
+	}
 
-echo $cssMinify == true ? minifyCSS($cssBuffer) : $cssBuffer;
+	$cssKey = array_keys($cssVariables);
+	$cssBuffer = str_replace($cssKey, $cssVariables, $cssBuffer);
+	$cssContent = $cssMinify == true ? minifyCSS($cssBuffer) : $cssBuffer;
+
+	file_put_contents('style.css',$cssContent);
+	echo $cssContent;
+
+else:
+
+	echo file_get_contents('style.css');
+
+endif;
 
 ?>
