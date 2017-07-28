@@ -12,16 +12,19 @@ echo '/*
  * 
  */';
 
-$cssDevelopMode = false;
+require_once('../resources/php/main.php');
+
+class php extends utilities\php { }
+
+$cssDevelopMode = true;
+$cssUrl = php::get_main_url('/css');
 
 if($cssDevelopMode):
 
 	require_once('../resources/php/minifier/minifier.php');
 
-	$cssUrl = minifyGetURL('css');
 	$cssMinify = true;
 	$cssBuffer = '';
-
 	$cssFiles = array(
 				  $cssUrl.'/css/style-base.css',
 				  $cssUrl.'/css/style-fonts.css',
@@ -29,6 +32,8 @@ if($cssDevelopMode):
 				);
 
 	$cssVariables = array(
+						//Global
+						'@global-url' => $cssUrl,
 						//Screen
 						'@screen-small-phone' 	=> '320px', 
 						'@screen-medium-phone' 	=> '360px',

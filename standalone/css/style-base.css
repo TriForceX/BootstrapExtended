@@ -1,5 +1,8 @@
 /* ================================================= GLOBAL ================================================= */
 
+/*Main URL replaced by PHP*/
+@main-url 	      { content: '@global-url'; }
+
 /*IE10 viewport hack for Surface/desktop Windows 8 bug*/
 @-ms-viewport     { width: device-width; }
 @-o-viewport      { width: device-width; }

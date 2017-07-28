@@ -12,14 +12,18 @@ echo '/*
  * 
  */';
 
-$jsDevelopMode = false;
+require_once('../resources/php/main.php');
+
+class php extends utilities\php { }
+	
+$jsDevelopMode = true;
+$jsUrl = php::get_main_url('/js');
 
 if($jsDevelopMode):
 	
 	require_once('../resources/php/minifier/minifier.php');
 
 	$jsLang = isset($_GET['lang']) ? $_GET['lang'] : 0; //0 = English, 1 = Spanish
-	$jsUrl = minifyGetURL('js');
 	$jsMinify = true;
 	$jsBuffer = '';
 
@@ -31,6 +35,8 @@ if($jsDevelopMode):
 				);
 
 	$jsVariables = array(
+						//Global
+						'@global-url' => $jsUrl,
 						//Screen
 						'@screen-small-phone' 	=> '320', 
 						'@screen-medium-phone' 	=> '360',
@@ -39,8 +45,6 @@ if($jsDevelopMode):
 						'@screen-desktop' 		=> '992',  
 						'@screen-widescreen' 	=> '1200', 
 						'@screen-full-hd' 		=> '1920', 
-						//Global
-						'@global-url' => $jsUrl,
 						//Form Validation
 						'@validate-title' 			=> $jsLang == 1 ? 'Alerta Formulario' : 'Form Alert', 
 						'@validate-normal' 			=> $jsLang == 1 ? 'Por favor complete los campos.' : 'Please fill the fields.', 

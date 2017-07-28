@@ -1,12 +1,5 @@
 <?php
 
-// Get Main URL
-function minifyGetURL($folder){
-	$protocol = isset($_SERVER['HTTPS']) && !empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] != 'off' ? 'https://' : 'http://';
-	$domain = $protocol.$_SERVER['SERVER_NAME'].dirname($_SERVER['PHP_SELF']);
-	return str_replace('/'.$folder,'',$domain);
-}
-
 // HTML Minifier
 function minifyHTML($input) {
     if(trim($input) === "") return $input;

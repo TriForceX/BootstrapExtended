@@ -23,7 +23,7 @@ $(document).ready(function(){
 		hasConfirm: true,
 		customValidate: ['validateCustom', '#example-input-custom', 'Fill the custom field'],
 	});
-	
+	console.log('URL: '+mainUrl);
 /* ================================================= DOCUMENT READY ================================================= */
 
 });
