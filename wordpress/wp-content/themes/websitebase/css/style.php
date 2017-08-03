@@ -5,7 +5,7 @@ header('Content-type: text/css; charset: UTF-8');
 echo '/*
  * Style.php CSS File Parser
  * Version 2.0
- * © 2017 TriForce - Matías Silva
+ * TriForce - Matías Silva
  * 
  * Site:     http://dev.gznetwork.com/websitebase
  * Issues:   https://github.com/triforcex/websitebase

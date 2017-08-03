@@ -1,7 +1,7 @@
 /*
  * Gulpfile JavaScript/CSS File Parser
  * Version 1.0
- * © 2017 TriForce - Matías Silva
+ * TriForce - Matías Silva
  * 
  * Site:     http://dev.gznetwork.com/websitebase
  * Issues:   https://github.com/triforcex/websitebase

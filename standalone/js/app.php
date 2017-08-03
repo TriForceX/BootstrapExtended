@@ -5,7 +5,7 @@ header('Content-type: text/javascript; charset: UTF-8');
 echo '/*
  * App.php JavaScript File Parser
  * Version 2.0
- * © 2017 TriForce - Matías Silva
+ * TriForce - Matías Silva
  * 
  * Site:     http://dev.gznetwork.com/websitebase
  * Issues:   https://github.com/triforcex/websitebase
