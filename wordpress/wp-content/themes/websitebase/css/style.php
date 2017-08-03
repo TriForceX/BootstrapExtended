@@ -12,16 +12,19 @@ echo '/*
  * 
  */';
 
-$cssDevelopMode = false;
+require_once('../resources/php/main.php');
+require_once('../resources/php/minifier/minifier.php');
 
-if($cssDevelopMode):
+class php extends utilities\php { }
 
-	require_once('../resources/php/minifier/minifier.php');
+//php::get_error('warning');
 
-	$cssUrl = minifyGetURL('css');
+function cssGenerate()
+{
 	$cssMinify = true;
 	$cssBuffer = '';
-
+	$cssUrl = php::get_main_url('/css');
+	
 	$cssFiles = array(
 				  $cssUrl.'/css/style-base.css',
 				  $cssUrl.'/css/style-fonts.css',
@@ -29,6 +32,8 @@ if($cssDevelopMode):
 				);
 
 	$cssVariables = array(
+						//Global
+						'@global-url' => $cssUrl,
 						//Screen
 						'@screen-small-phone' 	=> '320px', 
 						'@screen-medium-phone' 	=> '360px',
@@ -52,13 +57,24 @@ if($cssDevelopMode):
 	$cssBuffer = str_replace($cssKey, $cssVariables, $cssBuffer);
 	$cssContent = $cssMinify == true ? minifyCSS($cssBuffer) : $cssBuffer;
 
-	file_put_contents('style.css',$cssContent);
-	echo $cssContent;
+	return $cssContent;
+}
 
-else:
-
+if(php::is_localhost())
+{
+	if(file_exists('style.css'))
+	{
+		unlink('style.css');
+	}
+	echo cssGenerate();
+}
+else
+{
+	if(!file_exists('style.css'))
+	{
+		file_put_contents('style.css',cssGenerate());
+	}
 	echo file_get_contents('style.css');
-
-endif;
+}
 
 ?>

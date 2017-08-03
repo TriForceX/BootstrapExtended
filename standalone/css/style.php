@@ -62,12 +62,16 @@ function cssGenerate()
 
 if(php::is_localhost())
 {
+	if(file_exists('style.css'))
+	{
+		unlink('style.css');
+	}
 	echo cssGenerate();
-	unlink('style.css');
 }
 else
 {
-	if(!file_exists('style.css')){
+	if(!file_exists('style.css'))
+	{
 		file_put_contents('style.css',cssGenerate());
 	}
 	echo file_get_contents('style.css');

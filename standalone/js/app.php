@@ -89,12 +89,16 @@ function jsGenerate()
 
 if(php::is_localhost())
 {
+	if(file_exists('app.js'))
+	{
+		unlink('app.js');
+	}
 	echo jsGenerate();
-	unlink('app.js');
 }
 else
 {
-	if(!file_exists('app.js')){
+	if(!file_exists('app.js'))
+	{
 		file_put_contents('app.js',jsGenerate());
 	}
 	echo file_get_contents('app.js');

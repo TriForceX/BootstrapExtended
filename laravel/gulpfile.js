@@ -65,22 +65,28 @@ var replacementsJS = [
 	['@lgtitle-next' 			, jsLang == 1 ? 'Cargando siguiente página ...' : 'Loading next page ...'],
 ];
 
+var gulpCSSFiles = [
+					'style-base.css',
+					'style-fonts.css',
+					'style-theme-old.css',
+					'style-theme.css'
+					];
+					
+var gulpJSFiles = [
+					'app-base.js',
+					'app-base-old.js',
+					'app-ready.js',
+					'app-load.js',
+					'app-responsive.js'
+					];
+
 elixir(function(mix){
-	mix.styles([
-		//CSS Files
-		'style-base.css',
-		'style-fonts.css',
-		'style-theme-old.css',
-		'style-theme.css'
-	],'public/assets/css')
-	.scripts([
-		//JS Files
-		'app-base.js',
-		'app-base-old.js',
-		'app-ready.js',
-		'app-load.js',
-		'app-responsive.js'
-	],'public/assets/js')
-	.replace('public/assets/css/all.css', replacementsCSS)
-	.replace('public/assets/js/all.js', replacementsJS)
+	mix.styles(gulpCSSFiles, 'public/assets/css')
+		.scripts(gulpJSFiles, 'public/assets/js')
+		.replace('public/assets/css/all.css', replacementsCSS)
+		.replace('public/assets/js/all.js', replacementsJS);
+	
+	/*mix.replace('public/assets/css/all.css', replacementsCSS);
+	mix.replace('public/assets/js/all.js', replacementsJS);*/
+	
 });
