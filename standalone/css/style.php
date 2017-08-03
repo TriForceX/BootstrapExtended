@@ -13,18 +13,18 @@ echo '/*
  */';
 
 require_once('../resources/php/main.php');
+require_once('../resources/php/minifier/minifier.php');
 
 class php extends utilities\php { }
 
-$cssDevelopMode = true;
-$cssUrl = php::get_main_url('/css');
+//php::get_error('warning');
 
-if($cssDevelopMode):
-
-	require_once('../resources/php/minifier/minifier.php');
-
+function cssGenerate()
+{
 	$cssMinify = true;
 	$cssBuffer = '';
+	$cssUrl = php::get_main_url('/css');
+	
 	$cssFiles = array(
 				  $cssUrl.'/css/style-base.css',
 				  $cssUrl.'/css/style-fonts.css',
@@ -57,13 +57,20 @@ if($cssDevelopMode):
 	$cssBuffer = str_replace($cssKey, $cssVariables, $cssBuffer);
 	$cssContent = $cssMinify == true ? minifyCSS($cssBuffer) : $cssBuffer;
 
-	file_put_contents('style.css',$cssContent);
-	echo $cssContent;
+	return $cssContent;
+}
 
-else:
-
+if(php::is_localhost())
+{
+	echo cssGenerate();
+	unlink('style.css');
+}
+else
+{
+	if(!file_exists('style.css')){
+		file_put_contents('style.css',cssGenerate());
+	}
 	echo file_get_contents('style.css');
-
-endif;
+}
 
 ?>

@@ -13,19 +13,18 @@ echo '/*
  */';
 
 require_once('../resources/php/main.php');
+require_once('../resources/php/minifier/minifier.php');
 
 class php extends utilities\php { }
-	
-$jsDevelopMode = true;
-$jsUrl = php::get_main_url('/js');
 
-if($jsDevelopMode):
-	
-	require_once('../resources/php/minifier/minifier.php');
+//php::get_error('warning');
 
+function jsGenerate()
+{
 	$jsLang = isset($_GET['lang']) ? $_GET['lang'] : 0; //0 = English, 1 = Spanish
 	$jsMinify = true;
 	$jsBuffer = '';
+	$jsUrl = php::get_main_url('/js');
 
 	$jsFiles = array(
 				  $jsUrl.'/js/app-base.js',
@@ -85,13 +84,20 @@ if($jsDevelopMode):
 	$jsBuffer = str_replace($jsKey, $jsVariables, $jsBuffer);
 	$jsContent = $jsMinify == true ? minifyJS($jsBuffer) : $jsBuffer;
 
-	file_put_contents('app.js',$jsContent);
-	echo $jsContent;
+	return $jsContent;
+}
 
-else:
-
+if(php::is_localhost())
+{
+	echo jsGenerate();
+	unlink('app.js');
+}
+else
+{
+	if(!file_exists('app.js')){
+		file_put_contents('app.js',jsGenerate());
+	}
 	echo file_get_contents('app.js');
-
-endif;
+}
 
 ?>
