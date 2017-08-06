@@ -235,6 +235,24 @@ td[align='left']{
 }
 /*LightGallery*/
 
+/*Tooltip Custom Color*/
+/*.tooltip > .tooltip-inner{
+	background-color: red;
+}
+.tooltip.top .tooltip-arrow{
+	border-top-color: red;
+}
+.tooltip.right .tooltip-arrow{
+	border-right-color: red;
+}
+.tooltip.bottom .tooltip-arrow{
+	border-bottom-color: red;
+}
+.tooltip.left .tooltip-arrow{
+	border-left-color: red;
+}*/
+/*Tooltip Custom Color*/
+
 /*Form group radio & checkbox*/
 .form-group .checkbox {
 	  padding-left: 20px; 

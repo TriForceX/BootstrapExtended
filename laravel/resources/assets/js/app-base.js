@@ -969,7 +969,7 @@ $(document).ready(function(){
 	console.log(browserTest);*/
 
 	//Tooltip load
-	$('*[data-toggle="tooltip"]').tooltip();
+	$('*[data-toggle="tooltip"]').tooltip({ trigger: "hover" });
 	
 	//Popover load
 	$('*[data-toggle="popover"]').popover();
