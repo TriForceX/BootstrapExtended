@@ -87,8 +87,28 @@ function getEmbedVideo($url,$autoplay = false)
 	return $videoURL;
 }
 
+function getVideoID($url)
+{
+	$videoCode = '';
+	$videoID = '';
+	
+	if(php::str_contains($url,'youtube')){
+		preg_match('/^.*((youtu.be\/)|(v\/)|(\/u\/\w\/)|(embed\/)|(watch\?))\??v?=?([^#\&\?]*).*/', $url, $videoCode);
+		$videoID = $videoCode[7];
+	}
+	elseif(php::str_contains($url,'vimeo')){
+		preg_match('/^.*(vimeo\.com\/)((channels\/[A-z]+\/)|(groups\/[A-z]+\/videos\/))?([0-9]+)/', $url, $videoCode);
+		$videoID = $videoCode[5];
+	}
+	elseif(php::str_contains($url,'facebook')){
+		$videoID = $url;
+	}
+	
+	return $videoID;
+}
+
 //Custom paginator for galleries
-function customPaginator($offset, $limit, $totalnum, $customclass){
+function customPaginator($offset, $limit, $totalnum, $customclass, $customLeft = '&laquo;', $customRight = '&laquo;'){
 
 	if ($totalnum > $limit) {
 		// calculate number of pages needing links 
@@ -120,7 +140,7 @@ function customPaginator($offset, $limit, $totalnum, $customclass){
 			$paginaOffsetSig = $_GET['offset'];
 		}
 		echo '<div class="paginador '.$customclass.'"><div class="items">';
-		echo '<a class="prev" href="'.get_bloginfo('url').'/'.get_query_var('post_type').'/'.get_the_slug($post->ID).'/?offset='.$paginaOffsetAnt.'&pag='.$paginaAnterior.'">&laquo;</a>';	
+		echo '<a class="prev" href="'.get_bloginfo('url').'/'.get_query_var('post_type').'/'.get_the_slug($post->ID).'/?offset='.$paginaOffsetAnt.'&pag='.$paginaAnterior.'">'.$customLeft.'</a>';	
 			for ($i = 1; $i <= $pages; $i++) {  // loop thru 
 				$newoffset = $limit * ($i - 1);
 
@@ -134,7 +154,7 @@ function customPaginator($offset, $limit, $totalnum, $customclass){
 				}
 
 			}
-		echo '<a class="next" href="'.get_bloginfo('url').'/'.get_query_var('post_type').'/'.get_the_slug($post->ID).'/?offset='.$paginaOffsetSig.'&pag='.$paginaSiguiente.'">&raquo;</a>';	
+		echo '<a class="next" href="'.get_bloginfo('url').'/'.get_query_var('post_type').'/'.get_the_slug($post->ID).'/?offset='.$paginaOffsetSig.'&pag='.$paginaSiguiente.'">'.$customRight.'</a>';	
 		echo '</div></div>';
 	}
 	return;
