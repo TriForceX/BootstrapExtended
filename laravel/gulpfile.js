@@ -1,17 +1,12 @@
 /*
  * Gulpfile JavaScript/CSS File Parser
- * Version 1.0
+ * Version 2.0
  * TriForce - Matías Silva
  * 
  * Site:     http://dev.gznetwork.com/websitebase
  * Issues:   https://github.com/triforcex/websitebase
  * 
  */
-
-//Note: Place this code above (or in replace of) the elixir mix function
-//Install the elixir method using: npm install --save-dev laravel-elixir-replace
-
-require('laravel-elixir-replace');
 
 var jsUrl = '/assets';
 var jsLang = 1; //0 = English, 1 = Spanish
@@ -65,28 +60,94 @@ var replacementsJS = [
 	['@lgtitle-next' 			, jsLang == 1 ? 'Cargando siguiente página ...' : 'Loading next page ...'],
 ];
 
-var gulpCSSFiles = [
-					'style-base.css',
-					'style-fonts.css',
-					'style-theme-old.css',
-					'style-theme.css'
-					];
+//var gulpBackCSSFiles = [];
+
+//var gulpBackJSFiles = [];
+
+var gulpFrontCSSFiles = [
+						'resources/assets/css/style-base.css',
+						'resources/assets/css/style-fonts.css',
+						'resources/assets/css/style-theme.css'
+						];
 					
-var gulpJSFiles = [
-					'app-base.js',
-					'app-base-old.js',
-					'app-ready.js',
-					'app-load.js',
-					'app-responsive.js'
-					];
+var gulpFrontJSFiles = [
+						'resources/assets/js/app-base.js',
+						'resources/assets/js/app-ready.js',
+						'resources/assets/js/app-load.js',
+						'resources/assets/js/app-responsive.js'
+						];
+
+/*
+ * Elixir Asset Management for Backend
+ *
+ * Install using: npm install --save-dev laravel-elixir
+ * Install using: npm install --save-dev laravel-elixir-replace
+ *
+ */
+
+var elixir = require('laravel-elixir');
+
+require('laravel-elixir-replace');
+
+//elixir(function(mix){
+//	
+//	console.log('[ -------- CSS & JS Compile (Backend) -------- ]');
+//	
+//	mix.less('app.less')
+//		.coffee('app.coffee')
+//		.scripts(gulpBackJSFiles, 'public/js/vendor.js')
+//		.styles(gulpBackCSSFiles, 'public/css/vendor.css');
+//});
 
 elixir(function(mix){
-	mix.styles(gulpCSSFiles, 'public/assets/css')
-		.scripts(gulpJSFiles, 'public/assets/js')
+	
+	console.log('[ -------- CSS & JS Compile (Frontend) -------- ]');
+	
+	mix.styles(gulpFrontCSSFiles, 'public/assets/css')
+		.scripts(gulpFrontJSFiles, 'public/assets/js')
 		.replace('public/assets/css/all.css', replacementsCSS)
 		.replace('public/assets/js/all.js', replacementsJS);
 	
-	/*mix.replace('public/assets/css/all.css', replacementsCSS);
-	mix.replace('public/assets/js/all.js', replacementsJS);*/
+});
+
+
+/*
+ * Custom Watch Method for Frontend
+ *
+ * Install using: npm install --no-optional --save-dev gulp-batch-replace
+ * Install using: npm install --no-optional --save-dev gulp-concat
+ *
+ */
+
+var gulp = require('gulp');
+var replaceBatch = require('gulp-batch-replace');
+var concat = require('gulp-concat');
+
+var taskCSS = function(){
+
+	console.log('[ -------- CSS Detected -------- ]');
 	
+	return gulp.src(gulpFrontCSSFiles) 
+			   .pipe(replaceBatch(replacementsCSS))
+			   .pipe(concat('all.css'))
+			   .pipe(gulp.dest('public/assets/css'));
+};
+
+var taskJS = function(){
+
+	console.log('[ -------- JS Detected -------- ]');
+	
+	return gulp.src(gulpFrontJSFiles) 
+			   .pipe(replaceBatch(replacementsJS))
+			   .pipe(concat('all.js'))
+			   .pipe(gulp.dest('public/assets/js'));
+};
+
+gulp.task('watch', function(){
+	
+  console.log('[ -------- Starting Watch CSS & JS -------- ]');
+
+  gulp.watch(gulpFrontCSSFiles, taskCSS); // Watch .css files
+  gulp.watch(gulpFrontJSFiles, taskJS); // Watch .js files
+
 });
