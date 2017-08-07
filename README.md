@@ -20,6 +20,7 @@ Website base structure with small reusable parts of source code or functions for
 * jQuery Browser
 * jQuery Rotate
 * PHP Mailer
+* NPM Package
 
 # Functions & Code Snippets
 * HTML header data class
@@ -42,7 +43,7 @@ Website base structure with small reusable parts of source code or functions for
 	* Get main url, protocol, https, current page, and more...
 	* Convert string to UTF-8
 	* Custom show date format
-	* Get YouTube, Vimeo and Facebook ID from URL (to embed code)
+	* Get YouTube, Vimeo and Facebook ID and embed code URL
 	* Custom Paginator
 * Features in JS:
 	* Check attr function

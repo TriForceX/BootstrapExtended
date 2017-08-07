@@ -40,6 +40,7 @@
 						<li><a href="https://github.com/pupunzi/jquery.mb.browser" target="_blank">jQuery Browser</a></li>
 						<li><a href="http://jqueryrotate.com/" target="_blank">jQuery Rotate</a></li>
 						<li><a href="https://github.com/PHPMailer/PHPMailer/" target="_blank">PHP Mailer</a></li>
+						<li><a href="https://www.npmjs.com/package/package" target="_blank">NPM Package</a></li>
 					</ul>
 				</li>
 				<li class="dropdown">
@@ -251,6 +252,8 @@
 			</div>
 			<div class="panel-body">
 				The file <code>style-examples.css</code> is only for test purposes in this page, don't add this file to your website. Is not recomemded to modify the <code>style-base.css</code> because contains the main functions inside. <b>If you want add extra variables to replace, just add it in</b> <code>style-extras.php</code>
+				<br><br>
+				The compile process works in realtime if you are testing in <code>localhost</code> side, if you upload the code to <code>production</code> the file <code>style.css</code> will be generated only once, if you update your code, remember to delete <code>style.css</code> to get a new one.
 			</div>
 		</div>
 		</p>
@@ -315,6 +318,8 @@
 			</div>
 			<div class="panel-body">
 				The file <code>app-ready.js</code>, <code>app-load.js</code> and <code>app-responsive.js</code> contains some code pieces for test/examples purposes you can delete with no problems. Is not recomemded to modify the <code>app-base.js</code> because contains the main functions inside. <b>If you want add extra variables to replace, just add it in</b> <code>app-extras.php</code>
+				<br><br>
+				The compile process works in realtime if you are testing in <code>localhost</code> side, if you upload the code to <code>production</code> the file <code>app.js</code> will be generated only once, if you update your code, remember to delete <code>app.js</code> to get a new one.
 			</div>
 		</div>
 		</p>
