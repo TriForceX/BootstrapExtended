@@ -17,15 +17,15 @@ RewriteRule ^(.*)$ /websitebase/wordpress/index.php/$1 [L]
 # IF !(SITE A DOMAIN or SITE A SUBDOMAIN) 
 RewriteCond %{HTTP_HOST} !^192\.168\.1\..*$ [NC]
 RewriteCond %{HTTP_HOST} !^localhost$ [NC]
-# make sure we haven't already rewritten this URI
+# Make sure we haven't already rewritten this URI
 RewriteCond %{REQUEST_URI} !/index.php
-# don't rewrite if the resource already exists
+# Don't rewrite if the resource already exists
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
-# rewrite
+# Rewrite - Note: if this doesnt work, replace ^(.*)$ with .
 RewriteBase /
 RewriteRule ^(.*)$ /index.php/$1 [L]
-# force www
+# Force non www - Note: if this doesnt work, replace ^(.*)$ with .
 RewriteCond %{HTTP_HOST} ^www\.(.*)$ [NC]
 RewriteRule ^(.*)$ http://%1/$1 [R=301,L]
 
