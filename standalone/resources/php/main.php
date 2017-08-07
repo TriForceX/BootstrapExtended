@@ -168,7 +168,7 @@ class php
 			$whitelist[] = $custom;
 		}
 		foreach ($whitelist as $item) {
-			if (stripos($_SERVER['REMOTE_ADDR'], $item) !== false) {
+			if (stripos($_SERVER['HTTP_HOST'], $item) !== false) {
 				$passed = true;
 			}
 		}

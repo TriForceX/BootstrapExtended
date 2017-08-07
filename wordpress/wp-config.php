@@ -15,21 +15,27 @@
  */
 
 // ** Ajustes de MySQL. Solicita estos datos a tu proveedor de alojamiento web. ** //
-if($_SERVER['HTTP_HOST'] == 'localhost' OR filter_var($_SERVER['HTTP_HOST'], FILTER_VALIDATE_IP)):
+if(stripos($_SERVER['HTTP_HOST'], '::1') !== false || 
+   stripos($_SERVER['HTTP_HOST'], '127.0.0.') !== false || 
+   stripos($_SERVER['HTTP_HOST'], '192.168.') !== false || 
+   stripos($_SERVER['HTTP_HOST'], 'localhost') !== false ):
 	 //Localhost
 	$dbname = 'websitebase';
 	$dbuser = 'root';
 	$dbpass = 'root';
+	$dbhost = 'localhost';
 elseif($_SERVER['HTTP_HOST'] == 'domain.com'):
 	//Develop
 	$dbname = 'websitebase';
 	$dbuser = 'root';
 	$dbpass = 'root';
+	$dbhost = 'localhost';
 else:
 	//Production
 	$dbname = 'websitebase';
 	$dbuser = 'root';
 	$dbpass = 'root';
+	$dbhost = 'localhost';
 endif;
 
 // ** Ajustes de MySQL. Solicita estos datos a tu proveedor de alojamiento web. ** //
@@ -43,7 +49,7 @@ define('DB_USER', $dbuser);
 define('DB_PASSWORD', $dbpass);
 
 /** Host de MySQL (es muy probable que no necesites cambiarlo) */
-define('DB_HOST', 'localhost');
+define('DB_HOST', $dbhost);
 
 /** Codificación de caracteres para la base de datos. */
 define('DB_CHARSET', 'utf8mb4');
