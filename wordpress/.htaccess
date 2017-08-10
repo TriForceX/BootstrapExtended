@@ -1,36 +1,55 @@
-# BEGIN WordPress 
+# BEGIN WordPress
+<IfModule mod_rewrite.c>
 
-<IfModule mod_rewrite.c> 
-RewriteEngine On 
-# If (SITE A DOMAIN or SITE A SUBDOMAIN) 
-RewriteCond %{HTTP_HOST} ^192\.168\.1\..*$ [NC,OR]
-RewriteCond %{HTTP_HOST} ^localhost$ [NC]
-# make sure we haven't already rewritten this URI
-RewriteCond %{REQUEST_URI} !/websitebase/wordpress/index.php
-# don't rewrite if the resource already exists
-RewriteCond %{REQUEST_FILENAME} !-f
-RewriteCond %{REQUEST_FILENAME} !-d
-# rewrite
-RewriteBase /websitebase/wordpress/ 
-RewriteRule ^(.*)$ /websitebase/wordpress/index.php/$1 [L]
+# ---------------------------------------------------------------------------
+# Enable mod rewrite engine
+# ---------------------------------------------------------------------------
 
-# IF !(SITE A DOMAIN or SITE A SUBDOMAIN) 
-RewriteCond %{HTTP_HOST} !^192\.168\.1\..*$ [NC]
-RewriteCond %{HTTP_HOST} !^localhost$ [NC]
-# Make sure we haven't already rewritten this URI
-RewriteCond %{REQUEST_URI} !/index.php
-# Don't rewrite if the resource already exists
-RewriteCond %{REQUEST_FILENAME} !-f
-RewriteCond %{REQUEST_FILENAME} !-d
-# Rewrite - Note: if this doesnt work, replace ^(.*)$ with .
+RewriteEngine On
+
+# ---------------------------------------------------------------------------
+# Force/Non-force WWW with HTTPS support
+# ---------------------------------------------------------------------------
+
+# [Non-Force WWW]
+RewriteCond %{HTTP_HOST} !^(1::|127\.0\.0\..*|192\.168\..*|localhost)$ [NC]
+RewriteCond %{HTTP_HOST} ^www\.
+RewriteCond %{HTTPS}s ^on(s)|off
+RewriteCond http%1://%{HTTP_HOST} ^(https?://)(www\.)?(.+)$
+RewriteRule ^ %1%3%{REQUEST_URI} [R=301,L]
+
+# [Force WWW]
+# RewriteCond %{HTTP_HOST} !^(1::|127\.0\.0\..*|192\.168\..*|localhost)$ [NC]
+# RewriteCond %{HTTP_HOST} !=""
+# RewriteCond %{HTTP_HOST} !^www\. [NC]
+# RewriteCond %{HTTPS}s ^on(s)|
+# RewriteRule ^ http%1://www.%{HTTP_HOST}%{REQUEST_URI} [R=301,L]
+
+# ---------------------------------------------------------------------------
+# Set base and prevents requests from being rewritten
+# ---------------------------------------------------------------------------
+
 RewriteBase /
-RewriteRule ^(.*)$ /index.php/$1 [L]
-# Force non www - Note: if this doesnt work, replace ^(.*)$ with .
-RewriteCond %{HTTP_HOST} ^www\.(.*)$ [NC]
-RewriteRule ^(.*)$ http://%1/$1 [R=301,L]
+RewriteRule ^index\.php$ - [L]
 
-# TEST redireccion (no permanente) RewriteRule ^(.*)$ http://www.example.com/ 
-# TEST redireccion (permanente) RedirectMatch 301 ^(.*)$ http://www.example.com/ 
-</IfModule> 
+# ---------------------------------------------------------------------------
+# Rewrite for localhost and production enviroments
+# ---------------------------------------------------------------------------
 
-# END WordPress 
+# [Localhost]
+RewriteCond %{HTTP_HOST} ^(1::|127\.0\.0\..*|192\.168\..*|localhost)$ [NC]
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule . /websitebase/wordpress/index.php [L]
+
+# [Production]
+RewriteCond %{HTTP_HOST} !^(1::|127\.0\.0\..*|192\.168\..*|localhost)$ [NC]
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule . /index.php [L]
+
+# ---------------------------------------------------------------------------
+
+</IfModule>
+
+# END WordPress
