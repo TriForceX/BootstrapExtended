@@ -225,6 +225,12 @@ td[align='left']{
 }
 
 /*LightGallery*/
+.lg-backdrop{
+	z-index: 1055;
+}
+.lg-outer{
+	z-index: 1060;
+}
 .lg-outer .lg-thumb {
 	margin-left: auto !important;
 	margin-right: auto !important;
