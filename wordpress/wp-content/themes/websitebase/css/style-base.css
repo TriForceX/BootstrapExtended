@@ -226,11 +226,12 @@ td[align='left']{
 
 /*LightGallery*/
 .lg-backdrop{
-	z-index: 1055;
+	z-index: 1055; /*real: 1040 - bootstrap modal: 1040*/
 }
 .lg-outer{
-	z-index: 1060;
+	z-index: 1060; /*real: 1050 - bootstrap modal: 1050*/
 }
+
 .lg-outer .lg-thumb {
 	margin-left: auto !important;
 	margin-right: auto !important;

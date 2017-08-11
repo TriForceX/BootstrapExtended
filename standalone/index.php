@@ -44,32 +44,6 @@
 					</ul>
 				</li>
 				<li class="dropdown">
-					<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Bootstrap <span class="caret"></span></a>
-					<ul class="dropdown-menu" role="menu">
-						<li><a href="http://getbootstrap.com/css/" target="_blank">CSS</a></li>
-						<li><a href="http://getbootstrap.com/components/" target="_blank">Components</a></li>
-						<li><a href="http://getbootstrap.com/javascript/" target="_blank">Javascript</a></li>
-						<li class="divider"></li>
-						<li class="dropdown-header"><a href="http://getbootstrap.com/examples/starter-template/" target="_blank">Starter template</a></li>
-						<li class="dropdown-header"><a href="http://getbootstrap.com/examples/grid/" target="_blank">Grids</a></li>
-						<li class="dropdown-header"><a href="http://getbootstrap.com/examples/jumbotron/" target="_blank">Jumbotron</a></li>
-						<li class="dropdown-header"><a href="http://getbootstrap.com/examples/jumbotron-narrow/" target="_blank">Narrow jumbotron</a></li>
-						<li class="dropdown-header"><a href="http://getbootstrap.com/examples/navbar/" target="_blank">Navbar</a></li>
-						<li class="dropdown-header"><a href="http://getbootstrap.com/examples/navbar-static-top/" target="_blank">Static top navbar</a></li>
-						<li class="dropdown-header"><a href="http://getbootstrap.com/examples/navbar-fixed-top/" target="_blank">Fixed navbar</a></li>
-						<li class="dropdown-header"><a href="http://getbootstrap.com/examples/cover/" target="_blank">Cover</a></li>
-						<li class="dropdown-header"><a href="http://getbootstrap.com/examples/carousel/" target="_blank">Carousel</a></li>
-						<li class="dropdown-header"><a href="http://getbootstrap.com/examples/blog/" target="_blank">Blog</a></li>
-						<li class="dropdown-header"><a href="http://getbootstrap.com/examples/dashboard/" target="_blank">Dashboard</a></li>
-						<li class="dropdown-header"><a href="http://getbootstrap.com/examples/signin/" target="_blank">Sign-in page</a></li>
-						<li class="dropdown-header"><a href="http://getbootstrap.com/examples/justified-nav/" target="_blank">Justified nav</a></li>
-						<li class="dropdown-header"><a href="http://getbootstrap.com/examples/sticky-footer/" target="_blank">Sticky footer</a></li>
-						<li class="dropdown-header"><a href="http://getbootstrap.com/examples/sticky-footer-navbar/" target="_blank">Sticky footer fixed navbar</a></li>
-						<li class="dropdown-header"><a href="http://getbootstrap.com/examples/non-responsive/" target="_blank">Non-responsive Bootstrap</a></li>
-						<li class="dropdown-header"><a href="http://getbootstrap.com/examples/offcanvas/" target="_blank">Off-canvas</a></li>
-					</ul>
-				</li>
-				<li class="dropdown">
 					<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Utilities <span class="caret"></span></a>
 					<ul class="dropdown-menu" role="menu">
 						<li><a href="https://www.w3schools.com" target="_blank">W3 Schools Tutorials</a></li>
@@ -78,6 +52,32 @@
 						<li><a href="https://api.jquery.com" target="_blank">jQuery API</a></li>
 						<li><a href="http://jqueryui.com" target="_blank">jQuery UI API</a></li>
 						<li><a href="http://php.net" target="_blank">PHP Documentation</a></li>
+					</ul>
+				</li>
+				<li class="dropdown">
+					<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Bootstrap <sup>3.3.7</sup> <span class="caret"></span></a>
+					<ul class="dropdown-menu" role="menu">
+						<li><a href="http://getbootstrap.com/docs/3.3/css/" target="_blank">CSS</a></li>
+						<li><a href="http://getbootstrap.com/docs/3.3/components/" target="_blank">Components</a></li>
+						<li><a href="http://getbootstrap.com/docs/3.3/javascript/" target="_blank">Javascript</a></li>
+						<li class="divider"></li>
+						<li class="dropdown-header"><a href="http://getbootstrap.com/docs/3.3/examples/starter-template/" target="_blank">Starter template</a></li>
+						<li class="dropdown-header"><a href="http://getbootstrap.com/docs/3.3/examples/grid/" target="_blank">Grids</a></li>
+						<li class="dropdown-header"><a href="http://getbootstrap.com/docs/3.3/examples/jumbotron/" target="_blank">Jumbotron</a></li>
+						<li class="dropdown-header"><a href="http://getbootstrap.com/docs/3.3/examples/jumbotron-narrow/" target="_blank">Narrow jumbotron</a></li>
+						<li class="dropdown-header"><a href="http://getbootstrap.com/docs/3.3/examples/navbar/" target="_blank">Navbar</a></li>
+						<li class="dropdown-header"><a href="http://getbootstrap.com/docs/3.3/examples/navbar-static-top/" target="_blank">Static top navbar</a></li>
+						<li class="dropdown-header"><a href="http://getbootstrap.com/docs/3.3/examples/navbar-fixed-top/" target="_blank">Fixed navbar</a></li>
+						<li class="dropdown-header"><a href="http://getbootstrap.com/docs/3.3/examples/cover/" target="_blank">Cover</a></li>
+						<li class="dropdown-header"><a href="http://getbootstrap.com/docs/3.3/examples/carousel/" target="_blank">Carousel</a></li>
+						<li class="dropdown-header"><a href="http://getbootstrap.com/docs/3.3/examples/blog/" target="_blank">Blog</a></li>
+						<li class="dropdown-header"><a href="http://getbootstrap.com/docs/3.3/examples/dashboard/" target="_blank">Dashboard</a></li>
+						<li class="dropdown-header"><a href="http://getbootstrap.com/docs/3.3/examples/signin/" target="_blank">Sign-in page</a></li>
+						<li class="dropdown-header"><a href="http://getbootstrap.com/docs/3.3/examples/justified-nav/" target="_blank">Justified nav</a></li>
+						<li class="dropdown-header"><a href="http://getbootstrap.com/docs/3.3/examples/sticky-footer/" target="_blank">Sticky footer</a></li>
+						<li class="dropdown-header"><a href="http://getbootstrap.com/docs/3.3/examples/sticky-footer-navbar/" target="_blank">Sticky footer fixed navbar</a></li>
+						<li class="dropdown-header"><a href="http://getbootstrap.com/docs/3.3/examples/non-responsive/" target="_blank">Non-responsive Bootstrap</a></li>
+						<li class="dropdown-header"><a href="http://getbootstrap.com/docs/3.3/examples/offcanvas/" target="_blank">Off-canvas</a></li>
 					</ul>
 				</li>
 			</ul>
@@ -377,23 +377,23 @@
 		<div class="bs-example">
 			<div class="row JSlightGallery" data-lg-item="auto" data-lg-title="false" data-lg-thumb="false" data-lg-gallery="false" data-lg-download="false">
 				<div class="col-md-3">
-					<a class="thumbnail" style="height:100px; overflow: hidden" title="My image 1" href="http://getbootstrap.com/examples/screenshots/theme.jpg">
-						<img src="http://getbootstrap.com/examples/screenshots/theme.jpg">
+					<a class="thumbnail" style="height:100px; overflow: hidden" title="My image 1" href="http://getbootstrap.com/docs/3.3/examples/screenshots/theme.jpg">
+						<img src="http://getbootstrap.com/docs/3.3/examples/screenshots/theme.jpg">
 					</a>
 				</div>
 				<div class="col-md-3">
-					<a class="thumbnail" style="height:100px; overflow: hidden" title="My image 2" href="http://getbootstrap.com/examples/screenshots/cover.jpg">
-						<img src="http://getbootstrap.com/examples/screenshots/cover.jpg">
+					<a class="thumbnail" style="height:100px; overflow: hidden" title="My image 2" href="http://getbootstrap.com/docs/3.3/examples/screenshots/cover.jpg">
+						<img src="http://getbootstrap.com/docs/3.3/examples/screenshots/cover.jpg">
 					</a>
 				</div>
 				<div class="col-md-3">
-					<a class="thumbnail" style="height:100px; overflow: hidden" title="My image 3" href="http://getbootstrap.com/examples/screenshots/justified-nav.jpg">
-						<img src="http://getbootstrap.com/examples/screenshots/justified-nav.jpg">
+					<a class="thumbnail" style="height:100px; overflow: hidden" title="My image 3" href="http://getbootstrap.com/docs/3.3/examples/screenshots/justified-nav.jpg">
+						<img src="http://getbootstrap.com/docs/3.3/examples/screenshots/justified-nav.jpg">
 					</a>
 				</div>
 				<div class="col-md-3">
-					<a class="thumbnail" style="height:100px; overflow: hidden" title="My image 3" href="http://getbootstrap.com/examples/screenshots/dashboard.jpg">
-						<img src="http://getbootstrap.com/examples/screenshots/dashboard.jpg">
+					<a class="thumbnail" style="height:100px; overflow: hidden" title="My image 3" href="http://getbootstrap.com/docs/3.3/examples/screenshots/dashboard.jpg">
+						<img src="http://getbootstrap.com/docs/3.3/examples/screenshots/dashboard.jpg">
 					</a>
 				</div>
 			</div>
@@ -411,44 +411,44 @@
 			<div class="row JSlightGallery" data-lg-item="auto" data-lg-title="Gallery Title" data-lg-thumb="true" data-lg-gallery="true" data-lg-download="true">
 				<?php if($_GET["page"]!="2"): ?>
 				<div class="col-md-3">
-					<a class="thumbnail" style="height:100px; overflow: hidden" title="My image 1" href="http://getbootstrap.com/examples/screenshots/theme.jpg">
-						<img src="http://getbootstrap.com/examples/screenshots/theme.jpg">
+					<a class="thumbnail" style="height:100px; overflow: hidden" title="My image 1" href="http://getbootstrap.com/docs/3.3/examples/screenshots/theme.jpg">
+						<img src="http://getbootstrap.com/docs/3.3/examples/screenshots/theme.jpg">
 					</a>
 				</div>
 				<div class="col-md-3">
-					<a class="thumbnail" style="height:100px; overflow: hidden" title="My image 2" href="http://getbootstrap.com/examples/screenshots/cover.jpg">
-						<img src="http://getbootstrap.com/examples/screenshots/cover.jpg">
+					<a class="thumbnail" style="height:100px; overflow: hidden" title="My image 2" href="http://getbootstrap.com/docs/3.3/examples/screenshots/cover.jpg">
+						<img src="http://getbootstrap.com/docs/3.3/examples/screenshots/cover.jpg">
 					</a>
 				</div>
 				<div class="col-md-3">
-					<a class="thumbnail" style="height:100px; overflow: hidden" title="My image 3" href="http://getbootstrap.com/examples/screenshots/justified-nav.jpg">
-						<img src="http://getbootstrap.com/examples/screenshots/justified-nav.jpg">
+					<a class="thumbnail" style="height:100px; overflow: hidden" title="My image 3" href="http://getbootstrap.com/docs/3.3/examples/screenshots/justified-nav.jpg">
+						<img src="http://getbootstrap.com/docs/3.3/examples/screenshots/justified-nav.jpg">
 					</a>
 				</div>
 				<div class="col-md-3">
-					<a class="thumbnail" style="height:100px; overflow: hidden" title="My image 4" href="http://getbootstrap.com/examples/screenshots/dashboard.jpg">
-						<img src="http://getbootstrap.com/examples/screenshots/dashboard.jpg">
+					<a class="thumbnail" style="height:100px; overflow: hidden" title="My image 4" href="http://getbootstrap.com/docs/3.3/examples/screenshots/dashboard.jpg">
+						<img src="http://getbootstrap.com/docs/3.3/examples/screenshots/dashboard.jpg">
 					</a>
 				</div>
 				<?php else: ?>
 				<div class="col-md-3">
-					<a class="thumbnail" style="height:100px; overflow: hidden" title="My image 5" href="http://getbootstrap.com/examples/screenshots/offcanvas.jpg">
-						<img src="http://getbootstrap.com/examples/screenshots/offcanvas.jpg">
+					<a class="thumbnail" style="height:100px; overflow: hidden" title="My image 5" href="http://getbootstrap.com/docs/3.3/examples/screenshots/offcanvas.jpg">
+						<img src="http://getbootstrap.com/docs/3.3/examples/screenshots/offcanvas.jpg">
 					</a>
 				</div>
 				<div class="col-md-3">
-					<a class="thumbnail" style="height:100px; overflow: hidden" title="My image 6" href="http://getbootstrap.com/examples/screenshots/sign-in.jpg">
-						<img src="http://getbootstrap.com/examples/screenshots/sign-in.jpg">
+					<a class="thumbnail" style="height:100px; overflow: hidden" title="My image 6" href="http://getbootstrap.com/docs/3.3/examples/screenshots/sign-in.jpg">
+						<img src="http://getbootstrap.com/docs/3.3/examples/screenshots/sign-in.jpg">
 					</a>
 				</div>
 				<div class="col-md-3">
-					<a class="thumbnail" style="height:100px; overflow: hidden" title="My image 7" href="http://getbootstrap.com/examples/screenshots/jumbotron-narrow.jpg">
-						<img src="http://getbootstrap.com/examples/screenshots/jumbotron-narrow.jpg">
+					<a class="thumbnail" style="height:100px; overflow: hidden" title="My image 7" href="http://getbootstrap.com/docs/3.3/examples/screenshots/jumbotron-narrow.jpg">
+						<img src="http://getbootstrap.com/docs/3.3/examples/screenshots/jumbotron-narrow.jpg">
 					</a>
 				</div>
 				<div class="col-md-3">
-					<a class="thumbnail" style="height:100px; overflow: hidden" title="My image 8" href="http://getbootstrap.com/examples/screenshots/blog.jpg">
-						<img src="http://getbootstrap.com/examples/screenshots/blog.jpg">
+					<a class="thumbnail" style="height:100px; overflow: hidden" title="My image 8" href="http://getbootstrap.com/docs/3.3/examples/screenshots/blog.jpg">
+						<img src="http://getbootstrap.com/docs/3.3/examples/screenshots/blog.jpg">
 					</a>
 				</div>
 				<?php endif; ?>
