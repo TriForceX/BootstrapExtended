@@ -619,6 +619,22 @@ td[align='left']{
 }
 /*Form group select*/
 
+/*Aditional hover effects*/
+.hvr-opacity{
+	transition: opacity 0.4s ease;
+	-moz-transition: opacity 0.4s ease;
+	-webkit-transition: opacity 0.4s ease;
+	-o-transition: opacity 0.4s ease;
+}
+.hvr-opacity:hover{
+	opacity:0.6;
+	transition: opacity 0.4s ease;
+	-moz-transition: opacity 0.4s ease;
+	-webkit-transition: opacity 0.4s ease;
+	-o-transition: opacity 0.4s ease;
+}
+/*FAditional hover effects/
+
 /* ================================================= RESOURCES ================================================= */
 
 /* ================================================= JAVASCRIPT ================================================= */
