@@ -642,24 +642,21 @@ add_filter('excerpt_more', 'custom_excerpt_more');
 remove_filter( 'the_content', 'easy_image_gallery_append_to_content' );
 
 //for dynamic-featured-image.3.5.2
-function dinamicFeatured($dynamicItem,$dynamicPost,$size = 'full')
+function dynamicFeatured($dynamicItem,$dynamicPost,$dynamicSize = 'full')
 {
 	if( class_exists('Dynamic_Featured_Image') ) {
-		 global $dynamic_featured_image;
-		 $featured_images = $dynamic_featured_image->get_featured_images( $dynamicPost );
-		 return $featured_images[$dynamicItem][$size];//[0]['full']
-		//You can now loop through the image to display them as required
+		global $dynamic_featured_image;
+		$featured_images = $dynamic_featured_image->get_featured_images( $dynamicPost );
+		$value = $dynamic_featured_image->get_image_url($featured_images[$dynamicItem]['attachment_id'], $dynamicSize);    
+		return $value;
 	 }
 }
-
-//
-function dinamicFeaturedData($dynamicField,$dynamicItem,$dynamicPost)
+function dynamicFeaturedData($dynamicItem,$dynamicField,$dynamicPost)
 {
 	if( class_exists('Dynamic_Featured_Image') ) {
 		 global $dynamic_featured_image;
 		 $featured_images = $dynamic_featured_image->get_featured_images( $dynamicPost );
-		 $dynamicID = $featured_images[$dynamicItem]['attachment_id'];//[0]['full']
-		//You can now loop through the image to display them as required
+		 $dynamicID = $featured_images[$dynamicItem]['attachment_id'];
 		 $value = get_post_meta($dynamicID, $dynamicField, true);
    		 return $value;
 	 }
