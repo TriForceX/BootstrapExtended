@@ -81,4 +81,7 @@
 .gallery_images .details.attachment{
 	width: auto;
 }
+#easy_image_gallery label[for="easy_image_gallery_link_images"]{
+	display: none;
+}
 /* ================================================= WORDPRESS PLUGINS ================================================= */
