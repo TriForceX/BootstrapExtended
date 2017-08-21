@@ -22,6 +22,7 @@ $(document).ready(function(){
 		noValidate: '#example-input-lastname',
 		hasConfirm: true,
 		customValidate: ['validateCustom', '#example-input-custom', 'Fill the custom field'],
+		resetSubmit: true,
 	});
 	
 	//Test URL

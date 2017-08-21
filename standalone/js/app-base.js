@@ -67,6 +67,7 @@ $.fn.validateForm = function(options) {
 		noValidate: '',
 		hasConfirm: false,
 		customValidate: null,
+		resetSubmit: true,
 	}, options);
 	
 	$(this).submit(function(event){ 
@@ -229,9 +230,11 @@ $.fn.validateForm = function(options) {
 				callback: function(result){
 					if(result){
 						formElement.unbind("submit").submit();
-						formElement.trigger('reset');
-						formElement.find("input[type='checkbox']").prop('checked', false).parent().removeClass('active');
-						formElement.find("input[type='radio']").prop('checked', false).parent().removeClass('active');
+						if(settings.resetSubmit){
+							formElement.trigger('reset');
+							formElement.find("input[type='checkbox']").prop('checked', false).parent().removeClass('active');
+							formElement.find("input[type='radio']").prop('checked', false).parent().removeClass('active');
+						}
 						formElement.validateForm({
 							noValidate: settings.noValidate,
 							hasConfirm: settings.hasConfirm,

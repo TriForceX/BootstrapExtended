@@ -1214,6 +1214,7 @@
 	noValidate: "#example-input-lastname",
 	hasConfirm: true,
 	customValidate: null,
+	resetSubmit: true,
 });</code></pre>
 		</figure>
 		
