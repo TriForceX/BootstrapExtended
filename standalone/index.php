@@ -1086,39 +1086,39 @@
 			<form class="JSformExample" method="post" action="javascript:showAlert('Form Success!','The form passed sucessfully! Thanks!');">
 				<div class="form-group">
 					<label for="example-input-username">User Name</label>
-					<input type="text" class="form-control" id="example-input-username" placeholder="Type your User Name">
+					<input type="text" class="form-control" id="example-input-username" name="example-input-username" placeholder="Type your User Name">
 				</div>
 				<div class="form-group">
 					<label for="example-input-firstname">First Name</label>
-					<input type="text" class="form-control" id="example-input-firstname" placeholder="Type your First Name">
+					<input type="text" class="form-control" id="example-input-firstname" name="example-input-firstname" placeholder="Type your First Name">
 				</div>
 				<div class="form-group">
 					<label for="example-input-lastname">Last Name</label>
-					<input type="text" class="form-control" id="example-input-lastname" placeholder="Type your Last Name (Optional)">
+					<input type="text" class="form-control" id="example-input-lastname" name="example-input-lastname" placeholder="Type your Last Name (Optional)">
 				</div>
 				<div class="form-group">
 					<label for="example-input-age">Age</label>
-					<input type="number" step="any" class="form-control" id="example-input-age" placeholder="Type your Age">
+					<input type="number" step="any" class="form-control" id="example-input-age" name="example-input-age" placeholder="Type your Age">
 				</div>
 				<div class="form-group">
 					<label for="example-input-custom">Custom Input</label>
-					<input type="text" class="form-control" id="example-input-custom" placeholder="Type the word 'Custom'">
+					<input type="text" class="form-control" id="example-input-custom" name="example-input-custom" placeholder="Type the word 'Custom'">
 				</div>
 				<div class="form-group">
 					<label for="example-input-email">E-Mail address</label>
-					<input type="email" class="form-control" id="example-input-email" placeholder="Type your E-Mail">
+					<input type="email" class="form-control" id="example-input-email" name="example-input-email" placeholder="Type your E-Mail">
 				</div>
 				<div class="form-group">
 					<label for="example-input-tel">Phone Number</label>
-					<input type="tel" class="form-control" id="example-input-tel" placeholder="Type your Phone Number">
+					<input type="tel" class="form-control" id="example-input-tel" name="example-input-tel" placeholder="Type your Phone Number">
 				</div>
 				<div class="form-group">
 					<label for="example-input-password">Password</label>
-					<input type="password" class="form-control" id="example-input-password" placeholder="Type your Password">
+					<input type="password" class="form-control" id="example-input-password" name="example-input-password" placeholder="Type your Password">
 				</div>
 				<div class="form-group form-group-icon">
 					<label for="example-select">Select Item</label>
-					<select class="form-control" id="example-select">
+					<select class="form-control" id="example-select" name="example-select">
 						<option>Select an item</option>
 						<option value="1">Item 1</option>
 						<option value="2">Item 2</option>
@@ -1130,7 +1130,7 @@
 				</div>
 				<div class="form-group">
 					<label for="example-textarea">Message</label>
-					<textarea class="form-control" rows="3" id="example-textarea" placeholder="Write a Message"></textarea>
+					<textarea class="form-control textarea-no-resize" rows="3" id="example-textarea" name="example-textarea" placeholder="Write a Message"></textarea>
 				</div>
 				<div class="form-group" data-group="checkbox">
 					<p class="no-margin-b">

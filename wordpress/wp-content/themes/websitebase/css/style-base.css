@@ -617,6 +617,11 @@ td[align='left']{
 	text-align: center;
 	pointer-events: none;
 }
+.form-group textarea.textarea-no-resize{
+	resize: none;
+	-webkit-appearance:none;
+    -moz-appearance: none;
+}
 /*Form group select*/
 
 /*Aditional hover effects*/
