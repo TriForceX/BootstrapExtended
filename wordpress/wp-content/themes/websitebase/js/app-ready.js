@@ -28,6 +28,9 @@ $(document).ready(function(){
 	//Test URL
 	console.log('URL: '+mainUrl);
 	
+	//Aditional exceptions for disabled links
+	checkDisabledExceptions.push('#example');
+	
 /* ================================================= DOCUMENT READY ================================================= */
 
 });

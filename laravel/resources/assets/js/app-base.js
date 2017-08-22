@@ -13,6 +13,7 @@ var isMozilla;
 var isNavSafari;
 var isNavOpera;
 var isNavEdge;
+var checkDisabledExceptions = ["#carousel"];
 
 //IE10 viewport hack for Surface/desktop Windows 8 bug
 (function () {
@@ -827,14 +828,19 @@ function stripTags(container, items){
 function checkDisabledLink(string){
 	
 	var textUrl = string;
-
+	var exceptions = checkDisabledExceptions;
+	
 	//Exception 1
+	for (var i = exceptions.length - 1; i >= 0; --i) {
+		if (textUrl.indexOf(exceptions[i]) != -1) {
+			// str contains arr[i]
+			return true;
+		}
+	}
+
+	//Exception 2
 	if(textUrl==="#"){
 		return false;
-	}
-	//Exception 2
-	else if(textUrl.indexOf('#carousel') >= 0){
-		return true;
 	}
 	else{
 		if(textUrl.indexOf(window.location.host) <= 0){
