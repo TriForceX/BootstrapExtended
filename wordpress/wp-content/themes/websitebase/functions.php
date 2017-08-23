@@ -476,7 +476,12 @@ function remove_attachment_field() {
 						  );
 	$fields_meta = array(
 							//"posicion_foto_field",
-							//"url_destino_field"
+							//"url_destino_field",
+							//ACF Plugin
+							 "hide_on_screen",
+							 "layout",
+							 "position",
+							 "rule",
 						);
 	
 	echo "<style>";
