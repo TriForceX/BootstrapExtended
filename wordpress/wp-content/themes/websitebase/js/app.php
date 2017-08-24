@@ -21,7 +21,7 @@ class php extends utilities\php { }
 
 function jsGenerate()
 {
-	$jsLang = isset($_GET['lang']) ? $_GET['lang'] : 0; //0 = English, 1 = Spanish
+	$jsLang = $_GET['lang']; //0 = English, 1 = Spanish
 	$jsMinify = true;
 	$jsBuffer = '';
 	$jsUrl = php::get_main_url('/js');
@@ -93,15 +93,40 @@ if(php::is_localhost())
 	{
 		unlink('app.js');
 	}
+	else if(file_exists('app-0.js'))
+	{
+		unlink('app-0.js');
+	}
+	else if(file_exists('app-1.js'))
+	{
+		unlink('app-1.js');
+	}
+	
 	echo jsGenerate();
 }
 else
 {
-	if(!file_exists('app.js'))
+	//Generate separate files
+	$jsSeparate = $_GET['separate']; 
+	$jsLanguage = $_GET['lang'];
+	
+	if($jsSeparate)
 	{
-		file_put_contents('app.js',jsGenerate());
+		if(!file_exists('app-'.$jsLanguage.'.js'))
+		{
+			file_put_contents('app-'.$jsLanguage.'.js',jsGenerate());
+		}
+		echo file_get_contents('app-'.$jsLanguage.'.js');
 	}
-	echo file_get_contents('app.js');
+	else
+	{
+		if(!file_exists('app.js'))
+		{
+			file_put_contents('app.js',jsGenerate());
+		}
+		echo file_get_contents('app.js');
+	}
+	
 }
 
 ?>
