@@ -75,13 +75,15 @@
     display:none;
 }
 
-/* ================================================= ADMIN ================================================= */
-
-/* ================================================= WORDPRESS PLUGINS ================================================= */
-.gallery_images .details.attachment{
-	width: auto;
-}
-#easy_image_gallery label[for="easy_image_gallery_link_images"]{
+/*Advanced Order: Fix hidden item*/
+#toplevel_page_customtaxorder{
 	display: none;
 }
-/* ================================================= WORDPRESS PLUGINS ================================================= */
+/*Advanced Order: Fix on mobile */
+.wp-list-table td.a_order_drag.column-a_order_drag.ui-sortable-handle{
+	display: table-cell !important;	
+}
+.wp-list-table td.a_order_drag.column-a_order_drag.ui-sortable-handle::before{
+	display: none !important;
+}
+/* ================================================= ADMIN ================================================= */

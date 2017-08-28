@@ -168,7 +168,26 @@ function customPaginator($offset, $limit, $totalnum, $customclass, $customLeft =
  * 
  */
 
-//St current page title
+//Show admin bar in front-end
+if(isset($_GET['admin'])){
+	show_admin_bar(true);
+}
+else{
+	show_admin_bar(false);
+}
+
+//Add custom CSS & JS to admin
+function add_custom_admin() 
+{
+	echo '<link href="'.get_bloginfo('template_url').'/css/style-admin.css" rel="stylesheet" />';
+	echo '<script src="'.get_bloginfo('template_url').'/js/app-admin.js"></script>';
+}
+//add_action(array('admin_footer','login_footer','wp_footer'), 'add_custom_admin');
+add_action('admin_footer', 'add_custom_admin');
+add_action('login_footer', 'add_custom_admin');
+add_action('wp_footer', 'add_custom_admin');
+
+//Set current page title
 function get_page_title($separator)
 {
     if(is_page()){
@@ -184,7 +203,7 @@ function get_page_title($separator)
         $result = ' '/*.$separator.' '.$text*/; //WIP
     }
     else if(is_404()){
-		$text = 'No Disponible';
+		$text = 'Not found';
         $result = ' '.$separator.' '.$text;
     }
 	else if(is_home()){
@@ -196,48 +215,162 @@ function get_page_title($separator)
     return $result;
 }
 
-//Hide menu items
-function hide_menu_items() 
-{ 
-	remove_menu_page( 'edit.php' ); //Posts
-	
-	if(!current_user_can('administrator')){
-		remove_menu_page( 'tools.php' ); //Tools
+//Get the slug inside post
+function get_the_slug($id = null)
+{
+  if(empty($id)){
+    global $post;
+    if(empty($post))
+    	return ''; // No global $post var available.
+    $id = $post->ID;
+  }
+
+  $slug = basename( get_permalink($id) );
+  return $slug;
+}
+
+//Get the category inside post
+function get_category_name($tipo)
+{
+	if($tipo=='category'){
+		return get_the_category()[0]->name;
+	}
+	else{//Custom tax
+		return get_the_terms( get_the_ID(), $tipo )[0]->name;
 	}
 }
-add_action( 'admin_menu', 'hide_menu_items' ); 
+
+//Get the category slug inside post
+function get_category_slug($tipo)
+{
+	if($tipo=='category'){
+		return get_the_category()[0]->slug;
+	}
+	else{//Custom tax
+		return get_the_terms( get_the_ID(), $tipo )[0]->slug;
+	}
+}
+
+//Get the category name by id
+function get_category_name_by_id($name, $tipo)
+{
+	$term = get_term_by('slug', $name,  $tipo); 
+    $name = $term->name; 
+	return $name;
+}
+
+//Get the id by name
+function get_id_by_name($post_name)
+{
+	global $wpdb;
+	$id = $wpdb->get_var("SELECT ID FROM $wpdb->posts WHERE post_name = '".$post_name."'");
+	return $id;
+}
+
+//Get taxonomy data
+function get_taxonomy_data($type)
+{
+	//term_id, name, slug, term_group, term_taxonomy_id, taxonomy, description, parent, count
+	$term = get_term_by('slug', get_query_var('term'), get_query_var('taxonomy'));
+	return $term->$type; 
+}
+
+//Image Featured
+function imageFeatured($featuredPost,$size = 'full')
+{
+    $src = wp_get_attachment_image_src( get_post_thumbnail_id($featuredPost), $size, false); //$post->ID
+    return $src[0];
+}
+
+//Image Featured
+function imageFeaturedSize($tipo,$featuredPost)
+{
+    $src = wp_get_attachment_image_src( get_post_thumbnail_id($featuredPost), 'full', false); //$post->ID
+	if($tipo=="width"){
+		$srcFinal = $src[1];
+	}else{
+		$srcFinal = $src[2];
+	}
+    return $srcFinal;
+}
+
+//Image Featured Data
+function imageFeaturedData($featuredField,$featuredPost)
+{
+    $value = get_post_meta(get_post_thumbnail_id($featuredPost), $featuredField, true);
+    return $value;
+}
+
+//Custom excerpt word limit
+function custom_excerpt_length($length)
+{
+	global $typenow;
+	$amount = 150;
+	
+//	if("page" == $typenow){
+//		$amount = 150;
+//	}
+	
+	return $amount;
+}
+add_filter('excerpt_length', 'custom_excerpt_length', 999);
+
+//Custom excerpt append word
+function custom_excerpt_more($more)
+{
+    return ' ...';
+}
+add_filter('excerpt_more', 'custom_excerpt_more');
+
+//Custom file size limit
+function filter_site_upload_size_limit($size)
+{
+	//Set the upload size limit to 10 MB for users lacking the 'manage_options' capability.
+    $size = 1024 * 1100; // 1 MB.
+    return $size;
+}
+add_filter( 'upload_size_limit', 'filter_site_upload_size_limit', 20 );
+
+/*
+ * Wordpress Aditional Stuff
+ * 
+ * You can add more stuff above such as more functions, 
+ * global variables, wordpress stuff, etc...
+ * 
+ */
+
+//Enable post thumbnails
+add_theme_support('post-thumbnails');
+
+//Enable page excerpt
+//add_post_type_support('page', 'excerpt');
+
+//Hide menu items
+//function hide_menu_items() 
+//{ 
+//	remove_menu_page( 'edit.php' ); //Posts
+//	
+//	if(!current_user_can('administrator')){
+//		remove_menu_page( 'tools.php' ); //Tools
+//	}
+//}
+//add_action( 'admin_menu', 'hide_menu_items' ); 
 
 //Custom menu items order
-function admin_menu_items_order()
-{
-    global $menu;
-    foreach ( $menu as $key => $value ) {
-        if ( 'upload.php' == $value[2] ) {
-            $oldkey = $key;
-        }
-    }
-    $newkey = 24; // use whatever index gets you the position you want
-    // if this key is in use you will write over a menu item!
-    $menu[$newkey]=$menu[$oldkey];
-    $menu[$oldkey]=array();
-}
-add_action('admin_menu', 'admin_menu_items_order');
-
-//Custom menu items order
-function admin_menu_items_order_2()
-{
-    global $menu;
-    foreach ( $menu as $key => $value ) {
-        if ( 'edit.php?post_type=page' == $value[2] ) {
-            $oldkey = $key;
-        }
-    }
-    $newkey = 23; // use whatever index gets you the position you want
-    // if this key is in use you will write over a menu item!
-    $menu[$newkey]=$menu[$oldkey];
-    $menu[$oldkey]=array();
-}
-add_action('admin_menu', 'admin_menu_items_order_2');
+//function admin_menu_items_order()
+//{
+//    global $menu;
+//    foreach ( $menu as $key => $value ) {
+//        if ( 'upload.php' == $value[2] ) {
+//            $oldkey = $key;
+//        }
+//    }
+//    $newkey = 24; // use whatever index gets you the position you want
+//    // if this key is in use you will write over a menu item!
+//    $menu[$newkey]=$menu[$oldkey];
+//    $menu[$oldkey]=array();
+//}
+//add_action('admin_menu', 'admin_menu_items_order');
 
 //Remove dashboard widgets
 function remove_dashboard_widgets() 
@@ -312,31 +445,6 @@ class new_general_setting
     }
 }
 
-//Show admin bar in front-end
-if(isset($_GET['admin'])){
-	show_admin_bar(true);
-}
-else{
-	show_admin_bar(false);
-}
-
-//Add custom CSS & JS to admin
-function add_custom_admin() 
-{
-	echo '<link href="'.get_bloginfo('template_url').'/css/style-admin.css" rel="stylesheet" />';
-	echo '<script src="'.get_bloginfo('template_url').'/js/app-admin.js"></script>';
-}
-//add_action(array('admin_footer','login_footer','wp_footer'), 'add_custom_admin');
-add_action('admin_footer', 'add_custom_admin');
-add_action('login_footer', 'add_custom_admin');
-add_action('wp_footer', 'add_custom_admin');
-
-//Enable page excerpt
-add_post_type_support('page', 'excerpt');
-
-//Enable post thumbnails
-add_theme_support('post-thumbnails');
-
 //Show future posts
 //function show_future_posts($data) 
 //{
@@ -348,235 +456,99 @@ add_theme_support('post-thumbnails');
 //}
 //add_filter( 'wp_insert_post_data', 'show_future_posts' );
 
-//Get the slug inside post
-function get_the_slug($id = null)
-{
-  if(empty($id)){
-    global $post;
-    if(empty($post))
-    	return ''; // No global $post var available.
-    $id = $post->ID;
-  }
+//Protect meta key (custom_fields)
+//function my_is_protected_meta_filter($protected, $meta_key)
+//{
+//	$fields_target = array(
+//							'custom-field',
+//						  );
+//	
+//    if(in_array($meta_key, $fields_target))
+//	{
+//		return true;
+//	}
+//	return $protected;
+//}
+//add_filter('is_protected_meta', 'my_is_protected_meta_filter', 10, 2);
 
-  $slug = basename( get_permalink($id) );
-  return $slug;
-}
-
-//Get the category inside post
-function get_category_name($tipo)
-{
-	if($tipo=='category'){
-		return get_the_category()[0]->name;
-	}
-	else{//Custom tax
-		return get_the_terms( get_the_ID(), $tipo )[0]->name;
-	}
-}
-
-//Get the category slug inside post
-function get_category_slug($tipo)
-{
-	if($tipo=='category'){
-		return get_the_category()[0]->slug;
-	}
-	else{//Custom tax
-		return get_the_terms( get_the_ID(), $tipo )[0]->slug;
-	}
-}
-
-//Get the category name by id
-function get_category_name_by_id($name, $tipo)
-{
-	$term = get_term_by('slug', $name,  $tipo); 
-    $name = $term->name; 
-    //$id = $term->term_id;
-	return $name;
-}
-
-//Get the id by name
-function get_id_by_name($post_name)
-{
-	global $wpdb;
-	$id = $wpdb->get_var("SELECT ID FROM $wpdb->posts WHERE post_name = '".$post_name."'");
-	return $id;
-}
-
-//Get taxonomy data
-function get_taxonomy_data($type)
-{
-	/*
-	term_id
-	name
-	slug
-	term_group
-	term_taxonomy_id
-	taxonomy
-	description
-	parent
-	count
-	*/
-	$term = get_term_by('slug', get_query_var('term'), get_query_var('taxonomy'));
-	return $term->$type; 
-}
-
-//Image Featured
-function imageFeatured($featuredPost,$size = 'full')
-{
-    $src = wp_get_attachment_image_src( get_post_thumbnail_id($featuredPost), $size, false); //$post->ID
-    //echo $src[0];
-    return $src[0];
-}
-
-//Image Featured
-function imageFeaturedSize($tipo,$featuredPost)
-{
-    $src = wp_get_attachment_image_src( get_post_thumbnail_id($featuredPost), 'full', false); //$post->ID
-    //echo $src[0];
-	if($tipo=="width"){
-		$srcFinal = $src[1];
-	}else{
-		$srcFinal = $src[2];
-	}
-    return $srcFinal;
-}
-
-//Image Featured Data
-function imageFeaturedData($featuredField,$featuredPost)
-{
-    $value = get_post_meta(get_post_thumbnail_id($featuredPost), $featuredField, true);
-    return $value;
-}
-
-//Proteger meta key (custom_fields)
-function my_is_protected_meta_filter($protected, $meta_key)
-{
-	$fields_target = array(
-							'dfiFeatured',
-						  );
-	
-    if(in_array($meta_key, $fields_target))
-	{
-		return true;
-	}
-	return $protected;
-}
-add_filter('is_protected_meta', 'my_is_protected_meta_filter', 10, 2);
-
-//Ocultar meta key (attachment)
-function remove_attachment_field() {
-	
-	$fields_normal = array(
-							//"title",
-						   	"caption",
-							"alt",
-							"description"
-						  );
-	$fields_custom = array(
-							"dfi-link-to-image"
-						  );
-	$fields_meta = array(
-							//"posicion_foto_field",
-							//"url_destino_field",
-							//ACF Plugin
-							 "hide_on_screen",
-							 "layout",
-							 "position",
-							 "rule",
-						);
-	
-	echo "<style>";
-	
-	foreach ( $fields_normal as $fields_normal_item )
-	{
-		echo ".attachment-details .setting[data-setting='".$fields_normal_item."'], .media-sidebar .setting[data-setting='".$fields_normal_item."'],";
-	}
-	
-	foreach ( $fields_custom as $fields_custom_item )
-	{
-		echo ".compat-item tr.compat-field-".$fields_custom_item.",";
-	}
-	
-	echo ".remove_attachment_field_finish";
-	echo "{ display: none !important; }";
-	echo "</style>";
-	
-	echo "<script>jQuery(document).ready(function(){ ";
-	
-	foreach ( $fields_meta as $fields_meta_item )
-	{
-		echo 'jQuery("#metakeyselect option[value=';
-		echo "'".$fields_meta_item."'";
-		echo ']").remove();';
-	}
-	
-	echo "});</script>";
-	
-}
-add_action('admin_head', 'remove_attachment_field');
+//Hide meta key (attachment) by css
+//function remove_attachment_field() {
+//	
+//	$fields_normal = array(
+//							//"title",
+//						   	//"caption",
+//							//"alt",
+//							//"description"
+//						  );
+//	$fields_custom = array(
+//							//"custom-field"
+//						  );
+//	$fields_meta = array(
+//							//"custom-field",
+//						);
+//	
+//	echo "<style>";
+//	
+//	foreach ( $fields_normal as $fields_normal_item )
+//	{
+//		echo ".attachment-details .setting[data-setting='".$fields_normal_item."'], .media-sidebar .setting[data-setting='".$fields_normal_item."'],";
+//	}
+//	
+//	foreach ( $fields_custom as $fields_custom_item )
+//	{
+//		echo ".compat-item tr.compat-field-".$fields_custom_item.",";
+//	}
+//	
+//	echo ".remove_attachment_field_finish";
+//	echo "{ display: none !important; }";
+//	echo "</style>";
+//	
+//	echo "<script>jQuery(document).ready(function(){ ";
+//	
+//	foreach ( $fields_meta as $fields_meta_item )
+//	{
+//		echo 'jQuery("#metakeyselect option[value=';
+//		echo "'".$fields_meta_item."'";
+//		echo ']").remove();';
+//	}
+//	
+//	echo "});</script>";
+//	
+//}
+//add_action('admin_head', 'remove_attachment_field');
 
 //Create new attachment fields
 //function be_attachment_field_credit($form_fields, $post)
 //{
-//	$form_fields['posicion-foto'] = array(
-//		'label' => 'Posición Foto',
+//	$form_fields['custom-field'] = array(
+//		'label' => 'Custom Field',
 //		'input' => 'text',
-//		'value' => get_post_meta( $post->ID, 'posicion_foto_field', true ),
-//		//'helps' => 'Alineación horizontal/vertical',
-//	);
-//
-//	$form_fields['url-destino'] = array(
-//		'label' => 'URL Destino',
-//		'input' => 'text',
-//		'value' => get_post_meta( $post->ID, 'url_destino_field', true ),
-//		//'helps' => 'Alineación horizontal/vertical',
+//		'value' => get_post_meta( $post->ID, 'custom_field_id', true ),
+//		//'helps' => 'Custom Field Help',
 //	);
 //
 //	return $form_fields;
 //}
 //add_filter( 'attachment_fields_to_edit', 'be_attachment_field_credit', 10, 2 );
-//
+
 //Set new attachment fields
 //function be_attachment_field_credit_save($post, $attachment)
 //{
 //	
-//	if(isset( $attachment['posicion-foto']))
-//		update_post_meta($post['ID'], 'posicion_foto_field', $attachment['posicion-foto']);
-//
-//	if(isset( $attachment['url-destino']))
-//		update_post_meta($post['ID'], 'url_destino_field', $attachment['url-destino']);
+//	if(isset( $attachment['custom-field']))
+//		update_post_meta($post['ID'], 'custom_field_id', $attachment['custom-field']);
 //
 //	return $post;
 //}
 //add_filter( 'attachment_fields_to_save', 'be_attachment_field_credit_save', 10, 2 );
 
 //Increase post meta limit
-function customfield_limit_increase($limit)
-{
-  $limit = 100;
-  return $limit;
-}
-add_filter('postmeta_form_limit', 'customfield_limit_increase');
-
-//Custom excerpt word limit
-function custom_excerpt_length($length)
-{
-	global $typenow;
-	$amount = 150;
-	
-//	if("page" == $typenow){
-//		$amount = 150;
-//	}
-	
-	return $amount;
-}
-add_filter('excerpt_length', 'custom_excerpt_length', 999);
-
-//Custom excerpt append word
-function custom_excerpt_more($more)
-{
-    return ' ...';
-}
-add_filter('excerpt_more', 'custom_excerpt_more');
+//function customfield_limit_increase($limit)
+//{
+//  $limit = 100;
+//  return $limit;
+//}
+//add_filter('postmeta_form_limit', 'customfield_limit_increase');
 
 //Register sidebar
 //function themename_widgets_init()
@@ -625,55 +597,6 @@ add_filter('excerpt_more', 'custom_excerpt_more');
 //		  </style>";
 //}
 //add_action('admin_footer', 'hide_items_css');
-
-//Custom file size limit
-//function filter_site_upload_size_limit($size)
-//{
-//	//Set the upload size limit to 10 MB for users lacking the 'manage_options' capability.
-//    $size = 1024 * 1100; // 1 MB.
-//    return $size;
-//}
-//add_filter( 'upload_size_limit', 'filter_site_upload_size_limit', 20 );
-
-/*
- * Wordpress Plugin Stuff
- * 
- * You can add plugin stuff related above such as functions, 
- * global variables, etc...
- * 
- */
-
-//Dont show auto-galleries on content (Easy Gallery plugin)
-remove_filter( 'the_content', 'easy_image_gallery_append_to_content' );
-
-//for dynamic-featured-image.3.5.2
-function dynamicFeatured($dynamicItem,$dynamicPost,$dynamicSize = 'full')
-{
-	if( class_exists('Dynamic_Featured_Image') ) {
-		global $dynamic_featured_image;
-		$featured_images = $dynamic_featured_image->get_featured_images( $dynamicPost );
-		$value = $dynamic_featured_image->get_image_url($featured_images[$dynamicItem]['attachment_id'], $dynamicSize);    
-		return $value;
-	 }
-}
-function dynamicFeaturedData($dynamicItem,$dynamicField,$dynamicPost)
-{
-	if( class_exists('Dynamic_Featured_Image') ) {
-		 global $dynamic_featured_image;
-		 $featured_images = $dynamic_featured_image->get_featured_images( $dynamicPost );
-		 $dynamicID = $featured_images[$dynamicItem]['attachment_id'];
-		 $value = get_post_meta($dynamicID, $dynamicField, true);
-   		 return $value;
-	 }
-}
-
-/*
- * Wordpress Aditional Stuff
- * 
- * You can add more stuff above such as more functions, 
- * global variables, wordpress stuff, etc...
- * 
- */
 
 //Custom admin post filter by taxonomy
 //function custom_taxonomy_filter_1()
@@ -869,4 +792,3 @@ function dynamicFeaturedData($dynamicItem,$dynamicField,$dynamicPost)
 //    }
 //}
 //add_filter( 'pre_get_posts', 'themename_custom_posts_per_page' );
-
