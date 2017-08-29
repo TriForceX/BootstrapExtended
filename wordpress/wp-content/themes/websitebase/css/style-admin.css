@@ -48,24 +48,20 @@
 	.media-sidebar .setting input[type="email"], 
 	.media-sidebar .setting input[type="url"], 
 	.media-sidebar .setting textarea {
-		width:62%;
+		width:100%;
 	}
 	.compat-item .field{
-		width:62%;
-	}
-}
-@media (max-width: 992px) { 
-	.compat-item .field{
-		width:99%;
+		width:100%;
 	}
 }
 .attachment-details .setting span, 
 .compat-item label span, 
 .media-sidebar .setting span{
-	display: inline-block;
-    float: none;
-    line-height: 12px;
-    padding-top: 4px;
+    float: left;
+	width: 100%;
+	min-width:100%;
+	max-width:100%;
+	text-align: left;
 }
 .media-modal label br.clear, 
 .media-modal legend br.clear{
@@ -86,4 +82,23 @@
 .wp-list-table td.a_order_drag.column-a_order_drag.ui-sortable-handle::before{
 	display: none !important;
 }
+
+/*ACF Attachement fields*/
+.media-modal .compat-attachment-fields > tbody > .acf-field > .acf-input{
+	width:100%;
+}
+.media-modal .compat-attachment-fields > tbody > .acf-field > .acf-label{
+	min-width:100%;
+	max-width:100%;
+	text-align: left;
+}
+
+@media (max-width: 640px) { 
+	.acf-expanded .media-sidebar{
+		bottom:inherit;
+		overflow: auto;
+		height: 100%;
+	}
+}
+
 /* ================================================= ADMIN ================================================= */
