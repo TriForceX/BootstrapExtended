@@ -301,36 +301,6 @@ function imageFeaturedData($featuredField,$featuredPost)
     return $value;
 }
 
-//Custom excerpt word limit
-function custom_excerpt_length($length)
-{
-	global $typenow;
-	$amount = 150;
-	
-//	if("page" == $typenow){
-//		$amount = 150;
-//	}
-	
-	return $amount;
-}
-add_filter('excerpt_length', 'custom_excerpt_length', 999);
-
-//Custom excerpt append word
-function custom_excerpt_more($more)
-{
-    return ' ...';
-}
-add_filter('excerpt_more', 'custom_excerpt_more');
-
-//Custom file size limit
-function filter_site_upload_size_limit($size)
-{
-	//Set the upload size limit to 10 MB for users lacking the 'manage_options' capability.
-    $size = 1024 * 1100; // 1 MB.
-    return $size;
-}
-add_filter( 'upload_size_limit', 'filter_site_upload_size_limit', 20 );
-
 /*
  * Wordpress Aditional Stuff
  * 
@@ -344,6 +314,36 @@ add_theme_support('post-thumbnails');
 
 //Enable page excerpt
 //add_post_type_support('page', 'excerpt');
+
+//Custom excerpt word limit
+//function custom_excerpt_length($length)
+//{
+//	global $typenow;
+//	$amount = 150;
+//	
+////	if("page" == $typenow){
+////		$amount = 150;
+////	}
+//	
+//	return $amount;
+//}
+//add_filter('excerpt_length', 'custom_excerpt_length', 999);
+
+//Custom excerpt append word
+//function custom_excerpt_more($more)
+//{
+//    return ' ...';
+//}
+//add_filter('excerpt_more', 'custom_excerpt_more');
+
+//Custom file size limit
+//function filter_site_upload_size_limit($size)
+//{
+//	//Set the upload size limit to 10 MB for users lacking the 'manage_options' capability.
+//    $size = 1024 * 1100; // 1 MB.
+//    return $size;
+//}
+//add_filter( 'upload_size_limit', 'filter_site_upload_size_limit', 20 );
 
 //Hide menu items
 //function hide_menu_items() 
