@@ -38,7 +38,8 @@
 	.attachment-details .setting input[type="search"], 
 	.attachment-details .setting input[type="email"], 
 	.attachment-details .setting input[type="url"], 
-	.attachment-details .setting textarea, 
+	.attachment-details .setting textarea,
+	.attachment-details .setting select,
 	.media-sidebar .setting .value, 
 	.media-sidebar .setting input[type="tel"], 
 	.media-sidebar .setting input[type="text"], 
@@ -47,11 +48,16 @@
 	.media-sidebar .setting input[type="search"], 
 	.media-sidebar .setting input[type="email"], 
 	.media-sidebar .setting input[type="url"], 
-	.media-sidebar .setting textarea {
+	.media-sidebar .setting textarea, 
+	.media-sidebar .setting select {
 		width:100%;
+		min-width:100%;
+		max-width:100%;
 	}
 	.compat-item .field{
 		width:100%;
+		min-width:100%;
+		max-width:100%;
 	}
 }
 .attachment-details .setting span, 
