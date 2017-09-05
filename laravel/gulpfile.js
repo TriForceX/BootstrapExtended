@@ -21,6 +21,13 @@ var replacementsCSS = [
 	['@screen-full-hd' 		, '1920px'], 
 	//Global
 	['@global-url' , jsUrl],
+	//Custom
+	['@color-azul' 			, '#385086'], 
+	['@color-dorado' 		, '#ca9e64'], 
+	['@color-rojo' 			, '#d70000'], 
+	['@color-borde' 		, '#a0a0a0'], 
+	['@color-negro' 		, '#333333'], 
+	['@color-gris' 			, '#666666'], 
 ];
 var replacementsJS = [
 	//Screen
@@ -58,20 +65,54 @@ var replacementsJS = [
 	//Lightgallery
 	['@lgtitle-prev' 			, jsLang == 1 ? 'Cargando página anterior ...' : 'Loading previous page ...'],
 	['@lgtitle-next' 			, jsLang == 1 ? 'Cargando siguiente página ...' : 'Loading next page ...'],
+	//Custom
+	['@color-azul' 			, '#385086'], 
+	['@color-dorado' 		, '#ca9e64'], 
+	['@color-rojo' 			, '#d70000'], 
+	['@color-borde' 		, '#a0a0a0'], 
+	['@color-negro' 		, '#333333'], 
+	['@color-gris' 			, '#666666'], 
 ];
 
-//var gulpBackCSSFiles = [];
+var gulpBackCSSFiles = [
+						'datatables.net-bs/css/dataTables.bootstrap.css',
+						'eonasdan-bootstrap-datetimepicker/build/css/bootstrap-datetimepicker.css',
+						'cropper/dist/cropper.css',
+						'photoswipe/dist/photoswipe.css',
+						'bower_components/photoswipe/dist/default-skin/default-skin.css',
+						'dropzone/dist/dropzone.css',
+						'fullcalendar/dist/fullcalendar.css',
+						'clockpicker/dist/bootstrap-clockpicker.css',
+						'bootstrap-datepicker/dist/css/bootstrap-datepicker.css'
+						];
 
-//var gulpBackJSFiles = [];
+var gulpBackJSFiles = [
+						'jquery/dist/jquery.js',
+						'bootstrap/dist/js/bootstrap.js',
+						'datatables.net/js/jquery.dataTables.js',
+						'datatables.net-bs/js/dataTables.bootstrap.js',
+						'moment/min/moment.min.js',
+						'moment/locale/es.js',
+						'eonasdan-bootstrap-datetimepicker/build/js/bootstrap-datetimepicker.min.js',
+						'cropper/dist/cropper.js',
+						'photoswipe/dist/photoswipe.js',
+						'bower_components/photoswipe/dist/photoswipe-ui-default.js',
+						'dropzone/dist/dropzone.js',
+						'fullcalendar/dist/fullcalendar.js',
+						'clockpicker/dist/bootstrap-clockpicker.js',
+						'bootstrap-datepicker/dist/js/bootstrap-datepicker.js'
+						];
 
 var gulpFrontCSSFiles = [
 						'resources/assets/css/style-base.css',
 						'resources/assets/css/style-fonts.css',
+						'resources/assets/css/style-theme-old.css',
 						'resources/assets/css/style-theme.css'
 						];
 					
 var gulpFrontJSFiles = [
 						'resources/assets/js/app-base.js',
+						'resources/assets/js/app-base-old.js',
 						'resources/assets/js/app-ready.js',
 						'resources/assets/js/app-load.js',
 						'resources/assets/js/app-responsive.js'
@@ -80,6 +121,8 @@ var gulpFrontJSFiles = [
 /*
  * Elixir Asset Management for Backend
  *
+ * Install using: npm install --no-optional bower
+ * Install using: bower install
  * Install using: npm install --save-dev laravel-elixir
  * Install using: npm install --save-dev laravel-elixir-replace
  *
@@ -89,19 +132,22 @@ var elixir = require('laravel-elixir');
 
 require('laravel-elixir-replace');
 
-//elixir(function(mix){
-//	
-//	console.log('[ -------- CSS & JS Compile (Backend) -------- ]');
-//	
-//	mix.less('app.less')
-//		.coffee('app.coffee')
-//		.scripts(gulpBackJSFiles, 'public/js/vendor.js')
-//		.styles(gulpBackCSSFiles, 'public/css/vendor.css');
-//});
+elixir(function(mix){
+	
+	console.log('[ -------- Compilado CSS y JS (Backend) -------- ]');
+	
+	mix.less('app.less')
+		.coffee('app.coffee')
+		.scripts(gulpBackJSFiles, 'public/js/vendor.js', 'bower_components')
+		.styles(gulpBackCSSFiles, 'public/css/vendor.css', 'bower_components')
+		.copy('bower_components/bootstrap/dist/fonts/', 'public/fonts/')
+		.copy('bower_components/photoswipe/dist/default-skin/', 'public/css/gallery/')
+		.copy('bower_components/tinymce/', 'public/js/tinymce/');
+});
 
 elixir(function(mix){
 	
-	console.log('[ -------- CSS & JS Compile (Frontend) -------- ]');
+	console.log('[ -------- Compilado CSS y JS (Frontend) -------- ]');
 	
 	mix.styles(gulpFrontCSSFiles, 'public/assets/css')
 		.scripts(gulpFrontJSFiles, 'public/assets/js')
@@ -125,7 +171,7 @@ var concat = require('gulp-concat');
 
 var taskCSS = function(){
 
-	console.log('[ -------- CSS Detected -------- ]');
+	console.log('[ -------- Detección en CSS -------- ]');
 	
 	return gulp.src(gulpFrontCSSFiles) 
 			   .pipe(replaceBatch(replacementsCSS))
@@ -135,7 +181,7 @@ var taskCSS = function(){
 
 var taskJS = function(){
 
-	console.log('[ -------- JS Detected -------- ]');
+	console.log('[ -------- Detección en JS -------- ]');
 	
 	return gulp.src(gulpFrontJSFiles) 
 			   .pipe(replaceBatch(replacementsJS))
@@ -145,7 +191,7 @@ var taskJS = function(){
 
 gulp.task('watch', function(){
 	
-  console.log('[ -------- Starting Watch CSS & JS -------- ]');
+  console.log('[ -------- Comienzo Watch CSS y JS -------- ]');
 
   gulp.watch(gulpFrontCSSFiles, taskCSS); // Watch .css files
   gulp.watch(gulpFrontJSFiles, taskJS); // Watch .js files
