@@ -80,6 +80,8 @@ var gulpFrontJSFiles = [
 /*
  * Elixir Asset Management for Backend
  *
+ * Install using: npm install --no-optional bower
+ * Install using: bower install
  * Install using: npm install --save-dev laravel-elixir
  * Install using: npm install --save-dev laravel-elixir-replace
  *
