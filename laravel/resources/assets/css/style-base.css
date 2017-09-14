@@ -848,6 +848,67 @@ input.JSvalidateErrorCheck + label::before {
 }
 /*JS Map Launch*/
 
+/*JS Paginator*/
+/*.JSpaginator{
+	width:100%;
+	height:50px;
+	float:left;
+	display:table;
+}
+.JSpaginator .JSpageItems{
+	display:table-cell;
+	vertical-align:middle;
+	text-align:center;
+}
+.JSpaginator .JSpageItems .JSpageGroup{
+	display: inline;
+}
+.JSpaginator .JSpageItems .JSpageGroup.JSpageGroupNext:before,
+.JSpaginator .JSpageItems .JSpageGroup.JSpageGroupPrev:before{
+	content: '•••';
+	vertical-align: bottom;
+}
+.JSpaginator .JSpageItems a,
+.JSpaginator .JSpageItems a:hover,
+.JSpaginator .JSpageItems a:visited{
+	display:none;
+	color:gray;
+	font-size:24px;
+	font-family: 'OpenSans';
+	vertical-align:middle;
+	padding:5px 8px;
+	cursor:pointer;
+}
+.JSpaginator .JSpageItems .JSpageGroup.JSpageActive a,
+.JSpaginator .JSpageItems .JSpageGroup.JSpageActive a:hover,
+.JSpaginator .JSpageItems .JSpageGroup.JSpageActive a:visited{
+	display: inline-block;
+}
+.JSpaginator .JSpageItems a.JSpagePrev,
+.JSpaginator .JSpageItems a.JSpageNext{
+	display: inline-block;
+}
+.JSpaginator .JSpageItems a:hover,
+.JSpaginator .JSpageItems a.JSpageActive{
+	color: red;
+	font-family: 'OpenSans-Semibold';
+}
+.JSpaginator .JSpageItems a .glyphicon{
+	font-size: 15px;
+	vertical-align: middle;
+	margin-top: -7px;
+}
+@media (max-width: @screen-phone) 
+{
+	.JSpaginator .JSpageItems a,
+	.JSpaginator .JSpageItems a:hover,
+	.JSpaginator .JSpageItems a:visited,
+	.JSpaginator .JSpageItems span{
+		font-size:20px;
+	}
+}*/
+/*JS Paginator*/
+
 /* ================================================= JAVASCRIPT ================================================= */
 
 /* ================================================= CUSTOM ================================================= */

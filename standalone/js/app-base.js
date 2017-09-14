@@ -935,6 +935,33 @@ function mapLaunch(element){
 	
 	showAlert(mapTitle, mapContent, 'small');
 }
+
+//Paginator group
+function paginatorGroup(limit,limitMobile,exceptions)
+{
+	if(typeof exceptions === undefined || exceptions === null){
+		exceptions = '';
+	}
+	
+	$(".JSpaginator .JSpageItems").each(function(){ 
+
+		var items = $(this).find("a").not(exceptions);
+		var amount = ((isMobile) ? limitMobile : limit);
+		for(var i = 0; i < items.length; i+=amount)
+		{
+			if(items.slice(i, i+amount).hasClass("JSpageActive")){
+				items.slice(i, i+amount).wrapAll("<div class='JSpageGroup JSpageActive'></div>");
+			}
+			else{
+				items.slice(i, i+amount).wrapAll("<div class='JSpageGroup'></div>");
+			}
+		}
+
+		$(".JSpaginador .JSpageItems .JSpageGroup.JSpageActive").prev().addClass("JSpageGroupPrev");
+		$(".JSpaginador .JSpageItems .JSpageGroup.JSpageActive").next().addClass("JSpageGroupNext");
+
+	});
+}
 /* ================================================= FUNCTIONS ================================================= */
 
 $(document).ready(function(){

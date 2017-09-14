@@ -110,11 +110,10 @@ function getVideoID($url)
 //Custom paginator for galleries
 function customPaginator($offset, $limit, $totalnum, $customclass, $customLeft = '&laquo;', $customRight = '&laquo;'){
 
-	if ($totalnum > $limit) {
-		// calculate number of pages needing links 
+	if ($totalnum > $limit)
+	{
 		$pages = intval($totalnum / $limit);
 
-		// $pages now contains int of pages needed unless there is a remainder from division 
 		if ($totalnum % $limit)
 		$pages++;
 
@@ -123,38 +122,38 @@ function customPaginator($offset, $limit, $totalnum, $customclass, $customLeft =
 		}else{
 			$lastnum = ($offset + $limit);
 		}
-		if (isset($_GET['pag'])) { 
-			$paginaActual = $_GET['pag'];
+		if (isset($_GET['pag'])){ 
+			$pageCurrent = $_GET['pag'];
 		}
 		else{
-			$paginaActual = 1;
+			$pageCurrent = 1;
 		}
-		$paginaAnterior = $paginaActual-1; $paginaOffsetAnt = ($paginaActual*$limit)-$limit*2;
-		$paginaSiguiente = $paginaActual+1; $paginaOffsetSig = $paginaActual*$limit;
-		if($paginaAnterior < $paginaActual){
-			$paginaAnterior = 1;
-			$paginaOffsetAnt = 0;
+		$pagePrev = $pageCurrent-1; $pageNumPrev = ($pageCurrent*$limit)-$limit*2;
+		$pageNext = $pageCurrent+1; $pageNumNext = $pageCurrent*$limit;
+		if($pagePrev <= 1){
+			$pagePrev = 1;
+			$pageNumPrev = 0;
 		} 
-		if($paginaSiguiente > $pages ){
-			$paginaSiguiente = $_GET['pag'];
-			$paginaOffsetSig = $_GET['offset'];
+		if($pageNext > $pages){
+			$pageNext = $_GET['pag'];
+			$pageNumNext = $_GET['num'];
 		}
-		echo '<div class="paginador '.$customclass.'"><div class="items">';
-		echo '<a class="prev" href="'.get_bloginfo('url').'/'.get_query_var('post_type').'/'.get_the_slug($post->ID).'/?offset='.$paginaOffsetAnt.'&pag='.$paginaAnterior.'">'.$customLeft.'</a>';	
+		echo '<div class="JSpaginator '.$customclass.'"><div class="JSpageItems">';
+		echo '<a class="JSpagePrev" href="'.get_bloginfo('url').'/'.get_query_var('post_type').'/'.get_the_slug($post->ID).'/?pag='.$pagePrev.'&num='.$pageNumPrev.'">'.$customLeft.'</a>';	
 			for ($i = 1; $i <= $pages; $i++) {  // loop thru 
 				$newoffset = $limit * ($i - 1);
 
 				if ($newoffset != $offset) 
 				{
-					echo '<a href="'.get_bloginfo('url').'/'.get_query_var('post_type').'/'.get_the_slug($post->ID).'/?offset='.$newoffset.'&pag='.$i.'">'.$i.'</a>';
+					echo '<a href="'.get_bloginfo('url').'/'.get_query_var('post_type').'/'.get_the_slug($post->ID).'/?pag='.$i.'&num='.$newoffset.'">'.$i.'</a>';
 				} 
 				else
 				{
-					echo '<a href="'.get_bloginfo('url').'/'.get_query_var('post_type').'/'.get_the_slug($post->ID).'/?offset='.$newoffset.'&pag='.$i.'" class="active">'.$i.'</a>';
+					echo '<a href="'.get_bloginfo('url').'/'.get_query_var('post_type').'/'.get_the_slug($post->ID).'/?pag='.$i.'&num='.$newoffset.'" class="JSpageActive">'.$i.'</a>';
 				}
 
 			}
-		echo '<a class="next" href="'.get_bloginfo('url').'/'.get_query_var('post_type').'/'.get_the_slug($post->ID).'/?offset='.$paginaOffsetSig.'&pag='.$paginaSiguiente.'">'.$customRight.'</a>';	
+		echo '<a class="JSpageNext" href="'.get_bloginfo('url').'/'.get_query_var('post_type').'/'.get_the_slug($post->ID).'/?pag='.$pageNext.'&num='.$pageNumNext.'">'.$customRight.'</a>';
 		echo '</div></div>';
 	}
 	return;
