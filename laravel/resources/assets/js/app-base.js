@@ -461,19 +461,19 @@ function imageFill(container){
 	bgData = $(container).data('img-fill').split(',');
 	
 	//Check vertical align
-	if(bgData[0] === undefined || bgData[0] === null)
+	if(bgData[0] === undefined || bgData[0] === null || bgData[0] == '')
 	{
 		bgData[0] = 'center';
 	}
 	
 	//Check horizontal align
-	if(bgData[1] === undefined || bgData[1] === null)
+	if(bgData[1] === undefined || bgData[1] === null || bgData[1] == '')
 	{
 		bgData[1] = 'center';
 	}
 	
 	//Check fill
-	if(bgData[2] === undefined || bgData[2] === null)
+	if(bgData[2] === undefined || bgData[2] === null || bgData[2] == '')
 	{
 		bgData[2] = 'true';
 	}
