@@ -108,7 +108,11 @@ function getVideoID($url)
 }
 
 //Custom paginator for galleries
-function customPaginator($offset, $limit, $totalnum, $customclass, $customLeft = '&laquo;', $customRight = '&laquo;'){
+function customPaginator($offset, $limit, $totalnum, $customclass, $customLeft = '&laquo;', $customRight = '&laquo;', $append = false){
+	
+	if($append == false){
+		$append = get_bloginfo('url').'/'.get_query_var('post_type').'/'.get_the_slug($post->ID).'/?';
+	}
 
 	if ($totalnum > $limit)
 	{
@@ -139,21 +143,21 @@ function customPaginator($offset, $limit, $totalnum, $customclass, $customLeft =
 			$pageNumNext = $_GET['num'];
 		}
 		echo '<div class="JSpaginator '.$customclass.'"><div class="JSpageItems">';
-		echo '<a class="JSpagePrev" href="'.get_bloginfo('url').'/'.get_query_var('post_type').'/'.get_the_slug($post->ID).'/?pag='.$pagePrev.'&num='.$pageNumPrev.'">'.$customLeft.'</a>';	
+		echo '<a class="JSpagePrev" href="'.$append.'pag='.$pagePrev.'&num='.$pageNumPrev.'">'.$customLeft.'</a>';	
 			for ($i = 1; $i <= $pages; $i++) {  // loop thru 
 				$newoffset = $limit * ($i - 1);
 
 				if ($newoffset != $offset) 
 				{
-					echo '<a href="'.get_bloginfo('url').'/'.get_query_var('post_type').'/'.get_the_slug($post->ID).'/?pag='.$i.'&num='.$newoffset.'">'.$i.'</a>';
+					echo '<a href="'.$append.'pag='.$i.'&num='.$newoffset.'">'.$i.'</a>';
 				} 
 				else
 				{
-					echo '<a href="'.get_bloginfo('url').'/'.get_query_var('post_type').'/'.get_the_slug($post->ID).'/?pag='.$i.'&num='.$newoffset.'" class="JSpageActive">'.$i.'</a>';
+					echo '<a href="'.$append.'pag='.$i.'&num='.$newoffset.'" class="JSpageActive">'.$i.'</a>';
 				}
 
 			}
-		echo '<a class="JSpageNext" href="'.get_bloginfo('url').'/'.get_query_var('post_type').'/'.get_the_slug($post->ID).'/?pag='.$pageNext.'&num='.$pageNumNext.'">'.$customRight.'</a>';
+		echo '<a class="JSpageNext" href="'.$append.'pag='.$pageNext.'&num='.$pageNumNext.'">'.$customRight.'</a>';
 		echo '</div></div>';
 	}
 	return;
