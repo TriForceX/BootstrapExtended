@@ -607,7 +607,7 @@ td[align='left']{
 }
 .form-group-icon .glyphicon{
 	position: relative;
-	top: -34px;
+	margin-top: -34px;
 	float: right;
 	z-index: 2;
 	display: block;

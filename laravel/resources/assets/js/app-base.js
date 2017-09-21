@@ -133,7 +133,7 @@ $.fn.validateForm = function(options) {
 			}
 		});
 		
-		//Input tags
+		//Input validation
 		$(this).find('input').not(settings.noValidate).each(function(){
 			switch($(this).attr("type")){
 				case 'text':
@@ -191,25 +191,26 @@ $.fn.validateForm = function(options) {
 					}
 					break;
 				default:
-					//Custom validation
-					if(settings.customValidate !== null){
-						var CVFunction = settings.customValidate[0];
-						var CVInput = settings.customValidate[1];
-						var CVMessage = settings.customValidate[2];
-
-						if (!window[CVFunction]($(CVInput).val())) { 
-							$(CVInput).addClass("JSvalidateError");
-							formError = CVMessage;
-						}
-						else{
-							$(this).removeClass("JSvalidateError");
-						}
-					}
-					else{
-						$(this).removeClass("JSvalidateError");
-					}
+					$(this).removeClass("JSvalidateError");
 			}
 		});
+		
+		//Custom validation
+		if(settings.customValidate !== null){
+			var CVFunction = settings.customValidate[0];
+			var CVInput = settings.customValidate[1];
+			var CVMessage = settings.customValidate[2];
+			
+			$(CVInput).each(function(){
+				if (!window[CVFunction]($(this).val())) { 
+					$(this).addClass("JSvalidateError");
+					formError = CVMessage;
+				}
+				else{
+					$(this).removeClass("JSvalidateError");
+				}
+			});
+		}
 		
 		//Send error
 		if(formError !== false){
