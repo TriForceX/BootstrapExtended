@@ -190,6 +190,13 @@ add_action('admin_footer', 'add_custom_admin');
 add_action('login_footer', 'add_custom_admin');
 add_action('wp_footer', 'add_custom_admin');
 
+//Custom login logo URL
+function login_logo_url() {
+    return home_url();
+}
+add_filter( 'login_headerurl', 'login_logo_url' );
+add_filter( 'login_headertitle', 'login_logo_url' );
+
 //Set current page title
 function get_page_title($separator)
 {
