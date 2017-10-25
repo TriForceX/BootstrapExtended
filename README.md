@@ -6,6 +6,7 @@ Website base structure with small reusable parts of source code or functions for
 * Wordpress Support (Ver 4.7.5)
 * Laravel Support (Ver 5.2)
 * Bootstrap 3 (Ver 3.3.7)
+* Font Awesome (Ver 4.7.0)
 * Data Tables
 * Light Gallery
 * Holder JS
