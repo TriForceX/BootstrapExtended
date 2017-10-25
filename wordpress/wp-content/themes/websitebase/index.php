@@ -41,6 +41,7 @@
 						<li><a href="http://jqueryrotate.com/" target="_blank">jQuery Rotate</a></li>
 						<li><a href="https://github.com/PHPMailer/PHPMailer/" target="_blank">PHP Mailer</a></li>
 						<li><a href="https://www.npmjs.com/package/package" target="_blank">NPM Package</a></li>
+						<li><a href="http://fontawesome.io/" target="_blank">Font Awesome</a></li>
 					</ul>
 				</li>
 				<li class="dropdown">

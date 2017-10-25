@@ -46,6 +46,8 @@
 	<link href="<?php echo php::get_main_url(); ?>/resources/lightgallery/css/lg-fb-comment-box.css" rel="stylesheet">
     <!-- Hover CSS -->
 	<link href="<?php echo php::get_main_url(); ?>/resources/hover/css/hover.min.css" rel="stylesheet">
+	<!-- Font Awesome -->
+	<link href="<?php echo php::get_main_url(); ?>/resources/font-awesome/css/font-awesome.min.css" rel="stylesheet">
 	<!-- Main CSS File -->
 	<link href="<?php echo php::get_main_url(); ?>/css/style.php" rel="stylesheet">
 	<!-- IE8 support of HTML5 elements and media queries -->

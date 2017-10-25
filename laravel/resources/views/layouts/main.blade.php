@@ -13,8 +13,8 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<!-- Nav Bar Mobile Color -->
-	<meta name="theme-color" content="#FF0000">
-	<meta name="msapplication-navbutton-color" content="#FF0000">
+	<meta name="theme-color" content="#333333">
+	<meta name="msapplication-navbutton-color" content="#333333">
 	<meta name="apple-mobile-web-app-status-bar-style" content="black">
 	<!-- Meta Details -->
 	<meta name="description" content="Website based on Bootstrap with some CSS/JS/PHP improvements"/>
@@ -44,6 +44,8 @@
 	<link href="{{ url('assets/resources/lightgallery/css/lg-fb-comment-box.css') }}" rel="stylesheet">
     <!-- Hover CSS -->
 	<link href="{{ url('assets/resources/hover/css/hover.min.css') }}" rel="stylesheet">
+	<!-- Font Awesome -->
+	<link href="{{ url('assets/resources/font-awesome/css/font-awesome.min.css') }}" rel="stylesheet">
 	<!-- Main CSS File -->
     <link href="{{ url('assets/css/all.css') }}" rel="stylesheet">
 	<!-- IE8 support of HTML5 elements and media queries -->

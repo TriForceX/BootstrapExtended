@@ -43,7 +43,7 @@ class php extends utilities\php
 				return 'width=device-width, initial-scale=1, user-scalable=no'; 
 				break;
 			case 'nav-color': 
-				return '#FF0000'; 
+				return '#333333'; 
 				break;
 			case 'nav-color-apple': 
 				return 'black'; 
