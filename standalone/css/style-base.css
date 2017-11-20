@@ -758,6 +758,7 @@ td[align='left']{
 	height:100%;
 	z-index:9999;
 	top:0px;
+	left: 0px;
 }
 .JSloading:before{
 	position: absolute;
@@ -783,6 +784,11 @@ td[align='left']{
 	margin-top:-50px;
 	margin-left:-50px;
 	content: "";
+}
+.JSloading.static,
+.JSloading.static:before,
+.JSloading.static:after{
+	position: absolute;
 }
 .JSloading.red:after{
 	background-image:url("icons/loading/loading-icon-red.gif");
