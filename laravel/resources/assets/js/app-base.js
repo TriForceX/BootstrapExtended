@@ -1037,19 +1037,6 @@ $(document).ready(function(){
 	isNavOpera = $.browser.name === 'Opera' && $.browser.opera === true ? true : false;
 	isNavEdge = $.browser.name === 'Microsoft Edge' ? true : false;
 	
-	var browserTest = ''		
-					+'Chrome  = '+isNavChrome+'\n'		
-					+'Microsoft Internet Explorer = '+isNavIE+'\n'		
-					+'Microsoft Internet Explorer 6 = '+isNavIE6+'\n'		
-					+'Microsoft Internet Explorer 7 = '+isNavIE7+'\n'		
-					+'Microsoft Internet Explorer 8 = '+isNavIE8+'\n'		
- 					+'Mozilla = '+isNavMozilla+'\n'		
-					+'Safari = '+isNavSafari+'\n'			
-					+'Opera = '+isNavOpera+'\n'		
- 					+'Microsoft Edge = '+isNavEdge+'\n';		
-	
-	console.log(browserTest);
-	
 	//Map Launch on click
 	$(document).on("click", ".JSwindowPopup", function(){
 		windowPopup($(this));
