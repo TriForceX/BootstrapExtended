@@ -322,9 +322,9 @@ function responsiveCode() {
 
 	if (bodyWidth)
 	{
-		//*** RESPONSIVE CHANGES ***//
+		//*** Responsive Changes ***//
 
-		//Example Vertical Align Container
+		//Vertical Align Container
 		$("body").each(function(){
 
 			var valignBody = bodyHeight;
@@ -347,7 +347,7 @@ function responsiveCode() {
 		//Send data to event
 		$(document).trigger("responsiveCode", [bodyWidth, bodyHeight, bodyOrientation, bodyScreen]);
 		
-		//*** RESPONSIVE CHANGES ***//
+		//*** Responsive Changes ***//
 	}else{
 		window.setTimeout(ResponsiveCode, 30);
 	}
@@ -811,8 +811,6 @@ function linkify(inputText) {
 
     //Change email addresses to mailto:: links.
     replacePattern3 = /(([a-zA-Z0-9\-\_\.])+@[a-zA-Z\_]+?(\.[a-zA-Z]{2,6})+)/gim;
-	//replacePattern3 = /(^[a-zA-Z0-9_\-\.]+@[a-zA-Z0-9\-\.]+?\.[a-zA-Z]{2,6}$)/gim;
-	//replacePattern3 = /(\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,6})/gim;
     replacedText = replacedText.replace(replacePattern3, '<a href="mailto:$1">$1</a>');
 
     return replacedText;
@@ -832,9 +830,8 @@ function checkDisabledLink(string){
 	var exceptions = checkDisabledExceptions;
 	
 	//Exception 1
-	for (var i = exceptions.length - 1; i >= 0; --i) {
-		if (textUrl.indexOf(exceptions[i]) != -1) {
-			// str contains arr[i]
+	for (var i = exceptions.length - 1; i >= 0; --i){
+		if (textUrl.indexOf(exceptions[i]) != -1){
 			return true;
 		}
 	}
@@ -958,8 +955,8 @@ function paginatorGroup(limit,limitMobile,exceptions)
 			}
 		}
 
-		$(".JSpaginador .JSpageItems .JSpageGroup.JSpageActive").prev().addClass("JSpageGroupPrev");
-		$(".JSpaginador .JSpageItems .JSpageGroup.JSpageActive").next().addClass("JSpageGroupNext");
+		$(".JSpaginator .JSpageItems .JSpageGroup.JSpageActive").prev().addClass("JSpageGroupPrev");
+		$(".JSpaginator .JSpageItems .JSpageGroup.JSpageActive").next().addClass("JSpageGroupNext");
 
 	});
 }
@@ -967,42 +964,9 @@ function paginatorGroup(limit,limitMobile,exceptions)
 //Main Initialization
 function mainInit()
 {
-	//Load Responsive Code
-	responsiveCode();
-
 	//Load LightGallery
 	loadLightGallery();
-
-	//Check home
-	isHome = $('.isHome').length > 0 ? true : false;
-
-	//Check mobile
-	isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini|BB10|PlayBook|MeeGo/i.test(navigator.userAgent);
 	
-	//Check navigators
-	isNavChrome = $.browser.name === 'Chrome' && $.browser.webkit === true ? true : false;
-	isNavIE = $.browser.name === 'Microsoft Internet Explorer' && $.browser.msie === true ? true : false;
-	isNavIE6 = $.browser.name === 'Microsoft Internet Explorer' && $.browser.msie === true && $.browser.version === 6 ? true : false;
-	isNavIE7 = $.browser.name === 'Microsoft Internet Explorer' && $.browser.msie === true && $.browser.version === 7 ? true : false;
-	isNavIE8 =$.browser.name === 'Microsoft Internet Explorer' && $.browser.msie === true && $.browser.version === 8 ? true : false;
-	isNavMozilla = $.browser.name === 'Firefox' && $.browser.mozilla === true ? true : false;
-	isNavSafari = $.browser.name === 'Safari' && $.browser.webkit === true ? true : false;
-	isNavOpera = $.browser.name === 'Opera' && $.browser.opera === true ? true : false;
-	isNavEdge = $.browser.name === 'Microsoft Edge' ? true : false;
-	
-	/*var browserTest = ''		
-					+'Chrome  = '+isNavChrome+'\n'		
-					+'Microsoft Internet Explorer = '+isNavIE+'\n'		
-					+'Microsoft Internet Explorer 6 = '+isNavIE6+'\n'		
-					+'Microsoft Internet Explorer 7 = '+isNavIE7+'\n'		
-					+'Microsoft Internet Explorer 8 = '+isNavIE8+'\n'		
- 					+'Mozilla = '+isNavMozilla+'\n'		
-					+'Safari = '+isNavSafari+'\n'			
-					+'Opera = '+isNavOpera+'\n'		
- 					+'Microsoft Edge = '+isNavEdge+'\n';		
-	
-	console.log(browserTest);*/
-
 	//Tooltip load
 	$('*[data-toggle="tooltip"]').tooltip({ trigger: "hover" });
 	
@@ -1049,6 +1013,42 @@ function mainInit()
 		});
 		$(this).css('visibility','visible');
 	});
+}
+/* ================================================= FUNCTIONS ================================================= */
+
+$(document).ready(function(){
+
+/* ================================================= DOCUMENT READY ================================================= */
+
+	//Check home
+	isHome = $('.isHome').length > 0 ? true : false;
+
+	//Check mobile
+	isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini|BB10|PlayBook|MeeGo/i.test(navigator.userAgent);
+	
+	//Check navigators
+	isNavChrome = $.browser.name === 'Chrome' && $.browser.webkit === true ? true : false;
+	isNavIE = $.browser.name === 'Microsoft Internet Explorer' && $.browser.msie === true ? true : false;
+	isNavIE6 = $.browser.name === 'Microsoft Internet Explorer' && $.browser.msie === true && $.browser.version === 6 ? true : false;
+	isNavIE7 = $.browser.name === 'Microsoft Internet Explorer' && $.browser.msie === true && $.browser.version === 7 ? true : false;
+	isNavIE8 =$.browser.name === 'Microsoft Internet Explorer' && $.browser.msie === true && $.browser.version === 8 ? true : false;
+	isNavMozilla = $.browser.name === 'Firefox' && $.browser.mozilla === true ? true : false;
+	isNavSafari = $.browser.name === 'Safari' && $.browser.webkit === true ? true : false;
+	isNavOpera = $.browser.name === 'Opera' && $.browser.opera === true ? true : false;
+	isNavEdge = $.browser.name === 'Microsoft Edge' ? true : false;
+	
+	var browserTest = ''		
+					+'Chrome  = '+isNavChrome+'\n'		
+					+'Microsoft Internet Explorer = '+isNavIE+'\n'		
+					+'Microsoft Internet Explorer 6 = '+isNavIE6+'\n'		
+					+'Microsoft Internet Explorer 7 = '+isNavIE7+'\n'		
+					+'Microsoft Internet Explorer 8 = '+isNavIE8+'\n'		
+ 					+'Mozilla = '+isNavMozilla+'\n'		
+					+'Safari = '+isNavSafari+'\n'			
+					+'Opera = '+isNavOpera+'\n'		
+ 					+'Microsoft Edge = '+isNavEdge+'\n';		
+	
+	console.log(browserTest);
 	
 	//Map Launch on click
 	$(document).on("click", ".JSwindowPopup", function(){
@@ -1068,16 +1068,24 @@ function mainInit()
 			e.preventDefault();
 		}
 	});
-}
-/* ================================================= FUNCTIONS ================================================= */
-
-$(document).ready(function(){
-
-/* ================================================= DOCUMENT READY ================================================= */
-
+	
+	//Load Responsive Code
+	responsiveCode();
+	
+	//Launch main functions
 	mainInit();
 	
 /* ================================================= DOCUMENT READY ================================================= */
+
+});
+
+$(document).ajaxComplete(function() {
+	
+/* ================================================= AJAX COMPLETE ================================================= */
+	
+	mainInit();
+
+/* ================================================= AJAX COMPLETE ================================================= */
 
 });
 
