@@ -1,5 +1,5 @@
 # Custom Bootstrap Website Base
-Website base structure with small reusable parts of source code or functions for HTML use Based on Bootstrap. You can visit http://dev.gznetwork.com/websitebase for a running example.
+Base structure for WebSites with reusable parts of source code or functions mainly based on Bootstrap and another libraries. You can visit http://dev.gznetwork.com/websitebase for a running example.
 
 # Resources
 * Standalone Support (PHP 5.6+)
@@ -21,7 +21,6 @@ Website base structure with small reusable parts of source code or functions for
 * jQuery Browser
 * jQuery Rotate
 * PHP Mailer
-* NPM Package
 
 # Functions & Code Snippets
 * HTML header data class
@@ -46,6 +45,7 @@ Website base structure with small reusable parts of source code or functions for
 	* Custom show date format
 	* Get YouTube, Vimeo and Facebook ID and embed code URL
 	* Custom Paginator
+	* Multiple Language Support
 * Features in JS:
 	* Check attr function
 	* Check outer width & height with padding/margin
@@ -88,8 +88,15 @@ Website base structure with small reusable parts of source code or functions for
 	* Added custom general options fields
 	* Admin bar enable/disable
 	* Base Admin Panel CSS & JS injection
-	* Pre-Configured useful plugins
 	* A bunch of Wordpress functions and snippets
+	* Admin Menu Editor (Plugin)
+	* Advanced Custom Fields (Plugin)
+	* Advanced Order (Plugin)
+	* Custom Post Type UI (Plugin)
+	* Simple History (Plugin)
+	* TinyMCE (Plugin)
+	* Mail SMTP (Plugin)
+	* User Role Editor (Plugin)
 
 # Recommended Tools for editing
 * Adobe Dreamweaver
