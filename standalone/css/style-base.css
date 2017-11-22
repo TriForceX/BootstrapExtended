@@ -605,7 +605,7 @@ td[align='left']{
 	-o-appearance: none; 
 	appearance: none;
 }
-.form-group-icon .glyphicon{
+.form-group-icon .glyphicon:nth-last-of-type(1){
 	position: relative;
 	margin-top: -34px;
 	float: right;
