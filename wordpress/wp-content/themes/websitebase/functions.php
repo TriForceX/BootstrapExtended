@@ -206,7 +206,7 @@ function get_page_title($separator)
     }
     else if(is_single() || is_archive()){
 		$taxonomy = get_taxonomy_data('name');
-		$text = !empty($taxonomy) ? get_taxonomy_data('name') : get_post_type_object(get_query_var('post_type'))->label;
+		$text = !empty($taxonomy) ? $taxonomy : get_post_type_object(get_query_var('post_type'))->label;
         $result = ' '.$separator.' '.$text;
     }
 	else if(is_tax() || is_tag() || is_category()){
