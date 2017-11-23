@@ -1,7 +1,7 @@
 <?php
 
 $cssFilesExtras = array(
-						$cssUrl.'/css/style-example.css',
+						'../css/style-example.css',
 					);
 
 $cssVariablesExtras = array(

@@ -31,10 +31,10 @@ function jsGenerate()
 	$jsUrl = php::get_main_url('/js');
 
 	$jsFiles = array(
-				  $jsUrl.'/js/app-base.js',
-				  $jsUrl.'/js/app-ready.js',
-				  $jsUrl.'/js/app-load.js',
-				  $jsUrl.'/js/app-responsive.js',
+				  '../js/app-base.js',
+				  '../js/app-ready.js',
+				  '../js/app-load.js',
+				  '../js/app-responsive.js',
 				);
 
 	$jsVariables = array(

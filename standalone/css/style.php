@@ -26,9 +26,9 @@ function cssGenerate()
 	$cssUrl = php::get_main_url('/css');
 	
 	$cssFiles = array(
-				  $cssUrl.'/css/style-base.css',
-				  $cssUrl.'/css/style-fonts.css',
-				  $cssUrl.'/css/style-theme.css',
+				  '../css/style-base.css',
+				  '../css/style-fonts.css',
+				  '../css/style-theme.css',
 				);
 
 	$cssVariables = array(

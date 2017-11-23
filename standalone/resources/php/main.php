@@ -178,27 +178,22 @@ class php
 	//Checks to see if the page is being server over SSL or not
     public static function is_https()
     {
-		$https = $_SERVER['HTTPS'];
-        return isset($https) && !empty($https) && $https != 'off';
+        return isset($_SERVER['HTTPS']) && !empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] != 'off';
     }
 	
 	//Returns the IP address of the client.
     public static function get_client_ip($trust_proxy_headers = false)
     {
-		$httpclientip = $_SERVER['HTTP_CLIENT_IP'];
-		$httpforwarder = $_SERVER['HTTP_X_FORWARDED_FOR'];
-		$remoteaddr = $_SERVER['REMOTE_ADDR'];
-			
         if (!$trust_proxy_headers) {
-            return $remoteaddr;
+            return $_SERVER['REMOTE_ADDR'];
         }
 
-        if (!empty($httpclientip)) {
-            $ip = $httpclientip;
-        } elseif (!empty($httpforwarder)) {
-            $ip = $httpforwarder;
+        if (!empty($_SERVER['HTTP_CLIENT_IP'])) {
+            $ip = $_SERVER['HTTP_CLIENT_IP'];
+        } elseif (!empty($_SERVER['HTTP_X_FORWARDED_FOR'])) {
+            $ip = $_SERVER['HTTP_X_FORWARDED_FOR'];
         } else {
-            $ip = $remoteaddr;
+            $ip = $_SERVER['REMOTE_ADDR'];
         }
 
         return $ip;
