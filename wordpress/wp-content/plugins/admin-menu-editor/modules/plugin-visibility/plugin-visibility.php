@@ -192,6 +192,11 @@ class amePluginVisibility {
 		$user = wp_get_current_user();
 		$settings = $this->getSettings();
 
+		//Don't try to hide plugins outside the WP admin. It prevents WP-CLI from seeing all installed plugins.
+		if ( !$user->exists() || !is_admin() ) {
+			return $plugins;
+		}
+
 		$pluginFileNames = array_keys($plugins);
 		foreach($pluginFileNames as $fileName) {
 			//Remove all hidden plugins.
@@ -288,6 +293,9 @@ class amePluginVisibility {
 	}
 
 	public function displayUi() {
+		/** @noinspection PhpUnusedLocalVariableInspection Used in the "action" attribute of the settings form. */
+		$tabUrl = $this->getTabUrl();
+
 		require dirname(__FILE__) . '/plugin-visibility-template.php';
 	}
 
@@ -299,7 +307,7 @@ class amePluginVisibility {
 			$this->settings = json_decode($post['settings'], true);
 			$this->saveSettings();
 
-			$params = array('updated' => 1);
+			$params = array('message' => 1);
 
 			//Re-select the same actor.
 			if ( !empty($post['selected_actor']) ) {
@@ -313,13 +321,10 @@ class amePluginVisibility {
 
 	private function getTabUrl($queryParameters = array()) {
 		$queryParameters = array_merge(
-			array(
-				'page' => 'menu_editor',
-				'sub_section' => self::TAB_SLUG
-			),
+			array('sub_section' => self::TAB_SLUG),
 			$queryParameters
 		);
-		return add_query_arg($queryParameters, admin_url('options-general.php'));
+		return $this->menuEditor->get_plugin_page_url($queryParameters);
 	}
 
 	public function enqueueScripts() {

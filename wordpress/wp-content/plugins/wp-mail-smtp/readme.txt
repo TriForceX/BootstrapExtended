@@ -1,12 +1,12 @@
 === WP Mail SMTP by WPForms ===
-Contributors: wpforms, smub, jaredatch
+Contributors: wpforms, smub, jaredatch, slaFFik
 Donate link: https://wpforms.com/
 Tags: mail, smtp, wp_mail, mailer, phpmailer
 Requires at least: 2.7
-Tested up to: 4.7
-Stable tag: 0.10.1
+Tested up to: 4.9
+Stable tag: trunk
 
-The most popular SMTP plugin on WordPress.org. Trusted by over 600k sites.
+The most popular WordPress SMTP and PHP Mailer plugin. Trusted by over 700k sites.
 
 == Description ==
 
@@ -28,7 +28,7 @@ WP Mail SMTP plugin works with all major email services such as Gmail, Yahoo, Ou
 
 The goal of WP Mail SMTP plugin is to help fix the common "WordPress not sending an email issue".
 
-Often times an email sent out by your WordPress site either lands in the spam folder or get completely rejected by popular email providers. 
+Often times an email sent out by your WordPress site either lands in the spam folder or get completely rejected by popular email providers.
 
 SMTP (Simple Mail Transfer Protocol) is the industry standard for sending emails. WP Mail SMTP helps you use proper authentication which increases email deliverability.
 
@@ -48,9 +48,6 @@ If you like this plugin, then consider checking out our other projects:
 * <a href="https://www.monsterinsights.com/" rel="friend" title="MonsterInsights">MonsterInsights</a> - Best Google Analytics Plugin for WordPress
 
 Visit <a href="http://www.wpbeginner.com/" rel="friend" title="WPBeginner">WPBeginner</a> to learn from our <a href="http://www.wpbeginner.com/category/wp-tutorials/" rel="friend" title="WordPress Tutorials">WordPress Tutorials</a> and find out about other <a href="http://www.wpbeginner.com/category/plugins/" rel="friend" title="Best WordPress Plugins">best WordPress plugins</a>.
-
-
-
 
 == Installation ==
 
@@ -95,6 +92,21 @@ By all means please contact us to discuss features or options you'd like to see 
 4. Send a Test Email
 
 == Changelog ==
+
+= [0.11.1] - 2017-10-30 =
+* Older PHP compatibility fix.
+
+= [0.11] - 2017-10-30 =
+* Added: Helper description to Return Path option.
+* Added: Filter `wp_mail_smtp_admin_test_email_smtp_debug` to increase the debug message verbosity.
+* Added: PHP 5.2 notice.
+* Added: Announcement feed.
+* Changed: Localization fixes, proper locale name.
+* Changed: Code style improvements and optimizations for both HTML and PHP.
+* Changed: Inputs for emails now have a proper type `email`, instead of a generic `text`.
+* Changed: Turn off `$phpmailer->SMTPAutoTLS` when `No encryption` option is set to prevent error while sending emails.
+* Changed: Hide Pepipost for those who are not using it.
+* Changed: WP CLI support improved.
 
 = 0.10.1 =
 * Addition of Pepipost and cleanup of admin page.

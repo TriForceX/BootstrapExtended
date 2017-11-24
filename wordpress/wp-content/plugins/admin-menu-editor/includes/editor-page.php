@@ -72,9 +72,7 @@ if ( !apply_filters('admin_menu_editor_is_pro', false) ){
 
 <?php
 if ( !empty($_GET['message']) ){
-	if ( intval($_GET['message']) == 1 ){
-		echo '<div id="message" class="updated notice is-dismissible"><p><strong>Settings saved.</strong></p></div>';
-	} elseif ( intval($_GET['message']) == 2 ) {
+	if ( intval($_GET['message']) == 2 ) {
 		echo '<div id="message" class="error"><p><strong>Failed to decode input! The menu wasn\'t modified.</strong></p></div>';
 	}
 }
@@ -250,9 +248,12 @@ function ame_output_sort_buttons($icons) {
 	<div class="ws_basic_container">
 
 		<div class="ws_main_container" id="ws_editor_sidebar">
-		<form method="post" action="<?php echo admin_url('options-general.php?page=menu_editor&noheader=1'); ?>" id='ws_main_form' name='ws_main_form'>
+		<form method="post" action="<?php echo esc_attr(add_query_arg('noheader', '1', $editor_data['current_tab_url'])); ?>" id='ws_main_form' name='ws_main_form'>
 			<?php wp_nonce_field('menu-editor-form'); ?>
 			<input type="hidden" name="action" value="save_menu">
+			<?php
+			printf('<input type="hidden" name="config_id" value="%s">', esc_attr($editor_data['menu_config_id']));
+			?>
 			<input type="hidden" name="data" id="ws_data" value="">
 			<input type="hidden" name="data_length" id="ws_data_length" value="">
 			<input type="hidden" name="selected_actor" id="ws_selected_actor" value="">
@@ -507,7 +508,7 @@ function ame_output_sort_buttons($icons) {
 	}
 
 	$defaultIconImages = array(
-		'images/generic.png',
+		admin_url('images/generic.png'),
 	);
 	foreach($defaultIconImages as $icon) {
 		printf(

@@ -147,6 +147,11 @@ abstract class ameMenu {
 			$menu['has_modified_dashicons'] = (bool)$arr['has_modified_dashicons'];
 		}
 
+		//Copy the pre-generated list of virtual capabilities.
+		if ( isset($arr['prebuilt_virtual_caps']) ) {
+			$menu['prebuilt_virtual_caps'] = $arr['prebuilt_virtual_caps'];
+		}
+
 		return $menu;
 	}
 

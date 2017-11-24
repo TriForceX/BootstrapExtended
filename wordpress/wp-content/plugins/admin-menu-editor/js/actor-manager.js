@@ -116,9 +116,9 @@ var AmeSuperAdmin = (function (_super) {
         //The Super Admin has all possible capabilities except the special "do_not_allow" flag.
         return (capability !== 'do_not_allow');
     };
+    AmeSuperAdmin.permanentActorId = 'special:super_admin';
     return AmeSuperAdmin;
 }(AmeBaseActor));
-AmeSuperAdmin.permanentActorId = 'special:super_admin';
 var AmeActorManager = (function () {
     function AmeActorManager(roles, users, isMultisite) {
         if (isMultisite === void 0) { isMultisite = false; }
@@ -127,6 +127,8 @@ var AmeActorManager = (function () {
         this.users = {};
         this.grantedCapabilities = {};
         this.isMultisite = false;
+        this.exclusiveSuperAdminCapabilities = {};
+        this.tagMetaCaps = {};
         this.suggestedCapabilities = [];
         this.isMultisite = !!isMultisite;
         AmeActorManager._.forEach(roles, function (roleDetails, id) {
@@ -139,6 +141,21 @@ var AmeActorManager = (function () {
         });
         if (this.isMultisite) {
             this.superAdmin = new AmeSuperAdmin();
+        }
+        var exclusiveCaps = [
+            'update_core', 'update_plugins', 'delete_plugins', 'install_plugins', 'upload_plugins', 'update_themes',
+            'delete_themes', 'install_themes', 'upload_themes', 'update_core', 'edit_css', 'unfiltered_html',
+            'edit_files', 'edit_plugins', 'edit_themes', 'delete_user', 'delete_users'
+        ];
+        for (var i = 0; i < exclusiveCaps.length; i++) {
+            this.exclusiveSuperAdminCapabilities[exclusiveCaps[i]] = true;
+        }
+        var tagMetaCaps = [
+            'manage_post_tags', 'edit_categories', 'edit_post_tags', 'delete_categories',
+            'delete_post_tags'
+        ];
+        for (var i = 0; i < tagMetaCaps.length; i++) {
+            this.tagMetaCaps[tagMetaCaps[i]] = true;
         }
     }
     AmeActorManager.prototype.actorCanAccess = function (actorId, grantAccess, defaultCapability) {
@@ -194,7 +211,7 @@ var AmeActorManager = (function () {
         if (capability === 'exist') {
             return true;
         }
-        capability = AmeActorManager.mapMetaCap(capability);
+        capability = this.mapMetaCap(capability);
         var result = null;
         //Step #1: Check temporary context - unsaved caps, etc. Optional.
         //Step #2: Check granted capabilities. Default on, but can be skipped.
@@ -238,12 +255,22 @@ var AmeActorManager = (function () {
         }
         return false;
     };
-    AmeActorManager.mapMetaCap = function (capability) {
+    AmeActorManager.prototype.mapMetaCap = function (capability) {
         if (capability === 'customize') {
             return 'edit_theme_options';
         }
         else if (capability === 'delete_site') {
             return 'manage_options';
+        }
+        //In Multisite, some capabilities are only available to Super Admins.
+        if (this.isMultisite && this.exclusiveSuperAdminCapabilities.hasOwnProperty(capability)) {
+            return AmeSuperAdmin.permanentActorId;
+        }
+        if (this.tagMetaCaps.hasOwnProperty(capability)) {
+            return 'manage_categories';
+        }
+        if ((capability === 'assign_categories') || (capability === 'assign_post_tags')) {
+            return 'edit_posts';
         }
         return capability;
     };
@@ -291,18 +318,18 @@ var AmeActorManager = (function () {
      * Grant or deny a capability to an actor.
      */
     AmeActorManager.prototype.setCap = function (actor, capability, hasCap, sourceType, sourceName) {
-        AmeActorManager.setCapInContext(this.grantedCapabilities, actor, capability, hasCap, sourceType, sourceName);
+        this.setCapInContext(this.grantedCapabilities, actor, capability, hasCap, sourceType, sourceName);
     };
-    AmeActorManager.setCapInContext = function (context, actor, capability, hasCap, sourceType, sourceName) {
-        capability = AmeActorManager.mapMetaCap(capability);
+    AmeActorManager.prototype.setCapInContext = function (context, actor, capability, hasCap, sourceType, sourceName) {
+        capability = this.mapMetaCap(capability);
         var grant = sourceType ? [hasCap, sourceType, sourceName || null] : hasCap;
         AmeActorManager._.set(context, [actor, capability], grant);
     };
     AmeActorManager.prototype.resetCap = function (actor, capability) {
-        AmeActorManager.resetCapInContext(this.grantedCapabilities, actor, capability);
+        this.resetCapInContext(this.grantedCapabilities, actor, capability);
     };
-    AmeActorManager.resetCapInContext = function (context, actor, capability) {
-        capability = AmeActorManager.mapMetaCap(capability);
+    AmeActorManager.prototype.resetCapInContext = function (context, actor, capability) {
+        capability = this.mapMetaCap(capability);
         if (AmeActorManager._.has(context, [actor, capability])) {
             delete context[actor][capability];
         }
@@ -440,9 +467,9 @@ var AmeActorManager = (function () {
     AmeActorManager.prototype.getSuggestedCapabilities = function () {
         return this.suggestedCapabilities;
     };
+    AmeActorManager._ = wsAmeLodash;
     return AmeActorManager;
 }());
-AmeActorManager._ = wsAmeLodash;
 if (typeof wsAmeActorData !== 'undefined') {
     AmeActors = new AmeActorManager(wsAmeActorData.roles, wsAmeActorData.users, wsAmeActorData.isMultisite);
     if (typeof wsAmeActorData['capPower'] !== 'undefined') {

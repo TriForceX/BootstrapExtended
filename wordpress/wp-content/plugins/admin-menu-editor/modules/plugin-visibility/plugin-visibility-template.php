@@ -1,15 +1,14 @@
-<?php do_action('admin_menu_editor-display_header'); ?>
+<?php
+/**
+ * @var string $tabUrl Fully qualified URL of the "Plugins" tab.
+ */
+
+do_action('admin_menu_editor-display_header');
+?>
 
 <div id="ame-plugin-visibility-editor">
 		<form method="post" data-bind="submit: saveChanges" class="ame-pv-save-form" action="<?php
-		echo esc_attr(add_query_arg(
-			array(
-				'page' => 'menu_editor',
-				'noheader' => '1',
-				'sub_section' => amePluginVisibility::TAB_SLUG,
-			),
-			admin_url('options-general.php')
-		));
+		echo esc_attr(add_query_arg(array('noheader' => '1'), $tabUrl));
 		?>">
 
 			<?php submit_button('Save Changes', 'primary', 'submit', false); ?>

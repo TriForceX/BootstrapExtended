@@ -196,7 +196,6 @@ var AmeActorSelector = (function () {
         }
         return name;
     };
+    AmeActorSelector._ = wsAmeLodash;
     return AmeActorSelector;
 }());
-AmeActorSelector._ = wsAmeLodash;
-//# sourceMappingURL=actor-selector.js.map

@@ -21,6 +21,10 @@ abstract class ameModule {
 			$this->moduleId = basename($this->moduleDir);
 		}
 
+		if ( !$this->isEnabledForRequest() ) {
+			return;
+		}
+
 		add_action('admin_menu_editor-register_scripts', array($this, 'registerScripts'));
 
 		//Register the module tab.
@@ -31,6 +35,16 @@ abstract class ameModule {
 			add_action('admin_menu_editor-enqueue_scripts-' . $this->tabSlug, array($this, 'enqueueTabScripts'));
 			add_action('admin_menu_editor-enqueue_styles-' . $this->tabSlug, array($this, 'enqueueTabStyles'));
 		}
+	}
+
+	/**
+	 * Does this module need to do anything for the current request?
+	 *
+	 * For example, some modules work in the normal dashboard but not in the network admin.
+	 * Other modules don't need to run during AJAX requests or when WP is running Cron jobs.
+	 */
+	protected function isEnabledForRequest() {
+		return true;
 	}
 
 	public function addTab($tabs) {
@@ -50,13 +64,10 @@ abstract class ameModule {
 
 	protected function getTabUrl($queryParameters = array()) {
 		$queryParameters = array_merge(
-			array(
-				'page' => 'menu_editor',
-				'sub_section' => $this->tabSlug
-			),
+			array('sub_section' => $this->tabSlug),
 			$queryParameters
 		);
-		return add_query_arg($queryParameters, admin_url('options-general.php'));
+		return $this->menuEditor->get_plugin_page_url($queryParameters);
 	}
 
 	protected function outputMainTemplate() {

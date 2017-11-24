@@ -1226,12 +1226,15 @@ function updateActorAccessUi(containerNode) {
 		var currentUserActor = 'user:' + wsEditorData.currentUserLogin;
 		var otherActors = _(wsEditorData.actors).keys().without(currentUserActor, 'special:super_admin').value(),
 			hiddenFromCurrentUser = ! actorCanAccessMenu(menuItem, currentUserActor),
-			hiddenFromOthers = ! _.some(otherActors, _.curry(actorCanAccessMenu, 2)(menuItem));
+			hiddenFromOthers = ! _.some(otherActors, _.curry(actorCanAccessMenu, 2)(menuItem)),
+			visibleForSuperAdmin = AmeActors.isMultisite && actorCanAccessMenu(menuItem, 'special:super_admin');
 		setMenuFlag(
 			containerNode,
 			'hidden_from_others',
 			hiddenFromOthers,
-			hiddenFromCurrentUser ? 'Hidden from everyone' : 'Hidden from everyone except you'
+			hiddenFromCurrentUser
+				? 'Hidden from everyone'
+				: ('Hidden from everyone except you' + (visibleForSuperAdmin ? ' and Super Admins' : ''))
 		);
 	}
 
@@ -4834,5 +4837,8 @@ jQuery(function($){
 	});
 
 	//Move our options into the screen meta panel
-	$('#adv-settings').empty().append(screenOptions.show());
+	var advSettings = $('#adv-settings');
+	if (advSettings.length > 0) {
+		advSettings.empty().append(screenOptions.show());
+	}
 });

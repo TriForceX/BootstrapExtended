@@ -241,11 +241,15 @@ class MenuEd_ShadowPluginFramework {
 				$hook = substr($method->name, 5);
 				//Add the hook. Uses add_filter because add_action is simply a wrapper of the same.
 				add_filter($hook, array(&$this, $method->name), 
-					$this->magic_hook_priority, $method->getNumberOfParameters());
+					$this->get_magic_hook_priority(), $method->getNumberOfParameters());
 			}
 		}
 		
 		unset($class);
+	}
+
+	public function get_magic_hook_priority() {
+		return $this->magic_hook_priority;
 	}
 	
 

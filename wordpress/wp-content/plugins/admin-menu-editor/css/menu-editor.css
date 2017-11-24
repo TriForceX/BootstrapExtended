@@ -759,6 +759,8 @@ select.ws_dropdown optgroup option {
 
 .ame-color-option {
   padding: 10px 0; }
+  .ame-color-option .wp-picker-container {
+    display: inline-block; }
 
 .ame-advanced-menu-color {
   display: none; }

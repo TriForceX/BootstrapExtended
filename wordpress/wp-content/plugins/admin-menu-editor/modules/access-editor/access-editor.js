@@ -242,10 +242,10 @@ window.AmeItemAccessEditor = (function ($) {
 					hasCapWhenReset;
 
 				//Don't create custom settings unless necessary.
-				AmeActorManager.resetCapInContext(unsavedCapabilities, selectedActor, capability);
+				AmeCapabilityManager.resetCapInContext(unsavedCapabilities, selectedActor, capability);
 				hasCapWhenReset = AmeCapabilityManager.hasCap(selectedActor, capability, unsavedCapabilities);
 				if (isAllowed !== hasCapWhenReset) {
-					AmeActorManager.setCapInContext(
+					AmeCapabilityManager.setCapInContext(
 						unsavedCapabilities,
 						selectedActor,
 						capability,
@@ -277,7 +277,7 @@ window.AmeItemAccessEditor = (function ($) {
 				hasCapByDefault = AmeCapabilityManager.hasCapByDefault(selectedActor, itemRequiredCap);
 
 			if (isAllowed && hasCapByDefault && !hasCap) {
-				AmeActorManager.setCapInContext(
+				AmeCapabilityManager.setCapInContext(
 					unsavedCapabilities,
 					selectedActor,
 					itemRequiredCap,

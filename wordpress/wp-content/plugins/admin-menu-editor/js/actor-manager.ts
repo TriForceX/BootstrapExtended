@@ -177,8 +177,11 @@ class AmeActorManager {
 	private users: {[userLogin: string] : AmeUser} = {};
 	private grantedCapabilities: AmeGrantedCapabilityMap = {};
 
-	private isMultisite: boolean = false;
+	public readonly isMultisite: boolean = false;
 	private superAdmin: AmeSuperAdmin;
+	private exclusiveSuperAdminCapabilities = {};
+
+	private tagMetaCaps = {};
 
 	private suggestedCapabilities: AmeCapabilitySuggestion[] = [];
 
@@ -197,6 +200,23 @@ class AmeActorManager {
 
 		if (this.isMultisite) {
 			this.superAdmin = new AmeSuperAdmin();
+		}
+
+		const exclusiveCaps: string[] = [
+			'update_core', 'update_plugins', 'delete_plugins', 'install_plugins', 'upload_plugins', 'update_themes',
+			'delete_themes', 'install_themes', 'upload_themes', 'update_core', 'edit_css', 'unfiltered_html',
+			'edit_files', 'edit_plugins', 'edit_themes', 'delete_user', 'delete_users'
+		];
+		for (let i = 0; i < exclusiveCaps.length; i++) {
+			this.exclusiveSuperAdminCapabilities[exclusiveCaps[i]] = true;
+		}
+
+		const tagMetaCaps = [
+			'manage_post_tags', 'edit_categories', 'edit_post_tags', 'delete_categories',
+			'delete_post_tags'
+		];
+		for (let i = 0; i < tagMetaCaps.length; i++) {
+			this.tagMetaCaps[tagMetaCaps[i]] = true;
 		}
 	}
 
@@ -265,7 +285,7 @@ class AmeActorManager {
 			return true;
 		}
 
-		capability = AmeActorManager.mapMetaCap(capability);
+		capability = this.mapMetaCap(capability);
 		let result = null;
 
 		//Step #1: Check temporary context - unsaved caps, etc. Optional.
@@ -315,11 +335,21 @@ class AmeActorManager {
 		return false;
 	}
 
-	private static mapMetaCap(capability: string): string {
+	private mapMetaCap(capability: string): string {
 		if (capability === 'customize') {
 			return 'edit_theme_options';
 		} else if (capability === 'delete_site') {
 			return 'manage_options';
+		}
+		//In Multisite, some capabilities are only available to Super Admins.
+		if (this.isMultisite && this.exclusiveSuperAdminCapabilities.hasOwnProperty(capability)) {
+			return AmeSuperAdmin.permanentActorId;
+		}
+		if (this.tagMetaCaps.hasOwnProperty(capability)) {
+			return 'manage_categories';
+		}
+		if ((capability === 'assign_categories') || (capability === 'assign_post_tags')) {
+			return 'edit_posts';
 		}
 		return capability;
 	}
@@ -378,10 +408,10 @@ class AmeActorManager {
 	 * Grant or deny a capability to an actor.
 	 */
 	setCap(actor: string, capability: string, hasCap: boolean, sourceType?, sourceName?) {
-		AmeActorManager.setCapInContext(this.grantedCapabilities, actor, capability, hasCap, sourceType, sourceName);
+		this.setCapInContext(this.grantedCapabilities, actor, capability, hasCap, sourceType, sourceName);
 	}
 
-	static setCapInContext(
+	public setCapInContext(
 		context: AmeGrantedCapabilityMap,
 		actor: string,
 		capability: string,
@@ -389,18 +419,18 @@ class AmeActorManager {
 		sourceType?: string,
 		sourceName?: string
 	) {
-		capability = AmeActorManager.mapMetaCap(capability);
+		capability = this.mapMetaCap(capability);
 
 		const grant = sourceType ? [hasCap, sourceType, sourceName || null] : hasCap;
 		AmeActorManager._.set(context, [actor, capability], grant);
 	}
 
 	resetCap(actor: string, capability: string) {
-		AmeActorManager.resetCapInContext(this.grantedCapabilities, actor, capability);
+		this.resetCapInContext(this.grantedCapabilities, actor, capability);
 	}
 
-	static resetCapInContext(context: AmeGrantedCapabilityMap, actor: string, capability: string) {
-		capability = AmeActorManager.mapMetaCap(capability);
+	public resetCapInContext(context: AmeGrantedCapabilityMap, actor: string, capability: string) {
+		capability = this.mapMetaCap(capability);
 
 		if (AmeActorManager._.has(context, [actor, capability])) {
 			delete context[actor][capability];
