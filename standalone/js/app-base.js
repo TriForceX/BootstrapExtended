@@ -1021,7 +1021,7 @@ $(document).ready(function(){
 /* ================================================= DOCUMENT READY ================================================= */
 
 	//Check home
-	isHome = $('.isHome').length > 0 ? true : false;
+	isHome = $('.JSisHome').length > 0 ? true : false;
 
 	//Check mobile
 	isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini|BB10|PlayBook|MeeGo/i.test(navigator.userAgent);

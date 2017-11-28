@@ -66,7 +66,7 @@
 	?>
 </head>
 <?php if(is_home()): ?>
-<body class="isHome">
+<body class="JSisHome">
 <?php else: ?>
 <body>
 <?php endif; ?>

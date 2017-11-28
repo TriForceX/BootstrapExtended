@@ -59,7 +59,7 @@
 	<!-- ******** CSS FILES ******** -->
 </head>
 <?php if(php::is_home()): ?>
-<body class="isHome">
+<body class="JSisHome">
 <?php else: ?>
 <body>
 <?php endif; ?>

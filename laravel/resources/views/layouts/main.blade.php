@@ -60,7 +60,7 @@
     
 </head>
 @if(Request::path() == '/')
-<body class="isHome">
+<body class="JSisHome">
 @else
 <body>
 @endif
