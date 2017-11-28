@@ -43,10 +43,10 @@ class php extends utilities\php
 				return 'width=device-width, initial-scale=1, user-scalable=no'; 
 				break;
 			case 'nav-color': 
-				return '#333333'; 
+				return get_option('blognavcolor'); 
 				break;
 			case 'nav-color-apple': 
-				return 'black'; 
+				return get_option('blognavcolorapple'); 
 				break;
 			default: break;
 		}
@@ -425,34 +425,49 @@ class new_general_setting
     }
     function register_fields() 
 	{
-		$new_field_1 = array("blogkeywords","Site Keywords","Words to let search engines to found this site","new_field_1_html");
-		$new_field_2 = array("bloganalytics","Analytics Code","Code placed in the HTML head to track site analytics","new_field_2_html");
-		$new_field_3 = array("blogauthor","Site Author","Defines the website author","new_field_3_html");
-        register_setting( 'general', $new_field_1[0], 'esc_attr' );
-        register_setting( 'general', $new_field_2[0], 'esc_attr' );
-        register_setting( 'general', $new_field_3[0], 'esc_attr' );
-        add_settings_field($new_field_1[0], '<label for="'.$new_field_1[0].'">'.$new_field_1[1].'</label>' , array(&$this, $new_field_1[3]) , 'general' );
-        add_settings_field($new_field_2[0], '<label for="'.$new_field_2[0].'">'.$new_field_2[1].'</label>' , array(&$this, $new_field_2[3]) , 'general' );
-        add_settings_field($new_field_3[0], '<label for="'.$new_field_3[0].'">'.$new_field_3[1].'</label>' , array(&$this, $new_field_3[3]) , 'general' );
+		$new_fields = array(
+							array("blogkeywords","Site Keywords"),
+							array("bloganalytics","Analytics Code"),
+							array("blogauthor","Site Author"),
+							array("blognavcolor","Nav Color"),
+							array("blognavcolorapple","Nav Color"),
+							);
+		
+		for($i = 0; $i < count($new_fields); ++$i)
+		{
+			register_setting( 'general', $new_fields[$i][0], 'esc_attr' );
+			add_settings_field($new_fields[$i][0], '<label for="'.$new_fields[$i][0].'">'.$new_fields[$i][1].'</label>' , array(&$this, "new_field_".$i."_html") , 'general' );
+		}
     }
-    function new_field_1_html() 
+    function new_field_0_html() 
 	{
-		$new_field_data = array("blogkeywords","Site Keywords","Words to let search engines to found this site","new_field_1_html");
-        //echo '<input class="regular-text" type="text" id="'.$new_field_data[0].'" name="'.$new_field_data[0].'" value="' . get_option( $new_field_data[0], '' ) . '" />';
+		$new_field_data = array("blogkeywords","Words to let search engines to found this site");
 		echo '<textarea style="max-width: 350px;min-height: 100px;width: 100%;" id="'.$new_field_data[0].'" name="'.$new_field_data[0].'">' . get_option( $new_field_data[0], '' ) . '</textarea>';
-		echo '<p class="description" id="'.$new_field_data[0].'-description">'.$new_field_data[2].'</p>';
+		echo '<p class="description" id="'.$new_field_data[0].'-description">'.$new_field_data[1].'</p>';
+    }
+	function new_field_1_html() 
+	{
+		$new_field_data = array("bloganalytics","Code placed in the HTML head to track site analytics");
+        echo '<textarea style="max-width: 350px;min-height: 100px;width: 100%;" id="'.$new_field_data[0].'" name="'.$new_field_data[0].'">' . get_option( $new_field_data[0], '' ) . '</textarea>';
+		echo '<p class="description" id="'.$new_field_data[0].'-description">'.$new_field_data[1].'</p>';
     }
 	function new_field_2_html() 
 	{
-		$new_field_data = array("bloganalytics","Analytics Code","Code placed in the HTML head to track site analytics","new_field_2_html");
-        echo '<textarea style="max-width: 350px;min-height: 100px;width: 100%;" id="'.$new_field_data[0].'" name="'.$new_field_data[0].'">' . get_option( $new_field_data[0], '' ) . '</textarea>';
-		echo '<p class="description" id="'.$new_field_data[0].'-description">'.$new_field_data[2].'</p>';
+		$new_field_data = array("blogauthor","Defines the website author");
+        echo '<input style="max-width: 350px;width: 100%;" id="'.$new_field_data[0].'" name="'.$new_field_data[0].'" value="' . get_option( $new_field_data[0], '' ) . '"/>';
+		echo '<p class="description" id="'.$new_field_data[0].'-description">'.$new_field_data[1].'</p>';
     }
 	function new_field_3_html() 
 	{
-		$new_field_data = array("blogauthor","Site Author","Defines the website author","new_field_3_html");
+		$new_field_data = array("blognavcolor","Website nav bar color for most devices");
         echo '<input style="max-width: 350px;width: 100%;" id="'.$new_field_data[0].'" name="'.$new_field_data[0].'" value="' . get_option( $new_field_data[0], '' ) . '"/>';
-		echo '<p class="description" id="'.$new_field_data[0].'-description">'.$new_field_data[2].'</p>';
+		echo '<p class="description" id="'.$new_field_data[0].'-description">'.$new_field_data[1].'</p>';
+    }
+	function new_field_4_html() 
+	{
+		$new_field_data = array("blognavcolorapple","Website nav bar color for Apple devices (it can be black or black-translucent)","new_field_5_html");
+        echo '<input style="max-width: 350px;width: 100%;" id="'.$new_field_data[0].'" name="'.$new_field_data[0].'" value="' . get_option( $new_field_data[0], '' ) . '"/>';
+		echo '<p class="description" id="'.$new_field_data[0].'-description">'.$new_field_data[1].'</p>';
     }
 }
 
