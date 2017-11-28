@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: WPFront Notification Bar\n"
-"POT-Creation-Date: 2017-04-16 14:44+0530\n"
-"PO-Revision-Date: 2017-04-16 14:45+0530\n"
+"POT-Creation-Date: 2017-11-27 20:45+0530\n"
+"PO-Revision-Date: 2017-11-27 20:45+0530\n"
 "Last-Translator: \n"
 "Language-Team: WPFront <contact@wpfront.com>\n"
 "Language: en\n"
@@ -63,7 +63,7 @@ msgid "More information about %s"
 msgstr "More information about %s"
 
 #: ../classes/base/class-wpfront-base-menu.php:158
-#: ../classes/class-wpfront-user-role-editor-go-pro.php:295
+#: ../classes/class-wpfront-user-role-editor-go-pro.php:297
 msgid "Details"
 msgstr "Details"
 
@@ -217,13 +217,13 @@ msgstr ""
 #: ../classes/business-pro/class-wpfront-user-role-editor-ms-sync.php:227
 #: ../classes/class-wpfront-user-role-editor-add-edit.php:324
 #: ../classes/class-wpfront-user-role-editor-add-remove-capability.php:128
-#: ../classes/class-wpfront-user-role-editor-assign-roles.php:395
+#: ../classes/class-wpfront-user-role-editor-assign-roles.php:454
 #: ../classes/class-wpfront-user-role-editor-list.php:361
 #: ../classes/class-wpfront-user-role-editor-list.php:395
 #: ../classes/class-wpfront-user-role-editor-list.php:412
-#: ../classes/class-wpfront-user-role-editor-login-redirect.php:407
-#: ../classes/class-wpfront-user-role-editor-login-redirect.php:441
-#: ../classes/class-wpfront-user-role-editor-login-redirect.php:472
+#: ../classes/class-wpfront-user-role-editor-login-redirect.php:451
+#: ../classes/class-wpfront-user-role-editor-login-redirect.php:488
+#: ../classes/class-wpfront-user-role-editor-login-redirect.php:522
 #: ../classes/class-wpfront-user-role-editor-options.php:324
 #: ../classes/class-wpfront-user-role-editor-options.php:376
 #: ../classes/class-wpfront-user-role-editor-restore.php:168
@@ -406,7 +406,7 @@ msgstr ""
 
 #: ../classes/business-pro/class-wpfront-user-role-editor-ms-list.php:178
 #: ../classes/class-wpfront-user-role-editor-list.php:422
-#: ../classes/class-wpfront-user-role-editor-login-redirect.php:417
+#: ../classes/class-wpfront-user-role-editor-login-redirect.php:461
 #: ../classes/personal-pro/class-wpfront-user-role-editor-content-shortcodes.php:414
 msgid "Columns"
 msgstr "Columns"
@@ -486,7 +486,7 @@ msgstr ""
 #: ../classes/business-pro/class-wpfront-user-role-editor-ms-roles-list-table.php:228
 #: ../classes/business-pro/class-wpfront-user-role-editor-ms-roles-list-table.php:269
 #: ../classes/class-wpfront-user-role-editor-list.php:471
-#: ../classes/class-wpfront-user-role-editor-login-redirect-list-table.php:148
+#: ../classes/class-wpfront-user-role-editor-login-redirect-list-table.php:149
 #: ../classes/personal-pro/class-wpfront-user-role-editor-content-shortcodes-list-table.php:146
 #: ../classes/personal-pro/class-wpfront-user-role-editor-content-shortcodes.php:443
 #: ../templates/list-roles.php:109
@@ -512,7 +512,7 @@ msgstr ""
 #: ../classes/class-wpfront-user-role-editor-list.php:260
 #: ../classes/class-wpfront-user-role-editor-list.php:476
 #: ../classes/class-wpfront-user-role-editor-login-redirect-list-table.php:62
-#: ../classes/class-wpfront-user-role-editor-login-redirect-list-table.php:151
+#: ../classes/class-wpfront-user-role-editor-login-redirect-list-table.php:152
 #: ../classes/personal-pro/class-wpfront-user-role-editor-content-shortcodes-list-table.php:62
 #: ../classes/personal-pro/class-wpfront-user-role-editor-content-shortcodes-list-table.php:149
 #: ../classes/personal-pro/class-wpfront-user-role-editor-content-shortcodes.php:448
@@ -540,11 +540,11 @@ msgstr "Documentation on Multisite Roles"
 
 #: ../classes/business-pro/class-wpfront-user-role-editor-ms-restore.php:48
 #: ../classes/business-pro/class-wpfront-user-role-editor-ms-restore.php:77
-#: ../classes/class-wpfront-user-role-editor-go-pro.php:232
 #: ../classes/class-wpfront-user-role-editor-go-pro.php:234
-#: ../classes/class-wpfront-user-role-editor-go-pro.php:263
-#: ../classes/class-wpfront-user-role-editor-go-pro.php:293
-#: ../classes/class-wpfront-user-role-editor-go-pro.php:302
+#: ../classes/class-wpfront-user-role-editor-go-pro.php:236
+#: ../classes/class-wpfront-user-role-editor-go-pro.php:265
+#: ../classes/class-wpfront-user-role-editor-go-pro.php:295
+#: ../classes/class-wpfront-user-role-editor-go-pro.php:304
 #: ../classes/class-wpfront-user-role-editor-restore.php:87
 #: ../templates/add-edit-role.php:51 ../templates/add-edit-role.php:59
 #: ../templates/business-pro/sync-roles.php:21
@@ -553,7 +553,7 @@ msgid "ERROR"
 msgstr "ERROR"
 
 #: ../classes/business-pro/class-wpfront-user-role-editor-ms-restore.php:48
-#: ../classes/class-wpfront-user-role-editor-assign-roles.php:218
+#: ../classes/class-wpfront-user-role-editor-assign-roles.php:277
 msgid "Permission denied."
 msgstr "Permission denied."
 
@@ -599,7 +599,7 @@ msgid "Custom <span class=\"count\">(%s)</span>"
 msgstr "Custom <span class=\"count\">(%s)</span>"
 
 #: ../classes/business-pro/class-wpfront-user-role-editor-ms-roles-list-table.php:207
-#: ../classes/class-wpfront-user-role-editor-login-redirect-list-table.php:122
+#: ../classes/class-wpfront-user-role-editor-login-redirect-list-table.php:123
 #: ../classes/personal-pro/class-wpfront-user-role-editor-content-shortcodes-list-table.php:121
 #: ../templates/personal-pro/menu-editor.php:161
 #: ../templates/personal-pro/menu-editor.php:197
@@ -840,48 +840,53 @@ msgstr ""
 msgid "Documentation on Add/Remove Capability"
 msgstr "Documentation on Add/Remove Capability"
 
-#: ../classes/class-wpfront-user-role-editor-assign-roles.php:67
-#: ../classes/class-wpfront-user-role-editor-assign-roles.php:369
+#: ../classes/class-wpfront-user-role-editor-assign-roles.php:69
+#: ../classes/class-wpfront-user-role-editor-assign-roles.php:428
 msgid "Secondary Roles"
 msgstr "Secondary Roles"
 
-#: ../classes/class-wpfront-user-role-editor-assign-roles.php:83
-#: ../classes/class-wpfront-user-role-editor-assign-roles.php:402
+#: ../classes/class-wpfront-user-role-editor-assign-roles.php:85
+#: ../classes/class-wpfront-user-role-editor-assign-roles.php:461
 #: ../templates/assign-roles.php:42 ../templates/assign-roles.php:94
 msgid "Assign Roles"
 msgstr "Assign Roles"
 
-#: ../classes/class-wpfront-user-role-editor-assign-roles.php:185
+#: ../classes/class-wpfront-user-role-editor-assign-roles.php:116
+#: ../classes/class-wpfront-user-role-editor-assign-roles.php:148
+msgid "No roles for this site."
+msgstr "No roles for this site."
+
+#: ../classes/class-wpfront-user-role-editor-assign-roles.php:244
 msgid "No role for this site"
 msgstr "No role for this site"
 
-#: ../classes/class-wpfront-user-role-editor-assign-roles.php:212
+#: ../classes/class-wpfront-user-role-editor-assign-roles.php:271
 msgid "Invalid user."
 msgstr "Invalid user."
 
-#: ../classes/class-wpfront-user-role-editor-assign-roles.php:247
+#: ../classes/class-wpfront-user-role-editor-assign-roles.php:306
 msgid "Roles updated successfully."
 msgstr "Roles updated successfully."
 
-#: ../classes/class-wpfront-user-role-editor-assign-roles.php:249
+#: ../classes/class-wpfront-user-role-editor-assign-roles.php:308
 msgid "Invalid primary role specified."
 msgstr "Invalid primary role specified."
 
-#: ../classes/class-wpfront-user-role-editor-assign-roles.php:267
-#: ../classes/class-wpfront-user-role-editor-assign-roles.php:277
+#: ../classes/class-wpfront-user-role-editor-assign-roles.php:326
+#: ../classes/class-wpfront-user-role-editor-assign-roles.php:336
 msgid "Invalid primary role."
 msgstr "Invalid primary role."
 
-#: ../classes/class-wpfront-user-role-editor-assign-roles.php:299
+#: ../classes/class-wpfront-user-role-editor-assign-roles.php:358
 #, php-format
 msgid "%d user(s) migrated."
 msgstr "%d user(s) migrated."
 
-#: ../classes/class-wpfront-user-role-editor-assign-roles.php:351
+#: ../classes/class-wpfront-user-role-editor-assign-roles.php:410
 msgid "Primary Role"
 msgstr "Primary Role"
 
-#: ../classes/class-wpfront-user-role-editor-assign-roles.php:397
+#: ../classes/class-wpfront-user-role-editor-assign-roles.php:456
 msgid ""
 "This screen allows you to assign multiple roles to a user and also allows "
 "you to migrate users from a role to another role."
@@ -889,7 +894,7 @@ msgstr ""
 "This screen allows you to assign multiple roles to a user and also allows "
 "you to migrate users from a role to another role."
 
-#: ../classes/class-wpfront-user-role-editor-assign-roles.php:404
+#: ../classes/class-wpfront-user-role-editor-assign-roles.php:463
 msgid ""
 "To assign multiple roles to a user, select that user within the User drop "
 "down list and select the primary role you want for that user using the "
@@ -901,12 +906,12 @@ msgstr ""
 "Primary Role drop down list. Select the secondary roles using the check "
 "boxes below, then click Assign Roles."
 
-#: ../classes/class-wpfront-user-role-editor-assign-roles.php:409
+#: ../classes/class-wpfront-user-role-editor-assign-roles.php:468
 #: ../templates/assign-roles.php:99 ../templates/assign-roles.php:132
 msgid "Migrate Users"
 msgstr "Migrate Users"
 
-#: ../classes/class-wpfront-user-role-editor-assign-roles.php:411
+#: ../classes/class-wpfront-user-role-editor-assign-roles.php:470
 msgid ""
 "To migrate users from one role to another role or to add secondary roles to "
 "users belonging to a particular primary role, use the migrate users "
@@ -916,7 +921,7 @@ msgstr ""
 "users belonging to a particular primary role, use the migrate users "
 "functionality."
 
-#: ../classes/class-wpfront-user-role-editor-assign-roles.php:414
+#: ../classes/class-wpfront-user-role-editor-assign-roles.php:473
 msgid ""
 "Select the users using the From Primary Role drop down, to primary role "
 "using the Primary Role drop down and secondary roles using the check boxes "
@@ -926,7 +931,7 @@ msgstr ""
 "using the Primary Role drop down and secondary roles using the check boxes "
 "then click Migrate Users."
 
-#: ../classes/class-wpfront-user-role-editor-assign-roles.php:423
+#: ../classes/class-wpfront-user-role-editor-assign-roles.php:482
 msgid "Documentation on Assign / Migrate Users"
 msgstr "Documentation on Assign / Migrate Users"
 
@@ -950,40 +955,40 @@ msgstr "Review"
 msgid "Contact"
 msgstr "Contact"
 
-#: ../classes/class-wpfront-user-role-editor-go-pro.php:232
+#: ../classes/class-wpfront-user-role-editor-go-pro.php:234
 msgid "License key activation limit reached."
 msgstr "License key activation limit reached."
 
-#: ../classes/class-wpfront-user-role-editor-go-pro.php:232
+#: ../classes/class-wpfront-user-role-editor-go-pro.php:234
 #: ../classes/class-wpfront-user-role-editor-nav-menu.php:93
 msgid "More information"
 msgstr "More information"
 
-#: ../classes/class-wpfront-user-role-editor-go-pro.php:234
+#: ../classes/class-wpfront-user-role-editor-go-pro.php:236
 msgid "Invalid license key"
 msgstr "Invalid license key"
 
-#: ../classes/class-wpfront-user-role-editor-go-pro.php:263
+#: ../classes/class-wpfront-user-role-editor-go-pro.php:265
 msgid "Unable to deactivate"
 msgstr "Unable to deactivate"
 
-#: ../classes/class-wpfront-user-role-editor-go-pro.php:293
+#: ../classes/class-wpfront-user-role-editor-go-pro.php:295
 msgid "Unable to contact wpfront.com"
 msgstr "Unable to contact wpfront.com"
 
-#: ../classes/class-wpfront-user-role-editor-go-pro.php:302
+#: ../classes/class-wpfront-user-role-editor-go-pro.php:304
 msgid "Unable to parse response"
 msgstr "Unable to parse response"
 
-#: ../classes/class-wpfront-user-role-editor-go-pro.php:373
+#: ../classes/class-wpfront-user-role-editor-go-pro.php:375
 msgid "Site"
 msgstr "Site"
 
-#: ../classes/class-wpfront-user-role-editor-go-pro.php:374
+#: ../classes/class-wpfront-user-role-editor-go-pro.php:376
 msgid "Product"
 msgstr "Product"
 
-#: ../classes/class-wpfront-user-role-editor-go-pro.php:378
+#: ../classes/class-wpfront-user-role-editor-go-pro.php:380
 msgid ""
 "Your WPFront User Role Editor Pro license was activated on the following "
 "site."
@@ -991,19 +996,19 @@ msgstr ""
 "Your WPFront User Role Editor Pro license was activated on the following "
 "site."
 
-#: ../classes/class-wpfront-user-role-editor-go-pro.php:379
+#: ../classes/class-wpfront-user-role-editor-go-pro.php:381
 msgid "WPFront User Role Editor Pro License Activated"
 msgstr "WPFront User Role Editor Pro License Activated"
 
-#: ../classes/class-wpfront-user-role-editor-go-pro.php:381
+#: ../classes/class-wpfront-user-role-editor-go-pro.php:383
 msgid "Activated By"
 msgstr "Activated By"
 
-#: ../classes/class-wpfront-user-role-editor-go-pro.php:382
+#: ../classes/class-wpfront-user-role-editor-go-pro.php:384
 msgid "Activated On"
 msgstr "Activated On"
 
-#: ../classes/class-wpfront-user-role-editor-go-pro.php:386
+#: ../classes/class-wpfront-user-role-editor-go-pro.php:388
 msgid ""
 "Your WPFront User Role Editor Pro license was deactivated on the following "
 "site."
@@ -1011,21 +1016,21 @@ msgstr ""
 "Your WPFront User Role Editor Pro license was deactivated on the following "
 "site."
 
-#: ../classes/class-wpfront-user-role-editor-go-pro.php:387
-#: ../classes/class-wpfront-user-role-editor-go-pro.php:400
+#: ../classes/class-wpfront-user-role-editor-go-pro.php:389
+#: ../classes/class-wpfront-user-role-editor-go-pro.php:402
 msgid "WPFront User Role Editor Pro License Deactivated"
 msgstr "WPFront User Role Editor Pro License Deactivated"
 
-#: ../classes/class-wpfront-user-role-editor-go-pro.php:389
+#: ../classes/class-wpfront-user-role-editor-go-pro.php:391
 msgid "Deactivated By"
 msgstr "Deactivated By"
 
-#: ../classes/class-wpfront-user-role-editor-go-pro.php:390
-#: ../classes/class-wpfront-user-role-editor-go-pro.php:401
+#: ../classes/class-wpfront-user-role-editor-go-pro.php:392
+#: ../classes/class-wpfront-user-role-editor-go-pro.php:403
 msgid "Deactivated On"
 msgstr "Deactivated On"
 
-#: ../classes/class-wpfront-user-role-editor-go-pro.php:394
+#: ../classes/class-wpfront-user-role-editor-go-pro.php:396
 msgid ""
 "Your WPFront User Role Editor Pro license is invalid on the following site. "
 "Please activate a valid license immediately for the plugin to continue "
@@ -1035,15 +1040,15 @@ msgstr ""
 "Please activate a valid license immediately for the plugin to continue "
 "working."
 
-#: ../classes/class-wpfront-user-role-editor-go-pro.php:395
+#: ../classes/class-wpfront-user-role-editor-go-pro.php:397
 msgid "WPFront User Role Editor Pro Invalid License"
 msgstr "WPFront User Role Editor Pro Invalid License"
 
-#: ../classes/class-wpfront-user-role-editor-go-pro.php:396
+#: ../classes/class-wpfront-user-role-editor-go-pro.php:398
 msgid "Invalid URL"
 msgstr "Invalid URL"
 
-#: ../classes/class-wpfront-user-role-editor-go-pro.php:399
+#: ../classes/class-wpfront-user-role-editor-go-pro.php:401
 msgid ""
 "Your invalid WPFront User Role Editor Pro license was deactivated on the "
 "following site. Please activate a valid license immediately for the plugin "
@@ -1052,6 +1057,20 @@ msgstr ""
 "Your invalid WPFront User Role Editor Pro license was deactivated on the "
 "following site. Please activate a valid license immediately for the plugin "
 "to continue working."
+
+#: ../classes/class-wpfront-user-role-editor-go-pro.php:434
+#, php-format
+msgid "Your %s license is invalid."
+msgstr "Your %s license is invalid."
+
+#: ../classes/class-wpfront-user-role-editor-go-pro.php:438
+msgid "Renew now"
+msgstr "Renew now"
+
+#: ../classes/class-wpfront-user-role-editor-go-pro.php:442
+#, php-format
+msgid "Your %s license is expired. %s to receive automatic updates."
+msgstr "Your %s license is expired. %s to receive automatic updates."
 
 #: ../classes/class-wpfront-user-role-editor-list.php:221
 #: ../templates/add-edit-role.php:117
@@ -1227,32 +1246,36 @@ msgid "Priority"
 msgstr "Priority"
 
 #: ../classes/class-wpfront-user-role-editor-login-redirect-list-table.php:86
-#: ../classes/class-wpfront-user-role-editor-nav-menu-walker.php:148
 #: ../templates/login-redirect.php:133
-msgid "URL"
-msgstr "URL"
+msgid "Login Redirect URL"
+msgstr "Login Redirect URL"
 
 #: ../classes/class-wpfront-user-role-editor-login-redirect-list-table.php:87
+#: ../templates/login-redirect.php:143
+msgid "Logout Redirect URL"
+msgstr "Logout Redirect URL"
+
+#: ../classes/class-wpfront-user-role-editor-login-redirect-list-table.php:88
 msgid "WP-ADMIN"
 msgstr "WP-ADMIN"
 
-#: ../classes/class-wpfront-user-role-editor-login-redirect-list-table.php:88
+#: ../classes/class-wpfront-user-role-editor-login-redirect-list-table.php:89
 msgid "Toolbar"
 msgstr "Toolbar"
 
-#: ../classes/class-wpfront-user-role-editor-login-redirect.php:216
+#: ../classes/class-wpfront-user-role-editor-login-redirect.php:253
 msgid "Login redirect added."
 msgstr "Login redirect added."
 
-#: ../classes/class-wpfront-user-role-editor-login-redirect.php:219
+#: ../classes/class-wpfront-user-role-editor-login-redirect.php:256
 msgid "Login redirect updated."
 msgstr "Login redirect updated."
 
-#: ../classes/class-wpfront-user-role-editor-login-redirect.php:222
+#: ../classes/class-wpfront-user-role-editor-login-redirect.php:259
 msgid "This role is not supported."
 msgstr "This role is not supported."
 
-#: ../classes/class-wpfront-user-role-editor-login-redirect.php:409
+#: ../classes/class-wpfront-user-role-editor-login-redirect.php:453
 msgid ""
 "Use this functionality to redirect a user to a specific page after they "
 "login based on their role."
@@ -1260,7 +1283,7 @@ msgstr ""
 "Use this functionality to redirect a user to a specific page after they "
 "login based on their role."
 
-#: ../classes/class-wpfront-user-role-editor-login-redirect.php:412
+#: ../classes/class-wpfront-user-role-editor-login-redirect.php:456
 msgid ""
 "In addition, you can also deny the user access to WP-ADMIN and remove the "
 "toolbar (admin bar) from the front end."
@@ -1268,13 +1291,13 @@ msgstr ""
 "In addition, you can also deny the user access to WP-ADMIN and remove the "
 "toolbar (admin bar) from the front end."
 
-#: ../classes/class-wpfront-user-role-editor-login-redirect.php:419
-#: ../classes/class-wpfront-user-role-editor-login-redirect.php:450
+#: ../classes/class-wpfront-user-role-editor-login-redirect.php:463
+#: ../classes/class-wpfront-user-role-editor-login-redirect.php:497
 msgid "<b>Role</b>: The role of the user to qualify for this redirect."
 msgstr "<b>Role</b>: The role of the user to qualify for this redirect."
 
-#: ../classes/class-wpfront-user-role-editor-login-redirect.php:422
-#: ../classes/class-wpfront-user-role-editor-login-redirect.php:453
+#: ../classes/class-wpfront-user-role-editor-login-redirect.php:466
+#: ../classes/class-wpfront-user-role-editor-login-redirect.php:500
 msgid ""
 "<b>Priority</b>: When a user has multiple roles, the role configuration with "
 "the highest priority will be selected."
@@ -1282,33 +1305,42 @@ msgstr ""
 "<b>Priority</b>: When a user has multiple roles, the role configuration with "
 "the highest priority will be selected."
 
-#: ../classes/class-wpfront-user-role-editor-login-redirect.php:425
-#: ../classes/class-wpfront-user-role-editor-login-redirect.php:456
+#: ../classes/class-wpfront-user-role-editor-login-redirect.php:469
+#: ../classes/class-wpfront-user-role-editor-login-redirect.php:503
 msgid ""
-"<b>URL</b>: The URL where the user will be redirected after login or on WP-"
-"ADMIN access if denied."
+"<b>Login Redirect URL</b>: The URL where the user will be redirected after "
+"login or on WP-ADMIN access if denied."
 msgstr ""
-"<b>URL</b>: The URL where the user will be redirected after login or on WP-"
-"ADMIN access if denied."
+"<b>Login Redirect URL</b>: The URL where the user will be redirected after "
+"login or on WP-ADMIN access if denied."
 
-#: ../classes/class-wpfront-user-role-editor-login-redirect.php:428
+#: ../classes/class-wpfront-user-role-editor-login-redirect.php:472
+#: ../classes/class-wpfront-user-role-editor-login-redirect.php:506
+msgid ""
+"<b>Logout Redirect URL</b>: The URL where the user will be redirected after "
+"logout."
+msgstr ""
+"<b>Logout Redirect URL</b>: The URL where the user will be redirected after "
+"logout."
+
+#: ../classes/class-wpfront-user-role-editor-login-redirect.php:475
 msgid "<b>WP-ADMIN</b>: Displays whether user has access to WP-ADMIN."
 msgstr "<b>WP-ADMIN</b>: Displays whether user has access to WP-ADMIN."
 
-#: ../classes/class-wpfront-user-role-editor-login-redirect.php:431
+#: ../classes/class-wpfront-user-role-editor-login-redirect.php:478
 msgid "<b>Toolbar</b>: Displays whether user will see toolbar on front end."
 msgstr "<b>Toolbar</b>: Displays whether user will see toolbar on front end."
 
-#: ../classes/class-wpfront-user-role-editor-login-redirect.php:443
+#: ../classes/class-wpfront-user-role-editor-login-redirect.php:490
 msgid "Add/Edit a new login redirect."
 msgstr "Add/Edit a new login redirect."
 
-#: ../classes/class-wpfront-user-role-editor-login-redirect.php:448
+#: ../classes/class-wpfront-user-role-editor-login-redirect.php:495
 #: ../classes/personal-pro/class-wpfront-user-role-editor-menu-editor.php:625
 msgid "Fields"
 msgstr "Fields"
 
-#: ../classes/class-wpfront-user-role-editor-login-redirect.php:459
+#: ../classes/class-wpfront-user-role-editor-login-redirect.php:509
 msgid ""
 "<b>Deny WP-ADMIN</b>: If enabled user will be redirected to URL on WP-ADMIN "
 "access."
@@ -1316,17 +1348,17 @@ msgstr ""
 "<b>Deny WP-ADMIN</b>: If enabled user will be redirected to URL on WP-ADMIN "
 "access."
 
-#: ../classes/class-wpfront-user-role-editor-login-redirect.php:462
+#: ../classes/class-wpfront-user-role-editor-login-redirect.php:512
 msgid ""
 "<b>Disable Toolbar</b>: If enabled user will not see toolbar on front end."
 msgstr ""
 "<b>Disable Toolbar</b>: If enabled user will not see toolbar on front end."
 
-#: ../classes/class-wpfront-user-role-editor-login-redirect.php:474
+#: ../classes/class-wpfront-user-role-editor-login-redirect.php:524
 msgid "Click \"Confirm Delete\" to delete displayed configurations."
 msgstr "Click \"Confirm Delete\" to delete displayed configurations."
 
-#: ../classes/class-wpfront-user-role-editor-login-redirect.php:484
+#: ../classes/class-wpfront-user-role-editor-login-redirect.php:534
 msgid "Documentation on Login Redirect"
 msgstr "Documentation on Login Redirect"
 
@@ -1347,6 +1379,10 @@ msgstr "sub item"
 #: ../classes/class-wpfront-user-role-editor-nav-menu-walker.php:139
 msgid "Edit Menu Item"
 msgstr "Edit Menu Item"
+
+#: ../classes/class-wpfront-user-role-editor-nav-menu-walker.php:148
+msgid "URL"
+msgstr "URL"
 
 #: ../classes/class-wpfront-user-role-editor-nav-menu-walker.php:155
 msgid "Navigation Label"
@@ -1719,7 +1755,7 @@ msgstr "Shortcode(s) deleted."
 
 #: ../classes/personal-pro/class-wpfront-user-role-editor-content-shortcodes.php:235
 #: ../classes/personal-pro/class-wpfront-user-role-editor-nav-menu-pro.php:23
-#: ../classes/personal-pro/class-wpfront-user-role-editor-post-type-permissions.php:122
+#: ../classes/personal-pro/class-wpfront-user-role-editor-post-type-permissions.php:131
 #: ../classes/personal-pro/class-wpfront-user-role-editor-widget-permissions-pro.php:35
 msgid "[Guest]"
 msgstr "[Guest]"
@@ -2052,7 +2088,7 @@ msgid "%s license not activated."
 msgstr "%s license not activated."
 
 #: ../classes/personal-pro/class-wpfront-user-role-editor-post-type-permissions.php:83
-#: ../classes/personal-pro/class-wpfront-user-role-editor-post-type-permissions.php:377
+#: ../classes/personal-pro/class-wpfront-user-role-editor-post-type-permissions.php:386
 #: ../templates/personal-pro/bulk-edit-extended-permissions.php:221
 msgid "Role Permissions"
 msgstr "Role Permissions"
@@ -2300,29 +2336,29 @@ msgstr ""
 "Enter the URL where the user will be redirected after login or on wp-admin "
 "access."
 
-#: ../templates/login-redirect.php:138
+#: ../templates/login-redirect.php:138 ../templates/login-redirect.php:148
 msgid "[Relative to home URL (recommended) or absolute URL.]"
 msgstr "[Relative to home URL (recommended) or absolute URL.]"
 
-#: ../templates/login-redirect.php:143
+#: ../templates/login-redirect.php:153
 msgid "Deny WP-ADMIN"
 msgstr "Deny WP-ADMIN"
 
-#: ../templates/login-redirect.php:151
+#: ../templates/login-redirect.php:161
 msgid "Disable Toolbar"
 msgstr "Disable Toolbar"
 
-#: ../templates/login-redirect.php:160
+#: ../templates/login-redirect.php:170
 #: ../templates/personal-pro/bulk-edit-extended-permissions.php:298
 #: ../templates/personal-pro/content-shortcodes-add-edit.php:67
 msgid "Submit"
 msgstr "Submit"
 
-#: ../templates/login-redirect.php:168
+#: ../templates/login-redirect.php:178
 msgid "The following role configurations will be deleted."
 msgstr "The following role configurations will be deleted."
 
-#: ../templates/login-redirect.php:186
+#: ../templates/login-redirect.php:196
 msgid "Confirm Delete"
 msgstr "Confirm Delete"
 
@@ -2508,6 +2544,13 @@ msgstr "Restored"
 #: ../templates/restore-role.php:107
 msgid "Unexpected error / Timed out"
 msgstr "Unexpected error / Timed out"
+
+#~ msgid ""
+#~ "<b>URL</b>: The URL where the user will be redirected after login or on "
+#~ "WP-ADMIN access if denied."
+#~ msgstr ""
+#~ "<b>URL</b>: The URL where the user will be redirected after login or on "
+#~ "WP-ADMIN access if denied."
 
 #~ msgid ""
 #~ "This screen allow you to restore WordPress built-in roles to its standard "

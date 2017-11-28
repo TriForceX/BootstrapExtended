@@ -130,10 +130,20 @@ if (!defined('ABSPATH')) {
                     </tr>
                     <tr class="form-required <?php echo $this->valid_url ? '' : 'form-invalid' ?>">
                         <th scope="row">
-                            <?php echo $this->__('URL'); ?><span class="description"> (<?php echo $this->__('required'); ?>)</span>
+                            <?php echo $this->__('Login Redirect URL'); ?><span class="description"> (<?php echo $this->__('required'); ?>)</span>
                         </th>
                         <td>
                             <input class="regular-text" name="url" type="text" value="<?php echo $this->url; ?>" aria-required="true"  />
+                            <br />
+                            <span class="description"><?php echo $this->__('[Relative to home URL (recommended) or absolute URL.]'); ?></span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th scope="row">
+                            <?php echo $this->__('Logout Redirect URL'); ?>
+                        </th>
+                        <td>
+                            <input class="regular-text" name="logout_url" type="text" value="<?php echo $this->logout_url; ?>" aria-required="true"  />
                             <br />
                             <span class="description"><?php echo $this->__('[Relative to home URL (recommended) or absolute URL.]'); ?></span>
                         </td>

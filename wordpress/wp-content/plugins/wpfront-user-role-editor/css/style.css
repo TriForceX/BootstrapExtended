@@ -157,7 +157,6 @@ div.wrap.go-pro div.license-container table.form-table td.expired {
     color: red;
 }
 
-
 div.wrap.login-redirect table.wp-list-table .column-priority,
 div.wrap.login-redirect table.wp-list-table .column-deny_wpadmin,
 div.wrap.login-redirect table.wp-list-table .column-disable_toolbar {
@@ -165,6 +164,7 @@ div.wrap.login-redirect table.wp-list-table .column-disable_toolbar {
     text-align: center;
 }
 
-div.wrap.login-redirect table.wp-list-table .column-url {
+div.wrap.login-redirect table.wp-list-table .column-url,
+div.wrap.login-redirect table.wp-list-table .column-logout_url{
     width: 50%;
 }

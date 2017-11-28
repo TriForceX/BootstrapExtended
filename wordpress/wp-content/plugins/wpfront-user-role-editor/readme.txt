@@ -2,9 +2,10 @@
 Contributors: syammohanm
 Donate link: https://wpfront.com/donate/
 Tags: WordPress user role editor, user role editor, role editor, user role, role, WordPress user roles, user roles, roles, user roles editor, roles editor, role manager, roles manager, manage roles, manage role, access, capability, editor, permission, role, security, user, capability editor, capability manager, custom post types, custom post type permissions, custom post type capabilities, post type permissions, post type capabilities, menu editor, role menu, role menu editor, multisite roles, multisite role editor, multisite user roles, import roles, export roles
-Requires at least: 4.3
-Tested up to: 4.8
-Stable tag: 2.13.1
+Requires at least: 4.4
+Tested up to: 4.9
+Requires PHP: 5.2.4
+Stable tag: 2.14.1
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -84,6 +85,11 @@ Please visit [WPFront User Role Editor FAQ](https://wpfront.com/user-role-editor
 19. Widget permissions
 
 == Changelog ==
+
+= 2.14.1 =
+* Logout redirect added.
+* Secondary roles on Add New User added.
+* Secondary role filters added. [Documentation](https://wpfront.com/user-role-editor-pro/actions-and-filters/).
 
 = 2.13.1 =
 * [Important]XSS fixes. Thanks to Burak @ security.nl & DefenseCode WebScanner.
@@ -232,6 +238,9 @@ Please visit [WPFront User Role Editor FAQ](https://wpfront.com/user-role-editor
 * Initial release.
 
 == Upgrade Notice ==
+
+= 2.14.1 =
+* New features added.
 
 = 2.13.1 =
 * This update is highly recommended because of security fixes.

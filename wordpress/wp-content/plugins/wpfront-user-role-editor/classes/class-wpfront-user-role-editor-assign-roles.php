@@ -58,8 +58,10 @@ if (!class_exists('WPFront_User_Role_Editor_Assign_Roles')) {
             add_filter('user_row_actions', array($this, 'user_row_actions'), 10, 2);
 
             add_action('edit_user_profile', array($this, 'edit_user_profile'), 10, 1);
+            add_action('user_new_form', array($this, 'user_new_form'), 10, 1);
             //add_action('edit_user_profile_update', array($this, 'edit_user_profile_update'), 1000, 1);
             add_action('profile_update', array($this, 'edit_user_profile_update'), 1000, 1);
+            add_action('edit_user_created_user', array($this, 'edit_user_created_user'), 1000, 1);
         }
 
         public function manage_users_columns($columns) {
@@ -91,6 +93,7 @@ if (!class_exists('WPFront_User_Role_Editor_Assign_Roles')) {
             if (!$this->can_assign_roles())
                 return;
 
+            //TODO: remove for Administrator.
             if ($user->ID === wp_get_current_user()->ID)
                 return;
 
@@ -101,16 +104,54 @@ if (!class_exists('WPFront_User_Role_Editor_Assign_Roles')) {
             $roles = array_values($user->roles);
             array_shift($roles);
 
+            $this->secondary_roles = apply_filters('wpfront_ure_edit_user_profile_secondary_roles', $this->secondary_roles, $user);
+            
             //echo "<h3>{$this->__('Secondary Roles')}</h3>";
             echo '<table class="form-table">';
             echo '<tbody>';
             echo '<tr>';
-            echo "<th>{$this->__('Secondary Roles')}</th>";
+            echo "<th scope='row'>{$this->__('Secondary Roles')}</th>";
             echo '<td>';
-            foreach ($this->secondary_roles as $key => $value) {
-                echo '<div style="min-width:200px;width:25%;float:left;">';
-                printf('<label><input type="checkbox" name="wpfront-secondary-roles[%s]" %s />%s</label>', $key, in_array($key, $roles) ? 'checked' : '', $value);
-                echo '</div>';
+            if(empty($this->secondary_roles)) {
+                echo $this->__('No roles for this site.');
+            } else {
+                foreach ($this->secondary_roles as $key => $value) {
+                    echo '<div style="min-width:200px;width:25%;float:left;">';
+                    printf('<label><input type="checkbox" name="wpfront-secondary-roles[%s]" %s />%s</label>', $key, in_array($key, $roles) ? 'checked' : '', $value);
+                    echo '</div>';
+                }
+            }
+            echo '</td>';
+            echo '</tr>';
+            echo '</tbody>';
+            echo '</table>';
+        }
+        
+        public function user_new_form() {
+            if (is_multisite() && is_network_admin())
+                return;
+
+            if (!$this->can_assign_roles())
+                return;
+
+            $this->populate_roles_array();
+
+            $this->secondary_roles = apply_filters('wpfront_ure_add_user_profile_secondary_roles', $this->secondary_roles);
+            
+            //echo "<h3>{$this->__('Secondary Roles')}</h3>";
+            echo '<table class="form-table">';
+            echo '<tbody>';
+            echo '<tr>';
+            echo "<th scope='row'>{$this->__('Secondary Roles')}</th>";
+            echo '<td>';
+            if(empty($this->secondary_roles)) {
+                echo $this->__('No roles for this site.');
+            } else {
+                foreach ($this->secondary_roles as $key => $value) {
+                    echo '<div style="min-width:200px;width:25%;float:left;">';
+                    printf('<label><input type="checkbox" name="wpfront-secondary-roles[%s]" />%s</label>', $key, $value);
+                    echo '</div>';
+                }
             }
             echo '</td>';
             echo '</tr>';
@@ -132,6 +173,24 @@ if (!class_exists('WPFront_User_Role_Editor_Assign_Roles')) {
                 return;
 
             //$user = get_user_to_edit($user_id); //fatal error - function not defined.
+            $user = get_userdata($user_id);
+            if (empty($user))
+                return;
+
+            $this->populate_roles_array();
+            foreach ($this->secondary_roles as $key => $value) {
+                if (!empty($_POST["wpfront-secondary-roles"][$key]))
+                    $user->add_role($key);
+            }
+        }
+        
+        public function edit_user_created_user($user_id) {
+            if (is_multisite() && is_network_admin())
+                return;
+
+            if (!$this->can_assign_roles())
+                return;
+
             $user = get_userdata($user_id);
             if (empty($user))
                 return;

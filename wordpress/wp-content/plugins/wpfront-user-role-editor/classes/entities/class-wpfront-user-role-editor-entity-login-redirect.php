@@ -21,12 +21,16 @@ if (!class_exists('WPFront_User_Role_Editor_Entity_Login_Redirect')) {
         }
 
         protected function _db_data() {
+            $logout_url = $this->db_data_field('logout_url', 'varchar(2000)');
+            $logout_url->default = "''";
+            
             return array(
                 $this->db_data_field('role', 'varchar(250)'),
                 $this->db_data_field('priority', 'int'),
                 $this->db_data_field('url', 'varchar(2000)'),
                 $this->db_data_field('deny_wpadmin', 'bit'),
-                $this->db_data_field('disable_toolbar', 'bit')
+                $this->db_data_field('disable_toolbar', 'bit'),
+                $logout_url
             );
         }
 

@@ -83,7 +83,8 @@ if (!class_exists('WPFront_User_Role_Editor_Login_Redirect_List_Table')) {
                 'cb' => '<input type="checkbox" />',
                 'role' => $this->main->__('Role'),
                 'priority' => $this->main->__('Priority'),
-                'url' => $this->main->__('URL'),
+                'url' => $this->main->__('Login Redirect URL'),
+                'logout_url' => $this->main->__('Logout Redirect URL'),
                 'deny_wpadmin' => $this->main->__('WP-ADMIN'),
                 'disable_toolbar' => $this->main->__('Toolbar')
             );
@@ -162,6 +163,10 @@ if (!class_exists('WPFront_User_Role_Editor_Login_Redirect_List_Table')) {
 
                         case 'url':
                             echo "<td $attributes>" . $this->main->format_url($entity->get_url()) . "</td>";
+                            break;
+                        
+                        case 'logout_url':
+                            echo "<td $attributes>" . $this->main->format_url($entity->get_logout_url()) . "</td>";
                             break;
 
                         case 'deny_wpadmin':

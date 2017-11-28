@@ -454,19 +454,19 @@ class new_general_setting
 	function new_field_2_html() 
 	{
 		$new_field_data = array("blogauthor","Defines the website author");
-        echo '<input style="max-width: 350px;width: 100%;" id="'.$new_field_data[0].'" name="'.$new_field_data[0].'" value="' . get_option( $new_field_data[0], '' ) . '"/>';
+        echo '<input type="text" style="max-width: 350px;width: 100%;" id="'.$new_field_data[0].'" name="'.$new_field_data[0].'" value="' . get_option( $new_field_data[0], '' ) . '"/>';
 		echo '<p class="description" id="'.$new_field_data[0].'-description">'.$new_field_data[1].'</p>';
     }
 	function new_field_3_html() 
 	{
 		$new_field_data = array("blognavcolor","Website nav bar color for most devices");
-        echo '<input style="max-width: 350px;width: 100%;" id="'.$new_field_data[0].'" name="'.$new_field_data[0].'" value="' . get_option( $new_field_data[0], '' ) . '"/>';
+        echo '<input type="text" style="max-width: 350px;width: 100%;" id="'.$new_field_data[0].'" name="'.$new_field_data[0].'" value="' . get_option( $new_field_data[0], '' ) . '"/>';
 		echo '<p class="description" id="'.$new_field_data[0].'-description">'.$new_field_data[1].'</p>';
     }
 	function new_field_4_html() 
 	{
 		$new_field_data = array("blognavcolorapple","Website nav bar color for Apple devices (it can be black or black-translucent)","new_field_5_html");
-        echo '<input style="max-width: 350px;width: 100%;" id="'.$new_field_data[0].'" name="'.$new_field_data[0].'" value="' . get_option( $new_field_data[0], '' ) . '"/>';
+        echo '<input type="text" style="max-width: 350px;width: 100%;" id="'.$new_field_data[0].'" name="'.$new_field_data[0].'" value="' . get_option( $new_field_data[0], '' ) . '"/>';
 		echo '<p class="description" id="'.$new_field_data[0].'-description">'.$new_field_data[1].'</p>';
     }
 }
