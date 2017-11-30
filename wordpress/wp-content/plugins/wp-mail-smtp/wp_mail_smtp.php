@@ -1,7 +1,7 @@
 <?php
 /**
  * Plugin Name: WP Mail SMTP
- * Version: 0.11.1
+ * Version: 0.11.2
  * Plugin URI: https://wpforms.com/
  * Description: Reconfigures the wp_mail() function to use SMTP instead of mail() and creates an options page to manage the settings.
  * Author: WPForms
@@ -17,7 +17,7 @@
  * http://www.gnu.org/licenses/gpl.txt
  */
 
-define( 'WPMS_PLUGIN_VER', '0.11.1' );
+define( 'WPMS_PLUGIN_VER', '0.11.2' );
 
 /**
  * Setting options in wp-config.php
@@ -47,20 +47,21 @@ define('WPMS_SMTP_PASS', 'password'); // SMTP authentication password, only used
  */
 global $wpms_options;
 $wpms_options = array(
-	'mail_from'            => '',
-	'mail_from_name'       => '',
-	'mailer'               => 'smtp',
-	'mail_set_return_path' => 'false',
-	'smtp_host'            => 'localhost',
-	'smtp_port'            => '25',
-	'smtp_ssl'             => 'none',
-	'smtp_auth'            => false,
-	'smtp_user'            => '',
-	'smtp_pass'            => '',
-	'pepipost_user'        => '',
-	'pepipost_pass'        => '',
-	'pepipost_port'        => '2525',
-	'pepipost_ssl'         => 'none',
+	'mail_from'                            => '',
+	'mail_from_name'                       => '',
+	'mailer'                               => 'smtp',
+	'mail_set_return_path'                 => 'false',
+	'smtp_host'                            => 'localhost',
+	'smtp_port'                            => '25',
+	'smtp_ssl'                             => 'none',
+	'smtp_auth'                            => false,
+	'smtp_user'                            => '',
+	'smtp_pass'                            => '',
+	'pepipost_user'                        => '',
+	'pepipost_pass'                        => '',
+	'pepipost_port'                        => '2525',
+	'pepipost_ssl'                         => 'none',
+	'wp_mail_smtp_am_notifications_hidden' => '',
 );
 
 /**
@@ -371,6 +372,26 @@ if ( ! function_exists( 'wp_mail_smtp_options_page' ) ) :
 								<p class="description">
 									<?php _e( 'Return Path indicates where non-delivery receipts - or bounce messages - are to be sent.', 'wp-mail-smtp' ); ?>
 								</p>
+							</fieldset>
+						</td>
+					</tr>
+				</table>
+
+				<table class="form-table">
+					<tr valign="top">
+						<th scope="row">
+							<?php _e( 'Hide Announcements', 'wp-mail-smtp' ); ?>
+						</th>
+						<td>
+							<fieldset>
+								<legend class="screen-reader-text">
+									<span><?php _e( 'Hide Announcements', 'wp-mail-smtp' ); ?></span>
+								</legend>
+
+								<label for="wp_mail_smtp_am_notifications_hidden">
+									<input name="wp_mail_smtp_am_notifications_hidden" type="checkbox" id="wp_mail_smtp_am_notifications_hidden" value="true" <?php checked( 'true', get_option( 'wp_mail_smtp_am_notifications_hidden' ) ); ?> />
+									<?php _e( 'Check this if you would like to hide plugin announcements and update details.', 'wp-mail-smtp' ); ?>
+								</label>
 							</fieldset>
 						</td>
 					</tr>
@@ -735,6 +756,12 @@ function wp_mail_plugin_action_links( $links, $file ) {
  * @since 0.11
  */
 function wp_mail_smtp_am_notifications() {
+
+	$is_hidden = get_option( 'wp_mail_smtp_am_notifications_hidden', '' );
+
+	if ( 'true' === $is_hidden ) {
+		return;
+	}
 
 	if ( ! class_exists( 'WPMS_AM_Notification' ) ) {
 		require_once dirname( __FILE__ ) . '/class-wpms-am-notification.php';

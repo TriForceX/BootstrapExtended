@@ -93,8 +93,12 @@ By all means please contact us to discuss features or options you'd like to see 
 
 == Changelog ==
 
+= [0.11.2] - 2017-11-28 =
+* Added: Setting to hide annoucement feed.
+* Changed: Announcement feed data.
+
 = [0.11.1] - 2017-10-30 =
-* Older PHP compatibility fix.
+* Fixed: Older PHP compatibility fix.
 
 = [0.11] - 2017-10-30 =
 * Added: Helper description to Return Path option.
