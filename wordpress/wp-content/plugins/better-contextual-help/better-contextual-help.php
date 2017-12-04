@@ -1,7 +1,7 @@
 <?php
 /**
  * Plugin Name: Better Contextual Help
- * Description: Extend your Dahsboard Help. Display help for multiple screens and user roles.
+ * Description: Extend your Dashboard Help. Display help for multiple screens and user roles.
  * Version: 1.1
  * Author: Piotr Potrebka
  * Author URI: http://potrebka.pl

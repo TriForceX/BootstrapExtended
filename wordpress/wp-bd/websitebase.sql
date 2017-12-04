@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: localhost:3306
--- Tiempo de generación: 04-12-2017 a las 16:28:02
+-- Tiempo de generación: 04-12-2017 a las 16:33:44
 -- Versión del servidor: 5.5.42
 -- Versión de PHP: 5.6.10
 
@@ -215,7 +215,7 @@ INSERT INTO `wp_options` (`option_id`, `option_name`, `option_value`, `autoload`
 (138, 'current_theme', 'WebSite Base', 'yes'),
 (139, 'theme_mods_websitebase', 'a:2:{i:0;b:0;s:18:"custom_css_post_id";i:-1;}', 'yes'),
 (140, 'theme_switched', '', 'yes'),
-(186, '_transient_timeout_plugin_slugs', '1512487658', 'no'),
+(186, '_transient_timeout_plugin_slugs', '1512488013', 'no'),
 (187, '_transient_plugin_slugs', 'a:9:{i:0;s:33:"admin-menu-editor/menu-editor.php";i:1;s:34:"advanced-custom-fields-pro/acf.php";i:2;s:33:"advanced-order/advanced_order.php";i:3;s:49:"better-contextual-help/better-contextual-help.php";i:4;s:43:"custom-post-type-ui/custom-post-type-ui.php";i:5;s:24:"simple-history/index.php";i:6;s:37:"tinymce-advanced/tinymce-advanced.php";i:7;s:53:"wpfront-user-role-editor/wpfront-user-role-editor.php";i:8;s:29:"wp-mail-smtp/wp_mail_smtp.php";}', 'no'),
 (194, 'blogkeywords', 'html, jquery, javascript, php, responsive, css3', 'yes'),
 (195, 'bloganalytics', '&lt;script&gt;\r\n//Analytics Code Here\r\n&lt;/script&gt;', 'yes'),
