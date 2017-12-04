@@ -2,7 +2,7 @@
 /**
  * Plugin Name: Better Contextual Help
  * Description: Extend your Dahsboard Help. Display help for multiple screens and user roles.
- * Version: 1.0
+ * Version: 1.1
  * Author: Piotr Potrebka
  * Author URI: http://potrebka.pl
  * License: GPL2
@@ -17,7 +17,7 @@ class better_contextual_help {
 									'dashboard' 		=> __('Dashboard', 'bch'),
 									'update-core' 		=> __('&rarr; Update', 'bch'),
 									'edit-post' 		=> __('Post', 'bch'),
-									'post' 				=> __('&rarr; Edit post', 'bch'),
+									'post' 				=> __('&rarr; Edit Post', 'bch'),
 									'edit-category' 	=> __('&rarr; Categories', 'bch'),
 									'edit-post_tag' 	=> __('&rarr; Tags', 'bch'),
 									'edit-page' 		=> __('Pages', 'bch'),
@@ -27,17 +27,17 @@ class better_contextual_help {
 									'nav-menus' 		=> __('&rarr; Menus', 'bch'),
 									'theme-editor' 		=> __('Theme editor', 'bch'),
 									'plugins' 			=> __('Plugins', 'bch'),
-									'plugin-install' 	=> __('&rarr; Plugin install', 'bch'),
-									'plugin-editor' 	=> __('&rarr; Plugin editor', 'bch'),
+									'plugin-install' 	=> __('&rarr; Plugin Install', 'bch'),
+									'plugin-editor' 	=> __('&rarr; Plugin Editor', 'bch'),
 									'users' 			=> __('Users', 'bch'),
-									'user' 				=> __('&rarr; Add user', 'bch'),
-									'user-edit' 		=> __('&rarr; Edit user', 'bch'),
+									'user' 				=> __('&rarr; Add User', 'bch'),
+									'user-edit' 		=> __('&rarr; Edit User', 'bch'),
 									'profile' 			=> __('&rarr; Profile', 'bch'),
 									'tools' 			=> __('Tools', 'bch'),
 									'import' 			=> __('&rarr; Import', 'bch'),
 									'export' 			=> __('&rarr; Export', 'bch'),
-									'options-general' 	=> __('Options', 'bch'),
-									'edit-wp_help' 		=> __('Contextual Help', 'bch')
+									'options-general' 	=> __('Settings', 'bch'),
+									'edit-wp_help' 		=> __('&rarr; Contextual Help', 'bch')
 								);
 		
 		add_filter( 'contextual_help', array( $this, 'helper' ), 1, 3 );
@@ -114,7 +114,7 @@ class better_contextual_help {
 			$wh_roles = (array) get_post_meta( $post->ID, 'wh_roles', true );
 			$roles = '';
 			foreach( $wh_roles as $role ) {
-				$roles .= $role == 'all' ? __('All roles', 'bch') : translate_user_role( ucfirst( $role ) ) . ', ';
+				$roles .= $role == 'all' ? __('All Roles', 'bch') : translate_user_role( ucfirst( $role ) ) . ', ';
 				
 			}
 			echo rtrim( $roles, ', ' );
@@ -122,7 +122,7 @@ class better_contextual_help {
 	}
 	
 	public function meta_boxes() {
-		add_meta_box('contextual-help-option', __('Options','fa47lang'), array( $this, 'meta_box_options' ), 'wp_help', 'side', 'default');
+		add_meta_box('contextual-help-option', __('Settings', 'bch'), array( $this, 'meta_box_options' ), 'wp_help', 'side', 'default');
 	}
 	
 	public function meta_box_options( $post, $post_id ) {
@@ -152,11 +152,11 @@ class better_contextual_help {
 		</select>
 		</p>
 		
-		<p><label for="wh_roles"><?php _e('Display for'); ?></label><br/>
+		<p><label for="wh_roles"><?php _e('Display for', 'bch'); ?></label><br/>
 		<?php if( !$wh_roles ) $wh_roles = array('all'); ?>
 		
 		<select style="width:100%" id="wh_roles" name="wh_roles[]" multiple>
-		<option value="all" <?php echo in_array('all', $wh_roles) ? 'selected' : ''; ?>><?php _e('All roles', 'bch'); ?></option>
+		<option value="all" <?php echo in_array('all', $wh_roles) ? 'selected' : ''; ?>><?php _e('All Roles', 'bch'); ?></option>
 		<?php 
 		$editable_roles = get_editable_roles();
 		foreach ( $editable_roles as $role => $details ) {

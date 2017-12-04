@@ -1,11 +1,11 @@
 === Better Contextual Help ===
-Contributors: potreb, TriForceX
+Contributors: potreb, triforcex
 Tags: contextual help, help, user help, documentation, docs
 Tested up to: 4.9.1
 Stable tag: 1.1
 Requires at least: 3.8
 
-Extend your Dashboard Help. Display help for multiple screens and user roles.
+Extend your Dashboard Help.
 
 == Description ==
 Extend your dashboard help by adding new tabs or replacing old ones. You can add tab for the specific roles and screens.
@@ -15,13 +15,13 @@ You can export and import content help.
 Go to the settings to be able to post for help.
 
 == Changelog ==
-= 1.1 =
+= 0.2 =
 * Added support for custom post types
 * Changed sub menu left bar to arrows
 * Added note for select multiple options
+* Added spanish language
 
-
-= 1.0 =
+= 0.1 =
 * Make plugin
 
 == Installation ==
