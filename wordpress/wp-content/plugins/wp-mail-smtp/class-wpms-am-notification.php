@@ -10,7 +10,7 @@
  * @author     Benjamin Rojas
  * @license    GPL-2.0+
  * @copyright  Copyright (c) 2017, Retyp LLC
- * @version    1.0.0
+ * @version    1.0.2
  */
 class WPMS_AM_Notification {
 	/**
@@ -40,24 +40,6 @@ class WPMS_AM_Notification {
 	 * @var string
 	 */
 	public $plugin_version;
-
-	/**
-	 * The list of installed plugins.
-	 *
-	 * @since 1.0.0
-	 *
-	 * @var array
-	 */
-	public $plugin_list = array();
-
-	/**
-	 * The list of installed themes.
-	 *
-	 * @since 1.0.0
-	 *
-	 * @var string
-	 */
-	public $theme_list = array();
 
 	/**
 	 * Flag if a notice has been registered.
@@ -93,7 +75,9 @@ class WPMS_AM_Notification {
 	 */
 	public function custom_post_type() {
 		register_post_type( 'amn_' . $this->plugin, array(
-			'supports' => false,
+			'label'      => $this->plugin . ' Announcements',
+			'can_export' => false,
+			'supports'   => false,
 		) );
 	}
 
@@ -111,7 +95,7 @@ class WPMS_AM_Notification {
 
 		if ( $last_checked < strtotime( 'today midnight' ) ) {
 			$plugin_notifications = $this->get_plugin_notifications( 1 );
-			$notification_id 	  = null;
+			$notification_id      = null;
 
 			if ( ! empty( $plugin_notifications ) ) {
 				// Unset it from the array.
@@ -123,7 +107,7 @@ class WPMS_AM_Notification {
 				'body' => array(
 					'slug'              => $this->plugin,
 					'version'           => $this->plugin_version,
-					'last_notification' => $notification_id
+					'last_notification' => $notification_id,
 				),
 			) ) );
 
@@ -156,8 +140,6 @@ class WPMS_AM_Notification {
 					update_post_meta( $new_notification_id, 'type', sanitize_text_field( trim( $data->type ) ) );
 					update_post_meta( $new_notification_id, 'dismissable', (bool) $data->dismissible ? 1 : 0 );
 					update_post_meta( $new_notification_id, 'location', function_exists( 'wp_json_encode' ) ? wp_json_encode( $data->location ) : json_encode( $data->location ) );
-					update_post_meta( $new_notification_id, 'plugins', function_exists( 'wp_json_encode' ) ? wp_json_encode( $data->plugins ) : json_encode( $data->plugins ) );
-					update_post_meta( $new_notification_id, 'theme', sanitize_text_field( trim( $data->theme ) ) );
 					update_post_meta( $new_notification_id, 'version', sanitize_text_field( trim( $data->version ) ) );
 					update_post_meta( $new_notification_id, 'viewed', 0 );
 					update_post_meta( $new_notification_id, 'expiration', $data->expiration ? absint( $data->expiration ) : false );
@@ -188,8 +170,8 @@ class WPMS_AM_Notification {
 	public function get_plugin_notifications( $limit = -1, $args = array() ) {
 		return get_posts(
 			array(
-				'showposts' => $limit,
-				'post_type' => 'amn_' . $this->plugin,
+				'posts_per_page' => $limit,
+				'post_type'      => 'amn_' . $this->plugin,
 			) + $args
 		);
 	}
@@ -343,7 +325,7 @@ class WPMS_AM_Notification {
 	 */
 	public function get_plan_level() {
 		// Prepare variables.
-		$key	= '';
+		$key    = '';
 		$level  = '';
 		$option = false;
 		switch ( $this->plugin ) {
