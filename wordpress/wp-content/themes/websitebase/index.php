@@ -1257,6 +1257,12 @@
 			<pre><code class="language-html" data-lang="html">&lt;button type="button" class="btn btn-primary JSmapLaunch" data-map-address="Renato Sánchez 4265, Las Condes, Santiago, Chile" data-map-coords-1="-33.4176466,-70.585256,17" data-map-coords-2="-33.41748,-70.58519,17"&gt;Show Map Launch&lt;/button&gt;</code></pre>
 		</figure>
 
+		<!-- More functions -->
+		<div class="page-header">
+			<h1>More functions! <span class="label label-danger">JS & PHP</span></h1>
+		</div>
+		<p>There is a lot of more functions in the whole code, just play and try it. Remember to check <code>app-base.js</code> , <code>functions.php</code> and <code>main.php</code> for more stuff. Below you will find some original Bootstrap features, you can find more in the main menu.</p>
+
 		<!-- ******** BOOTSTRAP THEME EXAMPLES ******** -->
 		
 		<p>&nbsp;</p>
