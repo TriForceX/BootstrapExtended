@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the Plugins - WP Mail SMTP by WPForms - Development (trunk) package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2017-12-13 09:46:06+0000\n"
+"PO-Revision-Date: 2017-12-18 12:48:45+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -10,6 +10,22 @@ msgstr ""
 "X-Generator: GlotPress/2.4.0-alpha\n"
 "Language: es\n"
 "Project-Id-Version: Plugins - WP Mail SMTP by WPForms - Development (trunk)\n"
+
+#: src/Providers/OptionAbstract.php:208
+msgid "By default TLS encryption is automatically used if the server supports it, which is recommended. In some cases, due to server misconfigurations, this can cause issues and may need to be disabled."
+msgstr "Por defecto, se usa automáticamente la encriptación TLS si el servidor es compatible con ella, que es lo más recomendable. En algunos casos, debido a malas configuraciones del servidor, esto puede provocar problemas y puede que tengas que desactivarla."
+
+#: src/Providers/OptionAbstract.php:194
+msgid "Auto TLS"
+msgstr "TLS automática"
+
+#: src/Providers/OptionAbstract.php:186
+msgid "For most servers TLS is the recommended option. If your SMTP provider offers both SSL and TLS options, we recommend using TLS."
+msgstr "En la mayoría de los servidores TLS es la opción recomendable. Si tu proveedor de SMTP ofrece las opciones SSL y TLS te recomendamos usar TLS."
+
+#: src/Admin/Pages/Test.php:136
+msgid "Please copy only the content of the error debug message above, identified with an orange left border, into the support forum topic if you experience any issues."
+msgstr "Por favor, si experimentas algún problema, copia en el debate del foro de soporte solo el contenido del mensaje de depuración de errores de arriba, identificado con un borde naranja a la izquierda."
 
 #. translators: %s - SendGrid access level.
 #: src/Providers/Sendgrid/Options.php:79
@@ -52,34 +68,34 @@ msgstr "Otro SMTP"
 msgid "Pepipost"
 msgstr "Pepipost"
 
-#: src/Providers/OptionAbstract.php:286
+#: src/Providers/OptionAbstract.php:307
 msgid "Meanwhile you can switch to the \"Other SMTP\" Mailer option."
 msgstr "Mientras puedes cambiar a la opción de envío de correos con \"Otro SMTP\"."
 
 #. translators: %1$s - Provider name; %2$s - PHP version required by Provider;
 #. %3$s - current PHP version.
-#: src/Providers/OptionAbstract.php:279
+#: src/Providers/OptionAbstract.php:300
 msgid "%1$s requires PHP %2$s to work and does not support your current PHP version %3$s. Please contact your host and request a PHP upgrade to the latest one."
 msgstr "%1$s requiere PHP %2$s para funcionar y no es compatible con tu versión actual de PHP %3$s. Por favor, contacta con tu alojamiento y solicita una actualización de PHP a la última versión."
 
 #. translators: %s - wp-config.php.
-#: src/Providers/OptionAbstract.php:242
+#: src/Providers/OptionAbstract.php:263
 msgid "The password is stored in plain text. We highly recommend you setup your password in your WordPress configuration file for improved security; to do this add the lines below to your %s file."
 msgstr "La contraseña se almacena en texto plano. Te recomendamos encarecidamente que configures tu contraseña en el archivo de configuración de WordPress para mejorar la seguridad; para hacer esto añade las siguientes líneas a tu archivo %s."
 
-#: src/Providers/OptionAbstract.php:228
+#: src/Providers/OptionAbstract.php:249
 msgid "SMTP Password"
 msgstr "Contraseña SMTP"
 
-#: src/Providers/OptionAbstract.php:214
+#: src/Providers/OptionAbstract.php:235
 msgid "SMTP Username"
 msgstr "Nombre de usuario de SMTP"
 
-#: src/Providers/OptionAbstract.php:206
+#: src/Providers/OptionAbstract.php:205 src/Providers/OptionAbstract.php:227
 msgid "Off"
 msgstr "Inactivo"
 
-#: src/Providers/OptionAbstract.php:205
+#: src/Providers/OptionAbstract.php:204 src/Providers/OptionAbstract.php:226
 msgid "On"
 msgstr "Activo"
 
@@ -306,9 +322,9 @@ msgstr "Ocultar anuncios"
 msgid "WPForms"
 msgstr "WPForms"
 
-#. #-#-#-#-#  wp-mail-smtp-code.pot (WP Mail SMTP 1.0.2)  #-#-#-#-#
+#. #-#-#-#-#  wp-mail-smtp-code.pot (WP Mail SMTP 1.1.0)  #-#-#-#-#
 #. Plugin URI of the plugin/theme
-#. #-#-#-#-#  wp-mail-smtp-code.pot (WP Mail SMTP 1.0.2)  #-#-#-#-#
+#. #-#-#-#-#  wp-mail-smtp-code.pot (WP Mail SMTP 1.1.0)  #-#-#-#-#
 #. Author URI of the plugin/theme
 msgid "https://wpforms.com/"
 msgstr "https://wpforms.com/"
@@ -336,7 +352,7 @@ msgstr "Opciones de Pepipost SMTP"
 msgid "This is in plain text because it must not be stored encrypted."
 msgstr "Esto está en texto plano debido a que no debe actualizarse encriptado."
 
-#: src/Providers/OptionAbstract.php:186 wp_mail_smtp.php:462
+#: wp_mail_smtp.php:462
 msgid "TLS is not the same as STARTTLS. For most servers SSL is the recommended option."
 msgstr "TLS no es lo mismo que STARTTLS. En la mayoría de servidores SSL es la opción recomendada."
 
@@ -365,7 +381,7 @@ msgstr "Ajustes de WP Mail SMTP"
 msgid "Reconfigures the wp_mail() function to use SMTP instead of mail() and creates an options page to manage the settings."
 msgstr "Reconfigura la función wp_mail() para que use SMTP en vez de mail() y crea una página de opciones para gestionar los ajustes."
 
-#. #-#-#-#-#  wp-mail-smtp-code.pot (WP Mail SMTP 1.0.2)  #-#-#-#-#
+#. #-#-#-#-#  wp-mail-smtp-code.pot (WP Mail SMTP 1.1.0)  #-#-#-#-#
 #. Plugin Name of the plugin/theme
 #: src/Admin/Area.php:127 wp_mail_smtp.php:652
 msgid "WP Mail SMTP"
@@ -411,7 +427,7 @@ msgstr "Sí: Usar identificación SMTP."
 msgid "No: Do not use SMTP authentication."
 msgstr "No: No usar identificación SMTP."
 
-#: src/Providers/OptionAbstract.php:195 wp_mail_smtp.php:467
+#: src/Providers/OptionAbstract.php:216 wp_mail_smtp.php:467
 #: wp_mail_smtp.php:471
 msgid "Authentication"
 msgstr "Identificación"

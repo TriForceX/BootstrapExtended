@@ -84,7 +84,13 @@
 <div class="header">
 	<div class="container">
 		<!-- HEADER CONTAINER -->
-    	
+    	<style type="text/css">
+			.prueba{
+				font-size: 28px; width:100%; max-width: 360px; background: yellow; display: inline-block; margin: 5px;
+			}
+		</style>
+		<div class="prueba">Oftalmo 1</div>
+		<div class="prueba">Oftalmo 2</div>
 		<!-- HEADER CONTAINER -->
     </div>
 </div>
