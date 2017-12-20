@@ -108,14 +108,14 @@ td[align='left']{
 /*Modal*/
 
 /*Custom Panel*/
-.panel-custom {
-   /* border-color: red;*/
+/*.panel-custom {
+   border-color: red;
 }
 .panel-custom > .panel-heading {
-    /*background-color: red;
+    background: red;
     border-color: red;
-    color: #fff;*/
-}
+    color: #fff;
+}*/
 /*Custom Panel*/
 
 /*UI Date Picker*/
@@ -168,7 +168,7 @@ td[align='left']{
 .ui-state-hover, .ui-widget-content .ui-state-hover, .ui-widget-header .ui-state-hover, .ui-state-focus, .ui-widget-content .ui-state-focus, .ui-widget-header .ui-state-focus, .ui-button:hover, .ui-button:focus {
    border: 1px solid red;
     background: red;
-    color: black;
+    color: white;
 }
 .ui-datepicker .ui-datepicker-prev-hover.ui-state-hover{
 	border:none;

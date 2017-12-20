@@ -538,26 +538,21 @@ function textCut(container){
 }
 
 //Text auto size function (Note: Use this on responsive code to better results)
-function textAutoSize(container, max){
+function textSize(container, fontsize){
 	$(container).each(function (i,box){
 		
 		var width = $(box).width(),
 			html = '<span style="white-space:nowrap"></span>',
 			line = $(box).wrapInner(html).children()[0],
-			n = max;
+			n = fontsize.replace(/px/g,'');
 
 		$(box).css('font-size',n);
 
 		while ($(line).width() > width) {
 			$(box).css('font-size', --n);
-
 		}
 
 		$(box).text($(line).text());
-
-		//Example
-		//TextoFix(".container", 40); //Real Size in pixels
-
 	});
 }
 
@@ -1073,6 +1068,21 @@ $(document).ajaxComplete(function() {
 	mainInit();
 
 /* ================================================= AJAX COMPLETE ================================================= */
+
+});
+
+
+$(document).on("responsiveCode", function(event, bodyWidth, bodyHeight, bodyOrientation, bodyScreen){
+	
+/* ================================================= RESPONSIVE CODE ================================================= */
+	
+	//Apply Text Size
+	$(".JStextSize").each(function(){
+		$(this).removeAttr('style');
+		textSize($(this), $(this).css('font-size'));
+	});
+
+/* ================================================= RESPONSIVE CODE ================================================= */
 
 });
 
