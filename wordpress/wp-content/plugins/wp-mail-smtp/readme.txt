@@ -146,6 +146,13 @@ By all means please contact us to discuss features or options you'd like to see 
 
 == Changelog ==
 
+= 1.2.1 - 2017-12-21 =
+* Fixed: Failed SMTP connections generate fatal errors.
+
+= 1.2.0 - 2017-12-21 =
+* Fixed: Decrease the factual minimum WordPress version from 3.9 to 3.6.
+* Changed: Improve debug output for all mail providers.
+
 = 1.1.0 - 2017-12-18 =
 * Added: New option "Auto TLS" for SMTP mailer. Default is enabled. Migration routine for all sites.
 * Changed: Improve debug output - clear styles and context-aware content.

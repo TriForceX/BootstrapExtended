@@ -472,6 +472,68 @@ class new_general_setting
     }
 }
 
+//Set template values
+//$customize_theme_fields = array(
+//								array('field-1' => array('Field 1 Button Title','Field 1 Desctription','Field 1 Label Title','Field 1 Default Value')),
+//								array('field-2' => array('Field 2 Button Title','Field 2 Desctription','Field 2 Label Title','Field 2 Default Value')),
+//								array('field-3' => array('Field 3 Button Title','Field 3 Desctription','Field 3 Label Title','Field 3 Default Value')),
+//								);
+//
+////Set template modifications
+//function custom_theme_settings($wp_customize)
+//{
+//	global $customize_theme_fields;
+//	
+//	foreach ($customize_theme_fields as $items)
+//	{
+//		foreach ($items as $key => $value)
+//		{
+//			$wp_customize->add_section(
+//				$key,
+//				array(
+//					'title' => $value[0],
+//					'description' => $value[1],
+//				)
+//			);
+//			$wp_customize->add_setting(
+//				$key,
+//				array(
+//					'default' => $value[3],
+//				)
+//			);
+//			$wp_customize->add_control(
+//				$key,
+//				array(
+//					'label' => $value[2],
+//					'section' => $key,
+//					'type' => 'text',
+//				)
+//			);
+//		}
+//	}
+//}
+//add_action('customize_register', 'custom_theme_settings');
+
+//et template default values
+function get_theme_mod_2($name)
+{
+    global $customize_theme_fields;
+
+	foreach ($customize_theme_fields as $items)
+	{
+		foreach ($items as $key => $value)
+		{
+			if($key == $name)
+			{
+				$default = $value[3];
+				$field = get_theme_mod($key);
+				
+				return empty($field) ? $value[3] : get_theme_mod($key);
+			}
+		}
+	}
+}
+
 //Show future posts
 //function show_future_posts($data) 
 //{
