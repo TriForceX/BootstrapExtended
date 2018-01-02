@@ -26,6 +26,7 @@ Base structure for WebSites with reusable parts of source code or functions main
 * HTML header data class
 * PHP main utility class
 * CSS & JS files built in PHP (with code minification)
+* Custom htaccess file with force HTTPS & WWW options
 * Features in PHP:
 	* Global variables for CSS & JS usage
 	* Minify CSS, JS and HTML
@@ -74,16 +75,17 @@ Base structure for WebSites with reusable parts of source code or functions main
 	* Map launch function for Google Maps and Waze
 	* Check validations for home page, mobile and navigators
 * Features in CSS:
-	* Custom fade transition for Bootstrap's carousel
+	* Custom fade transition for Bootstrap carousel
 	* Disable shadows for Bootstrap's carousel navigators
-	* Custom loading container
-	* Disable margin & padding for all sides
-	* Collection of CSS3 powered hover effects
+	* Custom datepicker colors
+	* Custom Bootstrap tooltip colors
+	* Custom loading container for ajax purposes
 	* Custom form checkbox & radio style
 	* Custom form icons for input and select
+	* Custom padding, margin, width, height and table classes
+	* Collection of CSS3 powered hover effects
 * Wordpress Features:
 	* Custom database configuration for wp-config
-	* Custom htaccess file to work local/production
 	* Cron enable/disable
 	* Added custom general options fields
 	* Admin bar enable/disable
@@ -92,6 +94,7 @@ Base structure for WebSites with reusable parts of source code or functions main
 	* Admin Menu Editor (Plugin)
 	* Advanced Custom Fields (Plugin)
 	* Advanced Order (Plugin)
+	* Custom Contextual Help (Plugin)
 	* Custom Post Type UI (Plugin)
 	* Simple History (Plugin)
 	* TinyMCE (Plugin)
