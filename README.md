@@ -93,7 +93,7 @@ Base structure for WebSites with reusable parts of source code or functions main
 	* A bunch of Wordpress functions and snippets
 	* Admin Menu Editor (Plugin)
 	* Advanced Custom Fields (Plugin)
-	* Advanced Order (Plugin)
+	* Anything Order (Plugin)
 	* Custom Contextual Help (Plugin)
 	* Custom Post Type UI (Plugin)
 	* Simple History (Plugin)
