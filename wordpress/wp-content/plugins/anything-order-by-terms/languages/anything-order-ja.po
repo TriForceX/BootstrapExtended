@@ -1,0 +1,37 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Anything Order 1.0.0\n"
+"POT-Creation-Date: 2014-04-30 18:37+0900\n"
+"PO-Revision-Date: 2014-04-30 21:17+0900\n"
+"Last-Translator: kyamagucci <kazuhide.yamaguchi@gmail.com>\n"
+"Language-Team: Pimp My Site\n"
+"Language: ja\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.6.5\n"
+"X-Poedit-Basepath: .\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-KeywordsList: __;esc_html__\n"
+"X-Poedit-SearchPath-0: ..\n"
+
+#: ../modules/base/class.php:209
+msgid "Order"
+msgstr "並び順"
+
+#: ../modules/base/class.php:210
+msgid "Reset"
+msgstr "リセット"
+
+#: ../modules/base/class.php:282
+msgid ""
+"Are you sure you want to reset order?\n"
+" 'Cancel' to stop, 'OK' to reset."
+msgstr ""
+"ほんとうに並び順をリセットしますか ?\n"
+"中止するには 'キャンセル' を、リセットするには 'OK' をクリックしてください。"
+
+#: ../modules/base/class.php:311
+msgid "Invalid ordering number is posted."
+msgstr "無効な並び順番号です。"

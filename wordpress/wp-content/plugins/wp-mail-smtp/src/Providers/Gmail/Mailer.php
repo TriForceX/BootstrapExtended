@@ -3,8 +3,8 @@
 namespace WPMailSMTP\Providers\Gmail;
 
 use WPMailSMTP\Debug;
+use WPMailSMTP\MailCatcher;
 use WPMailSMTP\Providers\MailerAbstract;
-use WPMailSMTP\WP;
 
 /**
  * Class Mailer.
@@ -66,7 +66,7 @@ class Mailer extends MailerAbstract {
 	public function process_phpmailer( $phpmailer ) {
 		// Make sure that we have access to MailCatcher class methods.
 		if (
-			! $phpmailer instanceof \WPMailSMTP\MailCatcher &&
+			! $phpmailer instanceof MailCatcher &&
 			! $phpmailer instanceof \PHPMailer
 		) {
 			return;
@@ -83,10 +83,9 @@ class Mailer extends MailerAbstract {
 	public function send() {
 
 		// Get the raw MIME email using \PHPMailer data.
-		$mime = $this->phpmailer->getSentMIMEMessage();
-		$data = base64_encode( $mime );
-		$data = str_replace( array( '+', '/', '=' ), array( '-', '_', '' ), $data ); // url safe.
-		$this->message->setRaw( $data );
+		$base64 = base64_encode( $this->phpmailer->getSentMIMEMessage() );
+		$base64 = str_replace( array( '+', '/', '=' ), array( '-', '_', '' ), $base64 ); // url safe.
+		$this->message->setRaw( $base64 );
 
 		$service = new \Google_Service_Gmail( $this->auth->get_client() );
 
@@ -153,7 +152,10 @@ class Mailer extends MailerAbstract {
 		$gmail_text[] = '<strong>PHP.stream_socket_client():</strong> ' . ( function_exists( 'stream_socket_client' ) ? 'Yes' : 'No' );
 		$gmail_text[] = '<strong>PHP.fsockopen():</strong> ' . ( function_exists( 'fsockopen' ) ? 'Yes' : 'No' );
 		$gmail_text[] = '<strong>PHP.curl_version():</strong> ' . ( function_exists( 'curl_version' ) ? 'Yes' : 'No' );
-		$gmail_text[] = '<strong>Apache.mod_security:</strong> ' . ( in_array( 'mod_security', apache_get_modules(), true ) || in_array( 'mod_security2', apache_get_modules(), true ) ? 'Yes' : 'No' );
+		if ( function_exists( 'apache_get_modules' ) ) {
+			$modules      = apache_get_modules();
+			$gmail_text[] = '<strong>Apache.mod_security:</strong> ' . ( in_array( 'mod_security', $modules, true ) || in_array( 'mod_security2', $modules, true ) ? 'Yes' : 'No' );
+		}
 
 		return implode( '<br>', $gmail_text );
 	}

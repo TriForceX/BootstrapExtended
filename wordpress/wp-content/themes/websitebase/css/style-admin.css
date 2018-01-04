@@ -77,18 +77,6 @@
     display:none;
 }
 
-/*Advanced Order: Fix hidden item*/
-#toplevel_page_customtaxorder{
-	display: none;
-}
-/*Advanced Order: Fix on mobile */
-.wp-list-table td.a_order_drag.column-a_order_drag.ui-sortable-handle{
-	display: table-cell !important;	
-}
-.wp-list-table td.a_order_drag.column-a_order_drag.ui-sortable-handle::before{
-	display: none !important;
-}
-
 /*ACF Attachement fields*/
 .media-modal .compat-attachment-fields > tbody > .acf-field > .acf-input{
 	width:100%;

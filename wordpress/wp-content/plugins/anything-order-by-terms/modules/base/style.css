@@ -1,0 +1,162 @@
+@charset "UTF-8";
+
+/* head */
+
+#adv-settings label[for="anything-order-hide"] .dashicons{
+    display: none;
+}
+
+#adv-settings label[for="anything-order-hide"] .dashicons:before{
+    content: none;
+}
+
+#adv-settings label[for="anything-order-hide"] .title{
+    display: inline-block;
+}
+
+#adv-settings label[for="anything-order-hide"] .anything-order-actions a {
+    cursor: pointer;
+    display: inline-block;
+    font-size: .9em;
+    outline: none;
+    text-decoration: none;
+}
+
+#adv-settings label[for="anything-order-hide"] .anything-order-actions .disable {
+    cursor: default;
+    color: #ccc;
+}
+
+
+#adv-settings label[for="anything-order-hide"] .anything-order-actions:before {
+    content: "-";
+    display: inline-block;
+    margin: 0 .5em;
+}
+
+.wp-list-table .column-anything-order {
+    padding: 8px 0 8px 8px;
+    text-align: center;
+    width: 15px;
+}
+
+.wp-list-table .column-anything-order .title,
+.wp-list-table .column-anything-order .anything-order-actions {
+    display: none;
+}
+
+.wp-list-table .column-anything-order .dashicons {
+    font-size: 15px;
+    height: 15px;
+    width: 15px;
+}
+
+.wp-list-table .column-anything-order .dashicons.spinner {
+    background-position: 50% 50%;
+    display: block;
+    -webkit-background-size: 15px 15px;
+       -moz-background-size: 15px 15px;
+        -ms-background-size: 15px 15px;
+         -o-background-size: 15px 15px;
+            background-size: 15px 15px;
+    margin: -1px 0 0;
+}
+
+.wp-list-table .column-anything-order .dashicons.spinner:before {
+    content: none;
+}
+
+/* body */
+
+#the-list.ui-sortable tr {
+    cursor: move;
+}
+
+#the-list.ui-sortable .inline-editor,
+#the-list.ui-sortable .no-items,
+#the-list.ui-sortable-disabled tr {
+    cursor: auto;
+}
+
+#the-list.ui-sortable tr.sorted {
+    background-color: #7ad03a;
+}
+
+#the-list.ui-sortable tr {
+    -webkit-transition: background-color .2s ease-out 0;
+       -moz-transition: background-color .2s ease-out 0;
+        -ms-transition: background-color .2s ease-out 0;
+         -o-transition: background-color .2s ease-out 0;
+            transition: background-color .2s ease-out 0;
+}
+
+#the-list.ui-sortable tr:hover .column-anything-order {
+    border-left: 4px solid #7ad03a;
+}
+
+#the-list.ui-sortable tr.selected .column-anything-order {
+    border-left: 8px solid #7ad03a;
+}
+
+#the-list.ui-sortable tr.sorting th,
+#the-list.ui-sortable tr.sorting td,
+#the-list.ui-sortable tr.sorting a,
+#the-list.ui-sortable tr.sorting a:hover {
+    color: #ccc;
+}
+
+#the-list.ui-sortable tr.sorting:hover .row-actions {
+    visibility: hidden;
+}
+
+#the-list.ui-sortable tr.sorting .column-anything-order {
+    border-left: none;
+}
+
+#the-list.ui-sortable-disabled tr.selected .column-anything-order,
+#the-list.ui-sortable-disabled tr:hover .column-anything-order {
+    border-left: none;
+}
+
+#the-list .ui-sortable-helper>div {
+    background-color: #fff;
+    border: 1px solid #999;
+    height: auto;
+    margin: 0 0 1px;
+    min-height: 1em;
+    opacity: .8;
+    padding: .5em .8em;
+    width: auto;
+}
+
+#the-list .sortable-placeholder {
+    background-color: #7ad03a;
+    height: 2px;
+}
+
+#the-list .sortable-placeholder td {
+    padding: 0;
+}
+
+#the-list .sortable-placeholder div {
+    display: none;
+}
+
+.metabox-prefs label .anything-order-actions .reset {
+    display: inline-block;
+    margin-left: 5px;
+}
+
+.metabox-prefs label .anything-order-actions .reset:before {
+    content: '- ';
+}
+
+@media screen and (max-width: 782px) {
+    .wp-list-table .column-anything-order::before {
+        display: none !important;
+    }
+
+    .wp-list-table td.column-anything-order {
+        border-left: none!important;
+    }
+}

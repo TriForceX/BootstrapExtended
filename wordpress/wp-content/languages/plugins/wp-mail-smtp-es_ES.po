@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the Plugins - WP Mail SMTP by WPForms - Development (trunk) package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2017-12-18 12:48:45+0000\n"
+"PO-Revision-Date: 2017-12-22 07:45:38+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -11,15 +11,19 @@ msgstr ""
 "Language: es\n"
 "Project-Id-Version: Plugins - WP Mail SMTP by WPForms - Development (trunk)\n"
 
-#: src/Providers/OptionAbstract.php:208
+#: src/Admin/Pages/Test.php:134
+msgid "There was a problem while sending a test email. Related debugging output is shown below:"
+msgstr "Hubo un problema al mandar el correo de prueba. Los mensajes de depuración relacionados se muestran a continuación:"
+
+#: src/Providers/OptionsAbstract.php:208
 msgid "By default TLS encryption is automatically used if the server supports it, which is recommended. In some cases, due to server misconfigurations, this can cause issues and may need to be disabled."
 msgstr "Por defecto, se usa automáticamente la encriptación TLS si el servidor es compatible con ella, que es lo más recomendable. En algunos casos, debido a malas configuraciones del servidor, esto puede provocar problemas y puede que tengas que desactivarla."
 
-#: src/Providers/OptionAbstract.php:194
+#: src/Providers/OptionsAbstract.php:194
 msgid "Auto TLS"
 msgstr "TLS automática"
 
-#: src/Providers/OptionAbstract.php:186
+#: src/Providers/OptionsAbstract.php:186
 msgid "For most servers TLS is the recommended option. If your SMTP provider offers both SSL and TLS options, we recommend using TLS."
 msgstr "En la mayoría de los servidores TLS es la opción recomendable. Si tu proveedor de SMTP ofrece las opciones SSL y TLS te recomendamos usar TLS."
 
@@ -68,46 +72,46 @@ msgstr "Otro SMTP"
 msgid "Pepipost"
 msgstr "Pepipost"
 
-#: src/Providers/OptionAbstract.php:307
+#: src/Providers/OptionsAbstract.php:307
 msgid "Meanwhile you can switch to the \"Other SMTP\" Mailer option."
 msgstr "Mientras puedes cambiar a la opción de envío de correos con \"Otro SMTP\"."
 
 #. translators: %1$s - Provider name; %2$s - PHP version required by Provider;
 #. %3$s - current PHP version.
-#: src/Providers/OptionAbstract.php:300
+#: src/Providers/OptionsAbstract.php:300
 msgid "%1$s requires PHP %2$s to work and does not support your current PHP version %3$s. Please contact your host and request a PHP upgrade to the latest one."
 msgstr "%1$s requiere PHP %2$s para funcionar y no es compatible con tu versión actual de PHP %3$s. Por favor, contacta con tu alojamiento y solicita una actualización de PHP a la última versión."
 
 #. translators: %s - wp-config.php.
-#: src/Providers/OptionAbstract.php:263
+#: src/Providers/OptionsAbstract.php:263
 msgid "The password is stored in plain text. We highly recommend you setup your password in your WordPress configuration file for improved security; to do this add the lines below to your %s file."
 msgstr "La contraseña se almacena en texto plano. Te recomendamos encarecidamente que configures tu contraseña en el archivo de configuración de WordPress para mejorar la seguridad; para hacer esto añade las siguientes líneas a tu archivo %s."
 
-#: src/Providers/OptionAbstract.php:249
+#: src/Providers/OptionsAbstract.php:249
 msgid "SMTP Password"
 msgstr "Contraseña SMTP"
 
-#: src/Providers/OptionAbstract.php:235
+#: src/Providers/OptionsAbstract.php:235
 msgid "SMTP Username"
 msgstr "Nombre de usuario de SMTP"
 
-#: src/Providers/OptionAbstract.php:205 src/Providers/OptionAbstract.php:227
+#: src/Providers/OptionsAbstract.php:205 src/Providers/OptionsAbstract.php:227
 msgid "Off"
 msgstr "Inactivo"
 
-#: src/Providers/OptionAbstract.php:204 src/Providers/OptionAbstract.php:226
+#: src/Providers/OptionsAbstract.php:204 src/Providers/OptionsAbstract.php:226
 msgid "On"
 msgstr "Activo"
 
-#: src/Providers/OptionAbstract.php:182
+#: src/Providers/OptionsAbstract.php:182
 msgid "TLS"
 msgstr "TLS"
 
-#: src/Providers/OptionAbstract.php:173
+#: src/Providers/OptionsAbstract.php:173
 msgid "SSL"
 msgstr "SSL"
 
-#: src/Providers/OptionAbstract.php:164
+#: src/Providers/OptionsAbstract.php:164
 msgid "None"
 msgstr "Ninguno"
 
@@ -196,83 +200,75 @@ msgstr "ID cliente"
 msgid "Send emails using your Gmail or G Suite (formerly Google Apps) account, all while keeping your login credentials safe. Other Google SMTP methods require enabling less secure apps in your account and entering your password. However, this integration uses the Google API to improve email delivery issues while keeping your site secure.<br><br>Read our %1$sGmail documentation%2$s to learn how to configure Gmail or G Suite."
 msgstr "Envía correos usando tu cuenta de Gmail o G Suite (antiguamente Google Apps), guardando tus credenciales de acceso con seguridad. Otros métodos SMTP de Google requieren activar aplicaciones menos seguras en tu cuenta e introducir tu contraseña. Sin embargo, esta integración utiliza la API de Google para solucionar problemas de entrega de correos al tiempo que mantiene seguro tu sitio.<br><br>Lee nuestra %1$sdocumentación sobre Gmail%2$s para aprender a configurar Gmail o G Suite."
 
-#: src/Admin/Pages/Test.php:134
-msgid "The related debugging output is shown below:"
-msgstr "Los resultados de depuración relacionados se muestran abajo:"
-
-#: src/Admin/Pages/Test.php:133
-msgid "There was a problem while sending a test email."
-msgstr "Hubo un problema al enviar el correo de prueba."
-
-#: src/Admin/Pages/Test.php:126
+#: src/Admin/Pages/Test.php:127
 msgid "Your email was sent successfully!"
 msgstr "¡Tu correo se envió con éxito!"
 
 #. translators: %s - mailer name.
-#: src/Admin/Pages/Test.php:113
+#: src/Admin/Pages/Test.php:114
 msgid "This email was sent by %s mailer, and generated by the WP Mail SMTP WordPress plugin."
 msgstr "Este correo se ha enviado mediante el sistema de envío %s, y se ha creado con el plugin WordPress WP Mail SMTP."
 
 #. translators: %s - email address a test email will be sent to.
-#: src/Admin/Pages/Test.php:110
+#: src/Admin/Pages/Test.php:111
 msgid "Test email to %s"
 msgstr "Correo de prueba a %s"
 
-#: src/Admin/Pages/Test.php:86
+#: src/Admin/Pages/Test.php:87
 msgid "Test failed. Please use a valid email address and try to resend the test email."
 msgstr "Prueba fallida. Por favor, utiliza una dirección de correo válida y trata de enviar de nuevo el correo de prueba."
 
-#: src/Admin/Pages/Test.php:66
+#: src/Admin/Pages/Test.php:67
 msgid "Send Email"
 msgstr "Enviar correo"
 
-#: src/Admin/Pages/Test.php:60
+#: src/Admin/Pages/Test.php:61
 msgid "Type an email address here and then click a button below to generate a test email."
 msgstr "Teclea aquí una dirección de correo y luego haz clic en el botón de abajo para crear un correo de prueba."
 
-#: src/Admin/Pages/Test.php:55
+#: src/Admin/Pages/Test.php:56
 msgid "Send To"
 msgstr "Enviar a"
 
-#: src/Admin/Pages/Test.php:26
+#: src/Admin/Pages/Test.php:27
 msgid "Email Test"
 msgstr "Correo de prueba"
 
-#: src/Admin/Pages/Settings.php:152
+#: src/Admin/Pages/Settings.php:161
 msgid "If unchecked bounce messages may be lost."
 msgstr "Si quitas la selección los mensajes de rebote podrían perderse."
 
 #. translators: %s - WordPress.
-#: src/Admin/Pages/Settings.php:97
+#: src/Admin/Pages/Settings.php:98
 msgid "If you leave this blank, the emails will be sent from %s."
 msgstr "Si dejas esto en blanco los correos se enviarán desde %s."
 
-#: src/Admin/Pages/Settings.php:93
+#: src/Admin/Pages/Settings.php:94
 msgid "You can specify the name that emails should be sent from."
 msgstr "Puedes especificar el nombre desde el que se enviarán los correos."
 
-#: src/Admin/Pages/Settings.php:76
+#: src/Admin/Pages/Settings.php:77
 msgid "Please note if you are sending using an email provider (Gmail, Yahoo, Hotmail, Outlook.com, etc) this setting should be your email address for that account."
 msgstr "Por favor, ten en cuenta que si haces los envíos usando un proveedor de correo (Gmail, Yahoo, Hotmail, Outlook.com, etc.) este ajuste debería ser la dirección de correo de esa cuenta."
 
 #. translators: %s - default email address.
-#: src/Admin/Pages/Settings.php:70
+#: src/Admin/Pages/Settings.php:71
 msgid "If you leave this blank, the default one will be used: %s."
 msgstr "Si dejas esto en blanco se usará la dirección de correo por defecto: %s."
 
-#: src/Admin/Pages/Settings.php:66
+#: src/Admin/Pages/Settings.php:67
 msgid "You can specify the email address that emails should be sent from."
 msgstr "Puedes especificar la dirección de correo desde la que se enviarán los correos."
 
-#: src/Admin/Pages/Settings.php:50
+#: src/Admin/Pages/Settings.php:51
 msgid "Mail"
 msgstr "Correo electrónico"
 
-#: src/Admin/Pages/Misc.php:95 src/Admin/Pages/Settings.php:232
+#: src/Admin/Pages/Misc.php:95 src/Admin/Pages/Settings.php:246
 msgid "Settings were successfully saved."
 msgstr "Ajustes guardados correctamente."
 
-#: src/Admin/Pages/Misc.php:67 src/Admin/Pages/Settings.php:182
+#: src/Admin/Pages/Misc.php:67 src/Admin/Pages/Settings.php:191
 msgid "Save Settings"
 msgstr "Guardar ajustes"
 
@@ -322,9 +318,9 @@ msgstr "Ocultar anuncios"
 msgid "WPForms"
 msgstr "WPForms"
 
-#. #-#-#-#-#  wp-mail-smtp-code.pot (WP Mail SMTP 1.1.0)  #-#-#-#-#
+#. #-#-#-#-#  wp-mail-smtp-code.pot (WP Mail SMTP 1.2.2)  #-#-#-#-#
 #. Plugin URI of the plugin/theme
-#. #-#-#-#-#  wp-mail-smtp-code.pot (WP Mail SMTP 1.1.0)  #-#-#-#-#
+#. #-#-#-#-#  wp-mail-smtp-code.pot (WP Mail SMTP 1.2.2)  #-#-#-#-#
 #. Author URI of the plugin/theme
 msgid "https://wpforms.com/"
 msgstr "https://wpforms.com/"
@@ -360,7 +356,7 @@ msgstr "TLS no es lo mismo que STARTTLS. En la mayoría de servidores SSL es la 
 msgid "Use TLS encryption."
 msgstr "Usar encriptación TLS."
 
-#: src/Admin/Pages/Settings.php:151 wp_mail_smtp.php:385
+#: src/Admin/Pages/Settings.php:160 wp_mail_smtp.php:385
 msgid "Return Path indicates where non-delivery receipts - or bounce messages - are to be sent."
 msgstr "La ruta de retorno indica donde se enviarán los destinatarios no entregados - o mensajes rebotados."
 
@@ -381,13 +377,13 @@ msgstr "Ajustes de WP Mail SMTP"
 msgid "Reconfigures the wp_mail() function to use SMTP instead of mail() and creates an options page to manage the settings."
 msgstr "Reconfigura la función wp_mail() para que use SMTP en vez de mail() y crea una página de opciones para gestionar los ajustes."
 
-#. #-#-#-#-#  wp-mail-smtp-code.pot (WP Mail SMTP 1.1.0)  #-#-#-#-#
+#. #-#-#-#-#  wp-mail-smtp-code.pot (WP Mail SMTP 1.2.2)  #-#-#-#-#
 #. Plugin Name of the plugin/theme
 #: src/Admin/Area.php:127 wp_mail_smtp.php:652
 msgid "WP Mail SMTP"
 msgstr "WP Mail SMTP"
 
-#: src/Admin/Area.php:370 src/Admin/Pages/Settings.php:25 wp_mail_smtp.php:758
+#: src/Admin/Area.php:370 src/Admin/Pages/Settings.php:26 wp_mail_smtp.php:758
 msgid "Settings"
 msgstr "Configuración"
 
@@ -399,7 +395,7 @@ msgstr "Gmail"
 msgid "Type an email address here and then click Send Test to generate a test email."
 msgstr "Teclea aquí una dirección de correo electrónico y luego haz clic en Enviar prueba para generar un correo electrónico de prueba. "
 
-#: src/Admin/Pages/Test.php:48 wp_mail_smtp.php:598
+#: src/Admin/Pages/Test.php:49 wp_mail_smtp.php:598
 msgid "Send a Test Email"
 msgstr "Enviar un correo electrónico de prueba"
 
@@ -427,7 +423,7 @@ msgstr "Sí: Usar identificación SMTP."
 msgid "No: Do not use SMTP authentication."
 msgstr "No: No usar identificación SMTP."
 
-#: src/Providers/OptionAbstract.php:216 wp_mail_smtp.php:467
+#: src/Providers/OptionsAbstract.php:216 wp_mail_smtp.php:467
 #: wp_mail_smtp.php:471
 msgid "Authentication"
 msgstr "Identificación"
@@ -440,17 +436,17 @@ msgstr "Usar encriptación SSL"
 msgid "No encryption."
 msgstr "Sin encriptación."
 
-#: src/Providers/OptionAbstract.php:154 wp_mail_smtp.php:440
+#: src/Providers/OptionsAbstract.php:154 wp_mail_smtp.php:440
 #: wp_mail_smtp.php:444 wp_mail_smtp.php:559 wp_mail_smtp.php:565
 msgid "Encryption"
 msgstr "Encriptación"
 
-#: src/Providers/OptionAbstract.php:140 wp_mail_smtp.php:433
+#: src/Providers/OptionsAbstract.php:140 wp_mail_smtp.php:433
 #: wp_mail_smtp.php:551
 msgid "SMTP Port"
 msgstr "Puerto SMTP"
 
-#: src/Providers/OptionAbstract.php:126 wp_mail_smtp.php:425
+#: src/Providers/OptionsAbstract.php:126 wp_mail_smtp.php:425
 msgid "SMTP Host"
 msgstr "Servidor SMTP"
 
@@ -462,11 +458,11 @@ msgstr "Estas opciones solo se aplican si has elegido arriba enviar los correos 
 msgid "SMTP Options"
 msgstr "Opciones STMP"
 
-#: src/Admin/Pages/Settings.php:149 wp_mail_smtp.php:381
+#: src/Admin/Pages/Settings.php:157 wp_mail_smtp.php:381
 msgid "Set the return-path to match the From Email"
 msgstr "Establece la ruta de retorno para que coincida con el correo electrónico remitente"
 
-#: src/Admin/Pages/Settings.php:141 wp_mail_smtp.php:371 wp_mail_smtp.php:376
+#: src/Admin/Pages/Settings.php:148 wp_mail_smtp.php:371 wp_mail_smtp.php:376
 msgid "Return Path"
 msgstr "Ruta de retorno"
 
@@ -478,7 +474,7 @@ msgstr "Usar la función PHP mail() para enviar correos electrónicos."
 msgid "Send all WordPress emails via SMTP."
 msgstr "Enviar todos los correos electrónicos de WordPress a través de SMTP."
 
-#: src/Admin/Pages/Settings.php:108 wp_mail_smtp.php:330 wp_mail_smtp.php:335
+#: src/Admin/Pages/Settings.php:109 wp_mail_smtp.php:330 wp_mail_smtp.php:335
 msgid "Mailer"
 msgstr "Servicio de correo electrónico"
 
@@ -486,7 +482,7 @@ msgstr "Servicio de correo electrónico"
 msgid "You can specify the name that emails should be sent from. If you leave this blank, the emails will be sent from WordPress."
 msgstr "Puedes especificar el nombre desde el que se enviarán los correos electrónicos. Si dejas esto en blanco los correos electrónicos los enviará WordPress. "
 
-#: src/Admin/Pages/Settings.php:84 wp_mail_smtp.php:315
+#: src/Admin/Pages/Settings.php:85 wp_mail_smtp.php:315
 msgid "From Name"
 msgstr "Nombre remitente"
 
@@ -498,7 +494,7 @@ msgstr "<strong>Por favor, atención:</strong> Parece que estás usando una vers
 msgid "You can specify the email address that emails should be sent from. If you leave this blank, the default email will be used."
 msgstr "Puedes especificar el correo electrónico desde el que se mandarán los correos electrónicos. Si dejas esto en blanco se usará el correo electrónico por defecto."
 
-#: src/Admin/Pages/Settings.php:57 wp_mail_smtp.php:296
+#: src/Admin/Pages/Settings.php:58 wp_mail_smtp.php:296
 msgid "From Email"
 msgstr "Correo electrónico remitente"
 
