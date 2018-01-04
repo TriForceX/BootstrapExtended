@@ -166,14 +166,6 @@ class php extends utilities\php
  * 
  */
 
-//Show admin bar in front-end
-if(isset($_GET['adminbar'])){
-	show_admin_bar(true);
-}
-else{
-	show_admin_bar(false);
-}
-
 //Add custom CSS & JS to admin
 function add_custom_admin() 
 {
