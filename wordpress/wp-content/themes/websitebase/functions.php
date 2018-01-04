@@ -167,7 +167,7 @@ class php extends utilities\php
  */
 
 //Show admin bar in front-end
-if(isset($_GET['admin'])){
+if(isset($_GET['adminbar'])){
 	show_admin_bar(true);
 }
 else{
@@ -232,7 +232,7 @@ function get_the_slug($id = null)
     $id = $post->ID;
   }
 
-  $slug = basename( get_permalink($id) );
+  $slug = basename(get_permalink($id));
   return $slug;
 }
 
@@ -245,7 +245,7 @@ function get_id_by_name($post_name)
 }
 
 //Get taxonomy data (term_id, name, slug, term_group, term_taxonomy_id, taxonomy, description, parent, count)
-function get_taxonomy_data( $type, $taxonomy, $id = null ){
+function get_taxonomy_data($type, $taxonomy, $id = null){
 	$post_id = empty($id) ? get_the_ID() : $id;
 	$post_terms = array_reverse(get_terms($taxonomy));
 	$current_terms = wp_get_post_terms($post_id, $taxonomy, array('fields' => 'slugs')); 
@@ -258,14 +258,14 @@ function get_taxonomy_data( $type, $taxonomy, $id = null ){
 }
 
 //Image Featured
-function imageFeatured($featuredPost,$size = 'full')
+function imageFeatured($featuredPost, $size = 'full')
 {
     $src = wp_get_attachment_image_src( get_post_thumbnail_id($featuredPost), $size, false); //$post->ID
     return $src[0];
 }
 
 //Image Featured
-function imageFeaturedSize($tipo,$featuredPost)
+function imageFeaturedSize($tipo, $featuredPost)
 {
     $src = wp_get_attachment_image_src( get_post_thumbnail_id($featuredPost), 'full', false); //$post->ID
 	if($tipo=="width"){
@@ -277,7 +277,7 @@ function imageFeaturedSize($tipo,$featuredPost)
 }
 
 //Image Featured Data
-function imageFeaturedData($featuredField,$featuredPost)
+function imageFeaturedData($featuredField, $featuredPost)
 {
     $value = get_post_meta(get_post_thumbnail_id($featuredPost), $featuredField, true);
     return $value;
