@@ -226,43 +226,14 @@ function get_the_slug($id = null)
 {
   if(empty($id)){
     global $post;
-    if(empty($post))
+    if(empty($post)){
     	return ''; // No global $post var available.
+	}
     $id = $post->ID;
   }
 
   $slug = basename( get_permalink($id) );
   return $slug;
-}
-
-//Get the category inside post
-function get_category_name($tipo)
-{
-	if($tipo=='category'){
-		return get_the_category()[0]->name;
-	}
-	else{//Custom tax
-		return get_the_terms( get_the_ID(), $tipo )[0]->name;
-	}
-}
-
-//Get the category slug inside post
-function get_category_slug($tipo)
-{
-	if($tipo=='category'){
-		return get_the_category()[0]->slug;
-	}
-	else{//Custom tax
-		return get_the_terms( get_the_ID(), $tipo )[0]->slug;
-	}
-}
-
-//Get the category name by id
-function get_category_name_by_id($name, $tipo)
-{
-	$term = get_term_by('slug', $name,  $tipo); 
-    $name = $term->name; 
-	return $name;
 }
 
 //Get the id by name
@@ -273,12 +244,17 @@ function get_id_by_name($post_name)
 	return $id;
 }
 
-//Get taxonomy data
-function get_taxonomy_data($type)
-{
-	//term_id, name, slug, term_group, term_taxonomy_id, taxonomy, description, parent, count
-	$term = get_term_by('slug', get_query_var('term'), get_query_var('taxonomy'));
-	return $term->$type; 
+//Get taxonomy data (term_id, name, slug, term_group, term_taxonomy_id, taxonomy, description, parent, count)
+function get_taxonomy_data( $type, $taxonomy, $id = null ){
+	$post_id = empty($id) ? get_the_ID() : $id;
+	$post_terms = array_reverse(get_terms($taxonomy));
+	$current_terms = wp_get_post_terms($post_id, $taxonomy, array('fields' => 'slugs')); 
+
+	foreach($post_terms as $post_term){
+		if (in_array($post_term->slug, $current_terms)){
+			return $post_term->$type;
+		}
+	} 
 }
 
 //Image Featured
