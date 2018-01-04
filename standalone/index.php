@@ -150,7 +150,7 @@
 		<div class="page-header">
 			<h1>Footer <span class="label label-primary">Template</span></h1>
 		</div>
-	<p>The main footer structure contains the access to <code>JS</code> files (and the base one) and <code>HTML</code> footer containers. If you want use another language for JS messages, just add <code>?lang=Number</code> after <b>app.php</b> <i>(For example: app.php?lang=1)</i>. For more info read the file <b>app.php</b></p>
+	<p>The main footer structure contains the access to <code>JS</code> files (and the base one) and <code>HTML</code> footer containers. If you want use another language for JS messages, just add <code>?language=number</code> after <b>app.php</b> <i>(For example: app.php?language=1)</i>. Also if you will work with two languages you need generate two JS files, this is possible adding <code>&separate=1</code> <i>(For example: app.php?language=1&separate=1)</i> So you can play with these URL's. For more info read the file <b>app.php</b></p>
 		
 		<figure class="highlight">
 			<pre><code class="language-html" data-lang="html">...<br>&lt;!-- Main JS File --&gt;
