@@ -1,5 +1,5 @@
 # Custom Bootstrap Website Base
-Base structure for WebSites with reusable parts of source code or functions mainly based on Bootstrap and another libraries. You can visit http://dev.gznetwork.com/websitebase for a running example.
+Base structure for WebSites with reusable parts of source code or functions mainly based on Bootstrap and another libraries. You can visit https://dev.gznetwork.com/websitebase for a running example.
 
 # Resources
 * Standalone Support (PHP 5.6+)

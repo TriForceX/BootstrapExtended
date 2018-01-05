@@ -13,9 +13,9 @@ RewriteEngine On
 # ---------------------------------------------------------------------------
 
 # [Remove HTTPS]
-RewriteCond %{HTTP_HOST} !^(1::|127\.0\.0\..*|192\.168\..*|localhost)$ [NC]
-RewriteCond %{HTTPS} !=off
-RewriteRule ^(.*)$ http://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+# RewriteCond %{HTTP_HOST} !^(1::|127\.0\.0\..*|192\.168\..*|localhost)$ [NC]
+# RewriteCond %{HTTPS} !=off
+# RewriteRule ^(.*)$ http://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
 
 # [Force HTTPS]
 # RewriteCond %{HTTP_HOST} !^(1::|127\.0\.0\..*|192\.168\..*|localhost)$ [NC]
