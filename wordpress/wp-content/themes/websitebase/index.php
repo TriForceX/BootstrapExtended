@@ -378,23 +378,23 @@
 		<div class="bs-example">
 			<div class="row JSlightGallery" data-lg-item="auto" data-lg-title="false" data-lg-thumb="false" data-lg-gallery="false" data-lg-download="false">
 				<div class="col-md-3">
-					<a class="thumbnail" style="height:100px; overflow: hidden" title="My image 1" href="http://getbootstrap.com/docs/3.3/examples/screenshots/theme.jpg">
-						<img src="http://getbootstrap.com/docs/3.3/examples/screenshots/theme.jpg">
+					<a class="thumbnail" style="height:100px; overflow: hidden" title="My image 1" href="https://getbootstrap.com/docs/3.3/examples/screenshots/theme.jpg">
+						<img src="https://getbootstrap.com/docs/3.3/examples/screenshots/theme.jpg">
 					</a>
 				</div>
 				<div class="col-md-3">
-					<a class="thumbnail" style="height:100px; overflow: hidden" title="My image 2" href="http://getbootstrap.com/docs/3.3/examples/screenshots/cover.jpg">
-						<img src="http://getbootstrap.com/docs/3.3/examples/screenshots/cover.jpg">
+					<a class="thumbnail" style="height:100px; overflow: hidden" title="My image 2" href="https://getbootstrap.com/docs/3.3/examples/screenshots/cover.jpg">
+						<img src="https://getbootstrap.com/docs/3.3/examples/screenshots/cover.jpg">
 					</a>
 				</div>
 				<div class="col-md-3">
-					<a class="thumbnail" style="height:100px; overflow: hidden" title="My image 3" href="http://getbootstrap.com/docs/3.3/examples/screenshots/justified-nav.jpg">
-						<img src="http://getbootstrap.com/docs/3.3/examples/screenshots/justified-nav.jpg">
+					<a class="thumbnail" style="height:100px; overflow: hidden" title="My image 3" href="https://getbootstrap.com/docs/3.3/examples/screenshots/justified-nav.jpg">
+						<img src="https://getbootstrap.com/docs/3.3/examples/screenshots/justified-nav.jpg">
 					</a>
 				</div>
 				<div class="col-md-3">
-					<a class="thumbnail" style="height:100px; overflow: hidden" title="My image 3" href="http://getbootstrap.com/docs/3.3/examples/screenshots/dashboard.jpg">
-						<img src="http://getbootstrap.com/docs/3.3/examples/screenshots/dashboard.jpg">
+					<a class="thumbnail" style="height:100px; overflow: hidden" title="My image 3" href="https://getbootstrap.com/docs/3.3/examples/screenshots/dashboard.jpg">
+						<img src="https://getbootstrap.com/docs/3.3/examples/screenshots/dashboard.jpg">
 					</a>
 				</div>
 			</div>
@@ -412,44 +412,44 @@
 			<div class="row JSlightGallery" data-lg-item="auto" data-lg-title="Gallery Title" data-lg-thumb="true" data-lg-gallery="true" data-lg-download="true">
 				<?php if($_GET["page"]!="2"): ?>
 				<div class="col-md-3">
-					<a class="thumbnail" style="height:100px; overflow: hidden" title="My image 1" href="http://getbootstrap.com/docs/3.3/examples/screenshots/theme.jpg">
-						<img src="http://getbootstrap.com/docs/3.3/examples/screenshots/theme.jpg">
+					<a class="thumbnail" style="height:100px; overflow: hidden" title="My image 1" href="https://getbootstrap.com/docs/3.3/examples/screenshots/theme.jpg">
+						<img src="https://getbootstrap.com/docs/3.3/examples/screenshots/theme.jpg">
 					</a>
 				</div>
 				<div class="col-md-3">
-					<a class="thumbnail" style="height:100px; overflow: hidden" title="My image 2" href="http://getbootstrap.com/docs/3.3/examples/screenshots/cover.jpg">
-						<img src="http://getbootstrap.com/docs/3.3/examples/screenshots/cover.jpg">
+					<a class="thumbnail" style="height:100px; overflow: hidden" title="My image 2" href="https://getbootstrap.com/docs/3.3/examples/screenshots/cover.jpg">
+						<img src="https://getbootstrap.com/docs/3.3/examples/screenshots/cover.jpg">
 					</a>
 				</div>
 				<div class="col-md-3">
-					<a class="thumbnail" style="height:100px; overflow: hidden" title="My image 3" href="http://getbootstrap.com/docs/3.3/examples/screenshots/justified-nav.jpg">
-						<img src="http://getbootstrap.com/docs/3.3/examples/screenshots/justified-nav.jpg">
+					<a class="thumbnail" style="height:100px; overflow: hidden" title="My image 3" href="https://getbootstrap.com/docs/3.3/examples/screenshots/justified-nav.jpg">
+						<img src="https://getbootstrap.com/docs/3.3/examples/screenshots/justified-nav.jpg">
 					</a>
 				</div>
 				<div class="col-md-3">
-					<a class="thumbnail" style="height:100px; overflow: hidden" title="My image 4" href="http://getbootstrap.com/docs/3.3/examples/screenshots/dashboard.jpg">
-						<img src="http://getbootstrap.com/docs/3.3/examples/screenshots/dashboard.jpg">
+					<a class="thumbnail" style="height:100px; overflow: hidden" title="My image 4" href="https://getbootstrap.com/docs/3.3/examples/screenshots/dashboard.jpg">
+						<img src="https://getbootstrap.com/docs/3.3/examples/screenshots/dashboard.jpg">
 					</a>
 				</div>
 				<?php else: ?>
 				<div class="col-md-3">
-					<a class="thumbnail" style="height:100px; overflow: hidden" title="My image 5" href="http://getbootstrap.com/docs/3.3/examples/screenshots/offcanvas.jpg">
-						<img src="http://getbootstrap.com/docs/3.3/examples/screenshots/offcanvas.jpg">
+					<a class="thumbnail" style="height:100px; overflow: hidden" title="My image 5" href="https://getbootstrap.com/docs/3.3/examples/screenshots/offcanvas.jpg">
+						<img src="https://getbootstrap.com/docs/3.3/examples/screenshots/offcanvas.jpg">
 					</a>
 				</div>
 				<div class="col-md-3">
-					<a class="thumbnail" style="height:100px; overflow: hidden" title="My image 6" href="http://getbootstrap.com/docs/3.3/examples/screenshots/sign-in.jpg">
-						<img src="http://getbootstrap.com/docs/3.3/examples/screenshots/sign-in.jpg">
+					<a class="thumbnail" style="height:100px; overflow: hidden" title="My image 6" href="https://getbootstrap.com/docs/3.3/examples/screenshots/sign-in.jpg">
+						<img src="https://getbootstrap.com/docs/3.3/examples/screenshots/sign-in.jpg">
 					</a>
 				</div>
 				<div class="col-md-3">
-					<a class="thumbnail" style="height:100px; overflow: hidden" title="My image 7" href="http://getbootstrap.com/docs/3.3/examples/screenshots/jumbotron-narrow.jpg">
-						<img src="http://getbootstrap.com/docs/3.3/examples/screenshots/jumbotron-narrow.jpg">
+					<a class="thumbnail" style="height:100px; overflow: hidden" title="My image 7" href="https://getbootstrap.com/docs/3.3/examples/screenshots/jumbotron-narrow.jpg">
+						<img src="https://getbootstrap.com/docs/3.3/examples/screenshots/jumbotron-narrow.jpg">
 					</a>
 				</div>
 				<div class="col-md-3">
-					<a class="thumbnail" style="height:100px; overflow: hidden" title="My image 8" href="http://getbootstrap.com/docs/3.3/examples/screenshots/blog.jpg">
-						<img src="http://getbootstrap.com/docs/3.3/examples/screenshots/blog.jpg">
+					<a class="thumbnail" style="height:100px; overflow: hidden" title="My image 8" href="https://getbootstrap.com/docs/3.3/examples/screenshots/blog.jpg">
+						<img src="https://getbootstrap.com/docs/3.3/examples/screenshots/blog.jpg">
 					</a>
 				</div>
 				<?php endif; ?>
