@@ -661,7 +661,7 @@ function get_theme_mod_2($name)
 //	global $typenow;
 // 
 //	// an array of all the taxonomyies you want to display. Use the taxonomy name or slug
-//	$taxonomies = array('deportes');
+//	$taxonomies = array('custom-taxonomy-1');
 // 
 //	// must set this to the post type you want the filter(s) displayed on
 //	if($typenow == 'custom-post-type-1'){
@@ -670,14 +670,13 @@ function get_theme_mod_2($name)
 //			$tax_obj = get_taxonomy($tax_slug);
 //			$tax_name = $tax_obj->labels->name;
 //			$tax_terms = get_terms($tax_slug);
-//			//if(count($terms) > 0) {
-//				echo "<select name='$tax_slug' id='$tax_slug' class='postform'>";
-//				echo "<option value=''>Show All $tax_name</option>";
-//				foreach($tax_terms as $tax_term){ 
-//					echo '<option value='. $tax_term->slug, $_GET[$tax_slug] == $tax_term->slug ? ' selected="selected"' : '','>' . $tax_term->name .'</option>'; //(' . $tax_term->count .')
-//				}
-//				echo "</select>";
-//			//}
+//			
+//			echo "<select name='$tax_slug' id='$tax_slug' class='postform'>";
+//			echo "<option value=''>Show All $tax_name</option>";
+//			foreach($tax_terms as $tax_term){ 
+//				echo '<option value='. $tax_term->slug, $_GET[$tax_slug] == $tax_term->slug ? ' selected="selected"' : '','>' . $tax_term->name .'</option>'; //(' . $tax_term->count .')
+//			}
+//			echo "</select>";
 //		}
 //	}
 //}
