@@ -86,13 +86,17 @@
 	max-width:100%;
 	text-align: left;
 }
-
 @media (max-width: 640px) { 
 	.acf-expanded .media-sidebar{
 		bottom:inherit;
 		overflow: auto;
 		height: 100%;
 	}
+}
+
+/*CPT UI Field Container*/
+#poststuff{
+	min-width: inherit;
 }
 
 /* ================================================= ADMIN ================================================= */
