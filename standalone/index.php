@@ -179,7 +179,7 @@
 		
 		<div class="bs-example">
 			<figure class="highlight">
-				<pre><code class="language-html" data-lang="html">//Get the main URL will return: <?php echo php::get_main_url(); ?><br>&lt;?php echo php::get_main_url(); ?&gt;
+				<pre><code class="language-html" data-lang="html">//Get the current URL will return: <?php echo php::get_current_url(); ?><br>&lt;?php echo php::get_current_url(); ?&gt;
 			
 //Show current date will return: <?php echo php::show_date(false,'F j l, Y, g:i a'); ?><br>&lt;?php echo php::show_date(false,'F j l, Y, g:i a'); ?&gt;</code></pre>
 			</figure>

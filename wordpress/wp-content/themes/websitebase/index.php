@@ -143,7 +143,7 @@
 		<p>The main page (or index) structure contains <code>HTML</code> contents and access to the main <code>header</code> and <code>footer</code> files.</p>
 		
 		<figure class="highlight">
-			<pre><code class="language-html" data-lang="html">&lt;?php include('header.php'); ?&gt;<br>&lt;div class="content"&gt;<br>...<br>&lt;/div&gt;<br>&lt;?php include('footer.php'); ?&gt;</code></pre>
+			<pre><code class="language-html" data-lang="html">&lt;?php get_header(); ?&gt;<br>&lt;div class="content"&gt;<br>...<br>&lt;/div&gt;<br>&lt;?php get_footer(); ?&gt;</code></pre>
 		</figure>
 		
 		<!-- Footer example -->
@@ -179,7 +179,7 @@
 		
 		<div class="bs-example">
 			<figure class="highlight">
-				<pre><code class="language-html" data-lang="html">//Get the main URL will return: <?php echo php::get_main_url(); ?><br>&lt;?php echo php::get_main_url(); ?&gt;
+				<pre><code class="language-html" data-lang="html">//Get the current URL will return: <?php echo php::get_current_url(); ?><br>&lt;?php echo php::get_current_url(); ?&gt;
 			
 //Show current date will return: <?php echo php::show_date(false,'F j l, Y, g:i a'); ?><br>&lt;?php echo php::show_date(false,'F j l, Y, g:i a'); ?&gt;</code></pre>
 			</figure>
