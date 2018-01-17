@@ -3,7 +3,7 @@ Base structure for WebSites with reusable parts of source code or functions main
 
 # Resources
 * Standalone Support (PHP 5.6+)
-* Wordpress Support (Ver 4.7.5)
+* Wordpress Support (Ver 4.9.2)
 * Laravel Support (Ver 5.2)
 * Bootstrap 3 (Ver 3.3.7)
 * Font Awesome (Ver 4.7.0)
