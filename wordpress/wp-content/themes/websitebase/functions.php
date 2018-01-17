@@ -372,14 +372,62 @@ add_theme_support('post-thumbnails');
 //}
 //add_filter( 'upload_size_limit', 'filter_site_upload_size_limit', 20 );
 
+//Edit custom role capabilities
+//function custom_capability()
+//{
+//	$role1 = get_role('editor');
+//	
+//	//Per stuff
+//	/*$role1Perms = array('posts');
+//	
+//	foreach($role1Perms as $rolePerm1)
+//	{ 
+//		$role1->add_cap('publish_'.$role1Perm); 
+//		$role1->add_cap('edit_'.$role1Perm); 
+//		$role1->add_cap('delete_'.$role1Perm);
+//		$role1->add_cap('edit_published_'.$role1Perm); 
+//		$role1->add_cap('delete_published_'.$role1Perm); 
+//		$role1->add_cap('edit_others_'.$role1Perm); 
+//		$role1->add_cap('delete_others_'.$role1Perm); 
+//		$role1->add_cap('read_private_'.$role1Perm); 
+//		$role1->add_cap('edit_private_'.$role1Perm);
+//		$role1->add_cap('delete_private_'.$role1Perm);
+//		$role1->add_cap('manage_categories_'.$role1Perm); 	
+//	}*/
+//	
+//	//Individual add
+//	/*if(!$role1->has_cap('edit_theme_options')){
+//		$role1->add_cap('edit_theme_options'); 
+//	}*/
+//	
+//	//Individual remove
+//	/*if($role1->has_cap('edit_theme_options')){
+//		$role1->remove_cap('edit_theme_options'); 
+//	}*/
+//}
+//add_action('admin_init', 'custom_capability');
+
+
 //Hide menu items
 //function hide_menu_items() 
 //{ 
-//	remove_menu_page( 'edit.php' ); //Posts
+//	//Remove Posts for everyone
+//	/*remove_menu_page( 'edit.php' ); //Posts*/
 //	
-//	if(!current_user_can('administrator')){
+//	//Remove Tools for non administrator
+//	/*if(!current_user_can('administrator')){
 //		remove_menu_page( 'tools.php' ); //Tools
-//	}
+//	}*/
+//	
+//	//Add theme options for editors
+//	if(current_user_can('editor')) {
+//
+//		//remove_submenu_page( 'themes.php', 'themes.php' ); // hide the theme selection submenu
+//		//remove_submenu_page( 'themes.php', 'widgets.php' ); // hide the widgets submenu
+//		//remove_submenu_page( 'themes.php', 'customize.php' ); // hide the customizer submenu
+//		//remove_submenu_page( 'themes.php', 'nav-menus.php' ); // hide the widgets submenu
+//		//remove_submenu_page( 'themes.php', 'theme-editor.php' ); // hide the widgets submenu
+//    }
 //}
 //add_action( 'admin_menu', 'hide_menu_items' ); 
 
