@@ -245,12 +245,11 @@ function get_page_title($separator)
         $result = ' '.$separator.' '.$text;
     }
     else if(is_single() || is_archive()){
-		$taxonomy = get_taxonomy_data('name');
-		$text = !empty($taxonomy) ? $taxonomy : get_post_type_object(get_query_var('post_type'))->label;
+		$text = get_post_type_object(get_query_var('post_type'))->label;
         $result = ' '.$separator.' '.$text;
     }
 	else if(is_tax() || is_tag() || is_category()){
-		$text = ''; //WIP
+		$text = ''; //get_taxonomy_data('name'); //WIP
         $result = ' '/*.$separator.' '.$text*/; //WIP
     }
     else if(is_404()){
