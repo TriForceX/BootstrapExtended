@@ -2,7 +2,7 @@ $(document).on("responsiveCode", function(event, bodyWidth, bodyHeight, bodyOrie
 	
 /* ================================================= RESPONSIVE CODE ================================================= */
 	
-	//Example size
+	//Example size detection
 	$("body").attr("window-size",bodyWidth+"x"+bodyHeight);
 	
 	//Example lower than tablet

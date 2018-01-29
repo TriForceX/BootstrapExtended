@@ -150,7 +150,7 @@
 		<div class="page-header">
 			<h1>Footer <span class="label label-primary">Template</span></h1>
 		</div>
-	<p>The main footer structure contains the access to <code>JS</code> files (and the base one) and <code>HTML</code> footer containers. If you want use another language for JS messages, just add <code>?language=number</code> after <b>app.php</b> <i>(For example: app.php?language=1)</i>. Also if you will work with two languages you need generate two JS files, this is possible adding <code>&separate=1</code> <i>(For example: app.php?language=1&separate=1)</i> So you can play with these URL's. For more info read the file <b>app.php</b></p>
+		<p>The main footer structure contains the access to <code>JS</code> files (and the base one) and <code>HTML</code> footer containers. If you want use another language for JS strings, just add <code>?lang=code</code> after <b>app.php</b> <i>(For example: <b>app.php?lang=es</b> for Spanish)</i>, by default is <b>English (en)</b>. Also if you will work with two languages i recommend you to use <b>cookies</b> to set different URL's. For more info read the file <b>app.php</b></p>
 		
 		<figure class="highlight">
 			<pre><code class="language-html" data-lang="html">...<br>&lt;!-- Main JS File --&gt;
@@ -237,7 +237,7 @@
 			//Screen
 			'@screen-small-phone' 	=> '320px', 
 			'@screen-medium-phone' 	=> '360px',
-			'@screen-phone' 		=> '480px',
+			'@screen-phone' 	=> '480px',
 			'@screen-tablet' 	=> '768px',
 			'@screen-desktop' 	=> '992px',  
 			'@screen-widescreen' 	=> '1200px', 
@@ -292,6 +292,7 @@
 		</table>
 		<figure class="highlight">
 			<pre><code class="language-html" data-lang="html">$jsFiles = array(
+		  $jsUrl.'/js/app-lang.js',
 		  $jsUrl.'/js/app-base.js',
 		  $jsUrl.'/js/app-ready.js',
 		  $jsUrl.'/js/app-load.js',
@@ -301,7 +302,7 @@
 			//Screen
 			'@screen-small-phone' 	=> '320', 
 			'@screen-medium-phone' 	=> '360',
-			'@screen-phone' 		=> '480',
+			'@screen-phone' 	=> '480',
 			'@screen-tablet' 	=> '768',
 			'@screen-desktop' 	=> '992',  
 			'@screen-widescreen' 	=> '1200', 

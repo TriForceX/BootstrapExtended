@@ -1,6 +1,12 @@
 $(document).ready(function(){
 
 /* ================================================= DOCUMENT READY ================================================= */
+	
+	//Example add language string
+	language['@test-title'] = { 'en' : 'Hello world!', 'es' : 'Hola mundo!' };
+	
+	//Example use language string
+	console.log(lang('@test-title'));
 
 	//Example lightGallery next page
 	$(document).on('onNextPageChange.lg', function(event){
@@ -12,30 +18,30 @@ $(document).ready(function(){
 		window.location.href = $('.lg-prev').attr('href');
 	});
 	
-	//Scroll to gallery page
+	//Example scroll to gallery page
 	if (getUrlParameter('page')){
 		autoScroll(".JSlightGallery",true,0);
 	}
 	
-	//Form validation
+	//Example form validation
 	$('.JSformExample').validateForm({
 		noValidate: '#example-input-lastname',
 		hasConfirm: true,
-		customValidate: ['validateCustom', '#example-input-custom', 'Fill the custom field'],
+		customValidate: ['validateCustom', '#example-input-custom', 'Custom error alert message.'],
 		resetSubmit: true,
 	});
 	
-	//Test URL
+	//Example test URL
 	console.log('URL: '+mainUrl);
 	
-	//Aditional exceptions for disabled links
+	//Example aditional exceptions for disabled links
 	checkDisabledExceptions.push('#example');
 	
 /* ================================================= DOCUMENT READY ================================================= */
 
 });
 
-//Form validate custom
+//Example form validate custom function
 function validateCustom(field){
 	if(field === 'Custom'){
 		return true;

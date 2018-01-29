@@ -17,8 +17,6 @@ require_once('../resources/php/minifier/minifier.php');
 
 class php extends utilities\php { }
 
-//php::get_error('warning');
-
 function cssGenerate()
 {
 	$cssMinify = true;
@@ -76,5 +74,7 @@ else
 	}
 	echo file_get_contents('style.css');
 }
+
+//php::get_error('warning');
 
 ?>

@@ -32,22 +32,26 @@ var checkDisabledExceptions = ["#carousel"];
 })();
 
 //Check attr function
-$.fn.hasAttr = function(name) {  
+$.fn.hasAttr = function(name)
+{  
    return this.attr(name) !== undefined;
 };
 
 //Check outer height with padding/margin
-$.fn.outerHeight2 = function () {
+$.fn.outerHeight2 = function()
+{
 	return this[0].getBoundingClientRect().height;
 };
 
 //Check outer width with padding/margin
-$.fn.outerWidth2 = function () {
+$.fn.outerWidth2 = function()
+{
 	return this[0].getBoundingClientRect().width;
 };
 
 //Remove whitespaces between elements
-$.fn.htmlClean = function() {
+$.fn.htmlClean = function()
+{
     this.contents().filter(function() {
         if (this.nodeType !== 3) {
             $(this).htmlClean();
@@ -62,31 +66,33 @@ $.fn.htmlClean = function() {
 };
 
 //Form validate
-$.fn.validateForm = function(options) {
-	
+$.fn.validateForm = function(options)
+{	
 	var settings = $.extend({
-		noValidate: '',
-		hasConfirm: false,
-		customValidate: null,
-		resetSubmit: true,
+		noValidate		: '',
+		hasConfirm		: false,
+		customValidate	: null,
+		resetSubmit		: true,
 	}, options);
 	
 	$(this).submit(function(event){ 
 		
 		var formError = false;
-		var formConfirmTitle = '@validate-confirm-title';
-		var formConfirmText = '@validate-confirm-text';
-		var formErrorTitle = '@validate-title';
-		var formErrorText = {'text': 		'@validate-normal', 
-							 'number': 		'@validate-number', 
-							 'tel': 		'@validate-tel', 
-							 'pass': 		'@validate-pass', 
-							 'email': 		'@validate-email',
-							 'search': 		'@validate-search',
-							 'checkbox':	'@validate-checkbox',
-							 'radio':		'@validate-radio',
-							 'textarea':	'@validate-textarea',
-							 'select':		'@validate-select'};
+		var formConfirmTitle = lang('@validate-confirm-title');
+		var formConfirmText = lang('@validate-confirm-text');
+		var formErrorTitle = lang('@validate-title');
+		var formErrorText = {
+							 'text': 		lang('@validate-normal'), 
+							 'number': 		lang('@validate-number'), 
+							 'tel': 		lang('@validate-tel'), 
+							 'pass': 		lang('@validate-pass'), 
+							 'email': 		lang('@validate-email'),
+							 'search': 		lang('@validate-search'),
+							 'checkbox':	lang('@validate-checkbox'),
+							 'radio':		lang('@validate-radio'),
+							 'textarea':	lang('@validate-textarea'),
+							 'select':		lang('@validate-select'),
+							};
 
 		//Select inputs
 		$(this).find('select').not(settings.noValidate).each(function(){
@@ -253,7 +259,8 @@ $.fn.validateForm = function(options) {
 };
 
 //Form validate email
-function validateEmail(field){
+function validateEmail(field)
+{
     var emailReg = /^([\w-\.]+@([\w-]+\.)+[\w-]{2,4})?$/;
     
 	if (!emailReg.test(field)){
@@ -264,7 +271,8 @@ function validateEmail(field){
 }
 
 //Form validate numbers
-function validateNumber(field){
+function validateNumber(field)
+{
     var numberReg = /^-?\d+(\.\d+)?$/;
     
 	if (!numberReg.test(field)){
@@ -275,7 +283,8 @@ function validateNumber(field){
 }
 
 //Form validate empty
-function validateEmpty(field){
+function validateEmpty(field)
+{
     if(field === "" ||
        field === null ||
        field === undefined){
@@ -290,7 +299,8 @@ function validateEmpty(field){
 }
 
 //Convert string to boolean
-function toBoolean(value) {
+function toBoolean(value)
+{
     var strValue = String(value).toLowerCase();
     strValue = ((!isNaN(strValue) && strValue !== '0') &&
         strValue !== '' &&
@@ -300,7 +310,8 @@ function toBoolean(value) {
 }
 
 //Get max height from elements
-function getMaxHeight(elems){
+function getMaxHeight(elems)
+{
     return Math.max.apply(null, elems.map(function()
     {
         return $(this).outerHeight();
@@ -308,7 +319,8 @@ function getMaxHeight(elems){
 }
 
 //Responsive Code
-function responsiveCode() {
+function responsiveCode()
+{
 	var bodyWidth = document.body.clientWidth; //$(window).width();
 	var bodyHeight = $(window).height();
 	var bodyOrientation = bodyWidth > bodyHeight ? true : false;
@@ -359,19 +371,20 @@ $(window).bind("resize", responsiveCode);
 $(window).bind("orientationchange", responsiveCode);
 
 //LightGallery destroy function
-function destroyLightGallery(){
+function destroyLightGallery()
+{
 	$(".JSlightGallery").lightGallery().data('lightGallery').destroy(true);
 }
 //Lightgallery load function
-function loadLightGallery(){
-	
+function loadLightGallery()
+{	
 	$(".JSlightGallery").each(function(){ 
 
 		var galSelectorVal = $(this).data("lg-item") === "auto" ? "a" : $(this).data("lg-item");
 		var galThumbnailVal = $(this).data("lg-thumb");
 		var galDownloadVal = $(this).data("lg-download");
-		var galPrevGalText = "@lgtitle-prev";
-		var galNextGalText = "@lgtitle-next";
+		var galPrevGalText = lang('@lgtitle-prev');
+		var galNextGalText = lang('@lgtitle-next');
 		var galLoadThumb = mainUrl+"/resources/lightgallery/img/lg-loading-icon.gif";
 		var galPrevThumb = mainUrl+"/resources/lightgallery/img/lg-loading-prev.png";
 		var galNextThumb = mainUrl+"/resources/lightgallery/img/lg-loading-next.png";
@@ -451,8 +464,8 @@ function loadLightGallery(){
 }
 
 //ImgLiquid auto-fill background function
-function imageFill(container){
-	
+function imageFill(container)
+{	
 	var bgData = new Array();
 	var bgVertical;
 	var bgHorizontal;
@@ -503,7 +516,8 @@ function imageFill(container){
 }
 
 //Get element height changes
-function onElementHeightChange(elm, callback){
+function onElementHeightChange(elm, callback)
+{
 	var lastHeight = $(elm).height(), newHeight;
 	(function run(){
 		newHeight = $(elm).height();
@@ -531,14 +545,16 @@ function onElementHeightChange(elm, callback){
 }
 
 //Text cut function
-function textCut(container){
+function textCut(container)
+{
 	$(container).each(function(){
 		$(this).html("<div><div>"+$(this).html()+"</div></div>");
 	});
 }
 
 //Text auto size function (Note: Use this on responsive code to better results)
-function textSize(container, fontsize){
+function textSize(container, fontsize)
+{
 	$(container).each(function (i,box){
 		
 		var width = $(box).width(),
@@ -557,7 +573,8 @@ function textSize(container, fontsize){
 }
 
 //Show alert modal box using BootBox plugin
-function showAlert(title,text,size){
+function showAlert(title,text,size)
+{
 	if(typeof size === undefined || size === null){
 		size = 'medium';
 	}
@@ -575,7 +592,8 @@ function showAlert(title,text,size){
 }
 
 //Show alert modal box using BootBox plugin (Content)
-function showContent(title,element,size){
+function showContent(title,element,size)
+{
 	if(typeof size === undefined || size === null){
 		size = 'medium';
 	}
@@ -593,7 +611,8 @@ function showContent(title,element,size){
 }
 
 //YouTube get ID from URL
-function youTubeParser(url){
+function youTubeParser(url)
+{
     var regExp = /^.*((youtu.be\/)|(v\/)|(\/u\/\w\/)|(embed\/)|(watch\?))\??v?=?([^#\&\?]*).*/;
     var match = url.match(regExp);
     return (match&&match[7].length==11)? match[7] : false;
@@ -607,7 +626,8 @@ function youTubeParser(url){
 	// http://youtu.be/0zM3nApSvMg
 }
 //Vimemo get ID from URL
-function vimeoParser(url){
+function vimeoParser(url)
+{
     var regExp = /^.*(vimeo\.com\/)((channels\/[A-z]+\/)|(groups\/[A-z]+\/videos\/))?([0-9]+)/;
     var match = url.match(regExp);
     return match[5];
@@ -618,13 +638,13 @@ function vimeoParser(url){
 }
 
 //Video launch modal box function
-function videoLaunch(url, share, title, autoplay){
-	
+function videoLaunch(url, share, title, autoplay)
+{	
 	var ID;
 	var embedUrl;
 	var embedShare;
-	var embedShareTitle = '@videolaunch-title';
-	var embedShareText = '@videolaunch-text';
+	var embedShareTitle = lang('@videolaunch-title');
+	var embedShareText = lang('@videolaunch-text');
 	var embedAutoPlay = '';
 	
 	if(typeof share === undefined || share === null){
@@ -722,17 +742,20 @@ function videoLaunch(url, share, title, autoplay){
 }
 
 //Capitalize first function
-function capitalizeFirstLetter(string) {
+function capitalizeFirstLetter(string)
+{
     return string.charAt(0).toUpperCase() + string.slice(1);
 }
 
 //Convert to slug function
-function convertToSlug(Text){
+function convertToSlug(Text)
+{
 	return Text.toLowerCase().replace(/[^\w ]+/g,'').replace(/ +/g,'-');
 }
 
 //Auto scroll function
-function autoScroll(selector,animated,distance){      
+function autoScroll(selector,animated,distance)
+{      
     var scrollDistance = distance;
     var scrollTarget = $(selector);
 	var scrollAnimated = animated == true ? 500 : animated;
@@ -746,7 +769,8 @@ function autoScroll(selector,animated,distance){
 }
 
 //Disable right click menu
-function disableClick(enable){
+function disableClick(enable)
+{
 	if(enable){
 		$("body").attr("oncontextmenu","return false");
 	}
@@ -756,7 +780,8 @@ function disableClick(enable){
 }
 
 //Get URL parameter from URL (PHP $_GET like)
-function getUrlParameter(sParam){
+function getUrlParameter(sParam)
+{
 	var sPageURL = decodeURIComponent(window.location.search.substring(1)),
 		sURLVariables = sPageURL.split('&'),
 						sParameterName,
@@ -771,7 +796,8 @@ function getUrlParameter(sParam){
 	}
 }
 //Get URL parameter from Script SRC (PHP $_GET like)
-function getSrcParameter(sParam){
+function getSrcParameter(sParam)
+{
 	var scripts = document.getElementsByTagName('script');
 	var index = scripts.length - 1;
 	var myScript = scripts[index];
@@ -793,7 +819,8 @@ function getSrcParameter(sParam){
 }
 
 //Convert strings to links function
-function linkify(inputText) {
+function linkify(inputText)
+{
     var replacedText, replacePattern1, replacePattern2, replacePattern3;
 
     //URLs starting with http://, https://, or ftp://
@@ -812,15 +839,16 @@ function linkify(inputText) {
 }
 
 //Remove HTML tags function
-function stripTags(container, items){
+function stripTags(container, items)
+{
 	container.find("*").not(items).each(function() {
 		$(this).remove();
 	});
 }
 
 //Check hasthag disabled links function
-function checkDisabledLink(string){
-	
+function checkDisabledLink(string)
+{	
 	var textUrl = string;
 	var exceptions = checkDisabledExceptions;
 	
@@ -839,7 +867,7 @@ function checkDisabledLink(string){
 		if(textUrl.indexOf(window.location.host) <= 0){
 			//Show alert
 			var section = textUrl.split('#')[1].replace(/-/g,' ');
-			showAlert(section,"@disabled-text");
+			showAlert(section,lang('@disabled-text'));
 			return false;
 		}
 		else{
@@ -849,8 +877,8 @@ function checkDisabledLink(string){
 }
 
 //Window pop-up function
-function windowPopup(element){
-	
+function windowPopup(element)
+{	
     var leftPosition;
 	var topPosition;
 	var getUrl = $(element).data('win-url');
@@ -897,11 +925,11 @@ function windowPopup(element){
 }
 
 //Map launch function
-function mapLaunch(element){
-	
+function mapLaunch(element)
+{	
 	var mapContent;
-	var mapTitle = "@maplaunch-title";
-	var mapText = "@maplaunch-text";
+	var mapTitle = lang('@maplaunch-title');
+	var mapText = lang('@maplaunch-text');
 	var mapIcon1 = mainUrl+"/css/icons/maplaunch/google-maps.png";
 	var mapIcon2 = mainUrl+"/css/icons/maplaunch/waze.png";
 	var mapCoords1 = $(element).data('map-coords-1').split(',');
