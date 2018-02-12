@@ -1,5 +1,7 @@
 # Custom Bootstrap Website Base
-Base structure for WebSites with reusable parts of source code or functions mainly based on Bootstrap and another libraries. You can visit https://dev.gznetwork.com/websitebase for a running example.
+https://dev.gznetwork.com/websitebase
+
+Base structure for web sites with reusable parts of source code or functions mainly based on Bootstrap and another libraries. You can visit the website above for a running example.
 
 # Resources
 * Standalone Support (PHP 5.6+)
@@ -46,8 +48,8 @@ Base structure for WebSites with reusable parts of source code or functions main
 	* Custom show date format
 	* Get YouTube, Vimeo and Facebook ID and embed code URL
 	* Custom Paginator
-	* Multiple Language Support
 * Features in JS:
+	* Custom language support
 	* Check attr function
 	* Check outer width & height with padding/margin
 	* Remove whitespaces between elements
@@ -105,6 +107,7 @@ Base structure for WebSites with reusable parts of source code or functions main
 * Adobe Dreamweaver
 * NetBeans
 * Visual Studio Code
+* Atom
 * Brackets
 * Notepad++
 
@@ -115,4 +118,4 @@ Base structure for WebSites with reusable parts of source code or functions main
 * XAMPP Server (All)
 
 # For Web Masters
-I'm not the author of some plugins, but i try to let other people find the best way to use them. If you have any question feel free to contact me at admin@gznetwork.com
+I'm not the author of some plugins, but i try to let other people find the best way to use them. If you have any question feel free to contact me at triforce@gznetwork.com
