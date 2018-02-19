@@ -320,6 +320,8 @@
 			<div class="panel-body">
 				The file <code>app-ready.js</code>, <code>app-load.js</code> and <code>app-responsive.js</code> contains some code pieces for test/examples purposes you can delete with no problems. Is not recomemded to modify the <code>app-base.js</code> because contains the main functions inside. <b>If you want add extra variables to replace, just add it in</b> <code>app-extras.php</code>
 				<br><br>
+				To manage custom languages just add the attribute <code>data-js-lang</code> to <code>&lt;body&gt;</code> tag. The main language file is <code>app-lang.js</code> but these are the default ones, you can override them in <code>app-ready.js</code> using the same key. If you want add more language take a look on <code>app-ready.js</code> for examples. 
+				<br><br>
 				The compile process works in realtime if you are testing in <code>localhost</code> side, if you upload the code to <code>production</code> the file <code>app.js</code> will be generated only once, if you update your code, remember to delete <code>app.js</code> to get a new one.
 			</div>
 		</div>

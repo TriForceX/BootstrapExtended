@@ -9,7 +9,6 @@
  */
 
 var jsUrl = '/assets';
-var jsLanguage = 'es';
 var replacementsCSS = [
 	//Global
 	['@global-url' , jsUrl],
@@ -25,8 +24,6 @@ var replacementsCSS = [
 var replacementsJS = [
 	//Global
 	['@global-url' , jsUrl],
-	//Global
-	['@global-lang' , jsLanguage],
 	//Screen
 	['@screen-small-phone' 	, '320'], 
 	['@screen-medium-phone' , '360'],
