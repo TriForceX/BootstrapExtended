@@ -234,10 +234,12 @@
 		  $cssUrl.'/css/style-theme.css',
 		  ...
 		);<br>...<br>$cssVariables = array(
+			//Global
+			'@global-url' => $cssUrl,
 			//Screen
 			'@screen-small-phone' 	=> '320px', 
 			'@screen-medium-phone' 	=> '360px',
-			'@screen-phone' 	=> '480px',
+			'@screen-phone'		=> '480px',
 			'@screen-tablet' 	=> '768px',
 			'@screen-desktop' 	=> '992px',  
 			'@screen-widescreen' 	=> '1200px', 
@@ -292,22 +294,23 @@
 		</table>
 		<figure class="highlight">
 			<pre><code class="language-html" data-lang="html">$jsFiles = array(
+		  $jsUrl.'/js/app-lang.js',
 		  $jsUrl.'/js/app-base.js',
 		  $jsUrl.'/js/app-ready.js',
 		  $jsUrl.'/js/app-load.js',
 		  $jsUrl.'/js/app-responsive.js',
 		  ...
 		);<br>...<br>$jsVariables = array(
+			//Global
+			'@global-url' => $jsUrl,
 			//Screen
 			'@screen-small-phone' 	=> '320', 
 			'@screen-medium-phone' 	=> '360',
-			'@screen-phone' 	=> '480',
+			'@screen-phone'		=> '480',
 			'@screen-tablet' 	=> '768',
 			'@screen-desktop' 	=> '992',  
 			'@screen-widescreen' 	=> '1200', 
 			'@screen-full-hd' 	=> '1920', 
-			//Global
-			'@global-url' => $jsUrl,
 			...
 		);</code></pre>
 		</figure>
