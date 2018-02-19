@@ -7,7 +7,7 @@ echo '/*
  * Version 2.0
  * TriForce - Matías Silva
  * 
- * Site:     http://dev.gznetwork.com/websitebase
+ * Site:     https://dev.gznetwork.com/websitebase
  * Source:   https://github.com/triforcex/websitebase
  * 
  */';
