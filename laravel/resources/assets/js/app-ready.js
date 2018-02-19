@@ -2,6 +2,11 @@ $(document).ready(function(){
 
 /* ================================================= DOCUMENT READY ================================================= */
 	
+	//Set language on the fly
+	if(getUrlParameter('lang-test')=='es'){
+		mainLang = 'es';
+	}
+	
 	//Example add language string
 	language['@test-title'] = { 'en' : 'Hello world!', 'es' : 'Hola mundo!' };
 	

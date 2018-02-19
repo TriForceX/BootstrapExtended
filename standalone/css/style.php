@@ -8,7 +8,7 @@ echo '/*
  * TriForce - Matías Silva
  * 
  * Site:     http://dev.gznetwork.com/websitebase
- * Issues:   https://github.com/triforcex/websitebase
+ * Source:   https://github.com/triforcex/websitebase
  * 
  */';
 
@@ -31,7 +31,7 @@ function cssGenerate()
 
 	$cssVariables = array(
 						//Global
-						'@global-url' => $cssUrl,
+						'@global-url' 			=> $cssUrl,
 						//Screen
 						'@screen-small-phone' 	=> '320px', 
 						'@screen-medium-phone' 	=> '360px',

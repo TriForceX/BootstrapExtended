@@ -166,3 +166,8 @@ body{
   display: inline-block;
   padding-right: 45px;
 }
+
+/*Table*/
+table{
+	word-break: keep-all;
+}

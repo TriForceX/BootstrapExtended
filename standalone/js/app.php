@@ -8,7 +8,7 @@ echo '/*
  * TriForce - Matías Silva
  * 
  * Site:     http://dev.gznetwork.com/websitebase
- * Issues:   https://github.com/triforcex/websitebase
+ * Source:   https://github.com/triforcex/websitebase
  * 
  */';
 
@@ -17,12 +17,9 @@ require_once('../resources/php/minifier/minifier.php');
 
 class php extends utilities\php { }
 
-$jsLanguage = isset($_GET['lang']) ? $_GET['lang'] : 'en';
-
 function jsGenerate()
 {
-	global $jsLanguage;
-	
+	$jsLanguage = isset($_GET['lang']) ? $_GET['lang'] : 'en';
 	$jsMinify = true;
 	$jsBuffer = '';
 	$jsUrl = php::get_main_url('/js');

@@ -1,7 +1,8 @@
-//Define language var
+//Define language by default
+var mainLang = '@global-lang';
 var language = new Array();
 
-//Set language strings
+//Set base language strings
 language = {
 			//Form Validation
 			'@validate-title' 			: { 'en' : 'Form Alert', 'es' : 'Alerta Formulario' },
@@ -33,5 +34,5 @@ language = {
 //Parse language strings
 function lang(string)
 {
-	return language[string]['@global-lang'];
+	return language[string][mainLang];
 }

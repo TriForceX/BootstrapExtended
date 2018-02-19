@@ -1,7 +1,7 @@
 /* ================================================= FUNCTIONS ================================================= */
 
 //Global variables
-var mainUrl = "@global-url";
+var mainUrl = '@global-url';
 var isHome;
 var isMobile;
 var isNavChrome;
@@ -13,7 +13,7 @@ var isMozilla;
 var isNavSafari;
 var isNavOpera;
 var isNavEdge;
-var checkDisabledExceptions = ["#carousel"];
+var checkDisabledExceptions = ['#carousel'];
 
 //IE10 viewport hack for Surface/desktop Windows 8 bug
 (function () {

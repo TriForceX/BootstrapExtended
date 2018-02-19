@@ -338,6 +338,13 @@ function imageFeaturedData($featuredField, $featuredPost)
 //Enable post thumbnails
 add_theme_support('post-thumbnails');
 
+//Custom JPG quality
+//function custom_jpeg_quality()
+//{
+//    return 100;
+//}
+//add_filter ('jpeg_quality', 'custom_jpeg_quality');
+
 //Enable page excerpt
 //add_post_type_support('page', 'excerpt');
 
