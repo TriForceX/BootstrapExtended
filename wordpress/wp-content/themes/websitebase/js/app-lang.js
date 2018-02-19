@@ -1,5 +1,5 @@
 //Define language by default
-var mainLang = '@global-lang';
+var mainLang = $('body').data('js-lang') ? $('body').data('js-lang') : 'en';
 var language = new Array();
 
 //Set base language strings
@@ -34,5 +34,11 @@ language = {
 //Parse language strings
 function lang(string)
 {
-	return language[string][mainLang];
+	var text = language[string][mainLang];
+	
+	if(text === undefined || text === null || text == ''){
+		text = 'Error undefined.';
+	}
+	
+	return text;
 }

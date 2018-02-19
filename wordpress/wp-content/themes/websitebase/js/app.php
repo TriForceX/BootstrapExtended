@@ -19,7 +19,6 @@ class php extends utilities\php { }
 
 function jsGenerate()
 {
-	$jsLanguage = isset($_GET['lang']) ? $_GET['lang'] : 'en';
 	$jsMinify = true;
 	$jsBuffer = '';
 	$jsUrl = php::get_main_url('/js');
@@ -35,8 +34,6 @@ function jsGenerate()
 	$jsVariables = array(
 						//Global Url
 						'@global-url' 			=> $jsUrl,
-						//Global Language
-						'@global-lang'			=> $jsLanguage,
 						//Screen Size
 						'@screen-small-phone' 	=> '320', 
 						'@screen-medium-phone' 	=> '360',
