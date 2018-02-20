@@ -336,4 +336,28 @@ class php
 		);
 		return html_entity_decode(mb_convert_encoding(strtr($string, $map), 'UTF-8', 'ISO-8859-2'), ENT_QUOTES, 'UTF-8');
 	}
+	
+	//Get page code using cUrl
+	public static function get_page_code($url, $start, $end)
+	{
+		//Curl Init
+		$cuulAgent = 'User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/44.0.2403.89 Safari/537.36';
+		$curlInit = curl_init();
+		curl_setopt($curlInit, CURLOPT_URL, $url);
+		curl_setopt($curlInit, CURLOPT_HEADER, 0);
+		curl_setopt($curlInit, CURLOPT_RETURNTRANSFER, true);
+		if($curlAgent){
+			curl_setopt($curlInit, CURLOPT_USERAGENT, $curlAgent);
+		}
+		$curlInitResult = curl_exec($curlInit);
+		curl_close($curlInit);
+
+		//Curl Parse
+		$curlStartPos = stripos($curlInitResult, $start);
+		$curlStartStr = substr($curlInitResult, $curlStartPos);
+		$curlEndStr = substr($curlStartStr, strlen($start));
+		$curlEndPos = stripos($curlEndStr, $end);
+		$curlFinish = substr($curlEndStr, 0, $curlEndPos);
+		return trim($curlFinish);
+	}
 }
