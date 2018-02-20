@@ -119,4 +119,4 @@ Base structure for web sites with reusable parts of source code or functions mai
 - XAMPP Server (All)
 
 # For Web Masters
-I have code the most of the code snippets and functions *(from scratch or searching the whole internet)*. About the included libraries im not the author, but i try to let other people find the best way to use them *(original authors are linked in the demo page)*. If you have any question feel free to contact me at triforce@gznetwork.com
+I coded the most of the code snippets and functions *(from scratch or searching the whole internet)*. About the included libraries im not the author, but i try to let other people find the best way to use them *(original authors are linked in the demo page)*. If you have any question feel free to contact me at triforce@gznetwork.com

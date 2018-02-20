@@ -341,7 +341,7 @@ class php
 	public static function get_page_code($url, $start, $end)
 	{
 		//Curl Init
-		$cuulAgent = 'User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/44.0.2403.89 Safari/537.36';
+		$curlAgent = 'User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/44.0.2403.89 Safari/537.36';
 		$curlInit = curl_init();
 		curl_setopt($curlInit, CURLOPT_URL, $url);
 		curl_setopt($curlInit, CURLOPT_HEADER, 0);
