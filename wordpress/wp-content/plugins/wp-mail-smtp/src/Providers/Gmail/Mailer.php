@@ -82,7 +82,7 @@ class Mailer extends MailerAbstract {
 	 */
 	public function send() {
 
-		// Get the raw MIME email using \PHPMailer data.
+		// Get the raw MIME email using \MailCatcher data.
 		$base64 = base64_encode( $this->phpmailer->getSentMIMEMessage() );
 		$base64 = str_replace( array( '+', '/', '=' ), array( '-', '_', '' ), $base64 ); // url safe.
 		$this->message->setRaw( $base64 );
@@ -155,6 +155,12 @@ class Mailer extends MailerAbstract {
 		if ( function_exists( 'apache_get_modules' ) ) {
 			$modules      = apache_get_modules();
 			$gmail_text[] = '<strong>Apache.mod_security:</strong> ' . ( in_array( 'mod_security', $modules, true ) || in_array( 'mod_security2', $modules, true ) ? 'Yes' : 'No' );
+		}
+		if ( function_exists( 'selinux_is_enabled' ) ) {
+			$gmail_text[] = '<strong>OS.SELinux:</strong> ' . ( selinux_is_enabled() ? 'Yes' : 'No' );
+		}
+		if ( function_exists( 'grsecurity_is_enabled' ) ) {
+			$gmail_text[] = '<strong>OS.grsecurity:</strong> ' . ( grsecurity_is_enabled() ? 'Yes' : 'No' );
 		}
 
 		return implode( '<br>', $gmail_text );

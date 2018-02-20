@@ -20,7 +20,7 @@ class amePluginVisibility {
 		self::$lastInstance = $this;
 
 		//Remove "hidden" plugins from the list on the "Plugins -> Installed Plugins" page.
-		add_filter('all_plugins', array($this, 'filterPluginList'));
+		add_filter('all_plugins', array($this, 'filterPluginList'), 15);
 
 		//It's not possible to completely prevent a user from (de)activating "hidden" plugins because plugin API
 		//functions like activate_plugin() and deactivate_plugins() don't provide a way to abort (de)activation.

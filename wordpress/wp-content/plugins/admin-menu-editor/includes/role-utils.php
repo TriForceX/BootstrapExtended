@@ -1,11 +1,17 @@
 <?php
 class ameRoleUtils {
 	/**
-	  * Retrieve a list of all known capabilities of all roles
+	  * Retrieve a list of all known, non-meta capabilities of all roles.
 	  *
 	  * @return array Associative array with capability names as keys
 	  */
 	public static function get_all_capabilities(){
+		//Cache the results.
+		static $capabilities = null;
+		if ( isset($capabilities) ) {
+			return $capabilities;
+		}
+
 		$wp_roles = self::get_roles();
 		$capabilities = array();
 

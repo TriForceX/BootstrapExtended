@@ -286,6 +286,8 @@ function ame_output_sort_buttons($icons) {
 			?>
 		</div>
 
+		<div class="clear"></div>
+		<div class="metabox-holder">
 		<?php
 		if ( apply_filters('admin_menu_editor-show_general_box', false) ) :
 			$is_general_box_open = true;
@@ -295,8 +297,6 @@ function ame_output_sort_buttons($icons) {
 			$box_class = $is_general_box_open ? '' : 'closed';
 
 			?>
-			<div class="clear"></div>
-			<div class="metabox-holder">
 				<div class="postbox ws_ame_custom_postbox <?php echo $box_class; ?>" id="ws_ame_general_vis_box">
 					<button type="button" class="handlediv button-link">
 						<span class="toggle-indicator"></span>
@@ -306,16 +306,73 @@ function ame_output_sort_buttons($icons) {
 						<?php do_action('admin_menu_editor-general_box'); ?>
 					</div>
 				</div>
-			</div>
 			<?php
 		endif;
 
+		if ( $is_pro_version ) :
+			$is_how_to_box_open = true;
+			if ( isset($_COOKIE['ame_how_to_box_open']) ) {
+				$is_how_to_box_open = ($_COOKIE['ame_how_to_box_open'] === '1');
+			}
+			$box_class = $is_how_to_box_open ? '' : 'closed';
+
+			$how_to_link_template = '<a href="https://adminmenueditor.com/documentation/%1$s" target="_blank" title="Opens in a new tab">%2$s</a>';
+			$how_to_item_template = '<li>' . $how_to_link_template . '</li>';
+
+			?>
+			<div class="postbox ws_ame_custom_postbox <?php echo $box_class; ?>" id="ws_ame_how_to_box">
+				<button type="button" class="handlediv button-link">
+					<span class="toggle-indicator"></span>
+				</button>
+				<h2 class="hndle">How To</h2>
+				<div class="inside">
+					<ul class="ame-tutorial-list">
+						<li><?php
+							printf($how_to_link_template, 'how-to-hide-a-menu-item/', 'Hide a Menu...');
+							?>
+							<ul class="ame-tutorial-list">
+								<?php
+								foreach (
+									array(
+										'how-to-hide-a-menu-item/#how-to-hide-a-menu-from-a-role'                   => 'From a Role',
+										'how-to-hide-a-menu-item/#how-to-hide-a-menu-from-a-user'                   => 'From a User',
+										'how-to-hide-a-menu-item/#how-to-hide-a-menu-from-everyone-except-yourself' => 'From Everyone Except You',
+										'how-to-hide-menu-without-preventing-access/'                               => 'Without Preventing Access',
+									)
+									as $how_to_url => $how_to_title
+								) {
+									printf($how_to_item_template, esc_attr($how_to_url), $how_to_title);
+								}
+								?>
+							</ul>
+						</li>
+						<?php
+						foreach (
+							array(
+								'how-to-give-access-to-menu/' => 'Show a Menu',
+								'how-to-move-and-sort-menus/' => 'Move and Sort Menus',
+								'how-to-add-a-new-menu-item/' => 'Add a New Menu',
+							)
+							as $how_to_url => $how_to_title
+						) {
+							printf($how_to_item_template, esc_attr($how_to_url), $how_to_title);
+						}
+						?>
+					</ul>
+				</div>
+			</div>
+			<?php
+		endif;
+		?>
+		</div> <!-- / .metabox-holder -->
+
+		<?php
 		$hint_id = 'ws_sidebar_pro_ad';
 		$show_pro_benefits = !apply_filters('admin_menu_editor_is_pro', false) && (!isset($editor_data['show_hints'][$hint_id]) || $editor_data['show_hints'][$hint_id]);
 
 		if ( $show_pro_benefits ):
 			$benefit_variations = array(
-				'Drag items between menu levels.',
+				'Hide dashboard widgets.',
 				'More menu icons.',
 				'Make menus open in a new tab or an iframe.',
 				'Prevent users from deleting a specific user.',

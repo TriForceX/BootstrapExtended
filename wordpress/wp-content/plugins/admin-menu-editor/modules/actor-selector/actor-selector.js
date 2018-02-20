@@ -1,10 +1,11 @@
 /// <reference path="../../js/jquery.d.ts" />
 /// <reference path="../../js/jquery-json.d.ts" />
 /// <reference path="../../js/actor-manager.ts" />
-var AmeActorSelector = (function () {
+var AmeActorSelector = /** @class */ (function () {
     function AmeActorSelector(actorManager, isProVersion, currentUserLogin, visibleUsers, ajaxParams) {
         var _this = this;
         this.selectedActor = null;
+        this.selectedDisplayName = 'All';
         this.visibleUsers = [];
         this.subscribers = [];
         this.isProVersion = false;
@@ -88,6 +89,12 @@ var AmeActorSelector = (function () {
         var previousSelection = this.selectedActor;
         this.selectedActor = actorId;
         this.highlightSelectedActor();
+        if (actorId !== null) {
+            this.selectedDisplayName = this.actorManager.getActor(actorId).displayName;
+        }
+        else {
+            this.selectedDisplayName = 'All';
+        }
         //Notify subscribers that the selection has changed.
         if (this.selectedActor !== previousSelection) {
             for (var i = 0; i < this.subscribers.length; i++) {
@@ -199,3 +206,4 @@ var AmeActorSelector = (function () {
     AmeActorSelector._ = wsAmeLodash;
     return AmeActorSelector;
 }());
+//# sourceMappingURL=actor-selector.js.map

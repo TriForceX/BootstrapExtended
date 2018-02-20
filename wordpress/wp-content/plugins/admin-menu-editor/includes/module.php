@@ -7,6 +7,8 @@ abstract class ameModule {
 	protected $moduleId = '';
 	protected $moduleDir = '';
 
+	protected $settingsFormAction = '';
+
 	/**
 	 * @var WPMenuEditor
 	 */
@@ -34,6 +36,11 @@ abstract class ameModule {
 
 			add_action('admin_menu_editor-enqueue_scripts-' . $this->tabSlug, array($this, 'enqueueTabScripts'));
 			add_action('admin_menu_editor-enqueue_styles-' . $this->tabSlug, array($this, 'enqueueTabStyles'));
+
+			//Optionally, handle settings form submission.
+			if ( $this->settingsFormAction !== '' ) {
+				add_action('admin_menu_editor-header', array($this, '_processAction'), 10, 2);
+			}
 		}
 	}
 
@@ -80,11 +87,21 @@ abstract class ameModule {
 			/** @noinspection PhpUnusedLocalVariableInspection Used in some templates. */
 			$moduleTabUrl = $this->getTabUrl();
 
+			$templateVariables = $this->getTemplateVariables($name);
+			if ( !empty($templateVariables) ) {
+				extract($templateVariables, EXTR_SKIP);
+			}
+
 			/** @noinspection PhpIncludeInspection */
 			require $templateFile;
 			return true;
 		}
 		return false;
+	}
+
+	protected function getTemplateVariables(/** @noinspection PhpUnusedParameterInspection */ $templateName) {
+		//Override this method to pass variables to a template.
+		return array();
 	}
 
 	public function registerScripts() {
@@ -97,5 +114,21 @@ abstract class ameModule {
 
 	public function enqueueTabStyles() {
 		//Override this method to add stylesheets to the $this->tabSlug tab.
+	}
+
+	/**
+	 * @access private
+	 * @param string $action
+	 * @param array $post
+	 */
+	public function _processAction($action, $post = array()) {
+		if ( $action === $this->settingsFormAction ) {
+			check_admin_referer($action);
+			$this->handleSettingsForm($post);
+		}
+	}
+
+	public function handleSettingsForm($post = array()) {
+		//Override this method to process a form submitted from the module's tab.
 	}
 }

@@ -191,6 +191,10 @@ class Options {
 			$value = $this->postprocess_key_defaults( $group, $key );
 		}
 
+		if ( is_string( $value ) ) {
+			$value = stripslashes( $value );
+		}
+
 		return apply_filters( 'wp_mail_smtp_options_get', $value, $group, $key );
 	}
 
@@ -440,10 +444,12 @@ class Options {
 	 * Set plugin options, all at once.
 	 *
 	 * @since 1.0.0
+	 * @since 1.3.0 Added $once argument to save option only if they don't exist already.
 	 *
-	 * @param array $options Data to save.
+	 * @param array $options Plugin options to save.
+	 * @param bool $once Whether to update existing options or to add these options only once.
 	 */
-	public function set( $options ) {
+	public function set( $options, $once = false ) {
 
 		foreach ( (array) $options as $group => $keys ) {
 			foreach ( $keys as $key_name => $key_value ) {
@@ -452,7 +458,7 @@ class Options {
 						switch ( $key_name ) {
 							case 'from_name':
 							case 'mailer':
-								$options[ $group ][ $key_name ] = $this->get_const_value( $group, $key_name, sanitize_text_field( $options[ $group ][ $key_name ] ) );
+								$options[ $group ][ $key_name ] = $this->get_const_value( $group, $key_name, wp_strip_all_tags( $options[ $group ][ $key_name ], true ) );
 								break;
 							case 'from_email':
 								if ( filter_var( $options[ $group ][ $key_name ], FILTER_VALIDATE_EMAIL ) ) {
@@ -486,13 +492,13 @@ class Options {
 				switch ( $key_name ) {
 					case 'host':
 					case 'user':
-						$options[ $mailer ][ $key_name ] = $this->get_const_value( $mailer, $key_name, sanitize_text_field( $options[ $mailer ][ $key_name ] ) );
+						$options[ $mailer ][ $key_name ] = $this->get_const_value( $mailer, $key_name, wp_strip_all_tags( $options[ $mailer ][ $key_name ], true ) );
 						break;
 					case 'port':
 						$options[ $mailer ][ $key_name ] = $this->get_const_value( $mailer, $key_name, intval( $options[ $mailer ][ $key_name ] ) );
 						break;
 					case 'encryption':
-						$options[ $mailer ][ $key_name ] = $this->get_const_value( $mailer, $key_name, sanitize_text_field( $options[ $mailer ][ $key_name ] ) );
+						$options[ $mailer ][ $key_name ] = $this->get_const_value( $mailer, $key_name, wp_strip_all_tags( $options[ $mailer ][ $key_name ], true ) );
 						break;
 					case 'auth':
 					case 'autotls':
@@ -517,10 +523,64 @@ class Options {
 
 		$options = apply_filters( 'wp_mail_smtp_options_set', $options );
 
-		update_option( self::META_KEY, $options );
+		// Whether to update existing options or to add these options only once if they don't exist yet.
+		if ( $once ) {
+			add_option( self::META_KEY, $options, '', 'no' ); // Do not autoload these options.
+		} else {
+			update_option( self::META_KEY, $options, 'no' );
+		}
 
 		// Now we need to re-cache values.
 		$this->populate_options();
+	}
+
+	/**
+	 * Merge recursively, including a proper substitution of values in sub-arrays when keys are the same.
+	 * It's more like array_merge() and array_merge_recursive() combined.
+	 *
+	 * @since 1.0.0
+	 *
+	 * @return array
+	 */
+	public static function array_merge_recursive() {
+
+		$arrays = func_get_args();
+
+		if ( count( $arrays ) < 2 ) {
+			return isset( $arrays[0] ) ? $arrays[0] : array();
+		}
+
+		$merged = array();
+
+		while ( $arrays ) {
+			$array = array_shift( $arrays );
+
+			if ( ! is_array( $array ) ) {
+				return array();
+			}
+
+			if ( empty( $array ) ) {
+				continue;
+			}
+
+			foreach ( $array as $key => $value ) {
+				if ( is_string( $key ) ) {
+					if (
+						is_array( $value ) &&
+						array_key_exists( $key, $merged ) &&
+						is_array( $merged[ $key ] )
+					) {
+						$merged[ $key ] = call_user_func( __METHOD__, $merged[ $key ], $value );
+					} else {
+						$merged[ $key ] = $value;
+					}
+				} else {
+					$merged[] = $value;
+				}
+			}
+		}
+
+		return $merged;
 	}
 
 	/**

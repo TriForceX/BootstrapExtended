@@ -113,12 +113,6 @@ class Settings extends PageAbstract {
 
 						<?php foreach ( wp_mail_smtp()->get_providers()->get_options_all() as $provider ) : ?>
 
-							<?php
-							if ( ! $options->is_pepipost_active() && $provider->get_slug() === 'pepipost' ) {
-								continue;
-							}
-							?>
-
 							<div class="wp-mail-smtp-mailer <?php echo $mailer === $provider->get_slug() ? 'active' : ''; ?>">
 								<div class="wp-mail-smtp-mailer-image">
 									<img src="<?php echo esc_url( $provider->get_logo_url() ); ?>"
@@ -149,7 +143,7 @@ class Settings extends PageAbstract {
 				</div>
 				<div class="wp-mail-smtp-setting-field">
 					<input name="wp-mail-smtp[mail][return_path]" type="checkbox"
-						value="true" <?php checked( true, $options->get( 'mail', 'return_path' ) ); ?>
+						value="true" <?php checked( true, (bool) $options->get( 'mail', 'return_path' ) ); ?>
 						<?php echo $options->is_const_defined( 'mail', 'return_path' ) ? 'disabled' : ''; ?>
 						id="wp-mail-smtp-setting-return_path"
 					/>
@@ -206,6 +200,17 @@ class Settings extends PageAbstract {
 		$options = new Options();
 		$old_opt = $options->get_all();
 
+		// When checkbox is unchecked - it's not submitted at all, so we need to define its default false value.
+		if ( ! isset( $data['mail']['return_path'] ) ) {
+			$data['mail']['return_path'] = false;
+		}
+		if ( ! isset( $data['smtp']['autotls'] ) ) {
+			$data['smtp']['autotls'] = false;
+		}
+		if ( ! isset( $data['smtp']['auth'] ) ) {
+			$data['smtp']['auth'] = false;
+		}
+
 		// Remove all debug messages when switching mailers.
 		if ( $old_opt['mail']['mailer'] !== $data['mail']['mailer'] ) {
 			Debug::clear();
@@ -231,8 +236,8 @@ class Settings extends PageAbstract {
 			}
 		}
 
-		// New gmail clients data will be added from new $data, except the old access/refresh_token.
-		$to_save = array_merge( $old_opt, $data );
+		// New gmail clients data will be added from new $data.
+		$to_save = Options::array_merge_recursive( $old_opt, $data );
 
 		// All the sanitization is done in Options class.
 		$options->set( $to_save );

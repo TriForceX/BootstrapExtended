@@ -5,6 +5,9 @@ declare let wsAmeActorData: any;
 declare var wsAmeLodash: _.LoDashStatic;
 declare let AmeActors: AmeActorManager;
 
+type Falsy = false | null | '' | undefined | 0;
+type Truthy = true | string | 1;
+
 interface CapabilityMap {
 	[capabilityName: string] : boolean;
 }
@@ -13,15 +16,15 @@ abstract class AmeBaseActor {
 	public id: string;
 	public displayName: string = '[Error: No displayName set]';
 	public capabilities: CapabilityMap;
+	public metaCapabilities: CapabilityMap;
 
 	groupActors: string[] = [];
 
-	protected actorTypeSpecificity: Number = 0;
-
-	constructor(id: string, displayName: string, capabilities: CapabilityMap) {
+	constructor(id: string, displayName: string, capabilities: CapabilityMap, metaCapabilities: CapabilityMap = {}) {
 		this.id = id;
 		this.displayName = displayName;
 		this.capabilities = capabilities;
+		this.metaCapabilities = metaCapabilities;
 	}
 
 	/**
@@ -36,6 +39,9 @@ abstract class AmeBaseActor {
 	hasOwnCap(capability: string): boolean {
 		if (this.capabilities.hasOwnProperty(capability)) {
 			return this.capabilities[capability];
+		}
+		if (this.metaCapabilities.hasOwnProperty(capability)) {
+			return this.metaCapabilities[capability];
 		}
 		return null;
 	}
@@ -66,10 +72,9 @@ abstract class AmeBaseActor {
 
 class AmeRole extends AmeBaseActor {
 	name: string;
-	protected actorTypeSpecificity = 1;
 
-	constructor(roleId: string, displayName: string, capabilities: CapabilityMap) {
-		super('role:' + roleId, displayName, capabilities);
+	constructor(roleId: string, displayName: string, capabilities: CapabilityMap, metaCapabilities: CapabilityMap = {}) {
+		super('role:' + roleId, displayName, capabilities, metaCapabilities);
 		this.name = roleId;
 	}
 
@@ -88,6 +93,7 @@ interface AmeUserPropertyMap {
 	user_login: string;
 	display_name: string;
 	capabilities: CapabilityMap;
+	meta_capabilities: CapabilityMap;
 	roles : string[];
 	is_super_admin: boolean;
 	id?: number;
@@ -102,17 +108,16 @@ class AmeUser extends AmeBaseActor {
 	groupActors: string[];
 	avatarHTML: string = '';
 
-	protected actorTypeSpecificity = 10;
-
 	constructor(
 		userLogin: string,
 		displayName: string,
 		capabilities: CapabilityMap,
 		roles: string[],
 		isSuperAdmin: boolean = false,
-	    userId?: number
+	    userId?: number,
+		metaCapabilities: CapabilityMap = {}
 	) {
-		super('user:' + userLogin, displayName, capabilities);
+		super('user:' + userLogin, displayName, capabilities, metaCapabilities);
 
 		this.userLogin = userLogin;
 		this.roles = roles;
@@ -134,7 +139,8 @@ class AmeUser extends AmeBaseActor {
 			properties.capabilities,
 			properties.roles,
 			properties.is_super_admin,
-			properties.hasOwnProperty('id') ? properties.id : null
+			properties.hasOwnProperty('id') ? properties.id : null,
+			properties.meta_capabilities
 		);
 
 		if (properties.avatar_html) {
@@ -147,7 +153,6 @@ class AmeUser extends AmeBaseActor {
 
 class AmeSuperAdmin extends AmeBaseActor {
 	static permanentActorId = 'special:super_admin';
-	protected actorTypeSpecificity = 2;
 
 	constructor() {
 		super(AmeSuperAdmin.permanentActorId, 'Super Admin', {});
@@ -182,14 +187,20 @@ class AmeActorManager {
 	private exclusiveSuperAdminCapabilities = {};
 
 	private tagMetaCaps = {};
+	private suspectedMetaCaps: CapabilityMap;
 
 	private suggestedCapabilities: AmeCapabilitySuggestion[] = [];
 
-	constructor(roles, users, isMultisite: boolean = false) {
+	constructor(roles, users, isMultisite: Truthy | Falsy = false, suspectedMetaCaps: CapabilityMap = {}) {
 		this.isMultisite = !!isMultisite;
 
 		AmeActorManager._.forEach(roles, (roleDetails, id) => {
-			const role = new AmeRole(id, roleDetails.name, roleDetails.capabilities);
+			const role = new AmeRole(
+				id,
+				roleDetails.name,
+				roleDetails.capabilities,
+				AmeActorManager._.get(roleDetails, 'meta_capabilities', {})
+			);
 			this.roles[role.name] = role;
 		});
 
@@ -201,6 +212,8 @@ class AmeActorManager {
 		if (this.isMultisite) {
 			this.superAdmin = new AmeSuperAdmin();
 		}
+
+		this.suspectedMetaCaps = suspectedMetaCaps;
 
 		const exclusiveCaps: string[] = [
 			'update_core', 'update_plugins', 'delete_plugins', 'install_plugins', 'upload_plugins', 'update_themes',
@@ -277,7 +290,7 @@ class AmeActorManager {
 		return this.actorHasCap(actorId, capability);
 	}
 
-	private actorHasCap(actorId: string, capability: string, contextList?: Array<Object>): boolean {
+	private actorHasCap(actorId: string, capability: string, contextList?: Array<Object>): (boolean | null) {
 		//It's like the chain-of-responsibility pattern.
 
 		//Everybody has the "exist" cap and it can't be removed or overridden by plugins.
@@ -310,8 +323,11 @@ class AmeActorManager {
 		}
 
 		//Step #3: Check owned/default capabilities. Always checked.
-		let actor = this.getActor(actorId),
-			hasOwnCap = actor.hasOwnCap(capability);
+		let actor = this.getActor(actorId);
+		if (actor === null) {
+			return false;
+		}
+		let hasOwnCap = actor.hasOwnCap(capability);
 		if (hasOwnCap !== null) {
 			return hasOwnCap;
 		}
@@ -325,13 +341,21 @@ class AmeActorManager {
 			}
 
 			//Check if any of the user's roles have the capability.
-			result = false;
+			result = null;
 			for (let index = 0; index < actor.roles.length; index++) {
-				result = result || this.actorHasCap('role:' + actor.roles[index], capability, contextList);
+				let roleHasCap = this.actorHasCap('role:' + actor.roles[index], capability, contextList);
+				if (roleHasCap !== null) {
+					result = result || roleHasCap;
+				}
 			}
-			return result;
+			if (result !== null) {
+				return result;
+			}
 		}
 
+		if (this.suspectedMetaCaps.hasOwnProperty(capability)) {
+			return null;
+		}
 		return false;
 	}
 
@@ -425,10 +449,6 @@ class AmeActorManager {
 		AmeActorManager._.set(context, [actor, capability], grant);
 	}
 
-	resetCap(actor: string, capability: string) {
-		this.resetCapInContext(this.grantedCapabilities, actor, capability);
-	}
-
 	public resetCapInContext(context: AmeGrantedCapabilityMap, actor: string, capability: string) {
 		capability = this.mapMetaCap(capability);
 
@@ -463,7 +483,7 @@ class AmeActorManager {
 				delete pruned[actor][capability];
 
 				const hasCap = _.isArray(grant) ? grant[0] : grant,
-					hasCapWhenPruned = this.actorHasCap(actor, capability, context);
+					hasCapWhenPruned = !!this.actorHasCap(actor, capability, context);
 
 				if (hasCap !== hasCapWhenPruned) {
 					pruned[actor][capability] = grant; //Restore.
@@ -605,7 +625,8 @@ if (typeof wsAmeActorData !== 'undefined') {
 	AmeActors = new AmeActorManager(
 		wsAmeActorData.roles,
 		wsAmeActorData.users,
-		wsAmeActorData.isMultisite
+		wsAmeActorData.isMultisite,
+		wsAmeActorData.suspectedMetaCaps
 	);
 
 	if (typeof wsAmeActorData['capPower'] !== 'undefined') {

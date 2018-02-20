@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the Plugins - WP Mail SMTP by WPForms - Development (trunk) package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2017-12-22 07:45:38+0000\n"
+"PO-Revision-Date: 2018-01-23 08:38:02+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -234,7 +234,7 @@ msgstr "Enviar a"
 msgid "Email Test"
 msgstr "Correo de prueba"
 
-#: src/Admin/Pages/Settings.php:161
+#: src/Admin/Pages/Settings.php:155
 msgid "If unchecked bounce messages may be lost."
 msgstr "Si quitas la selección los mensajes de rebote podrían perderse."
 
@@ -264,11 +264,11 @@ msgstr "Puedes especificar la dirección de correo desde la que se enviarán los
 msgid "Mail"
 msgstr "Correo electrónico"
 
-#: src/Admin/Pages/Misc.php:95 src/Admin/Pages/Settings.php:246
+#: src/Admin/Pages/Misc.php:95 src/Admin/Pages/Settings.php:251
 msgid "Settings were successfully saved."
 msgstr "Ajustes guardados correctamente."
 
-#: src/Admin/Pages/Misc.php:67 src/Admin/Pages/Settings.php:191
+#: src/Admin/Pages/Misc.php:67 src/Admin/Pages/Settings.php:185
 msgid "Save Settings"
 msgstr "Guardar ajustes"
 
@@ -290,7 +290,7 @@ msgid "WP Mail SMTP Options"
 msgstr "Opciones de WP Mail SMTP"
 
 #: src/Admin/Area.php:111
-msgid "You have successfully linked the current site with you Google API project. Now you can start sending emails through Google."
+msgid "You have successfully linked the current site with your Google API project. Now you can start sending emails through Google."
 msgstr "Has enlazado con éxito el sitio actual con tu proyecto de la API de Google. Ahora puedes empezar a enviar correos desde Google."
 
 #: src/Admin/Area.php:102
@@ -318,9 +318,9 @@ msgstr "Ocultar anuncios"
 msgid "WPForms"
 msgstr "WPForms"
 
-#. #-#-#-#-#  wp-mail-smtp-code.pot (WP Mail SMTP 1.2.2)  #-#-#-#-#
+#. #-#-#-#-#  wp-mail-smtp-code.pot (WP Mail SMTP 1.2.5)  #-#-#-#-#
 #. Plugin URI of the plugin/theme
-#. #-#-#-#-#  wp-mail-smtp-code.pot (WP Mail SMTP 1.2.2)  #-#-#-#-#
+#. #-#-#-#-#  wp-mail-smtp-code.pot (WP Mail SMTP 1.2.5)  #-#-#-#-#
 #. Author URI of the plugin/theme
 msgid "https://wpforms.com/"
 msgstr "https://wpforms.com/"
@@ -356,7 +356,7 @@ msgstr "TLS no es lo mismo que STARTTLS. En la mayoría de servidores SSL es la 
 msgid "Use TLS encryption."
 msgstr "Usar encriptación TLS."
 
-#: src/Admin/Pages/Settings.php:160 wp_mail_smtp.php:385
+#: src/Admin/Pages/Settings.php:154 wp_mail_smtp.php:385
 msgid "Return Path indicates where non-delivery receipts - or bounce messages - are to be sent."
 msgstr "La ruta de retorno indica donde se enviarán los destinatarios no entregados - o mensajes rebotados."
 
@@ -377,7 +377,7 @@ msgstr "Ajustes de WP Mail SMTP"
 msgid "Reconfigures the wp_mail() function to use SMTP instead of mail() and creates an options page to manage the settings."
 msgstr "Reconfigura la función wp_mail() para que use SMTP en vez de mail() y crea una página de opciones para gestionar los ajustes."
 
-#. #-#-#-#-#  wp-mail-smtp-code.pot (WP Mail SMTP 1.2.2)  #-#-#-#-#
+#. #-#-#-#-#  wp-mail-smtp-code.pot (WP Mail SMTP 1.2.5)  #-#-#-#-#
 #. Plugin Name of the plugin/theme
 #: src/Admin/Area.php:127 wp_mail_smtp.php:652
 msgid "WP Mail SMTP"
@@ -458,11 +458,11 @@ msgstr "Estas opciones solo se aplican si has elegido arriba enviar los correos 
 msgid "SMTP Options"
 msgstr "Opciones STMP"
 
-#: src/Admin/Pages/Settings.php:157 wp_mail_smtp.php:381
+#: src/Admin/Pages/Settings.php:151 wp_mail_smtp.php:381
 msgid "Set the return-path to match the From Email"
 msgstr "Establece la ruta de retorno para que coincida con el correo electrónico remitente"
 
-#: src/Admin/Pages/Settings.php:148 wp_mail_smtp.php:371 wp_mail_smtp.php:376
+#: src/Admin/Pages/Settings.php:142 wp_mail_smtp.php:371 wp_mail_smtp.php:376
 msgid "Return Path"
 msgstr "Ruta de retorno"
 

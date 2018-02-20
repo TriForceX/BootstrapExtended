@@ -170,7 +170,7 @@ class Test extends PageAbstract {
 
 		$mailer_text = '<strong>Params:</strong><br>';
 
-		$mailer_text .= '<strong>Mailer:</strong> ' . $phpmailer->Mailer . '<br>';
+		$mailer_text .= '<strong>Mailer:</strong> ' . $options->get( 'mail', 'mailer' ) . '<br>';
 		$mailer_text .= '<strong>Constants:</strong> ' . ( $options->is_const_enabled() ? 'Yes' : 'No' ) . '<br>';
 
 		// Display different debug info based on the mailer.
@@ -198,7 +198,7 @@ class Test extends PageAbstract {
 		if ( $options->is_mailer_smtp() ) {
 			$smtp_text = '<strong>SMTP Debug:</strong><br>';
 			if ( ! empty( $smtp_debug ) ) {
-				$smtp_text .= $smtp_debug;
+				$smtp_text .= esc_textarea( $smtp_debug );
 			} else {
 				$smtp_text .= '[empty]';
 			}

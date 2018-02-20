@@ -1191,13 +1191,13 @@ function updateActorAccessUi(containerNode) {
 		var checkbox = containerNode.find('.ws_actor_access_checkbox');
 		checkbox.prop('checked', hasAccess);
 
-		//Display the checkbox differently if some items of this menu are hidden and some are visible,
+		//Display the checkbox in an indeterminate state if the actual menu permissions are unknown
+		//because it uses meta capabilities.
+		var isIndeterminate = (hasAccess === null);
+		//Also show it as indeterminate if some items of this menu are hidden and some are visible,
 		//or if their permissions don't match this menu's permissions.
 		var submenuItems = getSubmenuItemNodes(containerNode);
-		if ((submenuItems.length === 0) || isOverrideActive) {
-			//Either this menu doesn't contain any items, or their permissions don't matter because they're overridden.
-			checkbox.prop('indeterminate', false);
-		} else {
+		if ((submenuItems.length > 0) && !isOverrideActive)  {
 			var differentPermissions = false;
 			submenuItems.each(function() {
 				var item = $(this).data('menu_item');
@@ -1212,7 +1212,24 @@ function updateActorAccessUi(containerNode) {
 				return true;
 			});
 
-			checkbox.prop('indeterminate', differentPermissions);
+			if (differentPermissions) {
+				isIndeterminate = true;
+			}
+		}
+		checkbox.prop('indeterminate', isIndeterminate);
+
+		if (isIndeterminate && (hasAccess === null)) {
+			setMenuFlag(
+				containerNode,
+				'uncertain_meta_cap',
+				true,
+				"This item might be visible.\n"
+				+ "The plugin cannot reliably detect if \"" + actorSelectorWidget.selectedDisplayName
+				+ "\" has the \"" + getFieldValue(menuItem, 'access_level', '[No capability]')
+				+ "\" capability. If you need to hide the item, try checking and then unchecking it."
+			);
+		} else {
+			setMenuFlag(containerNode, 'uncertain_meta_cap', false);
 		}
 
 		containerNode.toggleClass('ws_is_hidden_for_actor', !hasAccess);
@@ -1222,12 +1239,17 @@ function updateActorAccessUi(containerNode) {
 	} else {
 		containerNode.removeClass('ws_is_hidden_for_actor ws_has_custom_permissions_for_actor');
 		setMenuFlag(containerNode, 'custom_actor_permissions', false);
+		setMenuFlag(containerNode, 'uncertain_meta_cap', false);
 
 		var currentUserActor = 'user:' + wsEditorData.currentUserLogin;
 		var otherActors = _(wsEditorData.actors).keys().without(currentUserActor, 'special:super_admin').value(),
 			hiddenFromCurrentUser = ! actorCanAccessMenu(menuItem, currentUserActor),
-			hiddenFromOthers = ! _.some(otherActors, _.curry(actorCanAccessMenu, 2)(menuItem)),
+			hasAccessToThisItem = _.curry(actorCanAccessMenu, 2)(menuItem),
+			hiddenFromOthers = _.every(otherActors, function(actorId) {
+				return (hasAccessToThisItem(actorId) === false);
+			}),
 			visibleForSuperAdmin = AmeActors.isMultisite && actorCanAccessMenu(menuItem, 'special:super_admin');
+
 		setMenuFlag(
 			containerNode,
 			'hidden_from_others',
@@ -1729,11 +1751,12 @@ function readAllFields(container){
  ***************************************************************************/
 
 var item_flags = {
-	'custom':'This is a custom menu item',
-	'unused':'This item was automatically recreated. You cannot delete a non-custom item, but you could hide it.',
-	'hidden':'Cosmetically hidden',
-	'custom_actor_permissions' : "The selected role has custom permissions for this item.",
-	'hidden_from_others' : 'Hidden from everyone except you.'
+	'custom': 'This is a custom menu item',
+	'unused': 'This item was added since the last time you saved menu settings.',
+	'hidden': 'Cosmetically hidden',
+	'custom_actor_permissions': "The selected role has custom permissions for this item.",
+	'hidden_from_others': 'Hidden from everyone except you.',
+	'uncertain_meta_cap': 'The plugin cannot detect if this item is visible by default.'
 };
 
 function setMenuFlag(item, flag, state, title) {
@@ -4726,6 +4749,17 @@ function ameOnDomReady() {
 				'action' : 'ws_ame_hide_hint',
 				'hint' : hint.attr('id')
 			}
+		);
+	});
+
+	//Expand/collapse the "How To" box.
+	var $howToBox = $("#ws_ame_how_to_box");
+	$howToBox.find(".handlediv").click(function() {
+		$howToBox.toggleClass('closed');
+		$.cookie(
+			'ame_how_to_box_open',
+			($howToBox.hasClass('closed') ? '0' : '1'),
+			{ expires: 180 }
 		);
 	});
 

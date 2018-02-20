@@ -114,6 +114,11 @@ class WPMenuEditor extends MenuEd_ShadowPluginFramework {
 	 */
 	private $current_tab = '';
 
+	/**
+	 * @var array List of capabilities that are used in the default admin menu. Used to detect meta capabilities.
+	 */
+	private $caps_used_in_menu = array();
+
 	function init(){
 		$this->sitewide_options = true;
 
@@ -221,6 +226,22 @@ class WPMenuEditor extends MenuEd_ShadowPluginFramework {
 			'index.php?page=nf-credits' => true,
 			//All in One SEO Pack 2.3.9.2
 			'index.php?page=aioseop-about' => true,
+			//WP Courseware 4.1.2
+			//'wpcw' => true, //This is commented out due to a bug. The Courseware top level menu and its first submenu
+			//both have the URL "wpcw", but the top level menu also has some visible, non-blacklisted items. AME would
+			//still hide the entire menu because the template builder doesn't check if a menu has submenu items.
+			'admin.php?page=wpcw-course-classroom'                 => true,
+			'admin.php?page=wpcw-student'                          => true,
+			'admin.php?page=WPCW_showPage_ConvertPage'             => true,
+			'admin.php?page=WPCW_showPage_CourseOrdering'          => true,
+			'admin.php?page=WPCW_showPage_GradeBook'               => true,
+			'admin.php?page=WPCW_showPage_ModifyCourse'            => true,
+			'admin.php?page=WPCW_showPage_ModifyModule'            => true,
+			'admin.php?page=WPCW_showPage_ModifyQuestion'          => true,
+			'admin.php?page=WPCW_showPage_ModifyQuiz'              => true,
+			'admin.php?page=WPCW_showPage_UserCourseAccess'        => true,
+			'admin.php?page=WPCW_showPage_UserProgess'             => true,
+			'admin.php?page=WPCW_showPage_UserProgess_quizAnswers' => true,
 		);
 		
 		//AJAXify screen options
@@ -320,6 +341,14 @@ class WPMenuEditor extends MenuEd_ShadowPluginFramework {
 			add_action('admin_notices', array($this, 'display_security_log'));
 		}
 
+		if ( did_action('plugins_loaded') ) {
+			$this->load_modules();
+		} else {
+			add_action('plugins_loaded', array($this, 'load_modules'), 11);
+		}
+	}
+
+	public function load_modules() {
 		//Modules
 		foreach($this->get_active_modules() as $module) {
 			/** @noinspection PhpIncludeInspection */
@@ -329,7 +358,7 @@ class WPMenuEditor extends MenuEd_ShadowPluginFramework {
 			}
 		}
 
-		//Set up the tabs for the menu editor page.
+		//Set up the tabs for the menu editor page. Many tabs are provided by modules.
 		$firstTabs = array('editor' => 'Admin Menu');
 		if ( is_network_admin() ) {
 			//TODO: This could be in extras.php
@@ -676,19 +705,10 @@ class WPMenuEditor extends MenuEd_ShadowPluginFramework {
 		}
 		$done = true;
 
+		$this->register_jquery_plugins();
+
 		//Lodash library
 		wp_register_auto_versioned_script('ame-lodash', plugins_url('js/lodash.min.js', $this->plugin_file));
-
-		//jQuery JSON plugin
-		wp_register_auto_versioned_script('jquery-json', plugins_url('js/jquery.json.js', $this->plugin_file), array('jquery'));
-		//jQuery sort plugin
-		wp_register_auto_versioned_script('jquery-sort', plugins_url('js/jquery.sort.js', $this->plugin_file), array('jquery'));
-		//qTip2 - jQuery tooltip plugin
-		wp_register_auto_versioned_script('jquery-qtip', plugins_url('js/jquery.qtip.min.js', $this->plugin_file), array('jquery'));
-		//jQuery Form plugin. This is a more recent version than the one included with WP.
-		wp_register_auto_versioned_script('ame-jquery-form', plugins_url('js/jquery.form.js', $this->plugin_file), array('jquery'));
-		//jQuery cookie plugin
-		wp_register_auto_versioned_script('jquery-cookie', plugins_url('js/jquery.biscuit.js', $this->plugin_file), array('jquery'));
 
 		//Knockout
 		wp_register_auto_versioned_script('knockout', plugins_url('js/knockout.js', $this->plugin_file));
@@ -728,12 +748,19 @@ class WPMenuEditor extends MenuEd_ShadowPluginFramework {
 		//Compatibility workaround: Get the real roles of the current user even if other plugins corrupt the list.
 		$users[$current_user->get('user_login')]['roles'] = array_values($this->get_user_roles($current_user));
 
+		$suspected_meta_caps = $this->detect_meta_caps($roles, $users);
+
+		//The current user has all of the meta caps. That's how we know they're meta caps and not just regular
+		//capabilities that simply haven't been granted to anyone.
+		$users[$current_user->get('user_login')]['meta_capabilities'] = $suspected_meta_caps;
+
 		//TODO: Include currentUserLogin
 		$actor_data = array(
 			'roles' => $roles,
 			'users' => $users,
 			'isMultisite' => is_multisite(),
 			'capPower' => $this->load_cap_power(),
+			'suspectedMetaCaps' => $suspected_meta_caps,
 		);
 		wp_localize_script('ame-actor-manager', 'wsAmeActorData', $actor_data);
 
@@ -748,6 +775,115 @@ class WPMenuEditor extends MenuEd_ShadowPluginFramework {
 		do_action('admin_menu_editor-register_scripts');
 	}
 
+	/**
+	 * @access private
+	 */
+	public function register_jquery_plugins() {
+		//jQuery JSON plugin
+		wp_register_auto_versioned_script('jquery-json', plugins_url('js/jquery.json.js', $this->plugin_file), array('jquery'));
+		//jQuery sort plugin
+		wp_register_auto_versioned_script('jquery-sort', plugins_url('js/jquery.sort.js', $this->plugin_file), array('jquery'));
+		//qTip2 - jQuery tooltip plugin
+		wp_register_auto_versioned_script('jquery-qtip', plugins_url('js/jquery.qtip.min.js', $this->plugin_file), array('jquery'));
+		//jQuery Form plugin. This is a more recent version than the one included with WP.
+		wp_register_auto_versioned_script('ame-jquery-form', plugins_url('js/jquery.form.js', $this->plugin_file), array('jquery'));
+		//jQuery cookie plugin
+		wp_register_auto_versioned_script('jquery-cookie', plugins_url('js/jquery.biscuit.js', $this->plugin_file), array('jquery'));
+	}
+
+	/**
+	 * Detect meta capabilities.
+	 * This only works if the current user is an admin. In Multisite, they must be a Super Admin.
+	 *
+	 * @param array $roles
+	 * @param array $users
+	 * @return array [capability => true]
+	 */
+	private function detect_meta_caps($roles, $users) {
+		if ( !$this->current_user_can_edit_menu() || !is_super_admin() ) {
+			return array();
+		}
+
+		//Any capability that's assigned to a role probably isn't a meta capability.
+		$allRealCaps = ameRoleUtils::get_all_capabilities();
+		//Similarly, capabilities that are directly assigned to users are probably real.
+		foreach($users as $user) {
+			$allRealCaps = array_merge($allRealCaps, $user['capabilities']);
+		}
+		//Role IDs can also be used as capabilities.
+		foreach($roles as $roleId => $role) {
+			$allRealCaps[$roleId] = true;
+		}
+
+		//Collect all of the required capabilities from the admin menu.
+		$menu = $this->get_default_menu();
+		ameMenu::for_each($menu['tree'], array($this, 'collect_menu_cap'));
+
+		//Any capability that's part of the admin menu but not assigned to any role or user
+		//is probably a meta capability.
+		$suspectedMetaCaps = array_diff_key($this->caps_used_in_menu, $allRealCaps);
+
+		//The current user is an admin and should have access to everything. If they don't have a cap,
+		//that's probably a non-meta cap that isn't enabled for *anyone*.
+		$suspectedMetaCaps = array_filter(array_keys($suspectedMetaCaps), 'current_user_can');
+
+		return array_fill_keys($suspectedMetaCaps, true);
+	}
+
+	/**
+	 * @access private
+	 * @param array $item
+	 */
+	public function collect_menu_cap($item) {
+		if ( isset($item['defaults'], $item['defaults']['access_level']) ) {
+			$this->caps_used_in_menu[$item['defaults']['access_level']] = true;
+		}
+	}
+
+	/** @noinspection PhpUnusedPrivateMethodInspection */
+	/**
+	 * Unfinished feature: Detect which roles have which meta capabilities.
+	 *
+	 * Create a temp. user for each role, test which meta caps they have, then cache the results in a site option.
+	 * Put this part in an AJAX request to avoid a massive slowdown (takes several seconds even on a fast PC).
+	 *
+	 * @param array $suspected_meta_caps
+	 * @param string[] $roleIds
+	 * @return array
+	 */
+	private function analyse_role_meta_caps($suspected_meta_caps, $roleIds) {
+		//$start = microtime(true);
+		$results = array();
+		$real_current_user = wp_get_current_user();
+
+		foreach($roleIds as $role_id) {
+			$id = wp_insert_user(array(
+				'role' => $role_id,
+				'user_login' => wp_slash('ametemp_' . wp_generate_password(14)),
+				'user_pass' => wp_generate_password(20),
+				'display_name' => 'Temporary user created by AME',
+			));
+			$user = new WP_User($id);
+
+			//Some plugins only check the current user and ignore the user ID passed to the "user_has_cap" filter.
+			//To account for cases like that, we need to also change the current user.
+			wp_set_current_user($user->ID);
+
+			$results[$role_id] = array();
+			foreach($suspected_meta_caps as $meta_cap => $ignored) {
+				$results[$role_id][$meta_cap] = $user->has_cap($meta_cap);
+			}
+
+			wp_delete_user($id);
+		}
+
+		//Restore the original user.
+		wp_set_current_user($real_current_user->ID);
+
+		/*$elapsed = microtime(true) - $start;
+		printf('Meta cap analysis: %.2f ms<br>', $elapsed * 1000);*/
+		return $results;
+	}
 
 	/**
 	  * Add the JS required by the editor to the page header
@@ -898,6 +1034,7 @@ class WPMenuEditor extends MenuEd_ShadowPluginFramework {
 			'id' => $user->ID,
 			'roles' => !empty($user->roles) ? (array)($user->roles) : array(),
 			'capabilities' => $this->castValuesToBool($user->caps),
+			'meta_capabilities' => array(),
 			'display_name' => $user->display_name,
 			'is_super_admin' => is_multisite() && is_super_admin($user->ID),
 		);
@@ -1185,7 +1322,7 @@ class WPMenuEditor extends MenuEd_ShadowPluginFramework {
 	 * @param string $login
 	 * @param WP_User $current_user
 	 */
-	public function maybe_reset_plugin_access(/** @noinspection PhpUnusedParameterInspection */ $login, $current_user) {
+	public function maybe_reset_plugin_access(/** @noinspection PhpUnusedParameterInspection */ $login = null, $current_user = null) {
 		if ( ($this->options['plugin_access'] !== 'specific_user') || !$current_user || !$current_user->exists() ) {
 			return;
 		}
@@ -3849,7 +3986,7 @@ class WPMenuEditor extends MenuEd_ShadowPluginFramework {
 					continue;
 				}
 
-				if ( count($line) >= 2 ) {
+				if ( is_array($line) && (count($line) >= 2) ) {
 					$cap_power[strval($line[0])] = floatval(str_replace(',', '.', $line[1]));
 				}
 			}
@@ -3937,6 +4074,8 @@ class WPMenuEditor extends MenuEd_ShadowPluginFramework {
 			}
 		}
 		unset($module);
+
+		$modules = apply_filters('admin_menu_editor-available_modules', $modules);
 
 		$modules = array_filter($modules, array($this, 'module_path_exists'));
 
@@ -4037,6 +4176,7 @@ class ameMenuTemplateBuilder {
 		}
 
 		//Skip blacklisted menus.
+		//BUG: We shouldn't skip top level menus that have non-blacklisted submenu items.
 		if ( isset($item['url'], $this->blacklist[$item['url']]) ) {
 			return;
 		}
