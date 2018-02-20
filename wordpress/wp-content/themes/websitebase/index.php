@@ -1266,7 +1266,7 @@
 		<div class="page-header">
 			<h1>More functions! <span class="label label-danger">JS & PHP</span></h1>
 		</div>
-		<p>There is a lot of more functions in the whole code, just play and try it. Remember to check <code>app-base.js</code> , <code>functions.php</code> and <code>main.php</code> for more stuff. Below you will find some original Bootstrap features, you can find more in the main menu.</p>
+		<p>There is more functions in the whole code, just play and try it. Remember to check <code>app-base.js</code>, <code>functions.php</code> and <code>main.php</code> for more stuff. Also you can find more info about the resources in the main menu.</p>
 
 		<!-- ******** RESOURCES EXAMPLES ******** -->
 
@@ -1444,6 +1444,12 @@
 				<span class="sr-only">Next</span>
 			</a>
 		</div>
+
+		<!-- More functions -->
+		<div class="page-header">
+			<h1>More Classes! <span class="label label-danger">CSS</span></h1>
+		</div>
+		<p>There is more classes in the whole code, just play and try it. Remember to check <code>style-base.css</code> for more stuff <i>(Some of are commented, just copy them in a new file)</i>.</p>
 
 		<!-- ******** CSS EXAMPLES ******** -->
 

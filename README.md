@@ -5,7 +5,7 @@ Base structure for web sites with reusable parts of source code or functions mai
 
 # Resources
 * Standalone Support (PHP 5.6+)
-* Wordpress Support (Ver 4.9.2)
+* Wordpress Support (Ver 4.9.4)
 * Laravel Support (Ver 5.2)
 * Bootstrap 3 (Ver 3.3.7)
 * Font Awesome (Ver 4.7.0)
@@ -47,7 +47,7 @@ Base structure for web sites with reusable parts of source code or functions mai
 	* Convert string to UTF-8
 	* Custom show date format
 	* Get YouTube, Vimeo and Facebook ID and embed code URL
-	* Custom Paginator
+	* Custom paginator
 * Features in JS:
 	* Custom language support
 	* Check attr function
@@ -56,7 +56,7 @@ Base structure for web sites with reusable parts of source code or functions mai
 	* Form validate
 	* Convert string to boolean
 	* Get max height from elements
-	* Responsive Code
+	* Responsive code detection
 	* LightGallery destroy & load functions/events
 	* ImgLiquid auto-fill background function
 	* Get element height changes
@@ -78,14 +78,15 @@ Base structure for web sites with reusable parts of source code or functions mai
 	* Check validations for home page, mobile and navigators
 * Features in CSS:
 	* Custom fade transition for Bootstrap carousel
-	* Disable shadows for Bootstrap's carousel navigators
+	* Disable shadows for Bootstrap carousel controls
 	* Custom datepicker colors
 	* Custom Bootstrap tooltip colors
 	* Custom loading container for ajax purposes
 	* Custom form checkbox & radio style
 	* Custom form icons for input and select
-	* Custom padding, margin, width, height and table classes
-	* Collection of CSS3 powered hover effects
+	* Custom padding, margin, width and height
+	* Custom vertical align classes
+	* Collection of custom CSS3 hover effects
 * Wordpress Features:
 	* Custom database configuration for wp-config
 	* Cron enable/disable
