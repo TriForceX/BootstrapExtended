@@ -955,3 +955,27 @@ function get_theme_mod_2($name)
 //    }
 //}
 //add_filter( 'pre_get_posts', 'themename_custom_posts_per_page' );
+
+//Disable specific plugin update check 
+function disable_plugin_updates( $value ) {
+	
+	$disabledPlugins = array(
+							'advanced-custom-fields-pro/acf.php', //Updated manually
+							'better-contextual-help/better-contextual-help.php', //Updated manually
+							//'plugin-folder/plugin.php',
+							//'plugin-folder/plugin.php',
+							);
+	
+	foreach ($disabledPlugins as $disabledPlugin)
+	{
+		if (isset($value) && is_object($value)) 
+		{
+			if (isset($value->response[$disabledPlugin])) 
+			{
+				unset($value->response[$disabledPlugin]);
+			}
+		}
+	}
+	return $value;
+}
+add_filter( 'site_transient_update_plugins', 'disable_plugin_updates' );
