@@ -961,6 +961,7 @@ function disable_plugin_updates( $value ) {
 	
 	$disabledPlugins = array(
 							'advanced-custom-fields-pro/acf.php', //Updated manually
+							'admin-menu-editor-pro/menu-editor.php', //Updated manually
 							'better-contextual-help/better-contextual-help.php', //Updated manually
 							//'plugin-folder/plugin.php',
 							//'plugin-folder/plugin.php',
