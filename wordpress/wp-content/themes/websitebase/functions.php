@@ -939,13 +939,13 @@ function get_theme_mod_2($name)
 //add_action( 'init', 'custom_post_type_1', 0 );
 
 //Posts data based on content type
-//function themename_custom_posts_per_page($query)
+//function custom_posts_per_page($query)
 //{
 //	if(!is_admin()){
 //        switch ($query->query_vars['post_type'])
 //        {
-//            case 'custom-post-type':  // Post Type named 'content_type_name'
-//                $query->query_vars['posts_per_page'] = 6; //display all is -1
+//            case 'custom_post_type_name':  // Post type slug
+//                $query->query_vars['posts_per_page'] = 6; //Display all is -1
 //                $query->query_vars['order'] = 'DESC';
 //                $query->query_vars['orderby'] = 'date';
 //                break;
@@ -954,7 +954,7 @@ function get_theme_mod_2($name)
 //        return $query;
 //    }
 //}
-//add_filter( 'pre_get_posts', 'themename_custom_posts_per_page' );
+//add_filter( 'pre_get_posts', 'custom_posts_per_page' );
 
 //Disable specific plugin update check 
 function disable_plugin_updates( $value ) {
