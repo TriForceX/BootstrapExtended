@@ -2,7 +2,7 @@
 
 /*
  * PHP Main Stuff
- * © 2017 TriForce - Matías Silva
+ * TriForce - Matías Silva
  *
  * This file calls the main PHP utilities and sets the main HTML data
  * also you can extend the functions below with your own ones

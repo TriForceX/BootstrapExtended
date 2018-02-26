@@ -4,11 +4,11 @@ namespace utilities;
 
 /*
  * PHP Functions Utilities
- * Version 1.0
- * © 2017 TriForce - Matías Silva
+ * Version 2.0
+ * TriForce - Matías Silva
  * 
- * Site:     http://dev.gznetwork.com/websitebase
- * Issues:   https://github.com/triforcex/websitebase
+ * Site:     https://dev.gznetwork.com/websitebase
+ * Source:   https://github.com/triforcex/websitebase
  * 
  */
 

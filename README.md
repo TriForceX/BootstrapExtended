@@ -29,7 +29,7 @@ Base structure for web sites with reusable parts of source code or functions mai
 - PHP main utility class
 - CSS & JS files built in PHP (with code minification)
 - Custom htaccess file with force HTTPS & WWW options
-- Features in PHP:
+- PHP Features:
 	- Global variables for CSS & JS usage
 	- Minify CSS, JS and HTML
 	- PHP error handle & warnings
@@ -48,7 +48,7 @@ Base structure for web sites with reusable parts of source code or functions mai
 	- Custom show date format
 	- Get YouTube, Vimeo and Facebook ID and embed code URL
 	- Custom paginator
-- Features in JS:
+- JS Features:
 	- Custom language support
 	- Check attr function
 	- Check outer width & height with padding/margin
@@ -76,7 +76,7 @@ Base structure for web sites with reusable parts of source code or functions mai
 	- Window pop-up function
 	- Map launch function for Google Maps and Waze
 	- Check validations for home page, mobile and navigators
-- Fe-tures in CSS:
+- CSS Features:
 	- Custom fade transition for Bootstrap carousel
 	- Disable shadows for Bootstrap carousel controls
 	- Custom datepicker colors
@@ -87,6 +87,7 @@ Base structure for web sites with reusable parts of source code or functions mai
 	- Custom padding, margin, width and height
 	- Custom vertical align classes
 	- Collection of custom CSS3 hover effects
+	- Included "BebasNeue" example font 
 - Wordpress Features:
 	- Custom database configuration for wp-config
 	- Cron enable/disable

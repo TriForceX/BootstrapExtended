@@ -3,12 +3,14 @@
  * Version 2.0
  * TriForce - Matías Silva
  * 
- * Site:     http://dev.gznetwork.com/websitebase
- * Issues:   https://github.com/triforcex/websitebase
+ * Site:     https://dev.gznetwork.com/websitebase
+ * Source:   https://github.com/triforcex/websitebase
  * 
  */
 
+//Main assets folder
 var jsUrl = '/assets';
+//Replacements
 var replacementsCSS = [
 	//Global
 	['@global-url' , jsUrl],
@@ -34,10 +36,12 @@ var replacementsJS = [
 	['@screen-full-hd' 		, '1920'], 
 ];
 
-//var gulpBackCSSFiles = [];
+//Replace back-end files
+/*var gulpBackCSSFiles = [];
 
-//var gulpBackJSFiles = [];
+var gulpBackJSFiles = [];*/
 
+//Replace front-end files
 var gulpFrontCSSFiles = [
 						'resources/assets/css/style-base.css',
 						'resources/assets/css/style-fonts.css',
@@ -45,6 +49,7 @@ var gulpFrontCSSFiles = [
 						];
 					
 var gulpFrontJSFiles = [
+						'resources/assets/js/app-lang.js',
 						'resources/assets/js/app-base.js',
 						'resources/assets/js/app-ready.js',
 						'resources/assets/js/app-load.js',
@@ -65,16 +70,18 @@ var elixir = require('laravel-elixir');
 
 require('laravel-elixir-replace');
 
-//elixir(function(mix){
-//	
-//	console.log('[ -------- CSS & JS Compile (Backend) -------- ]');
-//	
-//	mix.less('app.less')
-//		.coffee('app.coffee')
-//		.scripts(gulpBackJSFiles, 'public/js/vendor.js')
-//		.styles(gulpBackCSSFiles, 'public/css/vendor.css');
-//});
+//Parse back-end files
+/*elixir(function(mix){
+	
+	console.log('[ -------- CSS & JS Compile (Backend) -------- ]');
+	
+	mix.less('app.less')
+		.coffee('app.coffee')
+		.scripts(gulpBackJSFiles, 'public/js/vendor.js')
+		.styles(gulpBackCSSFiles, 'public/css/vendor.css');
+});*/
 
+//Parse front-end Files
 elixir(function(mix){
 	
 	console.log('[ -------- CSS & JS Compile (Frontend) -------- ]');
@@ -85,7 +92,6 @@ elixir(function(mix){
 		.replace('public/assets/js/all.js', replacementsJS);
 	
 });
-
 
 /*
  * Custom Watch Method for Frontend

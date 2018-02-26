@@ -102,10 +102,10 @@
 		
 		<!-- ******** LOADING BAR ******** -->
 		
-		<!-- ******** STRUCTURE EXAMPLES ******** -->
+		<!-- ******** TEMPLATE EXAMPLES ******** -->
 		
 		<div class="jumbotron">
-			<h1>Main Structure</h1>
+			<h1>Main Template</h1>
 			<p>This template consists of two main parts, <code>header</code> and <code>footer</code>, which are called from the <code>index</code> (or pages). The <code>CSS</code> and <code>JS</code> files are called from a <code>PHP</code> file.</p>
 		</div>
 		
@@ -113,14 +113,14 @@
 		<div class="page-header">
 			<h1>Header <span class="label label-primary">Template</span></h1>
 		</div>
-		<p>The main header structure contains the access to main <code>PHP</code> functions, website data, <code>META</code> tags, <code>CSS</code> files (and the base one) and <code>HTML</code> header containers.</p>
+		<p>The main header structure contains the access to main <code>PHP</code> functions, website data, <code>META</code> tags, <code>CSS</code> files and <code>HTML</code> header containers. <code>PHP</code> is used for the main <code>CSS</code> file <i>(style.php)</i> to parse variables, minify code, etc...</p>
 		
 		<figure class="highlight">
 			<pre><code class="language-html" data-lang="html">&lt;!DOCTYPE html&gt;
 &lt;html lang="&lt;?php echo php::get_html_data('lang'); ?&gt;"&gt;
 &lt;head&gt;
 	...
-	&lt;link href="&lt;?php echo get_bloginfo('template_url'); ?&gt;/css/style.php" rel="stylesheet"&gt;
+	&lt;link href="&lt;?php echo php::get_main_url(); ?&gt;/css/style.php" rel="stylesheet"&gt;
 	...
 &lt;/head&gt;<br>&lt;body&gt;<br>...</code></pre>
 		</figure>
@@ -143,18 +143,18 @@
 		<p>The main page (or index) structure contains <code>HTML</code> contents and access to the main <code>header</code> and <code>footer</code> files.</p>
 		
 		<figure class="highlight">
-			<pre><code class="language-html" data-lang="html">&lt;?php get_header(); ?&gt;<br>&lt;div class="content"&gt;<br>...<br>&lt;/div&gt;<br>&lt;?php get_footer(); ?&gt;</code></pre>
+			<pre><code class="language-html" data-lang="html">&lt;?php include('header.php'); ?&gt;<br>&lt;div class="content"&gt;<br>...<br>&lt;/div&gt;<br>&lt;?php include('footer.php'); ?&gt;</code></pre>
 		</figure>
 		
 		<!-- Footer example -->
 		<div class="page-header">
 			<h1>Footer <span class="label label-primary">Template</span></h1>
 		</div>
-		<p>The main footer structure contains the access to <code>JS</code> files (and the base one) and <code>HTML</code> footer containers. If you want use another language for JS strings, just add <code>?lang=code</code> after <b>app.php</b> <i>(For example: <b>app.php?lang=es</b> for Spanish)</i>, by default is <b>English (en)</b>. Also if you will work with two languages i recommend you to use <b>cookies</b> to set different URL's. For more info read the file <b>app.php</b></p>
+		<p>The main footer structure contains the access to <code>JS</code> files (included the base one) and <code>HTML</code> footer containers. <code>PHP</code> is used for the main <code>CSS</code> file <i>(app.php)</i> to parse variables, minify code, etc...</p>
 		
 		<figure class="highlight">
 			<pre><code class="language-html" data-lang="html">...<br>&lt;!-- Main JS File --&gt;
-&lt;script src="&lt;?php echo get_bloginfo('template_url'); ?&gt;/js/app.php"&gt;&lt;/script&gt;
+&lt;script src="&lt;?php echo php::get_main_url(); ?&gt;/js/app.php"&gt;&lt;/script&gt;
 ...
 &lt;/body&gt;
 &lt;/html&gt;</code></pre>
@@ -166,7 +166,7 @@
 				<h3 class="panel-title">Note for main PHP Functions</h3>
 			</div>
 			<div class="panel-body">
-				You can use the PHP functions from the main library like <i>php::function()</i>, If you will use Wordpress (or another CMS) is highly recommended to use their main functions instead the base here. For example use <code>get_bloginfo('template_url')</code> instead <code>php::get_main_url()</code>
+				You can use the PHP functions from the main library like <i>php::function()</i>, If you will use <b>Wordpress</b> (or another CMS) is highly recommended to use their main functions instead the base here. For example for <b>Wordpress</b> use <code>get_bloginfo('template_url')</code> instead <code>php::get_main_url()</code> and <code>get_header()</code>, <code>get_footer()</code> instead <code>include('header.php')</code>, <code>include('footer.php')</code>
 			</div>
 		</div>
 		</p>
@@ -184,8 +184,19 @@
 //Show current date will return: <?php echo php::show_date(false,'F j l, Y, g:i a'); ?><br>&lt;?php echo php::show_date(false,'F j l, Y, g:i a'); ?&gt;</code></pre>
 			</figure>
 		</div>
+
+		<p>
+		<div class="panel panel-default">
+			<div class="panel-heading">
+				<h3 class="panel-title">Note to begin a website</h3>
+			</div>
+			<div class="panel-body">
+				If you want to start a new website using this, i recommend to delete the <b>example code</b>. For <code>HTML</code> open <b>index.php</b> and delete the <b>nav menu</b> <i>(first &lt;nav&gt; tag)</i> and remove the class <b>theme-showcase</b> from the <b>container</b> element <i>(&lt;div class="container"&gt;)</i>. For <code>CSS</code> delete the file <b>style-extras.css</b> and open <b>style-extras.php</b> and delete or comment the included <b>style-example.css</b> line <i>('../css/style-example.css')</i>. Finally for <code>JS</code> open <b>app-ready.js</b>, <b>app-load.js</b> and <b>app-responsive.js</b> and delete or comment all code examples <i>(Beginning with //Example ...)</i>
+			</div>
+		</div>
+		</p>
 		
-		<!-- ******** STRUCTURE EXAMPLES ******** -->
+		<!-- ******** TEMPLATE EXAMPLES ******** -->
 		
 		<p>&nbsp;</p>
 		
@@ -228,7 +239,7 @@
 			</tbody>
 		</table>
 		<figure class="highlight">
-			<pre><code class="language-html" data-lang="html">$cssFiles = array(
+			<pre><code class="language-html" data-lang="html">$cssMinify = true;<br>$cssFiles = array(
 		  $cssUrl.'/css/style-base.css',
 		  $cssUrl.'/css/style-fonts.css',
 		  $cssUrl.'/css/style-theme.css',
@@ -293,7 +304,7 @@
 			</tbody>
 		</table>
 		<figure class="highlight">
-			<pre><code class="language-html" data-lang="html">$jsFiles = array(
+			<pre><code class="language-html" data-lang="html">$jsMinify = true;<br>$jsFiles = array(
 		  $jsUrl.'/js/app-lang.js',
 		  $jsUrl.'/js/app-base.js',
 		  $jsUrl.'/js/app-ready.js',

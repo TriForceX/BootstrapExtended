@@ -19,7 +19,7 @@
 			<ul class="nav navbar-nav">
 				<li class="active"><a href="index.php">Home</a></li>
 				<li class="dropdown">
-					<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">About Me <span class="caret"></span></a>
+					<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Contact <span class="caret"></span></a>
 					<ul class="dropdown-menu" role="menu">
 						<li><a href="https://github.com/TriForceX" target="_blank">GitHub</a></li>
 						<li><a href="http://stackoverflow.com/users/7613382/triforce" target="_blank">StackOverflow</a></li>
