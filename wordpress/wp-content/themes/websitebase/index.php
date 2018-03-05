@@ -175,7 +175,7 @@
 		<div class="page-header">
 			<h1>Utilities <span class="label label-primary">Functions</span></h1>
 		</div>
-		<p>The main php functions are located in <code>resources/php/main.php</code> and contains a bunch of useful functions to use in PHP</p>
+		<p>The main php functions are located in <code>functions.php</code> and <code>resources/php/main.php</code>. These files contains a some of useful functions to use in <b>PHP</b></p>
 		
 		<div class="bs-example">
 			<figure class="highlight">
