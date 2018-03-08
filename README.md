@@ -20,6 +20,7 @@ Base structure for web sites with reusable parts of source code or functions mai
 - Masonry JS
 - jQuery UI
 - jQuery Cookie
+- jQuery Fullscreen
 - jQuery Browser
 - jQuery Rotate
 - PHP Mailer

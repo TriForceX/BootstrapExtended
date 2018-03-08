@@ -39,6 +39,7 @@
                         <li><a href="https://masonry.desandro.com/" target="_blank">Masonry JS</a></li>
 						<li><a href="https://jqueryui.com/" target="_blank">jQuery UI</a></li>
 						<li><a href="https://github.com/js-cookie/js-cookie" target="_blank">jQuery Cookie</a></li>
+						<li><a href="https://github.com/kayahr/jquery-fullscreen-plugin" target="_blank">jQuery Fullscreen</a></li>
 						<li><a href="https://github.com/pupunzi/jquery.mb.browser" target="_blank">jQuery Browser</a></li>
 						<li><a href="http://jqueryrotate.com/" target="_blank">jQuery Rotate</a></li>
 						<li><a href="https://github.com/PHPMailer/PHPMailer/" target="_blank">PHP Mailer</a></li>
