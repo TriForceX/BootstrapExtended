@@ -610,6 +610,60 @@ function showContent(title,element,size)
 	});
 }
 
+//Show alert modal box using BootBox plugin (Ajax)
+function showAjax(title, fullurl, size, loading, debug){
+	
+	if(typeof loading === undefined || loading === null){
+		loading = false;
+	}
+	
+	if(typeof debug === undefined || debug === null){
+		debug = false;
+	}
+
+	$.ajax({
+		url: fullurl,
+		type: 'GET', 
+		dataType: 'html',
+		beforeSend: function(){
+			//Loading
+			if(debug){
+				console.log("showAjax Loading ...");
+			}
+			//Show loading colored icon
+			if(loading){
+				$("body").append("<div class='JSloading "+loading+"'></div>");
+			}
+		},
+		success: function(data){  
+			//Loaded
+			if(debug){
+				console.log("showAjax Loaded!");
+			}
+			//Show content
+			showAlert(title,data,size);
+			//Remove loading icon
+			if(loading){
+				$(".JSloading").remove();
+			}
+		},
+		error: function(xhr, status, error){
+			//Error
+			if(debug){
+				console.log("showAjax Error! ("+xhr.status+")");
+				
+				if(validateEmpty(xhr.responseText)){
+					console.log("---------------\n"+xhr.responseText);
+				}
+			}
+			//Remove loading icon
+			if(loading){
+				$(".JSloading").remove();
+			}
+		}
+	});
+}
+
 //YouTube get ID from URL
 function youTubeParser(url)
 {
@@ -1011,12 +1065,14 @@ function mainInit()
 	
 	//Applu Data Tables
 	$('.JSdataTables').each(function(){
+		
+		$(this).dataTable().fnDestroy();
 		$(this).DataTable({
 			paging: toBoolean($(this).data('table-pages')),
 			searching: toBoolean($(this).data('table-search')),
 			info: toBoolean($(this).data('table-info')),
 			ordering: toBoolean($(this).data('table-sort')),
-		});
+        });
 	});
 	
 	//Apply Image Fill

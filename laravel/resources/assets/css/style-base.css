@@ -773,8 +773,10 @@ td[align='left']{
 	content: "";
 }
 .JSloading:after{
+	background-image:url("icons/loading/loading-icon-black.gif");
 	background-position:center center;
 	background-repeat:no-repeat;
+	background-color:#333333;
 	border-radius: 20px;
 	position:fixed;
 	width:100px;
@@ -798,9 +800,13 @@ td[align='left']{
 	background-image:url("icons/loading/loading-icon-blue.gif");
 	background-color:#486ca5;
 }
-.JSloading.black:after{
-	background-image:url("icons/loading/loading-icon-black.gif");
-	background-color:#333333;
+.JSloading.green:after{
+	background-image:url("icons/loading/loading-icon-green.gif");
+	background-color:#1f7b5d;
+}
+.JSloading.yellow:after{
+	background-image:url("icons/loading/loading-icon-yellow.gif");
+	background-color:#faa425;
 }
 /*JS Loading*/
 
