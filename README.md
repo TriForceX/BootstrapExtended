@@ -63,7 +63,7 @@ Base structure for web sites with reusable parts of source code or functions mai
 	- Get element height changes
 	- Text cut function
 	- Text auto size function
-	- Show alert modal box using BootBox plugin (plain text, html content and ajax)
+	- Show alert modal box using BootBox plugin (plain text, html content & ajax)
 	- Video launch modal box function for YouTube, Vimeo and Facebook
 	- Capitalize first function
 	- Convert to slug function

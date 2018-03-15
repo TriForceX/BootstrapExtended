@@ -475,19 +475,19 @@ function imageFill(container)
 	bgData = $(container).data('img-fill').split(',');
 	
 	//Check vertical align
-	if(bgData[0] === undefined || bgData[0] === null || bgData[0] == '')
+	if(bgData[0] === undefined || bgData[0] === null || bgData[0] == '' || /^\s*$/.test(bgData[0]))
 	{
 		bgData[0] = 'center';
 	}
 	
 	//Check horizontal align
-	if(bgData[1] === undefined || bgData[1] === null || bgData[1] == '')
+	if(bgData[1] === undefined || bgData[1] === null || bgData[1] == '' || /^\s*$/.test(bgData[1]))
 	{
 		bgData[1] = 'center';
 	}
 	
 	//Check fill
-	if(bgData[2] === undefined || bgData[2] === null || bgData[2] == '')
+	if(bgData[2] === undefined || bgData[2] === null || bgData[2] == '' || /^\s*$/.test(bgData[2]))
 	{
 		bgData[2] = 'true';
 	}
@@ -573,12 +573,8 @@ function textSize(container, fontsize)
 }
 
 //Show alert modal box using BootBox plugin
-function showAlert(title,text,size)
+function showAlert(title, text, size = 'medium')
 {
-	if(typeof size === undefined || size === null){
-		size = 'medium';
-	}
-	
 	//Bootbox alert
 	bootbox.alert({
 		title: title,
@@ -592,12 +588,8 @@ function showAlert(title,text,size)
 }
 
 //Show alert modal box using BootBox plugin (Content)
-function showContent(title,element,size)
+function showContent(title, element, size = 'medium')
 {
-	if(typeof size === undefined || size === null){
-		size = 'medium';
-	}
-	
 	//Bootbox alert
 	bootbox.alert({
 		title: title,
@@ -611,16 +603,8 @@ function showContent(title,element,size)
 }
 
 //Show alert modal box using BootBox plugin (Ajax)
-function showAjax(title, fullurl, size, loading, debug){
-	
-	if(typeof loading === undefined || loading === null){
-		loading = false;
-	}
-	
-	if(typeof debug === undefined || debug === null){
-		debug = false;
-	}
-
+function showAjax(title, fullurl, size = 'medium', loading = false, debug = false)
+{
 	$.ajax({
 		url: fullurl,
 		type: 'GET', 
@@ -652,7 +636,7 @@ function showAjax(title, fullurl, size, loading, debug){
 			if(debug){
 				console.log("showAjax Error! ("+xhr.status+")");
 				
-				if(validateEmpty(xhr.responseText)){
+				if(!(xhr.responseText === undefined || xhr.responseText === null || xhr.responseText == '' || /^\s*$/.test(xhr.responseText))){
 					console.log("---------------\n"+xhr.responseText);
 				}
 			}
@@ -692,7 +676,7 @@ function vimeoParser(url)
 }
 
 //Video launch modal box function
-function videoLaunch(url, share, title, autoplay)
+function videoLaunch(url, share = false, title = null, autoplay = false)
 {	
 	var ID;
 	var embedUrl;
@@ -700,18 +684,6 @@ function videoLaunch(url, share, title, autoplay)
 	var embedShareTitle = lang('@videolaunch-title');
 	var embedShareText = lang('@videolaunch-text');
 	var embedAutoPlay = '';
-	
-	if(typeof share === undefined || share === null){
-		share = false;
-	}
-	
-	if(typeof title === undefined || title === null){
-		title = null;
-	}
-	
-	if(typeof autoplay === undefined || autoplay === null){
-		autoplay = false;
-	}
 	
 	if (url.indexOf('youtube') >= 0){
 		ID = youTubeParser(url);
@@ -785,11 +757,11 @@ function videoLaunch(url, share, title, autoplay)
 	//Clipboard
 	var clipboard = new Clipboard('.JSvideoLaunchURL');
 
-	clipboard.on('success', function() {
+	clipboard.on('success', function(){
 		$('.JSvideoLaunchText').tooltip('show');
 	});
 
-	clipboard.on('error', function() {
+	clipboard.on('error', function(){
 		$('.JSvideoLaunchURL').attr('target','blank');
 		$('.JSvideoLaunchURL').attr('href',embedShare);
 	});
@@ -1012,12 +984,8 @@ function mapLaunch(element)
 }
 
 //Paginator group
-function paginatorGroup(limit,limitMobile,exceptions)
+function paginatorGroup(limit,limitMobile,exceptions = '')
 {
-	if(typeof exceptions === undefined || exceptions === null){
-		exceptions = '';
-	}
-	
 	$(".JSpaginator .JSpageItems").each(function(){ 
 
 		var items = $(this).find("a").not(exceptions);
@@ -1129,7 +1097,6 @@ $(document).ready(function(){
 	//Modal on disabled links
 	$(document).on("click", "a[href*=#]", function(e){
 		var source =  $(this).attr("href");
-
 		if(!(checkDisabledLink(source))){
 			e.preventDefault();
 		}
