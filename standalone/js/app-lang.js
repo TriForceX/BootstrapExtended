@@ -1,5 +1,5 @@
 //Define language by default
-var mainLang = $('body').data('js-lang') ? $('body').data('js-lang') : 'en';
+var mainLang = $('body').data('js-lang') !== undefined ? $('body').data('js-lang') : 'en';
 var language = new Array();
 
 //Set base language strings
@@ -36,7 +36,7 @@ function lang(string)
 {
 	var text = language[string][mainLang];
 	
-	if(text === undefined || text === null || text == ''){
+	if(text === undefined || text === null || text == '' || /^\s*$/.test(text)){
 		text = 'Error undefined.';
 	}
 	
