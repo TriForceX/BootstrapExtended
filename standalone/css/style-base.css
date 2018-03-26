@@ -11,42 +11,42 @@
 /*General HTML*/
 body{
 	background-color: white;
-  	overflow-x: hidden !important;
+  	overflow-x: hidden;
 }
 body.modal-open{
-	padding-right: 0px !important;
-	overflow: auto !important;
-	overflow-x: hidden !important;
+	padding-right: 0px;
+	overflow: auto;
+	overflow-x: hidden;
 }
 img{
 	border:0;
-	outline: 0 !important;
+	outline: 0;
 }
-a, a:visited, a:hover, a:active, a:focus {
-	text-decoration:none !important;
-	outline: 0 !important;
+a, a:visited, a:hover, a:active, a:focus{
+	text-decoration: none;
+	outline: 0;
 	cursor: pointer;
 }
 a:hover{
-	text-decoration:none !important;
+	text-decoration: none;
 }
 ul{
-	padding-left:13px;
+	padding-left: 13px;
 }
 ol{
-	padding-left:16px;
+	padding-left: 16px;
 }
 th[align='center'],
 td[align='center']{
-	text-align:center;
+	text-align: center;
 }
 th[align='right'],
 td[align='right']{
-	text-align:right;
+	text-align: right;
 }
 th[align='left'],
 td[align='left']{
-	text-align:left;
+	text-align: left;
 }
 /* ================================================= GLOBAL ================================================= */
 
