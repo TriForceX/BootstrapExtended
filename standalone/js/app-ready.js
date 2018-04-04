@@ -3,8 +3,8 @@ $(document).ready(function(){
 /* ================================================= DOCUMENT READY ================================================= */
 	
 	//Set language on the fly
-	if(getUrlParameter('lang-test')=='es'){
-		mainLang = 'es';
+	if(getUrlParameter('lang-test')){
+		mainLang = getUrlParameter('lang-test');
 	}
 	
 	//Example add language string

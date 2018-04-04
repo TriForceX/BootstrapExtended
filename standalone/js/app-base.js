@@ -40,13 +40,23 @@ $.fn.hasAttr = function(name)
 //Check outer height with padding/margin
 $.fn.outerHeight2 = function()
 {
-	return this[0].getBoundingClientRect().height;
+	if(this[0] === undefined || this[0] === null || this[0] == ''){ //Empty value
+		return null;
+	}
+	else{
+		return this[0].getBoundingClientRect().height;
+	}
 };
 
 //Check outer width with padding/margin
 $.fn.outerWidth2 = function()
 {
-	return this[0].getBoundingClientRect().width;
+	if(this[0] === undefined || this[0] === null || this[0] == ''){ //Empty value
+		return null;
+	}
+	else{
+		return this[0].getBoundingClientRect().width;
+	}
 };
 
 //Remove whitespaces between elements
@@ -285,13 +295,8 @@ function validateNumber(field)
 //Form validate empty
 function validateEmpty(field)
 {
-    if(field === "" ||
-       field === null ||
-       field === undefined){
+    if(field === undefined || field === null || field == '' || /^\s*$/.test(field)){
     	return false;
-    }
-    else if(/^\s*$/.test(field)){
-        return false;
     }
     else{
         return true;
@@ -303,18 +308,23 @@ function toBoolean(value)
 {
     var strValue = String(value).toLowerCase();
     strValue = ((!isNaN(strValue) && strValue !== '0') &&
-        strValue !== '' &&
-        strValue !== 'null' &&
-        strValue !== 'undefined') ? '1' : strValue;
+        strValue !== undefined &&
+        strValue !== null &&
+        strValue != '') ? '1' : strValue;
     return strValue === 'true' || strValue === '1' ? true : false;
 }
 
 //Get max height from elements
-function getMaxHeight(elems)
+function getMaxHeight(elems, getrect)
 {
     return Math.max.apply(null, elems.map(function()
     {
-        return $(this).outerHeight();
+		if(getrect === true){
+			return $(this).outerHeight2();
+		}
+		else{
+			return $(this).outerHeight();
+		}
     }).get());
 }
 
@@ -475,20 +485,17 @@ function imageFill(container)
 	bgData = $(container).data('img-fill').split(',');
 	
 	//Check vertical align
-	if(bgData[0] === undefined || bgData[0] === null || bgData[0] == '' || /^\s*$/.test(bgData[0]))
-	{
+	if(bgData[0] === undefined || bgData[0] === null || bgData[0] == ''){ //Empty value
 		bgData[0] = 'center';
 	}
 	
 	//Check horizontal align
-	if(bgData[1] === undefined || bgData[1] === null || bgData[1] == '' || /^\s*$/.test(bgData[1]))
-	{
+	if(bgData[1] === undefined || bgData[1] === null || bgData[1] == ''){ //Empty value
 		bgData[1] = 'center';
 	}
 	
 	//Check fill
-	if(bgData[2] === undefined || bgData[2] === null || bgData[2] == '' || /^\s*$/.test(bgData[2]))
-	{
+	if(bgData[2] === undefined || bgData[2] === null || bgData[2] == ''){ //Empty value
 		bgData[2] = 'true';
 	}
 	
@@ -573,8 +580,12 @@ function textSize(container, fontsize)
 }
 
 //Show alert modal box using BootBox plugin
-function showAlert(title, text, size = 'medium')
+function showAlert(title, text, size)
 {
+	if(size === undefined || size === null || size == ''){  //Empty value
+		size = 'medium';
+	}
+	
 	//Bootbox alert
 	bootbox.alert({
 		title: title,
@@ -588,8 +599,12 @@ function showAlert(title, text, size = 'medium')
 }
 
 //Show alert modal box using BootBox plugin (Content)
-function showContent(title, element, size = 'medium')
+function showContent(title, element, size)
 {
+	if(size === undefined || size === null || size == ''){  //Empty value
+		size = 'medium';
+	}
+	
 	//Bootbox alert
 	bootbox.alert({
 		title: title,
@@ -603,8 +618,20 @@ function showContent(title, element, size = 'medium')
 }
 
 //Show alert modal box using BootBox plugin (Ajax)
-function showAjax(title, fullurl, size = 'medium', loading = false, debug = false)
+function showAjax(title, fullurl, size, loading, debug)
 {
+	if(size === undefined || size === null || size == ''){  //Empty value
+		size = 'medium';
+	}
+	
+	if(loading === undefined || loading === null || loading == ''){  //Empty value
+		loading = false;
+	}
+	
+	if(debug === undefined || debug === null || debug == ''){  //Empty value
+		debug = false;
+	}
+	
 	$.ajax({
 		url: fullurl,
 		type: 'GET', 
@@ -636,7 +663,7 @@ function showAjax(title, fullurl, size = 'medium', loading = false, debug = fals
 			if(debug){
 				console.log("showAjax Error! ("+xhr.status+")");
 				
-				if(!(xhr.responseText === undefined || xhr.responseText === null || xhr.responseText == '' || /^\s*$/.test(xhr.responseText))){
+				if(!(xhr.responseText === undefined || xhr.responseText === null || xhr.responseText == '')){
 					console.log("---------------\n"+xhr.responseText);
 				}
 			}
@@ -676,8 +703,20 @@ function vimeoParser(url)
 }
 
 //Video launch modal box function
-function videoLaunch(url, share = false, title = null, autoplay = false)
+function videoLaunch(url, share, title, autoplay)
 {	
+	if(share === undefined || share === null || share == ''){  //Empty value
+		share = false;
+	}
+	
+	if(title === undefined || title === null || title == ''){  //Empty value
+		title = '';
+	}
+	
+	if(autoplay === undefined || autoplay === null || autoplay == ''){  //Empty value
+		autoplay = false;
+	}
+	
 	var ID;
 	var embedUrl;
 	var embedShare;
@@ -903,14 +942,23 @@ function checkDisabledLink(string)
 }
 
 //Window pop-up function
-function windowPopup(element)
+function windowPopup(element, errortitle, errormsg)
 {	
+	if(errortitle === undefined || errortitle === null || errortitle == ''){  //Empty value
+		errortitle = lang('@winpopup-title');
+	}
+	
+	if(errormsg === undefined || errormsg === null || errormsg == ''){  //Empty value
+		errormsg = lang('@winpopup-text');
+	}
+	
     var leftPosition;
 	var topPosition;
 	var getUrl = $(element).data('win-url');
 	var getSize = $(element).data('win-size').split('x');
 	var getAlign = $(element).data('win-align').split(',');
 	var getScroll = $(element).data('win-scroll');
+	var isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini|BB10|PlayBook|MeeGo/i.test(navigator.userAgent);
 	
 	//Horizontal Align
 	if(getAlign[0]==="right"){
@@ -935,7 +983,7 @@ function windowPopup(element)
 	}
 	
     //Open the window.
-    window.open(getUrl,"WindowPopupJS","status=no,"+
+	var newWin = window.open(getUrl,"WindowPopupJS","status=no,"+
 									"width="+getSize[0]+","+
 									"height="+getSize[1]+","+
 									"resizable=yes,"+
@@ -948,6 +996,10 @@ function windowPopup(element)
 									"scrollbars="+getScroll+","+
 									"location=no,"+
 									"directories=no");
+	if(!newWin || newWin.closed || typeof newWin.closed == 'undefined') 
+	{ 
+		showAlert(errortitle, errormsg, 'small');
+	}
 }
 
 //Map launch function
@@ -984,8 +1036,12 @@ function mapLaunch(element)
 }
 
 //Paginator group
-function paginatorGroup(limit,limitMobile,exceptions = '')
+function paginatorGroup(limit,limitMobile,exceptions)
 {
+	if(exceptions === undefined || exceptions === null || exceptions == ''){  //Empty value
+		exceptions = '';
+	}
+	
 	$(".JSpaginator .JSpageItems").each(function(){ 
 
 		var items = $(this).find("a").not(exceptions);
@@ -1002,7 +1058,6 @@ function paginatorGroup(limit,limitMobile,exceptions = '')
 
 		$(".JSpaginator .JSpageItems .JSpageGroup.JSpageActive").prev().addClass("JSpageGroupPrev");
 		$(".JSpaginator .JSpageItems .JSpageGroup.JSpageActive").next().addClass("JSpageGroupNext");
-
 	});
 }
 
