@@ -88,12 +88,12 @@ var language = {
 				},
 				//Window popup error
 				'@winpopup-title': {
-					en: 'Pop-up Blocker is enabled!',
+					en: 'Pop-up Blocked!',
 					es: 'Pop-up Bloqueado!',
 				},
 				'@winpopup-text': {
-					en: 'Please add this site to your exception list.',
-					es: 'Por favor agregega este sitio a la lista de excepciones.',
+					en: 'Please add this site to your exception list and try again.',
+					es: 'Por favor agregega este sitio a la lista de excepciones e inténtalo denuevo.',
 				},
 			};
 
