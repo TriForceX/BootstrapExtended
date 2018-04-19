@@ -1177,7 +1177,6 @@ $(document).ajaxComplete(function() {
 
 });
 
-
 $(document).on("responsiveCode", function(event, bodyWidth, bodyHeight, bodyOrientation, bodyScreen){
 	
 /* ================================================= RESPONSIVE CODE ================================================= */

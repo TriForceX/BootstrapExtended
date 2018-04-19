@@ -1,6 +1,6 @@
 <?php
 $jsFilesExtras = array(
-					//'../js/app-example.js',
+					'../js/app-example.js',
 				);
 
 $jsVariablesExtras = array(
