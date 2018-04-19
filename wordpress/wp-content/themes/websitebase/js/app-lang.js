@@ -93,7 +93,7 @@ var language = {
 				},
 				'@winpopup-text': {
 					en: 'Please add this site to your exception list and try again.',
-					es: 'Por favor agregega este sitio a la lista de excepciones e inténtalo denuevo.',
+					es: 'Por favor agrega este sitio a la lista de excepciones e inténtalo denuevo.',
 				},
 			};
 
