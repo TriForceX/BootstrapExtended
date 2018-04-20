@@ -215,7 +215,7 @@ class php extends utilities\php
  * Wordpress Main Stuff
  * 
  * You can enable/disable Wordpress stuff or add more functions
- * for more resources in https://codex.wordpress.org
+ * More resources in https://codex.wordpress.org
  * 
  */
 

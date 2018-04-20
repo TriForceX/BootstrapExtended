@@ -210,3 +210,12 @@ class php extends utilities\php
 		return;
 	}
 }
+
+/*
+ * Custom Stuff
+ * 
+ * You can set-up custom stuff or add more functions
+ * More resources in http://php.net/manual/
+ * 
+ */
+
