@@ -14,9 +14,9 @@ body{
   	overflow-x: hidden;
 }
 body.modal-open{
-	padding-right: 0px;
-	overflow: auto;
-	overflow-x: hidden;
+	padding-right: 0px !important;
+	overflow: auto !important;
+	overflow-x: hidden !important;
 }
 img{
 	border:0;
