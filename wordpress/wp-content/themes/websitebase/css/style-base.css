@@ -19,16 +19,13 @@ body.modal-open{
 	overflow-x: hidden !important;
 }
 img{
-	border:0;
 	outline: 0;
+	border: 0;
 }
 a, a:visited, a:hover, a:active, a:focus{
 	text-decoration: none;
-	outline: 0;
 	cursor: pointer;
-}
-a:hover{
-	text-decoration: none;
+	outline: 0;
 }
 ul{
 	padding-left: 13px;
