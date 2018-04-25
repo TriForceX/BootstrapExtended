@@ -1121,7 +1121,7 @@ function mainInit()
 $(document).ready(function(){
 
 /* ================================================= DOCUMENT READY ================================================= */
-
+	
 	//Check home
 	isHome = $('.JSisHome').length > 0 ? true : false;
 
@@ -1167,30 +1167,6 @@ $(document).ready(function(){
 
 });
 
-$(document).ajaxComplete(function() {
-	
-/* ================================================= AJAX COMPLETE ================================================= */
-	
-	mainInit();
-
-/* ================================================= AJAX COMPLETE ================================================= */
-
-});
-
-$(document).on("responsiveCode", function(event, bodyWidth, bodyHeight, bodyOrientation, bodyScreen){
-	
-/* ================================================= RESPONSIVE CODE ================================================= */
-	
-	//Apply Text Size
-	$(".JStextSize").each(function(){
-		$(this).removeAttr('style');
-		textSize($(this), $(this).css('font-size'));
-	});
-
-/* ================================================= RESPONSIVE CODE ================================================= */
-
-});
-
 $(window).bind("load", function() {
 
 /* ================================================= WINDOWS LOAD ================================================= */
@@ -1198,5 +1174,29 @@ $(window).bind("load", function() {
 	
 	
 /* ================================================= WINDOWS LOAD ================================================= */
+
+});
+
+$(document).on("responsiveCode", function(event, bodyWidth, bodyHeight, bodyOrientation, bodyScreen){
+
+/* ================================================= RESPONSIVE CODE ================================================= */
+	
+	//Apply Text Size
+	$(".JStextSize").each(function(){
+		$(this).removeAttr('style');
+		textSize($(this), $(this).css('font-size'));
+	});
+	
+/* ================================================= RESPONSIVE CODE ================================================= */
+
+});
+
+$(document).ajaxComplete(function() {
+
+/* ================================================= AJAX COMPLETE ================================================= */
+	
+	mainInit();
+	
+/* ================================================= AJAX COMPLETE ================================================= */
 
 });

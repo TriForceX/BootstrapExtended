@@ -56,8 +56,20 @@ $(document).ready(function(){
 
 });
 
-$(document).on("responsiveCode", function(event, bodyWidth, bodyHeight, bodyOrientation, bodyScreen){
+$(window).bind("load", function() {
+
+/* ================================================= WINDOWS LOAD ================================================= */
 	
+	//Example test progress bar on load
+	$(".JSloadProgressTest .progress-bar").css("width", "100%");
+	$(".JSloadProgressTest .progress-bar").attr("aria-valuenow","100");
+	
+/* ================================================= WINDOWS LOAD ================================================= */
+
+});
+
+$(document).on("responsiveCode", function(event, bodyWidth, bodyHeight, bodyOrientation, bodyScreen){
+
 /* ================================================= RESPONSIVE CODE ================================================= */
 	
 	//Example size detection
@@ -76,19 +88,17 @@ $(document).on("responsiveCode", function(event, bodyWidth, bodyHeight, bodyOrie
 	else{ 
 		$("body").attr("window-orientation","portrait");
 	}
-
+	
 /* ================================================= RESPONSIVE CODE ================================================= */
 
 });
 
-$(window).bind("load", function() {
+$(document).ajaxComplete(function() {
 
-/* ================================================= WINDOWS LOAD ================================================= */
-
-	//Example test progress bar on load
-	$(".JSloadProgressTest .progress-bar").css("width", "100%");
-	$(".JSloadProgressTest .progress-bar").attr("aria-valuenow","100");
-		
-/* ================================================= WINDOWS LOAD ================================================= */
+/* ================================================= AJAX COMPLETE ================================================= */
+	
+	console.log('Ajax Complete!');
+	
+/* ================================================= AJAX COMPLETE ================================================= */
 
 });
