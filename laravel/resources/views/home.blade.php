@@ -895,7 +895,7 @@
 					<label for="example-input-password">Password</label>
 					<input type="password" class="form-control" id="example-input-password" name="example-input-password" placeholder="Type your Password">
 				</div>
-				<div class="form-group form-group-icon">
+				<div class="form-group has-feedback">
 					<label for="example-select">Select Item</label>
 					<select class="form-control" id="example-select" name="example-select">
 						<option>Select an item</option>
@@ -905,7 +905,7 @@
 						<option value="4">Item 4</option>
 						<option value="5">Item 5</option>
 					</select>
-					<span class="glyphicon glyphicon-chevron-down" aria-hidden="true"></span>
+					<span class="glyphicon glyphicon-chevron-down form-control-feedback" aria-hidden="true"></span>
 				</div>
 				<div class="form-group">
 					<label for="example-textarea">Message</label>

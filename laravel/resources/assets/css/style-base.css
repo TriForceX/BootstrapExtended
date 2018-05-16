@@ -233,13 +233,6 @@ td[align='left']{
 	margin-left: auto !important;
 	margin-right: auto !important;
 }
-.JSlightGallery .lg-thumb-prev,
-.JSlightGallery .lg-thumb-next{
-	display: none;
-}
-.JSlightGalleryNoBorder{
-	border-color: transparent !important;
-}
 /*LightGallery*/
 
 /*Tooltip Custom Color*/
@@ -594,32 +587,21 @@ td[align='left']{
 /*Form group radio & checkbox*/
 
 /*Form group select*/
-.form-group-icon input,
-.form-group-icon select{
-	padding-right: 42.5px;
+.form-group.has-feedback select{
 	-webkit-appearance: none; 
 	-moz-appearance: none; 
 	-o-appearance: none; 
 	appearance: none;
 }
-.form-group-icon .glyphicon:nth-last-of-type(1){
-	position: relative;
-	margin-top: -34px;
-	float: right;
-	z-index: 2;
-	display: block;
-	width: 34px;
-	height: 34px;
-	line-height: 34px;
-	text-align: center;
-	pointer-events: none;
-}
+/*Form group select*/
+
+/*Form group textarea resize*/
 .form-group textarea.textarea-no-resize{
 	resize: none;
 	-webkit-appearance:none;
     -moz-appearance: none;
 }
-/*Form group select*/
+/*Form group textarea resize*/
 
 /*Aditional hover effects*/
 .hvr-opacity{
@@ -640,6 +622,16 @@ td[align='left']{
 /* ================================================= RESOURCES ================================================= */
 
 /* ================================================= JAVASCRIPT ================================================= */
+
+/*JS LightGallery*/
+.JSlightGallery .lg-thumb-prev,
+.JSlightGallery .lg-thumb-next{
+	display: none;
+}
+.JSlightGalleryNoBorder{
+	border-color: transparent !important;
+}
+/*JS LightGallery*/
 
 /*JS Vertical Align*/
 .JSverticalAlign{
@@ -732,11 +724,11 @@ td[align='left']{
 	overflow: hidden;
 	text-overflow: ellipsis;
 	-webkit-touch-callout: none; /* iOS Safari */
-    -webkit-user-select: none; /* Safari */
-     -khtml-user-select: none; /* Konqueror HTML */
-       -moz-user-select: none; /* Firefox */
-        -ms-user-select: none; /* Internet Explorer/Edge */
-            user-select: none;
+	-webkit-user-select: none; /* Safari */
+	-khtml-user-select: none; /* Konqueror HTML */
+	-moz-user-select: none; /* Firefox */
+	-ms-user-select: none; /* Internet Explorer/Edge */
+	user-select: none;
 }
 .JSvideoLaunchCopy{
 	position: absolute;
