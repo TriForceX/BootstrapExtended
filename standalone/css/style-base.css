@@ -850,10 +850,10 @@ input.JSvalidateErrorCheck + label::before {
 	margin-top:15px;
 }
 .JSmapLaunchInfo > .JSmapLaunchIcons img{
-	width:100%;
-	max-width:90px;
-	vertical-align:middle;
-	margin:0px 5px;
+	width: 90px;
+	height: auto;
+	vertical-align: middle;
+	margin: 0px 5px;
 }
 /*JS Map Launch*/
 

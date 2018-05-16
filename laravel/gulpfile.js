@@ -98,6 +98,7 @@ elixir(function(mix){
 /*
  * Custom Watch Method for Frontend
  *
+ * Install using: npm install --no-optional gulp
  * Install using: npm install --no-optional --save-dev gulp-batch-replace
  * Install using: npm install --no-optional --save-dev gulp-concat
  *
