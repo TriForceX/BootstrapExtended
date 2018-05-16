@@ -15,6 +15,9 @@ var isNavOpera;
 var isNavEdge;
 var checkDisabledExceptions = ['#carousel'];
 
+//IE8 Undefined console fix
+if (!window.console) console = {log: function() {}};
+
 //IE10 viewport hack for Surface/desktop Windows 8 bug
 (function () {
   'use strict';
