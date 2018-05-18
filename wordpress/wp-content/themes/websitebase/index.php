@@ -1098,13 +1098,23 @@
 		<div class="page-header">
 			<h1>Form Validation <span class="label label-danger">Custom</span></h1>
 		</div>
-		<p>Basic validation for <code>input</code>, <code>select</code>, <code>checkbox</code> and <code>textarea</code> elements. The main function is <code>$()validateForm(options);</code></p></p>
+		<p>Basic validation for <code>input</code>, <code>select</code>, <code>checkbox</code> and <code>textarea</code> elements. The main function is <code>$().validateForm(options);</code></p></p>
 		
 		<div class="bs-example">
 			<form class="JSformExample" method="post" action="javascript:showAlert('Form Success!','The form passed sucessfully! Thanks!');">
 				<div class="form-group">
 					<label for="example-input-username">User Name</label>
-					<input type="text" class="form-control" id="example-input-username" name="example-input-username" placeholder="Type your User Name">
+					<div class="input-group">
+						<span class="input-group-addon"><span class="glyphicon glyphicon-user" aria-hidden="true"></span></span>
+						<input type="text" class="form-control" id="example-input-username" name="example-input-username" placeholder="Type your User Name">
+					</div>
+				</div>
+				<div class="form-group">
+					<label for="example-input-password">Password</label>
+					<div class="input-group">
+						<span class="input-group-addon"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></span>
+						<input type="password" class="form-control" id="example-input-password" name="example-input-password" placeholder="Type your Password">
+					</div>
 				</div>
 				<div class="form-group">
 					<label for="example-input-firstname">First Name</label>
@@ -1130,10 +1140,6 @@
 					<label for="example-input-tel">Phone Number</label>
 					<input type="tel" class="form-control" id="example-input-tel" name="example-input-tel" placeholder="Type your Phone Number">
 				</div>
-				<div class="form-group">
-					<label for="example-input-password">Password</label>
-					<input type="password" class="form-control" id="example-input-password" name="example-input-password" placeholder="Type your Password">
-				</div>
 				<div class="form-group has-feedback">
 					<label for="example-select">Select Item</label>
 					<select class="form-control" id="example-select" name="example-select">
@@ -1155,20 +1161,24 @@
 						<label>Check items</label>
 					</p>
 					<div class="checkbox">
-						<input type="checkbox" autocomplete="off" name="example-checkbox-1" id="example-checkbox-1" value="Selected 1"> 
-						<label for="example-checkbox-1">Checkbox Item 1</label>
+						<label for="example-checkbox-1">
+							<input type="checkbox" autocomplete="off" name="example-checkbox-1" id="example-checkbox-1" value="Selected 1"> Checkbox Item 1
+						</label>
 					</div>
-					<div class="checkbox checkbox-primary">
-						<input type="checkbox" autocomplete="off" name="example-checkbox-2" id="example-checkbox-2" value="Selected 2"> 
-						<label for="example-checkbox-2">Checkbox Item 2</label>
+					<div class="checkbox">
+						<label for="example-checkbox-2">
+							<input type="checkbox" autocomplete="off" name="example-checkbox-2" id="example-checkbox-2" value="Selected 2"> Checkbox Item 2
+						</label>
 					</div>
-					<div class="checkbox checkbox-success">
-						<input type="checkbox" autocomplete="off" name="example-checkbox-3" id="example-checkbox-3" value="Selected 3"> 
-						<label for="example-checkbox-3">Checkbox Item 3</label>
+					<div class="checkbox">
+						<label for="example-checkbox-3">
+							<input type="checkbox" autocomplete="off" name="example-checkbox-3" id="example-checkbox-3" value="Selected 3"> Checkbox Item 3
+						</label>
 					</div>
-					<div class="checkbox checkbox-danger">
-						<input type="checkbox" autocomplete="off" name="example-checkbox-4" id="example-checkbox-4" value="Selected 3"> 
-						<label for="example-checkbox-4">Checkbox Item 4</label>
+					<div class="checkbox">
+						<label for="example-checkbox-4">
+							<input type="checkbox" autocomplete="off" name="example-checkbox-4" id="example-checkbox-4" value="Selected 4"> Checkbox Item 4
+						</label>
 					</div>
 				</div>
 				<div class="form-group" data-group="radio">
@@ -1176,20 +1186,24 @@
 						<label>Radio items</label>
 					</p>
 					<div class="radio">
-						<input type="radio" name="example-radio" id="example-radio-1" autocomplete="off" value="Choosen 1"> 
-						<label for="example-radio-1">Radio Item 1</label>
+						<label for="example-radio-1">
+							<input type="radio" name="example-radio" id="example-radio-1" autocomplete="off" value="Choosen 1"> Radio Item 1
+						</label>
 					</div>
-					<div class="radio radio-primary">
-						<input type="radio" name="example-radio" id="example-radio-2" autocomplete="off" value="Choosen 2"> 
-						<label for="example-radio-2">Radio Item 2</label>
+					<div class="radio">
+						<label for="example-radio-2">
+							<input type="radio" name="example-radio" id="example-radio-2" autocomplete="off" value="Choosen 2"> Radio Item 2
+						</label>
 					</div>
-					<div class="radio radio-success">
-						<input type="radio" name="example-radio" id="example-radio-3" autocomplete="off" value="Choosen 3"> 
-						<label for="example-radio-3">Radio Item 3</label>
+					<div class="radio">
+						<label for="example-radio-3">
+							<input type="radio" name="example-radio" id="example-radio-3" autocomplete="off" value="Choosen 3"> Radio Item 3
+						</label>
 					</div>
-					<div class="radio radio-danger">
-						<input type="radio" name="example-radio" id="example-radio-4" autocomplete="off" value="Choosen 3"> 
-						<label for="example-radio-4">Radio Item 4</label>
+					<div class="radio">
+						<label for="example-radio-4">
+							<input type="radio" name="example-radio" id="example-radio-4" autocomplete="off" value="Choosen 3"> Radio Item 4
+						</label>
 					</div>
 				</div>
 				<div class="form-group" data-toggle="buttons" data-group="checkbox">

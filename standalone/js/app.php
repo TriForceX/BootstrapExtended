@@ -19,7 +19,7 @@ class php extends utilities\php { }
 
 function jsGenerate()
 {
-	$jsMinify = true;
+	$jsMinify = isset($_GET['unminify']) ? false : true;
 	$jsBuffer = '';
 	$jsUrl = php::get_main_url('/js');
 

@@ -44,6 +44,7 @@ var gulpBackJSFiles = [];*/
 //Replace front-end files
 var gulpFrontCSSFiles = [
 						'resources/assets/css/style-base.css',
+						'resources/assets/css/style-bootstrap.css',
 						'resources/assets/css/style-fonts.css',
 						'resources/assets/css/style-theme.css',
 						'resources/assets/css/style-example.css', //Example file

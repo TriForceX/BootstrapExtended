@@ -2,17 +2,10 @@
 
 //Global variables
 var mainUrl = '@global-url';
+var isLang = mainLang;
 var isHome;
 var isMobile;
-var isNavChrome;
-var isNavIE;
-var isNavIE6;
-var isNavIE7;
-var isNavIE8;
-var isMozilla;
-var isNavSafari;
-var isNavOpera;
-var isNavEdge;
+var isNav;
 var checkDisabledExceptions = ['#carousel'];
 
 //IE8 Undefined console fix
@@ -95,37 +88,37 @@ $.fn.validateForm = function(options)
 		var formConfirmText = lang('@validate-confirm-text');
 		var formErrorTitle = lang('@validate-title');
 		var formErrorText = {
-							 'text': 		lang('@validate-normal'), 
-							 'number': 		lang('@validate-number'), 
-							 'tel': 		lang('@validate-tel'), 
-							 'pass': 		lang('@validate-pass'), 
-							 'email': 		lang('@validate-email'),
-							 'search': 		lang('@validate-search'),
-							 'checkbox':	lang('@validate-checkbox'),
-							 'radio':		lang('@validate-radio'),
-							 'textarea':	lang('@validate-textarea'),
-							 'select':		lang('@validate-select'),
+							 'text'		: lang('@validate-normal'), 
+							 'number'	: lang('@validate-number'), 
+							 'tel'		: lang('@validate-tel'), 
+							 'pass'		: lang('@validate-pass'), 
+							 'email'	: lang('@validate-email'),
+							 'search'	: lang('@validate-search'),
+							 'checkbox'	: lang('@validate-checkbox'),
+							 'radio'	: lang('@validate-radio'),
+							 'textarea'	: lang('@validate-textarea'),
+							 'select'	: lang('@validate-select'),
 							};
 
 		//Select inputs
 		$(this).find('select').not(settings.noValidate).each(function(){
 			if (!validateEmpty($(this).find("option:selected").attr("value"))) { 
-				$(this).addClass("JSvalidateError");
+				$(this).parents('.form-group').addClass('has-error').removeClass('has-success');
 				formError = formErrorText.select;
 			}
 			else{
-				$(this).removeClass("JSvalidateError");
+				$(this).parents('.form-group').removeClass('has-error').addClass('has-success');
 			}
 		});
 		
 		//Textarea inputs
 		$(this).find('textarea').not(settings.noValidate).each(function(){
 			if (!validateEmpty($.trim($(this).val()))) { 
-				$(this).addClass("JSvalidateError");
+				$(this).parents('.form-group').addClass('has-error').removeClass('has-success');
 				formError = formErrorText.textarea;
 			}
 			else{
-				$(this).removeClass("JSvalidateError");
+				$(this).parents('.form-group').removeClass('has-error').addClass('has-success');
 			}
 		});
 		
@@ -142,13 +135,11 @@ $.fn.validateForm = function(options)
 			}
 			
 			if(!check){
-				item.addClass("JSvalidateErrorCheck");
-				item.parent('label').addClass("JSvalidateError");
+				item.parents('.form-group').addClass('has-error').removeClass('has-success');
 				formError = formErrorText[type];
 			}
 			else{
-				item.removeClass("JSvalidateErrorCheck");
-				item.parent('label').removeClass("JSvalidateError");
+				item.parents('.form-group').removeClass('has-error').addClass('has-success');
 			}
 		});
 		
@@ -157,60 +148,59 @@ $.fn.validateForm = function(options)
 			switch($(this).attr("type")){
 				case 'text':
 					if (!validateEmpty($(this).val())) { 
-						$(this).addClass("JSvalidateError");
+						$(this).parents('.form-group').addClass('has-error').removeClass('has-success');
 						formError = formErrorText.text;
 					}
 					else{
-						$(this).removeClass("JSvalidateError");
+						$(this).parents('.form-group').removeClass('has-error').addClass('has-success');
 					}
 					break;
 				case 'number':
 					if (!validateEmpty($(this).val()) || !validateNumber($(this).val())) { 
-						$(this).addClass("JSvalidateError");
+						$(this).parents('.form-group').addClass('has-error').removeClass('has-success');
 						formError = formErrorText.number;
 					}
 					else{
-						$(this).removeClass("JSvalidateError");
+						$(this).parents('.form-group').removeClass('has-error').addClass('has-success');
 					}
 					break;
 				case 'tel':
 					if (!validateEmpty($(this).val())) { 
-						$(this).addClass("JSvalidateError");
+						$(this).parents('.form-group').addClass('has-error').removeClass('has-success');
 						formError = formErrorText.tel;
 					}
 					else{
-						$(this).removeClass("JSvalidateError");
+						$(this).parents('.form-group').removeClass('has-error').addClass('has-success');
 					}
 					break;
 				case 'email':
 					if (!validateEmpty($(this).val()) || !validateEmail($(this).val())) { 
-						$(this).addClass("JSvalidateError");
+						$(this).parents('.form-group').addClass('has-error').removeClass('has-success');
 						formError = formErrorText.email;
 					}
 					else{
-						$(this).removeClass("JSvalidateError");
+						$(this).parents('.form-group').removeClass('has-error').addClass('has-success');
 					}
 					break;
 				case 'password':
 					if (!validateEmpty($(this).val())) { 
-						$(this).addClass("JSvalidateError");
+						$(this).parents('.form-group').addClass('has-error').removeClass('has-success');
 						formError = formErrorText.pass;
 					}
 					else{
-						$(this).removeClass("JSvalidateError");
+						$(this).parents('.form-group').removeClass('has-error').addClass('has-success');
 					}
 					break;
 				case 'search':
 					if (!validateEmpty($(this).val())) { 
-						$(this).addClass("JSvalidateError");
+						$(this).parents('.form-group').addClass('has-error').removeClass('has-success');
 						formError = formErrorText.search;
 					}
 					else{
-						$(this).removeClass("JSvalidateError");
+						$(this).parents('.form-group').removeClass('has-error').addClass('has-success');
 					}
 					break;
-				default:
-					$(this).removeClass("JSvalidateError");
+				default: break;
 			}
 		});
 		
@@ -222,11 +212,11 @@ $.fn.validateForm = function(options)
 			
 			$(CVInput).each(function(){
 				if (!window[CVFunction]($(this).val())) { 
-					$(this).addClass("JSvalidateError");
+					$(this).parents('.form-group').addClass('has-error').removeClass('has-success');
 					formError = CVMessage;
 				}
 				else{
-					$(this).removeClass("JSvalidateError");
+					$(this).parents('.form-group').removeClass('has-error').addClass('has-success');
 				}
 			});
 		}
@@ -253,6 +243,8 @@ $.fn.validateForm = function(options)
 						formElement.unbind("submit").submit();
 						if(settings.resetSubmit){
 							formElement.trigger('reset');
+							formElement.find('.form-group').removeClass('has-error');
+							formElement.find('.form-group').removeClass('has-success');
 							formElement.find("input[type='checkbox']").prop('checked', false).parent().removeClass('active');
 							formElement.find("input[type='radio']").prop('checked', false).parent().removeClass('active');
 						}
@@ -349,26 +341,6 @@ function responsiveCode()
 	{
 		//*** Responsive Changes ***//
 
-		//Vertical Align Container
-		$("body").each(function(){
-
-			var valignBody = bodyHeight;
-			var valignContainer = $(".JSverticalAlign").outerHeight(); 
-
-			if(valignBody > valignContainer)
-			{
-				$(".JSverticalAlign").css({"margin-top": -Math.abs(valignContainer / 2),
-										 "position":"absolute",
-										 "top":"50%",
-										 "width":$(".JSverticalAlign").parent().width(),
-										 "visibility":"visible"});
-			}
-			else
-			{
-				$(".JSverticalAlign").removeAttr("style");
-			}
-		});
-		
 		//Send data to event
 		$(document).trigger("responsiveCode", [bodyWidth, bodyHeight, bodyOrientation, bodyScreen]);
 		
@@ -1091,14 +1063,13 @@ function mainInit()
 	
 	//Applu Data Tables
 	$('.JSdataTables').each(function(){
-		
 		$(this).dataTable().fnDestroy();
 		$(this).DataTable({
-			paging: toBoolean($(this).data('table-pages')),
-			searching: toBoolean($(this).data('table-search')),
-			info: toBoolean($(this).data('table-info')),
-			ordering: toBoolean($(this).data('table-sort')),
-        });
+				initComplete: function(settings,json){
+					$(".dataTables_wrapper").removeClass("container-fluid");
+				},
+			}
+		);
 	});
 	
 	//Apply Image Fill
@@ -1132,15 +1103,24 @@ $(document).ready(function(){
 	isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini|BB10|PlayBook|MeeGo/i.test(navigator.userAgent);
 	
 	//Check navigators
-	isNavChrome = $.browser.name === 'Chrome' && $.browser.webkit === true ? true : false;
-	isNavIE = $.browser.name === 'Microsoft Internet Explorer' && $.browser.msie === true ? true : false;
-	isNavIE6 = $.browser.name === 'Microsoft Internet Explorer' && $.browser.msie === true && $.browser.version === 6 ? true : false;
-	isNavIE7 = $.browser.name === 'Microsoft Internet Explorer' && $.browser.msie === true && $.browser.version === 7 ? true : false;
-	isNavIE8 =$.browser.name === 'Microsoft Internet Explorer' && $.browser.msie === true && $.browser.version === 8 ? true : false;
-	isNavMozilla = $.browser.name === 'Firefox' && $.browser.mozilla === true ? true : false;
-	isNavSafari = $.browser.name === 'Safari' && $.browser.webkit === true ? true : false;
-	isNavOpera = $.browser.name === 'Opera' && $.browser.opera === true ? true : false;
-	isNavEdge = $.browser.name === 'Microsoft Edge' ? true : false;
+	isNav = function(navigator,version)
+			{
+				var checkData = {
+								 'ie' 			: { 'name' : 'Microsoft Internet Explorer', 'internal' : $.browser.msie },
+								 'edge' 		: { 'name' : 'Microsoft Edge', 'internal' : '' },
+								 'chrome' 		: { 'name' : 'Chrome', 'internal' : $.browser.webkit },
+								 'firefox' 		: { 'name' : 'Firefox', 'internal' : $.browser.mozilla },
+								 'safari' 		: { 'name' : 'Safari', 'internal' : $.browser.webkit },
+								 'opera' 		: { 'name' : 'Opera', 'internal' : $.browser.opera },
+								};
+		
+				var checkBrowser = $.browser.name === checkData[navigator].name;
+				var checkVersion = version === undefined ? true : ($.browser.version === version);
+				var checkInternal = checkData[navigator].internal === undefined ? true : (checkData[navigator].internal === true);
+				var checkFinal = checkBrowser && checkVersion && checkInternal ? true : false;
+				
+				return checkFinal;
+			};
 	
 	//Map Launch on click
 	$(document).on("click", ".JSwindowPopup", function(){
@@ -1165,6 +1145,10 @@ $(document).ready(function(){
 	
 	//Launch main functions
 	mainInit();
+	
+	if(isLang == 'es'){
+		$('body').css("background","red");
+	}
 	
 /* ================================================= DOCUMENT READY ================================================= */
 

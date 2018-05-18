@@ -19,12 +19,13 @@ class php extends utilities\php { }
 
 function cssGenerate()
 {
-	$cssMinify = true;
+	$cssMinify = isset($_GET['unminify']) ? false : true;
 	$cssBuffer = '';
 	$cssUrl = php::get_main_url('/css');
 	
 	$cssFiles = array(
 				  '../css/style-base.css',
+				  '../css/style-bootstrap.css',
 				  '../css/style-fonts.css',
 				  '../css/style-theme.css',
 				);
