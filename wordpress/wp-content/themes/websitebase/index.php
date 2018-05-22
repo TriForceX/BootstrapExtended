@@ -242,20 +242,19 @@
 		<figure class="highlight">
 			<pre><code class="language-html" data-lang="html">$cssMinify = true;<br>$cssFiles = array(
 		  $cssUrl.'/css/style-base.css',
+		  $cssUrl.'/css/style-bootstrap.css',
 		  $cssUrl.'/css/style-fonts.css',
 		  $cssUrl.'/css/style-theme.css',
 		  ...
 		);<br>...<br>$cssVariables = array(
 			//Global
-			'@global-url' => $cssUrl,
+			'@global-url'	=> $cssUrl,
 			//Screen
-			'@screen-small-phone' 	=> '320px', 
-			'@screen-medium-phone' 	=> '360px',
-			'@screen-phone'		=> '480px',
-			'@screen-tablet' 	=> '768px',
-			'@screen-desktop' 	=> '992px',  
-			'@screen-widescreen' 	=> '1200px', 
-			'@screen-full-hd' 	=> '1920px', 
+			'@screen-xs'	=> '480px',
+			'@screen-sm'	=> '768px',
+			'@screen-md'	=> '992px',
+			'@screen-lg'	=> '1200px', 
+			'@screen-xl' 	=> '1920px', 
 			...
 		);</code></pre>
 		</figure>
@@ -314,15 +313,13 @@
 		  ...
 		);<br>...<br>$jsVariables = array(
 			//Global
-			'@global-url' => $jsUrl,
+			'@global-url'	=> $jsUrl,
 			//Screen
-			'@screen-small-phone' 	=> '320', 
-			'@screen-medium-phone' 	=> '360',
-			'@screen-phone'		=> '480',
-			'@screen-tablet' 	=> '768',
-			'@screen-desktop' 	=> '992',  
-			'@screen-widescreen' 	=> '1200', 
-			'@screen-full-hd' 	=> '1920', 
+			'@screen-xs'	=> '480',
+			'@screen-sm'	=> '768',
+			'@screen-md'	=> '992',
+			'@screen-lg'	=> '1200', 
+			'@screen-xl' 	=> '1920', 
 			...
 		);</code></pre>
 		</figure>
@@ -510,26 +507,26 @@
 			</thead>
 			<tbody>
 				<tr>
-					<td>data-table-paginator</td>
-					<td>Enable a custom paginator with show amount option</td>
+					<td>data-paging</td>
+					<td>Enables a paginator with show amount option</td>
 				</tr>
 				<tr>
-					<td>data-table-search</td>
+					<td> data-searching</td>
 					<td>Enables a search box to filter results</td>
 				</tr>
 				<tr>
-					<td>data-table-info</td>
+					<td>data-info</td>
 					<td>Show info at the table footer</td>
 				</tr>
 				<tr>
-					<td>data-table-sorting</td>
+					<td>data-ordering</td>
 					<td>Enables ordering by column</td>
 				</tr>
 			</tbody>
 		</table>
 
 		<div class="bs-example table-responsive">
-			<table class="table-striped cell-border JSdataTables" data-table-pages="true" data-table-search="false" data-table-info="false" data-table-sort="true" cellspacing="0" cellpadding="0" border="0">
+			<table class="table-striped cell-border JSdataTables" data-paging="true" data-searching="true" data-info="true" data-ordering="true" cellspacing="0" cellpadding="0" border="0">
 				<thead>
 					<tr>
 						<th>Name</th>
@@ -1001,7 +998,7 @@
 			</table>
 		</div>
 		<figure class="highlight">
-			<pre><code class="language-html" data-lang="html">&lt;table class="JSdataTables" data-table-pages="true" data-table-search="false" data-table-info="false" data-table-sort="true"&gt;<br>...<br>&lt;/table&gt;</code></pre>
+			<pre><code class="language-html" data-lang="html">&lt;table class="JSdataTables" data-paging="true" data-searching="true" data-info="true" data-ordering="true"&gt;<br>...<br>&lt;/table&gt;</code></pre>
 		</figure>
 
 		<!-- Show alert example -->
@@ -1306,121 +1303,231 @@
 			<p>Some custom classes to use in addition to <code>CSS</code> included in this repository.</p>
 		</div>
 
-		<!-- Margin & Padding example -->
+		<!-- Spacing BS4 example -->
 		<div class="page-header">
-			<h1>Margin & Padding <span class="label label-danger">Custom</span></h1>
+			<h1>Spacing <span class="label label-danger">BS4</span></h1>
 		</div>
-		<p>New classes to the current <b>Bootstrap</b> carousel. Remember to manage the transition time interval you can use the attribute <code>data-interval</code> to modify <i>(time in milliseconds)</i></p>
+		<p>Imported <i>Margin & Padding</i> classes from <b>Bootstrap 4</b>. The classes are named using the format <code>{property}{sides}-{size}</code> for xs and <code>{property}{sides}-{breakpoint}-{size}</code> for <b>sm, md, lg,</b> and <b>xl</b>.</p>
 
-		<table class="table table-bordered table-striped js-options-table">
-			<thead>
-				<tr>
-					<th>Name</th>
-					<th>Description</th>
-				</tr>
-			</thead>
-			<tbody>
-				<tr>
-					<td>margin-a-b</td>
-					<td>Add this class to set margin. <b>A</b> will be the side and <b>B</b> the amount in pixels. <b>A</b> can be <code>t, b, l, r</code> <i>(Top, Bottom, Left, Right)</i> and <b>B</b> can be from <code>5</code> to <code>100</code> <i>(in multiples of 5)</i>
-					</td>
-				</tr>
-				<tr>
-					<td>padding-a-b</td>
-					<td>Add this class to set padding. <b>A</b> will be the side and <b>B</b> the amount in pixels. <b>A</b> can be <code>t, b, l, r</code> <i>(Top, Bottom, Left, Right)</i> and <b>B</b> can be from <code>5</code> to <code>100</code> <i>(in multiples of 5)</i>
-					</td>
-				</tr>
-				<tr>
-					<td>no-margin-x</td>
-					<td>Add this class to disable margin. <b>X</b> will be the side and it can be <code>t, b, l, r</code> <i>(Top, Bottom, Left, Right)</i>. To disable all sides just use <code>no-margin</code>
-					</td>
-				</tr>
-				<tr>
-					<td>no-padding-x</td>
-					<td>Add this class to disable padding. <b>X</b> will be the side and it can be <code>t, b, l, r</code> <i>(Top, Bottom, Left, Right)</i>. To disable all sides just use <code>no-padding</code>
-					</td>
-				</tr>
-			</tbody>
-		</table>
+		<p>Where <em>property</em> is one of:</p>
+
+		<ul>
+		  <li><code class="highlighter-rouge">m</code> - for classes that set <code class="highlighter-rouge">margin</code></li>
+		  <li><code class="highlighter-rouge">p</code> - for classes that set <code class="highlighter-rouge">padding</code></li>
+		</ul>
+
+		<p>Where <em>sides</em> is one of:</p>
+
+		<ul>
+		  <li><code class="highlighter-rouge">t</code> - for classes that set <code class="highlighter-rouge">margin-top</code> or <code class="highlighter-rouge">padding-top</code></li>
+		  <li><code class="highlighter-rouge">b</code> - for classes that set <code class="highlighter-rouge">margin-bottom</code> or <code class="highlighter-rouge">padding-bottom</code></li>
+		  <li><code class="highlighter-rouge">l</code> - for classes that set <code class="highlighter-rouge">margin-left</code> or <code class="highlighter-rouge">padding-left</code></li>
+		  <li><code class="highlighter-rouge">r</code> - for classes that set <code class="highlighter-rouge">margin-right</code> or <code class="highlighter-rouge">padding-right</code></li>
+		  <li><code class="highlighter-rouge">x</code> - for classes that set both <code class="highlighter-rouge">*-left</code> and <code class="highlighter-rouge">*-right</code></li>
+		  <li><code class="highlighter-rouge">y</code> - for classes that set both <code class="highlighter-rouge">*-top</code> and <code class="highlighter-rouge">*-bottom</code></li>
+		  <li>blank - for classes that set a <code class="highlighter-rouge">margin</code> or <code class="highlighter-rouge">padding</code> on all 4 sides of the element</li>
+		</ul>
+
+		<p>Where <em>size</em> is one of:</p>
+
+		<ul>
+		  <li><code class="highlighter-rouge">0</code> - for classes that eliminate the <code class="highlighter-rouge">margin</code> or <code class="highlighter-rouge">padding</code> by setting it to <code class="highlighter-rouge">0</code></li>
+		  <li><code class="highlighter-rouge">1</code> - (by default) for classes that set the <code class="highlighter-rouge">margin</code> or <code class="highlighter-rouge">padding</code> to <code class="highlighter-rouge">$spacer * .25</code></li>
+		  <li><code class="highlighter-rouge">2</code> - (by default) for classes that set the <code class="highlighter-rouge">margin</code> or <code class="highlighter-rouge">padding</code> to <code class="highlighter-rouge">$spacer * .5</code></li>
+		  <li><code class="highlighter-rouge">3</code> - (by default) for classes that set the <code class="highlighter-rouge">margin</code> or <code class="highlighter-rouge">padding</code> to <code class="highlighter-rouge">$spacer</code></li>
+		  <li><code class="highlighter-rouge">4</code> - (by default) for classes that set the <code class="highlighter-rouge">margin</code> or <code class="highlighter-rouge">padding</code> to <code class="highlighter-rouge">$spacer * 1.5</code></li>
+		  <li><code class="highlighter-rouge">5</code> - (by default) for classes that set the <code class="highlighter-rouge">margin</code> or <code class="highlighter-rouge">padding</code> to <code class="highlighter-rouge">$spacer * 3</code></li>
+		  <li><code class="highlighter-rouge">auto</code> - for classes that set the <code class="highlighter-rouge">margin</code> to auto</li>
+		</ul>
 
 		<div class="bs-example">
-			<div class="margin-10 padding-10" style="display:inline-block; vertical-align:top; background:yellow">
+			<div class="m-5 p-5" style="display:inline-block; vertical-align:top; background:yellow">
 				Full margin & padding
-			</div><div class="margin-10 padding-0" style="display:inline-block; vertical-align:top; background:lime">
+			</div><div class="m-5 p-0" style="display:inline-block; vertical-align:top; background:lime">
 				Full margin & no padding
-			</div><div class="margin-l-10 margin-r-10 padding-t-10" style="display:inline-block; vertical-align:top; background:blue; color:white">
+			</div><div class="ml-5 mr-5 pt-5" style="display:inline-block; vertical-align:top; background:blue; color:white">
 				Margin left + right & padding top
-			</div><div class="margin-l-10 margin-t-10 padding-t-10 padding-b-10" style="display:inline-block; vertical-align:top; background:red; color:white">
+			</div><div class="ml-5 mt-5 pt-5 pb-5" style="display:inline-block; vertical-align:top; background:red; color:white">
 				Margin left + top & padding top + bottom
 			</div>
 		</div>
 		<figure class="highlight">
-			<pre><code class="language-html" data-lang="html">&lt;div class="margin-10 padding-10"&gt;Full margin & padding&lt;/div&gt;
-&lt;div class="margin-10 padding-0"&gt;Full margin & no padding&lt;/div&gt;
-&lt;div class="margin-l-10 margin-r-10 padding-t-10"&gt;Margin left + right & padding top&lt;/div&gt;
-&lt;div class="margin-l-10 margin-t-10 padding-t-10 padding-b-10"&gt;Margin left + top & padding top + bottom&lt;/div&gt;</code></pre>
+			<pre><code class="language-html" data-lang="html">&lt;div class="m-5 p-5"&gt;Full margin & padding&lt;/div&gt;
+&lt;div class="m-5 p-0"&gt;Full margin & no padding&lt;/div&gt;
+&lt;div class="ml-5 mr-5 pt-5"&gt;Margin left + right & padding top&lt;/div&gt;
+&lt;div class="ml-5 mt-5 pt-5 pb-5"&gt;Margin left + top & padding top + bottom&lt;/div&gt;</code></pre>
 		</figure>
 
-		<!-- Margin & Padding example -->
-		<div class="page-header">
-			<h1>Vertical Align Content <span class="label label-danger">Custom</span></h1>
-		</div>
-		<p>Two classes to make a content vertical aligned. You need <b>2</b> containers to do this.</p>
+		<!-- Spacing BS4 example -->
 
-		<table class="table table-bordered table-striped js-options-table">
-			<thead>
-				<tr>
-					<th>Name</th>
-					<th>Description</th>
-				</tr>
-			</thead>
-			<tbody>
-				<tr>
-					<td>v-align</td>
-					<td>Add this class to the main container. This need to have set <code>width</code> and <code>height</code> to get working <i>(Also you can use <b>col-</b> classes to use as width)</i>
-					</td>
-				</tr>
-				<tr>
-					<td>v-align-x</td>
-					<td>Add this class to the child container. <b>X</b> will be the vertical alignment and it can be <code>top, middle, bottom</code>. This doesn't need <code>width</code> and <code>height</code>, it will take the parent's one
-					</td>
-				</tr>
-			</tbody>
-		</table>
+		<!-- Display BS4 example -->
+
+		<div class="page-header">
+			<h1>Display property <span class="label label-danger">BS4</span></h1>
+		</div>
+		<p>Imported <i>Display property</i> classes from <b>Bootstrap 4</b>. Change the value of the display property with our responsive display utility classes.</p>
+
+		<p>As such, the classes are named using the format:</p>
+
+		<ul>
+		  <li><code class="highlighter-rouge">d-{value}</code> for <code class="highlighter-rouge">xs</code></li>
+		  <li><code class="highlighter-rouge">d-{breakpoint}-{value}</code> for <code class="highlighter-rouge">sm</code>, <code class="highlighter-rouge">md</code>, <code class="highlighter-rouge">lg</code>, and <code class="highlighter-rouge">xl</code>.</li>
+		</ul>
+
+		<p>Where <em>value</em> is one of:</p>
+
+		<ul>
+		  <li><code class="highlighter-rouge">none</code></li>
+		  <li><code class="highlighter-rouge">inline</code></li>
+		  <li><code class="highlighter-rouge">inline-block</code></li>
+		  <li><code class="highlighter-rouge">block</code></li>
+		  <li><code class="highlighter-rouge">table</code></li>
+		  <li><code class="highlighter-rouge">table-cell</code></li>
+		  <li><code class="highlighter-rouge">table-row</code></li>
+		  <li><code class="highlighter-rouge">flex</code></li>
+		  <li><code class="highlighter-rouge">inline-flex</code></li>
+		</ul>
+
+		<p>The media queries effect screen widths with the given breakpoint <em>or larger</em>. For example, <code class="highlighter-rouge">.d-lg-none</code> sets <code class="highlighter-rouge">display: none;</code> on both <code class="highlighter-rouge">lg</code> and <code class="highlighter-rouge">xl</code> screens.</p>
 
 		<div class="bs-example">
 			<div class="padding-15" style="display: block">
 				<div class="row">
-					<div class="v-align col-xs-12 col-sm-6" style="height:150px; background:yellow">
-						<div class="v-align-bottom text-center">
-							Aligned bottom
-						</div>
-					</div><div class="v-align col-xs-12 col-sm-6" style="height:150px; background:lime">
-						<div class="v-align-middle text-center">
-							Aligned middle
+					<div class="col-xs-12">
+						<div class="d-inline-block mb-4 mr-4" style="background: yellow">Display Inline Block</div> 
+						<div class="d-inline-block mb-4" style="background: lime">Display Inline Block</div>
+						<div class="d-block mb-4" style="background: blue; color: white">Display Block</div>
+						<div class="d-block" style="background: red; color: white">Display Block</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<figure class="highlight">
+			<pre><code class="language-html" data-lang="html">&lt;div class="d-inline-block"&gt;Display Inline Block&lt;/div&gt; 
+&lt;div class="d-inline-block"&gt;Display Inline Block&lt;/div&gt;
+&lt;div class="d-block">Display Block&lt;/div&gt;
+&lt;div class="d-block">Display Block&lt;/div&gt;</code></pre>
+		</figure>
+
+		<!-- Display BS4 example -->
+
+		<!-- Vertical Alignment BS4 example -->
+
+		<div class="page-header">
+			<h1>Vertical Alignment <span class="label label-danger">BS4</span></h1>
+		</div>
+		<p>Imported <i>Vertical Alignment</i> classes from <b>Bootstrap 4</b>. Choose from <code>.align-baseline, .align-top, .align-middle, .align-bottom, .align-text-bottom,</code> and <code>.align-text-top</code> as needed.
+
+		<div class="bs-example">
+			<div class="padding-15" style="display: block">
+				<div class="row">
+					<div class="col-xs-12">
+						<div class="d-table float-left" style="width:50%; height:150px; background:yellow">
+							<div class="d-table-cell align-bottom text-center">
+								Aligned bottom
+							</div>
+						</div><div class="d-table float-left" style="width:50%; height:150px; background:lime">
+							<div class="d-table-cell align-middle text-center">
+								Aligned middle
+							</div>
 						</div>
 					</div>
 				</div>
 			</div>
 		</div>
 		<figure class="highlight">
-			<pre><code class="language-html" data-lang="html">&lt;div class="v-align" style="width:50%;height:150px;"&gt;
-	&lt;div class="v-align-bottom text-center"&gt;
+			<pre><code class="language-html" data-lang="html">&lt;div class="d-table" style="height:150px;"&gt;
+	&lt;div class="d-table-cell align-bottom text-center"&gt;
 		Aligned bottom
 	&lt;/div&gt;
 &lt;/div&gt;
-&lt;div class="v-align" style="width:50%;height:150px;"&gt;
-	&lt;div class="v-align-middle"&gt;
+&lt;div class="d-table" style="height:150px;"&gt;
+	&lt;div class="d-table-cell align-middle"&gt;
 		Aligned middle
 	&lt;/div&gt;
 &lt;/div&gt;</code></pre>
 		</figure>
 
+		<!-- Vertical Alignment BS4 example -->
+
+		<!-- Position BS4 example -->
+		
+		<div class="page-header">
+			<h1>Position <span class="label label-danger">BS4</span></h1>
+		</div>
+		<p>Imported <i>Position property</i> classes from <b>Bootstrap 4</b>. Use these shorthand utilities for quickly configuring the position of an element.</p>
+
+		<p>Where <em>value</em> is one of:</p>
+
+		<ul>
+		  <li><code class="highlighter-rouge">position-static</code></li>
+		  <li><code class="highlighter-rouge">position-relative</code></li>
+		  <li><code class="highlighter-rouge">position-absolute</code></li>
+		  <li><code class="highlighter-rouge">position-fixed</code></li>
+		  <li><code class="highlighter-rouge">position-sticky</code></li>
+		  <li><code class="highlighter-rouge">fixed-top</code></li>
+		  <li><code class="highlighter-rouge">fixed-bottom</code></li>
+		  <li><code class="highlighter-rouge">sticky-top</code></li>
+		</ul>
+
+		<div class="bs-example">
+			<div class="padding-15" style="display: block">
+				<div class="row">
+					<div class="col-xs-12">
+						<div class="position-relative" style="background: yellow; height: 100px;">
+							Position Relative
+							<div class="position-absolute" style="background: lime; right: 0px; top: 0px">Position Absolute</div>
+						</div> 
+					</div>
+				</div>
+			</div>
+		</div>
+		<figure class="highlight">
+			<pre><code class="language-html" data-lang="html">&lt;div class="position-relative"&gt;
+	Position Relative
+	&lt;div class="position-absolute">Position Absolute&lt;/div&gt;
+&lt;/div&gt;</code></pre>
+		</figure>
+
+		<!-- Position BS4 example -->
+
+		<!-- Text Align BS4 example -->
+		
+		<div class="page-header">
+			<h1>Text Align <span class="label label-danger">BS4</span></h1>
+		</div>
+		<p>Imported <i>Text Align</i> classes from <b>Bootstrap 4</b>. Responsive features to current text utilities to control alignment.</p>
+
+		<p>Where <em>value</em> is one of:</p>
+
+		<ul>
+		  <li><code class="highlighter-rouge">text-{breakpoint}-{value}</code> for <code class="highlighter-rouge">sm</code>, <code class="highlighter-rouge">md</code>, <code class="highlighter-rouge">lg</code>, and <code class="highlighter-rouge">xl</code>.</li>
+		</ul>
+
+		<div class="bs-example">
+			<div class="padding-15" style="display: block">
+				<div class="row">
+					<div class="col-xs-12">
+						<p class="text-sm-left">Left aligned text on viewports sized SM (small) or wider.</p>
+						<p class="text-md-center">Left aligned text on viewports sized MD (medium) or wider.</p>
+						<p class="text-lg-right">Left aligned text on viewports sized LG (large) or wider.</p>
+					</div>
+				</div>
+			</div>
+		</div>
+		<figure class="highlight">
+			<pre><code class="language-html" data-lang="html">&lt;p class="text-sm-left">Left aligned text on viewports sized SM (small) or wider.&lt;/p&gt;
+&lt;p class="text-md-center"&gt;Left aligned text on viewports sized MD (medium) or wider.&lt;/p&gt;
+&lt;p class="text-lg-right"&gt;Left aligned text on viewports sized LG (large) or wider.&lt;/p&gt;</code></pre>
+		</figure>
+
+		<!-- Text Align BS4 example -->
+
 		<!-- Carousel example -->
 		<div class="page-header">
-			<h1>Carousel Class <span class="label label-danger">Custom</span></h1>
+			<h1>Carousel <span class="label label-danger">Custom</span></h1>
 		</div>
-	<p>New classes to the current <b>Bootstrap</b> carousel. Remember to manage the transition time interval you can use the attribute <code>data-interval</code> to modify <i>(time in milliseconds)</i>. <i>Note: Touch gestures was added <i>(right or left)</i> on mobile devices</i></p>
+		<p>New classes to the current <b>Bootstrap</b> carousel. Remember to manage the transition time interval you can use the attribute <code>data-interval</code> to modify <i>(time in milliseconds)</i>. <i>Note: Touch gestures was added <i>(right or left)</i> on mobile devices</i></p>
 
 		<table class="table table-bordered table-striped js-options-table">
 			<thead>
@@ -1440,10 +1547,15 @@
 					<td>Adding this class will disable the shadows on <code>left</code> and <code>right</code> controls</code>
 					</td>
 				</tr>
+				<tr>
+					<td>carousel-square</td>
+					<td>Adding this class will change the indicators to <code>square</code> buttons
+					</td>
+				</tr>
 			</tbody>
 		</table>
 		
-		<div id="carousel-example-generic" class="carousel slide" data-ride="carousel" data-interval="3000">
+		<div id="carousel-example-generic" class="carousel slide carousel-square carousel-fade carousel-noshadow" data-ride="carousel" data-interval="3000">
 			<ol class="carousel-indicators">
 				<li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
 				<li data-target="#carousel-example-generic" data-slide-to="1"></li>
@@ -1475,7 +1587,7 @@
 		<div class="page-header">
 			<h1>More Classes! <span class="label label-danger">CSS</span></h1>
 		</div>
-		<p>There is more classes in the whole code, just play and try it. Remember to check <code>style-base.css</code> for more stuff <i>(Some of are commented, just copy them in a new file)</i>.</p>
+		<p>There is more classes in the whole code, just play and try it. Remember to check <code>style-base.css</code> or <code>style-bootstrap.css</code> for more stuff <i>(Some of are commented, just copy them in a new file)</i>.</p>
 
 		<!-- ******** CSS EXAMPLES ******** -->
 

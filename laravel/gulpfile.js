@@ -13,27 +13,23 @@ var jsUrl = '/assets';
 //Replacements
 var replacementsCSS = [
 	//Global
-	['@global-url' , jsUrl],
+	['@global-url'	, jsUrl],
 	//Screen
-	['@screen-small-phone' 	, '320px'], 
-	['@screen-medium-phone' , '360px'],
-	['@screen-phone' 		, '480px'],
-	['@screen-tablet' 		, '768px'],
-	['@screen-desktop' 		, '992px'],  
-	['@screen-widescreen' 	, '1200px'], 
-	['@screen-full-hd' 		, '1920px'], 
+	['@screen-xs'	, '480px'], 
+	['@screen-sm'	, '768px'], 
+	['@screen-md'	, '992px'], 
+	['@screen-lg'	, '1200px'],  
+	['@screen-xl'	, '1920px'],  
 ];
 var replacementsJS = [
 	//Global
-	['@global-url' , jsUrl],
+	['@global-url'	, jsUrl],
 	//Screen
-	['@screen-small-phone' 	, '320'], 
-	['@screen-medium-phone' , '360'],
-	['@screen-phone' 		, '480'],
-	['@screen-tablet' 		, '768'],
-	['@screen-desktop' 		, '992'],  
-	['@screen-widescreen' 	, '1200'], 
-	['@screen-full-hd' 		, '1920'], 
+	['@screen-xs'	, '480'], 
+	['@screen-sm'	, '768'], 
+	['@screen-md'	, '992'], 
+	['@screen-lg'	, '1200'],  
+	['@screen-xl'	, '1920'],  
 ];
 
 //Replace back-end files

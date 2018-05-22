@@ -6,7 +6,7 @@ Base structure for web sites with reusable parts of source code or functions mai
 # Resources
 - Standalone Support *(PHP 5.6+)*
 - Wordpress Support *(Ver 4.9.4)*
-- Laravel Support *(Ver 5.2, only CSS & JS)*
+- Laravel Support *(Ver 5.2, only CSS, JS, Home & Layout)*
 - Bootstrap 3 *(Ver 3.3.7)*
 - Font Awesome *(Ver 4.7.0)*
 - Data Tables
@@ -78,6 +78,7 @@ Base structure for web sites with reusable parts of source code or functions mai
 	- Map launch function for Google Maps and Waze
 	- Check validations for home page, mobile and navigators
 - CSS Features:
+	- Some features from Bootstrap 4
 	- Custom fade transition for Bootstrap carousel
 	- Disable shadows for Bootstrap carousel controls
 	- Custom datepicker colors

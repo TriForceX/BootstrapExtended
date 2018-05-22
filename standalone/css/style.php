@@ -32,15 +32,13 @@ function cssGenerate()
 
 	$cssVariables = array(
 						//Global
-						'@global-url' 			=> $cssUrl,
+						'@global-url'	=> $cssUrl,
 						//Screen
-						'@screen-small-phone' 	=> '320px', 
-						'@screen-medium-phone' 	=> '360px',
-						'@screen-phone' 		=> '480px',
-						'@screen-tablet' 		=> '768px',
-						'@screen-desktop' 		=> '992px',  
-						'@screen-widescreen' 	=> '1200px', 
-						'@screen-full-hd' 		=> '1920px', 
+						'@screen-xs'	=> '480px',
+						'@screen-sm'	=> '768px',
+						'@screen-md'	=> '992px',
+						'@screen-lg'	=> '1200px', 
+						'@screen-xl' 	=> '1920px', 
 					);
 
 	include('style-extras.php');

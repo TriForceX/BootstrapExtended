@@ -329,22 +329,20 @@ function responsiveCode()
 	var bodyWidth = document.body.clientWidth; //$(window).width();
 	var bodyHeight = $(window).height();
 	var bodyOrientation = bodyWidth > bodyHeight ? true : false;
-	var bodyScreen = {'small-phone'		: '@screen-small-phone', //320
-					  'medium-phone'	: '@screen-medium-phone', //360
-					  'phone'			: '@screen-phone', //480
-					  'tablet'			: '@screen-tablet', //768
-					  'desktop'			: '@screen-desktop', //992
-					  'widescreen'		: '@screen-widescreen', //1200
-					  'full-hd'			: '@screen-full-hd'}; //1920
+	var bodyScreen = {'xs'	: '@screen-xs', //480
+					  'sm'	: '@screen-sm', //768
+					  'md'	: '@screen-md', //992
+					  'lg'	: '@screen-lg', //1200
+					  'xl'	: '@screen-xl'}; //1920
 
 	if (bodyWidth)
 	{
-		//*** Responsive Changes ***//
+		/* Responsive Changes */
 
 		//Send data to event
 		$(document).trigger("responsiveCode", [bodyWidth, bodyHeight, bodyOrientation, bodyScreen]);
 		
-		//*** Responsive Changes ***//
+		/* Responsive Changes */
 	}else{
 		window.setTimeout(ResponsiveCode, 30);
 	}
@@ -943,7 +941,7 @@ function windowPopup(element, errortitle, errormsg)
 		leftPosition = 0;
 	}
 	else{
-		leftPosition = (window.screen.width / 2) - ((getSize[0] / 2) + 10);//Allow for borders.
+		leftPosition = (window.screen.width / 2) - ((getSize[0] / 2) + 10); //Allow for borders.
 	}
 
 	//Vertical Align
@@ -954,7 +952,7 @@ function windowPopup(element, errortitle, errormsg)
 		topPosition = window.screen.height;
 	}
 	else{
-		topPosition = (window.screen.height / 2) - ((getSize[1] / 2) + 50);//Allow for title and status bars.
+		topPosition = (window.screen.height / 2) - ((getSize[1] / 2) + 50); //Allow for title and status bars.
 	}
 	
     //Open the window.
@@ -1145,10 +1143,6 @@ $(document).ready(function(){
 	
 	//Launch main functions
 	mainInit();
-	
-	if(isLang == 'es'){
-		$('body').css("background","red");
-	}
 	
 /* ================================================= DOCUMENT READY ================================================= */
 

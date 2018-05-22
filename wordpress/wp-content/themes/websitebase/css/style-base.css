@@ -40,6 +40,8 @@ th[align='left'],
 td[align='left']{
 	text-align: left;
 }
+/*General HTML*/
+
 /* ================================================= GLOBAL ================================================= */
 
 /* ================================================= RESOURCES ================================================= */
@@ -59,7 +61,12 @@ td[align='left']{
 	background: transparent !important;
 	border: none;
 }
-.ui-state-active, .ui-widget-content .ui-state-active, .ui-widget-header .ui-state-active, a.ui-button:active, .ui-button:active, .ui-button.ui-state-active:hover{
+.ui-state-active, 
+.ui-widget-content .ui-state-active, 
+.ui-widget-header .ui-state-active, 
+a.ui-button:active, 
+.ui-button:active, 
+.ui-button.ui-state-active:hover{
 	font-weight: bold;
 }
 /*UI Date Picker*/
@@ -86,12 +93,24 @@ td[align='left']{
 	background:url("@global-url/resources/jquery-ui/css/images/ui-icons_ffffff_256x240.png");
 	background-position:-48px -192px;
 }
-.ui-state-active, .ui-widget-content .ui-state-active, .ui-widget-header .ui-state-active, a.ui-button:active, .ui-button:active, .ui-button.ui-state-active:hover {
+.ui-state-active, 
+.ui-widget-content .ui-state-active, 
+.ui-widget-header .ui-state-active, 
+a.ui-button:active, 
+.ui-button:active, 
+.ui-button.ui-state-active:hover {
     border: 1px solid red;
     background: red;
     color: black;
 }
-.ui-state-hover, .ui-widget-content .ui-state-hover, .ui-widget-header .ui-state-hover, .ui-state-focus, .ui-widget-content .ui-state-focus, .ui-widget-header .ui-state-focus, .ui-button:hover, .ui-button:focus {
+.ui-state-hover, 
+.ui-widget-content .ui-state-hover, 
+.ui-widget-header .ui-state-hover, 
+.ui-state-focus, 
+.ui-widget-content .ui-state-focus, 
+.ui-widget-header .ui-state-focus, 
+.ui-button:hover, 
+.ui-button:focus {
    border: 1px solid red;
     background: red;
     color: white;
@@ -108,8 +127,6 @@ td[align='left']{
 }*/
 /*UI Date Picker Custom*/
 
-
-
 /*LightGallery*/
 .lg-backdrop{
 	z-index: 1055; /*real: 1040 - bootstrap modal: 1040*/
@@ -117,7 +134,6 @@ td[align='left']{
 .lg-outer{
 	z-index: 1060; /*real: 1050 - bootstrap modal: 1050*/
 }
-
 .lg-outer .lg-thumb {
 	margin-left: auto !important;
 	margin-right: auto !important;
