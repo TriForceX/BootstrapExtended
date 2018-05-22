@@ -50,8 +50,9 @@
     <link href="{{ url('assets/css/all.css') }}" rel="stylesheet">
 	<!-- IE8 support of HTML5 elements and media queries -->
 	<!--[if lt IE 9]>
-	<script src="{{ url('assets/resources/bootstrap/js/html5shiv.min.js') }}"></script>
-	<script src="{{ url('assets/resources/bootstrap/js/respond.min.js') }}"></script>
+	<script src="{{ url('assets/resources/html5shiv/js/html5shiv.min.js') }}"></script>
+	<script src="{{ url('assets/resources/respond/js/respond.min.js') }}"></script>
+	<script src="{{ url('assets/resources/rem/js/rem.js') }}"></script>
 	<![endif]-->
 	
 	<!-- ******** CSS FILES ******** -->
@@ -97,7 +98,7 @@
 
 <!-- ================ Core JavaScript Placed at the end of the document so the pages load faster! ================ -->
 
-<!-- jQuery -->
+<!-- jQuery 1.12.4 -->
 <script src="{{ url('assets/resources/jquery/js/jquery.min.js') }}"></script>
 <!-- jQuery UI -->
 <script src="{{ url('assets/resources/jquery-ui/js/jquery-ui.min.js') }}"></script>

@@ -10,7 +10,7 @@
 
 <!-- ================ Core JavaScript Placed at the end of the document so the pages load faster! ================ -->
 
-<!-- jQuery -->
+<!-- jQuery 1.12.4 -->
 <script src="<?php echo get_bloginfo('template_url'); ?>/resources/jquery/js/jquery.min.js"></script>
 <!-- jQuery UI -->
 <script src="<?php echo get_bloginfo('template_url'); ?>/resources/jquery-ui/js/jquery-ui.min.js"></script>

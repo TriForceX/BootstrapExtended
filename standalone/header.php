@@ -52,8 +52,9 @@
 	<link href="<?php echo php::get_main_url(); ?>/css/style.php" rel="stylesheet">
 	<!-- IE8 support of HTML5 elements and media queries -->
 	<!--[if lt IE 9]>
-	<script src="<?php echo php::get_main_url(); ?>/resources/bootstrap/js/html5shiv.min.js"></script>
-	<script src="<?php echo php::get_main_url(); ?>/resources/bootstrap/js/respond.min.js"></script>
+	<script src="<?php echo php::get_main_url(); ?>/resources/html5shiv/js/html5shiv.min.js"></script>
+	<script src="<?php echo php::get_main_url(); ?>/resources/respond/js/respond.min.js"></script>
+	<script src="<?php echo php::get_main_url(); ?>/resources/rem/js/rem.js"></script>
 	<![endif]-->
 	
 	<!-- ******** CSS FILES ******** -->
