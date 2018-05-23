@@ -1131,7 +1131,7 @@ $(document).ready(function(){
 	});
 	
 	//Modal on disabled links
-	$(document).on("click", "a[href*=#]", function(e){
+	$(document).on("click", "a[href*=\\#]", function(e){
 		var source =  $(this).attr("href");
 		if(!(checkDisabledLink(source))){
 			e.preventDefault();

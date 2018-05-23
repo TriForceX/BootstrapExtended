@@ -1543,8 +1543,18 @@
 					</td>
 				</tr>
 				<tr>
+					<td>carousel-nogradient</td>
+					<td>Adding this class will disable the gradients on <code>left</code> and <code>right</code> controls</code>
+					</td>
+				</tr>
+				<tr>
 					<td>carousel-noshadow</td>
 					<td>Adding this class will disable the shadows on <code>left</code> and <code>right</code> controls</code>
+					</td>
+				</tr>
+				<tr>
+					<td>carousel-nomobile</td>
+					<td>Adding this class will disable the <code>left</code> and <code>right</code> controls on mobile devices</code>
 					</td>
 				</tr>
 				<tr>
@@ -1555,7 +1565,7 @@
 			</tbody>
 		</table>
 		
-		<div id="carousel-example-generic" class="carousel slide carousel-square carousel-fade carousel-noshadow" data-ride="carousel" data-interval="3000">
+		<div id="carousel-example-generic" class="carousel slide carousel-square carousel-fade carousel-nogradient carousel-noshadow carousel-nomobile" data-ride="carousel" data-interval="3000">
 			<ol class="carousel-indicators">
 				<li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
 				<li data-target="#carousel-example-generic" data-slide-to="1"></li>

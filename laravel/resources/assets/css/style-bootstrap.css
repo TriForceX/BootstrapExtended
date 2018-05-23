@@ -69,20 +69,47 @@ body.modal-open {
 }
 /*Carousel fade transition*/
 
-/*Carousel control shadows*/
-.carousel-noshadow .carousel-control.left,
-.carousel-noshadow .carousel-control.right {
+/*Carousel control no gradient*/
+.carousel-nogradient .carousel-control.left,
+.carousel-nogradient .carousel-control.right {
 	background: none !important;
 	background-image: none !important;
 	background-color: transparent !important;
 	filter: none !important;
 	width: 10% !important;
 }
-.carousel-noshadow .carousel-control.left .glyphicon,
-.carousel-noshadow .carousel-control.right .glyphicon {
+.carousel-nogradient .carousel-control.left .glyphicon,
+.carousel-nogradient .carousel-control.right .glyphicon {
 	text-shadow: 0px 3px 6px #000, 0px 3px 6px #000;
 }
-/*Carousel control shadows*/
+/*Carousel control no gradient*/
+
+/*Carousel control no shadow*/
+.carousel-noshadow .carousel-control.left,
+.carousel-noshadow .carousel-control.right {
+	background: none !important;
+	background-image: none !important;
+	background-color: transparent !important;
+	filter: none !important;
+	opacity: 1 !important;
+	width: 10% !important;
+}
+.carousel-noshadow .carousel-control.left .glyphicon,
+.carousel-noshadow .carousel-control.right .glyphicon {
+	text-shadow: none;
+}
+/*Carousel control no shadow*/
+
+/*Carousel control no mobile*/
+@media (max-width: @screen-sm) {
+	.carousel-nomobile .carousel-control.left,
+	.carousel-nomobile .carousel-control.right {
+		display: none;
+	}
+}
+/*Carousel control no mobile*/
+
+/*Carousel control disable*/
 
 /*Carousel square indicators*/
 .carousel-square .carousel-indicators li{
