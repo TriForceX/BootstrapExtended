@@ -46,6 +46,8 @@
 	<link href="{{ url('assets/resources/hover/css/hover.min.css') }}" rel="stylesheet">
 	<!-- Font Awesome -->
 	<link href="{{ url('assets/resources/font-awesome/css/font-awesome.min.css') }}" rel="stylesheet">
+	<!-- Tempus Dominus -->
+	<link href="{{ url('assets/resources/tempusdominus/css/tempusdominus.min.css') }}" rel="stylesheet">
 	<!-- Main CSS File -->
     <link href="{{ url('assets/css/all.css') }}" rel="stylesheet">
 	<!-- IE8 support of HTML5 elements and media queries -->
@@ -98,11 +100,11 @@
 
 <!-- ================ Core JavaScript Placed at the end of the document so the pages load faster! ================ -->
 
-<!-- jQuery 1.12.4 -->
+<!-- jQuery -->
 <script src="{{ url('assets/resources/jquery/js/jquery.min.js') }}"></script>
 <!-- jQuery UI -->
 <script src="{{ url('assets/resources/jquery-ui/js/jquery-ui.min.js') }}"></script>
-<!-- Browser Detection over jQuery 1.9+ -->
+<!-- jQuqey Browser for 1.9+ -->
 <script src="{{ url('assets/resources/jquery-browser/js/jquery.mb.browser.min.js') }}"></script>
 <!-- jQuery Cookie -->
 <script src="{{ url('assets/resources/jquery-cookie/js/js.cookie.js') }}"></script>
@@ -133,6 +135,8 @@
 <script src="{{ url('assets/resources/clipboard/js/clipboard.min.js') }}"></script>
 <!-- Masonry -->
 <script src="{{ url('assets/resources/masonry/js/masonry.min.js') }}"></script>
+<!-- Tempus Dominus -->
+<script src="{{ url('assets/resources/tempusdominus/js/tempusdominus.min.js') }}"></script>
 <!-- Main JS File -->
 <script src="{{ url('assets/js/all.js') }}"></script>
 

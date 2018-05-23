@@ -10,11 +10,11 @@
 
 <!-- ================ Core JavaScript Placed at the end of the document so the pages load faster! ================ -->
 
-<!-- jQuery 1.12.4 -->
+<!-- jQuery -->
 <script src="<?php echo get_bloginfo('template_url'); ?>/resources/jquery/js/jquery.min.js"></script>
 <!-- jQuery UI -->
 <script src="<?php echo get_bloginfo('template_url'); ?>/resources/jquery-ui/js/jquery-ui.min.js"></script>
-<!-- Browser Detection over jQuery 1.9+ -->
+<!-- jQuqey Browser for 1.9+ -->
 <script src="<?php echo get_bloginfo('template_url'); ?>/resources/jquery-browser/js/jquery.mb.browser.min.js"></script>
 <!-- jQuery Cookie -->
 <script src="<?php echo get_bloginfo('template_url'); ?>/resources/jquery-cookie/js/js.cookie.js"></script>
@@ -45,6 +45,8 @@
 <script src="<?php echo get_bloginfo('template_url'); ?>/resources/clipboard/js/clipboard.min.js"></script>
 <!-- Masonry -->
 <script src="<?php echo get_bloginfo('template_url'); ?>/resources/masonry/js/masonry.min.js"></script>
+<!-- Tempus Dominus -->
+<script src="<?php echo get_bloginfo('template_url'); ?>/resources/tempusdominus/js/tempusdominus.min.js"></script>
 <!-- Main JS File -->
 <script src="<?php echo get_bloginfo('template_url'); ?>/js/app.php"></script>
 

@@ -43,8 +43,8 @@
 						<li><a href="https://github.com/pupunzi/jquery.mb.browser" target="_blank">jQuery Browser</a></li>
 						<li><a href="http://jqueryrotate.com/" target="_blank">jQuery Rotate</a></li>
 						<li><a href="https://github.com/PHPMailer/PHPMailer/" target="_blank">PHP Mailer</a></li>
-						<li><a href="https://www.npmjs.com/package/package" target="_blank">NPM Package</a></li>
 						<li><a href="http://fontawesome.io/" target="_blank">Font Awesome</a></li>
+						<li><a href="https://tempusdominus.github.io/bootstrap-3/" target="_blank">Tempus Dominus</a></li>
 					</ul>
 				</li>
 				<li class="dropdown">
