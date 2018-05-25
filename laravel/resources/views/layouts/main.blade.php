@@ -114,7 +114,7 @@
 <script src="{{ url('assets/resources/touchswipe/js/jquery.touchSwipe.min.js') }}"></script>
 <!-- Bootstrap 3 -->
 <script src="{{ url('assets/resources/bootstrap/js/bootstrap.min.js') }}"></script>
-<!-- Bootstrap 3 Prompt y Confirm -->
+<!-- Bootbox Modals -->
 <script src="{{ url('assets/resources/bootbox/js/bootbox.min.js') }}"></script>
 <!-- Holder JS Images -->
 <script src="{{ url('assets/resources/holder/js/holder.min.js') }}"></script>
@@ -135,6 +135,8 @@
 <script src="{{ url('assets/resources/clipboard/js/clipboard.min.js') }}"></script>
 <!-- Masonry -->
 <script src="{{ url('assets/resources/masonry/js/masonry.min.js') }}"></script>
+<!-- Moment JS -->
+<script src="{{ url('assets/resources/moment/js/moment.min.js') }}"></script>
 <!-- Tempus Dominus -->
 <script src="{{ url('assets/resources/tempusdominus/js/tempusdominus.min.js') }}"></script>
 <!-- Main JS File -->

@@ -1,7 +1,7 @@
 /* ================================================= BOOTSTRAP ================================================= */
 
 /*Modal & Panel*/
-body.modal-open {
+.modal-open{
 	padding-right: 0px !important;
 	overflow: auto !important;
 	overflow-x: hidden !important;
@@ -18,9 +18,9 @@ body.modal-open {
 .modal-header {
 	border-color: #a0a0a0;
 }
-.modal-body {
-	/*text-align:justify;*/
-}
+/*.modal-body {
+	text-align:justify;
+}*/
 .modal-backdrop {
 	position: fixed;
 }
@@ -28,6 +28,96 @@ body.modal-open {
 	outline: 0;
 }
 /*Modal & Panel*/
+
+/*Modal Size*/
+@media (min-width: @screen-lg) {
+	.modal-xl {
+		width: 1140px;
+	}
+}
+@media (max-width: @screen-lg) {
+	.modal-xl {
+		width: 900px;
+	}
+}
+@media (max-width: @screen-md) {
+	.modal-xl {
+		width: 600px;
+	}
+}
+@media (max-width: @screen-sm) {
+	.modal-xl {
+		width: inherit;
+	}
+}
+/*Modal Size*/
+
+/*Modal Align*/
+.modal{
+	padding: 30px !important;
+}
+.modal-dialog {
+	margin: 0px auto;
+}
+@media (max-width: @screen-sm) {
+	.modal{
+		padding: 10px !important;
+	}
+	.modal-dialog {
+		width: 100%;
+	}
+	.modal-dialog.modal-sm {
+		width: auto;
+	}
+}
+.modal.center,
+.modal.bottom,
+.modal.top{
+  text-align: center;
+}
+.modal.left {
+  text-align: left;
+}
+.modal.right {
+  text-align: right;
+}
+.modal.center:before,
+.modal.bottom:before,
+.modal.top:before,
+.modal.left:before,
+.modal.right:before {
+	display: inline-block;
+	content: " ";
+	height: 100%;
+}
+.modal.center:before {
+	vertical-align: middle;
+}
+.modal.bottom:before {
+	vertical-align: bottom;
+}
+.modal.top:before {
+	vertical-align: top;
+}
+.modal.center .modal-dialog,
+.modal.bottom .modal-dialog,
+.modal.top .modal-dialog,
+.modal.left .modal-dialog,
+.modal.right .modal-dialog {
+	display: inline-block;
+	text-align: left;
+	vertical-align: middle;
+}
+.modal.center .modal-dialog {
+	vertical-align: middle;
+}
+.modal.bottom .modal-dialog {
+	vertical-align: bottom;
+}
+.modal.top .modal-dialog {
+	vertical-align: top;
+}
+/*Modal Align*/
 
 /*Custom Modal Panel*/
 

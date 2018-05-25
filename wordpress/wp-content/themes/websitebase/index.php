@@ -42,6 +42,7 @@
 						<li><a href="http://jqueryrotate.com/" target="_blank">jQuery Rotate</a></li>
 						<li><a href="https://github.com/PHPMailer/PHPMailer/" target="_blank">PHP Mailer</a></li>
 						<li><a href="http://fontawesome.io/" target="_blank">Font Awesome</a></li>
+						<li><a href="https://github.com/moment/moment" target="_blank">Moment JS</a></li>
 						<li><a href="https://tempusdominus.github.io/bootstrap-3/" target="_blank">Tempus Dominus</a></li>
 					</ul>
 				</li>
@@ -1005,40 +1006,42 @@
 		<div class="page-header">
 			<h1>Show Alert BootBox <span class="label label-danger">Plugin</span></h1>
 		</div>
-		<p>Launch a custom modal box using BootBox Features, the function structure is <code>showAlert(title, text, size)</code> you can alternatively set a size</p>
+<p>Launch a custom modal box using BootBox Features, the function structure is <code>showAlert(title, text, size, align)</code>. You can alternatively set a size and alignment classes like <code>horizontal vertical</code> (For example: <b>right center</b>).</p>
 
 		<div class="bs-example">
-			<button type="button" class="btn btn-primary" onclick="showAlert('Small Size Box','This is a text shown in a modal box','small')">Show Alert Small Size</button>
+			<button type="button" class="btn btn-primary" onclick="showAlert('Small Size Box','This is a text shown in a modal box','small','center')">Show Alert Small Size (Centered)</button>
 			<button type="button" class="btn btn-primary" onclick="showAlert('Medium Size Box','This is a text shown in a modal box')">Show Alert Medium Size (By default)</button>
 			<button type="button" class="btn btn-primary" onclick="showAlert('Large Size Box','This is a text shown in a modal box','large')">Show Alert Large Size</button>
+			<button type="button" class="btn btn-primary" onclick="showAlert('Extra Large Size Box','This is a text shown in a modal box','extra-large')">Show Alert Extra Large Size</button>
 		</div>
 		<figure class="highlight">
-			<pre><code class="language-html" data-lang="html">&lt;a onclick="showAlert('Small Size Box','This is a text shown in a modal box','small')">Click Here&lt;/a&gt;<br>&lt;a onclick="showAlert('Medium Size Box','This is a text shown in a modal box')">Click Here&lt;/a&gt;<br>&lt;a onclick="showAlert('Large Size Box','This is a text shown in a modal box','large')">Click Here&lt;/a&gt;</code></pre>
+			<pre><code class="language-html" data-lang="html">&lt;a onclick="showAlert('Small Size Box','This is a text shown in a modal box','small','center')">Click Here&lt;/a&gt;<br>&lt;a onclick="showAlert('Medium Size Box','This is a text shown in a modal box')">Click Here&lt;/a&gt;<br>&lt;a onclick="showAlert('Large Size Box','This is a text shown in a modal box','large')">Click Here&lt;/a&gt;<br>&lt;a onclick="showAlert('Extra Large Size Box','This is a text shown in a modal box','extra-large')">Click Here&lt;/a&gt;</code></pre>
 		</figure>
 		
 		<!-- Show alert example -->
 		<div class="page-header">
 			<h1>Show Content BootBox <span class="label label-danger">Plugin</span></h1>
 		</div>
-		<p>Launch a custom modal box using BootBox Features, the function shows the content from an element, the structure is <code>showContent(title, element, size)</code> you can alternatively set a size</p>
+		<p>Launch a custom modal box using BootBox Features, the function shows the content from an element, the structure is <code>showContent(title, element, size, align)</code>. You can alternatively set a size and alignment classes like <code>horizontal vertical</code> (For example: <b>right center</b>).</p>
 
 		<div class="bs-example">
-			<button type="button" class="btn btn-primary" onclick="showContent('Small Size Box','.showContentExample','small')">Show Content Small Size</button>
+			<button type="button" class="btn btn-primary" onclick="showContent('Small Size Box','.showContentExample','small','center')">Show Content Small Size (Centered)</button>
 			<button type="button" class="btn btn-primary" onclick="showContent('Medium Size Box','.showContentExample')">Show Content Medium Size (By default)</button>
 			<button type="button" class="btn btn-primary" onclick="showContent('Large Size Box','.showContentExample','large')">Show Content Large Size</button>
+			<button type="button" class="btn btn-primary" onclick="showContent('Large Size Box','.showContentExample','extra-large')">Show Alert Extra Large Size</button>
 			<div class="showContentExample hidden">
 				Hello <b>World!</b><br><i><u>This is my message in HTML</u> from a hidden element...</i>
 			</div>
 		</div>
 		<figure class="highlight">
-			<pre><code class="language-html" data-lang="html">&lt;a onclick="showContent('Small Size Box','.showContentExample','small')">Click Here&lt;/a&gt;<br>&lt;a onclick="showContent('Medium Size Box','.showContentExample')">Click Here&lt;/a&gt;<br>&lt;a onclick="showContent('Large Size Box','.showContentExample','large')">Click Here&lt;/a&gt;</code></pre>
+			<pre><code class="language-html" data-lang="html">&lt;a onclick="showContent('Small Size Box','.showContentExample','small')">Click Here&lt;/a&gt;<br>&lt;a onclick="showContent('Medium Size Box','.showContentExample')">Click Here&lt;/a&gt;<br>&lt;a onclick="showContent('Large Size Box','.showContentExample','large')">Click Here&lt;/a&gt;<br>&lt;a onclick="showContent('Extra Large Size Box','.showContentExample','extra-large')">Click Here&lt;/a&gt;</code></pre>
 		</figure>
 
 		<!-- Video launch example -->
 		<div class="page-header">
 			<h1>Video Launch <span class="label label-danger">Custom</span></h1>
 		</div>
-		<p>Launch a modal box with a basic video player, the function structure is <code>videoLaunch(url, share, title, autoplay)</code></p>
+	<p>Launch a modal box with a basic video player, the function structure is <code>videoLaunch(url, share, title, autoplay, size, align)</code>. You can alternatively set a size and alignment classes like <code>horizontal vertical</code> (For example: <b>right center</b>).</p>
 
 		<div class="bs-example">
 			<button type="button" class="btn btn-primary" onclick="videoLaunch('https://www.youtube.com/watch?v=ae6aeo9-Kn8', true, 'My YouTube Video', true)">YouTube Video</button>
@@ -1079,23 +1082,31 @@
 					<td>data-win-scroll</td>
 					<td>Enable or disable scrollbar in the pop-up</td>
 				</tr>
+				<tr>
+					<td>data-win-modal-size</td>
+					<td>Alternative to set error modal size classes like <code>small</code>, <code>medium</code>, <code>large</code> or <code>extra-large</code></td>
+				</tr>
+				<tr>
+					<td>data-win-modal-align</td>
+					<td>Alternative to set error modal alignment classes like <code>horizontal vertical</code> (For example: <b>right center</b>)</td>
+				</tr>
 			</tbody>
 		</table>
 
 		<div class="bs-example">
-			<button type="button" class="btn btn-primary JSwindowPopup" data-win-url="http://getbootstrap.com" data-win-size="640x480" data-win-align="center,center" data-win-scroll="yes">Center Center 640 x 480</button>
-			<button type="button" class="btn btn-primary JSwindowPopup" data-win-url="http://getbootstrap.com" data-win-size="320x480" data-win-align="right,bottom" data-win-scroll="yes">Right Bottom 320 x 480</button>
-			<button type="button" class="btn btn-primary JSwindowPopup" data-win-url="http://getbootstrap.com" data-win-size="320x480" data-win-align="left,top" data-win-scroll="yes">Left Top 320 x 480</button>
+			<button type="button" class="btn btn-primary JSwindowPopup" data-win-url="http://getbootstrap.com/docs/3.3" data-win-size="640x480" data-win-align="center,center" data-win-scroll="yes">Center Center 640 x 480</button>
+			<button type="button" class="btn btn-primary JSwindowPopup" data-win-url="http://getbootstrap.com/docs/3.3" data-win-size="320x480" data-win-align="right,bottom" data-win-scroll="yes">Right Bottom 320 x 480</button>
+			<button type="button" class="btn btn-primary JSwindowPopup" data-win-url="http://getbootstrap.com/docs/3.3" data-win-size="320x480" data-win-align="left,top" data-win-scroll="yes">Left Top 320 x 480</button>
 		</div>
 		<figure class="highlight">
-			<pre><code class="language-html" data-lang="html">&lt;a class="JSwindowPopup" data-win-url="http://getbootstrap.com" data-win-size="640x480" data-win-align="center,center" data-win-scroll="yes">Click Here&lt;/a&gt;<br>&lt;a class="JSwindowPopup" data-win-url="http://getbootstrap.com" data-win-size="320x480" data-win-align="right,bottom" data-win-scroll="yes">Click Here&lt;/a&gt;<br>&lt;a class="JSwindowPopup" data-win-url="http://getbootstrap.com" data-win-size="320x480" data-win-align="left,top" data-win-scroll="yes">Click Here&lt;/a&gt;</code></pre>
+			<pre><code class="language-html" data-lang="html">&lt;a class="JSwindowPopup" data-win-url="http://getbootstrap.com/docs/3.3" data-win-size="640x480" data-win-align="center,center" data-win-scroll="yes">Click Here&lt;/a&gt;<br>&lt;a class="JSwindowPopup" data-win-url="http://getbootstrap.com/docs/3.3" data-win-size="320x480" data-win-align="right,bottom" data-win-scroll="yes">Click Here&lt;/a&gt;<br>&lt;a class="JSwindowPopup" data-win-url="http://getbootstrap.com/docs/3.3" data-win-size="320x480" data-win-align="left,top" data-win-scroll="yes">Click Here&lt;/a&gt;</code></pre>
 		</figure>
 
 		<!-- Form validation -->
 		<div class="page-header">
 			<h1>Form Validation <span class="label label-danger">Custom</span></h1>
 		</div>
-		<p>Basic validation for <code>input</code>, <code>select</code>, <code>checkbox</code> and <code>textarea</code> elements. The main function is <code>$().validateForm(options);</code></p></p>
+		<p>Basic validation for <code>input</code>, <code>select</code>, <code>checkbox</code>, <code>radio</code> and <code>textarea</code> elements. The main function is <code>$().validateForm(options);</code></p></p>
 		
 		<div class="bs-example">
 			<form class="JSformExample" method="post" action="javascript:showAlert('Form Success!','The form passed sucessfully! Thanks!');">
@@ -1243,6 +1254,9 @@
 	hasConfirm: true,
 	customValidate: null,
 	resetSubmit: true,
+	styling: true,
+	size: 'medium',
+	align: 'top',
 });</code></pre>
 		</figure>
 		
@@ -1275,6 +1289,16 @@
 					<td>Desired address coords from <b>Waze</b> <code>latitude</code>, <code>longitude</code>, <code>zoom</code>
 					</td>
 				</tr>
+				<tr>
+					<td>data-map-modal-size</td>
+					<td>Alternative to set modal size classes like <code>small</code>, <code>medium</code>, <code>large</code> or <code>extra-large</code>
+					</td>
+				</tr>
+				<tr>
+					<td>data-map-modal-align</td>
+					<td>Alternative to set model alignment classes like <code>horizontal vertical</code> (For example: <b>right center</b>)
+					</td>
+				</tr>
 			</tbody>
 		</table>
 
@@ -1302,6 +1326,61 @@
 			<h1>CSS Resources</h1>
 			<p>Some custom classes to use in addition to <code>CSS</code> included in this repository.</p>
 		</div>
+
+		<!-- Float BS4 example -->
+
+		<div class="page-header">
+			<h1>Float <span class="label label-danger">BS4</span></h1>
+		</div>
+		<p>Imported <i>Float property</i> classes from <b>Bootstrap 4</b>. These utility classes float an element to the <code>left</code>, <code>right</code>, or <code>disable</code> floating. Use the same viewport breakpoints as our grid system.</p>
+
+		<p>As such, the classes are named using the format:</p>
+
+		<ul>
+		  <li><code class="highlighter-rouge">float-{value}</code> for <code class="highlighter-rouge">xs</code></li>
+		  <li><code class="highlighter-rouge">float-{breakpoint}-{value}</code> for <code class="highlighter-rouge">sm</code>, <code class="highlighter-rouge">md</code>, <code class="highlighter-rouge">lg</code>, and <code class="highlighter-rouge">xl</code>.</li>
+		</ul>
+
+		<p>Here are all the support classes:</p>
+
+		<ul>
+		  <li><code class="highlighter-rouge">float-left</code></li>
+		  <li><code class="highlighter-rouge">float-right</code></li>
+		  <li><code class="highlighter-rouge">float-none</code></li>
+		  <li><code class="highlighter-rouge">float-sm-left</code></li>
+		  <li><code class="highlighter-rouge">float-sm-right</code></li>
+		  <li><code class="highlighter-rouge">float-sm-none</code></li>
+		  <li><code class="highlighter-rouge">float-md-left</code></li>
+		  <li><code class="highlighter-rouge">float-md-right</code></li>
+		  <li><code class="highlighter-rouge">float-md-none</code></li>
+		  <li><code class="highlighter-rouge">float-lg-left</code></li>
+		  <li><code class="highlighter-rouge">float-lg-right</code></li>
+		  <li><code class="highlighter-rouge">float-lg-none</code></li>
+		  <li><code class="highlighter-rouge">float-xl-left</code></li>
+		  <li><code class="highlighter-rouge">float-xl-right</code></li>
+		  <li><code class="highlighter-rouge">float-xl-none</code></li>
+		</ul>
+
+		<div class="bs-example">
+			<div class="padding-15" style="display: block">
+				<div class="row">
+					<div class="col-xs-12">
+						<div class="float-sm-right">Float right on viewports sized SM (small) or wider</div><br>
+						<div class="float-md-left">Float left on viewports sized MD (medium) or wider</div><br>
+						<div class="float-lg-right">Float right on viewports sized LG (large) or wider</div><br>
+						<div class="float-xl-left">Float left on viewports sized XL (extra-large) or wider</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<figure class="highlight">
+			<pre><code class="language-html" data-lang="html">&lt;div class="float-sm-right"&gt;Float right on viewports sized SM (small) or wider&lt;/div&gt;
+&lt;div class="float-md-left"&gt;Float left on viewports sized MD (medium) or wider&lt;/div&gt;
+&lt;div class="float-lg-right"&gt;Float right on viewports sized LG (large) or wider&lt;/div&gt;
+&lt;div class="float-xl-left"&gt;Float left on viewports sized XL (extra-large) or wider&lt;/div&gt;</code></pre>
+		</figure>
+
+		<!-- Float BS4 example -->
 
 		<!-- Spacing BS4 example -->
 		<div class="page-header">

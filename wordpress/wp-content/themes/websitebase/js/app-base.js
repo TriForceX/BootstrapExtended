@@ -7,6 +7,7 @@ var isHome;
 var isMobile;
 var isNav;
 var checkDisabledExceptions = ['#carousel'];
+var checkDisabledAlignment = ['medium','top'];
 
 //IE8 Undefined console fix
 if (!window.console) console = {log: function() {}};
@@ -79,6 +80,9 @@ $.fn.validateForm = function(options)
 		hasConfirm		: false,
 		customValidate	: null,
 		resetSubmit		: true,
+		styling			: true,
+		size			: 'medium',
+		align			: '',
 	}, options);
 	
 	$(this).submit(function(event){ 
@@ -103,22 +107,22 @@ $.fn.validateForm = function(options)
 		//Select inputs
 		$(this).find('select').not(settings.noValidate).each(function(){
 			if (!validateEmpty($(this).find("option:selected").attr("value"))) { 
-				$(this).parents('.form-group').addClass('has-error').removeClass('has-success');
+				if(settings.styling){ $(this).parents('.form-group').addClass('has-error').removeClass('has-success'); }
 				formError = formErrorText.select;
 			}
 			else{
-				$(this).parents('.form-group').removeClass('has-error').addClass('has-success');
+				if(settings.styling){ $(this).parents('.form-group').removeClass('has-error').addClass('has-success'); }
 			}
 		});
 		
 		//Textarea inputs
 		$(this).find('textarea').not(settings.noValidate).each(function(){
 			if (!validateEmpty($.trim($(this).val()))) { 
-				$(this).parents('.form-group').addClass('has-error').removeClass('has-success');
+				if(settings.styling){ $(this).parents('.form-group').addClass('has-error').removeClass('has-success'); }
 				formError = formErrorText.textarea;
 			}
 			else{
-				$(this).parents('.form-group').removeClass('has-error').addClass('has-success');
+				if(settings.styling){ $(this).parents('.form-group').removeClass('has-error').addClass('has-success'); }
 			}
 		});
 		
@@ -135,11 +139,11 @@ $.fn.validateForm = function(options)
 			}
 			
 			if(!check){
-				item.parents('.form-group').addClass('has-error').removeClass('has-success');
+				if(settings.styling){ item.parents('.form-group').addClass('has-error').removeClass('has-success'); }
 				formError = formErrorText[type];
 			}
 			else{
-				item.parents('.form-group').removeClass('has-error').addClass('has-success');
+				if(settings.styling){ item.parents('.form-group').removeClass('has-error').addClass('has-success'); }
 			}
 		});
 		
@@ -148,56 +152,56 @@ $.fn.validateForm = function(options)
 			switch($(this).attr("type")){
 				case 'text':
 					if (!validateEmpty($(this).val())) { 
-						$(this).parents('.form-group').addClass('has-error').removeClass('has-success');
+						if(settings.styling){ $(this).parents('.form-group').addClass('has-error').removeClass('has-success'); }
 						formError = formErrorText.text;
 					}
 					else{
-						$(this).parents('.form-group').removeClass('has-error').addClass('has-success');
+						if(settings.styling){ $(this).parents('.form-group').removeClass('has-error').addClass('has-success'); }
 					}
 					break;
 				case 'number':
 					if (!validateEmpty($(this).val()) || !validateNumber($(this).val())) { 
-						$(this).parents('.form-group').addClass('has-error').removeClass('has-success');
+						if(settings.styling){ $(this).parents('.form-group').addClass('has-error').removeClass('has-success'); }
 						formError = formErrorText.number;
 					}
 					else{
-						$(this).parents('.form-group').removeClass('has-error').addClass('has-success');
+						if(settings.styling){ $(this).parents('.form-group').removeClass('has-error').addClass('has-success'); }
 					}
 					break;
 				case 'tel':
 					if (!validateEmpty($(this).val())) { 
-						$(this).parents('.form-group').addClass('has-error').removeClass('has-success');
+						if(settings.styling){ $(this).parents('.form-group').addClass('has-error').removeClass('has-success'); }
 						formError = formErrorText.tel;
 					}
 					else{
-						$(this).parents('.form-group').removeClass('has-error').addClass('has-success');
+						if(settings.styling){ $(this).parents('.form-group').removeClass('has-error').addClass('has-success'); }
 					}
 					break;
 				case 'email':
 					if (!validateEmpty($(this).val()) || !validateEmail($(this).val())) { 
-						$(this).parents('.form-group').addClass('has-error').removeClass('has-success');
+						if(settings.styling){ $(this).parents('.form-group').addClass('has-error').removeClass('has-success'); }
 						formError = formErrorText.email;
 					}
 					else{
-						$(this).parents('.form-group').removeClass('has-error').addClass('has-success');
+						if(settings.styling){ $(this).parents('.form-group').removeClass('has-error').addClass('has-success'); }
 					}
 					break;
 				case 'password':
 					if (!validateEmpty($(this).val())) { 
-						$(this).parents('.form-group').addClass('has-error').removeClass('has-success');
+						if(settings.styling){ $(this).parents('.form-group').addClass('has-error').removeClass('has-success'); }
 						formError = formErrorText.pass;
 					}
 					else{
-						$(this).parents('.form-group').removeClass('has-error').addClass('has-success');
+						if(settings.styling){ $(this).parents('.form-group').removeClass('has-error').addClass('has-success'); }
 					}
 					break;
 				case 'search':
 					if (!validateEmpty($(this).val())) { 
-						$(this).parents('.form-group').addClass('has-error').removeClass('has-success');
+						if(settings.styling){ $(this).parents('.form-group').addClass('has-error').removeClass('has-success'); }
 						formError = formErrorText.search;
 					}
 					else{
-						$(this).parents('.form-group').removeClass('has-error').addClass('has-success');
+						if(settings.styling){ $(this).parents('.form-group').removeClass('has-error').addClass('has-success'); }
 					}
 					break;
 				default: break;
@@ -212,18 +216,26 @@ $.fn.validateForm = function(options)
 			
 			$(CVInput).each(function(){
 				if (!window[CVFunction]($(this).val())) { 
-					$(this).parents('.form-group').addClass('has-error').removeClass('has-success');
+					if(settings.styling){ $(this).parents('.form-group').addClass('has-error').removeClass('has-success'); }
 					formError = CVMessage;
 				}
 				else{
-					$(this).parents('.form-group').removeClass('has-error').addClass('has-success');
+					if(settings.styling){ $(this).parents('.form-group').removeClass('has-error').addClass('has-success'); }
 				}
 			});
 		}
 		
 		//Send error
 		if(formError !== false){
-			showAlert(formErrorTitle,formError,'medium');
+			//Bootbox alert
+			bootbox.alert({
+				title: formErrorTitle,
+				message: formError,
+				size: settings.size,
+				backdrop: true,
+				className: settings.align,
+			});
+			
 			event.preventDefault();
 		}
 		
@@ -236,15 +248,16 @@ $.fn.validateForm = function(options)
 			bootbox.confirm({
 				title: formConfirmTitle,
 				message: formConfirmText,
-				size: 'medium',
+				size: settings.size,
 				backdrop: true,
+				className: settings.align,
 				callback: function(result){
 					if(result){
 						formElement.unbind("submit").submit();
 						if(settings.resetSubmit){
 							formElement.trigger('reset');
-							formElement.find('.form-group').removeClass('has-error');
-							formElement.find('.form-group').removeClass('has-success');
+							if(settings.styling){ formElement.find('.form-group').removeClass('has-error'); }
+							if(settings.styling){ formElement.find('.form-group').removeClass('has-success'); }
 							formElement.find("input[type='checkbox']").prop('checked', false).parent().removeClass('active');
 							formElement.find("input[type='radio']").prop('checked', false).parent().removeClass('active');
 						}
@@ -254,9 +267,6 @@ $.fn.validateForm = function(options)
 						});
 					}
 				}
-			}).on("shown.bs.modal", function(){
-				//Disable button auto-focus
-				$(".modal .modal-footer .btn:focus").blur();
 			});
 		}
 		
@@ -553,10 +563,14 @@ function textSize(container, fontsize)
 }
 
 //Show alert modal box using BootBox plugin
-function showAlert(title, text, size)
+function showAlert(title, text, size, align)
 {
 	if(size === undefined || size === null || size == ''){  //Empty value
 		size = 'medium';
+	}
+	
+	if(align === undefined || align === null || align == ''){  //Empty value
+		align = '';
 	}
 	
 	//Bootbox alert
@@ -564,18 +578,20 @@ function showAlert(title, text, size)
 		title: title,
         message: text,
         size: size,
-		backdrop: true
-    }).on("shown.bs.modal", function(){
-		//Disable button auto-focus
-		$(".modal .modal-footer .btn:focus").blur();
-	});
+		backdrop: true,
+		className: align,
+    });
 }
 
 //Show alert modal box using BootBox plugin (Content)
-function showContent(title, element, size)
+function showContent(title, element, size, align)
 {
 	if(size === undefined || size === null || size == ''){  //Empty value
 		size = 'medium';
+	}
+	
+	if(align === undefined || align === null || align == ''){  //Empty value
+		align = '';
 	}
 	
 	//Bootbox alert
@@ -583,18 +599,20 @@ function showContent(title, element, size)
 		title: title,
         message: $(element).html(),
         size: size,
-		backdrop: true
-    }).on("shown.bs.modal", function(){
-		//Disable button auto-focus
-		$(".modal .modal-footer .btn:focus").blur();
-	});
+		backdrop: true,
+		className: align,
+    });
 }
 
 //Show alert modal box using BootBox plugin (Ajax)
-function showAjax(title, fullurl, size, loading, debug)
+function showAjax(title, fullurl, size, align, loading, debug)
 {
 	if(size === undefined || size === null || size == ''){  //Empty value
 		size = 'medium';
+	}
+	
+	if(align === undefined || align === null || align == ''){  //Empty value
+		align = '';
 	}
 	
 	if(loading === undefined || loading === null || loading == ''){  //Empty value
@@ -624,8 +642,14 @@ function showAjax(title, fullurl, size, loading, debug)
 			if(debug){
 				console.log("showAjax Loaded!");
 			}
-			//Show content
-			showAlert(title,data,size);
+			//Bootbox alert
+			bootbox.alert({
+				title: title,
+				message: data,
+				size: size,
+				backdrop: true,
+				className: align,
+			});
 			//Remove loading icon
 			if(loading){
 				$(".JSloading").remove();
@@ -676,7 +700,7 @@ function vimeoParser(url)
 }
 
 //Video launch modal box function
-function videoLaunch(url, share, title, autoplay)
+function videoLaunch(url, share, title, autoplay, size, align)
 {	
 	if(share === undefined || share === null || share == ''){  //Empty value
 		share = false;
@@ -688,6 +712,14 @@ function videoLaunch(url, share, title, autoplay)
 	
 	if(autoplay === undefined || autoplay === null || autoplay == ''){  //Empty value
 		autoplay = false;
+	}
+	
+	if(size === undefined || size === null || size == ''){  //Empty value
+		size = 'large';
+	}
+	
+	if(align === undefined || align === null || align == ''){  //Empty value
+		align = '';
 	}
 	
 	var ID;
@@ -745,11 +777,10 @@ function videoLaunch(url, share, title, autoplay)
 	bootbox.alert({
 		title: title,
 		message: content,
-		size: 'large',
-		backdrop: true
+		size: size,
+		backdrop: true,
+		className: align,
 	}).on("shown.bs.modal", function(){
-		//Disable button auto-focus
-		$(".modal .modal-footer .btn:focus").blur();
 		//Modify facebook src
 		if (url.indexOf('facebook') >= 0){
 			var videoLaunchIframeSRC = $(".JSvideoLaunchIframe iframe").attr("src");
@@ -889,6 +920,16 @@ function checkDisabledLink(string)
 {	
 	var textUrl = string;
 	var exceptions = checkDisabledExceptions;
+	var size = checkDisabledAlignment[0];
+	var align = checkDisabledAlignment[1];
+	
+	if(size === undefined || size === null || size == ''){  //Empty value
+		size = 'medium';
+	}
+	
+	if(align === undefined || align === null || align == ''){  //Empty value
+		align = '';
+	}
 	
 	//Exception 1
 	for (var i = exceptions.length - 1; i >= 0; --i){
@@ -905,7 +946,14 @@ function checkDisabledLink(string)
 		if(textUrl.indexOf(window.location.host) <= 0){
 			//Show alert
 			var section = textUrl.split('#')[1].replace(/-/g,' ');
-			showAlert(section,lang('@disabled-text'));
+			//Bootbox alert
+			bootbox.alert({
+				title: section,
+				message: lang('@disabled-text'),
+				size: size,
+				backdrop: true,
+				className: align,
+			});
 			return false;
 		}
 		else{
@@ -931,7 +979,17 @@ function windowPopup(element, errortitle, errormsg)
 	var getSize = $(element).data('win-size').split('x');
 	var getAlign = $(element).data('win-align').split(',');
 	var getScroll = $(element).data('win-scroll');
+	var getModalSize = $(element).data('win-modal-size');
+	var getModalAlign = $(element).data('win-modal-align');
 	var isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini|BB10|PlayBook|MeeGo/i.test(navigator.userAgent);
+	
+	if(getModalSize === undefined || getModalSize === null || getModalSize == ''){  //Empty value
+		getModalSize = 'small';
+	}
+	
+	if(getModalAlign === undefined || getModalAlign === null || getModalAlign == ''){  //Empty value
+		getModalAlign = '';
+	}
 	
 	//Horizontal Align
 	if(getAlign[0]==="right"){
@@ -971,7 +1029,14 @@ function windowPopup(element, errortitle, errormsg)
 									"directories=no");
 	if(!newWin || newWin.closed || typeof newWin.closed == 'undefined') 
 	{ 
-		showAlert(errortitle, errormsg, 'small');
+		//Bootbox alert
+		bootbox.alert({
+			title: errortitle,
+			message: errormsg,
+			size: getModalSize,
+			backdrop: true,
+			className: getModalAlign,
+		});
 	}
 }
 
@@ -985,12 +1050,22 @@ function mapLaunch(element)
 	var mapIcon2 = mainUrl+"/css/icons/maplaunch/waze.png";
 	var mapCoords1 = $(element).data('map-coords-1').split(',');
 	var mapCoords2 = $(element).data('map-coords-2').split(',');
+	var mapModalSize = $(element).data('map-size');
+	var mapModalAlign = $(element).data('map-align');
 	var mapAddress = $(element).data('map-address');
 	var mapAddressUrl = encodeURI(mapAddress).replace(/%20/g,'+');
 	var mapLaunchUrl1 = isMobile ? 'http://maps.google.com/maps?q='+mapCoords1[0]+','+mapCoords1[1]+','+mapCoords1[2]+'z' : 
 										   'https://www.google.cl/maps/search/'+mapAddressUrl+'/@'+mapCoords1[0]+','+mapCoords1[1]+','+mapCoords1[2]+'z';
 	var mapLaunchUrl2 = isMobile ? 'waze://?ll='+mapCoords2[0]+','+mapCoords2[1]+'&navigate=yes' : 
 										   'https://www.waze.com/livemap?zoom='+mapCoords2[2]+'&lat='+mapCoords2[0]+'&lon='+mapCoords2[1];
+	
+	if(mapModalSize === undefined || mapModalSize === null || mapModalSize == ''){  //Empty value
+		mapModalSize = 'small';
+	}
+	
+	if(mapModalAlign === undefined || mapModalAlign === null || mapModalAlign == ''){  //Empty value
+		mapModalAlign = '';
+	}
 	
 	mapContent = '<div class="JSmapLaunchInfo">'+
 				'	<span class="label label-primary">'+mapText+'</span>'+
@@ -1005,7 +1080,14 @@ function mapLaunch(element)
 				'	<div class="well">'+mapAddress+'</div>'+
 				'</div>';
 	
-	showAlert(mapTitle, mapContent, 'small');
+	//Bootbox alert
+	bootbox.alert({
+		title: mapTitle,
+        message: mapContent,
+        size: mapModalSize,
+		backdrop: true,
+		className: mapModalAlign,
+    });
 }
 
 //Paginator group
@@ -1119,6 +1201,11 @@ $(document).ready(function(){
 				
 				return checkFinal;
 			};
+	
+	//Disable button auto-focus
+	$(document).on("shown.bs.modal", function(){
+		$(".modal .modal-footer .btn:focus").blur();
+	});
 	
 	//Map Launch on click
 	$(document).on("click", ".JSwindowPopup", function(){

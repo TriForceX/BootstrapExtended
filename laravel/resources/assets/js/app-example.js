@@ -44,6 +44,9 @@ $(document).ready(function(){
 		hasConfirm: true,
 		customValidate: ['validateCustom', '#example-input-custom', 'Custom error alert message.'],
 		resetSubmit: true,
+		styling: true,
+		size: 'medium',
+		align: 'top',
 	});
 	
 	//Example test URL
@@ -51,6 +54,9 @@ $(document).ready(function(){
 	
 	//Example aditional exceptions for disabled links
 	checkDisabledExceptions.push('#example');
+	
+	//Example aditional exceptions custom size & alignment
+	checkDisabledAlignment = ['small','center'];
 	
 /* ================================================= DOCUMENT READY ================================================= */
 
