@@ -24,6 +24,9 @@ Base structure for web sites with reusable parts of source code or functions mai
 - jQuery Browser
 - jQuery Rotate
 - PHP Mailer
+- Font Awesome
+- Moment JS
+- Tempus Dominus
 
 # Functions & Code Snippets
 - HTML header data class
