@@ -25,7 +25,7 @@
 	
 	<!-- ******** CSS FILES ******** -->
 	
-	<!-- Tab & App Icons -->
+	<!-- Nav Tab & App Icons -->
 	<link href="{{ url('assets/img/icons/favicon/all.png') }}" rel="shortcut icon">
 	<link href="{{ url('assets/img/icons/favicon/apple.png') }}" rel="apple-touch-icon">
 	<!-- jQuery UI CSS -->
@@ -37,7 +37,7 @@
 	<!-- Bootstrap theme -->
 	<link href="{{ url('assets/resources/bootstrap/css/bootstrap-theme.min.css') }}" rel="stylesheet">
 	<!-- Bootstrap Data Tables -->
-	<link href="{{ url('assets/resources/datatables/css/jquery.dataTables.min.css') }}" rel="stylesheet">
+	<link href="{{ url('assets/resources/datatables/css/dataTables.bootstrap.min.css') }}" rel="stylesheet">
 	<!-- LightGallery Lightbox -->
 	<link href="{{ url('assets/resources/lightgallery/css/lightgallery.css') }}" rel="stylesheet">
 	<link href="{{ url('assets/resources/lightgallery/css/lg-transitions.css') }}" rel="stylesheet">
@@ -118,8 +118,9 @@
 <script src="{{ url('assets/resources/bootbox/js/bootbox.min.js') }}"></script>
 <!-- Holder JS Images -->
 <script src="{{ url('assets/resources/holder/js/holder.min.js') }}"></script>
-<!-- Bootstrap 3 Data Tables -->
+<!-- Bootstrap Data Tables -->
 <script src="{{ url('assets/resources/datatables/js/jquery.dataTables.min.js') }}"></script>
+<script src="{{ url('assets/resources/datatables/js/dataTables.bootstrap.min.js') }}"></script>
 <!-- imgLiquid Fix -->
 <script src="{{ url('assets/resources/imgliquid/js/imgliquid.min.js') }}"></script>
 <!-- LightGallery Lightbox -->

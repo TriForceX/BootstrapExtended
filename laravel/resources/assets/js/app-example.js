@@ -44,9 +44,9 @@ $(document).ready(function(){
 		hasConfirm: true,
 		customValidate: ['validateCustom', '#example-input-custom', 'Custom error alert message.'],
 		resetSubmit: true,
-		styling: true,
-		size: 'medium',
-		align: 'top',
+		errorStyling: true,
+		modalSize: 'medium',
+		modalAlign: 'top',
 	});
 	
 	//Example test URL

@@ -291,7 +291,7 @@
 		</table>
 
 		<div class="bs-example table-responsive">
-			<table class="table-striped cell-border JSdataTables" data-paging="true" data-searching="true" data-info="true" data-ordering="true" cellspacing="0" cellpadding="0" border="0">
+			<table class="table table-striped table-bordered JSdataTables" data-paging="true" data-searching="true" data-info="true" data-ordering="true" cellspacing="0" cellpadding="0" border="0">
 				<thead>
 					<tr>
 						<th>Name</th>
@@ -763,7 +763,7 @@
 			</table>
 		</div>
 		<figure class="highlight">
-			<pre><code class="language-html" data-lang="html">&lt;table class="JSdataTables" data-paging="true" data-searching="true" data-info="true" data-ordering="true"&gt;<br>...<br>&lt;/table&gt;</code></pre>
+			<pre><code class="language-html" data-lang="html">&lt;table class="table table-striped table-bordered JSdataTables" data-paging="true" data-searching="true" data-info="true" data-ordering="true"&gt;<br>...<br>&lt;/table&gt;</code></pre>
 		</figure>
 
 		<!-- Show alert example -->
@@ -808,12 +808,12 @@
 	<p>Launch a modal box with a basic video player, the function structure is <code>videoLaunch(url, share, title, autoplay, size, align)</code>. You can alternatively set a size and alignment classes like <code>horizontal vertical</code> (For example: <b>right center</b>).</p>
 
 		<div class="bs-example">
-			<button type="button" class="btn btn-primary" onclick="videoLaunch('https://www.youtube.com/watch?v=ae6aeo9-Kn8', true, 'My YouTube Video', true)">YouTube Video</button>
+			<button type="button" class="btn btn-primary" onclick="videoLaunch('https://youtube.com/watch?v=ae6aeo9-Kn8', true, 'My YouTube Video', true, 'medium', 'center')">YouTube Video (Medium Size & Centered)</button>
 			<button type="button" class="btn btn-primary" onclick="videoLaunch('https://vimeo.com/214352663', false, 'My Vimeo Video', false)">Vimeo Video (No share URL + No AutoPlay)</button>
-			<button type="button" class="btn btn-primary" onclick="videoLaunch('https://www.facebook.com/1399203336817784/videos/1470830192988431',true, 'My Facebook Video',false)">Facebook Video (No AutoPlay)</button>
+			<button type="button" class="btn btn-primary" onclick="videoLaunch('https://facebook.com/1399203336817784/videos/1470830192988431',true, 'My Facebook Video',false)">Facebook Video (No AutoPlay)</button>
 		</div>
 		<figure class="highlight">
-			<pre><code class="language-html" data-lang="html">&lt;a onclick="videoLaunch('https://www.youtube.com/watch?v=ae6aeo9-Kn8', true, 'My YouTube Video', true)">Click Here&lt;/a&gt;<br>&lt;a onclick="videoLaunch('https://vimeo.com/214352663', false, 'My Vimeo Video', false)">Click Here&lt;/a&gt;<br>&lt;a onclick="videoLaunch('https://www.facebook.com/1399203336817784/videos/1470830192988431',true, 'My Facebook Video', false)">Click Here&lt;/a&gt;</code></pre>
+			<pre><code class="language-html" data-lang="html">&lt;a onclick="videoLaunch('https://youtube.com/watch?v=ae6aeo9-Kn8', true, 'My YouTube Video', true, 'medium', 'center')">Click Here&lt;/a&gt;<br>&lt;a onclick="videoLaunch('https://vimeo.com/214352663', false, 'My Vimeo Video', false)">Click Here&lt;/a&gt;<br>&lt;a onclick="videoLaunch('https://facebook.com/1399203336817784/videos/1470830192988431',true, 'My Facebook Video', false)">Click Here&lt;/a&gt;</code></pre>
 		</figure>
 
 		<!-- Window popup example -->
@@ -1018,9 +1018,9 @@
 	hasConfirm: true,
 	customValidate: null,
 	resetSubmit: true,
-	styling: true,
-	size: 'medium',
-	align: 'top',
+	errorStyling: true,
+	modalSize: 'medium',
+	modalAlign: 'top',
 });</code></pre>
 		</figure>
 		

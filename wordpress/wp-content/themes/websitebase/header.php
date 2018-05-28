@@ -25,7 +25,7 @@
 	
 	<!-- ******** CSS FILES ******** -->
 	
-	<!-- Tab & App Icons -->
+	<!-- Nav Tab & App Icons -->
 	<link href="<?php echo get_bloginfo('template_url'); ?>/img/icons/favicon/all.png" rel="shortcut icon">
 	<link href="<?php echo get_bloginfo('template_url'); ?>/img/icons/favicon/apple.png" rel="apple-touch-icon"/>
 	<!-- jQuery UI CSS -->
@@ -37,7 +37,7 @@
 	<!-- Bootstrap theme -->
 	<link href="<?php echo get_bloginfo('template_url'); ?>/resources/bootstrap/css/bootstrap-theme.min.css" rel="stylesheet">
 	<!-- Bootstrap Data Tables -->
-	<link href="<?php echo get_bloginfo('template_url'); ?>/resources/datatables/css/jquery.dataTables.min.css" rel="stylesheet">
+	<link href="<?php echo get_bloginfo('template_url'); ?>/resources/datatables/css/dataTables.bootstrap.min.css" rel="stylesheet">
 	<!-- LightGallery Lightbox -->
 	<link href="<?php echo get_bloginfo('template_url'); ?>/resources/lightgallery/css/lightgallery.css" rel="stylesheet">
 	<link href="<?php echo get_bloginfo('template_url'); ?>/resources/lightgallery/css/lg-transitions.css" rel="stylesheet">

@@ -80,9 +80,9 @@ $.fn.validateForm = function(options)
 		hasConfirm		: false,
 		customValidate	: null,
 		resetSubmit		: true,
-		styling			: true,
-		size			: 'medium',
-		align			: '',
+		errorStyling	: true,
+		modalSize		: 'medium',
+		modalAlign		: '',
 	}, options);
 	
 	$(this).submit(function(event){ 
@@ -107,22 +107,22 @@ $.fn.validateForm = function(options)
 		//Select inputs
 		$(this).find('select').not(settings.noValidate).each(function(){
 			if (!validateEmpty($(this).find("option:selected").attr("value"))) { 
-				if(settings.styling){ $(this).parents('.form-group').addClass('has-error').removeClass('has-success'); }
+				if(settings.errorStyling){ $(this).parents('.form-group').addClass('has-error').removeClass('has-success'); }
 				formError = formErrorText.select;
 			}
 			else{
-				if(settings.styling){ $(this).parents('.form-group').removeClass('has-error').addClass('has-success'); }
+				if(settings.errorStyling){ $(this).parents('.form-group').removeClass('has-error').addClass('has-success'); }
 			}
 		});
 		
 		//Textarea inputs
 		$(this).find('textarea').not(settings.noValidate).each(function(){
 			if (!validateEmpty($.trim($(this).val()))) { 
-				if(settings.styling){ $(this).parents('.form-group').addClass('has-error').removeClass('has-success'); }
+				if(settings.errorStyling){ $(this).parents('.form-group').addClass('has-error').removeClass('has-success'); }
 				formError = formErrorText.textarea;
 			}
 			else{
-				if(settings.styling){ $(this).parents('.form-group').removeClass('has-error').addClass('has-success'); }
+				if(settings.errorStyling){ $(this).parents('.form-group').removeClass('has-error').addClass('has-success'); }
 			}
 		});
 		
@@ -139,11 +139,11 @@ $.fn.validateForm = function(options)
 			}
 			
 			if(!check){
-				if(settings.styling){ item.parents('.form-group').addClass('has-error').removeClass('has-success'); }
+				if(settings.errorStyling){ item.parents('.form-group').addClass('has-error').removeClass('has-success'); }
 				formError = formErrorText[type];
 			}
 			else{
-				if(settings.styling){ item.parents('.form-group').removeClass('has-error').addClass('has-success'); }
+				if(settings.errorStyling){ item.parents('.form-group').removeClass('has-error').addClass('has-success'); }
 			}
 		});
 		
@@ -152,56 +152,56 @@ $.fn.validateForm = function(options)
 			switch($(this).attr("type")){
 				case 'text':
 					if (!validateEmpty($(this).val())) { 
-						if(settings.styling){ $(this).parents('.form-group').addClass('has-error').removeClass('has-success'); }
+						if(settings.errorStyling){ $(this).parents('.form-group').addClass('has-error').removeClass('has-success'); }
 						formError = formErrorText.text;
 					}
 					else{
-						if(settings.styling){ $(this).parents('.form-group').removeClass('has-error').addClass('has-success'); }
+						if(settings.errorStyling){ $(this).parents('.form-group').removeClass('has-error').addClass('has-success'); }
 					}
 					break;
 				case 'number':
 					if (!validateEmpty($(this).val()) || !validateNumber($(this).val())) { 
-						if(settings.styling){ $(this).parents('.form-group').addClass('has-error').removeClass('has-success'); }
+						if(settings.errorStyling){ $(this).parents('.form-group').addClass('has-error').removeClass('has-success'); }
 						formError = formErrorText.number;
 					}
 					else{
-						if(settings.styling){ $(this).parents('.form-group').removeClass('has-error').addClass('has-success'); }
+						if(settings.errorStyling){ $(this).parents('.form-group').removeClass('has-error').addClass('has-success'); }
 					}
 					break;
 				case 'tel':
 					if (!validateEmpty($(this).val())) { 
-						if(settings.styling){ $(this).parents('.form-group').addClass('has-error').removeClass('has-success'); }
+						if(settings.errorStyling){ $(this).parents('.form-group').addClass('has-error').removeClass('has-success'); }
 						formError = formErrorText.tel;
 					}
 					else{
-						if(settings.styling){ $(this).parents('.form-group').removeClass('has-error').addClass('has-success'); }
+						if(settings.errorStyling){ $(this).parents('.form-group').removeClass('has-error').addClass('has-success'); }
 					}
 					break;
 				case 'email':
 					if (!validateEmpty($(this).val()) || !validateEmail($(this).val())) { 
-						if(settings.styling){ $(this).parents('.form-group').addClass('has-error').removeClass('has-success'); }
+						if(settings.errorStyling){ $(this).parents('.form-group').addClass('has-error').removeClass('has-success'); }
 						formError = formErrorText.email;
 					}
 					else{
-						if(settings.styling){ $(this).parents('.form-group').removeClass('has-error').addClass('has-success'); }
+						if(settings.errorStyling){ $(this).parents('.form-group').removeClass('has-error').addClass('has-success'); }
 					}
 					break;
 				case 'password':
 					if (!validateEmpty($(this).val())) { 
-						if(settings.styling){ $(this).parents('.form-group').addClass('has-error').removeClass('has-success'); }
+						if(settings.errorStyling){ $(this).parents('.form-group').addClass('has-error').removeClass('has-success'); }
 						formError = formErrorText.pass;
 					}
 					else{
-						if(settings.styling){ $(this).parents('.form-group').removeClass('has-error').addClass('has-success'); }
+						if(settings.errorStyling){ $(this).parents('.form-group').removeClass('has-error').addClass('has-success'); }
 					}
 					break;
 				case 'search':
 					if (!validateEmpty($(this).val())) { 
-						if(settings.styling){ $(this).parents('.form-group').addClass('has-error').removeClass('has-success'); }
+						if(settings.errorStyling){ $(this).parents('.form-group').addClass('has-error').removeClass('has-success'); }
 						formError = formErrorText.search;
 					}
 					else{
-						if(settings.styling){ $(this).parents('.form-group').removeClass('has-error').addClass('has-success'); }
+						if(settings.errorStyling){ $(this).parents('.form-group').removeClass('has-error').addClass('has-success'); }
 					}
 					break;
 				default: break;
@@ -216,11 +216,11 @@ $.fn.validateForm = function(options)
 			
 			$(CVInput).each(function(){
 				if (!window[CVFunction]($(this).val())) { 
-					if(settings.styling){ $(this).parents('.form-group').addClass('has-error').removeClass('has-success'); }
+					if(settings.errorStyling){ $(this).parents('.form-group').addClass('has-error').removeClass('has-success'); }
 					formError = CVMessage;
 				}
 				else{
-					if(settings.styling){ $(this).parents('.form-group').removeClass('has-error').addClass('has-success'); }
+					if(settings.errorStyling){ $(this).parents('.form-group').removeClass('has-error').addClass('has-success'); }
 				}
 			});
 		}
@@ -231,9 +231,9 @@ $.fn.validateForm = function(options)
 			bootbox.alert({
 				title: formErrorTitle,
 				message: formError,
-				size: settings.size,
+				size: settings.modalSize,
 				backdrop: true,
-				className: settings.align,
+				className: settings.modalAlign,
 			});
 			
 			event.preventDefault();
@@ -248,16 +248,16 @@ $.fn.validateForm = function(options)
 			bootbox.confirm({
 				title: formConfirmTitle,
 				message: formConfirmText,
-				size: settings.size,
+				size: settings.modalSize,
 				backdrop: true,
-				className: settings.align,
+				className: settings.modalAlign,
 				callback: function(result){
 					if(result){
 						formElement.unbind("submit").submit();
 						if(settings.resetSubmit){
 							formElement.trigger('reset');
-							if(settings.styling){ formElement.find('.form-group').removeClass('has-error'); }
-							if(settings.styling){ formElement.find('.form-group').removeClass('has-success'); }
+							if(settings.errorStyling){ formElement.find('.form-group').removeClass('has-error'); }
+							if(settings.errorStyling){ formElement.find('.form-group').removeClass('has-success'); }
 							formElement.find("input[type='checkbox']").prop('checked', false).parent().removeClass('active');
 							formElement.find("input[type='radio']").prop('checked', false).parent().removeClass('active');
 						}
@@ -798,7 +798,7 @@ function videoLaunch(url, share, title, autoplay, size, align)
 	});
 
 	//Clipboard
-	var clipboard = new Clipboard('.JSvideoLaunchURL');
+	var clipboard = new ClipboardJS('.JSvideoLaunchURL');
 
 	clipboard.on('success', function(){
 		$('.JSvideoLaunchText').tooltip('show');
