@@ -1073,7 +1073,7 @@ function mapLaunch(element)
 				'		<a href="'+mapLaunchUrl1+'" target="_blank">'+
 				'			<img src="'+mapIcon1+'">'+
 				'		</a>'+
-				'		<a href="'+mapLaunchUrl2+'" target="_blank">'+
+				'		<a class="JSmapLaunchAlert" href="'+mapLaunchUrl2+'" target="_blank">'+
 				'			<img src="'+mapIcon2+'">'+
 				'		</a>'+
 				'	</div>'+
@@ -1224,6 +1224,13 @@ $(document).ready(function(){
 			e.preventDefault();
 		}
 	});
+	
+	//Check Map Launch Alert
+	$(document).on("click", '.JSmapLaunchAlert', function(e){
+		if (isMobile && !confirm(lang('@maplaunch-alert'))){
+		  e.preventDefault();
+		}
+    });
 	
 	//Load Responsive Code
 	responsiveCode();

@@ -72,6 +72,10 @@ var language = {
 					en: 'Select one of options below',
 					es: 'Seleccione una de las opciones',
 				},
+				'@maplaunch-alert': {
+					en: 'We remind you that you must have this app installed on your device. Do you want to continue?',
+					es: 'Le recordamos que debe tener esta aplicación instalada en su dispositivo. ¿Desea continuar?',
+				},
 				//Lightgallery
 				'@lgtitle-prev': {
 					en: 'Loading previous page ...',
