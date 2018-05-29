@@ -1050,40 +1050,61 @@ function mapLaunch(element)
 	var mapIcon2 = mainUrl+"/css/icons/maplaunch/waze.png";
 	var mapCoords1 = $(element).data('map-coords-1').split(',');
 	var mapCoords2 = $(element).data('map-coords-2').split(',');
-	var mapModalSize = $(element).data('map-size');
-	var mapModalAlign = $(element).data('map-align');
+	var mapIframe = toBoolean($(element).data('map-iframe'));
+	var mapModalSize = $(element).data('map-modal-size');
+	var mapModalAlign = $(element).data('map-modal-align');
 	var mapAddress = $(element).data('map-address');
 	var mapAddressUrl = encodeURI(mapAddress).replace(/%20/g,'+');
 	var mapLaunchUrl1 = isMobile ? 'http://maps.google.com/maps?q='+mapCoords1[0]+','+mapCoords1[1]+','+mapCoords1[2]+'z' : 
-										   'https://www.google.cl/maps/search/'+mapAddressUrl+'/@'+mapCoords1[0]+','+mapCoords1[1]+','+mapCoords1[2]+'z';
+										   'https://www.google.com/maps/search/'+mapAddressUrl+'/@'+mapCoords1[0]+','+mapCoords1[1]+','+mapCoords1[2]+'z';
 	var mapLaunchUrl2 = isMobile ? 'waze://?ll='+mapCoords2[0]+','+mapCoords2[1]+'&navigate=yes' : 
 										   'https://www.waze.com/livemap?zoom='+mapCoords2[2]+'&lat='+mapCoords2[0]+'&lon='+mapCoords2[1];
 	
+	if(mapIframe === undefined || mapIframe === null || mapIframe == ''){  //Empty value
+		mapIframe = false;
+	}
+	
 	if(mapModalSize === undefined || mapModalSize === null || mapModalSize == ''){  //Empty value
-		mapModalSize = 'small';
+		mapModalSize = mapIframe == false ? 'small' : 'medium';
 	}
 	
 	if(mapModalAlign === undefined || mapModalAlign === null || mapModalAlign == ''){  //Empty value
 		mapModalAlign = '';
 	}
 	
-	mapContent = '<div class="JSmapLaunchInfo">'+
-				'	<span class="label label-primary">'+mapText+'</span>'+
-				'	<div class="JSmapLaunchIcons">'+
-				'		<a href="'+mapLaunchUrl1+'" target="_blank">'+
-				'			<img src="'+mapIcon1+'">'+
-				'		</a>'+
-				'		<a class="JSmapLaunchAlert" href="'+mapLaunchUrl2+'" target="_blank">'+
-				'			<img src="'+mapIcon2+'">'+
-				'		</a>'+
-				'	</div>'+
-				'	<div class="well">'+mapAddress+'</div>'+
-				'</div>';
+	mapContentStyle1 = '<div class="JSmapLaunchInfo">'+
+						'	<span class="label label-primary">'+mapText+'</span>'+
+						'	<div class="JSmapLaunchIcons">'+
+						'		<a href="'+mapLaunchUrl1+'" target="_blank">'+
+						'			<img src="'+mapIcon1+'">'+
+						'		</a>'+
+						'		<a class="JSmapLaunchAlert" href="'+mapLaunchUrl2+'" target="_blank">'+
+						'			<img src="'+mapIcon2+'">'+
+						'		</a>'+
+						'	</div>'+
+						'	<div class="well mb-0 mt-3">'+mapAddress+'</div>'+
+						'</div>';
+	
+	mapContentStyle2 = '<div class="JSmapLaunchInfo">'+
+						'	<div class="well mb-4">'+mapAddress+'</div>'+
+						'	<div class="JSmapLaunchIframe embed-responsive embed-responsive-16by9">'+
+						'		<iframe class="embed-responsive-item" src="http://maps.google.com/maps?q='+mapAddressUrl+'&z='+mapCoords1[2]+'&output=embed" frameborder="0" allowfullscreen></iframe>'+
+						'	</div>'+
+						'	<span class="label label-primary">'+mapText+'</span>'+
+						'	<div class="JSmapLaunchIcons small">'+
+						'		<a href="'+mapLaunchUrl1+'" target="_blank">'+
+						'			<img src="'+mapIcon1+'">'+
+						'		</a>'+
+						'		<a class="JSmapLaunchAlert" href="'+mapLaunchUrl2+'" target="_blank">'+
+						'			<img src="'+mapIcon2+'">'+
+						'		</a>'+
+						'	</div>'+
+						'</div>';
 	
 	//Bootbox alert
 	bootbox.alert({
 		title: mapTitle,
-        message: mapContent,
+        message: mapIframe == false ? mapContentStyle1 : mapContentStyle2,
         size: mapModalSize,
 		backdrop: true,
 		className: mapModalAlign,

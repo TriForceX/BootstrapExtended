@@ -1,7 +1,6 @@
 <?php get_header(); ?>
 
 <!-- ================================================= NAV MENU ================================================= -->
-
 <nav class="navbar navbar-inverse navbar-fixed-top">
 	<div class="container">
 		<div class="navbar-header">
@@ -26,24 +25,29 @@
 				<li class="dropdown">
 					<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Resources <span class="caret"></span></a>
 					<ul class="dropdown-menu" role="menu">
-						<li><a href="https://datatables.net/examples/styling/bootstrap.html" target="_blank">Data Tables</a></li>
-						<li><a href="http://sachinchoolur.github.io/lightGallery/" target="_blank">Light Gallery</a></li>
-						<li><a href="http://holderjs.com/" target="_blank">Holder JS</a></li>
 						<li><a href="http://bootboxjs.com/" target="_blank">BootBox JS</a></li>
-						<li><a href="https://github.com/karacas/imgLiquid" target="_blank">ImgLiquid JS</a></li>
-						<li><a href="http://labs.rampinteractive.co.uk/touchSwipe/demos/" target="_blank">Touch Swipe</a></li>
+						<li><a href="http://getbootstrap.com/docs/3.3/" target="_blank">Bootstrap</a></li>
 						<li><a href="https://clipboardjs.com/" target="_blank">Clipboard JS</a></li>
+						<li><a href="https://datatables.net/examples/styling/bootstrap.html" target="_blank">Data Tables</a></li>
+						<li><a href="http://fontawesome.io/" target="_blank">Font Awesome</a></li>
+						<li><a href="http://holderjs.com/" target="_blank">Holder JS</a></li>
                         <li><a href="http://ianlunn.github.io/Hover/" target="_blank">Hover CSS</a></li>
-                        <li><a href="https://masonry.desandro.com/" target="_blank">Masonry JS</a></li>
-						<li><a href="https://jqueryui.com/" target="_blank">jQuery UI</a></li>
+                        <li><a href="https://github.com/aFarkas/html5shiv" target="_blank">HTML5 Shiv</a></li>
+						<li><a href="https://github.com/karacas/imgLiquid" target="_blank">ImgLiquid JS</a></li>
+						<li><a href="https://jquery.com/" target="_blank">jQuery</a></li>
+						<li><a href="https://github.com/pupunzi/jquery.mb.browser" target="_blank">jQuery Browser</a></li>
 						<li><a href="https://github.com/js-cookie/js-cookie" target="_blank">jQuery Cookie</a></li>
 						<li><a href="https://github.com/kayahr/jquery-fullscreen-plugin" target="_blank">jQuery Fullscreen</a></li>
-						<li><a href="https://github.com/pupunzi/jquery.mb.browser" target="_blank">jQuery Browser</a></li>
 						<li><a href="http://jqueryrotate.com/" target="_blank">jQuery Rotate</a></li>
-						<li><a href="https://github.com/PHPMailer/PHPMailer/" target="_blank">PHP Mailer</a></li>
-						<li><a href="http://fontawesome.io/" target="_blank">Font Awesome</a></li>
+						<li><a href="https://jqueryui.com/" target="_blank">jQuery UI</a></li>
+						<li><a href="http://sachinchoolur.github.io/lightGallery/" target="_blank">Light Gallery</a></li>
+                        <li><a href="https://masonry.desandro.com/" target="_blank">Masonry JS</a></li>
 						<li><a href="https://github.com/moment/moment" target="_blank">Moment JS</a></li>
+						<li><a href="https://github.com/chuckcarpenter/REM-unit-polyfill" target="_blank">REM Unit Polyfill</a></li>
+						<li><a href="https://github.com/scottjehl/Respond" target="_blank">Respond JS</a></li>
 						<li><a href="https://tempusdominus.github.io/bootstrap-3/" target="_blank">Tempus Dominus</a></li>
+						<li><a href="http://labs.rampinteractive.co.uk/touchSwipe/demos/" target="_blank">Touch Swipe</a></li>
+						<li><a href="https://github.com/PHPMailer/PHPMailer/" target="_blank">PHP Mailer</a></li>
 					</ul>
 				</li>
 				<li class="dropdown">
@@ -111,7 +115,8 @@
 			<p>This template consists of two main parts, <code>header</code> and <code>footer</code>, which are called from the <code>index</code> (or pages). The <code>CSS</code> and <code>JS</code> files are called from a <code>PHP</code> file.</p>
 		</div>
 		
-		<!-- Header example -->
+		<!-- Header Example -->
+		
 		<div class="page-header">
 			<h1>Header <span class="label label-primary">Template</span></h1>
 		</div>
@@ -128,17 +133,20 @@
 		</figure>
 		
 		<p>
-		<div class="panel panel-default">
-			<div class="panel-heading">
-				<h3 class="panel-title">Note for HTML data</h3>
+			<div class="panel panel-default">
+				<div class="panel-heading">
+					<h3 class="panel-title">Note for HTML data</h3>
+				</div>
+				<div class="panel-body">
+					Main HTML data for <i>meta tags</i> are located in <code>functions.php</code> using an extended function from PHP utilities. <i>php::get_html_data()</i>
+				</div>
 			</div>
-			<div class="panel-body">
-				Main HTML data for <i>meta tags</i> are located in <code>functions.php</code> using an extended function from PHP utilities. <i>php::get_html_data()</i>
-			</div>
-		</div>
 		</p>
+	
+		<!-- Header Example -->
 		
-		<!-- Index/page example -->
+		<!-- Index / Page Example -->
+	
 		<div class="page-header">
 			<h1>Page <span class="label label-primary">Template</span></h1>
 		</div>
@@ -147,8 +155,11 @@
 		<figure class="highlight">
 			<pre><code class="language-html" data-lang="html">&lt;?php include('header.php'); ?&gt;<br>&lt;div class="content"&gt;<br>...<br>&lt;/div&gt;<br>&lt;?php include('footer.php'); ?&gt;</code></pre>
 		</figure>
+	
+		<!-- Index / Page Example -->
 		
-		<!-- Footer example -->
+		<!-- Footer Example -->
+	
 		<div class="page-header">
 			<h1>Footer <span class="label label-primary">Template</span></h1>
 		</div>
@@ -163,17 +174,20 @@
 		</figure>
 		
 		<p>
-		<div class="panel panel-default">
-			<div class="panel-heading">
-				<h3 class="panel-title">Note for main PHP Functions</h3>
+			<div class="panel panel-default">
+				<div class="panel-heading">
+					<h3 class="panel-title">Note for main PHP Functions</h3>
+				</div>
+				<div class="panel-body">
+					You can use the PHP functions from the main library like <i>php::function()</i>, If you will use <b>Wordpress</b> (or another CMS) is highly recommended to use their main functions instead the base here. For example for <b>Wordpress</b> use <code>get_bloginfo('template_url')</code> instead <code>php::get_main_url()</code> and <code>get_header()</code>, <code>get_footer()</code> instead <code>include('header.php')</code>, <code>include('footer.php')</code>
+				</div>
 			</div>
-			<div class="panel-body">
-				You can use the PHP functions from the main library like <i>php::function()</i>, If you will use <b>Wordpress</b> (or another CMS) is highly recommended to use their main functions instead the base here. For example for <b>Wordpress</b> use <code>get_bloginfo('template_url')</code> instead <code>php::get_main_url()</code> and <code>get_header()</code>, <code>get_footer()</code> instead <code>include('header.php')</code>, <code>include('footer.php')</code>
-			</div>
-		</div>
 		</p>
+
+		<!-- Footer Example -->
 		
-		<!-- Utilities example -->
+		<!-- Utilities Example -->
+
 		<div class="page-header">
 			<h1>Utilities <span class="label label-primary">Functions</span></h1>
 		</div>
@@ -188,15 +202,17 @@
 		</div>
 
 		<p>
-		<div class="panel panel-default">
-			<div class="panel-heading">
-				<h3 class="panel-title">Note to begin a website</h3>
+			<div class="panel panel-default">
+				<div class="panel-heading">
+					<h3 class="panel-title">Note to begin a website</h3>
+				</div>
+				<div class="panel-body">
+					If you want to start a new website using this, i recommend to delete the <b>example code</b>. For <code>HTML</code> open <b>index.php</b> and delete the <b>nav menu</b> <i>(first &lt;nav&gt; tag)</i> and remove the class <b>theme-showcase</b> from the <b>container</b> element <i>(&lt;div class="container"&gt;)</i>. For <code>CSS</code> delete the file <b>style-extras.css</b> and open <b>style-extras.php</b> and delete or comment the included <b>style-example.css</b> line <i>('../css/style-example.css')</i>. Finally for <code>JS</code> open <b>app-ready.js</b>, <b>app-load.js</b> and <b>app-responsive.js</b> and delete or comment all code examples <i>(Beginning with //Example ...)</i>
+				</div>
 			</div>
-			<div class="panel-body">
-				If you want to start a new website using this, i recommend to delete the <b>example code</b>. For <code>HTML</code> open <b>index.php</b> and delete the <b>nav menu</b> <i>(first &lt;nav&gt; tag)</i> and remove the class <b>theme-showcase</b> from the <b>container</b> element <i>(&lt;div class="container"&gt;)</i>. For <code>CSS</code> delete the file <b>style-extras.css</b> and open <b>style-extras.php</b> and delete or comment the included <b>style-example.css</b> line <i>('../css/style-example.css')</i>. Finally for <code>JS</code> open <b>app-ready.js</b>, <b>app-load.js</b> and <b>app-responsive.js</b> and delete or comment all code examples <i>(Beginning with //Example ...)</i>
-			</div>
-		</div>
 		</p>
+
+		<!-- Utilities Example -->
 		
 		<!-- ******** TEMPLATE EXAMPLES ******** -->
 		
@@ -209,7 +225,8 @@
 			<p>This template contains a <code>PHP</code> files to call <code>JS</code> and <code>CSS</code> files which are ordered and minified for a better reading.</p>
 		</div>
 		
-		<!-- CSS example -->
+		<!-- CSS Example -->
+
 		<div class="page-header">
 			<h1>CSS <span class="label label-success">Template</span></h1>
 		</div>
@@ -272,8 +289,11 @@
 			</div>
 		</div>
 		</p>
+
+		<!-- CSS Example -->
 		
-		<!-- JS example -->
+		<!-- JS Example -->
+
 		<div class="page-header">
 			<h1>JS <span class="label label-success">Template</span></h1>
 		</div>
@@ -339,6 +359,8 @@
 			</div>
 		</div>
 		</p>
+
+		<!-- JS Example -->
 		
 		<!-- ******** CSS/JS EXAMPLES ******** -->
 		
@@ -346,13 +368,17 @@
 		
 		<!-- ******** RESOURCES EXAMPLES ******** -->
 
-		<!-- Section description -->
+		<!-- Section Description -->
+
 		<div class="jumbotron">
 			<h1>Resources Examples</h1>
 			<p>Some useful code functions and improvments in <code>PHP</code> or <code>JS</code> using the included resources in this repository.</p>
 		</div>
 
-		<!-- lightGallery examples -->
+		<!-- Section Description -->
+
+		<!-- lightGallery Example -->
+
 		<div class="page-header">
 			<h1>Light Gallery <span class="label label-danger">Plugin</span></h1>
 		</div>
@@ -423,7 +449,6 @@
 
 		<div class="bs-example">
 
-			<?php //echo isset($_GET["page-2"]) ? 'Page 2' : 'Page 1' ?>
 			<div class="row JSlightGallery" data-lg-item="auto" data-lg-title="Gallery Title" data-lg-thumb="true" data-lg-gallery="true" data-lg-download="true">
 				<?php if($_GET["page"]!="2"): ?>
 				<div class="col-md-3">
@@ -492,7 +517,10 @@
 			<pre><code class="language-html" data-lang="html">&lt;div class="JSlightGallery" data-lg-item="auto" data-lg-title="Gallery Title" data-lg-thumb="true" data-lg-gallery="true" data-lg-download="true"&gt;<br>...<br>&lt;/div&gt;</code></pre>
 		</figure>
 
-		<!-- Data Tables example -->
+		<!-- lightGallery Example -->
+
+		<!-- Data Tables Example -->
+
 		<div class="page-header">
 			<h1>Data Tables <span class="label label-danger">Plugin</span></h1>
 		</div>
@@ -1002,7 +1030,10 @@
 			<pre><code class="language-html" data-lang="html">&lt;table class="table table-striped table-bordered JSdataTables" data-paging="true" data-searching="true" data-info="true" data-ordering="true"&gt;<br>...<br>&lt;/table&gt;</code></pre>
 		</figure>
 
-		<!-- Show alert example -->
+		<!-- Data Tables Example -->
+
+		<!-- Show Alert example -->
+
 		<div class="page-header">
 			<h1>Show Alert BootBox <span class="label label-danger">Plugin</span></h1>
 		</div>
@@ -1017,8 +1048,11 @@
 		<figure class="highlight">
 			<pre><code class="language-html" data-lang="html">&lt;a onclick="showAlert('Small Size Box','This is a text shown in a modal box','small','center')">Click Here&lt;/a&gt;<br>&lt;a onclick="showAlert('Medium Size Box','This is a text shown in a modal box')">Click Here&lt;/a&gt;<br>&lt;a onclick="showAlert('Large Size Box','This is a text shown in a modal box','large')">Click Here&lt;/a&gt;<br>&lt;a onclick="showAlert('Extra Large Size Box','This is a text shown in a modal box','extra-large')">Click Here&lt;/a&gt;</code></pre>
 		</figure>
+
+		<!-- Show Alert example -->
 		
-		<!-- Show alert example -->
+		<!-- Show Content Example -->
+
 		<div class="page-header">
 			<h1>Show Content BootBox <span class="label label-danger">Plugin</span></h1>
 		</div>
@@ -1037,11 +1071,14 @@
 			<pre><code class="language-html" data-lang="html">&lt;a onclick="showContent('Small Size Box','.showContentExample','small')">Click Here&lt;/a&gt;<br>&lt;a onclick="showContent('Medium Size Box','.showContentExample')">Click Here&lt;/a&gt;<br>&lt;a onclick="showContent('Large Size Box','.showContentExample','large')">Click Here&lt;/a&gt;<br>&lt;a onclick="showContent('Extra Large Size Box','.showContentExample','extra-large')">Click Here&lt;/a&gt;</code></pre>
 		</figure>
 
-		<!-- Video launch example -->
+		<!-- Show Content Example -->
+
+		<!-- Video Launch Example -->
+
 		<div class="page-header">
 			<h1>Video Launch <span class="label label-danger">Custom</span></h1>
 		</div>
-	<p>Launch a modal box with a basic video player, the function structure is <code>videoLaunch(url, share, title, autoplay, size, align)</code>. You can alternatively set a size and alignment classes like <code>horizontal vertical</code> (For example: <b>right center</b>).</p>
+		<p>Launch a modal box with a basic video player, the function structure is <code>videoLaunch(url, share, title, autoplay, size, align)</code>. You can alternatively set a size and alignment classes like <code>horizontal vertical</code> (For example: <b>right center</b>).</p>
 
 		<div class="bs-example">
 			<button type="button" class="btn btn-primary" onclick="videoLaunch('https://youtube.com/watch?v=ae6aeo9-Kn8', true, 'My YouTube Video', true, 'medium', 'center')">YouTube Video (Medium Size & Centered)</button>
@@ -1052,7 +1089,10 @@
 			<pre><code class="language-html" data-lang="html">&lt;a onclick="videoLaunch('https://youtube.com/watch?v=ae6aeo9-Kn8', true, 'My YouTube Video', true, 'medium', 'center')">Click Here&lt;/a&gt;<br>&lt;a onclick="videoLaunch('https://vimeo.com/214352663', false, 'My Vimeo Video', false)">Click Here&lt;/a&gt;<br>&lt;a onclick="videoLaunch('https://facebook.com/1399203336817784/videos/1470830192988431',true, 'My Facebook Video', false)">Click Here&lt;/a&gt;</code></pre>
 		</figure>
 
-		<!-- Window popup example -->
+		<!-- Video Launch Example -->
+
+		<!-- Window Popup Example -->
+
 		<div class="page-header">
 			<h1>Window Pop-Up <span class="label label-danger">Custom</span></h1>
 		</div>
@@ -1101,8 +1141,68 @@
 		<figure class="highlight">
 			<pre><code class="language-html" data-lang="html">&lt;a class="JSwindowPopup" data-win-url="http://getbootstrap.com/docs/3.3" data-win-size="640x480" data-win-align="center,center" data-win-scroll="yes">Click Here&lt;/a&gt;<br>&lt;a class="JSwindowPopup" data-win-url="http://getbootstrap.com/docs/3.3" data-win-size="320x480" data-win-align="right,bottom" data-win-scroll="yes">Click Here&lt;/a&gt;<br>&lt;a class="JSwindowPopup" data-win-url="http://getbootstrap.com/docs/3.3" data-win-size="320x480" data-win-align="left,top" data-win-scroll="yes">Click Here&lt;/a&gt;</code></pre>
 		</figure>
+				
+		<!-- Window Popup Example -->
+				
+		<!-- Map launch example -->
 
-		<!-- Form validation -->
+		<div class="page-header">
+			<h1>Map Launch <span class="label label-danger">Custom</span></h1>
+		</div>
+		<p>Show a modal box with map options such as <i>Google Maps</i> and <i>Waze</i>. Below you will find an improved usage method via <code>data-map-attributes</code>.</p>
+
+		<table class="table table-bordered table-striped js-options-table">
+			<thead>
+				<tr>
+					<th>Name</th>
+					<th>Description</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td>data-map-address</td>
+					<td>The map address to search</code>
+					</td>
+				</tr>
+				<tr>
+					<td>data-map-coords-1</td>
+					<td>Desired address coords from <b>Google Maps</b> <code>latitude</code>, <code>longitude</code>, <code>zoom</code>
+					</td>
+				</tr>
+				<tr>
+					<td>data-map-coords-2</td>
+					<td>Desired address coords from <b>Waze</b> <code>latitude</code>, <code>longitude</code>, <code>zoom</code>
+					</td>
+				</tr>
+				<tr>
+					<td>data-map-iframe</td>
+					<td>Alternative to show an iframe for <code>Google Maps</code> with <code>true</code> or <code>false</code> 
+					</td>
+				</tr>
+				<tr>
+					<td>data-map-modal-size</td>
+					<td>Alternative to set modal size classes like <code>small</code>, <code>medium</code>, <code>large</code> or <code>extra-large</code>
+					</td>
+				</tr>
+				<tr>
+					<td>data-map-modal-align</td>
+					<td>Alternative to set modal alignment classes like <code>horizontal vertical</code> (For example: <b>right center</b>)
+					</td>
+				</tr>
+			</tbody>
+		</table>
+
+		<div class="bs-example">
+			<button type="button" class="btn btn-primary JSmapLaunch" data-map-address="Renato Sánchez 4265, Las Condes, Santiago, Chile" data-map-coords-1="-33.4176466,-70.585256,17" data-map-coords-2="-33.41748,-70.58519,17" data-map-iframe="true">Show Map Launch</button>
+		</div>
+		<figure class="highlight">
+			<pre><code class="language-html" data-lang="html">&lt;button type="button" class="btn btn-primary JSmapLaunch" data-map-address="Renato Sánchez 4265, Las Condes, Santiago, Chile" data-map-coords-1="-33.4176466,-70.585256,17" data-map-coords-2="-33.41748,-70.58519,17" data-map-iframe="true"&gt;Show Map Launch&lt;/button&gt;</code></pre>
+		</figure>
+
+		<!-- Map Launch Example -->
+
+		<!-- Form Validation -->
+
 		<div class="page-header">
 			<h1>Form Validation <span class="label label-danger">Custom</span></h1>
 		</div>
@@ -1259,61 +1359,17 @@
 	modalAlign: 'top',
 });</code></pre>
 		</figure>
-		
-		<!-- Map launch example -->
-		<div class="page-header">
-			<h1>Map Launch <span class="label label-danger">Custom</span></h1>
-		</div>
-		<p>Show a modal box with map options such as <i>Google Maps</i> and <i>Waze</i>. Below you will find an improved usage method via <code>data-map-attributes</code>.</p>
 
-		<table class="table table-bordered table-striped js-options-table">
-			<thead>
-				<tr>
-					<th>Name</th>
-					<th>Description</th>
-				</tr>
-			</thead>
-			<tbody>
-				<tr>
-					<td>data-map-address</td>
-					<td>The map address to search</code>
-					</td>
-				</tr>
-				<tr>
-					<td>data-map-coords-1</td>
-					<td>Desired address coords from <b>Google Maps</b> <code>latitude</code>, <code>longitude</code>, <code>zoom</code>
-					</td>
-				</tr>
-				<tr>
-					<td>data-map-coords-2</td>
-					<td>Desired address coords from <b>Waze</b> <code>latitude</code>, <code>longitude</code>, <code>zoom</code>
-					</td>
-				</tr>
-				<tr>
-					<td>data-map-modal-size</td>
-					<td>Alternative to set modal size classes like <code>small</code>, <code>medium</code>, <code>large</code> or <code>extra-large</code>
-					</td>
-				</tr>
-				<tr>
-					<td>data-map-modal-align</td>
-					<td>Alternative to set model alignment classes like <code>horizontal vertical</code> (For example: <b>right center</b>)
-					</td>
-				</tr>
-			</tbody>
-		</table>
+		<!-- Form Validation -->
 
-		<div class="bs-example">
-			<button type="button" class="btn btn-primary JSmapLaunch" data-map-address="Renato Sánchez 4265, Las Condes, Santiago, Chile" data-map-coords-1="-33.4176466,-70.585256,17" data-map-coords-2="-33.41748,-70.58519,17">Show Map Launch</button>
-		</div>
-		<figure class="highlight">
-			<pre><code class="language-html" data-lang="html">&lt;button type="button" class="btn btn-primary JSmapLaunch" data-map-address="Renato Sánchez 4265, Las Condes, Santiago, Chile" data-map-coords-1="-33.4176466,-70.585256,17" data-map-coords-2="-33.41748,-70.58519,17"&gt;Show Map Launch&lt;/button&gt;</code></pre>
-		</figure>
+		<!-- More Functions -->
 
-		<!-- More functions -->
 		<div class="page-header">
 			<h1>More functions! <span class="label label-danger">JS & PHP</span></h1>
 		</div>
 		<p>There is more functions in the whole code, just play and try it. Remember to check <code>app-base.js</code>, <code>functions.php</code> and <code>main.php</code> for more stuff. Also you can find more info about the resources in the main menu.</p>
+
+		<!-- More Functions -->
 
 		<!-- ******** RESOURCES EXAMPLES ******** -->
 
@@ -1321,11 +1377,14 @@
 		
 		<!-- ******** CSS EXAMPLES ******** -->
 
-		<!-- Section description -->
+		<!-- Section Description -->
+
 		<div class="jumbotron">
 			<h1>CSS Resources</h1>
 			<p>Some custom classes to use in addition to <code>CSS</code> included in this repository.</p>
 		</div>
+
+		<!-- Section Description -->
 
 		<!-- Float BS4 example -->
 
@@ -1383,6 +1442,7 @@
 		<!-- Float BS4 example -->
 
 		<!-- Spacing BS4 example -->
+
 		<div class="page-header">
 			<h1>Spacing <span class="label label-danger">BS4</span></h1>
 		</div>
@@ -1602,7 +1662,8 @@
 
 		<!-- Text Align BS4 example -->
 
-		<!-- Carousel example -->
+		<!-- Carousel Rxample -->
+
 		<div class="page-header">
 			<h1>Carousel <span class="label label-danger">Custom</span></h1>
 		</div>
@@ -1672,11 +1733,16 @@
 			</a>
 		</div>
 
-		<!-- More functions -->
+		<!-- Carousel Rxample -->
+
+		<!-- More Functions -->
+
 		<div class="page-header">
 			<h1>More Classes! <span class="label label-danger">CSS</span></h1>
 		</div>
 		<p>There is more classes in the whole code, just play and try it. Remember to check <code>style-base.css</code> or <code>style-bootstrap.css</code> for more stuff <i>(Some of are commented, just copy them in a new file)</i>.</p>
+
+		<!-- More Functions -->
 
 		<!-- ******** CSS EXAMPLES ******** -->
 

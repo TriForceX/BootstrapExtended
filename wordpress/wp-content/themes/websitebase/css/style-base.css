@@ -215,8 +215,9 @@ a.ui-button:active,
 	height:auto;
 	margin-bottom: 10px;
 }
+
 .JSvideoLaunchIframe iframe{
-	border-radius:10px;
+	border: 0px;
 }
 .JSvideoLaunchURL{
 	display:inline-block;
@@ -343,14 +344,22 @@ a.ui-button:active,
 	height:auto;
 	text-align:center;
 }
+.JSmapLaunchIframe{
+	background-color: #DDD;
+	display:inline-block;
+	width:100%;
+	height:auto;
+	margin-bottom: 10px;
+}
+.JSmapLaunchIframe iframe{
+	border: 0px;
+}
 .JSmapLaunchInfo span{
 	font-size: 14px;
 }
 .JSmapLaunchInfo .well{
 	padding: 10px;
 	font-style: italic;
-	margin-bottom: 0px;
-	margin-top: 10px;
 }
 .JSmapLaunchInfo > .JSmapLaunchIcons{
 	display:inline-block;
@@ -363,6 +372,9 @@ a.ui-button:active,
 	height: auto;
 	vertical-align: middle;
 	margin: 0px 5px;
+}
+.JSmapLaunchInfo > .JSmapLaunchIcons.small img{
+	width: 60px;
 }
 /*JS Map Launch*/
 

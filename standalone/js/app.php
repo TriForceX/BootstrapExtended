@@ -12,7 +12,7 @@ echo '/*
  * 
  */';
 
-require_once('../resources/php/main.php');
+require_once('../resources/php/utilities.php');
 require_once('../resources/php/minifier/minifier.php');
 
 class php extends utilities\php { }

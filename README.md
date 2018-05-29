@@ -8,25 +8,29 @@ Base structure for web sites with reusable parts of source code or functions mai
 - Wordpress Support *(Ver 4.9.4)*
 - Laravel Support *(Ver 5.2, only CSS, JS, Home & Layout)*
 - Bootstrap 3 *(Ver 3.3.7)*
-- Font Awesome *(Ver 4.7.0)*
-- Data Tables
-- Light Gallery
-- Holder JS
 - BootBox JS
-- ImgLiquid JS
-- Touch Swipe
+- Bootstrap
 - Clipboard JS
+- Data Tables
+- Font Awesome
+- Holder JS
 - Hover CSS
-- Masonry JS
-- jQuery UI
+- HTML5 Shiv
+- ImgLiquid JS
+- jQuery
+- jQuery Browser
 - jQuery Cookie
 - jQuery Fullscreen
-- jQuery Browser
 - jQuery Rotate
-- PHP Mailer
-- Font Awesome
+- jQuery UI
+- Light Gallery
+- Masonry JS
 - Moment JS
+- REM Unit Polyfill
+- Respond JS
 - Tempus Dominus
+- Touch Swipe
+- PHP Mailer
 
 # Functions & Code Snippets
 - HTML header data class
@@ -82,17 +86,13 @@ Base structure for web sites with reusable parts of source code or functions mai
 	- Check validations for home page, mobile and navigators
 - CSS Features:
 	- Some features from Bootstrap 4
-	- Custom fade transition for Bootstrap carousel
-	- Disable shadows for Bootstrap carousel controls
-	- Custom datepicker colors
-	- Custom Bootstrap tooltip colors
-	- Custom loading container for ajax purposes
-	- Custom form checkbox & radio style
-	- Custom form icons for input and select
-	- Custom padding, margin, width and height
-	- Custom vertical align classes
-	- Collection of custom CSS3 hover effects
-	- Included "BebasNeue" example font 
+	- Custom Bootstrap's carousel classes
+	- Custom Datepicker colors
+	- Custom Bootstrap's tooltip colors
+	- Custom loading classes for ajax purposes
+	- Custom form validation classes
+	- Collection of CSS3 hover effects
+	- Included "BebasNeue" example font face
 - Wordpress Features:
 	- Custom database configuration for wp-config
 	- Cron enable/disable
@@ -124,5 +124,15 @@ Base structure for web sites with reusable parts of source code or functions mai
 - LAMP Server (Linux)
 - XAMPP Server (All)
 
-# For Web Masters
+# Questions & Answers
+1. Why Bootstrap 3.3.7 instead the newer Bootstrap 4?
+   - In a few words, BS4 dropped the compatibility in **Internet Explorer 8 and 9**. Some people is still using **Windows 7** and this comes with **IE8** by default.
+   
+2. There's some stuff still not working on **Internet Explorer 8 and 9**, what about that?
+   - I am aware of that, but i don't intend to get website working completely 100% in **IE8** or **IE9**, but at least i want to show website "navigable" and not destroyed.
+
+3. Can i use this stuff in plain HTML instead the PHP Standalone?
+   - Yes, but you need to remove all the **PHP** stuff. Just copy the *Standalone* structure in **HTML** Files, remove **PHP** stuff, and call the **CSS / JS** files manually.
+
+# About
 I coded the most of the code snippets and functions *(from scratch or searching the whole internet)*. About the included libraries im not the author, but i try to let other people find the best way to use them *(original authors are linked in the demo page)*. If you have any question feel free to contact me at triforce@gznetwork.com

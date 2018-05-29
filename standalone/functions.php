@@ -10,7 +10,7 @@
  */
 
 //Get the PHP utilities file
-require('resources/php/main.php');
+require('resources/php/utilities.php');
 
 //PHP error handler
 if(isset($_GET['debug'])){

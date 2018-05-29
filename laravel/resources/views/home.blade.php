@@ -3,7 +3,6 @@
 @section('content')
 
 <!-- ================================================= NAV MENU ================================================= -->
-
 <nav class="navbar navbar-inverse navbar-fixed-top">
 	<div class="container">
 		<div class="navbar-header">
@@ -28,24 +27,29 @@
 				<li class="dropdown">
 					<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Resources <span class="caret"></span></a>
 					<ul class="dropdown-menu" role="menu">
-						<li><a href="https://datatables.net/examples/styling/bootstrap.html" target="_blank">Data Tables</a></li>
-						<li><a href="http://sachinchoolur.github.io/lightGallery/" target="_blank">Light Gallery</a></li>
-						<li><a href="http://holderjs.com/" target="_blank">Holder JS</a></li>
 						<li><a href="http://bootboxjs.com/" target="_blank">BootBox JS</a></li>
-						<li><a href="https://github.com/karacas/imgLiquid" target="_blank">ImgLiquid JS</a></li>
-						<li><a href="http://labs.rampinteractive.co.uk/touchSwipe/demos/" target="_blank">Touch Swipe</a></li>
+						<li><a href="http://getbootstrap.com/docs/3.3/" target="_blank">Bootstrap</a></li>
 						<li><a href="https://clipboardjs.com/" target="_blank">Clipboard JS</a></li>
+						<li><a href="https://datatables.net/examples/styling/bootstrap.html" target="_blank">Data Tables</a></li>
+						<li><a href="http://fontawesome.io/" target="_blank">Font Awesome</a></li>
+						<li><a href="http://holderjs.com/" target="_blank">Holder JS</a></li>
                         <li><a href="http://ianlunn.github.io/Hover/" target="_blank">Hover CSS</a></li>
-                        <li><a href="https://masonry.desandro.com/" target="_blank">Masonry JS</a></li>
-						<li><a href="https://jqueryui.com/" target="_blank">jQuery UI</a></li>
+                        <li><a href="https://github.com/aFarkas/html5shiv" target="_blank">HTML5 Shiv</a></li>
+						<li><a href="https://github.com/karacas/imgLiquid" target="_blank">ImgLiquid JS</a></li>
+						<li><a href="https://jquery.com/" target="_blank">jQuery</a></li>
+						<li><a href="https://github.com/pupunzi/jquery.mb.browser" target="_blank">jQuery Browser</a></li>
 						<li><a href="https://github.com/js-cookie/js-cookie" target="_blank">jQuery Cookie</a></li>
 						<li><a href="https://github.com/kayahr/jquery-fullscreen-plugin" target="_blank">jQuery Fullscreen</a></li>
-						<li><a href="https://github.com/pupunzi/jquery.mb.browser" target="_blank">jQuery Browser</a></li>
 						<li><a href="http://jqueryrotate.com/" target="_blank">jQuery Rotate</a></li>
-						<li><a href="https://github.com/PHPMailer/PHPMailer/" target="_blank">PHP Mailer</a></li>
-						<li><a href="http://fontawesome.io/" target="_blank">Font Awesome</a></li>
+						<li><a href="https://jqueryui.com/" target="_blank">jQuery UI</a></li>
+						<li><a href="http://sachinchoolur.github.io/lightGallery/" target="_blank">Light Gallery</a></li>
+                        <li><a href="https://masonry.desandro.com/" target="_blank">Masonry JS</a></li>
 						<li><a href="https://github.com/moment/moment" target="_blank">Moment JS</a></li>
+						<li><a href="https://github.com/chuckcarpenter/REM-unit-polyfill" target="_blank">REM Unit Polyfill</a></li>
+						<li><a href="https://github.com/scottjehl/Respond" target="_blank">Respond JS</a></li>
 						<li><a href="https://tempusdominus.github.io/bootstrap-3/" target="_blank">Tempus Dominus</a></li>
+						<li><a href="http://labs.rampinteractive.co.uk/touchSwipe/demos/" target="_blank">Touch Swipe</a></li>
+						<li><a href="https://github.com/PHPMailer/PHPMailer/" target="_blank">PHP Mailer</a></li>
 					</ul>
 				</li>
 				<li class="dropdown">
@@ -110,13 +114,17 @@
 		
 		<!-- ******** RESOURCES EXAMPLES ******** -->
 
-		<!-- Section description -->
+		<!-- Section Description -->
+
 		<div class="jumbotron">
 			<h1>Resources Examples</h1>
 			<p>Some useful code functions and improvments in <code>PHP</code> or <code>JS</code> using the included resources in this repository.</p>
 		</div>
 
-		<!-- lightGallery examples -->
+		<!-- Section Description -->
+
+		<!-- lightGallery Example -->
+
 		<div class="page-header">
 			<h1>Light Gallery <span class="label label-danger">Plugin</span></h1>
 		</div>
@@ -187,7 +195,6 @@
 
 		<div class="bs-example">
 
-			<?php //echo isset($_GET["page-2"]) ? 'Page 2' : 'Page 1' ?>
 			<div class="row JSlightGallery" data-lg-item="auto" data-lg-title="Gallery Title" data-lg-thumb="true" data-lg-gallery="true" data-lg-download="true">
 				<?php if($_GET["page"]!="2"): ?>
 				<div class="col-md-3">
@@ -256,7 +263,10 @@
 			<pre><code class="language-html" data-lang="html">&lt;div class="JSlightGallery" data-lg-item="auto" data-lg-title="Gallery Title" data-lg-thumb="true" data-lg-gallery="true" data-lg-download="true"&gt;<br>...<br>&lt;/div&gt;</code></pre>
 		</figure>
 
-		<!-- Data Tables example -->
+		<!-- lightGallery Example -->
+
+		<!-- Data Tables Example -->
+
 		<div class="page-header">
 			<h1>Data Tables <span class="label label-danger">Plugin</span></h1>
 		</div>
@@ -766,7 +776,10 @@
 			<pre><code class="language-html" data-lang="html">&lt;table class="table table-striped table-bordered JSdataTables" data-paging="true" data-searching="true" data-info="true" data-ordering="true"&gt;<br>...<br>&lt;/table&gt;</code></pre>
 		</figure>
 
-		<!-- Show alert example -->
+		<!-- Data Tables Example -->
+
+		<!-- Show Alert example -->
+
 		<div class="page-header">
 			<h1>Show Alert BootBox <span class="label label-danger">Plugin</span></h1>
 		</div>
@@ -781,8 +794,11 @@
 		<figure class="highlight">
 			<pre><code class="language-html" data-lang="html">&lt;a onclick="showAlert('Small Size Box','This is a text shown in a modal box','small','center')">Click Here&lt;/a&gt;<br>&lt;a onclick="showAlert('Medium Size Box','This is a text shown in a modal box')">Click Here&lt;/a&gt;<br>&lt;a onclick="showAlert('Large Size Box','This is a text shown in a modal box','large')">Click Here&lt;/a&gt;<br>&lt;a onclick="showAlert('Extra Large Size Box','This is a text shown in a modal box','extra-large')">Click Here&lt;/a&gt;</code></pre>
 		</figure>
+
+		<!-- Show Alert example -->
 		
-		<!-- Show alert example -->
+		<!-- Show Content Example -->
+
 		<div class="page-header">
 			<h1>Show Content BootBox <span class="label label-danger">Plugin</span></h1>
 		</div>
@@ -801,11 +817,14 @@
 			<pre><code class="language-html" data-lang="html">&lt;a onclick="showContent('Small Size Box','.showContentExample','small')">Click Here&lt;/a&gt;<br>&lt;a onclick="showContent('Medium Size Box','.showContentExample')">Click Here&lt;/a&gt;<br>&lt;a onclick="showContent('Large Size Box','.showContentExample','large')">Click Here&lt;/a&gt;<br>&lt;a onclick="showContent('Extra Large Size Box','.showContentExample','extra-large')">Click Here&lt;/a&gt;</code></pre>
 		</figure>
 
-		<!-- Video launch example -->
+		<!-- Show Content Example -->
+
+		<!-- Video Launch Example -->
+
 		<div class="page-header">
 			<h1>Video Launch <span class="label label-danger">Custom</span></h1>
 		</div>
-	<p>Launch a modal box with a basic video player, the function structure is <code>videoLaunch(url, share, title, autoplay, size, align)</code>. You can alternatively set a size and alignment classes like <code>horizontal vertical</code> (For example: <b>right center</b>).</p>
+		<p>Launch a modal box with a basic video player, the function structure is <code>videoLaunch(url, share, title, autoplay, size, align)</code>. You can alternatively set a size and alignment classes like <code>horizontal vertical</code> (For example: <b>right center</b>).</p>
 
 		<div class="bs-example">
 			<button type="button" class="btn btn-primary" onclick="videoLaunch('https://youtube.com/watch?v=ae6aeo9-Kn8', true, 'My YouTube Video', true, 'medium', 'center')">YouTube Video (Medium Size & Centered)</button>
@@ -816,7 +835,10 @@
 			<pre><code class="language-html" data-lang="html">&lt;a onclick="videoLaunch('https://youtube.com/watch?v=ae6aeo9-Kn8', true, 'My YouTube Video', true, 'medium', 'center')">Click Here&lt;/a&gt;<br>&lt;a onclick="videoLaunch('https://vimeo.com/214352663', false, 'My Vimeo Video', false)">Click Here&lt;/a&gt;<br>&lt;a onclick="videoLaunch('https://facebook.com/1399203336817784/videos/1470830192988431',true, 'My Facebook Video', false)">Click Here&lt;/a&gt;</code></pre>
 		</figure>
 
-		<!-- Window popup example -->
+		<!-- Video Launch Example -->
+
+		<!-- Window Popup Example -->
+
 		<div class="page-header">
 			<h1>Window Pop-Up <span class="label label-danger">Custom</span></h1>
 		</div>
@@ -865,8 +887,68 @@
 		<figure class="highlight">
 			<pre><code class="language-html" data-lang="html">&lt;a class="JSwindowPopup" data-win-url="http://getbootstrap.com/docs/3.3" data-win-size="640x480" data-win-align="center,center" data-win-scroll="yes">Click Here&lt;/a&gt;<br>&lt;a class="JSwindowPopup" data-win-url="http://getbootstrap.com/docs/3.3" data-win-size="320x480" data-win-align="right,bottom" data-win-scroll="yes">Click Here&lt;/a&gt;<br>&lt;a class="JSwindowPopup" data-win-url="http://getbootstrap.com/docs/3.3" data-win-size="320x480" data-win-align="left,top" data-win-scroll="yes">Click Here&lt;/a&gt;</code></pre>
 		</figure>
+				
+		<!-- Window Popup Example -->
+				
+		<!-- Map launch example -->
 
-		<!-- Form validation -->
+		<div class="page-header">
+			<h1>Map Launch <span class="label label-danger">Custom</span></h1>
+		</div>
+		<p>Show a modal box with map options such as <i>Google Maps</i> and <i>Waze</i>. Below you will find an improved usage method via <code>data-map-attributes</code>.</p>
+
+		<table class="table table-bordered table-striped js-options-table">
+			<thead>
+				<tr>
+					<th>Name</th>
+					<th>Description</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td>data-map-address</td>
+					<td>The map address to search</code>
+					</td>
+				</tr>
+				<tr>
+					<td>data-map-coords-1</td>
+					<td>Desired address coords from <b>Google Maps</b> <code>latitude</code>, <code>longitude</code>, <code>zoom</code>
+					</td>
+				</tr>
+				<tr>
+					<td>data-map-coords-2</td>
+					<td>Desired address coords from <b>Waze</b> <code>latitude</code>, <code>longitude</code>, <code>zoom</code>
+					</td>
+				</tr>
+				<tr>
+					<td>data-map-iframe</td>
+					<td>Alternative to show an iframe for <code>Google Maps</code> with <code>true</code> or <code>false</code> 
+					</td>
+				</tr>
+				<tr>
+					<td>data-map-modal-size</td>
+					<td>Alternative to set modal size classes like <code>small</code>, <code>medium</code>, <code>large</code> or <code>extra-large</code>
+					</td>
+				</tr>
+				<tr>
+					<td>data-map-modal-align</td>
+					<td>Alternative to set modal alignment classes like <code>horizontal vertical</code> (For example: <b>right center</b>)
+					</td>
+				</tr>
+			</tbody>
+		</table>
+
+		<div class="bs-example">
+			<button type="button" class="btn btn-primary JSmapLaunch" data-map-address="Renato Sánchez 4265, Las Condes, Santiago, Chile" data-map-coords-1="-33.4176466,-70.585256,17" data-map-coords-2="-33.41748,-70.58519,17" data-map-iframe="true">Show Map Launch</button>
+		</div>
+		<figure class="highlight">
+			<pre><code class="language-html" data-lang="html">&lt;button type="button" class="btn btn-primary JSmapLaunch" data-map-address="Renato Sánchez 4265, Las Condes, Santiago, Chile" data-map-coords-1="-33.4176466,-70.585256,17" data-map-coords-2="-33.41748,-70.58519,17" data-map-iframe="true"&gt;Show Map Launch&lt;/button&gt;</code></pre>
+		</figure>
+
+		<!-- Map Launch Example -->
+
+		<!-- Form Validation -->
+
 		<div class="page-header">
 			<h1>Form Validation <span class="label label-danger">Custom</span></h1>
 		</div>
@@ -1023,61 +1105,17 @@
 	modalAlign: 'top',
 });</code></pre>
 		</figure>
-		
-		<!-- Map launch example -->
-		<div class="page-header">
-			<h1>Map Launch <span class="label label-danger">Custom</span></h1>
-		</div>
-		<p>Show a modal box with map options such as <i>Google Maps</i> and <i>Waze</i>. Below you will find an improved usage method via <code>data-map-attributes</code>.</p>
 
-		<table class="table table-bordered table-striped js-options-table">
-			<thead>
-				<tr>
-					<th>Name</th>
-					<th>Description</th>
-				</tr>
-			</thead>
-			<tbody>
-				<tr>
-					<td>data-map-address</td>
-					<td>The map address to search</code>
-					</td>
-				</tr>
-				<tr>
-					<td>data-map-coords-1</td>
-					<td>Desired address coords from <b>Google Maps</b> <code>latitude</code>, <code>longitude</code>, <code>zoom</code>
-					</td>
-				</tr>
-				<tr>
-					<td>data-map-coords-2</td>
-					<td>Desired address coords from <b>Waze</b> <code>latitude</code>, <code>longitude</code>, <code>zoom</code>
-					</td>
-				</tr>
-				<tr>
-					<td>data-map-modal-size</td>
-					<td>Alternative to set modal size classes like <code>small</code>, <code>medium</code>, <code>large</code> or <code>extra-large</code>
-					</td>
-				</tr>
-				<tr>
-					<td>data-map-modal-align</td>
-					<td>Alternative to set model alignment classes like <code>horizontal vertical</code> (For example: <b>right center</b>)
-					</td>
-				</tr>
-			</tbody>
-		</table>
+		<!-- Form Validation -->
 
-		<div class="bs-example">
-			<button type="button" class="btn btn-primary JSmapLaunch" data-map-address="Renato Sánchez 4265, Las Condes, Santiago, Chile" data-map-coords-1="-33.4176466,-70.585256,17" data-map-coords-2="-33.41748,-70.58519,17">Show Map Launch</button>
-		</div>
-		<figure class="highlight">
-			<pre><code class="language-html" data-lang="html">&lt;button type="button" class="btn btn-primary JSmapLaunch" data-map-address="Renato Sánchez 4265, Las Condes, Santiago, Chile" data-map-coords-1="-33.4176466,-70.585256,17" data-map-coords-2="-33.41748,-70.58519,17"&gt;Show Map Launch&lt;/button&gt;</code></pre>
-		</figure>
+		<!-- More Functions -->
 
-		<!-- More functions -->
 		<div class="page-header">
 			<h1>More functions! <span class="label label-danger">JS & PHP</span></h1>
 		</div>
 		<p>There is more functions in the whole code, just play and try it. Remember to check <code>app-base.js</code>, <code>functions.php</code> and <code>main.php</code> for more stuff. Also you can find more info about the resources in the main menu.</p>
+
+		<!-- More Functions -->
 
 		<!-- ******** RESOURCES EXAMPLES ******** -->
 
@@ -1085,11 +1123,14 @@
 		
 		<!-- ******** CSS EXAMPLES ******** -->
 
-		<!-- Section description -->
+		<!-- Section Description -->
+
 		<div class="jumbotron">
 			<h1>CSS Resources</h1>
 			<p>Some custom classes to use in addition to <code>CSS</code> included in this repository.</p>
 		</div>
+
+		<!-- Section Description -->
 
 		<!-- Float BS4 example -->
 
@@ -1147,6 +1188,7 @@
 		<!-- Float BS4 example -->
 
 		<!-- Spacing BS4 example -->
+
 		<div class="page-header">
 			<h1>Spacing <span class="label label-danger">BS4</span></h1>
 		</div>
@@ -1366,7 +1408,8 @@
 
 		<!-- Text Align BS4 example -->
 
-		<!-- Carousel example -->
+		<!-- Carousel Rxample -->
+
 		<div class="page-header">
 			<h1>Carousel <span class="label label-danger">Custom</span></h1>
 		</div>
@@ -1436,11 +1479,16 @@
 			</a>
 		</div>
 
-		<!-- More functions -->
+		<!-- Carousel Rxample -->
+
+		<!-- More Functions -->
+
 		<div class="page-header">
 			<h1>More Classes! <span class="label label-danger">CSS</span></h1>
 		</div>
 		<p>There is more classes in the whole code, just play and try it. Remember to check <code>style-base.css</code> or <code>style-bootstrap.css</code> for more stuff <i>(Some of are commented, just copy them in a new file)</i>.</p>
+
+		<!-- More Functions -->
 
 		<!-- ******** CSS EXAMPLES ******** -->
 
