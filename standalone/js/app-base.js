@@ -1236,8 +1236,8 @@ function mainInit()
 			
 			$(this).css({
 						'visibility':'hidden',
-						'width':getSize[0],
-						'height':getSize[1],
+						'width':getSize[0].replace(/p/g,''),
+						'height':getSize[1].replace(/p/g,''),
 						});
 			
 			var fakeImage = '<div class="d-table position-absolute w-100 h-100" style="background-color: '+bg+'; color: '+fg+'; top: 0px; font-size: 45px; font-weight: bold">'+
