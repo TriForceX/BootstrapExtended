@@ -52,6 +52,7 @@ var gulpFrontJSFiles = [
 						'resources/assets/js/app-ready.js',
 						'resources/assets/js/app-load.js',
 						'resources/assets/js/app-responsive.js',
+						'resources/assets/js/app-theme.js',
 						'resources/assets/js/app-example.js', //Example file
 						];
 

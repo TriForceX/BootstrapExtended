@@ -29,6 +29,7 @@ function jsGenerate()
 				  '../js/app-ready.js',
 				  '../js/app-load.js',
 				  '../js/app-responsive.js',
+				  '../js/app-theme.js',
 				);
 
 	$jsVariables = array(
