@@ -26,8 +26,8 @@
 	<!-- ******** CSS FILES ******** -->
 	
 	<!-- Nav Tab & App Icons -->
-	<link href="<?php echo get_bloginfo('template_url'); ?>/img/icons/favicon/all.png" rel="shortcut icon">
 	<link href="<?php echo get_bloginfo('template_url'); ?>/img/icons/favicon/apple.png" rel="apple-touch-icon"/>
+	<link href="<?php echo get_bloginfo('template_url'); ?>/img/icons/favicon/global.png" rel="shortcut icon">
 	<!-- jQuery UI CSS -->
 	<link href="<?php echo get_bloginfo('template_url'); ?>/resources/jquery-ui/css/jquery-ui.min.css" rel="stylesheet">
 	<link href="<?php echo get_bloginfo('template_url'); ?>/resources/jquery-ui/css/jquery-ui.structure.min.css" rel="stylesheet">
