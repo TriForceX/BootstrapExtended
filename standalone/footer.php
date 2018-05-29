@@ -19,7 +19,7 @@
 <!-- jQuery Cookie -->
 <script src="<?php echo php::get_main_url(); ?>/resources/jquery-cookie/js/js.cookie.js"></script>
 <!-- jQuery Fullscreen -->
-<script src="<?php echo php::get_main_url(); ?>/resources/jquery-fullscreen/js/jquery.fullscreen-min.js"></script>
+<script src="<?php echo php::get_main_url(); ?>/resources/jquery-fullscreen/js/jquery.fullscreen.min.js"></script>
 <!-- Touch Swipe -->
 <script src="<?php echo php::get_main_url(); ?>/resources/touchswipe/js/jquery.touchSwipe.min.js"></script>
 <!-- Bootstrap 3 -->
