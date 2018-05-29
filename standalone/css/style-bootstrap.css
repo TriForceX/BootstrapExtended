@@ -131,6 +131,12 @@
 }*/
 /*Custom Modal Panel*/
 
+/*Carousel Indicators*/
+.carousel-indicators li{
+	background-color: transparent;
+}
+/*Carousel Indicators*/
+
 /*Carousel fade transition*/
 .carousel-fade .carousel-inner .item {
 	-webkit-transition-property: opacity;

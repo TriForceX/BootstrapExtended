@@ -124,7 +124,12 @@
 <!-- imgLiquid Fix -->
 <script src="{{ url('assets/resources/imgliquid/js/imgliquid.min.js') }}"></script>
 <!-- LightGallery Lightbox -->
+<!--[if lt IE 9]>
+<script src="{{ url('assets/resources/lightgallery/js/lightgallery.js') }}"></script>
+<![endif]-->
+<!--[if gt IE 8]><!-- -->
 <script src="{{ url('assets/resources/lightgallery/js/lightgallery-all.min.js') }}"></script>
+<!--<![endif]-->
 <!-- Clipboard JS -->
 <script src="{{ url('assets/resources/clipboard/js/clipboard.min.js') }}"></script>
 <!-- Masonry -->

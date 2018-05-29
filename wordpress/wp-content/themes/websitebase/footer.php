@@ -34,7 +34,12 @@
 <!-- imgLiquid Fix -->
 <script src="<?php echo get_bloginfo('template_url'); ?>/resources/imgliquid/js/imgliquid.min.js"></script>
 <!-- LightGallery Lightbox -->
+<!--[if lt IE 9]>
+<script src="<?php echo get_bloginfo('template_url'); ?>/resources/lightgallery/js/lightgallery.js"></script>
+<![endif]-->
+<!--[if gt IE 8]><!-- -->
 <script src="<?php echo get_bloginfo('template_url'); ?>/resources/lightgallery/js/lightgallery-all.min.js"></script>
+<!--<![endif]-->
 <!-- Clipboard JS -->
 <script src="<?php echo get_bloginfo('template_url'); ?>/resources/clipboard/js/clipboard.min.js"></script>
 <!-- Masonry -->
