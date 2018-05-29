@@ -94,12 +94,10 @@ Base structure for web sites with reusable parts of source code or functions mai
 	- Collection of CSS3 hover effects
 	- Included "BebasNeue" example font face
 - Wordpress Features:
-	- Custom database configuration for wp-config
-	- Cron enable/disable
-	- Added custom general options fields
-	- Admin bar enable/disable
-	- Base Admin Panel CSS & JS injection
 	- A bunch of Wordpress functions and snippets
+	- Custom database configuration for wp-config
+	- Cron and error reporting enable/disable
+	- Admin Panel CSS & JS injection
 	- Admin Menu Editor (Plugin)
 	- Advanced Custom Fields (Plugin)
 	- Anything Order (Plugin)
@@ -110,20 +108,6 @@ Base structure for web sites with reusable parts of source code or functions mai
 	- Mail SMTP (Plugin)
 	- User Role Editor (Plugin)
 
-# Recommended Tools for editing
-- Adobe Dreamweaver
-- NetBeans
-- Visual Studio Code
-- Atom
-- Brackets
-- Notepad++
-
-# Recommended Tools for server
-- WAMP Server (Windows)
-- MAMP Server (Mac OSX)
-- LAMP Server (Linux)
-- XAMPP Server (All)
-
 # Questions & Answers
 1. Why Bootstrap 3.3.7 instead the newer Bootstrap 4?
    - In a few words, BS4 dropped the compatibility in **Internet Explorer 8 and 9**. Some people is still using **Windows 7** and this comes with **IE8** by default.
@@ -133,6 +117,20 @@ Base structure for web sites with reusable parts of source code or functions mai
 
 3. Can i use this stuff in plain HTML instead the PHP Standalone?
    - Yes, but you need to remove all the **PHP** stuff. Just copy the *Standalone* structure in **HTML** Files, remove **PHP** stuff, and call the **CSS / JS** files manually.
+
+# Recommended Tools for editing
+- [Visual Studio Code](https://code.visualstudio.com/)
+- [NetBeans](https://netbeans.org/)
+- [Atom](https://atom.io/)
+- [Brackets](http://brackets.io/)
+- [Notepad++](https://notepad-plus-plus.org/download/v7.5.6.html)
+- [Adobe Dreamweaver](https://www.adobe.com/dreamweaver)
+
+# Recommended Tools for server
+- [MAMP Server (Mac OSX & Windows)](https://www.mamp.info/en/)
+- [WAMP Server (Windows)](http://www.wampserver.com/)
+- [LAMP Server (Linux)](https://bitnami.com/stack/lamp)
+- [XAMP Server (All)](https://www.apachefriends.org/)
 
 # About
 I coded the most of the code snippets and functions *(from scratch or searching the whole internet)*. About the included libraries im not the author, but i try to let other people find the best way to use them *(original authors are linked in the demo page)*. If you have any question feel free to contact me at triforce@gznetwork.com
