@@ -34,14 +34,7 @@
 <!-- imgLiquid Fix -->
 <script src="<?php echo php::get_main_url(); ?>/resources/imgliquid/js/imgliquid.min.js"></script>
 <!-- LightGallery Lightbox -->
-<script src="<?php echo php::get_main_url(); ?>/resources/lightgallery/js/lightgallery.js"></script>
-<script src="<?php echo php::get_main_url(); ?>/resources/lightgallery/js/lg-fullscreen.js"></script>
-<script src="<?php echo php::get_main_url(); ?>/resources/lightgallery/js/lg-thumbnail.js"></script>
-<script src="<?php echo php::get_main_url(); ?>/resources/lightgallery/js/lg-video.js"></script>
-<script src="<?php echo php::get_main_url(); ?>/resources/lightgallery/js/lg-autoplay.js"></script>
-<script src="<?php echo php::get_main_url(); ?>/resources/lightgallery/js/lg-zoom.js"></script>
-<script src="<?php echo php::get_main_url(); ?>/resources/lightgallery/js/lg-hash.js"></script>
-<script src="<?php echo php::get_main_url(); ?>/resources/lightgallery/js/lg-pager.js"></script>
+<script src="<?php echo php::get_main_url(); ?>/resources/lightgallery/js/lightgallery-all.min.js"></script>
 <!-- Clipboard JS -->
 <script src="<?php echo php::get_main_url(); ?>/resources/clipboard/js/clipboard.min.js"></script>
 <!-- Masonry -->

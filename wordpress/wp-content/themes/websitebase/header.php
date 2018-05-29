@@ -39,9 +39,9 @@
 	<!-- Bootstrap Data Tables -->
 	<link href="<?php echo get_bloginfo('template_url'); ?>/resources/datatables/css/dataTables.bootstrap.min.css" rel="stylesheet">
 	<!-- LightGallery Lightbox -->
-	<link href="<?php echo get_bloginfo('template_url'); ?>/resources/lightgallery/css/lightgallery.css" rel="stylesheet">
-	<link href="<?php echo get_bloginfo('template_url'); ?>/resources/lightgallery/css/lg-transitions.css" rel="stylesheet">
-	<link href="<?php echo get_bloginfo('template_url'); ?>/resources/lightgallery/css/lg-fb-comment-box.css" rel="stylesheet">
+	<link href="<?php echo get_bloginfo('template_url'); ?>/resources/lightgallery/css/lightgallery.min.css" rel="stylesheet">
+	<link href="<?php echo get_bloginfo('template_url'); ?>/resources/lightgallery/css/lg-transitions.min.css" rel="stylesheet">
+	<link href="<?php echo get_bloginfo('template_url'); ?>/resources/lightgallery/css/lg-fb-comment-box.min.css" rel="stylesheet">
     <!-- Hover CSS -->
 	<link href="<?php echo get_bloginfo('template_url'); ?>/resources/hover/css/hover.min.css" rel="stylesheet">
 	<!-- Font Awesome -->

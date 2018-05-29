@@ -378,7 +378,7 @@ function loadLightGallery()
 		var galDownloadVal = $(this).data("lg-download");
 		var galPrevGalText = lang('@lgtitle-prev');
 		var galNextGalText = lang('@lgtitle-next');
-		var galLoadThumb = mainUrl+"/resources/lightgallery/img/lg-loading-icon.gif";
+		var galLoadThumb = mainUrl+"/css/icons/loading/loading-icon-black.gif";
 		var galPrevThumb = mainUrl+"/resources/lightgallery/img/lg-loading-prev.png";
 		var galNextThumb = mainUrl+"/resources/lightgallery/img/lg-loading-next.png";
 		
@@ -1190,6 +1190,63 @@ function mainInit()
 		});
 		$(this).css('visibility','visible');
 	});
+	
+	//Fix for Holder JS in IE8
+	if(isNav('ie','8'))
+	{
+		$('img[data-src*="holder.js"]').each(function(){
+			var src = $(this).data('src');
+			var size = src.split('/');
+			var getSize = size[1].split('x');
+			var text = src.split('text=').pop().split('&').shift();
+			var getText = text.replace(/ \\n /g,'<br>');
+			var theme = src.split('theme=').pop().split('&').shift();
+			var bg, fg;
+			
+			switch(theme){
+	            case 'gray':
+	                bg = '#EEEEEE';
+	                fg = '#AAAAAA';
+	            	break;
+	            case 'social':
+	                bg = '#3a5a97';
+	                fg = '#FFFFFF';
+	            	break;
+	            case 'industrial':
+	                bg = '#434A52';
+	                fg = '#C2F200';
+	            	break;
+	            case 'sky':
+	                bg = '#0D8FDB';
+	                fg = '#FFFFFF';
+	            	break;
+	            case 'vine':
+	                bg = '#39DBAC';
+	                fg = '#1E292C';
+	            	break;
+	            case 'lava':
+	                bg = '#F8591A';
+	                fg = '#1C2846';
+	            	break;
+				default:
+	                bg = '#777777';
+	                fg = '#555555';
+	            	break;
+	        }
+			
+			$(this).css({
+						'visibility':'hidden',
+						'width':getSize[0],
+						'height':getSize[1],
+						});
+			
+			var fakeImage = '<div class="d-table position-absolute w-100 h-100" style="background-color: '+bg+'; color: '+fg+'; top: 0px; font-size: 45px; font-weight: bold">'+
+							'	<div class="d-table-cell align-middle text-center">'+getText+'</div>'+
+							'</div>';
+			
+			$(this).wrapAll('<div class="d-inline-block"></div>').after(fakeImage);
+		});
+	}
 }
 /* ================================================= FUNCTIONS ================================================= */
 
@@ -1216,7 +1273,7 @@ $(document).ready(function(){
 								};
 		
 				var checkBrowser = $.browser.name === checkData[navigator].name;
-				var checkVersion = version === undefined ? true : ($.browser.version === version);
+				var checkVersion = version === undefined ? true : ($.browser.version == version);
 				var checkInternal = checkData[navigator].internal === undefined ? true : (checkData[navigator].internal === true);
 				var checkFinal = checkBrowser && checkVersion && checkInternal ? true : false;
 				

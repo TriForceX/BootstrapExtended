@@ -39,9 +39,9 @@
 	<!-- Bootstrap Data Tables -->
 	<link href="{{ url('assets/resources/datatables/css/dataTables.bootstrap.min.css') }}" rel="stylesheet">
 	<!-- LightGallery Lightbox -->
-	<link href="{{ url('assets/resources/lightgallery/css/lightgallery.css') }}" rel="stylesheet">
-	<link href="{{ url('assets/resources/lightgallery/css/lg-transitions.css') }}" rel="stylesheet">
-	<link href="{{ url('assets/resources/lightgallery/css/lg-fb-comment-box.css') }}" rel="stylesheet">
+	<link href="{{ url('assets/resources/lightgallery/css/lightgallery.min.css') }}" rel="stylesheet">
+	<link href="{{ url('assets/resources/lightgallery/css/lg-transitions.min.css') }}" rel="stylesheet">
+	<link href="{{ url('assets/resources/lightgallery/css/lg-fb-comment-box.min.css') }}" rel="stylesheet">
     <!-- Hover CSS -->
 	<link href="{{ url('assets/resources/hover/css/hover.min.css') }}" rel="stylesheet">
 	<!-- Font Awesome -->
@@ -124,14 +124,7 @@
 <!-- imgLiquid Fix -->
 <script src="{{ url('assets/resources/imgliquid/js/imgliquid.min.js') }}"></script>
 <!-- LightGallery Lightbox -->
-<script src="{{ url('assets/resources/lightgallery/js/lightgallery.js') }}"></script>
-<script src="{{ url('assets/resources/lightgallery/js/lg-fullscreen.js') }}"></script>
-<script src="{{ url('assets/resources/lightgallery/js/lg-thumbnail.js') }}"></script>
-<script src="{{ url('assets/resources/lightgallery/js/lg-video.js') }}"></script>
-<script src="{{ url('assets/resources/lightgallery/js/lg-autoplay.js') }}"></script>
-<script src="{{ url('assets/resources/lightgallery/js/lg-zoom.js') }}"></script>
-<script src="{{ url('assets/resources/lightgallery/js/lg-hash.js') }}"></script>
-<script src="{{ url('assets/resources/lightgallery/js/lg-pager.js') }}"></script>
+<script src="{{ url('assets/resources/lightgallery/js/lightgallery-all.min.js') }}"></script>
 <!-- Clipboard JS -->
 <script src="{{ url('assets/resources/clipboard/js/clipboard.min.js') }}"></script>
 <!-- Masonry -->

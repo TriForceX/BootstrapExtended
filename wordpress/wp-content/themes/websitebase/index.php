@@ -1713,13 +1713,13 @@
 			</ol>
 			<div class="carousel-inner" role="listbox">
 				<div class="item active">
-					<img data-src="holder.js/1140x500/auto/#777:#555/text:First slide" alt="First slide">
+					<img data-src="holder.js/1140x500/?auto=yes&theme=sky&text=First Slide" alt="First slide">
 				</div>
 				<div class="item">
-					<img data-src="holder.js/1140x500/auto/#666:#444/text:Second slide" alt="Second slide">
+					<img data-src="holder.js/1140x500/?auto=yes&theme=vine&text=Second Slide" alt="Second slide">
 				</div>
 				<div class="item">
-					<img data-src="holder.js/1140x500/auto/#555:#333/text:Third slide" alt="Third slide">
+					<img data-src="holder.js/1140x500/?auto=yes&theme=lava&text=Third Slide" alt="Third slide">
 				</div>
 			</div>
 			<a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
