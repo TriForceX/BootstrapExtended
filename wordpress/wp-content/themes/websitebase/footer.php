@@ -26,8 +26,10 @@
 <script src="<?php echo get_bloginfo('template_url'); ?>/resources/bootstrap/js/bootstrap.min.js"></script>
 <!-- Bootbox Modals -->
 <script src="<?php echo get_bloginfo('template_url'); ?>/resources/bootbox/js/bootbox.min.js"></script>
-<!-- Holder JS Images -->
+<!-- Holder JS -->
+<!--[if gt IE 8]><!-- -->
 <script src="<?php echo get_bloginfo('template_url'); ?>/resources/holder/js/holder.min.js"></script>
+<!--<![endif]-->
 <!-- Bootstrap Data Tables -->
 <script src="<?php echo get_bloginfo('template_url'); ?>/resources/datatables/js/jquery.dataTables.min.js"></script>
 <script src="<?php echo get_bloginfo('template_url'); ?>/resources/datatables/js/dataTables.bootstrap.min.js"></script>

@@ -45,7 +45,7 @@
     <!-- Hover CSS -->
 	<link href="{{ url('assets/resources/hover/css/hover.min.css') }}" rel="stylesheet">
 	<!-- Font Awesome -->
-	<link href="{{ url('assets/resources/font-awesome/css/font-awesome.min.css') }}" rel="stylesheet">
+	<link href="{{ url('assets/resources/font-awesome/css/fontawesome-all.min.css') }}" rel="stylesheet">
 	<!-- Tempus Dominus -->
 	<link href="{{ url('assets/resources/tempusdominus/css/tempusdominus.min.css') }}" rel="stylesheet">
 	<!-- Main CSS File -->
@@ -116,8 +116,10 @@
 <script src="{{ url('assets/resources/bootstrap/js/bootstrap.min.js') }}"></script>
 <!-- Bootbox Modals -->
 <script src="{{ url('assets/resources/bootbox/js/bootbox.min.js') }}"></script>
-<!-- Holder JS Images -->
+<!-- Holder JS -->
+<!--[if gt IE 8]><!-- -->
 <script src="{{ url('assets/resources/holder/js/holder.min.js') }}"></script>
+<!--<![endif]-->
 <!-- Bootstrap Data Tables -->
 <script src="{{ url('assets/resources/datatables/js/jquery.dataTables.min.js') }}"></script>
 <script src="{{ url('assets/resources/datatables/js/dataTables.bootstrap.min.js') }}"></script>

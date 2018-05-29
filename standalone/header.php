@@ -47,7 +47,7 @@
     <!-- Hover CSS -->
 	<link href="<?php echo php::get_main_url(); ?>/resources/hover/css/hover.min.css" rel="stylesheet">
 	<!-- Font Awesome -->
-	<link href="<?php echo php::get_main_url(); ?>/resources/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+	<link href="<?php echo php::get_main_url(); ?>/resources/font-awesome/css/fontawesome-all.min.css" rel="stylesheet">
 	<!-- Tempus Dominus -->
 	<link href="<?php echo php::get_main_url(); ?>/resources/tempusdominus/css/tempusdominus.min.css" rel="stylesheet">
 	<!-- Main CSS File -->
