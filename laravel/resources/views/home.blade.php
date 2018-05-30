@@ -1113,7 +1113,7 @@
 		<div class="page-header">
 			<h1>More functions! <span class="label label-danger">JS & PHP</span></h1>
 		</div>
-		<p>There is more functions in the whole code, just play and try it. Remember to check <code>app-base.js</code>, <code>functions.php</code> and <code>main.php</code> for more stuff. Also you can find more info about the resources in the main menu.</p>
+		<p>There is more functions in the whole code, just play and try it. Remember to check <code>app-base.js</code>, <code>functions.php</code> and <code>utilities.php</code> for more stuff. Also you can find more info about the resources in the main menu.</p>
 
 		<!-- More Functions -->
 

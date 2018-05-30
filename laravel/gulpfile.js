@@ -41,17 +41,13 @@ var gulpBackJSFiles = [];*/
 var gulpFrontCSSFiles = [
 						'resources/assets/css/style-base.css',
 						'resources/assets/css/style-bootstrap.css',
-						'resources/assets/css/style-fonts.css',
 						'resources/assets/css/style-theme.css',
 						'resources/assets/css/style-example.css', //Example file
 						];
 					
 var gulpFrontJSFiles = [
 						'resources/assets/js/app-lang.js',
-						'resources/assets/js/app-base.js',
-						'resources/assets/js/app-ready.js',
-						'resources/assets/js/app-load.js',
-						'resources/assets/js/app-responsive.js',
+						'resources/assets/js/app-base.js',',
 						'resources/assets/js/app-theme.js',
 						'resources/assets/js/app-example.js', //Example file
 						];

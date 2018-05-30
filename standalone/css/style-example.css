@@ -1,6 +1,27 @@
+/* ================================================= EXAMPLE FONTS ================================================= */
+@font-face{
+	font-family: 'BebasNeue';
+	src: url('fonts/bebasneue/BebasNeue.eot');
+	src: url('fonts/bebasneue/BebasNeue.eot?#iefix') format('embedded-opentype'),  
+		 url('fonts/bebasneue/BebasNeue.otf') format('opentype'),
+		 url('fonts/bebasneue/BebasNeue.woff') format('woff'), 
+		 url('fonts/bebasneue/BebasNeue.ttf') format('truetype'), 
+		 url('fonts/bebasneue/BebasNeue.svg#BebasNeue') format('svg');
+	font-weight: normal;
+	font-style: normal;
+}
+/* ================================================= EXAMPLE FONTS ================================================= */
+
+/* ================================================= EXAMPLE GLOBAL ================================================= */
 body {
 	padding-top: 70px;
 }
+table {
+	word-break: keep-all;
+}
+/* ================================================= EXAMPLE GLOBAL ================================================= */
+
+/* ================================================= EXAMPLE CONTENT ================================================= */
 .content {
 	padding-bottom: 30px;
 }
@@ -9,10 +30,10 @@ body {
 	display: block;
 	margin-bottom: 20px;
 }
-.theme-showcase > p > .btn {
+.content .container > p > .btn {
 	margin: 5px 0;
 }
-.theme-showcase .navbar .container {
+.content .container .navbar .container {
 	width: auto;
 }
 .bs-example {
@@ -26,14 +47,6 @@ body {
 	box-shadow: inset 0 3px 6px rgba(0, 0, 0, .05);
 }
 /* Echo out a label for the example */
-
-/*
- * Examples
- *
- * Isolated sections of example content for each component or feature. Usually
- * followed by a code snippet.
- */
-
 .bs-example {
 	position: relative;
 	padding: 45px 15px 15px;
@@ -45,7 +58,6 @@ body {
 	box-shadow: inset 0 3px 6px rgba(0, 0, 0, .05);
 }
 /* Echo out a label for the example */
-
 .bs-example:after {
 	position: absolute;
 	top: 15px;
@@ -61,7 +73,6 @@ body {
 	padding-bottom: 24px;
 }
 /* Tweak display of the code snippets when following an example */
-
 .bs-example + .highlight,
 .bs-example + .zero-clipboard + .highlight {
 	margin: -15px -15px 15px;
@@ -69,8 +80,7 @@ body {
 	border-radius: 0;
 }
 /* Make the examples and snippets not full-width */
-
-@media (min-width: 768px) {
+@media (min-width: @screen-sm) {
 	.bs-example {
 		margin-right: 0;
 		margin-left: 0;
@@ -95,12 +105,10 @@ body {
 	}
 }
 /* Undo width of container */
-
 .bs-example .container {
 	width: auto;
 }
 /* Tweak content of examples for optimum awesome */
-
 .bs-example > p:last-child,
 .bs-example > ul:last-child,
 .bs-example > ol:last-child,
@@ -121,19 +129,16 @@ body {
 	float: none;
 }
 /* Contextual background colors */
-
 .bs-example-bg-classes p {
 	padding: 15px;
 }
 /* Images */
-
 .bs-example > .img-circle,
 .bs-example > .img-rounded,
 .bs-example > .img-thumbnail {
 	margin: 5px;
 }
 /* Buttons */
-
 .bs-example > .btn,
 .bs-example > .btn-group {
 	margin-top: 5px;
@@ -167,8 +172,4 @@ body {
 	display: inline-block;
 	padding-right: 45px;
 }
-/*Table*/
-
-table {
-	word-break: keep-all;
-}
+/* ================================================= EXAMPLE CONTENT ================================================= */

@@ -96,7 +96,7 @@
 
 <!-- ================================================= CONTENT ================================================= -->
 <div class="content">
-	<div class="container theme-showcase">
+	<div class="container">
 		<!-- MAIN CONTAINER -->
 		
 		<!-- ******** LOADING BAR ******** -->
@@ -191,7 +191,7 @@
 		<div class="page-header">
 			<h1>Utilities <span class="label label-primary">Functions</span></h1>
 		</div>
-		<p>The main php functions are located in <code>functions.php</code> and <code>resources/php/main.php</code>. These files contains a some of useful functions to use in <b>PHP</b></p>
+		<p>The main php functions are located in <code>functions.php</code> and <code>resources/php/utilities.php</code>. These files contains a some of useful functions to use in <b>PHP</b></p>
 		
 		<div class="bs-example">
 			<figure class="highlight">
@@ -207,7 +207,7 @@
 					<h3 class="panel-title">Note to begin a website</h3>
 				</div>
 				<div class="panel-body">
-					If you want to start a new website using this, i recommend to delete the <b>example code</b>. For <code>HTML</code> open <b>index.php</b> and delete the <b>nav menu</b> <i>(first &lt;nav&gt; tag)</i> and remove the class <b>theme-showcase</b> from the <b>container</b> element <i>(&lt;div class="container"&gt;)</i>. For <code>CSS</code> delete the file <b>style-extras.css</b> and open <b>style-extras.php</b> and delete or comment the included <b>style-example.css</b> line <i>('../css/style-example.css')</i>. Finally for <code>JS</code> open <b>app-ready.js</b>, <b>app-load.js</b> and <b>app-responsive.js</b> and delete or comment all code examples <i>(Beginning with //Example ...)</i>
+					If you want to start a new website using this, i recommend to delete the <b>example code</b>. For <code>HTML</code> open <b>index.php</b> and delete the <b>nav menu</b> <i>(first &lt;nav&gt; tag)</i> and remove all the content from the main <b>.content > .container</b> <i>(all inside element &lt;div class="container"&gt;</i>. For <code>CSS</code> delete the file <b>style-example.css</b>, open <b>style-extras.php</b> and delete or comment the included <b>style-example.css</b> line <i>('../css/style-example.css')</i>. Finally For <code>JS</code> delete the file <b>app-example.js</b>, open <b>app-extras.php</b> and delete or comment the included <b>app-example.js</b> line <i>('../css/app-example.js')</i>.
 				</div>
 			</div>
 		</p>
@@ -242,12 +242,12 @@
 			<tbody>
 				<tr>
 					<td>$cssFiles</td>
-					<td>Defines which <code>CSS</code> files will be called, you can add more to the array. The <code>style-fonts.css</code> is used to call <i>Fonts Files</i>, <code>style-theme.css</code> is used to define <i>Theme Styles</i>
+					<td>Defines which <code>CSS</code> files will be called, you can add more to the array. The <code>style-base.css</code> is used to set main classes, <code>style-bootstrap.css</code> is used to be set all <b>Bootstrap</b> related classes.
 					</td>
 				</tr>
 				<tr>
 					<td>$cssMinify</td>
-					<td>Defines if the <code>CSS</code> code will be minified, this will reduce the size of the file to the client.
+					<td>Defines if the <code>CSS</code> code will be minified, this will reduce the size of the file to the client. You can add the <code>GET</code> flag <b>?unminify</b> to the main <code>style.php</code> url to check the code unminified.
 					</td>
 				</tr>
 				<tr>
@@ -258,10 +258,9 @@
 			</tbody>
 		</table>
 		<figure class="highlight">
-			<pre><code class="language-html" data-lang="html">$cssMinify = true;<br>$cssFiles = array(
+			<pre><code class="language-html" data-lang="html">$cssMinify = isset($_GET['unminify']) ? false : true;<br>$cssFiles = array(
 		  $cssUrl.'/css/style-base.css',
 		  $cssUrl.'/css/style-bootstrap.css',
-		  $cssUrl.'/css/style-fonts.css',
 		  $cssUrl.'/css/style-theme.css',
 		  ...
 		);<br>...<br>$cssVariables = array(
@@ -283,7 +282,7 @@
 				<h3 class="panel-title">Note for included CSS files</h3>
 			</div>
 			<div class="panel-body">
-				The file <code>style-examples.css</code> is only for test purposes in this page, don't add this file to your website. Is not recomemded to modify the <code>style-base.css</code> because contains the main functions inside. <b>If you want add extra variables to replace, just add it in</b> <code>style-extras.php</code>
+				The file <code>style-theme.css</code> it will contain all the main classes for yout website. The file <code>style-example.css</code> is only for tests and references, you can delete with no problems. Is not recomemded to modify the <code>style-base.css</code> or <code>style-bootstrap.css</code> because contains the main functions inside. <b>If you want add extra stuff, just add it in</b> <code>style-theme.css</code> <b>or</b> <code>style-extras.php</code>
 				<br><br>
 				The compile process works in realtime if you are testing in <code>localhost</code> side, if you upload the code to <code>production</code> the file <code>style.css</code> will be generated only once, if you update your code, remember to delete <code>style.css</code> to get a new one.
 			</div>
@@ -309,12 +308,12 @@
 			<tbody>
 				<tr>
 					<td>$jsFiles</td>
-					<td>Defines which <code>JS</code> files will be called, you can add more to the array. The <code>app-ready.js</code> is used to be executed on <i>DOM Ready</i>, <code>app-load.js</code> is used to be executed on <i>Window Load</i> and <code>app-responsive.js</code> is used to be executed on <i>Responsive Changes</i>
+					<td>Defines which <code>JS</code> files will be called, you can add more to the array. The <code>app-base.js</code> is used to be execute all main stuff and functions, <code>app-lang.js</code> is used to be set the main language settings.
 					</td>
 				</tr>
 				<tr>
 					<td>$jsMinify</td>
-					<td>Defines if the <code>JS</code> code will be minified, this will reduce the size of the file to the client.
+					<td>Defines if the <code>JS</code> code will be minified, this will reduce the size of the file to the client. You can add the <code>GET</code> flag <b>?unminify</b> to the main <code>app.php</code> url to check the code unminified.
 					</td>
 				</tr>
 				<tr>
@@ -325,12 +324,10 @@
 			</tbody>
 		</table>
 		<figure class="highlight">
-			<pre><code class="language-html" data-lang="html">$jsMinify = true;<br>$jsFiles = array(
+			<pre><code class="language-html" data-lang="html">$jsMinify = isset($_GET['unminify']) ? false : true;<br>$jsFiles = array(
 		  $jsUrl.'/js/app-lang.js',
 		  $jsUrl.'/js/app-base.js',
-		  $jsUrl.'/js/app-ready.js',
-		  $jsUrl.'/js/app-load.js',
-		  $jsUrl.'/js/app-responsive.js',
+		  $jsUrl.'/js/app-theme.js',
 		  ...
 		);<br>...<br>$jsVariables = array(
 			//Global
@@ -351,9 +348,9 @@
 				<h3 class="panel-title">Note for included JS files</h3>
 			</div>
 			<div class="panel-body">
-				The file <code>app-ready.js</code>, <code>app-load.js</code> and <code>app-responsive.js</code> contains some code pieces for test/examples purposes you can delete with no problems. Is not recomemded to modify the <code>app-base.js</code> because contains the main functions inside. <b>If you want add extra variables to replace, just add it in</b> <code>app-extras.php</code>
+				The file <code>app-theme.js</code> it will contain all the main code for yout website. The file <code>app-example.js</code> is only for tests and references, you can delete with no problems. Is not recomemded to modify the <code>app-lang.js</code> or <code>app-base.js</code> because contains the main functions inside. <b>If you want add extra stuff, just add it in</b> <code>app-theme.js</code> <b>or</b> <code>app-extras.php</code>
 				<br><br>
-				To manage custom languages just add the attribute <code>data-js-lang</code> to <code>&lt;body&gt;</code> tag. The main language file is <code>app-lang.js</code> but these are the default ones, you can override them in <code>app-ready.js</code> using the same key. If you want add more language take a look on <code>app-ready.js</code> for examples. 
+				To manage custom languages just add the attribute <code>data-js-lang</code> to <code>&lt;body&gt;</code> tag. The main language file is <code>app-lang.js</code> but these are the default ones, you can override them in <code>app-theme.js</code> using the same key. If you want add more language take a look on <code>app-example.js</code> for references. 
 				<br><br>
 				The compile process works in realtime if you are testing in <code>localhost</code> side, if you upload the code to <code>production</code> the file <code>app.js</code> will be generated only once, if you update your code, remember to delete <code>app.js</code> to get a new one.
 			</div>
@@ -1367,7 +1364,7 @@
 		<div class="page-header">
 			<h1>More functions! <span class="label label-danger">JS & PHP</span></h1>
 		</div>
-		<p>There is more functions in the whole code, just play and try it. Remember to check <code>app-base.js</code>, <code>functions.php</code> and <code>main.php</code> for more stuff. Also you can find more info about the resources in the main menu.</p>
+		<p>There is more functions in the whole code, just play and try it. Remember to check <code>app-base.js</code>, <code>functions.php</code> and <code>utilities.php</code> for more stuff. Also you can find more info about the resources in the main menu.</p>
 
 		<!-- More Functions -->
 

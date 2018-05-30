@@ -1,4 +1,4 @@
-/* ================================================= FUNCTIONS ================================================= */
+/* ================================================= BASE FUNCTIONS ================================================= */
 
 //Global variables
 var mainUrl = '@global-url';
@@ -1149,7 +1149,7 @@ function mainInit()
 	//Popover load
 	$('*[data-toggle="popover"]').popover();
 	
-	//Touch swipe bootstrap carousel
+	//Touch swipe Bootstrap carousel
 	$('*[data-ride="carousel"]').swipe({
 		swipe:function(event, direction, distance, duration, fingerCount, fingerData){
 				if(direction === 'right'){
@@ -1178,7 +1178,7 @@ function mainInit()
 		imageFill($(this));
 	});
 	
-	//Apply Text Cur
+	//Apply Text Cut
 	$(".JStextCut").each(function(){
 		textCut($(this));
 	});
@@ -1248,11 +1248,11 @@ function mainInit()
 		});
 	}
 }
-/* ================================================= FUNCTIONS ================================================= */
+/* ================================================= BASE FUNCTIONS ================================================= */
 
 $(document).ready(function(){
 
-/* ================================================= DOCUMENT READY ================================================= */
+/* ================================================= BASE DOCUMENT READY ================================================= */
 	
 	//Check home
 	isHome = $('.JSisHome').length > 0 ? true : false;
@@ -1285,15 +1285,22 @@ $(document).ready(function(){
 		$(".modal .modal-footer .btn:focus").blur();
 	});
 	
-	//Map Launch on click
+	//Window Popup click
 	$(document).on("click", ".JSwindowPopup", function(){
 		windowPopup($(this));
 	});
 	
-	//Map Launch on click
+	//Map Launch click
 	$(document).on("click", ".JSmapLaunch", function(){
 		mapLaunch($(this));
 	});
+	
+	//Check map launch alert
+	$(document).on("click", '.JSmapLaunchAlert', function(e){
+		if (isMobile && !confirm(lang('@maplaunch-alert'))){
+		  e.preventDefault();
+		}
+    });
 	
 	//Modal on disabled links
 	$(document).on("click", "a[href*=\\#]", function(e){
@@ -1303,36 +1310,29 @@ $(document).ready(function(){
 		}
 	});
 	
-	//Check Map Launch Alert
-	$(document).on("click", '.JSmapLaunchAlert', function(e){
-		if (isMobile && !confirm(lang('@maplaunch-alert'))){
-		  e.preventDefault();
-		}
-    });
-	
-	//Load Responsive Code
+	//Load responsive code
 	responsiveCode();
 	
 	//Launch main functions
 	mainInit();
 	
-/* ================================================= DOCUMENT READY ================================================= */
+/* ================================================= BASE DOCUMENT READY ================================================= */
 
 });
 
-$(window).bind("load", function() {
+$(window).bind("load", function(){
 
-/* ================================================= WINDOWS LOAD ================================================= */
+/* ================================================= BASE WINDOWS LOAD ================================================= */
 	
 	
 	
-/* ================================================= WINDOWS LOAD ================================================= */
+/* ================================================= BASE WINDOWS LOAD ================================================= */
 
 });
 
 $(document).on("responsiveCode", function(event, bodyWidth, bodyHeight, bodyOrientation, bodyScreen){
 
-/* ================================================= RESPONSIVE CODE ================================================= */
+/* ================================================= BASE RESPONSIVE CODE ================================================= */
 	
 	//Apply Text Size
 	$(".JStextSize").each(function(){
@@ -1340,16 +1340,26 @@ $(document).on("responsiveCode", function(event, bodyWidth, bodyHeight, bodyOrie
 		textSize($(this), $(this).css('font-size'));
 	});
 	
-/* ================================================= RESPONSIVE CODE ================================================= */
+/* ================================================= BASE RESPONSIVE CODE ================================================= */
 
 });
 
-$(document).ajaxComplete(function() {
+$(document).ajaxStart(function(){
 
-/* ================================================= AJAX COMPLETE ================================================= */
+/* ================================================= BASE AJAX START ================================================= */
+	
+	
+	
+/* ================================================= BASE AJAX START ================================================= */
+
+});
+
+$(document).ajaxComplete(function(){
+
+/* ================================================= BASE AJAX COMPLETE ================================================= */
 	
 	mainInit();
 	
-/* ================================================= AJAX COMPLETE ================================================= */
+/* ================================================= BASE AJAX COMPLETE ================================================= */
 
 });

@@ -1,3 +1,5 @@
+/* ================================================= EXAMPLE FUNCTIONS ================================================= */
+
 //Example form validate custom function
 function validateCustom(field){
 	if(field === 'Custom'){
@@ -8,9 +10,11 @@ function validateCustom(field){
 	}
 }
 
+/* ================================================= EXAMPLE FUNCTIONS ================================================= */
+
 $(document).ready(function(){
 
-/* ================================================= DOCUMENT READY ================================================= */
+/* ================================================= EXAMPLE DOCUMENT READY ================================================= */
 	
 	//Set language on the fly
 	if(getUrlParameter('lang-test')){
@@ -58,25 +62,25 @@ $(document).ready(function(){
 	//Example aditional exceptions custom size & alignment
 	checkDisabledAlignment = ['small','center'];
 	
-/* ================================================= DOCUMENT READY ================================================= */
+/* ================================================= EXAMPLE DOCUMENT READY ================================================= */
 
 });
 
 $(window).bind("load", function() {
 
-/* ================================================= WINDOWS LOAD ================================================= */
+/* ================================================= EXAMPLE WINDOWS LOAD ================================================= */
 	
 	//Example test progress bar on load
 	$(".JSloadProgressTest .progress-bar").css("width", "100%");
 	$(".JSloadProgressTest .progress-bar").attr("aria-valuenow","100");
 	
-/* ================================================= WINDOWS LOAD ================================================= */
+/* ================================================= EXAMPLE WINDOWS LOAD ================================================= */
 
 });
 
 $(document).on("responsiveCode", function(event, bodyWidth, bodyHeight, bodyOrientation, bodyScreen){
 
-/* ================================================= RESPONSIVE CODE ================================================= */
+/* ================================================= EXAMPLE RESPONSIVE CODE ================================================= */
 	
 	//Example size detection
 	$("body").attr("window-size",bodyWidth+"x"+bodyHeight);
@@ -95,16 +99,28 @@ $(document).on("responsiveCode", function(event, bodyWidth, bodyHeight, bodyOrie
 		$("body").attr("window-orientation","portrait");
 	}
 	
-/* ================================================= RESPONSIVE CODE ================================================= */
+/* ================================================= EXAMPLE RESPONSIVE CODE ================================================= */
+
+});
+
+$(document).ajaxStart(function(){
+
+/* ================================================= EXAMPLE AJAX START ================================================= */
+	
+	//Example console message
+	console.log('Ajax Start...');
+	
+/* ================================================= EXAMPLE AJAX START ================================================= */
 
 });
 
 $(document).ajaxComplete(function() {
 
-/* ================================================= AJAX COMPLETE ================================================= */
+/* ================================================= EXAMPLE AJAX COMPLETE ================================================= */
 	
+	//Example console message
 	console.log('Ajax Complete!');
 	
-/* ================================================= AJAX COMPLETE ================================================= */
+/* ================================================= EXAMPLE AJAX COMPLETE ================================================= */
 
 });

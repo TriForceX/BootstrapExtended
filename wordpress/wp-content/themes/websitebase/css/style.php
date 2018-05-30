@@ -26,7 +26,6 @@ function cssGenerate()
 	$cssFiles = array(
 				  '../css/style-base.css',
 				  '../css/style-bootstrap.css',
-				  '../css/style-fonts.css',
 				  '../css/style-theme.css',
 				);
 

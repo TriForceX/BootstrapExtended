@@ -1,3 +1,5 @@
+/* ================================================= BASE LANGUAGE ================================================= */
+
 //Define language by default
 var mainLang = $('body').data('js-lang');
 var language = {
@@ -117,3 +119,5 @@ function lang(string)
 	
 	return text;
 }
+
+/* ================================================= BASE LANGUAGE ================================================= */
