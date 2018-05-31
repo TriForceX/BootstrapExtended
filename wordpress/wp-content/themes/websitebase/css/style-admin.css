@@ -20,7 +20,7 @@
 
 /*Login Logo*/
 .login #login h1 a{
-	background-image: url('icons/login/logo.png');
+	background-image: url('icons/admin/logo.png');
     background-position: center center;
     background-repeat: no-repeat;
 	background-size:contain;
