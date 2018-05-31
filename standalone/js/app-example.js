@@ -10,6 +10,37 @@ function validateCustom(field){
 	}
 }
 
+//Example Google Translate Widget styling function
+function googleTranslateStyles(){
+	var style;
+	var css = '<style type="text/css" id="googleTranslateStyles">'+
+				'.goog-te-combo,'+
+				'.goog-te-banner *,'+
+				'.goog-te-ftab *,'+
+				'.goog-te-menu *,'+
+				'.goog-te-menu2 *,'+
+				'.goog-te-balloon *{'+
+				'	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif !important;'+
+				'	font-size: 12px !important;'+
+				'}'+
+				'.goog-te-menu-value span, '+
+				'.goog-te-menu2-item span, '+
+				'.goog-te-menu2-item-selected span{'+
+				'	text-transform : capitalize !important;'+
+				'}'+
+				'</style>';
+	
+	//Menu iframe
+	if((style = $('.goog-te-menu-frame').contents().find('body')).length){
+		if($('.goog-te-menu-frame').contents().find('#googleTranslateStyles').length < 1){
+			$('.goog-te-menu-frame').contents().find('body').prepend(css);
+		}
+	}
+	else{
+		setTimeout(googleTranslateStyles, 1000);
+	}
+}
+
 /* ================================================= EXAMPLE FUNCTIONS ================================================= */
 
 $(document).ready(function(){
@@ -73,6 +104,9 @@ $(window).bind("load", function() {
 	//Example test progress bar on load
 	$(".JSloadProgressTest .progress-bar").css("width", "100%");
 	$(".JSloadProgressTest .progress-bar").attr("aria-valuenow","100");
+	
+	//Example Google Translate Widget styling
+	googleTranslateStyles();
 	
 /* ================================================= EXAMPLE WINDOWS LOAD ================================================= */
 

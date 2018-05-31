@@ -1055,7 +1055,7 @@ function mapLaunch(element)
 	var mapModalAlign = $(element).data('map-modal-align');
 	var mapAddress = $(element).data('map-address');
 	var mapAddressUrl = encodeURI(mapAddress).replace(/%20/g,'+');
-	var mapLaunchUrl1 = isMobile ? 'http://maps.google.com/maps?q='+mapCoords1[0]+','+mapCoords1[1]+','+mapCoords1[2]+'z' : 
+	var mapLaunchUrl1 = isMobile ? 'https://maps.google.com/maps?q='+mapCoords1[0]+','+mapCoords1[1]+','+mapCoords1[2]+'z' : 
 										   'https://www.google.com/maps/search/'+mapAddressUrl+'/@'+mapCoords1[0]+','+mapCoords1[1]+','+mapCoords1[2]+'z';
 	var mapLaunchUrl2 = isMobile ? 'waze://?ll='+mapCoords2[0]+','+mapCoords2[1]+'&navigate=yes' : 
 										   'https://www.waze.com/livemap?zoom='+mapCoords2[2]+'&lat='+mapCoords2[0]+'&lon='+mapCoords2[1];
@@ -1088,7 +1088,7 @@ function mapLaunch(element)
 	mapContentStyle2 = '<div class="JSmapLaunchInfo">'+
 						'	<div class="well mb-4">'+mapAddress+'</div>'+
 						'	<div class="JSmapLaunchIframe embed-responsive embed-responsive-16by9">'+
-						'		<iframe class="embed-responsive-item" src="http://maps.google.com/maps?q='+mapAddressUrl+'&z='+mapCoords1[2]+'&output=embed" frameborder="0" allowfullscreen></iframe>'+
+						'		<iframe class="embed-responsive-item" src="https://maps.google.com/maps?q='+mapAddressUrl+'&z='+mapCoords1[2]+'&output=embed" frameborder="0" allowfullscreen></iframe>'+
 						'	</div>'+
 						'	<span class="label label-primary">'+mapText+'</span>'+
 						'	<div class="JSmapLaunchIcons small">'+

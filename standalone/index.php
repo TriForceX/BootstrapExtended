@@ -10,21 +10,21 @@
 				<span class="icon-bar"></span>
 				<span class="icon-bar"></span>
 			</button>
-			<a class="navbar-brand" href="#">Website Base</a>
+			<a class="navbar-brand notranslate" href="#">Website Base</a>
 		</div>
 		<div class="navbar-collapse collapse">
 			<ul class="nav navbar-nav">
-				<li class="active"><a href="index.php">Home</a></li>
+				<li class="active"><a href="index.php" class="notranslate">Home</a></li>
 				<li class="dropdown">
 					<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Contact <span class="caret"></span></a>
-					<ul class="dropdown-menu" role="menu">
+					<ul class="dropdown-menu notranslate" role="menu">
 						<li><a href="https://github.com/TriForceX" target="_blank">GitHub</a></li>
 						<li><a href="http://stackoverflow.com/users/7613382/triforce" target="_blank">StackOverflow</a></li>
 					</ul>
 				</li>
 				<li class="dropdown">
 					<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Resources <span class="caret"></span></a>
-					<ul class="dropdown-menu" role="menu">
+					<ul class="dropdown-menu notranslate" role="menu">
 						<li><a href="http://bootboxjs.com/" target="_blank">BootBox JS</a></li>
 						<li><a href="http://getbootstrap.com/docs/3.3/" target="_blank">Bootstrap</a></li>
 						<li><a href="https://clipboardjs.com/" target="_blank">Clipboard JS</a></li>
@@ -52,7 +52,7 @@
 				</li>
 				<li class="dropdown">
 					<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Utilities <span class="caret"></span></a>
-					<ul class="dropdown-menu" role="menu">
+					<ul class="dropdown-menu notranslate" role="menu">
 						<li><a href="https://www.w3schools.com" target="_blank">W3 Schools Tutorials</a></li>
 						<li><a href="http://bootsnipp.com" target="_blank">Bootstrap Snippets</a></li>
 						<li><a href="https://libraries.io" target="_blank">Open Source Libraries</a></li>
@@ -62,7 +62,7 @@
 					</ul>
 				</li>
 				<li class="dropdown">
-					<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Bootstrap <sup>3.3.7</sup> <span class="caret"></span></a>
+					<a href="#" class="dropdown-toggle notranslate" data-toggle="dropdown" role="button" aria-expanded="false">Bootstrap <sup>3.3.7</sup> <span class="caret"></span></a>
 					<ul class="dropdown-menu" role="menu">
 						<li><a href="http://getbootstrap.com/docs/3.3/css/" target="_blank">CSS</a></li>
 						<li><a href="http://getbootstrap.com/docs/3.3/components/" target="_blank">Components</a></li>
@@ -87,6 +87,22 @@
 						<li class="dropdown-header"><a href="http://getbootstrap.com/docs/3.3/examples/offcanvas/" target="_blank">Off-canvas</a></li>
 					</ul>
 				</li>
+				<?php if(!(php::is_localhost())): ?>
+				<li>
+					<div id="google_translate_element"></div>
+					<script type="text/javascript">
+					function googleTranslateElementInit(){
+					  new google.translate.TranslateElement({
+						  pageLanguage: 'en', 
+						  includedLanguages: 'de,en,es,fr,pt', 
+						  layout: google.translate.TranslateElement.InlineLayout.SIMPLE, 
+						  autoDisplay: false
+					  }, 'google_translate_element');
+					}
+					</script>
+					<script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+				</li>
+				<?php endif; ?>
 			</ul>
 		</div>
 		<!--/.nav-collapse -->
@@ -102,7 +118,7 @@
 		<!-- ******** LOADING BAR ******** -->
 		
 		<div class="progress JSloadProgressTest">
-			<div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%"><span class="sr-only">80% Complete (danger)</span>
+			<div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%"><span class="sr-only">0% Complete (danger)</span>
 			</div>
 		</div>
 		
@@ -112,7 +128,7 @@
 		
 		<div class="jumbotron">
 			<h1>Main Template</h1>
-			<p>This template consists of two main parts, <code>header</code> and <code>footer</code>, which are called from the <code>index</code> (or pages). The <code>CSS</code> and <code>JS</code> files are called from a <code>PHP</code> file.</p>
+			<p>This template consists of two main parts, <code>Header</code> and <code>Footer</code>, which are called from the <code>Index</code> (or pages). The <code>CSS</code> and <code>JS</code> files are called from a <b>PHP file</b>.</p>
 		</div>
 		
 		<!-- Header Example -->
@@ -120,7 +136,7 @@
 		<div class="page-header">
 			<h1>Header <span class="label label-primary">Template</span></h1>
 		</div>
-		<p>The main header structure contains the access to main <code>PHP</code> functions, website data, <code>META</code> tags, <code>CSS</code> files and <code>HTML</code> header containers. <code>PHP</code> is used for the main <code>CSS</code> file <i>(style.php)</i> to parse variables, minify code, etc...</p>
+		<p>The main header structure contains the access to main <b>PHP functions</b>, website data, <b>Meta tags</b>, <b>CSS files</b> and <b>HTML containers</b>. <b>PHP</b> is used for the main <b>CSS file</b> <code>style.php</code> to parse variables, reduce code, etc...</p>
 		
 		<figure class="highlight">
 			<pre><code class="language-html" data-lang="html">&lt;!DOCTYPE html&gt;
@@ -138,7 +154,7 @@
 					<h3 class="panel-title">Note for HTML data</h3>
 				</div>
 				<div class="panel-body">
-					Main HTML data for <i>meta tags</i> are located in <code>functions.php</code> using an extended function from PHP utilities. <i>php::get_html_data()</i>
+					The Main <b>HTML data</b> for <i>Meta tags</i> are located in <code>functions.php</code> using an extended function from <b>PHP utilities</b>. For example: <code>php::get_html_data()</code>
 				</div>
 			</div>
 		</p>
@@ -150,7 +166,7 @@
 		<div class="page-header">
 			<h1>Page <span class="label label-primary">Template</span></h1>
 		</div>
-		<p>The main page (or index) structure contains <code>HTML</code> contents and access to the main <code>header</code> and <code>footer</code> files.</p>
+		<p>The main page (or index) structure contains <b>HTML contents</b> and access to the main <b>Header</b> and <b>Footer</b>.</p>
 		
 		<figure class="highlight">
 			<pre><code class="language-html" data-lang="html">&lt;?php include('header.php'); ?&gt;<br>&lt;div class="content"&gt;<br>...<br>&lt;/div&gt;<br>&lt;?php include('footer.php'); ?&gt;</code></pre>
@@ -163,7 +179,7 @@
 		<div class="page-header">
 			<h1>Footer <span class="label label-primary">Template</span></h1>
 		</div>
-		<p>The main footer structure contains the access to <code>JS</code> files (included the base one) and <code>HTML</code> footer containers. <code>PHP</code> is used for the main <code>CSS</code> file <i>(app.php)</i> to parse variables, minify code, etc...</p>
+		<p>The main footer structure contains the access to <b>JS files</b> (included the base one) and <b>HTML footer containers</b>. <b>PHP</b> is used for the main <b>CSS file</b> <code>app.php</code> to parse variables, reduce code, etc...</p>
 		
 		<figure class="highlight">
 			<pre><code class="language-html" data-lang="html">...<br>&lt;!-- Main JS File --&gt;
@@ -179,7 +195,7 @@
 					<h3 class="panel-title">Note for main PHP Functions</h3>
 				</div>
 				<div class="panel-body">
-					You can use the PHP functions from the main library like <i>php::function()</i>, If you will use <b>Wordpress</b> (or another CMS) is highly recommended to use their main functions instead the base here. For example for <b>Wordpress</b> use <code>get_bloginfo('template_url')</code> instead <code>php::get_main_url()</code> and <code>get_header()</code>, <code>get_footer()</code> instead <code>include('header.php')</code>, <code>include('footer.php')</code>
+					You can use the <b>PHP functions</b> from the main library like <code>php::function()</code>, If you will use <code>Wordpress</code> (or another CMS) is highly recommended to use their main functions instead the base here. For example for <code>Wordpress</code> use <code>get_bloginfo('template_url')</code> instead <code>php::get_main_url()</code> and <code>get_header()</code>, <code>get_footer()</code> instead <code>include('header.php')</code>, <code>include('footer.php')</code>
 				</div>
 			</div>
 		</p>
@@ -207,7 +223,7 @@
 					<h3 class="panel-title">Note to begin a website</h3>
 				</div>
 				<div class="panel-body">
-					If you want to start a new website using this, i recommend to delete the <b>example code</b>. For <code>HTML</code> open <b>index.php</b> and delete the <b>nav menu</b> <i>(first &lt;nav&gt; tag)</i> and remove all the content from the main <b>.content > .container</b> <i>(all inside element &lt;div class="container"&gt;</i>. For <code>CSS</code> delete the file <b>style-example.css</b>, open <b>style-extras.php</b> and delete or comment the included <b>style-example.css</b> line <i>('../css/style-example.css')</i>. Finally For <code>JS</code> delete the file <b>app-example.js</b>, open <b>app-extras.php</b> and delete or comment the included <b>app-example.js</b> line <i>('../css/app-example.js')</i>.
+					If you want to start a new website using this, i recommend to delete the <b>example code</b>. For <b>HTML</b> open <code>index.php</code> and delete the <b>Navbar Menu</b> <i>(first <code>&lt;nav&gt;</code> tag)</i> and remove all the content from the main <code>.content > .container</code> <i>(all inside element <code>&lt;div class="container"&gt;</code>)</i>. For <b>CSS</b> delete the file <code>style-example.css</code>, open <code>style-extras.php</code> and delete or comment the included <code>style-example.css</code> line <code>('../css/style-example.css')</code>. Finally For <b>JS</b> delete the file <code>app-example.js</code>, open <code>app-extras.php</code> and delete or comment the included <code>app-example.js</code> line <code>('../css/app-example.js')</code>.
 				</div>
 			</div>
 		</p>
@@ -222,7 +238,7 @@
 		
 		<div class="jumbotron">
 			<h1>CSS & JS</h1>
-			<p>This template contains a <code>PHP</code> files to call <code>JS</code> and <code>CSS</code> files which are ordered and minified for a better reading.</p>
+			<p>This template contains <b>PHP files</b> to call <code>JS</code> and <code>CSS</code>. These files are ordered and reduced for a better performance.</p>
 		</div>
 		
 		<!-- CSS Example -->
@@ -235,23 +251,23 @@
 		<table class="table table-bordered table-striped js-options-table">
 			<thead>
 				<tr>
-					<th>variable</th>
-					<th>description</th>
+					<th>Variable</th>
+					<th>Description</th>
 				</tr>
 			</thead>
 			<tbody>
 				<tr>
-					<td>$cssFiles</td>
+					<td class="notranslate">$cssFiles</td>
 					<td>Defines which <code>CSS</code> files will be called, you can add more to the array. The <code>style-base.css</code> is used to set main classes, <code>style-bootstrap.css</code> is used to be set all <b>Bootstrap</b> related classes.
 					</td>
 				</tr>
 				<tr>
-					<td>$cssMinify</td>
-					<td>Defines if the <code>CSS</code> code will be minified, this will reduce the size of the file to the client. You can add the <code>GET</code> flag <b>?unminify</b> to the main <code>style.php</code> url to check the code unminified.
+					<td class="notranslate">$cssMinify</td>
+					<td>Defines if the <code>CSS</code> code will get the size reduced to the client. You can add the <code>GET</code> flag <b>?unminify</b> to the main <code>style.php</code> url to check the unreduced code.
 					</td>
 				</tr>
 				<tr>
-					<td>$cssVariables</td>
+					<td class="notranslate">$cssVariables</td>
 					<td>Defines custom variables to replace inside the <code>CSS</code>files, such as colors, sizes and another data.
 					</td>
 				</tr>
@@ -282,9 +298,11 @@
 				<h3 class="panel-title">Note for included CSS files</h3>
 			</div>
 			<div class="panel-body">
-				The file <code>style-theme.css</code> it will contain all the main classes for yout website. The file <code>style-example.css</code> is only for tests and references, you can delete with no problems. Is not recomemded to modify the <code>style-base.css</code> or <code>style-bootstrap.css</code> because contains the main functions inside. <b>If you want add extra stuff, just add it in</b> <code>style-theme.css</code> <b>or</b> <code>style-extras.php</code>
+				The file <code>style-theme.css</code> it will contain all the main classes for the website layout. The file <code>style-example.css</code> is only for tests and references, you can delete with no problems. Is not recomended to modify the <code>style-base.css</code> or <code>style-bootstrap.css</code> because contains the main functions inside. <b>If you want add extra stuff, just add it in</b> <code>style-theme.css</code> <b>or</b> <code>style-extras.php</code>
 				<br><br>
 				The compile process works in realtime if you are testing in <code>localhost</code> side, if you upload the code to <code>production</code> the file <code>style.css</code> will be generated only once, if you update your code, remember to delete <code>style.css</code> to get a new one.
+				<br><br>
+				<b>Note for Wordpress:</b> Theres a file called <code>style-admin.css</code> which will directly affect the administration panel <i>(It already included some base classes)</i>.
 			</div>
 		</div>
 		</p>
@@ -301,23 +319,23 @@
 		<table class="table table-bordered table-striped js-options-table">
 			<thead>
 				<tr>
-					<th>variable</th>
-					<th>description</th>
+					<th>Variable</th>
+					<th>Description</th>
 				</tr>
 			</thead>
 			<tbody>
 				<tr>
-					<td>$jsFiles</td>
+					<td class="notranslate">$jsFiles</td>
 					<td>Defines which <code>JS</code> files will be called, you can add more to the array. The <code>app-base.js</code> is used to be execute all main stuff and functions, <code>app-lang.js</code> is used to be set the main language settings.
 					</td>
 				</tr>
 				<tr>
-					<td>$jsMinify</td>
-					<td>Defines if the <code>JS</code> code will be minified, this will reduce the size of the file to the client. You can add the <code>GET</code> flag <b>?unminify</b> to the main <code>app.php</code> url to check the code unminified.
+					<td class="notranslate">$jsMinify</td>
+					<td>Defines if the <code>JS</code> code will get the size reduced to the client. You can add the <code>GET</code> flag <code>?unminify</code> to the main <code>app.php</code> url to check the unreduced code.
 					</td>
 				</tr>
 				<tr>
-					<td>$jsVariables</td>
+					<td class="notranslate">$jsVariables</td>
 					<td>Defines custom variables to replace inside the <code>JS</code>files, such as colors, sizes and another data. <b>Note:</b> is important to keep the <code>@global-url</code> variable and the <code>@screen</code> ones, because are used in the <i>Base</i> code.
 					</td>
 				</tr>
@@ -353,6 +371,8 @@
 				To manage custom languages just add the attribute <code>data-js-lang</code> to <code>&lt;body&gt;</code> tag. The main language file is <code>app-lang.js</code> but these are the default ones, you can override them in <code>app-theme.js</code> using the same key. If you want add more language take a look on <code>app-example.js</code> for references. 
 				<br><br>
 				The compile process works in realtime if you are testing in <code>localhost</code> side, if you upload the code to <code>production</code> the file <code>app.js</code> will be generated only once, if you update your code, remember to delete <code>app.js</code> to get a new one.
+				<br><br>
+				<b>Note for Wordpress:</b> Theres a file called <code>app-admin.js</code> which will directly affect the administration panel in the case you need <i>(It already included some base functions)</i>.
 			</div>
 		</div>
 		</p>
@@ -376,10 +396,10 @@
 
 		<!-- lightGallery Example -->
 
-		<div class="page-header">
+		<div class="page-header notranslate">
 			<h1>Light Gallery <span class="label label-danger">Plugin</span></h1>
 		</div>
-		<p>A customizable, modular, responsive, lightbox gallery plugin for jQuery. Below you will find an improved usage method via <code>data-lg-attributes</code> applied to the main gallery container.
+		<p>A customizable, modular, responsive, gallery plugin for <b>jQuery</b>. Below you will find an improved usage method via <code>data-lg-attributes</code> applied to the main gallery container.
 
 		<table class="table table-bordered table-striped js-options-table">
 			<thead>
@@ -390,25 +410,25 @@
 			</thead>
 			<tbody>
 				<tr>
-					<td>data-lg-item</td>
+					<td class="notranslate">data-lg-item</td>
 					<td>Defines which element contains the image <code>url</code> and the <code>thumbnail</code>
 					</td>
 				</tr>
 				<tr>
-					<td>data-lg-title</td>
+					<td class="notranslate">data-lg-title</td>
 					<td>Set a custom title to all images in the lightbox</td>
 				</tr>
 				<tr>
-					<td>data-lg-thumb</td>
-					<td>Defines if thumbnails will be shown when the lightbox is executed</td>
+					<td class="notranslate">data-lg-thumb</td>
+					<td>Defines if thumbnails will be shown when the gallery is executed</td>
 				</tr>
 				<tr>
-					<td>data-lg-gallery</td>
+					<td class="notranslate">data-lg-gallery</td>
 					<td>Execute custom functions when you get the <code>first</code> or <code>last</code> page</td>
 				</tr>
 				<tr>
-					<td>data-lg-download</td>
-					<td>Enables downloads, the download url will be taken from data-<code>src/href</code> attribute</td>
+					<td class="notranslate">data-lg-download</td>
+					<td>Enables downloads, the download url will be taken from <code>data-src</code> or <code>href</code></td>
 				</tr>
 			</tbody>
 		</table>
@@ -442,7 +462,7 @@
 		</figure>
 		
 		<h3>Gallery Mode</h3>
-		<p>This mode allows to improve the way to show paged galleries executing custom functions when you get the <code>first</code> or <code>last</code> page.<br><i>Note: You need to add the class <code>lg-gallery-paginator</code> to the paginator to get the <b>prev></b> and <b>next</b> control working</i></p>
+		<p>This mode allows to improve the way to show paged galleries executing custom functions when you get the <code>first</code> or <code>last</code> page.<br><i>Note: You need to add the class <code>lg-gallery-paginator</code> to the paginator to get the previous and next gallery pages</b></i>.</p>
 
 		<div class="bs-example">
 
@@ -518,11 +538,11 @@
 
 		<!-- Data Tables Example -->
 
-		<div class="page-header">
+		<div class="page-header notranslate">
 			<h1>Data Tables <span class="label label-danger">Plugin</span></h1>
 		</div>
 		
-		<p>Improve the way to show plain html tables. Below you will find an improved usage method via <code>data-table-attributes</code>.</p>
+		<p>Improve the way to show plain or dynamic <b>HTML tables</b>. Below you will find the usage method via <code>data</code> attributes.</p>
 		
 		<table class="table table-bordered table-striped js-options-table">
 			<thead>
@@ -533,25 +553,25 @@
 			</thead>
 			<tbody>
 				<tr>
-					<td>data-paging</td>
-					<td>Enables a paginator with show amount option</td>
+					<td class="notranslate">data-paging</td>
+					<td>Enables a paginator</td>
 				</tr>
 				<tr>
-					<td> data-searching</td>
+					<td class="notranslate"> data-searching</td>
 					<td>Enables a search box to filter results</td>
 				</tr>
 				<tr>
-					<td>data-info</td>
+					<td class="notranslate">data-info</td>
 					<td>Show info at the table footer</td>
 				</tr>
 				<tr>
-					<td>data-ordering</td>
+					<td class="notranslate">data-ordering</td>
 					<td>Enables ordering by column</td>
 				</tr>
 			</tbody>
 		</table>
 
-		<div class="bs-example table-responsive">
+		<div class="bs-example table-responsive notranslate">
 			<table class="table table-striped table-bordered JSdataTables" data-paging="true" data-searching="true" data-info="true" data-ordering="true" cellspacing="0" cellpadding="0" border="0">
 				<thead>
 					<tr>
@@ -1031,10 +1051,10 @@
 
 		<!-- Show Alert example -->
 
-		<div class="page-header">
+		<div class="page-header notranslate">
 			<h1>Show Alert BootBox <span class="label label-danger">Plugin</span></h1>
 		</div>
-<p>Launch a custom modal box using BootBox Features, the function structure is <code>showAlert(title, text, size, align)</code>. You can alternatively set a size and alignment classes like <code>horizontal vertical</code> (For example: <b>right center</b>).</p>
+		<p>Launch a custom modal box using <b>BootBox</b> features, the function structure is <code>showAlert(title, text, size, align)</code>. You can alternatively set a size and alignment classes like <code>horizontal vertical</code> (For example: <code>right center</code>).</p>
 
 		<div class="bs-example">
 			<button type="button" class="btn btn-primary" onclick="showAlert('Small Size Box','This is a text shown in a modal box','small','center')">Show Alert Small Size (Centered)</button>
@@ -1050,10 +1070,10 @@
 		
 		<!-- Show Content Example -->
 
-		<div class="page-header">
+		<div class="page-header notranslate">
 			<h1>Show Content BootBox <span class="label label-danger">Plugin</span></h1>
 		</div>
-		<p>Launch a custom modal box using BootBox Features, the function shows the content from an element, the structure is <code>showContent(title, element, size, align)</code>. You can alternatively set a size and alignment classes like <code>horizontal vertical</code> (For example: <b>right center</b>).</p>
+		<p>Launch a custom modal box using <b>BootBox</b> features, the function shows the content from an element, the structure is <code>showContent(title, element, size, align)</code>. You can alternatively set a size and alignment classes like <code>horizontal vertical</code> (For example: <code>right center</code>).</p>
 
 		<div class="bs-example">
 			<button type="button" class="btn btn-primary" onclick="showContent('Small Size Box','.showContentExample','small','center')">Show Content Small Size (Centered)</button>
@@ -1072,10 +1092,10 @@
 
 		<!-- Video Launch Example -->
 
-		<div class="page-header">
+		<div class="page-header notranslate">
 			<h1>Video Launch <span class="label label-danger">Custom</span></h1>
 		</div>
-		<p>Launch a modal box with a basic video player, the function structure is <code>videoLaunch(url, share, title, autoplay, size, align)</code>. You can alternatively set a size and alignment classes like <code>horizontal vertical</code> (For example: <b>right center</b>).</p>
+		<p>Launch a modal box with a basic video player, the function structure is <code>videoLaunch(url, share, title, autoplay, size, align)</code>. You can alternatively set a size and alignment classes like <code>horizontal vertical</code> (For example: <code>right center</code>).</p>
 
 		<div class="bs-example">
 			<button type="button" class="btn btn-primary" onclick="videoLaunch('https://youtube.com/watch?v=ae6aeo9-Kn8', true, 'My YouTube Video', true, 'medium', 'center')">YouTube Video (Medium Size & Centered)</button>
@@ -1090,7 +1110,7 @@
 
 		<!-- Window Popup Example -->
 
-		<div class="page-header">
+		<div class="page-header notranslate">
 			<h1>Window Pop-Up <span class="label label-danger">Custom</span></h1>
 		</div>
 		<p>Launch a custom pop-up window via javascript. Below you will find an improved usage method via <code>data-win-attributes</code>.</p>
@@ -1104,28 +1124,28 @@
 			</thead>
 			<tbody>
 				<tr>
-					<td>data-win-url</td>
+					<td class="notranslate">data-win-url</td>
 					<td>Website URL to show in the pop-up</td>
 				</tr>
 				<tr>
-					<td>data-win-size</td>
-					<td>Width & Height (in pixels) of the pop-up, Need to be written like <code>width<code>x<code>height</code></td>
+					<td class="notranslate">data-win-size</td>
+					<td>Width & Height (in pixels) of the pop-up, Need to be written like <b>Width</b>x<b>Height</b></td>
 				</tr>
 				<tr>
-					<td>data-win-align</td>
-					<td>Horizontal & Vertical alignment (in pixels) of the pop-up, Need to be written like <code>horizontal<code>,<code>vertical</code> and the values can be <code>left</code>, <code>center</code> or <code>right</code></td>
+					<td class="notranslate">data-win-align</td>
+					<td>Horizontal & Vertical alignment (in pixels) of the pop-up, Need to be written like <code>horizontal</code>,<code>vertical</code> and the values can be <code>left</code>, <code>center</code> or <code>right</code></td>
 				</tr>
 				<tr>
-					<td>data-win-scroll</td>
+					<td class="notranslate">data-win-scroll</td>
 					<td>Enable or disable scrollbar in the pop-up</td>
 				</tr>
 				<tr>
-					<td>data-win-modal-size</td>
+					<td class="notranslate">data-win-modal-size</td>
 					<td>Alternative to set error modal size classes like <code>small</code>, <code>medium</code>, <code>large</code> or <code>extra-large</code></td>
 				</tr>
 				<tr>
-					<td>data-win-modal-align</td>
-					<td>Alternative to set error modal alignment classes like <code>horizontal vertical</code> (For example: <b>right center</b>)</td>
+					<td class="notranslate">data-win-modal-align</td>
+					<td>Alternative to set error modal alignment classes like <code>horizontal vertical</code> (For example: <code>right center</code>)</td>
 				</tr>
 			</tbody>
 		</table>
@@ -1143,10 +1163,10 @@
 				
 		<!-- Map launch example -->
 
-		<div class="page-header">
+		<div class="page-header notranslate">
 			<h1>Map Launch <span class="label label-danger">Custom</span></h1>
 		</div>
-		<p>Show a modal box with map options such as <i>Google Maps</i> and <i>Waze</i>. Below you will find an improved usage method via <code>data-map-attributes</code>.</p>
+		<p>Show a modal box with map options such as <code>Google Maps</code> and <code>Waze</code>. Below you will find an improved usage method via <code>data-map</code> attributes.</p>
 
 		<table class="table table-bordered table-striped js-options-table">
 			<thead>
@@ -1157,33 +1177,33 @@
 			</thead>
 			<tbody>
 				<tr>
-					<td>data-map-address</td>
+					<td class="notranslate">data-map-address</td>
 					<td>The map address to search</code>
 					</td>
 				</tr>
 				<tr>
-					<td>data-map-coords-1</td>
+					<td class="notranslate">data-map-coords-1</td>
 					<td>Desired address coords from <b>Google Maps</b> <code>latitude</code>, <code>longitude</code>, <code>zoom</code>
 					</td>
 				</tr>
 				<tr>
-					<td>data-map-coords-2</td>
+					<td class="notranslate">data-map-coords-2</td>
 					<td>Desired address coords from <b>Waze</b> <code>latitude</code>, <code>longitude</code>, <code>zoom</code>
 					</td>
 				</tr>
 				<tr>
-					<td>data-map-iframe</td>
+					<td class="notranslate">data-map-iframe</td>
 					<td>Alternative to show an iframe for <code>Google Maps</code> with <code>true</code> or <code>false</code> 
 					</td>
 				</tr>
 				<tr>
-					<td>data-map-modal-size</td>
+					<td class="notranslate">data-map-modal-size</td>
 					<td>Alternative to set modal size classes like <code>small</code>, <code>medium</code>, <code>large</code> or <code>extra-large</code>
 					</td>
 				</tr>
 				<tr>
-					<td>data-map-modal-align</td>
-					<td>Alternative to set modal alignment classes like <code>horizontal vertical</code> (For example: <b>right center</b>)
+					<td class="notranslate">data-map-modal-align</td>
+					<td>Alternative to set modal alignment classes like <code>horizontal vertical</code> (For example: <code>right center</code>)
 					</td>
 				</tr>
 			</tbody>
@@ -1200,12 +1220,12 @@
 
 		<!-- Form Validation -->
 
-		<div class="page-header">
-			<h1>Form Validation <span class="label label-danger">Custom</span></h1>
+		<div class="page-header notranslate">
+			<h1>Forms Validation <span class="label label-danger">Custom</span></h1>
 		</div>
-		<p>Basic validation for <code>input</code>, <code>select</code>, <code>checkbox</code>, <code>radio</code> and <code>textarea</code> elements. The main function is <code>$().validateForm(options);</code></p></p>
+		<p>Basic validation for forms. The elements validated are <code>input</code>, <code>select</code>, <code>checkbox</code>, <code>radio</code> and <code>textarea</code>. The main function is <code>$(elem).validateForm(options);</code></p></p>
 		
-		<div class="bs-example">
+		<div class="bs-example notranslate">
 			<form class="JSformExample" method="post" action="javascript:showAlert('Form Success!','The form passed sucessfully! Thanks!');">
 				<div class="form-group">
 					<label for="example-input-username">User Name</label>
@@ -1385,10 +1405,10 @@
 
 		<!-- Float BS4 example -->
 
-		<div class="page-header">
+		<div class="page-header notranslate">
 			<h1>Float <span class="label label-danger">BS4</span></h1>
 		</div>
-		<p>Imported <i>Float property</i> classes from <b>Bootstrap 4</b>. These utility classes float an element to the <code>left</code>, <code>right</code>, or <code>disable</code> floating. Use the same viewport breakpoints as our grid system.</p>
+		<p>Imported <code>Float</code> property classes from <b>Bootstrap 4</b>. These utility classes float an element to the <code>left</code>, <code>right</code>, or <code>disable</code> floating. Use the same viewport breakpoints as our grid system.</p>
 
 		<p>As such, the classes are named using the format:</p>
 
@@ -1440,10 +1460,10 @@
 
 		<!-- Spacing BS4 example -->
 
-		<div class="page-header">
+		<div class="page-header notranslate">
 			<h1>Spacing <span class="label label-danger">BS4</span></h1>
 		</div>
-		<p>Imported <i>Margin & Padding</i> classes from <b>Bootstrap 4</b>. The classes are named using the format <code>{property}{sides}-{size}</code> for xs and <code>{property}{sides}-{breakpoint}-{size}</code> for <b>sm, md, lg,</b> and <b>xl</b>.</p>
+		<p>Imported <code>Margin</code> and <code>Padding</code> classes from <b>Bootstrap 4</b>. The classes are named using the format <code>{property}{sides}-{size}</code> for xs and <code>{property}{sides}-{breakpoint}-{size}</code> for <b>sm, md, lg,</b> and <b>xl</b>.</p>
 
 		<p>Where <em>property</em> is one of:</p>
 
@@ -1476,7 +1496,7 @@
 		  <li><code class="highlighter-rouge">auto</code> - for classes that set the <code class="highlighter-rouge">margin</code> to auto</li>
 		</ul>
 
-		<div class="bs-example">
+		<div class="bs-example text-capitalize">
 			<div class="m-5 p-5" style="display:inline-block; vertical-align:top; background:yellow">
 				Full margin & padding
 			</div><div class="m-5 p-0" style="display:inline-block; vertical-align:top; background:lime">
@@ -1498,10 +1518,10 @@
 
 		<!-- Display BS4 example -->
 
-		<div class="page-header">
+		<div class="page-header notranslate">
 			<h1>Display property <span class="label label-danger">BS4</span></h1>
 		</div>
-		<p>Imported <i>Display property</i> classes from <b>Bootstrap 4</b>. Change the value of the display property with our responsive display utility classes.</p>
+		<p>Imported <code>Display</code> property classes from <b>Bootstrap 4</b>. Change the value of the display property with our responsive display utility classes.</p>
 
 		<p>As such, the classes are named using the format:</p>
 
@@ -1526,7 +1546,7 @@
 
 		<p>The media queries effect screen widths with the given breakpoint <em>or larger</em>. For example, <code class="highlighter-rouge">.d-lg-none</code> sets <code class="highlighter-rouge">display: none;</code> on both <code class="highlighter-rouge">lg</code> and <code class="highlighter-rouge">xl</code> screens.</p>
 
-		<div class="bs-example">
+		<div class="bs-example notranslate">
 			<div class="padding-15" style="display: block">
 				<div class="row">
 					<div class="col-xs-12">
@@ -1549,12 +1569,12 @@
 
 		<!-- Vertical Alignment BS4 example -->
 
-		<div class="page-header">
+		<div class="page-header notranslate">
 			<h1>Vertical Alignment <span class="label label-danger">BS4</span></h1>
 		</div>
-		<p>Imported <i>Vertical Alignment</i> classes from <b>Bootstrap 4</b>. Choose from <code>.align-baseline, .align-top, .align-middle, .align-bottom, .align-text-bottom,</code> and <code>.align-text-top</code> as needed.
+		<p>Imported <i>Alignment Classes</i> from <b>Bootstrap 4</b>. Choose from <code>.align-baseline, .align-top, .align-middle, .align-bottom, .align-text-bottom,</code> and <code>.align-text-top</code> as needed.</p>
 
-		<div class="bs-example">
+		<div class="bs-example text-capitalize">
 			<div class="padding-15" style="display: block">
 				<div class="row">
 					<div class="col-xs-12">
@@ -1588,10 +1608,10 @@
 
 		<!-- Position BS4 example -->
 		
-		<div class="page-header">
+		<div class="page-header notranslate">
 			<h1>Position <span class="label label-danger">BS4</span></h1>
 		</div>
-		<p>Imported <i>Position property</i> classes from <b>Bootstrap 4</b>. Use these shorthand utilities for quickly configuring the position of an element.</p>
+		<p>Imported <code>Position</code> property classes from <b>Bootstrap 4</b>. Use these shorthand utilities for quickly configuring the position of an element.</p>
 
 		<p>Where <em>value</em> is one of:</p>
 
@@ -1606,7 +1626,7 @@
 		  <li><code class="highlighter-rouge">sticky-top</code></li>
 		</ul>
 
-		<div class="bs-example">
+		<div class="bs-example text-capitalize">
 			<div class="padding-15" style="display: block">
 				<div class="row">
 					<div class="col-xs-12">
@@ -1629,10 +1649,10 @@
 
 		<!-- Text Align BS4 example -->
 		
-		<div class="page-header">
+		<div class="page-header notranslate">
 			<h1>Text Align <span class="label label-danger">BS4</span></h1>
 		</div>
-		<p>Imported <i>Text Align</i> classes from <b>Bootstrap 4</b>. Responsive features to current text utilities to control alignment.</p>
+		<p>Imported <code>Text Align</code> classes from <b>Bootstrap 4</b>. Responsive features to current text utilities to control alignment.</p>
 
 		<p>Where <em>value</em> is one of:</p>
 
@@ -1644,27 +1664,27 @@
 			<div class="padding-15" style="display: block">
 				<div class="row">
 					<div class="col-xs-12">
-						<p class="text-sm-left">Left aligned text on viewports sized SM (small) or wider.</p>
-						<p class="text-md-center">Left aligned text on viewports sized MD (medium) or wider.</p>
-						<p class="text-lg-right">Left aligned text on viewports sized LG (large) or wider.</p>
+						<p class="text-sm-left">Left aligned Text on viewports sized SM (small) or wider.</p>
+						<p class="text-md-center">Left aligned Text on viewports sized MD (medium) or wider.</p>
+						<p class="text-lg-right">Left aligned Text on viewports sized LG (large) or wider.</p>
 					</div>
 				</div>
 			</div>
 		</div>
 		<figure class="highlight">
-			<pre><code class="language-html" data-lang="html">&lt;p class="text-sm-left">Left aligned text on viewports sized SM (small) or wider.&lt;/p&gt;
-&lt;p class="text-md-center"&gt;Left aligned text on viewports sized MD (medium) or wider.&lt;/p&gt;
-&lt;p class="text-lg-right"&gt;Left aligned text on viewports sized LG (large) or wider.&lt;/p&gt;</code></pre>
+			<pre><code class="language-html" data-lang="html">&lt;p class="text-sm-left">Left aligned Text on viewports sized SM (small) or wider.&lt;/p&gt;
+&lt;p class="text-md-center"&gt;Left aligned Text on viewports sized MD (medium) or wider.&lt;/p&gt;
+&lt;p class="text-lg-right"&gt;Left aligned Text on viewports sized LG (large) or wider.&lt;/p&gt;</code></pre>
 		</figure>
 
 		<!-- Text Align BS4 example -->
 
 		<!-- Carousel Rxample -->
 
-		<div class="page-header">
+		<div class="page-header notranslate">
 			<h1>Carousel <span class="label label-danger">Custom</span></h1>
 		</div>
-		<p>New classes to the current <b>Bootstrap</b> carousel. Remember to manage the transition time interval you can use the attribute <code>data-interval</code> to modify <i>(time in milliseconds)</i>. <i>Note: Touch gestures was added <i>(right or left)</i> on mobile devices</i></p>
+		<p>New classes to the <b>Bootstrap</b> carousel. Remember to manage the transition time interval you can use the attribute <code>data-interval</code> to modify <i>(time in milliseconds)</i>. <i>Note: Touch gestures was added <b>(right or left)</b> on mobile devices</i></p>
 
 		<table class="table table-bordered table-striped js-options-table">
 			<thead>
@@ -1675,27 +1695,27 @@
 			</thead>
 			<tbody>
 				<tr>
-					<td>carousel-fade</td>
+					<td class="notranslate">carousel-fade</td>
 					<td>Adding this class will change the slide animation to fade <code>in</code> and <code>out</code>
 					</td>
 				</tr>
 				<tr>
-					<td>carousel-nogradient</td>
+					<td class="notranslate">carousel-nogradient</td>
 					<td>Adding this class will disable the gradients on <code>left</code> and <code>right</code> controls</code>
 					</td>
 				</tr>
 				<tr>
-					<td>carousel-noshadow</td>
+					<td class="notranslate">carousel-noshadow</td>
 					<td>Adding this class will disable the shadows on <code>left</code> and <code>right</code> controls</code>
 					</td>
 				</tr>
 				<tr>
-					<td>carousel-nomobile</td>
+					<td class="notranslate">carousel-nomobile</td>
 					<td>Adding this class will disable the <code>left</code> and <code>right</code> controls on mobile devices</code>
 					</td>
 				</tr>
 				<tr>
-					<td>carousel-square</td>
+					<td class="notranslate">carousel-square</td>
 					<td>Adding this class will change the indicators to <code>square</code> buttons
 					</td>
 				</tr>
@@ -1735,7 +1755,7 @@
 		<!-- More Functions -->
 
 		<div class="page-header">
-			<h1>More Classes! <span class="label label-danger">CSS</span></h1>
+			<h1>More classes! <span class="label label-danger">CSS</span></h1>
 		</div>
 		<p>There is more classes in the whole code, just play and try it. Remember to check <code>style-base.css</code> or <code>style-bootstrap.css</code> for more stuff <i>(Some of are commented, just copy them in a new file)</i>.</p>
 

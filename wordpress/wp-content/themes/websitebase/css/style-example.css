@@ -14,6 +14,7 @@
 
 /* ================================================= EXAMPLE GLOBAL ================================================= */
 body {
+	top: 0px !important;
 	padding-top: 70px;
 }
 table {
@@ -22,6 +23,35 @@ table {
 /* ================================================= EXAMPLE GLOBAL ================================================= */
 
 /* ================================================= EXAMPLE CONTENT ================================================= */
+/* Google Translate Widget */
+#google_translate_element{
+	position: relative;
+	display: block;
+	padding: 12px 15px;
+}
+.goog-te-banner-frame{
+	display: none !important;
+}
+.goog-te-gadget,
+.goog-te-combo,
+.goog-te-banner *,
+.goog-te-ftab *,
+.goog-te-menu *,
+.goog-te-menu2 *,
+.goog-te-balloon *{
+	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif !important;
+	font-size: 12px !important;
+}
+.goog-te-menu-value span{
+	text-transform: capitalize !important;
+}
+/* Capitalize content */
+.dropdown-toggle,
+.dropdown-menu,
+.page-header{
+	text-transform: capitalize !important;
+}
+/* General content */
 .content {
 	padding-bottom: 30px;
 }
@@ -80,7 +110,7 @@ table {
 	border-radius: 0;
 }
 /* Make the examples and snippets not full-width */
-@media (min-width: @screen-sm) {
+@media (min-width: @screen-sm){
 	.bs-example {
 		margin-right: 0;
 		margin-left: 0;

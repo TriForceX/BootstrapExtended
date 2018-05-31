@@ -1,6 +1,6 @@
 /* ================================================= BASE GLOBAL ================================================= */
 
-/*Main URL replaced by PHP*/
+/* Main URL replaced by PHP */
 @main-url 	      { content: '@global-url'; }
 
 /*IE10 viewport hack for Surface/desktop Windows 8 bug*/
@@ -8,7 +8,7 @@
 @-o-viewport      { width: device-width; }
 @viewport         { width: device-width; }
 
-/*General HTML*/
+/* General HTML */
 body{
 	background-color: white;
   	overflow-x: hidden;
@@ -40,13 +40,13 @@ th[align='left'],
 td[align='left']{
 	text-align: left;
 }
-/*General HTML*/
+/* General HTML */
 
 /* ================================================= BASE GLOBAL ================================================= */
 
 /* ================================================= BASE RESOURCES ================================================= */
 
-/*UI Date Picker*/
+/* UI Date Picker */
 .ui-datepicker{
 	font-size:12px;
 }
@@ -69,9 +69,9 @@ a.ui-button:active,
 .ui-button.ui-state-active:hover{
 	font-weight: bold;
 }
-/*UI Date Picker*/
+/* UI Date Picker */
 
-/*UI Date Picker Custom*/
+/* UI Date Picker Custom */
 /*.ui-datepicker .ui-datepicker-header{
 	background: red;
 	border-color: red;
@@ -125,9 +125,9 @@ a.ui-button:active,
 .ui-datepicker-title select option{
 	color: black;
 }*/
-/*UI Date Picker Custom*/
+/* UI Date Picker Custom */
 
-/*LightGallery*/
+/* LightGallery */
 .lg-backdrop{
 	z-index: 1055; /*real: 1040 - bootstrap modal: 1040*/
 }
@@ -138,9 +138,9 @@ a.ui-button:active,
 	margin-left: auto !important;
 	margin-right: auto !important;
 }
-/*LightGallery*/
+/* LightGallery */
 
-/*Aditional hover effects*/
+/* Aditional hover effects */
 .hvr-opacity{
 	transition: opacity 0.4s ease;
 	-moz-transition: opacity 0.4s ease;
@@ -154,13 +154,13 @@ a.ui-button:active,
 	-webkit-transition: opacity 0.4s ease;
 	-o-transition: opacity 0.4s ease;
 }
-/*Aditional hover effects/
+/* Aditional hover effects */
 
 /* ================================================= BASE RESOURCES ================================================= */
 
 /* ================================================= BASE JAVASCRIPT ================================================= */
 
-/*JS LightGallery*/
+/* JS LightGallery */
 .JSlightGallery .lg-thumb-prev,
 .JSlightGallery .lg-thumb-next{
 	display: none;
@@ -168,27 +168,27 @@ a.ui-button:active,
 .JSlightGalleryNoBorder{
 	border-color: transparent !important;
 }
-/*JS LightGallery*/
+/* JS LightGallery */
 
-/*JS Vertical Align*/
+/* JS Vertical Align */
 .JSverticalAlign{
 	visibility: hidden;
 }
-/*JS Vertical Align*/
+/* JS Vertical Align */
 
-/*JS Rotate*/
+/* JS Rotate */
 .JSrotate{
 	visibility: hidden;
 }
-/*JS Rotate*/
+/* JS Rotate */
 
-/*JS Auto Background*/
+/* JS Auto Background */
 .JSimgFill img{
 	display: none;
 }
-/*JS Auto Background*/
+/* JS Auto Background */
 
-/*JS Text Cut*/
+/* JS Text Cut */
 .JStextCut > div{
 	position: relative;
 }
@@ -205,9 +205,9 @@ a.ui-button:active,
 	overflow: hidden;
 	text-overflow: ellipsis;
 }
-/*JS Text Cut*/
+/* JS Text Cut */
 
-/*JS Video Launch*/
+/* JS Video Launch */
 .JSvideoLaunchIframe{
 	background-color: #DDD;
 	display:inline-block;
@@ -275,9 +275,9 @@ a.ui-button:active,
 	overflow: hidden;
 	opacity: 0;
 }
-/*JS Video Launch*/
+/* JS Video Launch */
 
-/*JS Loading*/
+/* JS Loading */
 .JSloading{
 	background-color: transparent;
 	position:fixed;
@@ -335,9 +335,9 @@ a.ui-button:active,
 	background-image:url("icons/loading/loading-icon-yellow.gif");
 	background-color:#faa425;
 }
-/*JS Loading*/
+/* JS Loading */
 
-/*JS Map Launch*/
+/* JS Map Launch */
 .JSmapLaunchInfo{
 	display:inline-block;
 	width:100%;
@@ -376,9 +376,9 @@ a.ui-button:active,
 .JSmapLaunchInfo > .JSmapLaunchIcons.small img{
 	width: 60px;
 }
-/*JS Map Launch*/
+/* JS Map Launch */
 
-/*JS Paginator*/
+/* JS Paginator */
 /*.JSpaginator{
 	width:100%;
 	height:50px;
@@ -437,6 +437,6 @@ a.ui-button:active,
 		font-size:20px;
 	}
 }*/
-/*JS Paginator*/
+/* JS Paginator */
 
 /* ================================================= BASE JAVASCRIPT ================================================= */

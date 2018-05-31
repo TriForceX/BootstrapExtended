@@ -69,7 +69,7 @@
 @endif
 
 <!-- ================================================= ANALYTICS ================================================= -->
-@if(stripos(Request::ip(), '192.168.') !== false)
+@if(stripos(Request::ip(), 'localhost') !== false || stripos(Request::ip(), '192.168.') !== false)
 <script>
 	function ga(){ console.log('Google Analytics:\n',arguments); } //Dont track in localhost
 </script>
