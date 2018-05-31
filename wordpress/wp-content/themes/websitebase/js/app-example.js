@@ -84,6 +84,9 @@ $(document).ready(function(){
 		modalAlign: 'top',
 	});
 	
+	//Example prevent title translation by Google
+	$('title').addClass('notranslate');
+	
 	//Example test URL
 	console.log('URL: '+mainUrl);
 	

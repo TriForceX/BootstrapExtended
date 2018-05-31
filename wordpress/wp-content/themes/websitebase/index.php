@@ -143,7 +143,7 @@
 &lt;html lang="&lt;?php echo php::get_html_data('lang'); ?&gt;"&gt;
 &lt;head&gt;
 	...
-	&lt;link href="&lt;?php echo php::get_main_url(); ?&gt;/css/style.php" rel="stylesheet"&gt;
+	&lt;link href="&lt;?php echo php::get_main_css(); ?&gt;" rel="stylesheet"&gt;
 	...
 &lt;/head&gt;<br>&lt;body&gt;<br>...</code></pre>
 		</figure>
@@ -183,7 +183,7 @@
 		
 		<figure class="highlight">
 			<pre><code class="language-html" data-lang="html">...<br>&lt;!-- Main JS File --&gt;
-&lt;script src="&lt;?php echo php::get_main_url(); ?&gt;/js/app.php"&gt;&lt;/script&gt;
+&lt;script src="&lt;?php echo php::get_main_js(); ?&gt;"&gt;&lt;/script&gt;
 ...
 &lt;/body&gt;
 &lt;/html&gt;</code></pre>
