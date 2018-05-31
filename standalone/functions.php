@@ -65,19 +65,22 @@ class php extends utilities\php
 		
 		if(php::is_localhost())
 		{
-			if(file_exists('style.css'))
+			if(file_exists('css/style.css'))
 			{
-				unlink('style.css');
+				unlink('css/style.css');
 			}
 			echo php::get_main_url().'/css/style.php'.$append;
 		}
 		else
 		{
-			if(!file_exists('style.css'))
+			if(!file_exists('css/style.css'))
 			{
 				echo php::get_main_url().'/css/style.php'.$append;
 			}
-			echo php::get_main_url().'/css/style.css'.$append;
+			else
+			{
+				echo php::get_main_url().'/css/style.css';
+			}
 		}
 	}
 	
@@ -88,19 +91,22 @@ class php extends utilities\php
 		
 		if(php::is_localhost())
 		{
-			if(file_exists('app.css'))
+			if(file_exists('js/app.js'))
 			{
-				unlink('app.css');
+				unlink('js/app.js');
 			}
 			echo php::get_main_url().'/js/app.php'.$append;
 		}
 		else
 		{
-			if(!file_exists('app.css'))
+			if(!file_exists('js/app.js'))
 			{
 				echo php::get_main_url().'/js/app.php'.$append;
 			}
-			echo php::get_main_url().'/js/app.css'.$append;
+			else
+			{
+				echo php::get_main_url().'/js/app.js';
+			}
 		}
 	}
 	

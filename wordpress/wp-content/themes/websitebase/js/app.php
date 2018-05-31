@@ -2,7 +2,7 @@
 
 header('Content-type: text/javascript; charset: UTF-8');
 
-echo '/*
+$jsInfo = '/*
  * App.php JavaScript File Parser
  * Version 2.0
  * TriForce - Matías Silva
@@ -62,13 +62,13 @@ if(php::is_localhost())
 	{
 		unlink('app.js');
 	}
-	echo jsGenerate();
+	echo $jsInfo.jsGenerate();
 }
 else
 {
 	if(!file_exists('app.js'))
 	{
-		file_put_contents('app.js',jsGenerate());
+		file_put_contents('app.js', $jsInfo.jsGenerate());
 	}
 	echo file_get_contents('app.js');
 }

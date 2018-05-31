@@ -2,7 +2,7 @@
 
 header('Content-type: text/css; charset: UTF-8');
 
-echo '/*
+$cssInfo = '/*
  * Style.php CSS File Parser
  * Version 2.0
  * TriForce - Matías Silva
@@ -62,13 +62,13 @@ if(php::is_localhost())
 	{
 		unlink('style.css');
 	}
-	echo cssGenerate();
+	echo $cssInfo.cssGenerate();
 }
 else
 {
 	if(!file_exists('style.css'))
 	{
-		file_put_contents('style.css',cssGenerate());
+		file_put_contents('style.css', $cssInfo.cssGenerate());
 	}
 	echo file_get_contents('style.css');
 }
