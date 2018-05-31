@@ -5,7 +5,7 @@ Base structure for web sites with reusable parts of source code or functions mai
 
 # Resources
 - Standalone Support *(PHP 5.4+)*
-- Wordpress Support *(Ver 4.9.4)*
+- Wordpress Support *(Ver 4.9.6)*
 - Laravel Support *(Ver 5.2, Experimental)*
 - Bootstrap 3 *(Ver 3.3.7)*
 - BootBox JS
