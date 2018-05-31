@@ -38,9 +38,9 @@ class AmeDashboardWidgetEditor {
 	public isExportButtonEnabled: KnockoutObservable<boolean>;
 
 	private initialWidgetSettings: WidgetEditorSettings;
-	private isMultisite: boolean = false;
+	private readonly isMultisite: boolean = false;
 
-	private static customIdPrefix = 'ame-custom-html-widget-';
+	private static customIdPrefix = 'ame-custom-widget-';
 	private newWidgetCounter = 0;
 
 	private importDialog: JQuery;
@@ -108,6 +108,8 @@ class AmeDashboardWidgetEditor {
 				widget = new AmeStandardWidgetWrapper(properties, this);
 			} else if (_.get(properties, 'widgetType') === 'custom-html') {
 				widget = new AmeCustomHtmlWidget(properties, this);
+			} else if (_.get(properties, 'widgetType') === 'custom-rss') {
+				widget = new AmeCustomRssWidget(properties, this);
 			} else {
 				throw {message: 'Unknown widget type', widgetProperties: properties};
 			}
@@ -152,7 +154,35 @@ class AmeDashboardWidgetEditor {
 		//Expand the new widget.
 		widget.isOpen(true);
 
-		this.widgets.unshift(widget);
+		this.insertAfterWelcomePanel(widget);
+	}
+
+	// noinspection JSUnusedGlobalSymbols Used in Knockout templates.
+	addRssWidget() {
+		this.newWidgetCounter++;
+
+		let widget = new AmeCustomRssWidget({
+			id: AmeDashboardWidgetEditor.customIdPrefix + this.newWidgetCounter,
+			title: 'New RSS Widget ' + this.newWidgetCounter
+		}, this);
+
+		//Expand the new widget.
+		widget.isOpen(true);
+
+		this.insertAfterWelcomePanel(widget);
+	}
+
+	private insertAfterWelcomePanel(widget: AmeDashboardWidget) {
+		//The "Welcome" panel is always first, so we can cheat for performance.
+		if (this.widgets.indexOf(this.welcomePanel) === 0) {
+			let welcomePanel = this.widgets.shift();
+			this.widgets.unshift(widget);
+			this.widgets.unshift(welcomePanel);
+		} else {
+			//But just in case it's not first for some odd reason,
+			//let's fall back to inserting the widget at the beginning.
+			this.widgets.unshift(widget);
+		}
 	}
 
 	// noinspection JSUnusedGlobalSymbols Used in Knockout templates.

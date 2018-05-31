@@ -3,7 +3,7 @@
 Plugin Name: Advanced Custom Fields PRO
 Plugin URI: https://www.advancedcustomfields.com/
 Description: Customise WordPress with powerful, professional and intuitive fields.
-Version: 5.6.7
+Version: 5.6.10
 Author: Elliot Condon
 Author URI: http://www.elliotcondon.com/
 Copyright: Elliot Condon
@@ -18,11 +18,16 @@ if( ! class_exists('ACF') ) :
 class ACF {
 	
 	/** @var string The plugin version number */
-	var $version = '5.6.7';
-	
+	var $version = '5.6.10';
 	
 	/** @var array The plugin settings array */
 	var $settings = array();
+	
+	/** @var array The plugin data array */
+	var $data = array();
+	
+	/** @var array Storage for class instances */
+	var $instances = array();
 	
 	
 	/*
@@ -61,17 +66,26 @@ class ACF {
 	function initialize() {
 		
 		// vars
+		$version = $this->version;
+		$basename = plugin_basename( __FILE__ );
+		$path = plugin_dir_path( __FILE__ );
+		$url = plugin_dir_url( __FILE__ );
+		$slug = dirname($basename);
+		
+		
+		// settings
 		$this->settings = array(
 			
 			// basic
 			'name'				=> __('Advanced Custom Fields', 'acf'),
-			'version'			=> $this->version,
+			'version'			=> $version,
 						
 			// urls
 			'file'				=> __FILE__,
-			'basename'			=> plugin_basename( __FILE__ ),
-			'path'				=> plugin_dir_path( __FILE__ ),
-			'url'				=> plugin_dir_url( __FILE__ ),
+			'basename'			=> $basename,
+			'path'				=> $path,
+			'url'				=> $url,
+			'slug'				=> $slug,
 			
 			// options
 			'show_admin'				=> true,
@@ -102,8 +116,8 @@ class ACF {
 		
 		// constants
 		$this->define( 'ACF', 			true );
-		$this->define( 'ACF_VERSION', 	$this->settings['version'] );
-		$this->define( 'ACF_PATH', 		$this->settings['path'] );
+		$this->define( 'ACF_VERSION', 	$version );
+		$this->define( 'ACF_PATH', 		$path );
 		
 		
 		// api
@@ -136,7 +150,6 @@ class ACF {
 		acf_include('includes/loop.php');
 		acf_include('includes/media.php');
 		acf_include('includes/revisions.php');
-		acf_include('includes/third_party.php');
 		acf_include('includes/updates.php');
 		acf_include('includes/validation.php');
 		
@@ -187,7 +200,6 @@ class ACF {
 		// filters
 		add_filter('posts_where',		array($this, 'posts_where'), 10, 2 );
 		//add_filter('posts_request',	array($this, 'posts_request'), 10, 1 );
-		
 	}
 	
 	
@@ -227,12 +239,18 @@ class ACF {
 		// textdomain
 		$this->load_plugin_textdomain();
 		
+		// include 3rd party support
+		acf_include('includes/third-party.php');
 		
 		// include wpml support
 		if( defined('ICL_SITEPRESS_VERSION') ) {
 			acf_include('includes/wpml.php');
 		}
 		
+		// include gutenberg
+		if( defined('GUTENBERG_VERSION') ) {
+			acf_include('includes/forms/form-gutenberg.php');
+		}
 		
 		// fields
 		acf_include('includes/fields/class-acf-field-text.php');
@@ -554,60 +572,125 @@ class ACF {
 		
 	}
 	
-	
-	/*
-	*  get_setting
+	/**
+	*  has_setting
 	*
-	*  This function will return a value from the settings array found in the acf object
+	*  Returns true if has setting.
 	*
-	*  @type	function
-	*  @date	28/09/13
-	*  @since	5.0.0
+	*  @date	2/2/18
+	*  @since	5.6.5
 	*
-	*  @param	$name (string) the setting name to return
-	*  @param	$value (mixed) default value
-	*  @return	$value
+	*  @param	string $name
+	*  @return	boolean
 	*/
 	
-	function get_setting( $name, $value = null ) {
-		
-		// check settings
-		if( isset($this->settings[ $name ]) ) {
-			$value = $this->settings[ $name ];
-		}
-		
-		
-		// filter
-		if( substr($name, 0, 1) !== '_' ) {
-			$value = apply_filters( "acf/settings/{$name}", $value );
-		}
-		
-		
-		// return
-		return $value;
-		
+	function has_setting( $name ) {
+		return isset($this->settings[ $name ]);
 	}
 	
-	
-	/*
-	*  update_setting
+	/**
+	*  get_setting
 	*
-	*  This function will update a value into the settings array found in the acf object
+	*  Returns a setting.
 	*
-	*  @type	function
 	*  @date	28/09/13
 	*  @since	5.0.0
 	*
-	*  @param	$name (string)
-	*  @param	$value (mixed)
+	*  @param	string $name
+	*  @return	mixed
+	*/
+	
+	function get_setting( $name ) {
+		return isset($this->settings[ $name ]) ? $this->settings[ $name ] : null;
+	}
+	
+	/**
+	*  update_setting
+	*
+	*  Updates a setting.
+	*
+	*  @date	28/09/13
+	*  @since	5.0.0
+	*
+	*  @param	string $name
+	*  @param	mixed $value
 	*  @return	n/a
 	*/
 	
 	function update_setting( $name, $value ) {
-		
 		$this->settings[ $name ] = $value;
 		return true;
-		
+	}
+	
+	/**
+	*  get_data
+	*
+	*  Returns data.
+	*
+	*  @date	28/09/13
+	*  @since	5.0.0
+	*
+	*  @param	string $name
+	*  @return	mixed
+	*/
+	
+	function get_data( $name ) {
+		return isset($this->data[ $name ]) ? $this->data[ $name ] : null;
+	}
+	
+	
+	/**
+	*  set_data
+	*
+	*  Sets data.
+	*
+	*  @date	28/09/13
+	*  @since	5.0.0
+	*
+	*  @param	string $name
+	*  @param	mixed $value
+	*  @return	n/a
+	*/
+	
+	function set_data( $name, $value ) {
+		$this->data[ $name ] = $value;
+	}
+	
+	
+	/**
+	*  get_instance
+	*
+	*  Returns an instance.
+	*
+	*  @date	13/2/18
+	*  @since	5.6.9
+	*
+	*  @param	string $class The instance class name.
+	*  @return	object
+	*/
+	
+	function get_instance( $class ) {
+		$name = strtolower($class);
+		return isset($this->instances[ $name ]) ? $this->instances[ $name ] : null;
+	}
+	
+	/**
+	*  new_instance
+	*
+	*  Creates and stores an instance.
+	*
+	*  @date	13/2/18
+	*  @since	5.6.9
+	*
+	*  @param	string $class The instance class name.
+	*  @return	object
+	*/
+	
+	function new_instance( $class ) {
+		$instance = new $class();
+		$name = strtolower($class);
+		$this->instances[ $name ] = $instance;
+		return $instance;
 	}
 	
 }

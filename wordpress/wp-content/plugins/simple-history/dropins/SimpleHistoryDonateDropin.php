@@ -35,7 +35,7 @@ class SimpleHistoryDonateDropin {
 
 			$links = array_merge(
 				$links,
-				array( sprintf( '<a href="http://eskapism.se/sida/donate/?utm_source=wordpress&utm_medium=pluginpage&utm_campaign=simplehistory">%1$s</a>', __( 'Donate', 'simple-history' ) ) )
+				array( sprintf( '<a href="https://www.paypal.me/eskapism">%1$s</a>', __('Donate', "simple-history") ) )
 			);
 
 		}
@@ -71,9 +71,8 @@ class SimpleHistoryDonateDropin {
 	function settings_section_output() {
 
 		printf(
-			__( 'If you find Simple History useful please <a href="%1$s">donate</a>.', 'simple-history' ),
-			'http://eskapism.se/sida/donate/?utm_source=wordpress&utm_medium=pluginpage&utm_campaign=simplehistory',
-			'http://www.amazon.co.uk/registry/wishlist/IAEZWNLQQICG'
+			__( 'If you find Simple History useful please <a href="%1$s">donate</a>.', "simple-history"),
+			'https://www.paypal.me/eskapism'
 		);
 
 	}

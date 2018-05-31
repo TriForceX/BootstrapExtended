@@ -128,6 +128,34 @@ class Wslm_LicenseServer {
 			$query .= ' WHERE license_id = ' . absint($license['license_id']);
 			$this->wpdb->query($query);
 		}
+
+		//Save add-ons.
+		$this->wpdb->query('START TRANSACTION');
+		//Delete old add-on records first.
+		$query = $this->wpdb->prepare(
+			"DELETE FROM `{$this->tablePrefix}license_addons` WHERE license_id = %d",
+			$license['license_id']
+		);
+		$this->wpdb->query($query);
+
+		//Insert new license-to-add-on relations.
+		if ( !empty($license['addons']) ) {
+			$query =
+				"INSERT INTO `{$this->tablePrefix}license_addons`(license_id, addon_id)
+				SELECT %d AS license_id, addon_id 
+				FROM `{$this->tablePrefix}addons`";
+			$query = $this->wpdb->prepare($query, $license['license_id']);
+
+			$preparedSlugs = array();
+			foreach($license['addons'] as $slug => $ignored) {
+				$preparedSlugs[] = $this->wpdb->prepare('%s', $slug);
+			}
+			$query .= ' WHERE slug IN (' . implode(', ', $preparedSlugs) . ')';
+
+			$this->wpdb->query($query);
+		}
+		$this->wpdb->query('COMMIT');
+
 		return $license;
 	}
 
@@ -232,8 +260,12 @@ class Wslm_LicenseServer {
 			}
 		}
 
-		if ( $license['product_slug'] != $productSlug ) {
-			return new WP_Error('not_found', 'This license key is for a different product.', 404);
+		if ( $license['product_slug'] !== $productSlug ) {
+			if ( $license->hasAddOn($productSlug) ) {
+				//This request is for an add-on, not the main product. That's fine.
+			} else {
+				return new WP_Error('not_found', 'This license key is for a different product.', 404);
+			}
 		}
 
 		//Make sure the site token was actually issued to that site and not another one.
@@ -257,12 +289,12 @@ class Wslm_LicenseServer {
 	 * look for the token. The returned license object will also include
 	 * the URL of the site associated with that token in a 'site_url' field.
 	 *
-	 * @param string|null $licenseKey
+	 * @param string|int|null $licenseKeyOrId
 	 * @param string|null $token
 	 * @throws InvalidArgumentException
 	 * @return Wslm_ProductLicense|null A license object, or null if the license doesn't exist.
 	 */
-	public function loadLicense($licenseKey, $token = null) {
+	public function loadLicense($licenseKeyOrId, $token = null) {
 		if ( !empty($token) ) {
 			$query = "SELECT licenses.*, tokens.site_url
 				 FROM
@@ -271,19 +303,25 @@ class Wslm_LicenseServer {
 				 	ON licenses.license_id = tokens.license_id
 				 WHERE tokens.token = ?";
 			$params = array($token);
-		} else if ( !empty($licenseKey) ) {
+		} else if ( is_numeric($licenseKeyOrId) && (!is_string($licenseKeyOrId) || (strlen($licenseKeyOrId) < 13)) ) {
+			$query =
+				"SELECT licenses.* FROM `{$this->tablePrefix}licenses` AS licenses
+				 WHERE license_id = ?";
+			$params = array($licenseKeyOrId);
+		} else if ( !empty($licenseKeyOrId) ) {
 			$query =
 				"SELECT licenses.* FROM `{$this->tablePrefix}licenses` AS licenses
 				 WHERE license_key = ?";
-			$params = array($licenseKey);
+			$params = array($licenseKeyOrId);
 		} else {
 			throw new InvalidArgumentException('You must specify a license key or a site token.');
 		}
 
 		$license = $this->db->getRow($query, $params);
 		if ( !empty($license) ) {
-			//Also include the list of sites associated with this license.
+			//Also include the list of sites and add-ons associated with this license.
 			$license['sites'] = $this->loadLicenseSites($license['license_id']);
+			$license['addons'] = $this->loadLicenseAddOns($license['license_id']);
 			$license = new Wslm_ProductLicense($license);
 
 			$license['renewal_url'] = 'http://adminmenueditor.com/renew-license/'; //TODO: Put this in a config of some sort instead.
@@ -304,6 +342,24 @@ class Wslm_LicenseServer {
 		return $licensedSites;
 	}
 
+	protected function loadLicenseAddOns($licenseId) {
+		$rows = $this->db->getResults(
+			"SELECT addons.slug, addons.name
+			 FROM 
+			 	{$this->tablePrefix}license_addons AS license_addons 
+			 	JOIN {$this->tablePrefix}addons AS addons
+			 	ON (license_addons.addon_id = addons.addon_id)  
+			 WHERE license_addons.license_id = ?",
+			array($licenseId)
+		);
+
+		$addOns = array();
+		foreach($rows as $row) {
+			$addOns[$row['slug']] = $row['name'];
+		}
+		return $addOns;
+	}
+
 	/**
 	 * @param Wslm_ProductLicense $license
 	 * @param bool $usingToken
@@ -322,7 +378,7 @@ class Wslm_LicenseServer {
 
 		$visibleFields = array_fill_keys(array(
 			'license_key', 'product_slug', 'status', 'issued_on', 'max_sites',
-			'expires_on', 'sites', 'site_url', 'error', 'renewal_url',
+			'expires_on', 'sites', 'site_url', 'error', 'renewal_url', 'addons',
 		), true);
 		if ( $usingToken ) {
 			$visibleFields = array_merge($visibleFields, array(
@@ -579,9 +635,25 @@ class Wslm_LicenseServer {
 	 * @return Wslm_ProductLicense[] An array of licenses ordered by status and expiry (newest valid licenses first).
 	 */
 	public function getCustomerLicenses($customerId, $productSlug = null) {
+		//This UNION hack is due to the fact that, when dealing with businesses, different people
+		//can renew or upgrade the same license. People have different emails, so they count as different
+		//customers. We need all of them to be able to access the license.
 		$query = $this->wpdb->prepare(
-			"SELECT * FROM {$this->tablePrefix}licenses WHERE customer_id = %s",
-			$customerId
+			"SELECT customerLicenses.*
+			FROM (
+			    SELECT licenses.*
+				FROM {$this->tablePrefix}licenses AS licenses
+				WHERE (licenses.customer_id = %d)
+				
+			    UNION DISTINCT
+			    
+			    SELECT order_licenses.*
+			    FROM {$this->tablePrefix}orders AS orders JOIN {$this->tablePrefix}licenses AS order_licenses 
+			    	ON (orders.license_id = order_licenses.license_id)
+				WHERE (orders.customer_id = %d)
+			) AS customerLicenses
+			WHERE 1",
+			array($customerId, $customerId)
 		);
 		if ( $productSlug !== null ) {
 			$query .= $this->wpdb->prepare(' AND product_slug=%s', $productSlug);
@@ -592,6 +664,7 @@ class Wslm_LicenseServer {
 		$licenses = array();
 		if ( is_array($rows) ) {
 			foreach($rows as $row) {
+				$row['addons'] = $this->loadLicenseAddOns($row['license_id']);
 				$licenses[] = new Wslm_ProductLicense($row);
 			}
 		}

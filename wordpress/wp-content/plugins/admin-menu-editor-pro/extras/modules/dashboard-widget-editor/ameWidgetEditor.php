@@ -311,8 +311,11 @@ class ameWidgetEditor {
 	}
 
 	private function loadSettings() {
-		//TODO: Respect scope settings
-		$settings = get_site_option(self::OPTION_NAME, null);
+		if ( $this->menuEditor->get_plugin_option('menu_config_scope') === 'site' ) {
+			$settings = get_option(self::OPTION_NAME, null);
+		} else {
+			$settings = get_site_option(self::OPTION_NAME, null);
+		}
 		if ( empty($settings) ) {
 			$this->dashboardWidgets = new ameWidgetCollection();
 		} else {

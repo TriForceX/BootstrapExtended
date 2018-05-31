@@ -247,7 +247,7 @@
 	};
 	
 	window.wp = window.wp || {};
-	window.wp.hooks = new EventManager();
+	window.wp.hooks = window.wp.hooks || new EventManager();
 
 } )( window );
 
@@ -1021,265 +1021,6 @@ var acf;
 			
 			// return
 			return data;
-			
-		},
-		
-/*
-		serialize: function( $el, prefix ){
-			
-			// defaults
-			prefix = prefix || '';
-			
-			
-			// vars
-			var data = {};
-			var $inputs = $el.find('select, textarea, input');
-			
-			
-			// loop
-			$inputs.each(function(){
-				
-				// vars
-				var $el = $(this);
-				var name = $el.attr('name');
-				var val = $el.val();
-				
-				
-				// is array
-				var is_array = ( name.slice(-2) === '[]' );
-				if( is_array ) {
-					name = name.slice(0, -2);
-				}
-				
-				
-				// explode name
-				var bits = name.split('[');
-				var depth = bits.length;
-				
-				
-				// loop
-				for( var i = 0; i < depth; i++ ) {
-					
-					// vars
-					var k = bits[i];
-										
-					
-					// end
-					if( i == depth-1 ) {
-						
-						
-						
-						
-					// not end
-					} else {
-						
-						// must be object
-						if( typeof data[k] !== 'object' ) {
-							data[k] = {};
-						} 
-						
-					}
-					
-					
-				}
-				
-				
-				bits.map(function( s ){ return s.replace(']', ''); })
-				
-				
-			});
-			
-		},
-*/
-		
-		
-		/*
-		*  disable
-		*
-		*  This function will disable an input
-		*
-		*  @type	function
-		*  @date	22/09/2016
-		*  @since	5.4.0
-		*
-		*  @param	$el (jQuery)
-		*  @param	context (string)
-		*  @return	n/a
-		*/
-		
-		disable: function( $input, context ){
-			
-			// defaults
-			context = context || '';
-			
-			
-			// bail early if is .acf-disabled
-			if( $input.hasClass('acf-disabled') ) return false;
-			
-			
-			// always disable input
-			$input.prop('disabled', true);
-			
-			
-			// context
-			if( context ) {
-				
-				// vars
-				var disabled = $input.data('acf_disabled') || [],
-					i = disabled.indexOf(context);
-					
-				
-				// append context if not found
-				if( i < 0 ) {
-					
-					// append
-					disabled.push( context );
-					
-					
-					// update
-					$input.data('acf_disabled', disabled);
-					
-				}
-			}
-			
-			
-			// return
-			return true;
-			
-		}, 
-		
-		
-		/*
-		*  enable
-		*
-		*  This function will enable an input
-		*
-		*  @type	function
-		*  @date	22/09/2016
-		*  @since	5.4.0
-		*
-		*  @param	$el (jQuery)
-		*  @param	context (string)
-		*  @return	n/a
-		*/
-		
-		enable: function( $input, context ){
-			
-			// defaults
-			context = context || '';
-			
-			
-			// bail early if is .acf-disabled
-			if( $input.hasClass('acf-disabled') ) return false;
-			
-			
-			// vars
-			var disabled = $input.data('acf_disabled') || [];
-				
-				
-			// context
-			if( context ) {
-				
-				// vars
-				var i = disabled.indexOf(context);
-				
-				
-				// remove context if found
-				if( i > -1 ) {
-					
-					// delete
-					disabled.splice(i, 1);
-					
-					
-					// update
-					$input.data('acf_disabled', disabled);
-					
-				}
-			}
-			
-			
-			// bail early if other disabled exist
-			if( disabled.length ) return false;
-			
-			
-			// enable input
-			$input.prop('disabled', false);
-			
-			
-			// return
-			return true;
-			
-		},
-		
-		
-		/*
-		*  disable_el
-		*
-		*  This function will disable all inputs within an element
-		*
-		*  @type	function
-		*  @date	22/09/2016
-		*  @since	5.4.0
-		*
-		*  @param	$el (jQuery)
-		*  @param	context (string)
-		*  @return	na
-		*/
-		
-		disable_el: function( $el, context ) {
-			
-			// defaults
-			context = context || '';
-			
-			
-			// loop
-			$el.find('select, textarea, input').each(function(){
-				
-				acf.disable( $(this), context );
-				
-			});
-			
-		},
-		
-		disable_form: function( $el, context ) {
-			
-			this.disable_el.apply( this, arguments );
-			
-		},
-		
-		
-		/*
-		*  enable_el
-		*
-		*  This function will enable all inputs within an element
-		*
-		*  @type	function
-		*  @date	22/09/2016
-		*  @since	5.4.0
-		*
-		*  @param	$el (jQuery)
-		*  @param	context (string)
-		*  @return	na
-		*/
-		
-		enable_el: function( $el, context ) {
-			
-			// defaults
-			context = context || '';
-			
-			
-			// loop
-			$el.find('select, textarea, input').each(function(){
-				
-				acf.enable( $(this), context );
-				
-			});
-			
-		},
-		
-		enable_form: function( $el, context ) {
-			
-			this.enable_el.apply( this, arguments );
 			
 		},
 		
@@ -3508,6 +3249,7 @@ var acf;
 		actions: {
 			'ready':	'ready',
 			'change':	'on',
+			'submit':	'off'
 		},
 		
 		ready: function(){
@@ -4085,6 +3827,321 @@ var acf;
 	};
 	
 	
+	/**
+	*  acf.lock
+	*
+	*  Creates a "lock" on an element for a given type and key
+	*
+	*  @date	22/2/18
+	*  @since	5.6.9
+	*
+	*  @param	jQuery $el The element to lock.
+	*  @param	string type The type of lock such as "condition" or "visibility".
+	*  @param	string key The key that will be used to unlock.
+	*  @return	void
+	*/
+	
+	var getLocks = function( $el, type ){
+		return $el.data('acf-lock-'+type) || [];
+	};
+	
+	var setLocks = function( $el, type, locks ){
+		$el.data('acf-lock-'+type, locks);
+	}
+	
+	acf.lock = function( $el, type, key ){
+		var locks = getLocks( $el, type );
+		var i = locks.indexOf(key);
+		if( i < 0 ) {
+			locks.push( key );
+			setLocks( $el, type, locks );
+		}
+	};
+	
+	/**
+	*  acf.unlock
+	*
+	*  Unlocks a "lock" on an element for a given type and key
+	*
+	*  @date	22/2/18
+	*  @since	5.6.9
+	*
+	*  @param	jQuery $el The element to lock.
+	*  @param	string type The type of lock such as "condition" or "visibility".
+	*  @param	string key The key that will be used to unlock.
+	*  @return	void
+	*/
+	
+	acf.unlock = function( $el, type, key ){
+		var locks = getLocks( $el, type );
+		var i = locks.indexOf(key);
+		if( i > -1 ) {
+			locks.splice(i, 1);
+			setLocks( $el, type, locks );
+		}
+		
+		// return true if is unlocked (no locks)
+		return (locks.length === 0);
+	};
+	
+	/**
+	*  acf.isLocked
+	*
+	*  Returns true if a lock exists for a given type
+	*
+	*  @date	22/2/18
+	*  @since	5.6.9
+	*
+	*  @param	jQuery $el The element to lock.
+	*  @param	string type The type of lock such as "condition" or "visibility".
+	*  @return	void
+	*/
+	
+	acf.isLocked = function( $el, type ){
+		return ( getLocks( $el, type ).length > 0 );
+	};
+	
+	/**
+	*  acf.show
+	*
+	*  description
+	*
+	*  @date	9/2/18
+	*  @since	5.6.5
+	*
+	*  @param	type $var Description. Default.
+	*  @return	type Description.
+	*/
+	
+	acf.show = function( $el, lockKey ){
+		
+		// unlock
+		if( lockKey ) {
+			acf.unlock($el, 'hidden', lockKey);
+		}
+		
+		// bail early if $el is still locked
+		if( acf.isLocked($el, 'hidden') ) {
+			//console.log( 'still locked', getLocks( $el, 'hidden' ));
+			return false;
+		}
+		
+		// $el is hidden, remove class and return true due to change in visibility
+		if( $el.hasClass('acf-hidden') ) {
+			$el.removeClass('acf-hidden');
+			return true;
+		
+		// $el is visible, return false due to no change in visibility
+		} else {
+			return false;
+		}
+	};
+	
+	/**
+	*  enable
+	*
+	*  description
+	*
+	*  @date	12/3/18
+	*  @since	5.6.9
+	*
+	*  @param	type $var Description. Default.
+	*  @return	type Description.
+	*/
+	
+	var enable = function( $el, lockKey ){
+		
+		// check class. Allow .acf-disabled to overrule all JS
+		if( $el.hasClass('acf-disabled') ) {
+			return false;
+		}
+		
+		// unlock
+		if( lockKey ) {
+			acf.unlock($el, 'disabled', lockKey);
+		}
+		
+		// bail early if $el is still locked
+		if( acf.isLocked($el, 'disabled') ) {
+			return false;
+		}
+		
+		// $el is disabled, remove prop and return true due to change
+		if( $el.prop('disabled') ) {
+			$el.prop('disabled', false);
+			return true;
+		
+		// $el is enabled, return false due to no change
+		} else {
+			return false;
+		}
+	};
+	
+	/**
+	*  acf.enable
+	*
+	*  description
+	*
+	*  @date	9/2/18
+	*  @since	5.6.5
+	*
+	*  @param	type $var Description. Default.
+	*  @return	type Description.
+	*/
+	
+	acf.enable = function( $el, lockKey ){
+		
+		// enable single input
+		if( $el.attr('name') ) {
+			return enable( $el, lockKey );
+		}
+		
+		// find and enable child inputs
+		// return false if 'any' inputs are still disabled
+		var results = true;
+		$el.find('[name]').each(function(){
+			var result = enable( $(this), lockKey );
+			if( !result ) {
+				results = false;
+			}
+		});
+		return results;
+	};
+	
+	
+	/**
+	*  disable
+	*
+	*  description
+	*
+	*  @date	12/3/18
+	*  @since	5.6.9
+	*
+	*  @param	type $var Description. Default.
+	*  @return	type Description.
+	*/
+	
+	var disable = function( $el, lockKey ){
+		
+		// lock
+		if( lockKey ) {
+			acf.lock($el, 'disabled', lockKey);
+		}
+		
+		// $el is disabled, return false due to no change
+		if( $el.prop('disabled') ) {
+			return false;
+		
+		// $el is enabled, add prop and return true due to change
+		} else {
+			$el.prop('disabled', true);
+			return true;
+		}
+	};
+	
+	
+	/**
+	*  acf.disable
+	*
+	*  description
+	*
+	*  @date	9/2/18
+	*  @since	5.6.5
+	*
+	*  @param	type $var Description. Default.
+	*  @return	type Description.
+	*/
+	
+	acf.disable = function( $el, lockKey ){
+		
+		// disable single input
+		if( $el.attr('name') ) {
+			return disable( $el, lockKey );
+		}
+		
+		// find and enable child inputs
+		// return false if 'any' inputs did not change
+		var results = true;
+		$el.find('[name]').each(function(){
+			var result = disable( $(this), lockKey );
+			if( !result ) {
+				results = false;
+			}
+		});
+		return results;
+	};
+	
+	// compatibility
+	acf.enable_el = acf.enable;
+	acf.enable_form = acf.enable;
+	
+	acf.disable_el = acf.disable;
+	acf.disable_form = acf.disable;
+	
+	
+	/**
+	*  acf.hide
+	*
+	*  description
+	*
+	*  @date	9/2/18
+	*  @since	5.6.5
+	*
+	*  @param	type $var Description. Default.
+	*  @return	type Description.
+	*/
+	
+	acf.hide = function( $el, lockKey ){
+		
+		// lock
+		if( lockKey ) {
+			acf.lock($el, 'hidden', lockKey);
+		}
+		
+		// $el is hidden, return false due to no change in visibility
+		if( $el.hasClass('acf-hidden') ) {
+			return false;
+		
+		// $el is visible, add class and return true due to change in visibility
+		} else {
+			$el.addClass('acf-hidden');
+			return true;
+		}
+	};
+	
+	
+	/**
+	*  acf.isHidden
+	*
+	*  description
+	*
+	*  @date	9/2/18
+	*  @since	5.6.5
+	*
+	*  @param	type $var Description. Default.
+	*  @return	type Description.
+	*/
+	
+	acf.isHidden = function( $el ){
+		return $el.hasClass('acf-hidden');
+	};
+	
+	
+	/**
+	*  acf.isVisible
+	*
+	*  description
+	*
+	*  @date	9/2/18
+	*  @since	5.6.5
+	*
+	*  @param	type $var Description. Default.
+	*  @return	type Description.
+	*/
+	
+	acf.isVisible = function( $el ){
+		return !acf.isHidden( $el );
+	};
 	
 	/*
 	*  Sortable
@@ -4340,6 +4397,8 @@ var acf;
 			// bail early if not active
 			if( !this.active ) return;
 			
+			// bail early if not for post
+			if( acf.get('screen') !== 'post' ) return;
 			
 			// bail early if no ajax
 			if( !acf.get('ajax') ) return;
@@ -4877,8 +4936,9 @@ var acf;
 
 (function($, undefined){
 	
-	// vars
-	var hidden = 'hidden-by-conditional-logic';
+	// constants
+	var CLASS = 'hidden-by-conditional-logic';
+	var CONTEXT = 'conditional_logic';
 	
 	// model
 	var conditionalLogic = acf.conditional_logic = acf.model.extend({
@@ -5258,9 +5318,9 @@ var acf;
 			
 			// hide / show
 			if( visibility ) {
-				this.showField( $target );					
+				this.showField( $target, key );					
 			} else {
-				this.hideField( $target );
+				this.hideField( $target, key );
 			}
 			
 		},
@@ -5279,23 +5339,24 @@ var acf;
 		*  @return	$post_id (int)
 		*/
 		
-		showField: function( $field ){
-			
-			// bail ealry if not hidden
-			//if( !$field.hasClass(hidden) ) return;
-			
-			// vars
-			var key = $field.data('key');
-			
-			// remove class
-			$field.removeClass(hidden);
+		showField: function( $field, lockKey ){
 			
 			// enable
-			acf.enable_form( $field, 'condition-'+key );
+			acf.enable( $field, lockKey );
 			
-			// action for 3rd party customization
-			acf.do_action('show_field', $field, 'conditional_logic' );
+			// show field and store result
+			var changed = acf.show( $field, lockKey );
 			
+			// use changed to set cl class
+			if( changed ) {
+				$field.removeClass( CLASS );
+			}
+			
+			// always do action to avoid tab field bugs (fixed in 5.7)
+			acf.do_action('show_field', $field, CONTEXT);
+			
+			// return
+			return changed;
 		},
 		
 		
@@ -5312,23 +5373,24 @@ var acf;
 		*  @return	$post_id (int)
 		*/
 		
-		hideField : function( $field ){
-			
-			// bail ealry if hidden
-			//if( $field.hasClass(hidden) ) return;
-			
-			// vars
-			var key = $field.data('key');
-			
-			// add class
-			$field.addClass( hidden );
+		hideField: function( $field, lockKey ){
 			
 			// disable
-			acf.disable_form( $field, 'condition-'+key );
-						
-			// action for 3rd party customization
-			acf.do_action('hide_field', $field, 'conditional_logic' );
+			acf.disable( $field, lockKey );
 			
+			// hide field and store result
+			var changed = acf.hide( $field, lockKey );
+			
+			// use changed to set cl class
+			if( changed ) {
+				$field.addClass( CLASS );
+			}
+			
+			// always do action to avoid tab field bugs (fixed in 5.7)
+			acf.do_action('hide_field', $field, CONTEXT);
+			
+			// return
+			return changed;
 		},
 				
 		
@@ -9274,8 +9336,8 @@ var acf;
 		$input: null,
 		
 		events: {
-			'input input': '_change',
-			'change input': '_change'
+			'input input': 'onInput',
+			'change input': 'onChange'
 		},
 		
 		focus: function(){
@@ -9287,30 +9349,22 @@ var acf;
 			
 		},
 		
-		_change: function( e ){
-			
-			// get value from changed element
-			var val = e.$el.val();
-			var type = e.$el.attr('type');
-			
-			
-			// allow for cleared value
-			val = val || 0;
-			
-			
-			// update sibling
-			if( type === 'range' ) {
-				
-				this.$input.val( val );
-				
-			} else {
-				
-				this.$range.val( val );
-				
-			}
-						
-		}
+		setValue: function( val ){
+			this.$input.val( val );
+			this.$range.val( val );
+		},
 		
+		onInput: function( e ){
+			this.setValue( e.$el.val() );
+		},
+		
+		onChange: function( e ){
+			this.setValue( e.$el.val() );
+			
+			if( e.$el.attr('type') == 'number' ) {
+				this.$range.trigger('change');
+			}
+		}
 	});
 	
 })(jQuery);
@@ -11630,7 +11684,7 @@ var acf;
 (function($){
 	
 	// vars
-	var hidden = 'hidden-by-conditional-logic';
+	var CLASS = 'hidden-by-conditional-logic';
 	var groupIndex = 0;
 	var tabIndex = 0;
 	
@@ -11955,18 +12009,18 @@ var acf;
 			
 			
 			// hide li
-			$li.addClass(hidden);
+			$li.addClass( CLASS );
 			
 				
 			// hide fields
 			tabs.getFields( $field ).each(function(){
-				acf.conditional_logic.hide_field( $(this) );
+				acf.conditional_logic.hide_field( $(this), key );
 			});
 			
 			
 			// select other tab if active
 			if( $li.hasClass('active') ) {
-				$wrap.find('li:not(.'+hidden+'):first a').trigger('click');
+				$wrap.find('li:not(.'+CLASS+'):first a').trigger('click');
 			}
 			
 		},
@@ -11989,18 +12043,18 @@ var acf;
 			
 			
 			// show li
-			$li.removeClass(hidden);
+			$li.removeClass( CLASS );
 			
 			
 			// hide fields
 			tabs.getFields( $field ).each(function(){
-				acf.conditional_logic.show_field( $(this) );
+				acf.conditional_logic.show_field( $(this), key );
 			});
 			
 			
 			// select tab if no other active
 			var $active = $li.siblings('.active');
-			if( !$active.exists() || $active.hasClass(hidden) ) {
+			if( !$active.exists() || $active.hasClass(CLASS) ) {
 				tabs.toggle( $tab );
 			}
 			
@@ -13547,11 +13601,6 @@ var acf;
 				
 			}
 			
-			
-			// action for 3rd party
-			acf.do_action('validation_failure');
-			
-			
 			// set valid (prevents fetch_complete from runing)
 			this.valid = false;
 			
@@ -13562,6 +13611,10 @@ var acf;
 			
 			// display errors
 			this.display_errors( json.errors, $form );
+			
+			
+			// action
+			acf.do_action('validation_failure');
 			
 		},
 		

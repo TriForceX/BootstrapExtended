@@ -36,9 +36,26 @@ class SimpleLogger {
 	public $messages;
 
 	/**
-	 * ID of last inserted row. Used when chaining methods.
+	 * ID of last inserted row
+	 *
+	 * @var int $lastInsertID Database row primary key.
 	 */
 	public $lastInsertID;
+
+	/**
+	 * Context of last inserted row.
+	 *
+	 * @var int $lastInsertContext Context used for the last insert.
+	 * @since 2.2x
+	 */
+	public $lastInsertContext;
+
+	/**
+	 * Simple History instance.
+	 *
+	 * @var object $simpleHistory Simple history instance.
+	 */
+	public $simpleHistory;
 
 	/**
 	 * Constructor. Remember to call this as parent constructor if making a childlogger
@@ -931,9 +948,9 @@ class SimpleLogger {
 	/**
 	 * Logs with an arbitrary level.
 	 *
-	 * @param mixed  $level The log level.
-	 * @param string $message The log message.
-	 * @param array  $context The log context.
+	 * @param mixed  $level The log level. Default "info".
+	 * @param string $message The log message. Default "".
+	 * @param array  $context The log context. Default empty array.
 	 * @return class SimpleLogger instance
 	 */
 	public function log( $level = 'info', $message = '', $context = array() ) {
@@ -1049,7 +1066,7 @@ class SimpleLogger {
 
 			// No occasions id specified, create one bases on the data array
 			$occasions_data = $data + $context;
-			// error_log(simpleHistory::json_encode($occasions_data));
+
 			// Don't include date in context data
 			unset( $occasions_data['date'] );
 
@@ -1188,11 +1205,26 @@ class SimpleLogger {
 				}
 			}
 
-			// Add remote addr to context
-			// Good to always have
+			// Add remote addr to context.
 			if ( ! isset( $context['_server_remote_addr'] ) ) {
 
-				$context['_server_remote_addr'] = empty( $_SERVER['REMOTE_ADDR'] ) ? '' : $_SERVER['REMOTE_ADDR'];
+				$remote_addr = empty( $_SERVER['REMOTE_ADDR'] ) ? '' : wp_unslash( $_SERVER['REMOTE_ADDR'] );
+
+				/**
+				 * Filter to control if ip addresses should be anonymized or not.
+				 *
+				 * @since 2.x
+				 *
+				 * @param bool true to anonymize ip address, false to keep original ip address.
+				 * @return bool
+				 */
+				$anonymize_ip_address = apply_filters( 'simple_history/privacy/anonymize_ip_address', true );
+
+				if ( $anonymize_ip_address ) {
+					$remote_addr = SimpleHistoryIpAnonymizer::anonymizeIp( $remote_addr );
+				}
+
+				$context['_server_remote_addr'] = $remote_addr;
 
 				// If web server is behind a load balancer then the ip address will always be the same
 				// See bug report: https://wordpress.org/support/topic/use-x-forwarded-for-http-header-when-logging-remote_addr?replies=1#post-6422981
@@ -1209,18 +1241,23 @@ class SimpleLogger {
 
 					if ( array_key_exists( $key, $_SERVER ) === true ) {
 
-						// Loop through all IPs
+						// Loop through all IPs.
 						$ip_loop_num = 0;
 						foreach ( explode( ',', $_SERVER[ $key ] ) as $ip ) {
 
-							// trim for safety measures
+							// trim for safety measures.
 							$ip = trim( $ip );
 
-							// attempt to validate IP
+							// attempt to validate IP.
 							if ( $this->validate_ip( $ip ) ) {
 
-								// valid, add to context, with loop index appended so we can store many IPs
+								// valid, add to context, with loop index appended so we can store many IPs.
 								$key_lower = strtolower( $key );
+
+								if ( $anonymize_ip_address ) {
+									$ip = SimpleHistoryIpAnonymizer::anonymizeIp( $ip );
+								}
+
 								$context[ "_server_{$key_lower}_{$ip_loop_num}" ] = $ip;
 
 							}
@@ -1232,8 +1269,7 @@ class SimpleLogger {
 				}
 			}// End if().
 
-			// Append http referer
-			// Also good to always have!
+			// Append http referer.
 			if ( ! isset( $context['_server_http_referer'] ) && isset( $_SERVER['HTTP_REFERER'] ) ) {
 				$context['_server_http_referer'] = $_SERVER['HTTP_REFERER'];
 			}
@@ -1250,31 +1286,12 @@ class SimpleLogger {
 			$context = apply_filters( 'simple_history/log_insert_context', $context, $data, $this );
 			$data_parent_row = $data;
 
-			// Insert all context values into db
-			foreach ( $context as $key => $value ) {
-
-				// If value is array or object then use json_encode to store it
-				// if ( is_object( $value ) || is_array( $value ) ) {
-				// $value = simpleHistory::json_encode($value);
-				// }
-				// Any reason why the check is not the other way around?
-				// Everything except strings should be json_encoded
-				if ( ! is_string( $value ) ) {
-					$value = simpleHistory::json_encode( $value );
-				}
-
-				$data = array(
-					'history_id' => $history_inserted_id,
-					'key' => $key,
-					'value' => $value,
-				);
-
-				$result = $wpdb->insert( $db_table_contexts, $data );
-
-			}
+			// Insert all context values into db.
+			$this->append_context( $history_inserted_id, $context );
 		}// End if().
 
 		$this->lastInsertID = $history_inserted_id;
+		$this->lastInsertContext = $context;
 
 		$this->simpleHistory->get_cache_incrementor( true );
 
@@ -1283,16 +1300,51 @@ class SimpleLogger {
 		 *
 		 * @since 2.5.1
 		 *
-		 * @param array $context Array with all context data to store. Modify and return this.
+		 * @param array $context Array with all context data that was used to log event.
 		 * @param array $data Array with data used for parent row.
 		 * @param array $this Reference to this logger instance
 		 */
 		do_action( 'simple_history/log/inserted', $context, $data_parent_row, $this );
 
-		// Return $this so we can chain methods
+		// Return $this so we can chain methods.
 		return $this;
 
 	} // log
+
+	/**
+	 * Append new info to the contextof history item with id $post_logger->lastInsertID..
+	 *
+	 * @param int   $history_id The id of the history row to add context to.
+	 * @param array $context Context to append to existing context for the row.
+	 * @return bool True if context was added, false if not (beacuse row_id or context is empty).
+	 */
+	public function append_context( $history_id, $context ) {
+		if ( empty( $history_id ) || empty( $context ) ) {
+			return false;
+		}
+
+		global $wpdb;
+
+		$db_table_contexts = $wpdb->prefix . SimpleHistory::DBTABLE_CONTEXTS;
+
+		foreach ( $context as $key => $value ) {
+
+			// Everything except strings should be json_encoded, ie. arrays and objects.
+			if ( ! is_string( $value ) ) {
+				$value = simpleHistory::json_encode( $value );
+			}
+
+			$data = array(
+				'history_id' => $history_id,
+				'key' => $key,
+				'value' => $value,
+			);
+
+			$result = $wpdb->insert( $db_table_contexts, $data );
+		}
+
+		return true;
+	}
 
 	/**
 	 * Returns array with headers that may contain user IP
@@ -1318,6 +1370,8 @@ class SimpleLogger {
 	 * Returns additional headers with ip number from context
 	 *
 	 * @since 2.0.29
+	 * @param array $row Row with info.
+	 * @return array Headers
 	 */
 	function get_event_ip_number_headers( $row ) {
 
@@ -1346,6 +1400,9 @@ class SimpleLogger {
 	/**
 	 * Ensures an ip address is both a valid IP and does not fall within
 	 * a private network range.
+	 *
+	 * @param string $ip IP number.
+	 * @return bool
 	 */
 	function validate_ip( $ip ) {
 
@@ -1397,21 +1454,21 @@ class SimpleLogger {
 class SimpleLoggerLogInitiators {
 
 	// A wordpress user that at the log event created did exist in the wp database
-	// May have been deleted when the log is viewed
+	// May have been deleted when the log is viewed.
 	const WP_USER = 'wp_user';
 
 	// Cron job run = wordpress initiated
 	// Email sent to customer on webshop = system/wordpress/anonymous web user
-	// Javascript error occured on website = anonymous web user
+	// Javascript error occured on website = anonymous web user.
 	const WEB_USER = 'web_user';
 
-	// WordPress core or plugins updated automatically via wp-cron
+	// WordPress core or plugins updated automatically via wp-cron.
 	const WORDPRESS = 'wp';
 
-	// WP CLI / terminal
+	// WP CLI / terminal.
 	const WP_CLI = 'wp_cli';
 
-	// I dunno
+	// I dunno.
 	const OTHER = 'other';
 }
 

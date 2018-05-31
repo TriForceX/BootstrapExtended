@@ -92,12 +92,22 @@
 
 		<?php
 		submit_button(
-			'Add Widget',
+			'Add HTML Widget',
 			'secondary',
 			'ame-add-html-widget',
 			false,
 			array(
 				'data-bind' => 'click: addHtmlWidget'
+			)
+		);
+
+		submit_button(
+			'Add RSS Widget',
+			'secondary',
+			'ame-add-rss-widget',
+			false,
+			array(
+				'data-bind' => 'click: addRssWidget'
 			)
 		);
 		?>
@@ -172,6 +182,48 @@
 			       class="ame-widget-property-value"
 			       title="Enable filters like automatic paragraphs, smart quotes and automatic tag balancing">
 			Apply content filters
+		</ame-widget-property>
+	</template>
+
+	<template id="ame-custom-rss-widget-template">
+		<ame-widget-property params="widget: $data, label: 'Feed URL'">
+			<input type="url"
+			       data-bind="value: feedUrl"
+			       class="ame-widget-property-value"
+			       title="The URL of the RSS feed">
+		</ame-widget-property>
+
+		<ame-widget-property params="widget: $data, label: 'Max. items to show'">
+			<input type="number"
+			       data-bind="value: maxItems"
+			       min="1"
+			       max="20"
+			       class="ame-widget-property-value"
+			       title="Max items">
+		</ame-widget-property>
+
+		<ame-widget-property params="widget: $data, label: ''">
+			<input type="checkbox"
+			       data-bind="checked: showAuthor"
+			       class="ame-widget-property-value"
+			       title="Show author">
+			Show author
+		</ame-widget-property>
+
+		<ame-widget-property params="widget: $data, label: ''">
+			<input type="checkbox"
+			       data-bind="checked: showDate"
+			       class="ame-widget-property-value"
+			       title="Show date">
+			Show date
+		</ame-widget-property>
+
+		<ame-widget-property params="widget: $data, label: ''">
+			<input type="checkbox"
+			       data-bind="checked: showSummary"
+			       class="ame-widget-property-value"
+			       title="Show summary">
+			Show summary
 		</ame-widget-property>
 	</template>
 

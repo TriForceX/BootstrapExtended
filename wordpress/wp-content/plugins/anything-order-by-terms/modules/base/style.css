@@ -2,15 +2,15 @@
 
 /* head */
 
-#adv-settings label[for="anything-order-hide"] .dashicons{
+#adv-settings label[for="anything-order-hide"] .dashicons {
     display: none;
 }
 
-#adv-settings label[for="anything-order-hide"] .dashicons:before{
+#adv-settings label[for="anything-order-hide"] .dashicons:before {
     content: none;
 }
 
-#adv-settings label[for="anything-order-hide"] .title{
+#adv-settings label[for="anything-order-hide"] .title {
     display: inline-block;
 }
 
@@ -26,7 +26,6 @@
     cursor: default;
     color: #ccc;
 }
-
 
 #adv-settings label[for="anything-order-hide"] .anything-order-actions:before {
     content: "-";
@@ -55,10 +54,10 @@
     background-position: 50% 50%;
     display: block;
     -webkit-background-size: 15px 15px;
-       -moz-background-size: 15px 15px;
-        -ms-background-size: 15px 15px;
-         -o-background-size: 15px 15px;
-            background-size: 15px 15px;
+    -moz-background-size: 15px 15px;
+    -ms-background-size: 15px 15px;
+    -o-background-size: 15px 15px;
+    background-size: 15px 15px;
     margin: -1px 0 0;
 }
 
@@ -84,10 +83,10 @@
 
 #the-list.ui-sortable tr {
     -webkit-transition: background-color .2s ease-out 0;
-       -moz-transition: background-color .2s ease-out 0;
-        -ms-transition: background-color .2s ease-out 0;
-         -o-transition: background-color .2s ease-out 0;
-            transition: background-color .2s ease-out 0;
+    -moz-transition: background-color .2s ease-out 0;
+    -ms-transition: background-color .2s ease-out 0;
+    -o-transition: background-color .2s ease-out 0;
+    transition: background-color .2s ease-out 0;
 }
 
 #the-list.ui-sortable tr:hover .column-anything-order {
@@ -118,7 +117,7 @@
     border-left: none;
 }
 
-#the-list .ui-sortable-helper>div {
+#the-list .ui-sortable-helper > div {
     background-color: #fff;
     border: 1px solid #999;
     height: auto;
@@ -157,6 +156,6 @@
     }
 
     .wp-list-table td.column-anything-order {
-        border-left: none!important;
+        border-left: none !important;
     }
 }

@@ -64,8 +64,6 @@ class ameMetaBoxSettings implements ArrayAccess {
 			$settings->screens[$screenId] = ameMetaBoxCollection::fromArray($collectionData, $screenId);
 		}
 
-		//$settings->siteComponentHash = isset($input['siteComponentHash']) ? strval($input['siteComponentHash']) : '';
-
 		return $settings;
 	}
 

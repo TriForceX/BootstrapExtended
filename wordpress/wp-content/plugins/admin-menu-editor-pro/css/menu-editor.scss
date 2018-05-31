@@ -393,6 +393,24 @@ $mainContainerBorderRadius: 0px;
 	min-height: 25px;
 }
 
+/*
+ * Group headings
+ */
+.ws_edit_field.ws_field_group_heading {
+	//display: none;
+	height: 1px;
+	min-height: 0;
+	padding-top: 0;
+
+	background: #ccc;
+	margin: 8px -4px 5px;
+
+	& span {
+		display: none;
+		font-weight: bold;
+	}
+}
+
 /* The reset-to-default button */
 .ws_reset_button {
 	display: block;
@@ -427,11 +445,12 @@ $mainContainerBorderRadius: 0px;
 }
 
 /* The input box in each field editor */
+$basicInputWidth: 254px;
 #ws_menu_editor .ws_editbox input[type="text"], 
 #ws_menu_editor .ws_editbox select {
 	display: block;
 	float: left;
-	width: 254px;
+	width: $basicInputWidth;
 	height: 25px;
 
 	font-size: 12px;
@@ -1088,22 +1107,30 @@ a#ws-ame-delete-color-preset:hover {
 
 /* Color scheme display in the editor widget. */
 
+$colorFieldWidth: 190px;
+$colorFieldRightMargin: 5px;
+
 .ws_color_scheme_display {
-	$colorFieldHeight: 20px;
+	$colorFieldHeight: 26px;
 
     display: inline-block;
+	box-sizing: border-box;
     height: $colorFieldHeight;
-    width: 186px;
+    width: $colorFieldWidth;
 
-    margin-right: 5px;
-    padding: 2px 3px;
+    margin-right: $colorFieldRightMargin;
+    padding: 2px 4px;
 
 	font-size: 12px;
     border: 1px solid #ddd;
     background: white;
     cursor: pointer;
 
-	line-height: $colorFieldHeight;
+	line-height: $colorFieldHeight - 6px;
+}
+
+.ws_open_color_editor {
+	width: $basicInputWidth - $colorFieldWidth - $colorFieldRightMargin - 1px;
 }
 
 .ws_color_display_item {
@@ -1285,14 +1312,17 @@ a#ws-ame-delete-color-preset:hover {
 *************************************/
 
 /* The launch button */
+$accessLevelInputWidth: 190px;
+$accessLevelRightMargin: 5px;
 #ws_menu_editor .ws_edit_field-access_level input.ws_field_value
 {
-	width: 190px;
-	margin-right: 5px;
+	width: $accessLevelInputWidth;
+	margin-right: $accessLevelRightMargin;
 }
 
 .ws_launch_access_editor {
 	min-width: 40px;
+	width: $basicInputWidth - $accessLevelRightMargin - $accessLevelInputWidth - 1px;
 }
 
 #ws_menu_access_editor {
@@ -1991,6 +2021,31 @@ $userSelectionPanelPadding: 10px;
 	margin-bottom: 1em;
 }
 
+.ame-available-add-ons {
+	tr:first-of-type td {
+		margin-top: 0;
+		padding-top: 0;
+	}
+
+	td {
+		padding-top: 10px;
+		padding-bottom: 10px;
+	}
+
+	.ame-add-on-heading {
+		padding-left: 0;
+	}
+}
+
+.ame-add-on-name {
+	font-weight: 600;
+}
+
+.ame-add-on-details-link::after {
+	/*content: " \f504";
+	font-family: dashicons, sans-serif;*/
+}
+
 /*********************************************
       Miscellaneous
 **********************************************/
@@ -2035,3 +2090,5 @@ $userSelectionPanelPadding: 10px;
 .test-content {
     padding: 8px;
 }
+
+@import "test-access-screen";

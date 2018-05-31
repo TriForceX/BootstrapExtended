@@ -82,6 +82,8 @@ abstract class ameDashboardWidget {
 			return ameStandardWidgetWrapper::fromArray($widgetProperties);
 		} else if ( $widgetType === 'custom-html' ) {
 			return ameCustomHtmlWidget::fromArray($widgetProperties);
+		} else if ( $widgetType === 'custom-rss' ) {
+			return ameCustomRssWidget::fromArray($widgetProperties);
 		} else {
 			throw new RuntimeException('Unsupported dashboard widget type "' . $widgetType . '"');
 		}

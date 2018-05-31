@@ -8,15 +8,15 @@
 	Author URI: http://briar.site/
 	Text Domain: any-order
 	Domain Path: /languages
-	Version: 1.2.2
+	Version: 1.3.0
 	License: GPL version 2 or later - http://www.gnu.org/licenses/gpl-2.0.html
  */
 
-if ( !defined( 'ABSPATH' ) ) {
+if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-if ( !class_exists( 'Anything_Order' ) ) {
+if ( ! class_exists( 'Anything_Order' ) ) {
 
 	/**
 	 * Reorder any post types and taxonomies with drag and drop.
@@ -58,6 +58,8 @@ if ( !class_exists( 'Anything_Order' ) ) {
 			load_plugin_textdomain( 'any-order', false, dirname( plugin_basename( __FILE__ ) ) . '/languages' );
 
 			include_once 'modules/base/class.php';
+			include_once 'modules/base/compatibility.php';
+
 			include_once 'modules/post/class.php';
 			include_once 'modules/taxonomy/class.php';
 

@@ -70,7 +70,6 @@ class ameMetaBoxEditor extends ameModule {
 			//Also update the default list of hidden boxes.
 			$metaBoxes->setHiddenByDefault($this->getUnmodifiedDefaultHiddenBoxes($currentScreen));
 
-			//$this->dashboardWidgets->siteComponentHash = $this->generateCompontentHash();
 			$this->saveSettings();
 		}
 
@@ -223,6 +222,20 @@ class ameMetaBoxEditor extends ameModule {
 			$postTypes = get_post_types(array('public' => true, 'show_ui' => true), 'objects', 'or');
 			foreach ($postTypes as $postType) {
 				$pagesWithMetaBoxes[] = 'post-new.php?post_type=' . $postType->name;
+			}
+
+			//Include Media/attachments. This post type doesn't have a standard "new post" screen,
+			//so lets use the edit URL of the most recently uploaded image instead.
+			$attachments = get_posts(array(
+				'post_type'      => 'attachment',
+				'post_mime_type' => 'image',
+				'numberposts'    => 1,
+				'post_status'    => null,
+				'post_parent'    => 'any',
+			));
+			if ( $attachments && !empty($attachments) ) {
+				$firstAttachment = reset($attachments);
+				$pagesWithMetaBoxes[] = get_edit_post_link($firstAttachment->ID, 'raw');
 			}
 
 			wp_enqueue_auto_versioned_script(

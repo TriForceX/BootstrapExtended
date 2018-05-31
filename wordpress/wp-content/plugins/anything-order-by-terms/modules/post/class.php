@@ -158,7 +158,10 @@ class Anything_Order_Post extends Anything_Order_Base {
 	 * @param object $screen Current screen.
 	 */
 	protected function manage_column( $screen ) {
-		add_filter( "manage_{$screen->post_type}_posts_columns", array( $this, 'get_columns' ) );
+		add_filter( "manage_{$screen->post_type}_posts_columns", array(
+			$this,
+			'get_columns'
+		), 100 ); //Before custom post types columns as Woocommerce product
 		add_action( "manage_{$screen->post_type}_posts_custom_column", array( $this, 'render_column' ), 10, 2 );
 	}
 

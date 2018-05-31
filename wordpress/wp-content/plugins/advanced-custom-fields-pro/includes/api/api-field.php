@@ -323,32 +323,38 @@ function acf_the_field_label( $field ) {
 *  @return	n/a
 */
 
-function acf_render_fields( $post_id = 0, $fields, $el = 'div', $instruction = 'label' ) {
+function acf_render_fields( $fields, $post_id = 0, $el = 'div', $instruction = 'label' ) {
+	
+	// parameter order changed in ACF 5.6.9
+	if( is_array($post_id) ) {
+		$args = func_get_args();
+		$fields = $args[1];
+		$post_id = $args[0];
+	}
+	
+	// filter
+	$fields = apply_filters('acf/pre_render_fields', $fields, $post_id);
 	
 	// bail early if no fields
-	if( empty($fields) ) return false;
+	if( empty($fields) ) return;
 	
-		
-	// remove corrupt fields
-	$fields = array_filter($fields);
-	
-	
-	// loop through fields
+	// loop
 	foreach( $fields as $field ) {
 		
+		// bail ealry if no field
+		if( !$field ) continue;
+	
 		// load value
 		if( $field['value'] === null ) {
-			
 			$field['value'] = acf_get_value( $post_id, $field );
-			
 		} 
-		
 		
 		// render
 		acf_render_field_wrap( $field, $el, $instruction );
-		
 	}
 	
+	// action
+	do_action( 'acf/render_fields', $fields, $post_id );
 }
 
 
@@ -711,6 +717,7 @@ function acf_get_fields( $parent = false ) {
 	
 	
 	// filter
+	$fields = apply_filters('acf/load_fields', $fields, $parent);
 	$fields = apply_filters('acf/get_fields', $fields, $parent);
 	
 	
@@ -762,7 +769,8 @@ function acf_get_fields_by_id( $parent_id = 0 ) {
 			'suppress_filters'			=> true, // DO NOT allow WPML to modify the query
 			'post_parent'				=> $parent_id,
 			'post_status'				=> 'publish, trash', // 'any' won't get trashed fields
-			'update_post_meta_cache'	=> false
+			'update_post_meta_cache'	=> false,
+			'update_post_term_cache'	=> false
 		));
 		
 		
@@ -1040,7 +1048,9 @@ function _acf_get_field_by_name( $name = '', $db_only = false ) {
 		'orderby' 			=> 'menu_order title',
 		'order'				=> 'ASC',
 		'suppress_filters'	=> false,
-		'acf_field_name'	=> $name
+		'acf_field_name'	=> $name,
+		'update_post_meta_cache'	=> false,
+		'update_post_term_cache'	=> false
 	);
 	
 	
@@ -1097,7 +1107,7 @@ function acf_maybe_get_field( $selector, $post_id = false, $strict = true ) {
 	
 	
 	// get reference
-	$field_key = acf_get_field_reference( $selector, $post_id );
+	$field_key = acf_get_reference( $selector, $post_id );
 	
 	
 	// update selector
@@ -1150,7 +1160,9 @@ function acf_get_field_id( $key = '' ) {
 		'orderby' 			=> 'menu_order title',
 		'order'				=> 'ASC',
 		'suppress_filters'	=> false,
-		'acf_field_key'		=> $key
+		'acf_field_key'		=> $key,
+		'update_post_meta_cache'	=> false,
+		'update_post_term_cache'	=> false
 	);
 	
 	

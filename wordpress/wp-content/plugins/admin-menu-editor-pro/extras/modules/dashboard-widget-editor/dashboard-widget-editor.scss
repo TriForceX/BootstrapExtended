@@ -33,6 +33,10 @@
 		width: 100%;
 		margin-top: 4px;
 	}
+
+	#ame-export-widgets {
+		margin-top: 12px;
+	}
 }
 
 #ame-dashboard-widgets,
@@ -181,6 +185,7 @@ $titleActionWidth: 40px;
 	}
 
 	input[type="text"].ame-widget-property-value,
+	input[type="url"].ame-widget-property-value,
 	select.ame-widget-property-value,
 	textarea.ame-widget-property-value {
 		width: 100%;

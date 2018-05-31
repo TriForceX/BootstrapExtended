@@ -226,7 +226,7 @@ interface KnockoutComputed<T> {
 
 class AmeActorAccessDictionary {
 	items: { [actorId: string] : KnockoutObservable<boolean>; } = {};
-	private numberOfObservables: KnockoutObservable<number>;
+	private readonly numberOfObservables: KnockoutObservable<number>;
 
 	constructor(initialData?: AmeDictionary<boolean>) {
 		this.numberOfObservables = ko.observable(0);
@@ -377,6 +377,57 @@ class AmeCustomHtmlWidget extends AmeDashboardWidget {
 		let properties = super.toPropertyMap();
 		properties['content'] = this.content();
 		properties['filtersEnabled'] = this.filtersEnabled();
+		return properties;
+	}
+}
+
+class AmeCustomRssWidget extends AmeDashboardWidget {
+	feedUrl: KnockoutObservable<string>;
+
+	showAuthor: KnockoutObservable<boolean>;
+	showDate: KnockoutObservable<boolean>;
+	showSummary: KnockoutObservable<boolean>;
+
+	maxItems: KnockoutObservable<number>;
+
+	constructor(settings: WidgetPropertyMap, widgetEditor: AmeDashboardWidgetEditor) {
+		const _ = AmeDashboardWidget._;
+		settings = _.merge(
+			{
+				id: 'new-untitled-rss-widget',
+				isPresent: true,
+				grantAccess: {}
+			},
+			settings
+		);
+		super(settings, widgetEditor);
+
+		this.widgetType = 'custom-rss';
+		this.canChangePriority = true;
+
+		this.title = ko.observable(_.get(settings, 'title', 'New RSS Widget'));
+		this.location = ko.observable(_.get(settings, 'location', 'normal'));
+		this.priority = ko.observable(_.get(settings, 'priority', 'high'));
+
+		this.feedUrl = ko.observable(_.get(settings, 'feedUrl', ''));
+		this.maxItems = ko.observable(_.get(settings, 'maxItems', 5));
+		this.showAuthor = ko.observable(_.get(settings, 'showAuthor', true));
+		this.showDate = ko.observable(_.get(settings, 'showDate', true));
+		this.showSummary = ko.observable(_.get(settings, 'showSummary', true));
+
+		this.isPresent = true;
+		this.canBeDeleted = true;
+
+		this.propertyTemplate = 'ame-custom-rss-widget-template';
+	}
+
+	toPropertyMap(): WidgetPropertyMap {
+		let properties = super.toPropertyMap();
+		let storedProps = ['feedUrl', 'showAuthor', 'showDate', 'showSummary', 'maxItems'];
+		for (let i = 0; i < storedProps.length; i++) {
+			let name = storedProps[i];
+			properties[name] = this[name]();
+		}
 		return properties;
 	}
 }

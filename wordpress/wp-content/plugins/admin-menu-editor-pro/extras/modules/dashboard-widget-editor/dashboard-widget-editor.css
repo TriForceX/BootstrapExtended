@@ -25,6 +25,8 @@
   #ame-major-widget-actions input.button {
     width: 100%;
     margin-top: 4px; }
+  #ame-major-widget-actions #ame-export-widgets {
+    margin-top: 12px; }
 
 #ame-dashboard-widgets,
 #ame-major-widget-actions {
@@ -126,6 +128,7 @@
   .ame-widget-properties .ame-widget-property-name {
     display: inline-block; }
   .ame-widget-properties input[type="text"].ame-widget-property-value,
+  .ame-widget-properties input[type="url"].ame-widget-property-value,
   .ame-widget-properties select.ame-widget-property-value,
   .ame-widget-properties textarea.ame-widget-property-value {
     width: 100%; }

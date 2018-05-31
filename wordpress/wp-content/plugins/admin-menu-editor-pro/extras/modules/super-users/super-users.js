@@ -3,7 +3,7 @@
 /// <reference path="../../../js/jquery.biscuit.d.ts" />
 /// <reference path="../../../js/lodash-3.10.d.ts" />
 /// <reference path="../../../modules/actor-selector/actor-selector.ts" />
-var AmeSuperUsers = (function () {
+var AmeSuperUsers = /** @class */ (function () {
     function AmeSuperUsers(settings) {
         var _this = this;
         this.addButtonText = 'Add User';
@@ -77,9 +77,9 @@ var AmeSuperUsers = (function () {
     AmeSuperUsers.prototype.toggleInfoBox = function () {
         this.isInfoBoxOpen(!this.isInfoBoxOpen());
     };
+    AmeSuperUsers._ = wsAmeLodash;
     return AmeSuperUsers;
 }());
-AmeSuperUsers._ = wsAmeLodash;
 jQuery(function () {
     var superUserVM = new AmeSuperUsers(wsAmeSuperUserSettings);
     ko.applyBindings(superUserVM, document.getElementById('ame-super-user-settings'));

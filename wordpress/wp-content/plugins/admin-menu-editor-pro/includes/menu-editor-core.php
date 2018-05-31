@@ -17,6 +17,7 @@ require $thisDirectory . '/menu.php';
 require $thisDirectory . '/auto-versioning.php';
 require $thisDirectory . '/../ajax-wrapper/AjaxWrapper.php';
 require $thisDirectory . '/module.php';
+require $thisDirectory . '/persistent-module.php';
 
 class WPMenuEditor extends MenuEd_ShadowPluginFramework {
 	const WPML_CONTEXT = 'admin-menu-editor menu texts';
@@ -119,6 +120,13 @@ class WPMenuEditor extends MenuEd_ShadowPluginFramework {
 	 */
 	private $caps_used_in_menu = array();
 
+	public $is_access_test = false;
+	private $test_menu = null;
+	/**
+	 * @var ameAccessTestRunner|null
+	 */
+	private $access_test_runner = null;
+
 	function init(){
 		$this->sitewide_options = true;
 
@@ -167,6 +175,10 @@ class WPMenuEditor extends MenuEd_ShadowPluginFramework {
 			//This usually applies to new items added by other plugins and, in Multisite, items that exist on
 			//the current site but did not exist on the site where the user last edited the menu configuration.
 			'unused_item_position' => 'relative', //"relative" or "bottom".
+
+			//Permissions for menu items that are not part of the save menu configuration.
+			//The default is to leave the permissions unchanged.
+			'unused_item_permissions' => 'unchanged', //"unchanged" or "match_plugin_access".
 
 			//Verbosity level of menu permission errors.
 			'error_verbosity' => self::VERBOSITY_NORMAL,
@@ -292,6 +304,15 @@ class WPMenuEditor extends MenuEd_ShadowPluginFramework {
 
 		//Multisite: Clear role and capability caches when switching to another site.
 		add_action('switch_blog', array($this, 'clear_site_specific_caches'), 10, 0);
+
+		//"Test Access" feature.
+		if ( (defined('DOING_AJAX') && DOING_AJAX) || isset($this->get['ame-test-menu-access-as']) ) {
+			require_once 'access-test-runner.php';
+			$this->access_test_runner = new ameAccessTestRunner($this, $this->get);
+		}
+
+		//Additional links below the plugin description.
+		add_filter('plugin_row_meta', array($this, 'add_plugin_row_meta_links'), 10, 2);
 
 		//Utility actions. Modules can use them in their templates.
 		add_action('admin_menu_editor-display_tabs', array($this, 'display_editor_tabs'));
@@ -455,7 +476,9 @@ class WPMenuEditor extends MenuEd_ShadowPluginFramework {
 			if ( is_network_admin() ) {
 				$screen_hook_name .= '-network';
 			}
-			add_meta_box("ws-ame-screen-options", "[AME placeholder]", '__return_false', $screen_hook_name);
+			if ( $this->current_tab === 'editor' ) {
+				add_meta_box("ws-ame-screen-options", "[AME placeholder]", '__return_false', $screen_hook_name);
+			}
 		}
 
 		//Compatibility fix for the WooCommerce order count bubble. Must be run before storing or processing $submenu.
@@ -508,8 +531,17 @@ class WPMenuEditor extends MenuEd_ShadowPluginFramework {
 			$this->build_custom_wp_menu($this->merged_custom_menu['tree']);
 			$this->user_cap_cache_enabled = false;
 
+			if ( $this->is_access_test ) {
+				$this->access_test_runner['wasCustomMenuApplied'] = true;
+				$this->access_test_runner->setCurrentMenuItem($this->get_current_menu_item());
+			}
+
 			if ( !$this->user_can_access_current_page() ) {
 				$this->log_security_note('DENY access.');
+				if ( $this->is_access_test ) {
+					$this->access_test_runner['userCanAccessCurrentPage'] = false;
+				}
+
 				$message = 'You do not have sufficient permissions to access this admin page.';
 
 				if ( ($this->options['error_verbosity'] >= self::VERBOSITY_NORMAL) ) {
@@ -532,6 +564,10 @@ class WPMenuEditor extends MenuEd_ShadowPluginFramework {
 				wp_die($message);
 			} else {
 				$this->log_security_note('ALLOW access.');
+				if ( $this->is_access_test ) {
+					$this->access_test_runner['userCanAccessCurrentPage'] =
+						($this->access_test_runner['currentMenuItem'] !== null);
+				}
 			}
 
 			//Replace the admin menu just before it is displayed and restore it afterwards.
@@ -1032,7 +1068,7 @@ class WPMenuEditor extends MenuEd_ShadowPluginFramework {
 		return array(
 			'user_login' => $user->get('user_login'),
 			'id' => $user->ID,
-			'roles' => !empty($user->roles) ? (array)($user->roles) : array(),
+			'roles' => !empty($user->roles) ? array_values((array)($user->roles)) : array(),
 			'capabilities' => $this->castValuesToBool($user->caps),
 			'meta_capabilities' => array(),
 			'display_name' => $user->display_name,
@@ -1228,6 +1264,7 @@ class WPMenuEditor extends MenuEd_ShadowPluginFramework {
 	 *
 	 * @param null $config_id
 	 * @return array|null Either a menu in the internal format, or NULL if there is no custom menu available.
+	 * @throws InvalidMenuException
 	 */
 	public function load_custom_menu($config_id = null) {
 		if ( $config_id === null ) {
@@ -1239,6 +1276,10 @@ class WPMenuEditor extends MenuEd_ShadowPluginFramework {
 		}
 
 		$this->loaded_menu_config_id = $config_id;
+
+		if ( $this->is_access_test ) {
+			return $this->test_menu;
+		}
 
 		if ( $config_id === 'network-admin' ) {
 			if ( empty($this->options['custom_network_menu']) ) {
@@ -1290,6 +1331,14 @@ class WPMenuEditor extends MenuEd_ShadowPluginFramework {
 			return false;
 		}
 		return ($this->options['menu_config_scope'] === 'site');
+	}
+
+	function save_options() {
+		if ( $this->is_access_test ) {
+			//Don't change live settings during an access test.
+			return false;
+		}
+		return parent::save_options();
 	}
 
 	/**
@@ -1549,6 +1598,7 @@ class WPMenuEditor extends MenuEd_ShadowPluginFramework {
 
 		//Lets merge in the unused items.
 		$max_menu_position = !empty($positions_by_template) ? max($positions_by_template) : 100;
+		$new_grant_access = $this->get_new_menu_grant_access();
 		foreach ($this->item_templates as $template_id => $template){
 			//Skip used menus and separators
 			if ( !empty($template['used']) || !empty($template['defaults']['separator'])) {
@@ -1560,6 +1610,8 @@ class WPMenuEditor extends MenuEd_ShadowPluginFramework {
 			$entry['template_id'] = $template_id;
 			$entry['defaults'] = $template['defaults'];
 			$entry['unused'] = true; //Note that this item is unused
+
+			$entry['grant_access'] = $new_grant_access;
 
 			if ($this->options['unused_item_position'] === 'relative') {
 
@@ -1677,6 +1729,20 @@ class WPMenuEditor extends MenuEd_ShadowPluginFramework {
 		$this->page_access_lookup[$item['url']][$priority] = $item['access_level'];
 	}
 
+	/**
+	 * Get the access settings for menu items that are not part of the saved menu configuration.
+	 *
+	 * Typically, this applies to new menus that were added by recently activated plugins.
+	 *
+	 * @return array
+	 */
+	public function get_new_menu_grant_access() {
+		if ( $this->options['unused_item_permissions'] === 'unchanged' ) {
+			return array();
+		}
+		return apply_filters('admin_menu_editor-new_menu_grant_access', array());
+	}
+
   /**
    * Generate WP-compatible $menu and $submenu arrays from a custom menu tree.
    * 
@@ -1745,6 +1811,10 @@ class WPMenuEditor extends MenuEd_ShadowPluginFramework {
 		foreach($this->page_access_lookup as $url => $capabilities) {
 			ksort($capabilities);
 			$this->page_access_lookup[$url] = reset($capabilities);
+		}
+
+		if ( $this->is_access_test ) {
+			$this->access_test_runner->onFinalTreeReady($new_tree);
 		}
 
 		//Convert the prepared tree to the internal WordPress format.
@@ -2396,6 +2466,14 @@ class WPMenuEditor extends MenuEd_ShadowPluginFramework {
 				if ( in_array($unused_item_position, $valid_position_settings, true) ) {
 					$this->options['unused_item_position'] = $unused_item_position;
 				}
+			}
+
+			//Permissions for unused menu items.
+			if (
+				isset($this->post['unused_item_permissions'])
+				&& in_array($this->post['unused_item_permissions'], array('unchanged', 'match_plugin_access'), true)
+			) {
+				$this->options['unused_item_permissions'] = strval($this->post['unused_item_permissions']);
 			}
 
 			//How verbose "access denied" errors should be.
@@ -3466,6 +3544,10 @@ class WPMenuEditor extends MenuEd_ShadowPluginFramework {
 		return $log;
 	}
 
+	public function get_security_log() {
+		return $this->security_log;
+	}
+
 	/**
 	 * WPML support: Update strings that need translation.
 	 *
@@ -3998,6 +4080,23 @@ class WPMenuEditor extends MenuEd_ShadowPluginFramework {
 		return $cap_power;
 	}
 
+	public function add_plugin_row_meta_links($pluginMeta, $pluginFile) {
+		$isRelevant = ($pluginFile == $this->plugin_basename);
+
+		if ( $isRelevant && $this->current_user_can_edit_menu() ) {
+			$documentationUrl = $this->is_pro_version()
+				? 'https://adminmenueditor.com/documentation/'
+				: 'https://adminmenueditor.com/free-version-docs/';
+			$pluginMeta[] = sprintf(
+				'<a href="%s">%s</a>',
+				esc_attr($documentationUrl),
+				'Documentation'
+			);
+		}
+
+		return $pluginMeta;
+	}
+
 	private function get_active_modules() {
 		$modules = $this->get_available_modules();
 
@@ -4049,6 +4148,11 @@ class WPMenuEditor extends MenuEd_ShadowPluginFramework {
 				'relativePath' => 'modules/admin-css/admin-css.php',
 				'className' => 'ameAdminCss',
 				'title' => 'Admin CSS',
+			),*/
+			/*'tweaks' => array(
+				'relativePath' => 'modules/tweaks/tweaks.php',
+				'className' => 'ameTweakManager',
+				'title' => 'Tweaks',
 			),*/
 			'hide-admin-menu' => array(
 				'relativePath' => 'extras/modules/hide-admin-menu/hide-admin-menu.php',

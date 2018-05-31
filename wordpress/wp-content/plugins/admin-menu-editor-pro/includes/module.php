@@ -131,4 +131,20 @@ abstract class ameModule {
 	public function handleSettingsForm($post = array()) {
 		//Override this method to process a form submitted from the module's tab.
 	}
+
+	protected function getScopedOption($name, $defaultValue = null) {
+		if ( $this->menuEditor->get_plugin_option('menu_config_scope') === 'site' ) {
+			return get_option($name, $defaultValue);
+		} else {
+			return get_site_option($name, $defaultValue);
+		}
+	}
+
+	protected function setScopedOption($name, $value, $autoload = null) {
+		if ( $this->menuEditor->get_plugin_option('menu_config_scope') === 'site' ) {
+			update_option($name, $value, $autoload);
+		} else {
+			WPMenuEditor::atomic_update_site_option($name, $value);
+		}
+	}
 }

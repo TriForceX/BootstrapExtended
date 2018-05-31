@@ -2,7 +2,6 @@
 
 defined( 'ABSPATH' ) or die();
 
-
 /**
  * Logs changes to posts and pages, including custom post types
  */
@@ -175,9 +174,13 @@ class SimplePostLogger extends SimpleLogger {
 
 		$prev_post_data = get_post( $post_ID );
 
-		$this->old_post_data[ $post_ID ] = array(
-			'post_data' => $prev_post_data,
-			'post_meta' => get_post_custom( $post_ID ),
+		if (is_wp_error($prev_post_data)) {
+			return;
+		}
+
+		$this->old_post_data[$post_ID] = array(
+			"post_data" => $prev_post_data,
+			"post_meta" => get_post_custom( $post_ID )
 		);
 
 	}
@@ -255,6 +258,10 @@ class SimplePostLogger extends SimpleLogger {
 
 		$post = get_post( $post_id );
 
+		if ( ! $this->ok_to_log_post_posttype( $post ) ) {
+			return;
+		}
+
 		$this->infoMessage(
 			'post_restored',
 			array(
@@ -267,7 +274,9 @@ class SimplePostLogger extends SimpleLogger {
 	}
 
 	/**
-	 * Called when a post is deleted from the trash
+	 * Fired immediately before a post is deleted from the database.
+	 *
+	 * @param int $postid Post ID.
 	 */
 	function on_delete_post( $post_id ) {
 
@@ -281,7 +290,23 @@ class SimplePostLogger extends SimpleLogger {
 			return;
 		}
 
-		if ( 'nav_menu_item' == get_post_type( $post ) ) {
+		if ( ! $this->ok_to_log_post_posttype( $post ) ) {
+			$ok_to_log = false;
+		}
+
+		/**
+		 * Filter to control logging.
+		 *
+		 * @param bool $ok_to_log If this post deletion should be logged.
+		 * @param int $post_id
+		 *
+		 * @return bool True to log, false to not log.
+		 *
+		 * @since 2.21
+		 */
+		$ok_to_log = apply_filters( 'simple_history/post_logger/post_deleted/ok_to_log', $ok_to_log, $post_id );
+
+		if ( ! $ok_to_log ) {
 			return;
 		}
 
@@ -315,13 +340,55 @@ class SimplePostLogger extends SimpleLogger {
 
 	}
 
+	/**
+	 * Get an array of post types that should not be logged by this logger.
+	 */
+	public function get_skip_posttypes() {
+		$skip_posttypes = array(
+			// Don't log nav_menu_updates.
+			'nav_menu_item',
+			// Don't log jetpack migration-things.
+			// https://wordpress.org/support/topic/updated-jetpack_migration-sidebars_widgets/.
+			'jetpack_migration',
+			'jp_sitemap',
+			'jp_img_sitemap',
+			'jp_sitemap_master',
+		);
+
+		/**
+		 * Filter to log what post types not to log
+		 *
+		 * @since 2.18
+		 */
+		$skip_posttypes = apply_filters( 'simple_history/post_logger/skip_posttypes', $skip_posttypes );
+
+		return $skip_posttypes;
+	}
 
 	/**
-	 * Fired when a post has changed status
-	 * Only run in certain cases,
-	 * because when always enabled it catches a lots of edits made by plugins during cron jobs etc,
-	 * which by definition is not wrong, but perhaps not wanted/annoying
+	 * Check if post type is ok to log by logger
+	 *
+	 * @param Int or WP_Post $post Post the check.
+	 *
+	 * @return bool
 	 */
+	public function ok_to_log_post_posttype( $post ) {
+		$ok_to_log = true;
+		$skip_posttypes = $this->get_skip_posttypes();
+
+		if ( in_array( get_post_type( $post ), $skip_posttypes, true ) ) {
+			$ok_to_log = false;
+		}
+
+		return $ok_to_log;
+	}
+
+	/**
+	  * Fired when a post has changed status
+	  * Only run in certain cases,
+	  * because when always enabled it catches a lots of edits made by plugins during cron jobs etc,
+	  * which by definition is not wrong, but perhaps not wanted/annoying
+	  */
 	function on_transition_post_status( $new_status, $old_status, $post ) {
 
 		$ok_to_log = true;
@@ -344,25 +411,23 @@ class SimplePostLogger extends SimpleLogger {
 			$ok_to_log = false;
 		}
 
-		// Don't log some post types.
-		$skip_posttypes = array(
-			// Don't log nav_menu_updates.
-			'nav_menu_item',
-			// Don't log jetpack migration-things.
-			// https://wordpress.org/support/topic/updated-jetpack_migration-sidebars_widgets/.
-			'jetpack_migration',
-		);
-
-		/**
-		 * Filter to log what post types not to log
-		 *
-		 * @since 2.18
-		 */
-		$skip_posttypes = apply_filters( 'simple_history/post_logger/skip_posttypes', $skip_posttypes );
-
-		if ( in_array( get_post_type( $post ), $skip_posttypes, true ) ) {
+		if ( ! $this->ok_to_log_post_posttype( $post ) ) {
 			$ok_to_log = false;
 		}
+
+		/**
+		 * Filter to control logging.
+		 *
+		 * @param bool $ok_to_log
+		 * @param $new_status
+		 * @param $old_status
+		 * @param $post
+		 *
+		 * @return bool True to log, false to not log.
+		 *
+		 * @since 2.21
+		 */
+		$ok_to_log = apply_filters( 'simple_history/post_logger/post_updated/ok_to_log', $ok_to_log, $new_status, $old_status, $post );
 
 		if ( ! $ok_to_log ) {
 			return;
@@ -421,7 +486,15 @@ class SimplePostLogger extends SimpleLogger {
 
 			$context['_occasionsID'] = __CLASS__ . '/' . __FUNCTION__ . "/post_updated/{$post->ID}";
 
-			$this->infoMessage( 'post_updated', $context );
+			/**
+			 * Modify the context saved.
+			 *
+			 * @param array $context
+			 * @param WP_Post $post
+			 */
+			$context = apply_filters( 'simple_history/post_logger/post_updated/context', $context, $post );
+
+			$this->infoMessage( "post_updated", $context );
 
 		}// End if().
 
@@ -654,7 +727,7 @@ class SimplePostLogger extends SimpleLogger {
 	}
 
 	/**
-	 * Modify plain output to include link to post
+	 * Modify plain output to include link to post.
 	 *
 	 * @param array $row Row data.
 	 */
@@ -960,6 +1033,15 @@ class SimplePostLogger extends SimpleLogger {
 			// post_new_thumb, int of new thumb, empty if no new thumb.
 			$diff_table_output .= $this->getLogRowDetailsOutputForPostThumb( $context );
 
+			/**
+			 * Modify the formatted diff output of a saved/modified post
+			 *
+			 * @param string $diff_table_output
+			 * @param array $context
+			 * @return string
+			 */
+			$diff_table_output = apply_filters( 'simple_history/post_logger/post_updated/diff_table_output', $diff_table_output, $context );
+
 			if ( $has_diff_values || $diff_table_output ) {
 
 				$diff_table_output = '<table class="SimpleHistoryLogitem__keyValueTable">' . $diff_table_output . '</table>';
@@ -1060,6 +1142,8 @@ class SimplePostLogger extends SimpleLogger {
 			// Check if images still exists and if so get their thumbnails.
 			$prev_thumb_id = empty( $context['post_prev_thumb_id'] ) ? null : $context['post_prev_thumb_id'];
 			$new_thumb_id = empty( $context['post_new_thumb_id'] ) ? null : $context['post_new_thumb_id'];
+			$post_new_thumb_title = empty( $context['post_new_thumb_title'] ) ? null : $context['post_new_thumb_title'];
+			$post_prev_thumb_title = empty( $context['post_prev_thumb_title'] ) ? null : $context['post_prev_thumb_title'];
 
 			$prev_attached_file = get_attached_file( $prev_thumb_id );
 			$prev_thumb_src = wp_get_attachment_image_src( $prev_thumb_id, 'small' );
@@ -1077,13 +1161,13 @@ class SimplePostLogger extends SimpleLogger {
 						</div>
 					',
 					$prev_thumb_src[0],
-					esc_html( $context['post_prev_thumb_title'] )
+					esc_html( $post_prev_thumb_title )
 				);
 			} else {
 				// Fallback if image does not exist.
 				$prev_thumb_html = sprintf(
 					'<div>%1$s</div>',
-					esc_html( $context['post_prev_thumb_title'] )
+					esc_html( $post_prev_thumb_title )
 				);
 			}
 
@@ -1097,13 +1181,13 @@ class SimplePostLogger extends SimpleLogger {
 						</div>
 					',
 					$new_thumb_src[0],
-					esc_html( $context['post_new_thumb_title'] )
+					esc_html( $post_new_thumb_title )
 				);
 			} else {
 				// Fallback if image does not exist.
 				$prev_thumb_html = sprintf(
 					'<div>%1$s</div>',
-					esc_html( $context['post_new_thumb_title'] )
+					esc_html( $post_new_thumb_title )
 				);
 			}
 
@@ -1131,7 +1215,7 @@ class SimplePostLogger extends SimpleLogger {
 					</td>
 				</tr>',
 				esc_html( __( 'Featured image', 'simple-history' ) ), // 1
-				$prev_thumb_html,// 2
+				$prev_thumb_html, // 2
 				$new_thumb_html // 3
 			);
 		} // End if().

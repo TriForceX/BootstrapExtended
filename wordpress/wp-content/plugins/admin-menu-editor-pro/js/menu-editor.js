@@ -46,6 +46,9 @@
  * @property {string|null} wsEditorData.selectedMenu
  * @property {string|null} wsEditorData.selectedSubmenu
  *
+ * @property {string} wsEditorData.setTestConfigurationNonce
+ * @property {string} wsEditorData.testAccessNonce
+ *
  * @property {boolean} wsEditorData.isDemoMode
  * @property {boolean} wsEditorData.isMasterMode
  */
@@ -774,6 +777,15 @@ var knownMenuFields = {
 		}
 	}),
 
+	'appearance_heading' : $.extend({}, baseField, {
+		caption: 'Appearance',
+		advanced : true,
+		onlyForTopMenus: false,
+		type: 'heading',
+		standardCaption: false,
+		visible: false //Only visible in the Pro version.
+	}),
+
 	'icon_url' : $.extend({}, baseField, {
 		caption: 'Icon URL',
 		type : 'icon_selector',
@@ -834,10 +846,50 @@ var knownMenuFields = {
 		}
 	}),
 
-	'css_class' : $.extend({}, baseField, {
-		caption: 'CSS classes',
+	'colors' : $.extend({}, baseField, {
+		caption: 'Color scheme',
+		defaultValue: 'Default',
+		type: 'color_scheme_editor',
+		onlyForTopMenus: true,
+		visible: false,
 		advanced : true,
-		onlyForTopMenus: true
+
+		display: function(menuItem, displayValue, input, containerNode) {
+			var colors = getFieldValue(menuItem, 'colors', {}) || {};
+			var colorList = containerNode.find('.ws_color_scheme_display');
+
+			colorList.empty();
+			var count = 0, maxColorsToShow = 7;
+
+			$.each(colors, function(name, value) {
+				if ( !value || (count >= maxColorsToShow) ) {
+					return;
+				}
+
+				colorList.append(
+					$('<span></span>').addClass('ws_color_display_item').css('background-color', value)
+				);
+				count++;
+			});
+
+			if (count === 0) {
+				colorList.append('Default');
+			}
+
+			return 'Placeholder. You should never see this.';
+		},
+
+		write: function(menuItem) {
+			//Menu colors can't be directly edited.
+		}
+	}),
+
+	'html_heading' : $.extend({}, baseField, {
+		caption: 'HTML',
+		advanced : true,
+		onlyForTopMenus: true,
+		type: 'heading',
+		standardCaption: false
 	}),
 
 	'open_in' : $.extend({}, baseField, {
@@ -888,48 +940,24 @@ var knownMenuFields = {
 		}
 	}),
 
-	'colors' : $.extend({}, baseField, {
-		caption: 'Color scheme',
-		defaultValue: 'Default',
-		type: 'color_scheme_editor',
-		onlyForTopMenus: true,
-		visible: false,
+	'css_class' : $.extend({}, baseField, {
+		caption: 'CSS classes',
 		advanced : true,
-
-		display: function(menuItem, displayValue, input, containerNode) {
-			var colors = getFieldValue(menuItem, 'colors', {}) || {};
-			var colorList = containerNode.find('.ws_color_scheme_display');
-
-			colorList.empty();
-			var count = 0, maxColorsToShow = 7;
-
-			$.each(colors, function(name, value) {
-				if ( !value || (count >= maxColorsToShow) ) {
-					return;
-				}
-
-				colorList.append(
-					$('<span></span>').addClass('ws_color_display_item').css('background-color', value)
-				);
-				count++;
-			});
-
-			if (count === 0) {
-				colorList.append('Default');
-			}
-
-			return 'Placeholder. You should never see this.';
-		},
-
-		write: function(menuItem) {
-			//Menu colors can't be directly edited.
-		}
+		onlyForTopMenus: true
 	}),
 
-	'page_title' : $.extend({}, baseField, {
-		caption: "Window title",
-		standardCaption : true,
-		advanced : true
+	'hookname' : $.extend({}, baseField, {
+		caption: 'ID attribute',
+		advanced : true,
+		onlyForTopMenus: true
+	}),
+
+	'page_properties_heading' : $.extend({}, baseField, {
+		caption: 'Page',
+		advanced : true,
+		onlyForTopMenus: true,
+		type: 'heading',
+		standardCaption: false
 	}),
 
 	'page_heading' : $.extend({}, baseField, {
@@ -939,14 +967,14 @@ var knownMenuFields = {
 		visible: false
 	}),
 
-	'hookname' : $.extend({}, baseField, {
-		caption: 'Hook name',
-		advanced : true,
-		onlyForTopMenus: true
+	'page_title' : $.extend({}, baseField, {
+		caption: "Window title",
+		standardCaption : true,
+		advanced : true
 	}),
 
 	'is_always_open' : $.extend({}, baseField, {
-		caption: 'Keep this menu open',
+		caption: 'Keep this menu expanded',
 		advanced : true,
 		onlyForTopMenus: true,
 		type: 'checkbox',
@@ -1054,6 +1082,10 @@ function buildEditboxField(entry, field_name, field_settings){
 				.add('<input type="button" class="button ws_open_color_editor" value="Edit...">');
 			break;
 
+		case 'heading':
+			inputBox = $('<span>' + field_settings.caption + '</span>');
+			break;
+
 		case 'text':
 			/* falls through */
 		default:
@@ -1067,6 +1099,9 @@ function buildEditboxField(entry, field_name, field_settings){
 	}
 	if (!field_settings.standardCaption) {
 		className += ' ws_no_field_caption';
+	}
+	if (field_settings.type === 'heading') {
+		className += ' ws_field_group_heading';
 	}
 
 	var caption = '';
@@ -1094,7 +1129,7 @@ function buildEditboxField(entry, field_name, field_settings){
 
 	editField
 		.append(
-			$('<img class="ws_reset_button" title="Reset to default value">')
+			$('<img class="ws_reset_button" title="Reset to default value" src="">')
 				.attr('src', wsEditorData.imagesUrl + '/transparent16.png')
 		).data('field_name', field_name);
 
@@ -1725,6 +1760,10 @@ function readAllFields(container){
 		if (field_name === 'embedded_page_id') {
 			return true;
 		}
+		//Headings contain no useful data.
+		if (field.hasClass('ws_field_group_heading')) {
+			return true;
+		}
 
 		//Find the field (usually an input or select element).
 		var input_box = field.find('.ws_field_value');
@@ -1997,6 +2036,8 @@ function ameOnDomReady() {
 		knownMenuFields.access_level.visible = true;
 		knownMenuFields.page_heading.visible = true;
 		knownMenuFields.colors.visible = true;
+		knownMenuFields.appearance_heading.visible = true;
+		knownMenuFields.appearance_heading.onlyForTopMenus = false;
 		knownMenuFields.extra_capability.visible = false; //Superseded by the "access_level" field.
 
 		//The Pro version supports submenu icons, but they can be disabled by the user.
@@ -4786,6 +4827,180 @@ function ameOnDomReady() {
 			actorSelectorWidget.setSelectedActor(null);
 		}
 	}
+
+	/******************************************************************
+	                        "Test Access" feature
+	 ******************************************************************/
+	var testAccessDialog = $('#ws_ame_test_access_screen').dialog({
+			autoOpen: false,
+			modal: true,
+			closeText: ' ',
+			title: 'Test access',
+			width: 900
+			//draggable: false
+		}),
+		testMenuItemList = $('#ws_ame_test_menu_item'),
+		testActorList = $('#ws_ame_test_relevant_actor'),
+		testAccessButton = $('#ws_ame_start_access_test'),
+		testAccessFrame = $('#ws_ame_test_access_frame'),
+		testConfig = null,
+
+		testProgress = $('#ws_ame_test_progress'),
+		testProgressText = $('#ws_ame_test_progress_text');
+
+	$('#ws_test_access').click(function () {
+		testConfig = readMenuTreeState();
+
+		var selectedMenuContainer = getSelectedMenu(),
+			selectedItemContainer = getSelectedSubmenuItem(),
+			selectedMenu = null,
+			selectedItem = null,
+			selectedUrl = null;
+		if (selectedMenuContainer.length > 0) {
+			selectedMenu = selectedMenuContainer.data('menu_item');
+			selectedUrl = getFieldValue(selectedMenu, 'url');
+		}
+		if (selectedItemContainer.length > 0) {
+			selectedItem = selectedItemContainer.data('menu_item');
+			selectedUrl = getFieldValue(selectedItem, 'url');
+		}
+
+		function addMenuItems(collection, parentTitle, parentFile) {
+			_.each(collection, function (menuItem) {
+				if (menuItem.separator) {
+					return;
+				}
+
+				var title = formatMenuTitle(getFieldValue(menuItem, 'menu_title', '[Untitled menu]'));
+				if (parentTitle) {
+					title = parentTitle + ' -> ' + title;
+				}
+				var url = getFieldValue(menuItem, 'url', '[no-url]');
+
+				var option = $(
+					'<option>', {
+						val: url,
+						text: title
+					}
+				);
+				option.data('menu_item', menuItem);
+				option.data('parent_file', parentFile || '');
+				option.prop('selected', (url === selectedUrl));
+
+				testMenuItemList.append(option);
+
+				if (menuItem.items) {
+					addMenuItems(menuItem.items, title, getFieldValue(menuItem, 'file', ''));
+				}
+			});
+		}
+
+		//Populate the list of menu items.
+		testMenuItemList.empty();
+		addMenuItems(testConfig.tree);
+
+		//Populate the actor list.
+		testActorList.empty();
+		testActorList.append($('<option>', {text: 'Not selected', val: ''}));
+		_.each(actorSelectorWidget.getVisibleActors(), function (actor) {
+			//TODO: Skip anything that isn't a role
+			var option = $('<option>', {
+				val: actor.id,
+				text: actorSelectorWidget.getNiceName(actor)
+			});
+			testActorList.append(option);
+		});
+
+		//Pre-select the current actor.
+		if (actorSelectorWidget.selectedActor !== null) {
+			testActorList.val(actorSelectorWidget.selectedActor);
+		}
+
+		testAccessDialog.dialog('open');
+	});
+
+	testAccessButton.click(function () {
+		testAccessButton.prop('disabled', true);
+		testProgress.show();
+		testProgressText.text('Sending menu settings...');
+
+		var selectedOption = testMenuItemList.find('option:selected').first(),
+			selectedMenu = selectedOption.data('menu_item'),
+			menuUrl = selectedOption.val();
+
+		$.ajax(
+			wsEditorData.adminAjaxUrl,
+			{
+				data: {
+					'action': 'ws_ame_set_test_configuration',
+					'data': encodeMenuAsJSON(testConfig),
+					'_ajax_nonce': wsEditorData.setTestConfigurationNonce
+				},
+				method: 'post',
+				dataType: 'json',
+				success: function(response, textStatus) {
+					if (!response) {
+						alert('Error: Could not parse the server response.');
+						testAccessButton.prop('disabled', false);
+						return;
+					}
+					if (response.error) {
+						alert(response.error);
+						testAccessButton.prop('disabled', false);
+						return;
+					}
+					if (!response.success) {
+						alert('Error: The request failed, but there is no error information available.');
+						testAccessButton.prop('disabled', false);
+						return;
+					}
+
+					//Caution: Won't work in IE. Needs compat checks.
+					var testPageUrl = new URL(menuUrl, window.location.href);
+					testPageUrl.searchParams.append('ame-test-menu-access-as', $('#ws_ame_test_access_username').val());
+					testPageUrl.searchParams.append('_wpnonce', wsEditorData.testAccessNonce);
+					testPageUrl.searchParams.append('ame-test-relevant-role', testActorList.val());
+
+					testPageUrl.searchParams.append('ame-test-target-item', getFieldValue(selectedMenu, 'file', ''));
+					testPageUrl.searchParams.append('ame-test-target-parent', selectedOption.data('parent_file'));
+
+					testProgressText.text('Loading the test page....');
+					$('#ws_ame_test_frame_placeholder').hide();
+
+					$(window).on('message', receiveTestAccessResults);
+					testAccessFrame
+						.show()
+						.on('load', onAccessTestLoaded)
+						.prop('src', testPageUrl.href);
+				},
+				error: function(jqXHR, textStatus) {
+					alert('HTTP Error: ' + textStatus);
+					testAccessButton.prop('disabled', false);
+				}
+			}
+		);
+	});
+
+	function onAccessTestLoaded() {
+		testAccessFrame.off('load', onAccessTestLoaded);
+		testProgress.hide();
+
+		testAccessButton.prop('disabled', false);
+	}
+
+	function receiveTestAccessResults(event) {
+		if (event.originalEvent.source !== testAccessFrame.get(0).contentWindow) {
+			if (console && console.warn) {
+				console.warn('AME: Received a message from an unexpected source. Message ignored.');
+			}
+			return;
+		}
+		var message = event.originalEvent.data || event.originalEvent.message;
+		console.log('message received', message);
+
+		$(window).off('message', receiveTestAccessResults);
+	}
+
 
 	//Finally, show the menu
 	loadMenuConfiguration(customMenu);

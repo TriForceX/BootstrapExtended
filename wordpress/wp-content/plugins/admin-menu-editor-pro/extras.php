@@ -138,6 +138,11 @@ class wsMenuEditorExtras {
 		add_filter('user_has_cap', array($this, 'regrant_virtual_caps_to_user'), 200, 1);
 		add_filter('role_has_cap', array($this, 'grant_virtual_caps_to_role'), 200, 3);
 
+		add_action('load-options.php', array($this, 'disable_virtual_caps_on_all_options'));
+
+		//Make it possible to automatically hide new admin menus.
+		add_filter('admin_menu_editor-new_menu_grant_access', array($this, 'get_new_menu_grant_access'));
+
 		//Remove the plugin from the "Plugins" page for users who're not allowed to see it.
 		if ( $this->wp_menu_editor->get_plugin_option('plugins_page_allowed_user_id') !== null ) {
 			add_filter('all_plugins', array($this, 'filter_plugin_list'));
@@ -161,6 +166,18 @@ class wsMenuEditorExtras {
 		add_action('wslm_license_ui_logo-admin-menu-editor-pro', array($this, 'license_ui_logo'));
 		add_action('wslm_license_ui_details-admin-menu-editor-pro', array($this, 'license_ui_upgrade_link'), 10, 3);
 		add_filter('wslm_product_name-admin-menu-editor-pro', array($this, 'license_ui_product_name'), 10, 0);
+
+		/**
+		 * Add-on display and installation.
+		 */
+		//Disabled for now. This feature should be finished later.
+		/*
+		add_action('admin-menu-editor-display_addons', array($this, 'display_addons'));
+		add_action('admin_menu_editor-enqueue_scripts-settings', array($this, 'enqueue_addon_scripts'));
+
+		add_action('wp_ajax_ws_ame_activate_add_on', array($this, 'ajax_activate_addon'));
+		add_action('wp_ajax_ws_ame_activate_add_on', array($this, 'ajax_install_addon'));
+		//*/
 	}
 	
   /**
@@ -1572,6 +1589,61 @@ wsEditorData.importMenuNonce = "<?php echo esc_js(wp_create_nonce('import_custom
 		return isset($default) ? $default : current_user_can($capability);
 	}
 
+	/**
+	 * @see WPMenuEditor::get_new_menu_grant_access()
+	 *
+	 * @param array $defaultGrantAccess Ignored. The default is completely replaced.
+	 * @return array
+	 */
+	public function get_new_menu_grant_access(/** @noinspection PhpUnusedParameterInspection */$defaultGrantAccess = array()) {
+		$capsWereDisabled = $this->disable_virtual_caps;
+		$this->disable_virtual_caps = true;
+
+		$grantAccess = array();
+
+		$roles = array_keys(ameRoleUtils::get_role_names());
+		$currentUser = wp_get_current_user();
+		$access = $this->wp_menu_editor->get_plugin_option('plugin_access');
+
+		if ( ($access === 'super_admin') && !is_multisite() ) {
+			//On a regular WordPress site, is_super_admin() just checks for the "delete_users" capability.
+			$access = 'delete_users';
+		}
+
+		if ( $access === 'super_admin' ) {
+			//Hide from everyone except Super Admins.
+			foreach($roles as $roleId) {
+				$grantAccess['role:' . $roleId] = false;
+			}
+			$grantAccess['special:super_admin'] = true;
+		} else if ( $access === 'specific_user' ) {
+			//Hide from everyone except a specific user.
+			$allowedUser = get_user_by('id', $this->wp_menu_editor->get_plugin_option('allowed_user_id'));
+			if ( $allowedUser && $allowedUser->exists() ) {
+				foreach($roles as $roleId) {
+					$grantAccess['role:' . $roleId] = false;
+				}
+				$grantAccess['user:' . $allowedUser->user_login] = true;
+				if ( is_multisite() ) {
+					$grantAccess['special:super_admin'] = false;
+				}
+			}
+		} else {
+			//Only show to roles that have a certain capability (usually "manage_options").
+			$capability = apply_filters('admin_menu_editor-capability', $access);
+			$grantAccess['user:' . $currentUser->user_login] = current_user_can($capability);
+			foreach($roles as $roleId) {
+				$role = get_role($roleId);
+				if ( $role ) {
+					$grantAccess['role:' . $roleId] = $role->has_cap($capability);
+				}
+			}
+		}
+
+		$this->disable_virtual_caps = $capsWereDisabled;
+		return $grantAccess;
+	}
+
 	function output_menu_dropzone($type = 'menu') {
 		printf(
 			'<div id="ws_%s_dropzone" class="ws_dropzone"> </div>',
@@ -1966,6 +2038,169 @@ wsEditorData.importMenuNonce = "<?php echo esc_js(wp_create_nonce('import_custom
 		}
 
 		return array();
+	}
+
+	public function display_addons() {
+		$addOns = $this->get_addons();
+		if ( empty($addOns) ) {
+			return;
+		}
+
+		echo '<tr><th>Add-ons</th><td><table class="ame-available-add-ons">';
+		foreach ($addOns as $slug => $addOn) {
+			printf('<tr class="ame-add-on-item" data-slug="%s">', esc_attr($slug));
+			printf(
+				'<td class="ame-add-on-heading">
+					<a href="%s" target="_blank" class="ame-add-on-details-link" title="View add-on details in a new tab">
+						<span class="ame-add-on-name">%s</span>
+					</a>
+				</td>',
+				esc_attr($addOn['detailsUrl']),
+				$addOn['name']
+			);
+
+			if ( $addOn['isActive'] ) {
+				echo '<td class="ame-add-on-status">Active</td>';
+			} else if ( $this->is_add_on_installed($slug) ) {
+				printf(
+					'<td class="ame-add-on-status">Installed</td>
+					 <td><button class="button ame-activate-add-on" data-nonce="%s">Activate</button></td>',
+					esc_attr(wp_create_nonce('ws_ame_activate_add_on-' . $slug))
+				);
+			} else if ( $this->can_download_add_on($slug) ) {
+				printf(
+					'<td class="ame-add-on-status">Available</td>
+					 <td><button class="button ame-install-add-on" data-nonce="%s">Install and Activate</button></td>',
+					esc_attr(wp_create_nonce('ws_ame_install_add_on-' . $slug))
+				);
+			} else {
+				$license = $this->get_license();
+				if ( $license->hasAddOn($slug) ) {
+					echo '<td class="ame-add-on-status">Download not available - no access to updates.</td>';
+				} else {
+					echo '<td class="ame-add-on-status">Not purchased</td>';
+				}
+			}
+
+			echo '</tr>';
+		}
+		echo '</table></td></tr>';
+	}
+
+	/**
+	 * Get all available add-ons including those that the user hasn't purchased.
+	 *
+	 * @return array
+	 */
+	private function get_addons() {
+		return array(
+			'wp-toolbar-editor' => array(
+				'slug'       => 'wp-toolbar-editor',
+				'name'       => 'WordPress Toolbar Editor',
+				'detailsUrl' => 'https://adminmenueditor.com/toolbar-editor/',
+				'isActive'   => defined('WS_ADMIN_BAR_EDITOR_FILE'),
+				'fileName'   => 'wp-toolbar-editor/load.php',
+			),
+			'ame-branding-add-on' => array(
+				'slug'       => 'ame-branding-add-on',
+				'name'       => 'Branding',
+				'detailsUrl' => 'https://adminmenueditor.com/',
+				'isActive'   => defined('AME_BRANDING_ADD_ON_FILE'),
+				'fileName'   => 'ame-branding-add-on/ame-branding-add-on.php',
+			),
+		);
+	}
+
+	private function is_add_on_installed($slug) {
+		$addOns = $this->get_addons();
+		if ( !isset($addOns[$slug]) ) {
+			return false;
+		}
+		return file_exists(WP_PLUGIN_DIR . '/' . $addOns[$slug]['fileName']);
+	}
+
+	/**
+	 * @param string $slug
+	 * @return bool
+	 */
+	private function can_download_add_on($slug) {
+		$license = $this->get_license();
+		if (!$license) {
+			return false;
+		}
+		return $license->canDownloadCurrentVersion() && $license->hasAddOn($slug);
+	}
+
+	private function get_license() {
+		global $ameProLicenseManager; /** @var Wslm_LicenseManagerClient $ameProLicenseManager */
+		if ( !$ameProLicenseManager ) {
+			return null;
+		}
+		return $ameProLicenseManager->getLicense();
+	}
+
+	public function enqueue_addon_scripts() {
+		wp_enqueue_auto_versioned_script(
+			'ws-ame-add-on-management',
+			plugins_url('extras/add-on-management.js', __FILE__),
+			array('jquery')
+		);
+
+		wp_localize_script(
+			'ws-ame-add-on-management',
+			'wsAmeAddOnData',
+			array(
+				'ajaxUrl' => self_admin_url('admin-ajax.php'),
+			)
+		);
+	}
+
+	public function ajax_activate_addon() {
+		if ( !isset($_POST['slug']) || !is_string($_POST['slug']) ) {
+			exit('Error: No add-on slug specified');
+		}
+
+		$slug = $_POST['slug'];
+		check_ajax_referer('ws_ame_activate_add_on-' . $slug);
+
+		$addOns = $this->get_addons();
+		if ( !isset($addOns[$slug]) ) {
+			exit('Error: Add-on not found');
+		}
+
+		if ( !current_user_can('activate_plugins') ) {
+			exit('You cannot activate plugins');
+		}
+
+		$result = activate_plugin($addOns[$slug]['fileName']);
+		if ( is_wp_error($result) ) {
+			exit($result->get_error_code() . ': ' . $result->get_error_message());
+		}
+		exit('OK');
+	}
+
+	public function ajax_install_addon() {
+
+	}
+
+	/**
+	 * Prevent non-privileged users from accessing the special "All Settings" page even if
+	 * they've been granted access to other pages that require the "manage_options" capability.
+	 */
+	public function disable_virtual_caps_on_all_options() {
+		//options.php also handles the saving of settings created with the Settings API, so we
+		//need to check if this is a direct request for options.php and not just a form submission.
+		$action = ameUtils::get($_POST, 'action', ameUtils::get($_GET, 'action', ''));
+		$option_page = ameUtils::get($_POST, 'option_page', ameUtils::get($_GET, 'option_page', 'options'));
+
+		if ( ($action !== 'update') && (($option_page === 'options') || empty($option_page)) ) {
+			$this->disable_virtual_caps = true;
+			add_action('admin_enqueue_scripts', array($this, 'enable_virtual_caps'));
+		}
+	}
+
+	public function enable_virtual_caps() {
+		$this->disable_virtual_caps = false;
 	}
 }
 

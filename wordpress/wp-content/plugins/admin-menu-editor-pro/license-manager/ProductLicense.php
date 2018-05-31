@@ -9,6 +9,9 @@ class Wslm_ProductLicense implements ArrayAccess {
         if ( !empty($data) ) {
             $this->data = (array)$data;
         }
+        if ( !isset($this->data['addons']) ) {
+        	$this->data['addons'] = array();
+        }
     }
 
     public function getData() {
@@ -42,9 +45,21 @@ class Wslm_ProductLicense implements ArrayAccess {
 
 	public function canDownloadCurrentVersion() {
 		//Just an alias, but it's a separate method because there's a subtle
-		//semantic difference betweeen being able to download the plugin and
+		//semantic difference between being able to download the plugin and
 		//having access to updates in general. It might matter one day.
 		return $this->canReceiveProductUpdates();
+	}
+
+	public function addAddOn($slug, $name = null) {
+		$this->data['addons'][$slug] = isset($name) ? $name : $slug;
+	}
+
+	public function removeAddOn($slug) {
+		unset($this->data['addons'][$slug]);
+	}
+
+	public function hasAddOn($slug) {
+		return (isset($this->data['addons'], $this->data['addons'][$slug])) && $this->data['addons'][$slug];
 	}
 
 	public function get($name, $default = null) {

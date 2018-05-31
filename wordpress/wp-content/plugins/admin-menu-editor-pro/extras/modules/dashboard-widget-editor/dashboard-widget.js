@@ -290,6 +290,43 @@ var AmeCustomHtmlWidget = /** @class */ (function (_super) {
     };
     return AmeCustomHtmlWidget;
 }(AmeDashboardWidget));
+var AmeCustomRssWidget = /** @class */ (function (_super) {
+    __extends(AmeCustomRssWidget, _super);
+    function AmeCustomRssWidget(settings, widgetEditor) {
+        var _this = this;
+        var _ = AmeDashboardWidget._;
+        settings = _.merge({
+            id: 'new-untitled-rss-widget',
+            isPresent: true,
+            grantAccess: {}
+        }, settings);
+        _this = _super.call(this, settings, widgetEditor) || this;
+        _this.widgetType = 'custom-rss';
+        _this.canChangePriority = true;
+        _this.title = ko.observable(_.get(settings, 'title', 'New RSS Widget'));
+        _this.location = ko.observable(_.get(settings, 'location', 'normal'));
+        _this.priority = ko.observable(_.get(settings, 'priority', 'high'));
+        _this.feedUrl = ko.observable(_.get(settings, 'feedUrl', ''));
+        _this.maxItems = ko.observable(_.get(settings, 'maxItems', 5));
+        _this.showAuthor = ko.observable(_.get(settings, 'showAuthor', true));
+        _this.showDate = ko.observable(_.get(settings, 'showDate', true));
+        _this.showSummary = ko.observable(_.get(settings, 'showSummary', true));
+        _this.isPresent = true;
+        _this.canBeDeleted = true;
+        _this.propertyTemplate = 'ame-custom-rss-widget-template';
+        return _this;
+    }
+    AmeCustomRssWidget.prototype.toPropertyMap = function () {
+        var properties = _super.prototype.toPropertyMap.call(this);
+        var storedProps = ['feedUrl', 'showAuthor', 'showDate', 'showSummary', 'maxItems'];
+        for (var i = 0; i < storedProps.length; i++) {
+            var name_1 = storedProps[i];
+            properties[name_1] = this[name_1]();
+        }
+        return properties;
+    };
+    return AmeCustomRssWidget;
+}(AmeDashboardWidget));
 var AmeWelcomeWidget = /** @class */ (function (_super) {
     __extends(AmeWelcomeWidget, _super);
     function AmeWelcomeWidget(settings, widgetEditor) {

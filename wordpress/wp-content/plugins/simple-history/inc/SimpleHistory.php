@@ -166,36 +166,39 @@ class SimpleHistory {
 		// Add some extra info to each logged context when SIMPLE_HISTORY_LOG_DEBUG is set and true
 		if ( defined( 'SIMPLE_HISTORY_LOG_DEBUG' ) && SIMPLE_HISTORY_LOG_DEBUG ) {
 
-			add_filter( 'simple_history/log_argument/context', function( $context, $level, $message, $logger ) {
+			add_filter(
+				'simple_history/log_argument/context', function( $context, $level, $message, $logger ) {
 
-				$sh = SimpleHistory::get_instance();
-				$context['_debug_get'] = $sh->json_encode( $_GET );
-				$context['_debug_post'] = $sh->json_encode( $_POST );
-				$context['_debug_server'] = $sh->json_encode( $_SERVER );
-				$context['_debug_files'] = $sh->json_encode( $_FILES );
-				$context['_debug_php_sapi_name'] = php_sapi_name();
+					$sh = SimpleHistory::get_instance();
+					$context['_debug_get'] = $sh->json_encode( $_GET );
+					$context['_debug_post'] = $sh->json_encode( $_POST );
+					$context['_debug_server'] = $sh->json_encode( $_SERVER );
+					$context['_debug_files'] = $sh->json_encode( $_FILES );
+					$context['_debug_php_sapi_name'] = php_sapi_name();
 
-				global $argv;
-				$context['_debug_argv'] = $sh->json_encode( $argv );
+					global $argv;
+					$context['_debug_argv'] = $sh->json_encode( $argv );
 
-				$consts = get_defined_constants( true );
-				$consts = $consts['user'];
-				$context['_debug_user_constants'] = $sh->json_encode( $consts );
+					$consts = get_defined_constants( true );
+					$consts = $consts['user'];
+					$context['_debug_user_constants'] = $sh->json_encode( $consts );
 
-				$postdata = file_get_contents( 'php://input' );
-				$context['_debug_http_raw_post_data'] = $sh->json_encode( $postdata );
+					$postdata = file_get_contents( 'php://input' );
+					$context['_debug_http_raw_post_data'] = $sh->json_encode( $postdata );
 
-				$context['_debug_wp_debug_backtrace_summary'] = wp_debug_backtrace_summary();
-				$context['_debug_is_admin'] = json_encode( is_admin() );
-				$context['_debug_is_doing_cron'] = json_encode( defined( 'DOING_CRON' ) && DOING_CRON );
+					$context['_debug_wp_debug_backtrace_summary'] = wp_debug_backtrace_summary();
+					$context['_debug_is_admin'] = json_encode( is_admin() );
+					$context['_debug_is_ajax'] = json_encode( defined( 'DOING_AJAX' ) && DOING_AJAX );
+					$context['_debug_is_doing_cron'] = json_encode( defined( 'DOING_CRON' ) && DOING_CRON );
 
-				global $wp_current_filter;
-				$context['_debug_current_filter_array'] = $wp_current_filter;
-				$context['_debug_current_filter'] = current_filter();
+					global $wp_current_filter;
+					$context['_debug_current_filter_array'] = $wp_current_filter;
+					$context['_debug_current_filter'] = current_filter();
 
-				return $context;
+					return $context;
 
-			}, 10, 4 );
+				}, 10, 4
+			);
 
 		}
 
@@ -516,9 +519,7 @@ class SimpleHistory {
 
 		if ( ! wp_next_scheduled( 'simple_history/maybe_purge_db' ) ) {
 			wp_schedule_event( time(), 'daily', 'simple_history/maybe_purge_db' );
-			// error_log("not scheduled, so do schedule");
 		} else {
-			// error_log("is scheduled");
 		}
 
 		// Remove old schedule (only author dev sites should have it)
@@ -532,11 +533,13 @@ class SimpleHistory {
 	public function testlog_old() {
 
 		// Log that an email has been sent
-		simple_history_add( array(
-			'object_type' => 'Email',
-			'object_name' => 'Hi there',
-			'action' => 'was sent',
-		) );
+		simple_history_add(
+			array(
+				'object_type' => 'Email',
+				'object_name' => 'Hi there',
+				'action' => 'was sent',
+			)
+		);
 
 		// Will show “Plugin your_plugin_name Edited” in the history log
 		simple_history_add( 'action=edited&object_type=plugin&object_name=your_plugin_name' );
@@ -545,12 +548,14 @@ class SimpleHistory {
 		simple_history_add( 'action=repaired&object_type=Starship&object_name=USS Enterprise' );
 
 		// Log with some extra details about the email
-		simple_history_add( array(
-			'object_type' => 'Email',
-			'object_name' => 'Hi there',
-			'action' => 'was sent',
-			'description' => 'The database query to generate the email took .3 seconds. This is email number 4 that is sent to this user',
-		) );
+		simple_history_add(
+			array(
+				'object_type' => 'Email',
+				'object_name' => 'Hi there',
+				'action' => 'was sent',
+				'description' => 'The database query to generate the email took .3 seconds. This is email number 4 that is sent to this user',
+			)
+		);
 
 	}
 
@@ -585,8 +590,8 @@ class SimpleHistory {
 			<script type="text/html" id="tmpl-simple-history-base">
 
 				<div class="SimpleHistory__waitingForFirstLoad">
-					<img src="<?php echo admin_url( '/images/spinner.gif' );?>" alt="" width="20" height="20">
-					<?php echo _x( 'Loading history...', 'Message visible while waiting for log to load from server the first time', 'simple-history' )?>
+					<img src="<?php echo admin_url( '/images/spinner.gif' ); ?>" alt="" width="20" height="20">
+					<?php echo _x( 'Loading history...', 'Message visible while waiting for log to load from server the first time', 'simple-history' ); ?>
 				</div>
 
 				<div class="SimpleHistoryLogitemsWrap">
@@ -623,7 +628,7 @@ class SimpleHistory {
 							href="#">‹</a>
 						<span class="SimpleHistoryPaginationInput">
 							<input class="SimpleHistoryPaginationCurrentPage" title="{{ data.strings.currentPage }}" type="text" name="paged" value="{{ data.api_args.paged }}" size="4">
-							<?php _x( 'of', 'page n of n', 'simple-history' )?>
+							<?php _x( 'of', 'page n of n', 'simple-history' ); ?>
 							<span class="total-pages">{{ data.pages_count }}</span>
 						</span>
 						<a
@@ -647,7 +652,7 @@ class SimpleHistory {
 					<div class="SimpleHistory-modal__background"></div>
 					<div class="SimpleHistory-modal__content">
 						<div class="SimpleHistory-modal__contentInner">
-							<img class="SimpleHistory-modal__contentSpinner" src="<?php echo admin_url( '/images/spinner.gif' );?>" alt="">
+							<img class="SimpleHistory-modal__contentSpinner" src="<?php echo admin_url( '/images/spinner.gif' ); ?>" alt="">
 						</div>
 						<div class="SimpleHistory-modal__contentClose">
 							<button class="button">✕</button>
@@ -715,17 +720,21 @@ class SimpleHistory {
 
 		if ( empty( $args ) || ! $type ) {
 
-			wp_send_json_error( array(
-				_x( 'Not enough args specified', 'API: not enought arguments passed', 'simple-history' ),
-			) );
+			wp_send_json_error(
+				array(
+					_x( 'Not enough args specified', 'API: not enought arguments passed', 'simple-history' ),
+				)
+			);
 
 		}
 
 		// User must have capability to view the history page
 		if ( ! current_user_can( $this->get_view_history_capability() ) ) {
-			wp_send_json_error( array(
-				'error' => 'CAPABILITY_ERROR',
-			) );
+			wp_send_json_error(
+				array(
+					'error' => 'CAPABILITY_ERROR',
+				)
+			);
 		}
 
 		if ( isset( $args['id'] ) ) {
@@ -741,7 +750,6 @@ class SimpleHistory {
 			case 'overview':
 			case 'occasions':
 			case 'single':
-
 				// API use SimpleHistoryLogQuery, so simply pass args on to that
 				$logQuery = new SimpleHistoryLogQuery();
 				$data = $logQuery->query( $args );
@@ -888,6 +896,7 @@ class SimpleHistory {
 
 	/**
 	 * Check if the current user can clear the log
+	 *
 	 * @since 2.19
 	 * @return bool
 	 */
@@ -972,6 +981,7 @@ class SimpleHistory {
 		$loggersDir = SIMPLE_HISTORY_PATH . 'loggers/';
 
 		$loggersFiles = array(
+			// Main loggers.
 			$loggersDir . 'SimpleCommentsLogger.php',
 			$loggersDir . 'SimpleCoreUpdatesLogger.php',
 			$loggersDir . 'SimpleExportLogger.php',
@@ -987,18 +997,20 @@ class SimpleHistory {
 			$loggersDir . 'SimpleCategoriesLogger.php',
 			$loggersDir . 'AvailableUpdatesLogger.php',
 			$loggersDir . 'FileEditsLogger.php',
+			$loggersDir . 'class-sh-privacy-logger.php',
 
-			// Loggers for third party plugins
+			// Loggers for third party plugins.
 			$loggersDir . 'PluginUserSwitchingLogger.php',
 			$loggersDir . 'PluginEnableMediaReplaceLogger.php',
 			$loggersDir . 'Plugin_UltimateMembers_Logger.php',
 			$loggersDir . 'Plugin_LimitLoginAttempts.php',
 			$loggersDir . 'Plugin_Redirection.php',
 			$loggersDir . 'Plugin_DuplicatePost.php',
+			$loggersDir . 'Plugin_ACF.php',
 		);
 
-		// SimpleLogger.php must be loaded first and always since the other loggers extend it
-		// Include it manually so risk of anyone using filters or similar disables it
+		// SimpleLogger.php must be loaded first and always since the other loggers extend it.
+		// Include it manually so risk of anyone using filters or similar disables it.
 		include_once $loggersDir . 'SimpleLogger.php';
 
 		/**
@@ -1013,15 +1025,18 @@ class SimpleHistory {
 		 */
 		$loggersFiles = apply_filters( 'simple_history/loggers_files', $loggersFiles );
 
-		// Array with slug of loggers to instantiate
-		// Slug of logger must also be the name of the logger class
-		$arrLoggersToInstantiate = array();
+		// Array with slug of loggers to instantiate.
+		// Slug of logger must also be the name of the logger class.
+		$arr_loggers_to_instantiate = array();
 
-		foreach ( $loggersFiles as $oneLoggerFile ) {
+		// $one_logger_file = "SimpleCommentsLogger.php", "class-privacy-logger.php", and so on.
+		foreach ( $loggersFiles as $one_logger_file ) {
 
 			$load_logger = true;
 
-			$basename_no_suffix = basename( $oneLoggerFile, '.php' );
+			// SimpleCommentsLogger.php -> SimpleCommentsLogger.
+			// class-privacy-logger.php -> class-privacy-logger.
+			$basename_no_suffix = basename( $one_logger_file, '.php' );
 
 			/**
 			 * Filter to completely skip loading of a logger
@@ -1029,7 +1044,7 @@ class SimpleHistory {
 			 * @since 2.0.22
 			 *
 			 * @param bool if to load the logger. return false to not load it.
-			 * @param string slug of logger
+			 * @param string basename of logger, i.e. "SimpleCommentsLogger" or "class-privacy-logger"
 			 */
 			$load_logger = apply_filters( 'simple_history/logger/load_logger', $load_logger, $basename_no_suffix );
 
@@ -1037,9 +1052,9 @@ class SimpleHistory {
 				continue;
 			}
 
-			include_once $oneLoggerFile;
+			include_once $one_logger_file;
 
-			$arrLoggersToInstantiate[] = $basename_no_suffix;
+			$arr_loggers_to_instantiate[] = $basename_no_suffix;
 
 		}
 
@@ -1053,99 +1068,87 @@ class SimpleHistory {
 		 */
 		do_action( 'simple_history/add_custom_logger', $this );
 
-		$arrLoggersToInstantiate = array_merge( $arrLoggersToInstantiate, $this->externalLoggers );
+		$arr_loggers_to_instantiate = array_merge( $arr_loggers_to_instantiate, $this->externalLoggers );
 
 		/**
 		 * Filter the array with names of loggers to instantiate.
 		 *
 		 * Array
 		 * (
-		 *	[0] => SimpleCommentsLogger
-		 *	[1] => SimpleCoreUpdatesLogger
-			*	...
+		 *  [0] => SimpleCommentsLogger
+		 *  [1] => SimpleCoreUpdatesLogger
+			*   ...
 			* )
 		 *
 		 * @since 2.0
 		 *
-		 * @param array $arrLoggersToInstantiate Array with class names
+		 * @param array $arr_loggers_to_instantiate Array with class names
 		 */
-		$arrLoggersToInstantiate = apply_filters( 'simple_history/loggers_to_instantiate', $arrLoggersToInstantiate );
+		$arr_loggers_to_instantiate = apply_filters( 'simple_history/loggers_to_instantiate', $arr_loggers_to_instantiate );
 
-		// Instantiate each logger
-		foreach ( $arrLoggersToInstantiate as $oneLoggerName ) {
+		// Instantiate each logger.
+		foreach ( $arr_loggers_to_instantiate as $one_logger_name ) {
 
-			if ( ! class_exists( $oneLoggerName ) ) {
+			// Detect logger class name.
+			$logger_class_name = null;
+
+			if ( class_exists( $one_logger_name ) ) {
+				// Logger name is "SimpleCommentsLogger".
+				$logger_class_name = $one_logger_name;
+			} else {
+				// Check if class is "class-privacy-logger".
+				$logger_snaked_name = substr( $one_logger_name, 6 );
+				// "privacy-logger" -> "privacy_logger" -> Privacy_Logger
+				$logger_snaked_name = str_replace( '-', '_', $logger_snaked_name );
+				$logger_snaked_name = sh_ucwords( $logger_snaked_name, '_' );
+
+				if ( class_exists( $logger_snaked_name ) ) {
+					$logger_class_name = $logger_snaked_name;
+				}
+			}
+
+			// Continue to load next logger if no valid logger class found.
+			if ( ! $logger_class_name ) {
 				continue;
 			}
 
-			$loggerInstance = new $oneLoggerName( $this );
-			if ( ! is_subclass_of( $loggerInstance, 'SimpleLogger' ) && ! is_a( $loggerInstance, 'SimpleLogger' ) ) {
+			// Init found logger class.
+			$logger_instance = new $logger_class_name( $this );
+
+			if ( ! is_subclass_of( $logger_instance, 'SimpleLogger' ) && ! is_a( $logger_instance, 'SimpleLogger' ) ) {
 				continue;
 			}
 
-			$loggerInstance->loaded();
+			$logger_instance->loaded();
 
-			// Tell gettext-filter to add untranslated messages
+			// Tell gettext-filter to add untranslated messages.
 			$this->doFilterGettext = true;
-			$this->doFilterGettext_currentLogger = $loggerInstance;
+			$this->doFilterGettext_currentLogger = $logger_instance;
 
-			$loggerInfo = $loggerInstance->getInfo();
+			$logger_info = $logger_instance->getInfo();
 
 			// Check so no logger has a logger slug with more than 30 chars,
 			// because db column is only 30 chars.
-			if ( strlen( $loggerInstance->slug ) > 30 ) {
+			if ( strlen( $logger_instance->slug ) > 30 ) {
 				add_action( 'admin_notices', array( $this, 'admin_notice_logger_slug_to_long' ) );
 			}
 
-			/*
-				$loggerInfo["messages"]
-			    [messages] => Array
-			        (
-			            [anon_comment_added] => Lade till en kommentar till {comment_post_type} "{comment_post_title}"
-			            [user_comment_added] => Lade till en kommentar till {comment_post_type} "{comment_post_title}"
-			            [comment_status_approve] => Godkände en kommentar till "{comment_post_title}" av {comment_author} ({comment_author_email})
-			            [comment_status_hold] => Godkände inte en kommentar till "{comment_post_title}" av {comment_author} ({comment_author_email})
-			*/
-
-			/*
-			$loggerInstance->messages
-			Array
-			(
-			    [0] => Array
-			        (
-			            [untranslated_text] => Added a comment to {comment_post_type} "{comment_post_title}"
-			            [translated_text] => Lade till en kommentar till {comment_post_type} "{comment_post_title}"
-			            [domain] => simple-history
-			            [context] => A comment was added to the database by a non-logged in internet user
-			        )
-			*/
-
-			// Un-tell gettext filter
+			// Un-tell gettext filter.
 			$this->doFilterGettext = false;
 			$this->doFilterGettext_currentLogger = null;
 
 			// LoggerInfo contains all messages, both translated an not, by key.
-			// Add messages to the loggerInstance
+			// Add messages to the loggerInstance.
 			$loopNum = 0;
 
 			$arr_messages_by_message_key = array();
 
-			if ( isset( $loggerInfo['messages'] ) ) {
+			if ( isset( $logger_info['messages'] ) ) {
 
-				foreach ( (array) $loggerInfo['messages'] as $message_key => $message_translated ) {
+				foreach ( (array) $logger_info['messages'] as $message_key => $message_translated ) {
 
-					// Find message in array with both translated and non translated strings
-					foreach ( $loggerInstance->messages as $one_message_with_translation_info ) {
-
-						/*
-						[0] => Array
-						(
-						[untranslated_text] => ...
-						[translated_text] => ...
-						[domain] => simple-history
-						[context] => ...
-						)
-						*/
+					// Find message in array with both translated and non translated strings.
+					foreach ( $logger_instance->messages as $one_message_with_translation_info ) {
 						if ( $message_translated == $one_message_with_translation_info['translated_text'] ) {
 							$arr_messages_by_message_key[ $message_key ] = $one_message_with_translation_info;
 							continue;
@@ -1154,12 +1157,12 @@ class SimpleHistory {
 				}
 			}
 
-			$loggerInstance->messages = $arr_messages_by_message_key;
+			$logger_instance->messages = $arr_messages_by_message_key;
 
-			// Add logger to array of loggers
-			$this->instantiatedLoggers[ $loggerInstance->slug ] = array(
-				'name' => $loggerInfo['name'],
-				'instance' => $loggerInstance,
+			// Add logger to array of loggers.
+			$this->instantiatedLoggers[ $logger_instance->slug ] = array(
+				'name' => $logger_info['name'],
+				'instance' => $logger_instance,
 			);
 
 		}// End foreach().
@@ -1341,10 +1344,10 @@ class SimpleHistory {
 
 		$settings_page_url = menu_page_url( SimpleHistory::SETTINGS_MENU_SLUG, 0 );
 
-		if(empty($actions)){ // Create array if actions is empty (and therefore is assumed to be a string by PHP & results in PHP 7.1+ fatal error due to trying to make array modifications on what's assumed to be a string)
+		if ( empty( $actions ) ) { // Create array if actions is empty (and therefore is assumed to be a string by PHP & results in PHP 7.1+ fatal error due to trying to make array modifications on what's assumed to be a string)
 			$actions = array();
-		}elseif(is_string($actions)){ // Convert the string (which it might've been retrieved as) to an array for future use as an array
-			$actions = array($actions);
+		} elseif ( is_string( $actions ) ) { // Convert the string (which it might've been retrieved as) to an array for future use as an array
+			$actions = array( $actions );
 		}
 		$actions[] = "<a href='$settings_page_url'>" . __( 'Settings', 'simple-history' ) . '</a>';
 
@@ -1396,7 +1399,7 @@ class SimpleHistory {
 
 		?>
 		<div class="SimpleHistoryGui"
-			 data-pager-size='<?php echo $pager_size?>'
+			 data-pager-size='<?php echo $pager_size; ?>'
 			 ></div>
 		<?php
 
@@ -1445,19 +1448,21 @@ class SimpleHistory {
 			wp_enqueue_style( 'select2', SIMPLE_HISTORY_DIR_URL . 'js/select2/select2.min.css' );
 
 			// Translations that we use in JavaScript
-			wp_localize_script( 'simple_history_script', 'simple_history_script_vars', array(
-				'settingsConfirmClearLog' => __( 'Remove all log items?', 'simple-history' ),
-				'pagination' => array(
-					'goToTheFirstPage' => __( 'Go to the first page', 'simple-history' ),
-					'goToThePrevPage' => __( 'Go to the previous page', 'simple-history' ),
-					'goToTheNextPage' => __( 'Go to the next page', 'simple-history' ),
-					'goToTheLastPage' => __( 'Go to the last page', 'simple-history' ),
-					'currentPage' => __( 'Current page', 'simple-history' ),
-				),
-				'loadLogAPIError' => __( 'Oups, the log could not be loaded right now.', 'simple-history' ),
-				'ajaxLoadError' => __( 'Hm, the log could not be loaded right now. Perhaps another plugin is giving some errors. Anyway, below is the output I got from the server.', 'simple-history' ),
-				'logNoHits' => __( 'Your search did not match any history events.', 'simple-history' ),
-			) );
+			wp_localize_script(
+				'simple_history_script', 'simple_history_script_vars', array(
+					'settingsConfirmClearLog' => __( 'Remove all log items?', 'simple-history' ),
+					'pagination' => array(
+						'goToTheFirstPage' => __( 'Go to the first page', 'simple-history' ),
+						'goToThePrevPage' => __( 'Go to the previous page', 'simple-history' ),
+						'goToTheNextPage' => __( 'Go to the next page', 'simple-history' ),
+						'goToTheLastPage' => __( 'Go to the last page', 'simple-history' ),
+						'currentPage' => __( 'Current page', 'simple-history' ),
+					),
+					'loadLogAPIError' => __( 'Oups, the log could not be loaded right now.', 'simple-history' ),
+					'ajaxLoadError' => __( 'Hm, the log could not be loaded right now. Perhaps another plugin is giving some errors. Anyway, below is the output I got from the server.', 'simple-history' ),
+					'logNoHits' => __( 'Your search did not match any history events.', 'simple-history' ),
+				)
+			);
 
 			// Call plugins adminCSS-method, so they can add their CSS
 			foreach ( $this->instantiatedLoggers as $one_logger ) {
@@ -1531,10 +1536,10 @@ class SimpleHistory {
 			// Table creation, used to be in register_activation_hook
 			// We change the varchar size to add one num just to force update of encoding. dbdelta didn't see it otherwise.
 			$sql = 'CREATE TABLE ' . $table_name . ' (
-              id bigint(20) NOT NULL AUTO_INCREMENT,
-              date datetime NOT NULL,
-              PRIMARY KEY  (id)
-            ) CHARACTER SET=utf8;';
+			  id bigint(20) NOT NULL AUTO_INCREMENT,
+			  date datetime NOT NULL,
+			  PRIMARY KEY  (id)
+			) CHARACTER SET=utf8;';
 
 			// Upgrade db / fix utf for varchars
 			dbDelta( $sql );
@@ -1638,7 +1643,8 @@ class SimpleHistory {
 			update_option( 'simple_history_db_version', $db_version );
 
 			// Update possible old items to use SimpleLegacyLogger
-			$sql = sprintf( '
+			$sql = sprintf(
+				'
 					UPDATE %1$s
 					SET
 						logger = "SimpleLegacyLogger",
@@ -1674,7 +1680,8 @@ class SimpleHistory {
 
 			if ( in_array( 'action', $db_cools ) ) {
 
-				$sql = sprintf( '
+				$sql = sprintf(
+					'
 						ALTER TABLE %1$s
 						MODIFY `action` varchar(255) NULL,
 						MODIFY `object_type` varchar(255) NULL,
@@ -1825,7 +1832,7 @@ Because Simple History was just recently installed, this feed does not contain m
 
 			<h1 class="SimpleHistoryPageHeadline">
 				<div class="dashicons dashicons-backup SimpleHistoryPageHeadline__icon"></div>
-				<?php _e( 'Simple History Settings', 'simple-history' )?>
+				<?php _e( 'Simple History Settings', 'simple-history' ); ?>
 			</h1>
 
 			<?php
@@ -1854,9 +1861,11 @@ Because Simple History was just recently installed, this feed does not contain m
 			<?php
 
 			// Output contents for selected tab
-			$arr_active_tab = wp_filter_object_list( $arr_settings_tabs, array(
-				'slug' => $active_tab,
-			) );
+			$arr_active_tab = wp_filter_object_list(
+				$arr_settings_tabs, array(
+					'slug' => $active_tab,
+				)
+			);
 			$arr_active_tab = current( $arr_active_tab );
 
 			// We must have found an active tab and it must have a callable function
@@ -2066,7 +2075,7 @@ Because Simple History was just recently installed, this feed does not contain m
 
 			<h1 class="SimpleHistoryPageHeadline">
 				<div class="dashicons dashicons-backup SimpleHistoryPageHeadline__icon"></div>
-				<?php echo _x( 'Simple History', 'history page headline', 'simple-history' )?>
+				<?php echo _x( 'Simple History', 'history page headline', 'simple-history' ); ?>
 			</h1>
 
 			<?php
@@ -2083,7 +2092,7 @@ Because Simple History was just recently installed, this feed does not contain m
 			<div class="SimpleHistoryGuiWrap">
 
 				<div class="SimpleHistoryGui"
-					 data-pager-size='<?php echo $pager_size?>'
+					 data-pager-size='<?php echo $pager_size; ?>'
 					 ></div>
 
 				<?php
@@ -2145,16 +2154,16 @@ Because Simple History was just recently installed, this feed does not contain m
 
 		?>
 		<select name="simple_history_pager_size">
-			<option <?php echo $current_pager_size == 5 ? 'selected' : ''?> value="5">5</option>
-			<option <?php echo $current_pager_size == 10 ? 'selected' : ''?> value="10">10</option>
-			<option <?php echo $current_pager_size == 15 ? 'selected' : ''?> value="15">15</option>
-			<option <?php echo $current_pager_size == 20 ? 'selected' : ''?> value="20">20</option>
-			<option <?php echo $current_pager_size == 25 ? 'selected' : ''?> value="25">25</option>
-			<option <?php echo $current_pager_size == 30 ? 'selected' : ''?> value="30">30</option>
-			<option <?php echo $current_pager_size == 40 ? 'selected' : ''?> value="40">40</option>
-			<option <?php echo $current_pager_size == 50 ? 'selected' : ''?> value="50">50</option>
-			<option <?php echo $current_pager_size == 75 ? 'selected' : ''?> value="75">75</option>
-			<option <?php echo $current_pager_size == 100 ? 'selected' : ''?> value="100">100</option>
+			<option <?php echo $current_pager_size == 5 ? 'selected' : ''; ?> value="5">5</option>
+			<option <?php echo $current_pager_size == 10 ? 'selected' : ''; ?> value="10">10</option>
+			<option <?php echo $current_pager_size == 15 ? 'selected' : ''; ?> value="15">15</option>
+			<option <?php echo $current_pager_size == 20 ? 'selected' : ''; ?> value="20">20</option>
+			<option <?php echo $current_pager_size == 25 ? 'selected' : ''; ?> value="25">25</option>
+			<option <?php echo $current_pager_size == 30 ? 'selected' : ''; ?> value="30">30</option>
+			<option <?php echo $current_pager_size == 40 ? 'selected' : ''; ?> value="40">40</option>
+			<option <?php echo $current_pager_size == 50 ? 'selected' : ''; ?> value="50">50</option>
+			<option <?php echo $current_pager_size == 75 ? 'selected' : ''; ?> value="75">75</option>
+			<option <?php echo $current_pager_size == 100 ? 'selected' : ''; ?> value="100">100</option>
 		</select>
 		<?php
 
@@ -2169,16 +2178,16 @@ Because Simple History was just recently installed, this feed does not contain m
 
 		?>
 		<select name="simple_history_pager_size_dashboard">
-			<option <?php echo $current_pager_size == 5 ? 'selected' : ''?> value="5">5</option>
-			<option <?php echo $current_pager_size == 10 ? 'selected' : ''?> value="10">10</option>
-			<option <?php echo $current_pager_size == 15 ? 'selected' : ''?> value="15">15</option>
-			<option <?php echo $current_pager_size == 20 ? 'selected' : ''?> value="20">20</option>
-			<option <?php echo $current_pager_size == 25 ? 'selected' : ''?> value="25">25</option>
-			<option <?php echo $current_pager_size == 30 ? 'selected' : ''?> value="30">30</option>
-			<option <?php echo $current_pager_size == 40 ? 'selected' : ''?> value="40">40</option>
-			<option <?php echo $current_pager_size == 50 ? 'selected' : ''?> value="50">50</option>
-			<option <?php echo $current_pager_size == 75 ? 'selected' : ''?> value="75">75</option>
-			<option <?php echo $current_pager_size == 100 ? 'selected' : ''?> value="100">100</option>
+			<option <?php echo $current_pager_size == 5 ? 'selected' : ''; ?> value="5">5</option>
+			<option <?php echo $current_pager_size == 10 ? 'selected' : ''; ?> value="10">10</option>
+			<option <?php echo $current_pager_size == 15 ? 'selected' : ''; ?> value="15">15</option>
+			<option <?php echo $current_pager_size == 20 ? 'selected' : ''; ?> value="20">20</option>
+			<option <?php echo $current_pager_size == 25 ? 'selected' : ''; ?> value="25">25</option>
+			<option <?php echo $current_pager_size == 30 ? 'selected' : ''; ?> value="30">30</option>
+			<option <?php echo $current_pager_size == 40 ? 'selected' : ''; ?> value="40">40</option>
+			<option <?php echo $current_pager_size == 50 ? 'selected' : ''; ?> value="50">50</option>
+			<option <?php echo $current_pager_size == 75 ? 'selected' : ''; ?> value="75">75</option>
+			<option <?php echo $current_pager_size == 100 ? 'selected' : ''; ?> value="100">100</option>
 		</select>
 		<?php
 
@@ -2194,13 +2203,13 @@ Because Simple History was just recently installed, this feed does not contain m
 
 		?>
 
-		<input <?php echo $show_on_dashboard ? "checked='checked'" : ''?> type="checkbox" value="1" name="simple_history_show_on_dashboard" id="simple_history_show_on_dashboard" class="simple_history_show_on_dashboard" />
-		<label for="simple_history_show_on_dashboard"><?php _e( 'on the dashboard', 'simple-history' )?></label>
+		<input <?php echo $show_on_dashboard ? "checked='checked'" : ''; ?> type="checkbox" value="1" name="simple_history_show_on_dashboard" id="simple_history_show_on_dashboard" class="simple_history_show_on_dashboard" />
+		<label for="simple_history_show_on_dashboard"><?php _e( 'on the dashboard', 'simple-history' ); ?></label>
 
 		<br />
 
-		<input <?php echo $show_as_page ? "checked='checked'" : ''?> type="checkbox" value="1" name="simple_history_show_as_page" id="simple_history_show_as_page" class="simple_history_show_as_page" />
-		<label for="simple_history_show_as_page"><?php _e( 'as a page under the dashboard menu', 'simple-history' )?></label>
+		<input <?php echo $show_as_page ? "checked='checked'" : ''; ?> type="checkbox" value="1" name="simple_history_show_as_page" id="simple_history_show_as_page" class="simple_history_show_as_page" />
+		<label for="simple_history_show_as_page"><?php _e( 'as a page under the dashboard menu', 'simple-history' ); ?></label>
 
 		<?php
 	}
@@ -2362,6 +2371,7 @@ Because Simple History was just recently installed, this feed does not contain m
 		$message = _nx(
 			'Simple History removed one event that were older than {days} days',
 			'Simple History removed {num_rows} events that were older than {days} days',
+			sizeof( $ids_to_delete ),
 			'Database is being cleared automagically',
 			'simple-history'
 		);
@@ -2479,7 +2489,7 @@ Because Simple History was just recently installed, this feed does not contain m
 	 * Works like json_encode, but adds JSON_PRETTY_PRINT if the current php version supports it
 	 * i.e. PHP is 5.4.0 or greated
 	 *
-	 * @param $value array|object|string|whatever that is json_encode'able
+	 * @param mixed $value array|object|string|whatever that is json_encode'able.
 	 */
 	public static function json_encode( $value ) {
 
@@ -2658,32 +2668,14 @@ Because Simple History was just recently installed, this feed does not contain m
 			}
 
 			$logRowContextKeysToShow = array_fill_keys( array_keys( (array) $oneLogRow->context ), true );
-			/*
-			error_log($this->json_encode($logRowContextKeysToShow));
-			 Marker - 2 maj 2015 20:51:54
-			[02-May-2015 18:51:57 UTC] {
-			    "post_id": true,
-			    "post_type": true,
-			    "post_title": true,
-			    "post_prev_post_title": true,
-			    "post_new_post_title": true,
-			    "post_prev_post_name": true,
-			    "post_new_post_name": true,
-			    "_message_key": true,
-			    "_user_id": true,
-			    "_user_login": true,
-			    "_user_email": true,
-			    "_server_remote_addr": true,
-			    "_server_http_referer": true
-			}
-			*/
+
 			/**
 			 * Filter what keys to show from the row context
 			 *
 			 * Array is in format
 			 *
-			  *   Array
-			  *   (
+			 *   Array
+			 *   (
 			 *       [plugin_slug] => 1
 			 *       [plugin_name] => 1
 			 *       [plugin_title] => 1
@@ -2902,6 +2894,10 @@ Because Simple History was just recently installed, this feed does not contain m
 	}
 
 
+	/**
+	 * @param string $slug
+	 * @return mixed logger instance if found, bool false if logger not found
+	 */
 	public function getInstantiatedLoggerBySlug( $slug = '' ) {
 
 		if ( empty( $slug ) ) {
@@ -3115,10 +3111,12 @@ Because Simple History was just recently installed, this feed does not contain m
 
 		// Get number of events today
 		$logQuery = new SimpleHistoryLogQuery();
-		$logResults = $logQuery->query( array(
-			'posts_per_page' => 1,
-			'date_from' => strtotime( 'today' ),
-		) );
+		$logResults = $logQuery->query(
+			array(
+				'posts_per_page' => 1,
+				'date_from' => strtotime( 'today' ),
+			)
+		);
 
 		$total_row_count = (int) $logResults['total_row_count'];
 
@@ -3126,7 +3124,8 @@ Because Simple History was just recently installed, this feed does not contain m
 		$sql_loggers_in = $this->getLoggersThatUserCanRead( get_current_user_id(), 'sql' );
 
 		// Get number of users today, i.e. events with wp_user as initiator
-		$sql_users_today = sprintf( '
+		$sql_users_today = sprintf(
+			'
 			SELECT
 				DISTINCT(c.value) AS user_id
 				#h.id, h.logger, h.level, h.initiator, h.date
@@ -3170,7 +3169,8 @@ Because Simple History was just recently installed, this feed does not contain m
 
 		$sql_other_sources_where = apply_filters( 'simple_history/quick_stats_where', $sql_other_sources_where );
 
-		$sql_other_sources = sprintf( '
+		$sql_other_sources = sprintf(
+			'
 			SELECT
 				DISTINCT(h.initiator) AS initiator
 			FROM %3$s AS h
@@ -3419,11 +3419,13 @@ Because Simple History was just recently installed, this feed does not contain m
 
 		if ( false == $numEvents ) {
 
-			$sql = $wpdb->prepare("
+			$sql = $wpdb->prepare(
+				"
 				SELECT count( DISTINCT occasionsID )
 				FROM $table_name
 				WHERE date >= DATE_ADD(CURDATE(), INTERVAL -%d DAY)
-			", $days);
+			", $days
+			);
 
 			$numEvents = $wpdb->get_var( $sql );
 
@@ -3504,11 +3506,11 @@ function simple_history_add( $args ) {
  * The arguments supported and can be changed are listed below.
  *
  * 'title' : Default is an empty string. Titles the diff in a manner compatible
- *		with the output.
+ *      with the output.
  * 'title_left' : Default is an empty string. Change the HTML to the left of the
- *		title.
+ *      title.
  * 'title_right' : Default is an empty string. Change the HTML to the right of
- *		the title.
+ *      the title.
  *
  * @see wp_parse_args() Used to change defaults to user defined settings.
  * @uses Text_Diff
@@ -3588,4 +3590,78 @@ function simple_history_text_diff( $left_string, $right_string, $args = null ) {
 	$r .= '</div>';
 
 	return $r;
+}
+
+/**
+ * Log variable(s) to error log.
+ * Any number of variables can be passed and each variable is print_r'ed to the error log.
+ *
+ * Example usage:
+ * sh_error_log(
+ *   'rest_request_after_callbacks:',
+ *   $handler,
+ *   $handler['callback'][0],
+ *   $handler['callback'][1]
+ * );
+ */
+function sh_error_log() {
+	foreach ( func_get_args() as $var ) {
+		if ( is_bool( $var ) ) {
+			$bool_string = true === $var ? 'true' : 'false';
+			error_log( "$bool_string (boolean value)" );
+		} elseif ( is_null( $var ) ) {
+			error_log( 'null (null value)' );
+		} else {
+			error_log( print_r( $var, true ) );
+		}
+	}
+}
+
+/**
+ * Return a name for a callable.
+ *
+ * Examples of return values:
+ * - WP_REST_Posts_Controller::get_items
+ * - WP_REST_Users_Controller::get_items"
+ * - WP_REST_Server::get_index
+ * - Redirection_Api_Redirect::route_bulk
+ * - wpcf7_rest_create_feedback
+ * - closure
+ *
+ * Function based on code found on stack overflow:
+ * https://stackoverflow.com/questions/34324576/print-name-or-definition-of-callable-in-php
+ *
+ * @param callable $callable The callable thing to check.
+ * @return string Name of callable.
+ */
+function sh_get_callable_name( $callable ) {
+	if ( is_string( $callable ) ) {
+		return trim( $callable );
+	} else if ( is_array( $callable ) ) {
+		if ( is_object( $callable[0] ) ) {
+			return sprintf( '%s::%s', get_class( $callable[0] ), trim( $callable[1] ) );
+		} else {
+			return sprintf( '%s::%s', trim( $callable[0] ), trim( $callable[1] ) );
+		}
+	} else if ( $callable instanceof Closure ) {
+		return 'closure';
+	} else {
+		return 'unknown';
+	}
+}
+
+/**
+ * PHP 5.3 compatible version of ucwords with second argument.
+ * Taken from http://php.net/manual/en/function.ucwords.php#105249.
+ *
+ * @param string $str String.
+ * @param string $separator String.
+ *
+ * @return string with words uppercased.
+ */
+function sh_ucwords( $str, $separator = ' ' ) {
+	$str = str_replace( $separator, ' ', $str );
+	$str = ucwords( strtolower( $str ) );
+	$str = str_replace( ' ', $separator, $str );
+	return $str;
 }

@@ -2,9 +2,9 @@
 Contributors: briar
 Donate link: http://briar.site/donate/
 Tags: admin, custom, drag and drop, menu_order, order, page, post, rearrange, reorder, sort, taxonomy, term_order
-Requires at least: 4.4
-Tested up to: 4.8.1
-Stable tag: 1.2.2
+Requires at least: 4.7
+Tested up to: 4.9.5
+Stable tag: 1.3.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -39,7 +39,7 @@ Uncheck the "Order" option in "Show on screen" section on [Screen Options](http:
 Use [filter](https://developer.wordpress.org/reference/functions/add_filter/). Place in you theme's function.php file `add_filter('Anything_Order/do_order/Post', '__return_false');` or `add_filter('Anything_Order/do_order/Taxonomy', '__return_false');`.
 
 = How do I reset the order? =
-Click the "Reset" link next to "Order" option on [Screen Options](http://codex.wordpress.org/Administration_Screens#Screen_Options) tab.
+Select the "Reset Order" option in [bulk actions](https://codex.wordpress.org/Posts_Screen#Actions) select and click "Apply".
 
 = How do I select multiple items? =
 Ctrl(or Command on OS X)+Click toggle selection state of current item. Shift+Click select items between first selected item on the list and current item.
@@ -47,12 +47,18 @@ Ctrl(or Command on OS X)+Click toggle selection state of current item. Shift+Cli
 
 == Screenshots ==
 
-1. Enable/Disable arrangement with drag and drop on "Screen Options" tab.
+1. Enable/Disable arrangement with drag and drop on "Screen Options" tab. Reset bulk action.
 2. Dragging items. Also support custom post type like Woocommerce product.
 3. You can select multiple items by Ctrl(or Command on OS X)+Click.
 
 
 == Changelog ==
+
+= 1.3.0 - 2018-18-04 =
+* Changed - Wordpress 4.9.5 and Woocommerce 3.3.5 compability.
+* Changed - Disable Woocommerce term ordering in favour plugin methods.
+* Changed - Reset order init by bulk action select instead screen options link.
+* Fixed - Save ordering post by term when use filter select in admin area.
 
 = 1.2.2 =
 * Enhancement - Woocommerce 3.1 compability.
@@ -67,16 +73,7 @@ Ctrl(or Command on OS X)+Click toggle selection state of current item. Shift+Cli
 * Feature - Add disabled order filter (`Anything_Order/do_order/Post` and `Anything_Order/do_order/Taxonomy`).
 * Bugfix - Polylang and Woocommerce compability.
 
-= 1.1.6 =
- - Mobile view.
-
-= 1.1.0 =
-* Feature - Save post order for each term.
-
-= 1.0.0 =
-* Initial Release
-
 
 == Upgrade Notice ==
 
-The current version of Anything Order requires WordPress 4.4 or higher. If you use older version of WordPress, you need to upgrade WordPress first.
+The current version of Anything Order requires WordPress 4.7 or higher. If you use older version of WordPress, you need to upgrade WordPress first.

@@ -56,6 +56,9 @@ var AmeDashboardWidgetEditor = /** @class */ (function () {
             else if (_.get(properties, 'widgetType') === 'custom-html') {
                 widget = new AmeCustomHtmlWidget(properties, this);
             }
+            else if (_.get(properties, 'widgetType') === 'custom-rss') {
+                widget = new AmeCustomRssWidget(properties, this);
+            }
             else {
                 throw { message: 'Unknown widget type', widgetProperties: properties };
             }
@@ -92,7 +95,31 @@ var AmeDashboardWidgetEditor = /** @class */ (function () {
         }, this);
         //Expand the new widget.
         widget.isOpen(true);
-        this.widgets.unshift(widget);
+        this.insertAfterWelcomePanel(widget);
+    };
+    // noinspection JSUnusedGlobalSymbols Used in Knockout templates.
+    AmeDashboardWidgetEditor.prototype.addRssWidget = function () {
+        this.newWidgetCounter++;
+        var widget = new AmeCustomRssWidget({
+            id: AmeDashboardWidgetEditor.customIdPrefix + this.newWidgetCounter,
+            title: 'New RSS Widget ' + this.newWidgetCounter
+        }, this);
+        //Expand the new widget.
+        widget.isOpen(true);
+        this.insertAfterWelcomePanel(widget);
+    };
+    AmeDashboardWidgetEditor.prototype.insertAfterWelcomePanel = function (widget) {
+        //The "Welcome" panel is always first, so we can cheat for performance.
+        if (this.widgets.indexOf(this.welcomePanel) === 0) {
+            var welcomePanel = this.widgets.shift();
+            this.widgets.unshift(widget);
+            this.widgets.unshift(welcomePanel);
+        }
+        else {
+            //But just in case it's not first for some odd reason,
+            //let's fall back to inserting the widget at the beginning.
+            this.widgets.unshift(widget);
+        }
     };
     // noinspection JSUnusedGlobalSymbols Used in Knockout templates.
     AmeDashboardWidgetEditor.prototype.saveChanges = function () {
@@ -229,7 +256,7 @@ var AmeDashboardWidgetEditor = /** @class */ (function () {
     };
     AmeDashboardWidgetEditor._ = wsAmeLodash;
     AmeDashboardWidgetEditor.autoCleanupEnabled = true;
-    AmeDashboardWidgetEditor.customIdPrefix = 'ame-custom-html-widget-';
+    AmeDashboardWidgetEditor.customIdPrefix = 'ame-custom-widget-';
     return AmeDashboardWidgetEditor;
 }());
 //A one-way binding for indeterminate checkbox states.
