@@ -51,7 +51,7 @@
 <!-- Tempus Dominus -->
 <script src="<?php echo get_bloginfo('template_url'); ?>/resources/tempusdominus/js/tempusdominus.min.js"></script>
 <!-- Main JS File -->
-<script src="<?php echo get_bloginfo('template_url'); ?>/js/app.php"></script>
+<script src="<?php echo php::get_main_js(); ?>"></script>
 
 <?php
 /* Always have wp_footer() just before the closing </body>

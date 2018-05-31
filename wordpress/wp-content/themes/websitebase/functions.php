@@ -58,6 +58,52 @@ class php extends utilities\php
 		}
 	}
 	
+	//Get main CSS file
+	public static function get_main_css($get = null)
+    {
+		$append = $get != null ? $get : '';
+		
+		if(php::is_localhost())
+		{
+			if(file_exists('style.css'))
+			{
+				unlink('style.css');
+			}
+			echo get_bloginfo('template_url').'/css/style.php'.$append;
+		}
+		else
+		{
+			if(!file_exists('style.css'))
+			{
+				echo get_bloginfo('template_url').'/css/style.php'.$append;
+			}
+			echo get_bloginfo('template_url').'/css/style.css'.$append;
+		}
+	}
+	
+	//Get main JS file
+	public static function get_main_js($get = null)
+    {
+		$append = $get != null ? $get : '';
+		
+		if(php::is_localhost())
+		{
+			if(file_exists('app.css'))
+			{
+				unlink('app.css');
+			}
+			echo get_bloginfo('template_url').'/js/app.php'.$append;
+		}
+		else
+		{
+			if(!file_exists('app.css'))
+			{
+				echo get_bloginfo('template_url').'/js/app.php'.$append;
+			}
+			echo get_bloginfo('template_url').'/js/app.css'.$append;
+		}
+	}
+	
 	//Get custom date format
 	public static function show_date($date = false, $format = 'Y-m-d', $lang = 'eng', $abbr = false){
 

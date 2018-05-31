@@ -49,7 +49,7 @@
 	<!-- Tempus Dominus -->
 	<link href="<?php echo get_bloginfo('template_url'); ?>/resources/tempusdominus/css/tempusdominus.min.css" rel="stylesheet">
 	<!-- Main CSS File -->
-	<link href="<?php echo get_bloginfo('template_url'); ?>/css/style.php" rel="stylesheet">
+	<link href="<?php echo php::get_main_css(); ?>" rel="stylesheet">
 	<!-- IE8 support of HTML5 elements and media queries -->
 	<!--[if lt IE 9]>
 	<script src="<?php echo get_bloginfo('template_url'); ?>/resources/html5shiv/js/html5shiv.min.js"></script>
