@@ -28,7 +28,6 @@
 					<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Resources <span class="caret"></span></a>
 					<ul class="dropdown-menu notranslate" role="menu">
 						<li><a href="http://bootboxjs.com/" target="_blank">BootBox JS</a></li>
-						<li><a href="http://getbootstrap.com/docs/3.3/" target="_blank">Bootstrap</a></li>
 						<li><a href="https://clipboardjs.com/" target="_blank">Clipboard JS</a></li>
 						<li><a href="https://datatables.net/examples/styling/bootstrap.html" target="_blank">Data Tables</a></li>
 						<li><a href="http://fontawesome.io/" target="_blank">Font Awesome</a></li>
@@ -206,7 +205,7 @@
 			<pre><code class="language-html" data-lang="html">&lt;div class="JSlightGallery" data-lg-item="auto" data-lg-title="false" data-lg-thumb="false" data-lg-gallery="false" data-lg-download="false"&gt;<br>...<br>&lt;/div&gt;</code></pre>
 		</figure>
 		
-		<h3>Gallery Mode</h3>
+		<h3 class="JSlightGalleryExample">Gallery Mode</h3>
 		<p>This mode allows to improve the way to show paged galleries executing custom functions when you get the <code>first</code> or <code>last</code> page.<br><i>Note: You need to add the class <code>lg-gallery-paginator</code> to the paginator to get the previous and next gallery pages</b></i>.</p>
 
 		<div class="bs-example">

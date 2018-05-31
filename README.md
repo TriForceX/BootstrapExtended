@@ -4,9 +4,9 @@ https://dev.gznetwork.com/websitebase
 Base structure for web sites with reusable parts of source code or functions mainly based on Bootstrap and another libraries. You can visit the website above for a running example.
 
 # Resources
-- Standalone Support *(PHP 5.6+)*
+- Standalone Support *(PHP 5.4+)*
 - Wordpress Support *(Ver 4.9.4)*
-- Laravel Support *(Ver 5.2, only CSS, JS, Home & Layout)*
+- Laravel Support *(Ver 5.2, Experimental)*
 - Bootstrap 3 *(Ver 3.3.7)*
 - BootBox JS
 - Bootstrap
@@ -35,8 +35,8 @@ Base structure for web sites with reusable parts of source code or functions mai
 # Functions & Code Snippets
 - HTML header data class
 - PHP main utility class
-- CSS & JS files built in PHP (with code minification)
-- Custom htaccess file with force HTTPS & WWW options
+- CSS & JS files built in PHP (with code reduction)
+- Custom .htaccess file with force HTTPS & WWW options
 - PHP Features:
 	- Global variables for CSS & JS usage
 	- Minify CSS, JS and HTML
@@ -65,7 +65,7 @@ Base structure for web sites with reusable parts of source code or functions mai
 	- Convert string to boolean
 	- Get max height from elements
 	- Responsive code detection
-	- LightGallery destroy & load functions/events
+	- Light Gallery destroy & load functions/events
 	- ImgLiquid auto-fill background function
 	- Get element height changes
 	- Text cut function

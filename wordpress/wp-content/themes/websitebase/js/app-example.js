@@ -70,7 +70,7 @@ $(document).ready(function(){
 	
 	//Example scroll to gallery page
 	if (getUrlParameter('page')){
-		autoScroll(".JSlightGallery",true,0);
+		autoScroll(".JSlightGalleryExample",true,70);
 	}
 	
 	//Example form validation
