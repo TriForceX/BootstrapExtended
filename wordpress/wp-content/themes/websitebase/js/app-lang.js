@@ -79,13 +79,25 @@ var language = {
 					es: 'Le recordamos que debe tener esta aplicación instalada en su dispositivo. ¿Desea continuar?',
 				},
 				//Lightgallery
-				'@lgtitle-prev': {
+				'@lgtitle-prev-text': {
 					en: 'Loading previous page ...',
 					es: 'Cargando página anterior ...',
 				},
-				'@lgtitle-next': {
+				'@lgtitle-next-text': {
 					en: 'Loading next page ...',
 					es: 'Cargando siguiente página ...',
+				},
+				'@lgtitle-prev-button': {
+					en: 'Previous Page',
+					es: 'Pág. Anterior',
+				},
+				'@lgtitle-next-button': {
+					en: 'Next Page',
+					es: 'Pág. Siguiente',
+				},
+				'@lgtitle-gallery-close': {
+					en: 'Closing ...',
+					es: 'Cerrando ...',
 				},
 				//Check disabled
 				'@disabled-text': {

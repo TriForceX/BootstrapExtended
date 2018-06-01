@@ -376,25 +376,24 @@ function loadLightGallery()
 		var galSelectorVal = $(this).data("lg-item") === "auto" ? "a" : $(this).data("lg-item");
 		var galThumbnailVal = $(this).data("lg-thumb");
 		var galDownloadVal = $(this).data("lg-download");
-		var galPrevGalText = lang('@lgtitle-prev');
-		var galNextGalText = lang('@lgtitle-next');
-		var galLoadThumb = mainUrl+"/css/icons/loading/loading-icon-black.gif";
-		var galPrevThumb = mainUrl+"/resources/lightgallery/img/lg-loading-prev.png";
-		var galNextThumb = mainUrl+"/resources/lightgallery/img/lg-loading-next.png";
+		var galPageTotal = parseInt($(this).data("lg-page-total"));
+		var galGalleryMode = $(this).data("lg-gallery");
+		var galPageCurrent = parseInt($(this).data("lg-page-current"));
+		var galLoadThumb = mainUrl+"/resources/lightgallery/img/loading.gif";
 		
 		if(String($(this).data("lg-title")) != "false"){
 			$(this).find(galSelectorVal).not(".lg-thumb-prev, .lg-thumb-next").attr("title", $(this).data("lg-title"));
 		}
 		
-		if(toBoolean($(this).data("lg-gallery")) === true){
+		if(toBoolean(galGalleryMode) === true){
 			$(this).addClass("JSlightGalleryMode");
 		}
 		
 		if($(".lg-gallery-paginator").length > 0){
 			if($(".JSlightGallery.JSlightGalleryMode .lg-thumb-prev").length < 1 && 
 			   $(".JSlightGallery.JSlightGalleryMode .lg-thumb-next").length < 1){
-				$(".JSlightGallery.JSlightGalleryMode").prepend("<div class='lg-thumb-prev' href='"+galLoadThumb+"' title='"+galPrevGalText+"'><img src='"+galPrevThumb+"'></div>");
-				$(".JSlightGallery.JSlightGalleryMode").append("<div class='lg-thumb-next' href='"+galLoadThumb+"' title='"+galNextGalText+"'><img src='"+galNextThumb+"'></div>");
+				$(".JSlightGallery.JSlightGalleryMode").prepend("<div class='lg-thumb-prev' href='"+galLoadThumb+"' title='"+lang('@lgtitle-prev-text')+"'><img src='#'></div>");
+				$(".JSlightGallery.JSlightGalleryMode").append("<div class='lg-thumb-next' href='"+galLoadThumb+"' title='"+lang('@lgtitle-next-text')+"'><img src='#'></div>");
 			}
 		}
 		
@@ -402,48 +401,120 @@ function loadLightGallery()
 			selector: galSelectorVal+", .lg-thumb-prev, .lg-thumb-next", 
 			thumbnail: toBoolean(galThumbnailVal),
 			download: toBoolean(galDownloadVal),
+			hash: toBoolean(galGalleryMode) === true ? false : true,
 			loop: false,
 		}); 
 		
 		if($(".lg-gallery-paginator").length > 0){
 			
+			var total;
+			var totalSlide;
+			var current;
+			var currentSlide;
+			
+			$(".JSlightGallery.JSlightGalleryMode").on('onBeforeOpen.lg',function(){
+				$("#lg-counter").addClass("invisible");
+			});
+			
+			$(".JSlightGallery.JSlightGalleryMode").on('onBeforeSlide.lg',function(){
+				$("#lg-counter").addClass("invisible");
+			});
+			
 			$(".JSlightGallery.JSlightGalleryMode").on('onAfterOpen.lg',function(){
-				//console.log("opened");
-				$(".lg-outer .lg-thumb .lg-thumb-item:first-child").addClass("JSlightGalleryNoBorder");
-				$(".lg-outer .lg-thumb .lg-thumb-item:last-child").addClass("JSlightGalleryNoBorder");
+				var galThumbPrevHTML = "<div><span class='glyphicon glyphicon-chevron-left' aria-hidden='true'></span><strong>"+lang('@lgtitle-prev-button')+"</strong></div>";
+				var galThumbNextHTML = "<div><span class='glyphicon glyphicon-chevron-right' aria-hidden='true'></span><strong>"+lang('@lgtitle-next-button')+"</strong></div>";
+				
+				$(".lg-outer .lg-thumb .lg-thumb-item:first-child").addClass("JSlightGalleryNoBorder").append(galThumbPrevHTML);
+				$(".lg-outer .lg-thumb .lg-thumb-item:last-child").addClass("JSlightGalleryNoBorder").append(galThumbNextHTML);
+				
+				total = parseInt($("#lg-counter-all").html());
+				totalSlide = total <= 2 ? 1 : (total - 2);
+				current = parseInt($("#lg-counter-current").html());
+				currentSlide = current <= 2 ? 1 : (current == total ? totalSlide : (current - 1));
+				
+				$("#lg-counter-all").html(totalSlide);
+				$("#lg-counter-current").html(currentSlide);
+				$("#lg-counter").removeClass("invisible");
+				
+				if(galPageCurrent === 1){
+					$(".lg-actions .lg-prev").addClass("invisible");
+					$(".lg-actions .lg-next").removeClass("invisible");
+					$(".lg-outer .lg-thumb .lg-thumb-item:first-child").addClass("invisible");
+					$(".lg-outer .lg-thumb .lg-thumb-item:last-child").removeClass("invisible");
+				}
+				else if(galPageCurrent === galPageTotal){
+					$(".lg-actions .lg-prev").removeClass("invisible");
+					$(".lg-actions .lg-next").addClass("invisible");
+					$(".lg-outer .lg-thumb .lg-thumb-item:first-child").removeClass("invisible");
+					$(".lg-outer .lg-thumb .lg-thumb-item:last-child").addClass("invisible");
+				}
+				else{
+					$(".lg-actions .lg-prev").removeClass("invisible");
+					$(".lg-actions .lg-next").removeClass("invisible");
+					$(".lg-outer .lg-thumb .lg-thumb-item:first-child").removeClass("invisible");
+					$(".lg-outer .lg-thumb .lg-thumb-item:last-child").removeClass("invisible");
+				}
 			});
-
+			
 			$(".JSlightGallery.JSlightGalleryMode").on('onAfterSlide.lg',function(){
-				var total = parseInt($("#lg-counter-all").html());
-				var current = parseInt($("#lg-counter-current").html());
-
-				if(current === total){
-					//console.log("closing... next page");
-					$(".JSlightGallery").addClass("lightGalleryAuto");
-					$(".JSlightGallery").addClass("lightGalleryAutoNext");
-					setTimeout(function(){ 
-						$(".lg-toolbar .lg-close").trigger("click");
-					}, 1500);
+				current = parseInt($("#lg-counter-current").html());
+				currentSlide = current <= 2 ? 1 : (current == total ? totalSlide : (current - 1));
+				
+				$("#lg-counter-all").html(totalSlide);
+				$("#lg-counter-current").html(currentSlide);
+				$("#lg-counter").removeClass("invisible");
+				
+				if(currentSlide === 1){
+					$(".lg-actions .lg-prev").addClass("invisible");
+					$(".lg-actions .lg-next").removeClass("invisible");
+					//Close
+					if(current === 1){
+						if(galPageCurrent === 1){
+							$(".lg-outer .lg-sub-html").html(lang('@lgtitle-gallery-close'));
+						}
+						else{
+							//Redirect
+							$(".JSlightGallery").addClass("lightGalleryAuto");
+							$(".JSlightGallery").addClass("lightGalleryAutoPrev");
+						}
+						setTimeout(function(){ $(".lg-toolbar .lg-close").trigger("click"); }, 1500);
+					}
 				}
-				if(current === 1){
-					//console.log("closing... prev page");
-					$(".JSlightGallery").addClass("lightGalleryAuto");
-					$(".JSlightGallery").addClass("lightGalleryAutoPrev");
-					setTimeout(function(){ 
-						$(".lg-toolbar .lg-close").trigger("click");
-					}, 1500);
+				else if(currentSlide > 1 && currentSlide < totalSlide){
+					$(".lg-actions .lg-prev").removeClass("invisible");
+					$(".lg-actions .lg-next").removeClass("invisible");
+				}
+				else if(currentSlide >= totalSlide){
+					$(".lg-actions .lg-prev").removeClass("invisible");
+					$(".lg-actions .lg-next").addClass("invisible");
+					//Close
+					if(current === total){
+						if(galPageCurrent === galPageTotal){
+							$(".lg-outer .lg-sub-html").html(lang('@lgtitle-gallery-close'));
+						}
+						else{
+							//Redirect
+							$(".JSlightGallery").addClass("lightGalleryAuto");
+							$(".JSlightGallery").addClass("lightGalleryAutoNext");
+						}
+						setTimeout(function(){ $(".lg-toolbar .lg-close").trigger("click"); }, 1500);
+					}
+				}
+				else{
+					$(".lg-actions .lg-prev").removeClass("invisible");
+					$(".lg-actions .lg-next").removeClass("invisible");
 				}
 			});
-
+			
 			$(".JSlightGallery.JSlightGalleryMode").on('onCloseAfter.lg',function(){
 				if($(this).hasClass("lightGalleryAuto")){
 					if($(this).hasClass("lightGalleryAutoNext")){
 						//Stuff to do on close
-						$(document).trigger("onNextPageChange.lg"); ////Send data to event
+						$(document).trigger("onNextPageChange.lg"); //Send data to event
 					}
 					else if($(this).hasClass("lightGalleryAutoPrev")){
 						//Stuff to do on close
-						$(document).trigger("onPrevPageChange.lg"); ////Send data to event
+						$(document).trigger("onPrevPageChange.lg"); //Send data to event
 					}
 					$(this).removeClass("lightGalleryAuto");
 					$(this).removeClass("lightGalleryAutoPrev");
@@ -939,7 +1010,7 @@ function checkDisabledLink(string)
 	}
 
 	//Exception 2
-	if(textUrl==="#"){
+	if(textUrl === '#' || textUrl.split('#')[1] == ''){
 		return false;
 	}
 	else{

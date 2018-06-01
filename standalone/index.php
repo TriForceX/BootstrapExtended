@@ -415,25 +415,33 @@
 				</tr>
 				<tr>
 					<td class="notranslate">data-lg-title</td>
-					<td>Set a custom title to all images in the lightbox</td>
+					<td>Set a custom title to all images in the gallery.</td>
 				</tr>
 				<tr>
 					<td class="notranslate">data-lg-thumb</td>
-					<td>Defines if thumbnails will be shown when the gallery is executed</td>
-				</tr>
-				<tr>
-					<td class="notranslate">data-lg-gallery</td>
-					<td>Execute custom functions when you get the <code>first</code> or <code>last</code> page</td>
+					<td>Defines if thumbnails will be shown when the gallery is executed.</td>
 				</tr>
 				<tr>
 					<td class="notranslate">data-lg-download</td>
-					<td>Enables downloads, the download url will be taken from <code>data-src</code> or <code>href</code></td>
+					<td>Enables downloads, the download url will be taken from <code>data-src</code> or <code>href</code>.</td>
+				</tr>
+				<tr>
+					<td class="notranslate">data-lg-gallery</td>
+					<td>Show the <b>previous</b> or <b>next</b> page controls inside the gallery. Includes auto redirection.</td>
+				</tr>
+				<tr>
+					<td class="notranslate">data-lg-page-total</td>
+					<td>Set the <b>total amount</b> of the gallery pages. This is <b>show</b> or <b>hide</b> the <b>previous</b> or <b>next</b> controls inside the gallery.</td>
+				</tr>
+				<tr>
+					<td class="notranslate">data-lg-page-current</td>
+					<td>Set the current <b>active</b> page. This is <b>show</b> or <b>hide</b> the <b>previous</b> or <b>next</b> controls inside the gallery.</td>
 				</tr>
 			</tbody>
 		</table>
 
 		<div class="bs-example">
-			<div class="row JSlightGallery" data-lg-item="auto" data-lg-title="false" data-lg-thumb="false" data-lg-gallery="false" data-lg-download="false">
+			<div class="row JSlightGallery" data-lg-item="auto" data-lg-title="false" data-lg-thumb="false" data-lg-download="false" data-lg-gallery="false">
 				<div class="col-md-3">
 					<a class="thumbnail" style="height:100px; overflow: hidden" title="My image 1" href="https://getbootstrap.com/docs/3.3/examples/screenshots/theme.jpg">
 						<img src="https://getbootstrap.com/docs/3.3/examples/screenshots/theme.jpg">
@@ -461,33 +469,12 @@
 		</figure>
 		
 		<h3 class="JSlightGalleryExample">Gallery Mode</h3>
-		<p>This mode allows to improve the way to show paged galleries executing custom functions when you get the <code>first</code> or <code>last</code> page.<br><i>Note: You need to add the class <code>lg-gallery-paginator</code> to the paginator to get the previous and next gallery pages</b></i>.</p>
+		<p>This mode allows to improve the way to show paged galleries executing custom functions when you get the <code>first</code> or <code>last</code> page.</p>
 
 		<div class="bs-example">
 
-			<div class="row JSlightGallery" data-lg-item="auto" data-lg-title="Gallery Title" data-lg-thumb="true" data-lg-gallery="true" data-lg-download="true">
-				<?php if($_GET["page"]!="2"): ?>
-				<div class="col-md-3">
-					<a class="thumbnail" style="height:100px; overflow: hidden" title="My image 1" href="https://getbootstrap.com/docs/3.3/examples/screenshots/theme.jpg">
-						<img src="https://getbootstrap.com/docs/3.3/examples/screenshots/theme.jpg">
-					</a>
-				</div>
-				<div class="col-md-3">
-					<a class="thumbnail" style="height:100px; overflow: hidden" title="My image 2" href="https://getbootstrap.com/docs/3.3/examples/screenshots/cover.jpg">
-						<img src="https://getbootstrap.com/docs/3.3/examples/screenshots/cover.jpg">
-					</a>
-				</div>
-				<div class="col-md-3">
-					<a class="thumbnail" style="height:100px; overflow: hidden" title="My image 3" href="https://getbootstrap.com/docs/3.3/examples/screenshots/justified-nav.jpg">
-						<img src="https://getbootstrap.com/docs/3.3/examples/screenshots/justified-nav.jpg">
-					</a>
-				</div>
-				<div class="col-md-3">
-					<a class="thumbnail" style="height:100px; overflow: hidden" title="My image 4" href="https://getbootstrap.com/docs/3.3/examples/screenshots/dashboard.jpg">
-						<img src="https://getbootstrap.com/docs/3.3/examples/screenshots/dashboard.jpg">
-					</a>
-				</div>
-				<?php else: ?>
+			<div class="row JSlightGallery" data-lg-item="auto" data-lg-title="Gallery Title" data-lg-thumb="true" data-lg-download="true" data-lg-gallery="true" data-lg-page-total="3" data-lg-page-current="<?php echo empty($_GET["page"]) ? '1' : $_GET["page"]; ?>">
+				<?php if($_GET["page"]=="2"): ?>
 				<div class="col-md-3">
 					<a class="thumbnail" style="height:100px; overflow: hidden" title="My image 5" href="https://getbootstrap.com/docs/3.3/examples/screenshots/offcanvas.jpg">
 						<img src="https://getbootstrap.com/docs/3.3/examples/screenshots/offcanvas.jpg">
@@ -508,20 +495,63 @@
 						<img src="https://getbootstrap.com/docs/3.3/examples/screenshots/blog.jpg">
 					</a>
 				</div>
+				<?php elseif($_GET["page"]=="3"): ?>
+				<div class="col-md-3">
+					<a class="thumbnail" style="height:100px; overflow: hidden" title="My image 5" href="https://getbootstrap.com/docs/3.3/examples/screenshots/carousel.jpg">
+						<img src="https://getbootstrap.com/docs/3.3/examples/screenshots/carousel.jpg">
+					</a>
+				</div>
+				<div class="col-md-3">
+					<a class="thumbnail" style="height:100px; overflow: hidden" title="My image 6" href="https://getbootstrap.com/docs/3.3/examples/screenshots/sticky-footer-navbar.jpg">
+						<img src="https://getbootstrap.com/docs/3.3/examples/screenshots/sticky-footer-navbar.jpg">
+					</a>
+				</div>
+				<div class="col-md-3">
+					<a class="thumbnail" style="height:100px; overflow: hidden" title="My image 7" href="https://getbootstrap.com/docs/3.3/examples/screenshots/grid.jpg">
+						<img src="https://getbootstrap.com/docs/3.3/examples/screenshots/grid.jpg">
+					</a>
+				</div>
+				<div class="col-md-3">
+					<a class="thumbnail" style="height:100px; overflow: hidden" title="My image 8" href="https://getbootstrap.com/docs/3.3/examples/screenshots/navbar.jpg">
+						<img src="https://getbootstrap.com/docs/3.3/examples/screenshots/navbar.jpg">
+					</a>
+				</div>
+				<?php else: ?>
+				<div class="col-md-3">
+					<a class="thumbnail" style="height:100px; overflow: hidden" title="My image 1" href="https://getbootstrap.com/docs/3.3/examples/screenshots/theme.jpg">
+						<img src="https://getbootstrap.com/docs/3.3/examples/screenshots/theme.jpg">
+					</a>
+				</div>
+				<div class="col-md-3">
+					<a class="thumbnail" style="height:100px; overflow: hidden" title="My image 2" href="https://getbootstrap.com/docs/3.3/examples/screenshots/cover.jpg">
+						<img src="https://getbootstrap.com/docs/3.3/examples/screenshots/cover.jpg">
+					</a>
+				</div>
+				<div class="col-md-3">
+					<a class="thumbnail" style="height:100px; overflow: hidden" title="My image 3" href="https://getbootstrap.com/docs/3.3/examples/screenshots/justified-nav.jpg">
+						<img src="https://getbootstrap.com/docs/3.3/examples/screenshots/justified-nav.jpg">
+					</a>
+				</div>
+				<div class="col-md-3">
+					<a class="thumbnail" style="height:100px; overflow: hidden" title="My image 4" href="https://getbootstrap.com/docs/3.3/examples/screenshots/dashboard.jpg">
+						<img src="https://getbootstrap.com/docs/3.3/examples/screenshots/dashboard.jpg">
+					</a>
+				</div>
 				<?php endif; ?>
 			</div>
 
 			<nav aria-label="Page navigation">
 				<ul class="pagination no-margin lg-gallery-paginator">
 					<li>
-						<a href="?page=1" aria-label="Previous" class="lg-prev">
+						<a href="?page=<?php echo $_GET["page"]=="3" ? '2' : ($_GET["page"]=="2" ? '1' : ($_GET["page"]=="1" ? '#' : '#')); ?>" aria-label="Previous" class="lg-prev">
 							<span aria-hidden="true">&laquo;</span>
 						</a>
 					</li>
-					<li class="<?php echo $_GET["page"]!="2" ? 'active' : '' ?>"><a href="?page=1">1</a></li>
+					<li class="<?php echo $_GET["page"]=="1" || empty($_GET["page"]) ? 'active' : '' ?>"><a href="?page=1">1</a></li>
 					<li class="<?php echo $_GET["page"]=="2" ? 'active' : '' ?>"><a href="?page=2">2</a></li>
+					<li class="<?php echo $_GET["page"]=="3" ? 'active' : '' ?>"><a href="?page=3">3</a></li>
 					<li>
-						<a href="?page=2" aria-label="Next" class="lg-next">
+						<a href="?page=<?php echo $_GET["page"]=="3" ? '#' : ($_GET["page"]=="2" ? '3' : ($_GET["page"]=="1" ? '2' : '2')); ?>" aria-label="Next" class="lg-next">
 							<span aria-hidden="true">&raquo;</span>
 						</a>
 					</li>
@@ -530,7 +560,7 @@
 		</div>
 		
 		<figure class="highlight">
-			<pre><code class="language-html" data-lang="html">&lt;div class="JSlightGallery" data-lg-item="auto" data-lg-title="Gallery Title" data-lg-thumb="true" data-lg-gallery="true" data-lg-download="true"&gt;<br>...<br>&lt;/div&gt;</code></pre>
+			<pre><code class="language-html" data-lang="html">&lt;div class="JSlightGallery" data-lg-item="auto" data-lg-title="Gallery Title" data-lg-thumb="true" data-lg-download="true" data-lg-gallery="true" data-lg-page-total="3" data-lg-page-current="1"&gt;<br>...<br>&lt;/div&gt;</code></pre>
 		</figure>
 
 		<!-- lightGallery Example -->

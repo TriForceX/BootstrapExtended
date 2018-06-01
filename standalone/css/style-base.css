@@ -128,6 +128,9 @@ a.ui-button:active,
 /* UI Date Picker Custom */
 
 /* LightGallery */
+.lg-on{
+	overflow: hidden !important;
+}
 .lg-backdrop{
 	z-index: 1055; /*real: 1040 - bootstrap modal: 1040*/
 }
@@ -165,8 +168,32 @@ a.ui-button:active,
 .JSlightGallery .lg-thumb-next{
 	display: none;
 }
+.JSlightGalleryNoBorder img,
+.JSlightGalleryNoBorder img{
+	display: none;
+}
 .JSlightGalleryNoBorder{
 	border-color: transparent !important;
+	position: relative;
+}
+.JSlightGalleryNoBorder div{
+	position: absolute;
+	width: 100%;
+	top: 0px;
+	left: 0px;
+	color: white;
+	text-align: center;
+}
+.JSlightGalleryNoBorder div span{
+	font-size: 30px;
+	margin-top: 10px;
+}
+.JSlightGalleryNoBorder div strong{
+	display: inline-block;
+	width: 100%;
+	margin-top: 5px;
+	font-size: 12px;
+	font-weight: normal;
 }
 /* JS LightGallery */
 
