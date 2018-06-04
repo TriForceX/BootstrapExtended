@@ -213,29 +213,29 @@ class php
     }
 	
 	//Return the current URL.
-    public static function get_current_url()
+    public static function get_current_url($queryStrings = true)
     {
         $url = '';
 
         // Check to see if it's over https
         $is_https = self::is_https();
-        if ($is_https) {
+		
+        if($is_https){
             $url .= 'https://';
-        } else {
+        }else{
             $url .= 'http://';
         }
 
         // Was a username or password passed?
-        if (isset($_SERVER['PHP_AUTH_USER'])) {
+        if(isset($_SERVER['PHP_AUTH_USER'])){
             $url .= $_SERVER['PHP_AUTH_USER'];
 
-            if (isset($_SERVER['PHP_AUTH_PW'])) {
+            if (isset($_SERVER['PHP_AUTH_PW'])){
                 $url .= ':' . $_SERVER['PHP_AUTH_PW'];
             }
 
             $url .= '@';
         }
-
 
         // We want the user to stay on the same host they are currently on,
         // but beware of security issues
@@ -245,23 +245,27 @@ class php
         $port = $_SERVER['SERVER_PORT'];
 
         // Is it on a non standard port?
-        if ($is_https && ($port != 443)) {
+        if($is_https && ($port != 443)){
             $url .= ':' . $_SERVER['SERVER_PORT'];
-        } elseif (!$is_https && ($port != 80)) {
+        }elseif(!$is_https && ($port != 80)){
             $url .= ':' . $_SERVER['SERVER_PORT'];
         }
 
         // Get the rest of the URL
-        if (!isset($_SERVER['REQUEST_URI'])) {
+        if(!isset($_SERVER['REQUEST_URI'])){
             // Microsoft IIS doesn't set REQUEST_URI by default
             $url .= $_SERVER['PHP_SELF'];
 
-            if (isset($_SERVER['QUERY_STRING'])) {
+            if(isset($_SERVER['QUERY_STRING'])){
                 $url .= '?' . $_SERVER['QUERY_STRING'];
             }
-        } else {
+        }else{
             $url .= $_SERVER['REQUEST_URI'];
         }
+		
+		if(!$queryStrings){
+			$url = strtok($url,'?');
+		}
 
         return $url;
     }

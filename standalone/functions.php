@@ -204,7 +204,7 @@ class php extends utilities\php
 	public static function custom_paginator($offset, $limit, $totalnum, $customclass, $customLeft = '&laquo;', $customRight = '&laquo;', $append = false, $parentDiv = false)
 	{
 		if($append == false){
-			$append = php::get_current_url().'/?';
+			$append = php::get_current_url(false).'?';
 		}
 		
 		if ($totalnum > $limit)
