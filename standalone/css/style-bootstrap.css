@@ -54,16 +54,17 @@
 
 /*Modal Align*/
 .modal{
-	padding: 30px !important;
+	padding: 0px 30px !important;
 }
 .modal-dialog {
-	margin: 0px auto;
+	margin: 30px auto;
 }
 @media (max-width: @screen-sm) {
 	.modal{
-		padding: 10px !important;
+		padding: 0px 10px !important;
 	}
 	.modal-dialog {
+		margin: 10px auto;
 		width: 100%;
 	}
 	.modal-dialog.modal-sm {
