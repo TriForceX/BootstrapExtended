@@ -436,23 +436,36 @@ function loadLightGallery()
 				$("#lg-counter-current").html(currentSlide);
 				$("#lg-counter").removeClass("invisible");
 				
+				//Prev & Next Pages
 				if(galPageCurrent === 1){
-					$(".lg-actions .lg-prev").addClass("invisible");
-					$(".lg-actions .lg-next").removeClass("invisible");
 					$(".lg-outer .lg-thumb .lg-thumb-item:first-child").addClass("invisible");
 					$(".lg-outer .lg-thumb .lg-thumb-item:last-child").removeClass("invisible");
 				}
 				else if(galPageCurrent === galPageTotal){
-					$(".lg-actions .lg-prev").removeClass("invisible");
-					$(".lg-actions .lg-next").addClass("invisible");
 					$(".lg-outer .lg-thumb .lg-thumb-item:first-child").removeClass("invisible");
 					$(".lg-outer .lg-thumb .lg-thumb-item:last-child").addClass("invisible");
 				}
 				else{
-					$(".lg-actions .lg-prev").removeClass("invisible");
-					$(".lg-actions .lg-next").removeClass("invisible");
 					$(".lg-outer .lg-thumb .lg-thumb-item:first-child").removeClass("invisible");
 					$(".lg-outer .lg-thumb .lg-thumb-item:last-child").removeClass("invisible");
+				}
+				
+				//Prev & Next Controls
+				if(currentSlide === 1){
+					$(".lg-actions .lg-prev").addClass("invisible");
+					$(".lg-actions .lg-next").removeClass("invisible");
+				}
+				else if(currentSlide > 1 && currentSlide < totalSlide){
+					$(".lg-actions .lg-prev").removeClass("invisible");
+					$(".lg-actions .lg-next").removeClass("invisible");
+				}
+				else if(currentSlide >= totalSlide){
+					$(".lg-actions .lg-prev").removeClass("invisible");
+					$(".lg-actions .lg-next").addClass("invisible");
+				}
+				else{
+					$(".lg-actions .lg-prev").removeClass("invisible");
+					$(".lg-actions .lg-next").removeClass("invisible");
 				}
 			});
 			
@@ -464,6 +477,7 @@ function loadLightGallery()
 				$("#lg-counter-current").html(currentSlide);
 				$("#lg-counter").removeClass("invisible");
 				
+				//Prev & Next Controls
 				if(currentSlide === 1){
 					$(".lg-actions .lg-prev").addClass("invisible");
 					$(".lg-actions .lg-next").removeClass("invisible");

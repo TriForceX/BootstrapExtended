@@ -218,7 +218,7 @@
 
 		<div class="bs-example">
 
-			<div class="row JSlightGallery" data-lg-item="auto" data-lg-title="Gallery Title" data-lg-thumb="true" data-lg-download="true" data-lg-gallery="true" data-lg-page-total="3" data-lg-page-current="<?php echo empty($_GET["page"]) ? '1' : $_GET["page"]; ?>">
+			<div class="row JSlightGallery" data-lg-item="auto" data-lg-title="Gallery title" data-lg-thumb="true" data-lg-download="true" data-lg-gallery="true" data-lg-page-total="3" data-lg-page-current="<?php echo empty($_GET["page"]) ? '1' : $_GET["page"]; ?>">
 				<?php if($_GET["page"]=="2"): ?>
 				<div class="col-md-3">
 					<a class="thumbnail" style="height:100px; overflow: hidden" title="My image 5" href="https://getbootstrap.com/docs/3.3/examples/screenshots/offcanvas.jpg">

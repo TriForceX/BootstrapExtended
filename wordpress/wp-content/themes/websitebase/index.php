@@ -194,7 +194,9 @@
 					<h3 class="panel-title">Note for main PHP Functions</h3>
 				</div>
 				<div class="panel-body">
-					You can use the <b>PHP functions</b> from the main library like <code>php::function()</code>, If you will use <code>Wordpress</code> (or another CMS) is highly recommended to use their main functions instead the base here. For example for <code>Wordpress</code> use <code>get_bloginfo('template_url')</code> instead <code>php::get_main_url()</code> and <code>get_header()</code>, <code>get_footer()</code> instead <code>include('header.php')</code>, <code>include('footer.php')</code>
+					You can use the <b>PHP functions</b> from the main library like <code>php::function()</code>, If you will use <code>Wordpress</code> (or another CMS) is highly recommended to use their main functions instead the base here. For example for <code>Wordpress</code> use <code>get_bloginfo('template_url')</code> instead <code>php::get_main_url()</code> and <code>get_header()</code>, <code>get_footer()</code> instead <code>include('header.php')</code>, <code>include('footer.php')</code>.
+					<br><br>
+					<b>Note for main CSS and JS:</b> You can display the code unreduced setting the <code>GET</code> flag <code>?unminify</code> to the main <b>CSS</b> and <b>JS</b> call functions. For example <code>&lt;?php echo php::get_main_css('?unminify'); ?&gt;</code>
 				</div>
 			</div>
 		</p>
@@ -473,7 +475,7 @@
 
 		<div class="bs-example">
 
-			<div class="row JSlightGallery" data-lg-item="auto" data-lg-title="Gallery Title" data-lg-thumb="true" data-lg-download="true" data-lg-gallery="true" data-lg-page-total="3" data-lg-page-current="<?php echo empty($_GET["page"]) ? '1' : $_GET["page"]; ?>">
+			<div class="row JSlightGallery" data-lg-item="auto" data-lg-title="Gallery title" data-lg-thumb="true" data-lg-download="true" data-lg-gallery="true" data-lg-page-total="3" data-lg-page-current="<?php echo empty($_GET["page"]) ? '1' : $_GET["page"]; ?>">
 				<?php if($_GET["page"]=="2"): ?>
 				<div class="col-md-3">
 					<a class="thumbnail" style="height:100px; overflow: hidden" title="My image 5" href="https://getbootstrap.com/docs/3.3/examples/screenshots/offcanvas.jpg">
