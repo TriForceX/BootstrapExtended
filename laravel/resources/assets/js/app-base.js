@@ -1368,6 +1368,7 @@ $(document).ready(function(){
 	//Disable button auto-focus
 	$(document).on("shown.bs.modal", function(){
 		$(".modal .modal-footer .btn:focus").blur();
+		$(".modal").scrollTop(0);
 	});
 	
 	//Window Popup click
