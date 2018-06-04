@@ -201,10 +201,10 @@ class php extends utilities\php
 	}
 
 	//Custom paginator
-	public static function custom_paginator($offset, $limit, $totalnum, $customclass, $customLeft = '&laquo;', $customRight = '&laquo;', $append = false, $parentDiv = false){
-
+	public static function custom_paginator($offset, $limit, $totalnum, $customclass, $customLeft = '&laquo;', $customRight = '&laquo;', $append = false, $parentDiv = false)
+	{
 		if($append == false){
-			$append = get_bloginfo('url').'/'.get_query_var('post_type').'/'.get_the_slug($post->ID).'/?';
+			$append = php::get_current_url().'/?';
 		}
 		
 		if ($totalnum > $limit)
@@ -240,7 +240,8 @@ class php extends utilities\php
 			}
 			echo '<div class="JSpaginator '.$customclass.'"><div class="JSpageItems">';
 			echo '<a class="JSpagePrev" href="'.$append.'pag='.$pagePrev.'&num='.$pageNumPrev.'">'.$customLeft.'</a>';	
-				for ($i = 1; $i <= $pages; $i++) {  // loop thru 
+				for ($i = 1; $i <= $pages; $i++)
+				{
 					$newoffset = $limit * ($i - 1);
 
 					if ($newoffset != $offset) 
@@ -251,7 +252,6 @@ class php extends utilities\php
 					{
 						echo '<a href="'.$append.'pag='.$i.'&num='.$newoffset.'" class="JSpageActive">'.$i.'</a>';
 					}
-
 				}
 			echo '<a class="JSpageNext" href="'.$append.'pag='.$pageNext.'&num='.$pageNumNext.'">'.$customRight.'</a>';
 			echo '</div></div>';
