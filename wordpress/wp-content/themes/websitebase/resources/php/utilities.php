@@ -213,7 +213,7 @@ class php
     }
 	
 	//Return the current URL.
-    public static function get_current_url($queryStrings = true)
+    public static function get_current_url($queryRemove = false)
     {
         $url = '';
 
@@ -263,11 +263,98 @@ class php
             $url .= $_SERVER['REQUEST_URI'];
         }
 		
-		if(!$queryStrings){
+		if($queryRemove){
 			$url = strtok($url,'?');
 		}
 
         return $url;
+    }
+	
+	//Access an array index, retrieving the value stored there if it exists or a default if it does not
+    public static function array_get(&$var, $default = null)
+    {
+        if(isset($var)){
+            return $var;
+        }
+        return $default;
+    }
+	
+	//Add or remove query arguments to the URL
+    public static function add_query_arg($newKey, $newValue = null, $uri = null)
+    {
+        // Was an associative array of key => value pairs passed?
+        if (is_array($newKey)) {
+            $newParams = $newKey;
+
+            // Was the URL passed as an argument?
+            if (!is_null($newValue)) {
+                $uri = $newValue;
+            } elseif (!is_null($uri)) {
+                $uri = $uri;
+            } else {
+                $uri = self::array_get($_SERVER['REQUEST_URI'], '');
+            }
+        } else {
+            $newParams = array($newKey => $newValue);
+
+            // Was the URL passed as an argument?
+            $uri = is_null($uri) ? self::array_get($_SERVER['REQUEST_URI'], '') : $uri;
+        }
+
+        // Parse the URI into it's components
+        $puri = parse_url($uri);
+
+        if (isset($puri['query'])) {
+            parse_str($puri['query'], $queryParams);
+            $queryParams = array_merge($queryParams, $newParams);
+        } elseif (isset($puri['path']) && strstr($puri['path'], '=') !== false) {
+            $puri['query'] = $puri['path'];
+            unset($puri['path']);
+            parse_str($puri['query'], $queryParams);
+            $queryParams = array_merge($queryParams, $newParams);
+        } else {
+            $queryParams = $newParams;
+        }
+
+        // Strip out any query params that are set to false.
+        // Properly handle valueless parameters.
+        foreach ($queryParams as $param => $value) {
+            if ($value === false) {
+                unset($queryParams[$param]);
+            } elseif ($value === null) {
+                $queryParams[$param] = '';
+            }
+        }
+
+        // Re-construct the query string
+        $puri['query'] = http_build_query($queryParams);
+
+        // Strip = from valueless parameters.
+        $puri['query'] = preg_replace('/=(?=&|$)/', '', $puri['query']);
+
+
+        // Re-construct the entire URL
+        $nuri = self::http_build_url($puri);
+
+        // Make the URI consistent with our input
+        if ($nuri[0] === '/' && strstr($uri, '/') === false) {
+            $nuri = substr($nuri, 1);
+        }
+
+        if ($nuri[0] === '?' && strstr($uri, '?') === false) {
+            $nuri = substr($nuri, 1);
+        }
+
+        return rtrim($nuri, '?');
+    }
+
+    //Removes an item or list from the query string
+    public static function remove_query_arg($keys, $uri = null)
+    {
+        if(is_array($keys)){
+            return self::add_query_arg(array_combine($keys, array_fill(0, count($keys), false)), $uri);
+        }
+        return self::add_query_arg(array($keys => false), $uri);
     }
 	
 	//Convert page file name to words
@@ -287,6 +374,158 @@ class php
 		}
 		return $result;
     }
+	
+	//Get custom date format
+	public static function show_date($date = false, $format = 'Y-m-d', $lang = 'eng', $abbr = false)
+	{
+		if(!$date){
+			$date = date('Y-m-d');
+		}
+		
+		$newDate = strtotime($date);
+		$finalDate = date($format, $newDate);
+		$langSet = $lang == 'esp' ? 1 : 0;
+		$langAbbr = $abbr ? 1 : 0;
+
+		$langDays = array(
+						array(
+							array("Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"),
+							array("Domingo","Lunes","Martes","Miércoles","Jueves","Viernes","Sábado"),
+						),
+						array(
+							array("Sun","Mon","Tue","Wed","Thu","Fri","Sat"),
+							array("Dom","Lun","Mar","Mié","Jue","Vie","Sáb"),
+						)
+					);
+		
+		$langMonths = array(
+							array(
+								array("January","February","March","April","May","June","July ","August","September","October","November","December"),
+								array("Enero","Febrero","Marzo","Abril","Mayo","Junio","Julio","Agosto","Septiembre","Octubre","Noviembre", "Diciembre"),
+							),
+							array(
+								array("Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sept","Oct","Nov","Dec"),
+								array("Ene","Feb","Mar","Abr","May","Jun","Jul","Ago","Sept","Oct","Nov","Dic"),
+							)
+						);
+
+
+		for ($day = 0; $day < 7; $day++)
+		{
+			$finalDate = str_replace($langDays[0][0][$day], $langDays[$langAbbr][$langSet][$day] , $finalDate);
+		}
+		for ($month = 0; $month < 12; $month++)
+		{
+			$finalDate = str_replace($langMonths[0][0][$month], $langMonths[$langAbbr][$langSet][$month], $finalDate);
+		}
+		
+		return $finalDate;
+	}
+	
+	//Custom paginator
+	public static function custom_paginator($offset, $limit, $totalnum, $customclass, $customLeft = '&laquo;', $customRight = '&laquo;', $append = false, $parentDiv = false)
+	{
+		if($append == false){
+			$append = self::get_current_url(true).'?';
+		}
+		
+		if ($totalnum > $limit)
+		{
+			$pages = intval($totalnum / $limit);
+
+			if ($totalnum % $limit)
+			$pages++;
+
+			if(($offset + $limit) > $totalnum){
+				$lastnum = $totalnum;
+			}else{
+				$lastnum = ($offset + $limit);
+			}
+			if (isset($_GET['pag'])){ 
+				$pageCurrent = $_GET['pag'];
+			}
+			else{
+				$pageCurrent = 1;
+			}
+			$pagePrev = $pageCurrent-1; $pageNumPrev = ($pageCurrent*$limit)-$limit*2;
+			$pageNext = $pageCurrent+1; $pageNumNext = $pageCurrent*$limit;
+			if($pagePrev <= 1){
+				$pagePrev = 1;
+				$pageNumPrev = 0;
+			} 
+			if($pageNext > $pages){
+				$pageNext = $_GET['pag'];
+				$pageNumNext = $_GET['num'];
+			}
+			if($parentDiv != false){
+				echo '<div class="'.$parentDiv.'">';
+			}
+			echo '<div class="JSpaginator '.$customclass.'"><div class="JSpageItems">';
+			echo '<a class="JSpagePrev" href="'.$append.'pag='.$pagePrev.'&num='.$pageNumPrev.'">'.$customLeft.'</a>';	
+				for ($i = 1; $i <= $pages; $i++)
+				{
+					$newoffset = $limit * ($i - 1);
+
+					if ($newoffset != $offset) 
+					{
+						echo '<a href="'.$append.'pag='.$i.'&num='.$newoffset.'">'.$i.'</a>';
+					} 
+					else
+					{
+						echo '<a href="'.$append.'pag='.$i.'&num='.$newoffset.'" class="JSpageActive">'.$i.'</a>';
+					}
+				}
+			echo '<a class="JSpageNext" href="'.$append.'pag='.$pageNext.'&num='.$pageNumNext.'">'.$customRight.'</a>';
+			echo '</div></div>';
+			if($parentDiv != false){
+				echo '</div>';
+			}
+		}
+		return;
+	}
+	
+	//Get video embed url
+	public static function get_embed_video($url,$autoplay = false)
+	{
+		$videoCode = '';
+		$videoURL = '';
+		$videoAutplay = $autoplay === true ? 1 : 0;
+
+		if(self::str_contains($url,'youtube')){
+			preg_match('/^.*((youtu.be\/)|(v\/)|(\/u\/\w\/)|(embed\/)|(watch\?))\??v?=?([^#\&\?]*).*/', $url, $videoCode);
+			$videoURL = 'https://www.youtube.com/embed/'.$videoCode[7].'?rel=0&autoplay='.$videoAutplay;
+		}
+		elseif(self::str_contains($url,'vimeo')){
+			preg_match('/^.*(vimeo\.com\/)((channels\/[A-z]+\/)|(groups\/[A-z]+\/videos\/))?([0-9]+)/', $url, $videoCode);
+			$videoURL = 'https://player.vimeo.com/video/'.$videoCode[5].'?autoplay='.$videoAutplay;
+		}
+		elseif(self::str_contains($url,'facebook')){
+			$videoURL = 'https://www.facebook.com/plugins/video.php?href='.$url.'&show_text=0&autoplay='.$videoAutplay;
+		}
+
+		return $videoURL;
+	}
+	
+	//Get video id
+	public static function get_video_id($url)
+	{
+		$videoCode = '';
+		$videoID = '';
+
+		if(self::str_contains($url,'youtube')){
+			preg_match('/^.*((youtu.be\/)|(v\/)|(\/u\/\w\/)|(embed\/)|(watch\?))\??v?=?([^#\&\?]*).*/', $url, $videoCode);
+			$videoID = $videoCode[7];
+		}
+		elseif(self::str_contains($url,'vimeo')){
+			preg_match('/^.*(vimeo\.com\/)((channels\/[A-z]+\/)|(groups\/[A-z]+\/videos\/))?([0-9]+)/', $url, $videoCode);
+			$videoID = $videoCode[5];
+		}
+		elseif(self::str_contains($url,'facebook')){
+			$videoID = $url;
+		}
+
+		return $videoID;
+	}
 	
 	//Convert string to UTF8
 	public static function convert_to_utf8($string)
