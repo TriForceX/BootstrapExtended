@@ -41,7 +41,6 @@ Base structure for web sites with reusable parts of source code or functions mai
 	- Global variables for CSS & JS usage
 	- Minify CSS, JS and HTML
 	- PHP error handle & warnings
-	- Get Website part with cURL
 	- Send E-Mails with PHPMailer
 	- Check ends/start of string
 	- Check string contains another string
@@ -51,22 +50,25 @@ Base structure for web sites with reusable parts of source code or functions mai
 	- Sanitize Strings
 	- Convert to slug
 	- Limit character/words
-	- Get main url, protocol, https, current page, and more...
+	- Get main url, protocol, https, current url, and more...
+	- Array index access
+	- Add & remove URL query argument
 	- Convert string to UTF-8
 	- Custom show date format
-	- Get YouTube, Vimeo and Facebook ID and embed code URL
 	- Custom paginator
+	- Get YouTube, Vimeo and Facebook ID and embed code URL
+	- Get website parts with cUrl
 - JS Features:
 	- Custom language support
 	- Check attr function
 	- Check outer width & height with padding/margin
 	- Remove whitespaces between elements
-	- Form validate
+	- Form validation
 	- Convert string to boolean
-	- Get max height from elements
+	- Get max height between elements
 	- Responsive code detection
-	- Light Gallery destroy & load functions/events
-	- ImgLiquid auto-fill background function
+	- LightGallery improved functions/events
+	- ImgLiquid auto-fill background images
 	- Get element height changes
 	- Text cut function
 	- Text auto size function
