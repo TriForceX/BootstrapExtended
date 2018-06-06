@@ -603,4 +603,12 @@ class php
 		$curlFinish = substr($curlEndStr, 0, $curlEndPos);
 		return trim($curlFinish);
 	}
+	
+	//Get external function
+	public static function get_function($name, $params = array())
+	{
+		if(function_exists($name)){
+			return call_user_func_array($name, $params);
+		}
+	}
 }
