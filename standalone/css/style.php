@@ -13,47 +13,47 @@ $cssInfo = '/*
  */';
 
 require_once('../resources/php/utilities.php');
-require_once('../resources/php/minifier/minifier.php');
 
-class php extends utilities\php { }
-
-function cssGenerate()
+class php extends utilities\php 
 {
-	$cssMinify = isset($_GET['unminify']) ? false : true;
-	$cssBuffer = '';
-	$cssUrl = php::get_main_url('/css');
-	
-	$cssFiles = array(
-				  '../css/style-base.css',
-				  '../css/style-bootstrap.css',
-				  '../css/style-theme.css',
-				);
+	public static function build_css()
+	{
+		$cssMinify = isset($_GET['unminify']) ? false : true;
+		$cssBuffer = '';
+		$cssUrl = php::get_main_url('/css');
 
-	$cssVariables = array(
-						//Global
-						'@global-url'	=> $cssUrl,
-						//Screen
-						'@screen-xs'	=> '480px',
-						'@screen-sm'	=> '768px',
-						'@screen-md'	=> '992px',
-						'@screen-lg'	=> '1200px', 
-						'@screen-xl' 	=> '1920px', 
+		$cssFiles = array(
+					  '../css/style-base.css',
+					  '../css/style-bootstrap.css',
+					  '../css/style-theme.css',
 					);
 
-	include('style-extras.php');
+		$cssVariables = array(
+							//Global Url
+							'@global-url'	=> $cssUrl,
+							//Screen Size
+							'@screen-xs'	=> '480px',
+							'@screen-sm'	=> '768px',
+							'@screen-md'	=> '992px',
+							'@screen-lg'	=> '1200px', 
+							'@screen-xl' 	=> '1920px', 
+						);
 
-	$cssFiles = array_merge($cssFiles, $cssFilesExtras);
-	$cssVariables = array_merge($cssVariables, $cssVariablesExtras);
+		include('style-extras.php');
 
-	foreach($cssFiles as $cssFile){
-		$cssBuffer .= file_get_contents($cssFile);
+		$cssFiles = array_merge($cssFiles, $cssFilesExtras);
+		$cssVariables = array_merge($cssVariables, $cssVariablesExtras);
+
+		foreach($cssFiles as $cssFile){
+			$cssBuffer .= file_get_contents($cssFile);
+		}
+
+		$cssKey = array_keys($cssVariables);
+		$cssBuffer = str_replace($cssKey, $cssVariables, $cssBuffer);
+		$cssContent = $cssMinify == true ? php::minify_css($cssBuffer) : $cssBuffer;
+
+		return $cssContent;
 	}
-
-	$cssKey = array_keys($cssVariables);
-	$cssBuffer = str_replace($cssKey, $cssVariables, $cssBuffer);
-	$cssContent = $cssMinify == true ? minifyCSS($cssBuffer) : $cssBuffer;
-
-	return $cssContent;
 }
 
 if(php::is_localhost())
@@ -62,13 +62,13 @@ if(php::is_localhost())
 	{
 		unlink('style.css');
 	}
-	echo $cssInfo.cssGenerate();
+	echo $cssInfo.php::build_css();
 }
 else
 {
 	if(!file_exists('style.css'))
 	{
-		file_put_contents('style.css', $cssInfo.cssGenerate());
+		file_put_contents('style.css', $cssInfo.php::build_css());
 	}
 	echo file_get_contents('style.css');
 }
