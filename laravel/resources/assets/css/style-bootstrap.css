@@ -1,6 +1,6 @@
 /* ================================================= BOOTSTRAP ================================================= */
 
-/*Modal & Panel*/
+/* Modal & Panel */
 .modal-open{
 	padding-right: 0px !important;
 	overflow: auto !important;
@@ -27,9 +27,9 @@
 .modal-footer .btn {
 	outline: 0;
 }
-/*Modal & Panel*/
+/* Modal & Panel */
 
-/*Modal Size*/
+/* Modal Size */
 @media (min-width: @screen-lg) {
 	.modal-xl {
 		width: 1140px;
@@ -50,9 +50,9 @@
 		width: inherit;
 	}
 }
-/*Modal Size*/
+/* Modal Size */
 
-/*Modal Align*/
+/* Modal Align */
 .modal{
 	padding: 0px 30px !important;
 }
@@ -118,9 +118,9 @@
 .modal.top .modal-dialog {
 	vertical-align: top;
 }
-/*Modal Align*/
+/* Modal Align */
 
-/*Custom Modal Panel*/
+/* Custom Modal Panel */
 
 /*.panel-custom {
    border-color: red;
@@ -130,15 +130,15 @@
     border-color: red;
     color: #fff;
 }*/
-/*Custom Modal Panel*/
+/* Custom Modal Panel */
 
-/*Carousel Indicators*/
+/* Carousel Indicators */
 .carousel-indicators li{
 	background-color: transparent;
 }
-/*Carousel Indicators*/
+/* Carousel Indicators */
 
-/*Carousel fade transition*/
+/* Carousel fade transition */
 .carousel-fade .carousel-inner .item {
 	-webkit-transition-property: opacity;
 	transition-property: opacity;
@@ -164,9 +164,9 @@
 .carousel-fade .carousel-control {
 	z-index: 2;
 }
-/*Carousel fade transition*/
+/* Carousel fade transition */
 
-/*Carousel control no gradient*/
+/* Carousel control no gradient */
 .carousel-nogradient .carousel-control.left,
 .carousel-nogradient .carousel-control.right {
 	background: none !important;
@@ -179,9 +179,9 @@
 .carousel-nogradient .carousel-control.right .glyphicon {
 	text-shadow: 0px 3px 6px #000, 0px 3px 6px #000;
 }
-/*Carousel control no gradient*/
+/* Carousel control no gradient */
 
-/*Carousel control no shadow*/
+/* Carousel control no shadow */
 .carousel-noshadow .carousel-control.left,
 .carousel-noshadow .carousel-control.right {
 	background: none !important;
@@ -195,18 +195,18 @@
 .carousel-noshadow .carousel-control.right .glyphicon {
 	text-shadow: none;
 }
-/*Carousel control no shadow*/
+/* Carousel control no shadow */
 
-/*Carousel control no mobile*/
+/* Carousel control no mobile */
 @media (max-width: @screen-sm) {
 	.carousel-nomobile .carousel-control.left,
 	.carousel-nomobile .carousel-control.right {
 		display: none;
 	}
 }
-/*Carousel control no mobile*/
+/* Carousel control no mobile */
 
-/*Carousel control disable*/
+/* Carousel control disable */
 
 /*Carousel square indicators*/
 .carousel-square .carousel-indicators li{
@@ -214,9 +214,9 @@
 	width: 30px !important;
 	height: 8px !important;
 }
-/*Carousel square indicators*/
+/* Carousel square indicators */
 
-/*Tooltip Custom Color*/
+/* Tooltip Custom Color */
 /*.tooltip > .tooltip-inner{
 	background-color: red;
 }
@@ -232,26 +232,26 @@
 .tooltip.left .tooltip-arrow{
 	border-left-color: red;
 }*/
-/*Tooltip Custom Color*/
+/* Tooltip Custom Color */
 
-/*Form group select*/
+/* Form group select */
 .form-group.has-feedback select {
 	-webkit-appearance: none;
 	-moz-appearance: none;
 	-o-appearance: none;
 	appearance: none;
 }
-/*Form group select*/
+/* Form group select */
 
-/*Form group textarea resize*/
+/* Form group textarea resize */
 .form-group textarea.textarea-no-resize {
 	resize: none;
 	-webkit-appearance: none;
 	-moz-appearance: none;
 }
-/*Form group textarea resize*/
+/* Form group textarea resize */
 
-/*Form group has success*/
+/* Form group has success */
 .form-group.has-success .help-block,
 .form-group.has-success .control-label,
 .form-group.has-success .radio,
@@ -288,9 +288,9 @@
 .form-group.has-success .form-control-feedback {
 	color: #5cb85c;
 }
-/*Form group has success*/
+/* Form group has success */
 
-/*Form group has warning*/
+/* Form group has warning */
 .form-group.has-warning .help-block,
 .form-group.has-warning .control-label,
 .form-group.has-warning .radio,
@@ -327,9 +327,9 @@
 .form-group.has-warning .form-control-feedback {
 	color: #f0ad4e;
 }
-/*Form group has warning*/
+/* Form group has warning */
 
-/*Form group has error*/
+/* Form group has error */
 .form-group.has-error .help-block,
 .form-group.has-error .control-label,
 .form-group.has-error .radio,
@@ -366,13 +366,13 @@
 .form-group.has-error .form-control-feedback {
 	color: #d00000;
 }
-/*Form group has error*/
+/* Form group has error */
 
 /* ================================================= BOOTSTRAP ================================================= */
 
 /* ================================================= BOOTSTRAP 4 ================================================= */
 
-/*Float*/
+/* Float */
 .float-left {
 	float: left !important;
 }
@@ -426,9 +426,9 @@
 		float: none !important;
 	}
 }
-/*Float*/
+/* Float */
 
-/*Display*/
+/* Display */
 .d-none {
 	display: none !important;
 }
@@ -613,9 +613,9 @@
 		display: inline-flex !important;
 	}
 }
-/*Display*/
+/* Display */
 
-/*Width & Height*/
+/* Width & Height */
 .w-25 {
 	width: 25% !important;
 }
@@ -652,9 +652,9 @@
 .mh-100 {
 	max-height: 100% !important;
 }
-/*Width & Height*/
+/* Width & Height */
 
-/*Vertical Align*/
+/* Vertical Align */
 .align-baseline {
 	vertical-align: baseline !important;
 }
@@ -673,9 +673,9 @@
 .align-text-top {
 	vertical-align: text-top !important;
 }
-/*Vertical Align*/
+/* Vertical Align */
 
-/*Margin & Padding*/
+/* Margin & Padding */
 .m-0 {
 	margin: 0 !important;
 }
@@ -1919,9 +1919,9 @@
 		margin-left: auto !important;
 	}
 }
-/*Margin & Padding*/
+/* Margin & Padding */
 
-/*Position*/
+/* Position */
 .position-static {
 	position: static !important;
 }
@@ -1960,9 +1960,9 @@
 		z-index: 1020;
 	}
 }
-/*Position*/
+/* Position */
 
-/*Text Align*/
+/* Text Align */
 @media (min-width: @screen-sm) {
 	.text-sm-left {
 		text-align: left !important;
@@ -2007,6 +2007,6 @@
 		text-align: center !important;
 	}
 }
-/*Text Align*/
+/* Text Align */
 
 /* ================================================= BOOTSTRAP 4 ================================================= */
