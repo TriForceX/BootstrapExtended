@@ -12,11 +12,6 @@
 //Get the PHP utilities file
 require('resources/php/utilities.php');
 
-//PHP error handler
-if(isset($_GET['debug'])){
-	php::get_error($_GET['debug']);
-}
-
 //Call the main class
 class php extends utilities\php 
 { 

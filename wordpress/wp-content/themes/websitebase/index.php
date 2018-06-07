@@ -474,7 +474,11 @@
 		<p>This mode allows to improve the way to show paged galleries executing custom functions when you get the <code>first</code> or <code>last</code> page.</p>
 
 		<div class="bs-example">
-
+			<?php
+			if(!isset($_GET['page'])){
+				$_GET['page'] = null;
+			}
+			?>
 			<div class="row JSlightGallery" data-lg-item="auto" data-lg-title="Gallery title" data-lg-thumb="true" data-lg-download="true" data-lg-gallery="true" data-lg-page-total="3" data-lg-page-current="<?php echo empty($_GET["page"]) ? '1' : $_GET["page"]; ?>">
 				<?php if($_GET["page"]=="2"): ?>
 				<div class="col-md-3">

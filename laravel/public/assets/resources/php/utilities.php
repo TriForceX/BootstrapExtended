@@ -17,13 +17,13 @@ class php
 	//PHP error handle & warnings
 	public static function get_error($type)
     {
-		if($type=='handler'){
-			ob_start(function($outputt) {
-					// ... modify content ...
+		if($type=='handle'){
+			ob_start(function(){
 					$error = error_get_last();
-					$output = "";
-					foreach ($error as $info => $string)
-						$output .= "{$info}: {$string}<br>";
+					$output = '';
+					foreach ($error as $info => $string){
+						$output .= '<b>'.$info.'</b>: '.$string.'<br>';
+					}
 					return $output;
 				}
 			);
@@ -741,4 +741,9 @@ class php
 			return call_user_func_array($name, $params);
 		}
 	}
+}
+
+//PHP get error
+if(isset($_GET['debug'])){
+	php::get_error($_GET['debug']);
 }
