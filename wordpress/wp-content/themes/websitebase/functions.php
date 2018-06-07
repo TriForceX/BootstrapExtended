@@ -104,6 +104,22 @@ class php extends utilities\php
 			}
 		}
 	}
+	
+	//Get extra code
+	public static $extra_code = false;
+
+	public static function extra_code($type)
+	{
+		if($type == 'start'){
+			return ob_start();
+		}
+		elseif($type == 'end'){
+			return php::$extra_code .= ob_get_clean();
+		}
+		elseif($type == 'get'){
+			return php::$extra_code;
+		}
+	}
 }
 
 /*

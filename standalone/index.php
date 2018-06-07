@@ -172,7 +172,7 @@
 		</figure>
 	
 		<!-- Index / Page Example -->
-		
+	
 		<!-- Footer Example -->
 	
 		<div class="page-header">
@@ -202,6 +202,41 @@
 		</p>
 
 		<!-- Footer Example -->
+
+		<!-- Extra Code Example -->
+		
+		<div class="page-header">
+			<h1>Extra Code <span class="label label-primary">Template</span></h1>
+		</div>
+		<p>Sometimes you may need to add extra <b>CSS</b> or <b>JS</b> only for some pages. You can place them between <code>php::extra_code('start')</code> and <code>php::extra_code('end')</code> to print it in the <b>footer</b> (before <code>&lt;/body&gt;</code> closure).</p>
+		
+		<figure class="highlight">
+			<pre><code class="language-html" data-lang="html">...<br>
+&lt;?php php::extra_code('start'); ?&gt;
+&lt;style type="text/css"&gt;
+body{
+	background: #FF0000;
+}
+&lt;/style>
+&lt;script type="text/javascript"&gt;
+	alert("My Alert!");
+&lt;/script&gt;
+&lt;?php php::extra_code('end'); ?&gt;
+			<br>...</code></pre>
+		</figure>
+		
+		<p>
+			<div class="panel panel-default">
+				<div class="panel-heading">
+					<h3 class="panel-title">Note for Extra Code</h3>
+				</div>
+				<div class="panel-body">
+					This code is only printed in the <b>footer</b>. Also you can use external <b>PHP</b> variables or functions inside with no problems.
+				</div>
+			</div>
+		</p>
+	
+		<!-- Extra Code Example -->
 		
 		<!-- Utilities Example -->
 
