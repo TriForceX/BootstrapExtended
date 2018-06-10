@@ -155,7 +155,7 @@
 			<tbody>
 				<tr>
 					<td class="notranslate">data-lg-item</td>
-					<td>Defines which element contains the image <code>url</code> and the <code>thumbnail</code>
+					<td>Defines which element contains the image <b>url</b> and the <b>thumbnail</b>
 					</td>
 				</tr>
 				<tr>
@@ -288,6 +288,7 @@
 				</div>
 				<?php endif; ?>
 			</div>
+
 
 			<nav aria-label="Page navigation">
 				<ul class="pagination no-margin lg-gallery-paginator">
@@ -832,7 +833,7 @@
 		<div class="page-header notranslate">
 			<h1>Show Alert BootBox <span class="label label-danger">Plugin</span></h1>
 		</div>
-		<p>Launch a custom modal box using <b>BootBox</b> features, the function structure is <code>showAlert(title, text, size, align)</code>. You can alternatively set a size and alignment classes like <code>horizontal vertical</code> (For example: <code>right center</code>).</p>
+		<p>Launch a custom modal box using <b>BootBox</b> features, the function structure is <code>showAlert(title, text, size, align)</code>. You can alternatively set a size and alignment classes like <b>horizontal vertical</b> (For example: <code>right center</code>).</p>
 
 		<div class="bs-example">
 			<button type="button" class="btn btn-primary" onclick="showAlert('Small Size Box','This is a text shown in a modal box','small','center')">Show Alert Small Size (Centered)</button>
@@ -851,7 +852,7 @@
 		<div class="page-header notranslate">
 			<h1>Show Content BootBox <span class="label label-danger">Plugin</span></h1>
 		</div>
-		<p>Launch a custom modal box using <b>BootBox</b> features, the function shows the content from an element, the structure is <code>showContent(title, element, size, align)</code>. You can alternatively set a size and alignment classes like <code>horizontal vertical</code> (For example: <code>right center</code>).</p>
+		<p>Launch a custom modal box using <b>BootBox</b> features, the function shows the content from an element, the structure is <code>showContent(title, element, size, align)</code>. You can alternatively set a size and alignment classes like <b>horizontal vertical</b> (For example: <code>right center</code>).</p>
 
 		<div class="bs-example">
 			<button type="button" class="btn btn-primary" onclick="showContent('Small Size Box','.showContentExample','small','center')">Show Content Small Size (Centered)</button>
@@ -873,7 +874,7 @@
 		<div class="page-header notranslate">
 			<h1>Video Launch <span class="label label-danger">Custom</span></h1>
 		</div>
-		<p>Launch a modal box with a basic video player, the function structure is <code>videoLaunch(url, share, title, autoplay, size, align)</code>. You can alternatively set a size and alignment classes like <code>horizontal vertical</code> (For example: <code>right center</code>).</p>
+		<p>Launch a modal box with a basic video player, the function structure is <code>videoLaunch(url, share, title, autoplay, size, align)</code>. You can alternatively set a size and alignment classes like <b>horizontal vertical</b> (For example: <code>right center</code>).</p>
 
 		<div class="bs-example">
 			<button type="button" class="btn btn-primary" onclick="videoLaunch('https://youtube.com/watch?v=ae6aeo9-Kn8', true, 'My YouTube Video', true, 'medium', 'center')">YouTube Video (Medium Size & Centered)</button>
@@ -911,7 +912,7 @@
 				</tr>
 				<tr>
 					<td class="notranslate">data-win-align</td>
-					<td>Horizontal & Vertical alignment (in pixels) of the pop-up, Need to be written like <code>horizontal</code>,<code>vertical</code> and the values can be <code>left</code>, <code>center</code> or <code>right</code></td>
+					<td>Horizontal & Vertical alignment (in pixels) of the pop-up, Need to be written like <b>horizontal</b>,<b>vertical</b> and the values can be <code>left</code>, <code>center</code> or <code>right</code></td>
 				</tr>
 				<tr>
 					<td class="notranslate">data-win-scroll</td>
@@ -923,7 +924,7 @@
 				</tr>
 				<tr>
 					<td class="notranslate">data-win-modal-align</td>
-					<td>Alternative to set error modal alignment classes like <code>horizontal vertical</code> (For example: <code>right center</code>)</td>
+					<td>Alternative to set error modal alignment classes like <b>horizontal vertical</b> (For example: <code>right center</code>)</td>
 				</tr>
 			</tbody>
 		</table>
@@ -961,12 +962,12 @@
 				</tr>
 				<tr>
 					<td class="notranslate">data-map-coords-1</td>
-					<td>Desired address coords from <b>Google Maps</b> <code>latitude</code>, <code>longitude</code>, <code>zoom</code>
+					<td>Desired address coords from <code>Google Maps</code> <b>latitude</b>, <b>longitude</b>, <b>zoom</b>
 					</td>
 				</tr>
 				<tr>
 					<td class="notranslate">data-map-coords-2</td>
-					<td>Desired address coords from <b>Waze</b> <code>latitude</code>, <code>longitude</code>, <code>zoom</code>
+					<td>Desired address coords from <code>Waze</code> <b>latitude</b>, <b>longitude</b>, <b>zoom</b>
 					</td>
 				</tr>
 				<tr>
@@ -981,7 +982,7 @@
 				</tr>
 				<tr>
 					<td class="notranslate">data-map-modal-align</td>
-					<td>Alternative to set modal alignment classes like <code>horizontal vertical</code> (For example: <code>right center</code>)
+					<td>Alternative to set modal alignment classes like <b>horizontal vertical</b> (For example: <code>right center</code>)
 					</td>
 				</tr>
 			</tbody>
@@ -1186,7 +1187,7 @@
 		<div class="page-header notranslate">
 			<h1>Float <span class="label label-danger">BS4</span></h1>
 		</div>
-		<p>Imported <code>Float</code> property classes from <b>Bootstrap 4</b>. These utility classes float an element to the <code>left</code>, <code>right</code>, or <code>disable</code> floating. Use the same viewport breakpoints as our grid system.</p>
+		<p>Imported <code>Float</code> property classes from <b>Bootstrap 4</b>. These utility classes float an element to the <b>left</b>, <b>right</b>, or <b>disable</b> floating. Use the same viewport breakpoints as our grid system.</p>
 
 		<p>As such, the classes are named using the format:</p>
 
@@ -1474,27 +1475,27 @@
 			<tbody>
 				<tr>
 					<td class="notranslate">carousel-fade</td>
-					<td>Adding this class will change the slide animation to fade <code>in</code> and <code>out</code>
+					<td>Adding this class will change the slide animation to <b>fade in</b> and <b>fade out</b>
 					</td>
 				</tr>
 				<tr>
 					<td class="notranslate">carousel-nogradient</td>
-					<td>Adding this class will disable the gradients on <code>left</code> and <code>right</code> controls</code>
+					<td>Adding this class will disable the gradients on <b>left</b> and <b>right</b> controls
 					</td>
 				</tr>
 				<tr>
 					<td class="notranslate">carousel-noshadow</td>
-					<td>Adding this class will disable the shadows on <code>left</code> and <code>right</code> controls</code>
+					<td>Adding this class will disable the shadows on <b>left</b> and <b>right</b> controls
 					</td>
 				</tr>
 				<tr>
 					<td class="notranslate">carousel-nomobile</td>
-					<td>Adding this class will disable the <code>left</code> and <code>right</code> controls on mobile devices</code>
+					<td>Adding this class will disable the <b>left</b> and <b>right</b> controls on mobile devices
 					</td>
 				</tr>
 				<tr>
 					<td class="notranslate">carousel-square</td>
-					<td>Adding this class will change the indicators to <code>square</code> buttons
+					<td>Adding this class will change the indicators to <b>square</b> buttons
 					</td>
 				</tr>
 			</tbody>

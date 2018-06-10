@@ -211,7 +211,7 @@
 		<p>Sometimes you may need to add extra <b>CSS</b> or <b>JS</b> only for some pages. You can place them between <code>php::extra_code('start')</code> and <code>php::extra_code('end')</code> to print it in the <b>footer</b> (before <code>&lt;/body&gt;</code> closure).</p>
 		
 		<figure class="highlight">
-			<pre><code class="language-html" data-lang="html">...<br>
+			<pre><code class="language-html" data-lang="html">...
 &lt;?php php::extra_code('start'); ?&gt;
 &lt;style type="text/css"&gt;
 body{
@@ -222,7 +222,7 @@ body{
 	alert("My Alert!");
 &lt;/script&gt;
 &lt;?php php::extra_code('end'); ?&gt;
-			<br>...</code></pre>
+...</code></pre>
 		</figure>
 		
 		<p>
@@ -231,7 +231,7 @@ body{
 					<h3 class="panel-title">Note for Extra Code</h3>
 				</div>
 				<div class="panel-body">
-					This code is only printed in the <b>footer</b>. Also you can use external <b>PHP</b> variables or functions inside with no problems.
+					This code is only printed in the <b>footer</b>. Also you can use external <b>PHP</b> variables or functions inside the <b>extra code</b> with no problems.
 				</div>
 			</div>
 		</p>
@@ -282,7 +282,7 @@ body{
 		<div class="page-header">
 			<h1>CSS <span class="label label-success">Template</span></h1>
 		</div>
-		<p>The main file structure contains the access to <code>CSS</code> files and <code>Variables</code> to improve the use.</p>
+		<p>The main file structure contains the access to <b>CSS</b> files and <code>Variables</code> to improve the use.</p>
 		
 		<table class="table table-bordered table-striped js-options-table">
 			<thead>
@@ -294,17 +294,17 @@ body{
 			<tbody>
 				<tr>
 					<td class="notranslate">$cssFiles</td>
-					<td>Defines which <code>CSS</code> files will be called, you can add more to the array. The <code>style-base.css</code> is used to set main classes, <code>style-bootstrap.css</code> is used to be set all <b>Bootstrap</b> related classes.
+					<td>Defines which <b>CSS</b> files will be called, you can add more to the array. The <code>style-base.css</code> is used to set main classes, <code>style-bootstrap.css</code> is used to be set all <b>Bootstrap</b> related classes.
 					</td>
 				</tr>
 				<tr>
 					<td class="notranslate">$cssMinify</td>
-					<td>Defines if the <code>CSS</code> code will get the size reduced to the client. You can add the <code>GET</code> flag <b>?unminify</b> to the main <code>style.php</code> url to check the unreduced code.
+					<td>Defines if the <b>CSS</b> code will get the size reduced to the client. You can add the <code>GET</code> flag <b>?unminify</b> to the main <code>style.php</code> url to check the unreduced code.
 					</td>
 				</tr>
 				<tr>
 					<td class="notranslate">$cssVariables</td>
-					<td>Defines custom variables to replace inside the <code>CSS</code>files, such as colors, sizes and another data.
+					<td>Defines custom variables to replace inside the <b>CSS</b> files, such as colors, sizes and another data.
 					</td>
 				</tr>
 			</tbody>
@@ -350,7 +350,7 @@ body{
 		<div class="page-header">
 			<h1>JS <span class="label label-success">Template</span></h1>
 		</div>
-		<p>The main file structure contains the access to <code>JS</code> files and <code>Variables</code> to improve the use.</p>
+		<p>The main file structure contains the access to <b>JS</b> files and <code>Variables</code> to improve the use.</p>
 		
 		<table class="table table-bordered table-striped js-options-table">
 			<thead>
@@ -362,17 +362,17 @@ body{
 			<tbody>
 				<tr>
 					<td class="notranslate">$jsFiles</td>
-					<td>Defines which <code>JS</code> files will be called, you can add more to the array. The <code>app-base.js</code> is used to be execute all main stuff and functions, <code>app-lang.js</code> is used to be set the main language settings.
+					<td>Defines which <b>JS</b> files will be called, you can add more to the array. The <code>app-base.js</code> is used to be execute all main stuff and functions, <code>app-lang.js</code> is used to be set the main language settings.
 					</td>
 				</tr>
 				<tr>
 					<td class="notranslate">$jsMinify</td>
-					<td>Defines if the <code>JS</code> code will get the size reduced to the client. You can add the <code>GET</code> flag <code>?unminify</code> to the main <code>app.php</code> url to check the unreduced code.
+					<td>Defines if the <b>JS</b> code will get the size reduced to the client. You can add the <code>GET</code> flag <code>?unminify</code> to the main <code>app.php</code> url to check the unreduced code.
 					</td>
 				</tr>
 				<tr>
 					<td class="notranslate">$jsVariables</td>
-					<td>Defines custom variables to replace inside the <code>JS</code>files, such as colors, sizes and another data. <b>Note:</b> is important to keep the <code>@global-url</code> variable and the <code>@screen</code> ones, because are used in the <i>Base</i> code.
+					<td>Defines custom variables to replace inside the <b>JS</b>files, such as colors, sizes and another data. <b>Note:</b> is important to keep the <code>@global-url</code> variable and the <code>@screen</code> ones, because are used in the <i>Base</i> code.
 					</td>
 				</tr>
 			</tbody>
@@ -447,7 +447,7 @@ body{
 			<tbody>
 				<tr>
 					<td class="notranslate">data-lg-item</td>
-					<td>Defines which element contains the image <code>url</code> and the <code>thumbnail</code>
+					<td>Defines which element contains the image <b>url</b> and the <b>thumbnail</b>
 					</td>
 				</tr>
 				<tr>
@@ -640,6 +640,7 @@ body{
 				</tr>
 			</tbody>
 		</table>
+
 
 		<div class="bs-example table-responsive notranslate">
 			<table class="table table-striped table-bordered JSdataTables" data-paging="true" data-searching="true" data-info="true" data-ordering="true" cellspacing="0" cellpadding="0" border="0">
@@ -1124,7 +1125,7 @@ body{
 		<div class="page-header notranslate">
 			<h1>Show Alert BootBox <span class="label label-danger">Plugin</span></h1>
 		</div>
-		<p>Launch a custom modal box using <b>BootBox</b> features, the function structure is <code>showAlert(title, text, size, align)</code>. You can alternatively set a size and alignment classes like <code>horizontal vertical</code> (For example: <code>right center</code>).</p>
+		<p>Launch a custom modal box using <b>BootBox</b> features, the function structure is <code>showAlert(title, text, size, align)</code>. You can alternatively set a size and alignment classes like <b>horizontal vertical</b> (For example: <code>right center</code>).</p>
 
 		<div class="bs-example">
 			<button type="button" class="btn btn-primary" onclick="showAlert('Small Size Box','This is a text shown in a modal box','small','center')">Show Alert Small Size (Centered)</button>
@@ -1143,7 +1144,7 @@ body{
 		<div class="page-header notranslate">
 			<h1>Show Content BootBox <span class="label label-danger">Plugin</span></h1>
 		</div>
-		<p>Launch a custom modal box using <b>BootBox</b> features, the function shows the content from an element, the structure is <code>showContent(title, element, size, align)</code>. You can alternatively set a size and alignment classes like <code>horizontal vertical</code> (For example: <code>right center</code>).</p>
+		<p>Launch a custom modal box using <b>BootBox</b> features, the function shows the content from an element, the structure is <code>showContent(title, element, size, align)</code>. You can alternatively set a size and alignment classes like <b>horizontal vertical</b> (For example: <code>right center</code>).</p>
 
 		<div class="bs-example">
 			<button type="button" class="btn btn-primary" onclick="showContent('Small Size Box','.showContentExample','small','center')">Show Content Small Size (Centered)</button>
@@ -1165,7 +1166,7 @@ body{
 		<div class="page-header notranslate">
 			<h1>Video Launch <span class="label label-danger">Custom</span></h1>
 		</div>
-		<p>Launch a modal box with a basic video player, the function structure is <code>videoLaunch(url, share, title, autoplay, size, align)</code>. You can alternatively set a size and alignment classes like <code>horizontal vertical</code> (For example: <code>right center</code>).</p>
+		<p>Launch a modal box with a basic video player, the function structure is <code>videoLaunch(url, share, title, autoplay, size, align)</code>. You can alternatively set a size and alignment classes like <b>horizontal vertical</b> (For example: <code>right center</code>).</p>
 
 		<div class="bs-example">
 			<button type="button" class="btn btn-primary" onclick="videoLaunch('https://youtube.com/watch?v=ae6aeo9-Kn8', true, 'My YouTube Video', true, 'medium', 'center')">YouTube Video (Medium Size & Centered)</button>
@@ -1203,7 +1204,7 @@ body{
 				</tr>
 				<tr>
 					<td class="notranslate">data-win-align</td>
-					<td>Horizontal & Vertical alignment (in pixels) of the pop-up, Need to be written like <code>horizontal</code>,<code>vertical</code> and the values can be <code>left</code>, <code>center</code> or <code>right</code></td>
+					<td>Horizontal & Vertical alignment (in pixels) of the pop-up, Need to be written like <b>horizontal</b>,<b>vertical</b> and the values can be <code>left</code>, <code>center</code> or <code>right</code></td>
 				</tr>
 				<tr>
 					<td class="notranslate">data-win-scroll</td>
@@ -1215,7 +1216,7 @@ body{
 				</tr>
 				<tr>
 					<td class="notranslate">data-win-modal-align</td>
-					<td>Alternative to set error modal alignment classes like <code>horizontal vertical</code> (For example: <code>right center</code>)</td>
+					<td>Alternative to set error modal alignment classes like <b>horizontal vertical</b> (For example: <code>right center</code>)</td>
 				</tr>
 			</tbody>
 		</table>
@@ -1253,12 +1254,12 @@ body{
 				</tr>
 				<tr>
 					<td class="notranslate">data-map-coords-1</td>
-					<td>Desired address coords from <b>Google Maps</b> <code>latitude</code>, <code>longitude</code>, <code>zoom</code>
+					<td>Desired address coords from <code>Google Maps</code> <b>latitude</b>, <b>longitude</b>, <b>zoom</b>
 					</td>
 				</tr>
 				<tr>
 					<td class="notranslate">data-map-coords-2</td>
-					<td>Desired address coords from <b>Waze</b> <code>latitude</code>, <code>longitude</code>, <code>zoom</code>
+					<td>Desired address coords from <code>Waze</code> <b>latitude</b>, <b>longitude</b>, <b>zoom</b>
 					</td>
 				</tr>
 				<tr>
@@ -1273,7 +1274,7 @@ body{
 				</tr>
 				<tr>
 					<td class="notranslate">data-map-modal-align</td>
-					<td>Alternative to set modal alignment classes like <code>horizontal vertical</code> (For example: <code>right center</code>)
+					<td>Alternative to set modal alignment classes like <b>horizontal vertical</b> (For example: <code>right center</code>)
 					</td>
 				</tr>
 			</tbody>
@@ -1478,7 +1479,7 @@ body{
 		<div class="page-header notranslate">
 			<h1>Float <span class="label label-danger">BS4</span></h1>
 		</div>
-		<p>Imported <code>Float</code> property classes from <b>Bootstrap 4</b>. These utility classes float an element to the <code>left</code>, <code>right</code>, or <code>disable</code> floating. Use the same viewport breakpoints as our grid system.</p>
+		<p>Imported <code>Float</code> property classes from <b>Bootstrap 4</b>. These utility classes float an element to the <b>left</b>, <b>right</b>, or <b>disable</b> floating. Use the same viewport breakpoints as our grid system.</p>
 
 		<p>As such, the classes are named using the format:</p>
 
@@ -1766,27 +1767,27 @@ body{
 			<tbody>
 				<tr>
 					<td class="notranslate">carousel-fade</td>
-					<td>Adding this class will change the slide animation to fade <code>in</code> and <code>out</code>
+					<td>Adding this class will change the slide animation to <b>fade in</b> and <b>fade out</b>
 					</td>
 				</tr>
 				<tr>
 					<td class="notranslate">carousel-nogradient</td>
-					<td>Adding this class will disable the gradients on <code>left</code> and <code>right</code> controls</code>
+					<td>Adding this class will disable the gradients on <b>left</b> and <b>right</b> controls
 					</td>
 				</tr>
 				<tr>
 					<td class="notranslate">carousel-noshadow</td>
-					<td>Adding this class will disable the shadows on <code>left</code> and <code>right</code> controls</code>
+					<td>Adding this class will disable the shadows on <b>left</b> and <b>right</b> controls
 					</td>
 				</tr>
 				<tr>
 					<td class="notranslate">carousel-nomobile</td>
-					<td>Adding this class will disable the <code>left</code> and <code>right</code> controls on mobile devices</code>
+					<td>Adding this class will disable the <b>left</b> and <b>right</b> controls on mobile devices
 					</td>
 				</tr>
 				<tr>
 					<td class="notranslate">carousel-square</td>
-					<td>Adding this class will change the indicators to <code>square</code> buttons
+					<td>Adding this class will change the indicators to <b>square</b> buttons
 					</td>
 				</tr>
 			</tbody>
