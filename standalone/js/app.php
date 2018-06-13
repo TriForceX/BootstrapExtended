@@ -52,7 +52,7 @@ class php extends utilities\php
 		$jsBuffer = str_replace($jsKey, $jsVariables, $jsBuffer);
 		$jsContent = $jsMinify == true ? php::minify_js($jsBuffer) : $jsBuffer;
 
-		return $jsContent;
+		return php::$jsInfo.$jsContent;
 	}
 }
 
@@ -62,20 +62,20 @@ if(php::is_localhost())
 	{
 		unlink('app.js');
 	}
-	echo php::$jsInfo.php::build_js();
+	echo php::build_js();
 }
 else
 {
 	if(file_exists('app.js'))
 	{
-		if(strcmp(php::$jsInfo.php::build_js(), file_get_contents('app.js')) != 0)
+		if(strcmp(php::build_js(), file_get_contents('app.js')) != 0)
 		{
 			unlink('app.js');
 		}
 	}
 	if(!file_exists('app.js'))
 	{
-		file_put_contents('app.js', php::$jsInfo.php::build_js());
+		file_put_contents('app.js', php::build_js());
 	}
 	echo file_get_contents('app.js');
 }

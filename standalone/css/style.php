@@ -52,7 +52,7 @@ class php extends utilities\php
 		$cssBuffer = str_replace($cssKey, $cssVariables, $cssBuffer);
 		$cssContent = $cssMinify == true ? php::minify_css($cssBuffer) : $cssBuffer;
 
-		return $cssContent;
+		return php::$cssInfo.$cssContent;
 	}
 }
 
@@ -62,20 +62,20 @@ if(php::is_localhost())
 	{
 		unlink('style.css');
 	}
-	echo php::$cssInfo.php::build_css();
+	echo php::build_css();
 }
 else
 {
 	if(file_exists('style.css'))
 	{
-		if(strcmp(php::$cssInfo.php::build_css(), file_get_contents('style.css')) != 0)
+		if(strcmp(php::build_css(), file_get_contents('style.css')) != 0)
 		{
 			unlink('style.css');
 		}
 	}
 	if(!file_exists('style.css'))
 	{
-		file_put_contents('style.css', php::$cssInfo.php::build_css());
+		file_put_contents('style.css', php::build_css());
 	}
 	echo file_get_contents('style.css');
 }
