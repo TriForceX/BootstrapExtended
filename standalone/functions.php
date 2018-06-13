@@ -59,13 +59,13 @@ class php extends utilities\php
 		$append = $get != null ? $get : '';
 		$base = php::get_main_url().'/css/style.';
 		
-		if(php::is_localhost())
+		if(php::is_localhost() || !file_exists('css/style.css'))
 		{
 			echo $base.'php'.$append;
 		}
 		else
 		{
-			echo file_exists('css/style.css') == false ? $base.'php'.$append : $base.'css';
+			echo $base.'css';
 		}
 	}
 	
@@ -75,13 +75,13 @@ class php extends utilities\php
 		$append = $get != null ? $get : '';
 		$base = php::get_main_url().'/js/app.';
 		
-		if(php::is_localhost())
+		if(php::is_localhost() || !file_exists('js/app.js'))
 		{
 			echo $base.'php'.$append;
 		}
 		else
 		{
-			echo file_exists('js/app.js') == false ? $base.'php'.$append : $base.'js';
+			echo $base.'js';
 		}
 	}
 	
