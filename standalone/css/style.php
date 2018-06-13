@@ -2,7 +2,11 @@
 
 header('Content-type: text/css; charset: UTF-8');
 
-$cssInfo = '/*
+require_once('../resources/php/utilities.php');
+
+class php extends utilities\php 
+{
+	public static $cssInfo = '/*
  * Style.php CSS File Parser
  * Version 2.0
  * TriForce - Matías Silva
@@ -11,11 +15,7 @@ $cssInfo = '/*
  * Source:   https://github.com/triforcex/websitebase
  * 
  */';
-
-require_once('../resources/php/utilities.php');
-
-class php extends utilities\php 
-{
+	
 	public static function build_css()
 	{
 		$cssMinify = isset($_GET['unminify']) ? false : true;
@@ -62,17 +62,22 @@ if(php::is_localhost())
 	{
 		unlink('style.css');
 	}
-	echo $cssInfo.php::build_css();
+	echo php::$cssInfo.php::build_css();
 }
 else
 {
+	if(file_exists('style.css'))
+	{
+		if(strcmp(php::$cssInfo.php::build_css(), file_get_contents('style.css')) != 0)
+		{
+			unlink('style.css');
+		}
+	}
 	if(!file_exists('style.css'))
 	{
-		file_put_contents('style.css', $cssInfo.php::build_css());
+		file_put_contents('style.css', php::$cssInfo.php::build_css());
 	}
 	echo file_get_contents('style.css');
 }
 
 //php::get_error('warning');
-
-?>
