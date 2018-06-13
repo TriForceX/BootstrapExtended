@@ -1485,7 +1485,7 @@
 				</tr>
 				<tr>
 					<td class="notranslate">carousel-noshadow</td>
-					<td>Adding this class will disable the shadows on <b>left</b> and <b>right</b> controls
+					<td>Adding this class will disable the shadows on <b>left</b> and <b>right</b> controls and <b>indicators</b>
 					</td>
 				</tr>
 				<tr>

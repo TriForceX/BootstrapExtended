@@ -177,7 +177,10 @@
 }
 .carousel-nogradient .carousel-control.left .glyphicon,
 .carousel-nogradient .carousel-control.right .glyphicon {
-	text-shadow: 0px 3px 6px #000, 0px 3px 6px #000;
+	text-shadow: 0px 3px 6px #000;
+}
+.carousel-nogradient .carousel-indicators li {
+	box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.6);
 }
 /* Carousel control no gradient */
 
@@ -194,6 +197,9 @@
 .carousel-noshadow .carousel-control.left .glyphicon,
 .carousel-noshadow .carousel-control.right .glyphicon {
 	text-shadow: none;
+}
+.carousel-noshadow .carousel-indicators li {
+	box-shadow: none;
 }
 /* Carousel control no shadow */
 
