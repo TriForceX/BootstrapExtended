@@ -2,7 +2,11 @@
 
 header('Content-type: text/javascript; charset: UTF-8');
 
-$jsInfo = '/*
+require_once('../resources/php/utilities.php');
+
+class php extends utilities\php 
+{
+	public static $jsInfo = '/*
  * App.php JavaScript File Parser
  * Version 2.0
  * TriForce - Matías Silva
@@ -11,11 +15,7 @@ $jsInfo = '/*
  * Source:   https://github.com/triforcex/websitebase
  * 
  */';
-
-require_once('../resources/php/utilities.php');
-
-class php extends utilities\php 
-{
+	
 	public static function build_js()
 	{
 		$jsMinify = isset($_GET['unminify']) ? false : true;
@@ -52,7 +52,7 @@ class php extends utilities\php
 		$jsBuffer = str_replace($jsKey, $jsVariables, $jsBuffer);
 		$jsContent = $jsMinify == true ? php::minify_js($jsBuffer) : $jsBuffer;
 
-		return $jsContent;
+		return php::$jsInfo.$jsContent;
 	}
 }
 
@@ -62,17 +62,22 @@ if(php::is_localhost())
 	{
 		unlink('app.js');
 	}
-	echo $jsInfo.php::build_js();
+	echo php::build_js();
 }
 else
 {
+	if(file_exists('app.js'))
+	{
+		if(strcmp(php::build_js(), file_get_contents('app.js')) != 0)
+		{
+			unlink('app.js');
+		}
+	}
 	if(!file_exists('app.js'))
 	{
-		file_put_contents('app.js', $jsInfo.php::build_js());
+		file_put_contents('app.js', php::build_js());
 	}
 	echo file_get_contents('app.js');
 }
 
 //php::get_error('warning');
-
-?>

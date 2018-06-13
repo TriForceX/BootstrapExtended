@@ -57,25 +57,15 @@ class php extends utilities\php
 	public static function get_main_css($get = null)
     {
 		$append = $get != null ? $get : '';
+		$base = get_bloginfo('template_url').'/css/style.';
 		
-		if(php::is_localhost())
+		if(php::is_localhost() || !file_exists('css/style.css'))
 		{
-			if(file_exists('css/style.css'))
-			{
-				unlink('css/style.css');
-			}
-			echo get_bloginfo('template_url').'/css/style.php'.$append;
+			echo $base.'php'.$append;
 		}
 		else
 		{
-			if(!file_exists('css/style.css'))
-			{
-				echo get_bloginfo('template_url').'/css/style.php'.$append;
-			}
-			else
-			{
-				echo get_bloginfo('template_url').'/css/style.css';
-			}
+			echo $base.'css';
 		}
 	}
 	
@@ -83,25 +73,15 @@ class php extends utilities\php
 	public static function get_main_js($get = null)
     {
 		$append = $get != null ? $get : '';
+		$base = get_bloginfo('template_url').'/js/app.';
 		
-		if(php::is_localhost())
+		if(php::is_localhost() || !file_exists('js/app.js'))
 		{
-			if(file_exists('js/app.js'))
-			{
-				unlink('js/app.js');
-			}
-			echo get_bloginfo('template_url').'/js/app.php'.$append;
+			echo $base.'php'.$append;
 		}
 		else
 		{
-			if(!file_exists('js/app.js'))
-			{
-				echo get_bloginfo('template_url').'/js/app.php'.$append;
-			}
-			else
-			{
-				echo get_bloginfo('template_url').'/js/app.js';
-			}
+			echo $base.'js';
 		}
 	}
 	
