@@ -56,28 +56,6 @@ class php extends utilities\php
 	}
 }
 
-if(php::is_localhost())
-{
-	if(file_exists('app.js'))
-	{
-		unlink('app.js');
-	}
-	echo php::build_js();
-}
-else
-{
-	if(file_exists('app.js'))
-	{
-		if(strcmp(php::build_js(), file_get_contents('app.js')) != 0)
-		{
-			unlink('app.js');
-		}
-	}
-	if(!file_exists('app.js'))
-	{
-		file_put_contents('app.js', php::build_js());
-	}
-	echo file_get_contents('app.js');
-}
+echo php::build_js();
 
 //php::get_error('warning');

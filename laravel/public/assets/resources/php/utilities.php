@@ -711,10 +711,25 @@ class php
 	}
 	
 	//Get page code using cUrl
-	public static function get_page_code($url, $start, $end)
+	public static function get_page_code($url, $start = '', $end = '', $agent = false)
 	{
+		/*
+		Examples of common user agents:
+		
+		Chrome: 				Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.2 (KHTML, like Gecko) Chrome/22.0.1216.0 Safari/537.2
+		Internet Explorer 10: 	Mozilla/1.22 (compatible; MSIE 10.0; Windows 3.1)
+		Internet Explorer 6: 	Mozilla/4.08 (compatible; MSIE 6.0; Windows NT 5.1)
+		Googlebot: 				Googlebot/2.1 (+http://www.google.com/bot.html)
+		Bingbot: 				Mozilla/5.0 (compatible; bingbot/2.0; +http://www.bing.com/bingbot.htm)
+		IE 11: 					Mozilla/5.0 (Windows NT 6.3; Trident/7.0; rv:11.0) like Gecko
+		Opera: 					Opera/9.80 (Windows NT 6.0) Presto/2.12.388 Version/12.14
+		Safari: 				Mozilla/5.0 (Macintosh; Intel Mac OS X 10_9_3) AppleWebKit/537.75.14 (KHTML, like Gecko) Version/7.0.3 Safari/7046A194A
+		Twitter: 				Twitterbot/1.0
+		Facebook: 				facebookexternalhit/1.1 (+https://www.facebook.com/externalhit_uatext.php)
+		*/
+		
 		//Curl Init
-		$curlAgent = 'User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/44.0.2403.89 Safari/537.36';
+		$curlAgent = $agent ? $agent : false;
 		$curlInit = curl_init();
 		curl_setopt($curlInit, CURLOPT_URL, $url);
 		curl_setopt($curlInit, CURLOPT_HEADER, 0);
@@ -724,14 +739,21 @@ class php
 		}
 		$curlInitResult = curl_exec($curlInit);
 		curl_close($curlInit);
-
-		//Curl Parse
-		$curlStartPos = stripos($curlInitResult, $start);
-		$curlStartStr = substr($curlInitResult, $curlStartPos);
-		$curlEndStr = substr($curlStartStr, strlen($start));
-		$curlEndPos = stripos($curlEndStr, $end);
-		$curlFinish = substr($curlEndStr, 0, $curlEndPos);
-		return trim($curlFinish);
+		
+		if(empty($start) && empty($end))
+		{
+			return $curlInitResult;
+		}
+		else
+		{
+			//Curl Parse
+			$curlStartPos = stripos($curlInitResult, $start);
+			$curlStartStr = substr($curlInitResult, $curlStartPos);
+			$curlEndStr = substr($curlStartStr, strlen($start));
+			$curlEndPos = stripos($curlEndStr, $end);
+			$curlFinish = substr($curlEndStr, 0, $curlEndPos);
+			return trim($curlFinish);
+		}
 	}
 	
 	//Get external function

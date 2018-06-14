@@ -53,35 +53,38 @@ class php extends utilities\php
 		}
 	}
 	
-	//Get main CSS file
-	public static function get_main_css($get = null)
+	//Get main CSS & JS files
+	public static function get_main_theme($type, $get = null)
     {
+		$url = php::get_main_url();
 		$append = $get != null ? $get : '';
-		$base = php::get_main_url().'/css/style.';
+		$route = $type == 'css' ? 'css/style' : 'js/app';
+		$ext = $type == 'css' ? '.css' : '.js';
+		$file = $url.'/'.$route;
 		
-		if(php::is_localhost() || !file_exists('css/style.css'))
+		if(php::is_localhost())
 		{
-			echo $base.'php'.$append;
+			if(file_exists($route.$ext))
+			{
+				unlink($route.$ext);
+			}
+			echo $file.'.php'.$append;
 		}
 		else
 		{
-			echo $base.'css';
-		}
-	}
-	
-	//Get main JS file
-	public static function get_main_js($get = null)
-    {
-		$append = $get != null ? $get : '';
-		$base = php::get_main_url().'/js/app.';
-		
-		if(php::is_localhost() || !file_exists('js/app.js'))
-		{
-			echo $base.'php'.$append;
-		}
-		else
-		{
-			echo $base.'js';
+			if(file_exists($route.$ext) && isset($_GET['rebuild']))
+			{
+				if(strcmp(php::get_page_code($file.'.php'.$append), file_get_contents($route.$ext)) !== 0)
+				{
+					unlink($route.$ext);
+				}
+				header('Location: '.$url);
+			}
+			if(!file_exists($route.$ext))
+			{
+				file_put_contents($route.$ext, php::get_page_code($file.'.php'.$append));
+			}
+			echo $file.$ext;
 		}
 	}
 	

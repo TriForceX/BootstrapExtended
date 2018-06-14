@@ -56,28 +56,6 @@ class php extends utilities\php
 	}
 }
 
-if(php::is_localhost())
-{
-	if(file_exists('style.css'))
-	{
-		unlink('style.css');
-	}
-	echo php::build_css();
-}
-else
-{
-	if(file_exists('style.css'))
-	{
-		if(strcmp(php::build_css(), file_get_contents('style.css')) != 0)
-		{
-			unlink('style.css');
-		}
-	}
-	if(!file_exists('style.css'))
-	{
-		file_put_contents('style.css', php::build_css());
-	}
-	echo file_get_contents('style.css');
-}
+echo php::build_css();
 
 //php::get_error('warning');

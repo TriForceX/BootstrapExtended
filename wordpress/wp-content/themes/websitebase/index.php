@@ -142,7 +142,7 @@
 &lt;html lang="&lt;?php echo php::get_html_data('lang'); ?&gt;"&gt;
 &lt;head&gt;
 	...
-	&lt;link href="&lt;?php echo php::get_main_css(); ?&gt;" rel="stylesheet"&gt;
+	&lt;link href="&lt;?php echo php::get_main_theme('css'); ?&gt;" rel="stylesheet"&gt;
 	...
 &lt;/head&gt;<br>&lt;body&gt;<br>...</code></pre>
 		</figure>
@@ -182,7 +182,7 @@
 		
 		<figure class="highlight">
 			<pre><code class="language-html" data-lang="html">...<br>&lt;!-- Main JS File --&gt;
-&lt;script src="&lt;?php echo php::get_main_js(); ?&gt;"&gt;&lt;/script&gt;
+&lt;script src="&lt;?php echo php::get_main_theme('js'); ?&gt;"&gt;&lt;/script&gt;
 ...
 &lt;/body&gt;
 &lt;/html&gt;</code></pre>
@@ -196,7 +196,7 @@
 				<div class="panel-body">
 					You can use the <b>PHP functions</b> from the main library like <code>php::function()</code>, If you will use <code>Wordpress</code> (or another CMS) is highly recommended to use their main functions instead the base here. For example for <code>Wordpress</code> use <code>get_bloginfo('template_url')</code> instead <code>php::get_main_url()</code> and <code>get_header()</code>, <code>get_footer()</code> instead <code>include('header.php')</code>, <code>include('footer.php')</code>.
 					<br><br>
-					<b>Note for main CSS and JS:</b> You can display the code unreduced setting the <code>GET</code> flag <code>?unminify</code> to the main <b>CSS</b> and <b>JS</b> call functions. For example <code>&lt;?php echo php::get_main_css('?unminify'); ?&gt;</code>
+					<b>Note for main CSS and JS:</b> You can display the code unreduced setting the <code>GET</code> flag <code>?unminify</code> to the main <b>CSS</b> and <b>JS</b> call functions. For example <code>&lt;?php echo php::get_main_theme('css','?unminify'); ?&gt;</code>.
 				</div>
 			</div>
 		</p>
@@ -336,7 +336,7 @@ body{
 			<div class="panel-body">
 				The file <code>style-theme.css</code> it will contain all the main classes for the website layout. The file <code>style-example.css</code> is only for tests and references, you can delete with no problems. Is not recomended to modify the <code>style-base.css</code> or <code>style-bootstrap.css</code> because contains the main functions inside. <b>If you want add extra stuff, just add it in</b> <code>style-theme.css</code> <b>or</b> <code>style-extras.php</code>
 				<br><br>
-				The compile process works in realtime if you are testing in <code>localhost</code> side, if you upload the code to <code>production</code> the file <code>style.css</code> will be generated only once, if you update your code, remember to delete <code>style.css</code> to get a new one.
+				The compile process works in realtime if you are testing in <b>localhost</b>, if you upload the code to <b>production</b> enviroment, the file <code>style.css</code> will be generated only once, if you update your code, remember to rebuild it adding <code>?rebuild</code> to the main url (for example: <b><?php echo php::get_main_url(); ?>/?rebuild</b>).
 				<br><br>
 				<b>Note for Wordpress:</b> Theres a file called <code>style-admin.css</code> which will directly affect the administration panel <i>(It already included some base classes)</i>.
 			</div>
@@ -406,7 +406,7 @@ body{
 				<br><br>
 				To manage custom languages just add the attribute <code>data-js-lang</code> to <code>&lt;body&gt;</code> tag. The main language file is <code>app-lang.js</code> but these are the default ones, you can override them in <code>app-theme.js</code> using the same key. If you want add more language take a look on <code>app-example.js</code> for references. 
 				<br><br>
-				The compile process works in realtime if you are testing in <code>localhost</code> side, if you upload the code to <code>production</code> the file <code>app.js</code> will be generated only once, if you update your code, remember to delete <code>app.js</code> to get a new one.
+				The compile process works in realtime if you are testing in <b>localhost</b>, if you upload the code to <b>production</b> enviroment, the file <code>app.js</code> will be generated only once, if you update your code, remember to rebuild it adding <code>?rebuild</code> to the main url (for example: <b><?php echo php::get_main_url(); ?>/?rebuild</b>).
 				<br><br>
 				<b>Note for Wordpress:</b> Theres a file called <code>app-admin.js</code> which will directly affect the administration panel in the case you need <i>(It already included some base functions)</i>.
 			</div>
@@ -640,7 +640,6 @@ body{
 				</tr>
 			</tbody>
 		</table>
-
 
 		<div class="bs-example table-responsive notranslate">
 			<table class="table table-striped table-bordered JSdataTables" data-paging="true" data-searching="true" data-info="true" data-ordering="true" cellspacing="0" cellpadding="0" border="0">
