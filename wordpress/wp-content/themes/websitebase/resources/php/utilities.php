@@ -188,6 +188,18 @@ class php
     {
         return stripos($haystack, $needle) !== false;
     }
+	
+	//Check if a string is different with another.
+    public static function str_compare($first, $second)
+    {
+        return strcmp($first, $second) !== 0;
+    }
+	
+	//Check if a string is different with another. This version is case insensitive.
+    public static function str_icompare($first, $second)
+    {
+        return strcasecmp($first, $second) !== 0;
+    }
 
     //Strip all witespaces from the given string.
     public static function strip_space($string)
@@ -206,14 +218,13 @@ class php
         } elseif (preg_match('/^(' . $no_words . ')$/i', $string)) {
             return false;
         }
-
         return $default;
     }
 	
 	//Converts all accent characters to normal characters
     public static function remove_accents($string)
     {
-       $unwanted_array = array('Š'=>'S', 'š'=>'s', 'Ž'=>'Z', 'ž'=>'z', 'À'=>'A', 'Á'=>'A', 'Â'=>'A', 'Ã'=>'A', 'Ä'=>'A', 'Å'=>'A', 'Æ'=>'A', 'Ç'=>'C', 'È'=>'E', 'É'=>'E',
+		$unwanted_array = array('Š'=>'S', 'š'=>'s', 'Ž'=>'Z', 'ž'=>'z', 'À'=>'A', 'Á'=>'A', 'Â'=>'A', 'Ã'=>'A', 'Ä'=>'A', 'Å'=>'A', 'Æ'=>'A', 'Ç'=>'C', 'È'=>'E', 'É'=>'E',
                             'Ê'=>'E', 'Ë'=>'E', 'Ì'=>'I', 'Í'=>'I', 'Î'=>'I', 'Ï'=>'I', 'Ñ'=>'N', 'Ò'=>'O', 'Ó'=>'O', 'Ô'=>'O', 'Õ'=>'O', 'Ö'=>'O', 'Ø'=>'O', 'Ù'=>'U',
                             'Ú'=>'U', 'Û'=>'U', 'Ü'=>'U', 'Ý'=>'Y', 'Þ'=>'B', 'ß'=>'Ss', 'à'=>'a', 'á'=>'a', 'â'=>'a', 'ã'=>'a', 'ä'=>'a', 'å'=>'a', 'æ'=>'a', 'ç'=>'c',
                             'è'=>'e', 'é'=>'e', 'ê'=>'e', 'ë'=>'e', 'ì'=>'i', 'í'=>'i', 'î'=>'i', 'ï'=>'i', 'ð'=>'o', 'ñ'=>'n', 'ò'=>'o', 'ó'=>'o', 'ô'=>'o', 'õ'=>'o',
@@ -238,7 +249,7 @@ class php
     public static function slugify($string, $separator = '-', $css_mode = false)
     {
         // Compatibility with 1.0.* parameter ordering for semvar
-        if ($separator === true || $separator === false) {
+        if ($separator === true || $separator === false){
             $css_mode = $separator;
             $separator = '-';
 
@@ -248,24 +259,22 @@ class php
 
         $slug = preg_replace('/([^a-z0-9]+)/', $separator, strtolower(self::remove_accents($string)));
 
-        if ($css_mode) {
+        if($css_mode){
             $digits = array('zero', 'one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine');
 
-            if (is_numeric(substr($slug, 0, 1))) {
+            if(is_numeric(substr($slug, 0, 1))){
                 $slug = $digits[substr($slug, 0, 1)] . substr($slug, 1);
             }
         }
-
         return $slug;
     }
 	
     //Convert the string to given length of charactes.
     public static function limit_characters($string, $limit = 100, $append = '...')
     {
-        if (mb_strlen($string) <= $limit) {
+        if (mb_strlen($string) <= $limit){
             return $string;
         }
-
         return rtrim(mb_substr($string, 0, $limit, 'UTF-8')) . $append;
     }
 
@@ -274,10 +283,9 @@ class php
     {
         preg_match('/^\s*+(?:\S++\s*+){1,' . $limit . '}/u', $string, $matches);
 
-        if (!isset($matches[0]) || strlen($string) === strlen($matches[0])) {
+        if(!isset($matches[0]) || strlen($string) === strlen($matches[0])){
             return $string;
         }
-
         return rtrim($matches[0]).$append;
     }
 	
@@ -297,8 +305,8 @@ class php
 		if($custom != null){
 			$whitelist[] = $custom;
 		}
-		foreach ($whitelist as $item) {
-			if (stripos($_SERVER['HTTP_HOST'], $item) !== false) {
+		foreach ($whitelist as $item){
+			if (stripos($_SERVER['HTTP_HOST'], $item) !== false){
 				$passed = true;
 			}
 		}
@@ -314,18 +322,18 @@ class php
 	//Returns the IP address of the client.
     public static function get_client_ip($trust_proxy_headers = false)
     {
-        if (!$trust_proxy_headers) {
+        if(!$trust_proxy_headers){
             return $_SERVER['REMOTE_ADDR'];
         }
-
-        if (!empty($_SERVER['HTTP_CLIENT_IP'])) {
+        if(!empty($_SERVER['HTTP_CLIENT_IP'])){
             $ip = $_SERVER['HTTP_CLIENT_IP'];
-        } elseif (!empty($_SERVER['HTTP_X_FORWARDED_FOR'])) {
+        }
+		elseif(!empty($_SERVER['HTTP_X_FORWARDED_FOR'])){
             $ip = $_SERVER['HTTP_X_FORWARDED_FOR'];
-        } else {
+        }
+		else{
             $ip = $_SERVER['REMOTE_ADDR'];
         }
-
         return $ip;
     }
 	
@@ -338,7 +346,6 @@ class php
 		if($remove != null){
 			$domain = str_replace($remove,'',$domain);
 		}
-		
 		return $domain;
     }
 	
@@ -352,35 +359,32 @@ class php
 		
         if($is_https){
             $url .= 'https://';
-        }else{
+        }
+		else{
             $url .= 'http://';
         }
-
         // Was a username or password passed?
         if(isset($_SERVER['PHP_AUTH_USER'])){
             $url .= $_SERVER['PHP_AUTH_USER'];
 
-            if (isset($_SERVER['PHP_AUTH_PW'])){
+            if(isset($_SERVER['PHP_AUTH_PW'])){
                 $url .= ':' . $_SERVER['PHP_AUTH_PW'];
             }
-
             $url .= '@';
         }
 
-        // We want the user to stay on the same host they are currently on,
-        // but beware of security issues
+        // We want the user to stay on the same host they are currently on, but beware of security issues
         // see http://shiflett.org/blog/2006/mar/server-name-versus-http-host
         $url .= $_SERVER['HTTP_HOST'];
-
         $port = $_SERVER['SERVER_PORT'];
 
         // Is it on a non standard port?
         if($is_https && ($port != 443)){
             $url .= ':' . $_SERVER['SERVER_PORT'];
-        }elseif(!$is_https && ($port != 80)){
+        }
+		elseif(!$is_https && ($port != 80)){
             $url .= ':' . $_SERVER['SERVER_PORT'];
         }
-
         // Get the rest of the URL
         if(!isset($_SERVER['REQUEST_URI'])){
             // Microsoft IIS doesn't set REQUEST_URI by default
@@ -389,14 +393,13 @@ class php
             if(isset($_SERVER['QUERY_STRING'])){
                 $url .= '?' . $_SERVER['QUERY_STRING'];
             }
-        }else{
+        }
+		else{
             $url .= $_SERVER['REQUEST_URI'];
         }
-		
 		if($queryRemove){
 			$url = strtok($url,'?');
 		}
-
         return $url;
     }
 	
@@ -413,7 +416,7 @@ class php
     public static function add_query_arg($newKey, $newValue = null, $uri = null)
     {
         // Was an associative array of key => value pairs passed?
-        if (is_array($newKey)) {
+        if(is_array($newKey)){
             $newParams = $newKey;
 
             // Was the URL passed as an argument?
@@ -424,7 +427,8 @@ class php
             } else {
                 $uri = self::array_get($_SERVER['REQUEST_URI'], '');
             }
-        } else {
+        }
+		else{
             $newParams = array($newKey => $newValue);
 
             // Was the URL passed as an argument?
@@ -434,47 +438,45 @@ class php
         // Parse the URI into it's components
         $puri = parse_url($uri);
 
-        if (isset($puri['query'])) {
+        if(isset($puri['query'])){
             parse_str($puri['query'], $queryParams);
             $queryParams = array_merge($queryParams, $newParams);
-        } elseif (isset($puri['path']) && strstr($puri['path'], '=') !== false) {
+        }
+		elseif(isset($puri['path']) && strstr($puri['path'], '=') !== false){
             $puri['query'] = $puri['path'];
             unset($puri['path']);
             parse_str($puri['query'], $queryParams);
             $queryParams = array_merge($queryParams, $newParams);
-        } else {
+        }
+		else{
             $queryParams = $newParams;
         }
 
         // Strip out any query params that are set to false.
         // Properly handle valueless parameters.
-        foreach ($queryParams as $param => $value) {
-            if ($value === false) {
+        foreach($queryParams as $param => $value){
+            if($value === false){
                 unset($queryParams[$param]);
-            } elseif ($value === null) {
+            }
+			elseif ($value === null){
                 $queryParams[$param] = '';
             }
         }
 
         // Re-construct the query string
         $puri['query'] = http_build_query($queryParams);
-
         // Strip = from valueless parameters.
         $puri['query'] = preg_replace('/=(?=&|$)/', '', $puri['query']);
-
-
         // Re-construct the entire URL
         $nuri = self::http_build_url($puri);
 
         // Make the URI consistent with our input
-        if ($nuri[0] === '/' && strstr($uri, '/') === false) {
+        if($nuri[0] === '/' && strstr($uri, '/') === false){
             $nuri = substr($nuri, 1);
         }
-
-        if ($nuri[0] === '?' && strstr($uri, '?') === false) {
+        if($nuri[0] === '?' && strstr($uri, '?') === false){
             $nuri = substr($nuri, 1);
         }
-
         return rtrim($nuri, '?');
     }
 
@@ -508,10 +510,7 @@ class php
 	//Get custom date format
 	public static function show_date($date = false, $format = 'Y-m-d', $lang = 'eng', $abbr = false)
 	{
-		if(!$date){
-			$date = date('Y-m-d');
-		}
-		
+		$date = $date ? $date : date('Y-m-d');
 		$newDate = strtotime($date);
 		$finalDate = date($format, $newDate);
 		$langSet = $lang == 'esp' ? 1 : 0;
@@ -568,17 +567,20 @@ class php
 
 			if(($offset + $limit) > $totalnum){
 				$lastnum = $totalnum;
-			}else{
+			}
+			else{
 				$lastnum = ($offset + $limit);
 			}
-			if (isset($_GET['pag'])){ 
+			if(isset($_GET['pag'])){ 
 				$pageCurrent = $_GET['pag'];
 			}
 			else{
 				$pageCurrent = 1;
 			}
+			
 			$pagePrev = $pageCurrent-1; $pageNumPrev = ($pageCurrent*$limit)-$limit*2;
 			$pageNext = $pageCurrent+1; $pageNumNext = $pageCurrent*$limit;
+			
 			if($pagePrev <= 1){
 				$pagePrev = 1;
 				$pageNumPrev = 0;
@@ -592,11 +594,11 @@ class php
 			}
 			echo '<div class="JSpaginator '.$customclass.'"><div class="JSpageItems">';
 			echo '<a class="JSpagePrev" href="'.$append.'pag='.$pagePrev.'&num='.$pageNumPrev.'">'.$customLeft.'</a>';	
-				for ($i = 1; $i <= $pages; $i++)
+				for($i = 1; $i <= $pages; $i++)
 				{
 					$newoffset = $limit * ($i - 1);
 
-					if ($newoffset != $offset) 
+					if($newoffset != $offset) 
 					{
 						echo '<a href="'.$append.'pag='.$i.'&num='.$newoffset.'">'.$i.'</a>';
 					} 
@@ -632,7 +634,6 @@ class php
 		elseif(self::str_contains($url,'facebook')){
 			$videoURL = 'https://www.facebook.com/plugins/video.php?href='.$url.'&show_text=0&autoplay='.$videoAutplay;
 		}
-
 		return $videoURL;
 	}
 	
@@ -653,14 +654,13 @@ class php
 		elseif(self::str_contains($url,'facebook')){
 			$videoID = $url;
 		}
-
 		return $videoID;
 	}
 	
 	//Convert string to UTF8
 	public static function convert_to_utf8($string)
     {
-		// map based on:
+		// Map based on:
 		// http://konfiguracja.c0.pl/iso02vscp1250en.html
 		// http://konfiguracja.c0.pl/webpl/index_en.html#examp
 		// http://www.htmlentities.com/html/entities/
@@ -728,7 +728,7 @@ class php
 		Facebook:	facebookexternalhit/1.1 (+https://www.facebook.com/externalhit_uatext.php)
 		*/
 		
-		//Curl Init
+		//cUrl init
 		$curlAgent = $agent ? $agent : false;
 		$curlInit = curl_init();
 		curl_setopt($curlInit, CURLOPT_URL, $url);
@@ -742,11 +742,12 @@ class php
 		
 		if(empty($start) && empty($end))
 		{
+			//cUrl full code
 			return $curlInitResult;
 		}
 		else
 		{
-			//Curl Parse
+			//cUrl by start/end
 			$curlStartPos = stripos($curlInitResult, $start);
 			$curlStartStr = substr($curlInitResult, $curlStartPos);
 			$curlEndStr = substr($curlStartStr, strlen($start));
@@ -761,6 +762,22 @@ class php
 	{
 		if(function_exists($name)){
 			return call_user_func_array($name, $params);
+		}
+	}
+	
+	//Get extra code
+	public static $extra_code = false;
+
+	public static function extra_code($type)
+	{
+		if($type == 'start'){
+			return ob_start();
+		}
+		elseif($type == 'end'){
+			return php::$extra_code .= ob_get_clean();
+		}
+		elseif($type == 'get'){
+			return php::$extra_code;
 		}
 	}
 }
