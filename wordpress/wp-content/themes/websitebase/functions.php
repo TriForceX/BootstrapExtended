@@ -169,7 +169,14 @@ function get_id_by_name($post_name)
 	return $id;
 }
 
-//Get taxonomy data (term_id, name, slug, term_group, term_taxonomy_id, taxonomy, description, parent, count)
+//Get post_type data (label, name, description, etc...)
+function get_post_type_data($type, $name = null){
+	$post_type = empty($name) ? get_query_var('post_type') : $name;
+	$data = get_post_type_object($post_type);
+	return $data->$type;
+}
+
+//Get taxonomy data (term_id, name, slug, term_group, term_taxonomy_id, taxonomy, description, parent, count, etc...)
 function get_taxonomy_data($type, $taxonomy, $id = null){
 	$post_id = empty($id) ? get_the_ID() : $id;
 	$post_terms = array_reverse(get_terms($taxonomy));
