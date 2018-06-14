@@ -68,11 +68,7 @@
 	wp_head();
 	?>
 </head>
-<?php if(is_home()): ?>
-<body class="JSisHome">
-<?php else: ?>
-<body>
-<?php endif; ?>
+<body class="<?php echo is_home() ? 'JSisHome' : ''; ?>">
 <!-- ================================================= ANALYTICS ================================================= -->
 <?php if(php::is_localhost()): ?>
 <script>

@@ -62,14 +62,14 @@
     
     
 </head>
-@if(Request::path() == '/')
-<body class="JSisHome">
-@else
-<body>
-@endif
 
+<body class="@if(Request::path() == '/') JSisHome @endif">
 <!-- ================================================= ANALYTICS ================================================= -->
-@if(stripos(Request::ip(), 'localhost') !== false || stripos(Request::ip(), '192.168.') !== false)
+@if(stripos(Request::ip(), 'localhost') !== false || 
+	stripos(Request::ip(), '127.0.0.') !== false ||
+	stripos(Request::ip(), '192.168.') !== false ||
+	stripos(Request::ip(), '.site') !== false ||
+	stripos(Request::ip(), '.dev') !== false)
 <script>
 	function ga(){ console.log('Google Analytics:\n',arguments); } //Dont track in localhost
 </script>

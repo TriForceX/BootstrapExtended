@@ -61,11 +61,7 @@
 	
 	<!-- ******** CSS FILES ******** -->
 </head>
-<?php if(php::is_home()): ?>
-<body class="JSisHome">
-<?php else: ?>
-<body>
-<?php endif; ?>
+<body class="<?php echo php::is_home() ? 'JSisHome' : ''; ?>">
 <!-- ================================================= ANALYTICS ================================================= -->
 <?php if(php::is_localhost()): ?>
 <script>
