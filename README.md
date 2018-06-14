@@ -44,6 +44,7 @@ Base structure for web sites with reusable parts of source code or functions mai
 	- Send E-Mails with PHPMailer
 	- Check ends/start of string
 	- Check string contains another string
+	- Compare strings
 	- Strip all witespaces to string
 	- Convert string to boolean
 	- Remove accents
@@ -58,6 +59,8 @@ Base structure for web sites with reusable parts of source code or functions mai
 	- Custom paginator
 	- Get YouTube, Vimeo and Facebook ID and embed code URL
 	- Get website parts with cUrl
+	- Get external functions
+	- Get extra code
 - JS Features:
 	- Custom language support
 	- Check attr function
@@ -112,14 +115,14 @@ Base structure for web sites with reusable parts of source code or functions mai
 	- User Role Editor (Plugin)
 
 # Questions & Answers
-1. Why Bootstrap 3.3.7 instead the newer **Bootstrap 4**?
+1. Why **Bootstrap 3.3.7** instead the newer **Bootstrap 4**?
    - In a few words, BS4 dropped the compatibility in **Internet Explorer 8 and 9**. Some people is still using **Windows 7** and this comes with **IE8** by default.
    
 2. There's some stuff still not working on **Internet Explorer 8 and 9**, what about that?
    - I am aware of that, but i don't intend to get website working completely 100% in **IE8** or **IE9**, but at least i want to show website "navigable" and not destroyed.
 
 3. Can i use this stuff in plain **HTML** instead the **PHP** Standalone?
-   - Yes, but you need to remove all the **PHP** stuff. Just copy the *Standalone* structure in **HTML** Files, remove **PHP** stuff, and call the **CSS / JS** files manually.
+   - Yes, but you need to remove all the **PHP** stuff. Just copy the *Standalone* structure in **HTML** Files, remove **PHP** stuff, and call the **CSS & JS** files manually.
 
 # Recommended Tools for editing
 - [Visual Studio Code](https://code.visualstudio.com/)
