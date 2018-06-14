@@ -72,13 +72,16 @@ class php extends utilities\php
 		}
 		else
 		{
-			if(file_exists($route.$ext) && isset($_GET['rebuild']))
+			if(isset($_GET['rebuild']))
 			{
-				if(strcmp(php::get_page_code($file.'.php'.$append), file_get_contents($route.$ext)) !== 0)
+				if(file_exists($route.$ext))
 				{
-					unlink($route.$ext);
+					if(strcmp(php::get_page_code($file.'.php'.$append), file_get_contents($route.$ext)) !== 0)
+					{
+						unlink($route.$ext);
+					}
+					header('Location: '.$url);
 				}
-				header('Location: '.$url);
 			}
 			if(!file_exists($route.$ext))
 			{
