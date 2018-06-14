@@ -63,7 +63,7 @@
     
 </head>
 
-<body class="@if(Request::path() == '/') JSisHome @endif">
+<body class="<?php echo Request::path() == '/' ? 'JSisHome' : ''; ?>">
 <!-- ================================================= ANALYTICS ================================================= -->
 @if(stripos(Request::ip(), 'localhost') !== false || 
 	stripos(Request::ip(), '127.0.0.') !== false ||
