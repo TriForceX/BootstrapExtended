@@ -56,7 +56,7 @@
 <!-- ******** FOOTER RESOURCES ******** -->
 
 <!-- Extra Code -->
-<?php echo php::extra_code('footer','get'); ?>
+<?php echo php::section('footer','get'); ?>
 
 <?php
 /* Always have wp_footer() just before the closing </body>

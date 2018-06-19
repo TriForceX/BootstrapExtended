@@ -56,7 +56,7 @@
 <!-- ******** FOOTER RESOURCES ******** -->
 
 <!-- Extra Code -->
-<?php echo php::extra_code('footer','get'); ?>
+<?php echo php::section('footer','get'); ?>
 
 </body>
 </html>
