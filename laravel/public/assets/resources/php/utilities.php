@@ -562,9 +562,9 @@ class php
 		{
 			$pages = intval($totalnum / $limit);
 
-			if ($totalnum % $limit)
-			$pages++;
-
+			if ($totalnum % $limit){
+				$pages++;
+			}
 			if(($offset + $limit) > $totalnum){
 				$lastnum = $totalnum;
 			}

@@ -57,15 +57,15 @@ $(document).ready(function(){
 	
 	//Example use language string
 	console.log(lang('@test-title'));
-
-	//Example lightGallery next page
-	$(document).on('onNextPageChange.lg', function(event){
-		window.location.href = $('.lg-next').attr('href'); 
-	});
 	
 	//Example lightGallery prev page
 	$(document).on('onPrevPageChange.lg', function(event){
-		window.location.href = $('.lg-prev').attr('href');
+		window.location.href = $('.JSpagePrev').attr('href');
+	});
+
+	//Example lightGallery next page
+	$(document).on('onNextPageChange.lg', function(event){
+		window.location.href = $('.JSpageNext').attr('href'); 
 	});
 	
 	//Example scroll to gallery page

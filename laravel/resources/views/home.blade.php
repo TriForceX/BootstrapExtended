@@ -154,12 +154,11 @@
 			<tbody>
 				<tr>
 					<td class="notranslate">data-lg-item</td>
-					<td>Defines which element contains the image <b>url</b> and the <b>thumbnail</b>
-					</td>
+					<td>Defines which element contains the image <b>url</b> and the <b>thumbnail</b>. If is <code>auto</code> it will takes all <code>&lt;a&gt;</code> tag.</td>
 				</tr>
 				<tr>
 					<td class="notranslate">data-lg-title</td>
-					<td>Set a custom title to all images in the gallery.</td>
+					<td>Set a custom title to all images in the gallery. If is <code>auto</code> it will takes all <code>&lt;a&gt;</code> title attribute.</td>
 				</tr>
 				<tr>
 					<td class="notranslate">data-lg-thumb</td>
@@ -185,7 +184,7 @@
 		</table>
 
 		<div class="bs-example">
-			<div class="row JSlightGallery" data-lg-item="auto" data-lg-title="false" data-lg-thumb="false" data-lg-download="false" data-lg-gallery="false">
+			<div class="row JSlightGallery" data-lg-item="auto" data-lg-title="auto" data-lg-thumb="false" data-lg-download="false" data-lg-gallery="false">
 				<div class="col-md-3">
 					<a class="thumbnail" style="height:100px; overflow: hidden" title="My image 1" href="https://getbootstrap.com/docs/3.3/examples/screenshots/theme.jpg">
 						<img src="https://getbootstrap.com/docs/3.3/examples/screenshots/theme.jpg">
@@ -209,7 +208,7 @@
 			</div>
 		</div>
 		<figure class="highlight">
-			<pre><code class="language-html" data-lang="html">&lt;div class="JSlightGallery" data-lg-item="auto" data-lg-title="false" data-lg-thumb="false" data-lg-gallery="false" data-lg-download="false"&gt;<br>...<br>&lt;/div&gt;</code></pre>
+			<pre><code class="language-html" data-lang="html">&lt;div class="JSlightGallery" data-lg-item="auto" data-lg-title="auto" data-lg-thumb="false" data-lg-gallery="false" data-lg-download="false"&gt;<br>...<br>&lt;/div&gt;</code></pre>
 		</figure>
 		
 		<h3 class="JSlightGalleryExample">Gallery Mode</h3>
@@ -289,9 +288,9 @@
 			</div>
 
 			<nav aria-label="Page navigation">
-				<ul class="pagination no-margin lg-gallery-paginator">
+				<ul class="pagination no-margin">
 					<li>
-						<a href="?page=<?php echo $_GET["page"]=="3" ? '2' : ($_GET["page"]=="2" ? '1' : ($_GET["page"]=="1" ? '#' : '#')); ?>" aria-label="Previous" class="lg-prev">
+						<a href="?page=<?php echo $_GET["page"]=="3" ? '2' : ($_GET["page"]=="2" ? '1' : ($_GET["page"]=="1" ? '#' : '#')); ?>" aria-label="Previous" class="JSpagePrev">
 							<span aria-hidden="true">&laquo;</span>
 						</a>
 					</li>
@@ -299,7 +298,7 @@
 					<li class="<?php echo $_GET["page"]=="2" ? 'active' : '' ?>"><a href="?page=2">2</a></li>
 					<li class="<?php echo $_GET["page"]=="3" ? 'active' : '' ?>"><a href="?page=3">3</a></li>
 					<li>
-						<a href="?page=<?php echo $_GET["page"]=="3" ? '#' : ($_GET["page"]=="2" ? '3' : ($_GET["page"]=="1" ? '2' : '2')); ?>" aria-label="Next" class="lg-next">
+						<a href="?page=<?php echo $_GET["page"]=="3" ? '#' : ($_GET["page"]=="2" ? '3' : ($_GET["page"]=="1" ? '2' : '2')); ?>" aria-label="Next" class="JSpageNext">
 							<span aria-hidden="true">&raquo;</span>
 						</a>
 					</li>
@@ -310,6 +309,17 @@
 		<figure class="highlight">
 			<pre><code class="language-html" data-lang="html">&lt;div class="JSlightGallery" data-lg-item="auto" data-lg-title="Gallery Title" data-lg-thumb="true" data-lg-download="true" data-lg-gallery="true" data-lg-page-total="3" data-lg-page-current="1"&gt;<br>...<br>&lt;/div&gt;</code></pre>
 		</figure>
+
+		<p>
+		<div class="panel panel-default">
+			<div class="panel-heading">
+				<h3 class="panel-title">Note for gallery paginator</h3>
+			</div>
+			<div class="panel-body">
+				Remember to add the <b>previous</b> and <b>next</b> events in the <b>JS</b> to detect which actions will be executed on each case. Take a look in the file <code>app-example.js</code> for <code>onPrevPageChange.lg</code> and <code>onNextPageChange.lg</code> events examples.
+			</div>
+		</div>
+		</p>
 
 		<!-- lightGallery Example -->
 
@@ -1163,7 +1173,7 @@
 		<div class="page-header">
 			<h1>More functions! <span class="label label-danger">JS & PHP</span></h1>
 		</div>
-		<p>There is more functions in the whole code, just play and try it. Remember to check <code>app-base.js</code>, <code>functions.php</code> and <code>utilities.php</code> for more stuff. Also you can find more info about the resources in the main menu.</p>
+		<p>There is more functions in the whole code, just play and try it. Remember to check <code>app-base.js</code>, <code>resources.php</code> and <code>utilities.php</code> for more stuff. Also you can find more info about the resources in the main menu.</p>
 
 		<!-- More Functions -->
 

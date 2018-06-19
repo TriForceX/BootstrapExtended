@@ -381,7 +381,7 @@ function loadLightGallery()
 		var galPageCurrent = parseInt($(this).data("lg-page-current"));
 		var galLoadThumb = mainUrl+"/resources/lightgallery/img/loading.gif";
 		
-		if(String($(this).data("lg-title")) != "false"){
+		if(String($(this).data("lg-title")) != "auto"){
 			$(this).find(galSelectorVal).not(".lg-thumb-prev, .lg-thumb-next").attr("title", $(this).data("lg-title"));
 		}
 		
@@ -389,7 +389,7 @@ function loadLightGallery()
 			$(this).addClass("JSlightGalleryMode");
 		}
 		
-		if($(".lg-gallery-paginator").length > 0){
+		if($(".JSlightGalleryMode").length > 0){
 			if($(".JSlightGallery.JSlightGalleryMode .lg-thumb-prev").length < 1 && 
 			   $(".JSlightGallery.JSlightGalleryMode .lg-thumb-next").length < 1){
 				$(".JSlightGallery.JSlightGalleryMode").prepend("<div class='lg-thumb-prev' href='"+galLoadThumb+"' title='"+lang('@lgtitle-prev-text')+"'><img src='#'></div>");
@@ -405,7 +405,7 @@ function loadLightGallery()
 			loop: false,
 		}); 
 		
-		if($(".lg-gallery-paginator").length > 0){
+		if($(".JSlightGalleryMode").length > 0){
 			
 			var total;
 			var totalSlide;
