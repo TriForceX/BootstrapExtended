@@ -389,7 +389,7 @@ function loadLightGallery()
 			$(this).addClass("JSlightGalleryMode");
 		}
 		
-		if($(".JSlightGalleryMode").length > 0){
+		if($(".JSlightGalleryMode").length > 0 && galPageTotal > 1){
 			if($(".JSlightGallery.JSlightGalleryMode .lg-thumb-prev").length < 1 && 
 			   $(".JSlightGallery.JSlightGalleryMode .lg-thumb-next").length < 1){
 				$(".JSlightGallery.JSlightGalleryMode").prepend("<div class='lg-thumb-prev' href='"+galLoadThumb+"' title='"+lang('@lgtitle-prev-text')+"'><img src='#'></div>");
@@ -405,7 +405,7 @@ function loadLightGallery()
 			loop: false,
 		}); 
 		
-		if($(".JSlightGalleryMode").length > 0){
+		if($(".JSlightGalleryMode").length > 0 && galPageTotal > 1){
 			
 			var total;
 			var totalSlide;
