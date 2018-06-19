@@ -1,3 +1,4 @@
+<?php require('resources.php'); ?>
 <?php include('header.php'); ?>
 
 <!-- ================================================= NAV MENU ================================================= -->
@@ -10,11 +11,11 @@
 				<span class="icon-bar"></span>
 				<span class="icon-bar"></span>
 			</button>
-			<a class="navbar-brand notranslate" href="#">Website Base</a>
+			<a class="navbar-brand notranslate" href="<?php echo php::get_main_url(); ?>">Website Base</a>
 		</div>
 		<div class="navbar-collapse collapse">
 			<ul class="nav navbar-nav">
-				<li class="active"><a href="index.php" class="notranslate">Home</a></li>
+				<li class="active"><a href="<?php echo php::get_main_url(); ?>" class="notranslate">Home</a></li>
 				<li class="dropdown">
 					<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Contact <span class="caret"></span></a>
 					<ul class="dropdown-menu notranslate" role="menu">
@@ -142,7 +143,7 @@
 &lt;html lang="&lt;?php echo php::get_html_data('lang'); ?&gt;"&gt;
 &lt;head&gt;
 	...
-	&lt;link href="&lt;?php echo php::get_main_theme('css'); ?&gt;" rel="stylesheet"&gt;
+	&lt;link href="&lt;?php echo php::get_template('css'); ?&gt;" rel="stylesheet"&gt;
 	...
 &lt;/head&gt;<br>&lt;body&gt;<br>...</code></pre>
 		</figure>
@@ -153,7 +154,7 @@
 					<h3 class="panel-title">Note for HTML data</h3>
 				</div>
 				<div class="panel-body">
-					The Main <b>HTML data</b> for <i>Meta tags</i> are located in <code>functions.php</code> using an extended function from <b>PHP utilities</b>. For example: <code>php::get_html_data()</code>
+					The Main <b>HTML data</b> for <i>Meta tags</i> are located in <code>resources.php</code> using an extended function from <b>PHP utilities</b>. For example: <code>php::get_html_data()</code>
 				</div>
 			</div>
 		</p>
@@ -182,7 +183,7 @@
 		
 		<figure class="highlight">
 			<pre><code class="language-html" data-lang="html">...<br>&lt;!-- Main JS File --&gt;
-&lt;script src="&lt;?php echo php::get_main_theme('js'); ?&gt;"&gt;&lt;/script&gt;
+&lt;script src="&lt;?php echo php::get_template('js'); ?&gt;"&gt;&lt;/script&gt;
 ...
 &lt;/body&gt;
 &lt;/html&gt;</code></pre>
@@ -196,7 +197,7 @@
 				<div class="panel-body">
 					You can use the <b>PHP functions</b> from the main library like <code>php::function()</code>, If you will use <code>Wordpress</code> (or another CMS) is highly recommended to use their main functions instead the base here. For example for <code>Wordpress</code> use <code>get_bloginfo('template_url')</code> instead <code>php::get_main_url()</code> and <code>get_header()</code>, <code>get_footer()</code> instead <code>include('header.php')</code>, <code>include('footer.php')</code>.
 					<br><br>
-					<b>Note for main CSS and JS:</b> You can display the code unreduced setting the <code>GET</code> flag <code>?unminify</code> to the main <b>CSS</b> and <b>JS</b> call functions. For example <code>&lt;?php echo php::get_main_theme('css','?unminify'); ?&gt;</code>.
+					<b>Note for main CSS and JS:</b> You can display the code unreduced setting the <code>GET</code> flag <code>?unminify</code> to the main <b>CSS</b> and <b>JS</b> call functions. For example <code>&lt;?php echo php::get_template('css','?unminify'); ?&gt;</code>.
 				</div>
 			</div>
 		</p>
@@ -208,11 +209,11 @@
 		<div class="page-header">
 			<h1>Extra Code <span class="label label-primary">Template</span></h1>
 		</div>
-		<p>Sometimes you may need to add extra <b>CSS</b> or <b>JS</b> only for some pages. You can place them between <code>php::extra_code('start')</code> and <code>php::extra_code('end')</code> to print it in the <b>footer</b> (before <code>&lt;/body&gt;</code> closure).</p>
+		<p>Sometimes you may need to add extra <b>CSS</b> or <b>JS</b> only for some pages. You can place them between <code>php::section('name','start')</code> and <code>php::section('name','end')</code> to print it in the desired part.</p>
 		
 		<figure class="highlight">
 			<pre><code class="language-html" data-lang="html">...
-&lt;?php php::extra_code('start'); ?&gt;
+&lt;?php php::section('footer','start'); ?&gt;
 &lt;style type="text/css"&gt;
 body{
 	background: #FF0000;
@@ -221,7 +222,7 @@ body{
 &lt;script type="text/javascript"&gt;
 	alert("My Alert!");
 &lt;/script&gt;
-&lt;?php php::extra_code('end'); ?&gt;
+&lt;?php php::section('footer','end'); ?&gt;
 ...</code></pre>
 		</figure>
 		
@@ -231,7 +232,7 @@ body{
 					<h3 class="panel-title">Note for Extra Code</h3>
 				</div>
 				<div class="panel-body">
-					This code is only printed in the <b>footer</b>. Also you can use external <b>PHP</b> variables or functions inside the <b>extra code</b> with no problems.
+					By default, <b>header</b> and <b>footer</b> section was created. Is recommended to use this after the <code>&lt;?php require('resources.php'); ?&gt;</code> code.
 				</div>
 			</div>
 		</p>
@@ -243,7 +244,7 @@ body{
 		<div class="page-header">
 			<h1>Utilities <span class="label label-primary">Functions</span></h1>
 		</div>
-		<p>The main php functions are located in <code>functions.php</code> and <code>resources/php/utilities.php</code>. These files contains a some of useful functions to use in <b>PHP</b></p>
+		<p>The main php functions are located in <code>resources.php</code> and <code>resources/php/utilities.php</code>. These files contains a some of useful functions to use in <b>PHP</b></p>
 		
 		<div class="bs-example">
 			<figure class="highlight">
@@ -1456,7 +1457,7 @@ body{
 		<div class="page-header">
 			<h1>More functions! <span class="label label-danger">JS & PHP</span></h1>
 		</div>
-		<p>There is more functions in the whole code, just play and try it. Remember to check <code>app-base.js</code>, <code>functions.php</code> and <code>utilities.php</code> for more stuff. Also you can find more info about the resources in the main menu.</p>
+		<p>There is more functions in the whole code, just play and try it. Remember to check <code>app-base.js</code>, <code>resources.php</code> and <code>utilities.php</code> for more stuff. Also you can find more info about the resources in the main menu.</p>
 
 		<!-- More Functions -->
 

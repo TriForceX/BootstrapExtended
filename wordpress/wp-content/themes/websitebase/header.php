@@ -23,7 +23,7 @@
 	
 	<!-- ******** META TAGS ******** -->
 	
-	<!-- ******** CSS FILES ******** -->
+	<!-- ******** HEADER RESOURCES ******** -->
 	
 	<!-- Nav Tab & App Icons -->
 	<link href="<?php echo get_bloginfo('template_url'); ?>/img/icons/favicon/apple.png" rel="apple-touch-icon"/>
@@ -49,7 +49,7 @@
 	<!-- Tempus Dominus -->
 	<link href="<?php echo get_bloginfo('template_url'); ?>/resources/tempusdominus/css/tempusdominus.min.css" rel="stylesheet">
 	<!-- Main CSS File -->
-	<link href="<?php echo php::get_main_theme('css'); ?>" rel="stylesheet">
+	<link href="<?php echo php::get_template('css'); ?>" rel="stylesheet">
 	<!-- IE8 support of HTML5 elements and media queries -->
 	<!--[if lt IE 9]>
 	<script src="<?php echo get_bloginfo('template_url'); ?>/resources/html5shiv/js/html5shiv.min.js"></script>
@@ -57,7 +57,10 @@
 	<script src="<?php echo get_bloginfo('template_url'); ?>/resources/rem/js/rem.js"></script>
 	<![endif]-->
 	
-	<!-- ******** CSS FILES ******** -->
+	<!-- ******** HEADER RESOURCES ******** -->
+	
+	<!-- Extra Code -->
+	<?php echo php::section('header','get'); ?>
 	
 	<?php
 	/* Always have wp_head() just before the closing </head>

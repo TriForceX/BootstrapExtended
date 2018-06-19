@@ -4,13 +4,13 @@
  * PHP Main Stuff
  * TriForce - Matías Silva
  *
- * This file calls the main PHP utilities and sets the main HTML data
+ * This file calls the main PHP utilities and sets the main template ones
  * also you can extend the functions below with your own ones
  * 
  */
 
 //Get the PHP utilities file
-require('resources/php/utilities.php');
+require_once('resources/php/utilities.php');
 
 //Call the main class
 class php extends utilities\php 
@@ -53,8 +53,27 @@ class php extends utilities\php
 		}
 	}
 	
+	//Get extra code section
+	public static $section_code = array();
+
+	public static function section($name, $type)
+	{
+		if(!isset(self::$section_code[$name])){
+			self::$section_code[$name] = null; 
+		}
+		if($type == 'start'){
+			return ob_start();
+		}
+		elseif($type == 'end'){
+			return self::$section_code[$name] .= ob_get_clean();
+		}
+		elseif($type == 'get'){
+			return self::$section_code[$name];
+		}
+	}
+	
 	//Get main CSS & JS files
-	public static function get_main_theme($type, $get = null)
+	public static function get_template($type, $get = null)
     {
 		$url = php::get_main_url();
 		$append = $get != null ? $get : '';
@@ -96,7 +115,6 @@ class php extends utilities\php
  * Custom Stuff
  * 
  * You can set-up custom stuff or add more functions
- * More resources in http://php.net/manual/
+ * More resources in http://php.net/manual
  * 
  */
-

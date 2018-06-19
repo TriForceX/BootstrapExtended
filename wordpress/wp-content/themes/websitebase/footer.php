@@ -8,7 +8,7 @@
 </div>
 <!-- ================================================= FOOTER ================================================= -->
 
-<!-- ================ Core JavaScript Placed at the end of the document so the pages load faster! ================ -->
+<!-- ******** FOOTER RESOURCES ******** -->
 
 <!-- jQuery -->
 <script src="<?php echo get_bloginfo('template_url'); ?>/resources/jquery/js/jquery.min.js"></script>
@@ -51,9 +51,12 @@
 <!-- Tempus Dominus -->
 <script src="<?php echo get_bloginfo('template_url'); ?>/resources/tempusdominus/js/tempusdominus.min.js"></script>
 <!-- Main JS File -->
-<script src="<?php echo php::get_main_theme('js'); ?>"></script>
+<script src="<?php echo php::get_template('js'); ?>"></script>
+
+<!-- ******** FOOTER RESOURCES ******** -->
+
 <!-- Extra Code -->
-<?php echo php::extra_code('get'); ?>
+<?php echo php::extra_code('footer','get'); ?>
 
 <?php
 /* Always have wp_footer() just before the closing </body>

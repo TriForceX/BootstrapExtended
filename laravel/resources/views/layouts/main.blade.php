@@ -23,7 +23,7 @@
 	
 	<!-- ******** META TAGS ******** -->
 	
-	<!-- ******** CSS FILES ******** -->
+	<!-- ******** HEADER RESOURCES ******** -->
 	
 	<!-- Nav Tab & App Icons -->
 	<link href="{{ url('assets/img/icons/favicon/apple.png') }}" rel="apple-touch-icon">
@@ -57,9 +57,10 @@
 	<script src="{{ url('assets/resources/rem/js/rem.js') }}"></script>
 	<![endif]-->
 	
-	<!-- ******** CSS FILES ******** -->
+	<!-- ******** HEADER RESOURCES ******** -->
     
-    
+    <!-- Extra Code -->
+	@yield('extra_code_header')
     
 </head>
 
@@ -98,7 +99,7 @@
 </div>
 <!-- ================================================= FOOTER ================================================= -->
 
-<!-- ================ Core JavaScript Placed at the end of the document so the pages load faster! ================ -->
+<!-- ******** FOOTER RESOURCES ******** -->
 
 <!-- jQuery -->
 <script src="{{ url('assets/resources/jquery/js/jquery.min.js') }}"></script>
@@ -142,6 +143,11 @@
 <script src="{{ url('assets/resources/tempusdominus/js/tempusdominus.min.js') }}"></script>
 <!-- Main JS File -->
 <script src="{{ url('assets/js/all.js') }}"></script>
+	
+<!-- ******** FOOTER RESOURCES ******** -->
+
+<!-- Extra Code -->
+@yield('extra_code_footer')
 
 </body>
 </html>
