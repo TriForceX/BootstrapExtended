@@ -73,6 +73,8 @@ class php extends utilities\php
 	}
 	
 	//Get main CSS & JS files
+	public static $rebuild_pass = 'mypassword';
+	
 	public static function get_template($type, $get = null)
     {
 		$url = get_bloginfo('template_url');
@@ -91,7 +93,7 @@ class php extends utilities\php
 		}
 		else
 		{
-			if(isset($_GET['rebuild']))
+			if(isset($_GET['rebuild']) && $_GET['rebuild'] == self::$rebuild_pass)
 			{
 				if(file_exists($route.$ext))
 				{
