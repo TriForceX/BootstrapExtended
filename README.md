@@ -60,7 +60,6 @@ Base structure for web sites with reusable parts of source code or functions mai
 	- Get YouTube, Vimeo and Facebook ID and embed code URL
 	- Get website parts with cUrl
 	- Get external functions
-	- Get extra code
 - JS Features:
 	- Custom language support
 	- Check attr function
