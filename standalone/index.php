@@ -250,7 +250,7 @@ body{
 			<figure class="highlight">
 				<pre><code class="language-html" data-lang="html">//Get the current URL will return: <?php echo php::get_current_url(); ?><br>&lt;?php echo php::get_current_url(); ?&gt;
 			
-//Show current date will return: <?php echo php::show_date(false,'F j l, Y, g:i a'); ?><br>&lt;?php echo php::show_date(false,'F j l, Y, g:i a'); ?&gt;</code></pre>
+//Show current date will return: <?php echo php::show_date('auto','F j l, Y, g:i a'); ?><br>&lt;?php echo php::show_date('auto','F j l, Y, g:i a'); ?&gt;</code></pre>
 			</figure>
 		</div>
 

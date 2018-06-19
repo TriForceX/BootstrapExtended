@@ -508,12 +508,11 @@ class php
     }
 	
 	//Get custom date format
-	public static function show_date($date = false, $format = 'Y-m-d', $lang = 'eng', $abbr = false)
+	public static function show_date($date = 'auto', $format = 'Y-m-d', $lang = 'en', $abbr = false)
 	{
-		$date = $date ? $date : date('Y-m-d');
-		$newDate = strtotime($date);
-		$finalDate = date($format, $newDate);
-		$langSet = $lang == 'esp' ? 1 : 0;
+		$newDate = $date == 'auto' ? date('Y-m-d') : str_replace('/','-',$date);
+		$finalDate = date($format,strtotime($newDate));
+		$langSet = $lang == 'es' ? 1 : 0;
 		$langAbbr = $abbr ? 1 : 0;
 
 		$langDays = array(
@@ -529,7 +528,7 @@ class php
 		
 		$langMonths = array(
 							array(
-								array("January","February","March","April","May","June","July ","August","September","October","November","December"),
+								array("January","February","March","April","May","June","July","August","September","October","November","December"),
 								array("Enero","Febrero","Marzo","Abril","Mayo","Junio","Julio","Agosto","Septiembre","Octubre","Noviembre", "Diciembre"),
 							),
 							array(
