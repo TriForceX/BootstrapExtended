@@ -337,7 +337,7 @@ body{
 			<div class="panel-body">
 				The file <code>style-theme.css</code> it will contain all the main classes for the website layout. The file <code>style-example.css</code> is only for tests and references, you can delete with no problems. Is not recomended to modify the <code>style-base.css</code> or <code>style-bootstrap.css</code> because contains the main functions inside. <b>If you want add extra stuff, just add it in</b> <code>style-theme.css</code> <b>or</b> <code>style-extras.php</code>
 				<br><br>
-				The compile process works in realtime if you are testing in <b>localhost</b>, if you upload the code to <b>production</b> enviroment, the file <code>style.css</code> will be generated only once, if you update your code, remember to rebuild it adding <code>?rebuild</code> to the main url (for example: <b><?php echo php::get_main_url(); ?>/?rebuild</b>).
+				The compile process works in realtime if you are testing in <b>localhost</b>, if you upload the code to <b>production</b> enviroment, the file <code>style.css</code> will be generated only once, if you update your code, remember to rebuild it adding <code>?rebuild=password</code> to the main url (for example: <b><?php echo php::get_main_url(); ?>/?rebuild=mypassword</b>). Remember to change the password in <code>resources.php</code>.
 				<br><br>
 				<b>Note for Wordpress:</b> Theres a file called <code>style-admin.css</code> which will directly affect the administration panel <i>(It already included some base classes)</i>.
 			</div>
