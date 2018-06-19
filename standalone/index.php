@@ -209,7 +209,7 @@
 		<div class="page-header">
 			<h1>Extra Code <span class="label label-primary">Template</span></h1>
 		</div>
-		<p>Sometimes you may need to add extra <b>CSS</b> or <b>JS</b> only for some pages. You can place them between <code>php::section('name','start')</code> and <code>php::section('name','end')</code> to print it in the desired part.</p>
+		<p>Sometimes you may need to add extra <b>CSS</b> or <b>JS</b> only for some pages. You can place them between <code>php::section('name','start')</code> and <code>php::section('name','end')</code> to print it in the desired part using <code>php::section('name','get')</code>.</p>
 		
 		<figure class="highlight">
 			<pre><code class="language-html" data-lang="html">...
