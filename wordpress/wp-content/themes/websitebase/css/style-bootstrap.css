@@ -18,14 +18,14 @@
 .modal-header {
 	border-color: #a0a0a0;
 }
-/*.modal-body {
-	text-align:justify;
-}*/
 .modal-backdrop {
 	position: fixed;
 }
 .modal-footer .btn {
 	outline: 0;
+}
+.modal-content {
+	box-shadow: none; /* Comment this if bootstrap-theme.min.css is enabled */
 }
 /* Modal & Panel */
 
