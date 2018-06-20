@@ -6,10 +6,6 @@
 	overflow: auto !important;
 	overflow-x: hidden !important;
 }
-.modal-body p,
-.panel-body p {
-	margin-bottom: 27px;
-}
 .modal-body p:last-child,
 .panel-body p:last-child {
 	margin-bottom: 0px;
@@ -25,7 +21,7 @@
 	outline: 0;
 }
 .modal-content {
-	box-shadow: none; /* Comment this if bootstrap-theme.min.css is enabled */
+	box-shadow: none; /* Comment this if you will enable bootstrap-theme.min.css */
 }
 /* Modal & Panel */
 
