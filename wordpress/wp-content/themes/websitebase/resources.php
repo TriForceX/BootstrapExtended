@@ -20,22 +20,22 @@ class php extends utilities\php
     {
 		switch($type){
 			case 'lang': 
-				return get_bloginfo('language'); 
+				return 'en'; 
 				break;
 			case 'charset': 
-				return get_option('blog_charset'); 
+				return 'UTF-8'; 
 				break;
 			case 'title': 
-				return get_option('blogname'); 
+				return 'Website Base'; 
 				break;
 			case 'description': 
-				return get_option('blogdescription'); 
+				return 'Base structure for WebSites with CSS/JS/PHP improvements'; 
 				break;
 			case 'keywords': 
-				return get_option('blogkeywords'); 
+				return 'html, jquery, javascript, php, responsive, css3'; 
 				break;
 			case 'author': 
-				return get_option('blogauthor'); 
+				return 'TriForce'; 
 				break;
 			case 'mobile-capable': 
 				return 'yes'; 
@@ -44,10 +44,10 @@ class php extends utilities\php
 				return 'width=device-width, initial-scale=1, user-scalable=no'; 
 				break;
 			case 'nav-color': 
-				return get_option('blognavcolor'); 
+				return '#333333'; 
 				break;
 			case 'nav-color-apple': 
-				return get_option('blognavcolorapple'); 
+				return 'black'; 
 				break;
 			default: break;
 		}
@@ -77,38 +77,38 @@ class php extends utilities\php
 	
 	public static function get_template($type, $get = null)
     {
-		$url = get_bloginfo('template_url');
+		$url = get_bloginfo('template_url').'/';
+		$local = dirname( __FILE__ ).'/';
 		$append = $get != null ? $get : '';
 		$route = $type == 'css' ? 'css/style' : 'js/app';
 		$ext = $type == 'css' ? '.css' : '.js';
-		$file = $url.'/'.$route;
 		
 		if(php::is_localhost())
 		{
-			if(file_exists($route.$ext))
+			if(file_exists($local.$route.$ext))
 			{
-				unlink($route.$ext);
+				unlink($local.$route.$ext);
 			}
-			echo $file.'.php'.$append;
+			echo $url.$route.'.php'.$append;
 		}
 		else
 		{
 			if(isset($_GET['rebuild']) && $_GET['rebuild'] == self::$rebuild_pass)
 			{
-				if(file_exists($route.$ext))
+				if(file_exists($local.$route.$ext))
 				{
-					if(strcmp(php::get_page_code($file.'.php'.$append), file_get_contents($route.$ext)) !== 0)
+					if(strcmp(php::get_page_code($url.$route.'.php'.$append), file_get_contents($local.$route.$ext)) !== 0)
 					{
-						unlink($route.$ext);
+						unlink($local.$route.$ext);
 					}
-					header('Location: '.$url);
+					header('Location: '.php::get_main_url());
 				}
 			}
-			if(!file_exists($route.$ext))
+			if(!file_exists($local.$route.$ext))
 			{
-				file_put_contents($route.$ext, php::get_page_code($file.'.php'.$append));
+				file_put_contents($local.$route.$ext, php::get_page_code($url.$route.'.php'.$append));
 			}
-			echo $file.$ext;
+			echo $url.$route.$ext;
 		}
 	}
 }

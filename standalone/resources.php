@@ -77,38 +77,38 @@ class php extends utilities\php
 	
 	public static function get_template($type, $get = null)
     {
-		$url = php::get_main_url();
+		$url = php::get_main_url().'/';
+		$local = dirname( __FILE__ ).'/';
 		$append = $get != null ? $get : '';
 		$route = $type == 'css' ? 'css/style' : 'js/app';
 		$ext = $type == 'css' ? '.css' : '.js';
-		$file = $url.'/'.$route;
 		
 		if(php::is_localhost())
 		{
-			if(file_exists($route.$ext))
+			if(file_exists($local.$route.$ext))
 			{
-				unlink($route.$ext);
+				unlink($local.$route.$ext);
 			}
-			echo $file.'.php'.$append;
+			echo $url.$route.'.php'.$append;
 		}
 		else
 		{
 			if(isset($_GET['rebuild']) && $_GET['rebuild'] == self::$rebuild_pass)
 			{
-				if(file_exists($route.$ext))
+				if(file_exists($local.$route.$ext))
 				{
-					if(strcmp(php::get_page_code($file.'.php'.$append), file_get_contents($route.$ext)) !== 0)
+					if(strcmp(php::get_page_code($url.$route.'.php'.$append), file_get_contents($local.$route.$ext)) !== 0)
 					{
-						unlink($route.$ext);
+						unlink($local.$route.$ext);
 					}
-					header('Location: '.$url);
+					header('Location: '.php::get_main_url());
 				}
 			}
-			if(!file_exists($route.$ext))
+			if(!file_exists($local.$route.$ext))
 			{
-				file_put_contents($route.$ext, php::get_page_code($file.'.php'.$append));
+				file_put_contents($local.$route.$ext, php::get_page_code($url.$route.'.php'.$append));
 			}
-			echo $file.$ext;
+			echo $url.$route.$ext;
 		}
 	}
 }
