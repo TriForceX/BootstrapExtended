@@ -112,6 +112,12 @@ class php extends utilities\php
 	}
 }
 
+//Rebuild CSS & JS redirect
+if(isset($_GET['rebuild']) && $_GET['rebuild'] == php::$rebuild_pass)
+{
+	header('Refresh: 0; url='.php::get_main_url());
+}
+
 /*
  * Custom Stuff
  * 
