@@ -28,14 +28,14 @@
 	<!-- Nav Tab & App Icons -->
 	<link href="<?php echo php::get_main_url(); ?>/img/icons/favicon/apple.png" rel="apple-touch-icon">
 	<link href="<?php echo php::get_main_url(); ?>/img/icons/favicon/global.png" rel="shortcut icon">
-	<!-- jQuery UI CSS -->
+	<!-- jQuery UI -->
 	<link href="<?php echo php::get_main_url(); ?>/resources/jquery-ui/css/jquery-ui.min.css" rel="stylesheet">
 	<link href="<?php echo php::get_main_url(); ?>/resources/jquery-ui/css/jquery-ui.structure.min.css" rel="stylesheet">
 	<link href="<?php echo php::get_main_url(); ?>/resources/jquery-ui/css/jquery-ui.theme.min.css" rel="stylesheet">
-	<!-- Bootstrap core CSS -->
+	<!-- Bootstrap Core -->
 	<link href="<?php echo php::get_main_url(); ?>/resources/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-	<!-- Bootstrap theme -->
-	<link href="<?php echo php::get_main_url(); ?>/resources/bootstrap/css/bootstrap-theme.min.css" rel="stylesheet">
+	<!-- Bootstrap Theme -->
+	<!-- <link href="<?php echo php::get_main_url(); ?>/resources/bootstrap/css/bootstrap-theme.min.css" rel="stylesheet"> -->
 	<!-- Bootstrap Data Tables -->
 	<link href="<?php echo php::get_main_url(); ?>/resources/datatables/css/dataTables.bootstrap.min.css" rel="stylesheet">
 	<!-- LightGallery Lightbox -->
