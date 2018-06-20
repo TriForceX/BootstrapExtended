@@ -101,7 +101,6 @@ class php extends utilities\php
 					{
 						unlink($local.$route.$ext);
 					}
-					header('Location: '.php::get_main_url());
 				}
 			}
 			if(!file_exists($local.$route.$ext))
@@ -111,6 +110,12 @@ class php extends utilities\php
 			echo $url.$route.$ext;
 		}
 	}
+}
+
+//Rebuild CSS & JS redirect
+if(isset($_GET['rebuild']) && $_GET['rebuild'] == php::$rebuild_pass)
+{
+	header('Location: '.get_bloginfo('url'));
 }
 
 /*
