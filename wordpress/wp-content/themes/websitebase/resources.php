@@ -20,22 +20,22 @@ class php extends utilities\php
     {
 		switch($type){
 			case 'lang': 
-				return 'en'; 
+				return get_bloginfo('language'); 
 				break;
 			case 'charset': 
-				return 'UTF-8'; 
+				return get_option('blog_charset'); 
 				break;
 			case 'title': 
-				return 'Website Base'; 
+				return get_option('blogname'); 
 				break;
 			case 'description': 
-				return 'Base structure for WebSites with CSS/JS/PHP improvements'; 
+				return get_option('blogdescription'); 
 				break;
 			case 'keywords': 
-				return 'html, jquery, javascript, php, responsive, css3'; 
+				return get_option('blogkeywords'); 
 				break;
 			case 'author': 
-				return 'TriForce'; 
+				return get_option('blogauthor'); 
 				break;
 			case 'mobile-capable': 
 				return 'yes'; 
@@ -44,10 +44,10 @@ class php extends utilities\php
 				return 'width=device-width, initial-scale=1, user-scalable=no'; 
 				break;
 			case 'nav-color': 
-				return '#333333'; 
+				return get_option('blognavcolor'); 
 				break;
 			case 'nav-color-apple': 
-				return 'black'; 
+				return get_option('blognavcolorapple'); 
 				break;
 			default: break;
 		}
