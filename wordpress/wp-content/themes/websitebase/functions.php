@@ -1,5 +1,10 @@
 <?php
 
+//Get the main PHP utilities
+require_once('resources/php/utilities.php');
+
+use utilities\php as php;
+
 /*
  * Wordpress Main Stuff
  * 

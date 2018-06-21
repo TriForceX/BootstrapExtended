@@ -1,7 +1,9 @@
 <?php
 
+//Show as a CSS file
 header('Content-type: text/css; charset: UTF-8');
 
+//Get the main PHP utilities
 require_once('../resources/php/utilities.php');
 
 class php extends utilities\php 

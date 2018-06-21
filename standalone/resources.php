@@ -9,10 +9,9 @@
  * 
  */
 
-//Get the PHP utilities file
+//Get the main PHP utilities
 require_once('resources/php/utilities.php');
 
-//Call the main class
 class php extends utilities\php 
 { 
 	//Main header data
