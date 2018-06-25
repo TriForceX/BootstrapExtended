@@ -407,7 +407,7 @@ body{
 				<br><br>
 				To manage custom languages just add the attribute <code>data-js-lang</code> to <code>&lt;body&gt;</code> tag. The main language file is <code>app-lang.js</code> but these are the default ones, you can override them in <code>app-theme.js</code> using the same key. If you want add more language take a look on <code>app-example.js</code> for references. 
 				<br><br>
-				The compile process works in realtime if you are testing in <b>localhost</b>, if you upload the code to <b>production</b> enviroment, the file <code>app.js</code> will be generated only once, if you update your code, remember to rebuild it adding <code>?rebuild</code> to the main url (for example: <b><?php echo php::get_main_url(); ?>/?rebuild</b>).
+				The compile process works in realtime if you are testing in <b>localhost</b>, if you upload the code to <b>production</b> enviroment, the file <code>app.js</code> will be generated only once, if you update your code, remember to rebuild it adding <code>?rebuild=password</code> to the main url (for example: <b><?php echo php::get_main_url(); ?>/?rebuild=mypassword</b>). Remember to change the password in <code>resources.php</code>.
 				<br><br>
 				<b>Note for Wordpress:</b> Theres a file called <code>app-admin.js</code> which will directly affect the administration panel in the case you need <i>(It already included some base functions)</i>.
 			</div>
