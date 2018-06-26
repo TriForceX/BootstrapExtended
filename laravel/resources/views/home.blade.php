@@ -1070,6 +1070,18 @@
 					<label for="example-textarea">Message</label>
 					<textarea class="form-control textarea-no-resize" rows="3" id="example-textarea" name="example-textarea" placeholder="Write a Message"></textarea>
 				</div>
+				<div class="form-group">
+					<label for="bases-archivo">File</label>
+					<div class="input-group">
+						<div class="form-control custom-file">
+							<span>Select File</span>
+							<input type="file" id="example-file" name="example-file" placeholder="Select File">
+						</div>
+						<label class="input-group-btn" for="example-file">
+							<span class="btn btn-primary">Search</span>
+						</label>
+					</div>
+				</div>
 				<div class="form-group" data-group="checkbox">
 					<p class="no-margin-b">
 						<label>Check items</label>

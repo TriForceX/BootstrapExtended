@@ -102,6 +102,7 @@ $.fn.validateForm = function(options)
 							 'radio'	: lang('@validate-radio'),
 							 'textarea'	: lang('@validate-textarea'),
 							 'select'	: lang('@validate-select'),
+							 'file'		: lang('@validate-file'),
 							};
 
 		//Select inputs
@@ -199,6 +200,15 @@ $.fn.validateForm = function(options)
 					if (!validateEmpty($(this).val())) { 
 						if(settings.errorStyling){ $(this).parents('.form-group').addClass('has-error').removeClass('has-success'); }
 						formError = formErrorText.search;
+					}
+					else{
+						if(settings.errorStyling){ $(this).parents('.form-group').removeClass('has-error').addClass('has-success'); }
+					}
+					break;
+				case 'file':
+					if (!validateEmpty($(this).val())) { 
+						if(settings.errorStyling){ $(this).parents('.form-group').addClass('has-error').removeClass('has-success'); }
+						formError = formErrorText.file;
 					}
 					else{
 						if(settings.errorStyling){ $(this).parents('.form-group').removeClass('has-error').addClass('has-success'); }
@@ -1482,6 +1492,13 @@ $(document).ready(function(){
 			$(this).datetimepicker('hide');
 		});
 	}
+	
+	//Custom file input change
+	$(document).on("change", ".form-group .custom-file input[type='file']", function(){
+		var placeholder = $(this).hasAttr('placeholder') ? $(this).attr('placeholder') : '';
+		var filename = $(this)[0].files.length ? $(this)[0].files[0].name : placeholder;
+		$(this).parent().find('span').html(filename);
+	});
 	
 	//Load responsive code
 	responsiveCode();

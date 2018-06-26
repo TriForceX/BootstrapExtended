@@ -48,6 +48,10 @@ var language = {
 					en: 'Please select an option.',
 					es: 'Por favor seleccione una opción.',
 				},
+				'@validate-file': {
+					en: 'Please select a file.',
+					es: 'Por favor seleccione un archivo.',
+				},
 				'@validate-confirm-title': {
 					en: 'Form Confirm',
 					es: 'Confirmar Formulario',
