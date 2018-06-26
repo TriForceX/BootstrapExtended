@@ -226,50 +226,58 @@ $.fn.validateForm = function(options)
 		}
 		
 		//Send error
-		if(formError !== false){
-			//Bootbox alert
-			bootbox.alert({
-				title: formErrorTitle,
-				message: formError,
-				size: settings.modalSize,
-				backdrop: true,
-				className: settings.modalAlign,
-			});
-			
+		if(formError !== false)
+		{
+			//Check plugin
+			if(typeof bootbox !== 'undefined')
+			{
+				//Bootbox alert
+				bootbox.alert({
+					title: formErrorTitle,
+					message: formError,
+					size: settings.modalSize,
+					backdrop: true,
+					className: settings.modalAlign,
+				});
+			}
 			event.preventDefault();
 		}
 		
 		//Check Confirm mode
-		if(settings.hasConfirm && formError === false){
+		if(settings.hasConfirm && formError === false)
+		{
 			var formElement = $(this);
 			event.preventDefault();
 			
-			//Bootbox alert
-			bootbox.confirm({
-				title: formConfirmTitle,
-				message: formConfirmText,
-				size: settings.modalSize,
-				backdrop: true,
-				className: settings.modalAlign,
-				callback: function(result){
-					if(result){
-						formElement.unbind("submit").submit();
-						if(settings.resetSubmit){
-							formElement.trigger('reset');
-							if(settings.errorStyling){ formElement.find('.form-group').removeClass('has-error'); }
-							if(settings.errorStyling){ formElement.find('.form-group').removeClass('has-success'); }
-							formElement.find("input[type='checkbox']").prop('checked', false).parent().removeClass('active');
-							formElement.find("input[type='radio']").prop('checked', false).parent().removeClass('active');
+			//Check plugin
+			if(typeof bootbox !== 'undefined')
+			{
+				//Bootbox alert
+				bootbox.confirm({
+					title: formConfirmTitle,
+					message: formConfirmText,
+					size: settings.modalSize,
+					backdrop: true,
+					className: settings.modalAlign,
+					callback: function(result){
+						if(result){
+							formElement.unbind("submit").submit();
+							if(settings.resetSubmit){
+								formElement.trigger('reset');
+								if(settings.errorStyling){ formElement.find('.form-group').removeClass('has-error'); }
+								if(settings.errorStyling){ formElement.find('.form-group').removeClass('has-success'); }
+								formElement.find("input[type='checkbox']").prop('checked', false).parent().removeClass('active');
+								formElement.find("input[type='radio']").prop('checked', false).parent().removeClass('active');
+							}
+							formElement.validateForm({
+								noValidate: settings.noValidate,
+								hasConfirm: settings.hasConfirm,
+							});
 						}
-						formElement.validateForm({
-							noValidate: settings.noValidate,
-							hasConfirm: settings.hasConfirm,
-						});
 					}
-				}
-			});
+				});
+			}
 		}
-		
 	});
 };
 
@@ -631,7 +639,6 @@ function textCut(container)
 function textSize(container, fontsize)
 {
 	$(container).each(function (i,box){
-		
 		var width = $(box).width(),
 			html = '<span style="white-space:nowrap"></span>',
 			line = $(box).wrapInner(html).children()[0],
@@ -658,14 +665,18 @@ function showAlert(title, text, size, align)
 		align = '';
 	}
 	
-	//Bootbox alert
-	bootbox.alert({
-		title: title,
-        message: text,
-        size: size,
-		backdrop: true,
-		className: align,
-    });
+	//Check plugin
+	if(typeof bootbox !== 'undefined')
+	{
+		//Bootbox alert
+		bootbox.alert({
+			title: title,
+			message: text,
+			size: size,
+			backdrop: true,
+			className: align,
+		});
+	}
 }
 
 //Show alert modal box using BootBox plugin (Content)
@@ -679,14 +690,18 @@ function showContent(title, element, size, align)
 		align = '';
 	}
 	
-	//Bootbox alert
-	bootbox.alert({
-		title: title,
-        message: $(element).html(),
-        size: size,
-		backdrop: true,
-		className: align,
-    });
+	//Check plugin
+	if(typeof bootbox !== 'undefined')
+	{
+		//Bootbox alert
+		bootbox.alert({
+			title: title,
+			message: $(element).html(),
+			size: size,
+			backdrop: true,
+			className: align,
+		});
+	}
 }
 
 //Show alert modal box using BootBox plugin (Ajax)
@@ -727,14 +742,18 @@ function showAjax(title, fullurl, size, align, loading, debug)
 			if(debug){
 				console.log("showAjax Loaded!");
 			}
-			//Bootbox alert
-			bootbox.alert({
-				title: title,
-				message: data,
-				size: size,
-				backdrop: true,
-				className: align,
-			});
+			//Check plugin
+			if(typeof bootbox !== 'undefined')
+			{
+				//Bootbox alert
+				bootbox.alert({
+					title: title,
+					message: data,
+					size: size,
+					backdrop: true,
+					className: align,
+				});
+			}
 			//Remove loading icon
 			if(loading){
 				$(".JSloading").remove();
@@ -859,21 +878,25 @@ function videoLaunch(url, share, title, autoplay, size, align)
 							'</a>';
 	}
 	
-	bootbox.alert({
-		title: title,
-		message: content,
-		size: size,
-		backdrop: true,
-		className: align,
-	}).on("shown.bs.modal", function(){
-		//Modify facebook src
-		if (url.indexOf('facebook') >= 0){
-			var videoLaunchIframeSRC = $(".JSvideoLaunchIframe iframe").attr("src");
-			var videoLaunchIframeSRCwidth = $(".JSvideoLaunchIframe iframe").width();
-			var videoLaunchIframeSRCheight = $(".JSvideoLaunchIframe iframe").height();
-			$(".JSvideoLaunchIframe iframe").attr("src",videoLaunchIframeSRC+"&width="+videoLaunchIframeSRCwidth+"&height="+videoLaunchIframeSRCheight);
-		}
-	});
+	//Check plugin
+	if(typeof bootbox !== 'undefined')
+	{
+		bootbox.alert({
+			title: title,
+			message: content,
+			size: size,
+			backdrop: true,
+			className: align,
+		}).on("shown.bs.modal", function(){
+			//Modify facebook src
+			if (url.indexOf('facebook') >= 0){
+				var videoLaunchIframeSRC = $(".JSvideoLaunchIframe iframe").attr("src");
+				var videoLaunchIframeSRCwidth = $(".JSvideoLaunchIframe iframe").width();
+				var videoLaunchIframeSRCheight = $(".JSvideoLaunchIframe iframe").height();
+				$(".JSvideoLaunchIframe iframe").attr("src",videoLaunchIframeSRC+"&width="+videoLaunchIframeSRCwidth+"&height="+videoLaunchIframeSRCheight);
+			}
+		});
+	}
 
 	//Tooltip load
 	$('.JSvideoLaunchText').tooltip({
@@ -882,17 +905,26 @@ function videoLaunch(url, share, title, autoplay, size, align)
 		trigger: 'manual',
 	});
 
-	//Clipboard
-	var clipboard = new ClipboardJS('.JSvideoLaunchURL');
+	//Check plugin
+	if(typeof ClipboardJS !== 'undefined')
+	{
+		//Clipboard
+		var clipboard = new ClipboardJS('.JSvideoLaunchURL');
 
-	clipboard.on('success', function(){
-		$('.JSvideoLaunchText').tooltip('show');
-	});
+		clipboard.on('success', function(){
+			$('.JSvideoLaunchText').tooltip('show');
+		});
 
-	clipboard.on('error', function(){
+		clipboard.on('error', function(){
+			$('.JSvideoLaunchURL').attr('target','blank');
+			$('.JSvideoLaunchURL').attr('href',embedShare);
+		});
+	}
+	else
+	{
 		$('.JSvideoLaunchURL').attr('target','blank');
 		$('.JSvideoLaunchURL').attr('href',embedShare);
-	});
+	}
 }
 
 //Capitalize first function
@@ -1031,14 +1063,18 @@ function checkDisabledLink(string)
 		if(textUrl.indexOf(window.location.host) <= 0){
 			//Show alert
 			var section = textUrl.split('#')[1].replace(/-/g,' ');
-			//Bootbox alert
-			bootbox.alert({
-				title: section,
-				message: lang('@disabled-text'),
-				size: size,
-				backdrop: true,
-				className: align,
-			});
+			//Check plugin
+			if(typeof bootbox !== 'undefined')
+			{
+				//Bootbox alert
+				bootbox.alert({
+					title: section,
+					message: lang('@disabled-text'),
+					size: size,
+					backdrop: true,
+					className: align,
+				});
+			}
 			return false;
 		}
 		else{
@@ -1113,15 +1149,19 @@ function windowPopup(element, errortitle, errormsg)
 									"location=no,"+
 									"directories=no");
 	if(!newWin || newWin.closed || typeof newWin.closed == 'undefined') 
-	{ 
-		//Bootbox alert
-		bootbox.alert({
-			title: errortitle,
-			message: errormsg,
-			size: getModalSize,
-			backdrop: true,
-			className: getModalAlign,
-		});
+	{
+		//Check plugin
+		if(typeof bootbox !== 'undefined')
+		{
+			//Bootbox alert
+			bootbox.alert({
+				title: errortitle,
+				message: errormsg,
+				size: getModalSize,
+				backdrop: true,
+				className: getModalAlign,
+			});
+		}
 	}
 }
 
@@ -1185,15 +1225,18 @@ function mapLaunch(element)
 						'		</a>'+
 						'	</div>'+
 						'</div>';
-	
-	//Bootbox alert
-	bootbox.alert({
-		title: mapTitle,
-        message: mapIframe == false ? mapContentStyle1 : mapContentStyle2,
-        size: mapModalSize,
-		backdrop: true,
-		className: mapModalAlign,
-    });
+	//Check plugin
+	if(typeof bootbox !== 'undefined')
+	{
+		//Bootbox alert
+		bootbox.alert({
+			title: mapTitle,
+			message: mapIframe == false ? mapContentStyle1 : mapContentStyle2,
+			size: mapModalSize,
+			backdrop: true,
+			className: mapModalAlign,
+		});
+	}
 }
 
 //Paginator group
@@ -1225,56 +1268,76 @@ function paginatorGroup(limit,limitMobile,exceptions)
 //Main Initialization
 function mainInit()
 {
-	//Load LightGallery
-	loadLightGallery();
-	
 	//Tooltip load
 	$('*[data-toggle="tooltip"]').tooltip({ trigger: "hover" });
 	
 	//Popover load
 	$('*[data-toggle="popover"]').popover();
 	
-	//Touch swipe Bootstrap carousel
-	$('*[data-ride="carousel"]').swipe({
-		swipe:function(event, direction, distance, duration, fingerCount, fingerData){
-				if(direction === 'right'){
-					$(this).carousel('prev');  
-				}
-				else if(direction === 'left'){
-					$(this).carousel('next');  
-				}
-			},
-		allowPageScroll:'vertical',
-	});
+	//Check plugin
+	if($.fn.lightGallery !== undefined)
+	{
+		//Load LightGallery
+		loadLightGallery();
+	}
 	
-	//Applu Data Tables
-	$('.JSdataTables').each(function(){
-		$(this).dataTable().fnDestroy();
-		$(this).DataTable({
-				initComplete: function(settings,json){
-					$(".dataTables_wrapper").removeClass("container-fluid");
+	//Check plugin
+	if($.fn.swipe !== undefined)
+	{
+		//Touch swipe Bootstrap carousel
+		$('*[data-ride="carousel"]').swipe({
+			swipe:function(event, direction, distance, duration, fingerCount, fingerData){
+					if(direction === 'right'){
+						$(this).carousel('prev');  
+					}
+					else if(direction === 'left'){
+						$(this).carousel('next');  
+					}
 				},
-			}
-		);
-	});
+			allowPageScroll:'vertical',
+		});
+	}
 	
-	//Apply Image Fill
-	$('.JSimgFill').each(function(){
-		imageFill($(this));
-	});
+	//Check plugin
+	if($.fn.dataTable !== undefined || $.fn.DataTable !== undefined)
+	{
+		//Applu Data Tables
+		$('.JSdataTables').each(function(){
+			$(this).dataTable().fnDestroy();
+			$(this).DataTable({
+					initComplete: function(settings,json){
+						$(".dataTables_wrapper").removeClass("container-fluid");
+					},
+				}
+			);
+		});
+	}
+	
+	//Check plugin
+	if($.fn.imgLiquid !== undefined)
+	{
+		//Apply Image Fill
+		$('.JSimgFill').each(function(){
+			imageFill($(this));
+		});
+	}
 	
 	//Apply Text Cut
 	$(".JStextCut").each(function(){
 		textCut($(this));
 	});
 	
-	//Apply Rotation
-	$(".JSrotate").each(function(){
-		$(this).rotate({
-			angle: $(this).data('rotate-angle')
+	//Check plugin
+	if($.fn.rotate !== undefined)
+	{
+		//Apply Rotation
+		$(".JSrotate").each(function(){
+			$(this).rotate({
+				angle: $(this).data('rotate-angle')
+			});
+			$(this).css('visibility','visible');
 		});
-		$(this).css('visibility','visible');
-	});
+	}
 	
 	//Fix for Holder JS in IE8
 	if(isNav('ie','8'))
@@ -1345,24 +1408,29 @@ $(document).ready(function(){
 	//Check mobile
 	isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini|BB10|PlayBook|MeeGo/i.test(navigator.userAgent);
 	
+	
 	//Check navigators
-	isNav = function(navigator,version)
+	isNav = function(name,version)
 			{
-				var checkData = {
-								 'ie' 			: { 'name' : 'Microsoft Internet Explorer', 'internal' : $.browser.msie },
-								 'edge' 		: { 'name' : 'Microsoft Edge', 'internal' : '' },
-								 'chrome' 		: { 'name' : 'Chrome', 'internal' : $.browser.webkit },
-								 'firefox' 		: { 'name' : 'Firefox', 'internal' : $.browser.mozilla },
-								 'safari' 		: { 'name' : 'Safari', 'internal' : $.browser.webkit },
-								 'opera' 		: { 'name' : 'Opera', 'internal' : $.browser.opera },
-								};
-		
-				var checkBrowser = $.browser.name === checkData[navigator].name;
-				var checkVersion = version === undefined ? true : ($.browser.version == version);
-				var checkInternal = checkData[navigator].internal === undefined ? true : (checkData[navigator].internal === true);
-				var checkFinal = checkBrowser && checkVersion && checkInternal ? true : false;
-				
-				return checkFinal;
+				//Check plugin
+				if($.fn.browser !== undefined)
+				{
+					var checkData = {
+									 'ie' 			: { 'name' : 'Microsoft Internet Explorer', 'internal' : $.browser.msie },
+									 'edge' 		: { 'name' : 'Microsoft Edge', 'internal' : '' },
+									 'chrome' 		: { 'name' : 'Chrome', 'internal' : $.browser.webkit },
+									 'firefox' 		: { 'name' : 'Firefox', 'internal' : $.browser.mozilla },
+									 'safari' 		: { 'name' : 'Safari', 'internal' : $.browser.webkit },
+									 'opera' 		: { 'name' : 'Opera', 'internal' : $.browser.opera },
+									};
+
+					var checkBrowser = $.browser.name === checkData[name].name;
+					var checkVersion = version === undefined ? true : ($.browser.version == version);
+					var checkInternal = checkData[name].internal === undefined ? true : (checkData[name].internal === true);
+					var checkFinal = checkBrowser && checkVersion && checkInternal ? true : false;
+					
+					return checkFinal;
+				}
 			};
 	
 	//Disable button auto-focus
@@ -1395,6 +1463,25 @@ $(document).ready(function(){
 			e.preventDefault();
 		}
 	});
+	
+	//Check plugin
+	if($.fn.datetimepicker !== undefined)
+	{
+		//Datepicker dont allow keywritting
+		$(document).on("keydown", ".datetimepicker-input", function(e){
+			e.preventDefault();
+		});
+
+		//Datepicker enable on input click
+		$(document).on("click", ".datetimepicker-input", function(e){
+			$(this).datetimepicker('show');
+		});
+
+		//Datepicker hide on focus-out
+		$(document).on("focusout", ".datetimepicker-input", function(e){
+			$(this).datetimepicker('hide');
+		});
+	}
 	
 	//Load responsive code
 	responsiveCode();

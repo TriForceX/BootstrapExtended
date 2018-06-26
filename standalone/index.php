@@ -311,22 +311,21 @@ body{
 			</tbody>
 		</table>
 		<figure class="highlight">
-			<pre><code class="language-html" data-lang="html">$cssMinify = isset($_GET['unminify']) ? false : true;<br>$cssFiles = array(
-		  $cssUrl.'/css/style-base.css',
-		  $cssUrl.'/css/style-bootstrap.css',
-		  $cssUrl.'/css/style-theme.css',
-		  ...
-		);<br>...<br>$cssVariables = array(
-			//Global
-			'@global-url'	=> $cssUrl,
-			//Screen
-			'@screen-xs'	=> '480px',
-			'@screen-sm'	=> '768px',
-			'@screen-md'	=> '992px',
-			'@screen-lg'	=> '1200px', 
-			'@screen-xl' 	=> '1920px', 
-			...
-		);</code></pre>
+			<pre><code class="language-html" data-lang="html">...<br>$css_minify = isset($_GET['unminify']) ? false : true;<br>
+//Defaults
+$css_data['file'] = array(
+			 'style-base.css',
+			 'style-bootstrap.css',
+			 'style-theme.css',
+			 );
+$css_data['vars'] = array(
+			 '@global-url'	=> $css_url,
+			 '@screen-xs'	=> '480px',
+			 '@screen-sm'	=> '768px',
+			 '@screen-md'	=> '992px',
+			 '@screen-lg'	=> '1200px', 
+			 '@screen-xl' 	=> '1920px', 
+			 );<br>...</code></pre>
 		</figure>
         
         <p>
@@ -335,7 +334,7 @@ body{
 				<h3 class="panel-title">Note for included CSS files</h3>
 			</div>
 			<div class="panel-body">
-				The file <code>style-theme.css</code> it will contain all the main classes for the website layout. The file <code>style-example.css</code> is only for tests and references, you can delete with no problems. Is not recomended to modify the <code>style-base.css</code> or <code>style-bootstrap.css</code> because contains the main functions inside. <b>If you want add extra stuff, just add it in</b> <code>style-theme.css</code> <b>or</b> <code>style-extras.php</code>
+				The file <code>style-theme.css</code> it will contain all the main classes for the website layout. The file <code>extras/example.css</code> is only for tests and references, you can delete with no problems. Is not recomended to modify the <code>style-base.css</code> or <code>style-bootstrap.css</code> because contains the main functions inside. <b>If you want add extra stuff, just add it in</b> <code>style-theme.css</code> <b>or</b> <code>style-extras.php</code>
 				<br><br>
 				The compile process works in realtime if you are testing in <b>localhost</b>, if you upload the code to <b>production</b> enviroment, the file <code>style.css</code> will be generated only once, if you update your code, remember to rebuild it adding <code>?rebuild=password</code> to the main url (for example: <b><?php echo php::get_main_url(); ?>/?rebuild=mypassword</b>). Remember to change the password in <code>resources.php</code>.
 				<br><br>
@@ -379,22 +378,21 @@ body{
 			</tbody>
 		</table>
 		<figure class="highlight">
-			<pre><code class="language-html" data-lang="html">$jsMinify = isset($_GET['unminify']) ? false : true;<br>$jsFiles = array(
-		  $jsUrl.'/js/app-lang.js',
-		  $jsUrl.'/js/app-base.js',
-		  $jsUrl.'/js/app-theme.js',
-		  ...
-		);<br>...<br>$jsVariables = array(
-			//Global
-			'@global-url'	=> $jsUrl,
-			//Screen
+			<pre><code class="language-html" data-lang="html">...<br>$js_minify = isset($_GET['unminify']) ? false : true;<br>
+//Defaults
+$js_data['file'] = array(
+			'app-lang.js',
+			'app-base.js',
+			'app-theme.js',
+			);<br>
+$js_data['vars'] = array(
+			'@global-url'	=> $js_url,
 			'@screen-xs'	=> '480',
 			'@screen-sm'	=> '768',
 			'@screen-md'	=> '992',
 			'@screen-lg'	=> '1200', 
 			'@screen-xl' 	=> '1920', 
-			...
-		);</code></pre>
+			);<br>...</code></pre>
 		</figure>
 		
 		<p>
@@ -403,7 +401,7 @@ body{
 				<h3 class="panel-title">Note for included JS files</h3>
 			</div>
 			<div class="panel-body">
-				The file <code>app-theme.js</code> it will contain all the main code for yout website. The file <code>app-example.js</code> is only for tests and references, you can delete with no problems. Is not recomemded to modify the <code>app-lang.js</code> or <code>app-base.js</code> because contains the main functions inside. <b>If you want add extra stuff, just add it in</b> <code>app-theme.js</code> <b>or</b> <code>app-extras.php</code>
+				The file <code>app-theme.js</code> it will contain all the main code for yout website. The file <code>extras/example.js</code> is only for tests and references, you can delete with no problems. Is not recomemded to modify the <code>app-lang.js</code> or <code>app-base.js</code> because contains the main functions inside. <b>If you want add extra stuff, just add it in</b> <code>app-theme.js</code> <b>or</b> <code>app-extras.php</code>
 				<br><br>
 				To manage custom languages just add the attribute <code>data-js-lang</code> to <code>&lt;body&gt;</code> tag. The main language file is <code>app-lang.js</code> but these are the default ones, you can override them in <code>app-theme.js</code> using the same key. If you want add more language take a look on <code>app-example.js</code> for references. 
 				<br><br>

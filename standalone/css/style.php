@@ -8,7 +8,7 @@ require_once('../resources/php/utilities.php');
 
 class php extends utilities\php 
 {
-	public static $cssInfo = '/*
+	public static $css_info = '/*
  * Style.php CSS File Parser
  * Version 2.0
  * TriForce - Matías Silva
@@ -20,41 +20,38 @@ class php extends utilities\php
 	
 	public static function build_css()
 	{
-		$cssMinify = isset($_GET['unminify']) ? false : true;
-		$cssBuffer = '';
-		$cssUrl = php::get_main_url('/css');
-
-		$cssFiles = array(
-					  '../css/style-base.css',
-					  '../css/style-bootstrap.css',
-					  '../css/style-theme.css',
-					);
-
-		$cssVariables = array(
-							//Global Url
-							'@global-url'	=> $cssUrl,
-							//Screen Size
-							'@screen-xs'	=> '480px',
-							'@screen-sm'	=> '768px',
-							'@screen-md'	=> '992px',
-							'@screen-lg'	=> '1200px', 
-							'@screen-xl' 	=> '1920px', 
-						);
-
+		$css_url = php::get_main_url('/css');
+		$css_minify = isset($_GET['unminify']) ? false : true;
+		
+		//Defaults
+		$css_data['file'] = array(
+								 'style-base.css',
+								 'style-bootstrap.css',
+								 'style-theme.css',
+								 );
+		$css_data['vars'] = array(
+								 '@global-url'	=> $css_url,
+								 '@screen-xs'	=> '480px',
+								 '@screen-sm'	=> '768px',
+								 '@screen-md'	=> '992px',
+								 '@screen-lg'	=> '1200px', 
+								 '@screen-xl' 	=> '1920px', 
+								 );
+		
 		include('style-extras.php');
+		
+		$css_data['file'] = array_merge($css_data['file'], $css_extra['file']);
+		$css_data['vars'] = array_merge($css_data['vars'], $css_extra['vars']);
 
-		$cssFiles = array_merge($cssFiles, $cssFilesExtras);
-		$cssVariables = array_merge($cssVariables, $cssVariablesExtras);
-
-		foreach($cssFiles as $cssFile){
-			$cssBuffer .= file_get_contents($cssFile);
+		foreach($css_data['file'] as $css_file){
+			$css_buffer .= file_get_contents($css_file);
 		}
 
-		$cssKey = array_keys($cssVariables);
-		$cssBuffer = str_replace($cssKey, $cssVariables, $cssBuffer);
-		$cssContent = $cssMinify == true ? php::minify_css($cssBuffer) : $cssBuffer;
+		$css_key = array_keys($css_data['vars']);
+		$css_buffer = str_replace($css_key, $css_data['vars'], $css_buffer);
+		$css_content = $css_minify == true ? php::minify_css($css_buffer) : $css_buffer;
 
-		return php::$cssInfo.$cssContent;
+		return php::$css_info.$css_content;
 	}
 }
 

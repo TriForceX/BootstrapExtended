@@ -14,12 +14,14 @@
 <script src="<?php echo php::get_main_url(); ?>/resources/jquery/js/jquery.min.js"></script>
 <!-- jQuery UI -->
 <script src="<?php echo php::get_main_url(); ?>/resources/jquery-ui/js/jquery-ui.min.js"></script>
-<!-- jQuqey Browser for 1.9+ -->
+<!-- jQuqey Browser -->
 <script src="<?php echo php::get_main_url(); ?>/resources/jquery-browser/js/jquery.mb.browser.min.js"></script>
 <!-- jQuery Cookie -->
 <script src="<?php echo php::get_main_url(); ?>/resources/jquery-cookie/js/js.cookie.js"></script>
 <!-- jQuery Fullscreen -->
 <script src="<?php echo php::get_main_url(); ?>/resources/jquery-fullscreen/js/jquery.fullscreen.min.js"></script>
+<!-- jQuery Rotate -->
+<script src="<?php echo php::get_main_url(); ?>/resources/jquery-rotate/js/jQueryRotate.js"></script>
 <!-- Touch Swipe -->
 <script src="<?php echo php::get_main_url(); ?>/resources/touchswipe/js/jquery.touchSwipe.min.js"></script>
 <!-- Bootstrap 3 -->
@@ -33,7 +35,7 @@
 <!-- Bootstrap Data Tables -->
 <script src="<?php echo php::get_main_url(); ?>/resources/datatables/js/jquery.dataTables.min.js"></script>
 <script src="<?php echo php::get_main_url(); ?>/resources/datatables/js/dataTables.bootstrap.min.js"></script>
-<!-- imgLiquid Fix -->
+<!-- imgLiquid -->
 <script src="<?php echo php::get_main_url(); ?>/resources/imgliquid/js/imgliquid.min.js"></script>
 <!-- LightGallery Lightbox -->
 <!--[if lt IE 9]>

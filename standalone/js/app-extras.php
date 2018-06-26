@@ -1,9 +1,9 @@
 <?php
-$jsFilesExtras = array(
-					'../js/app-example.js',
-				);
-
-$jsVariablesExtras = array(
-					//'@color-custom' => '#ffffff',
-				);
+//Extras
+$js_extra['file'] = array(
+						 'extras/example.js',
+						 );
+$js_extra['vars'] = array(
+						 //'@color-custom'	=> '#ffffff',
+						 );
 ?>

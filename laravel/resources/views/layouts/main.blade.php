@@ -105,12 +105,14 @@
 <script src="{{ url('assets/resources/jquery/js/jquery.min.js') }}"></script>
 <!-- jQuery UI -->
 <script src="{{ url('assets/resources/jquery-ui/js/jquery-ui.min.js') }}"></script>
-<!-- jQuqey Browser for 1.9+ -->
+<!-- jQuqey Browser -->
 <script src="{{ url('assets/resources/jquery-browser/js/jquery.mb.browser.min.js') }}"></script>
 <!-- jQuery Cookie -->
 <script src="{{ url('assets/resources/jquery-cookie/js/js.cookie.js') }}"></script>
 <!-- jQuery Fullscreen -->
 <script src="{{ url('assets/resources/jquery-fullscreen/js/jquery.fullscreen.min.js') }}"></script>
+<!-- jQuery Rotate -->
+<script src="{{ url('assets/resources/jquery-rotate/js/jQueryRotate.js') }}"></script>
 <!-- Touch Swipe -->
 <script src="{{ url('assets/resources/touchswipe/js/jquery.touchSwipe.min.js') }}"></script>
 <!-- Bootstrap 3 -->
@@ -124,7 +126,7 @@
 <!-- Bootstrap Data Tables -->
 <script src="{{ url('assets/resources/datatables/js/jquery.dataTables.min.js') }}"></script>
 <script src="{{ url('assets/resources/datatables/js/dataTables.bootstrap.min.js') }}"></script>
-<!-- imgLiquid Fix -->
+<!-- imgLiquid -->
 <script src="{{ url('assets/resources/imgliquid/js/imgliquid.min.js') }}"></script>
 <!-- LightGallery Lightbox -->
 <!--[if lt IE 9]>

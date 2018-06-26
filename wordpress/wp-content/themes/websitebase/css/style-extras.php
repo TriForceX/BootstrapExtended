@@ -1,10 +1,9 @@
 <?php
-
-$cssFilesExtras = array(
-						'../css/style-example.css',
-					);
-
-$cssVariablesExtras = array(
-						//'@color-custom' 	=> '#ffffff',
-					);
+//Extras
+$css_extra['file'] = array(
+						  'extras/example.css',
+						  );
+$css_extra['vars'] = array(
+						  //'@color-custom'	=> '#ffffff',
+						  );
 ?>

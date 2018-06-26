@@ -9,11 +9,11 @@
  */
 
 //Main assets folder
-var jsUrl = '/assets';
+var mainUrl = '/assets';
 //Replacements
 var replacementsCSS = [
 	//Global
-	['@global-url'	, jsUrl],
+	['@global-url'	, mainUrl],
 	//Screen
 	['@screen-xs'	, '480px'], 
 	['@screen-sm'	, '768px'], 
@@ -23,7 +23,7 @@ var replacementsCSS = [
 ];
 var replacementsJS = [
 	//Global
-	['@global-url'	, jsUrl],
+	['@global-url'	, mainUrl],
 	//Screen
 	['@screen-xs'	, '480'], 
 	['@screen-sm'	, '768'], 
@@ -42,14 +42,14 @@ var gulpFrontCSSFiles = [
 						'resources/assets/css/style-base.css',
 						'resources/assets/css/style-bootstrap.css',
 						'resources/assets/css/style-theme.css',
-						'resources/assets/css/style-example.css', //Example file
+						'resources/assets/css/extras/example.css', //Example file
 						];
 					
 var gulpFrontJSFiles = [
 						'resources/assets/js/app-lang.js',
-						'resources/assets/js/app-base.js',',
+						'resources/assets/js/app-base.js',
 						'resources/assets/js/app-theme.js',
-						'resources/assets/js/app-example.js', //Example file
+						'resources/assets/js/extras/example.js', //Example file
 						];
 
 /*

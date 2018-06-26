@@ -8,7 +8,7 @@ require_once('../resources/php/utilities.php');
 
 class php extends utilities\php 
 {
-	public static $jsInfo = '/*
+	public static $js_info = '/*
  * App.php JavaScript File Parser
  * Version 2.0
  * TriForce - Matías Silva
@@ -20,41 +20,38 @@ class php extends utilities\php
 	
 	public static function build_js()
 	{
-		$jsMinify = isset($_GET['unminify']) ? false : true;
-		$jsBuffer = '';
-		$jsUrl = php::get_main_url('/js');
-
-		$jsFiles = array(
-					  '../js/app-lang.js',
-					  '../js/app-base.js',
-					  '../js/app-theme.js',
-					);
-
-		$jsVariables = array(
-							//Global Url
-							'@global-url'	=> $jsUrl,
-							//Screen Size
-							'@screen-xs'	=> '480',
-							'@screen-sm'	=> '768',
-							'@screen-md'	=> '992',
-							'@screen-lg'	=> '1200', 
-							'@screen-xl' 	=> '1920', 
-						);
-
+		$js_url = php::get_main_url('/js');
+		$js_minify = isset($_GET['unminify']) ? false : true;
+		
+		//Defaults
+		$js_data['file'] = array(
+								 'app-lang.js',
+								 'app-base.js',
+								 'app-theme.js',
+								 );
+		$js_data['vars'] = array(
+								 '@global-url'	=> $js_url,
+								 '@screen-xs'	=> '480',
+								 '@screen-sm'	=> '768',
+								 '@screen-md'	=> '992',
+								 '@screen-lg'	=> '1200', 
+								 '@screen-xl' 	=> '1920', 
+								 );
+		
 		include('app-extras.php');
+		
+		$js_data['file'] = array_merge($js_data['file'], $js_extra['file']);
+		$js_data['vars'] = array_merge($js_data['vars'], $js_extra['vars']);
 
-		$jsFiles = array_merge($jsFiles, $jsFilesExtras);
-		$jsVariables = array_merge($jsVariables, $jsVariablesExtras);
-
-		foreach($jsFiles as $jsFile){
-			$jsBuffer .= file_get_contents($jsFile);
+		foreach($js_data['file'] as $js_file){
+			$js_buffer .= file_get_contents($js_file);
 		}
 
-		$jsKey = array_keys($jsVariables);
-		$jsBuffer = str_replace($jsKey, $jsVariables, $jsBuffer);
-		$jsContent = $jsMinify == true ? php::minify_js($jsBuffer) : $jsBuffer;
+		$js_key = array_keys($js_data['vars']);
+		$js_buffer = str_replace($js_key, $js_data['vars'], $js_buffer);
+		$js_content = $js_minify == true ? php::minify_js($js_buffer) : $js_buffer;
 
-		return php::$jsInfo.$jsContent;
+		return php::$js_info.$js_content;
 	}
 }
 

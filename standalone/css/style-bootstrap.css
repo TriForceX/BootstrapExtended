@@ -57,10 +57,10 @@
 }
 @media (max-width: @screen-sm) {
 	.modal{
-		padding: 0px 10px !important;
+		padding: 0px 15px !important;
 	}
 	.modal-dialog {
-		margin: 10px auto;
+		margin: 15px auto;
 		width: 100%;
 	}
 	.modal-dialog.modal-sm {
