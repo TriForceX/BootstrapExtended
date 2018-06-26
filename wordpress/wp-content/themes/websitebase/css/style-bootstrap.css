@@ -236,6 +236,20 @@
 }*/
 /* Tooltip Custom Color */
 
+/* Form input addon label */
+.form-group .input-group-addon label{
+	font-weight: normal;
+	vertical-align: middle;
+	cursor: pointer;
+	white-space: nowrap;
+	margin-bottom: 0px;
+}
+.form-group .input-group-addon label input[type='checkbox'],
+.form-group .input-group-addon label input[type='radio']{
+	margin-right: 5px;
+}
+/* Form input addon label */
+
 /* Form custom file */
 .form-group .custom-file input[type='file']{
 	-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
