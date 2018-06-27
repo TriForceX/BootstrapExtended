@@ -45,7 +45,7 @@
     <!-- Hover CSS -->
 	<link href="{{ url('assets/resources/hover/css/hover.min.css') }}" rel="stylesheet">
 	<!-- Font Awesome -->
-	<link href="{{ url('assets/resources/font-awesome/css/fontawesome-all.min.css') }}" rel="stylesheet">
+	<link href="{{ url('assets/resources/font-awesome/css/all.css') }}" rel="stylesheet">
 	<!-- Tempus Dominus -->
 	<link href="{{ url('assets/resources/tempusdominus/css/tempusdominus.min.css') }}" rel="stylesheet">
 	<!-- Main CSS File -->
