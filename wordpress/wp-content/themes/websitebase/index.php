@@ -1366,7 +1366,7 @@ $js_data['vars'] = array(
 					<label for="bases-archivo">File</label>
 					<div class="input-group">
 						<div class="form-control custom-file">
-							<span>Select File</span>
+							<div class="custom-file-text"><span>Select File</span></div>
 							<input type="file" id="example-file" name="example-file" placeholder="Select File">
 						</div>
 						<label class="input-group-btn" for="example-file">
@@ -1374,8 +1374,41 @@ $js_data['vars'] = array(
 						</label>
 					</div>
 				</div>
+				<div class="form-group" data-group="checkbox-addon">
+					<label for="example-website-url">Website</label>
+					<div class="input-group">
+						<span class="input-group-addon">
+							<label for="example-website-enable">
+								<input type="checkbox" name="example-website-enable" id="example-website-enable"> 
+								Enable
+							</label>
+						</span>
+						<input type="text" class="form-control" name="example-website-url" id="example-website-url" placeholder="Type your Website URL">
+					</div>
+				</div>
+				<div class="form-group" data-group="radio-addon">
+					<label for="example-website-url">Social Network</label>
+					<div class="row">
+						<div class="col-xs-12 col-sm-6 mb-3 mb-sm-0">
+							<div class="input-group">
+								<span class="input-group-addon">
+									<input type="radio" name="example-social-enable" id="example-social-1" autocomplete="off" value="Social 1 Enable">
+								</span>
+								<input type="text" class="form-control" name="example-social-1-url" id="example-social-1-url" placeholder="Type your Social Network URL">
+							</div>
+						</div>
+						<div class="col-xs-12 col-sm-6 mb-3 mb-sm-0">
+							<div class="input-group">
+								<span class="input-group-addon">
+									<input type="radio" name="example-social-enable" id="example-social-2" autocomplete="off" value="Social 2 Enable">
+								</span>
+								<input type="text" class="form-control" name="example-social-2-url" id="example-social-2-url" placeholder="Type your Social Network URL">
+							</div>
+						</div>
+					</div>
+				</div>
 				<div class="form-group" data-group="checkbox">
-					<p class="no-margin-b">
+					<p class="mb-0">
 						<label>Check items</label>
 					</p>
 					<div class="checkbox">
@@ -1400,7 +1433,7 @@ $js_data['vars'] = array(
 					</div>
 				</div>
 				<div class="form-group" data-group="radio">
-					<p class="no-margin-b">
+					<p class="mb-0">
 						<label>Radio items</label>
 					</p>
 					<div class="radio">
@@ -1424,8 +1457,45 @@ $js_data['vars'] = array(
 						</label>
 					</div>
 				</div>
+				<div class="form-group" data-group="checkbox">
+					<p class="mb-0">
+						<label>Check items (overflow box)</label>
+					</p>
+					<div class="input-group-overflow">
+						<div class="checkbox">
+							<label for="example-checkbox-box-1">
+								<input type="checkbox" autocomplete="off" name="example-checkbox-box-1" id="example-checkbox-box-1" value="Selected 1"> Checkbox Box Item 1
+							</label>
+						</div>
+						<div class="checkbox">
+							<label for="example-checkbox-box-2">
+								<input type="checkbox" autocomplete="off" name="example-checkbox-box-2" id="example-checkbox-box-2" value="Selected 2"> Checkbox Box Item 2
+							</label>
+						</div>
+						<div class="checkbox">
+							<label for="example-checkbox-box-3">
+								<input type="checkbox" autocomplete="off" name="example-checkbox-box-3" id="example-checkbox-box-3" value="Selected 3"> Checkbox Box Item 3
+							</label>
+						</div>
+						<div class="checkbox">
+							<label for="example-checkbox-box-4">
+								<input type="checkbox" autocomplete="off" name="example-checkbox-box-4" id="example-checkbox-box-4" value="Selected 4"> Checkbox Box Item 4
+							</label>
+						</div>
+						<div class="checkbox">
+							<label for="example-checkbox-box-5">
+								<input type="checkbox" autocomplete="off" name="example-checkbox-box-5" id="example-checkbox-box-5" value="Selected 5"> Checkbox Box Item 5
+							</label>
+						</div>
+						<div class="checkbox">
+							<label for="example-checkbox-box-6">
+								<input type="checkbox" autocomplete="off" name="example-checkbox-box-6" id="example-checkbox-box-6" value="Selected 6"> Checkbox Box Item 6
+							</label>
+						</div>
+					</div>
+				</div>
 				<div class="form-group" data-toggle="buttons" data-group="checkbox">
-					<p class="no-margin-b">
+					<p class="mb-0">
 						<label>Check items (Button style)</label>
 					</p>
 					<label class="btn btn-primary" for="example-checkbox-1-style">
@@ -1439,7 +1509,7 @@ $js_data['vars'] = array(
 					</label>
 				</div>
 				<div class="form-group" data-toggle="buttons" data-group="radio">
-					<p class="no-margin-b">
+					<p class="mb-0">
 						<label>Radio items (Button style)</label>
 					</p>
 					<label class="btn btn-primary" for="example-radio-1-style">
@@ -1452,7 +1522,7 @@ $js_data['vars'] = array(
 						<input type="radio" name="example-radio-style" id="example-radio-3-style" autocomplete="off" value="Choosen 3 style"> Radio Item 3
 					</label>
 				</div>
-				<div class="form-group no-margin-b">
+				<div class="form-group mb-0">
 					<button type="reset" class="btn btn-default">Reset</button>
 					<button type="submit" class="btn btn-default">Submit</button>
 				</div>

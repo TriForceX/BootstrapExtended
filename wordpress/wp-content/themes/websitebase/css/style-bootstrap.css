@@ -236,6 +236,29 @@
 }*/
 /* Tooltip Custom Color */
 
+/* Form input group overflow */
+.form-group .input-group-overflow{
+	height: auto;
+    max-height: 120px;
+	overflow: hidden;
+	overflow-y: auto;
+	width: 100%;
+	display: block;
+	border: 1px solid #CCC;
+	border-radius: 5px;
+	padding: 10px 10px 0 10px;
+	text-align: justify;
+	word-break: break-all;
+}
+/* Form input group overflow */
+
+/* Form checkbox & radio margin */
+.form-group .checkbox:nth-of-type(1),
+.form-group .radio:nth-of-type(1){
+	margin-top: 0px !important;
+}
+/* Form checkbox & radio margin */
+
 /* Form input addon label */
 .form-group .input-group-addon label{
 	font-weight: normal;
@@ -262,9 +285,25 @@
 	z-index: 2;
 	width: 100%;
 	height: 100%;
-	margin: 0;
-	top: 0;
+	margin: 0px;
+	top: 0px;
+	left: 0px;
+}
+.form-group .custom-file .custom-file-text{
+	position: relative;
+}
+.form-group .custom-file .custom-file-text:before {
+	content: "&nbsp;";
+	visibility: hidden;
+}
+.form-group .custom-file .custom-file-text > span {
+	position: absolute;
 	left: 0;
+	right: 0;
+	top: 0;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
 }
 /* Form custom file */
 

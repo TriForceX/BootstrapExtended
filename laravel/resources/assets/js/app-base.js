@@ -104,6 +104,75 @@ $.fn.validateForm = function(options)
 							 'select'	: lang('@validate-select'),
 							 'file'		: lang('@validate-file'),
 							};
+		
+		var formInputValidation = function(element){
+			switch(element.attr("type")){
+				case 'text':
+					if (!validateEmpty(element.val())) { 
+						if(settings.errorStyling){ element.parents('.form-group').addClass('has-error').removeClass('has-success'); }
+						formError = formErrorText.text;
+					}
+					else{
+						if(settings.errorStyling){ element.parents('.form-group').removeClass('has-error').addClass('has-success'); }
+					}
+					break;
+				case 'number':
+					if (!validateEmpty(element.val()) || !validateNumber(element.val())) { 
+						if(settings.errorStyling){ element.parents('.form-group').addClass('has-error').removeClass('has-success'); }
+						formError = formErrorText.number;
+					}
+					else{
+						if(settings.errorStyling){ element.parents('.form-group').removeClass('has-error').addClass('has-success'); }
+					}
+					break;
+				case 'tel':
+					if (!validateEmpty(element.val())) { 
+						if(settings.errorStyling){ element.parents('.form-group').addClass('has-error').removeClass('has-success'); }
+						formError = formErrorText.tel;
+					}
+					else{
+						if(settings.errorStyling){ element.parents('.form-group').removeClass('has-error').addClass('has-success'); }
+					}
+					break;
+				case 'email':
+					if (!validateEmpty(element.val()) || !validateEmail(element.val())) { 
+						if(settings.errorStyling){ element.parents('.form-group').addClass('has-error').removeClass('has-success'); }
+						formError = formErrorText.email;
+					}
+					else{
+						if(settings.errorStyling){ element.parents('.form-group').removeClass('has-error').addClass('has-success'); }
+					}
+					break;
+				case 'password':
+					if (!validateEmpty(element.val())) { 
+						if(settings.errorStyling){ element.parents('.form-group').addClass('has-error').removeClass('has-success'); }
+						formError = formErrorText.pass;
+					}
+					else{
+						if(settings.errorStyling){ element.parents('.form-group').removeClass('has-error').addClass('has-success'); }
+					}
+					break;
+				case 'search':
+					if (!validateEmpty(element.val())) { 
+						if(settings.errorStyling){ element.parents('.form-group').addClass('has-error').removeClass('has-success'); }
+						formError = formErrorText.search;
+					}
+					else{
+						if(settings.errorStyling){ element.parents('.form-group').removeClass('has-error').addClass('has-success'); }
+					}
+					break;
+				case 'file':
+					if (!validateEmpty(element.val())) { 
+						if(settings.errorStyling){ element.parents('.form-group').addClass('has-error').removeClass('has-success'); }
+						formError = formErrorText.file;
+					}
+					else{
+						if(settings.errorStyling){ element.parents('.form-group').removeClass('has-error').addClass('has-success'); }
+					}
+					break;
+				default: break;
+			}
+		};
 
 		//Select inputs
 		$(this).find('select').not(settings.noValidate).each(function(){
@@ -128,9 +197,9 @@ $.fn.validateForm = function(options)
 		});
 		
 		//Checkbox & radio group inputs
-		$(this).find('[data-group]').each(function(){
+		$(this).find('[data-group="checkbox"], [data-group="radio"]').not(settings.noValidate).each(function(){
 			var type = $(this).data('group');
-			var item = $(this).find("input[type='"+type+"']");
+			var item = $(this).find('input[type="'+type+'"]');
 			var check = false;
 		
 			for (var i = item.length -1; i >= 0; i--){
@@ -138,7 +207,6 @@ $.fn.validateForm = function(options)
 					check = true;
 				}
 			}
-			
 			if(!check){
 				if(settings.errorStyling){ item.parents('.form-group').addClass('has-error').removeClass('has-success'); }
 				formError = formErrorText[type];
@@ -148,74 +216,31 @@ $.fn.validateForm = function(options)
 			}
 		});
 		
-		//Input validation
-		$(this).find('input').not(settings.noValidate).each(function(){
-			switch($(this).attr("type")){
-				case 'text':
-					if (!validateEmpty($(this).val())) { 
-						if(settings.errorStyling){ $(this).parents('.form-group').addClass('has-error').removeClass('has-success'); }
-						formError = formErrorText.text;
-					}
-					else{
-						if(settings.errorStyling){ $(this).parents('.form-group').removeClass('has-error').addClass('has-success'); }
-					}
-					break;
-				case 'number':
-					if (!validateEmpty($(this).val()) || !validateNumber($(this).val())) { 
-						if(settings.errorStyling){ $(this).parents('.form-group').addClass('has-error').removeClass('has-success'); }
-						formError = formErrorText.number;
-					}
-					else{
-						if(settings.errorStyling){ $(this).parents('.form-group').removeClass('has-error').addClass('has-success'); }
-					}
-					break;
-				case 'tel':
-					if (!validateEmpty($(this).val())) { 
-						if(settings.errorStyling){ $(this).parents('.form-group').addClass('has-error').removeClass('has-success'); }
-						formError = formErrorText.tel;
-					}
-					else{
-						if(settings.errorStyling){ $(this).parents('.form-group').removeClass('has-error').addClass('has-success'); }
-					}
-					break;
-				case 'email':
-					if (!validateEmpty($(this).val()) || !validateEmail($(this).val())) { 
-						if(settings.errorStyling){ $(this).parents('.form-group').addClass('has-error').removeClass('has-success'); }
-						formError = formErrorText.email;
-					}
-					else{
-						if(settings.errorStyling){ $(this).parents('.form-group').removeClass('has-error').addClass('has-success'); }
-					}
-					break;
-				case 'password':
-					if (!validateEmpty($(this).val())) { 
-						if(settings.errorStyling){ $(this).parents('.form-group').addClass('has-error').removeClass('has-success'); }
-						formError = formErrorText.pass;
-					}
-					else{
-						if(settings.errorStyling){ $(this).parents('.form-group').removeClass('has-error').addClass('has-success'); }
-					}
-					break;
-				case 'search':
-					if (!validateEmpty($(this).val())) { 
-						if(settings.errorStyling){ $(this).parents('.form-group').addClass('has-error').removeClass('has-success'); }
-						formError = formErrorText.search;
-					}
-					else{
-						if(settings.errorStyling){ $(this).parents('.form-group').removeClass('has-error').addClass('has-success'); }
-					}
-					break;
-				case 'file':
-					if (!validateEmpty($(this).val())) { 
-						if(settings.errorStyling){ $(this).parents('.form-group').addClass('has-error').removeClass('has-success'); }
-						formError = formErrorText.file;
-					}
-					else{
-						if(settings.errorStyling){ $(this).parents('.form-group').removeClass('has-error').addClass('has-success'); }
-					}
-					break;
-				default: break;
+		//Checkbox & radio input addons
+		$(this).find('[data-group="checkbox-addon"], [data-group="radio-addon"]').not(settings.noValidate).each(function(){
+			var type = $(this).data('group').replace(/-addon/g,'');
+			var item = $(this).find('input[type="'+type+'"]');
+			var check = false;
+		
+			for (var i = item.length -1; i >= 0; i--){
+				if(item.eq(i).is(":checked")){
+					check = true;
+				}
 			}
+			if(!check){
+				if(settings.errorStyling){ item.parents('.form-group').addClass('has-error').removeClass('has-success'); }
+				formError = formErrorText[type];
+			}
+			else{
+				$(this).find('input[type="'+type+'"]:checked').parents('.input-group').find('input').each(function(){
+					formInputValidation($(this));
+				});
+			}
+		});
+		
+		//Input validation
+		$(this).find('.form-group').not('[data-group="checkbox-addon"], [data-group="radio-addon"]').find('input').not(settings.noValidate).each(function(){
+			formInputValidation($(this));
 		});
 		
 		//Custom validation
@@ -275,9 +300,14 @@ $.fn.validateForm = function(options)
 							if(settings.resetSubmit){
 								formElement.trigger('reset');
 								if(settings.errorStyling){ formElement.find('.form-group').removeClass('has-error'); }
+								if(settings.errorStyling){ formElement.find('.form-group').removeClass('has-warning'); }
 								if(settings.errorStyling){ formElement.find('.form-group').removeClass('has-success'); }
-								formElement.find("input[type='checkbox']").prop('checked', false).parent().removeClass('active');
-								formElement.find("input[type='radio']").prop('checked', false).parent().removeClass('active');
+								formElement.find('input[type="checkbox"]').prop('checked', false).parent().removeClass('active');
+								formElement.find('input[type="radio"]').prop('checked', false).parent().removeClass('active');
+								formElement.find('.form-group input[type="file"]').each(function(){
+									var placeholder = $(this).hasAttr('placeholder') ? $(this).attr('placeholder') : '';
+									$(this).parent().find('.custom-file-text > span').html(placeholder);
+								});
 							}
 							formElement.validateForm({
 								noValidate: settings.noValidate,
@@ -1474,7 +1504,7 @@ $(document).ready(function(){
 	});
 	
 	//Check map launch alert
-	$(document).on("click", '.JSmapLaunchAlert', function(e){
+	$(document).on("click", ".JSmapLaunchAlert", function(e){
 		if (isMobile && !confirm(lang('@maplaunch-alert'))){
 		  e.preventDefault();
 		}
@@ -1511,8 +1541,21 @@ $(document).ready(function(){
 	$(document).on("change", ".form-group .custom-file input[type='file']", function(){
 		var placeholder = $(this).hasAttr('placeholder') ? $(this).attr('placeholder') : '';
 		var filename = $(this)[0].files.length ? $(this)[0].files[0].name : placeholder;
-		$(this).parent().find('span').html(filename);
+		$(this).parent().find('.custom-file-text > span').html(filename);
 	});
+	
+	//Check form reset
+	$(document).on("reset", "form", function(e){
+		$(this).find('.form-group').removeClass('has-error');
+		$(this).find('.form-group').removeClass('has-warning');
+		$(this).find('.form-group').removeClass('has-success');
+		$(this).find('.form-group input[type="checkbox"]').prop('checked', false).parent().removeClass('active');
+		$(this).find('.form-group input[type="radio"]').prop('checked', false).parent().removeClass('active');
+		$(this).find('.form-group input[type="file"]').each(function(){
+			var placeholder = $(this).hasAttr('placeholder') ? $(this).attr('placeholder') : '';
+			$(this).parent().find('.custom-file-text > span').html(placeholder);
+		});
+    });
 	
 	//Load responsive code
 	responsiveCode();

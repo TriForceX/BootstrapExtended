@@ -77,7 +77,7 @@ $(document).ready(function(){
 	$('.JSformExample').validateForm({
 		noValidate: '#example-input-lastname',
 		hasConfirm: true,
-		customValidate: ['validateCustom', '#example-input-custom', 'Custom error alert message.'],
+		customValidate: ['validateCustom', '#example-input-custom', 'Please fill the Custom Field.'],
 		resetSubmit: true,
 		errorStyling: true,
 		modalSize: 'medium',
