@@ -20,7 +20,7 @@ body{
 table{
 	word-break: keep-all;
 }
-table tr td:first-child{
+table:not(.JSdataTables) tr td:first-child{
 	white-space: nowrap;
 }
 /* ================================================= EXAMPLE GLOBAL ================================================= */
