@@ -337,7 +337,21 @@ function toBoolean(value)
     return strValue === 'true' || strValue === '1' ? true : false;
 }
 
-//Get max height from elements
+//Get max width between elements
+function getMaxWidth(elems, getrect)
+{
+    return Math.max.apply(null, elems.map(function()
+    {
+		if(getrect === true){
+			return $(this).outerWidth2();
+		}
+		else{
+			return $(this).outerWidth();
+		}
+    }).get());
+}
+
+//Get max height between elements
 function getMaxHeight(elems, getrect)
 {
     return Math.max.apply(null, elems.map(function()

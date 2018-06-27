@@ -35,7 +35,7 @@ Base structure for web sites with reusable parts of source code or functions mai
 # Functions & Code Snippets
 - HTML header data class
 - PHP main utility class
-- CSS & JS files built in PHP (with code reduction)
+- CSS & JS built in PHP with minify & auto-build features
 - Custom .htaccess file with force HTTPS & WWW options
 - PHP Features:
 	- Global variables for CSS & JS usage
@@ -67,7 +67,7 @@ Base structure for web sites with reusable parts of source code or functions mai
 	- Remove whitespaces between elements
 	- Form validation
 	- Convert string to boolean
-	- Get max height between elements
+	- Get max width & height between elements
 	- Responsive code detection
 	- LightGallery improved functions/events
 	- ImgLiquid auto-fill background images
