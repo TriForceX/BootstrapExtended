@@ -322,6 +322,16 @@
 	-webkit-appearance: none;
 	-moz-appearance: none;
 }
+.form-group textarea.textarea-resize-x {
+	resize: horizontal;
+	-webkit-appearance: horizontal;
+	-moz-appearance: horizontal;
+}
+.form-group textarea.textarea-resize-y {
+	resize: vertical;
+	-webkit-appearance: vertical;
+	-moz-appearance: vertical;
+}
 /* Form group textarea resize */
 
 /* Form group has success */
