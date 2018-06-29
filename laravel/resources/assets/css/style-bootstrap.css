@@ -256,11 +256,27 @@
 .open > .dropdown-overflow-lg{
 	max-height: 500px;
 }
+@media (max-width: @screen-lg) {
+	.open > .dropdown-overflow-lg{
+		max-height: 400px;
+	}
+}
+@media (max-width: @screen-md) {
+	.open > .dropdown-overflow-md,
+	.open > .dropdown-overflow-lg{
+		max-height: 195px;
+	}
+}
 @media (max-width: @screen-sm) {
-	.open > .dropdown-overflow-xs,
 	.open > .dropdown-overflow-sm,
 	.open > .dropdown-overflow-md,
 	.open > .dropdown-overflow-lg{
+		max-height: 120px;
+	}
+	.nav .open > .dropdown-overflow-xs,
+	.nav .open > .dropdown-overflow-sm,
+	.nav .open > .dropdown-overflow-md,
+	.nav .open > .dropdown-overflow-lg{
 		overflow: auto;
 		max-height: none;
 	}
