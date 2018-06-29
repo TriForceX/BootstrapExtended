@@ -236,6 +236,37 @@
 }*/
 /* Tooltip Custom Color */
 
+/* Dropdown Overflow */
+.open > .dropdown-overflow-xs,
+.open > .dropdown-overflow-sm,
+.open > .dropdown-overflow-md,
+.open > .dropdown-overflow-lg{
+	overflow: hidden;
+	overflow-y: auto;
+}
+.open > .dropdown-overflow-xs{
+	max-height: 120px;
+}
+.open > .dropdown-overflow-sm{
+	max-height: 195px;
+}
+.open > .dropdown-overflow-md{
+	max-height: 400px;
+}
+.open > .dropdown-overflow-lg{
+	max-height: 500px;
+}
+@media (max-width: @screen-sm) {
+	.open > .dropdown-overflow-xs,
+	.open > .dropdown-overflow-sm,
+	.open > .dropdown-overflow-md,
+	.open > .dropdown-overflow-lg{
+		overflow: auto;
+		max-height: none;
+	}
+}
+/* Dropdown Overflow */
+
 /* Form input group overflow */
 .form-group .input-group-overflow{
 	height: auto;

@@ -18,14 +18,14 @@
 				<li class="active"><a href="{{ url('/') }}" class="notranslate">Home</a></li>
 				<li class="dropdown">
 					<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Contact <span class="caret"></span></a>
-					<ul class="dropdown-menu notranslate" role="menu">
+					<ul class="dropdown-menu dropdown-overflow-lg notranslate" role="menu">
 						<li><a href="https://github.com/TriForceX" target="_blank">GitHub</a></li>
 						<li><a href="http://stackoverflow.com/users/7613382/triforce" target="_blank">StackOverflow</a></li>
 					</ul>
 				</li>
 				<li class="dropdown">
 					<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Resources <span class="caret"></span></a>
-					<ul class="dropdown-menu notranslate" role="menu">
+					<ul class="dropdown-menu dropdown-overflow-lg notranslate" role="menu">
 						<li><a href="http://bootboxjs.com/" target="_blank">BootBox JS</a></li>
 						<li><a href="https://clipboardjs.com/" target="_blank">Clipboard JS</a></li>
 						<li><a href="https://datatables.net/examples/styling/bootstrap.html" target="_blank">Data Tables</a></li>
@@ -52,7 +52,7 @@
 				</li>
 				<li class="dropdown">
 					<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Utilities <span class="caret"></span></a>
-					<ul class="dropdown-menu notranslate" role="menu">
+					<ul class="dropdown-menu dropdown-overflow-lg notranslate" role="menu">
 						<li><a href="https://www.w3schools.com" target="_blank">W3 Schools Tutorials</a></li>
 						<li><a href="http://bootsnipp.com" target="_blank">Bootstrap Snippets</a></li>
 						<li><a href="https://libraries.io" target="_blank">Open Source Libraries</a></li>
@@ -63,7 +63,7 @@
 				</li>
 				<li class="dropdown">
 					<a href="#" class="dropdown-toggle notranslate" data-toggle="dropdown" role="button" aria-expanded="false">Bootstrap <sup>3.3.7</sup> <span class="caret"></span></a>
-					<ul class="dropdown-menu" role="menu">
+					<ul class="dropdown-menu dropdown-overflow-lg" role="menu">
 						<li><a href="http://getbootstrap.com/docs/3.3/css/" target="_blank">CSS</a></li>
 						<li><a href="http://getbootstrap.com/docs/3.3/components/" target="_blank">Components</a></li>
 						<li><a href="http://getbootstrap.com/docs/3.3/javascript/" target="_blank">Javascript</a></li>
