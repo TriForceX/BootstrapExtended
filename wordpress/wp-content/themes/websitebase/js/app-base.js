@@ -1521,11 +1521,6 @@ $(document).ready(function(){
 	//Check plugin
 	if($.fn.datetimepicker !== undefined)
 	{
-		//Datepicker dont allow keywritting
-		$(document).on("keydown", ".datetimepicker-input", function(e){
-			e.preventDefault();
-		});
-
 		//Datepicker enable on input click
 		$(document).on("click", ".datetimepicker-input", function(e){
 			$(this).datetimepicker('show');

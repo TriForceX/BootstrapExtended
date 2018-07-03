@@ -137,7 +137,7 @@ a.ui-button:active,
 .lg-outer{
 	z-index: 1060; /*real: 1050 - bootstrap modal: 1050*/
 }
-.lg-outer .lg-thumb {
+.lg-outer .lg-thumb{
 	margin-left: auto !important;
 	margin-right: auto !important;
 }
@@ -158,6 +158,12 @@ a.ui-button:active,
 	-o-transition: opacity 0.4s ease;
 }
 /* Aditional hover effects */
+
+/* Tempusdominus datetime input bg */
+.datetimepicker-input[readonly="readonly"]{
+	background-color: white;
+}
+/* Tempusdominus datetime input bg */
 
 /* ================================================= BASE RESOURCES ================================================= */
 
