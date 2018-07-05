@@ -46,8 +46,8 @@
 	<link href="<?php echo get_bloginfo('template_url'); ?>/resources/hover/css/hover.min.css" rel="stylesheet">
 	<!-- Font Awesome -->
 	<link href="<?php echo get_bloginfo('template_url'); ?>/resources/font-awesome/css/all.css" rel="stylesheet">
-	<!-- Tempus Dominus -->
-	<link href="<?php echo get_bloginfo('template_url'); ?>/resources/tempusdominus/css/tempusdominus.min.css" rel="stylesheet">
+	<!-- Bootstrap Datepicker -->
+	<link href="<?php echo php::get_main_url(); ?>/resources/bootstrap-datepicker/css/bootstrap-datepicker3.min.css" rel="stylesheet">
 	<!-- Main CSS File -->
 	<link href="<?php echo php::get_template('css'); ?>" rel="stylesheet">
 	<!-- IE8 support of HTML5 elements and media queries -->

@@ -3,13 +3,15 @@ https://dev.gznetwork.com/websitebase
 
 Base structure for web sites with reusable parts of source code or functions mainly based on Bootstrap and another libraries. You can visit the website above for a running example.
 
-# Resources
+# Base
 - Standalone Support *(PHP 5.4+)*
 - Wordpress Support *(Ver 4.9.6)*
 - Laravel Support *(Ver 5.2, Experimental)*
 - Bootstrap 3 *(Ver 3.3.7)*
+
+# Resources
 - BootBox JS
-- Bootstrap
+- Bootstrap Datepicker
 - Clipboard JS
 - Data Tables
 - Font Awesome
@@ -25,10 +27,8 @@ Base structure for web sites with reusable parts of source code or functions mai
 - jQuery UI
 - Light Gallery
 - Masonry JS
-- Moment JS
 - REM Unit Polyfill
 - Respond JS
-- Tempus Dominus
 - Touch Swipe
 - PHP Mailer
 

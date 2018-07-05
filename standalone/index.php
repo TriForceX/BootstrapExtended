@@ -27,6 +27,7 @@
 					<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Resources <span class="caret"></span></a>
 					<ul class="dropdown-menu dropdown-overflow-lg notranslate" role="menu">
 						<li><a href="http://bootboxjs.com/" target="_blank">BootBox JS</a></li>
+						<li><a href="https://github.com/uxsolutions/bootstrap-datepicker" target="_blank">Bootstrap Datepicker</a></li>
 						<li><a href="https://clipboardjs.com/" target="_blank">Clipboard JS</a></li>
 						<li><a href="https://datatables.net/examples/styling/bootstrap.html" target="_blank">Data Tables</a></li>
 						<li><a href="http://fontawesome.io/" target="_blank">Font Awesome</a></li>
@@ -42,10 +43,8 @@
 						<li><a href="https://jqueryui.com/" target="_blank">jQuery UI</a></li>
 						<li><a href="http://sachinchoolur.github.io/lightGallery/" target="_blank">Light Gallery</a></li>
                         <li><a href="https://masonry.desandro.com/" target="_blank">Masonry JS</a></li>
-						<li><a href="https://github.com/moment/moment" target="_blank">Moment JS</a></li>
 						<li><a href="https://github.com/chuckcarpenter/REM-unit-polyfill" target="_blank">REM Unit Polyfill</a></li>
 						<li><a href="https://github.com/scottjehl/Respond" target="_blank">Respond JS</a></li>
-						<li><a href="https://tempusdominus.github.io/bootstrap-3/" target="_blank">Tempus Dominus</a></li>
 						<li><a href="http://labs.rampinteractive.co.uk/touchSwipe/demos/" target="_blank">Touch Swipe</a></li>
 						<li><a href="https://github.com/PHPMailer/PHPMailer/" target="_blank">PHP Mailer</a></li>
 					</ul>

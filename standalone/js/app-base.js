@@ -1518,20 +1518,6 @@ $(document).ready(function(){
 		}
 	});
 	
-	//Check plugin
-	if($.fn.datetimepicker !== undefined)
-	{
-		//Datepicker enable on input click
-		$(document).on("click", ".datetimepicker-input", function(e){
-			$(this).datetimepicker('show');
-		});
-
-		//Datepicker hide on focus-out
-		$(document).on("focusout", ".datetimepicker-input", function(e){
-			$(this).datetimepicker('hide');
-		});
-	}
-	
 	//Custom file input change
 	$(document).on("change", ".form-group .custom-file input[type='file']", function(){
 		var placeholder = $(this).hasAttr('placeholder') ? $(this).attr('placeholder') : '';

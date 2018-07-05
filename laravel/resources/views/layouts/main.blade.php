@@ -46,8 +46,8 @@
 	<link href="{{ url('assets/resources/hover/css/hover.min.css') }}" rel="stylesheet">
 	<!-- Font Awesome -->
 	<link href="{{ url('assets/resources/font-awesome/css/all.css') }}" rel="stylesheet">
-	<!-- Tempus Dominus -->
-	<link href="{{ url('assets/resources/tempusdominus/css/tempusdominus.min.css') }}" rel="stylesheet">
+	<!-- Bootstrap Datepicker -->
+	<link href="{{ url('assets/resources/bootstrap-datepicker/css/bootstrap-datepicker3.min.css') }}" rel="stylesheet">
 	<!-- Main CSS File -->
     <link href="{{ url('assets/css/all.css') }}" rel="stylesheet">
 	<!-- IE8 support of HTML5 elements and media queries -->
@@ -139,10 +139,8 @@
 <script src="{{ url('assets/resources/clipboard/js/clipboard.min.js') }}"></script>
 <!-- Masonry -->
 <script src="{{ url('assets/resources/masonry/js/masonry.min.js') }}"></script>
-<!-- Moment JS -->
-<script src="{{ url('assets/resources/moment/js/moment.min.js') }}"></script>
-<!-- Tempus Dominus -->
-<script src="{{ url('assets/resources/tempusdominus/js/tempusdominus.min.js') }}"></script>
+<!-- Bootstrap Datepicker -->
+<script src="{{ url('assets/resources/bootstrap-datepicker/js/bootstrap-datepicker.min.js') }}"></script>
 <!-- Main JS File -->
 <script src="{{ url('assets/js/all.js') }}"></script>
 	

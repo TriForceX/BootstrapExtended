@@ -381,6 +381,12 @@
 }
 /* Form group textarea resize */
 
+/* Form group readonly input bg */
+.form-group .form-control.no-readonly[readonly]{
+	background-color: white;
+}
+/* Form group readonly input bg */
+
 /* Form group has success */
 .form-group.has-success .help-block,
 .form-group.has-success .control-label,

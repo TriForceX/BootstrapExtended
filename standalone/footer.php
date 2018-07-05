@@ -48,10 +48,8 @@
 <script src="<?php echo php::get_main_url(); ?>/resources/clipboard/js/clipboard.min.js"></script>
 <!-- Masonry -->
 <script src="<?php echo php::get_main_url(); ?>/resources/masonry/js/masonry.min.js"></script>
-<!-- Moment JS -->
-<script src="<?php echo php::get_main_url(); ?>/resources/moment/js/moment.min.js"></script>
-<!-- Tempus Dominus -->
-<script src="<?php echo php::get_main_url(); ?>/resources/tempusdominus/js/tempusdominus.min.js"></script>
+<!-- Bootstrap Datepicker -->
+<script src="<?php echo php::get_main_url(); ?>/resources/bootstrap-datepicker/js/bootstrap-datepicker.min.js"></script>
 <!-- Main JS File -->
 <script src="<?php echo php::get_template('js'); ?>"></script>
 

@@ -159,12 +159,6 @@ a.ui-button:active,
 }
 /* Aditional hover effects */
 
-/* Tempusdominus datetime input bg */
-.datetimepicker-input[readonly="readonly"]{
-	background-color: white;
-}
-/* Tempusdominus datetime input bg */
-
 /* ================================================= BASE RESOURCES ================================================= */
 
 /* ================================================= BASE JAVASCRIPT ================================================= */
