@@ -143,7 +143,7 @@ a.ui-button:active,
 }
 /* LightGallery */
 
-/* Aditional hover effects */
+/* Aditional Hover CSS */
 .hvr-opacity{
 	transition: opacity 0.4s ease;
 	-moz-transition: opacity 0.4s ease;
@@ -157,7 +157,28 @@ a.ui-button:active,
 	-webkit-transition: opacity 0.4s ease;
 	-o-transition: opacity 0.4s ease;
 }
-/* Aditional hover effects */
+/* Aditional Hover CSS */
+
+/* Clock Picker */
+.clockpicker-popover{
+	z-index: 10;
+}
+.clockpicker-popover .popover-title{
+	font-size: 19px;
+	padding: 4px 10px;
+	border-color: #cccccc;
+}
+.clockpicker-popover .popover-title span{
+	padding: 2px 0px;
+	border-radius: 4px;
+}
+.clockpicker-popover .popover-title span.text-primary{
+	color: white;
+	background-color: #286090;
+	padding: 2px 5px;
+	border-radius: 4px;
+}
+/* Clock Picker */
 
 /* ================================================= BASE RESOURCES ================================================= */
 

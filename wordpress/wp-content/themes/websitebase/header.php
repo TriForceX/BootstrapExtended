@@ -38,6 +38,10 @@
 	<!-- <link href="<?php echo get_bloginfo('template_url'); ?>/resources/bootstrap/css/bootstrap-theme.min.css" rel="stylesheet"> -->
 	<!-- Bootstrap Data Tables -->
 	<link href="<?php echo get_bloginfo('template_url'); ?>/resources/datatables/css/dataTables.bootstrap.min.css" rel="stylesheet">
+	<!-- Bootstrap Date Picker -->
+	<link href="<?php echo get_bloginfo('template_url'); ?>/resources/bootstrap-datepicker/css/bootstrap-datepicker3.min.css" rel="stylesheet">
+	<!-- Bootstrap Clock Picker -->
+	<link href="<?php echo get_bloginfo('template_url'); ?>/resources/bootstrap-clockpicker/css/bootstrap-clockpicker.min.css" rel="stylesheet">
 	<!-- LightGallery Lightbox -->
 	<link href="<?php echo get_bloginfo('template_url'); ?>/resources/lightgallery/css/lightgallery.min.css" rel="stylesheet">
 	<link href="<?php echo get_bloginfo('template_url'); ?>/resources/lightgallery/css/lg-transitions.min.css" rel="stylesheet">
@@ -46,8 +50,6 @@
 	<link href="<?php echo get_bloginfo('template_url'); ?>/resources/hover/css/hover.min.css" rel="stylesheet">
 	<!-- Font Awesome -->
 	<link href="<?php echo get_bloginfo('template_url'); ?>/resources/font-awesome/css/all.css" rel="stylesheet">
-	<!-- Bootstrap Datepicker -->
-	<link href="<?php echo php::get_main_url(); ?>/resources/bootstrap-datepicker/css/bootstrap-datepicker3.min.css" rel="stylesheet">
 	<!-- Main CSS File -->
 	<link href="<?php echo php::get_template('css'); ?>" rel="stylesheet">
 	<!-- IE8 support of HTML5 elements and media queries -->

@@ -38,6 +38,10 @@
 	<!-- <link href="{{ url('assets/resources/bootstrap/css/bootstrap-theme.min.css') }}" rel="stylesheet"> -->
 	<!-- Bootstrap Data Tables -->
 	<link href="{{ url('assets/resources/datatables/css/dataTables.bootstrap.min.css') }}" rel="stylesheet">
+	<!-- Bootstrap Date Picker -->
+	<link href="{{ url('assets/resources/bootstrap-datepicker/css/bootstrap-datepicker3.min.css') }}" rel="stylesheet">
+	<!-- Bootstrap Clock Picker -->
+	<link href="{{ url('assets/resources/bootstrap-clockpicker/css/bootstrap-clockpicker.min.css') }}" rel="stylesheet">
 	<!-- LightGallery Lightbox -->
 	<link href="{{ url('assets/resources/lightgallery/css/lightgallery.min.css') }}" rel="stylesheet">
 	<link href="{{ url('assets/resources/lightgallery/css/lg-transitions.min.css') }}" rel="stylesheet">
@@ -46,8 +50,6 @@
 	<link href="{{ url('assets/resources/hover/css/hover.min.css') }}" rel="stylesheet">
 	<!-- Font Awesome -->
 	<link href="{{ url('assets/resources/font-awesome/css/all.css') }}" rel="stylesheet">
-	<!-- Bootstrap Datepicker -->
-	<link href="{{ url('assets/resources/bootstrap-datepicker/css/bootstrap-datepicker3.min.css') }}" rel="stylesheet">
 	<!-- Main CSS File -->
     <link href="{{ url('assets/css/all.css') }}" rel="stylesheet">
 	<!-- IE8 support of HTML5 elements and media queries -->
@@ -126,6 +128,10 @@
 <!-- Bootstrap Data Tables -->
 <script src="{{ url('assets/resources/datatables/js/jquery.dataTables.min.js') }}"></script>
 <script src="{{ url('assets/resources/datatables/js/dataTables.bootstrap.min.js') }}"></script>
+<!-- Bootstrap Date Picker -->
+<script src="{{ url('assets/resources/bootstrap-datepicker/js/bootstrap-datepicker.min.js') }}"></script>
+<!-- Bootstrap Clock Picker -->
+<script src="{{ url('assets/resources/bootstrap-clockpicker/js/bootstrap-clockpicker.min.js') }}"></script>
 <!-- imgLiquid -->
 <script src="{{ url('assets/resources/imgliquid/js/imgliquid.min.js') }}"></script>
 <!-- LightGallery Lightbox -->
@@ -139,8 +145,6 @@
 <script src="{{ url('assets/resources/clipboard/js/clipboard.min.js') }}"></script>
 <!-- Masonry -->
 <script src="{{ url('assets/resources/masonry/js/masonry.min.js') }}"></script>
-<!-- Bootstrap Datepicker -->
-<script src="{{ url('assets/resources/bootstrap-datepicker/js/bootstrap-datepicker.min.js') }}"></script>
 <!-- Main JS File -->
 <script src="{{ url('assets/js/all.js') }}"></script>
 	

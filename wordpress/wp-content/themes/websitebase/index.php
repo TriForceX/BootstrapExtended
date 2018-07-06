@@ -27,7 +27,8 @@
 					<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Resources <span class="caret"></span></a>
 					<ul class="dropdown-menu dropdown-overflow-lg notranslate" role="menu">
 						<li><a href="http://bootboxjs.com/" target="_blank">BootBox JS</a></li>
-						<li><a href="https://github.com/uxsolutions/bootstrap-datepicker" target="_blank">Bootstrap Datepicker</a></li>
+						<li><a href="http://weareoutman.github.io/clockpicker/" target="_blank">Bootstrap Clock Picker</a></li>
+						<li><a href="https://uxsolutions.github.io/bootstrap-datepicker/" target="_blank">Bootstrap Date Picker</a></li>
 						<li><a href="https://clipboardjs.com/" target="_blank">Clipboard JS</a></li>
 						<li><a href="https://datatables.net/examples/styling/bootstrap.html" target="_blank">Data Tables</a></li>
 						<li><a href="http://fontawesome.io/" target="_blank">Font Awesome</a></li>

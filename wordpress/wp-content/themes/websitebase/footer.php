@@ -35,6 +35,10 @@
 <!-- Bootstrap Data Tables -->
 <script src="<?php echo get_bloginfo('template_url'); ?>/resources/datatables/js/jquery.dataTables.min.js"></script>
 <script src="<?php echo get_bloginfo('template_url'); ?>/resources/datatables/js/dataTables.bootstrap.min.js"></script>
+<!-- Bootstrap Date Picker -->
+<script src="<?php echo get_bloginfo('template_url'); ?>/resources/bootstrap-datepicker/js/bootstrap-datepicker.min.js"></script>
+<!-- Bootstrap Clock Picker -->
+<script src="<?php echo get_bloginfo('template_url'); ?>/resources/bootstrap-clockpicker/js/bootstrap-clockpicker.min.js"></script>
 <!-- imgLiquid -->
 <script src="<?php echo get_bloginfo('template_url'); ?>/resources/imgliquid/js/imgliquid.min.js"></script>
 <!-- LightGallery Lightbox -->
@@ -48,8 +52,6 @@
 <script src="<?php echo get_bloginfo('template_url'); ?>/resources/clipboard/js/clipboard.min.js"></script>
 <!-- Masonry -->
 <script src="<?php echo get_bloginfo('template_url'); ?>/resources/masonry/js/masonry.min.js"></script>
-<!-- Bootstrap Datepicker -->
-<script src="<?php echo get_bloginfo('template_url'); ?>/resources/bootstrap-datepicker/js/bootstrap-datepicker.min.js"></script>
 <!-- Main JS File -->
 <script src="<?php echo php::get_template('js'); ?>"></script>
 
