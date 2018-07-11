@@ -180,6 +180,13 @@ a.ui-button:active,
 }
 /* Clock Picker */
 
+/* TinyMCE */
+.mce-container-body{
+	overflow: hidden;
+	overflow-x: auto;
+}
+/* TinyMCE */
+
 /* ================================================= BASE RESOURCES ================================================= */
 
 /* ================================================= BASE JAVASCRIPT ================================================= */
