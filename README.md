@@ -30,8 +30,9 @@ Base structure for web sites with reusable parts of source code or functions mai
 - Masonry JS
 - REM Unit Polyfill
 - Respond JS
-- Touch Swipe
 - PHP Mailer
+- Touch Swipe
+- TinyMCE
 
 # Functions & Code Snippets
 - HTML header data class

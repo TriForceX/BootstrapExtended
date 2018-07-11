@@ -145,6 +145,8 @@
 <script src="{{ url('assets/resources/clipboard/js/clipboard.min.js') }}"></script>
 <!-- Masonry -->
 <script src="{{ url('assets/resources/masonry/js/masonry.min.js') }}"></script>
+<!-- TinyMCE -->
+<script src="{{ url('assets/resources/tinymce/js/tinymce.min.js') }}"></script>
 <!-- Main JS File -->
 <script src="{{ url('assets/js/all.js') }}"></script>
 	

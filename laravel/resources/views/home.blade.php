@@ -44,10 +44,11 @@
 						<li><a href="https://jqueryui.com/" target="_blank">jQuery UI</a></li>
 						<li><a href="http://sachinchoolur.github.io/lightGallery/" target="_blank">Light Gallery</a></li>
                         <li><a href="https://masonry.desandro.com/" target="_blank">Masonry JS</a></li>
+						<li><a href="https://github.com/PHPMailer/PHPMailer/" target="_blank">PHP Mailer</a></li>
 						<li><a href="https://github.com/chuckcarpenter/REM-unit-polyfill" target="_blank">REM Unit Polyfill</a></li>
 						<li><a href="https://github.com/scottjehl/Respond" target="_blank">Respond JS</a></li>
+						<li><a href="https://www.tiny.cloud/" target="_blank">Tiny MCE</a></li>
 						<li><a href="http://labs.rampinteractive.co.uk/touchSwipe/demos/" target="_blank">Touch Swipe</a></li>
-						<li><a href="https://github.com/PHPMailer/PHPMailer/" target="_blank">PHP Mailer</a></li>
 					</ul>
 				</li>
 				<li class="dropdown">
@@ -56,6 +57,7 @@
 						<li><a href="https://www.w3schools.com" target="_blank">W3 Schools Tutorials</a></li>
 						<li><a href="http://bootsnipp.com" target="_blank">Bootstrap Snippets</a></li>
 						<li><a href="https://libraries.io" target="_blank">Open Source Libraries</a></li>
+						<li><a href="https://www.jqueryscript.net/" target="_blank">jQuery Scripts</a></li>
 						<li><a href="https://api.jquery.com" target="_blank">jQuery API</a></li>
 						<li><a href="http://jqueryui.com" target="_blank">jQuery UI API</a></li>
 						<li><a href="http://php.net" target="_blank">PHP Documentation</a></li>
