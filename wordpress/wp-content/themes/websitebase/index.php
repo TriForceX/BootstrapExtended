@@ -21,6 +21,8 @@
 					<ul class="dropdown-menu dropdown-overflow-lg notranslate" role="menu">
 						<li><a href="https://github.com/TriForceX" target="_blank">GitHub</a></li>
 						<li><a href="http://stackoverflow.com/users/7613382/triforce" target="_blank">StackOverflow</a></li>
+						<li class="divider"></li>
+						<li><a href="https://github.com/TriForceX/WebsiteBase" target="_blank">Repository</a></li>
 					</ul>
 				</li>
 				<li class="dropdown">
@@ -47,7 +49,7 @@
 						<li><a href="https://github.com/PHPMailer/PHPMailer/" target="_blank">PHP Mailer</a></li>
 						<li><a href="https://github.com/chuckcarpenter/REM-unit-polyfill" target="_blank">REM Unit Polyfill</a></li>
 						<li><a href="https://github.com/scottjehl/Respond" target="_blank">Respond JS</a></li>
-						<li><a href="https://www.tiny.cloud/" target="_blank">Tiny MCE</a></li>
+						<li><a href="https://www.tiny.cloud/" target="_blank">TinyMCE</a></li>
 						<li><a href="http://labs.rampinteractive.co.uk/touchSwipe/demos/" target="_blank">Touch Swipe</a></li>
 					</ul>
 				</li>
