@@ -159,26 +159,14 @@ a.ui-button:active,
 }
 /* Aditional Hover CSS */
 
-/* Clock Picker */
-.clockpicker-popover{
-	z-index: 10;
+/* Time Picker */
+.bootstrap-timepicker-widget table td input{
+	border: 1px solid #cccccc;
+	border-radius: 0px;
+	width: 30px;
+	padding: 3px;
 }
-.clockpicker-popover .popover-title{
-	font-size: 19px;
-	padding: 4px 10px;
-	border-color: #cccccc;
-}
-.clockpicker-popover .popover-title span{
-	padding: 2px 0px;
-	border-radius: 4px;
-}
-.clockpicker-popover .popover-title span.text-primary{
-	color: white;
-	background-color: #286090;
-	padding: 2px 5px;
-	border-radius: 4px;
-}
-/* Clock Picker */
+/* Time Picker */
 
 /* TinyMCE */
 .mce-container-body{

@@ -40,8 +40,8 @@
 	<link href="{{ url('assets/resources/datatables/css/dataTables.bootstrap.min.css') }}" rel="stylesheet">
 	<!-- Bootstrap Date Picker -->
 	<link href="{{ url('assets/resources/bootstrap-datepicker/css/bootstrap-datepicker3.min.css') }}" rel="stylesheet">
-	<!-- Bootstrap Clock Picker -->
-	<link href="{{ url('assets/resources/bootstrap-clockpicker/css/bootstrap-clockpicker.min.css') }}" rel="stylesheet">
+	<!-- Bootstrap Time Picker -->
+	<link href="{{ url('assets/resources/bootstrap-timepicker/css/bootstrap-timepicker.min.css') }}" rel="stylesheet">
 	<!-- LightGallery Lightbox -->
 	<link href="{{ url('assets/resources/lightgallery/css/lightgallery.min.css') }}" rel="stylesheet">
 	<link href="{{ url('assets/resources/lightgallery/css/lg-transitions.min.css') }}" rel="stylesheet">
@@ -130,8 +130,8 @@
 <script src="{{ url('assets/resources/datatables/js/dataTables.bootstrap.min.js') }}"></script>
 <!-- Bootstrap Date Picker -->
 <script src="{{ url('assets/resources/bootstrap-datepicker/js/bootstrap-datepicker.min.js') }}"></script>
-<!-- Bootstrap Clock Picker -->
-<script src="{{ url('assets/resources/bootstrap-clockpicker/js/bootstrap-clockpicker.min.js') }}"></script>
+<!-- Bootstrap Time Picker -->
+<script src="{{ url('assets/resources/bootstrap-timepicker/js/bootstrap-timepicker.min.js') }}"></script>
 <!-- imgLiquid -->
 <script src="{{ url('assets/resources/imgliquid/js/imgliquid.min.js') }}"></script>
 <!-- LightGallery Lightbox -->

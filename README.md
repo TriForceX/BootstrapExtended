@@ -11,8 +11,8 @@ Base structure for web sites with reusable parts of source code or functions mai
 
 # Resources
 - BootBox JS
-- Bootstrap Clock Picker
 - Bootstrap Date Picker
+- Bootstrap Time Picker
 - Clipboard JS
 - Data Tables
 - Font Awesome

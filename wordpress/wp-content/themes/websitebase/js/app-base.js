@@ -1368,6 +1368,15 @@ function mainInit()
 	}
 	
 	//Check plugin
+	if($.fn.timepicker !== undefined)
+	{
+		//Show on focus
+		$(document).on("focusin", ".timepicker input", function(e){
+			$(this).timepicker('showWidget');
+		});
+	}
+	
+	//Check plugin
 	if($.fn.imgLiquid !== undefined)
 	{
 		//Apply Image Fill

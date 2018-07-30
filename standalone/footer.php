@@ -37,8 +37,8 @@
 <script src="<?php echo php::get_main_url(); ?>/resources/datatables/js/dataTables.bootstrap.min.js"></script>
 <!-- Bootstrap Date Picker -->
 <script src="<?php echo php::get_main_url(); ?>/resources/bootstrap-datepicker/js/bootstrap-datepicker.min.js"></script>
-<!-- Bootstrap Clock Picker -->
-<script src="<?php echo php::get_main_url(); ?>/resources/bootstrap-clockpicker/js/bootstrap-clockpicker.min.js"></script>
+<!-- Bootstrap Time Picker -->
+<script src="<?php echo php::get_main_url(); ?>/resources/bootstrap-timepicker/js/bootstrap-timepicker.min.js"></script>
 <!-- imgLiquid -->
 <script src="<?php echo php::get_main_url(); ?>/resources/imgliquid/js/imgliquid.min.js"></script>
 <!-- LightGallery Lightbox -->
