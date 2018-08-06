@@ -4,8 +4,8 @@
  * PHP Main Stuff
  * TriForce - Matías Silva
  *
- * This file calls the main PHP utilities and sets the main template ones
- * also you can extend the functions below with your own ones
+ * This file calls the main PHP utilities and sets the main data (html and rebuild pass)
+ * You can extend the functions in functions.php
  * 
  */
 
@@ -116,11 +116,3 @@ if(isset($_GET['rebuild']) && $_GET['rebuild'] == php::$rebuild_pass)
 {
 	header('Refresh: 0; url='.php::get_main_url());
 }
-
-/*
- * Custom Stuff
- * 
- * You can set-up custom stuff or add more functions
- * More resources in http://php.net/manual
- * 
- */

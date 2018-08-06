@@ -1,3 +1,4 @@
+<?php include('functions.php'); ?>
 <!DOCTYPE html>
 <html lang="<?php echo php::get_html_data('lang'); ?>">
 <head>
