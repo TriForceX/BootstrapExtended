@@ -124,6 +124,9 @@ Base structure for web sites with reusable parts of source code or functions mai
 
 3. Can i use this stuff in plain **HTML** instead the **PHP** Standalone?
    - Yes, but you need to remove all the **PHP** stuff. Just copy the *Standalone* structure in **HTML** Files, remove **PHP** stuff, and call the **CSS & JS** files manually.
+   
+4. How i can use the functions described above?
+   - I am adding all the explanation in the **Wiki** page. To access it [Click Here](https://github.com/TriForceX/WebsiteBase/wiki).
 
 # Recommended Tools for editing
 - [Visual Studio Code](https://code.visualstudio.com/)
