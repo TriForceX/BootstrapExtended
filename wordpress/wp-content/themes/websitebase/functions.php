@@ -746,12 +746,11 @@ function get_theme_mod_2($name)
 //	if(!is_admin()){
 //        switch ($query->query_vars['post_type'])
 //        {
-//            case 'custom_post_type_name':  // Post type slug
-//                $query->query_vars['posts_per_page'] = 6; //Display all is -1
+//            case 'custom_post_type_slug':
+//                $query->query_vars['posts_per_page'] = 6;
 //                $query->query_vars['order'] = 'DESC';
 //                $query->query_vars['orderby'] = 'date';
 //                break;
-//			
 //        }
 //        return $query;
 //    }
