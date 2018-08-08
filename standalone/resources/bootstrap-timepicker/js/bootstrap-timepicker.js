@@ -470,13 +470,14 @@
     highlightHour: function() {
       var $element = this.$element.get(0),
           self = this;
+	  var $hasPadZero = this.padZero; //TriForce
 
       this.highlightedUnit = 'hour';
 
       if ($element.setSelectionRange) {
         setTimeout(function() {
           if (self.hour < 10) {
-            $element.setSelectionRange(0,1);
+            $element.setSelectionRange(0, ($hasPadZero ? 2 : 1) ); //TriForce
           } else {
             $element.setSelectionRange(0,2);
           }
@@ -487,13 +488,14 @@
     highlightMinute: function() {
       var $element = this.$element.get(0),
           self = this;
+	  var $hasPadZero = this.padZero; //TriForce
 
       this.highlightedUnit = 'minute';
 
       if ($element.setSelectionRange) {
         setTimeout(function() {
           if (self.hour < 10) {
-            $element.setSelectionRange(2,4);
+            $element.setSelectionRange(2, ($hasPadZero ? 5 : 4) ); //TriForce
           } else {
             $element.setSelectionRange(3,5);
           }
@@ -504,13 +506,14 @@
     highlightSecond: function() {
       var $element = this.$element.get(0),
           self = this;
+	  var $hasPadZero = this.padZero; //TriForce
 
       this.highlightedUnit = 'second';
 
       if ($element.setSelectionRange) {
         setTimeout(function() {
           if (self.hour < 10) {
-            $element.setSelectionRange(5,7);
+            $element.setSelectionRange(5, ($hasPadZero ? 8 : 7) ); //TriForce
           } else {
             $element.setSelectionRange(6,8);
           }
