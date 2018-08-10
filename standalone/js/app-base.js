@@ -6,6 +6,7 @@ var isLang = mainLang;
 var isHome;
 var isMobile;
 var isNav;
+var checkDisabled = $('body').data('js-check-disabled');
 var checkDisabledExceptions = ['#carousel'];
 var checkDisabledAlignment = ['medium','top'];
 
@@ -1520,12 +1521,15 @@ $(document).ready(function(){
     });
 	
 	//Modal on disabled links
-	$(document).on("click", "a[href*=\\#]", function(e){
-		var source =  $(this).attr("href");
-		if(!(checkDisabledLink(source))){
-			e.preventDefault();
-		}
-	});
+	if(!checkDisabled)
+	{
+		$(document).on("click", "a[href*=\\#]", function(e){
+			var source =  $(this).attr("href");
+			if(!(checkDisabledLink(source))){
+				e.preventDefault();
+			}
+		});
+	}
 	
 	//Custom file input change
 	$(document).on("change", ".form-group .custom-file input[type='file']", function(){
