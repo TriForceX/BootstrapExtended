@@ -72,6 +72,7 @@
 	stripos(Request::ip(), '127.0.0.') !== false ||
 	stripos(Request::ip(), '192.168.') !== false ||
 	stripos(Request::ip(), '.site') !== false ||
+	stripos(Request::ip(), '.test') !== false ||
 	stripos(Request::ip(), '.dev') !== false)
 <script>
 	function ga(){ console.log('Google Analytics:\n',arguments); } //Dont track in localhost
