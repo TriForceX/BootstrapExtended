@@ -29,8 +29,8 @@ add_action('wp_footer', 'add_custom_admin');
 function login_logo_url() {
     return home_url();
 }
-add_filter( 'login_headerurl', 'login_logo_url' );
-add_filter( 'login_headertitle', 'login_logo_url' );
+add_filter('login_headerurl', 'login_logo_url');
+add_filter('login_headertitle', 'login_logo_url');
 
 //Set current page title
 function get_page_title($separator)
@@ -103,29 +103,29 @@ function get_taxonomy_data($type, $taxonomy, $id = null){
 	} 
 }
 
-//Image Featured
-function imageFeatured($featuredPost, $size = 'full')
+//Featured image
+function featuredImg($size = 'full', $post)
 {
-    $src = wp_get_attachment_image_src( get_post_thumbnail_id($featuredPost), $size, false); //$post->ID
+    $src = wp_get_attachment_image_src( get_post_thumbnail_id($post), $size, false); //$post->ID
     return $src[0];
 }
 
-//Image Featured
-function imageFeaturedSize($tipo, $featuredPost)
+//Featured image size
+function featuredImgSize($prop, $post)
 {
-    $src = wp_get_attachment_image_src( get_post_thumbnail_id($featuredPost), 'full', false); //$post->ID
-	if($tipo=="width"){
-		$srcFinal = $src[1];
+    $src = wp_get_attachment_image_src( get_post_thumbnail_id($post), 'full', false); //$post->ID
+	if($prop=="width"){
+		$data = $src[1];
 	}else{
-		$srcFinal = $src[2];
+		$data = $src[2];
 	}
-    return $srcFinal;
+    return $data;
 }
 
-//Image Featured Data
-function imageFeaturedData($featuredField, $featuredPost)
+//Featured image field
+function featuredImgField($field, $post)
 {
-    $value = get_post_meta(get_post_thumbnail_id($featuredPost), $featuredField, true);
+    $value = get_post_meta(get_post_thumbnail_id($post), $field, true);
     return $value;
 }
 
@@ -156,9 +156,9 @@ add_filter ('jpeg_quality', 'custom_jpeg_quality');
 //	global $typenow;
 //	$amount = 150;
 //	
-////	if("page" == $typenow){
-////		$amount = 150;
-////	}
+//	/*if("page" == $typenow){
+//		$amount = 150;
+//	}*/
 //	
 //	return $amount;
 //}
@@ -178,7 +178,7 @@ add_filter ('jpeg_quality', 'custom_jpeg_quality');
 //    $size = 1024 * 1100; // 1 MB.
 //    return $size;
 //}
-//add_filter( 'upload_size_limit', 'filter_site_upload_size_limit', 20 );
+//add_filter('upload_size_limit', 'filter_site_upload_size_limit', 20);
 
 //Edit custom role capabilities
 //function custom_capability()
@@ -220,11 +220,11 @@ add_filter ('jpeg_quality', 'custom_jpeg_quality');
 //function hide_menu_items() 
 //{ 
 //	//Remove Posts for everyone
-//	/*remove_menu_page( 'edit.php' ); //Posts*/
+//	/*remove_menu_page('edit.php'); //Posts*/
 //	
 //	//Remove Tools for non administrator
 //	/*if(!current_user_can('administrator')){
-//		remove_menu_page( 'tools.php' ); //Tools
+//		remove_menu_page('tools.php'); //Tools
 //	}*/
 //	
 //	//Add theme options for editors
@@ -237,7 +237,7 @@ add_filter ('jpeg_quality', 'custom_jpeg_quality');
 //		//remove_submenu_page( 'themes.php', 'theme-editor.php' ); // hide the widgets submenu
 //    }
 //}
-//add_action( 'admin_menu', 'hide_menu_items' ); 
+//add_action('admin_menu', 'hide_menu_items'); 
 
 //Custom menu items order
 //function admin_menu_items_order()
@@ -248,40 +248,39 @@ add_filter ('jpeg_quality', 'custom_jpeg_quality');
 //            $oldkey = $key;
 //        }
 //    }
-//    $newkey = 24; // use whatever index gets you the position you want
-//    // if this key is in use you will write over a menu item!
+//    $newkey = 24; // use whatever index gets you the position you want,if this key is in use you will write over a menu item!
 //    $menu[$newkey]=$menu[$oldkey];
 //    $menu[$oldkey]=array();
 //}
 //add_action('admin_menu', 'admin_menu_items_order');
 
 //Remove dashboard widgets
-function remove_dashboard_widgets() 
-{
-	//$user = wp_get_current_user();
-	
-	remove_action( 'welcome_panel', 'wp_welcome_panel' );
-	remove_meta_box( 'dashboard_right_now', 'dashboard', 'normal' );   // Right Now
-	remove_meta_box( 'dashboard_recent_comments', 'dashboard', 'normal' ); // Recent Comments
-	remove_meta_box( 'dashboard_incoming_links', 'dashboard', 'normal' );  // Incoming Links
-	remove_meta_box( 'dashboard_plugins', 'dashboard', 'normal' );   // Plugins
-	remove_meta_box( 'dashboard_quick_press', 'dashboard', 'side' );  // Quick Press
-	remove_meta_box( 'dashboard_recent_drafts', 'dashboard', 'side' );  // Recent Drafts
-	remove_meta_box( 'dashboard_primary', 'dashboard', 'side' );   // WordPress blog
-	remove_meta_box( 'dashboard_secondary', 'dashboard', 'side' );   // Other WordPress News
-	remove_meta_box( 'dashboard_activity', 'dashboard', 'normal' ); //Activity
-	
-	if ( !current_user_can('administrator') ){
-		remove_meta_box( 'simple_history_dashboard_widget', 'dashboard', 'normal' ); //History System
-	}
-	
-	/*if( $user && isset($user->user_login) && 'user' == $user->user_login ) {
-		remove_meta_box( 'simple_history_dashboard_widget', 'dashboard', 'normal' ); //History System
-	}*/
-}
-add_action( 'wp_dashboard_setup', 'remove_dashboard_widgets' );
+//function remove_dashboard_widgets() 
+//{
+//	//General
+//	remove_action( 'welcome_panel', 'wp_welcome_panel' );
+//	remove_meta_box( 'dashboard_right_now', 'dashboard', 'normal' );   // Right Now
+//	remove_meta_box( 'dashboard_recent_comments', 'dashboard', 'normal' ); // Recent Comments
+//	remove_meta_box( 'dashboard_incoming_links', 'dashboard', 'normal' );  // Incoming Links
+//	remove_meta_box( 'dashboard_plugins', 'dashboard', 'normal' );   // Plugins
+//	remove_meta_box( 'dashboard_quick_press', 'dashboard', 'side' );  // Quick Press
+//	remove_meta_box( 'dashboard_recent_drafts', 'dashboard', 'side' );  // Recent Drafts
+//	remove_meta_box( 'dashboard_primary', 'dashboard', 'side' );   // WordPress blog
+//	remove_meta_box( 'dashboard_secondary', 'dashboard', 'side' );   // Other WordPress News
+//	remove_meta_box( 'dashboard_activity', 'dashboard', 'normal' ); //Activity
+//	
+//	//Example by user role: Remove 'Simple History' Plugin widget
+//	/*if(!current_user_can('administrator')){
+//		remove_meta_box('simple_history_dashboard_widget', 'dashboard', 'normal'); 
+//	}*/
+//	//Example by user role: Remove 'Simple History' Plugin widget
+//	/*if($user && isset($user->user_login) && 'user' == $user->user_login){
+//		remove_meta_box('simple_history_dashboard_widget', 'dashboard', 'normal'); 
+//	}*/
+//}
+//add_action('wp_dashboard_setup', 'remove_dashboard_widgets');
 
-//Remove from adminbar
+//Remove items from adminbar
 function remove_from_adminbar($wp_admin_bar) 
 {
 	$wp_admin_bar->remove_node('wp-logo');
@@ -290,7 +289,7 @@ function remove_from_adminbar($wp_admin_bar)
 	$wp_admin_bar->remove_node('new-media');
 	$wp_admin_bar->remove_node('archive');
 }
-add_action( 'admin_bar_menu', 'remove_from_adminbar', 999 );
+add_action('admin_bar_menu', 'remove_from_adminbar', 999);
 
 //Custom general fields
 $new_general_setting = new new_general_setting();
@@ -299,7 +298,7 @@ class new_general_setting
 {
     function new_general_setting() 
 	{
-        add_filter( 'admin_init' , array( &$this , 'register_fields' ) );
+        add_filter('admin_init', array(&$this, 'register_fields'));
     }
     function register_fields() 
 	{
@@ -313,38 +312,38 @@ class new_general_setting
 		
 		for($i = 0; $i < count($new_fields); ++$i)
 		{
-			register_setting( 'general', $new_fields[$i][0], 'esc_attr' );
-			add_settings_field($new_fields[$i][0], '<label for="'.$new_fields[$i][0].'">'.$new_fields[$i][1].'</label>' , array(&$this, "new_field_".$i."_html") , 'general' );
+			register_setting('general', $new_fields[$i][0], 'esc_attr');
+			add_settings_field($new_fields[$i][0], '<label for="'.$new_fields[$i][0].'">'.$new_fields[$i][1].'</label>', array(&$this, "new_field_".$i."_html"), 'general');
 		}
     }
     function new_field_0_html() 
 	{
 		$new_field_data = array("blogkeywords","Words to let search engines to found this site");
-		echo '<textarea style="max-width: 350px;min-height: 100px;width: 100%;" id="'.$new_field_data[0].'" name="'.$new_field_data[0].'">' . get_option( $new_field_data[0], '' ) . '</textarea>';
+		echo '<textarea style="max-width: 350px;min-height: 100px;width: 100%;" id="'.$new_field_data[0].'" name="'.$new_field_data[0].'">'.get_option($new_field_data[0], '').'</textarea>';
 		echo '<p class="description" id="'.$new_field_data[0].'-description">'.$new_field_data[1].'</p>';
     }
 	function new_field_1_html() 
 	{
 		$new_field_data = array("bloganalytics","Code placed in the HTML head to track site analytics");
-        echo '<textarea style="max-width: 350px;min-height: 100px;width: 100%;" id="'.$new_field_data[0].'" name="'.$new_field_data[0].'">' . get_option( $new_field_data[0], '' ) . '</textarea>';
+        echo '<textarea style="max-width: 350px;min-height: 100px;width: 100%;" id="'.$new_field_data[0].'" name="'.$new_field_data[0].'">'.get_option($new_field_data[0], '').'</textarea>';
 		echo '<p class="description" id="'.$new_field_data[0].'-description">'.$new_field_data[1].'</p>';
     }
 	function new_field_2_html() 
 	{
 		$new_field_data = array("blogauthor","Defines the website author");
-        echo '<input type="text" style="max-width: 350px;width: 100%;" id="'.$new_field_data[0].'" name="'.$new_field_data[0].'" value="' . get_option( $new_field_data[0], '' ) . '"/>';
+        echo '<input type="text" style="max-width: 350px;width: 100%;" id="'.$new_field_data[0].'" name="'.$new_field_data[0].'" value="'.get_option($new_field_data[0], '').'"/>';
 		echo '<p class="description" id="'.$new_field_data[0].'-description">'.$new_field_data[1].'</p>';
     }
 	function new_field_3_html() 
 	{
 		$new_field_data = array("blognavcolor","Website nav bar color for most devices");
-        echo '<input type="text" style="max-width: 350px;width: 100%;" id="'.$new_field_data[0].'" name="'.$new_field_data[0].'" value="' . get_option( $new_field_data[0], '' ) . '"/>';
+        echo '<input type="text" style="max-width: 350px;width: 100%;" id="'.$new_field_data[0].'" name="'.$new_field_data[0].'" value="'.get_option($new_field_data[0], '').'"/>';
 		echo '<p class="description" id="'.$new_field_data[0].'-description">'.$new_field_data[1].'</p>';
     }
 	function new_field_4_html() 
 	{
 		$new_field_data = array("blognavcolorapple","Website nav bar color for Apple devices (it can be black or black-translucent)","new_field_5_html");
-        echo '<input type="text" style="max-width: 350px;width: 100%;" id="'.$new_field_data[0].'" name="'.$new_field_data[0].'" value="' . get_option( $new_field_data[0], '' ) . '"/>';
+        echo '<input type="text" style="max-width: 350px;width: 100%;" id="'.$new_field_data[0].'" name="'.$new_field_data[0].'" value="'.get_option($new_field_data[0], '').'"/>';
 		echo '<p class="description" id="'.$new_field_data[0].'-description">'.$new_field_data[1].'</p>';
     }
 }
@@ -495,7 +494,7 @@ function get_theme_mod_2($name)
 //
 //	return $form_fields;
 //}
-//add_filter( 'attachment_fields_to_edit', 'be_attachment_field_credit', 10, 2 );
+//add_filter('attachment_fields_to_edit', 'be_attachment_field_credit', 10, 2);
 
 //Set new attachment fields
 //function be_attachment_field_credit_save($post, $attachment)
@@ -506,7 +505,7 @@ function get_theme_mod_2($name)
 //
 //	return $post;
 //}
-//add_filter( 'attachment_fields_to_save', 'be_attachment_field_credit_save', 10, 2 );
+//add_filter('attachment_fields_to_save', 'be_attachment_field_credit_save', 10, 2);
 
 //Increase post meta limit
 //function customfield_limit_increase($limit)
@@ -532,7 +531,7 @@ function get_theme_mod_2($name)
 //        'after_title'   => '</h1>',
 //    ));
 //}
-//add_action( 'widgets_init', 'themename_widgets_init' );
+//add_action('widgets_init', 'themename_widgets_init');
 
 //Hide admin items using CSS
 //function hide_items_css()
@@ -589,7 +588,7 @@ function get_theme_mod_2($name)
 //		}
 //	}
 //}
-//add_action( 'restrict_manage_posts', 'custom_taxonomy_filter_1' );
+//add_action('restrict_manage_posts', 'custom_taxonomy_filter_1');
 
 //Custom taxonomy
 //function create_custom_taxonomy_1() 
@@ -598,7 +597,7 @@ function get_theme_mod_2($name)
 //	$nameFULL = 'Custom Taxonomy';
 //	$nameITEM = 'Taxonomy Item';
 //	$nameLANG = 0; //0 = English, 1 = Spanish
-//	$nameGENDER = 'o'; //a: femenino, o: masculino
+//	$nameGENDER = 'o'; //a = Female, o = Male (Spanish case to end an item)
 //	$nameSLUG = 'deportes';
 //	$nameTYPE = array(
 //					  	'custom-post-type-1',
@@ -650,7 +649,7 @@ function get_theme_mod_2($name)
 //	wp_insert_term( $termNAME1, $nameSLUG, array( 'slug' => $termSLUG1,'parent'=> $parent_term_id ));*/
 //	
 //}
-//add_action( 'init', 'create_custom_taxonomy_1', 0 );
+//add_action('init', 'create_custom_taxonomy_1', 0);
 
 //Custom Post Type 1
 //function custom_post_type_1() 
@@ -659,7 +658,7 @@ function get_theme_mod_2($name)
 //	$nameFULL = 'Custom Post Type 1';
 //	$nameITEM = 'Post Type 1 Item';
 //	$nameLANG = 0; //0 = English, 1 = Spanish
-//	$nameGENDER = 'o'; //Spanish case to end an item
+//	$nameGENDER = 'o'; //a = Female, o = Male (Spanish case to end an item)
 //	$nameSLUG = 'custom-post-type-1';
 //	$nameTEMPLATE = 'websitebase';
 //	$menuPOSITION = 4;
@@ -736,9 +735,9 @@ function get_theme_mod_2($name)
 //    );
 //    
 //    // Registering your Custom Post Type
-//    register_post_type( $nameSLUG, $menuARGS );
+//    register_post_type($nameSLUG, $menuARGS);
 //}
-//add_action( 'init', 'custom_post_type_1', 0 );
+//add_action('init', 'custom_post_type_1', 0);
 
 //Posts data based on content type
 //function custom_posts_per_page($query)
@@ -755,7 +754,7 @@ function get_theme_mod_2($name)
 //        return $query;
 //    }
 //}
-//add_filter( 'pre_get_posts', 'custom_posts_per_page' );
+//add_filter('pre_get_posts', 'custom_posts_per_page');
 
 //Disable specific plugin update check 
 function disable_plugin_updates( $value ) {
@@ -780,4 +779,4 @@ function disable_plugin_updates( $value ) {
 	}
 	return $value;
 }
-add_filter( 'site_transient_update_plugins', 'disable_plugin_updates' );
+add_filter('site_transient_update_plugins', 'disable_plugin_updates');
