@@ -82,6 +82,7 @@ $(document).ready(function(){
 		errorStyling: true,
 		modalSize: 'medium',
 		modalAlign: 'top',
+		modalAnimate: true,
 	});
 	
 	//Example prevent title translation by Google
@@ -95,6 +96,9 @@ $(document).ready(function(){
 	
 	//Example aditional exceptions custom size & alignment
 	checkDisabledAlignment = ['small','center'];
+	
+	//Example aditional exceptions custom size & alignment
+	checkDisabledAnimate = true;
 	
 /* ================================================= EXAMPLE DOCUMENT READY ================================================= */
 

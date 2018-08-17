@@ -9,6 +9,7 @@ var isNav;
 var checkDisabled = $('body').data('js-check-disabled');
 var checkDisabledExceptions = ['#carousel'];
 var checkDisabledAlignment = ['medium','top'];
+var checkDisabledAnimate = true;
 
 //IE8 Undefined console fix
 if (!window.console) console = {log: function() {}};
@@ -84,6 +85,7 @@ $.fn.validateForm = function(options)
 		errorStyling	: true,
 		modalSize		: 'medium',
 		modalAlign		: '',
+		modalAnimate	: true,
 	}, options);
 	
 	$(this).submit(function(event){ 
@@ -106,8 +108,20 @@ $.fn.validateForm = function(options)
 							 'file'		: lang('@validate-file'),
 							};
 		
+		if(settings.modalSize === undefined || settings.modalSize === null || settings.modalSize == ''){ //Empty value
+			settings.modalSize = 'medium';
+		}
+
+		if(settings.modalAlign === undefined || settings.modalAlign === null || settings.modalAlign == ''){ //Empty value
+			settings.modalAlign = '';
+		}
+
+		if(settings.modalAnimate != false && (settings.modalAnimate === undefined || settings.modalAnimate === null || settings.modalAnimate == '')){ //Empty value
+			settings.modalAnimate = true;
+		}
+		
 		var formInputValidation = function(element){
-			switch(element.attr("type")){
+			switch(element.attr('type')){
 				case 'text':
 					if (!validateEmpty(element.val())) { 
 						if(settings.errorStyling){ element.parents('.form-group').addClass('has-error').removeClass('has-success'); }
@@ -177,7 +191,7 @@ $.fn.validateForm = function(options)
 
 		//Select inputs
 		$(this).find('select').not(settings.noValidate).each(function(){
-			if (!validateEmpty($(this).find("option:selected").attr("value"))) { 
+			if (!validateEmpty($(this).find('option:selected').attr('value'))) { 
 				if(settings.errorStyling){ $(this).parents('.form-group').addClass('has-error').removeClass('has-success'); }
 				formError = formErrorText.select;
 			}
@@ -273,7 +287,8 @@ $.fn.validateForm = function(options)
 					message: formError,
 					size: settings.modalSize,
 					backdrop: true,
-					className: settings.modalAlign,
+					className: (settings.modalAnimate == 'alternative' ? 'fade-2 '+settings.modalAlign : settings.modalAlign),
+					animate: (settings.modalAnimate == 'alternative' ? true : settings.modalAnimate),
 				});
 			}
 			event.preventDefault();
@@ -294,7 +309,8 @@ $.fn.validateForm = function(options)
 					message: formConfirmText,
 					size: settings.modalSize,
 					backdrop: true,
-					className: settings.modalAlign,
+					className: (settings.modalAnimate == 'alternative' ? 'fade-2 '+settings.modalAlign : settings.modalAlign),
+					animate: (settings.modalAnimate == 'alternative' ? true : settings.modalAnimate),
 					callback: function(result){
 						if(result){
 							formElement.unbind("submit").submit();
@@ -417,7 +433,7 @@ function responsiveCode()
 		
 		/* Responsive Changes */
 	}else{
-		window.setTimeout(ResponsiveCode, 30);
+		window.setTimeout(responsiveCode, 30);
 	}
 
 }
@@ -436,19 +452,22 @@ function loadLightGallery()
 {	
 	$(".JSlightGallery").each(function(){ 
 
-		var galSelectorVal = $(this).data("lg-item") === "auto" ? "a" : $(this).data("lg-item");
-		var galThumbnailVal = $(this).data("lg-thumb");
-		var galDownloadVal = $(this).data("lg-download");
-		var galPageTotal = parseInt($(this).data("lg-page-total"));
+		var galSelector = $(this).data("lg-item") === "auto" ? "a" : $(this).data("lg-item");
+		var galThumbnail = $(this).data("lg-thumb");
+		var galDownload = $(this).data("lg-download");
+		var galAutoplay = $(this).data("lg-autoplay");
+		var galLoop = $(this).data("lg-loop");
+		var galShare = $(this).data("lg-share");
 		var galGalleryMode = $(this).data("lg-gallery");
+		var galPageTotal = parseInt($(this).data("lg-page-total"));
 		var galPageCurrent = parseInt($(this).data("lg-page-current"));
 		var galLoadThumb = mainUrl+"/resources/lightgallery/img/loading.gif";
 		
-		if(String($(this).data("lg-title")) != "auto"){
-			$(this).find(galSelectorVal).not(".lg-thumb-prev, .lg-thumb-next").attr("title", $(this).data("lg-title"));
+		if($(this).data("lg-title") !== "auto"){
+			$(this).find(galSelector).not(".lg-thumb-prev, .lg-thumb-next").attr("title", $(this).data("lg-title"));
 		}
 		
-		if(toBoolean(galGalleryMode) === true){
+		if(galGalleryMode === true){
 			$(this).addClass("JSlightGalleryMode");
 		}
 		
@@ -461,11 +480,13 @@ function loadLightGallery()
 		}
 		
 		$(this).lightGallery({
-			selector: galSelectorVal+", .lg-thumb-prev, .lg-thumb-next", 
-			thumbnail: toBoolean(galThumbnailVal),
-			download: toBoolean(galDownloadVal),
-			hash: toBoolean(galGalleryMode) === true ? false : true,
-			loop: false,
+			selector: galSelector+", .lg-thumb-prev, .lg-thumb-next", 
+			thumbnail: galThumbnail,
+			download: galDownload,
+			autoplayControls: galAutoplay,
+			hash: galGalleryMode === true ? false : true,
+			loop: galLoop,
+			share: galShare,
 		}); 
 		
 		if($(".JSlightGalleryMode").length > 0 && galPageTotal > 1){
@@ -710,14 +731,18 @@ function textSize(container, fontsize)
 }
 
 //Show alert modal box using BootBox plugin
-function showAlert(title, text, size, align)
+function showAlert(title, text, size, align, animate)
 {
-	if(size === undefined || size === null || size == ''){  //Empty value
+	if(size === undefined || size === null || size == ''){ //Empty value
 		size = 'medium';
 	}
 	
-	if(align === undefined || align === null || align == ''){  //Empty value
+	if(align === undefined || align === null || align == ''){ //Empty value
 		align = '';
+	}
+	
+	if(animate != false && (animate === undefined || animate === null || animate == '')){ //Empty value
+		animate = true;
 	}
 	
 	//Check plugin
@@ -729,20 +754,25 @@ function showAlert(title, text, size, align)
 			message: text,
 			size: size,
 			backdrop: true,
-			className: align,
+			className: (animate == 'alternative' ? 'fade-2 '+align : align),
+			animate: (animate == 'alternative' ? true : animate),
 		});
 	}
 }
 
 //Show alert modal box using BootBox plugin (Content)
-function showContent(title, element, size, align)
+function showContent(title, element, size, align, animate)
 {
-	if(size === undefined || size === null || size == ''){  //Empty value
+	if(size === undefined || size === null || size == ''){ //Empty value
 		size = 'medium';
 	}
 	
-	if(align === undefined || align === null || align == ''){  //Empty value
+	if(align === undefined || align === null || align == ''){ //Empty value
 		align = '';
+	}
+	
+	if(animate != false && (animate === undefined || animate === null || animate == '')){ //Empty value
+		animate = true;
 	}
 	
 	//Check plugin
@@ -754,13 +784,14 @@ function showContent(title, element, size, align)
 			message: $(element).html(),
 			size: size,
 			backdrop: true,
-			className: align,
+			className: (animate == 'alternative' ? 'fade-2 '+align : align),
+			animate: (animate == 'alternative' ? true : animate),
 		});
 	}
 }
 
 //Show alert modal box using BootBox plugin (Ajax)
-function showAjax(title, fullurl, size, align, loading, debug)
+function showAjax(title, url, loading, debug, size, align, animate)
 {
 	if(size === undefined || size === null || size == ''){  //Empty value
 		size = 'medium';
@@ -768,6 +799,10 @@ function showAjax(title, fullurl, size, align, loading, debug)
 	
 	if(align === undefined || align === null || align == ''){  //Empty value
 		align = '';
+	}
+	
+	if(animate != false && (animate === undefined || animate === null || animate == '')){ //Empty value
+		animate = true;
 	}
 	
 	if(loading === undefined || loading === null || loading == ''){  //Empty value
@@ -779,7 +814,7 @@ function showAjax(title, fullurl, size, align, loading, debug)
 	}
 	
 	$.ajax({
-		url: fullurl,
+		url: url,
 		type: 'GET', 
 		dataType: 'html',
 		beforeSend: function(){
@@ -806,7 +841,8 @@ function showAjax(title, fullurl, size, align, loading, debug)
 					message: data,
 					size: size,
 					backdrop: true,
-					className: align,
+					className: (animate == 'alternative' ? 'fade-2 '+align : align),
+					animate: (animate == 'alternative' ? true : animate),
 				});
 			}
 			//Remove loading icon
@@ -859,26 +895,30 @@ function vimeoParser(url)
 }
 
 //Video launch modal box function
-function videoLaunch(url, share, title, autoplay, size, align)
+function videoLaunch(title, url, share, autoplay, size, align, animate)
 {	
-	if(share === undefined || share === null || share == ''){  //Empty value
-		share = false;
-	}
-	
-	if(title === undefined || title === null || title == ''){  //Empty value
+	if(title === undefined || title === null || title == ''){ //Empty value
 		title = '';
 	}
 	
-	if(autoplay === undefined || autoplay === null || autoplay == ''){  //Empty value
-		autoplay = false;
-	}
-	
-	if(size === undefined || size === null || size == ''){  //Empty value
+	if(size === undefined || size === null || size == ''){ //Empty value
 		size = 'large';
 	}
 	
-	if(align === undefined || align === null || align == ''){  //Empty value
+	if(align === undefined || align === null || align == ''){ //Empty value
 		align = '';
+	}
+	
+	if(animate != false && (animate === undefined || animate === null || animate == '')){ //Empty value
+		animate = true;
+	}
+	
+	if(share === undefined || share === null || share == ''){ //Empty value
+		share = false;
+	}
+	
+	if(autoplay === undefined || autoplay === null || autoplay == ''){ //Empty value
+		autoplay = false;
 	}
 	
 	var ID;
@@ -941,7 +981,8 @@ function videoLaunch(url, share, title, autoplay, size, align)
 			message: content,
 			size: size,
 			backdrop: true,
-			className: align,
+			className: (animate == 'alternative' ? 'fade-2 '+align : align),
+			animate: (animate == 'alternative' ? true : animate),
 		}).on("shown.bs.modal", function(){
 			//Modify facebook src
 			if (url.indexOf('facebook') >= 0){
@@ -1094,6 +1135,7 @@ function checkDisabledLink(string)
 	var exceptions = checkDisabledExceptions;
 	var size = checkDisabledAlignment[0];
 	var align = checkDisabledAlignment[1];
+	var animate = checkDisabledAnimate;
 	
 	if(size === undefined || size === null || size == ''){  //Empty value
 		size = 'medium';
@@ -1101,6 +1143,10 @@ function checkDisabledLink(string)
 	
 	if(align === undefined || align === null || align == ''){  //Empty value
 		align = '';
+	}
+	
+	if(animate != false && (animate === undefined || animate === null || animate == '')){ //Empty value
+		animate = true;
 	}
 	
 	//Exception 1
@@ -1127,7 +1173,8 @@ function checkDisabledLink(string)
 					message: lang('@disabled-text'),
 					size: size,
 					backdrop: true,
-					className: align,
+					className: (animate == 'alternative' ? 'fade-2 '+align : align),
+					animate: (animate == 'alternative' ? true : animate),
 				});
 			}
 			return false;
@@ -1157,6 +1204,7 @@ function windowPopup(element, errortitle, errormsg)
 	var getScroll = $(element).data('win-scroll');
 	var getModalSize = $(element).data('win-modal-size');
 	var getModalAlign = $(element).data('win-modal-align');
+	var getModalAnimate = $(element).data('win-modal-animate');
 	var isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini|BB10|PlayBook|MeeGo/i.test(navigator.userAgent);
 	
 	if(getModalSize === undefined || getModalSize === null || getModalSize == ''){  //Empty value
@@ -1165,6 +1213,10 @@ function windowPopup(element, errortitle, errormsg)
 	
 	if(getModalAlign === undefined || getModalAlign === null || getModalAlign == ''){  //Empty value
 		getModalAlign = '';
+	}
+	
+	if(getModalAnimate != false && (getModalAnimate === undefined || getModalAnimate === null || getModalAnimate == '')){ //Empty value
+		getModalAnimate = true;
 	}
 	
 	//Horizontal Align
@@ -1214,7 +1266,8 @@ function windowPopup(element, errortitle, errormsg)
 				message: errormsg,
 				size: getModalSize,
 				backdrop: true,
-				className: getModalAlign,
+				className: (getModalAnimate == 'alternative' ? 'fade-2 '+getModalAlign : getModalAlign),
+				animate: (getModalAnimate == 'alternative' ? true : getModalAnimate),
 			});
 		}
 	}
@@ -1230,9 +1283,10 @@ function mapLaunch(element)
 	var mapIcon2 = mainUrl+"/css/icons/maplaunch/waze.png";
 	var mapCoords1 = $(element).data('map-coords-1').split(',');
 	var mapCoords2 = $(element).data('map-coords-2').split(',');
-	var mapIframe = toBoolean($(element).data('map-iframe'));
+	var mapIframe = $(element).data('map-iframe');
 	var mapModalSize = $(element).data('map-modal-size');
 	var mapModalAlign = $(element).data('map-modal-align');
+	var mapModalAnimate = $(element).data('map-modal-animate');
 	var mapAddress = $(element).data('map-address');
 	var mapAddressUrl = encodeURI(mapAddress).replace(/%20/g,'+');
 	var mapLaunchUrl1 = isMobile ? 'https://maps.google.com/maps?q='+mapCoords1[0]+','+mapCoords1[1]+','+mapCoords1[2]+'z' : 
@@ -1250,6 +1304,10 @@ function mapLaunch(element)
 	
 	if(mapModalAlign === undefined || mapModalAlign === null || mapModalAlign == ''){  //Empty value
 		mapModalAlign = '';
+	}
+	
+	if(mapModalAnimate != false && (mapModalAnimate === undefined || mapModalAnimate === null || mapModalAnimate == '')){ //Empty value
+		mapModalAnimate = true;
 	}
 	
 	mapContentStyle1 = '<div class="JSmapLaunchInfo">'+
@@ -1289,7 +1347,8 @@ function mapLaunch(element)
 			message: mapIframe == false ? mapContentStyle1 : mapContentStyle2,
 			size: mapModalSize,
 			backdrop: true,
-			className: mapModalAlign,
+			className: (mapModalAnimate == 'alternative' ? 'fade-2 '+mapModalAlign : mapModalAlign),
+			animate: (mapModalAnimate == 'alternative' ? true : mapModalAnimate),
 		});
 	}
 }

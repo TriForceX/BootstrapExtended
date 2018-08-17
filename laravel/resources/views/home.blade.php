@@ -175,6 +175,18 @@
 					<td>Enables downloads, the download url will be taken from <code>data-src</code> or <code>href</code>.</td>
 				</tr>
 				<tr>
+					<td class="notranslate">data-lg-autoplay</td>
+					<td>Enables autoplay controls.</td>
+				</tr>
+				<tr>
+					<td class="notranslate">data-lg-loop</td>
+					<td>When you get the last image it will change to the first image.</td>
+				</tr>
+				<tr>
+					<td class="notranslate">data-lg-share</td>
+					<td>Enables social share buttons.</td>
+				</tr>
+				<tr>
 					<td class="notranslate">data-lg-gallery</td>
 					<td>Show the <b>previous</b> or <b>next</b> page controls inside the gallery. Includes auto redirection.</td>
 				</tr>
@@ -190,7 +202,7 @@
 		</table>
 
 		<div class="bs-example">
-			<div class="row JSlightGallery" data-lg-item="auto" data-lg-title="auto" data-lg-thumb="false" data-lg-download="false" data-lg-gallery="false">
+			<div class="row JSlightGallery" data-lg-item="auto" data-lg-title="auto" data-lg-thumb="false" data-lg-download="false" data-lg-share="true" data-lg-autoplay="true" data-lg-loop="false" data-lg-gallery="false">
 				<div class="col-md-3">
 					<a class="thumbnail" style="height:100px; overflow: hidden" title="My image 1" href="https://getbootstrap.com/docs/3.3/examples/screenshots/theme.jpg">
 						<img src="https://getbootstrap.com/docs/3.3/examples/screenshots/theme.jpg">
@@ -214,7 +226,7 @@
 			</div>
 		</div>
 		<figure class="highlight">
-			<pre><code class="language-html" data-lang="html">&lt;div class="JSlightGallery" data-lg-item="auto" data-lg-title="auto" data-lg-thumb="false" data-lg-gallery="false" data-lg-download="false"&gt;<br>...<br>&lt;/div&gt;</code></pre>
+			<pre><code class="language-html" data-lang="html">&lt;div class="JSlightGallery" data-lg-item="auto" data-lg-title="auto" data-lg-thumb="false" data-lg-download="false" data-lg-share="true" data-lg-autoplay="true" data-lg-loop="false" data-lg-gallery="false"&gt;<br>...<br>&lt;/div&gt;</code></pre>
 		</figure>
 		
 		<h3 class="JSlightGalleryExample">Gallery Mode</h3>
@@ -226,7 +238,7 @@
 				$_GET['page'] = null;
 			}
 			?>
-			<div class="row JSlightGallery" data-lg-item="auto" data-lg-title="Gallery title" data-lg-thumb="true" data-lg-download="true" data-lg-gallery="true" data-lg-page-total="3" data-lg-page-current="<?php echo empty($_GET["page"]) ? '1' : $_GET["page"]; ?>">
+			<div class="row JSlightGallery" data-lg-item="auto" data-lg-title="Gallery title" data-lg-thumb="true" data-lg-download="true" data-lg-share="true" data-lg-autoplay="true" data-lg-loop="false" data-lg-gallery="true" data-lg-page-total="3" data-lg-page-current="<?php echo empty($_GET["page"]) ? '1' : $_GET["page"]; ?>">
 				<?php if($_GET["page"]=="2"): ?>
 				<div class="col-md-3">
 					<a class="thumbnail" style="height:100px; overflow: hidden" title="My image 5" href="https://getbootstrap.com/docs/3.3/examples/screenshots/offcanvas.jpg">
@@ -313,7 +325,7 @@
 		</div>
 		
 		<figure class="highlight">
-			<pre><code class="language-html" data-lang="html">&lt;div class="JSlightGallery" data-lg-item="auto" data-lg-title="Gallery Title" data-lg-thumb="true" data-lg-download="true" data-lg-gallery="true" data-lg-page-total="3" data-lg-page-current="1"&gt;<br>...<br>&lt;/div&gt;</code></pre>
+			<pre><code class="language-html" data-lang="html">&lt;div class="JSlightGallery" data-lg-item="auto" data-lg-title="Gallery Title" data-lg-thumb="true" data-lg-download="true" data-lg-share="true" data-lg-autoplay="true" data-lg-loop="false" data-lg-gallery="true" data-lg-page-total="3" data-lg-page-current="1"&gt;<br>...<br>&lt;/div&gt;</code></pre>
 		</figure>
 
 		<p>
@@ -847,7 +859,7 @@
 		<div class="page-header notranslate">
 			<h1>Show Alert BootBox <span class="label label-danger">Plugin</span></h1>
 		</div>
-		<p>Launch a custom modal box using <b>BootBox</b> features, the function structure is <code>showAlert(title, text, size, align)</code>. You can alternatively set a size and alignment classes like <b>horizontal vertical</b> (For example: <code>right center</code>).</p>
+		<p>Launch a custom modal box using <b>BootBox</b> features, the function structure is <code>showAlert(title, text, size, align, animate)</code>. You can alternatively set a size and alignment classes like <b>horizontal vertical</b> (For example: <code>right center</code>).</p>
 
 		<div class="bs-example">
 			<button type="button" class="btn btn-primary" onclick="showAlert('Small Size Box','This is a text shown in a modal box','small','center')">Show Alert Small Size (Centered)</button>
@@ -866,7 +878,7 @@
 		<div class="page-header notranslate">
 			<h1>Show Content BootBox <span class="label label-danger">Plugin</span></h1>
 		</div>
-		<p>Launch a custom modal box using <b>BootBox</b> features, the function shows the content from an element, the structure is <code>showContent(title, element, size, align)</code>. You can alternatively set a size and alignment classes like <b>horizontal vertical</b> (For example: <code>right center</code>).</p>
+		<p>Launch a custom modal box using <b>BootBox</b> features, the function shows the content from an element, the structure is <code>showContent(title, element, size, align, animate)</code>. You can alternatively set a size and alignment classes like <b>horizontal vertical</b> (For example: <code>right center</code>).</p>
 
 		<div class="bs-example">
 			<button type="button" class="btn btn-primary" onclick="showContent('Small Size Box','.showContentExample','small','center')">Show Content Small Size (Centered)</button>
@@ -888,12 +900,12 @@
 		<div class="page-header notranslate">
 			<h1>Video Launch <span class="label label-danger">Custom</span></h1>
 		</div>
-		<p>Launch a modal box with a basic video player, the function structure is <code>videoLaunch(url, share, title, autoplay, size, align)</code>. You can alternatively set a size and alignment classes like <b>horizontal vertical</b> (For example: <code>right center</code>).</p>
+		<p>Launch a modal box with a basic video player, the function structure is <code>videoLaunch(title, url, share, autoplay, size, align, animate)</code>. You can alternatively set a size and alignment classes like <b>horizontal vertical</b> (For example: <code>right center</code>).</p>
 
 		<div class="bs-example">
-			<button type="button" class="btn btn-primary" onclick="videoLaunch('https://youtube.com/watch?v=ae6aeo9-Kn8', true, 'My YouTube Video', true, 'medium', 'center')">YouTube Video (Medium Size & Centered)</button>
-			<button type="button" class="btn btn-primary" onclick="videoLaunch('https://vimeo.com/214352663', false, 'My Vimeo Video', false)">Vimeo Video (No share URL + No AutoPlay)</button>
-			<button type="button" class="btn btn-primary" onclick="videoLaunch('https://facebook.com/1399203336817784/videos/1470830192988431',true, 'My Facebook Video',false)">Facebook Video (No AutoPlay)</button>
+			<button type="button" class="btn btn-primary" onclick="videoLaunch('My YouTube Video', 'https://youtube.com/watch?v=ae6aeo9-Kn8', true, true, 'medium', 'center')">YouTube Video (Medium Size & Centered)</button>
+			<button type="button" class="btn btn-primary" onclick="videoLaunch('My Vimeo Video', 'https://vimeo.com/214352663', false, false)">Vimeo Video (No share URL + No AutoPlay)</button>
+			<button type="button" class="btn btn-primary" onclick="videoLaunch('My Facebook Video', 'https://facebook.com/1399203336817784/videos/1470830192988431', true, false)">Facebook Video (No AutoPlay)</button>
 		</div>
 		<figure class="highlight">
 			<pre><code class="language-html" data-lang="html">&lt;a onclick="videoLaunch('https://youtube.com/watch?v=ae6aeo9-Kn8', true, 'My YouTube Video', true, 'medium', 'center')">Click Here&lt;/a&gt;<br>&lt;a onclick="videoLaunch('https://vimeo.com/214352663', false, 'My Vimeo Video', false)">Click Here&lt;/a&gt;<br>&lt;a onclick="videoLaunch('https://facebook.com/1399203336817784/videos/1470830192988431',true, 'My Facebook Video', false)">Click Here&lt;/a&gt;</code></pre>
@@ -939,6 +951,10 @@
 				<tr>
 					<td class="notranslate">data-win-modal-align</td>
 					<td>Alternative to set error modal alignment classes like <b>horizontal vertical</b> (For example: <code>right center</code>)</td>
+				</tr>
+				<tr>
+					<td class="notranslate">data-win-modal-animate</td>
+					<td>Alternative to change or disable the modal animation. You can choose between <code>true</code>, <code>false</code> or <code>alternative</code></td>
 				</tr>
 			</tbody>
 		</table>
@@ -999,11 +1015,15 @@
 					<td>Alternative to set modal alignment classes like <b>horizontal vertical</b> (For example: <code>right center</code>)
 					</td>
 				</tr>
+				<tr>
+					<td class="notranslate">data-map-modal-animate</td>
+					<td>Alternative to change or disable the modal animation. You can choose between <code>true</code>, <code>false</code> or <code>alternative</code></td>
+				</tr>
 			</tbody>
 		</table>
 
 		<div class="bs-example">
-			<button type="button" class="btn btn-primary JSmapLaunch" data-map-address="Renato Sánchez 4265, Las Condes, Santiago, Chile" data-map-coords-1="-33.4176466,-70.585256,17" data-map-coords-2="-33.41748,-70.58519,17" data-map-modal-align="center">Show Map Launch (Normal & Centered)</button>
+			<button type="button" class="btn btn-primary JSmapLaunch" data-map-address="Renato Sánchez 4265, Las Condes, Santiago, Chile" data-map-coords-1="-33.4176466,-70.585256,17" data-map-coords-2="-33.41748,-70.58519,17" data-map-modal-align="center" data-map-modal-animate="false">Show Map Launch (Normal & Centered)</button>
 			<button type="button" class="btn btn-primary JSmapLaunch" data-map-address="Renato Sánchez 4265, Las Condes, Santiago, Chile" data-map-coords-1="-33.4176466,-70.585256,17" data-map-coords-2="-33.41748,-70.58519,17" data-map-iframe="true">Show Map Launch (With Map)</button>
 		</div>
 		<figure class="highlight">

@@ -250,7 +250,6 @@ a.ui-button:active,
 	display:inline-block;
 	width:100%;
 	height:auto;
-	margin-bottom: 10px;
 }
 
 .JSvideoLaunchIframe iframe{
@@ -261,6 +260,7 @@ a.ui-button:active,
 	width:100%;
 	text-align: center;
 	margin-bottom: -10px;
+	margin-top: 10px;
 }
 .JSvideoLaunchButton{
 	color: #FFF;
