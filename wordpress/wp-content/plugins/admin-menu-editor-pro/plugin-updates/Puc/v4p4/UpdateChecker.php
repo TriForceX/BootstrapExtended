@@ -36,6 +36,11 @@ if ( !class_exists('Puc_v4p4_UpdateChecker', false) ):
 		public $slug = '';
 
 		/**
+		 * @var Puc_v4p4_InstalledPackage
+		 */
+		protected $package;
+
+		/**
 		 * @var Puc_v4p4_Scheduler
 		 */
 		public $scheduler;
@@ -72,6 +77,7 @@ if ( !class_exists('Puc_v4p4_UpdateChecker', false) ):
 				}
 			}
 
+			$this->package = $this->createInstalledPackage();
 			$this->scheduler = $this->createScheduler($checkPeriod);
 			$this->upgraderStatus = new Puc_v4p4_UpgraderStatus();
 			$this->updateState = new Puc_v4p4_StateStore($this->optionName);
@@ -193,6 +199,20 @@ if ( !class_exists('Puc_v4p4_UpdateChecker', false) ):
 		}
 
 		/**
+		 * Create a package instance that represents this plugin or theme.
+		 *
+		 * @return Puc_v4p4_InstalledPackage
+		 */
+		abstract protected function createInstalledPackage();
+
+		/**
+		 * @return Puc_v4p4_InstalledPackage
+		 */
+		public function getInstalledPackage() {
+			return $this->package;
+		}
+
+		/**
 		 * Create an instance of the scheduler.
 		 *
 		 * This is implemented as a method to make it possible for plugins to subclass the update checker
@@ -301,6 +321,8 @@ if ( !class_exists('Puc_v4p4_UpdateChecker', false) ):
 			//Let plugins/themes modify the update.
 			$update = apply_filters($this->getUniqueName('request_update_result'), $update, $httpResult);
 
+			$this->fixSupportedWordpressVersion($update);
+
 			if ( isset($update, $update->translations) ) {
 				//Keep only those translation updates that apply to this site.
 				$update->translations = $this->filterApplicableTranslations($update->translations);
@@ -310,18 +332,62 @@ if ( !class_exists('Puc_v4p4_UpdateChecker', false) ):
 		}
 
 		/**
+		 * The "Tested up to" field in the plugin metadata is supposed to be in the form of "major.minor",
+		 * while WordPress core's list_plugin_updates() expects the $update->tested field to be an exact
+		 * version, e.g. "major.minor.patch", to say it's compatible. In other case it shows
+		 * "Compatibility: Unknown".
+		 * The function mimics how wordpress.org API crafts the "tested" field out of "Tested up to".
+		 *
+		 * @param Puc_v4p4_Update|null $update
+		 */
+		protected function fixSupportedWordpressVersion(Puc_v4p4_Update $update = null) {
+			if ( !isset($update->tested) || !preg_match('/^\d++\.\d++$/', $update->tested) ) {
+				return;
+			}
+
+			$actualWpVersions = array();
+
+			$wpVersion = $GLOBALS['wp_version'];
+
+			if ( function_exists('get_preferred_from_update_core') ) {
+				$coreUpdate = get_preferred_from_update_core();
+				if ( isset($coreUpdate->current) && version_compare($coreUpdate->current, $wpVersion, '>') ) {
+					$actualWpVersions[] = $coreUpdate->current;
+				}
+			}
+
+			$actualWpVersions[] = $wpVersion;
+
+			$actualWpPatchNumber = "999";
+			foreach ($actualWpVersions as $version) {
+				if ( preg_match('/^(?P<majorMinor>\d++\.\d++)\.(?P<patch>\d++)/', $version, $versionParts) ) {
+					if ( $versionParts['majorMinor'] === $update->tested ) {
+						$actualWpPatchNumber = $versionParts['patch'];
+						break;
+					}
+				}
+			}
+
+			$update->tested .= '.' . $actualWpPatchNumber;
+		}
+
+		/**
 		 * Get the currently installed version of the plugin or theme.
 		 *
 		 * @return string|null Version number.
 		 */
-		abstract public function getInstalledVersion();
+		public function getInstalledVersion() {
+			return $this->package->getInstalledVersion();
+		}
 
 		/**
 		 * Get the full path of the plugin or theme directory.
 		 *
 		 * @return string
 		 */
-		abstract public function getAbsoluteDirectoryPath();
+		public function getAbsoluteDirectoryPath() {
+			return $this->package->getAbsoluteDirectoryPath();
+		}
 
 		/**
 		 * Trigger a PHP error, but only when $debugMode is enabled.
@@ -329,8 +395,8 @@ if ( !class_exists('Puc_v4p4_UpdateChecker', false) ):
 		 * @param string $message
 		 * @param int $errorType
 		 */
-		protected function triggerError($message, $errorType) {
-			if ($this->isDebugModeEnabled()) {
+		public function triggerError($message, $errorType) {
+			if ( $this->isDebugModeEnabled() ) {
 				trigger_error($message, $errorType);
 			}
 		}
@@ -339,7 +405,7 @@ if ( !class_exists('Puc_v4p4_UpdateChecker', false) ):
 		 * @return bool
 		 */
 		protected function isDebugModeEnabled() {
-			if ($this->debugMode === null) {
+			if ( $this->debugMode === null ) {
 				$this->debugMode = (bool)(constant('WP_DEBUG'));
 			}
 			return $this->debugMode;
@@ -356,7 +422,7 @@ if ( !class_exists('Puc_v4p4_UpdateChecker', false) ):
 		 */
 		public function getUniqueName($baseTag) {
 			$name = 'puc_' . $baseTag;
-			if ($this->filterSuffix !== '') {
+			if ( $this->filterSuffix !== '' ) {
 				$name .= '_' . $this->filterSuffix;
 			}
 			return $name . '-' . $this->slug;
@@ -603,7 +669,7 @@ if ( !class_exists('Puc_v4p4_UpdateChecker', false) ):
 			$installedTranslations = $this->getInstalledTranslations();
 
 			$applicableTranslations = array();
-			foreach($translations as $translation) {
+			foreach ($translations as $translation) {
 				//Does it match one of the available core languages?
 				$isApplicable = array_key_exists($translation->language, $languages);
 				//Is it more recent than an already-installed translation?
@@ -829,52 +895,6 @@ if ( !class_exists('Puc_v4p4_UpdateChecker', false) ):
 		}
 
 		/* -------------------------------------------------------------------
-		 * File header parsing
-		 * -------------------------------------------------------------------
-		 */
-
-		/**
-		 * Parse plugin or theme metadata from the header comment.
-		 *
-		 * This is basically a simplified version of the get_file_data() function from /wp-includes/functions.php.
-		 * It's intended as a utility for subclasses that detect updates by parsing files in a VCS.
-		 *
-		 * @param string|null $content File contents.
-		 * @return string[]
-		 */
-		public function getFileHeader($content) {
-			$content = (string) $content;
-
-			//WordPress only looks at the first 8 KiB of the file, so we do the same.
-			$content = substr($content, 0, 8192);
-			//Normalize line endings.
-			$content = str_replace("\r", "\n", $content);
-
-			$headers = $this->getHeaderNames();
-			$results = array();
-			foreach ($headers as $field => $name) {
-				$success = preg_match('/^[ \t\/*#@]*' . preg_quote($name, '/') . ':(.*)$/mi', $content, $matches);
-
-				if ( ($success === 1) && $matches[1] ) {
-					$value = $matches[1];
-					if ( function_exists('_cleanup_header_comment') ) {
-						$value = _cleanup_header_comment($value);
-					}
-					$results[$field] = $value;
-				} else {
-					$results[$field] = '';
-				}
-			}
-
-			return $results;
-		}
-
-		/**
-		 * @return array Format: ['HeaderKey' => 'Header Name']
-		 */
-		abstract protected function getHeaderNames();
-
-		/* -------------------------------------------------------------------
 		 * DebugBar integration
 		 * -------------------------------------------------------------------
 		 */
@@ -883,7 +903,7 @@ if ( !class_exists('Puc_v4p4_UpdateChecker', false) ):
 		 * Initialize the update checker Debug Bar plugin/add-on thingy.
 		 */
 		public function maybeInitDebugBar() {
-			if ( class_exists('Debug_Bar', false) && file_exists(dirname(__FILE__ . '/DebugBar')) ) {
+			if ( class_exists('Debug_Bar', false) && file_exists(dirname(__FILE__) . '/DebugBar') ) {
 				$this->createDebugBarExtension();
 			}
 		}

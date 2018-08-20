@@ -7,6 +7,11 @@ class Wslm_LicenseServer {
 	private $get = array();
 	private $post = array();
 
+	/**
+	 * @var int How soon to delete probably-unused license tokens.
+	 */
+	protected $tokenDeletionThreshold = 60;
+
 	/** @var Wslm_Database */
 	private $db;
 
@@ -28,6 +33,14 @@ class Wslm_LicenseServer {
 			add_filter('query_vars', array($this, 'addQueryVars'));
 
 			add_action('template_redirect', array($this, 'dispatchRequest'), 5);
+
+			$cronHook = 'wslm_delete_unused_tokens';
+			if ( function_exists('wp_next_scheduled') && is_admin() ) {
+				if ( !wp_next_scheduled($cronHook) && !defined('WP_INSTALLING') ) {
+					wp_schedule_event(time(), 'daily', $cronHook);
+				}
+			}
+			add_action($cronHook, array($this, 'deleteUnusedTokens'));
 		}
 	}
 
@@ -200,6 +213,10 @@ class Wslm_LicenseServer {
 		$this->outputResponse(array(
 			'license' => $this->prepareLicenseForOutput($license, !empty($token)),
 		));
+
+		if ( !empty($token) ) {
+			$this->logUpdateCheck($token);
+		}
 	}
 
 	/**
@@ -401,6 +418,20 @@ class Wslm_LicenseServer {
 	public function logUpdateCheck($token) {
 		$query = "UPDATE {$this->tablePrefix}tokens SET last_update_check = NOW() WHERE token = ?";
 		$this->db->query($query, array($token));
+	}
+
+	/**
+	 * Delete tokens associated with sites that haven't checked for updates in the last X days.
+	 */
+	public function deleteUnusedTokens() {
+		$query =
+			"DELETE FROM {$this->tablePrefix}tokens 
+			 WHERE 
+			    last_update_check IS NOT NULL
+			    AND last_update_check < DATE_SUB(NOW(), INTERVAL ? DAY)";
+		$this->db->query($query, array($this->tokenDeletionThreshold));
+
+		//TODO: Also delete sites that were licensed a long time ago and that have never checked for updates.
 	}
 
 	protected function actionLicenseSite($productSlug, $licenseKey) {

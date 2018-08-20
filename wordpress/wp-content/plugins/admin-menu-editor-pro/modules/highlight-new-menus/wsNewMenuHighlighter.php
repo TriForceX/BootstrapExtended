@@ -36,6 +36,7 @@ class wsNewMenuHighlighter {
 		'plugins.php'                       => true,
 		'post-new.php'                      => true,
 		'profile.php'                       => true,
+		'privacy.php'                       => true,
 		'theme-editor.php'                  => true,
 		'themes.php'                        => true,
 		'tools.php'                         => true,

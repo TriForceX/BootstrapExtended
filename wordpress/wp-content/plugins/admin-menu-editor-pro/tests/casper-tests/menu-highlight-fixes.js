@@ -16,6 +16,24 @@ casper.then(function() {
 	ameTest.selectItemByTitle('Appearance');
 	casper.click('#ws_paste_item');
 
+	casper.test.comment('Add a custom "Active Plugins" item to "Plugins" and make it the first link');
+	ameTest.selectItemByTitle('Plugins');
+	ameTest.addNewItem({
+		'menu_title' : 'Active Plugins',
+		'template_id': '',
+		'file'       : 'plugins.php?plugin_status=active'
+	});
+
+	//The plugin doesn't have an API for moving items, so we use this cut & paste hack.
+	var originalFirstItem = 'Installed Plugins';
+	casper.click('#ws_cut_item');
+	ameTest.selectItemByTitle('Plugins', originalFirstItem);
+	casper.click('#ws_paste_item'); //"Active Plugins" is now the second item.
+	ameTest.selectItemByTitle('Plugins', originalFirstItem);
+	casper.click('#ws_cut_item'); //Cut the first item.
+	ameTest.selectItemByTitle('Plugins', 'Active Plugins');
+	casper.click('#ws_paste_item'); //Paste the original first item after "Active Plugins".
+
 	casper.click('#ws_save_menu');
 });
 
@@ -64,6 +82,30 @@ casper.thenOpen(ameTestConfig.adminUrl + '/options-general.php', function() {
 	casper.test.assertEvalEquals(
 		ameTest.getHighlightedItemCount, 1,
 		'There is only one highlighted submenu item'
+	);
+});
+
+casper.thenOpen(ameTestConfig.adminUrl + '/plugins.php?plugin_status=active', function() {
+	casper.test.comment(
+		"Regression test: Verify that an item with a custom URL is highlighted even when it's the first item."
+	);
+
+	casper.test.assertExists(
+		'#menu-plugins.wp-has-current-submenu.wp-menu-open',
+		'"Plugins" is highlighted as the current menu'
+	);
+	casper.test.assertSelectorHasText(
+		'#menu-plugins .wp-submenu li.wp-submenu-head + li',
+		'Active Plugins',
+		'"Active Plugins" is the first item in the "Plugins" menu'
+	);
+	casper.test.assertExists(
+		'#menu-plugins .wp-submenu li a[href="plugins.php?plugin_status=active"].current',
+		'"Plugins -> Active Plugins" is highlighted as the current menu item'
+	);
+	casper.test.assertExists(
+		'#menu-plugins .wp-submenu li a[href="plugins.php"]',
+		'"Plugins -> Installed Plugins" still exists'
 	);
 });
 

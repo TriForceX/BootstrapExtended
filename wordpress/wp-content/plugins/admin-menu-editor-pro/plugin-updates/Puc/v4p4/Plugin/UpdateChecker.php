@@ -5,7 +5,7 @@ if ( !class_exists('Puc_v4p4_Plugin_UpdateChecker', false) ):
 	 * A custom plugin update checker.
 	 *
 	 * @author Janis Elsts
-	 * @copyright 2016
+	 * @copyright 2018
 	 * @access public
 	 */
 	class Puc_v4p4_Plugin_UpdateChecker extends Puc_v4p4_UpdateChecker {
@@ -16,8 +16,12 @@ if ( !class_exists('Puc_v4p4_Plugin_UpdateChecker', false) ):
 		public $pluginFile = '';  //Plugin filename relative to the plugins directory. Many WP APIs use this to identify plugins.
 		public $muPluginFile = ''; //For MU plugins, the plugin filename relative to the mu-plugins directory.
 
-		private $cachedInstalledVersion = null;
-		private $manualCheckErrorTransient = '';
+		/**
+		 * @var Puc_v4p4_Plugin_Package
+		 */
+		protected $package;
+
+		private $extraUi = null;
 
 		/**
 		 * Class constructor.
@@ -62,9 +66,9 @@ if ( !class_exists('Puc_v4p4_Plugin_UpdateChecker', false) ):
 			//Details: https://github.com/YahnisElsts/plugin-update-checker/issues/138#issuecomment-335590964
 			add_action('uninstall_' . $this->pluginFile, array($this, 'removeHooks'));
 
-			$this->manualCheckErrorTransient = $this->getUniqueName('manual_check_errors');
-
 			parent::__construct($metadataUrl, dirname($this->pluginFile), $slug, $checkPeriod, $optionName);
+
+			$this->extraUi = new Puc_v4p4_Plugin_Ui($this);
 		}
 
 		/**
@@ -89,15 +93,6 @@ if ( !class_exists('Puc_v4p4_Plugin_UpdateChecker', false) ):
 			//Override requests for plugin information
 			add_filter('plugins_api', array($this, 'injectInfo'), 20, 3);
 
-			add_filter('plugin_row_meta', array($this, 'addViewDetailsLink'), 10, 3);
-			add_filter('plugin_row_meta', array($this, 'addCheckForUpdatesLink'), 10, 2);
-			add_action('admin_init', array($this, 'handleManualCheck'));
-			add_action('all_admin_notices', array($this, 'displayManualCheckResult'));
-
-			//Clear the version number cache when something - anything - is upgraded or WP clears the update cache.
-			add_filter('upgrader_post_install', array($this, 'clearCachedVersion'));
-			add_action('delete_site_transient_update_plugins', array($this, 'clearCachedVersion'));
-
 			parent::installHooks();
 		}
 
@@ -117,16 +112,10 @@ if ( !class_exists('Puc_v4p4_Plugin_UpdateChecker', false) ):
 		 */
 		public function removeHooks() {
 			parent::removeHooks();
+			$this->extraUi->removeHooks();
+			$this->package->removeHooks();
 
 			remove_filter('plugins_api', array($this, 'injectInfo'), 20);
-
-			remove_filter('plugin_row_meta', array($this, 'addViewDetailsLink'), 10);
-			remove_filter('plugin_row_meta', array($this, 'addCheckForUpdatesLink'), 10);
-			remove_action('admin_init', array($this, 'handleManualCheck'));
-			remove_action('all_admin_notices', array($this, 'displayManualCheckResult'));
-
-			remove_filter('upgrader_post_install', array($this, 'clearCachedVersion'));
-			remove_action('delete_site_transient_update_plugins', array($this, 'clearCachedVersion'));
 		}
 
 		/**
@@ -172,83 +161,6 @@ if ( !class_exists('Puc_v4p4_Plugin_UpdateChecker', false) ):
 		}
 
 		/**
-		 * Get the currently installed version of the plugin.
-		 *
-		 * @return string Version number.
-		 */
-		public function getInstalledVersion(){
-			if ( isset($this->cachedInstalledVersion) ) {
-				return $this->cachedInstalledVersion;
-			}
-
-			$pluginHeader = $this->getPluginHeader();
-			if ( isset($pluginHeader['Version']) ) {
-				$this->cachedInstalledVersion = $pluginHeader['Version'];
-				return $pluginHeader['Version'];
-			} else {
-				//This can happen if the filename points to something that is not a plugin.
-				$this->triggerError(
-					sprintf(
-						"Can't to read the Version header for '%s'. The filename is incorrect or is not a plugin.",
-						$this->pluginFile
-					),
-					E_USER_WARNING
-				);
-				return null;
-			}
-		}
-
-		/**
-		 * Get plugin's metadata from its file header.
-		 *
-		 * @return array
-		 */
-		protected function getPluginHeader() {
-			if ( !is_file($this->pluginAbsolutePath) ) {
-				//This can happen if the plugin filename is wrong.
-				$this->triggerError(
-					sprintf(
-						"Can't to read the plugin header for '%s'. The file does not exist.",
-						$this->pluginFile
-					),
-					E_USER_WARNING
-				);
-				return array();
-			}
-
-			if ( !function_exists('get_plugin_data') ){
-				/** @noinspection PhpIncludeInspection */
-				require_once( ABSPATH . '/wp-admin/includes/plugin.php' );
-			}
-			return get_plugin_data($this->pluginAbsolutePath, false, false);
-		}
-
-		/**
-		 * @return array
-		 */
-		protected function getHeaderNames() {
-			return array(
-				'Name' => 'Plugin Name',
-				'PluginURI' => 'Plugin URI',
-				'Version' => 'Version',
-				'Description' => 'Description',
-				'Author' => 'Author',
-				'AuthorURI' => 'Author URI',
-				'TextDomain' => 'Text Domain',
-				'DomainPath' => 'Domain Path',
-				'Network' => 'Network',
-
-				//The newest WordPress version that this plugin requires or has been tested with.
-				//We support several different formats for compatibility with other libraries.
-				'Tested WP' => 'Tested WP',
-				'Requires WP' => 'Requires WP',
-				'Tested up to' => 'Tested up to',
-				'Requires at least' => 'Requires at least',
-			);
-		}
-
-
-		/**
 		 * Intercept plugins_api() calls that request information about our plugin and
 		 * use the configured API endpoint to satisfy them.
 		 *
@@ -288,7 +200,7 @@ if ( !class_exists('Puc_v4p4_Plugin_UpdateChecker', false) ):
 		 * @return stdClass
 		 */
 		protected function addUpdateToList($updates, $updateToAdd) {
-			if ( $this->isMuPlugin() ) {
+			if ( $this->package->isMuPlugin() ) {
 				//WP does not support automatic update installation for mu-plugins, but we can
 				//still display a notice.
 				$updateToAdd->package = null;
@@ -315,7 +227,7 @@ if ( !class_exists('Puc_v4p4_Plugin_UpdateChecker', false) ):
 		 * @return string
 		 */
 		protected function getUpdateListKey() {
-			if ( $this->isMuPlugin() ) {
+			if ( $this->package->isMuPlugin() ) {
 				return $this->muPluginFile;
 			}
 			return $this->pluginFile;
@@ -363,257 +275,13 @@ if ( !class_exists('Puc_v4p4_Plugin_UpdateChecker', false) ):
 		}
 
 		/**
-		 * Add a "Check for updates" link to the plugin row in the "Plugins" page. By default,
-		 * the new link will appear after the "Visit plugin site" link if present, otherwise
-		 * after the "View plugin details" link.
-		 *
-		 * You can change the link text by using the "puc_manual_check_link-$slug" filter.
-		 * Returning an empty string from the filter will disable the link.
-		 *
-		 * @param array $pluginMeta Array of meta links.
-		 * @param string $pluginFile
-		 * @return array
-		 */
-		public function addCheckForUpdatesLink($pluginMeta, $pluginFile) {
-			$isRelevant = ($pluginFile == $this->pluginFile)
-				|| (!empty($this->muPluginFile) && $pluginFile == $this->muPluginFile);
-
-			if ( $isRelevant && $this->userCanInstallUpdates() ) {
-				$linkUrl = wp_nonce_url(
-					add_query_arg(
-						array(
-							'puc_check_for_updates' => 1,
-							'puc_slug' => $this->slug,
-						),
-						self_admin_url('plugins.php')
-					),
-					'puc_check_for_updates'
-				);
-
-				$linkText = apply_filters(
-					$this->getUniqueName('manual_check_link'),
-					__('Check for updates', 'plugin-update-checker')
-				);
-				if ( !empty($linkText) ) {
-					/** @noinspection HtmlUnknownTarget */
-					$pluginMeta[] = sprintf('<a href="%s">%s</a>', esc_attr($linkUrl), $linkText);
-				}
-			}
-			return $pluginMeta;
-		}
-
-		/**
-		 * Add a "View Details" link to the plugin row in the "Plugins" page. By default,
-		 * the new link will appear before the "Visit plugin site" link (if present).
-		 *
-		 * You can change the link text by using the "puc_view_details_link-$slug" filter.
-		 * Returning an empty string from the filter will disable the link.
-		 *
-		 * You can change the position of the link using the
-		 * "puc_view_details_link_position-$slug" filter.
-		 * Returning 'before' or 'after' will place the link immediately before/after the
-		 * "Visit plugin site" link
-		 * Returning 'append' places the link after any existing links at the time of the hook.
-		 * Returning 'replace' replaces the "Visit plugin site" link
-		 * Returning anything else disables the link when there is a "Visit plugin site" link.
-		 *
-		 * If there is no "Visit plugin site" link 'append' is always used!
-		 *
-		 * @param array $pluginMeta Array of meta links.
-		 * @param string $pluginFile
-		 * @param array $pluginData Array of plugin header data.
-		 * @return array
-		 */
-		public function addViewDetailsLink($pluginMeta, $pluginFile, $pluginData = array()) {
-			$isRelevant = ($pluginFile == $this->pluginFile)
-				|| (!empty($this->muPluginFile) && $pluginFile == $this->muPluginFile);
-
-			if ( $isRelevant && $this->userCanInstallUpdates() && !isset($pluginData['slug']) ) {
-				$linkText = apply_filters($this->getUniqueName('view_details_link'), __('View details'));
-				if ( !empty($linkText) ) {
-					$viewDetailsLinkPosition = 'append';
-
-					//Find the "Visit plugin site" link (if present).
-					$visitPluginSiteLinkIndex = count($pluginMeta) - 1;
-					if ( $pluginData['PluginURI'] ) {
-						$escapedPluginUri = esc_url($pluginData['PluginURI']);
-						foreach ($pluginMeta as $linkIndex => $existingLink) {
-							if ( strpos($existingLink, $escapedPluginUri) !== false ) {
-								$visitPluginSiteLinkIndex = $linkIndex;
-								$viewDetailsLinkPosition = apply_filters(
-									$this->getUniqueName('view_details_link_position'),
-									'before'
-								);
-								break;
-							}
-						}
-					}
-
-					$viewDetailsLink = sprintf('<a href="%s" class="thickbox open-plugin-details-modal" aria-label="%s" data-title="%s">%s</a>',
-						esc_url(network_admin_url('plugin-install.php?tab=plugin-information&plugin=' . urlencode($this->slug) .
-							'&TB_iframe=true&width=600&height=550')),
-						esc_attr(sprintf(__('More information about %s'), $pluginData['Name'])),
-						esc_attr($pluginData['Name']),
-						$linkText
-					);
-					switch ($viewDetailsLinkPosition) {
-						case 'before':
-							array_splice($pluginMeta, $visitPluginSiteLinkIndex, 0, $viewDetailsLink);
-							break;
-						case 'after':
-							array_splice($pluginMeta, $visitPluginSiteLinkIndex + 1, 0, $viewDetailsLink);
-							break;
-						case 'replace':
-							$pluginMeta[$visitPluginSiteLinkIndex] = $viewDetailsLink;
-							break;
-						case 'append':
-						default:
-							$pluginMeta[] = $viewDetailsLink;
-							break;
-					}
-				}
-			}
-			return $pluginMeta;
-		}
-
-
-		/**
-		 * Check for updates when the user clicks the "Check for updates" link.
-		 * @see self::addCheckForUpdatesLink()
-		 *
-		 * @return void
-		 */
-		public function handleManualCheck() {
-			$shouldCheck =
-				isset($_GET['puc_check_for_updates'], $_GET['puc_slug'])
-				&& $_GET['puc_slug'] == $this->slug
-				&& $this->userCanInstallUpdates()
-				&& check_admin_referer('puc_check_for_updates');
-
-			if ( $shouldCheck ) {
-				$update = $this->checkForUpdates();
-				$status = ($update === null) ? 'no_update' : 'update_available';
-
-				if ( ($update === null) && !empty($this->lastRequestApiErrors) ) {
-					//Some errors are not critical. For example, if PUC tries to retrieve the readme.txt
-					//file from GitHub and gets a 404, that's an API error, but it doesn't prevent updates
-					//from working. Maybe the plugin simply doesn't have a readme.
-					//Let's only show important errors.
-					$foundCriticalErrors = false;
-					$questionableErrorCodes = array(
-						'puc-github-http-error',
-						'puc-gitlab-http-error',
-						'puc-bitbucket-http-error',
-					);
-
-					foreach ($this->lastRequestApiErrors as $item) {
-						$wpError = $item['error'];
-						/** @var WP_Error $wpError */
-						if ( !in_array($wpError->get_error_code(), $questionableErrorCodes) ) {
-							$foundCriticalErrors = true;
-							break;
-						}
-					}
-
-					if ( $foundCriticalErrors ) {
-						$status = 'error';
-						set_site_transient($this->manualCheckErrorTransient, $this->lastRequestApiErrors, 60);
-					}
-				}
-
-				wp_redirect(add_query_arg(
-					array(
-						'puc_update_check_result' => $status,
-						'puc_slug' => $this->slug,
-					),
-					self_admin_url('plugins.php')
-				));
-			}
-		}
-
-		/**
-		 * Display the results of a manual update check.
-		 * @see self::handleManualCheck()
-		 *
-		 * You can change the result message by using the "puc_manual_check_message-$slug" filter.
-		 */
-		public function displayManualCheckResult() {
-			if ( isset($_GET['puc_update_check_result'], $_GET['puc_slug']) && ($_GET['puc_slug'] == $this->slug) ) {
-				$status      = strval($_GET['puc_update_check_result']);
-				$title       = $this->getPluginTitle();
-				$noticeClass = 'updated notice-success';
-				$details     = '';
-
-				if ( $status == 'no_update' ) {
-					$message = sprintf(_x('The %s plugin is up to date.', 'the plugin title', 'plugin-update-checker'), $title);
-				} else if ( $status == 'update_available' ) {
-					$message = sprintf(_x('A new version of the %s plugin is available.', 'the plugin title', 'plugin-update-checker'), $title);
-				} else if ( $status === 'error' ) {
-					$message = sprintf(_x('Could not determine if updates are available for %s.', 'the plugin title', 'plugin-update-checker'), $title);
-					$noticeClass = 'error notice-error';
-
-					$details = $this->formatManualCheckErrors(get_site_transient($this->manualCheckErrorTransient));
-					delete_site_transient($this->manualCheckErrorTransient);
-				} else {
-					$message = sprintf(__('Unknown update checker status "%s"', 'plugin-update-checker'), htmlentities($status));
-					$noticeClass = 'error notice-error';
-				}
-				printf(
-					'<div class="notice %s is-dismissible"><p>%s</p>%s</div>',
-					$noticeClass,
-					apply_filters($this->getUniqueName('manual_check_message'), $message, $status),
-					$details
-				);
-			}
-		}
-
-		/**
-		 * Format the list of errors that were thrown during an update check.
-		 *
-		 * @param array $errors
-		 * @return string
-		 */
-		protected function formatManualCheckErrors($errors) {
-			if ( empty($errors) ) {
-				return '';
-			}
-			$output = '';
-
-			$showAsList = count($errors) > 1;
-			if ( $showAsList ) {
-				$output .= '<ol>';
-				$formatString = '<li>%1$s <code>%2$s</code></li>';
-			} else {
-				$formatString = '<p>%1$s <code>%2$s</code></p>';
-			}
-			foreach ($errors as $item) {
-				$wpError = $item['error'];
-				/** @var WP_Error $wpError */
-				$output .= sprintf(
-					$formatString,
-					$wpError->get_error_message(),
-					$wpError->get_error_code()
-				);
-			}
-			if ( $showAsList ) {
-				$output .= '</ol>';
-			}
-
-			return $output;
-		}
-
-		/**
 		 * Get the translated plugin title.
 		 *
+		 * @deprecated
 		 * @return string
 		 */
-		protected function getPluginTitle() {
-			$title  = '';
-			$header = $this->getPluginHeader();
-			if ( $header && !empty($header['Name']) && isset($header['TextDomain']) ) {
-				$title = translate($header['Name'], $header['TextDomain']);
-			}
-			return $title;
+		public function getPluginTitle() {
+			return $this->package->getPluginTitle();
 		}
 
 		/**
@@ -628,20 +296,11 @@ if ( !class_exists('Puc_v4p4_Plugin_UpdateChecker', false) ):
 		/**
 		 * Check if the plugin file is inside the mu-plugins directory.
 		 *
+		 * @deprecated
 		 * @return bool
 		 */
 		protected function isMuPlugin() {
-			static $cachedResult = null;
-
-			if ( $cachedResult === null ) {
-				//Convert both paths to the canonical form before comparison.
-				$muPluginDir = realpath(WPMU_PLUGIN_DIR);
-				$pluginPath  = realpath($this->pluginAbsolutePath);
-
-				$cachedResult = (strpos($pluginPath, $muPluginDir) === 0);
-			}
-
-			return $cachedResult;
+			return $this->package->isMuPlugin();
 		}
 
 		/**
@@ -651,19 +310,7 @@ if ( !class_exists('Puc_v4p4_Plugin_UpdateChecker', false) ):
 		 * @return bool
 		 */
 		protected function isUnknownMuPlugin() {
-			return empty($this->muPluginFile) && $this->isMuPlugin();
-		}
-
-		/**
-		 * Clear the cached plugin version. This method can be set up as a filter (hook) and will
-		 * return the filter argument unmodified.
-		 *
-		 * @param mixed $filterArgument
-		 * @return mixed
-		 */
-		public function clearCachedVersion($filterArgument = null) {
-			$this->cachedInstalledVersion = null;
-			return $filterArgument;
+			return empty($this->muPluginFile) && $this->package->isMuPlugin();
 		}
 
 		/**
@@ -673,13 +320,6 @@ if ( !class_exists('Puc_v4p4_Plugin_UpdateChecker', false) ):
 		 */
 		public function getAbsolutePath() {
 			return $this->pluginAbsolutePath;
-		}
-
-		/**
-		 * @return string
-		 */
-		public function getAbsoluteDirectoryPath() {
-			return dirname($this->pluginAbsolutePath);
 		}
 
 		/**
@@ -734,6 +374,22 @@ if ( !class_exists('Puc_v4p4_Plugin_UpdateChecker', false) ):
 
 		protected function createDebugBarExtension() {
 			return new Puc_v4p4_DebugBar_PluginExtension($this);
+		}
+
+		/**
+		 * Create a package instance that represents this plugin or theme.
+		 *
+		 * @return Puc_v4p4_InstalledPackage
+		 */
+		protected function createInstalledPackage() {
+			return new Puc_v4p4_Plugin_Package($this->pluginAbsolutePath, $this);
+		}
+
+		/**
+		 * @return Puc_v4p4_Plugin_Package
+		 */
+		public function getInstalledPackage() {
+			return $this->package;
 		}
 	}
 
