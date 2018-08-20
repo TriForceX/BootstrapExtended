@@ -6,13 +6,13 @@ Tested up to: 4.9
 Stable tag: trunk
 Requires PHP: 5.3
 
-The most popular WordPress SMTP and PHP Mailer plugin. Trusted by over 700k sites.
+The most popular WordPress SMTP and PHP Mailer plugin. Trusted by over 900k sites.
 
 == Description ==
 
 = WordPress Mail SMTP Plugin =
 
-Having problems with your WordPress site not sending emails? You're not alone. Over 700,000 websites use WP Mail SMTP to fix their email deliverability issues.
+Having problems with your WordPress site not sending emails? You're not alone. Over 900,000 websites use WP Mail SMTP to fix their email deliverability issues.
 
 WP Mail SMTP fixes your email deliverability by reconfiguring the wp_mail() PHP function to use a proper SMTP provider.
 
@@ -146,7 +146,42 @@ By all means please contact us to discuss features or options you'd like to see 
 
 == Changelog ==
 
-= 1.2.5 - 2018-02-05 =
+## [1.3.3] - 2018-07-05
+* Fixed: Compatibility with other plugins, that are using Google Service or Google Client classes.
+* Changed: Optimize code loading.
+
+= 1.3.2 - 2018-06-29 =
+* Make sure that other plugins/themes are not conflicting with our TGMPA library.
+
+= 1.3.1 - 2018-06-29 =
+* Fixed: Other SMTP: Clear new Debug messages about failed email delivery on next successful email sending.
+* Fixed: Introduce conditional autoloader to workaround Gmail PHP 5.5 requirement and its library compatibility issues vs PHP 5.3+ minimum viable plugin version.
+
+= 1.3.0 - 2018-06-28 =
+* Added: New option: force From Email rewrite regardless of the current value.
+* Added: New option: force From Name rewrite regardless of the current value.
+* Added: New option: remove all plugin data on plugin uninstall (when user deletes it).
+* Added: Notify site admins in wp-admin area with a notice about last failed email delivery. Cleans up on successful delivery.
+* Added: Notify site admins in wp-admin area with a notice about possible compatibility issues with other SMTP and email delivery plugins.
+* Added: Improve User Debug Experience when doing Email Test - display helpful description and steps to fix the issue.
+* Added: New users: provide default SMTP Port value for new users based on Encryption selection.
+* Added: New users: notify about not configured plugin settings.
+* Added: New users: Recommend free WPForms Lite plugin for those who don't have it.
+* Added: SendGrid/Mailgun: provide support for multipart/alternative types of emails.
+* Added: Gmail: new button to remove connection and to connect a new Google account.
+* Fixed: Support plugin installation into /mu-plugins/ directory.
+* Fixed: SendGrid: required text/plain part of email being the first one - fixes plain text emails not having links.
+* Fixed: SendGrid and Mailgun: improperly sending plain text emails in html format.
+* Fixed: SMTP Debug output was empty in some cases.
+* Fixed: Compatibility with lots of other plugins that use Google Analytics library of different versions.
+* Fixed: "client_id is empty" is no more a problem, should be fixed.
+* Changed: For SendGrid and Mailgun allow using custom defined attachments names if present. Fallback to file name.
+* Changed: Gmail: switch to a wider scope to prevent possible issues in certain circumstances.
+* Changed: Remove whitespaces start/end of keys, secrets etc.
+* Changed: Improved helpful description tests of various options.
+* Changed: Improved plugin autoloading functionality.
+
+= 1.2.5 - 2017-02-05 =
 * Fixed: `Return path` can't be turned off.
 * Fixed: `Authentication` sometimes can't be turned off.
 * Fixed: `Auto TLS` sometimes can't be turned off.
@@ -161,10 +196,10 @@ By all means please contact us to discuss features or options you'd like to see 
 * Changed: Do not autoload on each page request plugin settings from WordPress options table.
 * Changed: Do not autoload Pepipost classes unless it's saved as active mailer in settings.
 
-= 1.2.4 - 2018-01-28 =
+= 1.2.4 - 2017-01-28 =
 * Fixed: Improved escaping in debug reporting.
 
-= 1.2.3 - 2018-01-22 =
+= 1.2.3 - 2017-01-22 =
 * Fixed: Gmail tokens were reset after clicking Save Settings.
 * Fixed: Slight typo in Gmail success message.
 

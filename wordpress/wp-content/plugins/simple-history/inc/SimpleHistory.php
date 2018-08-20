@@ -998,6 +998,8 @@ class SimpleHistory {
 			$loggersDir . 'AvailableUpdatesLogger.php',
 			$loggersDir . 'FileEditsLogger.php',
 			$loggersDir . 'class-sh-privacy-logger.php',
+			$loggersDir . 'class-sh-translations-logger.php',
+			$loggersDir . 'class-sh-jetpack-logger.php',
 
 			// Loggers for third party plugins.
 			$loggersDir . 'PluginUserSwitchingLogger.php',
@@ -1010,7 +1012,7 @@ class SimpleHistory {
 		);
 
 		// SimpleLogger.php must be loaded first and always since the other loggers extend it.
-		// Include it manually so risk of anyone using filters or similar disables it.
+		// Include it manually so no risk of anyone using filters or similar disables it.
 		include_once $loggersDir . 'SimpleLogger.php';
 
 		/**
@@ -1047,6 +1049,12 @@ class SimpleHistory {
 			 * @param string basename of logger, i.e. "SimpleCommentsLogger" or "class-privacy-logger"
 			 */
 			$load_logger = apply_filters( 'simple_history/logger/load_logger', $load_logger, $basename_no_suffix );
+
+			// If logger was SimpleLogger then force it to be loaded because for example
+			// custom extended plugins added later probably depends on it.
+			if ( 'SimpleLogger' === $basename_no_suffix ) {
+				$load_logger = true;
+			}
 
 			if ( ! $load_logger ) {
 				continue;
@@ -2331,7 +2339,7 @@ Because Simple History was just recently installed, this feed does not contain m
 
 		$days = $this->get_clear_history_interval();
 
-		// Never clear log if days = 0
+		// Never clear log if days = 0.
 		if ( 0 == $days ) {
 			return;
 		}
@@ -2341,57 +2349,59 @@ Because Simple History was just recently installed, this feed does not contain m
 		$table_name = $wpdb->prefix . SimpleHistory::DBTABLE;
 		$table_name_contexts = $wpdb->prefix . SimpleHistory::DBTABLE_CONTEXTS;
 
-		// Get id of rows to delete
-		$sql = $wpdb->prepare(
-			"SELECT id FROM $table_name WHERE DATE_ADD(date, INTERVAL %d DAY) < now()",
-			$days
-		);
+		while( 1 > 0 ) {
+			// Get id of rows to delete.
+			$sql = $wpdb->prepare(
+				"SELECT id FROM $table_name WHERE DATE_ADD(date, INTERVAL %d DAY) < now() LIMIT 100000",
+				$days
+			);
 
-		$ids_to_delete = $wpdb->get_col( $sql );
+			$ids_to_delete = $wpdb->get_col( $sql );
 
-		if ( empty( $ids_to_delete ) ) {
-			// Nothing to delete
-			return;
+			if ( empty( $ids_to_delete ) ) {
+				// Nothing to delete.
+				return;
+			}
+
+			$sql_ids_in = implode( ',', $ids_to_delete );
+
+			// Add number of deleted rows to total_rows option.
+			$prev_total_rows = (int) get_option( 'simple_history_total_rows', 0 );
+			$total_rows = $prev_total_rows + sizeof( $ids_to_delete );
+			update_option( 'simple_history_total_rows', $total_rows );
+
+			// Remove rows + contexts.
+			$sql_delete_history = "DELETE FROM {$table_name} WHERE id IN ($sql_ids_in)";
+			$sql_delete_history_context = "DELETE FROM {$table_name_contexts} WHERE history_id IN ($sql_ids_in)";
+
+			$wpdb->query( $sql_delete_history );
+			$wpdb->query( $sql_delete_history_context );
+
+			$message = _nx(
+				'Simple History removed one event that were older than {days} days',
+				'Simple History removed {num_rows} events that were older than {days} days',
+				count( $ids_to_delete ),
+				'Database is being cleared automagically',
+				'simple-history'
+			);
+
+			SimpleLogger()->info(
+				$message,
+				array(
+					'days' => $days,
+					'num_rows' => count( $ids_to_delete ),
+				)
+			);
+
+			$this->get_cache_incrementor( true );
 		}
-
-		$sql_ids_in = implode( ',', $ids_to_delete );
-
-		// Add number of deleted rows to total_rows option
-		$prev_total_rows = (int) get_option( 'simple_history_total_rows', 0 );
-		$total_rows = $prev_total_rows + sizeof( $ids_to_delete );
-		update_option( 'simple_history_total_rows', $total_rows );
-
-		// Remove rows + contexts
-		$sql_delete_history = "DELETE FROM {$table_name} WHERE id IN ($sql_ids_in)";
-		$sql_delete_history_context = "DELETE FROM {$table_name_contexts} WHERE history_id IN ($sql_ids_in)";
-
-		$wpdb->query( $sql_delete_history );
-		$wpdb->query( $sql_delete_history_context );
-
-		$message = _nx(
-			'Simple History removed one event that were older than {days} days',
-			'Simple History removed {num_rows} events that were older than {days} days',
-			sizeof( $ids_to_delete ),
-			'Database is being cleared automagically',
-			'simple-history'
-		);
-
-		SimpleLogger()->info(
-			$message,
-			array(
-				'days' => $days,
-				'num_rows' => sizeof( $ids_to_delete ),
-			)
-		);
-
-		$this->get_cache_incrementor( true );
 
 	}
 
 	/**
 	 * Return plain text output for a log row
 	 * Uses the getLogRowPlainTextOutput of the logger that logged the row
-	 * with fallback to SimpleLogger if logger is not available
+	 * with fallback to SimpleLogger if logger is not available.
 	 *
 	 * @param array $row
 	 * @return string

@@ -5,9 +5,9 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 /**
- * Autoloader. Inspired by PSR-4 examples:
- *
- * @link https://github.com/php-fig/fig-standards/blob/master/accepted/PSR-4-autoloader-examples.md
+ * Autoloader. We needs it being separate and not using Composer autoloader because of the Gmail libs,
+ * which are huge and not needed for most users.
+ * Inspired by PSR-4 examples: https://github.com/php-fig/fig-standards/blob/master/accepted/PSR-4-autoloader-examples.md
  *
  * @since 1.0.0
  *
@@ -23,7 +23,7 @@ spl_autoload_register( function ( $class ) {
 	$plugin_folder = 'wp-mail-smtp';
 
 	// Default directory for all code is plugin's /src/.
-	$base_dir = WP_PLUGIN_DIR . '/' . $plugin_folder . '/src/';
+	$base_dir = plugin_dir_path( __DIR__ ) . '/' . $plugin_folder . '/src/';
 
 	// Get the relative class name.
 	$relative_class = substr( $class, strlen( $plugin_space ) + 1 );

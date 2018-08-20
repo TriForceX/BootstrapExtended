@@ -157,10 +157,16 @@ if ( ! class_exists( 'Plugin_ACF' ) ) {
 		 *
 		 * Called when ACF saves a post.
 		 *
-		 * @param int $post_id ID of post that is being saved.
+		 * @param mixed int $post_id ID of post that is being saved. string "option" or "options" when saving an options page.
 		 */
 		public function on_acf_save_post( $post_id ) {
 			if ( defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE ) {
+				return;
+			}
+
+			// Only act when $post_id is numeric, can be "options" too when
+			// ACF saves an options page.
+			if ( ! is_numeric( $post_id ) ) {
 				return;
 			}
 
@@ -187,7 +193,8 @@ if ( ! class_exists( 'Plugin_ACF' ) ) {
 			[_product_images_0_image_related] => field_59aaedbc3ae10
 			[product_images_1_image] => 574
 			*/
-			$prev_post_meta = $this->oldPostData['prev_post_meta'];
+			$prev_post_meta = isset( $this->oldPostData['prev_post_meta'] ) ? $this->oldPostData['prev_post_meta'] : array();
+
 			$new_post_meta  = get_post_custom( $post_id );
 			$new_post_meta  = array_map( 'reset', $new_post_meta );
 
@@ -517,7 +524,7 @@ if ( ! class_exists( 'Plugin_ACF' ) ) {
 
 			// Bail if not ACF Field Group.
 			if ( $post_type !== 'acf-field-group' ) {
-				return '';
+				return $diff_table_output;
 			}
 
 			// Field group fields to check for and output if found
@@ -892,7 +899,7 @@ if ( ! class_exists( 'Plugin_ACF' ) ) {
 
 					foreach ( $arr_added_fields_keys_to_add as $one_key_to_add ) {
 						// Check that new and old exist.
-						$new_exist = isset( $modifiedFields['new'][ $modifiedFieldId ][ $one_key_to_add ] );
+						$new_exists = isset( $modifiedFields['new'][ $modifiedFieldId ][ $one_key_to_add ] );
 						$old_exists = isset( $modifiedFields['old'][ $modifiedFieldId ][ $one_key_to_add ] );
 
 						if ( ! $new_exists || ! $old_exists ) {
@@ -939,6 +946,10 @@ if ( ! class_exists( 'Plugin_ACF' ) ) {
 			}
 
 			if ( empty( $postarr['ID'] ) ) {
+				return $data;
+			}
+
+			if ( empty( $_POST['acf_field_group'] ) ) {
 				return $data;
 			}
 

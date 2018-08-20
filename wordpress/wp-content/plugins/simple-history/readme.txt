@@ -5,7 +5,7 @@ Tags: history, log, changes, changelog, audit, trail, pages, attachments, users,
 Requires at least: 4.5.1
 Tested up to: 4.9
 Requires PHP: 5.3
-Stable tag: 2.23.1
+Stable tag: 2.27
 
 View changes made by users within WordPress. See who created a page, uploaded an attachment or approved an comment, and more.
 
@@ -50,6 +50,11 @@ see when a user privacy data export request is added and when this request is ap
 
 By default Simple History comes with built in support for the following plugins:
 
+**Jetpack**<br>
+The [Jetpack plugin](https://wordpress.org/plugins/jetpack/) is a plugin from Automattic (the creators of WordPress) that lets you supercharge your website by adding a lot of extra functions.
+In Simple History you will see what Jetpack modules that are activated and deactivated.
+(The creator of Simple History recommends this plugin and its [brute force attack protection](https://jetpack.com/features/security/brute-force-attack-protection/) functions btw. It's a really good way to block unwanted login attempts from malicious botnets and distributed attacks.
+
 **Advanced Custom Fields (ACF)**<br>
 [ACF](https://www.advancedcustomfields.com/) adds fields to your posts and pages.
 Simple History will log changes made to the field groups and the fields inside field groups. Your will be able to
@@ -64,12 +69,12 @@ The [Enable Media Replace plugin](https://wordpress.org/plugins/enable-media-rep
 Simple history will log details about the file being replaced and details about the new file.
 
 **Limit Login Attempts**<br>
-The plugin [Limit Login Attempts](https://sv.wordpress.org/plugins/limit-login-attempts/) is old
+The plugin [Limit Login Attempts](https://wordpress.org/plugins/limit-login-attempts/) is old
 and has not been updated for 4 years. However it still has +1 million installs, so many users will benefit from
 Simple History logging login attempts, lockouts, and configuration changes made in the plugin Limit Login Attempts.
 
 **Redirection**
-The [redirection plugin](https://sv.wordpress.org/plugins/redirection/) manages url redirections, using a nice GUI.
+The [redirection plugin](https://wordpress.org/plugins/redirection/) manages url redirections, using a nice GUI.
 Simple History will log redirects and groups that are created, changed, enabled or disabled and also when the global plugin settings have been modified.
 
 **Duplicate Post**
@@ -166,6 +171,35 @@ A simple way to see any uncommon activity, for example an increased number of lo
 == Changelog ==
 
 ## Changelog
+
+= 2.27 (August 2018) =
+- Fix notice errors when syncing an ACF field group. Fixes https://github.com/bonny/WordPress-Simple-History/issues/150.
+- Fix notice error when trying to read plugin info for a plugin that no longer exists or has changed name. Fixes https://github.com/bonny/WordPress-Simple-History/issues/146.
+- Always load the SimpleLogger logger. Fixes https://github.com/bonny/WordPress-Simple-History/issues/129.
+- Make more texts translatable.
+- Show plugin slug instead of name when translations are updated and a plugin name is not provided by the upgrader. This can happen when a plugin is using an external update service, like EDD.
+- Group translation updates in the log. Useful because sometimes you update a lot of translations at the same time and the log is full of just those messages.
+
+= 2.26.1 (July 2018) =
+- Fix 5.3 compatibility.
+
+= 2.26 (July 2018) =
+- Add support for the [Jetpack plugin](https://wordpress.org/plugins/jetpack/). To begin with, activation and deactivation of Jetpack modules is logged.
+- Add logging of translation updates, so now you can see when a plugin or a theme has gotten new translations. Fixes https://github.com/bonny/WordPress-Simple-History/issues/147.
+- Fix notice in Advanced Custom Fields logger when saving an ACF options page.
+Fixes https://wordpress.org/support/topic/problem-with-acf-options-pages/, https://wordpress.org/support/topic/problem-with-recent-version-and-acf/, https://github.com/bonny/WordPress-Simple-History/issues/145.
+
+= 2.25 (July 2018) =
+- Add `wp_cron_current_filter` to event context when something is logged during a cron job. This can help debugging thing like posts being added or deleted by some plugin and you're trying to figure out which plugin it is.
+- Fix for event details not always being shown.
+- Fix for sometimes missing user name and user email in export file.
+
+= 2.24 (July 2018) =
+
+- Added user login and user email to CSV export file.
+- Fix notice in postlogger when a post was deleted from the trash.
+- Clear database in smaller steps. Fixes https://github.com/bonny/WordPress-Simple-History/issues/143.
+- Fix notice in ACF logger due to misspelled variable. Fixes https://wordpress.org/support/topic/problem-with-recent-version-and-acf/.
 
 = 2.23.1 (May 2018) =
 
