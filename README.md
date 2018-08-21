@@ -4,9 +4,9 @@ https://dev.gznetwork.com/websitebase
 Base structure for web sites with reusable parts of source code or functions mainly based on Bootstrap and another libraries. You can visit the website above for a running example.
 
 # Base
-- Standalone Support *(PHP 5.4+)*
-- Wordpress Support *(Ver 4.9.6)*
-- Laravel Support *(Ver 5.2, Experimental)*
+- Standalone *(PHP 5.4+)*
+- Wordpress *(Ver 4.9.6)*
+- Laravel *(Ver 5.2, Experimental)*
 - Bootstrap 3 *(Ver 3.3.7)*
 
 # Resources
@@ -116,17 +116,17 @@ Base structure for web sites with reusable parts of source code or functions mai
 	- User Role Editor (Plugin)
 
 # Questions & Answers
-1. Why **Bootstrap 3.3.7** instead the newer **Bootstrap 4**?
+1. How i can use the functions described above?
+   - I will try to add all the explanation in the **Wiki** page. To access it [Click Here](https://github.com/TriForceX/WebsiteBase/wiki).
+   
+2. Why **Bootstrap 3.3.7** instead the newer **Bootstrap 4**?
    - In a few words, BS4 dropped the compatibility in **Internet Explorer 8 and 9**. Some people is still using **Windows 7** and this comes with **IE8** by default.
    
-2. There's some stuff still not working on **Internet Explorer 8 and 9**, what about that?
+3. There's some stuff still not working on **Internet Explorer 8 and 9**, what about that?
    - I am aware of that, but i don't intend to get website working completely 100% in **IE8** or **IE9**, but at least i want to show website "navigable" and not destroyed.
 
-3. Can i use this stuff in plain **HTML** instead the **PHP** Standalone?
+4. Can i use this stuff in plain **HTML** instead the **PHP** Standalone?
    - Yes, but you need to remove all the **PHP** stuff. Just copy the *Standalone* structure in **HTML** Files, remove **PHP** stuff, and call the **CSS & JS** files manually.
-   
-4. How i can use the functions described above?
-   - I am adding all the explanation in the **Wiki** page. To access it [Click Here](https://github.com/TriForceX/WebsiteBase/wiki).
 
 # Recommended Tools for editing
 - [Visual Studio Code](https://code.visualstudio.com/)
