@@ -239,7 +239,7 @@ a.ui-button:active,
 	right: 0;
 	top: 0;
 	white-space: nowrap;
-	overflow: hidden;
+	overflow-x: hidden;
 	text-overflow: ellipsis;
 }
 /* JS Text Cut */
