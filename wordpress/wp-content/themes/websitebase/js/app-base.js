@@ -39,7 +39,7 @@ $.fn.hasAttr = function(name)
 //Check outer height with padding/margin
 $.fn.outerHeight2 = function()
 {
-	if(this[0] === undefined || this[0] === null || this[0] == ''){ //Empty value
+	if(!this[0]){ //Check value
 		return null;
 	}
 	else{
@@ -50,7 +50,7 @@ $.fn.outerHeight2 = function()
 //Check outer width with padding/margin
 $.fn.outerWidth2 = function()
 {
-	if(this[0] === undefined || this[0] === null || this[0] == ''){ //Empty value
+	if(!this[0]){ //Check value
 		return null;
 	}
 	else{
@@ -84,11 +84,27 @@ $.fn.validateForm = function(options)
 		resetSubmit		: true,
 		errorStyling	: true,
 		modalSize		: 'medium',
-		modalAlign		: '',
+		modalAlign		: 'top',
 		modalAnimate	: true,
 	}, options);
 	
 	$(this).submit(function(event){ 
+		
+		var size = settings.modalSize;
+		var align = settings.modalAlign;
+		var animate = settings.modalAnimate;
+		
+		if(!size || !size.match(/^(small|medium|large|extra-large)$/)){ //Check value
+			size = 'medium';
+		}
+
+		if(!align || !align.match(/^(top|bottom|left|center|right)$/)){ //Check value
+			align = 'top';
+		}
+
+		if(!animate && animate != false){ //Check value
+			animate = true;
+		}
 		
 		var formError = false;
 		var formConfirmTitle = lang('@validate-confirm-title');
@@ -107,18 +123,6 @@ $.fn.validateForm = function(options)
 							 'select'	: lang('@validate-select'),
 							 'file'		: lang('@validate-file'),
 							};
-		
-		if(settings.modalSize === undefined || settings.modalSize === null || settings.modalSize == ''){ //Empty value
-			settings.modalSize = 'medium';
-		}
-
-		if(settings.modalAlign === undefined || settings.modalAlign === null || settings.modalAlign == ''){ //Empty value
-			settings.modalAlign = '';
-		}
-
-		if(settings.modalAnimate != false && (settings.modalAnimate === undefined || settings.modalAnimate === null || settings.modalAnimate == '')){ //Empty value
-			settings.modalAnimate = true;
-		}
 		
 		var formInputValidation = function(element){
 			switch(element.attr('type')){
@@ -285,10 +289,10 @@ $.fn.validateForm = function(options)
 				bootbox.alert({
 					title: formErrorTitle,
 					message: formError,
-					size: settings.modalSize,
+					size: size,
 					backdrop: true,
-					className: (settings.modalAnimate == 'alternative' ? 'fade-2 '+settings.modalAlign : settings.modalAlign),
-					animate: (settings.modalAnimate == 'alternative' ? true : settings.modalAnimate),
+					className: (animate == 'alternative' ? 'fade-2 '+align : align),
+					animate: (animate == 'alternative' ? true : animate),
 				});
 			}
 			event.preventDefault();
@@ -307,10 +311,10 @@ $.fn.validateForm = function(options)
 				bootbox.confirm({
 					title: formConfirmTitle,
 					message: formConfirmText,
-					size: settings.modalSize,
+					size: size,
 					backdrop: true,
-					className: (settings.modalAnimate == 'alternative' ? 'fade-2 '+settings.modalAlign : settings.modalAlign),
-					animate: (settings.modalAnimate == 'alternative' ? true : settings.modalAnimate),
+					className: (animate == 'alternative' ? 'fade-2 '+align : align),
+					animate: (animate == 'alternative' ? true : animate),
 					callback: function(result){
 						if(result){
 							formElement.unbind("submit").submit();
@@ -365,7 +369,7 @@ function validateNumber(field)
 //Form validate empty
 function validateEmpty(field)
 {
-    if(field === undefined || field === null || field == '' || /^\s*$/.test(field)){
+    if(!field || /^\s*$/.test(field)){
     	return false;
     }
     else{
@@ -418,24 +422,21 @@ function responsiveCode()
 	var bodyWidth = document.body.clientWidth; //$(window).width();
 	var bodyHeight = $(window).height();
 	var bodyOrientation = bodyWidth > bodyHeight ? true : false;
-	var bodyScreen = {'xs'	: '@screen-xs', //480
-					  'sm'	: '@screen-sm', //768
-					  'md'	: '@screen-md', //992
-					  'lg'	: '@screen-lg', //1200
-					  'xl'	: '@screen-xl'}; //1920
+	var bodyScreen = {'xs'	: parseFloat('@screen-xs'), //480
+					  'sm'	: parseFloat('@screen-sm'), //768
+					  'md'	: parseFloat('@screen-md'), //992
+					  'lg'	: parseFloat('@screen-lg'), //1200
+					  'xl'	: parseFloat('@screen-xl')}; //1920
 
 	if (bodyWidth)
 	{
-		/* Responsive Changes */
-
 		//Send data to event
 		$(document).trigger("responsiveCode", [bodyWidth, bodyHeight, bodyOrientation, bodyScreen]);
-		
-		/* Responsive Changes */
-	}else{
+	}
+	else
+	{
 		window.setTimeout(responsiveCode, 30);
 	}
-
 }
 
 $(window).bind("load", responsiveCode);
@@ -445,184 +446,192 @@ $(window).bind("orientationchange", responsiveCode);
 //LightGallery destroy function
 function destroyLightGallery()
 {
-	$(".JSlightGallery").lightGallery().data('lightGallery').destroy(true);
+	//Check plugin
+	if($.fn.lightGallery !== 'undefined')
+	{
+		$(".JSlightGallery").lightGallery().data('lightGallery').destroy(true);
+	}
 }
 //Lightgallery load function
 function loadLightGallery()
 {	
-	$(".JSlightGallery").each(function(){ 
+	//Check plugin
+	if($.fn.lightGallery !== 'undefined')
+	{
+		$(".JSlightGallery").each(function(){ 
 
-		var galSelector = $(this).data("lg-item") === "auto" ? "a" : $(this).data("lg-item");
-		var galThumbnail = $(this).data("lg-thumb");
-		var galDownload = $(this).data("lg-download");
-		var galAutoplay = $(this).data("lg-autoplay");
-		var galLoop = $(this).data("lg-loop");
-		var galShare = $(this).data("lg-share");
-		var galGalleryMode = $(this).data("lg-gallery");
-		var galPageTotal = parseInt($(this).data("lg-page-total"));
-		var galPageCurrent = parseInt($(this).data("lg-page-current"));
-		var galLoadThumb = mainUrl+"/resources/lightgallery/img/loading.gif";
-		
-		if($(this).data("lg-title") !== "auto"){
-			$(this).find(galSelector).not(".lg-thumb-prev, .lg-thumb-next").attr("title", $(this).data("lg-title"));
-		}
-		
-		if(galGalleryMode === true){
-			$(this).addClass("JSlightGalleryMode");
-		}
-		
-		if($(".JSlightGalleryMode").length > 0 && galPageTotal > 1){
-			if($(".JSlightGallery.JSlightGalleryMode .lg-thumb-prev").length < 1 && 
-			   $(".JSlightGallery.JSlightGalleryMode .lg-thumb-next").length < 1){
-				$(".JSlightGallery.JSlightGalleryMode").prepend("<div class='lg-thumb-prev' href='"+galLoadThumb+"' title='"+lang('@lgtitle-prev-text')+"'><img src='#'></div>");
-				$(".JSlightGallery.JSlightGalleryMode").append("<div class='lg-thumb-next' href='"+galLoadThumb+"' title='"+lang('@lgtitle-next-text')+"'><img src='#'></div>");
+			var galSelector = $(this).data("lg-item") === "auto" ? "a" : $(this).data("lg-item");
+			var galThumbnail = $(this).data("lg-thumb");
+			var galDownload = $(this).data("lg-download");
+			var galAutoplay = $(this).data("lg-autoplay");
+			var galLoop = $(this).data("lg-loop");
+			var galShare = $(this).data("lg-share");
+			var galGalleryMode = $(this).data("lg-gallery");
+			var galPageTotal = parseInt($(this).data("lg-page-total"));
+			var galPageCurrent = parseInt($(this).data("lg-page-current"));
+			var galLoadThumb = mainUrl+"/resources/lightgallery/img/loading.gif";
+
+			if($(this).data("lg-title") !== "auto"){
+				$(this).find(galSelector).not(".lg-thumb-prev, .lg-thumb-next").attr("title", $(this).data("lg-title"));
 			}
-		}
-		
-		$(this).lightGallery({
-			selector: galSelector+", .lg-thumb-prev, .lg-thumb-next", 
-			thumbnail: galThumbnail,
-			download: galDownload,
-			autoplayControls: galAutoplay,
-			hash: galGalleryMode === true ? false : true,
-			loop: galLoop,
-			share: galShare,
-		}); 
-		
-		if($(".JSlightGalleryMode").length > 0 && galPageTotal > 1){
-			
-			var total;
-			var totalSlide;
-			var current;
-			var currentSlide;
-			
-			$(".JSlightGallery.JSlightGalleryMode").on('onBeforeOpen.lg',function(){
-				$("#lg-counter").addClass("invisible");
-			});
-			
-			$(".JSlightGallery.JSlightGalleryMode").on('onBeforeSlide.lg',function(){
-				$("#lg-counter").addClass("invisible");
-			});
-			
-			$(".JSlightGallery.JSlightGalleryMode").on('onAfterOpen.lg',function(){
-				var galThumbPrevHTML = "<div><span class='glyphicon glyphicon-chevron-left' aria-hidden='true'></span><strong>"+lang('@lgtitle-prev-button')+"</strong></div>";
-				var galThumbNextHTML = "<div><span class='glyphicon glyphicon-chevron-right' aria-hidden='true'></span><strong>"+lang('@lgtitle-next-button')+"</strong></div>";
-				
-				$(".lg-outer .lg-thumb .lg-thumb-item:first-child").addClass("JSlightGalleryNoBorder").append(galThumbPrevHTML);
-				$(".lg-outer .lg-thumb .lg-thumb-item:last-child").addClass("JSlightGalleryNoBorder").append(galThumbNextHTML);
-				
-				total = parseInt($("#lg-counter-all").html());
-				totalSlide = total <= 2 ? 1 : (total - 2);
-				current = parseInt($("#lg-counter-current").html());
-				currentSlide = current <= 2 ? 1 : (current == total ? totalSlide : (current - 1));
-				
-				$("#lg-counter-all").html(totalSlide);
-				$("#lg-counter-current").html(currentSlide);
-				$("#lg-counter").removeClass("invisible");
-				
-				//Prev & Next Pages
-				if(galPageCurrent === 1){
-					$(".lg-outer .lg-thumb .lg-thumb-item:first-child").addClass("invisible");
-					$(".lg-outer .lg-thumb .lg-thumb-item:last-child").removeClass("invisible");
-				}
-				else if(galPageCurrent === galPageTotal){
-					$(".lg-outer .lg-thumb .lg-thumb-item:first-child").removeClass("invisible");
-					$(".lg-outer .lg-thumb .lg-thumb-item:last-child").addClass("invisible");
-				}
-				else{
-					$(".lg-outer .lg-thumb .lg-thumb-item:first-child").removeClass("invisible");
-					$(".lg-outer .lg-thumb .lg-thumb-item:last-child").removeClass("invisible");
-				}
-				
-				//Prev & Next Controls
-				if(currentSlide === 1){
-					$(".lg-actions .lg-prev").addClass("invisible");
-					$(".lg-actions .lg-next").removeClass("invisible");
-				}
-				else if(currentSlide > 1 && currentSlide < totalSlide){
-					$(".lg-actions .lg-prev").removeClass("invisible");
-					$(".lg-actions .lg-next").removeClass("invisible");
-				}
-				else if(currentSlide >= totalSlide){
-					$(".lg-actions .lg-prev").removeClass("invisible");
-					$(".lg-actions .lg-next").addClass("invisible");
-				}
-				else{
-					$(".lg-actions .lg-prev").removeClass("invisible");
-					$(".lg-actions .lg-next").removeClass("invisible");
-				}
-			});
-			
-			$(".JSlightGallery.JSlightGalleryMode").on('onAfterSlide.lg',function(){
-				current = parseInt($("#lg-counter-current").html());
-				currentSlide = current <= 2 ? 1 : (current == total ? totalSlide : (current - 1));
-				
-				$("#lg-counter-all").html(totalSlide);
-				$("#lg-counter-current").html(currentSlide);
-				$("#lg-counter").removeClass("invisible");
-				
-				//Prev & Next Controls
-				if(currentSlide === 1){
-					$(".lg-actions .lg-prev").addClass("invisible");
-					$(".lg-actions .lg-next").removeClass("invisible");
-					//Close
-					if(current === 1){
-						if(galPageCurrent === 1){
-							$(".lg-outer .lg-sub-html").html(lang('@lgtitle-gallery-close'));
-						}
-						else{
-							//Redirect
-							$(".JSlightGallery").addClass("lightGalleryAuto");
-							$(".JSlightGallery").addClass("lightGalleryAutoPrev");
-						}
-						setTimeout(function(){ $(".lg-toolbar .lg-close").trigger("click"); }, 1500);
-					}
-				}
-				else if(currentSlide > 1 && currentSlide < totalSlide){
-					$(".lg-actions .lg-prev").removeClass("invisible");
-					$(".lg-actions .lg-next").removeClass("invisible");
-				}
-				else if(currentSlide >= totalSlide){
-					$(".lg-actions .lg-prev").removeClass("invisible");
-					$(".lg-actions .lg-next").addClass("invisible");
-					//Close
-					if(current === total){
-						if(galPageCurrent === galPageTotal){
-							$(".lg-outer .lg-sub-html").html(lang('@lgtitle-gallery-close'));
-						}
-						else{
-							//Redirect
-							$(".JSlightGallery").addClass("lightGalleryAuto");
-							$(".JSlightGallery").addClass("lightGalleryAutoNext");
-						}
-						setTimeout(function(){ $(".lg-toolbar .lg-close").trigger("click"); }, 1500);
-					}
-				}
-				else{
-					$(".lg-actions .lg-prev").removeClass("invisible");
-					$(".lg-actions .lg-next").removeClass("invisible");
-				}
-			});
-			
-			$(".JSlightGallery.JSlightGalleryMode").on('onCloseAfter.lg',function(){
-				if($(this).hasClass("lightGalleryAuto")){
-					if($(this).hasClass("lightGalleryAutoNext")){
-						//Stuff to do on close
-						$(document).trigger("onNextPageChange.lg"); //Send data to event
-					}
-					else if($(this).hasClass("lightGalleryAutoPrev")){
-						//Stuff to do on close
-						$(document).trigger("onPrevPageChange.lg"); //Send data to event
-					}
-					$(this).removeClass("lightGalleryAuto");
-					$(this).removeClass("lightGalleryAutoPrev");
-					$(this).removeClass("lightGalleryAutoNext");
-				}
-			});
-			
-		}
 
-	});
+			if(galGalleryMode === true){
+				$(this).addClass("JSlightGalleryMode");
+			}
+
+			if($(".JSlightGalleryMode").length > 0 && galPageTotal > 1){
+				if($(".JSlightGallery.JSlightGalleryMode .lg-thumb-prev").length < 1 && 
+				   $(".JSlightGallery.JSlightGalleryMode .lg-thumb-next").length < 1){
+					$(".JSlightGallery.JSlightGalleryMode").prepend("<div class='lg-thumb-prev' href='"+galLoadThumb+"' title='"+lang('@lgtitle-prev-text')+"'><img src='#'></div>");
+					$(".JSlightGallery.JSlightGalleryMode").append("<div class='lg-thumb-next' href='"+galLoadThumb+"' title='"+lang('@lgtitle-next-text')+"'><img src='#'></div>");
+				}
+			}
+
+			$(this).lightGallery({
+				selector: galSelector+", .lg-thumb-prev, .lg-thumb-next", 
+				thumbnail: galThumbnail,
+				download: galDownload,
+				autoplayControls: galAutoplay,
+				hash: galGalleryMode === true ? false : true,
+				loop: galLoop,
+				share: galShare,
+			}); 
+
+			if($(".JSlightGalleryMode").length > 0 && galPageTotal > 1){
+
+				var total;
+				var totalSlide;
+				var current;
+				var currentSlide;
+
+				$(".JSlightGallery.JSlightGalleryMode").on('onBeforeOpen.lg',function(){
+					$("#lg-counter").addClass("invisible");
+				});
+
+				$(".JSlightGallery.JSlightGalleryMode").on('onBeforeSlide.lg',function(){
+					$("#lg-counter").addClass("invisible");
+				});
+
+				$(".JSlightGallery.JSlightGalleryMode").on('onAfterOpen.lg',function(){
+					var galThumbPrevHTML = "<div><span class='glyphicon glyphicon-chevron-left' aria-hidden='true'></span><strong>"+lang('@lgtitle-prev-button')+"</strong></div>";
+					var galThumbNextHTML = "<div><span class='glyphicon glyphicon-chevron-right' aria-hidden='true'></span><strong>"+lang('@lgtitle-next-button')+"</strong></div>";
+
+					$(".lg-outer .lg-thumb .lg-thumb-item:first-child").addClass("JSlightGalleryNoBorder").append(galThumbPrevHTML);
+					$(".lg-outer .lg-thumb .lg-thumb-item:last-child").addClass("JSlightGalleryNoBorder").append(galThumbNextHTML);
+
+					total = parseInt($("#lg-counter-all").html());
+					totalSlide = total <= 2 ? 1 : (total - 2);
+					current = parseInt($("#lg-counter-current").html());
+					currentSlide = current <= 2 ? 1 : (current == total ? totalSlide : (current - 1));
+
+					$("#lg-counter-all").html(totalSlide);
+					$("#lg-counter-current").html(currentSlide);
+					$("#lg-counter").removeClass("invisible");
+
+					//Prev & Next Pages
+					if(galPageCurrent === 1){
+						$(".lg-outer .lg-thumb .lg-thumb-item:first-child").addClass("invisible");
+						$(".lg-outer .lg-thumb .lg-thumb-item:last-child").removeClass("invisible");
+					}
+					else if(galPageCurrent === galPageTotal){
+						$(".lg-outer .lg-thumb .lg-thumb-item:first-child").removeClass("invisible");
+						$(".lg-outer .lg-thumb .lg-thumb-item:last-child").addClass("invisible");
+					}
+					else{
+						$(".lg-outer .lg-thumb .lg-thumb-item:first-child").removeClass("invisible");
+						$(".lg-outer .lg-thumb .lg-thumb-item:last-child").removeClass("invisible");
+					}
+
+					//Prev & Next Controls
+					if(currentSlide === 1){
+						$(".lg-actions .lg-prev").addClass("invisible");
+						$(".lg-actions .lg-next").removeClass("invisible");
+					}
+					else if(currentSlide > 1 && currentSlide < totalSlide){
+						$(".lg-actions .lg-prev").removeClass("invisible");
+						$(".lg-actions .lg-next").removeClass("invisible");
+					}
+					else if(currentSlide >= totalSlide){
+						$(".lg-actions .lg-prev").removeClass("invisible");
+						$(".lg-actions .lg-next").addClass("invisible");
+					}
+					else{
+						$(".lg-actions .lg-prev").removeClass("invisible");
+						$(".lg-actions .lg-next").removeClass("invisible");
+					}
+				});
+
+				$(".JSlightGallery.JSlightGalleryMode").on('onAfterSlide.lg',function(){
+					current = parseInt($("#lg-counter-current").html());
+					currentSlide = current <= 2 ? 1 : (current == total ? totalSlide : (current - 1));
+
+					$("#lg-counter-all").html(totalSlide);
+					$("#lg-counter-current").html(currentSlide);
+					$("#lg-counter").removeClass("invisible");
+
+					//Prev & Next Controls
+					if(currentSlide === 1){
+						$(".lg-actions .lg-prev").addClass("invisible");
+						$(".lg-actions .lg-next").removeClass("invisible");
+						//Close
+						if(current === 1){
+							if(galPageCurrent === 1){
+								$(".lg-outer .lg-sub-html").html(lang('@lgtitle-gallery-close'));
+							}
+							else{
+								//Redirect
+								$(".JSlightGallery").addClass("lightGalleryAuto");
+								$(".JSlightGallery").addClass("lightGalleryAutoPrev");
+							}
+							setTimeout(function(){ $(".lg-toolbar .lg-close").trigger("click"); }, 1500);
+						}
+					}
+					else if(currentSlide > 1 && currentSlide < totalSlide){
+						$(".lg-actions .lg-prev").removeClass("invisible");
+						$(".lg-actions .lg-next").removeClass("invisible");
+					}
+					else if(currentSlide >= totalSlide){
+						$(".lg-actions .lg-prev").removeClass("invisible");
+						$(".lg-actions .lg-next").addClass("invisible");
+						//Close
+						if(current === total){
+							if(galPageCurrent === galPageTotal){
+								$(".lg-outer .lg-sub-html").html(lang('@lgtitle-gallery-close'));
+							}
+							else{
+								//Redirect
+								$(".JSlightGallery").addClass("lightGalleryAuto");
+								$(".JSlightGallery").addClass("lightGalleryAutoNext");
+							}
+							setTimeout(function(){ $(".lg-toolbar .lg-close").trigger("click"); }, 1500);
+						}
+					}
+					else{
+						$(".lg-actions .lg-prev").removeClass("invisible");
+						$(".lg-actions .lg-next").removeClass("invisible");
+					}
+				});
+
+				$(".JSlightGallery.JSlightGalleryMode").on('onCloseAfter.lg',function(){
+					if($(this).hasClass("lightGalleryAuto")){
+						if($(this).hasClass("lightGalleryAutoNext")){
+							//Stuff to do on close
+							$(document).trigger("onNextPageChange.lg"); //Send data to event
+						}
+						else if($(this).hasClass("lightGalleryAutoPrev")){
+							//Stuff to do on close
+							$(document).trigger("onPrevPageChange.lg"); //Send data to event
+						}
+						$(this).removeClass("lightGalleryAuto");
+						$(this).removeClass("lightGalleryAutoPrev");
+						$(this).removeClass("lightGalleryAutoNext");
+					}
+				});
+
+			}
+
+		});
+	}
 }
 
 //ImgLiquid auto-fill background function
@@ -637,17 +646,17 @@ function imageFill(container)
 	bgData = $(container).data('img-fill').split(',');
 	
 	//Check vertical align
-	if(bgData[0] === undefined || bgData[0] === null || bgData[0] == ''){ //Empty value
+	if(!bgData[0]){ //Check value
 		bgData[0] = 'center';
 	}
 	
 	//Check horizontal align
-	if(bgData[1] === undefined || bgData[1] === null || bgData[1] == ''){ //Empty value
+	if(!bgData[1]){ //Check value
 		bgData[1] = 'center';
 	}
 	
 	//Check fill
-	if(bgData[2] === undefined || bgData[2] === null || bgData[2] == ''){ //Empty value
+	if(!bgData[2]){ //Check value
 		bgData[2] = 'true';
 	}
 	
@@ -655,7 +664,7 @@ function imageFill(container)
 	bgVertical = bgData[0];
 	bgHorizontal = bgData[1];
 	bgFill = bgData[2].indexOf('%') >= 0 || bgData[2].indexOf('px') >= 0 ||  bgData[2] === 'contain' ? false : true;
-	bgFillSize = bgData[2].indexOf('%') >= 0 || bgData[2].indexOf('px') >= 0 ? parseInt(bgData[2].replace(/\x25|px/g, '')) : false;
+	bgFillSize = bgData[2].indexOf('%') >= 0 || bgData[2].indexOf('px') >= 0 ? parseFloat(bgData[2].replace(/\x25|px/g, '')) : false;
 	
 	//Set changes
 	$(container).imgLiquid({ 
@@ -733,15 +742,15 @@ function textSize(container, fontsize)
 //Show alert modal box using BootBox plugin
 function showAlert(title, text, size, align, animate)
 {
-	if(size === undefined || size === null || size == ''){ //Empty value
+	if(!size || !size.match(/^(small|medium|large|extra-large)$/)){ //Check value
 		size = 'medium';
 	}
 	
-	if(align === undefined || align === null || align == ''){ //Empty value
-		align = '';
+	if(!align || !align.match(/^(top|bottom|left|center|right)$/)){ //Check value
+		align = 'top';
 	}
 	
-	if(animate != false && (animate === undefined || animate === null || animate == '')){ //Empty value
+	if(!animate && animate != false){ //Check value
 		animate = true;
 	}
 	
@@ -763,15 +772,15 @@ function showAlert(title, text, size, align, animate)
 //Show alert modal box using BootBox plugin (Content)
 function showContent(title, element, size, align, animate)
 {
-	if(size === undefined || size === null || size == ''){ //Empty value
+	if(!size || !size.match(/^(small|medium|large|extra-large)$/)){ //Check value
 		size = 'medium';
 	}
 	
-	if(align === undefined || align === null || align == ''){ //Empty value
-		align = '';
+	if(!align || !align.match(/^(top|bottom|left|center|right)$/)){ //Check value
+		align = 'top';
 	}
 	
-	if(animate != false && (animate === undefined || animate === null || animate == '')){ //Empty value
+	if(!animate && animate != false){ //Check value
 		animate = true;
 	}
 	
@@ -793,23 +802,23 @@ function showContent(title, element, size, align, animate)
 //Show alert modal box using BootBox plugin (Ajax)
 function showAjax(title, url, loading, debug, size, align, animate)
 {
-	if(size === undefined || size === null || size == ''){  //Empty value
+	if(!size || !size.match(/^(small|medium|large|extra-large)$/)){ //Check value
 		size = 'medium';
 	}
 	
-	if(align === undefined || align === null || align == ''){  //Empty value
-		align = '';
+	if(!align || !align.match(/^(top|bottom|left|center|right)$/)){ //Check value
+		align = 'top';
 	}
 	
-	if(animate != false && (animate === undefined || animate === null || animate == '')){ //Empty value
+	if(!animate && animate != false){ //Check value
 		animate = true;
 	}
 	
-	if(loading === undefined || loading === null || loading == ''){  //Empty value
+	if(!loading){ //Check value
 		loading = false;
 	}
 	
-	if(debug === undefined || debug === null || debug == ''){  //Empty value
+	if(!debug){ //Check value
 		debug = false;
 	}
 	
@@ -897,27 +906,27 @@ function vimeoParser(url)
 //Video launch modal box function
 function videoLaunch(title, url, share, autoplay, size, align, animate)
 {	
-	if(title === undefined || title === null || title == ''){ //Empty value
-		title = '';
+	if(!title){ //Check value
+		title = false;
 	}
 	
-	if(size === undefined || size === null || size == ''){ //Empty value
-		size = 'large';
+	if(!size || !size.match(/^(small|medium|large|extra-large)$/)){ //Check value
+		size = 'medium';
 	}
 	
-	if(align === undefined || align === null || align == ''){ //Empty value
-		align = '';
+	if(!align || !align.match(/^(top|bottom|left|center|right)$/)){ //Check value
+		align = 'top';
 	}
 	
-	if(animate != false && (animate === undefined || animate === null || animate == '')){ //Empty value
+	if(!animate && animate != false){ //Check value
 		animate = true;
 	}
 	
-	if(share === undefined || share === null || share == ''){ //Empty value
+	if(!share){ //Check value
 		share = false;
 	}
 	
-	if(autoplay === undefined || autoplay === null || autoplay == ''){ //Empty value
+	if(!autoplay){ //Check value
 		autoplay = false;
 	}
 	
@@ -1137,15 +1146,15 @@ function checkDisabledLink(string)
 	var align = checkDisabledAlignment[1];
 	var animate = checkDisabledAnimate;
 	
-	if(size === undefined || size === null || size == ''){  //Empty value
+	if(!size || !size.match(/^(small|medium|large|extra-large)$/)){ //Check value
 		size = 'medium';
 	}
 	
-	if(align === undefined || align === null || align == ''){  //Empty value
-		align = '';
+	if(!align || !align.match(/^(top|bottom|left|center|right)$/)){ //Check value
+		align = 'top';
 	}
 	
-	if(animate != false && (animate === undefined || animate === null || animate == '')){ //Empty value
+	if(!animate && animate != false){ //Check value
 		animate = true;
 	}
 	
@@ -1157,7 +1166,7 @@ function checkDisabledLink(string)
 	}
 
 	//Exception 2
-	if(textUrl === '#' || textUrl.split('#')[1] == ''){
+	if(textUrl == '#' || !textUrl.split('#')[1]){
 		return false;
 	}
 	else{
@@ -1188,12 +1197,20 @@ function checkDisabledLink(string)
 //Window pop-up function
 function windowPopup(element, errortitle, errormsg)
 {	
-	if(errortitle === undefined || errortitle === null || errortitle == ''){  //Empty value
-		errortitle = lang('@winpopup-title');
+	var size = $(element).data('win-modal-size');
+	var align = $(element).data('win-modal-align');
+	var animate = $(element).data('win-modal-animate');
+	
+	if(!size || !size.match(/^(small|medium|large|extra-large)$/)){ //Check value
+		size = 'medium';
 	}
 	
-	if(errormsg === undefined || errormsg === null || errormsg == ''){  //Empty value
-		errormsg = lang('@winpopup-text');
+	if(!align || !align.match(/^(top|bottom|left|center|right)$/)){ //Check value
+		align = 'top';
+	}
+	
+	if(!animate && animate != false){ //Check value
+		animate = true;
 	}
 	
     var leftPosition;
@@ -1202,28 +1219,21 @@ function windowPopup(element, errortitle, errormsg)
 	var getSize = $(element).data('win-size').split('x');
 	var getAlign = $(element).data('win-align').split(',');
 	var getScroll = $(element).data('win-scroll');
-	var getModalSize = $(element).data('win-modal-size');
-	var getModalAlign = $(element).data('win-modal-align');
-	var getModalAnimate = $(element).data('win-modal-animate');
 	var isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini|BB10|PlayBook|MeeGo/i.test(navigator.userAgent);
 	
-	if(getModalSize === undefined || getModalSize === null || getModalSize == ''){  //Empty value
-		getModalSize = 'small';
+	if(!errortitle){ //Check value
+		errortitle = lang('@winpopup-title');
 	}
 	
-	if(getModalAlign === undefined || getModalAlign === null || getModalAlign == ''){  //Empty value
-		getModalAlign = '';
-	}
-	
-	if(getModalAnimate != false && (getModalAnimate === undefined || getModalAnimate === null || getModalAnimate == '')){ //Empty value
-		getModalAnimate = true;
+	if(!errormsg){ //Check value
+		errormsg = lang('@winpopup-text');
 	}
 	
 	//Horizontal Align
-	if(getAlign[0]==="right"){
+	if(getAlign[0] === 'right'){
 		leftPosition = window.screen.width;
 	}
-	else if(getAlign[0]==="left"){
+	else if(getAlign[0] === 'left'){
 		leftPosition = 0;
 	}
 	else{
@@ -1231,10 +1241,10 @@ function windowPopup(element, errortitle, errormsg)
 	}
 
 	//Vertical Align
-	if(getAlign[1]==="top"){
+	if(getAlign[1] === 'top'){
 		topPosition = 0;
 	}
-	else if(getAlign[1]==="bottom"){
+	else if(getAlign[1] === 'bottom'){
 		topPosition = window.screen.height;
 	}
 	else{
@@ -1255,6 +1265,7 @@ function windowPopup(element, errortitle, errormsg)
 									"scrollbars="+getScroll+","+
 									"location=no,"+
 									"directories=no");
+	
 	if(!newWin || newWin.closed || typeof newWin.closed == 'undefined') 
 	{
 		//Check plugin
@@ -1264,10 +1275,10 @@ function windowPopup(element, errortitle, errormsg)
 			bootbox.alert({
 				title: errortitle,
 				message: errormsg,
-				size: getModalSize,
+				size: size,
 				backdrop: true,
-				className: (getModalAnimate == 'alternative' ? 'fade-2 '+getModalAlign : getModalAlign),
-				animate: (getModalAnimate == 'alternative' ? true : getModalAnimate),
+				className: (animate == 'alternative' ? 'fade-2 '+align : align),
+				animate: (animate == 'alternative' ? true : animate),
 			});
 		}
 	}
@@ -1276,6 +1287,22 @@ function windowPopup(element, errortitle, errormsg)
 //Map launch function
 function mapLaunch(element)
 {	
+	var size = $(element).data('map-modal-size');
+	var align = $(element).data('map-modal-align');
+	var animate = $(element).data('map-modal-animate');
+	
+	if(!size || !size.match(/^(small|medium|large|extra-large)$/)){ //Check value
+		size = 'medium';
+	}
+	
+	if(!align || !align.match(/^(top|bottom|left|center|right)$/)){ //Check value
+		align = 'top';
+	}
+	
+	if(!animate && animate != false){ //Check value
+		animate = true;
+	}
+	
 	var mapContent;
 	var mapTitle = lang('@maplaunch-title');
 	var mapText = lang('@maplaunch-text');
@@ -1284,9 +1311,6 @@ function mapLaunch(element)
 	var mapCoords1 = $(element).data('map-coords-1').split(',');
 	var mapCoords2 = $(element).data('map-coords-2').split(',');
 	var mapIframe = $(element).data('map-iframe');
-	var mapModalSize = $(element).data('map-modal-size');
-	var mapModalAlign = $(element).data('map-modal-align');
-	var mapModalAnimate = $(element).data('map-modal-animate');
 	var mapAddress = $(element).data('map-address');
 	var mapAddressUrl = encodeURI(mapAddress).replace(/%20/g,'+');
 	var mapLaunchUrl1 = isMobile ? 'https://maps.google.com/maps?q='+mapCoords1[0]+','+mapCoords1[1]+','+mapCoords1[2]+'z' : 
@@ -1294,20 +1318,8 @@ function mapLaunch(element)
 	var mapLaunchUrl2 = isMobile ? 'waze://?ll='+mapCoords2[0]+','+mapCoords2[1]+'&navigate=yes' : 
 										   'https://www.waze.com/livemap?zoom='+mapCoords2[2]+'&lat='+mapCoords2[0]+'&lon='+mapCoords2[1];
 	
-	if(mapIframe === undefined || mapIframe === null || mapIframe == ''){  //Empty value
+	if(mapIframe === undefined || mapIframe === null || mapIframe == ''){  //Check value
 		mapIframe = false;
-	}
-	
-	if(mapModalSize === undefined || mapModalSize === null || mapModalSize == ''){  //Empty value
-		mapModalSize = mapIframe == false ? 'small' : 'medium';
-	}
-	
-	if(mapModalAlign === undefined || mapModalAlign === null || mapModalAlign == ''){  //Empty value
-		mapModalAlign = '';
-	}
-	
-	if(mapModalAnimate != false && (mapModalAnimate === undefined || mapModalAnimate === null || mapModalAnimate == '')){ //Empty value
-		mapModalAnimate = true;
 	}
 	
 	mapContentStyle1 = '<div class="JSmapLaunchInfo">'+
@@ -1338,6 +1350,7 @@ function mapLaunch(element)
 						'		</a>'+
 						'	</div>'+
 						'</div>';
+	
 	//Check plugin
 	if(typeof bootbox !== 'undefined')
 	{
@@ -1345,10 +1358,10 @@ function mapLaunch(element)
 		bootbox.alert({
 			title: mapTitle,
 			message: mapIframe == false ? mapContentStyle1 : mapContentStyle2,
-			size: mapModalSize,
+			size: size,
 			backdrop: true,
-			className: (mapModalAnimate == 'alternative' ? 'fade-2 '+mapModalAlign : mapModalAlign),
-			animate: (mapModalAnimate == 'alternative' ? true : mapModalAnimate),
+			className: (animate == 'alternative' ? 'fade-2 '+align : align),
+			animate: (animate == 'alternative' ? true : animate),
 		});
 	}
 }
@@ -1356,8 +1369,8 @@ function mapLaunch(element)
 //Paginator group
 function paginatorGroup(limit,limitMobile,exceptions)
 {
-	if(exceptions === undefined || exceptions === null || exceptions == ''){  //Empty value
-		exceptions = '';
+	if(!exceptions){ //Check value
+		exceptions = true;
 	}
 	
 	$(".JSpaginator .JSpageItems").each(function(){ 
@@ -1388,15 +1401,11 @@ function mainInit()
 	//Popover load
 	$('*[data-toggle="popover"]').popover();
 	
-	//Check plugin
-	if($.fn.lightGallery !== undefined)
-	{
-		//Load LightGallery
-		loadLightGallery();
-	}
+	//Load LightGallery
+	loadLightGallery();
 	
 	//Check plugin
-	if($.fn.swipe !== undefined)
+	if($.fn.swipe !== 'undefined')
 	{
 		//Touch swipe Bootstrap carousel
 		$('*[data-ride="carousel"]').swipe({
@@ -1413,7 +1422,7 @@ function mainInit()
 	}
 	
 	//Check plugin
-	if($.fn.dataTable !== undefined || $.fn.DataTable !== undefined)
+	if($.fn.dataTable !== 'undefined' || $.fn.DataTable !== 'undefined')
 	{
 		//Applu Data Tables
 		$('.JSdataTables').each(function(){
@@ -1428,7 +1437,7 @@ function mainInit()
 	}
 	
 	//Check plugin
-	if($.fn.timepicker !== undefined)
+	if($.fn.timepicker !== 'undefined')
 	{
 		//Show on focus
 		$(document).on("focusin", ".timepicker input", function(e){
@@ -1437,7 +1446,7 @@ function mainInit()
 	}
 	
 	//Check plugin
-	if($.fn.imgLiquid !== undefined)
+	if($.fn.imgLiquid !== 'undefined')
 	{
 		//Apply Image Fill
 		$('.JSimgFill').each(function(){
@@ -1451,7 +1460,7 @@ function mainInit()
 	});
 	
 	//Check plugin
-	if($.fn.rotate !== undefined)
+	if($.fn.rotate !== 'undefined')
 	{
 		//Apply Rotation
 		$(".JSrotate").each(function(){
@@ -1536,7 +1545,7 @@ $(document).ready(function(){
 	isNav = function(name,version)
 			{
 				//Check plugin
-				if($.fn.browser !== undefined)
+				if($.fn.browser !== 'undefined')
 				{
 					var checkData = {
 									 'ie' 			: { 'name' : 'Microsoft Internet Explorer', 'internal' : $.browser.msie },

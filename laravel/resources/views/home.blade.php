@@ -903,12 +903,12 @@
 		<p>Launch a modal box with a basic video player, the function structure is <code>videoLaunch(title, url, share, autoplay, size, align, animate)</code>. You can alternatively set a size and alignment classes like <b>horizontal vertical</b> (For example: <code>right center</code>).</p>
 
 		<div class="bs-example">
-			<button type="button" class="btn btn-primary" onclick="videoLaunch('My YouTube Video', 'https://youtube.com/watch?v=ae6aeo9-Kn8', true, true, 'medium', 'center')">YouTube Video (Medium Size & Centered)</button>
-			<button type="button" class="btn btn-primary" onclick="videoLaunch('My Vimeo Video', 'https://vimeo.com/214352663', false, false)">Vimeo Video (No share URL + No AutoPlay)</button>
-			<button type="button" class="btn btn-primary" onclick="videoLaunch('My Facebook Video', 'https://facebook.com/1399203336817784/videos/1470830192988431', true, false)">Facebook Video (No AutoPlay)</button>
+			<button type="button" class="btn btn-primary" onclick="videoLaunch('My YouTube Video','https://youtube.com/watch?v=ae6aeo9-Kn8',true,true,'medium','center')">YouTube Video (Medium size & centered)</button>
+			<button type="button" class="btn btn-primary" onclick="videoLaunch('My Vimeo Video','https://vimeo.com/214352663',false,false)">Vimeo Video (No share URL + No autoplay)</button>
+			<button type="button" class="btn btn-primary" onclick="videoLaunch('My Facebook Video','https://web.facebook.com/ign/videos/275980713021701/')">Facebook Video (Only title + URL)</button>
 		</div>
 		<figure class="highlight">
-			<pre><code class="language-html" data-lang="html">&lt;a onclick="videoLaunch('https://youtube.com/watch?v=ae6aeo9-Kn8', true, 'My YouTube Video', true, 'medium', 'center')">Click Here&lt;/a&gt;<br>&lt;a onclick="videoLaunch('https://vimeo.com/214352663', false, 'My Vimeo Video', false)">Click Here&lt;/a&gt;<br>&lt;a onclick="videoLaunch('https://facebook.com/1399203336817784/videos/1470830192988431',true, 'My Facebook Video', false)">Click Here&lt;/a&gt;</code></pre>
+			<pre><code class="language-html" data-lang="html">&lt;a onclick="videoLaunch('My YouTube Video','https://youtube.com/watch?v=ae6aeo9-Kn8',true,true,'medium','center')">Click Here&lt;/a&gt;<br>&lt;a onclick="videoLaunch('My Vimeo Video','https://vimeo.com/214352663',false,false)">Click Here&lt;/a&gt;<br>&lt;a onclick="videoLaunch('My Facebook Video','https://web.facebook.com/ign/videos/275980713021701/')">Click Here&lt;/a&gt;</code></pre>
 		</figure>
 
 		<!-- Video Launch Example -->
@@ -1023,11 +1023,11 @@
 		</table>
 
 		<div class="bs-example">
-			<button type="button" class="btn btn-primary JSmapLaunch" data-map-address="Renato Sánchez 4265, Las Condes, Santiago, Chile" data-map-coords-1="-33.4176466,-70.585256,17" data-map-coords-2="-33.41748,-70.58519,17" data-map-modal-align="center" data-map-modal-animate="false">Show Map Launch (Normal & Centered)</button>
+			<button type="button" class="btn btn-primary JSmapLaunch" data-map-address="Renato Sánchez 4265, Las Condes, Santiago, Chile" data-map-coords-1="-33.4176466,-70.585256,17" data-map-coords-2="-33.41748,-70.58519,17" data-map-modal-size="small" data-map-modal-align="center" data-map-modal-animate="true">Show Map Launch (Normal & Centered)</button>
 			<button type="button" class="btn btn-primary JSmapLaunch" data-map-address="Renato Sánchez 4265, Las Condes, Santiago, Chile" data-map-coords-1="-33.4176466,-70.585256,17" data-map-coords-2="-33.41748,-70.58519,17" data-map-iframe="true">Show Map Launch (With Map)</button>
 		</div>
 		<figure class="highlight">
-			<pre><code class="language-html" data-lang="html">&lt;button type="button" class="btn btn-primary JSmapLaunch" data-map-address="Renato Sánchez 4265, Las Condes, Santiago, Chile" data-map-coords-1="-33.4176466,-70.585256,17" data-map-coords-2="-33.41748,-70.58519,17" data-map-modal-align="center"&gt;Show Map Launch (Normal & Centered)&lt;/button&gt;
+			<pre><code class="language-html" data-lang="html">&lt;button type="button" class="btn btn-primary JSmapLaunch" data-map-address="Renato Sánchez 4265, Las Condes, Santiago, Chile" data-map-coords-1="-33.4176466,-70.585256,17" data-map-coords-2="-33.41748,-70.58519,17" data-map-modal-size="small" data-map-modal-align="center"&gt;Show Map Launch (Normal & Centered)&lt;/button&gt;
 &lt;button type="button" class="btn btn-primary JSmapLaunch" data-map-address="Renato Sánchez 4265, Las Condes, Santiago, Chile" data-map-coords-1="-33.4176466,-70.585256,17" data-map-coords-2="-33.41748,-70.58519,17" data-map-iframe="true"&gt;Show Map Launch (With Map)&lt;/button&gt;</code></pre>
 		</figure>
 
@@ -1271,6 +1271,7 @@
 	errorStyling: true,
 	modalSize: 'medium',
 	modalAlign: 'top',
+	modalAnimate: true,
 });</code></pre>
 		</figure>
 
