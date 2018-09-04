@@ -908,6 +908,7 @@ function disable_plugin_updates( $value ) {
 							'advanced-custom-fields-pro/acf.php', //Updated manually (from https://github.com/wp-premium/advanced-custom-fields-pro)
 							'admin-menu-editor-pro/menu-editor.php', //Updated manually (check the comment "//Manual update" on this file before update)
 							'better-contextual-help/better-contextual-help.php', //Updated manually (the author left the development)
+							'wp-migrate-db-pro/wp-migrate-db-pro.php', //Updated manually (check the comment "//Manual update" on this file before update)
 							//'plugin-folder/plugin.php',
 							//'plugin-folder/plugin.php',
 							);
