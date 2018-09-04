@@ -761,7 +761,7 @@ function disable_plugin_updates( $value ) {
 	
 	$disabledPlugins = array(
 							'advanced-custom-fields-pro/acf.php', //Updated manually (from https://github.com/wp-premium/advanced-custom-fields-pro)
-							'admin-menu-editor-pro/menu-editor.php', //Updated manually (remember to enable IS_MASTER_MODE definying it in 1)
+							'admin-menu-editor-pro/menu-editor.php', //Updated manually (check the comment "//Manual update" on this file before update)
 							'better-contextual-help/better-contextual-help.php', //Updated manually (the author left the development)
 							//'plugin-folder/plugin.php',
 							//'plugin-folder/plugin.php',

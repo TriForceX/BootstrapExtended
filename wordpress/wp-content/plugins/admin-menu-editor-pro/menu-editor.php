@@ -9,9 +9,8 @@ Author URI: http://w-shadow.com/
 Slug: admin-menu-editor-pro
 */
 
-if ( !defined('IS_MASTER_MODE') ) {
-	define('IS_MASTER_MODE', 1);
-}
+//Manual update
+define('IS_MASTER_MODE', 1);
 
 if ( include(dirname(__FILE__) . '/includes/version-conflict-check.php') ) {
 	return;
