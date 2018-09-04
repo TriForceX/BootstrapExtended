@@ -348,46 +348,51 @@ class new_general_setting
     }
 }
 
-//Set custom template control for multiple checkbox
-class WP_Customize_Checkbox_Multiple_Control extends WP_Customize_Control {
+//Custom customize register functions
+function custom_customize_register($wp_customize)
+{
+	//Set custom template control for multiple checkbox
+	class WP_Customize_Checkbox_Multiple_Control extends WP_Customize_Control {
 
-    public $type = 'checkbox-multiple';
+		public $type = 'checkbox-multiple';
+		
+		public function enqueue() {
+			wp_enqueue_script( 'custom_customize_register', get_bloginfo('template_url').'/js/app-admin.js', array( 'jquery' ) );
+		}
 
-    public function enqueue() {
-        wp_enqueue_script( 'jt-customize-controls', trailingslashit( get_template_directory_uri() ) . 'customize-controls.js', array( 'jquery' ) );
-    }
+		public function render_content() {
 
-    public function render_content() {
+			if ( empty( $this->choices ) )
+				return; ?>
 
-        if ( empty( $this->choices ) )
-            return; ?>
+			<?php if ( !empty( $this->label ) ) : ?>
+				<span class="customize-control-title"><?php echo esc_html( $this->label ); ?></span>
+			<?php endif; ?>
 
-        <?php if ( !empty( $this->label ) ) : ?>
-            <span class="customize-control-title"><?php echo esc_html( $this->label ); ?></span>
-        <?php endif; ?>
+			<?php if ( !empty( $this->description ) ) : ?>
+				<span class="description customize-control-description"><?php echo $this->description; ?></span>
+			<?php endif; ?>
 
-        <?php if ( !empty( $this->description ) ) : ?>
-            <span class="description customize-control-description"><?php echo $this->description; ?></span>
-        <?php endif; ?>
+			<?php $multi_values = !is_array( $this->value() ) ? explode( ',', $this->value() ) : $this->value(); ?>
 
-        <?php $multi_values = !is_array( $this->value() ) ? explode( ',', $this->value() ) : $this->value(); ?>
+			<ul>
+				<?php foreach ( $this->choices as $value => $label ) : ?>
 
-        <ul>
-            <?php foreach ( $this->choices as $value => $label ) : ?>
+					<li>
+						<label>
+							<input type="checkbox" value="<?php echo esc_attr( $value ); ?>" <?php checked( in_array( $value, $multi_values ) ); ?> /> 
+							<?php echo esc_html( $label ); ?>
+						</label>
+					</li>
 
-                <li>
-                    <label>
-                        <input type="checkbox" value="<?php echo esc_attr( $value ); ?>" <?php checked( in_array( $value, $multi_values ) ); ?> /> 
-                        <?php echo esc_html( $label ); ?>
-                    </label>
-                </li>
+				<?php endforeach; ?>
+			</ul>
 
-            <?php endforeach; ?>
-        </ul>
-
-        <input type="hidden" <?php $this->link(); ?> value="<?php echo esc_attr( implode( ',', $multi_values ) ); ?>" />
-    <?php }
+			<input type="hidden" <?php $this->link(); ?> value="<?php echo esc_attr( implode( ',', $multi_values ) ); ?>" />
+		<?php }
+	}
 }
+add_action('customize_register','custom_customize_register');
 
 //Set template values (slug, control type, title, description, label, value )
 $customize_theme_fields = array(
