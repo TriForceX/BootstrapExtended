@@ -348,49 +348,189 @@ class new_general_setting
     }
 }
 
-//Set template values
-//$customize_theme_fields = array(
-//								array('field-1' => array('Field 1 Button Title','Field 1 Desctription','Field 1 Label Title','Field 1 Default Value')),
-//								array('field-2' => array('Field 2 Button Title','Field 2 Desctription','Field 2 Label Title','Field 2 Default Value')),
-//								array('field-3' => array('Field 3 Button Title','Field 3 Desctription','Field 3 Label Title','Field 3 Default Value')),
-//								);
-//
-////Set template modifications
-//function custom_theme_settings($wp_customize)
-//{
-//	global $customize_theme_fields;
-//	
-//	foreach ($customize_theme_fields as $items)
-//	{
-//		foreach ($items as $key => $value)
-//		{
-//			$wp_customize->add_section(
-//				$key,
-//				array(
-//					'title' => $value[0],
-//					'description' => $value[1],
-//				)
-//			);
-//			$wp_customize->add_setting(
-//				$key,
-//				array(
-//					'default' => $value[3],
-//				)
-//			);
-//			$wp_customize->add_control(
-//				$key,
-//				array(
-//					'label' => $value[2],
-//					'section' => $key,
-//					'type' => 'text',
-//				)
-//			);
-//		}
-//	}
-//}
-//add_action('customize_register', 'custom_theme_settings');
+//Set custom template control for multiple checkbox
+class WP_Customize_Checkbox_Multiple_Control extends WP_Customize_Control {
 
-//et template default values
+    public $type = 'checkbox-multiple';
+
+    public function enqueue() {
+        wp_enqueue_script( 'jt-customize-controls', trailingslashit( get_template_directory_uri() ) . 'customize-controls.js', array( 'jquery' ) );
+    }
+
+    public function render_content() {
+
+        if ( empty( $this->choices ) )
+            return; ?>
+
+        <?php if ( !empty( $this->label ) ) : ?>
+            <span class="customize-control-title"><?php echo esc_html( $this->label ); ?></span>
+        <?php endif; ?>
+
+        <?php if ( !empty( $this->description ) ) : ?>
+            <span class="description customize-control-description"><?php echo $this->description; ?></span>
+        <?php endif; ?>
+
+        <?php $multi_values = !is_array( $this->value() ) ? explode( ',', $this->value() ) : $this->value(); ?>
+
+        <ul>
+            <?php foreach ( $this->choices as $value => $label ) : ?>
+
+                <li>
+                    <label>
+                        <input type="checkbox" value="<?php echo esc_attr( $value ); ?>" <?php checked( in_array( $value, $multi_values ) ); ?> /> 
+                        <?php echo esc_html( $label ); ?>
+                    </label>
+                </li>
+
+            <?php endforeach; ?>
+        </ul>
+
+        <input type="hidden" <?php $this->link(); ?> value="<?php echo esc_attr( implode( ',', $multi_values ) ); ?>" />
+    <?php }
+}
+
+//Set template values (slug, control type, title, description, label, value )
+$customize_theme_fields = array(
+									////Field
+									//array('field-text' => 
+									//	  array(
+									//			'text',
+									//			'Field Text Button Title',
+									//			'Field Text Desctription',
+									//			'Field Text Label Title',
+									//			'Field Text Default Value'
+									//			)
+									//),
+									////Field
+									//array('field-image' => 
+									//	  array(
+									//			'image',
+									//			'Field Image Button Title',
+									//			'Field Image Desctription',
+									//			'Field Image Label Title',
+									//			get_bloginfo('template_url').'/img/icons/favicon/global.png'
+									//			)
+									//),
+									////Field
+									//array('field-checkbox' => 
+									//	  array(
+									//		  	'checkbox',
+									//			'Field Checkbox Button Title',
+									//			'Field Checkbox Desctription',
+									//			'Field Checkbox Label Title',
+									//			array('option-2'), //Default
+									//			array(
+									//				'option-1'  => 'Option 1',
+									//				'option-2'  => 'Option 2',
+									//			)
+									//		)
+									//),
+									////Field
+									//array('field-radio' => 
+									//	  array(
+									//		  	'radio',
+									//		  	'Field Radio Button Title',
+									//		  	'Field Radio Desctription',
+									//		  	'Field Radio Label Title',
+									//		  	'option-2', //Default
+									//		  	array(
+									//				'option-1'  => 'Option 1',
+									//				'option-2'  => 'Option 2',
+									//			)
+									//		)
+									//),
+									////Field
+									//array('field-select' => 
+									//	  array(
+									//		  	'select',
+									//		  	'Field Select Button Title',
+									//		  	'Field Select Desctription',
+									//		  	'Field Select Label Title',
+									//		  	'option-2', //Default
+									//		  	array(
+									//				'option-1'  => 'Option 1',
+									//				'option-2'  => 'Option 2',
+									//			)
+									//		)
+									//),
+								);
+
+//Set template modifications
+function custom_theme_settings($wp_customize)
+{
+	global $customize_theme_fields;
+	
+	foreach ($customize_theme_fields as $items)
+	{
+		foreach ($items as $key => $value)
+		{
+			$wp_customize->add_section($key,
+				array(
+					'title' 		=> $value[1],
+					'description' 	=> $value[2],
+				)
+			);
+			$wp_customize->add_setting($key,
+				array(
+					'default' 		=> $value[4],
+				)
+			);
+			
+			//Control type
+			switch($value[0])
+			{
+				case 'text':
+					$wp_customize->add_control($key,
+						array(
+							'label' 	=> $value[3],
+							'section' 	=> $key,
+							'type' 		=> $value[0], //text
+						)
+					);
+					break;
+				case 'radio':
+				case 'select':
+					$wp_customize->add_control($key,
+						array(
+							'label' 	=> $value[3],
+							'section' 	=> $key,
+							'settings'	=> $key,
+							'type' 		=> $value[0], //radio/select
+							'choices'  	=> $value[5],
+						)
+					);
+					break;
+				case 'checkbox':
+					$wp_customize->add_control( 
+						new WP_Customize_Checkbox_Multiple_Control($wp_customize, $key,
+							array(
+								'label' 	=> $value[3],
+								'section' 	=> $key,
+								'settings'	=> $key,
+								'type' 		=> 'checkbox-multiple', //improved checkbox
+								'choices'  	=> $value[5],
+							)
+						)
+					);
+					break;
+				case 'image':
+					$wp_customize->add_control( 
+						new WP_Customize_Image_Control($wp_customize, $key,
+							array(
+								'label'   	=> $value[3],
+								'section' 	=> $key,
+								'settings'	=> $key,
+							)
+						)
+					);
+					break;
+			}
+		}
+	}
+}
+add_action('customize_register', 'custom_theme_settings');
+
+//Set template default values
 function get_theme_mod_2($name)
 {
     global $customize_theme_fields;
