@@ -394,7 +394,7 @@ function custom_customize_register($wp_customize)
 }
 add_action('customize_register','custom_customize_register');
 
-//Set template values (slug, control type, title, description, label, value )
+//Set template values (slug, control type, title, description, label, value)
 $customize_theme_fields = array(
 									////Field
 									//array('field-text' => 

@@ -109,6 +109,8 @@ Base structure for web sites with reusable parts of source code or functions mai
 	- Anything Order (Plugin)
 	- Custom Contextual Help (Plugin)
 	- Custom Post Type UI (Plugin)
+	- Classic Editor (Plugin)
+	- Gutenberg Editor (Plugin)
 	- Migrate DB (Plugin)
 	- Resize Image After Upload (Plugin)
 	- Simple History (Plugin)
