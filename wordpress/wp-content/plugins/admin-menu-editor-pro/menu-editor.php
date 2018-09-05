@@ -10,7 +10,7 @@ Slug: admin-menu-editor-pro
 */
 
 //Manual update
-define('IS_MASTER_MODE', 1);
+define('IS_MASTER_MODE',1);
 
 if ( include(dirname(__FILE__) . '/includes/version-conflict-check.php') ) {
 	return;
