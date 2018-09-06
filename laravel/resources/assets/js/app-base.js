@@ -666,12 +666,16 @@ function imageFill(container)
 	bgFill = bgData[2].indexOf('%') >= 0 || bgData[2].indexOf('px') >= 0 ||  bgData[2] === 'contain' ? false : true;
 	bgFillSize = bgData[2].indexOf('%') >= 0 || bgData[2].indexOf('px') >= 0 ? parseFloat(bgData[2].replace(/\x25|px/g, '')) : false;
 	
-	//Set changes
-	$(container).imgLiquid({ 
-		fill: bgFill,
-		verticalAlign: bgVertical, 
-		horizontalAlign: bgHorizontal,
-	});
+	//Check plugin
+	if($.fn.imgLiquid !== 'undefined')
+	{
+		//Set changes
+		$(container).imgLiquid({ 
+			fill: bgFill,
+			verticalAlign: bgVertical, 
+			horizontalAlign: bgHorizontal,
+		});
+	}
 	
 	//Set alternative fill
 	if(bgFillSize)
@@ -1445,14 +1449,10 @@ function mainInit()
 		});
 	}
 	
-	//Check plugin
-	if($.fn.imgLiquid !== 'undefined')
-	{
-		//Apply Image Fill
-		$('.JSimgFill').each(function(){
-			imageFill($(this));
-		});
-	}
+	//Apply Image Fill
+	$('.JSimgFill').each(function(){
+		imageFill($(this));
+	});
 	
 	//Apply Text Cut
 	$(".JStextCut").each(function(){
