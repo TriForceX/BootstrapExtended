@@ -418,6 +418,16 @@ $customize_theme_fields = array(
 									//			'Field Text Default Value'
 									//			)
 									//),
+									//Field
+									//array('field-text-area' => 
+									//	  array(
+									//			'textarea',
+									//			'Field Text Button Title',
+									//			'Field Text Desctription',
+									//			'Field Text Label Title',
+									//			'Field Text Default Value'
+									//			)
+									//),
 									////Field
 									//array('field-image' => 
 									//	  array(
@@ -497,6 +507,7 @@ function custom_theme_settings($wp_customize)
 			switch($value[0])
 			{
 				case 'text':
+				case 'textarea':
 					$wp_customize->add_control($key,
 						array(
 							'label' 	=> $value[3],
