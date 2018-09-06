@@ -111,6 +111,7 @@ Base structure for web sites with reusable parts of source code or functions mai
 	- Custom Post Type UI (Plugin)
 	- Classic Editor (Plugin)
 	- Gutenberg Editor (Plugin)
+	- Login reCaptcha (Plugin)
 	- Migrate DB (Plugin)
 	- Resize Image After Upload (Plugin)
 	- Simple History (Plugin)
