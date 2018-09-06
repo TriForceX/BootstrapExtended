@@ -348,9 +348,21 @@ class new_general_setting
     }
 }
 
+
+
 //Custom customize register functions
 function custom_customize_register($wp_customize)
 {
+	//Hide ections, settings, and controls
+	$wp_customize->remove_panel('themes');
+	$wp_customize->remove_section('title_tagline');
+	$wp_customize->remove_section('colors');
+	$wp_customize->remove_section('header_image');
+	$wp_customize->remove_section('background_image');
+	$wp_customize->remove_panel('nav_menus');
+	$wp_customize->remove_section('static_front_page');
+	$wp_customize->remove_section('custom_css');
+	
 	//Set custom template control for multiple checkbox
 	class WP_Customize_Checkbox_Multiple_Control extends WP_Customize_Control {
 
@@ -392,7 +404,7 @@ function custom_customize_register($wp_customize)
 		<?php }
 	}
 }
-add_action('customize_register','custom_customize_register');
+add_action('customize_register','custom_customize_register', 50);
 
 //Set template values (slug, control type, title, description, label, value)
 $customize_theme_fields = array(
