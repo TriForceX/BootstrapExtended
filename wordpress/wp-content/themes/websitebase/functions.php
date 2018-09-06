@@ -418,14 +418,14 @@ $customize_theme_fields = array(
 									//			'Field Text Default Value'
 									//			)
 									//),
-									//Field
+									////Field
 									//array('field-text-area' => 
 									//	  array(
 									//			'textarea',
-									//			'Field Text Button Title',
-									//			'Field Text Desctription',
-									//			'Field Text Label Title',
-									//			'Field Text Default Value'
+									//			'Field Text Area Button Title',
+									//			'Field Text Area Desctription',
+									//			'Field Text Area Label Title',
+									//			'Field Text Area Default Value'
 									//			)
 									//),
 									////Field
@@ -435,6 +435,16 @@ $customize_theme_fields = array(
 									//			'Field Image Button Title',
 									//			'Field Image Desctription',
 									//			'Field Image Label Title',
+									//			get_bloginfo('template_url').'/img/icons/favicon/global.png'
+									//			)
+									//),
+									////Field
+									//array('field-file' => 
+									//	  array(
+									//			'file',
+									//			'Field File Button Title',
+									//			'Field File Desctription',
+									//			'Field File Label Title',
 									//			get_bloginfo('template_url').'/img/icons/favicon/global.png'
 									//			)
 									//),
@@ -544,6 +554,17 @@ function custom_theme_settings($wp_customize)
 				case 'image':
 					$wp_customize->add_control( 
 						new WP_Customize_Image_Control($wp_customize, $key,
+							array(
+								'label'   	=> $value[3],
+								'section' 	=> $key,
+								'settings'	=> $key,
+							)
+						)
+					);
+					break;
+				case 'file':
+					$wp_customize->add_control( 
+						new WP_Customize_Upload_Control($wp_customize, $key,
 							array(
 								'label'   	=> $value[3],
 								'section' 	=> $key,
