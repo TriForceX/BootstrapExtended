@@ -140,6 +140,12 @@ function featuredImgField($field, $post)
 //Enable post thumbnails
 add_theme_support('post-thumbnails');
 
+//Remove custom post type support
+//function remove_custom_post_type_support() {
+//	remove_post_type_support('post_type_slug', 'post_type_feature');
+//}
+//add_action('init', 'remove_custom_post_type_support');
+
 //Custom JPEG quality (disable if it will managed by a plugin)
 function custom_jpeg_quality()
 {
@@ -281,15 +287,17 @@ add_filter ('jpeg_quality', 'custom_jpeg_quality');
 //add_action('wp_dashboard_setup', 'remove_dashboard_widgets');
 
 //Remove items from adminbar
-function remove_from_adminbar($wp_admin_bar) 
-{
-	$wp_admin_bar->remove_node('wp-logo');
-	$wp_admin_bar->remove_node('new-post');
-	$wp_admin_bar->remove_node('new-page');
-	$wp_admin_bar->remove_node('new-media');
-	$wp_admin_bar->remove_node('archive');
-}
-add_action('admin_bar_menu', 'remove_from_adminbar', 999);
+//function remove_from_adminbar($wp_admin_bar) 
+//{
+//	$wp_admin_bar->remove_node('wp-logo');
+//	$wp_admin_bar->remove_node('comments');
+//	$wp_admin_bar->remove_node('new-post');
+//	$wp_admin_bar->remove_node('new-page');
+//	$wp_admin_bar->remove_node('new-media');
+//	$wp_admin_bar->remove_node('new-content');
+//	$wp_admin_bar->remove_node('archive');
+//}
+//add_action('admin_bar_menu', 'remove_from_adminbar', 999);
 
 //Custom general fields
 $new_general_setting = new new_general_setting();
@@ -348,8 +356,6 @@ class new_general_setting
     }
 }
 
-
-
 //Custom customize register functions
 function custom_customize_register($wp_customize)
 {
@@ -404,11 +410,11 @@ function custom_customize_register($wp_customize)
 		<?php }
 	}
 }
-add_action('customize_register','custom_customize_register', 50);
+add_action('customize_register', 'custom_customize_register', 50);
 
 //Set template values (slug, control type, title, description, label, value)
 $customize_theme_fields = array(
-									////Field
+									//Field
 									//array('field-text' => 
 									//	  array(
 									//			'text',
@@ -418,7 +424,7 @@ $customize_theme_fields = array(
 									//			'Field Text Default Value'
 									//			)
 									//),
-									////Field
+									//Field
 									//array('field-text-area' => 
 									//	  array(
 									//			'textarea',
@@ -428,7 +434,7 @@ $customize_theme_fields = array(
 									//			'Field Text Area Default Value'
 									//			)
 									//),
-									////Field
+									//Field
 									//array('field-image' => 
 									//	  array(
 									//			'image',
@@ -438,7 +444,7 @@ $customize_theme_fields = array(
 									//			get_bloginfo('template_url').'/img/icons/favicon/global.png'
 									//			)
 									//),
-									////Field
+									//Field
 									//array('field-file' => 
 									//	  array(
 									//			'file',
@@ -448,7 +454,7 @@ $customize_theme_fields = array(
 									//			get_bloginfo('template_url').'/img/icons/favicon/global.png'
 									//			)
 									//),
-									////Field
+									//Field
 									//array('field-checkbox' => 
 									//	  array(
 									//		  	'checkbox',
@@ -462,7 +468,7 @@ $customize_theme_fields = array(
 									//			)
 									//		)
 									//),
-									////Field
+									//Field
 									//array('field-radio' => 
 									//	  array(
 									//		  	'radio',
@@ -476,7 +482,7 @@ $customize_theme_fields = array(
 									//			)
 									//		)
 									//),
-									////Field
+									//Field
 									//array('field-select' => 
 									//	  array(
 									//		  	'select',
@@ -927,6 +933,12 @@ function get_theme_mod_2($name)
 //    register_post_type($nameSLUG, $menuARGS);
 //}
 //add_action('init', 'custom_post_type_1', 0);
+
+//Remove custom post type
+//function delete_custom_post_type(){
+//    unregister_post_type('post_type_slug');
+//}
+//add_action('init','delete_custom_post_type');
 
 //Posts data based on content type
 //function custom_posts_per_page($query)
