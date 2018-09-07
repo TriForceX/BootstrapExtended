@@ -104,17 +104,17 @@ function get_taxonomy_data($type, $taxonomy, $id = null){
 }
 
 //Featured image
-function featuredImg($size = 'full', $post)
+function featuredImg($post, $size = 'full')
 {
     $src = wp_get_attachment_image_src( get_post_thumbnail_id($post), $size, false); //$post->ID
     return $src[0];
 }
 
 //Featured image size
-function featuredImgSize($prop, $post)
+function featuredImgSize($post, $prop)
 {
     $src = wp_get_attachment_image_src( get_post_thumbnail_id($post), 'full', false); //$post->ID
-	if($prop=="width"){
+	if($prop == 'width'){
 		$data = $src[1];
 	}else{
 		$data = $src[2];
@@ -123,10 +123,16 @@ function featuredImgSize($prop, $post)
 }
 
 //Featured image field
-function featuredImgField($field, $post)
+function featuredImgField($post, $field)
 {
     $value = get_post_meta(get_post_thumbnail_id($post), $field, true);
     return $value;
+}
+
+//Small function to check plugin without using is_plugin_active (due to it requires plugin.php)
+function check_plugin($plugin)
+{
+	return in_array($plugin, apply_filters('active_plugins', get_option('active_plugins')));
 }
 
 /*
@@ -146,12 +152,17 @@ add_theme_support('post-thumbnails');
 //}
 //add_action('init', 'remove_custom_post_type_support');
 
-//Custom JPEG quality (disable if it will managed by a plugin)
+//Custom JPEG quality on upload
 function custom_jpeg_quality()
 {
     return 100;
 }
-add_filter ('jpeg_quality', 'custom_jpeg_quality');
+
+//Don't execute custom jpg quality if an image resizer is enabled
+if(!check_plugin('resize-image-after-upload/resize-image-after-upload.php'))
+{
+	add_filter('jpeg_quality', 'custom_jpeg_quality');
+}
 
 //Enable page excerpt
 //add_post_type_support('page', 'excerpt');
@@ -586,7 +597,7 @@ function custom_theme_settings($wp_customize)
 add_action('customize_register', 'custom_theme_settings');
 
 //Set template default values
-function get_theme_mod_2($name)
+function get_theme_mod2($name)
 {
     global $customize_theme_fields;
 
@@ -596,10 +607,8 @@ function get_theme_mod_2($name)
 		{
 			if($key == $name)
 			{
-				$default = $value[3];
 				$field = get_theme_mod($key);
-				
-				return empty($field) ? $value[3] : get_theme_mod($key);
+				return empty($field) ? $value[4] : get_theme_mod($key);
 			}
 		}
 	}
