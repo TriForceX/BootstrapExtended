@@ -226,14 +226,14 @@ a.ui-button:active,
 /* JS Auto Background */
 
 /* JS Text Cut */
-.JStextCut > div{
+.JStextCutElem > div{
 	position: relative;
 }
-.JStextCut > div:before {
+.JStextCutElem > div:before {
 	content: "&nbsp;";
 	visibility: hidden;
 }
-.JStextCut > div > div {
+.JStextCutElem > div > div {
 	position: absolute;
 	left: 0;
 	right: 0;

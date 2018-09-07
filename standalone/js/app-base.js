@@ -718,9 +718,10 @@ function onElementHeightChange(elm, callback)
 
 //Text cut function
 function textCut(container)
-{
+{	
 	$(container).each(function(){
-		$(this).html("<div><div>"+$(this).html()+"</div></div>");
+		$(this).addClass('JStextCutElem');
+		$(this).html('<div><div>'+$(this).html()+'</div></div>');
 	});
 }
 
@@ -1456,7 +1457,8 @@ function mainInit()
 	
 	//Apply Text Cut
 	$(".JStextCut").each(function(){
-		textCut($(this));
+		var target = $(this).data('text-cut') ? $(this).data('text-cut') : $(this);
+		textCut(target);
 	});
 	
 	//Check plugin
