@@ -1,11 +1,11 @@
 === Simple History ===
 Contributors: eskapism
 Donate link: http://eskapism.se/sida/donate/
-Tags: history, log, changes, changelog, audit, trail, pages, attachments, users, dashboard, admin, syslog, feed, activity, stream, audit trail, brute-force
+Tags: history, log, changes, changelog, audit, audit log, event log, user tracking, trail, pages, attachments, users, dashboard, admin, syslog, feed, activity, stream, audit trail, brute-force
 Requires at least: 4.5.1
 Tested up to: 4.9
 Requires PHP: 5.3
-Stable tag: 2.27
+Stable tag: 2.28
 
 View changes made by users within WordPress. See who created a page, uploaded an attachment or approved an comment, and more.
 
@@ -57,8 +57,7 @@ In Simple History you will see what Jetpack modules that are activated and deact
 
 **Advanced Custom Fields (ACF)**<br>
 [ACF](https://www.advancedcustomfields.com/) adds fields to your posts and pages.
-Simple History will log changes made to the field groups and the fields inside field groups. Your will be able to
-see when both field groups and fields are created and modified.
+Simple History will log changes made to the field groups and the fields inside field groups. Your will see when both field groups and fields are created and modified.
 
 **User Switching**<br>
 The [User Switching plugin](https://wordpress.org/plugins/user-switching/) allows you to quickly swap between user accounts in WordPress at the click of a button.
@@ -149,6 +148,16 @@ https://github.com/bonny/WordPress-Simple-History
 
 * If you like this plugin please consider [donating to support the development](https://www.paypal.me/eskapism).
 
+== Frequently Asked Questions ==
+
+= Can I add my own events to the log? =
+
+Yes. See the [examples file](https://github.com/bonny/WordPress-Simple-History/blob/master/examples/examples.php).
+
+= For how long are events stored? =
+
+Events in the log are stored for 60 days by default. Events older than this will be removed.
+
 == Screenshots ==
 
 1. The log view + it also shows the filter function in use - the log only shows event that
@@ -172,7 +181,14 @@ A simple way to see any uncommon activity, for example an increased number of lo
 
 ## Changelog
 
+= 2.28 (September 2018) =
+
+- Always show time and sometimes date before each event, in addition to the relative date. Fixes https://wordpress.org/support/topic/feature-request-granular-settings-changes-detailed-timestamp/.
+- Use WordPress own function (`wp_privacy_anonymize_ip`, available since WordPress version 4.9.6) to anonymize IP addresses, instead of our own class.
+- Update timeago.js
+
 = 2.27 (August 2018) =
+
 - Fix notice errors when syncing an ACF field group. Fixes https://github.com/bonny/WordPress-Simple-History/issues/150.
 - Fix notice error when trying to read plugin info for a plugin that no longer exists or has changed name. Fixes https://github.com/bonny/WordPress-Simple-History/issues/146.
 - Always load the SimpleLogger logger. Fixes https://github.com/bonny/WordPress-Simple-History/issues/129.
@@ -181,15 +197,18 @@ A simple way to see any uncommon activity, for example an increased number of lo
 - Group translation updates in the log. Useful because sometimes you update a lot of translations at the same time and the log is full of just those messages.
 
 = 2.26.1 (July 2018) =
+
 - Fix 5.3 compatibility.
 
 = 2.26 (July 2018) =
+
 - Add support for the [Jetpack plugin](https://wordpress.org/plugins/jetpack/). To begin with, activation and deactivation of Jetpack modules is logged.
 - Add logging of translation updates, so now you can see when a plugin or a theme has gotten new translations. Fixes https://github.com/bonny/WordPress-Simple-History/issues/147.
 - Fix notice in Advanced Custom Fields logger when saving an ACF options page.
 Fixes https://wordpress.org/support/topic/problem-with-acf-options-pages/, https://wordpress.org/support/topic/problem-with-recent-version-and-acf/, https://github.com/bonny/WordPress-Simple-History/issues/145.
 
 = 2.25 (July 2018) =
+
 - Add `wp_cron_current_filter` to event context when something is logged during a cron job. This can help debugging thing like posts being added or deleted by some plugin and you're trying to figure out which plugin it is.
 - Fix for event details not always being shown.
 - Fix for sometimes missing user name and user email in export file.
