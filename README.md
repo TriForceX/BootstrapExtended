@@ -106,17 +106,17 @@ Base structure for web sites with reusable parts of source code or functions mai
 	- Admin Panel CSS & JS injection
 	- Admin Menu Editor (Plugin)
 	- Advanced Custom Fields (Plugin)
-	- Anything Order (Plugin)
-	- Custom Contextual Help (Plugin)
-	- Custom Post Type UI (Plugin)
+	- Anything Order by Terms (Plugin)
 	- Classic Editor (Plugin)
+	- Custom Post Type UI (Plugin)
+	- Enhaced Context Help (Plugin)
 	- Gutenberg Editor (Plugin)
 	- Login reCaptcha (Plugin)
+	- Mail SMTP (Plugin)
 	- Migrate DB (Plugin)
 	- Resize Image After Upload (Plugin)
 	- Simple History (Plugin)
 	- TinyMCE (Plugin)
-	- Mail SMTP (Plugin)
 	- User Role Editor (Plugin)
 
 # Questions & Answers

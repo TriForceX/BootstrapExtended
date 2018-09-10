@@ -1,21 +1,29 @@
-=== Better Contextual Help ===
-Contributors: potreb, triforcex
+=== Enhaced Contextual Help ===
+Contributors: triforce, potreb
 Tags: contextual help, help, user help, documentation, docs
-Tested up to: 4.9.1
-Stable tag: 1.1
+Tested up to: 4.9.8
+Stable tag: 2.0
 Requires at least: 3.8
 
 Extend your Dashboard Help.
 
 == Description ==
-Extend your dashboard help by adding new tabs or replacing old ones. You can add tab for the specific roles and screens.
-
+Extend your dashboard help by adding new tabs or replacing old ones. You can add tab for the specific roles and screens. 
 You can export and import content help.
-
 Go to the settings to be able to post for help.
 
+This plugin is based on the original "Better Contextual Help" by Piotr Potrebka.
+
 == Changelog ==
-= 0.2 =
+= 2.0 =
+* Added "Settings" menu in admin options
+* Added option to hide "more info" sidebar
+* Added option to show help tabs on mobile
+* Added option to hide help list on menu
+* Added option to hide multiple tabs by slug
+* Changed plugin name to Enhaced Contextual Help
+
+= 1.0 =
 * Added support for custom post types
 * Changed sub menu left bar to arrows
 * Added note for select multiple options
