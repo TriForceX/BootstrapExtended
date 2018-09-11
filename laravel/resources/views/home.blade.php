@@ -59,6 +59,7 @@
 						<li><a href="https://github.com/TriForceX/WebsiteBase/wiki" target="_blank">Repository Wiki</a></li>
 						<li class="divider"></li>
 						<li><a href="https://www.w3schools.com" target="_blank">W3 Schools Tutorials</a></li>
+						<li><a href="https://www.w3schools.com/howto/" target="_blank">W3 Schools How To</a></li>
 						<li><a href="http://bootsnipp.com" target="_blank">Bootstrap Snippets</a></li>
 						<li><a href="https://libraries.io" target="_blank">Open Source Libraries</a></li>
 						<li><a href="https://www.jqueryscript.net/" target="_blank">jQuery Scripts</a></li>
