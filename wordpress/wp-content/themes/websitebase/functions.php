@@ -167,12 +167,12 @@ if(!check_plugin('resize-image-after-upload/resize-image-after-upload.php'))
 //Register custom menus
 //function register_custom_menus()
 //{
-//  register_nav_menus(
-//    array(
-//      'header-menu'	=> __('Header Menu'),
-//      'extra-menu' 	=> __('Extra Menu')
-//    )
-//  );
+//	register_nav_menus(
+//		array(
+//			'header-menu'	=> __('Header Menu'),
+//			'extra-menu' 	=> __('Extra Menu')
+//		)
+//	);
 //}
 //add_action('init', 'register_custom_menus');
 
@@ -731,23 +731,111 @@ function get_theme_mod2($name)
 //}
 //add_filter('postmeta_form_limit', 'customfield_limit_increase');
 
-//Register sidebar
-//function themename_widgets_init()
+//Custom widget class
+//class custom_widget_1 extends WP_Widget
 //{
-//	
+//	function custom_widget_1()
+//	{
+//		//process widget
+//		$widget_options = array(
+//			'classname'=> 'custom_widget_1_classname',
+//			'description'=> 'A custom widget 1.',
+//		);
+//		$this->WP_Widget('custom_widget_1', 'Custom Widget 1', $widget_options);
+//	}
+//	function form($instance)
+//	{
+//		//show widget form in admin panel
+//		$default_settings = array(
+//			'title' => 'Custom Boxes',
+//			'cwbox_box_1'=>'',
+//			'cwbox_box_2'=>'',
+//			'cwbox_box_3'=>'',
+//			'cwbox_box_4'=>'',
+//		);
+//		$instance = wp_parse_args(
+//			(array) $instance,
+//			$default_settings
+//		);
+//		$title = $instance['title'];
+//		$cwbox_box_1 = $instance['cwbox_box_1'];
+//		$cwbox_box_2 = $instance['cwbox_box_2'];
+//		$cwbox_box_3 = $instance['cwbox_box_3'];
+//		$cwbox_box_4 = $instance['cwbox_box_4'];
+//		
+//		echo '<p>
+//				Title: <input class="widefat" name="'.$this->get_field_name('title').'" type="text" value="'.esc_attr($title).'"/>
+//			</p>
+//			<p>
+//				Ads Box 1: <textarea class="widefat" name="'.$this->get_field_name('cwbox_box_1').'">'.esc_attr($cwbox_box_1).'</textarea>
+//			</p>
+//			<p>
+//				Ads Box 2: <textarea class="widefat" name="'.$this->get_field_name('cwbox_box_2').'">'.esc_attr($cwbox_box_2).'</textarea>
+//			</p>
+//			<p>
+//				Ads Box 3: <textarea class="widefat" name="'.$this->get_field_name('cwbox_box_3').'">'.esc_attr($cwbox_box_3).'</textarea>
+//			</p>
+//			<p>
+//				Ads Box 4: <textarea class="widefat" name="'.$this->get_field_name('cwbox_box_4').'">'.esc_attr($cwbox_box_4).'</textarea>
+//			</p>';
+//	}
+//	function update($new_instance, $old_instance)
+//	{
+//		//update widget settings
+//		$instance = $old_instance;
+//		$instance['title'] = strip_tags($new_instance['title']);
+//		$instance['cwbox_box_1'] = $new_instance['cwbox_box_1'];
+//		$instance['cwbox_box_2'] = $new_instance['cwbox_box_2'];
+//		$instance['cwbox_box_3'] = $new_instance['cwbox_box_3'];
+//		$instance['cwbox_box_4'] = $new_instance['cwbox_box_4'];
+//
+//		return $instance;
+//	}
+//	function widget($args, $instance)
+//	{
+//		//display widget
+//		extract($args);
+//
+//		echo $before_widget;
+//
+//		$title = apply_filters('widget_title', $instance['title']);
+//		$cwbox_box_1 = empty($instance['cwbox_box_1']) ? '' : $instance['cwbox_box_1'];
+//		$cwbox_box_2 = empty($instance['cwbox_box_2']) ? '' : $instance['cwbox_box_2'];
+//		$cwbox_box_3 = empty($instance['cwbox_box_3']) ? '' : $instance['cwbox_box_3'];
+//		$cwbox_box_4 = empty($instance['cwbox_box_4']) ? '' : $instance['cwbox_box_4'];
+//
+//		if(!empty($title)){ echo $befor_title . $title . $after_title; }
+//		echo '<ul class="cli_sb_cwbox_boxes">
+//				<li>'.$cwbox_box_1.'</li>
+//				<li>'.$cwbox_box_2.'</li>
+//				<li>'.$cwbox_box_3.'</li>
+//				<li>'.$cwbox_box_4.'</li>
+//			</ul>';
+//
+//		echo $after_widget;
+//	}
+//}
+
+//Register widgets and sidebars
+//function custom_widgets_init()
+//{
 //	$nameTHEME = 'websitebase';
 //	
+//	//Sidebar
 //    register_sidebar(array(
-//        'name'          => __('Sidebar Custom', $nameTHEME),
-//        'id'            => 'custom',
-//		//'description'	=> '',  
+//        'name'          => __('Sidebar Custom 1', $nameTHEME),
+//        'id'            => 'sidebar-custom-1',
+//		'description'	=> 'A custom sidebar 1.',  
 //        'before_widget' => '<aside id="%1$s" class="widget %2$s">',
 //        'after_widget'  => '</aside>',
 //        'before_title'  => '<h1 class="widget-title">',
 //        'after_title'   => '</h1>',
 //    ));
+//	
+//	//Widget
+//	register_widget('custom_widget_1');
 //}
-//add_action('widgets_init', 'themename_widgets_init');
+//add_action('widgets_init', 'custom_widgets_init');
 
 //Hide admin items using CSS
 //function hide_items_css()
