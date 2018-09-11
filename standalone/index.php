@@ -1176,7 +1176,7 @@ $js_data['vars'] = array(
 			<button type="button" class="btn btn-primary" onclick="JSmodalContent('Small Size Box','.JSmodalContentExample','small','center')">Show Content Small Size (Centered)</button>
 			<button type="button" class="btn btn-primary" onclick="JSmodalContent('Medium Size Box','.JSmodalContentExample')">Show Content Medium Size (By default)</button>
 			<button type="button" class="btn btn-primary" onclick="JSmodalContent('Large Size Box','.JSmodalContentExample','large')">Show Content Large Size</button>
-			<button type="button" class="btn btn-primary" onclick="JSmodalContent('Large Size Box','.JSmodalContentExample','extra-large')">Show Alert Extra Large Size</button>
+			<button type="button" class="btn btn-primary" onclick="JSmodalContent('Extra Large Size Box','.JSmodalContentExample','extra-large')">Show Alert Extra Large Size</button>
 			<div class="JSmodalContentExample hidden">
 				Hello <b>World!</b><br><i><u>This is my message in HTML</u> from a hidden element...</i>
 			</div>
