@@ -1,7 +1,8 @@
 /* ================================================= EXAMPLE FUNCTIONS ================================================= */
 
 //Example form validate custom function
-function validateCustom(field){
+function JSvalidateCustom(field)
+{
 	if(field === 'Custom'){
 		return true;
 	}
@@ -11,9 +12,10 @@ function validateCustom(field){
 }
 
 //Example Google Translate Widget styling function
-function googleTranslateStyles(){
+function JSgoogleTranslateStyles()
+{
 	var style;
-	var css = '<style type="text/css" id="googleTranslateStyles">'+
+	var css = '<style type="text/css" id="JSgoogleTranslateStyles">'+
 				'.goog-te-combo,'+
 				'.goog-te-banner *,'+
 				'.goog-te-ftab *,'+
@@ -32,12 +34,12 @@ function googleTranslateStyles(){
 	
 	//Menu iframe
 	if((style = $('.goog-te-menu-frame').contents().find('body')).length){
-		if($('.goog-te-menu-frame').contents().find('#googleTranslateStyles').length < 1){
+		if($('.goog-te-menu-frame').contents().find('#JSgoogleTranslateStyles').length < 1){
 			$('.goog-te-menu-frame').contents().find('body').prepend(css);
 		}
 	}
 	else{
-		setTimeout(googleTranslateStyles, 1000);
+		setTimeout(JSgoogleTranslateStyles, 1000);
 	}
 }
 
@@ -48,15 +50,15 @@ $(document).ready(function(){
 /* ================================================= EXAMPLE DOCUMENT READY ================================================= */
 	
 	//Set language on the fly
-	if(getUrlParameter('lang-test')){
-		mainLang = getUrlParameter('lang-test');
+	if(JSgetUrlParameter('lang-test')){
+		JSmainLang = JSgetUrlParameter('lang-test');
 	}
 	
 	//Example add language string
-	language['@test-title'] = { 'en' : 'Hello world!', 'es' : 'Hola mundo!' };
+	JSlanguage['@test-title'] = { 'en' : 'Hello world!', 'es' : 'Hola mundo!' };
 	
 	//Example use language string
-	console.log(lang('@test-title'));
+	console.log(JSlang('@test-title'));
 	
 	//Example lightGallery prev page
 	$(document).on('onPrevPageChange.lg', function(event){
@@ -69,15 +71,15 @@ $(document).ready(function(){
 	});
 	
 	//Example scroll to gallery page
-	if (getUrlParameter('page')){
-		autoScroll(".JSlightGalleryExample",true,70);
+	if (JSgetUrlParameter('page')){
+		JSautoScroll(".JSlightGalleryExample",true,70);
 	}
 	
 	//Example form validation
-	$('.JSformExample').validateForm({
+	$('.JSformExample').JSvalidateForm({
 		noValidate: '#example-input-lastname',
 		hasConfirm: true,
-		customValidate: ['validateCustom', '#example-input-custom', 'Please fill the Custom Field.'],
+		customValidate: ['JSvalidateCustom', '#example-input-custom', 'Please fill the Custom Field.'],
 		resetSubmit: true,
 		errorStyling: true,
 		modalSize: 'medium',
@@ -89,16 +91,16 @@ $(document).ready(function(){
 	$('title').addClass('notranslate');
 	
 	//Example test URL
-	console.log('URL: '+mainUrl);
+	console.log('URL: '+JSmainUrl);
 	
 	//Example aditional exceptions for disabled links
-	checkDisabledExceptions.push('#example');
+	JScheckDisabledExceptions.push('#example');
 	
 	//Example aditional exceptions custom size & alignment
-	checkDisabledAlignment = ['small','center'];
+	JScheckDisabledAlignment = ['small','center'];
 	
 	//Example aditional exceptions custom size & alignment
-	checkDisabledAnimate = true;
+	JScheckDisabledAnimate = true;
 	
 /* ================================================= EXAMPLE DOCUMENT READY ================================================= */
 
@@ -113,13 +115,13 @@ $(window).bind("load", function() {
 	$(".JSloadProgressTest .progress-bar").attr("aria-valuenow","100");
 	
 	//Example Google Translate Widget styling
-	googleTranslateStyles();
+	JSgoogleTranslateStyles();
 	
 /* ================================================= EXAMPLE WINDOWS LOAD ================================================= */
 
 });
 
-$(document).on("responsiveCode", function(event, bodyWidth, bodyHeight, bodyOrientation, bodyScreen){
+$(document).on("JSresponsiveCode", function(event, bodyWidth, bodyHeight, bodyOrientation, bodyScreen){
 
 /* ================================================= EXAMPLE RESPONSIVE CODE ================================================= */
 	

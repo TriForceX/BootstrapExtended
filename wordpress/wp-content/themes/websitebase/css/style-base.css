@@ -246,7 +246,8 @@ a.ui-button:active,
 
 /* JS Video Launch */
 .JSvideoLaunchIframe{
-	background-color: #DDD;
+	background-color: #EEE;
+	border: 1px solid #CCC;
 	display:inline-block;
 	width:100%;
 	height:auto;
@@ -376,16 +377,17 @@ a.ui-button:active,
 
 /* JS Map Launch */
 .JSmapLaunchInfo{
-	display:inline-block;
-	width:100%;
-	height:auto;
-	text-align:center;
+	display: inline-block;
+	width: 100%;
+	height: auto;
+	text-align: center;
 }
 .JSmapLaunchIframe{
-	background-color: #DDD;
-	display:inline-block;
-	width:100%;
-	height:auto;
+	background-color: #EEE;
+	border: 1px solid #CCC;
+	display: inline-block;
+	width: 100%;
+	height: auto;
 	margin-bottom: 10px;
 }
 .JSmapLaunchIframe iframe{

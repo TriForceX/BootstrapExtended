@@ -1,8 +1,8 @@
 /* ================================================= BASE LANGUAGE ================================================= */
 
 //Define language by default
-var mainLang = $('body').data('js-lang');
-var language = {
+var JSmainLang = $('body').data('js-lang');
+var JSlanguage = {
 				//Form validation
 				'@validate-title': {
 					en: 'Form Alert',
@@ -120,17 +120,17 @@ var language = {
 			};
 
 //Set default language
-if(mainLang === undefined || mainLang === null || mainLang == ''){ //Empty value
-	mainLang = 'en';
+if(JSmainLang === undefined || JSmainLang === null || JSmainLang == ''){ //Empty value
+	JSmainLang = 'en';
 }
 
 //Parse language strings
-function lang(string)
+function JSlang(string)
 {
-	var text = language[string][mainLang];
+	var text = JSlanguage[string][JSmainLang];
 	
 	if(text === undefined || text === null || text == ''){
-		text = language[string]['en'];
+		text = JSlanguage[string]['en'];
 	}
 	
 	return text;

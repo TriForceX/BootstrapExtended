@@ -1,21 +1,21 @@
 /* ================================================= BASE FUNCTIONS ================================================= */
 
 //Global variables
-var mainUrl = '@global-url';
-var isLang = mainLang;
-var isHome;
-var isMobile;
-var isNav;
-var checkDisabled = $('body').data('js-check-disabled');
-var checkDisabledExceptions = ['#carousel'];
-var checkDisabledAlignment = ['medium','top'];
-var checkDisabledAnimate = true;
+var JSmainUrl = '@global-url';
+var JSisLang = JSmainLang;
+var JSisHome;
+var JSisMobile;
+var JSisNav;
+var JScheckDisabled = $('body').data('js-check-disabled');
+var JScheckDisabledExceptions = ['#carousel'];
+var JScheckDisabledAlignment = ['medium','top'];
+var JScheckDisabledAnimate = true;
 
 //IE8 Undefined console fix
 if (!window.console) console = {log: function() {}};
 
 //IE10 viewport hack for Surface/desktop Windows 8 bug
-(function () {
+(function(){
   'use strict';
 
   if (navigator.userAgent.match(/IEMobile\/10\.0/)) {
@@ -31,13 +31,13 @@ if (!window.console) console = {log: function() {}};
 })();
 
 //Check attr function
-$.fn.hasAttr = function(name)
+$.fn.JShasAttr = function(name)
 {  
    return this.attr(name) !== undefined;
 };
 
 //Check outer height with padding/margin
-$.fn.outerHeight2 = function()
+$.fn.JSouterHeight = function()
 {
 	if(!this[0]){ //Check value
 		return null;
@@ -48,7 +48,7 @@ $.fn.outerHeight2 = function()
 };
 
 //Check outer width with padding/margin
-$.fn.outerWidth2 = function()
+$.fn.JSouterWidth = function()
 {
 	if(!this[0]){ //Check value
 		return null;
@@ -59,11 +59,11 @@ $.fn.outerWidth2 = function()
 };
 
 //Remove whitespaces between elements
-$.fn.htmlClean = function()
+$.fn.JShtmlClean = function()
 {
     this.contents().filter(function() {
         if (this.nodeType !== 3) {
-            $(this).htmlClean();
+            $(this).JShtmlClean();
             return false;
         }
         else {
@@ -75,7 +75,7 @@ $.fn.htmlClean = function()
 };
 
 //Form validate
-$.fn.validateForm = function(options)
+$.fn.JSvalidateForm = function(options)
 {	
 	var settings = $.extend({
 		noValidate		: '',
@@ -107,27 +107,27 @@ $.fn.validateForm = function(options)
 		}
 		
 		var formError = false;
-		var formConfirmTitle = lang('@validate-confirm-title');
-		var formConfirmText = lang('@validate-confirm-text');
-		var formErrorTitle = lang('@validate-title');
+		var formConfirmTitle = JSlang('@validate-confirm-title');
+		var formConfirmText = JSlang('@validate-confirm-text');
+		var formErrorTitle = JSlang('@validate-title');
 		var formErrorText = {
-							 'text'		: lang('@validate-normal'), 
-							 'number'	: lang('@validate-number'), 
-							 'tel'		: lang('@validate-tel'), 
-							 'pass'		: lang('@validate-pass'), 
-							 'email'	: lang('@validate-email'),
-							 'search'	: lang('@validate-search'),
-							 'checkbox'	: lang('@validate-checkbox'),
-							 'radio'	: lang('@validate-radio'),
-							 'textarea'	: lang('@validate-textarea'),
-							 'select'	: lang('@validate-select'),
-							 'file'		: lang('@validate-file'),
+							 'text'		: JSlang('@validate-normal'), 
+							 'number'	: JSlang('@validate-number'), 
+							 'tel'		: JSlang('@validate-tel'), 
+							 'pass'		: JSlang('@validate-pass'), 
+							 'email'	: JSlang('@validate-email'),
+							 'search'	: JSlang('@validate-search'),
+							 'checkbox'	: JSlang('@validate-checkbox'),
+							 'radio'	: JSlang('@validate-radio'),
+							 'textarea'	: JSlang('@validate-textarea'),
+							 'select'	: JSlang('@validate-select'),
+							 'file'		: JSlang('@validate-file'),
 							};
 		
 		var formInputValidation = function(element){
 			switch(element.attr('type')){
 				case 'text':
-					if (!validateEmpty(element.val())) { 
+					if (!JSvalidateEmpty(element.val())) { 
 						if(settings.errorStyling){ element.parents('.form-group').addClass('has-error').removeClass('has-success'); }
 						formError = formErrorText.text;
 					}
@@ -136,7 +136,7 @@ $.fn.validateForm = function(options)
 					}
 					break;
 				case 'number':
-					if (!validateEmpty(element.val()) || !validateNumber(element.val())) { 
+					if (!JSvalidateEmpty(element.val()) || !JSvalidateNumber(element.val())) { 
 						if(settings.errorStyling){ element.parents('.form-group').addClass('has-error').removeClass('has-success'); }
 						formError = formErrorText.number;
 					}
@@ -145,7 +145,7 @@ $.fn.validateForm = function(options)
 					}
 					break;
 				case 'tel':
-					if (!validateEmpty(element.val())) { 
+					if (!JSvalidateEmpty(element.val())) { 
 						if(settings.errorStyling){ element.parents('.form-group').addClass('has-error').removeClass('has-success'); }
 						formError = formErrorText.tel;
 					}
@@ -154,7 +154,7 @@ $.fn.validateForm = function(options)
 					}
 					break;
 				case 'email':
-					if (!validateEmpty(element.val()) || !validateEmail(element.val())) { 
+					if (!JSvalidateEmpty(element.val()) || !JSvalidateEmail(element.val())) { 
 						if(settings.errorStyling){ element.parents('.form-group').addClass('has-error').removeClass('has-success'); }
 						formError = formErrorText.email;
 					}
@@ -163,7 +163,7 @@ $.fn.validateForm = function(options)
 					}
 					break;
 				case 'password':
-					if (!validateEmpty(element.val())) { 
+					if (!JSvalidateEmpty(element.val())) { 
 						if(settings.errorStyling){ element.parents('.form-group').addClass('has-error').removeClass('has-success'); }
 						formError = formErrorText.pass;
 					}
@@ -172,7 +172,7 @@ $.fn.validateForm = function(options)
 					}
 					break;
 				case 'search':
-					if (!validateEmpty(element.val())) { 
+					if (!JSvalidateEmpty(element.val())) { 
 						if(settings.errorStyling){ element.parents('.form-group').addClass('has-error').removeClass('has-success'); }
 						formError = formErrorText.search;
 					}
@@ -181,7 +181,7 @@ $.fn.validateForm = function(options)
 					}
 					break;
 				case 'file':
-					if (!validateEmpty(element.val())) { 
+					if (!JSvalidateEmpty(element.val())) { 
 						if(settings.errorStyling){ element.parents('.form-group').addClass('has-error').removeClass('has-success'); }
 						formError = formErrorText.file;
 					}
@@ -195,7 +195,7 @@ $.fn.validateForm = function(options)
 
 		//Select inputs
 		$(this).find('select').not(settings.noValidate).each(function(){
-			if (!validateEmpty($(this).find('option:selected').attr('value'))) { 
+			if (!JSvalidateEmpty($(this).find('option:selected').attr('value'))) { 
 				if(settings.errorStyling){ $(this).parents('.form-group').addClass('has-error').removeClass('has-success'); }
 				formError = formErrorText.select;
 			}
@@ -206,7 +206,7 @@ $.fn.validateForm = function(options)
 		
 		//Textarea inputs
 		$(this).find('textarea').not(settings.noValidate).each(function(){
-			if (!validateEmpty($.trim($(this).val()))) { 
+			if (!JSvalidateEmpty($.trim($(this).val()))) { 
 				if(settings.errorStyling){ $(this).parents('.form-group').addClass('has-error').removeClass('has-success'); }
 				formError = formErrorText.textarea;
 			}
@@ -326,11 +326,11 @@ $.fn.validateForm = function(options)
 								formElement.find('input[type="checkbox"]').prop('checked', false).parent().removeClass('active');
 								formElement.find('input[type="radio"]').prop('checked', false).parent().removeClass('active');
 								formElement.find('.form-group input[type="file"]').each(function(){
-									var placeholder = $(this).hasAttr('placeholder') ? $(this).attr('placeholder') : '';
+									var placeholder = $(this).JShasAttr('placeholder') ? $(this).attr('placeholder') : '';
 									$(this).parent().find('.custom-file-text > span').html(placeholder);
 								});
 							}
-							formElement.validateForm({
+							formElement.JSvalidateForm({
 								noValidate: settings.noValidate,
 								hasConfirm: settings.hasConfirm,
 							});
@@ -343,7 +343,7 @@ $.fn.validateForm = function(options)
 };
 
 //Form validate email
-function validateEmail(field)
+function JSvalidateEmail(field)
 {
     var emailReg = /^([\w-\.]+@([\w-]+\.)+[\w-]{2,4})?$/;
     
@@ -355,7 +355,7 @@ function validateEmail(field)
 }
 
 //Form validate numbers
-function validateNumber(field)
+function JSvalidateNumber(field)
 {
     var numberReg = /^-?\d+(\.\d+)?$/;
     
@@ -367,7 +367,7 @@ function validateNumber(field)
 }
 
 //Form validate empty
-function validateEmpty(field)
+function JSvalidateEmpty(field)
 {
     if(!field || /^\s*$/.test(field)){
     	return false;
@@ -378,7 +378,7 @@ function validateEmpty(field)
 }
 
 //Convert string to boolean
-function toBoolean(value)
+function JStoBoolean(value)
 {
     var strValue = String(value).toLowerCase();
     strValue = ((!isNaN(strValue) && strValue !== '0') &&
@@ -389,12 +389,12 @@ function toBoolean(value)
 }
 
 //Get max width between elements
-function getMaxWidth(elems, getrect)
+function JSgetMaxWidth(elems, getRect)
 {
     return Math.max.apply(null, elems.map(function()
     {
-		if(getrect === true){
-			return $(this).outerWidth2();
+		if(getRect === true){
+			return $(this).JSouterWidth();
 		}
 		else{
 			return $(this).outerWidth();
@@ -403,12 +403,12 @@ function getMaxWidth(elems, getrect)
 }
 
 //Get max height between elements
-function getMaxHeight(elems, getrect)
+function JSgetMaxHeight(elems, getRect)
 {
     return Math.max.apply(null, elems.map(function()
     {
-		if(getrect === true){
-			return $(this).outerHeight2();
+		if(getRect === true){
+			return $(this).JSouterHeight();
 		}
 		else{
 			return $(this).outerHeight();
@@ -417,7 +417,7 @@ function getMaxHeight(elems, getrect)
 }
 
 //Responsive Code
-function responsiveCode()
+function JSresponsiveCode()
 {
 	var bodyWidth = document.body.clientWidth; //$(window).width();
 	var bodyHeight = $(window).height();
@@ -431,20 +431,20 @@ function responsiveCode()
 	if (bodyWidth)
 	{
 		//Send data to event
-		$(document).trigger("responsiveCode", [bodyWidth, bodyHeight, bodyOrientation, bodyScreen]);
+		$(document).trigger("JSresponsiveCode", [bodyWidth, bodyHeight, bodyOrientation, bodyScreen]);
 	}
 	else
 	{
-		window.setTimeout(responsiveCode, 30);
+		window.setTimeout(JSresponsiveCode, 30);
 	}
 }
 
-$(window).bind("load", responsiveCode);
-$(window).bind("resize", responsiveCode);
-$(window).bind("orientationchange", responsiveCode);
+$(window).bind("load", JSresponsiveCode);
+$(window).bind("resize", JSresponsiveCode);
+$(window).bind("orientationchange", JSresponsiveCode);
 
 //LightGallery destroy function
-function destroyLightGallery()
+function JSdestroyLightGallery()
 {
 	//Check plugin
 	if($.fn.lightGallery !== 'undefined')
@@ -453,7 +453,7 @@ function destroyLightGallery()
 	}
 }
 //Lightgallery load function
-function loadLightGallery()
+function JSloadLightGallery()
 {	
 	//Check plugin
 	if($.fn.lightGallery !== 'undefined')
@@ -469,7 +469,7 @@ function loadLightGallery()
 			var galGalleryMode = $(this).data("lg-gallery");
 			var galPageTotal = parseInt($(this).data("lg-page-total"));
 			var galPageCurrent = parseInt($(this).data("lg-page-current"));
-			var galLoadThumb = mainUrl+"/resources/lightgallery/img/loading.gif";
+			var galLoadThumb = JSmainUrl+"/resources/lightgallery/img/loading.gif";
 
 			if($(this).data("lg-title") !== "auto"){
 				$(this).find(galSelector).not(".lg-thumb-prev, .lg-thumb-next").attr("title", $(this).data("lg-title"));
@@ -482,8 +482,8 @@ function loadLightGallery()
 			if($(".JSlightGalleryMode").length > 0 && galPageTotal > 1){
 				if($(".JSlightGallery.JSlightGalleryMode .lg-thumb-prev").length < 1 && 
 				   $(".JSlightGallery.JSlightGalleryMode .lg-thumb-next").length < 1){
-					$(".JSlightGallery.JSlightGalleryMode").prepend("<div class='lg-thumb-prev' href='"+galLoadThumb+"' title='"+lang('@lgtitle-prev-text')+"'><img src='#'></div>");
-					$(".JSlightGallery.JSlightGalleryMode").append("<div class='lg-thumb-next' href='"+galLoadThumb+"' title='"+lang('@lgtitle-next-text')+"'><img src='#'></div>");
+					$(".JSlightGallery.JSlightGalleryMode").prepend("<div class='lg-thumb-prev' href='"+galLoadThumb+"' title='"+JSlang('@lgtitle-prev-text')+"'><img src='#'></div>");
+					$(".JSlightGallery.JSlightGalleryMode").append("<div class='lg-thumb-next' href='"+galLoadThumb+"' title='"+JSlang('@lgtitle-next-text')+"'><img src='#'></div>");
 				}
 			}
 
@@ -513,8 +513,8 @@ function loadLightGallery()
 				});
 
 				$(".JSlightGallery.JSlightGalleryMode").on('onAfterOpen.lg',function(){
-					var galThumbPrevHTML = "<div><span class='glyphicon glyphicon-chevron-left' aria-hidden='true'></span><strong>"+lang('@lgtitle-prev-button')+"</strong></div>";
-					var galThumbNextHTML = "<div><span class='glyphicon glyphicon-chevron-right' aria-hidden='true'></span><strong>"+lang('@lgtitle-next-button')+"</strong></div>";
+					var galThumbPrevHTML = "<div><span class='glyphicon glyphicon-chevron-left' aria-hidden='true'></span><strong>"+JSlang('@lgtitle-prev-button')+"</strong></div>";
+					var galThumbNextHTML = "<div><span class='glyphicon glyphicon-chevron-right' aria-hidden='true'></span><strong>"+JSlang('@lgtitle-next-button')+"</strong></div>";
 
 					$(".lg-outer .lg-thumb .lg-thumb-item:first-child").addClass("JSlightGalleryNoBorder").append(galThumbPrevHTML);
 					$(".lg-outer .lg-thumb .lg-thumb-item:last-child").addClass("JSlightGalleryNoBorder").append(galThumbNextHTML);
@@ -576,7 +576,7 @@ function loadLightGallery()
 						//Close
 						if(current === 1){
 							if(galPageCurrent === 1){
-								$(".lg-outer .lg-sub-html").html(lang('@lgtitle-gallery-close'));
+								$(".lg-outer .lg-sub-html").html(JSlang('@lgtitle-gallery-close'));
 							}
 							else{
 								//Redirect
@@ -596,7 +596,7 @@ function loadLightGallery()
 						//Close
 						if(current === total){
 							if(galPageCurrent === galPageTotal){
-								$(".lg-outer .lg-sub-html").html(lang('@lgtitle-gallery-close'));
+								$(".lg-outer .lg-sub-html").html(JSlang('@lgtitle-gallery-close'));
 							}
 							else{
 								//Redirect
@@ -635,7 +635,7 @@ function loadLightGallery()
 }
 
 //ImgLiquid auto-fill background function
-function imageFill(container)
+function JSimageFill(container)
 {	
 	var bgData = new Array();
 	var bgVertical;
@@ -688,7 +688,7 @@ function imageFill(container)
 }
 
 //Get element height changes
-function onElementHeightChange(elm, callback)
+function JSelementHeightChange(elm, callback)
 {
 	var lastHeight = $(elm).height(), newHeight;
 	(function run(){
@@ -699,25 +699,25 @@ function onElementHeightChange(elm, callback)
 		
 		lastHeight = newHeight;
 
-		if(elm.onElementHeightChangeTimer){
-		  clearTimeout(elm.onElementHeightChangeTimer);
+		if(elm.JSelementHeightChangeTimer){
+		  clearTimeout(elm.JSelementHeightChangeTimer);
 		}
 
-		elm.onElementHeightChangeTimer = setTimeout(run, 200);
+		elm.JSelementHeightChangeTimer = setTimeout(run, 200);
 	})();
 	
-	//Example
+	//Usage
 	/*if($(".container").length > 0)
 	{
-		onElementHeightChange(".container", function(){
+		JSelementHeightChange(".container", function(){
 			console.log('Container height has changed');
-			responsiveCode();
+			JSresponsiveCode();
 		});
 	}*/
 }
 
 //Text cut function
-function textCut(container)
+function JStextCut(container)
 {	
 	$(container).each(function(){
 		$(this).addClass('JStextCutElem');
@@ -726,13 +726,13 @@ function textCut(container)
 }
 
 //Text auto size function (Note: Use this on responsive code to better results)
-function textSize(container, fontsize)
+function JStextSize(container, fontSize)
 {
 	$(container).each(function (i,box){
 		var width = $(box).width(),
 			html = '<span style="white-space:nowrap"></span>',
 			line = $(box).wrapInner(html).children()[0],
-			n = fontsize.replace(/px/g,'');
+			n = fontSize.replace(/px/g,'');
 
 		$(box).css('font-size',n);
 
@@ -745,7 +745,7 @@ function textSize(container, fontsize)
 }
 
 //Show alert modal box using BootBox plugin
-function showAlert(title, text, size, align, animate)
+function JSmodalAlert(title, text, size, align, animate)
 {
 	if(!size || !size.match(/^(small|medium|large|extra-large)$/)){ //Check value
 		size = 'medium';
@@ -775,7 +775,7 @@ function showAlert(title, text, size, align, animate)
 }
 
 //Show alert modal box using BootBox plugin (Content)
-function showContent(title, element, size, align, animate)
+function JSmodalContent(title, element, size, align, animate)
 {
 	if(!size || !size.match(/^(small|medium|large|extra-large)$/)){ //Check value
 		size = 'medium';
@@ -805,7 +805,7 @@ function showContent(title, element, size, align, animate)
 }
 
 //Show alert modal box using BootBox plugin (Ajax)
-function showAjax(title, url, loading, debug, size, align, animate)
+function JSmodalAjax(title, url, loading, debug, size, align, animate)
 {
 	if(!size || !size.match(/^(small|medium|large|extra-large)$/)){ //Check value
 		size = 'medium';
@@ -834,7 +834,7 @@ function showAjax(title, url, loading, debug, size, align, animate)
 		beforeSend: function(){
 			//Loading
 			if(debug){
-				console.log("showAjax Loading ...");
+				console.log("JSmodalAjax Loading ...");
 			}
 			//Show loading colored icon
 			if(loading){
@@ -844,7 +844,7 @@ function showAjax(title, url, loading, debug, size, align, animate)
 		success: function(data){  
 			//Loaded
 			if(debug){
-				console.log("showAjax Loaded!");
+				console.log("JSmodalAjax Loaded!");
 			}
 			//Check plugin
 			if(typeof bootbox !== 'undefined')
@@ -867,7 +867,7 @@ function showAjax(title, url, loading, debug, size, align, animate)
 		error: function(xhr, status, error){
 			//Error
 			if(debug){
-				console.log("showAjax Error! ("+xhr.status+")");
+				console.log("JSmodalAjax Error! ("+xhr.status+")");
 				
 				if(!(xhr.responseText === undefined || xhr.responseText === null || xhr.responseText == '')){
 					console.log("---------------\n"+xhr.responseText);
@@ -882,7 +882,7 @@ function showAjax(title, url, loading, debug, size, align, animate)
 }
 
 //YouTube get ID from URL
-function youTubeParser(url)
+function JSyouTubeParser(url)
 {
     var regExp = /^.*((youtu.be\/)|(v\/)|(\/u\/\w\/)|(embed\/)|(watch\?))\??v?=?([^#\&\?]*).*/;
     var match = url.match(regExp);
@@ -897,7 +897,7 @@ function youTubeParser(url)
 	// http://youtu.be/0zM3nApSvMg
 }
 //Vimemo get ID from URL
-function vimeoParser(url)
+function JSvimeoParser(url)
 {
     var regExp = /^.*(vimeo\.com\/)((channels\/[A-z]+\/)|(groups\/[A-z]+\/videos\/))?([0-9]+)/;
     var match = url.match(regExp);
@@ -909,7 +909,7 @@ function vimeoParser(url)
 }
 
 //Video launch modal box function
-function videoLaunch(title, url, share, autoplay, size, align, animate)
+function JSvideoLaunch(title, url, share, autoplay, size, align, animate)
 {	
 	if(!title){ //Check value
 		title = false;
@@ -938,27 +938,27 @@ function videoLaunch(title, url, share, autoplay, size, align, animate)
 	var ID;
 	var embedUrl;
 	var embedShare;
-	var embedShareTitle = lang('@videolaunch-title');
-	var embedShareText = lang('@videolaunch-text');
+	var embedShareTitle = JSlang('@videolaunch-title');
+	var embedShareText = JSlang('@videolaunch-text');
 	var embedAutoPlay = '';
 	
-	if (url.indexOf('youtube') >= 0){
-		ID = youTubeParser(url);
+	if(url.indexOf('youtube') >= 0){
+		ID = JSyouTubeParser(url);
 		if(autoplay){
 			embedAutoPlay = '&autoplay=1';
 		}
 		embedUrl = 'https://www.youtube.com/embed/'+ID+'?rel=0'+embedAutoPlay;
 		embedShare = 'https://youtu.be/'+ID;
 	}
-	else if (url.indexOf('vimeo') >= 0){
-		ID = vimeoParser(url);
+	else if(url.indexOf('vimeo') >= 0){
+		ID = JSvimeoParser(url);
 		if(autoplay){
 			embedAutoPlay = '?autoplay=1';
 		}
 		embedUrl = 'https://player.vimeo.com/video/'+ID+''+embedAutoPlay;
 		embedShare = 'https://vimeo.com/'+ID;
 	}
-	else if (url.indexOf('facebook') >= 0){
+	else if(url.indexOf('facebook') >= 0){
 		ID = '';
 		if(autoplay){
 			embedAutoPlay = '&autoplay=1';
@@ -966,7 +966,7 @@ function videoLaunch(title, url, share, autoplay, size, align, animate)
 		embedUrl = 'https://www.facebook.com/plugins/video.php?href='+url+'&show_text=0'+embedAutoPlay;
 		embedShare = url;
 	}
-	else { //Only ID will take YouTube as default
+	else{ //Only ID will take YouTube as default
 		ID = url;
 		if(autoplay){
 			embedAutoPlay = '&autoplay=1';
@@ -1000,10 +1000,10 @@ function videoLaunch(title, url, share, autoplay, size, align, animate)
 		}).on("shown.bs.modal", function(){
 			//Modify facebook src
 			if (url.indexOf('facebook') >= 0){
-				var videoLaunchIframeSRC = $(".JSvideoLaunchIframe iframe").attr("src");
-				var videoLaunchIframeSRCwidth = $(".JSvideoLaunchIframe iframe").width();
-				var videoLaunchIframeSRCheight = $(".JSvideoLaunchIframe iframe").height();
-				$(".JSvideoLaunchIframe iframe").attr("src",videoLaunchIframeSRC+"&width="+videoLaunchIframeSRCwidth+"&height="+videoLaunchIframeSRCheight);
+				var JSvideoLaunchIframeSRC = $(".JSvideoLaunchIframe iframe").attr("src");
+				var JSvideoLaunchIframeSRCwidth = $(".JSvideoLaunchIframe iframe").width();
+				var JSvideoLaunchIframeSRCheight = $(".JSvideoLaunchIframe iframe").height();
+				$(".JSvideoLaunchIframe iframe").attr("src",JSvideoLaunchIframeSRC+"&width="+JSvideoLaunchIframeSRCwidth+"&height="+JSvideoLaunchIframeSRCheight);
 			}
 		});
 	}
@@ -1038,19 +1038,19 @@ function videoLaunch(title, url, share, autoplay, size, align, animate)
 }
 
 //Capitalize first function
-function capitalizeFirstLetter(string)
+function JScapitalizeFirst(string)
 {
     return string.charAt(0).toUpperCase() + string.slice(1);
 }
 
 //Convert to slug function
-function convertToSlug(Text)
+function JStoSlug(string)
 {
-	return Text.toLowerCase().replace(/[^\w ]+/g,'').replace(/ +/g,'-');
+	return string.toLowerCase().replace(/[^\w ]+/g,'').replace(/ +/g,'-');
 }
 
 //Auto scroll function
-function autoScroll(selector,animated,distance)
+function JSautoScroll(selector, animated, distance)
 {      
     var scrollDistance = distance;
     var scrollTarget = $(selector);
@@ -1065,7 +1065,7 @@ function autoScroll(selector,animated,distance)
 }
 
 //Disable right click menu
-function disableClick(enable)
+function JSdisableClick(enable)
 {
 	if(enable){
 		$("body").attr("oncontextmenu","return false");
@@ -1076,7 +1076,7 @@ function disableClick(enable)
 }
 
 //Get URL parameter from URL (PHP $_GET like)
-function getUrlParameter(sParam)
+function JSgetUrlParameter(sParam)
 {
 	var sPageURL = decodeURIComponent(window.location.search.substring(1)),
 		sURLVariables = sPageURL.split('&'),
@@ -1092,7 +1092,7 @@ function getUrlParameter(sParam)
 	}
 }
 //Get URL parameter from Script SRC (PHP $_GET like)
-function getSrcParameter(sParam)
+function JSgetSrcParameter(sParam)
 {
 	var scripts = document.getElementsByTagName('script');
 	var index = scripts.length - 1;
@@ -1115,7 +1115,7 @@ function getSrcParameter(sParam)
 }
 
 //Convert strings to links function
-function linkify(inputText)
+function JSlinkify(inputText)
 {
     var replacedText, replacePattern1, replacePattern2, replacePattern3;
 
@@ -1135,7 +1135,7 @@ function linkify(inputText)
 }
 
 //Remove HTML tags function
-function stripTags(container, items)
+function JSstripTags(container, items)
 {
 	container.find("*").not(items).each(function() {
 		$(this).remove();
@@ -1143,13 +1143,13 @@ function stripTags(container, items)
 }
 
 //Check hasthag disabled links function
-function checkDisabledLink(string)
+function JScheckDisabledLink(string)
 {	
 	var textUrl = string;
-	var exceptions = checkDisabledExceptions;
-	var size = checkDisabledAlignment[0];
-	var align = checkDisabledAlignment[1];
-	var animate = checkDisabledAnimate;
+	var exceptions = JScheckDisabledExceptions;
+	var size = JScheckDisabledAlignment[0];
+	var align = JScheckDisabledAlignment[1];
+	var animate = JScheckDisabledAnimate;
 	
 	if(!size || !size.match(/^(small|medium|large|extra-large)$/)){ //Check value
 		size = 'medium';
@@ -1184,7 +1184,7 @@ function checkDisabledLink(string)
 				//Bootbox alert
 				bootbox.alert({
 					title: section,
-					message: lang('@disabled-text'),
+					message: JSlang('@disabled-text'),
 					size: size,
 					backdrop: true,
 					className: (animate == 'alternative' ? 'fade-2 '+align : align),
@@ -1200,7 +1200,7 @@ function checkDisabledLink(string)
 }
 
 //Window pop-up function
-function windowPopup(element, errortitle, errormsg)
+function JSwindowPopup(element, errortitle, errormsg)
 {	
 	var size = $(element).data('win-modal-size');
 	var align = $(element).data('win-modal-align');
@@ -1224,14 +1224,13 @@ function windowPopup(element, errortitle, errormsg)
 	var getSize = $(element).data('win-size').split('x');
 	var getAlign = $(element).data('win-align').split(',');
 	var getScroll = $(element).data('win-scroll');
-	var isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini|BB10|PlayBook|MeeGo/i.test(navigator.userAgent);
 	
 	if(!errortitle){ //Check value
-		errortitle = lang('@winpopup-title');
+		errortitle = JSlang('@winpopup-title');
 	}
 	
 	if(!errormsg){ //Check value
-		errormsg = lang('@winpopup-text');
+		errormsg = JSlang('@winpopup-text');
 	}
 	
 	//Horizontal Align
@@ -1290,7 +1289,7 @@ function windowPopup(element, errortitle, errormsg)
 }
 
 //Map launch function
-function mapLaunch(element)
+function JSmapLaunch(element)
 {	
 	var size = $(element).data('map-modal-size');
 	var align = $(element).data('map-modal-align');
@@ -1309,18 +1308,18 @@ function mapLaunch(element)
 	}
 	
 	var mapContent;
-	var mapTitle = lang('@maplaunch-title');
-	var mapText = lang('@maplaunch-text');
-	var mapIcon1 = mainUrl+"/css/icons/maplaunch/google-maps.png";
-	var mapIcon2 = mainUrl+"/css/icons/maplaunch/waze.png";
+	var mapTitle = JSlang('@maplaunch-title');
+	var mapText = JSlang('@maplaunch-text');
+	var mapIcon1 = JSmainUrl+"/css/icons/maplaunch/google-maps.png";
+	var mapIcon2 = JSmainUrl+"/css/icons/maplaunch/waze.png";
 	var mapCoords1 = $(element).data('map-coords-1').split(',');
 	var mapCoords2 = $(element).data('map-coords-2').split(',');
 	var mapIframe = $(element).data('map-iframe');
 	var mapAddress = $(element).data('map-address');
 	var mapAddressUrl = encodeURI(mapAddress).replace(/%20/g,'+');
-	var mapLaunchUrl1 = isMobile ? 'https://maps.google.com/maps?q='+mapCoords1[0]+','+mapCoords1[1]+','+mapCoords1[2]+'z' : 
+	var mapLaunchUrl1 = JSisMobile ? 'https://maps.google.com/maps?q='+mapCoords1[0]+','+mapCoords1[1]+','+mapCoords1[2]+'z' : 
 										   'https://www.google.com/maps/search/'+mapAddressUrl+'/@'+mapCoords1[0]+','+mapCoords1[1]+','+mapCoords1[2]+'z';
-	var mapLaunchUrl2 = isMobile ? 'waze://?ll='+mapCoords2[0]+','+mapCoords2[1]+'&navigate=yes' : 
+	var mapLaunchUrl2 = JSisMobile ? 'waze://?ll='+mapCoords2[0]+','+mapCoords2[1]+'&navigate=yes' : 
 										   'https://www.waze.com/livemap?zoom='+mapCoords2[2]+'&lat='+mapCoords2[0]+'&lon='+mapCoords2[1];
 	
 	if(mapIframe === undefined || mapIframe === null || mapIframe == ''){  //Check value
@@ -1372,7 +1371,7 @@ function mapLaunch(element)
 }
 
 //Paginator group
-function paginatorGroup(limit,limitMobile,exceptions)
+function JSpaginatorGroup(limit, limitMobile, exceptions)
 {
 	if(!exceptions){ //Check value
 		exceptions = true;
@@ -1381,7 +1380,7 @@ function paginatorGroup(limit,limitMobile,exceptions)
 	$(".JSpaginator .JSpageItems").each(function(){ 
 
 		var items = $(this).find("a").not(exceptions);
-		var amount = ((isMobile) ? limitMobile : limit);
+		var amount = ((JSisMobile) ? limitMobile : limit);
 		for(var i = 0; i < items.length; i+=amount)
 		{
 			if(items.slice(i, i+amount).hasClass("JSpageActive")){
@@ -1398,7 +1397,7 @@ function paginatorGroup(limit,limitMobile,exceptions)
 }
 
 //Main Initialization
-function mainInit()
+function JSmainInit()
 {
 	//Tooltip load
 	$('*[data-toggle="tooltip"]').tooltip({ trigger: "hover" });
@@ -1407,7 +1406,7 @@ function mainInit()
 	$('*[data-toggle="popover"]').popover();
 	
 	//Load LightGallery
-	loadLightGallery();
+	JSloadLightGallery();
 	
 	//Check plugin
 	if($.fn.swipe !== 'undefined')
@@ -1452,13 +1451,13 @@ function mainInit()
 	
 	//Apply Image Fill
 	$('.JSimgFill').each(function(){
-		imageFill($(this));
+		JSimageFill($(this));
 	});
 	
 	//Apply Text Cut
 	$(".JStextCut").each(function(){
 		var target = $(this).data('text-cut') ? $(this).data('text-cut') : $(this);
-		textCut(target);
+		JStextCut(target);
 	});
 	
 	//Check plugin
@@ -1473,8 +1472,8 @@ function mainInit()
 		});
 	}
 	
-	//Fix for Holder JS in IE8
-	if(isNav('ie','8'))
+	//Workarround for Holder JS in IE8
+	if(JSisNav('ie','8'))
 	{
 		$('img[data-src*="holder.js"]').each(function(){
 			var src = $(this).data('src');
@@ -1537,15 +1536,15 @@ $(document).ready(function(){
 /* ================================================= BASE DOCUMENT READY ================================================= */
 	
 	//Check home
-	isHome = $('.JSisHome').length > 0 ? true : false;
+	JSisHome = $('.JSisHome').length > 0 ? true : false;
 
 	//Check mobile
-	isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini|BB10|PlayBook|MeeGo/i.test(navigator.userAgent);
+	JSisMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini|BB10|PlayBook|MeeGo/i.test(navigator.userAgent);
 	
 	
 	//Check navigators
-	isNav = function(name,version)
-			{
+	JSisNav = function(name,version)
+			  {
 				//Check plugin
 				if($.fn.browser !== 'undefined')
 				{
@@ -1562,10 +1561,10 @@ $(document).ready(function(){
 					var checkVersion = version === undefined ? true : ($.browser.version == version);
 					var checkInternal = checkData[name].internal === undefined ? true : (checkData[name].internal === true);
 					var checkFinal = checkBrowser && checkVersion && checkInternal ? true : false;
-					
+
 					return checkFinal;
 				}
-			};
+			  };
 	
 	//Disable button auto-focus
 	$(document).on("shown.bs.modal", function(){
@@ -1575,27 +1574,27 @@ $(document).ready(function(){
 	
 	//Window Popup click
 	$(document).on("click", ".JSwindowPopup", function(){
-		windowPopup($(this));
+		JSwindowPopup($(this));
 	});
 	
 	//Map Launch click
 	$(document).on("click", ".JSmapLaunch", function(){
-		mapLaunch($(this));
+		JSmapLaunch($(this));
 	});
 	
 	//Check map launch alert
 	$(document).on("click", ".JSmapLaunchAlert", function(e){
-		if (isMobile && !confirm(lang('@maplaunch-alert'))){
+		if (JSisMobile && !confirm(JSlang('@maplaunch-alert'))){
 		  e.preventDefault();
 		}
     });
 	
 	//Modal on disabled links
-	if(!checkDisabled)
+	if(!JScheckDisabled)
 	{
 		$(document).on("click", "a[href*=\\#]", function(e){
 			var source =  $(this).attr("href");
-			if(!(checkDisabledLink(source))){
+			if(!(JScheckDisabledLink(source))){
 				e.preventDefault();
 			}
 		});
@@ -1603,7 +1602,7 @@ $(document).ready(function(){
 	
 	//Custom file input change
 	$(document).on("change", ".form-group .custom-file input[type='file']", function(){
-		var placeholder = $(this).hasAttr('placeholder') ? $(this).attr('placeholder') : '';
+		var placeholder = $(this).JShasAttr('placeholder') ? $(this).attr('placeholder') : '';
 		var filename = $(this)[0].files.length ? $(this)[0].files[0].name : placeholder;
 		$(this).parent().find('.custom-file-text > span').html(filename);
 	});
@@ -1616,16 +1615,16 @@ $(document).ready(function(){
 		$(this).find('.form-group input[type="checkbox"]').prop('checked', false).parent().removeClass('active');
 		$(this).find('.form-group input[type="radio"]').prop('checked', false).parent().removeClass('active');
 		$(this).find('.form-group input[type="file"]').each(function(){
-			var placeholder = $(this).hasAttr('placeholder') ? $(this).attr('placeholder') : '';
+			var placeholder = $(this).JShasAttr('placeholder') ? $(this).attr('placeholder') : '';
 			$(this).parent().find('.custom-file-text > span').html(placeholder);
 		});
     });
 	
 	//Load responsive code
-	responsiveCode();
+	JSresponsiveCode();
 	
 	//Launch main functions
-	mainInit();
+	JSmainInit();
 	
 /* ================================================= BASE DOCUMENT READY ================================================= */
 
@@ -1641,14 +1640,14 @@ $(window).bind("load", function(){
 
 });
 
-$(document).on("responsiveCode", function(event, bodyWidth, bodyHeight, bodyOrientation, bodyScreen){
+$(document).on("JSresponsiveCode", function(event, bodyWidth, bodyHeight, bodyOrientation, bodyScreen){
 
 /* ================================================= BASE RESPONSIVE CODE ================================================= */
 	
 	//Apply Text Size
 	$(".JStextSize").each(function(){
 		$(this).removeAttr('style');
-		textSize($(this), $(this).css('font-size'));
+		JStextSize($(this), $(this).css('font-size'));
 	});
 	
 /* ================================================= BASE RESPONSIVE CODE ================================================= */
@@ -1669,7 +1668,7 @@ $(document).ajaxComplete(function(){
 
 /* ================================================= BASE AJAX COMPLETE ================================================= */
 	
-	mainInit();
+	JSmainInit();
 	
 /* ================================================= BASE AJAX COMPLETE ================================================= */
 

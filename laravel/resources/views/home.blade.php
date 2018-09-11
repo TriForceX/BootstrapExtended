@@ -858,18 +858,18 @@
 		<!-- Show Alert example -->
 
 		<div class="page-header notranslate">
-			<h1>Show Alert BootBox <span class="label label-danger">Plugin</span></h1>
+			<h1>Modal Alert BootBox <span class="label label-danger">Plugin</span></h1>
 		</div>
-		<p>Launch a custom modal box using <b>BootBox</b> features, the function structure is <code>showAlert(title, text, size, align, animate)</code>. You can alternatively set a size and alignment classes like <b>horizontal vertical</b> (For example: <code>right center</code>).</p>
+		<p>Launch a custom modal box using <b>BootBox</b> features, the function structure is <code>JSmodalAlert(title, text, size, align, animate)</code>. You can alternatively set a size and alignment classes like <b>horizontal vertical</b> (For example: <code>right center</code>).</p>
 
 		<div class="bs-example">
-			<button type="button" class="btn btn-primary" onclick="showAlert('Small Size Box','This is a text shown in a modal box','small','center')">Show Alert Small Size (Centered)</button>
-			<button type="button" class="btn btn-primary" onclick="showAlert('Medium Size Box','This is a text shown in a modal box')">Show Alert Medium Size (By default)</button>
-			<button type="button" class="btn btn-primary" onclick="showAlert('Large Size Box','This is a text shown in a modal box','large')">Show Alert Large Size</button>
-			<button type="button" class="btn btn-primary" onclick="showAlert('Extra Large Size Box','This is a text shown in a modal box','extra-large')">Show Alert Extra Large Size</button>
+			<button type="button" class="btn btn-primary" onclick="JSmodalAlert('Small Size Box','This is a text shown in a modal box','small','center')">Show Alert Small Size (Centered)</button>
+			<button type="button" class="btn btn-primary" onclick="JSmodalAlert('Medium Size Box','This is a text shown in a modal box')">Show Alert Medium Size (By default)</button>
+			<button type="button" class="btn btn-primary" onclick="JSmodalAlert('Large Size Box','This is a text shown in a modal box','large')">Show Alert Large Size</button>
+			<button type="button" class="btn btn-primary" onclick="JSmodalAlert('Extra Large Size Box','This is a text shown in a modal box','extra-large')">Show Alert Extra Large Size</button>
 		</div>
 		<figure class="highlight">
-			<pre><code class="language-html" data-lang="html">&lt;a onclick="showAlert('Small Size Box','This is a text shown in a modal box','small','center')">Click Here&lt;/a&gt;<br>&lt;a onclick="showAlert('Medium Size Box','This is a text shown in a modal box')">Click Here&lt;/a&gt;<br>&lt;a onclick="showAlert('Large Size Box','This is a text shown in a modal box','large')">Click Here&lt;/a&gt;<br>&lt;a onclick="showAlert('Extra Large Size Box','This is a text shown in a modal box','extra-large')">Click Here&lt;/a&gt;</code></pre>
+			<pre><code class="language-html" data-lang="html">&lt;a onclick="JSmodalAlert('Small Size Box','This is a text shown in a modal box','small','center')">Click Here&lt;/a&gt;<br>&lt;a onclick="JSmodalAlert('Medium Size Box','This is a text shown in a modal box')">Click Here&lt;/a&gt;<br>&lt;a onclick="JSmodalAlert('Large Size Box','This is a text shown in a modal box','large')">Click Here&lt;/a&gt;<br>&lt;a onclick="JSmodalAlert('Extra Large Size Box','This is a text shown in a modal box','extra-large')">Click Here&lt;/a&gt;</code></pre>
 		</figure>
 
 		<!-- Show Alert example -->
@@ -877,21 +877,21 @@
 		<!-- Show Content Example -->
 
 		<div class="page-header notranslate">
-			<h1>Show Content BootBox <span class="label label-danger">Plugin</span></h1>
+			<h1>Modal Content BootBox <span class="label label-danger">Plugin</span></h1>
 		</div>
-		<p>Launch a custom modal box using <b>BootBox</b> features, the function shows the content from an element, the structure is <code>showContent(title, element, size, align, animate)</code>. You can alternatively set a size and alignment classes like <b>horizontal vertical</b> (For example: <code>right center</code>).</p>
+		<p>Launch a custom modal box using <b>BootBox</b> features, the function shows the content from an element, the structure is <code>JSmodalContent(title, element, size, align, animate)</code>. You can alternatively set a size and alignment classes like <b>horizontal vertical</b> (For example: <code>right center</code>).</p>
 
 		<div class="bs-example">
-			<button type="button" class="btn btn-primary" onclick="showContent('Small Size Box','.showContentExample','small','center')">Show Content Small Size (Centered)</button>
-			<button type="button" class="btn btn-primary" onclick="showContent('Medium Size Box','.showContentExample')">Show Content Medium Size (By default)</button>
-			<button type="button" class="btn btn-primary" onclick="showContent('Large Size Box','.showContentExample','large')">Show Content Large Size</button>
-			<button type="button" class="btn btn-primary" onclick="showContent('Large Size Box','.showContentExample','extra-large')">Show Alert Extra Large Size</button>
-			<div class="showContentExample hidden">
+			<button type="button" class="btn btn-primary" onclick="JSmodalContent('Small Size Box','.JSmodalContentExample','small','center')">Show Content Small Size (Centered)</button>
+			<button type="button" class="btn btn-primary" onclick="JSmodalContent('Medium Size Box','.JSmodalContentExample')">Show Content Medium Size (By default)</button>
+			<button type="button" class="btn btn-primary" onclick="JSmodalContent('Large Size Box','.JSmodalContentExample','large')">Show Content Large Size</button>
+			<button type="button" class="btn btn-primary" onclick="JSmodalContent('Large Size Box','.JSmodalContentExample','extra-large')">Show Alert Extra Large Size</button>
+			<div class="JSmodalContentExample hidden">
 				Hello <b>World!</b><br><i><u>This is my message in HTML</u> from a hidden element...</i>
 			</div>
 		</div>
 		<figure class="highlight">
-			<pre><code class="language-html" data-lang="html">&lt;a onclick="showContent('Small Size Box','.showContentExample','small')">Click Here&lt;/a&gt;<br>&lt;a onclick="showContent('Medium Size Box','.showContentExample')">Click Here&lt;/a&gt;<br>&lt;a onclick="showContent('Large Size Box','.showContentExample','large')">Click Here&lt;/a&gt;<br>&lt;a onclick="showContent('Extra Large Size Box','.showContentExample','extra-large')">Click Here&lt;/a&gt;</code></pre>
+			<pre><code class="language-html" data-lang="html">&lt;a onclick="JSmodalContent('Small Size Box','.JSmodalContentExample','small')">Click Here&lt;/a&gt;<br>&lt;a onclick="JSmodalContent('Medium Size Box','.JSmodalContentExample')">Click Here&lt;/a&gt;<br>&lt;a onclick="JSmodalContent('Large Size Box','.JSmodalContentExample','large')">Click Here&lt;/a&gt;<br>&lt;a onclick="JSmodalContent('Extra Large Size Box','.JSmodalContentExample','extra-large')">Click Here&lt;/a&gt;</code></pre>
 		</figure>
 
 		<!-- Show Content Example -->
@@ -901,15 +901,15 @@
 		<div class="page-header notranslate">
 			<h1>Video Launch <span class="label label-danger">Custom</span></h1>
 		</div>
-		<p>Launch a modal box with a basic video player, the function structure is <code>videoLaunch(title, url, share, autoplay, size, align, animate)</code>. You can alternatively set a size and alignment classes like <b>horizontal vertical</b> (For example: <code>right center</code>).</p>
+		<p>Launch a modal box with a basic video player, the function structure is <code>JSvideoLaunch(title, url, share, autoplay, size, align, animate)</code>. You can alternatively set a size and alignment classes like <b>horizontal vertical</b> (For example: <code>right center</code>).</p>
 
 		<div class="bs-example">
-			<button type="button" class="btn btn-primary" onclick="videoLaunch('My YouTube Video','https://youtube.com/watch?v=ae6aeo9-Kn8',true,true,'medium','center')">YouTube Video (Medium size & centered)</button>
-			<button type="button" class="btn btn-primary" onclick="videoLaunch('My Vimeo Video','https://vimeo.com/214352663',false,false)">Vimeo Video (No share URL + No autoplay)</button>
-			<button type="button" class="btn btn-primary" onclick="videoLaunch('My Facebook Video','https://web.facebook.com/ign/videos/275980713021701/')">Facebook Video (Only title + URL)</button>
+			<button type="button" class="btn btn-primary" onclick="JSvideoLaunch('My YouTube Video','https://youtube.com/watch?v=ae6aeo9-Kn8',true,true,'medium','center')">YouTube Video (Medium size + Center Aligned)</button>
+			<button type="button" class="btn btn-primary" onclick="JSvideoLaunch('My Vimeo Video','https://vimeo.com/214352663',false,false,'large')">Vimeo Video (Large size + No share URL + No autoplay)</button>
+			<button type="button" class="btn btn-primary" onclick="JSvideoLaunch('My Facebook Video','https://web.facebook.com/ign/videos/275980713021701/')">Facebook Video (Only title + URL)</button>
 		</div>
 		<figure class="highlight">
-			<pre><code class="language-html" data-lang="html">&lt;a onclick="videoLaunch('My YouTube Video','https://youtube.com/watch?v=ae6aeo9-Kn8',true,true,'medium','center')">Click Here&lt;/a&gt;<br>&lt;a onclick="videoLaunch('My Vimeo Video','https://vimeo.com/214352663',false,false)">Click Here&lt;/a&gt;<br>&lt;a onclick="videoLaunch('My Facebook Video','https://web.facebook.com/ign/videos/275980713021701/')">Click Here&lt;/a&gt;</code></pre>
+			<pre><code class="language-html" data-lang="html">&lt;a onclick="JSvideoLaunch('My YouTube Video','https://youtube.com/watch?v=ae6aeo9-Kn8',true,true,'medium','center')">Click Here&lt;/a&gt;<br>&lt;a onclick="JSvideoLaunch('My Vimeo Video','https://vimeo.com/214352663',false,false,'large')">Click Here&lt;/a&gt;<br>&lt;a onclick="JSvideoLaunch('My Facebook Video','https://web.facebook.com/ign/videos/275980713021701/')">Click Here&lt;/a&gt;</code></pre>
 		</figure>
 
 		<!-- Video Launch Example -->
@@ -1039,10 +1039,10 @@
 		<div class="page-header notranslate">
 			<h1>Forms Validation <span class="label label-danger">Custom</span></h1>
 		</div>
-		<p>Basic validation for forms. The elements validated are <code>input</code>, <code>select</code>, <code>checkbox</code>, <code>radio</code> and <code>textarea</code>. The main function is <code>$(elem).validateForm(options);</code></p></p>
+		<p>Basic validation for forms. The elements validated are <code>input</code>, <code>select</code>, <code>checkbox</code>, <code>radio</code> and <code>textarea</code>. The main function is <code>$(elem).JSvalidateForm(options);</code></p></p>
 		
 		<div class="bs-example notranslate">
-			<form class="JSformExample" method="post" action="javascript:showAlert('Form Success!','The form passed sucessfully! Thanks!');">
+			<form class="JSformExample" method="post" action="javascript:JSmodalAlert('Form Success!','The form passed sucessfully! Thanks!');">
 				<div class="form-group">
 					<label for="example-input-username">User Name</label>
 					<div class="input-group">
@@ -1264,7 +1264,7 @@
 			</form>
 		</div>
 		<figure class="highlight">
-			<pre><code class="language-html" data-lang="html">$(".JSformExample").validateForm({
+			<pre><code class="language-html" data-lang="html">$(".JSformExample").JSvalidateForm({
 	noValidate: "#example-input-lastname",
 	hasConfirm: true,
 	customValidate: null,
