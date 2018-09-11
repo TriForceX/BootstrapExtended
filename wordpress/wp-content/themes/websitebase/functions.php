@@ -164,6 +164,18 @@ if(!check_plugin('resize-image-after-upload/resize-image-after-upload.php'))
 	add_filter('jpeg_quality', 'custom_jpeg_quality');
 }
 
+//Register custom menus
+//function register_custom_menus()
+//{
+//  register_nav_menus(
+//    array(
+//      'header-menu'	=> __('Header Menu'),
+//      'extra-menu' 	=> __('Extra Menu')
+//    )
+//  );
+//}
+//add_action('init', 'register_custom_menus');
+
 //Enable page excerpt
 //add_post_type_support('page', 'excerpt');
 
