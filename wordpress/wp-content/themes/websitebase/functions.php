@@ -32,6 +32,9 @@ function login_logo_url() {
 add_filter('login_headerurl', 'login_logo_url');
 add_filter('login_headertitle', 'login_logo_url');
 
+//Prevent .htaccess to be modified by permalink rules
+add_filter('flush_rewrite_rules_hard','__return_false');
+
 //Set current page title
 function get_page_title($separator)
 {
