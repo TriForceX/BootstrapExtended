@@ -18,9 +18,9 @@
 	<meta name="msapplication-navbutton-color" content="<?php echo php::get_html_data('nav-color'); ?>">
 	<meta name="apple-mobile-web-app-status-bar-style" content="<?php echo php::get_html_data('nav-color-apple'); ?>">
 	<!-- Meta Details -->
-	<meta name="description" content="<?php echo php::get_html_data('description'); ?>"/>
-	<meta name="keywords" content="<?php echo php::get_html_data('keywords'); ?>" />
-	<meta name="author" content="<?php echo php::get_html_data('author'); ?>" />
+	<meta name="description" content="<?php echo php::get_html_data('description'); ?>">
+	<meta name="keywords" content="<?php echo php::get_html_data('keywords'); ?>">
+	<meta name="author" content="<?php echo php::get_html_data('author'); ?>">
 	
 	<!-- ******** META TAGS ******** -->
 	

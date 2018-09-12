@@ -17,9 +17,9 @@
 	<meta name="msapplication-navbutton-color" content="#333333">
 	<meta name="apple-mobile-web-app-status-bar-style" content="black">
 	<!-- Meta Details -->
-	<meta name="description" content="Website based on Bootstrap with some CSS/JS/PHP improvements"/>
-	<meta name="keywords" content="html, jquery, javascript, php, responsive, css3" />
-	<meta name="author" content="TriForce" />
+	<meta name="description" content="Website based on Bootstrap with some CSS/JS/PHP improvements">
+	<meta name="keywords" content="html, jquery, javascript, php, responsive, css3">
+	<meta name="author" content="TriForce">
 	
 	<!-- ******** META TAGS ******** -->
 	

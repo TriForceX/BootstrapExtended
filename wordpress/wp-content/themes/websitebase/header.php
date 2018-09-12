@@ -17,16 +17,16 @@
 	<meta name="msapplication-navbutton-color" content="<?php echo php::get_html_data('nav-color'); ?>">
 	<meta name="apple-mobile-web-app-status-bar-style" content="<?php echo php::get_html_data('nav-color-apple'); ?>">
 	<!-- Meta Details -->
-	<meta name="description" content="<?php echo php::get_html_data('description'); ?>"/>
-	<meta name="keywords" content="<?php echo php::get_html_data('keywords'); ?>" />
-	<meta name="author" content="<?php echo php::get_html_data('author'); ?>" />
+	<meta name="description" content="<?php echo php::get_html_data('description'); ?>">
+	<meta name="keywords" content="<?php echo php::get_html_data('keywords'); ?>">
+	<meta name="author" content="<?php echo php::get_html_data('author'); ?>">
 	
 	<!-- ******** META TAGS ******** -->
 	
 	<!-- ******** HEADER RESOURCES ******** -->
 	
 	<!-- Nav Tab & App Icons -->
-	<link href="<?php echo get_bloginfo('template_url'); ?>/img/icons/favicon/apple.png" rel="apple-touch-icon"/>
+	<link href="<?php echo get_bloginfo('template_url'); ?>/img/icons/favicon/apple.png" rel="apple-touch-icon">
 	<link href="<?php echo get_bloginfo('template_url'); ?>/img/icons/favicon/global.png" rel="shortcut icon">
 	<!-- jQuery UI -->
 	<link href="<?php echo get_bloginfo('template_url'); ?>/resources/jquery-ui/css/jquery-ui.min.css" rel="stylesheet">
