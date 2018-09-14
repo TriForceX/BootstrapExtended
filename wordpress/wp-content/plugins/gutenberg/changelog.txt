@@ -1,5 +1,47 @@
 == Changelog ==
 
+= 3.8.0 =
+
+* Add Full Screen mode. 📺
+* Add UI for bulk managing reusable blocks.
+* Implement a more sophisticated Editor Styles mechanism. 🖍 It allows themes to register editor styles for blocks by targeting the blocks themselves without having to fight CSS specificity, and without having to know the internal DOM structure for the editor.
+* Move the block settings menu to the block toolbar, further consolidating the UI elements.
+* Switch to a new hand-coded default block parser implementation and expand documentation.
+* - Implemented in both PHP and JS.
+* - Brings great performance improvements in both time and memory.
+* - Makes server-side parsing in PHP viable for accessing blocks as a tree.
+* Use flex-box to render the block inserter layout to address different issues with spacing.
+* Show a warning when a disallowed filetype is dropped on a MediaUpload.
+* Show "no archives to show" message on Archives Block.
+* Add AccessibleSVG component and use consistently for block icons.
+* Improve Classic editor and Cloudflare notification modals.
+* Refactor Draggable component to decouple the drag handle from the DOM node being dragged.
+* Move video caption styles to style.scss.
+* Treat Verse lines consistently on the front-end.
+* Make sure all available taxonomies are loaded in the editor.
+* Improve empty elements filters in Slot implementation.
+* Fix case with PostTextEditor where intended state value is not always reflected in the rendered textarea when empty.
+* Fix background clashing with some themes in Separator alternative styles.
+* Fix case where hasSelectedInnerBlock did not account for multi-selected innerBlocks. This caused an edge case in Spotlight mode where multiple blocks selected inside a column would appear unfocused.
+* Fix regression with margins around image captions.
+* Fix issue with author select overflowing on IE11.
+* Fix the publish panel top position in FullScreen mode.
+* Fix radio button alignment in post visibility menu.
+* Fix issues with centering of images.
+* Fix BlockIcon usage in embed placeholder when resource cannot be previewed.
+* Fix font size regression in PostTitle.
+* Fix codetabs block in extensibility documentation.
+* Fix import source of RangeControl in Readme file.
+* Fix broken link in documentation inside element/README.md.
+* Deprecate usage of RichText provider component.
+* Deprecate getI18n, dcnpgettext.
+* Remove deprecated selectors from docs.
+* Revert shortcut change in block-deletion e2e test.
+* Pin fetch polyfill to 3.0 UMD distributable to resolve an issue where it was no longer usable in IE11.
+* Ensure Gutenberg repository is clean after install.
+* Include block serialization default parser in plugin.
+* Change how required built-ins are polyfilled with Babel 7.
+
 = 3.7.0 =
 
 * New “Spotlight Mode” that focuses on a single block at a time and an updated “Unified Toolbar” design. Both can be combined.
