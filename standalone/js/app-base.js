@@ -1396,6 +1396,75 @@ function JSpaginatorGroup(limit, limitMobile, exceptions)
 	});
 }
 
+//Paint & clean table
+function JSpaintTable(container)
+{
+	var paintGroup = container.data('paint-group');
+	var paintGroupType = container.data('paint-group-type');
+	var paintHeader = container.data('paint-header');
+	var paintHeaderAlt = container.data('paint-header-alt');
+	var paintEmpty = container.data('paint-empty');
+
+	var getEmpty = paintEmpty ? paintEmpty : '––';
+	var getType = paintGroupType == 'even' ? 'tr:nth-child(even)' : 'tr:nth-child(odd)';
+	var getHeader = paintHeader ? paintHeaderAlt ? ':first-child, :nth-child(2)' : ':first-child' : '';
+	
+	container.find('table').each(function(){
+		//Clean table
+		$(this).attr('width','0');
+		$(this).attr('border','0');
+		$(this).attr('cellpadding','0');
+		$(this).attr('cellspacing','0');
+		$(this).removeAttr('style');
+
+		//Clean elements
+		$(this).find('tr, td, th').css('width','');
+		$(this).find('tr, td, th').css('height','');
+		$(this).find('tr, td, th').removeAttr('width');
+		$(this).find('tr, td, th').removeAttr('height');
+		
+		//Fill empty cells
+		$(this).find('tr').not(getHeader).find('td').each(function(){
+			var cell = $(this).hasClass('JStextCutElem') ? $(this).find('div > div') : $(this);
+			
+			if(cell.html() == '&nbsp;')
+			{ 
+				cell.html(getEmpty).addClass('empty'); 
+			}
+			else if(cell.is(':empty'))
+			{  
+				cell.html(getEmpty).addClass('empty');
+			}
+		});
+
+		//Paint groups
+		if(paintGroup)
+		{
+			if(paintGroup == '1')
+			{
+				$(this).find(getType).not(getHeader).addClass('group');
+			}
+			else
+			{
+				var divs = $(this).find('tr').not(getHeader);
+				var num = 0;
+				var limit = paintGroup;
+				var check;
+
+				for(var i = 0; i < divs.length; i+=limit)
+				{
+					check = paintGroupType == 'even' ? (num % 2 != 0) : (num % 2 == 0);
+					if(check)
+					{
+						divs.slice(i, i+limit).addClass('group');
+					}
+					num++;
+				}
+			}
+		}
+	});
+}
+
 //Main Initialization
 function JSmainInit()
 {
@@ -1452,6 +1521,11 @@ function JSmainInit()
 	//Apply Image Fill
 	$('.JSimgFill').each(function(){
 		JSimageFill($(this));
+	});
+	
+	//Apply Paint Table
+	$('.JSpaintTable').each(function(){
+		JSpaintTable($(this));
 	});
 	
 	//Apply Text Cut
