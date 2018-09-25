@@ -3,6 +3,9 @@
 //Example form validate custom function
 function JSvalidateCustom(field)
 {
+	//Dev log
+	JSdeveloper('[JS Example] Validate Custom');
+	
 	if(field === 'Custom'){
 		return true;
 	}
@@ -14,7 +17,9 @@ function JSvalidateCustom(field)
 //Example Google Translate Widget styling function
 function JSgoogleTranslateStyles()
 {
-	var style;
+	//Dev log
+	JSdeveloper('[JS Example] Google Translate Styles');
+	
 	var css = '<style type="text/css" id="JSgoogleTranslateStyles">'+
 				'.goog-te-combo,'+
 				'.goog-te-banner *,'+
@@ -33,7 +38,7 @@ function JSgoogleTranslateStyles()
 				'</style>';
 	
 	//Menu iframe
-	if((style = $('.goog-te-menu-frame').contents().find('body')).length){
+	if($('.goog-te-menu-frame').contents().find('body').length > 0){
 		if($('.goog-te-menu-frame').contents().find('#JSgoogleTranslateStyles').length < 1){
 			$('.goog-te-menu-frame').contents().find('body').prepend(css);
 		}
@@ -49,6 +54,9 @@ $(document).ready(function(){
 
 /* ================================================= EXAMPLE DOCUMENT READY ================================================= */
 	
+	//Dev log
+	JSdeveloper('[JS Example] Document Ready');
+	
 	//Set language on the fly
 	if(JSgetUrlParameter('lang-test')){
 		JSmainLang = JSgetUrlParameter('lang-test');
@@ -58,7 +66,7 @@ $(document).ready(function(){
 	JSlanguage['@test-title'] = { 'en' : 'Hello world!', 'es' : 'Hola mundo!' };
 	
 	//Example use language string
-	console.log(JSlang('@test-title'));
+	JSdeveloper(JSlang('@test-title'));
 	
 	//Example lightGallery prev page
 	$(document).on('onPrevPageChange.lg', function(event){
@@ -90,8 +98,8 @@ $(document).ready(function(){
 	//Example prevent title translation by Google
 	$('title').addClass('notranslate');
 	
-	//Example test URL
-	console.log('URL: '+JSmainUrl);
+	//Example test main url
+	JSdeveloper('URL: '+JSmainUrl);
 	
 	//Example aditional exceptions for disabled links
 	JShashTagExceptions.push('#example');
@@ -110,6 +118,9 @@ $(window).bind("load", function() {
 
 /* ================================================= EXAMPLE WINDOWS LOAD ================================================= */
 	
+	//Dev log
+	JSdeveloper('[JS Example] Window Load');
+	
 	//Example test progress bar on load
 	$(".JSloadProgressTest .progress-bar").css("width", "100%");
 	$(".JSloadProgressTest .progress-bar").attr("aria-valuenow","100");
@@ -124,6 +135,9 @@ $(window).bind("load", function() {
 $(document).on("JSresponsiveCode", function(event, bodyWidth, bodyHeight, bodyOrientation, bodyScreen){
 
 /* ================================================= EXAMPLE RESPONSIVE CODE ================================================= */
+	
+	//Dev log
+	JSdeveloper('[JS Example] Responsive Code');
 	
 	//Example size detection
 	$("body").attr("window-size",bodyWidth+"x"+bodyHeight);
@@ -150,8 +164,8 @@ $(document).ajaxStart(function(){
 
 /* ================================================= EXAMPLE AJAX START ================================================= */
 	
-	//Example console message
-	console.log('Ajax Start...');
+	//Dev log
+	JSdeveloper('[JS Example] Ajax Start');
 	
 /* ================================================= EXAMPLE AJAX START ================================================= */
 
@@ -161,8 +175,8 @@ $(document).ajaxComplete(function() {
 
 /* ================================================= EXAMPLE AJAX COMPLETE ================================================= */
 	
-	//Example console message
-	console.log('Ajax Complete!');
+	//Dev log
+	JSdeveloper('[JS Example] Ajax Complete');
 	
 /* ================================================= EXAMPLE AJAX COMPLETE ================================================= */
 

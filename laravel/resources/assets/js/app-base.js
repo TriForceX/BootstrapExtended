@@ -11,15 +11,6 @@ var JShashTagExceptions = ['#carousel'];
 var JShashTagAlignment = ['medium','top'];
 var JShashTagAnimate = true;
 
-//Developer mode
-var JSdeveloper = function(data)
-				  {
-					  if($('*[data-js-developer="true"]').length > 0)
-					  {
-						  console.log(data);
-					  }
-				  };
-
 //IE8 Undefined console fix
 if (!window.console) console = {log: function() {}};
 

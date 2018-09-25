@@ -1,3 +1,16 @@
+/* ================================================= BASE DEVELOPER ================================================= */
+
+//Custom console log (developer mode)
+function JSdeveloper(data)
+{
+	if($('*[data-js-developer]').length > 0)
+	{
+		console.log(data);
+	}
+}
+
+/* ================================================= BASE DEVELOPER ================================================= */
+
 /* ================================================= BASE LANGUAGE ================================================= */
 
 //Define language by default
@@ -127,6 +140,9 @@ if(JSmainLang === undefined || JSmainLang === null || JSmainLang == ''){ //Empty
 //Parse language strings
 function JSlang(string)
 {
+	//Dev log
+	JSdeveloper('[JS Function] Get Language');
+	
 	var text = JSlanguage[string][JSmainLang];
 	
 	if(text === undefined || text === null || text == ''){

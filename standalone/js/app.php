@@ -25,7 +25,7 @@ class php extends utilities\php
 		
 		//Defaults
 		$js_data['file'] = array(
-								 'app-lang.js',
+								 'app-init.js',
 								 'app-base.js',
 								 'app-theme.js',
 								 );

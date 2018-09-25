@@ -46,7 +46,7 @@ var gulpFrontCSSFiles = [
 						];
 					
 var gulpFrontJSFiles = [
-						'resources/assets/js/app-lang.js',
+						'resources/assets/js/app-init.js',
 						'resources/assets/js/app-base.js',
 						'resources/assets/js/app-theme.js',
 						'resources/assets/js/extras/example.js', //Example file
