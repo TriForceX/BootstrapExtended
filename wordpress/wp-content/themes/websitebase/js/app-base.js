@@ -635,7 +635,7 @@ function JSloadLightGallery()
 }
 
 //ImgLiquid auto-fill background function
-function JSimageFill(container)
+function JSimgFill(container)
 {	
 	var bgData = new Array();
 	var bgVertical;
@@ -643,14 +643,14 @@ function JSimageFill(container)
 	var bgFill;
 	var bgFillSize;
 	
-	bgData = $(container).data('img-fill').split(',');
+	bgData = $(container).data('img-fill').split(' ');
 	
-	//Check vertical align
+	//Check hotizontal align
 	if(!bgData[0]){ //Check value
 		bgData[0] = 'center';
 	}
 	
-	//Check horizontal align
+	//Check vertical align
 	if(!bgData[1]){ //Check value
 		bgData[1] = 'center';
 	}
@@ -661,8 +661,8 @@ function JSimageFill(container)
 	}
 	
 	//Set variables
-	bgVertical = bgData[0];
-	bgHorizontal = bgData[1];
+	bgHorizontal = bgData[0];
+	bgVertical = bgData[1];
 	bgFill = bgData[2].indexOf('%') >= 0 || bgData[2].indexOf('px') >= 0 ||  bgData[2] === 'contain' ? false : true;
 	bgFillSize = bgData[2].indexOf('%') >= 0 || bgData[2].indexOf('px') >= 0 ? parseFloat(bgData[2].replace(/\x25|px/g, '')) : false;
 	
@@ -671,9 +671,9 @@ function JSimageFill(container)
 	{
 		//Set changes
 		$(container).imgLiquid({ 
-			fill: bgFill,
-			verticalAlign: bgVertical, 
 			horizontalAlign: bgHorizontal,
+			verticalAlign: bgVertical, 
+			fill: bgFill,
 		});
 	}
 	
@@ -682,7 +682,7 @@ function JSimageFill(container)
 	{
 		if(bgFillSize > 100 || bgFillSize < 100)
 		{
-			$(container).css('background-size',bgData[2]);
+			$(container).css('background-size', bgData[2]);
 		}
 	}
 }
@@ -1520,7 +1520,7 @@ function JSmainInit()
 	
 	//Apply Image Fill
 	$('.JSimgFill').each(function(){
-		JSimageFill($(this));
+		JSimgFill($(this));
 	});
 	
 	//Apply Paint Table
