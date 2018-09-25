@@ -6,10 +6,19 @@ var JSisLang = JSmainLang;
 var JSisHome;
 var JSisMobile;
 var JSisNav;
-var JScheckDisabled = $('body').data('js-check-disabled');
-var JScheckDisabledExceptions = ['#carousel'];
-var JScheckDisabledAlignment = ['medium','top'];
-var JScheckDisabledAnimate = true;
+var JShashTag = $('body').data('js-hashtag');
+var JShashTagExceptions = ['#carousel'];
+var JShashTagAlignment = ['medium','top'];
+var JShashTagAnimate = true;
+
+//Developer mode
+var JSdeveloper = function(data)
+				  {
+					  if($('*[data-js-developer="true"]').length > 0)
+					  {
+						  console.log(data);
+					  }
+				  };
 
 //IE8 Undefined console fix
 if (!window.console) console = {log: function() {}};
@@ -33,12 +42,18 @@ if (!window.console) console = {log: function() {}};
 //Check attr function
 $.fn.JShasAttr = function(name)
 {  
-   return this.attr(name) !== undefined;
+	//Dev log
+	JSdeveloper('[JS Function] Has Attr');
+	
+	return this.attr(name) !== undefined;
 };
 
 //Check outer height with padding/margin
 $.fn.JSouterHeight = function()
 {
+	//Dev log
+	JSdeveloper('[JS Function] Outer Height');
+	
 	if(!this[0]){ //Check value
 		return null;
 	}
@@ -50,6 +65,9 @@ $.fn.JSouterHeight = function()
 //Check outer width with padding/margin
 $.fn.JSouterWidth = function()
 {
+	//Dev log
+	JSdeveloper('[JS Function] Outer Width');
+	
 	if(!this[0]){ //Check value
 		return null;
 	}
@@ -61,6 +79,9 @@ $.fn.JSouterWidth = function()
 //Remove whitespaces between elements
 $.fn.JShtmlClean = function()
 {
+	//Dev log
+	JSdeveloper('[JS Function] HTML Clean');
+	
     this.contents().filter(function() {
         if (this.nodeType !== 3) {
             $(this).JShtmlClean();
@@ -77,6 +98,9 @@ $.fn.JShtmlClean = function()
 //Form validate
 $.fn.JSvalidateForm = function(options)
 {	
+	//Dev log
+	JSdeveloper('[JS Function] Validate Form');
+	
 	var settings = $.extend({
 		noValidate		: '',
 		hasConfirm		: false,
@@ -345,6 +369,9 @@ $.fn.JSvalidateForm = function(options)
 //Form validate email
 function JSvalidateEmail(field)
 {
+	//Dev log
+	JSdeveloper('[JS Function] Validate Email');
+	
     var emailReg = /^([\w-\.]+@([\w-]+\.)+[\w-]{2,4})?$/;
     
 	if (!emailReg.test(field)){
@@ -357,6 +384,9 @@ function JSvalidateEmail(field)
 //Form validate numbers
 function JSvalidateNumber(field)
 {
+	//Dev log
+	JSdeveloper('[JS Function] Validate Number');
+	
     var numberReg = /^-?\d+(\.\d+)?$/;
     
 	if (!numberReg.test(field)){
@@ -369,6 +399,9 @@ function JSvalidateNumber(field)
 //Form validate empty
 function JSvalidateEmpty(field)
 {
+	//Dev log
+	JSdeveloper('[JS Function] Validate Empty');
+	
     if(!field || /^\s*$/.test(field)){
     	return false;
     }
@@ -380,6 +413,9 @@ function JSvalidateEmpty(field)
 //Convert string to boolean
 function JStoBoolean(value)
 {
+	//Dev log
+	JSdeveloper('[JS Function] Convert To Boolean');
+	
     var strValue = String(value).toLowerCase();
     strValue = ((!isNaN(strValue) && strValue !== '0') &&
         strValue !== undefined &&
@@ -391,6 +427,9 @@ function JStoBoolean(value)
 //Get max width between elements
 function JSgetMaxWidth(elems, getRect)
 {
+	//Dev log
+	JSdeveloper('[JS Function] Get Max Width');
+	
     return Math.max.apply(null, elems.map(function()
     {
 		if(getRect === true){
@@ -405,6 +444,9 @@ function JSgetMaxWidth(elems, getRect)
 //Get max height between elements
 function JSgetMaxHeight(elems, getRect)
 {
+	//Dev log
+	JSdeveloper('[JS Function] Get Max Height');
+	
     return Math.max.apply(null, elems.map(function()
     {
 		if(getRect === true){
@@ -419,6 +461,9 @@ function JSgetMaxHeight(elems, getRect)
 //Responsive Code
 function JSresponsiveCode()
 {
+	//Dev log
+	JSdeveloper('[JS Function] Responsive Code');
+	
 	var bodyWidth = document.body.clientWidth; //$(window).width();
 	var bodyHeight = $(window).height();
 	var bodyOrientation = bodyWidth > bodyHeight ? true : false;
@@ -446,6 +491,9 @@ $(window).bind("orientationchange", JSresponsiveCode);
 //LightGallery destroy function
 function JSdestroyLightGallery()
 {
+	//Dev log
+	JSdeveloper('[JS Function] Destroy Light Gallery');
+	
 	//Check plugin
 	if($.fn.lightGallery !== 'undefined')
 	{
@@ -455,6 +503,9 @@ function JSdestroyLightGallery()
 //Lightgallery load function
 function JSloadLightGallery()
 {	
+	//Dev log
+	JSdeveloper('[JS Function] Load Light Gallery');
+	
 	//Check plugin
 	if($.fn.lightGallery !== 'undefined')
 	{
@@ -637,6 +688,9 @@ function JSloadLightGallery()
 //ImgLiquid auto-fill background function
 function JSimgFill(container)
 {	
+	//Dev log
+	JSdeveloper('[JS Function] Img Fill');
+	
 	var bgData = new Array();
 	var bgVertical;
 	var bgHorizontal;
@@ -690,6 +744,9 @@ function JSimgFill(container)
 //Get element height changes
 function JSelementHeightChange(elm, callback)
 {
+	//Dev log
+	JSdeveloper('[JS Function] Element Height Change');
+	
 	var lastHeight = $(elm).height(), newHeight;
 	(function run(){
 		newHeight = $(elm).height();
@@ -719,6 +776,9 @@ function JSelementHeightChange(elm, callback)
 //Text cut function
 function JStextCut(container)
 {	
+	//Dev log
+	JSdeveloper('[JS Function] Text Cut');
+	
 	$(container).each(function(){
 		$(this).addClass('JStextCutElem');
 		$(this).html('<div><div>'+$(this).html()+'</div></div>');
@@ -728,6 +788,9 @@ function JStextCut(container)
 //Text auto size function (Note: Use this on responsive code to better results)
 function JStextSize(container, fontSize)
 {
+	//Dev log
+	JSdeveloper('[JS Function] Text Size');
+	
 	$(container).each(function (i,box){
 		var width = $(box).width(),
 			html = '<span style="white-space:nowrap"></span>',
@@ -747,6 +810,9 @@ function JStextSize(container, fontSize)
 //Show alert modal box using BootBox plugin
 function JSmodalAlert(title, text, size, align, animate)
 {
+	//Dev log
+	JSdeveloper('[JS Function] Modal Alert');
+	
 	if(!size || !size.match(/^(small|medium|large|extra-large)$/)){ //Check value
 		size = 'medium';
 	}
@@ -777,6 +843,9 @@ function JSmodalAlert(title, text, size, align, animate)
 //Show alert modal box using BootBox plugin (Content)
 function JSmodalContent(title, element, size, align, animate)
 {
+	//Dev log
+	JSdeveloper('[JS Function] Modal Content');
+	
 	if(!size || !size.match(/^(small|medium|large|extra-large)$/)){ //Check value
 		size = 'medium';
 	}
@@ -805,8 +874,11 @@ function JSmodalContent(title, element, size, align, animate)
 }
 
 //Show alert modal box using BootBox plugin (Ajax)
-function JSmodalAjax(title, url, loading, debug, size, align, animate)
+function JSmodalAjax(title, url, loading, size, align, animate)
 {
+	//Dev log
+	JSdeveloper('[JS Function] Modal Ajax');
+	
 	if(!size || !size.match(/^(small|medium|large|extra-large)$/)){ //Check value
 		size = 'medium';
 	}
@@ -823,19 +895,14 @@ function JSmodalAjax(title, url, loading, debug, size, align, animate)
 		loading = false;
 	}
 	
-	if(!debug){ //Check value
-		debug = false;
-	}
-	
 	$.ajax({
 		url: url,
 		type: 'GET', 
 		dataType: 'html',
 		beforeSend: function(){
 			//Loading
-			if(debug){
-				console.log("JSmodalAjax Loading ...");
-			}
+			JSdeveloper('JSmodalAjax Loading ...');
+			
 			//Show loading colored icon
 			if(loading){
 				$("body").append("<div class='JSloading "+loading+"'></div>");
@@ -843,9 +910,8 @@ function JSmodalAjax(title, url, loading, debug, size, align, animate)
 		},
 		success: function(data){  
 			//Loaded
-			if(debug){
-				console.log("JSmodalAjax Loaded!");
-			}
+			JSdeveloper("JSmodalAjax Loaded!");
+			
 			//Check plugin
 			if(typeof bootbox !== 'undefined')
 			{
@@ -866,12 +932,10 @@ function JSmodalAjax(title, url, loading, debug, size, align, animate)
 		},
 		error: function(xhr, status, error){
 			//Error
-			if(debug){
-				console.log("JSmodalAjax Error! ("+xhr.status+")");
+			JSdeveloper("JSmodalAjax Error! ("+xhr.status+")");
 				
-				if(!(xhr.responseText === undefined || xhr.responseText === null || xhr.responseText == '')){
-					console.log("---------------\n"+xhr.responseText);
-				}
+			if(!(xhr.responseText === undefined || xhr.responseText === null || xhr.responseText == '')){
+				JSdeveloper("---------------\n"+xhr.responseText);
 			}
 			//Remove loading icon
 			if(loading){
@@ -884,6 +948,9 @@ function JSmodalAjax(title, url, loading, debug, size, align, animate)
 //YouTube get ID from URL
 function JSyouTubeParser(url)
 {
+	//Dev log
+	JSdeveloper('[JS Function] YouTube URL Parser');
+	
     var regExp = /^.*((youtu.be\/)|(v\/)|(\/u\/\w\/)|(embed\/)|(watch\?))\??v?=?([^#\&\?]*).*/;
     var match = url.match(regExp);
     return (match&&match[7].length==11)? match[7] : false;
@@ -899,6 +966,9 @@ function JSyouTubeParser(url)
 //Vimemo get ID from URL
 function JSvimeoParser(url)
 {
+	//Dev log
+	JSdeveloper('[JS Function] Vimeo URL Parser');
+	
     var regExp = /^.*(vimeo\.com\/)((channels\/[A-z]+\/)|(groups\/[A-z]+\/videos\/))?([0-9]+)/;
     var match = url.match(regExp);
     return match[5];
@@ -911,6 +981,9 @@ function JSvimeoParser(url)
 //Video launch modal box function
 function JSvideoLaunch(title, url, share, autoplay, size, align, animate)
 {	
+	//Dev log
+	JSdeveloper('[JS Function] Video Launch');
+	
 	if(!title){ //Check value
 		title = false;
 	}
@@ -1040,18 +1113,27 @@ function JSvideoLaunch(title, url, share, autoplay, size, align, animate)
 //Capitalize first function
 function JScapitalizeFirst(string)
 {
+	//Dev log
+	JSdeveloper('[JS Function] Capitalize First');
+	
     return string.charAt(0).toUpperCase() + string.slice(1);
 }
 
 //Convert to slug function
 function JStoSlug(string)
 {
+	//Dev log
+	JSdeveloper('[JS Function] Convert To Slug');
+	
 	return string.toLowerCase().replace(/[^\w ]+/g,'').replace(/ +/g,'-');
 }
 
 //Auto scroll function
 function JSautoScroll(selector, animated, distance)
-{      
+{
+	//Dev log
+	JSdeveloper('[JS Function] Auto Scroll');
+	
     var scrollDistance = distance;
     var scrollTarget = $(selector);
 	var scrollAnimated = animated == true ? 500 : animated;
@@ -1065,19 +1147,29 @@ function JSautoScroll(selector, animated, distance)
 }
 
 //Disable right click menu
-function JSdisableClick(enable)
+function JSdisabledClick(element, message)
 {
-	if(enable){
-		$("body").attr("oncontextmenu","return false");
+	//Dev log
+	JSdeveloper('[JS Function] Check Disabled Click');
+	
+	if(!message){ //Check value
+		message = false;
 	}
-	else{
-		$("body").removeAttr("oncontextmenu");
-	}
+	
+	$(element).contextmenu(function(e){
+		if(message){
+			alert(message);
+		}
+		e.preventDefault();
+	});
 }
 
 //Get URL parameter from URL (PHP $_GET like)
 function JSgetUrlParameter(sParam)
 {
+	//Dev log
+	JSdeveloper('[JS Function] Get URL Parameter');
+	
 	var sPageURL = decodeURIComponent(window.location.search.substring(1)),
 		sURLVariables = sPageURL.split('&'),
 						sParameterName,
@@ -1094,6 +1186,9 @@ function JSgetUrlParameter(sParam)
 //Get URL parameter from Script SRC (PHP $_GET like)
 function JSgetSrcParameter(sParam)
 {
+	//Dev log
+	JSdeveloper('[JS Function] Get Source Parameter');
+	
 	var scripts = document.getElementsByTagName('script');
 	var index = scripts.length - 1;
 	var myScript = scripts[index];
@@ -1117,6 +1212,9 @@ function JSgetSrcParameter(sParam)
 //Convert strings to links function
 function JSlinkify(inputText)
 {
+	//Dev log
+	JSdeveloper('[JS Function] Linkify');
+	
     var replacedText, replacePattern1, replacePattern2, replacePattern3;
 
     //URLs starting with http://, https://, or ftp://
@@ -1137,19 +1235,25 @@ function JSlinkify(inputText)
 //Remove HTML tags function
 function JSstripTags(container, items)
 {
+	//Dev log
+	JSdeveloper('[JS Function] Strip Tags');
+	
 	container.find("*").not(items).each(function() {
 		$(this).remove();
 	});
 }
 
 //Check hasthag disabled links function
-function JScheckDisabledLink(string)
+function JShashTagLink(string)
 {	
+	//Dev log
+	JSdeveloper('[JS Function] Check Disabled Link');
+	
 	var textUrl = string;
-	var exceptions = JScheckDisabledExceptions;
-	var size = JScheckDisabledAlignment[0];
-	var align = JScheckDisabledAlignment[1];
-	var animate = JScheckDisabledAnimate;
+	var exceptions = JShashTagExceptions;
+	var size = JShashTagAlignment[0];
+	var align = JShashTagAlignment[1];
+	var animate = JShashTagAnimate;
 	
 	if(!size || !size.match(/^(small|medium|large|extra-large)$/)){ //Check value
 		size = 'medium';
@@ -1202,6 +1306,9 @@ function JScheckDisabledLink(string)
 //Window pop-up function
 function JSwindowPopup(element, errortitle, errormsg)
 {	
+	//Dev log
+	JSdeveloper('[JS Function] Window Pop-Up');
+	
 	var size = $(element).data('win-modal-size');
 	var align = $(element).data('win-modal-align');
 	var animate = $(element).data('win-modal-animate');
@@ -1291,6 +1398,9 @@ function JSwindowPopup(element, errortitle, errormsg)
 //Map launch function
 function JSmapLaunch(element)
 {	
+	//Dev log
+	JSdeveloper('[JS Function] Map Launch');
+	
 	var size = $(element).data('map-modal-size');
 	var align = $(element).data('map-modal-align');
 	var animate = $(element).data('map-modal-animate');
@@ -1373,6 +1483,9 @@ function JSmapLaunch(element)
 //Paginator group
 function JSpaginatorGroup(limit, limitMobile, exceptions)
 {
+	//Dev log
+	JSdeveloper('[JS Function] Paginator Group');
+	
 	if(!exceptions){ //Check value
 		exceptions = true;
 	}
@@ -1399,6 +1512,9 @@ function JSpaginatorGroup(limit, limitMobile, exceptions)
 //Paint & clean table
 function JSpaintTable(container)
 {
+	//Dev log
+	JSdeveloper('[JS Function] Paint Table');
+	
 	var paintGroup = container.data('paint-group');
 	var paintGroupType = container.data('paint-group-type');
 	var paintHeader = container.data('paint-header');
@@ -1468,6 +1584,9 @@ function JSpaintTable(container)
 //Main Initialization
 function JSmainInit()
 {
+	//Dev log
+	JSdeveloper('[JS Function] Main Init');
+	
 	//Tooltip load
 	$('*[data-toggle="tooltip"]').tooltip({ trigger: "hover" });
 	
@@ -1609,35 +1728,37 @@ $(document).ready(function(){
 
 /* ================================================= BASE DOCUMENT READY ================================================= */
 	
+	//Dev log
+	JSdeveloper('[JS State] Document Ready');
+	
 	//Check home
 	JSisHome = $('.JSisHome').length > 0 ? true : false;
 
 	//Check mobile
 	JSisMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini|BB10|PlayBook|MeeGo/i.test(navigator.userAgent);
 	
-	
 	//Check navigators
 	JSisNav = function(name,version)
 			  {
-				//Check plugin
-				if($.fn.browser !== 'undefined')
-				{
-					var checkData = {
-									 'ie' 			: { 'name' : 'Microsoft Internet Explorer', 'internal' : $.browser.msie },
-									 'edge' 		: { 'name' : 'Microsoft Edge', 'internal' : '' },
-									 'chrome' 		: { 'name' : 'Chrome', 'internal' : $.browser.webkit },
-									 'firefox' 		: { 'name' : 'Firefox', 'internal' : $.browser.mozilla },
-									 'safari' 		: { 'name' : 'Safari', 'internal' : $.browser.webkit },
-									 'opera' 		: { 'name' : 'Opera', 'internal' : $.browser.opera },
-									};
-
-					var checkBrowser = $.browser.name === checkData[name].name;
-					var checkVersion = version === undefined ? true : ($.browser.version == version);
-					var checkInternal = checkData[name].internal === undefined ? true : (checkData[name].internal === true);
-					var checkFinal = checkBrowser && checkVersion && checkInternal ? true : false;
-
-					return checkFinal;
-				}
+					//Check plugin
+					if($.fn.browser !== 'undefined')
+					{
+						var checkData = {
+					 					'ie' 			: { 'name' : 'Microsoft Internet Explorer', 'internal' : $.browser.msie },
+					 					'edge' 		: { 'name' : 'Microsoft Edge', 'internal' : '' },
+					 					'chrome' 		: { 'name' : 'Chrome', 'internal' : $.browser.webkit },
+					 					'firefox' 		: { 'name' : 'Firefox', 'internal' : $.browser.mozilla },
+					 					'safari' 		: { 'name' : 'Safari', 'internal' : $.browser.webkit },
+					 					'opera' 		: { 'name' : 'Opera', 'internal' : $.browser.opera },
+										};
+					
+						var checkBrowser = $.browser.name === checkData[name].name;
+						var checkVersion = version === undefined ? true : ($.browser.version == version);
+						var checkInternal = checkData[name].internal === undefined ? true : (checkData[name].internal === true);
+						var checkFinal = checkBrowser && checkVersion && checkInternal ? true : false;
+					
+						return checkFinal;
+					}
 			  };
 	
 	//Disable button auto-focus
@@ -1664,11 +1785,11 @@ $(document).ready(function(){
     });
 	
 	//Modal on disabled links
-	if(!JScheckDisabled)
+	if(JShashTag)
 	{
 		$(document).on("click", "a[href*=\\#]", function(e){
 			var source =  $(this).attr("href");
-			if(!(JScheckDisabledLink(source))){
+			if(!(JShashTagLink(source))){
 				e.preventDefault();
 			}
 		});
@@ -1708,7 +1829,7 @@ $(window).bind("load", function(){
 
 /* ================================================= BASE WINDOWS LOAD ================================================= */
 	
-	
+	JSdeveloper('[JS State] Window Load');
 	
 /* ================================================= BASE WINDOWS LOAD ================================================= */
 
@@ -1717,6 +1838,9 @@ $(window).bind("load", function(){
 $(document).on("JSresponsiveCode", function(event, bodyWidth, bodyHeight, bodyOrientation, bodyScreen){
 
 /* ================================================= BASE RESPONSIVE CODE ================================================= */
+	
+	//Dev log
+	JSdeveloper('[JS State] Responsice Code');
 	
 	//Apply Text Size
 	$(".JStextSize").each(function(){
@@ -1732,7 +1856,8 @@ $(document).ajaxStart(function(){
 
 /* ================================================= BASE AJAX START ================================================= */
 	
-	
+	//Dev log
+	JSdeveloper('[JS State] Ajax Start');
 	
 /* ================================================= BASE AJAX START ================================================= */
 
@@ -1742,6 +1867,10 @@ $(document).ajaxComplete(function(){
 
 /* ================================================= BASE AJAX COMPLETE ================================================= */
 	
+	//Dev log
+	JSdeveloper('[JS State] Ajax Complete');
+	
+	//Launch main functions
 	JSmainInit();
 	
 /* ================================================= BASE AJAX COMPLETE ================================================= */

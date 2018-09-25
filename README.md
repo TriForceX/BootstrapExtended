@@ -64,6 +64,7 @@ Base structure for web sites with reusable parts of source code or functions mai
 	- Get external functions
 - JS Features:
 	- Custom language support
+	- Custom console log (developer)
 	- Check attr function
 	- Check outer width & height with padding/margin
 	- Remove whitespaces between elements
@@ -81,7 +82,7 @@ Base structure for web sites with reusable parts of source code or functions mai
 	- Capitalize first function
 	- Convert to slug function
 	- Auto scroll function
-	- Disable right click menu
+	- Disable right click menu on element
 	- Get URL parameter from URL (PHP $_GET like)
 	- Get URL parameter from Script SRC (PHP $_GET like)
 	- Convert strings to links function
@@ -89,6 +90,7 @@ Base structure for web sites with reusable parts of source code or functions mai
 	- Check hasthag disabled links function
 	- Window pop-up function
 	- Map launch function for Google Maps and Waze
+	- Table painter & cleaner
 	- Check validations for home page, mobile and navigators
 - CSS Features:
 	- Some features from Bootstrap 4

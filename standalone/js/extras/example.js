@@ -94,13 +94,13 @@ $(document).ready(function(){
 	console.log('URL: '+JSmainUrl);
 	
 	//Example aditional exceptions for disabled links
-	JScheckDisabledExceptions.push('#example');
+	JShashTagExceptions.push('#example');
 	
 	//Example aditional exceptions custom size & alignment
-	JScheckDisabledAlignment = ['small','center'];
+	JShashTagAlignment = ['small','center'];
 	
 	//Example aditional exceptions custom size & alignment
-	JScheckDisabledAnimate = true;
+	JShashTagAnimate = true;
 	
 /* ================================================= EXAMPLE DOCUMENT READY ================================================= */
 
