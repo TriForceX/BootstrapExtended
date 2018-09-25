@@ -2160,4 +2160,50 @@
 }
 /* Text Align */
 
+/* Text Truncate */
+
+.text-truncate {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.text-truncate-multi-xs,
+.text-truncate-multi-sm,
+.text-truncate-multi-md,
+.text-truncate-multi-lg{
+	position: relative;
+	overflow: hidden;
+}
+.text-truncate-multi-xs:after,
+.text-truncate-multi-sm:after,
+.text-truncate-multi-md:after,
+.text-truncate-multi-lg:after {
+	position: absolute;
+	content: "";
+	right: 0px;
+	bottom: 0px;
+	background: -moz-linear-gradient(-45deg, rgba(255,255,255,0) 0%, rgba(255,255,255,1) 80%, rgba(255,255,255,1) 100%);
+	background: -webkit-linear-gradient(-45deg, rgba(255,255,255,0) 0%,rgba(255,255,255,1) 80%,rgba(255,255,255,1) 100%);
+	background: linear-gradient(135deg, rgba(255,255,255,0) 0%,rgba(255,255,255,1) 80%,rgba(255,255,255,1) 100%);
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00ffffff', endColorstr='#ffffff',GradientType=1 );
+}
+.text-truncate-multi-xs:after {
+	width: 35px;
+	height: 20px;
+}
+.text-truncate-multi-sm:after {
+	width: 45px;
+	height: 30px;
+}
+.text-truncate-multi-md:after {
+	width: 55px;
+	height: 40px;
+}
+.text-truncate-multi-lg:after {
+	width: 65px;
+	height: 50px;
+}
+
+/* Text Truncate */
+
 /* ================================================= BOOTSTRAP 4 ================================================= */
