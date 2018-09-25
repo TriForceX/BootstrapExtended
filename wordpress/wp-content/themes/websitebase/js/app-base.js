@@ -1777,20 +1777,20 @@ $(document).ready(function(){
 	}
 	
 	//Custom file input change
-	$(document).on("change", ".form-group .custom-file input[type='file']", function(){
+	$(document).on('change', '.form-group .custom-file input[type="file"]', function(){
 		var placeholder = $(this).JShasAttr('placeholder') ? $(this).attr('placeholder') : '';
 		var filename = $(this)[0].files.length ? $(this)[0].files[0].name : placeholder;
 		$(this).parent().find('.custom-file-text > span').html(filename);
 	});
 	
 	//Check form reset
-	$(document).on("reset", "form", function(e){
-		$(this).find('.form-group').removeClass('has-error');
-		$(this).find('.form-group').removeClass('has-warning');
-		$(this).find('.form-group').removeClass('has-success');
-		$(this).find('.form-group input[type="checkbox"]').prop('checked', false).parent().removeClass('active');
-		$(this).find('.form-group input[type="radio"]').prop('checked', false).parent().removeClass('active');
-		$(this).find('.form-group input[type="file"]').each(function(){
+	$(document).on('click', 'form *[type="reset"]', function(e){
+		$(this).parents('form').find('.form-group').removeClass('has-error');
+		$(this).parents('form').find('.form-group').removeClass('has-warning');
+		$(this).parents('form').find('.form-group').removeClass('has-success');
+		$(this).parents('form').find('.form-group input[type="checkbox"]').prop('checked', false).parent().removeClass('active');
+		$(this).parents('form').find('.form-group input[type="radio"]').prop('checked', false).parent().removeClass('active');
+		$(this).parents('form').find('.form-group input[type="file"]').each(function(){
 			var placeholder = $(this).JShasAttr('placeholder') ? $(this).attr('placeholder') : '';
 			$(this).parent().find('.custom-file-text > span').html(placeholder);
 		});
