@@ -1,11 +1,20 @@
 /* ================================================= BASE DEVELOPER ================================================= */
 
+//Check element existance
+function JSexist(elem)
+{
+	return elem.length > 0;
+}
+
 //Custom console log (developer mode)
 function JSdeveloper(data)
 {
-	if($('*[data-js-developer]').length > 0)
+	if(JSexist($('*[data-js-developer]')))
 	{
-		console.log(data);
+		if(!(JSexist($('*[data-js-developer="nobase"]')) && /\[JS/i.test(data)))
+		{
+			console.log(data);
+		}
 	}
 }
 
@@ -133,7 +142,7 @@ var JSlanguage = {
 			};
 
 //Set default language
-if(JSmainLang === undefined || JSmainLang === null || JSmainLang == ''){ //Empty value
+if(JSmainLang === undefined || JSmainLang === null || JSmainLang == ''){ //Check value
 	JSmainLang = 'en';
 }
 

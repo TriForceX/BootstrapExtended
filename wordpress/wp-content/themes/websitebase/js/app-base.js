@@ -2,14 +2,33 @@
 
 //Global variables
 var JSmainUrl = '@global-url';
-var JSisLang = JSmainLang;
-var JSisHome;
-var JSisMobile;
-var JSisNav;
-var JShashTag = $('body').data('js-hashtag');
+var JSisHome = JSexist($('.JSisHome'));
+var JSisMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini|BB10|PlayBook|MeeGo/i.test(navigator.userAgent);
 var JShashTagExceptions = ['#carousel'];
 var JShashTagAlignment = ['medium','top'];
 var JShashTagAnimate = true;
+var JSisNav = function(name, version)
+			  {
+					//Check plugin
+					if($.fn.browser !== 'undefined')
+					{
+						var checkData = {
+					 					'ie' 			: { 'name' : 'Microsoft Internet Explorer', 'internal' : $.browser.msie },
+					 					'edge' 		: { 'name' : 'Microsoft Edge', 'internal' : '' },
+					 					'chrome' 		: { 'name' : 'Chrome', 'internal' : $.browser.webkit },
+					 					'firefox' 		: { 'name' : 'Firefox', 'internal' : $.browser.mozilla },
+					 					'safari' 		: { 'name' : 'Safari', 'internal' : $.browser.webkit },
+					 					'opera' 		: { 'name' : 'Opera', 'internal' : $.browser.opera },
+										};
+					
+						var checkBrowser = $.browser.name === checkData[name].name;
+						var checkVersion = version === undefined ? true : ($.browser.version == version);
+						var checkInternal = checkData[name].internal === undefined ? true : (checkData[name].internal === true);
+						var checkFinal = checkBrowser && checkVersion && checkInternal ? true : false;
+					
+						return checkFinal;
+					}
+			  };
 
 //IE8 Undefined console fix
 if (!window.console) console = {log: function() {}};
@@ -452,19 +471,17 @@ function JSgetMaxHeight(elems, getRect)
 //Responsive Code
 function JSresponsiveCode()
 {
-	//Dev log
-	JSdeveloper('[JS Function] Responsive Code');
-	
 	var bodyWidth = document.body.clientWidth; //$(window).width();
 	var bodyHeight = $(window).height();
-	var bodyOrientation = bodyWidth > bodyHeight ? true : false;
+	var bodyOrientation = {'landscape'	: bodyWidth > bodyHeight ? true : false,
+					  	   'portrait'	: bodyWidth < bodyHeight ? true : false}; 
 	var bodyScreen = {'xs'	: parseFloat('@screen-xs'), //480
 					  'sm'	: parseFloat('@screen-sm'), //768
 					  'md'	: parseFloat('@screen-md'), //992
 					  'lg'	: parseFloat('@screen-lg'), //1200
 					  'xl'	: parseFloat('@screen-xl')}; //1920
 
-	if (bodyWidth)
+	if(bodyWidth)
 	{
 		//Send data to event
 		$(document).trigger("JSresponsiveCode", [bodyWidth, bodyHeight, bodyOrientation, bodyScreen]);
@@ -521,7 +538,7 @@ function JSloadLightGallery()
 				$(this).addClass("JSlightGalleryMode");
 			}
 
-			if($(".JSlightGalleryMode").length > 0 && galPageTotal > 1){
+			if(JSexist($(".JSlightGalleryMode")) && galPageTotal > 1){
 				if($(".JSlightGallery.JSlightGalleryMode .lg-thumb-prev").length < 1 && 
 				   $(".JSlightGallery.JSlightGalleryMode .lg-thumb-next").length < 1){
 					$(".JSlightGallery.JSlightGalleryMode").prepend("<div class='lg-thumb-prev' href='"+galLoadThumb+"' title='"+JSlang('@lgtitle-prev-text')+"'><img src='#'></div>");
@@ -539,7 +556,7 @@ function JSloadLightGallery()
 				share: galShare,
 			}); 
 
-			if($(".JSlightGalleryMode").length > 0 && galPageTotal > 1){
+			if(JSexist($(".JSlightGalleryMode")) && galPageTotal > 1){
 
 				var total;
 				var totalSlide;
@@ -755,7 +772,7 @@ function JSelementHeightChange(elm, callback)
 	})();
 	
 	//Usage
-	/*if($(".container").length > 0)
+	/*if(JSexist($(".container")))
 	{
 		JSelementHeightChange(".container", function(){
 			console.log('Container height has changed');
@@ -1235,10 +1252,10 @@ function JSstripTags(container, items)
 }
 
 //Check hasthag disabled links function
-function JShashTagLink(string)
+function JShashTag(string)
 {	
 	//Dev log
-	JSdeveloper('[JS Function] Check Disabled Link');
+	JSdeveloper('[JS Function] Check Hash Tag');
 	
 	var textUrl = string;
 	var exceptions = JShashTagExceptions;
@@ -1579,13 +1596,16 @@ function JSmainInit()
 	JSdeveloper('[JS Function] Main Init');
 	
 	//Tooltip load
-	$('*[data-toggle="tooltip"]').tooltip({ trigger: "hover" });
+	$('*[data-toggle="tooltip"]').tooltip({ trigger: 'hover' });
 	
 	//Popover load
 	$('*[data-toggle="popover"]').popover();
 	
 	//Load LightGallery
-	JSloadLightGallery();
+	if(JSexist('.JSlightGallery'))
+	{
+		JSloadLightGallery();
+	}
 	
 	//Check plugin
 	if($.fn.swipe !== 'undefined')
@@ -1700,9 +1720,9 @@ function JSmainInit()
 	        }
 			
 			$(this).css({
-						'visibility':'hidden',
-						'width':getSize[0].replace(/p/g,''),
-						'height':getSize[1].replace(/p/g,''),
+						'visibility' :	'hidden',
+						'width'		 :	getSize[0].replace(/p/g,''),
+						'height'	 :	getSize[1].replace(/p/g,''),
 						});
 			
 			var fakeImage = '<div class="d-table position-absolute w-100 h-100" style="background-color: '+bg+'; color: '+fg+'; top: 0px; font-size: 45px; font-weight: bold">'+
@@ -1721,36 +1741,6 @@ $(document).ready(function(){
 	
 	//Dev log
 	JSdeveloper('[JS State] Document Ready');
-	
-	//Check home
-	JSisHome = $('.JSisHome').length > 0 ? true : false;
-
-	//Check mobile
-	JSisMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini|BB10|PlayBook|MeeGo/i.test(navigator.userAgent);
-	
-	//Check navigators
-	JSisNav = function(name,version)
-			  {
-					//Check plugin
-					if($.fn.browser !== 'undefined')
-					{
-						var checkData = {
-					 					'ie' 			: { 'name' : 'Microsoft Internet Explorer', 'internal' : $.browser.msie },
-					 					'edge' 		: { 'name' : 'Microsoft Edge', 'internal' : '' },
-					 					'chrome' 		: { 'name' : 'Chrome', 'internal' : $.browser.webkit },
-					 					'firefox' 		: { 'name' : 'Firefox', 'internal' : $.browser.mozilla },
-					 					'safari' 		: { 'name' : 'Safari', 'internal' : $.browser.webkit },
-					 					'opera' 		: { 'name' : 'Opera', 'internal' : $.browser.opera },
-										};
-					
-						var checkBrowser = $.browser.name === checkData[name].name;
-						var checkVersion = version === undefined ? true : ($.browser.version == version);
-						var checkInternal = checkData[name].internal === undefined ? true : (checkData[name].internal === true);
-						var checkFinal = checkBrowser && checkVersion && checkInternal ? true : false;
-					
-						return checkFinal;
-					}
-			  };
 	
 	//Disable button auto-focus
 	$(document).on("shown.bs.modal", function(){
@@ -1776,11 +1766,11 @@ $(document).ready(function(){
     });
 	
 	//Modal on disabled links
-	if(JShashTag)
+	if(JSexist($('*[data-js-hashtag]')))
 	{
 		$(document).on("click", "a[href*=\\#]", function(e){
 			var source =  $(this).attr("href");
-			if(!(JShashTagLink(source))){
+			if(!(JShashTag(source))){
 				e.preventDefault();
 			}
 		});
@@ -1831,7 +1821,7 @@ $(document).on("JSresponsiveCode", function(event, bodyWidth, bodyHeight, bodyOr
 /* ================================================= BASE RESPONSIVE CODE ================================================= */
 	
 	//Dev log
-	JSdeveloper('[JS State] Responsice Code');
+	JSdeveloper('[JS State] Responsive Code');
 	
 	//Apply Text Size
 	$(".JStextSize").each(function(){

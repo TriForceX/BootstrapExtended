@@ -6,10 +6,12 @@ function JSvalidateCustom(field)
 	//Dev log
 	JSdeveloper('[JS Example] Validate Custom');
 	
-	if(field === 'Custom'){
+	if(field === 'Custom')
+	{
 		return true;
 	}
-	else{
+	else
+	{
 		return false;
 	}
 }
@@ -38,12 +40,15 @@ function JSgoogleTranslateStyles()
 				'</style>';
 	
 	//Menu iframe
-	if($('.goog-te-menu-frame').contents().find('body').length > 0){
-		if($('.goog-te-menu-frame').contents().find('#JSgoogleTranslateStyles').length < 1){
+	if(JSexist($('.goog-te-menu-frame').contents().find('body')))
+	{
+		if($('.goog-te-menu-frame').contents().find('#JSgoogleTranslateStyles').length < 1)
+		{
 			$('.goog-te-menu-frame').contents().find('body').prepend(css);
 		}
 	}
-	else{
+	else
+	{
 		setTimeout(JSgoogleTranslateStyles, 1000);
 	}
 }
@@ -58,7 +63,8 @@ $(document).ready(function(){
 	JSdeveloper('[JS Example] Document Ready');
 	
 	//Set language on the fly
-	if(JSgetUrlParameter('lang-test')){
+	if(JSgetUrlParameter('lang-test'))
+	{
 		JSmainLang = JSgetUrlParameter('lang-test');
 	}
 	
@@ -79,8 +85,9 @@ $(document).ready(function(){
 	});
 	
 	//Example scroll to gallery page
-	if (JSgetUrlParameter('page')){
-		JSautoScroll(".JSlightGalleryExample",true,70);
+	if(JSgetUrlParameter('page'))
+	{
+		JSautoScroll(".JSlightGalleryExample", true, 70);
 	}
 	
 	//Example form validation
@@ -126,7 +133,10 @@ $(window).bind("load", function() {
 	$(".JSloadProgressTest .progress-bar").attr("aria-valuenow","100");
 	
 	//Example Google Translate Widget styling
-	JSgoogleTranslateStyles();
+	if(JSexist($('#google_translate_element')))
+	{
+		JSgoogleTranslateStyles();
+	}
 	
 /* ================================================= EXAMPLE WINDOWS LOAD ================================================= */
 
@@ -143,16 +153,18 @@ $(document).on("JSresponsiveCode", function(event, bodyWidth, bodyHeight, bodyOr
 	$("body").attr("window-size",bodyWidth+"x"+bodyHeight);
 	
 	//Example lower than tablet
-	if (bodyWidth < bodyScreen.sm)
+	if(bodyWidth < bodyScreen.sm)
 	{
 		console.log('Tablet size and lower!');
 	}
 	
 	//Example orientation
-	if(bodyOrientation){ 
+	if(bodyOrientation.landscape)
+	{ 
 		$("body").attr("window-orientation","landscape");
 	}
-	else{ 
+	else
+	{ 
 		$("body").attr("window-orientation","portrait");
 	}
 	

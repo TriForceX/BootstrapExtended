@@ -368,7 +368,7 @@ $css_data['vars'] = array(
 			<tbody>
 				<tr>
 					<td class="notranslate">$jsFiles</td>
-					<td>Defines which <b>JS</b> files will be called, you can add more to the array. The <code>app-base.js</code> is used to be execute all main stuff and functions, <code>app-lang.js</code> is used to be set the main language settings.
+					<td>Defines which <b>JS</b> files will be called, you can add more to the array. The <code>app-base.js</code> is used to be execute all main stuff and functions, <code>app-init.js</code> is used to be set the main language settings.
 					</td>
 				</tr>
 				<tr>
@@ -387,7 +387,7 @@ $css_data['vars'] = array(
 			<pre><code class="language-html" data-lang="html">...<br>$js_minify = isset($_GET['unminify']) ? false : true;<br>
 //Defaults
 $js_data['file'] = array(
-			'app-lang.js',
+			'app-init.js',
 			'app-base.js',
 			'app-theme.js',
 			);<br>
@@ -407,9 +407,9 @@ $js_data['vars'] = array(
 				<h3 class="panel-title">Note for included JS files</h3>
 			</div>
 			<div class="panel-body">
-				The file <code>app-theme.js</code> it will contain all the main code for yout website. The file <code>extras/example.js</code> is only for tests and references, you can delete with no problems. Is not recomemded to modify the <code>app-lang.js</code> or <code>app-base.js</code> because contains the main functions inside. <b>If you want add extra stuff, just add it in</b> <code>app-theme.js</code> <b>or</b> <code>app-extras.php</code>
+				The file <code>app-theme.js</code> it will contain all the main code for yout website. The file <code>extras/example.js</code> is only for tests and references, you can delete with no problems. Is not recomemded to modify the <code>app-init.js</code> or <code>app-base.js</code> because contains the main functions inside. <b>If you want add extra stuff, just add it in</b> <code>app-theme.js</code> <b>or</b> <code>app-extras.php</code>
 				<br><br>
-				To manage custom languages just add the attribute <code>data-js-lang</code> to <code>&lt;body&gt;</code> tag. The main language file is <code>app-lang.js</code> but these are the default ones, you can override them in <code>app-theme.js</code> using the same key. If you want add more language take a look on <code>app-example.js</code> for references. 
+				To manage custom languages just add the attribute <code>data-js-lang</code> to <code>&lt;body&gt;</code> tag. The main language file is <code>app-init.js</code> but these are the default ones, you can override them in <code>app-theme.js</code> using the same key. If you want add more language take a look on <code>app-example.js</code> for references. 
 				<br><br>
 				The compile process works in realtime if you are testing in <b>localhost</b>, if you upload the code to <b>production</b> enviroment, the file <code>app.js</code> will be generated only once, if you update your code, remember to rebuild it adding <code>?rebuild=password</code> to the main url (for example: <b><?php echo php::get_main_url(); ?>/?rebuild=mypassword</b>). Remember to change the password in <code>resources.php</code>.
 				<br><br>
