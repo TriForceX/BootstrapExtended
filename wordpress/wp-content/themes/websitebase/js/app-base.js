@@ -794,20 +794,21 @@ function JStextCut(container)
 }
 
 //Text auto size function (Note: Use this on responsive code to better results)
-function JStextSize(container, fontSize)
+function JStextSize(container)
 {
 	//Dev log
 	JSdeveloper('[JS Function] Text Size');
 	
+	$(container).css('font-size','');
 	$(container).each(function (i,box){
 		var width = $(box).width(),
 			html = '<span style="white-space:nowrap"></span>',
 			line = $(box).wrapInner(html).children()[0],
-			n = fontSize.replace(/px/g,'');
+			n = $(container).css('font-size').replace(/px|em/g,'');
 
 		$(box).css('font-size',n);
 
-		while ($(line).width() > width) {
+		while($(line).width() > width){
 			$(box).css('font-size', --n);
 		}
 
@@ -1825,8 +1826,7 @@ $(document).on("JSresponsiveCode", function(event, bodyWidth, bodyHeight, bodyOr
 	
 	//Apply Text Size
 	$(".JStextSize").each(function(){
-		$(this).removeAttr('style');
-		JStextSize($(this), $(this).css('font-size'));
+		JStextSize($(this));
 	});
 	
 /* ================================================= BASE RESPONSIVE CODE ================================================= */
