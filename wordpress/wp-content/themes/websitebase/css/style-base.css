@@ -344,7 +344,7 @@ a.ui-button:active,
 	content: "";
 }
 .JSloading:after{
-	background-image:url("icons/loading/loading-icon-black.gif");
+	background-image:url("base/loading/loading-icon-black.gif");
 	background-position:center center;
 	background-repeat:no-repeat;
 	background-color:#333333;
@@ -364,19 +364,19 @@ a.ui-button:active,
 	position: absolute;
 }
 .JSloading.red:after{
-	background-image:url("icons/loading/loading-icon-red.gif");
+	background-image:url("base/loading/loading-icon-red.gif");
 	background-color:#d2040d;
 }
 .JSloading.blue:after{
-	background-image:url("icons/loading/loading-icon-blue.gif");
+	background-image:url("base/loading/loading-icon-blue.gif");
 	background-color:#486ca5;
 }
 .JSloading.green:after{
-	background-image:url("icons/loading/loading-icon-green.gif");
+	background-image:url("base/loading/loading-icon-green.gif");
 	background-color:#1f7b5d;
 }
 .JSloading.yellow:after{
-	background-image:url("icons/loading/loading-icon-yellow.gif");
+	background-image:url("base/loading/loading-icon-yellow.gif");
 	background-color:#faa425;
 }
 /* JS Loading */
