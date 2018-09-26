@@ -330,7 +330,7 @@ if(!check_plugin('resize-image-after-upload/resize-image-after-upload.php'))
 //add_action('admin_bar_menu', 'remove_from_adminbar', 999);
 
 //Custom general fields
-$new_general_setting = new new_general_setting();
+new new_general_setting();
 
 class new_general_setting 
 {
@@ -391,6 +391,7 @@ function custom_customize_register($wp_customize)
 {
 	//Hide ections, settings, and controls
 	$wp_customize->remove_panel('themes');
+	$wp_customize->remove_panel('widgets');
 	$wp_customize->remove_section('title_tagline');
 	$wp_customize->remove_section('colors');
 	$wp_customize->remove_section('header_image');
@@ -398,47 +399,6 @@ function custom_customize_register($wp_customize)
 	$wp_customize->remove_panel('nav_menus');
 	$wp_customize->remove_section('static_front_page');
 	$wp_customize->remove_section('custom_css');
-	
-	//Set custom template control for multiple checkbox
-	class WP_Customize_Checkbox_Multiple_Control extends WP_Customize_Control {
-
-		public $type = 'checkbox-multiple';
-		
-		public function enqueue() {
-			wp_enqueue_script( 'custom_customize_register', get_bloginfo('template_url').'/js/app-admin.js', array( 'jquery' ) );
-		}
-
-		public function render_content() {
-
-			if ( empty( $this->choices ) )
-				return; ?>
-
-			<?php if ( !empty( $this->label ) ) : ?>
-				<span class="customize-control-title"><?php echo esc_html( $this->label ); ?></span>
-			<?php endif; ?>
-
-			<?php if ( !empty( $this->description ) ) : ?>
-				<span class="description customize-control-description"><?php echo $this->description; ?></span>
-			<?php endif; ?>
-
-			<?php $multi_values = !is_array( $this->value() ) ? explode( ',', $this->value() ) : $this->value(); ?>
-
-			<ul>
-				<?php foreach ( $this->choices as $value => $label ) : ?>
-
-					<li>
-						<label>
-							<input type="checkbox" value="<?php echo esc_attr( $value ); ?>" <?php checked( in_array( $value, $multi_values ) ); ?> /> 
-							<?php echo esc_html( $label ); ?>
-						</label>
-					</li>
-
-				<?php endforeach; ?>
-			</ul>
-
-			<input type="hidden" <?php $this->link(); ?> value="<?php echo esc_attr( implode( ',', $multi_values ) ); ?>" />
-		<?php }
-	}
 }
 add_action('customize_register', 'custom_customize_register', 50);
 
@@ -462,6 +422,16 @@ $customize_theme_fields = array(
 									//			'Field Text Area Desctription',
 									//			'Field Text Area Label Title',
 									//			'Field Text Area Default Value'
+									//			)
+									//),
+									//Field
+									//array('field-text-wysiwig' => 
+									//	  array(
+									//			'wysiwig',
+									//			'Field WYSIWIG Text Button Title',
+									//			'Field WYSIWIG Text Desctription',
+									//			'Field WYSIWIG Text Label Title',
+									//			'Field WYSIWIG Text Default Value'
 									//			)
 									//),
 									//Field
@@ -531,6 +501,84 @@ $customize_theme_fields = array(
 //Set template modifications
 function custom_theme_settings($wp_customize)
 {
+	//Set custom template control for multiple checkbox
+	class WP_Customize_Checkbox_Multiple_Control extends WP_Customize_Control 
+	{
+		public $type = 'checkbox-multiple';
+
+		public function enqueue() 
+		{
+			wp_enqueue_script('custom_customize_register', get_bloginfo('template_url').'/js/admin/app-base.js', array('jquery'));
+		}
+
+		public function render_content() 
+		{
+			if ( empty( $this->choices ) )
+				return; ?>
+
+			<?php if ( !empty( $this->label ) ) : ?>
+				<span class="customize-control-title"><?php echo esc_html( $this->label ); ?></span>
+			<?php endif; ?>
+
+			<?php if ( !empty( $this->description ) ) : ?>
+				<span class="description customize-control-description"><?php echo $this->description; ?></span>
+			<?php endif; ?>
+
+			<?php $multi_values = !is_array( $this->value() ) ? explode( ',', $this->value() ) : $this->value(); ?>
+
+			<ul>
+				<?php foreach ( $this->choices as $value => $label ) : ?>
+
+					<li>
+						<label>
+							<input type="checkbox" value="<?php echo esc_attr( $value ); ?>" <?php checked( in_array( $value, $multi_values ) ); ?> /> 
+							<?php echo esc_html( $label ); ?>
+						</label>
+					</li>
+
+				<?php endforeach; ?>
+			</ul>
+
+			<input type="hidden" <?php $this->link(); ?> value="<?php echo esc_attr( implode( ',', $multi_values ) ); ?>" />
+		<?php }
+	}
+
+	//Set custom WYSIWIG text editor
+	class WP_Customize_WYSIWIG_Text_Editor_Control extends WP_Customize_Control
+	{
+		public $type = 'wysiwig-text';
+		
+		function enqueue() 
+		{
+			wp_enqueue_script('custom_customize_register', get_bloginfo('template_url').'/js/admin/app-base.js', array('jquery'));
+		}
+
+		public function render_content()
+		{
+		?>
+			<label>
+				<span class="customize-control-title"><?php echo esc_html( $this->label ); ?></span>
+				<?php
+					$settings = array(
+									'wpautop'		=> true,
+									'textarea_rows' => 10,
+									'media_buttons' => false,
+									'quicktags' 	=> false,
+									);
+					$this->filter_editor_setting_link();
+					wp_editor($this->value(), $this->id, $settings);
+				?>
+			</label>
+		<?php
+			do_action('admin_footer');
+			do_action('admin_print_footer_scripts');
+		}
+		private function filter_editor_setting_link()
+		{
+			add_filter('the_editor', function($output){ return preg_replace('/<textarea/', '<textarea '.$this->get_link(), $output, 1); });
+		}
+	}
+	
 	global $customize_theme_fields;
 	
 	foreach ($customize_theme_fields as $items)
@@ -583,6 +631,18 @@ function custom_theme_settings($wp_customize)
 								'settings'	=> $key,
 								'type' 		=> 'checkbox-multiple', //improved checkbox
 								'choices'  	=> $value[5],
+							)
+						)
+					);
+					break;
+				case 'wysiwig':
+					$wp_customize->add_control( 
+						new WP_Customize_WYSIWIG_Text_Editor_Control($wp_customize, $key,
+							array(
+								'label'   	=> $value[3],
+								'section' 	=> $key,
+								'settings'	=> $key,
+								'type' 		=> 'wysiwig-text', //improved text editor
 							)
 						)
 					);
