@@ -826,18 +826,16 @@ function get_theme_mod2($name)
 //Register widgets and sidebars
 //function custom_widgets_init()
 //{
-//	$nameTHEME = 'websitebase';
-//	
 //	//Sidebar
-//    register_sidebar(array(
-//        'name'          => __('Sidebar Custom 1', $nameTHEME),
-//        'id'            => 'sidebar-custom-1',
-//		'description'	=> 'A custom sidebar 1.',  
-//        'before_widget' => '<aside id="%1$s" class="widget %2$s">',
-//        'after_widget'  => '</aside>',
-//        'before_title'  => '<h1 class="widget-title">',
-//        'after_title'   => '</h1>',
-//    ));
+//	register_sidebar(array(
+//		'name'          => 'Custom Sidebar 1',
+//		'id'            => 'custom-sidebar-1',
+//		'description'	=> 'Custom Sidebar Description.',  
+//		'before_widget' => '<div>',
+//		'after_widget'  => '</div>',
+//		'before_title'  => '<h2 class="rounded">',
+//		'after_title'   => '</h2>',
+//	));
 //	
 //	//Widget
 //	register_widget('custom_widget_1');
