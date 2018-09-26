@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WordPress - 4.9.x - Development - Administration package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2018-07-25 19:18:20+0000\n"
+"PO-Revision-Date: 2018-09-26 11:16:14+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -4568,7 +4568,7 @@ msgstr "El tema previsualizado es totalmente interactivo &mdash; navega por dist
 
 #: wp-admin/widgets.php:398
 msgid "To activate a widget drag it to a sidebar or click on it. To deactivate a widget and delete its settings, drag it back."
-msgstr "Para activar un widget, arrástralo a la barra lateral o haz clic en él. Para desactivar un widget y borrar sus ajustes, arrástralo de vuelta a su lugar de origen."
+msgstr "Para activar un widget, arrástralo a una barra lateral o haz clic en él. Para desactivar un widget y borrar sus ajustes, arrástralo de vuelta a su lugar de origen."
 
 #. translators: 1: The rating, 2: The number of ratings
 #: wp-admin/includes/template.php:2169
