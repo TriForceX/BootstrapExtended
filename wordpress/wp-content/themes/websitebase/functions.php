@@ -83,10 +83,10 @@ function get_the_slug($id = null)
 }
 
 //Get the id by name
-function get_id_by_name($post_name)
+function get_id_by_name($name)
 {
 	global $wpdb;
-	$id = $wpdb->get_var("SELECT ID FROM $wpdb->posts WHERE post_name = '".$post_name."'");
+	$id = $wpdb->get_var("SELECT ID FROM $wpdb->posts WHERE post_name = '".$name."'");
 	return $id;
 }
 
@@ -831,7 +831,7 @@ function get_theme_mod2($name)
 //		'name'          => 'Custom Sidebar 1',
 //		'id'            => 'custom-sidebar-1',
 //		'description'	=> 'Custom Sidebar Description.',  
-//		'before_widget' => '<div>',
+//		'before_widget' => '<div id="%1$s" class="%2$s">',
 //		'after_widget'  => '</div>',
 //		'before_title'  => '<h2 class="rounded">',
 //		'after_title'   => '</h2>',
