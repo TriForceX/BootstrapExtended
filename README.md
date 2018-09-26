@@ -75,7 +75,8 @@ Base structure for web sites with reusable parts of source code or functions mai
 	- LightGallery improved functions/events
 	- ImgLiquid auto-fill background images
 	- Get element height changes
-	- Text cut function
+	- Text cut one line function
+	- Text cut multi line function
 	- Text auto size function
 	- Show alert modal box using BootBox plugin (plain text, html content & ajax)
 	- Video launch modal box function for YouTube, Vimeo and Facebook
@@ -87,7 +88,7 @@ Base structure for web sites with reusable parts of source code or functions mai
 	- Get URL parameter from Script SRC (PHP $_GET like)
 	- Convert strings to links function
 	- Remove HTML tags function
-	- Check hasthag disabled links function
+	- Check hashtag links function
 	- Window pop-up function
 	- Map launch function for Google Maps and Waze
 	- Table painter & cleaner

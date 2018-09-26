@@ -225,7 +225,7 @@ a.ui-button:active,
 }
 /* JS Auto Background */
 
-/* JS Text Cut */
+/* JS Text Cut One Line */
 .JStextCutElem > div{
 	position: relative;
 }
@@ -242,7 +242,13 @@ a.ui-button:active,
 	overflow-x: hidden;
 	text-overflow: ellipsis;
 }
-/* JS Text Cut */
+/* JS Text Cut One Line */
+
+/* JS Text Cut Multi Line */
+.JStextCutMulti{
+	overflow: hidden;
+}
+/* JS Text Cut Multi Line */
 
 /* JS Video Launch */
 .JSvideoLaunchIframe{

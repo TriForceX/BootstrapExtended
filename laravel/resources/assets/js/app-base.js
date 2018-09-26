@@ -781,11 +781,11 @@ function JSelementHeightChange(elm, callback)
 	}*/
 }
 
-//Text cut function
+//Text cut function one line
 function JStextCut(container)
 {	
 	//Dev log
-	JSdeveloper('[JS Function] Text Cut');
+	JSdeveloper('[JS Function] Text Cut One Line');
 	
 	$(container).each(function(){
 		$(this).addClass('JStextCutElem');
@@ -793,7 +793,21 @@ function JStextCut(container)
 	});
 }
 
-//Text auto size function (Note: Use this on responsive code to better results)
+//Text cut function multi line
+function JStextCutMulti(container)
+{
+	//Dev log
+	JSdeveloper('[JS Function] Text Cut Multi Line');
+	
+    var wordArray = container.html().split(' ');
+	while(container.prop('scrollHeight') > container.height())
+	{
+		wordArray.pop();
+		container.html(wordArray.join(' ') + '...');
+	}
+}
+
+//Text auto size function
 function JStextSize(container)
 {
 	//Dev log
@@ -1827,6 +1841,11 @@ $(document).on("JSresponsiveCode", function(event, bodyWidth, bodyHeight, bodyOr
 	//Apply Text Size
 	$(".JStextSize").each(function(){
 		JStextSize($(this));
+	});
+	
+	//Apply Text Cut Multiline
+	$(".JStextCutMulti").each(function(){
+		JStextCutMulti($(this));
 	});
 	
 /* ================================================= BASE RESPONSIVE CODE ================================================= */
