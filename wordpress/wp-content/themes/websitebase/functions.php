@@ -17,13 +17,17 @@ use utilities\php as php;
 //Add custom CSS & JS to admin
 function add_custom_admin() 
 {
-	echo '<link href="'.get_bloginfo('template_url').'/css/style-admin.css" rel="stylesheet" />';
-	echo '<script src="'.get_bloginfo('template_url').'/js/app-admin.js"></script>';
+	echo '<link href="'.get_bloginfo('template_url').'/css/admin/style-base.css" rel="stylesheet">';
+	echo '<link href="'.get_bloginfo('template_url').'/css/admin/style-theme.css" rel="stylesheet">';
+	echo '<script src="'.get_bloginfo('template_url').'/js/admin/app-base.js"></script>';
+	echo '<script src="'.get_bloginfo('template_url').'/js/admin/app-theme.js"></script>';
 }
-//add_action(array('admin_footer','login_footer','wp_footer'), 'add_custom_admin');
 add_action('admin_footer', 'add_custom_admin');
 add_action('login_footer', 'add_custom_admin');
-add_action('wp_footer', 'add_custom_admin');
+if(is_user_logged_in())
+{
+	add_action('wp_footer', 'add_custom_admin');
+}
 
 //Custom login logo URL
 function login_logo_url() {

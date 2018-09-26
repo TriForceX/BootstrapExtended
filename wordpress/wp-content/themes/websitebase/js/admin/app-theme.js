@@ -6,30 +6,11 @@
 
 jQuery(document).ready(function(){
 
-/* ================================================= DOCUMENT READY ================================================= */
+/* ================================================= THEME DOCUMENT READY ================================================= */
 	
-	//Lock admin bar buttons
-	jQuery('#wp-admin-bar-site-name > .ab-item').click(function(e){
-		e.preventDefault();
-	});
-	jQuery('#wp-admin-bar-new-content > .ab-item').click(function(e){
-		e.preventDefault();
-	});
 	
-	//Replace admin bar buttons
-	jQuery('#wp-admin-bar-view-site').find('a').attr('target','_blank');
 	
-	//Action for custom multiple checkbox control in theme customize
-	jQuery(document).on('click','.customize-control-checkbox-multiple input[type="checkbox"]',function() {
-
-		var checkbox_values = jQuery(this).parents('.customize-control').find('input[type="checkbox"]:checked').map(function(){
-									return this.value;
-							}).get().join( ',' );
-
-		jQuery(this).parents('.customize-control').find('input[type="hidden"]').val(checkbox_values).trigger('change');
-	});
-	
-/* ================================================= DOCUMENT READY ================================================= */
+/* ================================================= THEME DOCUMENT READY ================================================= */
 
 });
 
