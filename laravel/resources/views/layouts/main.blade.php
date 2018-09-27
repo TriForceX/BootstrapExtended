@@ -68,12 +68,7 @@
 
 <body class="<?php echo Request::path() == '/' ? 'JSisHome' : ''; ?>">
 <!-- ================================================= ANALYTICS ================================================= -->
-@if(stripos(Request::ip(), 'localhost') !== false || 
-	stripos(Request::ip(), '127.0.0.') !== false ||
-	stripos(Request::ip(), '192.168.') !== false ||
-	stripos(Request::ip(), '.site') !== false ||
-	stripos(Request::ip(), '.test') !== false ||
-	stripos(Request::ip(), '.dev') !== false)
+@if(preg_match('/(::1|127.0.0.|192.168.|localhost|.app|.dev|.site.|.test)/i', Request::ip()))
 <script>
 	function ga(){ console.log('Google Analytics:\n',arguments); } //Dont track in localhost
 </script>

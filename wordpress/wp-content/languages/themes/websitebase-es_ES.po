@@ -1,0 +1,64 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Website Base\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2014-12-29 19:58+0100\n"
+"PO-Revision-Date: 2018-09-27 19:39+0000\n"
+"Last-Translator: TriForce <triforce@gznetwork.com>\n"
+"Language-Team: Spanish (Spain)\n"
+"Language: es-ES\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Loco-Source-Locale: es_CL\n"
+"X-Poedit-KeywordsList: _;__;_e;esc_html_e\n"
+"X-Poedit-Basepath: .\n"
+"X-Generator: Loco https://localise.biz/\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-SearchPath-0: ..\n"
+"X-Poedit-SearchPath-1: ..\n"
+"X-Loco-Parser: loco_parse_po"
+
+#. Theme Name of the plugin/theme
+msgid "Website Base"
+msgstr "Website Base"
+
+#. Theme URI of the plugin/theme
+msgid "Page not found"
+msgstr "P&aacute;gina no encontrada"
+
+msgid "Site keywords"
+msgstr "Palabras clave"
+
+msgid "Analytics code"
+msgstr "C&oacute;digo anal&iacute;tica"
+
+msgid "Site author"
+msgstr "Autor sitio"
+
+msgid "Nav color"
+msgstr "Color navegaci&oacute;n"
+
+msgid "Nav color (Apple)"
+msgstr "Color navegaci&oacute;n (Apple)"
+
+msgid "Words to let search engines to found this site"
+msgstr "Palabras para que los motores de b&uacute;squeda encuentren el sitio"
+
+msgid "Code placed in the HTML head to track site analytics"
+msgstr ""
+"C&oacute;digo colocado en la cabecera HTML para la anal&iacute;tica del sitio"
+
+msgid "Defines the site author"
+msgstr "Define el autor del sitio"
+
+msgid "Navigator bar color for most devices (use hexadecimal format)"
+msgstr ""
+"Color de la barra del navegador para los dispositivos (use formato "
+"hexadecimal)"
+
+msgid "Navigator bar color for Apple devices (use black or black-translucent)"
+msgstr ""
+"Color de la barra del navegador para los dispositivos (use black o black-"
+"translucent)"

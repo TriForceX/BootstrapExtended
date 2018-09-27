@@ -14,6 +14,9 @@ use utilities\php as php;
  * 
  */
 
+//Load theme language
+load_theme_textdomain('websitebase');
+
 //Add custom CSS & JS to admin
 function add_custom_admin() 
 {
@@ -55,7 +58,7 @@ function get_page_title($separator)
         $result = ' '/*.$separator.' '.$text*/; //WIP
     }
     else if(is_404()){
-		$text = 'Not found';
+		$text = __('Page not found', 'websitebase');
         $result = ' '.$separator.' '.$text;
     }
 	else if(is_home()){
@@ -341,46 +344,46 @@ class new_general_setting
     function register_fields() 
 	{
 		$new_fields = array(
-							array("blogkeywords","Site Keywords"),
-							array("bloganalytics","Analytics Code"),
-							array("blogauthor","Site Author"),
-							array("blognavcolor","Nav Color"),
-							array("blognavcolorapple","Nav Color"),
+							array('blogkeywords'		, __('Site keywords', 'websitebase')),
+							array('bloganalytics'		, __('Analytics code', 'websitebase')),
+							array('blogauthor'			, __('Site author', 'websitebase')),
+							array('blognavcolor'		, __('Nav color', 'websitebase')),
+							array('blognavcolorapple'	, __('Nav color (Apple)', 'websitebase')),
 							);
 		
 		for($i = 0; $i < count($new_fields); ++$i)
 		{
 			register_setting('general', $new_fields[$i][0], 'esc_attr');
-			add_settings_field($new_fields[$i][0], '<label for="'.$new_fields[$i][0].'">'.$new_fields[$i][1].'</label>', array(&$this, "new_field_".$i."_html"), 'general');
+			add_settings_field($new_fields[$i][0], '<label for="'.$new_fields[$i][0].'">'.$new_fields[$i][1].'</label>', array(&$this, 'new_field_'.$i.'_html'), 'general');
 		}
     }
     function new_field_0_html() 
 	{
-		$new_field_data = array("blogkeywords","Words to let search engines to found this site");
+		$new_field_data = array('blogkeywords', __('Words to let search engines to found this site', 'websitebase'));
 		echo '<textarea style="max-width: 350px;min-height: 100px;width: 100%;" id="'.$new_field_data[0].'" name="'.$new_field_data[0].'">'.get_option($new_field_data[0], '').'</textarea>';
 		echo '<p class="description" id="'.$new_field_data[0].'-description">'.$new_field_data[1].'</p>';
     }
 	function new_field_1_html() 
 	{
-		$new_field_data = array("bloganalytics","Code placed in the HTML head to track site analytics");
+		$new_field_data = array('bloganalytics', __('Code placed in the HTML head to track site analytics', 'websitebase'));
         echo '<textarea style="max-width: 350px;min-height: 100px;width: 100%;" id="'.$new_field_data[0].'" name="'.$new_field_data[0].'">'.get_option($new_field_data[0], '').'</textarea>';
 		echo '<p class="description" id="'.$new_field_data[0].'-description">'.$new_field_data[1].'</p>';
     }
 	function new_field_2_html() 
 	{
-		$new_field_data = array("blogauthor","Defines the website author");
+		$new_field_data = array('blogauthor', __('Defines the site author', 'websitebase'));
         echo '<input type="text" style="max-width: 350px;width: 100%;" id="'.$new_field_data[0].'" name="'.$new_field_data[0].'" value="'.get_option($new_field_data[0], '').'"/>';
 		echo '<p class="description" id="'.$new_field_data[0].'-description">'.$new_field_data[1].'</p>';
     }
 	function new_field_3_html() 
 	{
-		$new_field_data = array("blognavcolor","Website nav bar color for most devices");
+		$new_field_data = array('blognavcolor', __('Navigator bar color for most devices (use hexadecimal format)', 'websitebase'));
         echo '<input type="text" style="max-width: 350px;width: 100%;" id="'.$new_field_data[0].'" name="'.$new_field_data[0].'" value="'.get_option($new_field_data[0], '').'"/>';
 		echo '<p class="description" id="'.$new_field_data[0].'-description">'.$new_field_data[1].'</p>';
     }
 	function new_field_4_html() 
 	{
-		$new_field_data = array("blognavcolorapple","Website nav bar color for Apple devices (it can be black or black-translucent)","new_field_5_html");
+		$new_field_data = array('blognavcolorapple', __('Navigator bar color for Apple devices (use black or black-translucent)', 'websitebase'));
         echo '<input type="text" style="max-width: 350px;width: 100%;" id="'.$new_field_data[0].'" name="'.$new_field_data[0].'" value="'.get_option($new_field_data[0], '').'"/>';
 		echo '<p class="description" id="'.$new_field_data[0].'-description">'.$new_field_data[1].'</p>';
     }

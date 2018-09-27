@@ -19,49 +19,52 @@
  */
 
 // ** MySQL settings - You can get this info from your web host ** //
-if(stripos($_SERVER['HTTP_HOST'], '::1') !== false || 
-   stripos($_SERVER['HTTP_HOST'], '127.0.0.') !== false || 
-   stripos($_SERVER['HTTP_HOST'], '192.168.') !== false || 
-   stripos($_SERVER['HTTP_HOST'], 'localhost') !== false ):
+$database = array('charset' => 'utf8mb4',
+				  'collate' => '',
+				  'prefix' 	=> 'wp_',
+				  'cron'	=> true,
+				  'debug'	=> false);
+
+if(preg_match('/(::1|127.0.0.|192.168.|localhost)/i', $_SERVER['HTTP_HOST'])):
 	 //Localhost
-	$dbname = 'websitebase';
-	$dbuser = 'root';
-	$dbpass = 'root';
-	$dbhost = 'localhost';
+	$database['name'] = 'websitebase';
+	$database['user'] = 'root';
+	$database['pass'] = 'root';
+	$database['host'] = 'localhost';
 elseif($_SERVER['HTTP_HOST'] == 'domain.com'):
 	//Develop
-	$dbname = 'websitebase';
-	$dbuser = 'root';
-	$dbpass = 'root';
-	$dbhost = 'localhost';
+	$database['name'] = 'websitebase';
+	$database['user'] = 'root';
+	$database['pass'] = 'root';
+	$database['host'] = 'localhost';
 else:
 	//Production
-	$dbname = 'websitebase';
-	$dbuser = 'root';
-	$dbpass = 'root';
-	$dbhost = 'localhost';
+	$database['name'] = 'websitebase';
+	$database['user'] = 'root';
+	$database['pass'] = 'root';
+	$database['host'] = 'localhost';
 endif;
 
 /** The name of the database for WordPress */
-define('DB_NAME', $dbname);
+define('DB_NAME', $database['name']);
 
 /** MySQL database username */
-define('DB_USER', $dbuser);
+define('DB_USER', $database['user']);
 
 /** MySQL database password */
-define('DB_PASSWORD', $dbpass);
+define('DB_PASSWORD', $database['pass']);
 
 /** MySQL hostname */
-define('DB_HOST', $dbhost);
+define('DB_HOST', $database['host']);
 
 /** Database Charset to use in creating database tables. */
-define('DB_CHARSET', 'utf8mb4');
+define('DB_CHARSET', $database['charset']);
 
 /** The Database Collate type. Don't change this if in doubt. */
-define('DB_COLLATE', '');
+define('DB_COLLATE', $database['collate']);
 
 /** CRON disable for scheduled tasks */
-define('DISABLE_WP_CRON', 'true');
+define('DISABLE_WP_CRON', $database['cron']);
 
 /**#@+
  * Authentication Unique Keys and Salts.
@@ -89,7 +92,7 @@ define('NONCE_SALT', '*:Vo_s-~pOYEhhQzt/Qm$8@$xiNWxjsc0)Aq%cfYKO3~EODldO^NN>n<i$
  * You can have multiple installations in one database if you give each
  * a unique prefix. Only numbers, letters, and underscores please!
  */
-$table_prefix  = 'wp_';
+$table_prefix  = $database['prefix'];
 
 
 /**
@@ -104,7 +107,7 @@ $table_prefix  = 'wp_';
  *
  * @link https://codex.wordpress.org/Debugging_in_WordPress
  */
-define('WP_DEBUG', false);
+define('WP_DEBUG', $database['debug']);
 
 /* That's all, stop editing! Happy blogging. */
 
@@ -116,4 +119,4 @@ if ( !defined('ABSPATH') )
 require_once(ABSPATH . 'wp-settings.php');
 
 // Turn off all PHP error reporting by default
-error_reporting(0);
+error_reporting($database['debug']);
