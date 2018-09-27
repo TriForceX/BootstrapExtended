@@ -95,6 +95,7 @@ Base structure for web sites with reusable parts of source code or functions mai
 	- Check validations for home page, mobile and navigators
 - CSS Features:
 	- Some features from Bootstrap 4
+	- Some Bootstrap 3 & 4 improved classes
 	- Custom Bootstrap's carousel classes
 	- Custom Datepicker colors
 	- Custom Bootstrap's tooltip colors
@@ -114,6 +115,7 @@ Base structure for web sites with reusable parts of source code or functions mai
 	- Custom Post Type UI (Plugin)
 	- Enhaced Context Help (Plugin)
 	- Gutenberg Editor (Plugin)
+	- Loco Translate (Plugin)
 	- Login reCaptcha (Plugin)
 	- Mail SMTP (Plugin)
 	- Migrate DB (Plugin)
