@@ -155,9 +155,8 @@ jQuery(document).ready(function ($, undefined) {
                 if (confirm(anythingOrder.texts.confirmReset)) {
                     doUpdate();
                 }
+                return false;
             }
-
-            return false;
         }),
 
 

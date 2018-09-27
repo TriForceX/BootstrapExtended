@@ -8,7 +8,7 @@
 	Author URI: http://briar.site/
 	Text Domain: any-order
 	Domain Path: /languages
-	Version: 1.3.0
+	Version: 1.3.1
 	License: GPL version 2 or later - http://www.gnu.org/licenses/gpl-2.0.html
  */
 

@@ -164,6 +164,8 @@ abstract class Anything_Order_Base {
 		}
 
 		$this->manage_column( $screen );
+
+		$this->bulk_actions( $screen );
 	}
 
 	/**
@@ -181,6 +183,33 @@ abstract class Anything_Order_Base {
 	 * @param object $screen Current screen.
 	 */
 	abstract protected function manage_column( $screen );
+
+
+	/**
+	 * Filter bulk actions
+	 *
+	 * @since 1.3.1
+	 *
+	 * @param $screen \WP_Screen
+	 */
+	protected function bulk_actions( $screen ) {
+		add_filter( "bulk_actions-{$screen->id}", array( $this, 'add_reset_action' ) );
+	}
+
+	/**
+	 * Add Reset Order action
+	 *
+	 * @since 1.3.1
+	 *
+	 * @param $actions array
+	 *
+	 * @return array
+	 */
+	public function add_reset_action( $actions ) {
+		$actions[ $this->bulk_option_value ] = esc_html__( 'Reset Order', 'any-order' );
+
+		return $actions;
+	}
 
 	/**
 	 * Hook: Prepend a column for ordering to columns.
