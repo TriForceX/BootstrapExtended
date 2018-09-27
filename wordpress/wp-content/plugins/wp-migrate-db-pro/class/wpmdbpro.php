@@ -12,6 +12,9 @@ class WPMDBPro extends WPMDB {
 		add_action( 'wpmdb_notices', array( $this, 'template_secret_key_warning' ) );
 		add_action( 'wpmdb_notices', array( $this, 'template_block_external_warning' ) );
 
+		add_action( 'wpmdb_notices', array( $this, 'template_notice_enable_usage_tracking' ) );
+		add_action( 'wpmdb_additional_settings_advanced', array( $this, 'template_toggle_usage_tracking' ) );
+
 		// Internal AJAX handlers
 		add_action( 'wp_ajax_wpmdb_verify_connection_to_remote_site', array( $this, 'ajax_verify_connection_to_remote_site' ) );
 		add_action( 'wp_ajax_wpmdb_fire_migration_complete', array( $this, 'fire_migration_complete' ) );
@@ -75,6 +78,25 @@ class WPMDBPro extends WPMDB {
 		$this->maybe_disable_wp_engine_filtering();
 
 		new WPMDBPro_Import( $this );
+
+		$beta_manager = new WPMDB_Beta_Manager( $this );
+		$beta_manager->register();
+	}
+
+	/**
+	 * Get an array of the addon basenames
+	 *
+	 * @return array
+	 */
+	public function get_addon_basenames() {
+		return array_keys( $this->addons );
+	}
+
+	/**
+	 * Get basename of the plugin
+	 */
+	public function get_plugin_basename() {
+		return $this->plugin_basename;
 	}
 
 	/**
@@ -257,6 +279,10 @@ class WPMDBPro extends WPMDB {
 		$this->template( 'licence-info', 'pro', $args );
 	}
 
+	function template_toggle_usage_tracking() {
+		$this->template( 'toggle-usage-tracking', 'pro' );
+	}
+
 	/**
 	 * Shows all the videos on the Help tab.
 	 *
@@ -284,6 +310,13 @@ class WPMDBPro extends WPMDB {
 			),
 		);
 		$this->template( 'videos', 'pro', $args );
+	}
+
+	function template_notice_enable_usage_tracking() {
+		if ( 'boolean' !== gettype( $this->settings['allow_tracking'] ) ) {
+			$this->template( 'notice-enable-usage-tracking', 'pro' );
+		}
+		return;
 	}
 
 	function template_outdated_addons_warning() {
@@ -945,6 +978,8 @@ class WPMDBPro extends WPMDB {
 			$this->delete_temporary_tables( $filtered_post['temp_prefix'] );
 		}
 
+		do_action( 'wpmdb_respond_to_push_cancellation' );
+
 		$result = $this->end_ajax( true );
 
 		return $result;
@@ -1018,8 +1053,7 @@ class WPMDBPro extends WPMDB {
 		}
 
 		$addon            = $addons[ $args->slug ];
-		$required_version = $this->get_required_version( $args->slug );
-		$is_beta          = $this->is_beta_version( $required_version ) && ! empty( $addon['beta_version'] );
+		$is_beta          = ! empty( $addon['beta_version'] ) && ( $this->has_beta_optin() );
 
 		$res                = new stdClass();
 		$res->name          = 'WP Migrate DB Pro ' . $addon['name'];
@@ -1038,12 +1072,7 @@ class WPMDBPro extends WPMDB {
 		}
 
 		foreach ( $plugin_upgrade_data as $plugin_slug => $upgrade_data ) {
-			// If pre-1.1.2 version of Media Files addon, use the slug as folder name
-			if ( ! isset( $GLOBALS['wpmdb_meta'][ $plugin_slug ]['folder'] ) ) {
-				$plugin_folder = $plugin_slug;
-			} else {
-				$plugin_folder = $GLOBALS['wpmdb_meta'][ $plugin_slug ]['folder'];
-			}
+			$plugin_folder = $this->get_plugin_folder( $plugin_slug );
 
 			$plugin_basename = sprintf( '%s/%s.php', $plugin_folder, $plugin_slug );
 			$latest_version  = $this->get_latest_version( $plugin_slug );
@@ -1075,7 +1104,7 @@ class WPMDBPro extends WPMDB {
 				$is_beta = $this->is_beta_version( $latest_version );
 
 				$trans->response[ $plugin_basename ]              = new stdClass();
-				$trans->response[ $plugin_basename ]->url         = $this->dbrains_api_base;
+				$trans->response[ $plugin_basename ]->url         = $this->get_dbrains_api_base();
 				$trans->response[ $plugin_basename ]->slug        = $plugin_slug;
 				$trans->response[ $plugin_basename ]->package     = $this->get_plugin_update_download_url( $plugin_slug, $is_beta );
 				$trans->response[ $plugin_basename ]->new_version = $latest_version;
@@ -1087,6 +1116,22 @@ class WPMDBPro extends WPMDB {
 		return $trans;
 	}
 
+	/**
+	 * Get a plugin folder from the slug
+	 *
+	 * @param string $slug
+	 *
+	 * @return mixed
+	 */
+	public function get_plugin_folder( $slug ) {
+		if ( isset( $GLOBALS['wpmdb_meta'][ $slug ]['folder'] ) ) {
+			return $GLOBALS['wpmdb_meta'][ $slug ]['folder'];
+		}
+
+		// If pre-1.1.2 version of Media Files addon, use the slug as folder name
+		return $slug;
+	}
+
 	function enqueue_plugin_update_script( $hook ) {
 		if ( 'plugins.php' != $hook ) {
 			return;
@@ -1094,7 +1139,7 @@ class WPMDBPro extends WPMDB {
 		$ver_string  = '-' . str_replace( '.', '', $this->plugin_version );
 		$min = defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG ? '' : '.min';
 
-		$src = plugins_url( "asset/dist/js/plugin-update{$ver_string}{$min}.js", dirname( __FILE__ ) );
+		$src = plugins_url( "asset/build/js/plugin-update{$ver_string}.js", dirname( __FILE__ ) );
 		wp_enqueue_script( 'wp-migrate-db-pro-plugin-update-script', $src, array( 'jquery' ), false, true );
 
 		wp_localize_script( 'wp-migrate-db-pro-plugin-update-script', 'wpmdb_nonces', array( 'check_licence' => WPMDB_Utils::create_nonce( 'check-licence' ), 'process_notice_link' => WPMDB_Utils::create_nonce( 'process-notice-link' ), ) );
@@ -1104,7 +1149,7 @@ class WPMDBPro extends WPMDB {
 	function add_plugin_update_styles() {
 		$version     = defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG ? time() : $this->plugin_version;
 		$plugins_url = trailingslashit( plugins_url() ) . trailingslashit( $this->plugin_folder_name );
-		$src         = $plugins_url . 'asset/dist/css/plugin-update-styles.css';
+		$src         = $plugins_url . 'asset/build/css/plugin-update-styles.css';
 		wp_enqueue_style( 'plugin-update-styles', $src, array(), $version );
 	}
 
@@ -1245,9 +1290,8 @@ class WPMDBPro extends WPMDB {
 					$actions     = sprintf( '<a class="action" href="%s">%s</a>', $install_url, _x( 'Install', 'Download and activate addon', 'wp-migrate-db' ) );
 				}
 
-				$required_version = $this->get_required_version( $key );
-
-				$download_url = $this->get_plugin_update_download_url( $key, $this->is_beta_version( $required_version ) );
+				$is_beta = ! empty( $addon['beta_version'] ) && $this->has_beta_optin();
+				$download_url = $this->get_plugin_update_download_url( $key, $is_beta );
 				$actions .= sprintf( '<a class="action" href="%s">%s</a>', $download_url, _x( 'Download', 'Download to your computer', 'wp-migrate-db' ) ); ?>
 
 				<article class="addon <?php echo esc_attr( $key ); ?>">
