@@ -42,34 +42,6 @@ add_filter('login_headertitle', 'login_logo_url');
 //Prevent .htaccess to be modified by permalink rules
 add_filter('flush_rewrite_rules_hard','__return_false');
 
-//Set current page title
-function get_page_title($separator)
-{
-    if(is_page()){
-		$text = get_the_title(get_page_by_path(get_query_var('pagename')));
-        $result = ' '.$separator.' '.$text;
-    }
-    else if(is_single() || is_archive()){
-		$text = get_post_type_object(get_query_var('post_type'))->label;
-        $result = ' '.$separator.' '.$text;
-    }
-	else if(is_tax() || is_tag() || is_category()){
-		$text = ''; //get_taxonomy_data('name'); //WIP
-        $result = ' '/*.$separator.' '.$text*/; //WIP
-    }
-    else if(is_404()){
-		$text = __('Page not found', 'websitebase');
-        $result = ' '.$separator.' '.$text;
-    }
-	else if(is_home()){
-		$result = '';
-    }
-    else{
-        $result = '';
-    }
-    return $result;
-}
-
 //Get the slug inside post
 function get_the_slug($id = null)
 {

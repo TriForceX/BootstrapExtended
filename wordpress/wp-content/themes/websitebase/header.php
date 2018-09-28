@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="<?php echo php::get_html_data('lang'); ?>">
 <head>
-	<title><?php echo php::get_html_data('title'); ?><?php echo get_page_title('&raquo;'); ?></title>
+	<title><?php echo php::get_html_data('title'); ?><?php echo wp_title('&raquo;'); ?></title>
 	
 	<!-- ******** META TAGS ******** -->
 	

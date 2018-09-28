@@ -117,6 +117,3 @@ if ( !defined('ABSPATH') )
 
 /** Sets up WordPress vars and included files. */
 require_once(ABSPATH . 'wp-settings.php');
-
-// Turn off all PHP error reporting by default
-error_reporting($database['debug']);
