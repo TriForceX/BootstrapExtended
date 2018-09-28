@@ -69,10 +69,10 @@ $(document).ready(function(){
 	}
 	
 	//Example add language string
-	JSlanguage['@test-title'] = { 'en' : 'Hello world!', 'es' : 'Hola mundo!' };
+	JSlanguage['@test-hello'] = { 'en' : 'Hello world!', 'es' : 'Hola mundo!' };
 	
 	//Example use language string
-	JSdeveloper(JSlang('@test-title'));
+	JSdeveloper(JSlang('@test-hello'));
 	
 	//Example lightGallery prev page
 	$(document).on('onPrevPageChange.lg', function(event){
@@ -107,6 +107,9 @@ $(document).ready(function(){
 	
 	//Example test main url
 	JSdeveloper('URL: '+JSmainUrl);
+	
+	//Example disable click on images
+	JSdisabledClick('body img', 'Element disabled', 'You can not copy images from this site.');
 	
 	//Example aditional exceptions for disabled links
 	JShashTagExceptions.push('#example');

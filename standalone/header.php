@@ -66,11 +66,11 @@
 	<?php echo php::section('header','get'); ?>
 	
 </head>
-<body class="<?php echo php::is_home() ? 'JSisHome' : ''; ?>">
+<body data-js-lang="en" data-js-hashtag="true" <?php echo php::is_home() ? 'data-js-home="true"' : ''; ?>>
 <!-- ================================================= ANALYTICS ================================================= -->
 <?php if(php::is_localhost()): ?>
 <script>
-	function ga(){ console.log('Google Analytics:\n',arguments); } //Dont track in localhost
+	function ga(){ console.log('Google Analytics:\n', arguments); } //Dont track in localhost
 </script>
 <?php else: ?>
 <?php echo php::convert_to_utf8('<script></script>')."\n"; ?>

@@ -65,12 +65,11 @@
 	@yield('extra_code_header')
     
 </head>
-
-<body class="<?php echo Request::path() == '/' ? 'JSisHome' : ''; ?>">
+<body data-js-lang="en" data-js-hashtag="true" <?php echo Request::path() == '/' ? 'data-js-home="true"' : ''; ?>>
 <!-- ================================================= ANALYTICS ================================================= -->
 @if(preg_match('/(::1|127.0.0.|192.168.|localhost|.app|.dev|.site.|.test)/i', Request::ip()))
 <script>
-	function ga(){ console.log('Google Analytics:\n',arguments); } //Dont track in localhost
+	function ga(){ console.log('Google Analytics:\n', arguments); } //Dont track in localhost
 </script>
 @else
 <script>

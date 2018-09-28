@@ -73,11 +73,11 @@
 	wp_head();
 	?>
 </head>
-<body class="<?php echo is_home() ? 'JSisHome' : ''; ?>">
+<body data-js-lang="en" data-js-hashtag="true" <?php echo is_home() ? 'data-js-home="true"' : ''; ?>>
 <!-- ================================================= ANALYTICS ================================================= -->
 <?php if(php::is_localhost()): ?>
 <script>
-	function ga(){ console.log('Google Analytics:\n',arguments); } //Dont track in localhost
+	function ga(){ console.log('Google Analytics:\n', arguments); } //Dont track in localhost
 </script>
 <?php else: ?>
 <?php echo php::convert_to_utf8(get_option('bloganalytics'))."\n"; ?>

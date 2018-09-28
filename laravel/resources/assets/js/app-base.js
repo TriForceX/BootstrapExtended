@@ -2,7 +2,7 @@
 
 //Global variables
 var JSmainUrl = '@global-url';
-var JSisHome = JSexist($('.JSisHome'));
+var JSisHome = JSexist($('*[data-js-home]'));
 var JSisMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini|BB10|PlayBook|MeeGo/i.test(navigator.userAgent);
 var JShashTagExceptions = ['#carousel'];
 var JShashTagAlignment = ['medium','top'];
@@ -14,7 +14,7 @@ var JSisNav = function(name, version)
 					{
 						var checkData = {
 					 					'ie' 			: { 'name' : 'Microsoft Internet Explorer', 'internal' : $.browser.msie },
-					 					'edge' 		: { 'name' : 'Microsoft Edge', 'internal' : '' },
+					 					'edge' 			: { 'name' : 'Microsoft Edge', 'internal' : '' },
 					 					'chrome' 		: { 'name' : 'Chrome', 'internal' : $.browser.webkit },
 					 					'firefox' 		: { 'name' : 'Firefox', 'internal' : $.browser.mozilla },
 					 					'safari' 		: { 'name' : 'Safari', 'internal' : $.browser.webkit },
@@ -1170,18 +1170,47 @@ function JSautoScroll(selector, animated, distance)
 }
 
 //Disable right click menu
-function JSdisabledClick(element, message)
+function JSdisabledClick(element, title, message, size, align, animate)
 {
 	//Dev log
 	JSdeveloper('[JS Function] Check Disabled Click');
+	
+	if(!title){ //Check value
+		title = false;
+	}
 	
 	if(!message){ //Check value
 		message = false;
 	}
 	
-	$(element).contextmenu(function(e){
-		if(message){
-			alert(message);
+	if(!size || !size.match(/^(small|medium|large|extra-large)$/)){ //Check value
+		size = 'medium';
+	}
+	
+	if(!align || !align.match(/^(top|bottom|left|center|right)$/)){ //Check value
+		align = 'top';
+	}
+	
+	if(!animate && animate != false){ //Check value
+		animate = true;
+	}
+	
+	$(document).on('contextmenu', element, function(e){
+		if(title && message)
+		{
+			//Check plugin
+			if(typeof bootbox !== 'undefined')
+			{
+				//Bootbox alert
+				bootbox.alert({
+					title: title,
+					message: message,
+					size: size,
+					backdrop: true,
+					className: (animate == 'alternative' ? 'fade-2 '+align : align),
+					animate: (animate == 'alternative' ? true : animate),
+				});
+			}
 		}
 		e.preventDefault();
 	});
