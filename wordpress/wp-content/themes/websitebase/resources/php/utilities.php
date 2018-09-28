@@ -391,7 +391,7 @@ class php
             $url .= $_SERVER['REQUEST_URI'];
         }
 		if($queryRemove){
-			$url = strtok($url,'?');
+			$url = rtrim(strtok($url,'?'), '/');
 		}
         return $url;
     }

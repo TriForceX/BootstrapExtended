@@ -300,17 +300,10 @@ class php
 	//Check if the current domain is localhost
 	public static function is_localhost($custom = null)
     {
-		$whitelist = array('127.0.0.', '192.168.', '::1', 'localhost');
-		$passed = false;
-		if($custom != null){
-			$whitelist[] = $custom;
-		}
-		foreach ($whitelist as $item){
-			if (stripos($_SERVER['HTTP_HOST'], $item) !== false){
-				$passed = true;
-			}
-		}
-        return $passed;
+		$baselist = preg_match('/(::1|127.0.0.|192.168.|localhost)/i', $_SERVER['HTTP_HOST']);
+		$whitelist = $custom != null ? preg_match('/('.$custom.')/i', $_SERVER['HTTP_HOST']) : false;
+
+		return $baselist || $whitelist ? true : false;
     }
 	
 	//Checks to see if the page is being server over SSL or not
@@ -398,7 +391,7 @@ class php
             $url .= $_SERVER['REQUEST_URI'];
         }
 		if($queryRemove){
-			$url = strtok($url,'?');
+			$url = rtrim(strtok($url,'?'), '/');
 		}
         return $url;
     }
