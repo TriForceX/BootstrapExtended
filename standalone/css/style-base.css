@@ -30,15 +30,15 @@ ol{
 }
 th[align='center'],
 td[align='center']{
-	text-align: center;
+	text-align: center !important;
 }
 th[align='right'],
 td[align='right']{
-	text-align: right;
+	text-align: right !important;
 }
 th[align='left'],
 td[align='left']{
-	text-align: left;
+	text-align: left !important;
 }
 /* General HTML */
 
