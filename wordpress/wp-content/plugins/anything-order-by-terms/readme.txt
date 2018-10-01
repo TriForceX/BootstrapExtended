@@ -1,10 +1,10 @@
 === Anything Order by Terms ===
 Contributors: briar
-Donate link: http://briar.site/donate/
+Donate link: http://briar.guru/donate/
 Tags: admin, custom, drag and drop, menu_order, order, page, post, rearrange, reorder, sort, taxonomy, term_order
 Requires at least: 4.7
 Tested up to: 4.9.8
-Stable tag: 1.3.1
+Stable tag: 1.3.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -54,6 +54,12 @@ Ctrl(or Command on OS X)+Click toggle selection state of current item. Shift+Cli
 
 == Changelog ==
 
+= 1.3.2 - 2018-10-01 =
+* Fixed - Update author site link.
+
+= 1.3.1 - 2018-27-09 =
+* Fixed - Bulk actions did not work in post view.
+
 = 1.3.1 - 2018-27-09 =
 * Fixed - Bulk actions did not work in post view.
 
@@ -62,10 +68,6 @@ Ctrl(or Command on OS X)+Click toggle selection state of current item. Shift+Cli
 * Changed - Disable Woocommerce term ordering in favour plugin methods.
 * Changed - Reset order init by bulk action select instead screen options link.
 * Fixed - Save ordering post by term when use filter select in admin area.
-
-= 1.2.2 =
-* Changed - Woocommerce 3.1 compability.
-* Fixed - Minor.
 
 
 == Upgrade Notice ==

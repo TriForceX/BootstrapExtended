@@ -5,10 +5,10 @@
 	Plugin URI: http://wordpress.org/plugins/anything-order-by-terms/
 	Description: This plugin allows you to arrange any post types and taxonomies with drag and drop. Save post order for each term.
 	Author: briar
-	Author URI: http://briar.site/
+	Author URI: http://briar.guru/
 	Text Domain: any-order
 	Domain Path: /languages
-	Version: 1.3.1
+	Version: 1.3.2
 	License: GPL version 2 or later - http://www.gnu.org/licenses/gpl-2.0.html
  */
 

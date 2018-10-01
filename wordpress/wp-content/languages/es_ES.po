@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WordPress - 4.9.x - Development package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2018-09-18 12:24:03+0000\n"
+"PO-Revision-Date: 2018-09-30 10:41:34+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -7460,7 +7460,7 @@ msgstr "Volver"
 
 #: wp-includes/customize/class-wp-customize-themes-section.php:84
 msgid "An unexpected error occurred. Something may be wrong with WordPress.org or this server&#8217;s configuration. If you continue to have problems, please try the <a href=\"https://wordpress.org/support/\">support forums</a>."
-msgstr "Ha sucedido un error inesperado. Puede que haya un problema con WordPress.org o con la configuración de este servidor. Si continuas teniendo problemas, por favor prueba en los <a href=\"https://es.forums.wordpress.org\">foros de soporte</a>."
+msgstr "Ha sucedido un error inesperado. Puede que algo vaya mal con WordPress.org o con la configuración de este servidor. Si sigues teniendo problemas, por favor, prueba en los <a href=\"https://es.wordpress.org/support\">foros de soporte</a>."
 
 #: wp-includes/media.php:3566
 msgid "Image Details"
@@ -7821,7 +7821,7 @@ msgstr "on"
 #: wp-includes/update.php:152 wp-includes/update.php:344
 #: wp-includes/update.php:526
 msgid "An unexpected error occurred. Something may be wrong with WordPress.org or this server&#8217;s configuration. If you continue to have problems, please try the <a href=\"%s\">support forums</a>."
-msgstr "Sucedió un error inesperado. Puede que algo vaya mal con WordPress.org o la configuración de este servidor. Si sigues teniendo problemas, por favor prueba en los <a href=\"%s\">foros de soporte</a>."
+msgstr "Ha sucedido un error inesperado. Puede que algo vaya mal con WordPress.org o la configuración de este servidor. Si sigues teniendo problemas, por favor, prueba en los <a href=\"%s\">foros de soporte</a>."
 
 #. translators: To add an additional Open Sans character subset specific to
 #. your language, translate this to 'greek', 'cyrillic' or 'vietnamese'. Do not
