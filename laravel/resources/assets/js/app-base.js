@@ -1533,31 +1533,33 @@ function JSmapLaunch(element)
 }
 
 //Paginator group
-function JSpaginatorGroup(limit, limitMobile, exceptions)
+function JSpaginator(container)
 {
 	//Dev log
-	JSdeveloper('[JS Function] Paginator Group');
+	JSdeveloper('[JS Function] Paginator');
 	
-	if(!exceptions){ //Check value
-		exceptions = true;
-	}
-	
-	$(".JSpaginator .JSpageItems").each(function(){ 
+	$(container).each(function(){ 
+		var limit = $(container).data('paginator-limit') ? $(container).data('paginator-limit') : 10;
+		var limitMobile = $(container).data('paginator-limit-mobile') ? $(container).data('paginator-limit-mobile') : 5;
+		var exceptions = $(container).data('paginator-exceptions') ? $(container).data('paginator-exceptions') : '';
 
 		var items = $(this).find("a").not(exceptions);
 		var amount = ((JSisMobile) ? limitMobile : limit);
+		
 		for(var i = 0; i < items.length; i+=amount)
 		{
-			if(items.slice(i, i+amount).hasClass("JSpageActive")){
+			if(items.slice(i, i+amount).hasClass("JSpageActive"))
+			{
 				items.slice(i, i+amount).wrapAll("<div class='JSpageGroup JSpageActive'></div>");
 			}
-			else{
+			else
+			{
 				items.slice(i, i+amount).wrapAll("<div class='JSpageGroup'></div>");
 			}
 		}
 
-		$(".JSpaginator .JSpageItems .JSpageGroup.JSpageActive").prev().addClass("JSpageGroupPrev");
-		$(".JSpaginator .JSpageItems .JSpageGroup.JSpageActive").next().addClass("JSpageGroupNext");
+		$(this).find(".JSpageItems .JSpageGroup.JSpageActive").prev().addClass("JSpageGroupPrev");
+		$(this).find(".JSpageItems .JSpageGroup.JSpageActive").next().addClass("JSpageGroupNext");
 	});
 }
 
@@ -1695,6 +1697,11 @@ function JSmainInit()
 	//Apply Image Fill
 	$('.JSimgFill').each(function(){
 		JSimgFill($(this));
+	});
+	
+	//Apply Paginator
+	$('.JSpaginator').each(function(){
+		JSpaginator($(this));
 	});
 	
 	//Apply Paint Table
