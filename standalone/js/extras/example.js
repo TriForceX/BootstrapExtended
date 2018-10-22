@@ -4,7 +4,7 @@
 function JSvalidateCustom(field)
 {
 	//Dev log
-	JSdeveloper('[JS Example] Validate Custom');
+	JSconsole('[JS Example] Validate Custom');
 	
 	if(field === 'Custom')
 	{
@@ -20,7 +20,7 @@ function JSvalidateCustom(field)
 function JSgoogleTranslateStyles()
 {
 	//Dev log
-	JSdeveloper('[JS Example] Google Translate Styles');
+	JSconsole('[JS Example] Google Translate Styles');
 	
 	var css = '<style type="text/css" id="JSgoogleTranslateStyles">'+
 				'.goog-te-combo,'+
@@ -60,7 +60,7 @@ $(document).ready(function(){
 /* ================================================= EXAMPLE DOCUMENT READY ================================================= */
 	
 	//Dev log
-	JSdeveloper('[JS Example] Document Ready');
+	JSconsole('[JS Example] Document Ready');
 	
 	//Set language on the fly
 	if(JSgetUrlParameter('lang-test'))
@@ -72,7 +72,7 @@ $(document).ready(function(){
 	JSlanguage['@test-hello'] = { 'en' : 'Hello world!', 'es' : 'Hola mundo!' };
 	
 	//Example use language string
-	JSdeveloper(JSlang('@test-hello'));
+	JSconsole(JSlang('@test-hello'));
 	
 	//Example lightGallery prev page
 	$(document).on('onPrevPageChange.lg', function(event){
@@ -106,7 +106,7 @@ $(document).ready(function(){
 	$('title').addClass('notranslate');
 	
 	//Example test main url
-	JSdeveloper('URL: '+JSmainUrl);
+	JSconsole('URL: '+JSmainUrl);
 	
 	//Example disable click on images
 	JSdisabledClick('body img', 'Element disabled', 'You can not copy images from this site.');
@@ -129,7 +129,7 @@ $(window).bind("load", function() {
 /* ================================================= EXAMPLE WINDOWS LOAD ================================================= */
 	
 	//Dev log
-	JSdeveloper('[JS Example] Window Load');
+	JSconsole('[JS Example] Window Load');
 	
 	//Example test progress bar on load
 	$(".JSloadProgressTest .progress-bar").css("width", "100%");
@@ -150,7 +150,7 @@ $(document).on("JSresponsiveCode", function(event, bodyWidth, bodyHeight, bodyOr
 /* ================================================= EXAMPLE RESPONSIVE CODE ================================================= */
 	
 	//Dev log
-	JSdeveloper('[JS Example] Responsive Code');
+	JSconsole('[JS Example] Responsive Code');
 	
 	//Example size detection
 	$("body").attr("window-size",bodyWidth+"x"+bodyHeight);
@@ -180,7 +180,7 @@ $(document).ajaxStart(function(){
 /* ================================================= EXAMPLE AJAX START ================================================= */
 	
 	//Dev log
-	JSdeveloper('[JS Example] Ajax Start');
+	JSconsole('[JS Example] Ajax Start');
 	
 /* ================================================= EXAMPLE AJAX START ================================================= */
 
@@ -191,7 +191,7 @@ $(document).ajaxComplete(function() {
 /* ================================================= EXAMPLE AJAX COMPLETE ================================================= */
 	
 	//Dev log
-	JSdeveloper('[JS Example] Ajax Complete');
+	JSconsole('[JS Example] Ajax Complete');
 	
 /* ================================================= EXAMPLE AJAX COMPLETE ================================================= */
 

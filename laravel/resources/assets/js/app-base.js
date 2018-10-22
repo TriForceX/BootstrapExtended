@@ -53,7 +53,7 @@ if (!window.console) console = {log: function() {}};
 $.fn.JShasAttr = function(name)
 {  
 	//Dev log
-	JSdeveloper('[JS Function] Has Attr');
+	JSconsole('[JS Function] Has Attr');
 	
 	return this.attr(name) !== undefined;
 };
@@ -62,7 +62,7 @@ $.fn.JShasAttr = function(name)
 $.fn.JSouterHeight = function()
 {
 	//Dev log
-	JSdeveloper('[JS Function] Outer Height');
+	JSconsole('[JS Function] Outer Height');
 	
 	if(!this[0]){ //Check value
 		return null;
@@ -76,7 +76,7 @@ $.fn.JSouterHeight = function()
 $.fn.JSouterWidth = function()
 {
 	//Dev log
-	JSdeveloper('[JS Function] Outer Width');
+	JSconsole('[JS Function] Outer Width');
 	
 	if(!this[0]){ //Check value
 		return null;
@@ -90,7 +90,7 @@ $.fn.JSouterWidth = function()
 $.fn.JShtmlClean = function()
 {
 	//Dev log
-	JSdeveloper('[JS Function] HTML Clean');
+	JSconsole('[JS Function] HTML Clean');
 	
     this.contents().filter(function() {
         if (this.nodeType !== 3) {
@@ -109,7 +109,7 @@ $.fn.JShtmlClean = function()
 $.fn.JSvalidateForm = function(options)
 {	
 	//Dev log
-	JSdeveloper('[JS Function] Validate Form');
+	JSconsole('[JS Function] Validate Form');
 	
 	var settings = $.extend({
 		noValidate		: '',
@@ -380,7 +380,7 @@ $.fn.JSvalidateForm = function(options)
 function JSvalidateEmail(field)
 {
 	//Dev log
-	JSdeveloper('[JS Function] Validate Email');
+	JSconsole('[JS Function] Validate Email');
 	
     var emailReg = /^([\w-\.]+@([\w-]+\.)+[\w-]{2,4})?$/;
     
@@ -395,7 +395,7 @@ function JSvalidateEmail(field)
 function JSvalidateNumber(field)
 {
 	//Dev log
-	JSdeveloper('[JS Function] Validate Number');
+	JSconsole('[JS Function] Validate Number');
 	
     var numberReg = /^-?\d+(\.\d+)?$/;
     
@@ -410,7 +410,7 @@ function JSvalidateNumber(field)
 function JSvalidateEmpty(field)
 {
 	//Dev log
-	JSdeveloper('[JS Function] Validate Empty');
+	JSconsole('[JS Function] Validate Empty');
 	
     if(!field || /^\s*$/.test(field)){
     	return false;
@@ -424,7 +424,7 @@ function JSvalidateEmpty(field)
 function JStoBoolean(value)
 {
 	//Dev log
-	JSdeveloper('[JS Function] Convert To Boolean');
+	JSconsole('[JS Function] Convert To Boolean');
 	
     var strValue = String(value).toLowerCase();
     strValue = ((!isNaN(strValue) && strValue !== '0') &&
@@ -438,7 +438,7 @@ function JStoBoolean(value)
 function JSgetMaxWidth(elems, getRect)
 {
 	//Dev log
-	JSdeveloper('[JS Function] Get Max Width');
+	JSconsole('[JS Function] Get Max Width');
 	
     return Math.max.apply(null, elems.map(function()
     {
@@ -455,7 +455,7 @@ function JSgetMaxWidth(elems, getRect)
 function JSgetMaxHeight(elems, getRect)
 {
 	//Dev log
-	JSdeveloper('[JS Function] Get Max Height');
+	JSconsole('[JS Function] Get Max Height');
 	
     return Math.max.apply(null, elems.map(function()
     {
@@ -500,7 +500,7 @@ $(window).bind("orientationchange", JSresponsiveCode);
 function JSdestroyLightGallery()
 {
 	//Dev log
-	JSdeveloper('[JS Function] Destroy Light Gallery');
+	JSconsole('[JS Function] Destroy Light Gallery');
 	
 	//Check plugin
 	if($.fn.lightGallery !== 'undefined')
@@ -512,7 +512,7 @@ function JSdestroyLightGallery()
 function JSloadLightGallery()
 {	
 	//Dev log
-	JSdeveloper('[JS Function] Load Light Gallery');
+	JSconsole('[JS Function] Load Light Gallery');
 	
 	//Check plugin
 	if($.fn.lightGallery !== 'undefined')
@@ -697,7 +697,7 @@ function JSloadLightGallery()
 function JSimgFill(container)
 {	
 	//Dev log
-	JSdeveloper('[JS Function] Img Fill');
+	JSconsole('[JS Function] Img Fill');
 	
 	var bgData = new Array();
 	var bgVertical;
@@ -753,7 +753,7 @@ function JSimgFill(container)
 function JSelementHeightChange(elm, callback)
 {
 	//Dev log
-	JSdeveloper('[JS Function] Element Height Change');
+	JSconsole('[JS Function] Element Height Change');
 	
 	var lastHeight = $(elm).height(), newHeight;
 	(function run(){
@@ -785,7 +785,7 @@ function JSelementHeightChange(elm, callback)
 function JStextCut(container)
 {	
 	//Dev log
-	JSdeveloper('[JS Function] Text Cut One Line');
+	JSconsole('[JS Function] Text Cut One Line');
 	
 	$(container).each(function(){
 		$(this).addClass('JStextCutElem');
@@ -797,7 +797,7 @@ function JStextCut(container)
 function JStextCutMulti(container)
 {
 	//Dev log
-	JSdeveloper('[JS Function] Text Cut Multi Line');
+	JSconsole('[JS Function] Text Cut Multi Line');
 	
     var wordArray = container.html().split(' ');
 	while(container.prop('scrollHeight') > container.height())
@@ -811,7 +811,7 @@ function JStextCutMulti(container)
 function JStextSize(container)
 {
 	//Dev log
-	JSdeveloper('[JS Function] Text Size');
+	JSconsole('[JS Function] Text Size');
 	
 	$(container).css('font-size','');
 	$(container).each(function (i,box){
@@ -834,7 +834,7 @@ function JStextSize(container)
 function JSmodalAlert(title, text, size, align, animate)
 {
 	//Dev log
-	JSdeveloper('[JS Function] Modal Alert');
+	JSconsole('[JS Function] Modal Alert');
 	
 	if(!size || !size.match(/^(small|medium|large|extra-large)$/)){ //Check value
 		size = 'medium';
@@ -867,7 +867,7 @@ function JSmodalAlert(title, text, size, align, animate)
 function JSmodalContent(title, element, size, align, animate)
 {
 	//Dev log
-	JSdeveloper('[JS Function] Modal Content');
+	JSconsole('[JS Function] Modal Content');
 	
 	if(!size || !size.match(/^(small|medium|large|extra-large)$/)){ //Check value
 		size = 'medium';
@@ -900,7 +900,7 @@ function JSmodalContent(title, element, size, align, animate)
 function JSmodalAjax(title, url, loading, size, align, animate)
 {
 	//Dev log
-	JSdeveloper('[JS Function] Modal Ajax');
+	JSconsole('[JS Function] Modal Ajax');
 	
 	if(!size || !size.match(/^(small|medium|large|extra-large)$/)){ //Check value
 		size = 'medium';
@@ -924,7 +924,7 @@ function JSmodalAjax(title, url, loading, size, align, animate)
 		dataType: 'html',
 		beforeSend: function(){
 			//Loading
-			JSdeveloper('JSmodalAjax Loading ...');
+			JSconsole('JSmodalAjax Loading ...');
 			
 			//Show loading colored icon
 			if(loading){
@@ -933,7 +933,7 @@ function JSmodalAjax(title, url, loading, size, align, animate)
 		},
 		success: function(data){  
 			//Loaded
-			JSdeveloper("JSmodalAjax Loaded!");
+			JSconsole("JSmodalAjax Loaded!");
 			
 			//Check plugin
 			if(typeof bootbox !== 'undefined')
@@ -955,10 +955,10 @@ function JSmodalAjax(title, url, loading, size, align, animate)
 		},
 		error: function(xhr, status, error){
 			//Error
-			JSdeveloper("JSmodalAjax Error! ("+xhr.status+")");
+			JSconsole("JSmodalAjax Error! ("+xhr.status+")");
 				
 			if(!(xhr.responseText === undefined || xhr.responseText === null || xhr.responseText == '')){
-				JSdeveloper("---------------\n"+xhr.responseText);
+				JSconsole("---------------\n"+xhr.responseText);
 			}
 			//Remove loading icon
 			if(loading){
@@ -972,7 +972,7 @@ function JSmodalAjax(title, url, loading, size, align, animate)
 function JSyouTubeParser(url)
 {
 	//Dev log
-	JSdeveloper('[JS Function] YouTube URL Parser');
+	JSconsole('[JS Function] YouTube URL Parser');
 	
     var regExp = /^.*((youtu.be\/)|(v\/)|(\/u\/\w\/)|(embed\/)|(watch\?))\??v?=?([^#\&\?]*).*/;
     var match = url.match(regExp);
@@ -990,7 +990,7 @@ function JSyouTubeParser(url)
 function JSvimeoParser(url)
 {
 	//Dev log
-	JSdeveloper('[JS Function] Vimeo URL Parser');
+	JSconsole('[JS Function] Vimeo URL Parser');
 	
     var regExp = /^.*(vimeo\.com\/)((channels\/[A-z]+\/)|(groups\/[A-z]+\/videos\/))?([0-9]+)/;
     var match = url.match(regExp);
@@ -1005,7 +1005,7 @@ function JSvimeoParser(url)
 function JSvideoLaunch(title, url, share, autoplay, size, align, animate)
 {	
 	//Dev log
-	JSdeveloper('[JS Function] Video Launch');
+	JSconsole('[JS Function] Video Launch');
 	
 	if(!title){ //Check value
 		title = false;
@@ -1137,7 +1137,7 @@ function JSvideoLaunch(title, url, share, autoplay, size, align, animate)
 function JScapitalizeFirst(string)
 {
 	//Dev log
-	JSdeveloper('[JS Function] Capitalize First');
+	JSconsole('[JS Function] Capitalize First');
 	
     return string.charAt(0).toUpperCase() + string.slice(1);
 }
@@ -1146,7 +1146,7 @@ function JScapitalizeFirst(string)
 function JStoSlug(string)
 {
 	//Dev log
-	JSdeveloper('[JS Function] Convert To Slug');
+	JSconsole('[JS Function] Convert To Slug');
 	
 	return string.toLowerCase().replace(/[^\w ]+/g,'').replace(/ +/g,'-');
 }
@@ -1155,7 +1155,7 @@ function JStoSlug(string)
 function JSautoScroll(selector, animated, distance)
 {
 	//Dev log
-	JSdeveloper('[JS Function] Auto Scroll');
+	JSconsole('[JS Function] Auto Scroll');
 	
     var scrollDistance = distance;
     var scrollTarget = $(selector);
@@ -1173,7 +1173,7 @@ function JSautoScroll(selector, animated, distance)
 function JSdisabledClick(element, title, message, size, align, animate)
 {
 	//Dev log
-	JSdeveloper('[JS Function] Check Disabled Click');
+	JSconsole('[JS Function] Check Disabled Click');
 	
 	if(!title){ //Check value
 		title = false;
@@ -1220,7 +1220,7 @@ function JSdisabledClick(element, title, message, size, align, animate)
 function JSgetUrlParameter(sParam)
 {
 	//Dev log
-	JSdeveloper('[JS Function] Get URL Parameter');
+	JSconsole('[JS Function] Get URL Parameter');
 	
 	var sPageURL = decodeURIComponent(window.location.search.substring(1)),
 		sURLVariables = sPageURL.split('&'),
@@ -1239,7 +1239,7 @@ function JSgetUrlParameter(sParam)
 function JSgetSrcParameter(sParam)
 {
 	//Dev log
-	JSdeveloper('[JS Function] Get Source Parameter');
+	JSconsole('[JS Function] Get Source Parameter');
 	
 	var scripts = document.getElementsByTagName('script');
 	var index = scripts.length - 1;
@@ -1265,7 +1265,7 @@ function JSgetSrcParameter(sParam)
 function JSlinkify(inputText)
 {
 	//Dev log
-	JSdeveloper('[JS Function] Linkify');
+	JSconsole('[JS Function] Linkify');
 	
     var replacedText, replacePattern1, replacePattern2, replacePattern3;
 
@@ -1288,7 +1288,7 @@ function JSlinkify(inputText)
 function JSstripTags(container, items)
 {
 	//Dev log
-	JSdeveloper('[JS Function] Strip Tags');
+	JSconsole('[JS Function] Strip Tags');
 	
 	container.find("*").not(items).each(function() {
 		$(this).remove();
@@ -1299,7 +1299,7 @@ function JSstripTags(container, items)
 function JShashTag(string)
 {	
 	//Dev log
-	JSdeveloper('[JS Function] Check Hash Tag');
+	JSconsole('[JS Function] Check Hash Tag');
 	
 	var textUrl = string;
 	var exceptions = JShashTagExceptions;
@@ -1359,7 +1359,7 @@ function JShashTag(string)
 function JSwindowPopup(element, errortitle, errormsg)
 {	
 	//Dev log
-	JSdeveloper('[JS Function] Window Pop-Up');
+	JSconsole('[JS Function] Window Pop-Up');
 	
 	var size = $(element).data('win-modal-size');
 	var align = $(element).data('win-modal-align');
@@ -1451,7 +1451,7 @@ function JSwindowPopup(element, errortitle, errormsg)
 function JSmapLaunch(element)
 {	
 	//Dev log
-	JSdeveloper('[JS Function] Map Launch');
+	JSconsole('[JS Function] Map Launch');
 	
 	var size = $(element).data('map-modal-size');
 	var align = $(element).data('map-modal-align');
@@ -1536,7 +1536,7 @@ function JSmapLaunch(element)
 function JSpaginator(container)
 {
 	//Dev log
-	JSdeveloper('[JS Function] Paginator');
+	JSconsole('[JS Function] Paginator');
 	
 	$(container).each(function(){ 
 		var limit = $(container).data('paginator-limit') ? $(container).data('paginator-limit') : 10;
@@ -1567,7 +1567,7 @@ function JSpaginator(container)
 function JSpaintTable(container)
 {
 	//Dev log
-	JSdeveloper('[JS Function] Paint Table');
+	JSconsole('[JS Function] Paint Table');
 	
 	var paintGroup = container.data('paint-group');
 	var paintGroupType = container.data('paint-group-type');
@@ -1639,7 +1639,7 @@ function JSpaintTable(container)
 function JSmainInit()
 {
 	//Dev log
-	JSdeveloper('[JS Function] Main Init');
+	JSconsole('[JS Function] Main Init');
 	
 	//Tooltip load
 	$('*[data-toggle="tooltip"]').tooltip({ trigger: 'hover' });
@@ -1791,7 +1791,7 @@ $(document).ready(function(){
 /* ================================================= BASE DOCUMENT READY ================================================= */
 	
 	//Dev log
-	JSdeveloper('[JS State] Document Ready');
+	JSconsole('[JS State] Document Ready');
 	
 	//Disable button auto-focus
 	$(document).on("shown.bs.modal", function(){
@@ -1861,7 +1861,7 @@ $(window).bind("load", function(){
 
 /* ================================================= BASE WINDOWS LOAD ================================================= */
 	
-	JSdeveloper('[JS State] Window Load');
+	JSconsole('[JS State] Window Load');
 	
 /* ================================================= BASE WINDOWS LOAD ================================================= */
 
@@ -1872,7 +1872,7 @@ $(document).on("JSresponsiveCode", function(event, bodyWidth, bodyHeight, bodyOr
 /* ================================================= BASE RESPONSIVE CODE ================================================= */
 	
 	//Dev log
-	JSdeveloper('[JS State] Responsive Code');
+	JSconsole('[JS State] Responsive Code');
 	
 	//Apply Text Size
 	$(".JStextSize").each(function(){
@@ -1893,7 +1893,7 @@ $(document).ajaxStart(function(){
 /* ================================================= BASE AJAX START ================================================= */
 	
 	//Dev log
-	JSdeveloper('[JS State] Ajax Start');
+	JSconsole('[JS State] Ajax Start');
 	
 /* ================================================= BASE AJAX START ================================================= */
 
@@ -1904,7 +1904,7 @@ $(document).ajaxComplete(function(){
 /* ================================================= BASE AJAX COMPLETE ================================================= */
 	
 	//Dev log
-	JSdeveloper('[JS State] Ajax Complete');
+	JSconsole('[JS State] Ajax Complete');
 	
 	//Launch main functions
 	JSmainInit();

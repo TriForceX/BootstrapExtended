@@ -7,11 +7,11 @@ function JSexist(elem)
 }
 
 //Custom console log (developer mode)
-function JSdeveloper(data)
+function JSconsole(data)
 {
-	if(JSexist($('*[data-js-developer]')))
+	if(JSexist($('*[data-js-console]')))
 	{
-		if(!(JSexist($('*[data-js-developer="nobase"]')) && /\[JS/i.test(data)))
+		if(!(JSexist($('*[data-js-console="nobase"]')) && /\[JS/i.test(data)))
 		{
 			console.log(data);
 		}
@@ -150,7 +150,7 @@ if(JSmainLang === undefined || JSmainLang === null || JSmainLang == ''){ //Check
 function JSlang(string)
 {
 	//Dev log
-	JSdeveloper('[JS Function] Get Language');
+	JSconsole('[JS Function] Get Language');
 	
 	var text = JSlanguage[string][JSmainLang];
 	
