@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WordPress - 4.9.x - Development - Administration package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2018-09-26 11:16:14+0000\n"
+"PO-Revision-Date: 2018-10-18 11:45:31+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -502,7 +502,7 @@ msgstr "En esta sección debes indicar la URL de tu sitio, así como el nombre d
 
 #: wp-admin/includes/misc.php:1662
 msgid "Please edit your privacy policy content, making sure to delete the summaries, and adding any information from your theme and plugins. Once you publish your policy page, remember to add it to your navigation menu."
-msgstr "Por favor, edita el contenido de tu política de privacidad, asegurándote de eliminar los resúmenes, y añade cualquier información de tus temas y plugins. Una vez publiques tu página de política, recuerda agregarla a tu menú de navegación."
+msgstr "Por favor, edita el contenido de tu política de privacidad, asegurándote de eliminar los resúmenes, y añade cualquier información de tus temas y plugins. Una vez que publiques tu página de política, recuerda añadirla a tu menú de navegación."
 
 #: wp-admin/includes/misc.php:1659
 msgid "Hello,"
@@ -702,10 +702,6 @@ msgstr "La página de política de privacidad seleccionada actualmente está en 
 msgid "The currently selected Privacy Policy page does not exist. Please create or select a new page."
 msgstr "La página de política de privacidad seleccionada actualmente no existe. Por favor, crea o selecciona una nueva página."
 
-#: wp-admin/includes/misc.php:1635
-msgid "Copy suggested policy text from %s."
-msgstr "Copiar texto de política sugerido desde %s."
-
 #. translators: Do not translate EXPIRATION, LINK, SITENAME, SITEURL: those are
 #. placeholders.
 #: wp-admin/includes/file.php:2070
@@ -737,6 +733,10 @@ msgstr ""
 "Atentamente,\n"
 "El equipo de ###SITENAME###\n"
 "###SITEURL###"
+
+#: wp-admin/includes/misc.php:1635
+msgid "Copy suggested policy text from %s."
+msgstr "Copiar texto de política sugerido desde %s."
 
 #: wp-admin/includes/file.php:2019
 msgid "Unable to add data to export file."
@@ -1795,10 +1795,6 @@ msgstr "Importar entradas y comentarios de un blog Movable Type o TypePad."
 msgid "Import links in OPML format."
 msgstr "Importar enlaces en formato OPML."
 
-#: wp-admin/includes/import.php:200
-msgid "Import posts from an RSS feed."
-msgstr "Importar entradas de un canal RSS."
-
 #: wp-admin/includes/import.php:212
 msgid "Import posts, pages, comments, custom fields, categories, and tags from a WordPress export file."
 msgstr "Importar entradas, páginas, comentarios, campos personalizados, categorías y etiquetas de un fichero de exportación de WordPress."
@@ -1810,6 +1806,10 @@ msgstr "Convierte las categorías existentes a etiquetas o las etiquetas en cate
 #: wp-admin/includes/import.php:206
 msgid "Import posts &amp; media from Tumblr using their API."
 msgstr "Importa entradas y medios de Tumblr usando su API."
+
+#: wp-admin/includes/import.php:200
+msgid "Import posts from an RSS feed."
+msgstr "Importar entradas de un feed RSS."
 
 #: wp-admin/includes/import.php:170
 msgid "Import posts, comments, and users from a Blogger blog."
@@ -3462,7 +3462,7 @@ msgstr "<a href=\"https://codex.wordpress.org/Plugins_Add_New_Screen\">Documenta
 
 #: wp-admin/user-new.php:220
 msgid "<a href=\"https://codex.wordpress.org/Users_Add_New_Screen\">Documentation on Adding New Users</a>"
-msgstr "<a href=\"https://codex.wordpress.org/Users_Add_New_Screen\">Documentación sobre agregar nuevos usuarios</a>"
+msgstr "<a href=\"https://codex.wordpress.org/Users_Add_New_Screen\">Documentación sobre añadir nuevos usuarios</a>"
 
 #: wp-admin/options-reading.php:38
 msgid "<a href=\"https://codex.wordpress.org/Settings_Reading_Screen\">Documentation on Reading Settings</a>"
@@ -5709,10 +5709,6 @@ msgstr "Si sabes lo que estás buscando Buscar es tu mejor apuesta. La pantalla 
 msgid "Search Engine Visibility"
 msgstr "Visibilidad en los motores de búsqueda"
 
-#: wp-admin/options-reading.php:25
-msgid "You can also control the display of your content in RSS feeds, including the maximum number of posts to display and whether to show full text or a summary."
-msgstr "También puedes controlar qué mostrar en el contenido de tu canal RSS, incluyendo el número máximo de entradas a mostrar o si mostrar todo el texto o solo un resumen."
-
 #: wp-admin/includes/dashboard.php:1578
 msgid "Welcome to WordPress!"
 msgstr "¡Bienvenido a WordPress!"
@@ -5736,6 +5732,10 @@ msgstr "A continuación debes introducir los detalles de conexión de tu base de
 #: wp-admin/includes/dashboard.php:1579
 msgid "We&#8217;ve assembled some links to get you started:"
 msgstr "Hemos recopilado algunos enlaces para que puedas comenzar:"
+
+#: wp-admin/options-reading.php:25
+msgid "You can also control the display of your content in RSS feeds, including the maximum number of posts to display and whether to show full text or a summary."
+msgstr "También puedes controlar qué mostrar en el contenido de tu feed RSS, incluyendo el número máximo de entradas a mostrar o si mostrar todo el texto o solo un resumen."
 
 #: wp-admin/includes/class-wp-plugin-install-list-table.php:112
 msgctxt "Plugin Installer"
@@ -8689,10 +8689,6 @@ msgid_plural "Drop-ins <span class=\"count\">(%s)</span>"
 msgstr[0] "Dependiente <span class=\"count\">(%s)</span>"
 msgstr[1] "Dependientes <span class=\"count\">(%s)</span>"
 
-#: wp-admin/plugins.php:362
-msgid "Yes, delete these files and data"
-msgstr "Si, borra estos archivos y datos"
-
 #: wp-admin/options-general.php:98
 msgid "This address is used for admin purposes. If you change this we will send you an email at your new address to confirm it. <strong>The new address will not become active until confirmed.</strong>"
 msgstr "Esta dirección está siendo utilizada con propósitos administrativos. Si la cambias se te enviará un correo electrónico a la nueva direccción para confirmarla. <strong>La nueva dirección no se activará hasta que no la hayas confirmado.</strong>"
@@ -8702,6 +8698,10 @@ msgid "Must-Use <span class=\"count\">(%s)</span>"
 msgid_plural "Must-Use <span class=\"count\">(%s)</span>"
 msgstr[0] "Imprescindible <span class=\"count\">(%s)</span>"
 msgstr[1] "Imprescindibles <span class=\"count\">(%s)</span>"
+
+#: wp-admin/plugins.php:362
+msgid "Yes, delete these files and data"
+msgstr "Sí, borra estos archivos y datos"
 
 #: wp-admin/includes/file.php:782
 msgid "File is empty. Please upload something more substantial."

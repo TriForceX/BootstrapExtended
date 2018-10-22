@@ -75,14 +75,14 @@ define('DISABLE_WP_CRON', $database['cron']);
  *
  * @since 2.6.0
  */
-define('AUTH_KEY', 'gQry#z]LR9=7h^2$u4Z3.25eB3HmMLmBiq,iLgcvN@~u_t/kB~q9S1W$3pYNa{02');
-define('SECURE_AUTH_KEY', 'h2hvm@%m~AB{NoQrBg/&yGo,-=E@F^?YrbRBJORLJQ2{s!bNMA4AY(y/,znp[ONd');
-define('LOGGED_IN_KEY', 'ZQ}k<;:l}&)oX_c%&M!4MQ~u]3n=J>~1R8,!I$ X@!?ks(hG19OcV02_]_^g~cGR');
-define('NONCE_KEY', '*)p(&f[1)bmS2CxPpIcq3N[d#?D3`Fy2`-U$LAZvnc+G=$.1_xn<OzuR$go.DMkd');
-define('AUTH_SALT', 'Q#uEq8H@K-TUgK6Qc9Qu==`zhRegQqm(~ ^PHdV`#6pNYw7m}(n)$},l4*z$A[{(');
-define('SECURE_AUTH_SALT', 'LLFWDbR_aj xlx]NA~qaqYu_b_/3TEr_1^4Cel5UF;_:+{:g><|[tpf7+#n5c]d9');
-define('LOGGED_IN_SALT', '!dj*7j^jY+KJI>VM+NlJ42W5?)A/WEcGUIU!W^ C0 P3{@kKxYCC^BDUC56u1U<_');
-define('NONCE_SALT', '*:Vo_s-~pOYEhhQzt/Qm$8@$xiNWxjsc0)Aq%cfYKO3~EODldO^NN>n<i$?YzYn[');
+define('AUTH_KEY',         'put your unique phrase here');
+define('SECURE_AUTH_KEY',  'put your unique phrase here');
+define('LOGGED_IN_KEY',    'put your unique phrase here');
+define('NONCE_KEY',        'put your unique phrase here');
+define('AUTH_SALT',        'put your unique phrase here');
+define('SECURE_AUTH_SALT', 'put your unique phrase here');
+define('LOGGED_IN_SALT',   'put your unique phrase here');
+define('NONCE_SALT',       'put your unique phrase here');
 
 /**#@-*/
 

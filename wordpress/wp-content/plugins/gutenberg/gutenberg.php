@@ -3,15 +3,15 @@
  * Plugin Name: Gutenberg
  * Plugin URI: https://github.com/WordPress/gutenberg
  * Description: Printing since 1440. This is the development plugin for the new block editor in core.
- * Version: 3.9.0
+ * Version: 4.0.0
  * Author: Gutenberg Team
  *
  * @package gutenberg
  */
 
 ### BEGIN AUTO-GENERATED DEFINES
-define( 'GUTENBERG_VERSION', '3.9.0' );
-define( 'GUTENBERG_GIT_COMMIT', 'daca50cb5051c131ad81a3dace70098c83bce0d6' );
+define( 'GUTENBERG_VERSION', '4.0.0' );
+define( 'GUTENBERG_GIT_COMMIT', '7047b02a73a3fbb95a990ed7417726a91485c15d' );
 ### END AUTO-GENERATED DEFINES
 
 gutenberg_pre_init();
@@ -258,13 +258,22 @@ add_action( 'admin_init', 'gutenberg_add_edit_link_filters' );
  * @return array          Updated post actions.
  */
 function gutenberg_add_edit_link( $actions, $post ) {
+	// Build the classic edit action. See also: WP_Posts_List_Table::handle_row_actions().
+	$title = _draft_or_post_title( $post->ID );
+
 	if ( 'wp_block' === $post->post_type ) {
 		unset( $actions['edit'] );
 		unset( $actions['inline hide-if-no-js'] );
 		$actions['export'] = sprintf(
-			'<a class="wp-list-reusable-blocks__export" href="#" data-id="%s" aria-label="%s">%s</a>',
+			'<button type="button" class="wp-list-reusable-blocks__export button-link" data-id="%s" aria-label="%s">%s</button>',
 			$post->ID,
-			__( 'Export as JSON', 'gutenberg' ),
+			esc_attr(
+				sprintf(
+					/* translators: %s: post title */
+					__( 'Export &#8220;%s&#8221; as JSON', 'gutenberg' ),
+					$title
+				)
+			),
 			__( 'Export as JSON', 'gutenberg' )
 		);
 		return $actions;
@@ -277,8 +286,6 @@ function gutenberg_add_edit_link( $actions, $post ) {
 	$edit_url = get_edit_post_link( $post->ID, 'raw' );
 	$edit_url = add_query_arg( 'classic-editor', '', $edit_url );
 
-	// Build the classic edit action. See also: WP_Posts_List_Table::handle_row_actions().
-	$title       = _draft_or_post_title( $post->ID );
 	$edit_action = array(
 		'classic' => sprintf(
 			'<a href="%s" aria-label="%s">%s</a>',
