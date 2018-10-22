@@ -179,6 +179,12 @@ a.ui-button:active,
 
 /* ================================================= BASE JAVASCRIPT ================================================= */
 
+/* JS Href */
+.JShref{
+	cursor: pointer;
+}
+/* JS Href */
+
 /* JS LightGallery */
 .JSlightGallery .lg-thumb-prev,
 .JSlightGallery .lg-thumb-next{

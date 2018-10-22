@@ -1152,20 +1152,20 @@ function JStoSlug(string)
 }
 
 //Auto scroll function
-function JSautoScroll(selector, animated, distance)
+function JSautoScroll(element, animated, distance)
 {
 	//Dev log
 	JSconsole('[JS Function] Auto Scroll');
 	
-    var scrollDistance = distance;
-    var scrollTarget = $(selector);
-	var scrollAnimated = animated == true ? 500 : animated;
+	var distance = $(element).data('scroll-distance') ? $(element).data('scroll-distance') : 0;
+	var target = $(element);
+	var animated = $(element).data('scroll-animated') < 500 ? 500 : $(element).data('scroll-animated');
 
-    if(scrollAnimated){
-        $('html, body').animate({scrollTop: (scrollTarget.offset().top - scrollDistance)}, scrollAnimated);
+    if(animated){
+        $('html, body').animate({scrollTop: (target.offset().top - distance)}, animated);
     }
     else{
-        $('html, body').scrollTop(scrollTarget.offset().top - scrollDistance);
+        $('html, body').scrollTop(target.offset().top - distance);
     }
 }
 
@@ -1569,13 +1569,15 @@ function JSpaintTable(container)
 	//Dev log
 	JSconsole('[JS Function] Paint Table');
 	
+	var paintCleanTable = container.data('paint-clean-table');
+	var paintCleanCell = container.data('paint-clean-cell');
 	var paintGroup = container.data('paint-group');
 	var paintGroupType = container.data('paint-group-type');
 	var paintHeader = container.data('paint-header');
 	var paintHeaderAlt = container.data('paint-header-alt');
 	var paintEmpty = container.data('paint-empty');
 
-	var getEmpty = paintEmpty ? paintEmpty : '––';
+	var getEmpty = paintEmpty ? paintEmpty : 'none';
 	var getType = paintGroupType == 'even' ? 'tr:nth-child(even)' : 'tr:nth-child(odd)';
 	var getHeader = paintHeader ? paintHeaderAlt ? ':first-child, :nth-child(2)' : ':first-child' : '';
 	
@@ -1585,27 +1587,35 @@ function JSpaintTable(container)
 		$(this).attr('border','0');
 		$(this).attr('cellpadding','0');
 		$(this).attr('cellspacing','0');
-		$(this).removeAttr('style');
+		if(paintCleanTable){ $(this).removeAttr('style'); }
 
-		//Clean elements
+		//Clean cells
 		$(this).find('tr, td, th').css('width','');
 		$(this).find('tr, td, th').css('height','');
 		$(this).find('tr, td, th').removeAttr('width');
 		$(this).find('tr, td, th').removeAttr('height');
+		if(paintCleanCell){ $(this).find('tr, td, th').removeAttr('style'); }
 		
 		//Fill empty cells
-		$(this).find('tr').not(getHeader).find('td').each(function(){
-			var cell = $(this).hasClass('JStextCutElem') ? $(this).find('div > div') : $(this);
-			
-			if(cell.html() == '&nbsp;')
-			{ 
-				cell.html(getEmpty).addClass('empty'); 
-			}
-			else if(cell.is(':empty'))
-			{  
-				cell.html(getEmpty).addClass('empty');
-			}
-		});
+		if(paintEmpty)
+		{
+			$(this).find('tr').not(getHeader).find('td').each(function(){
+				var cell = $(this).hasClass('JStextCutElem') ? $(this).find('div > div') : $(this);
+
+				if(cell.is(":empty") && getEmpty == 'none')
+				{
+					cell.html("&nbsp;");
+				}
+				else if(cell.html() == '&nbsp;' && getEmpty != 'none')
+				{ 
+					cell.html(getEmpty).addClass('empty'); 
+				}
+				else if(cell.is(':empty') && getEmpty != 'none')
+				{  
+					cell.html(getEmpty).addClass('empty');
+				}
+			});
+		}
 
 		//Paint groups
 		if(paintGroup)
@@ -1631,6 +1641,23 @@ function JSpaintTable(container)
 					num++;
 				}
 			}
+		}
+	});
+}
+
+//Custom href function
+function JShref(element)
+{
+	element.each(function(){
+		var url = $(this).attr('href');
+		
+		if($(this).attr('target'))
+		{
+			window.open(url, $(this).attr('target'));
+		}
+		else
+		{
+			window.location = url;
 		}
 	});
 }
@@ -1707,6 +1734,11 @@ function JSmainInit()
 	//Apply Paint Table
 	$('.JSpaintTable').each(function(){
 		JSpaintTable($(this));
+	});
+	
+	//Apply Auto Scroll
+	$('.JSautoScroll').each(function(){
+		JSautoScroll($(this));
 	});
 	
 	//Apply Text Cut
@@ -1807,6 +1839,11 @@ $(document).ready(function(){
 	//Map Launch click
 	$(document).on("click", ".JSmapLaunch", function(){
 		JSmapLaunch($(this));
+	});
+	
+	//Href Click
+	$(document).on("click", ".JShref", function(){
+		JShref($(this));
 	});
 	
 	//Check map launch alert
