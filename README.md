@@ -121,6 +121,7 @@ Base structure for web sites with reusable parts of source code or functions mai
 	- Resize Image After Upload (Plugin)
 	- Simple Custom Post Order (Plugin)
 	- Simple History (Plugin)
+	- Theme Editor (Plugin)
 	- TinyMCE (Plugin)
 	- User Role Editor (Plugin)
 
