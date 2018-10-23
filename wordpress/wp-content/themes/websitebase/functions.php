@@ -377,105 +377,124 @@ function custom_customize_register($wp_customize)
 }
 add_action('customize_register', 'custom_customize_register', 50);
 
-//Set template values (slug, control type, title, description, label, value)
+//Set template values
 $customize_theme_fields = array(
-									//Field
-									//array('field-text' => 
-									//	  array(
-									//			'text',
-									//			'Field Text Button Title',
-									//			'Field Text Desctription',
-									//			'Field Text Label Title',
-									//			'Field Text Default Value'
-									//			)
-									//),
-									//Field
-									//array('field-text-area' => 
-									//	  array(
-									//			'textarea',
-									//			'Field Text Area Button Title',
-									//			'Field Text Area Desctription',
-									//			'Field Text Area Label Title',
-									//			'Field Text Area Default Value'
-									//			)
-									//),
-									//Field
-									//array('field-text-wysiwig' => 
-									//	  array(
-									//			'wysiwig',
-									//			'Field WYSIWIG Text Button Title',
-									//			'Field WYSIWIG Text Desctription',
-									//			'Field WYSIWIG Text Label Title',
-									//			'Field WYSIWIG Text Default Value'
-									//			)
-									//),
-									//Field
-									//array('field-image' => 
-									//	  array(
-									//			'image',
-									//			'Field Image Button Title',
-									//			'Field Image Desctription',
-									//			'Field Image Label Title',
-									//			get_bloginfo('template_url').'/img/icons/favicon/global.png'
-									//			)
-									//),
-									//Field
-									//array('field-file' => 
-									//	  array(
-									//			'file',
-									//			'Field File Button Title',
-									//			'Field File Desctription',
-									//			'Field File Label Title',
-									//			get_bloginfo('template_url').'/img/icons/favicon/global.png'
-									//			)
-									//),
-									//Field
-									//array('field-checkbox' => 
-									//	  array(
-									//		  	'checkbox',
-									//			'Field Checkbox Button Title',
-									//			'Field Checkbox Desctription',
-									//			'Field Checkbox Label Title',
-									//			array('option-2'), //Default
-									//			array(
-									//				'option-1'  => 'Option 1',
-									//				'option-2'  => 'Option 2',
-									//			)
-									//		)
-									//),
-									//Field
-									//array('field-radio' => 
-									//	  array(
-									//		  	'radio',
-									//		  	'Field Radio Button Title',
-									//		  	'Field Radio Desctription',
-									//		  	'Field Radio Label Title',
-									//		  	'option-2', //Default
-									//		  	array(
-									//				'option-1'  => 'Option 1',
-									//				'option-2'  => 'Option 2',
-									//			)
-									//		)
-									//),
-									//Field
-									//array('field-select' => 
-									//	  array(
-									//		  	'select',
-									//		  	'Field Select Button Title',
-									//		  	'Field Select Desctription',
-									//		  	'Field Select Label Title',
-									//		  	'option-2', //Default
-									//		  	array(
-									//				'option-1'  => 'Option 1',
-									//				'option-2'  => 'Option 2',
-									//			)
-									//		)
-									//),
-								);
+	//Text Field
+	//array('field-text' => 
+	//	  array(
+	//			'panel'		=>	'',
+	//			'type'		=>	'text',
+	//			'title'		=>	'Field Text Button Title',
+	//			'desc'		=>	'Field Text Desctription',
+	//			'label'		=>	'Field Text Label Title',
+	//			'default'	=>	'Field Text Default Value'
+	//			)
+	//),
+	//Text Area Field
+	//array('field-text-area' => 
+	//	  array(
+	//			'panel'		=>	'',
+	//			'type'		=>	'textarea',
+	//			'title'		=>	'Field Text Area Button Title',
+	//			'desc'		=>	'Field Text Area Desctription',
+	//			'label'		=>	'Field Text Area Label Title',
+	//			'default'	=>	'Field Text Area Default Value'
+	//			)
+	//),
+	//Wysiwig Field
+	//array('field-text-wysiwig' => 
+	//	  array(
+	//			'panel'		=>	'',
+	//			'type'		=>	'wysiwig',
+	//			'title'		=>	'Field WYSIWIG Text Button Title',
+	//			'desc'		=>	'Field WYSIWIG Text Desctription',
+	//			'label'		=>	'Field WYSIWIG Text Label Title',
+	//			'default'	=>	'Field WYSIWIG Text Default Value'
+	//			)
+	//),
+	//Image Field
+	//array('field-image' => 
+	//	  array(
+	//			'panel'		=>	'',
+	//			'type'		=>	'image',
+	//			'title'		=>	'Field Image Button Title',
+	//			'desc'		=>	'Field Image Desctription',
+	//			'label'		=>	'Field Image Label Title',
+	//			'default'	=>	get_bloginfo('template_url').'/img/icons/favicon/global.png'
+	//			)
+	//),
+	//File Field
+	//array('field-file' => 
+	//	  array(
+	//			'panel'		=>	'',
+	//			'type'		=>	'file',
+	//			'title'		=>	'Field File Button Title',
+	//			'desc'		=>	'Field File Desctription',
+	//			'label'		=>	'Field File Label Title',
+	//			'default'	=>	get_bloginfo('template_url').'/img/icons/favicon/global.png'
+	//			)
+	//),
+	//Checkbox Field
+	//array('field-checkbox' => 
+	//	  array(
+	//			'panel'		=>	'',
+	//		  	'type'		=>	'checkbox',
+	//			'title'		=>	'Field Checkbox Button Title',
+	//			'desc'		=>	'Field Checkbox Desctription',
+	//			'label'		=>	'Field Checkbox Label Title',
+	//			'default'	=>	'option-2', //Default
+	//			'choices'	=>	array(
+	//									'option-1'  => 'Option 1',
+	//									'option-2'  => 'Option 2',
+	//								)
+	//		)
+	//),
+	//Radio Field
+	//array('field-radio' => 
+	//	  array(
+	//			'panel'		=>	'',
+	//		  	'type'		=>	'radio',
+	//		  	'title'		=>	'Field Radio Button Title',
+	//		  	'desc'		=>	'Field Radio Desctription',
+	//		  	'label'		=>	'Field Radio Label Title',
+	//		  	'default'	=>	'option-2', //Default
+	//		  	'choices'	=>	array(
+	//									'option-1'  => 'Option 1',
+	//									'option-2'  => 'Option 2',
+	//								)
+	//		)
+	//),
+	//Select Field
+	//array('field-select' => 
+	//	  array(
+	//			'panel'		=>	'',
+	//		  	'type'		=>	'select',
+	//		  	'title'		=>	'Field Select Button Title',
+	//		  	'desc'		=>	'Field Select Desctription',
+	//		  	'label'		=>	'Field Select Label Title',
+	//		  	'default'	=>	'option-2', //Default
+	//		  	'choices'	=>	array(
+	//									'option-1'  => 'Option 1',
+	//									'option-2'  => 'Option 2',
+	//								)
+	//		)
+	//),
+);
 
 //Set template modifications
 function custom_theme_settings($wp_customize)
 {
+	//Custom panels
+	//$wp_customize->add_panel('custom-panel-1', 
+	//							 array(
+	//									'priority'       => 10,
+	//									'capability'     => 'edit_theme_options',
+	//									'theme_supports' => '',
+	//									'title'          => 'Custom Panel 1 Title',
+	//									'description'    => 'Custom Panel 1 Description',
+	//							 		)
+	//						);
+	
 	//Set custom template control for multiple checkbox
 	class WP_Customize_Checkbox_Multiple_Control extends WP_Customize_Control 
 	{
@@ -562,26 +581,27 @@ function custom_theme_settings($wp_customize)
 		{
 			$wp_customize->add_section($key,
 				array(
-					'title' 		=> $value[1],
-					'description' 	=> $value[2],
+					'title' 		=> $value['title'],
+					'description' 	=> $value['desc'],
+					'panel'			=> $value['panel'],
 				)
 			);
 			$wp_customize->add_setting($key,
 				array(
-					'default' 		=> $value[4],
+					'default' 		=> $value['default'],
 				)
 			);
 			
 			//Control type
-			switch($value[0])
+			switch($value['type'])
 			{
 				case 'text':
 				case 'textarea':
 					$wp_customize->add_control($key,
 						array(
-							'label' 	=> $value[3],
+							'label' 	=> $value['label'],
 							'section' 	=> $key,
-							'type' 		=> $value[0], //text
+							'type' 		=> $value['type'], //text
 						)
 					);
 					break;
@@ -589,11 +609,11 @@ function custom_theme_settings($wp_customize)
 				case 'select':
 					$wp_customize->add_control($key,
 						array(
-							'label' 	=> $value[3],
+							'label' 	=> $value['label'],
 							'section' 	=> $key,
 							'settings'	=> $key,
-							'type' 		=> $value[0], //radio/select
-							'choices'  	=> $value[5],
+							'type' 		=> $value['type'], //radio/select
+							'choices'  	=> $value['choices'],
 						)
 					);
 					break;
@@ -601,11 +621,11 @@ function custom_theme_settings($wp_customize)
 					$wp_customize->add_control( 
 						new WP_Customize_Checkbox_Multiple_Control($wp_customize, $key,
 							array(
-								'label' 	=> $value[3],
+								'label' 	=> $value['label'],
 								'section' 	=> $key,
 								'settings'	=> $key,
 								'type' 		=> 'checkbox-multiple', //improved checkbox
-								'choices'  	=> $value[5],
+								'choices'  	=> $value['choices'],
 							)
 						)
 					);
@@ -614,7 +634,7 @@ function custom_theme_settings($wp_customize)
 					$wp_customize->add_control( 
 						new WP_Customize_WYSIWIG_Text_Editor_Control($wp_customize, $key,
 							array(
-								'label'   	=> $value[3],
+								'label'   	=> $value['label'],
 								'section' 	=> $key,
 								'settings'	=> $key,
 								'type' 		=> 'wysiwig-text', //improved text editor
@@ -626,7 +646,7 @@ function custom_theme_settings($wp_customize)
 					$wp_customize->add_control( 
 						new WP_Customize_Image_Control($wp_customize, $key,
 							array(
-								'label'   	=> $value[3],
+								'label'   	=> $value['label'],
 								'section' 	=> $key,
 								'settings'	=> $key,
 							)
@@ -637,7 +657,7 @@ function custom_theme_settings($wp_customize)
 					$wp_customize->add_control( 
 						new WP_Customize_Upload_Control($wp_customize, $key,
 							array(
-								'label'   	=> $value[3],
+								'label'   	=> $value['label'],
 								'section' 	=> $key,
 								'settings'	=> $key,
 							)
@@ -662,7 +682,7 @@ function get_theme_mod2($name)
 			if($key == $name)
 			{
 				$field = get_theme_mod($key);
-				return empty($field) ? $value[4] : get_theme_mod($key);
+				return empty($field) ? $value['default'] : get_theme_mod($key);
 			}
 		}
 	}
