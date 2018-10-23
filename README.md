@@ -110,7 +110,6 @@ Base structure for web sites with reusable parts of source code or functions mai
 	- Admin Panel CSS & JS injection
 	- Admin Menu Editor (Plugin)
 	- Advanced Custom Fields (Plugin)
-	- Anything Order by Terms (Plugin)
 	- Classic Editor (Plugin)
 	- Custom Post Type UI (Plugin)
 	- Enhaced Context Help (Plugin)
@@ -120,6 +119,7 @@ Base structure for web sites with reusable parts of source code or functions mai
 	- Mail SMTP (Plugin)
 	- Migrate DB (Plugin)
 	- Resize Image After Upload (Plugin)
+	- Simple Custom Post Order (Plugin)
 	- Simple History (Plugin)
 	- TinyMCE (Plugin)
 	- User Role Editor (Plugin)
