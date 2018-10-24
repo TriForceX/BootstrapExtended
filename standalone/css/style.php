@@ -10,8 +10,8 @@ class php extends utilities\php
 {
 	public static $css_info = '/*
  * Style.php CSS File Parser
- * Version 2.0
- * TriForce - Matías Silva
+ * Version 3.0
+ * TriForce - Matias Silva
  * 
  * Site:     https://dev.gznetwork.com/websitebase
  * Source:   https://github.com/triforcex/websitebase
@@ -21,7 +21,8 @@ class php extends utilities\php
 	public static function build_css()
 	{
 		$css_url = php::get_main_url('/css');
-		$css_minify = isset($_GET['unminify']) ? false : true;
+		$css_minify = $_GET['minify'] == 'false' ? false : true;
+		$css_mix = $_GET['mix'] == 'false' ? false : true;
 		
 		//Defaults
 		$css_data['file'] = array(
@@ -42,6 +43,24 @@ class php extends utilities\php
 		
 		$css_data['file'] = array_merge($css_data['file'], $css_extra['file']);
 		$css_data['vars'] = array_merge($css_data['vars'], $css_extra['vars']);
+		
+		if(!$css_mix)
+		{
+			mkdir('export', 0777, true);
+			
+			foreach($css_data['file'] as $css_mix_file){
+				$css_mix_buffer = file_get_contents($css_mix_file);
+				$css_mix_key = array_keys($css_data['vars']);
+				$css_mix_buffer = str_replace($css_mix_key, $css_data['vars'], $css_mix_buffer);
+				$css_mix_content = $css_minify == true ? php::minify_css($css_mix_buffer) : $css_mix_buffer;
+				
+				file_put_contents('export/'.$css_mix_file, php::$css_info.$css_mix_content);
+			}
+		}
+		else
+		{
+			php::remove_dir('export');
+		}
 
 		foreach($css_data['file'] as $css_file){
 			$css_buffer .= file_get_contents($css_file);

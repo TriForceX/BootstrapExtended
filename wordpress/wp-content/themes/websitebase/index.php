@@ -203,7 +203,7 @@
 				<div class="panel-body">
 					You can use the <b>PHP functions</b> from the main library like <code>php::function()</code>, If you will use <code>Wordpress</code> (or another CMS) is highly recommended to use their main functions instead the base here. For example for <code>Wordpress</code> use <code>get_bloginfo('template_url')</code> instead <code>php::get_main_url()</code> and <code>get_header()</code>, <code>get_footer()</code> instead <code>include('header.php')</code>, <code>include('footer.php')</code>.
 					<br><br>
-					<b>Note for main CSS and JS:</b> You can display the code unreduced setting the <code>GET</code> flag <code>?unminify</code> to the main <b>CSS</b> and <b>JS</b> call functions. For example <code>&lt;?php echo php::get_template('css','?unminify'); ?&gt;</code>.
+					<b>Note for main CSS and JS:</b> You can display the code unreduced setting the <code>GET</code> flag <code>?minify=false</code> to the main <b>CSS</b> and <b>JS</b> call functions. For example <code>&lt;?php echo php::get_template('css','?minify=false'); ?&gt;</code>.
 				</div>
 			</div>
 		</p>
@@ -300,24 +300,29 @@ body{
 			</thead>
 			<tbody>
 				<tr>
-					<td class="notranslate">$cssFiles</td>
+					<td class="notranslate">$css_minify</td>
+					<td>Defines if the <b>CSS</b> code will get the size reduced to the client. You can add the <code>GET</code> flag <b>?minify=false</b> to the main <code>style.php</code> url to disable the unreduced code.
+					</td>
+				</tr>
+				<tr>
+					<td class="notranslate">$css_mix</td>
+					<td>Defines if the <b>CSS</b> files will get mixed in only one file. You can add the <code>GET</code> flag <b>?mix=false</b> to the main <code>style.php</code> url to disable the unmixed files.
+					</td>
+				</tr>
+				<tr>
+					<td class="notranslate">$css_data['file']</td>
 					<td>Defines which <b>CSS</b> files will be called, you can add more to the array. The <code>style-base.css</code> is used to set main classes, <code>style-bootstrap.css</code> is used to be set all <b>Bootstrap</b> related classes.
 					</td>
 				</tr>
 				<tr>
-					<td class="notranslate">$cssMinify</td>
-					<td>Defines if the <b>CSS</b> code will get the size reduced to the client. You can add the <code>GET</code> flag <b>?unminify</b> to the main <code>style.php</code> url to check the unreduced code.
-					</td>
-				</tr>
-				<tr>
-					<td class="notranslate">$cssVariables</td>
+					<td class="notranslate">$css_data['vars']</td>
 					<td>Defines custom variables to replace inside the <b>CSS</b> files, such as colors, sizes and another data.
 					</td>
 				</tr>
 			</tbody>
 		</table>
 		<figure class="highlight">
-			<pre><code class="language-html" data-lang="html">...<br>$css_minify = isset($_GET['unminify']) ? false : true;<br>
+			<pre><code class="language-html" data-lang="html">...<br>$css_minify = $_GET['minify'] == 'false' ? false : true;<br>$css_mix = $_GET['mix'] == 'false' ? false : true;<br>
 //Defaults
 $css_data['file'] = array(
 			 'style-base.css',
@@ -367,24 +372,29 @@ $css_data['vars'] = array(
 			</thead>
 			<tbody>
 				<tr>
-					<td class="notranslate">$jsFiles</td>
+					<td class="notranslate">$js_minify</td>
+					<td>Defines if the <b>JS</b> code will get the size reduced to the client. You can add the <code>GET</code> flag <code>?minify=false</code> to the main <code>app.php</code> url to disable the unreduced code.
+					</td>
+				</tr>
+				<tr>
+					<td class="notranslate">$js_mix</td>
+					<td>Defines if the <b>JS</b> files will get mixed in only one file. You can add the <code>GET</code> flag <b>?mix=false</b> to the main <code>style.php</code> url to disable the unmixed files.
+					</td>
+				</tr>
+				<tr>
+					<td class="notranslate">$js_data['file']</td>
 					<td>Defines which <b>JS</b> files will be called, you can add more to the array. The <code>app-base.js</code> is used to be execute all main stuff and functions, <code>app-init.js</code> is used to be set the main language settings.
 					</td>
 				</tr>
 				<tr>
-					<td class="notranslate">$jsMinify</td>
-					<td>Defines if the <b>JS</b> code will get the size reduced to the client. You can add the <code>GET</code> flag <code>?unminify</code> to the main <code>app.php</code> url to check the unreduced code.
-					</td>
-				</tr>
-				<tr>
-					<td class="notranslate">$jsVariables</td>
+					<td class="notranslate">$js_data['vars']</td>
 					<td>Defines custom variables to replace inside the <b>JS</b>files, such as colors, sizes and another data. <b>Note:</b> is important to keep the <code>@global-url</code> variable and the <code>@screen</code> ones, because are used in the <i>Base</i> code.
 					</td>
 				</tr>
 			</tbody>
 		</table>
 		<figure class="highlight">
-			<pre><code class="language-html" data-lang="html">...<br>$js_minify = isset($_GET['unminify']) ? false : true;<br>
+			<pre><code class="language-html" data-lang="html">...<br>$js_minify = $_GET['minify'] == 'false' ? false : true;<br>$js_mix = $_GET['mix'] == 'false' ? false : true;<br>
 //Defaults
 $js_data['file'] = array(
 			'app-init.js',
