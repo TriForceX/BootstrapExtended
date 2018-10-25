@@ -3,7 +3,7 @@
 /* Main URL replaced by PHP */
 @main-url 	      { content: '@global-url'; }
 
-/*IE10 viewport hack for Surface/desktop Windows 8 bug*/
+/* IE10 viewport hack for Surface/desktop Windows 8 bug* /
 @-ms-viewport     { width: device-width; }
 @-o-viewport      { width: device-width; }
 @viewport         { width: device-width; }
@@ -48,13 +48,13 @@ td[align='left']{
 
 /* UI Date Picker */
 .ui-datepicker{
-	font-size:12px;
+	font-size: 12px;
 }
 .ui-datepicker .ui-datepicker-next{
-	cursor:pointer;
+	cursor: pointer;
 }
 .ui-datepicker .ui-datepicker-prev{
-	cursor:pointer;
+	cursor: pointer;
 }
 .ui-datepicker .ui-datepicker-next-hover,
 .ui-datepicker .ui-datepicker-prev-hover{
@@ -78,20 +78,20 @@ a.ui-button:active,
 	color: white;
 }
 .ui-datepicker .ui-datepicker-prev span{
-	background:url("@global-url/resources/jquery-ui/css/images/ui-icons_ffffff_256x240.png");
-	background-position:-80px -192px;
+	background: url("@global-url/resources/jquery-ui/css/images/ui-icons_ffffff_256x240.png");
+	background-position: -80px -192px;
 }
 .ui-datepicker .ui-datepicker-next span{
-	background:url("@global-url/resources/jquery-ui/css/images/ui-icons_ffffff_256x240.png");
-	background-position:-48px -192px;
+	background: url("@global-url/resources/jquery-ui/css/images/ui-icons_ffffff_256x240.png");
+	background-position: -48px -192px;
 }
 .ui-datepicker .ui-datepicker-prev-hover span{
-	background:url("@global-url/resources/jquery-ui/css/images/ui-icons_ffffff_256x240.png");
-	background-position:-80px -192px;
+	background: url("@global-url/resources/jquery-ui/css/images/ui-icons_ffffff_256x240.png");
+	background-position: -80px -192px;
 }
 .ui-datepicker .ui-datepicker-next-hover span{
-	background:url("@global-url/resources/jquery-ui/css/images/ui-icons_ffffff_256x240.png");
-	background-position:-48px -192px;
+	background: url("@global-url/resources/jquery-ui/css/images/ui-icons_ffffff_256x240.png");
+	background-position: -48px -192px;
 }
 .ui-state-active, 
 .ui-widget-content .ui-state-active, 
@@ -116,10 +116,10 @@ a.ui-button:active,
     color: white;
 }
 .ui-datepicker .ui-datepicker-prev-hover.ui-state-hover{
-	border:none;
+	border: none;
 }
 .ui-datepicker .ui-datepicker-next-hover.ui-state-hover{
-	border:none;
+	border: none;
 }
 .ui-datepicker-title select,
 .ui-datepicker-title select option{
@@ -151,7 +151,7 @@ a.ui-button:active,
 	-o-transition: opacity 0.4s ease;
 }
 .hvr-opacity:hover{
-	opacity:0.6;
+	opacity: 0.6;
 	transition: opacity 0.4s ease;
 	-moz-transition: opacity 0.4s ease;
 	-webkit-transition: opacity 0.4s ease;
@@ -260,23 +260,23 @@ a.ui-button:active,
 .JSvideoLaunchIframe{
 	background-color: #EEE;
 	border: 1px solid #CCC;
-	display:inline-block;
-	width:100%;
-	height:auto;
+	display: inline-block;
+	width: 100%;
+	height: auto;
 }
 
 .JSvideoLaunchIframe iframe{
 	border: 0px;
 }
 .JSvideoLaunchURL{
-	display:inline-block;
-	width:100%;
+	display: inline-block;
+	width: 100%;
 	text-align: center;
 	margin-bottom: -10px;
 	margin-top: 10px;
 }
 .JSvideoLaunchButton{
-	color: #FFF;
+	color: white;
 	font-weight: normal;
 	background-color: red;
 	border-radius: 3px;
@@ -299,8 +299,8 @@ a.ui-button:active,
 	font-size: 12px;
 	font-weight: normal;
 	padding: 2px 5px;
-	color:#000;
-	background-color: #FFF;
+	color: black;
+	background-color: white;
 	border-radius: 3px;
 	width: 285px;
 	max-width: 100%;
@@ -315,7 +315,7 @@ a.ui-button:active,
 	-webkit-user-select: none; /* Safari */
 	-khtml-user-select: none; /* Konqueror HTML */
 	-moz-user-select: none; /* Firefox */
-	-ms-user-select: none; /* Internet Explorer/Edge */
+	-ms-user-select: none; /* Internet Explorer & Edge */
 	user-select: none;
 }
 .JSvideoLaunchCopy{
@@ -330,11 +330,11 @@ a.ui-button:active,
 /* JS Loading */
 .JSloading{
 	background-color: transparent;
-	position:fixed;
-	width:100%;
-	height:100%;
-	z-index:9999;
-	top:0px;
+	position: fixed;
+	width: 100%;
+	height: 100%;
+	z-index: 9999;
+	top: 0px;
 	left: 0px;
 }
 .JSloading:before{
@@ -350,18 +350,18 @@ a.ui-button:active,
 	content: "";
 }
 .JSloading:after{
-	background-image:url("base/loading/loading-icon-black.gif");
-	background-position:center center;
-	background-repeat:no-repeat;
-	background-color:#333333;
+	background-image: url("../img/base/loading/black.gif");
+	background-position: center center;
+	background-repeat: no-repeat;
+	background-color: #333333;
 	border-radius: 20px;
-	position:fixed;
-	width:100px;
-	height:100px;
-	top:50%;
-	left:50%;
-	margin-top:-50px;
-	margin-left:-50px;
+	position: fixed;
+	width: 100px;
+	height: 100px;
+	top: 50%;
+	left: 50%;
+	margin-top: -50px;
+	margin-left: -50px;
 	content: "";
 }
 .JSloading.static,
@@ -370,20 +370,20 @@ a.ui-button:active,
 	position: absolute;
 }
 .JSloading.red:after{
-	background-image:url("base/loading/loading-icon-red.gif");
-	background-color:#d2040d;
+	background-image: url("../img/base/loading/red.gif");
+	background-color: #d2040d;
 }
 .JSloading.blue:after{
-	background-image:url("base/loading/loading-icon-blue.gif");
-	background-color:#486ca5;
+	background-image: url("../img/base/loading/blue.gif");
+	background-color: #486ca5;
 }
 .JSloading.green:after{
-	background-image:url("base/loading/loading-icon-green.gif");
-	background-color:#1f7b5d;
+	background-image: url("../img/base/loading/green.gif");
+	background-color: #1f7b5d;
 }
 .JSloading.yellow:after{
-	background-image:url("base/loading/loading-icon-yellow.gif");
-	background-color:#faa425;
+	background-image: url("../img/base/loading/yellow.gif");
+	background-color: #faa425;
 }
 /* JS Loading */
 
@@ -413,10 +413,10 @@ a.ui-button:active,
 	font-style: italic;
 }
 .JSmapLaunchInfo > .JSmapLaunchIcons{
-	display:inline-block;
-	width:100%;
-	height:auto;
-	margin-top:15px;
+	display: inline-block;
+	width: 100%;
+	height: auto;
+	margin-top: 15px;
 }
 .JSmapLaunchInfo > .JSmapLaunchIcons img{
 	width: 90px;
@@ -431,15 +431,15 @@ a.ui-button:active,
 
 /* JS Paginator */
 /*.JSpaginator{
-	width:100%;
-	height:50px;
-	float:left;
-	display:table;
+	width: 100%;
+	height: 50px;
+	float: left;
+	display: table;
 }
 .JSpaginator .JSpageItems{
-	display:table-cell;
-	vertical-align:middle;
-	text-align:center;
+	display: table-cell;
+	vertical-align: middle;
+	text-align: center;
 }
 .JSpaginator .JSpageItems .JSpageGroup{
 	display: inline;
@@ -452,13 +452,13 @@ a.ui-button:active,
 .JSpaginator .JSpageItems a,
 .JSpaginator .JSpageItems a:hover,
 .JSpaginator .JSpageItems a:visited{
-	display:none;
-	color:gray;
-	font-size:24px;
+	display: none;
+	color: gray;
+	font-size: 24px;
 	font-family: 'OpenSans';
-	vertical-align:middle;
-	padding:5px 8px;
-	cursor:pointer;
+	vertical-align: middle;
+	padding: 5px 8px;
+	cursor: pointer;
 }
 .JSpaginator .JSpageItems .JSpageGroup.JSpageActive a,
 .JSpaginator .JSpageItems .JSpageGroup.JSpageActive a:hover,
@@ -485,7 +485,7 @@ a.ui-button:active,
 	.JSpaginator .JSpageItems a:hover,
 	.JSpaginator .JSpageItems a:visited,
 	.JSpaginator .JSpageItems span{
-		font-size:20px;
+		font-size: 20px;
 	}
 }*/
 /* JS Paginator */
