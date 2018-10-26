@@ -21,7 +21,7 @@ define('websitebase', serialize([
 	'viewport' 			=> 'width=device-width, initial-scale=1, user-scalable=no',
 	'nav-color' 		=> '#333333',
 	'nav-color-apple' 	=> 'black',
-	'timezone' 			=> 'America/New_York',
+	'timezone' 			=> date_default_timezone_get(),
 	'rebuild_pass'		=> 'mypassword',
 	'minify'			=> true,
 	'mix'				=> true,
