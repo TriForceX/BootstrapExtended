@@ -26,8 +26,8 @@
 	<!-- ******** HEADER RESOURCES ******** -->
 	
 	<!-- Nav Tab & App Icons -->
-	<link href="{{ url('assets/img/icons/favicon/apple.png') }}" rel="apple-touch-icon">
-	<link href="{{ url('assets/img/icons/favicon/global.png') }}" rel="shortcut icon">
+	<link href="{{ url('assets/img/base/favicon/apple.png') }}" rel="apple-touch-icon">
+	<link href="{{ url('assets/img/base/favicon/global.png') }}" rel="shortcut icon">
 	<!-- jQuery UI -->
 	<link href="{{ url('assets/resources/jquery-ui/css/jquery-ui.min.css') }}" rel="stylesheet">
 	<link href="{{ url('assets/resources/jquery-ui/css/jquery-ui.structure.min.css') }}" rel="stylesheet">
