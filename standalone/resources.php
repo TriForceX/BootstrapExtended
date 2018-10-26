@@ -1,118 +1,95 @@
 <?php
-
 /*
- * PHP Main Stuff
+ * PHP Main Resources
  * TriForce - Matías Silva
  *
  * This file calls the main PHP utilities and sets the main data (html and rebuild pass)
- * You can extend the functions in functions.php
+ * Don't add functions here, You can add your own in functions.php
  * 
  */
+		
+//Main Website Base Data
+define('websitebase', serialize([
+	//Fields
+	'lang' 				=> 'en-US',
+	'charset' 			=> 'UTF-8',
+	'title' 			=> 'Website Base',
+	'description' 		=> 'Base structure for WebSites with CSS/JS/PHP improvements',
+	'keywords' 			=> 'html, jquery, javascript, php, responsive, css3',
+	'author' 			=> 'TriForce',
+	'mobile-capable' 	=> 'yes',
+	'viewport' 			=> 'width=device-width, initial-scale=1, user-scalable=no',
+	'nav-color' 		=> '#333333',
+	'nav-color-apple' 	=> 'black',
+	'timezone' 			=> 'America/New_York',
+	'rebuild_pass'		=> 'mypassword',
+	'minify'			=> true,
+	'mix'				=> true,
+	'css_file'			=> [
+							'css/extras/example.css',
+							//'css/extras/example-2.css',
+							//'css/extras/example-3.css',
+						   ],
+	'css_vars'			=> [
+							'@color-custom'	=> '#FF0000',
+							//'@color-custom-2'	=> '#FFFFFF',
+							//'@color-custom-3'	=> '#FFFFFF',
+						   ],
+	'js_file'			=> [
+							'js/extras/example.js',
+							//'js/extras/example-2.js',
+							//'js/extras/example-3.js',
+						   ],
+	'js_vars'			=> [
+							'@color-custom'	=> '#FF0000',
+							//'@color-custom-2'	=> '#FFFFFF',
+							//'@color-custom-3'	=> '#FFFFFF',
+						   ],
+]));
+
+//Handle errors
+if(isset($_GET['debug']))
+{
+	if($_GET['debug'] == 'handle')
+	{
+		ob_start(function(){
+				$error = error_get_last();
+				$output = '';
+				foreach ($error as $info => $string){
+					$output .= '<b>'.$info.'</b>: '.$string.'<br>';
+				}
+				return $output;
+			}
+		);
+	}
+	else
+	{
+		ini_set('display_errors', 1);
+		ini_set('display_startup_errors', 1);
+		error_reporting(E_ALL);
+	}
+}
+
+//Set Website Base Data
+$websitebase = unserialize(constant('websitebase'));
 
 //Get the main PHP utilities
 require_once('resources/php/utilities.php');
 
-class php extends utilities\php 
-{ 
-	//Main header data
-	public static function get_html_data($type)
-    {
-		switch($type){
-			case 'lang': 
-				return 'en'; 
-				break;
-			case 'charset': 
-				return 'UTF-8'; 
-				break;
-			case 'title': 
-				return 'Website Base'; 
-				break;
-			case 'description': 
-				return 'Base structure for WebSites with CSS/JS/PHP improvements'; 
-				break;
-			case 'keywords': 
-				return 'html, jquery, javascript, php, responsive, css3'; 
-				break;
-			case 'author': 
-				return 'TriForce'; 
-				break;
-			case 'mobile-capable': 
-				return 'yes'; 
-				break;
-			case 'viewport': 
-				return 'width=device-width, initial-scale=1, user-scalable=no'; 
-				break;
-			case 'nav-color': 
-				return '#333333'; 
-				break;
-			case 'nav-color-apple': 
-				return 'black'; 
-				break;
-			default: break;
-		}
-	}
-	
-	//Get extra code section
-	public static $section_code = array();
+//Enable main PHP utilities
+class php extends utilities\php { }
 
-	public static function section($name, $type)
-	{
-		if(!isset(self::$section_code[$name])){
-			self::$section_code[$name] = null; 
-		}
-		if($type == 'start'){
-			return ob_start();
-		}
-		elseif($type == 'end'){
-			return self::$section_code[$name] .= ob_get_clean();
-		}
-		elseif($type == 'get'){
-			return self::$section_code[$name];
-		}
-	}
-	
-	//Get main CSS & JS files
-	public static $rebuild_pass = 'mypassword';
-	
-	public static function get_template($type, $get = null)
-    {
-		$url = php::get_main_url().'/';
-		$local = dirname( __FILE__ ).'/';
-		$append = $get != null ? $get : '';
-		$route = $type == 'css' ? 'css/style' : 'js/app';
-		$ext = $type == 'css' ? '.css' : '.js';
-		
-		if(php::is_localhost())
-		{
-			if(file_exists($local.$route.$ext))
-			{
-				unlink($local.$route.$ext);
-			}
-			echo $url.$route.'.php'.$append;
-		}
-		else
-		{
-			if(isset($_GET['rebuild']) && $_GET['rebuild'] == self::$rebuild_pass)
-			{
-				if(file_exists($local.$route.$ext))
-				{
-					if(strcmp(php::get_page_code($url.$route.'.php'.$append), file_get_contents($local.$route.$ext)) !== 0)
-					{
-						unlink($local.$route.$ext);
-					}
-				}
-			}
-			if(!file_exists($local.$route.$ext))
-			{
-				file_put_contents($local.$route.$ext, php::get_page_code($url.$route.'.php'.$append));
-			}
-			echo $url.$route.$ext;
-		}
-	}
-}
-
-//Rebuild CSS & JS redirect
-if(isset($_GET['rebuild']) && $_GET['rebuild'] == php::$rebuild_pass)
+//Rebuild CSS & JS redirect clean
+if(isset($_GET['rebuild']) && $_GET['rebuild'] == $websitebase['rebuild_pass'])
 {
-	header('Refresh: 0; url='.php::get_main_url());
+	header('Expires: Tue, 01 Jan 2000 00:00:00 GMT');
+	header('Last-Modified: '.gmdate("D, d M Y H:i:s").' GMT');
+	header('Cache-Control: no-store, no-cache, must-revalidate, max-age=0');
+	header('Cache-Control: post-check=0, pre-check=0', false);
+	header('Pragma: no-cache');
+	header('Location: '.php::get_main_url().'?lastbuild');
+}
+if(isset($_GET['lastbuild']))
+{
+	header('Location: '.php::get_main_url());
 }

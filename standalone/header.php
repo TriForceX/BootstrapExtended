@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html lang="<?php echo php::get_html_data('lang'); ?>">
 <head>
-	<title><?php echo php::get_html_data('title'); ?><?php echo php::get_page_title('&raquo;'); ?></title>
+	<title><?php echo php::get_html_data('title'); ?><?php echo php::get_page_title('&raquo;','page'); ?></title>
 	
 	<!-- ******** META TAGS ******** -->
 	
@@ -52,7 +52,7 @@
 	<!-- Font Awesome -->
 	<link href="<?php echo php::get_main_url(); ?>/resources/font-awesome/css/all.css" rel="stylesheet">
 	<!-- Main CSS File -->
-	<link href="<?php echo php::get_template('css'); ?>" rel="stylesheet">
+	<?php echo php::get_template('css'); ?>
 	<!-- IE8 support of HTML5 elements and media queries -->
 	<!--[if lt IE 9]>
 	<script src="<?php echo php::get_main_url(); ?>/resources/html5shiv/js/html5shiv.min.js"></script>
