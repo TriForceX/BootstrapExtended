@@ -1,7 +1,7 @@
 /* ================================================= BASE FUNCTIONS ================================================= */
 
 //Global variables
-var JSmainUrl = '@global-url';
+var JSmainUrl = '$global-url';
 var JSisHome = JSexist($('*[data-js-home]'));
 var JSisMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini|BB10|PlayBook|MeeGo/i.test(navigator.userAgent);
 var JShashTagExceptions = ['#carousel'];
@@ -141,21 +141,21 @@ $.fn.JSvalidateForm = function(options)
 		}
 		
 		var formError = false;
-		var formConfirmTitle = JSlang('@validate-confirm-title');
-		var formConfirmText = JSlang('@validate-confirm-text');
-		var formErrorTitle = JSlang('@validate-title');
+		var formConfirmTitle = JSlang('$validate-confirm-title');
+		var formConfirmText = JSlang('$validate-confirm-text');
+		var formErrorTitle = JSlang('$validate-title');
 		var formErrorText = {
-							 'text'		: JSlang('@validate-normal'), 
-							 'number'	: JSlang('@validate-number'), 
-							 'tel'		: JSlang('@validate-tel'), 
-							 'pass'		: JSlang('@validate-pass'), 
-							 'email'	: JSlang('@validate-email'),
-							 'search'	: JSlang('@validate-search'),
-							 'checkbox'	: JSlang('@validate-checkbox'),
-							 'radio'	: JSlang('@validate-radio'),
-							 'textarea'	: JSlang('@validate-textarea'),
-							 'select'	: JSlang('@validate-select'),
-							 'file'		: JSlang('@validate-file'),
+							 'text'		: JSlang('$validate-normal'), 
+							 'number'	: JSlang('$validate-number'), 
+							 'tel'		: JSlang('$validate-tel'), 
+							 'pass'		: JSlang('$validate-pass'), 
+							 'email'	: JSlang('$validate-email'),
+							 'search'	: JSlang('$validate-search'),
+							 'checkbox'	: JSlang('$validate-checkbox'),
+							 'radio'	: JSlang('$validate-radio'),
+							 'textarea'	: JSlang('$validate-textarea'),
+							 'select'	: JSlang('$validate-select'),
+							 'file'		: JSlang('$validate-file'),
 							};
 		
 		var formInputValidation = function(element){
@@ -475,11 +475,11 @@ function JSresponsiveCode()
 	var bodyHeight = $(window).height();
 	var bodyOrientation = {'landscape'	: bodyWidth > bodyHeight ? true : false,
 					  	   'portrait'	: bodyWidth < bodyHeight ? true : false}; 
-	var bodyScreen = {'xs'	: parseFloat('@screen-xs'), //480
-					  'sm'	: parseFloat('@screen-sm'), //768
-					  'md'	: parseFloat('@screen-md'), //992
-					  'lg'	: parseFloat('@screen-lg'), //1200
-					  'xl'	: parseFloat('@screen-xl')}; //1920
+	var bodyScreen = {'xs'	: parseFloat('$screen-xs'), //480
+					  'sm'	: parseFloat('$screen-sm'), //768
+					  'md'	: parseFloat('$screen-md'), //992
+					  'lg'	: parseFloat('$screen-lg'), //1200
+					  'xl'	: parseFloat('$screen-xl')}; //1920
 
 	if(bodyWidth)
 	{
@@ -541,8 +541,8 @@ function JSloadLightGallery()
 			if(JSexist($(".JSlightGalleryMode")) && galPageTotal > 1){
 				if($(".JSlightGallery.JSlightGalleryMode .lg-thumb-prev").length < 1 && 
 				   $(".JSlightGallery.JSlightGalleryMode .lg-thumb-next").length < 1){
-					$(".JSlightGallery.JSlightGalleryMode").prepend("<div class='lg-thumb-prev' href='"+galLoadThumb+"' title='"+JSlang('@lgtitle-prev-text')+"'><img src='#'></div>");
-					$(".JSlightGallery.JSlightGalleryMode").append("<div class='lg-thumb-next' href='"+galLoadThumb+"' title='"+JSlang('@lgtitle-next-text')+"'><img src='#'></div>");
+					$(".JSlightGallery.JSlightGalleryMode").prepend("<div class='lg-thumb-prev' href='"+galLoadThumb+"' title='"+JSlang('$lgtitle-prev-text')+"'><img src='#'></div>");
+					$(".JSlightGallery.JSlightGalleryMode").append("<div class='lg-thumb-next' href='"+galLoadThumb+"' title='"+JSlang('$lgtitle-next-text')+"'><img src='#'></div>");
 				}
 			}
 
@@ -572,8 +572,8 @@ function JSloadLightGallery()
 				});
 
 				$(".JSlightGallery.JSlightGalleryMode").on('onAfterOpen.lg',function(){
-					var galThumbPrevHTML = "<div><span class='glyphicon glyphicon-chevron-left' aria-hidden='true'></span><strong>"+JSlang('@lgtitle-prev-button')+"</strong></div>";
-					var galThumbNextHTML = "<div><span class='glyphicon glyphicon-chevron-right' aria-hidden='true'></span><strong>"+JSlang('@lgtitle-next-button')+"</strong></div>";
+					var galThumbPrevHTML = "<div><span class='glyphicon glyphicon-chevron-left' aria-hidden='true'></span><strong>"+JSlang('$lgtitle-prev-button')+"</strong></div>";
+					var galThumbNextHTML = "<div><span class='glyphicon glyphicon-chevron-right' aria-hidden='true'></span><strong>"+JSlang('$lgtitle-next-button')+"</strong></div>";
 
 					$(".lg-outer .lg-thumb .lg-thumb-item:first-child").addClass("JSlightGalleryNoBorder").append(galThumbPrevHTML);
 					$(".lg-outer .lg-thumb .lg-thumb-item:last-child").addClass("JSlightGalleryNoBorder").append(galThumbNextHTML);
@@ -635,7 +635,7 @@ function JSloadLightGallery()
 						//Close
 						if(current === 1){
 							if(galPageCurrent === 1){
-								$(".lg-outer .lg-sub-html").html(JSlang('@lgtitle-gallery-close'));
+								$(".lg-outer .lg-sub-html").html(JSlang('$lgtitle-gallery-close'));
 							}
 							else{
 								//Redirect
@@ -655,7 +655,7 @@ function JSloadLightGallery()
 						//Close
 						if(current === total){
 							if(galPageCurrent === galPageTotal){
-								$(".lg-outer .lg-sub-html").html(JSlang('@lgtitle-gallery-close'));
+								$(".lg-outer .lg-sub-html").html(JSlang('$lgtitle-gallery-close'));
 							}
 							else{
 								//Redirect
@@ -1034,8 +1034,8 @@ function JSvideoLaunch(title, url, share, autoplay, size, align, animate)
 	var ID;
 	var embedUrl;
 	var embedShare;
-	var embedShareTitle = JSlang('@videolaunch-title');
-	var embedShareText = JSlang('@videolaunch-text');
+	var embedShareTitle = JSlang('$videolaunch-title');
+	var embedShareText = JSlang('$videolaunch-text');
 	var embedAutoPlay = '';
 	
 	if(url.indexOf('youtube') >= 0){
@@ -1340,7 +1340,7 @@ function JShashTag(string)
 				//Bootbox alert
 				bootbox.alert({
 					title: section,
-					message: JSlang('@disabled-text'),
+					message: JSlang('$disabled-text'),
 					size: size,
 					backdrop: true,
 					className: (animate == 'alternative' ? 'fade-2 '+align : align),
@@ -1385,11 +1385,11 @@ function JSwindowPopup(element, errortitle, errormsg)
 	var getScroll = $(element).data('win-scroll');
 	
 	if(!errortitle){ //Check value
-		errortitle = JSlang('@winpopup-title');
+		errortitle = JSlang('$winpopup-title');
 	}
 	
 	if(!errormsg){ //Check value
-		errormsg = JSlang('@winpopup-text');
+		errormsg = JSlang('$winpopup-text');
 	}
 	
 	//Horizontal Align
@@ -1470,8 +1470,8 @@ function JSmapLaunch(element)
 	}
 	
 	var mapContent;
-	var mapTitle = JSlang('@maplaunch-title');
-	var mapText = JSlang('@maplaunch-text');
+	var mapTitle = JSlang('$maplaunch-title');
+	var mapText = JSlang('$maplaunch-text');
 	var mapIcon1 = JSmainUrl+"/css/base/maplaunch/google-maps.png";
 	var mapIcon2 = JSmainUrl+"/css/base/maplaunch/waze.png";
 	var mapCoords1 = $(element).data('map-coords-1').split(',');
@@ -1848,7 +1848,7 @@ $(document).ready(function(){
 	
 	//Check map launch alert
 	$(document).on("click", ".JSmapLaunchAlert", function(e){
-		if (JSisMobile && !confirm(JSlang('@maplaunch-alert'))){
+		if (JSisMobile && !confirm(JSlang('$maplaunch-alert'))){
 		  e.preventDefault();
 		}
     });

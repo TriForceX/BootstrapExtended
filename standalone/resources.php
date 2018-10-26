@@ -25,50 +25,19 @@ define('websitebase', serialize([
 	'rebuild_pass'		=> 'mypassword',
 	'minify'			=> true,
 	'mix'				=> true,
-	'css_file'			=> [
-							'css/extras/example.css',
-							//'css/extras/example-2.css',
-							//'css/extras/example-3.css',
-						   ],
-	'css_vars'			=> [
-							'@color-custom'	=> '#FF0000',
-							//'@color-custom-2'	=> '#FFFFFF',
-							//'@color-custom-3'	=> '#FFFFFF',
-						   ],
-	'js_file'			=> [
-							'js/extras/example.js',
-							//'js/extras/example-2.js',
-							//'js/extras/example-3.js',
-						   ],
-	'js_vars'			=> [
-							'@color-custom'	=> '#FF0000',
-							//'@color-custom-2'	=> '#FFFFFF',
-							//'@color-custom-3'	=> '#FFFFFF',
-						   ],
+	'css_file'			=> ['css/extras/example.css',
+							/*'css/extras/example-2.css',*/
+							/*'css/extras/example-3.css',*/],
+	'css_vars'			=> ['$color-custom'	=> '#FF0000',
+							/*'$color-custom-2'	=> '#FFFFFF',*/
+							/*'$color-custom-3'	=> '#FFFFFF',*/ ],
+	'js_file'			=> ['js/extras/example.js',
+							/*'js/extras/example-2.js',*/
+							/*'js/extras/example-3.js',*/],
+	'js_vars'			=> ['$color-custom'	=> '#FF0000',
+							/*'$color-custom-2'	=> '#FFFFFF',*/
+							/*'$color-custom-3'	=> '#FFFFFF',*/],
 ]));
-
-//Handle errors
-if(isset($_GET['debug']))
-{
-	if($_GET['debug'] == 'handle')
-	{
-		ob_start(function(){
-				$error = error_get_last();
-				$output = '';
-				foreach ($error as $info => $string){
-					$output .= '<b>'.$info.'</b>: '.$string.'<br>';
-				}
-				return $output;
-			}
-		);
-	}
-	else
-	{
-		ini_set('display_errors', 1);
-		ini_set('display_startup_errors', 1);
-		error_reporting(E_ALL);
-	}
-}
 
 //Set Website Base Data
 $websitebase = unserialize(constant('websitebase'));

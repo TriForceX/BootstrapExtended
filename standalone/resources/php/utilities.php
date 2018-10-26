@@ -173,7 +173,7 @@ class php
 	}
 	
 	//Build CSS & JS template files
-	public static function build_template($type, $minify = true, $mix = true)
+	public static function build_template($type, $minify = true, $mix = true, $url)
 	{
 		//Main data
 		$websitebase = unserialize(constant('websitebase'));
@@ -188,7 +188,6 @@ class php
  * 
  */';
 		$local = str_replace('resources/php', '', dirname( __FILE__ ));
-		$url = self::get_main_url();
 		$final = $type == 'css' ? 'style.css' : 'app.js';
 		$buffer = null;
 		
@@ -200,12 +199,12 @@ class php
 										  'js/app-base.js',
 										  'js/app-theme.js'];
 		
-		$data['vars'] = ['@global-url'	=> $url,
-						 '@screen-xs'	=> $type == 'css' ? '480px' : '480',
-						 '@screen-sm'	=> $type == 'css' ? '768px' : '768',
-						 '@screen-md'	=> $type == 'css' ? '992px' : '992',
-						 '@screen-lg'	=> $type == 'css' ? '1200px' : '1200',
-						 '@screen-xl' 	=> $type == 'css' ? '1920px' : '1920'];
+		$data['vars'] = ['$global-url'	=> $url,
+						 '$screen-xs'	=> $type == 'css' ? '480px' : '480',
+						 '$screen-sm'	=> $type == 'css' ? '768px' : '768',
+						 '$screen-md'	=> $type == 'css' ? '992px' : '992',
+						 '$screen-lg'	=> $type == 'css' ? '1200px' : '1200',
+						 '$screen-xl' 	=> $type == 'css' ? '1920px' : '1920'];
 		
 		$data['file'] = array_merge($data['file'], $websitebase[$type.'_file']);
 		$data['vars'] = array_merge($data['vars'], $websitebase[$type.'_vars']);
@@ -268,13 +267,12 @@ class php
 	}
 	
 	//Get main CSS & JS files
-	public static function get_template($type)
+	public static function get_template($type, $url)
     {
 		//Main data
 		$websitebase = unserialize(constant('websitebase'));
 		
 		$local = str_replace('resources/php', '', dirname( __FILE__ ));
-		$url = self::get_main_url();
 		$final = $type == 'css' ? 'style.css' : 'app.js';
 		
 		$minify = $websitebase['minify'];
@@ -284,7 +282,7 @@ class php
 		
 		if(self::is_localhost())
 		{
-			return self::build_template($type, $minify, $mix);
+			return self::build_template($type, $minify, $mix, $url);
 		}
 		else
 		{
@@ -292,7 +290,7 @@ class php
 			{
 				if(isset($_GET['rebuild']) && $_GET['rebuild'] == $websitebase['rebuild_pass'])
 				{
-					return self::build_template($type, $minify, $mix);
+					return self::build_template($type, $minify, $mix, $url);
 				}
 				else
 				{
@@ -319,7 +317,7 @@ class php
 				
 				if(isset($_GET['rebuild']) && $_GET['rebuild'] == $websitebase['rebuild_pass'])
 				{
-					return self::build_template($type, $minify, $mix);
+					return self::build_template($type, $minify, $mix, $url);
 				}
 				else
 				{

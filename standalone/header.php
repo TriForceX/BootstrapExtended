@@ -52,7 +52,7 @@
 	<!-- Font Awesome -->
 	<link href="<?php echo php::get_main_url(); ?>/resources/font-awesome/css/all.css" rel="stylesheet">
 	<!-- Main CSS File -->
-	<?php echo php::get_template('css'); ?>
+	<?php echo php::get_template('css', php::get_main_url()); ?>
 	<!-- IE8 support of HTML5 elements and media queries -->
 	<!--[if lt IE 9]>
 	<script src="<?php echo php::get_main_url(); ?>/resources/html5shiv/js/html5shiv.min.js"></script>
