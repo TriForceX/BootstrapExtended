@@ -69,10 +69,10 @@ $(document).ready(function(){
 	}
 	
 	//Example add language string
-	JSlanguage['@test-hello'] = { 'en' : 'Hello world!', 'es' : 'Hola mundo!' };
+	JSlanguage['$test-hello'] = { 'en' : 'Hello world!', 'es' : 'Hola mundo!' };
 	
 	//Example use language string
-	JSconsole(JSlang('@test-hello'));
+	JSconsole(JSlang('$test-hello'));
 	
 	//Example lightGallery prev page
 	$(document).on('onPrevPageChange.lg', function(event){

@@ -13,15 +13,15 @@
 /* ================================================= THEME FONTS ================================================= */
 
 /*
-'@screen-xs'	=> '480px',
-'@screen-sm'	=> '768px',
-'@screen-md'	=> '992px',
-'@screen-lg'	=> '1200px', 
-'@screen-xl' 	=> '1920px', 
+'$screen-xs'	=> '480px',
+'$screen-sm'	=> '768px',
+'$screen-md'	=> '992px',
+'$screen-lg'	=> '1200px', 
+'$screen-xl' 	=> '1920px', 
 */
 
 /*
-@media (max-width: @screen-size){
+@media (max-width: $screen-size){
 	...
 }
 */

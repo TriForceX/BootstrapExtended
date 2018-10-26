@@ -1,118 +1,64 @@
 <?php
-
 /*
- * PHP Main Stuff
+ * PHP Main Resources
  * TriForce - Matías Silva
  *
  * This file calls the main PHP utilities and sets the main data (html and rebuild pass)
- * You can extend the functions in functions.php
+ * Don't add functions here, You can add your own in functions.php
  * 
  */
+
+//Main Website Base Data
+define('websitebase', serialize([
+	//Fields
+	'lang' 				=> get_bloginfo('language'),
+	'charset' 			=> get_option('blog_charset'),
+	'title' 			=> get_option('blogname'),
+	'description' 		=> get_option('blogdescription'),
+	'keywords' 			=> get_option('blogkeywords'),
+	'author' 			=> get_option('blogauthor'),
+	'mobile-capable' 	=> 'yes',
+	'viewport' 			=> 'width=device-width, initial-scale=1, user-scalable=no',
+	'nav-color' 		=> '#333333',
+	'nav-color-apple' 	=> get_option('blognavcolorapple'),
+	'timezone' 			=> get_option('timezone_string'),
+	'rebuild_pass'		=> 'mypassword',
+	'minify'			=> true,
+	'mix'				=> true,
+	'css_file'			=> ['css/extras/example.css',
+							/*'css/extras/example-2.css',*/
+							/*'css/extras/example-3.css',*/],
+	'css_vars'			=> ['$color-custom'	=> '#FF0000',
+							/*'$color-custom-2'	=> '#FFFFFF',*/
+							/*'$color-custom-3'	=> '#FFFFFF',*/ ],
+	'js_file'			=> ['js/extras/example.js',
+							/*'js/extras/example-2.js',*/
+							/*'js/extras/example-3.js',*/],
+	'js_vars'			=> ['$color-custom'	=> '#FF0000',
+							/*'$color-custom-2'	=> '#FFFFFF',*/
+							/*'$color-custom-3'	=> '#FFFFFF',*/],
+]));
+
+//Set Website Base Data
+$websitebase = unserialize(constant('websitebase'));
 
 //Get the main PHP utilities
 require_once('resources/php/utilities.php');
 
-class php extends utilities\php 
-{ 
-	//Main header data
-	public static function get_html_data($type)
-    {
-		switch($type){
-			case 'lang': 
-				return get_bloginfo('language'); 
-				break;
-			case 'charset': 
-				return get_option('blog_charset'); 
-				break;
-			case 'title': 
-				return get_option('blogname'); 
-				break;
-			case 'description': 
-				return get_option('blogdescription'); 
-				break;
-			case 'keywords': 
-				return get_option('blogkeywords'); 
-				break;
-			case 'author': 
-				return get_option('blogauthor'); 
-				break;
-			case 'mobile-capable': 
-				return 'yes'; 
-				break;
-			case 'viewport': 
-				return 'width=device-width, initial-scale=1, user-scalable=no'; 
-				break;
-			case 'nav-color': 
-				return get_option('blognavcolor'); 
-				break;
-			case 'nav-color-apple': 
-				return get_option('blognavcolorapple'); 
-				break;
-			default: break;
-		}
-	}
-	
-	//Get extra code section
-	public static $section_code = array();
+//Enable main PHP utilities
+class php extends utilities\php { }
 
-	public static function section($name, $type)
-	{
-		if(!isset(self::$section_code[$name])){
-			self::$section_code[$name] = null; 
-		}
-		if($type == 'start'){
-			return ob_start();
-		}
-		elseif($type == 'end'){
-			return self::$section_code[$name] .= ob_get_clean();
-		}
-		elseif($type == 'get'){
-			return self::$section_code[$name];
-		}
-	}
-	
-	//Get main CSS & JS files
-	public static $rebuild_pass = 'mypassword';
-	
-	public static function get_template($type, $get = null)
-    {
-		$url = get_bloginfo('template_url').'/';
-		$local = dirname( __FILE__ ).'/';
-		$append = $get != null ? $get : '';
-		$route = $type == 'css' ? 'css/style' : 'js/app';
-		$ext = $type == 'css' ? '.css' : '.js';
-		
-		if(php::is_localhost())
-		{
-			if(file_exists($local.$route.$ext))
-			{
-				unlink($local.$route.$ext);
-			}
-			echo $url.$route.'.php'.$append;
-		}
-		else
-		{
-			if(isset($_GET['rebuild']) && $_GET['rebuild'] == self::$rebuild_pass)
-			{
-				if(file_exists($local.$route.$ext))
-				{
-					if(strcmp(php::get_page_code($url.$route.'.php'.$append), file_get_contents($local.$route.$ext)) !== 0)
-					{
-						unlink($local.$route.$ext);
-					}
-				}
-			}
-			if(!file_exists($local.$route.$ext))
-			{
-				file_put_contents($local.$route.$ext, php::get_page_code($url.$route.'.php'.$append));
-			}
-			echo $url.$route.$ext;
-		}
-	}
-}
-
-//Rebuild CSS & JS redirect
-if(isset($_GET['rebuild']) && $_GET['rebuild'] == php::$rebuild_pass)
+//Rebuild CSS & JS redirect clean
+if(isset($_GET['rebuild']) && $_GET['rebuild'] == $websitebase['rebuild_pass'])
 {
-	header('Refresh: 0; url='.get_bloginfo('url'));
+	header('Expires: Tue, 01 Jan 2000 00:00:00 GMT');
+	header('Last-Modified: '.gmdate("D, d M Y H:i:s").' GMT');
+	header('Cache-Control: no-store, no-cache, must-revalidate, max-age=0');
+	header('Cache-Control: post-check=0, pre-check=0', false);
+	header('Pragma: no-cache');
+	header('Location: '.get_bloginfo('url').'?lastbuild');
+}
+if(isset($_GET['lastbuild']))
+{
+	header('Location: '.get_bloginfo('url'));
 }

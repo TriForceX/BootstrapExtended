@@ -1,7 +1,7 @@
 /* ================================================= BASE GLOBAL ================================================= */
 
 /* Main URL replaced by PHP */
-@main-url 	      { content: '@global-url'; }
+@main-url 	      { content: '$global-url'; }
 
 /* IE10 viewport hack for Surface/desktop Windows 8 bug* /
 @-ms-viewport     { width: device-width; }
@@ -78,19 +78,19 @@ a.ui-button:active,
 	color: white;
 }
 .ui-datepicker .ui-datepicker-prev span{
-	background: url("@global-url/resources/jquery-ui/css/images/ui-icons_ffffff_256x240.png");
+	background: url("$global-url/resources/jquery-ui/css/images/ui-icons_ffffff_256x240.png");
 	background-position: -80px -192px;
 }
 .ui-datepicker .ui-datepicker-next span{
-	background: url("@global-url/resources/jquery-ui/css/images/ui-icons_ffffff_256x240.png");
+	background: url("$global-url/resources/jquery-ui/css/images/ui-icons_ffffff_256x240.png");
 	background-position: -48px -192px;
 }
 .ui-datepicker .ui-datepicker-prev-hover span{
-	background: url("@global-url/resources/jquery-ui/css/images/ui-icons_ffffff_256x240.png");
+	background: url("$global-url/resources/jquery-ui/css/images/ui-icons_ffffff_256x240.png");
 	background-position: -80px -192px;
 }
 .ui-datepicker .ui-datepicker-next-hover span{
-	background: url("@global-url/resources/jquery-ui/css/images/ui-icons_ffffff_256x240.png");
+	background: url("$global-url/resources/jquery-ui/css/images/ui-icons_ffffff_256x240.png");
 	background-position: -48px -192px;
 }
 .ui-state-active, 
@@ -479,7 +479,7 @@ a.ui-button:active,
 	vertical-align: middle;
 	margin-top: -7px;
 }
-@media (max-width: @screen-phone) 
+@media (max-width: $screen-phone) 
 {
 	.JSpaginator .JSpageItems a,
 	.JSpaginator .JSpageItems a:hover,

@@ -35,22 +35,22 @@
 /* Modal & Panel */
 
 /* Modal Size */
-@media (min-width: @screen-lg) {
+@media (min-width: $screen-lg) {
 	.modal-xl {
 		width: 1140px;
 	}
 }
-@media (max-width: @screen-lg) {
+@media (max-width: $screen-lg) {
 	.modal-xl {
 		width: 900px;
 	}
 }
-@media (max-width: @screen-md) {
+@media (max-width: $screen-md) {
 	.modal-xl {
 		width: 600px;
 	}
 }
-@media (max-width: @screen-sm) {
+@media (max-width: $screen-sm) {
 	.modal-xl {
 		width: inherit;
 	}
@@ -64,7 +64,7 @@
 .modal-dialog {
 	margin: 30px auto;
 }
-@media (max-width: @screen-sm) {
+@media (max-width: $screen-sm) {
 	.modal{
 		padding: 0px 15px !important;
 	}
@@ -224,7 +224,7 @@
 /* Carousel control no shadow */
 
 /* Carousel control no mobile */
-@media (max-width: @screen-sm) {
+@media (max-width: $screen-sm) {
 	.carousel-nomobile .carousel-control.left,
 	.carousel-nomobile .carousel-control.right {
 		display: none;
@@ -280,18 +280,18 @@
 .open > .dropdown-overflow-lg{
 	max-height: 500px;
 }
-@media (max-width: @screen-lg) {
+@media (max-width: $screen-lg) {
 	.open > .dropdown-overflow-lg{
 		max-height: 400px;
 	}
 }
-@media (max-width: @screen-md) {
+@media (max-width: $screen-md) {
 	.open > .dropdown-overflow-md,
 	.open > .dropdown-overflow-lg{
 		max-height: 195px;
 	}
 }
-@media (max-width: @screen-sm) {
+@media (max-width: $screen-sm) {
 	.open > .dropdown-overflow-sm,
 	.open > .dropdown-overflow-md,
 	.open > .dropdown-overflow-lg{
@@ -542,7 +542,7 @@
 .float-none {
 	float: none !important;
 }
-@media (min-width: @screen-sm) {
+@media (min-width: $screen-sm) {
 	.float-sm-left {
 		float: left !important;
 	}
@@ -553,7 +553,7 @@
 		float: none !important;
 	}
 }
-@media (min-width: @screen-md) {
+@media (min-width: $screen-md) {
 	.float-md-left {
 		float: left !important;
 	}
@@ -564,7 +564,7 @@
 		float: none !important;
 	}
 }
-@media (min-width: @screen-lg) {
+@media (min-width: $screen-lg) {
 	.float-lg-left {
 		float: left !important;
 	}
@@ -575,7 +575,7 @@
 		float: none !important;
 	}
 }
-@media (min-width: @screen-xl) {
+@media (min-width: $screen-xl) {
 	.float-xl-left {
 		float: left !important;
 	}
@@ -618,7 +618,7 @@
 	display: -ms-inline-flexbox !important;
 	display: inline-flex !important;
 }
-@media (min-width: @screen-sm) {
+@media (min-width: $screen-sm) {
 	.d-sm-none {
 		display: none !important;
 	}
@@ -649,7 +649,7 @@
 		display: inline-flex !important;
 	}
 }
-@media (min-width: @screen-md) {
+@media (min-width: $screen-md) {
 	.d-md-none {
 		display: none !important;
 	}
@@ -680,7 +680,7 @@
 		display: inline-flex !important;
 	}
 }
-@media (min-width: @screen-lg) {
+@media (min-width: $screen-lg) {
 	.d-lg-none {
 		display: none !important;
 	}
@@ -711,7 +711,7 @@
 		display: inline-flex !important;
 	}
 }
-@media (min-width: @screen-xl) {
+@media (min-width: $screen-xl) {
 	.d-xl-none {
 		display: none !important;
 	}
@@ -1083,7 +1083,7 @@
 .mx-auto {
 	margin-left: auto !important;
 }
-@media (min-width: @screen-sm) {
+@media (min-width: $screen-sm) {
 	.m-sm-0 {
 		margin: 0 !important;
 	}
@@ -1332,7 +1332,7 @@
 		margin-left: auto !important;
 	}
 }
-@media (min-width: @screen-md) {
+@media (min-width: $screen-md) {
 	.m-md-0 {
 		margin: 0 !important;
 	}
@@ -1581,7 +1581,7 @@
 		margin-left: auto !important;
 	}
 }
-@media (min-width: @screen-lg) {
+@media (min-width: $screen-lg) {
 	.m-lg-0 {
 		margin: 0 !important;
 	}
@@ -1830,7 +1830,7 @@
 		margin-left: auto !important;
 	}
 }
-@media (min-width: @screen-xl) {
+@media (min-width: $screen-xl) {
 	.m-xl-0 {
 		margin: 0 !important;
 	}
@@ -2123,7 +2123,7 @@
 /* Position */
 
 /* Text Align */
-@media (min-width: @screen-sm) {
+@media (min-width: $screen-sm) {
 	.text-sm-left {
 		text-align: left !important;
 	}
@@ -2134,7 +2134,7 @@
 		text-align: center !important;
 	}
 }
-@media (min-width: @screen-md) {
+@media (min-width: $screen-md) {
 	.text-md-left {
 		text-align: left !important;
 	}
@@ -2145,7 +2145,7 @@
 		text-align: center !important;
 	}
 }
-@media (min-width: @screen-lg) {
+@media (min-width: $screen-lg) {
 	.text-lg-left {
 		text-align: left !important;
 	}
@@ -2156,7 +2156,7 @@
 		text-align: center !important;
 	}
 }
-@media (min-width: @screen-xl) {
+@media (min-width: $screen-xl) {
 	.text-xl-left {
 		text-align: left !important;
 	}

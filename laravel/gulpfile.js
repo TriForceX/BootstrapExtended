@@ -13,23 +13,23 @@ var mainUrl = '/assets';
 //Replacements
 var replacementsCSS = [
 	//Global
-	['@global-url'	, mainUrl],
+	['$global-url'	, mainUrl],
 	//Screen
-	['@screen-xs'	, '480px'], 
-	['@screen-sm'	, '768px'], 
-	['@screen-md'	, '992px'], 
-	['@screen-lg'	, '1200px'],  
-	['@screen-xl'	, '1920px'],  
+	['$screen-xs'	, '480px'], 
+	['$screen-sm'	, '768px'], 
+	['$screen-md'	, '992px'], 
+	['$screen-lg'	, '1200px'],  
+	['$screen-xl'	, '1920px'],  
 ];
 var replacementsJS = [
 	//Global
-	['@global-url'	, mainUrl],
+	['$global-url'	, mainUrl],
 	//Screen
-	['@screen-xs'	, '480'], 
-	['@screen-sm'	, '768'], 
-	['@screen-md'	, '992'], 
-	['@screen-lg'	, '1200'],  
-	['@screen-xl'	, '1920'],  
+	['$screen-xs'	, '480'], 
+	['$screen-sm'	, '768'], 
+	['$screen-md'	, '992'], 
+	['$screen-lg'	, '1200'],  
+	['$screen-xl'	, '1920'],  
 ];
 
 //Replace back-end files

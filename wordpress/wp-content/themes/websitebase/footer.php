@@ -55,7 +55,7 @@
 <!-- TinyMCE -->
 <script src="<?php echo get_bloginfo('template_url'); ?>/resources/tinymce/js/tinymce.min.js"></script>
 <!-- Main JS File -->
-<script src="<?php echo php::get_template('js'); ?>"></script>
+<?php echo php::get_template('js', get_bloginfo('template_url')); ?>
 
 <!-- ******** FOOTER RESOURCES ******** -->
 
