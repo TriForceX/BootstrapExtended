@@ -725,7 +725,7 @@ function JSimgFill(container)
 	//Set variables
 	bgHorizontal = bgData[0];
 	bgVertical = bgData[1];
-	bgFill = bgData[2].indexOf('%') >= 0 || bgData[2].indexOf('px') >= 0 ||  bgData[2] === 'contain' ? false : true;
+	bgFill = bgData[2].indexOf('%') >= 0 || bgData[2].indexOf('px') >= 0 || bgData[2] === 'contain' ? false : true;
 	bgFillSize = bgData[2].indexOf('%') >= 0 || bgData[2].indexOf('px') >= 0 ? parseFloat(bgData[2].replace(/\x25|px/g, '')) : false;
 	
 	//Check plugin
@@ -742,10 +742,7 @@ function JSimgFill(container)
 	//Set alternative fill
 	if(bgFillSize)
 	{
-		if(bgFillSize > 100 || bgFillSize < 100)
-		{
-			$(container).css('background-size', bgData[2]);
-		}
+		$(container).css('background-size', (bgFillSize == 100 ? 'cover' : bgData[2]));
 	}
 }
 
