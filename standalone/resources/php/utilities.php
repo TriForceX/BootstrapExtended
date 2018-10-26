@@ -192,19 +192,19 @@ class php
 		$buffer = null;
 		
 		//Defaults
-		$data['file'] = $type == 'css' ? ['css/style-base.css',
-										  'css/style-bootstrap.css',
-										  'css/style-theme.css'] :
-										 ['js/app-init.js',
-										  'js/app-base.js',
-										  'js/app-theme.js'];
+		$data['file'] = $type == 'css' ? array('css/style-base.css',
+											   'css/style-bootstrap.css',
+											   'css/style-theme.css') :
+										 array('js/app-init.js',
+											   'js/app-base.js',
+											   'js/app-theme.js');
 		
-		$data['vars'] = ['$global-url'	=> $url,
-						 '$screen-xs'	=> $type == 'css' ? '480px' : '480',
-						 '$screen-sm'	=> $type == 'css' ? '768px' : '768',
-						 '$screen-md'	=> $type == 'css' ? '992px' : '992',
-						 '$screen-lg'	=> $type == 'css' ? '1200px' : '1200',
-						 '$screen-xl' 	=> $type == 'css' ? '1920px' : '1920'];
+		$data['vars'] = array('$global-url'	=> $url,
+							  '$screen-xs'	=> $type == 'css' ? '480px' : '480',
+							  '$screen-sm'	=> $type == 'css' ? '768px' : '768',
+							  '$screen-md'	=> $type == 'css' ? '992px' : '992',
+							  '$screen-lg'	=> $type == 'css' ? '1200px' : '1200',
+							  '$screen-xl' 	=> $type == 'css' ? '1920px' : '1920');
 		
 		$data['file'] = array_merge($data['file'], $websitebase[$type.'_file']);
 		$data['vars'] = array_merge($data['vars'], $websitebase[$type.'_vars']);
@@ -306,12 +306,12 @@ class php
 			}
 			else
 			{
-				$data['file'] = $type == 'css' ? ['css/style-base.css',
-												  'css/style-bootstrap.css',
-												  'css/style-theme.css'] :
-												 ['js/app-init.js',
-												  'js/app-base.js',
-												  'js/app-theme.js'];
+				$data['file'] = $type == 'css' ? array('css/style-base.css',
+													   'css/style-bootstrap.css',
+													   'css/style-theme.css') :
+												 array('js/app-init.js',
+													   'js/app-base.js',
+													   'js/app-theme.js');
 
 				$data['file'] = array_merge($data['file'], $websitebase[$type.'_file']);
 				

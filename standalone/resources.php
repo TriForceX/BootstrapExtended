@@ -9,7 +9,7 @@
  */
 		
 //Main Website Base Data
-define('websitebase', serialize([
+define('websitebase', serialize(array(
 	//Fields
 	'lang' 				=> 'en-US',
 	'charset' 			=> 'UTF-8',
@@ -25,19 +25,19 @@ define('websitebase', serialize([
 	'rebuild_pass'		=> 'mypassword',
 	'minify'			=> true,
 	'mix'				=> true,
-	'css_file'			=> ['css/extras/example.css',
-							/*'css/extras/example-2.css',*/
-							/*'css/extras/example-3.css',*/],
-	'css_vars'			=> ['$color-custom'	=> '#FF0000',
-							/*'$color-custom-2'	=> '#FFFFFF',*/
-							/*'$color-custom-3'	=> '#FFFFFF',*/ ],
-	'js_file'			=> ['js/extras/example.js',
-							/*'js/extras/example-2.js',*/
-							/*'js/extras/example-3.js',*/],
-	'js_vars'			=> ['$color-custom'	=> '#FF0000',
-							/*'$color-custom-2'	=> '#FFFFFF',*/
-							/*'$color-custom-3'	=> '#FFFFFF',*/],
-]));
+	'css_file'			=> array('css/extras/example.css',
+								 /*'css/extras/example-2.css',*/
+								 /*'css/extras/example-3.css',*/),
+	'css_vars'			=> array('$color-custom'	=> '#FF0000',
+								 /*'$color-custom-2'	=> '#FFFFFF',*/
+								 /*'$color-custom-3'	=> '#FFFFFF',*/ ),
+	'js_file'			=> array('js/extras/example.js',
+								 /*'js/extras/example-2.js',*/
+								 /*'js/extras/example-3.js',*/),
+	'js_vars'			=> array('$color-custom'	=> '#FF0000',
+								 /*'$color-custom-2'	=> '#FFFFFF',*/
+								 /*'$color-custom-3'	=> '#FFFFFF',*/),
+)));
 
 //Set Website Base Data
 $websitebase = unserialize(constant('websitebase'));
