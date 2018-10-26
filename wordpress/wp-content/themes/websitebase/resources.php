@@ -19,7 +19,7 @@ define('websitebase', serialize(array(
 	'author' 			=> get_option('blogauthor'),
 	'mobile-capable' 	=> 'yes',
 	'viewport' 			=> 'width=device-width, initial-scale=1, user-scalable=no',
-	'nav-color' 		=> '#333333',
+	'nav-color' 		=> get_option('blognavcolor'),
 	'nav-color-apple' 	=> get_option('blognavcolorapple'),
 	'timezone' 			=> get_option('timezone_string'),
 	'rebuild_pass'		=> 'mypassword',
@@ -30,7 +30,7 @@ define('websitebase', serialize(array(
 								 /*'css/extras/example-3.css',*/),
 	'css_vars'			=> array('$color-custom'	=> '#FF0000',
 								 /*'$color-custom-2'	=> '#FFFFFF',*/
-								 /*'$color-custom-3'	=> '#FFFFFF',*/ ),
+								 /*'$color-custom-3'	=> '#FFFFFF',*/),
 	'js_file'			=> array('js/extras/example.js',
 								 /*'js/extras/example-2.js',*/
 								 /*'js/extras/example-3.js',*/),

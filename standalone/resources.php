@@ -30,7 +30,7 @@ define('websitebase', serialize(array(
 								 /*'css/extras/example-3.css',*/),
 	'css_vars'			=> array('$color-custom'	=> '#FF0000',
 								 /*'$color-custom-2'	=> '#FFFFFF',*/
-								 /*'$color-custom-3'	=> '#FFFFFF',*/ ),
+								 /*'$color-custom-3'	=> '#FFFFFF',*/),
 	'js_file'			=> array('js/extras/example.js',
 								 /*'js/extras/example-2.js',*/
 								 /*'js/extras/example-3.js',*/),
