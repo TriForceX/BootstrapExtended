@@ -1659,6 +1659,23 @@ function JShref(element)
 	});
 }
 
+//Custom Masonry function
+function JSmasonry(element)
+{
+	element.each(function(){
+		var target = $(this).data('masonry-target');
+		
+		//Check plugin
+		if(typeof Masonry !== 'undefined')
+		{
+			$(this).masonry({ 
+				itemSelector: target, 
+				columnWidth: target,
+			});  
+		}
+	});
+}
+
 //Main Initialization
 function JSmainInit()
 {
@@ -1895,7 +1912,13 @@ $(window).bind("load", function(){
 
 /* ================================================= BASE WINDOWS LOAD ================================================= */
 	
+	//Dev log
 	JSconsole('[JS State] Window Load');
+	
+	//Apply Masonry
+	$(".JSmasonry").each(function(){
+		JSmasonry($(this));
+	});
 	
 /* ================================================= BASE WINDOWS LOAD ================================================= */
 
@@ -1916,6 +1939,11 @@ $(document).on("JSresponsiveCode", function(event, bodyWidth, bodyHeight, bodyOr
 	//Apply Text Cut Multiline
 	$(".JStextCutMulti").each(function(){
 		JStextCutMulti($(this));
+	});
+	
+	//Apply Masonry
+	$(".JSmasonry").each(function(){
+		JSmasonry($(this));
 	});
 	
 /* ================================================= BASE RESPONSIVE CODE ================================================= */
