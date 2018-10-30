@@ -717,7 +717,7 @@ class php
 	}
 	
 	//Custom paginator
-	public static function custom_paginator($offset, $limit, $totalnum, $customclass, $customLeft = '&laquo;', $customRight = '&laquo;', $append = false, $parentDiv = false)
+	public static function custom_paginator($offset, $limit, $totalnum, $customclass, $customLeft = '&laquo;', $customRight = '&laquo;', $append = false, $parentDiv = false, $paginLimit = 12, $paginLimitMobile = 7)
 	{
 		if($append == false){
 			$append = self::get_current_url(true).'?';
@@ -757,7 +757,7 @@ class php
 			if($parentDiv != false){
 				echo '<div class="'.$parentDiv.'">';
 			}
-			echo '<div class="JSpaginator '.$customclass.'"><div class="JSpageItems">';
+			echo '<div class="JSpaginator '.$customclass.'" data-paginator-limit="'.$paginLimit.'" data-paginator-limit-mobile="'.$paginLimitMobile.'"><div class="JSpageItems">';
 			echo '<a class="JSpagePrev" href="'.$append.'pag='.$pagePrev.'&num='.$pageNumPrev.'">'.$customLeft.'</a>';	
 				for($i = 1; $i <= $pages; $i++)
 				{
