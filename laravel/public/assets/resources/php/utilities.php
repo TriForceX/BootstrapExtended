@@ -717,10 +717,10 @@ class php
 	}
 	
 	//Custom paginator
-	public static function custom_paginator($offset, $limit, $totalnum, $customclass, $customLeft = '&laquo;', $customRight = '&laquo;', $append = false, $parentDiv = false, $paginLimit = 12, $paginLimitMobile = 7)
+	public static function custom_paginator($offset, $limit, $totalnum, $customclass = false, $customLeft = '&laquo;', $customRight = '&laquo;', $append = false, $parentDiv = false, $paginLimit = 12, $paginLimitMobile = 7)
 	{
 		if($append == false){
-			$append = self::get_current_url(true).'?';
+			$append = self::get_current_url(true).'/?';
 		}
 		
 		if ($totalnum > $limit)
