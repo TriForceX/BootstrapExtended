@@ -1668,6 +1668,10 @@ function JSmasonry(element)
 		//Check plugin
 		if(typeof Masonry !== 'undefined')
 		{
+			if(typeof $(this).masonry() !== 'undefined')
+			{
+				$(this).masonry('reloadItems');
+			}
 			$(this).masonry({ 
 				itemSelector: target, 
 				columnWidth: target,
@@ -1970,6 +1974,11 @@ $(document).ajaxComplete(function(){
 	
 	//Launch main functions
 	JSmainInit();
+	
+	//Apply Masonry
+	$(".JSmasonry").each(function(){
+		JSmasonry($(this));
+	});
 	
 /* ================================================= BASE AJAX COMPLETE ================================================= */
 
