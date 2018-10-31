@@ -417,7 +417,7 @@ $customize_theme_fields = array(
 	//			'title'		=>	'Field Image Button Title',
 	//			'desc'		=>	'Field Image Desctription',
 	//			'label'		=>	'Field Image Label Title',
-	//			'default'	=>	get_bloginfo('template_url').'/img/icons/favicon/global.png'
+	//			'default'	=>	get_bloginfo('template_url').'/img/base/favicon/global.png'
 	//			)
 	//),
 	//File Field
@@ -428,7 +428,7 @@ $customize_theme_fields = array(
 	//			'title'		=>	'Field File Button Title',
 	//			'desc'		=>	'Field File Desctription',
 	//			'label'		=>	'Field File Label Title',
-	//			'default'	=>	get_bloginfo('template_url').'/img/icons/favicon/global.png'
+	//			'default'	=>	get_bloginfo('template_url').'/img/base/favicon/global.png'
 	//			)
 	//),
 	//Checkbox Field
