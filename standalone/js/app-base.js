@@ -503,7 +503,7 @@ function JSdestroyLightGallery()
 	JSconsole('[JS Function] Destroy Light Gallery');
 	
 	//Check plugin
-	if($.fn.lightGallery !== 'undefined')
+	if(typeof $.fn.lightGallery !== 'undefined')
 	{
 		$(".JSlightGallery").lightGallery().data('lightGallery').destroy(true);
 	}
@@ -514,8 +514,9 @@ function JSloadLightGallery()
 	//Dev log
 	JSconsole('[JS Function] Load Light Gallery');
 	
+	
 	//Check plugin
-	if($.fn.lightGallery !== 'undefined')
+	if(typeof $.fn.lightGallery !== 'undefined')
 	{
 		$(".JSlightGallery").each(function(){ 
 
@@ -1154,9 +1155,18 @@ function JSautoScroll(element, animated, distance)
 	//Dev log
 	JSconsole('[JS Function] Auto Scroll');
 	
-	var distance = $(element).data('scroll-distance') ? $(element).data('scroll-distance') : 0;
 	var target = $(element);
-	var animated = $(element).data('scroll-animated') < 500 ? 500 : $(element).data('scroll-animated');
+	
+	if(!animated){ //Check value
+		animated = $(element).data('scroll-animated') < 500 ? 500 : $(element).data('scroll-animated');
+	}
+	else{
+		animated = animated < 500 ? 500 : animated;
+	}
+	
+	if(!distance){ //Check value
+		distance = $(element).data('scroll-distance') ? $(element).data('scroll-distance') : 0;
+	}
 
     if(animated){
         $('html, body').animate({scrollTop: (target.offset().top - distance)}, animated);
@@ -1660,11 +1670,9 @@ function JShref(element)
 }
 
 //Custom Masonry function
-function JSmasonry(element)
+function JSmasonryPre(element, target)
 {
 	element.each(function(){
-		var target = $(this).data('masonry-target');
-		
 		//Check plugin
 		if(typeof Masonry !== 'undefined')
 		{
@@ -1675,8 +1683,24 @@ function JSmasonry(element)
 			$(this).masonry({ 
 				itemSelector: target, 
 				columnWidth: target,
-			});  
+			});
+			$(this).find(target).removeClass('d-none');
 		}
+	});
+}
+function JSmasonry(element)
+{
+	//Dev log
+	JSconsole('[JS Function] Masonry');
+	
+	var target = element.data('masonry-target');
+	
+	$(window).bind("load", function(){
+		JSmasonryPre(element, target);
+	});
+	
+	element.find(target).find('img').bind("load", function(){
+		JSmasonryPre(element, target);
 	});
 }
 
@@ -1695,6 +1719,7 @@ function JSmainInit()
 	//Load LightGallery
 	if(JSexist('.JSlightGallery'))
 	{
+		JSdestroyLightGallery();
 		JSloadLightGallery();
 	}
 	
@@ -1759,8 +1784,13 @@ function JSmainInit()
 		JSautoScroll($(this));
 	});
 	
+	//Apply Masonry
+	$('.JSmasonry').each(function(){
+		JSmasonry($(this));
+	});
+	
 	//Apply Text Cut
-	$(".JStextCut").each(function(){
+	$('.JStextCut').each(function(){
 		var target = $(this).data('text-cut') ? $(this).data('text-cut') : $(this);
 		JStextCut(target);
 	});
@@ -1919,11 +1949,6 @@ $(window).bind("load", function(){
 	//Dev log
 	JSconsole('[JS State] Window Load');
 	
-	//Apply Masonry
-	$(".JSmasonry").each(function(){
-		JSmasonry($(this));
-	});
-	
 /* ================================================= BASE WINDOWS LOAD ================================================= */
 
 });
@@ -1974,11 +1999,6 @@ $(document).ajaxComplete(function(){
 	
 	//Launch main functions
 	JSmainInit();
-	
-	//Apply Masonry
-	$(".JSmasonry").each(function(){
-		JSmasonry($(this));
-	});
 	
 /* ================================================= BASE AJAX COMPLETE ================================================= */
 
