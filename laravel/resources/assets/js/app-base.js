@@ -1690,7 +1690,7 @@ function JSmasonry(element)
 							columnWidth: target,
 						});
 					}
-				}
+				};
 	
 	$(window).bind("load", function(){
 		masonry();
