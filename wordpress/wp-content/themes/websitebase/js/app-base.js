@@ -1676,7 +1676,7 @@ function JSmasonry(element)
 	JSconsole('[JS Function] Masonry');
 	
 	var target = element.data('masonry-target');
-	var masonry = function(){console.log('masonry load');
+	var masonry = function(){
 					//Check plugin
 					if(typeof Masonry !== 'undefined')
 					{
