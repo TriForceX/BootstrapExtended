@@ -1670,37 +1670,34 @@ function JShref(element)
 }
 
 //Custom Masonry function
-function JSmasonryPre(element, target)
-{
-	element.each(function(){
-		//Check plugin
-		if(typeof Masonry !== 'undefined')
-		{
-			if(typeof $(this).masonry() !== 'undefined')
-			{
-				$(this).masonry('reloadItems');
-			}
-			$(this).masonry({ 
-				itemSelector: target, 
-				columnWidth: target,
-			});
-			$(this).find(target).removeClass('d-none');
-		}
-	});
-}
 function JSmasonry(element)
 {
 	//Dev log
 	JSconsole('[JS Function] Masonry');
 	
 	var target = element.data('masonry-target');
+	var masonry = function(){console.log('masonry load');
+					//Check plugin
+					if(typeof Masonry !== 'undefined')
+					{
+						if(typeof element.masonry() !== 'undefined')
+						{
+							element.masonry('reloadItems');
+						}
+						element.find(target).removeClass('d-none');
+						element.masonry({ 
+							itemSelector: target, 
+							columnWidth: target,
+						});
+					}
+				}
 	
 	$(window).bind("load", function(){
-		JSmasonryPre(element, target);
+		masonry();
 	});
 	
-	element.find(target).find('img').bind("load", function(){
-		JSmasonryPre(element, target);
+	element.find(target).eq(0).find('img').bind("load", function(){
+		masonry();
 	});
 }
 
@@ -1717,7 +1714,7 @@ function JSmainInit()
 	$('*[data-toggle="popover"]').popover();
 	
 	//Load LightGallery
-	if(JSexist('.JSlightGallery'))
+	if(JSexist($('.JSlightGallery')))
 	{
 		JSdestroyLightGallery();
 		JSloadLightGallery();
@@ -1759,7 +1756,7 @@ function JSmainInit()
 	if($.fn.timepicker !== 'undefined')
 	{
 		//Show on focus
-		$(document).on("focusin", ".timepicker input", function(e){
+		$(document).on('focusin', '.timepicker input', function(e){
 			$(this).timepicker('showWidget');
 		});
 	}
@@ -1874,28 +1871,28 @@ $(document).ready(function(){
 	JSconsole('[JS State] Document Ready');
 	
 	//Disable button auto-focus
-	$(document).on("shown.bs.modal", function(){
-		$(".modal .modal-footer .btn:focus").blur();
-		$(".modal").scrollTop(0);
+	$(document).on('shown.bs.modal', function(){
+		$('.modal .modal-footer .btn:focus').blur();
+		$('.modal').scrollTop(0);
 	});
 	
 	//Window Popup click
-	$(document).on("click", ".JSwindowPopup", function(){
+	$(document).on('click', '.JSwindowPopup', function(){
 		JSwindowPopup($(this));
 	});
 	
 	//Map Launch click
-	$(document).on("click", ".JSmapLaunch", function(){
+	$(document).on('click', '.JSmapLaunch', function(){
 		JSmapLaunch($(this));
 	});
 	
 	//Href Click
-	$(document).on("click", ".JShref", function(){
+	$(document).on('click', '.JShref', function(){
 		JShref($(this));
 	});
 	
 	//Check map launch alert
-	$(document).on("click", ".JSmapLaunchAlert", function(e){
+	$(document).on('click', '.JSmapLaunchAlert', function(e){
 		if (JSisMobile && !confirm(JSlang('$maplaunch-alert'))){
 		  e.preventDefault();
 		}
@@ -1942,7 +1939,7 @@ $(document).ready(function(){
 
 });
 
-$(window).bind("load", function(){
+$(window).bind('load', function(){
 
 /* ================================================= BASE WINDOWS LOAD ================================================= */
 	
@@ -1961,18 +1958,13 @@ $(document).on("JSresponsiveCode", function(event, bodyWidth, bodyHeight, bodyOr
 	JSconsole('[JS State] Responsive Code');
 	
 	//Apply Text Size
-	$(".JStextSize").each(function(){
+	$('.JStextSize').each(function(){
 		JStextSize($(this));
 	});
 	
 	//Apply Text Cut Multiline
-	$(".JStextCutMulti").each(function(){
+	$('.JStextCutMulti').each(function(){
 		JStextCutMulti($(this));
-	});
-	
-	//Apply Masonry
-	$(".JSmasonry").each(function(){
-		JSmasonry($(this));
 	});
 	
 /* ================================================= BASE RESPONSIVE CODE ================================================= */
