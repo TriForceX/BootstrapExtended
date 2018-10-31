@@ -54,11 +54,11 @@ function get_the_slug($id = null)
   return $slug;
 }
 
-//Get the id by name
-function get_id_by_name($name)
+//Get the id by slug
+function get_id_by_slug($slug)
 {
 	global $wpdb;
-	$id = $wpdb->get_var("SELECT ID FROM $wpdb->posts WHERE post_name = '".$name."'");
+	$id = $wpdb->get_var("SELECT ID FROM $wpdb->posts WHERE post_name = '".$slug."'");
 	return $id;
 }
 
