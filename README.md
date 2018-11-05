@@ -137,21 +137,21 @@ Base structure for web sites with reusable parts of source code or functions mai
    - I am aware of that, but i don't intend to get website working completely 100% in **IE8** or **IE9**, but at least i want to show website "navigable" and not destroyed.
 
 4. Can i use this stuff in plain **HTML** instead the **PHP** Standalone?
-   - Yes, but you need to remove all the **PHP** stuff. Just copy the *Standalone* structure in **HTML** Files, remove **PHP** stuff, and call the **CSS & JS** files manually.
+   - Yes, but you will lost all the **PHP** stuff. In the *Standalone* project turn off the **Mix** option _(in **resources.php** set **mix** to **false**)_. Next load the page, view the code in the navigator and copy it in a **HTML** page.
 
 # Recommended Tools for editing
-- [Visual Studio Code](https://code.visualstudio.com/)
-- [NetBeans](https://netbeans.org/)
-- [Atom](https://atom.io/)
-- [Brackets](http://brackets.io/)
-- [Notepad++](https://notepad-plus-plus.org/download/v7.5.6.html)
+- [Visual Studio Code](https://code.visualstudio.com)
+- [NetBeans](https://netbeans.org)
+- [Atom](https://atom.io)
+- [Brackets](http://brackets.io)
+- [Notepad++](https://notepad-plus-plus.org/download)
 - [Adobe Dreamweaver](https://www.adobe.com/dreamweaver)
 
 # Recommended Tools for server
-- [MAMP Server (Mac OSX & Windows)](https://www.mamp.info/en/)
-- [WAMP Server (Windows)](http://www.wampserver.com/)
+- [MAMP Server (Mac OSX & Windows)](https://www.mamp.info/en)
+- [WAMP Server (Windows)](http://www.wampserver.com)
 - [LAMP Server (Linux)](https://bitnami.com/stack/lamp)
-- [XAMP Server (All)](https://www.apachefriends.org/)
+- [XAMP Server (All)](https://www.apachefriends.org)
 
 # About
 I coded the most of the code snippets and functions *(from scratch or searching the whole internet)*. About the included libraries im not the author, but i try to let other people find the best way to use them *(original authors are linked in the demo page)*. If you have any question feel free to contact me at triforce@gznetwork.com
