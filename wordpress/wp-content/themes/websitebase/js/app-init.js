@@ -9,10 +9,14 @@ function JSexist(elem)
 //Custom console log (developer mode)
 function JSconsole(data)
 {
-	if(JSexist($('*[data-js-console]')))
+	if(!(JSexist($('*[data-js-console="false"]'))))
 	{
-		if(!(JSexist($('*[data-js-console="nobase"]')) && /\[JS/i.test(data)))
+		if(/\[JS/i.test(data) && JSexist($('*[data-js-console="base"]')))
 		{
+			console.log('%c'+data, 'color: orange');
+		}
+		else if(!(/\[JS/i.test(data)))
+		{		
 			console.log(data);
 		}
 	}

@@ -1675,30 +1675,28 @@ function JSmasonry(element)
 	//Dev log
 	JSconsole('[JS Function] Masonry');
 	
-	var target = element.data('masonry-target');
-	var masonry = function(){
-					//Check plugin
-					if(typeof Masonry !== 'undefined')
-					{
-						if(typeof element.masonry() !== 'undefined')
-						{
-							element.masonry('reloadItems');
-						}
-						element.find(target).removeClass('d-none');
-						element.masonry({ 
-							itemSelector: target, 
-							columnWidth: target,
-						});
-					}
-				};
-	
-	$(window).bind("load", function(){
-		masonry();
-	});
-	
-	element.find(target).eq(0).find('img').bind("load", function(){
-		masonry();
-	});
+	//Check plugin
+	if(typeof imagesLoaded !== 'undefined')
+	{
+		element.imagesLoaded(function(){
+
+			var target = element.data('masonry-target');
+
+			//Check plugin
+			if(typeof Masonry !== 'undefined')
+			{
+				if(typeof element.masonry() !== 'undefined')
+				{
+					element.masonry('reloadItems');
+				}
+				element.find(target).removeClass('d-none');
+				element.masonry({ 
+					itemSelector: target, 
+					columnWidth: target,
+				});
+			}
+		});
+	}
 }
 
 //Main Initialization

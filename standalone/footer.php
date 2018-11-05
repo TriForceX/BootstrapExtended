@@ -54,6 +54,8 @@
 <script src="<?php echo php::get_main_url(); ?>/resources/masonry/js/masonry.min.js"></script>
 <!-- TinyMCE -->
 <script src="<?php echo php::get_main_url(); ?>/resources/tinymce/js/tinymce.min.js"></script>
+<!-- Images Loaded -->
+<script src="<?php echo php::get_main_url(); ?>/resources/imagesloaded/js/imagesloaded.pkgd.min.js"></script>
 <!-- Main JS File -->
 <?php echo php::get_template('js', php::get_main_url()); ?>
 

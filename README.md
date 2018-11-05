@@ -19,6 +19,7 @@ Base structure for web sites with reusable parts of source code or functions mai
 - Holder JS
 - Hover CSS
 - HTML5 Shiv
+- ImagesLoaded JS
 - ImgLiquid JS
 - jQuery
 - jQuery Browser
