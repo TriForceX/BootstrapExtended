@@ -51,11 +51,11 @@
 <!-- Clipboard JS -->
 <script src="<?php echo get_bloginfo('template_url'); ?>/resources/clipboard/js/clipboard.min.js"></script>
 <!-- Masonry -->
-<script src="<?php echo get_bloginfo('template_url'); ?>/resources/masonry/js/masonry.min.js"></script>
-<!-- TinyMCE -->
-<script src="<?php echo get_bloginfo('template_url'); ?>/resources/tinymce/js/tinymce.min.js"></script>
+<script src="<?php echo get_bloginfo('template_url'); ?>/resources/masonry/js/masonry.pkgd.min.js"></script>
 <!-- Images Loaded -->
 <script src="<?php echo get_bloginfo('template_url'); ?>/resources/imagesloaded/js/imagesloaded.pkgd.min.js"></script>
+<!-- TinyMCE -->
+<script src="<?php echo get_bloginfo('template_url'); ?>/resources/tinymce/js/tinymce.min.js"></script>
 <!-- Main JS File -->
 <?php echo php::get_template('js', get_bloginfo('template_url')); ?>
 

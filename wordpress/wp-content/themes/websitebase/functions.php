@@ -1124,8 +1124,8 @@ function get_theme_mod2($name)
 //add_filter('pre_get_posts', 'custom_posts_per_page');
 
 //Disable specific plugin update check 
-function disable_plugin_updates( $value ) {
-	
+function disable_plugin_updates($value)
+{	
 	$disabledPlugins = array(
 							'advanced-custom-fields-pro/acf.php', //Updated manually
 							'admin-menu-editor-pro/menu-editor.php', //Updated manually (check the comment "//Manual update" in this file before update)
