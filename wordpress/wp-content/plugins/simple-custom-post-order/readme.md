@@ -2,25 +2,24 @@
 Contributors: colorlibplugins, silkalns
 Tags: custom post order, post order, js post order, page order, posts order, category order, sort posts, sort pages, sort custom posts
 Requires at least: 3.5.1
-Tested up to: 4.9
-Requires PHP: 5.6
-Stable tag: trunk
-License: GPLv3 or later
-License URI: http://www.gnu.org/licenses/gpl-3.0.html
+Tested up to: 5.0.0
+Stable tag: 2.3.4
+License: GPLv2 or later
+License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-Order posts(posts, any custom post types) using a Drag and Drop Sortable JavaScript. Configuration is unnecessary. 
+Order posts(posts, any custom post types) using a Drag and Drop Sortable JavaScript. Configuration is unnecessary.
 
 == Description ==
 
 Order posts(posts, any custom post types) using a Drag and Drop Sortable JavaScript. Configuration is unnecessary. You can do directly on default WordPress administration.
 Excluding custom query which uses order or orderby parameters, in get_posts or query_posts and so on.
 
-This plugins is now supported and maintained by <a href=“https://colorlib.com/wp/“ target=“_blank” rel=“friend” >Colorlib</a>. 
+This plugins is now supported and maintained by <a href=“https://colorlib.com/wp/“ target=“_blank”>Colorlib</a>.
 
 == Installation ==
 
 1. Upload `plugin-name.php` to the `/wp-content/plugins/` directory
-1. Activate the plugin through the 'Plugins' menu in WordPress 
+1. Activate the plugin through the 'Plugins' menu in WordPress
 
 == Frequently asked questions ==
 
@@ -34,7 +33,6 @@ An answer to that question.
 2. screenshot-2
 
 == Changelog ==
-
 = Version 1.0 (20-07-2013) =
 *  Initial release.
 
@@ -48,7 +46,7 @@ An answer to that question.
 * Taxonomy Activate Checkbox removed.
 
 = Version 2.1 (31-12-2013) =
-* Prevent Breaking autocomplete 
+* Prevent Breaking autocomplete
 
 = Version 2.2 (02-07-2014) =
 * Fixed bug: Custom Query which uses 'order' or 'orderby' parameters is preferred
@@ -64,3 +62,6 @@ An answer to that question.
 
 = Version 2.3.3 (22-10-2018) = 
 * Minor tweaks & fixes
+
+= Version 2.3.4 =
+* Removed deprecated function "screen_icon"
