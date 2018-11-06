@@ -16,11 +16,9 @@
 			<ul class="nav navbar-nav">
 				<li class="active"><a href="<?php echo php::get_main_url(); ?>" class="notranslate">Home</a></li>
 				<li class="dropdown">
-					<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Contact <span class="caret"></span></a>
+					<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Information <span class="caret"></span></a>
 					<ul class="dropdown-menu dropdown-overflow-lg notranslate" role="menu">
-						<li><a href="https://github.com/TriForceX" target="_blank">GitHub</a></li>
-						<li><a href="http://stackoverflow.com/users/7613382/triforce" target="_blank">StackOverflow</a></li>
-						<li class="divider"></li>
+						<li><a href="https://github.com/TriForceX/WebsiteBase/wiki" target="_blank">Wiki</a></li>
 						<li><a href="https://github.com/TriForceX/WebsiteBase" target="_blank">Repository</a></li>
 					</ul>
 				</li>
@@ -36,6 +34,7 @@
 						<li><a href="http://holderjs.com/" target="_blank">Holder JS</a></li>
                         <li><a href="http://ianlunn.github.io/Hover/" target="_blank">Hover CSS</a></li>
                         <li><a href="https://github.com/aFarkas/html5shiv" target="_blank">HTML5 Shiv</a></li>
+						<li><a href="https://imagesloaded.desandro.com" target="_blank">Images Loaded</a></li>
 						<li><a href="https://github.com/karacas/imgLiquid" target="_blank">ImgLiquid JS</a></li>
 						<li><a href="https://jquery.com/" target="_blank">jQuery</a></li>
 						<li><a href="https://github.com/pupunzi/jquery.mb.browser" target="_blank">jQuery Browser</a></li>
@@ -55,8 +54,6 @@
 				<li class="dropdown">
 					<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Utilities <span class="caret"></span></a>
 					<ul class="dropdown-menu dropdown-overflow-lg notranslate" role="menu">
-						<li><a href="https://github.com/TriForceX/WebsiteBase/wiki" target="_blank">Repository Wiki</a></li>
-						<li class="divider"></li>
 						<li><a href="https://www.w3schools.com" target="_blank">W3 Schools Tutorials</a></li>
 						<li><a href="https://www.w3schools.com/howto/" target="_blank">W3 Schools How To</a></li>
 						<li><a href="http://bootsnipp.com" target="_blank">Bootstrap Snippets</a></li>
@@ -93,9 +90,8 @@
 						<li class="dropdown-header"><a href="http://getbootstrap.com/docs/3.3/examples/offcanvas/" target="_blank">Off-canvas</a></li>
 					</ul>
 				</li>
-				<?php if(!(php::is_localhost())): ?>
 				<li>
-					<div id="google_translate_element"></div>
+					<script type="text/javascript" src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 					<script type="text/javascript">
 					function googleTranslateElementInit(){
 					  new google.translate.TranslateElement({
@@ -106,9 +102,8 @@
 					  }, 'google_translate_element');
 					}
 					</script>
-					<script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+					<div id="google_translate_element"></div>
 				</li>
-				<?php endif; ?>
 			</ul>
 		</div>
 		<!--/.nav-collapse -->
@@ -129,310 +124,6 @@
 		</div>
 		
 		<!-- ******** LOADING BAR ******** -->
-		
-		<!-- ******** TEMPLATE EXAMPLES ******** -->
-		
-		<div class="jumbotron">
-			<h1>Main Template</h1>
-			<p>This template consists of two main parts, <code>Header</code> and <code>Footer</code>, which are called from the <code>Index</code> (or pages). The <code>CSS</code> and <code>JS</code> files are called from a <b>PHP file</b>.</p>
-		</div>
-		
-		<!-- Header Example -->
-		
-		<div class="page-header">
-			<h1>Header <span class="label label-primary">Template</span></h1>
-		</div>
-		<p>The main header structure contains the access to main <b>PHP functions</b>, website data, <b>Meta tags</b>, <b>CSS files</b> and <b>HTML containers</b>. <b>PHP</b> is used for the main <b>CSS file</b> <code>style.php</code> to parse variables, reduce code, etc...</p>
-		
-		<figure class="highlight">
-			<pre><code class="language-html" data-lang="html">&lt;!DOCTYPE html&gt;
-&lt;html lang="&lt;?php echo php::get_html_data('lang'); ?&gt;"&gt;
-&lt;head&gt;
-	...
-	&lt;link href="&lt;?php echo php::get_template('css'); ?&gt;" rel="stylesheet"&gt;
-	...
-&lt;/head&gt;<br>&lt;body&gt;<br>...</code></pre>
-		</figure>
-		
-		<p>
-			<div class="panel panel-default">
-				<div class="panel-heading">
-					<h3 class="panel-title">Note for HTML data</h3>
-				</div>
-				<div class="panel-body">
-					The Main <b>HTML data</b> for <i>Meta tags</i> are located in <code>resources.php</code> using an extended function from <b>PHP utilities</b>. For example: <code>php::get_html_data()</code>
-				</div>
-			</div>
-		</p>
-	
-		<!-- Header Example -->
-		
-		<!-- Index / Page Example -->
-	
-		<div class="page-header">
-			<h1>Page <span class="label label-primary">Template</span></h1>
-		</div>
-		<p>The main page (or index) structure contains <b>HTML contents</b> and access to the main <b>Header</b> and <b>Footer</b>.</p>
-		
-		<figure class="highlight">
-			<pre><code class="language-html" data-lang="html">&lt;?php include('header.php'); ?&gt;<br>&lt;div class="content"&gt;<br>...<br>&lt;/div&gt;<br>&lt;?php include('footer.php'); ?&gt;</code></pre>
-		</figure>
-	
-		<!-- Index / Page Example -->
-	
-		<!-- Footer Example -->
-	
-		<div class="page-header">
-			<h1>Footer <span class="label label-primary">Template</span></h1>
-		</div>
-		<p>The main footer structure contains the access to <b>JS files</b> (included the base one) and <b>HTML footer containers</b>. <b>PHP</b> is used for the main <b>CSS file</b> <code>app.php</code> to parse variables, reduce code, etc...</p>
-		
-		<figure class="highlight">
-			<pre><code class="language-html" data-lang="html">...<br>&lt;!-- Main JS File --&gt;
-&lt;script src="&lt;?php echo php::get_template('js'); ?&gt;"&gt;&lt;/script&gt;
-...
-&lt;/body&gt;
-&lt;/html&gt;</code></pre>
-		</figure>
-		
-		<p>
-			<div class="panel panel-default">
-				<div class="panel-heading">
-					<h3 class="panel-title">Note for main PHP Functions</h3>
-				</div>
-				<div class="panel-body">
-					You can use the <b>PHP functions</b> from the main library like <code>php::function()</code>, If you will use <code>Wordpress</code> (or another CMS) is highly recommended to use their main functions instead the base here. For example for <code>Wordpress</code> use <code>get_bloginfo('template_url')</code> instead <code>php::get_main_url()</code> and <code>get_header()</code>, <code>get_footer()</code> instead <code>include('header.php')</code>, <code>include('footer.php')</code>.
-					<br><br>
-					<b>Note for main CSS and JS:</b> You can display the code unreduced setting the <code>GET</code> flag <code>?minify=false</code> to the main <b>CSS</b> and <b>JS</b> call functions. For example <code>&lt;?php echo php::get_template('css','?minify=false'); ?&gt;</code>.
-				</div>
-			</div>
-		</p>
-
-		<!-- Footer Example -->
-
-		<!-- Extra Code Example -->
-		
-		<div class="page-header">
-			<h1>Extra Code <span class="label label-primary">Template</span></h1>
-		</div>
-		<p>Sometimes you may need to add extra <b>CSS</b> or <b>JS</b> only for some pages. You can place them between <code>php::section('name','start')</code> and <code>php::section('name','end')</code> to print it in the desired part using <code>php::section('name','get')</code>.</p>
-		
-		<figure class="highlight">
-			<pre><code class="language-html" data-lang="html">...
-&lt;?php php::section('footer','start'); ?&gt;
-&lt;style type="text/css"&gt;
-body{
-	background: #FF0000;
-}
-&lt;/style>
-&lt;script type="text/javascript"&gt;
-	alert("My Alert!");
-&lt;/script&gt;
-&lt;?php php::section('footer','end'); ?&gt;
-...</code></pre>
-		</figure>
-		
-		<p>
-			<div class="panel panel-default">
-				<div class="panel-heading">
-					<h3 class="panel-title">Note for Extra Code</h3>
-				</div>
-				<div class="panel-body">
-					By default, <b>header</b> and <b>footer</b> section was created. Is recommended to use this after the <code>&lt;?php require('resources.php'); ?&gt;</code> code.
-				</div>
-			</div>
-		</p>
-	
-		<!-- Extra Code Example -->
-		
-		<!-- Utilities Example -->
-
-		<div class="page-header">
-			<h1>Utilities <span class="label label-primary">Functions</span></h1>
-		</div>
-		<p>The main php functions are located in <code>resources.php</code> and <code>resources/php/utilities.php</code>. These files contains a some of useful functions to use in <b>PHP</b></p>
-		
-		<div class="bs-example">
-			<figure class="highlight">
-				<pre><code class="language-html" data-lang="html">//Get the current URL will return: <?php echo php::get_current_url(); ?><br>&lt;?php echo php::get_current_url(); ?&gt;
-			
-//Show current date will return: <?php echo php::show_date('auto','F j l, Y, g:i a'); ?><br>&lt;?php echo php::show_date('auto','F j l, Y, g:i a'); ?&gt;</code></pre>
-			</figure>
-		</div>
-
-		<p>
-			<div class="panel panel-default">
-				<div class="panel-heading">
-					<h3 class="panel-title">Note to begin a website</h3>
-				</div>
-				<div class="panel-body">
-					If you want to start a new website using this repository, i recommend to delete all the <b>example code</b>. For <b>HTML</b> open <code>index.php</code> and delete the <b>Navbar Menu</b> <i>(first <code>&lt;nav&gt;</code> tag)</i>. After remove all the content <b>inside</b> the element <code>&lt;div class="container"&gt;</code> <i>(Not the element)</i>. For <b>CSS</b> delete the file <code>style-example.css</code>, open <code>style-extras.php</code> and delete or comment the included line <code>'../css/style-example.css'</code>. Finally For <b>JS</b> delete the file <code>app-example.js</code>, open <code>app-extras.php</code> and delete or comment the included line <code>'../css/app-example.js'</code>.
-				</div>
-			</div>
-		</p>
-
-		<!-- Utilities Example -->
-		
-		<!-- ******** TEMPLATE EXAMPLES ******** -->
-		
-		<p>&nbsp;</p>
-		
-		<!-- ******** CSS/JS EXAMPLES ******** -->
-		
-		<div class="jumbotron">
-			<h1>CSS & JS</h1>
-			<p>This template contains <b>PHP files</b> to call <code>JS</code> and <code>CSS</code>. These files are ordered and reduced for a better performance.</p>
-		</div>
-		
-		<!-- CSS Example -->
-
-		<div class="page-header">
-			<h1>CSS <span class="label label-success">Template</span></h1>
-		</div>
-		<p>The main file structure contains the access to <b>CSS</b> files and <code>Variables</code> to improve the use.</p>
-		
-		<table class="table table-bordered table-striped js-options-table">
-			<thead>
-				<tr>
-					<th>Variable</th>
-					<th>Description</th>
-				</tr>
-			</thead>
-			<tbody>
-				<tr>
-					<td class="notranslate">$css_minify</td>
-					<td>Defines if the <b>CSS</b> code will get the size reduced to the client. You can add the <code>GET</code> flag <b>?minify=false</b> to the main <code>style.php</code> url to disable the unreduced code.
-					</td>
-				</tr>
-				<tr>
-					<td class="notranslate">$css_mix</td>
-					<td>Defines if the <b>CSS</b> files will get mixed in only one file. You can add the <code>GET</code> flag <b>?mix=false</b> to the main <code>style.php</code> url to disable the unmixed files.
-					</td>
-				</tr>
-				<tr>
-					<td class="notranslate">$css_data['file']</td>
-					<td>Defines which <b>CSS</b> files will be called, you can add more to the array. The <code>style-base.css</code> is used to set main classes, <code>style-bootstrap.css</code> is used to be set all <b>Bootstrap</b> related classes.
-					</td>
-				</tr>
-				<tr>
-					<td class="notranslate">$css_data['vars']</td>
-					<td>Defines custom variables to replace inside the <b>CSS</b> files, such as colors, sizes and another data.
-					</td>
-				</tr>
-			</tbody>
-		</table>
-		<figure class="highlight">
-			<pre><code class="language-html" data-lang="html">...<br>$css_minify = $_GET['minify'] == 'false' ? false : true;<br>$css_mix = $_GET['mix'] == 'false' ? false : true;<br>
-//Defaults
-$css_data['file'] = array(
-			 'style-base.css',
-			 'style-bootstrap.css',
-			 'style-theme.css',
-			 );
-$css_data['vars'] = array(
-			 '@global-url'	=> $css_url,
-			 '@screen-xs'	=> '480px',
-			 '@screen-sm'	=> '768px',
-			 '@screen-md'	=> '992px',
-			 '@screen-lg'	=> '1200px', 
-			 '@screen-xl' 	=> '1920px', 
-			 );<br>...</code></pre>
-		</figure>
-        
-        <p>
-		<div class="panel panel-default">
-			<div class="panel-heading">
-				<h3 class="panel-title">Note for included CSS files</h3>
-			</div>
-			<div class="panel-body">
-				The file <code>style-theme.css</code> it will contain all the main classes for the website layout. The file <code>extras/example.css</code> is only for tests and references, you can delete with no problems. Is not recomended to modify the <code>style-base.css</code> or <code>style-bootstrap.css</code> because contains the main functions inside. <b>If you want add extra stuff, just add it in</b> <code>style-theme.css</code> <b>or</b> <code>style-extras.php</code>
-				<br><br>
-				The compile process works in realtime if you are testing in <b>localhost</b>, if you upload the code to <b>production</b> enviroment, the file <code>style.css</code> will be generated only once, if you update your code, remember to rebuild it adding <code>?rebuild=password</code> to the main url (for example: <b><?php echo php::get_main_url(); ?>/?rebuild=mypassword</b>). Remember to change the password in <code>resources.php</code>.
-				<br><br>
-				<b>Note for Wordpress:</b> Theres a file called <code>style-admin.css</code> which will directly affect the administration panel <i>(It already included some base classes)</i>.
-			</div>
-		</div>
-		</p>
-
-		<!-- CSS Example -->
-		
-		<!-- JS Example -->
-
-		<div class="page-header">
-			<h1>JS <span class="label label-success">Template</span></h1>
-		</div>
-		<p>The main file structure contains the access to <b>JS</b> files and <code>Variables</code> to improve the use.</p>
-		
-		<table class="table table-bordered table-striped js-options-table">
-			<thead>
-				<tr>
-					<th>Variable</th>
-					<th>Description</th>
-				</tr>
-			</thead>
-			<tbody>
-				<tr>
-					<td class="notranslate">$js_minify</td>
-					<td>Defines if the <b>JS</b> code will get the size reduced to the client. You can add the <code>GET</code> flag <code>?minify=false</code> to the main <code>app.php</code> url to disable the unreduced code.
-					</td>
-				</tr>
-				<tr>
-					<td class="notranslate">$js_mix</td>
-					<td>Defines if the <b>JS</b> files will get mixed in only one file. You can add the <code>GET</code> flag <b>?mix=false</b> to the main <code>style.php</code> url to disable the unmixed files.
-					</td>
-				</tr>
-				<tr>
-					<td class="notranslate">$js_data['file']</td>
-					<td>Defines which <b>JS</b> files will be called, you can add more to the array. The <code>app-base.js</code> is used to be execute all main stuff and functions, <code>app-init.js</code> is used to be set the main language settings.
-					</td>
-				</tr>
-				<tr>
-					<td class="notranslate">$js_data['vars']</td>
-					<td>Defines custom variables to replace inside the <b>JS</b>files, such as colors, sizes and another data. <b>Note:</b> is important to keep the <code>@global-url</code> variable and the <code>@screen</code> ones, because are used in the <i>Base</i> code.
-					</td>
-				</tr>
-			</tbody>
-		</table>
-		<figure class="highlight">
-			<pre><code class="language-html" data-lang="html">...<br>$js_minify = $_GET['minify'] == 'false' ? false : true;<br>$js_mix = $_GET['mix'] == 'false' ? false : true;<br>
-//Defaults
-$js_data['file'] = array(
-			'app-init.js',
-			'app-base.js',
-			'app-theme.js',
-			);<br>
-$js_data['vars'] = array(
-			'@global-url'	=> $js_url,
-			'@screen-xs'	=> '480',
-			'@screen-sm'	=> '768',
-			'@screen-md'	=> '992',
-			'@screen-lg'	=> '1200', 
-			'@screen-xl' 	=> '1920', 
-			);<br>...</code></pre>
-		</figure>
-		
-		<p>
-		<div class="panel panel-default">
-			<div class="panel-heading">
-				<h3 class="panel-title">Note for included JS files</h3>
-			</div>
-			<div class="panel-body">
-				The file <code>app-theme.js</code> it will contain all the main code for yout website. The file <code>extras/example.js</code> is only for tests and references, you can delete with no problems. Is not recomemded to modify the <code>app-init.js</code> or <code>app-base.js</code> because contains the main functions inside. <b>If you want add extra stuff, just add it in</b> <code>app-theme.js</code> <b>or</b> <code>app-extras.php</code>
-				<br><br>
-				To manage custom languages just add the attribute <code>data-js-lang</code> to <code>&lt;body&gt;</code> tag. The main language file is <code>app-init.js</code> but these are the default ones, you can override them in <code>app-theme.js</code> using the same key. If you want add more language take a look on <code>app-example.js</code> for references. 
-				<br><br>
-				The compile process works in realtime if you are testing in <b>localhost</b>, if you upload the code to <b>production</b> enviroment, the file <code>app.js</code> will be generated only once, if you update your code, remember to rebuild it adding <code>?rebuild=password</code> to the main url (for example: <b><?php echo php::get_main_url(); ?>/?rebuild=mypassword</b>). Remember to change the password in <code>resources.php</code>.
-				<br><br>
-				<b>Note for Wordpress:</b> Theres a file called <code>app-admin.js</code> which will directly affect the administration panel in the case you need <i>(It already included some base functions)</i>.
-			</div>
-		</div>
-		</p>
-
-		<!-- JS Example -->
-		
-		<!-- ******** CSS/JS EXAMPLES ******** -->
-		
-		<p>&nbsp;</p>
 		
 		<!-- ******** RESOURCES EXAMPLES ******** -->
 
@@ -534,15 +225,10 @@ $js_data['vars'] = array(
 		<h3 class="JSlightGalleryExample">Gallery Mode</h3>
 		<p>This mode allows to improve the way to show paged galleries executing custom functions when you get the <code>first</code> or <code>last</code> page.</p>
 
-		<div class="bs-example">
-			<?php
-			if(!isset($_GET['page'])){
-				$_GET['page'] = null;
-			}
-			?>
+		<div class="bs-example"><?php if(!isset($_GET['page'])): $_GET['page'] = null; endif; ?>
+			
 			<div class="row JSlightGallery" data-lg-item="auto" data-lg-title="Gallery title" data-lg-thumb="true" data-lg-download="true" data-lg-share="true" data-lg-autoplay="true" data-lg-loop="false" data-lg-gallery="true" data-lg-page-total="3" data-lg-page-current="<?php echo empty($_GET["page"]) ? '1' : $_GET["page"]; ?>">
-				<?php if($_GET["page"]=="2"): ?>
-				<div class="col-md-3">
+				<?php if($_GET["page"]=="2"): ?><div class="col-md-3">
 					<a class="thumbnail" style="height:100px; overflow: hidden" title="My image 5" href="https://getbootstrap.com/docs/3.3/examples/screenshots/offcanvas.jpg">
 						<img src="https://getbootstrap.com/docs/3.3/examples/screenshots/offcanvas.jpg">
 					</a>
@@ -562,8 +248,7 @@ $js_data['vars'] = array(
 						<img src="https://getbootstrap.com/docs/3.3/examples/screenshots/blog.jpg">
 					</a>
 				</div>
-				<?php elseif($_GET["page"]=="3"): ?>
-				<div class="col-md-3">
+				<?php elseif($_GET["page"]=="3"): ?><div class="col-md-3">
 					<a class="thumbnail" style="height:100px; overflow: hidden" title="My image 5" href="https://getbootstrap.com/docs/3.3/examples/screenshots/carousel.jpg">
 						<img src="https://getbootstrap.com/docs/3.3/examples/screenshots/carousel.jpg">
 					</a>
@@ -583,8 +268,7 @@ $js_data['vars'] = array(
 						<img src="https://getbootstrap.com/docs/3.3/examples/screenshots/navbar.jpg">
 					</a>
 				</div>
-				<?php else: ?>
-				<div class="col-md-3">
+				<?php else: ?><div class="col-md-3">
 					<a class="thumbnail" style="height:100px; overflow: hidden" title="My image 1" href="https://getbootstrap.com/docs/3.3/examples/screenshots/theme.jpg">
 						<img src="https://getbootstrap.com/docs/3.3/examples/screenshots/theme.jpg">
 					</a>
@@ -603,8 +287,8 @@ $js_data['vars'] = array(
 					<a class="thumbnail" style="height:100px; overflow: hidden" title="My image 4" href="https://getbootstrap.com/docs/3.3/examples/screenshots/dashboard.jpg">
 						<img src="https://getbootstrap.com/docs/3.3/examples/screenshots/dashboard.jpg">
 					</a>
-				</div>
-				<?php endif; ?>
+				</div><?php endif; ?>
+				
 			</div>
 
 			<nav aria-label="Page navigation">
@@ -636,7 +320,7 @@ $js_data['vars'] = array(
 				<h3 class="panel-title">Note for gallery paginator</h3>
 			</div>
 			<div class="panel-body">
-				Remember to add the <b>previous</b> and <b>next</b> events in the <b>JS</b> to detect which actions will be executed on each case. Take a look in the file <code>app-example.js</code> for <code>onPrevPageChange.lg</code> and <code>onNextPageChange.lg</code> events examples.
+				Remember to add the <b>previous</b> and <b>next</b> events in the <b>JS</b> to detect which actions will be executed on each case. Take a look in the file <code>extras/example.js</code> for <code>onPrevPageChange.lg</code> and <code>onNextPageChange.lg</code> events examples.
 			</div>
 		</div>
 		</p>

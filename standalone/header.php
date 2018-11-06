@@ -66,7 +66,7 @@
 	<?php echo php::section('header','get'); ?>
 	
 </head>
-<body data-js-lang="en" data-js-hashtag="true" <?php echo php::is_home() ? 'data-js-home="true"' : ''; ?>>
+<body data-js-lang="en" data-js-hashtag="true" <?php echo php::is_home() ? 'data-js-home="true"' : ''; ?> data-js-console="false">
 <!-- ================================================= ANALYTICS ================================================= -->
 <?php if(php::is_localhost()): ?>
 <script>

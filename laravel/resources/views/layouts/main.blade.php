@@ -65,7 +65,7 @@
 	@yield('extra_code_header')
     
 </head>
-<body data-js-lang="en" data-js-hashtag="true" <?php echo Request::path() == '/' ? 'data-js-home="true"' : ''; ?>>
+<body data-js-lang="en" data-js-hashtag="true" <?php echo Request::path() == '/' ? 'data-js-home="true"' : ''; ?> data-js-console="false">
 <!-- ================================================= ANALYTICS ================================================= -->
 @if(preg_match('/(::1|127.0.0.|192.168.|localhost|.app|.dev|.site.|.test)/i', Request::ip()))
 <script>

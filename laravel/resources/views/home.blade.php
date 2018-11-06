@@ -17,11 +17,9 @@
 			<ul class="nav navbar-nav">
 				<li class="active"><a href="{{ url('/') }}" class="notranslate">Home</a></li>
 				<li class="dropdown">
-					<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Contact <span class="caret"></span></a>
+					<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Information <span class="caret"></span></a>
 					<ul class="dropdown-menu dropdown-overflow-lg notranslate" role="menu">
-						<li><a href="https://github.com/TriForceX" target="_blank">GitHub</a></li>
-						<li><a href="http://stackoverflow.com/users/7613382/triforce" target="_blank">StackOverflow</a></li>
-						<li class="divider"></li>
+						<li><a href="https://github.com/TriForceX/WebsiteBase/wiki" target="_blank">Wiki</a></li>
 						<li><a href="https://github.com/TriForceX/WebsiteBase" target="_blank">Repository</a></li>
 					</ul>
 				</li>
@@ -37,6 +35,7 @@
 						<li><a href="http://holderjs.com/" target="_blank">Holder JS</a></li>
                         <li><a href="http://ianlunn.github.io/Hover/" target="_blank">Hover CSS</a></li>
                         <li><a href="https://github.com/aFarkas/html5shiv" target="_blank">HTML5 Shiv</a></li>
+						<li><a href="https://imagesloaded.desandro.com" target="_blank">Images Loaded</a></li>
 						<li><a href="https://github.com/karacas/imgLiquid" target="_blank">ImgLiquid JS</a></li>
 						<li><a href="https://jquery.com/" target="_blank">jQuery</a></li>
 						<li><a href="https://github.com/pupunzi/jquery.mb.browser" target="_blank">jQuery Browser</a></li>
@@ -56,8 +55,6 @@
 				<li class="dropdown">
 					<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Utilities <span class="caret"></span></a>
 					<ul class="dropdown-menu dropdown-overflow-lg notranslate" role="menu">
-						<li><a href="https://github.com/TriForceX/WebsiteBase/wiki" target="_blank">Repository Wiki</a></li>
-						<li class="divider"></li>
 						<li><a href="https://www.w3schools.com" target="_blank">W3 Schools Tutorials</a></li>
 						<li><a href="https://www.w3schools.com/howto/" target="_blank">W3 Schools How To</a></li>
 						<li><a href="http://bootsnipp.com" target="_blank">Bootstrap Snippets</a></li>
@@ -94,9 +91,8 @@
 						<li class="dropdown-header"><a href="http://getbootstrap.com/docs/3.3/examples/offcanvas/" target="_blank">Off-canvas</a></li>
 					</ul>
 				</li>
-				@if(!(stripos(Request::ip(), 'localhost') !== false) || !(stripos(Request::ip(), '192.168.') !== false))
 				<li>
-					<div id="google_translate_element"></div>
+					<script type="text/javascript" src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 					<script type="text/javascript">
 					function googleTranslateElementInit(){
 					  new google.translate.TranslateElement({
@@ -107,9 +103,8 @@
 					  }, 'google_translate_element');
 					}
 					</script>
-					<script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+					<div id="google_translate_element"></div>
 				</li>
-				@endif
 			</ul>
 		</div>
 		<!--/.nav-collapse -->
@@ -119,7 +114,7 @@
 
 <!-- ================================================= CONTENT ================================================= -->
 <div class="content">
-	<div class="container theme-showcase">
+	<div class="container">
 		<!-- MAIN CONTAINER -->
 		
 		<!-- ******** LOADING BAR ******** -->
@@ -130,8 +125,6 @@
 		</div>
 		
 		<!-- ******** LOADING BAR ******** -->
-		
-		<p>&nbsp;</p>
 		
 		<!-- ******** RESOURCES EXAMPLES ******** -->
 
@@ -233,15 +226,10 @@
 		<h3 class="JSlightGalleryExample">Gallery Mode</h3>
 		<p>This mode allows to improve the way to show paged galleries executing custom functions when you get the <code>first</code> or <code>last</code> page.</p>
 
-		<div class="bs-example">
-			<?php
-			if(!isset($_GET['page'])){
-				$_GET['page'] = null;
-			}
-			?>
+		<div class="bs-example"><?php if(!isset($_GET['page'])): $_GET['page'] = null; endif; ?>
+			
 			<div class="row JSlightGallery" data-lg-item="auto" data-lg-title="Gallery title" data-lg-thumb="true" data-lg-download="true" data-lg-share="true" data-lg-autoplay="true" data-lg-loop="false" data-lg-gallery="true" data-lg-page-total="3" data-lg-page-current="<?php echo empty($_GET["page"]) ? '1' : $_GET["page"]; ?>">
-				<?php if($_GET["page"]=="2"): ?>
-				<div class="col-md-3">
+				<?php if($_GET["page"]=="2"): ?><div class="col-md-3">
 					<a class="thumbnail" style="height:100px; overflow: hidden" title="My image 5" href="https://getbootstrap.com/docs/3.3/examples/screenshots/offcanvas.jpg">
 						<img src="https://getbootstrap.com/docs/3.3/examples/screenshots/offcanvas.jpg">
 					</a>
@@ -261,8 +249,7 @@
 						<img src="https://getbootstrap.com/docs/3.3/examples/screenshots/blog.jpg">
 					</a>
 				</div>
-				<?php elseif($_GET["page"]=="3"): ?>
-				<div class="col-md-3">
+				<?php elseif($_GET["page"]=="3"): ?><div class="col-md-3">
 					<a class="thumbnail" style="height:100px; overflow: hidden" title="My image 5" href="https://getbootstrap.com/docs/3.3/examples/screenshots/carousel.jpg">
 						<img src="https://getbootstrap.com/docs/3.3/examples/screenshots/carousel.jpg">
 					</a>
@@ -282,8 +269,7 @@
 						<img src="https://getbootstrap.com/docs/3.3/examples/screenshots/navbar.jpg">
 					</a>
 				</div>
-				<?php else: ?>
-				<div class="col-md-3">
+				<?php else: ?><div class="col-md-3">
 					<a class="thumbnail" style="height:100px; overflow: hidden" title="My image 1" href="https://getbootstrap.com/docs/3.3/examples/screenshots/theme.jpg">
 						<img src="https://getbootstrap.com/docs/3.3/examples/screenshots/theme.jpg">
 					</a>
@@ -302,8 +288,8 @@
 					<a class="thumbnail" style="height:100px; overflow: hidden" title="My image 4" href="https://getbootstrap.com/docs/3.3/examples/screenshots/dashboard.jpg">
 						<img src="https://getbootstrap.com/docs/3.3/examples/screenshots/dashboard.jpg">
 					</a>
-				</div>
-				<?php endif; ?>
+				</div><?php endif; ?>
+				
 			</div>
 
 			<nav aria-label="Page navigation">
@@ -335,7 +321,7 @@
 				<h3 class="panel-title">Note for gallery paginator</h3>
 			</div>
 			<div class="panel-body">
-				Remember to add the <b>previous</b> and <b>next</b> events in the <b>JS</b> to detect which actions will be executed on each case. Take a look in the file <code>app-example.js</code> for <code>onPrevPageChange.lg</code> and <code>onNextPageChange.lg</code> events examples.
+				Remember to add the <b>previous</b> and <b>next</b> events in the <b>JS</b> to detect which actions will be executed on each case. Take a look in the file <code>extras/example.js</code> for <code>onPrevPageChange.lg</code> and <code>onNextPageChange.lg</code> events examples.
 			</div>
 		</div>
 		</p>
