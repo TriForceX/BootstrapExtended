@@ -129,7 +129,7 @@ Base structure for web sites with reusable parts of source code or functions mai
 
 # Questions & Answers
 1. How i can use the functions described above?
-   - I will try to add all the explanation in the **Wiki** page. To access it [Click Here](https://github.com/TriForceX/WebsiteBase/wiki).
+   - I will try to add all the explanation in the **Wiki** page. To access it [click here](https://github.com/TriForceX/WebsiteBase/wiki).
    
 2. Why **Bootstrap 3.3.7** instead the newer **Bootstrap 4**?
    - In a few words, BS4 dropped the compatibility in **Internet Explorer 8 and 9**. Some people is still using **Windows 7** and this comes with **IE8** by default.
