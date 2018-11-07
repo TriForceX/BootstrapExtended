@@ -517,7 +517,7 @@ function JSloadLightGallery()
 	//Check plugin
 	if(typeof $.fn.lightGallery !== 'undefined')
 	{
-		$(".JSlightGallery").each(function(){ 
+		$('.JSlightGallery').each(function(){ 
 			var galSelector = $(this).data('lg-item') === 'auto' ? 'a' : $(this).data('lg-item');
 			var galThumbnail = $(this).data('lg-thumb');
 			var galDownload = $(this).data('lg-download');
@@ -528,6 +528,7 @@ function JSloadLightGallery()
 			var galPageTotal = parseInt($(this).data('lg-page-total'));
 			var galPageCurrent = parseInt($(this).data('lg-page-current'));
 			var galLoadThumb = JSmainUrl+'/resources/lightgallery/img/loading.gif';
+			var galID = $('.JSlightGallery').index(this);
 
 			if($(this).data('lg-title') !== 'auto')
 			{
@@ -547,7 +548,7 @@ function JSloadLightGallery()
 					$('.JSlightGalleryMode').append('<div class="lg-thumb-next" href="'+galLoadThumb+'" title="'+JSlang('$lgtitle-next-text')+'"><img src="#"></div>');
 				}
 			}
-
+			
 			$(this).lightGallery({
 				selector: galSelector+', .lg-thumb-prev, .lg-thumb-next', 
 				thumbnail: galThumbnail,
@@ -556,6 +557,7 @@ function JSloadLightGallery()
 				hash: galGalleryMode === true ? false : true,
 				loop: galLoop,
 				share: galShare,
+				galleryId: galID,
 			}); 
 
 			if(JSexist($('.JSlightGalleryMode')) && galPageTotal > 1)
@@ -1737,7 +1739,6 @@ function JSmainInit()
 	//Load LightGallery
 	if(JSexist($('.JSlightGallery')))
 	{
-		JSdestroyLightGallery();
 		JSloadLightGallery();
 	}
 	
@@ -1998,6 +1999,12 @@ $(document).ajaxStart(function(){
 	
 	//Dev log
 	JSconsole('[JS State] Ajax Start');
+	
+	//Destroy LightGallery
+	if(JSexist($('.JSlightGallery')))
+	{
+		JSdestroyLightGallery();
+	}
 	
 /* ================================================= BASE AJAX START ================================================= */
 
