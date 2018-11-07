@@ -3,12 +3,11 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "X-Generator: babel-plugin-makepot\n"
 
-#: components/code-editor/index.js:108
-#: packages/api-fetch/build-module/index.js:120
+#: packages/api-fetch/build-module/index.js:125
 msgid "An unknown error occurred."
 msgstr ""
 
-#: packages/api-fetch/build-module/index.js:78
+#: packages/api-fetch/build-module/index.js:83
 msgid "The response is not a valid JSON response."
 msgstr ""
 
@@ -17,83 +16,79 @@ msgid "Archives Settings"
 msgstr ""
 
 #: packages/block-library/build-module/archives/edit.js:23
-#: packages/block-library/build-module/categories/edit.js:183
+#: packages/block-library/build-module/categories/edit.js:196
 msgid "Display as Dropdown"
 msgstr ""
 
 #: packages/block-library/build-module/archives/edit.js:31
-#: packages/block-library/build-module/categories/edit.js:191
+#: packages/block-library/build-module/categories/edit.js:204
 msgid "Show Post Counts"
 msgstr ""
 
-#: packages/block-library/build-module/archives/index.js:14
+#: packages/block-library/build-module/archives/index.js:15
 msgid "Archives"
 msgstr ""
 
-#: packages/block-library/build-module/archives/index.js:15
-msgid "Display a monthly archive of your site’s Posts."
+#: packages/block-library/build-module/archives/index.js:16
+msgid "Display a monthly archive of your posts."
 msgstr ""
 
-#: packages/block-library/build-module/audio/edit.js:172
-#: packages/block-library/build-module/audio/index.js:17
-#: packages/editor/build-module/components/post-format/index.js:46
-msgid "Audio"
-msgstr ""
-
-#: packages/block-library/build-module/audio/edit.js:173
-msgid "an audio"
-msgstr ""
-
-#: packages/block-library/build-module/audio/edit.js:190
+#: packages/block-library/build-module/audio/edit.js:186
 msgid "Edit audio"
 msgstr ""
 
-#: packages/block-library/build-module/audio/edit.js:194
+#: packages/block-library/build-module/audio/edit.js:190
 msgid "Audio Settings"
+msgstr ""
+
+#: packages/block-library/build-module/audio/edit.js:192
+#: packages/block-library/build-module/video/edit.js:217
+msgid "Autoplay"
 msgstr ""
 
 #: packages/block-library/build-module/audio/edit.js:196
 #: packages/block-library/build-module/video/edit.js:221
-msgid "Autoplay"
-msgstr ""
-
-#: packages/block-library/build-module/audio/edit.js:200
-#: packages/block-library/build-module/video/edit.js:225
 msgid "Loop"
 msgstr ""
 
-#: packages/block-library/build-module/audio/edit.js:204
-#: packages/block-library/build-module/video/edit.js:237
+#: packages/block-library/build-module/audio/edit.js:200
+#: packages/block-library/build-module/video/edit.js:233
 msgid "Preload"
 msgstr ""
 
-#: packages/block-library/build-module/audio/edit.js:214
-#: packages/block-library/build-module/video/edit.js:246
+#: packages/block-library/build-module/audio/edit.js:210
+#: packages/block-library/build-module/video/edit.js:242
 msgid "Auto"
 msgstr ""
 
-#: packages/block-library/build-module/audio/edit.js:217
-#: packages/block-library/build-module/video/edit.js:249
+#: packages/block-library/build-module/audio/edit.js:213
+#: packages/block-library/build-module/video/edit.js:245
 msgid "Metadata"
 msgstr ""
 
-#: packages/block-library/build-module/audio/edit.js:220
+#: packages/block-library/build-module/audio/edit.js:216
 #: packages/block-library/build-module/gallery/edit.js:37
 #: packages/block-library/build-module/image/edit.js:303
-#: packages/block-library/build-module/video/edit.js:252
+#: packages/block-library/build-module/video/edit.js:248
 msgid "None"
 msgstr ""
 
-#: packages/block-library/build-module/audio/edit.js:229
-#: packages/block-library/build-module/embed/index.js:450
+#: packages/block-library/build-module/audio/edit.js:225
+#: packages/block-library/build-module/embed/edit.js:409
 #: packages/block-library/build-module/gallery/gallery-image.js:166
-#: packages/block-library/build-module/image/edit.js:582
-#: packages/block-library/build-module/video/edit.js:282
+#: packages/block-library/build-module/image/edit.js:587
+#: packages/block-library/build-module/video/edit.js:278
 msgid "Write caption…"
 msgstr ""
 
 #: packages/block-library/build-module/audio/index.js:18
-msgid "Embed an audio file and a simple audio player."
+#: packages/editor/build-module/components/media-placeholder/index.js:212
+#: packages/editor/build-module/components/post-format/index.js:46
+msgid "Audio"
+msgstr ""
+
+#: packages/block-library/build-module/audio/index.js:19
+msgid "Embed a simple audio player."
 msgstr ""
 
 #: packages/block-library/build-module/block/edit-panel/index.js:101
@@ -107,7 +102,7 @@ msgstr ""
 
 #: packages/block-library/build-module/block/edit-panel/index.js:95
 #: packages/editor/build-module/components/post-permalink/index.js:138
-#: packages/editor/build-module/components/rich-text/format-toolbar/link-container.js:109
+#: packages/format-library/build-module/link/inline.js:107
 msgid "Edit"
 msgstr ""
 
@@ -131,14 +126,14 @@ msgid "Reusable Block: %s"
 msgstr ""
 
 #: packages/block-library/build-module/button/edit.js:104
-#: packages/block-library/build-module/media-text/edit.js:173
+#: packages/block-library/build-module/media-text/edit.js:190
 #: packages/block-library/build-module/paragraph/edit.js:201
 #: packages/block-library/build-module/pullquote/edit.js:117
 msgid "Color Settings"
 msgstr ""
 
 #: packages/block-library/build-module/button/edit.js:108
-#: packages/block-library/build-module/media-text/edit.js:151
+#: packages/block-library/build-module/media-text/edit.js:153
 #: packages/block-library/build-module/paragraph/edit.js:206
 msgid "Background Color"
 msgstr ""
@@ -150,8 +145,8 @@ msgid "Text Color"
 msgstr ""
 
 #: packages/block-library/build-module/button/edit.js:136
-#: packages/editor/build-module/components/media-placeholder/index.js:51
-#: packages/editor/build-module/components/rich-text/format-toolbar/link-container.js:87
+#: packages/editor/build-module/components/media-placeholder/index.js:50
+#: packages/format-library/build-module/link/inline.js:85
 msgid "Apply"
 msgstr ""
 
@@ -160,49 +155,39 @@ msgstr ""
 msgid "Add text…"
 msgstr ""
 
-#: packages/block-library/build-module/button/index.js:61
+#: packages/block-library/build-module/button/index.js:63
 msgid "Button"
 msgstr ""
 
-#: packages/block-library/build-module/button/index.js:62
-msgid ""
-"Want visitors to click to subscribe, buy, or read more? Get their attention "
-"with a button."
+#: packages/block-library/build-module/button/index.js:64
+msgid "Prompt visitors to take action with a custom button."
 msgstr ""
 
-#: packages/block-library/build-module/button/index.js:80
-msgid "Rounded"
-msgstr ""
-
-#: packages/block-library/build-module/button/index.js:84
+#: packages/block-library/build-module/button/index.js:86
 msgid "Outline"
 msgstr ""
 
-#: packages/block-library/build-module/button/index.js:87
-msgid "Squared"
+#: packages/block-library/build-module/categories/edit.js:102
+#: packages/block-library/build-module/latest-posts/edit.js:169
+msgid "(Untitled)"
 msgstr ""
 
-#: packages/block-library/build-module/categories/edit.js:181
+#: packages/block-library/build-module/categories/edit.js:194
 msgid "Categories Settings"
 msgstr ""
 
-#: packages/block-library/build-module/categories/edit.js:187
+#: packages/block-library/build-module/categories/edit.js:200
 msgid "Show Hierarchy"
 msgstr ""
 
-#: packages/block-library/build-module/categories/edit.js:199
-#: packages/block-library/build-module/categories/index.js:14
+#: packages/block-library/build-module/categories/edit.js:212
+#: packages/block-library/build-module/categories/index.js:15
 #: packages/editor/build-module/components/post-taxonomies/hierarchical-term-selector.js:451
 msgid "Categories"
 msgstr ""
 
-#: packages/block-library/build-module/categories/edit.js:97
-#: packages/block-library/build-module/latest-posts/edit.js:166
-msgid "(Untitled)"
-msgstr ""
-
-#: packages/block-library/build-module/categories/index.js:15
-msgid "Display a list of all your site’s categories."
+#: packages/block-library/build-module/categories/index.js:16
+msgid "Display a list of all categories."
 msgstr ""
 
 #: packages/block-library/build-module/classic/edit.js:161
@@ -210,14 +195,11 @@ msgid "Insert Media"
 msgstr ""
 
 #: packages/block-library/build-module/classic/edit.js:213
-#: packages/block-library/build-module/classic/index.js:15
 msgid "Classic"
 msgstr ""
 
-#: packages/block-library/build-module/classic/index.js:16
-msgid ""
-"It’s the classic WordPress editor and it’s a block! Drop the editor right "
-"in."
+#: packages/block-library/build-module/classic/index.js:17
+msgid "Use the classic WordPress editor."
 msgstr ""
 
 #: packages/block-library/build-module/code/edit.js:25
@@ -226,160 +208,290 @@ msgstr ""
 
 #: packages/block-library/build-module/code/edit.js:26
 #: packages/block-library/build-module/code/index.js:16
+#: packages/format-library/build-module/code/index.js:12
 msgid "Code"
 msgstr ""
 
 #: packages/block-library/build-module/code/index.js:17
-msgid "Add text that respects your spacing and tabs -- perfect for displaying code."
+msgid "Display code snippets that respect your spacing and tabs."
 msgstr ""
 
-#: packages/block-library/build-module/columns/column.js:10
+#: packages/block-library/build-module/columns/column.js:11
 msgid "Column"
 msgstr ""
 
-#: packages/block-library/build-module/columns/column.js:21
+#: packages/block-library/build-module/columns/column.js:22
 msgid "A single column within a columns block."
 msgstr ""
 
-#: packages/block-library/build-module/columns/index.js:120
-#: packages/block-library/build-module/gallery/edit.js:253
-#: packages/block-library/build-module/latest-posts/edit.js:105
-#: packages/block-library/build-module/text-columns/index.js:99
-msgid "Columns"
-msgstr ""
-
-#: packages/block-library/build-module/columns/index.js:62
+#: packages/block-library/build-module/columns/index.js:109
 msgid ""
 "Add a block that displays content in multiple columns, then add whatever "
 "content blocks you’d like."
 msgstr ""
 
-#: packages/block-library/build-module/cover/index.js:282
+#: packages/block-library/build-module/columns/index.js:175
+#: packages/block-library/build-module/gallery/edit.js:253
+#: packages/block-library/build-module/latest-posts/edit.js:105
+#: packages/block-library/build-module/text-columns/index.js:100
+msgid "Columns"
+msgstr ""
+
+#: packages/block-library/build-module/cover/index.js:283
 msgid "Edit media"
 msgstr ""
 
-#: packages/block-library/build-module/cover/index.js:288
+#: packages/block-library/build-module/cover/index.js:289
 msgid "Cover Settings"
 msgstr ""
 
-#: packages/block-library/build-module/cover/index.js:290
+#: packages/block-library/build-module/cover/index.js:291
 msgid "Fixed Background"
 msgstr ""
 
-#: packages/block-library/build-module/cover/index.js:294
+#: packages/block-library/build-module/cover/index.js:295
 msgid "Overlay"
 msgstr ""
 
-#: packages/block-library/build-module/cover/index.js:299
+#: packages/block-library/build-module/cover/index.js:300
 msgid "Overlay Color"
 msgstr ""
 
-#: packages/block-library/build-module/cover/index.js:302
+#: packages/block-library/build-module/cover/index.js:303
 msgid "Background Opacity"
 msgstr ""
 
-#: packages/block-library/build-module/cover/index.js:318
+#: packages/block-library/build-module/cover/index.js:319
 msgid "Cover"
 msgstr ""
 
-# Fragment of the sentence: "Drag %s, upload a new one or select a file from your library."
-#: packages/block-library/build-module/cover/index.js:326
-msgid "an image or a video"
+#: packages/block-library/build-module/cover/index.js:325
+msgid ""
+"Drag an image or a video, upload a new one or select a file from your "
+"library."
 msgstr ""
 
-#: packages/block-library/build-module/cover/index.js:349
+#: packages/block-library/build-module/cover/index.js:348
 msgid "Write title…"
 msgstr ""
 
-#: packages/block-library/build-module/cover/index.js:63
-msgid "Add a full-width image or video, and layer text over it — great for headers."
+#: packages/block-library/build-module/cover/index.js:64
+msgid "Add an image or video with a text overlay — great for headers."
 msgstr ""
 
-#: packages/block-library/build-module/embed/index.js:324
-msgid "Videos and other content automatically resizes."
+#: packages/block-library/build-module/embed/core-embeds.js:105
+msgid "Embed Cloudup content"
 msgstr ""
 
-#: packages/block-library/build-module/embed/index.js:324
-msgid "Content is fixed size."
+#: packages/block-library/build-module/embed/core-embeds.js:113
+msgid "Embed CollegeHumor content"
 msgstr ""
 
-#: packages/block-library/build-module/embed/index.js:361
-msgid "Edit URL"
+#: packages/block-library/build-module/embed/core-embeds.js:121
+msgid "Embed a Dailymotion video"
 msgstr ""
 
-#: packages/block-library/build-module/embed/index.js:365
-msgid "Media Settings"
+#: packages/block-library/build-module/embed/core-embeds.js:129
+msgid "Embed Funny or Die content"
 msgstr ""
 
-#: packages/block-library/build-module/embed/index.js:368
-msgid "Automatically scale content"
+#: packages/block-library/build-module/embed/core-embeds.js:137
+msgid "Embed Hulu content"
 msgstr ""
 
-#: packages/block-library/build-module/embed/index.js:377
-msgid "Embedding…"
+#: packages/block-library/build-module/embed/core-embeds.js:145
+msgid "Embed Imgur content"
 msgstr ""
 
-#: packages/block-library/build-module/embed/index.js:381
-msgid "%s URL"
+#: packages/block-library/build-module/embed/core-embeds.js:153
+msgid "Embed Issuu content"
 msgstr ""
 
-#: packages/block-library/build-module/embed/index.js:398
-msgid "Enter URL to embed here…"
+#: packages/block-library/build-module/embed/core-embeds.js:161
+msgid "Embed Kickstarter content"
 msgstr ""
 
-#: packages/block-library/build-module/embed/index.js:409
-msgid "Sorry, we could not embed that content."
+#: packages/block-library/build-module/embed/core-embeds.js:169
+msgid "Embed Meetup.com content"
 msgstr ""
 
-#: packages/block-library/build-module/embed/index.js:417
-msgid "Embedded content from %s"
+#: packages/block-library/build-module/embed/core-embeds.js:17
+msgid "Embed a tweet"
 msgstr ""
 
-#: packages/block-library/build-module/embed/index.js:448
-msgid "Previews for this are unavailable in the editor, sorry!"
-msgstr ""
-
-# %s: Name of service (e.g. VideoPress, YouTube)
-#: packages/block-library/build-module/embed/index.js:498
-msgid ""
-"Add a block that displays content pulled from other sites, like Twitter, "
-"Instagram or YouTube."
-msgstr ""
-
-#: packages/block-library/build-module/embed/index.js:630
-msgid "Embed"
-msgstr ""
-
-#: packages/block-library/build-module/embed/index.js:631
-msgid ""
-"The Embed block allows you to easily add videos, images, tweets, audio, and "
-"other content to your post or page."
-msgstr ""
-
-#: packages/block-library/build-module/embed/index.js:716
-msgid "post"
-msgstr ""
-
-#: packages/block-library/build-module/embed/index.js:716
-msgid "blog"
-msgstr ""
-
-#: packages/block-library/build-module/embed/index.js:750
-#: packages/block-library/build-module/media-text/index.js:31
-msgid "image"
-msgstr ""
-
-#: packages/block-library/build-module/embed/index.js:845
+#: packages/block-library/build-module/embed/core-embeds.js:177
 msgid "music"
 msgstr ""
 
-#: packages/block-library/build-module/embed/index.js:845
+#: packages/block-library/build-module/embed/core-embeds.js:177
 msgid "audio"
 msgstr ""
 
-#: packages/block-library/build-module/embed/index.js:961
-#: packages/block-library/build-module/media-text/index.js:31
+#: packages/block-library/build-module/embed/core-embeds.js:178
+msgid "Embed Mixcloud content"
+msgstr ""
+
+#: packages/block-library/build-module/embed/core-embeds.js:186
+msgid "Embed a Photobucket image"
+msgstr ""
+
+#: packages/block-library/build-module/embed/core-embeds.js:194
+msgid "Embed Polldaddy content"
+msgstr ""
+
+#: packages/block-library/build-module/embed/core-embeds.js:202
+msgid "Embed a Reddit thread"
+msgstr ""
+
+#: packages/block-library/build-module/embed/core-embeds.js:210
+msgid "Embed ReverbNation content"
+msgstr ""
+
+#: packages/block-library/build-module/embed/core-embeds.js:218
+msgid "Embed Screencast content"
+msgstr ""
+
+#: packages/block-library/build-module/embed/core-embeds.js:226
+msgid "Embed Scribd content"
+msgstr ""
+
+#: packages/block-library/build-module/embed/core-embeds.js:234
+msgid "Embed Slideshare content"
+msgstr ""
+
+#: packages/block-library/build-module/embed/core-embeds.js:242
+msgid "Embed SmugMug content"
+msgstr ""
+
+#: packages/block-library/build-module/embed/core-embeds.js:26
+msgid "Embed a YouTube video"
+msgstr ""
+
+#: packages/block-library/build-module/embed/core-embeds.js:270
+msgid "Embed Speaker Deck content"
+msgstr ""
+
+#: packages/block-library/build-module/embed/core-embeds.js:278
+msgid "Embed a TED video"
+msgstr ""
+
+#: packages/block-library/build-module/embed/core-embeds.js:286
+msgid "Embed a Tumblr post"
+msgstr ""
+
+#: packages/block-library/build-module/embed/core-embeds.js:294
+#: packages/block-library/build-module/media-text/index.js:33
 msgid "video"
+msgstr ""
+
+#: packages/block-library/build-module/embed/core-embeds.js:295
+msgid "Embed a VideoPress video"
+msgstr ""
+
+#: packages/block-library/build-module/embed/core-embeds.js:303
+msgid "Embed a WordPress.tv video"
+msgstr ""
+
+#: packages/block-library/build-module/embed/core-embeds.js:34
+msgid "Embed a Facebook post"
+msgstr ""
+
+#: packages/block-library/build-module/embed/core-embeds.js:43
+msgid "Embed an Instagram post"
+msgstr ""
+
+#: packages/block-library/build-module/embed/core-embeds.js:51
+msgid "post"
+msgstr ""
+
+#: packages/block-library/build-module/embed/core-embeds.js:51
+msgid "blog"
+msgstr ""
+
+#: packages/block-library/build-module/embed/core-embeds.js:53
+msgid "Embed a WordPress post"
+msgstr ""
+
+#: packages/block-library/build-module/embed/core-embeds.js:61
+msgid "Embed SoundCloud content"
+msgstr ""
+
+#: packages/block-library/build-module/embed/core-embeds.js:70
+msgid "Embed Spotify content"
+msgstr ""
+
+#: packages/block-library/build-module/embed/core-embeds.js:78
+#: packages/block-library/build-module/media-text/index.js:33
+msgid "image"
+msgstr ""
+
+#: packages/block-library/build-module/embed/core-embeds.js:79
+msgid "Embed Flickr content"
+msgstr ""
+
+#: packages/block-library/build-module/embed/core-embeds.js:88
+msgid "Embed a Vimeo video"
+msgstr ""
+
+#: packages/block-library/build-module/embed/core-embeds.js:97
+msgid "Embed an Animoto video"
+msgstr ""
+
+#: packages/block-library/build-module/embed/edit.js:283
+msgid "This embed will preserve its aspect ratio when the browser is resized."
+msgstr ""
+
+#: packages/block-library/build-module/embed/edit.js:283
+msgid "This embed may not preserve its aspect ratio when the browser is resized."
+msgstr ""
+
+#: packages/block-library/build-module/embed/edit.js:320
+msgid "Edit URL"
+msgstr ""
+
+#: packages/block-library/build-module/embed/edit.js:324
+msgid "Media Settings"
+msgstr ""
+
+#: packages/block-library/build-module/embed/edit.js:327
+msgid "Resize for smaller devices"
+msgstr ""
+
+#: packages/block-library/build-module/embed/edit.js:336
+msgid "Embedding…"
+msgstr ""
+
+#: packages/block-library/build-module/embed/edit.js:340
+msgid "%s URL"
+msgstr ""
+
+#: packages/block-library/build-module/embed/edit.js:357
+msgid "Enter URL to embed here…"
+msgstr ""
+
+#: packages/block-library/build-module/embed/edit.js:368
+msgid "Sorry, we could not embed that content."
+msgstr ""
+
+#: packages/block-library/build-module/embed/edit.js:376
+msgid "Embedded content from %s"
+msgstr ""
+
+#: packages/block-library/build-module/embed/edit.js:407
+msgid "Previews for this are unavailable in the editor, sorry!"
+msgstr ""
+
+#: packages/block-library/build-module/embed/index.js:18
+msgid ""
+"Embed videos, images, tweets, audio, and other content from external "
+"sources."
+msgstr ""
+
+# %s: Name of service (e.g. VideoPress, YouTube)
+#: packages/block-library/build-module/embed/settings.js:56
+msgid ""
+"Add a block that displays content pulled from other sites, like Twitter, "
+"Instagram or YouTube."
 msgstr ""
 
 #: packages/block-library/build-module/file/edit.js:175
@@ -389,7 +501,7 @@ msgid "File"
 msgstr ""
 
 #: packages/block-library/build-module/file/edit.js:176
-msgid "a file"
+msgid "Drag a file, upload a new one or select a file from your library."
 msgstr ""
 
 #: packages/block-library/build-module/file/edit.js:207
@@ -411,7 +523,7 @@ msgid "Copy URL"
 msgstr ""
 
 #: packages/block-library/build-module/file/index.js:25
-msgid "Add a link to a file that visitors can download."
+msgid "Add a link to a downloadable file."
 msgstr ""
 
 #: packages/block-library/build-module/file/index.js:36
@@ -420,10 +532,6 @@ msgstr ""
 
 #: packages/block-library/build-module/file/index.js:36
 msgid "pdf"
-msgstr ""
-
-#: packages/block-library/build-module/file/index.js:69
-msgid "Download"
 msgstr ""
 
 #: packages/block-library/build-module/file/inspector.js:12
@@ -435,7 +543,7 @@ msgid "The download button is hidden."
 msgstr ""
 
 #: packages/block-library/build-module/file/inspector.js:27
-#: packages/editor/build-module/components/media-placeholder/index.js:44
+#: packages/editor/build-module/components/media-placeholder/index.js:43
 #: packages/editor/build-module/components/url-input/index.js:235
 msgid "URL"
 msgstr ""
@@ -458,12 +566,13 @@ msgstr ""
 
 #: packages/block-library/build-module/file/inspector.js:43
 #: packages/block-library/build-module/gallery/edit.js:264
-#: packages/block-library/build-module/image/edit.js:474
+#: packages/block-library/build-module/image/edit.js:471
 msgid "Link To"
 msgstr ""
 
 #: packages/block-library/build-module/file/inspector.js:48
-#: packages/editor/build-module/components/rich-text/format-toolbar/link-container.js:273
+#: packages/block-library/build-module/image/edit.js:482
+#: packages/format-library/build-module/link/inline.js:272
 msgid "Open in New Tab"
 msgstr ""
 
@@ -488,14 +597,13 @@ msgid "Edit Gallery"
 msgstr ""
 
 #: packages/block-library/build-module/gallery/edit.js:238
-#: packages/block-library/build-module/gallery/index.js:69
+#: packages/block-library/build-module/gallery/index.js:71
 #: packages/editor/build-module/components/post-format/index.js:25
 msgid "Gallery"
 msgstr ""
 
 #: packages/block-library/build-module/gallery/edit.js:239
-#: packages/block-library/build-module/gallery/index.js:85
-msgid "images"
+msgid "Drag images, upload new ones or select files from your library."
 msgstr ""
 
 #: packages/block-library/build-module/gallery/edit.js:251
@@ -514,11 +622,15 @@ msgstr ""
 msgid "Remove Image"
 msgstr ""
 
-#: packages/block-library/build-module/gallery/index.js:70
-msgid "Display multiple images in an elegantly organized tiled layout."
+#: packages/block-library/build-module/gallery/index.js:72
+msgid "Display multiple images in a rich gallery."
 msgstr ""
 
-#: packages/block-library/build-module/gallery/index.js:85
+#: packages/block-library/build-module/gallery/index.js:87
+msgid "images"
+msgstr ""
+
+#: packages/block-library/build-module/gallery/index.js:87
 msgid "photos"
 msgstr ""
 
@@ -543,21 +655,21 @@ msgstr ""
 msgid "Heading %d"
 msgstr ""
 
-#: packages/block-library/build-module/heading/index.js:55
+#: packages/block-library/build-module/heading/index.js:57
 msgid "Heading"
 msgstr ""
 
-#: packages/block-library/build-module/heading/index.js:56
+#: packages/block-library/build-module/heading/index.js:58
 msgid ""
-"Introduce topics and help visitors (and search engines!) understand how "
-"your content is organized."
+"Introduce new sections and organize content to help visitors (and search "
+"engines) understand the structure of your content."
 msgstr ""
 
-#: packages/block-library/build-module/heading/index.js:67
+#: packages/block-library/build-module/heading/index.js:69
 msgid "title"
 msgstr ""
 
-#: packages/block-library/build-module/heading/index.js:67
+#: packages/block-library/build-module/heading/index.js:69
 msgid "subtitle"
 msgstr ""
 
@@ -566,7 +678,7 @@ msgid "Custom HTML"
 msgstr ""
 
 #: packages/block-library/build-module/html/index.js:15
-msgid "Add your own HTML (and view it right here as you edit!)."
+msgid "Add custom HTML code and preview it as you edit."
 msgstr ""
 
 #: packages/block-library/build-module/html/index.js:23
@@ -590,71 +702,71 @@ msgstr ""
 msgid "Custom URL"
 msgstr ""
 
-#: packages/block-library/build-module/image/edit.js:368
+#: packages/block-library/build-module/image/edit.js:369
 msgid "Edit image"
 msgstr ""
 
-#: packages/block-library/build-module/image/edit.js:387
-#: packages/block-library/build-module/image/index.js:88
-#: packages/editor/build-module/components/post-format/index.js:31
-msgid "Image"
-msgstr ""
-
-#: packages/block-library/build-module/image/edit.js:388
-msgid "an image"
-msgstr ""
-
-#: packages/block-library/build-module/image/edit.js:415
+#: packages/block-library/build-module/image/edit.js:412
 msgid "Image Settings"
 msgstr ""
 
-#: packages/block-library/build-module/image/edit.js:417
+#: packages/block-library/build-module/image/edit.js:414
+#: packages/block-library/build-module/media-text/edit.js:184
 msgid "Alt Text (Alternative Text)"
 msgstr ""
 
-#: packages/block-library/build-module/image/edit.js:420
+#: packages/block-library/build-module/image/edit.js:417
+#: packages/block-library/build-module/media-text/edit.js:187
 msgid ""
-"Describe the purpose of the image. Leave empty if the image is not a key "
-"part of the content."
+"Alternative text describes your image to people who can’t see it. Add a "
+"short description with its key details."
 msgstr ""
 
-#: packages/block-library/build-module/image/edit.js:435
+#: packages/block-library/build-module/image/edit.js:432
 msgid "Image Dimensions"
 msgstr ""
 
-#: packages/block-library/build-module/image/edit.js:440
+#: packages/block-library/build-module/image/edit.js:437
 msgid "Width"
 msgstr ""
 
-#: packages/block-library/build-module/image/edit.js:448
+#: packages/block-library/build-module/image/edit.js:445
 msgid "Height"
 msgstr ""
 
-#: packages/block-library/build-module/image/edit.js:456
+#: packages/block-library/build-module/image/edit.js:453
 msgid "Image Size"
 msgstr ""
 
-#: packages/block-library/build-module/image/edit.js:471
-#: packages/components/src/font-size-picker/index.js:95
-#: packages/components/src/range-control/index.js:70
+#: packages/block-library/build-module/image/edit.js:468
+#: packages/components/build-module/font-size-picker/index.js:105
+#: packages/components/build-module/range-control/index.js:78
 msgid "Reset"
 msgstr ""
 
-#: packages/block-library/build-module/image/edit.js:472
+#: packages/block-library/build-module/image/edit.js:469
 #: packages/editor/build-module/components/url-popover/index.js:66
 msgid "Link Settings"
 msgstr ""
 
-#: packages/block-library/build-module/image/edit.js:479
+#: packages/block-library/build-module/image/edit.js:476
 msgid "Link URL"
 msgstr ""
 
-#: packages/block-library/build-module/image/index.js:102
+#: packages/block-library/build-module/image/index.js:110
+#: packages/format-library/build-module/image/index.js:22
 msgid "photo"
 msgstr ""
 
-#: packages/block-library/build-module/image/index.js:89
-msgid "They’re worth 1,000 words! Insert a single image."
+#: packages/block-library/build-module/image/index.js:95
+#: packages/editor/build-module/components/media-placeholder/index.js:214
+#: packages/editor/build-module/components/post-format/index.js:31
+#: packages/format-library/build-module/image/index.js:21
+msgid "Image"
+msgstr ""
+
+#: packages/block-library/build-module/image/index.js:96
+msgid "Insert an image to make a visual statement."
 msgstr ""
 
 #: packages/block-library/build-module/latest-comments/edit.js:102
@@ -677,15 +789,15 @@ msgstr ""
 msgid "Display Date"
 msgstr ""
 
-#: packages/block-library/build-module/latest-comments/index.js:14
+#: packages/block-library/build-module/latest-comments/index.js:15
 msgid "Latest Comments"
 msgstr ""
 
-#: packages/block-library/build-module/latest-comments/index.js:15
-msgid "Show a list of your site’s most recent comments."
+#: packages/block-library/build-module/latest-comments/index.js:16
+msgid "Display a list of your most recent comments."
 msgstr ""
 
-#: packages/block-library/build-module/latest-comments/index.js:28
+#: packages/block-library/build-module/latest-comments/index.js:29
 msgid "recent comments"
 msgstr ""
 
@@ -694,7 +806,7 @@ msgid "Display post date"
 msgstr ""
 
 #: packages/block-library/build-module/latest-posts/edit.js:120
-#: packages/block-library/build-module/latest-posts/index.js:14
+#: packages/block-library/build-module/latest-posts/index.js:15
 msgid "Latest Posts"
 msgstr ""
 
@@ -714,64 +826,72 @@ msgstr ""
 msgid "Latest Posts Settings"
 msgstr ""
 
-#: packages/block-library/build-module/latest-posts/index.js:15
+#: packages/block-library/build-module/latest-posts/index.js:16
 msgid "Display a list of your most recent posts."
 msgstr ""
 
-#: packages/block-library/build-module/latest-posts/index.js:56
+#: packages/block-library/build-module/latest-posts/index.js:57
 msgid "recent posts"
 msgstr ""
 
-#: packages/block-library/build-module/list/index.js:314
+#: packages/block-library/build-module/list/index.js:330
 msgid "Convert to unordered list"
 msgstr ""
 
-#: packages/block-library/build-module/list/index.js:319
+#: packages/block-library/build-module/list/index.js:335
 msgid "Convert to ordered list"
 msgstr ""
 
-#: packages/block-library/build-module/list/index.js:324
+#: packages/block-library/build-module/list/index.js:340
 msgid "Outdent list item"
 msgstr ""
 
-#: packages/block-library/build-module/list/index.js:328
+#: packages/block-library/build-module/list/index.js:344
 msgid "Indent list item"
 msgstr ""
 
-#: packages/block-library/build-module/list/index.js:340
+#: packages/block-library/build-module/list/index.js:356
 msgid "Write list…"
 msgstr ""
 
-#: packages/block-library/build-module/list/index.js:58
+#: packages/block-library/build-module/list/index.js:61
 msgid "List"
 msgstr ""
 
-#: packages/block-library/build-module/list/index.js:59
-msgid "Numbers, bullets, up to you. Add a list of items."
+#: packages/block-library/build-module/list/index.js:62
+msgid "Create a bulleted or numbered list."
 msgstr ""
 
-#: packages/block-library/build-module/list/index.js:67
+#: packages/block-library/build-module/list/index.js:70
 msgid "bullet list"
 msgstr ""
 
-#: packages/block-library/build-module/list/index.js:67
+#: packages/block-library/build-module/list/index.js:70
 msgid "ordered list"
 msgstr ""
 
-#: packages/block-library/build-module/list/index.js:67
+#: packages/block-library/build-module/list/index.js:70
 msgid "numbered list"
 msgstr ""
 
-#: packages/block-library/build-module/media-text/edit.js:155
+#: packages/block-library/build-module/media-text/edit.js:157
 msgid "Show media on left"
 msgstr ""
 
-#: packages/block-library/build-module/media-text/edit.js:164
+#: packages/block-library/build-module/media-text/edit.js:166
 msgid "Show media on right"
 msgstr ""
 
-#: packages/block-library/build-module/media-text/index.js:23
+#: packages/block-library/build-module/media-text/edit.js:182
+msgid "Media & Text Settings"
+msgstr ""
+
+#: packages/block-library/build-module/media-text/index.js:24
 msgid "Media & Text"
+msgstr ""
+
+#: packages/block-library/build-module/media-text/index.js:25
+msgid "Set media and words side-by-side media for a richer layout."
 msgstr ""
 
 #: packages/block-library/build-module/media-text/media-container.js:46
@@ -780,10 +900,6 @@ msgstr ""
 
 #: packages/block-library/build-module/media-text/media-container.js:89
 msgid "Media area"
-msgstr ""
-
-#: packages/block-library/build-module/media-text/media-container.js:90
-msgid "a media file (image or video)"
 msgstr ""
 
 #: packages/block-library/build-module/missing/index.js:24
@@ -821,26 +937,25 @@ msgstr ""
 
 #: packages/block-library/build-module/more/index.js:23
 msgid ""
-"Want to show only part of this post on your blog’s home page? Insert a "
-"\"More\" block where you want the split."
+"Want to show only an excerpt of this post on your home page? Use this block "
+"to define where you want the separation."
 msgstr ""
 
-#: packages/block-library/build-module/nextpage/index.js:12
-msgid ""
-"This block allows you to set break points on your post. Visitors of your "
-"blog are then presented with content split into multiple pages."
+#: packages/block-library/build-module/nextpage/edit.js:10
+#: packages/block-library/build-module/nextpage/index.js:13
+msgid "Page break"
 msgstr ""
 
-#: packages/block-library/build-module/nextpage/index.js:20
+#: packages/block-library/build-module/nextpage/index.js:14
+msgid "Separate your content into a multi-page experience."
+msgstr ""
+
+#: packages/block-library/build-module/nextpage/index.js:22
 msgid "next page"
 msgstr ""
 
-#: packages/block-library/build-module/nextpage/index.js:20
+#: packages/block-library/build-module/nextpage/index.js:22
 msgid "pagination"
-msgstr ""
-
-#: packages/block-library/build-module/nextpage/index.js:46
-msgid "Page break"
 msgstr ""
 
 #: packages/block-library/build-module/paragraph/edit.js:189
@@ -863,37 +978,37 @@ msgstr ""
 msgid "Toggle to show a large initial letter."
 msgstr ""
 
-#: packages/block-library/build-module/paragraph/index.js:68
+#: packages/block-library/build-module/paragraph/index.js:69
 msgid "Paragraph"
 msgstr ""
 
-#: packages/block-library/build-module/paragraph/index.js:69
-msgid "Add some basic text."
+#: packages/block-library/build-module/paragraph/index.js:70
+msgid "Start with the building block of all narrative."
 msgstr ""
 
-#: packages/block-library/build-module/paragraph/index.js:77
+#: packages/block-library/build-module/paragraph/index.js:78
 msgid "text"
 msgstr ""
 
-#: packages/block-library/build-module/preformatted/index.js:11
+#: packages/block-library/build-module/preformatted/index.js:12
 msgid "Preformatted"
 msgstr ""
 
-#: packages/block-library/build-module/preformatted/index.js:12
+#: packages/block-library/build-module/preformatted/index.js:13
 msgid "Add text that respects your spacing and tabs, and also allows styling."
 msgstr ""
 
-#: packages/block-library/build-module/preformatted/index.js:92
+#: packages/block-library/build-module/preformatted/index.js:95
 msgid "Write preformatted text…"
 msgstr ""
 
 #: packages/block-library/build-module/pullquote/edit.js:103
-#: packages/block-library/build-module/quote/index.js:229
+#: packages/block-library/build-module/quote/index.js:244
 msgid "Write quote…"
 msgstr ""
 
 #: packages/block-library/build-module/pullquote/edit.js:109
-#: packages/block-library/build-module/quote/index.js:239
+#: packages/block-library/build-module/quote/index.js:254
 msgid "Write citation…"
 msgstr ""
 
@@ -901,76 +1016,63 @@ msgstr ""
 msgid "Main Color"
 msgstr ""
 
-#: packages/block-library/build-module/pullquote/index.js:43
+#: packages/block-library/build-module/pullquote/index.js:47
 msgid "Pullquote"
 msgstr ""
 
-#: packages/block-library/build-module/pullquote/index.js:44
-msgid ""
-"Highlight a quote from your post or page by displaying it as a graphic "
-"element."
+#: packages/block-library/build-module/pullquote/index.js:48
+msgid "Give special visual emphasis to a quote from your text."
 msgstr ""
 
-#: packages/block-library/build-module/pullquote/index.js:62
-#: packages/block-library/build-module/quote/index.js:51
-#: packages/block-library/build-module/table/index.js:99
-msgid "Regular"
-msgstr ""
-
-#: packages/block-library/build-module/pullquote/index.js:66
+#: packages/block-library/build-module/pullquote/index.js:70
 msgid "Solid Color"
 msgstr ""
 
-#: packages/block-library/build-module/quote/index.js:35
+#: packages/block-library/build-module/quote/index.js:40
 #: packages/editor/build-module/components/post-format/index.js:34
 msgid "Quote"
 msgstr ""
 
-#: packages/block-library/build-module/quote/index.js:36
-msgid "Maybe someone else said it better -- add some quoted text."
+#: packages/block-library/build-module/quote/index.js:41
+msgid ""
+"Give quoted text visual emphasis. \"In quoting others, we cite ourselves.\" "
+"— Julio Cortázar"
 msgstr ""
 
-#: packages/block-library/build-module/quote/index.js:47
+#: packages/block-library/build-module/quote/index.js:52
 msgid "blockquote"
 msgstr ""
 
-#: packages/block-library/build-module/quote/index.js:55
-#: packages/editor/build-module/store/defaults.js:81
-msgid "Large"
-msgstr ""
-
-#: packages/block-library/build-module/separator/index.js:10
+#: packages/block-library/build-module/separator/index.js:11
 msgid "Separator"
 msgstr ""
 
-#: packages/block-library/build-module/separator/index.js:11
-msgid "Insert a horizontal line where you want to create a break between ideas."
+#: packages/block-library/build-module/separator/index.js:12
+msgid "Create a break between ideas or sections with a horizontal separator."
 msgstr ""
 
-#: packages/block-library/build-module/separator/index.js:22
+#: packages/block-library/build-module/separator/index.js:23
 msgid "horizontal-line"
 msgstr ""
 
-#: packages/block-library/build-module/separator/index.js:22
+#: packages/block-library/build-module/separator/index.js:23
 msgid "divider"
 msgstr ""
 
-#: packages/block-library/build-module/separator/index.js:25
+#: packages/block-library/build-module/separator/index.js:26
 msgid "Short Line"
 msgstr ""
 
-#: packages/block-library/build-module/separator/index.js:29
+#: packages/block-library/build-module/separator/index.js:30
 msgid "Wide Line"
 msgstr ""
 
-#: packages/block-library/build-module/separator/index.js:32
+#: packages/block-library/build-module/separator/index.js:33
 msgid "Dots"
 msgstr ""
 
 #: packages/block-library/build-module/shortcode/index.js:15
-msgid ""
-"Add a shortcode -- a WordPress-specific snippet of code written between "
-"square brackets."
+msgid "Insert additional custom elements with a WordPress shortcode."
 msgstr ""
 
 #: packages/block-library/build-module/shortcode/index.js:68
@@ -986,7 +1088,7 @@ msgid "Spacer"
 msgstr ""
 
 #: packages/block-library/build-module/spacer/index.js:19
-msgid "Add an element with empty space and custom height."
+msgid "Add white space between blocks and customize its height."
 msgstr ""
 
 #: packages/block-library/build-module/spacer/index.js:69
@@ -997,15 +1099,15 @@ msgstr ""
 msgid "Height in pixels"
 msgstr ""
 
-#: packages/block-library/build-module/subhead/index.js:13
+#: packages/block-library/build-module/subhead/index.js:14
 msgid "Subheading (deprecated)"
 msgstr ""
 
-#: packages/block-library/build-module/subhead/index.js:14
+#: packages/block-library/build-module/subhead/index.js:15
 msgid "This block is deprecated. Please use the Paragraph block instead."
 msgstr ""
 
-#: packages/block-library/build-module/subhead/index.js:75
+#: packages/block-library/build-module/subhead/index.js:77
 msgid "Write subheading…"
 msgstr ""
 
@@ -1057,27 +1159,27 @@ msgstr ""
 msgid "Fixed width table cells"
 msgstr ""
 
-#: packages/block-library/build-module/table/index.js:103
+#: packages/block-library/build-module/table/index.js:105
 msgid "Stripes"
 msgstr ""
 
-#: packages/block-library/build-module/table/index.js:76
+#: packages/block-library/build-module/table/index.js:78
 msgid "Table"
 msgstr ""
 
-#: packages/block-library/build-module/table/index.js:77
-msgid "Insert a table -- perfect for sharing charts and data."
+#: packages/block-library/build-module/table/index.js:79
+msgid "Insert a table — perfect for sharing charts and data."
 msgstr ""
 
-#: packages/block-library/build-module/template/index.js:10
+#: packages/block-library/build-module/template/index.js:11
 msgid "Reusable Template"
 msgstr ""
 
-#: packages/block-library/build-module/template/index.js:12
+#: packages/block-library/build-module/template/index.js:13
 msgid "Template block used as a container."
 msgstr ""
 
-#: packages/block-library/build-module/text-columns/index.js:124
+#: packages/block-library/build-module/text-columns/index.js:125
 msgid "New Column"
 msgstr ""
 
@@ -1089,72 +1191,66 @@ msgstr ""
 msgid "This block is deprecated. Please use the Columns block instead."
 msgstr ""
 
-#: packages/block-library/build-module/verse/index.js:12
+#: packages/block-library/build-module/verse/index.js:13
 msgid "Verse"
 msgstr ""
 
-#: packages/block-library/build-module/verse/index.js:13
-msgid ""
-"A block for haiku? Why not? Blocks for all the things! (See what we did "
-"here?)"
+#: packages/block-library/build-module/verse/index.js:14
+msgid "Insert poetry. Use special spacing formats. Or quote song lyrics."
 msgstr ""
 
-#: packages/block-library/build-module/verse/index.js:24
+#: packages/block-library/build-module/verse/index.js:25
 msgid "poetry"
 msgstr ""
 
-#: packages/block-library/build-module/verse/index.js:75
+#: packages/block-library/build-module/verse/index.js:78
 msgid "Write…"
 msgstr ""
 
-#: packages/block-library/build-module/video/edit.js:197
-#: packages/block-library/build-module/video/index.js:17
-#: packages/editor/build-module/components/post-format/index.js:43
-msgid "Video"
-msgstr ""
-
-#: packages/block-library/build-module/video/edit.js:198
-msgid "a video"
-msgstr ""
-
-#: packages/block-library/build-module/video/edit.js:215
+#: packages/block-library/build-module/video/edit.js:211
 msgid "Edit video"
 msgstr ""
 
-#: packages/block-library/build-module/video/edit.js:219
+#: packages/block-library/build-module/video/edit.js:215
 msgid "Video Settings"
 msgstr ""
 
-#: packages/block-library/build-module/video/edit.js:229
+#: packages/block-library/build-module/video/edit.js:225
 msgid "Muted"
 msgstr ""
 
-#: packages/block-library/build-module/video/edit.js:233
+#: packages/block-library/build-module/video/edit.js:229
 msgid "Playback Controls"
 msgstr ""
 
-#: packages/block-library/build-module/video/edit.js:256
+#: packages/block-library/build-module/video/edit.js:252
 msgid "Poster Image"
 msgstr ""
 
-#: packages/block-library/build-module/video/edit.js:267
+#: packages/block-library/build-module/video/edit.js:263
 msgid "Select Poster Image"
 msgstr ""
 
-#: packages/block-library/build-module/video/edit.js:267
-#: packages/editor/build-module/components/post-featured-image/index.js:86
+#: packages/block-library/build-module/video/edit.js:263
+#: packages/editor/build-module/components/post-featured-image/index.js:87
 msgid "Replace image"
 msgstr ""
 
-#: packages/block-library/build-module/video/edit.js:273
+#: packages/block-library/build-module/video/edit.js:269
 msgid "Remove Poster Image"
 msgstr ""
 
 #: packages/block-library/build-module/video/index.js:18
-msgid "Embed a video file and a simple video player."
+#: packages/editor/build-module/components/media-placeholder/index.js:216
+#: packages/editor/build-module/components/post-format/index.js:43
+msgid "Video"
 msgstr ""
 
-#: packages/block-library/build-module/video/index.js:28
+#: packages/block-library/build-module/video/index.js:19
+msgid "Embed a video from your media library or upload a new one."
+msgstr ""
+
+#: packages/block-library/build-module/video/index.js:29
 msgid "movie"
 msgstr ""
 
@@ -1182,359 +1278,349 @@ msgstr ""
 msgid "Reusable Blocks"
 msgstr ""
 
-#: packages/components/src/autocomplete/index.js:244
-#: packages/components/src/form-token-field/index.js:219
+#: packages/components/build-module/autocomplete/index.js:287
+#: packages/components/build-module/form-token-field/index.js:257
 #: packages/editor/build-module/components/url-input/index.js:136
 msgid "%d result found, use up and down arrow keys to navigate."
 msgid_plural "%d results found, use up and down arrow keys to navigate."
 msgstr[0] ""
 msgstr[1] ""
 
-#: packages/components/src/autocomplete/index.js:250
-#: packages/components/src/form-token-field/index.js:225
+#: packages/components/build-module/autocomplete/index.js:289
+#: packages/components/build-module/form-token-field/index.js:259
 #: packages/editor/build-module/components/url-input/index.js:138
 msgid "No results."
 msgstr ""
 
-#: packages/components/src/color-palette/index.js:24
+#: packages/components/build-module/color-palette/index.js:100
+msgid "Clear"
+msgstr ""
+
+#: packages/components/build-module/color-palette/index.js:35
 msgid "Custom color picker"
 msgstr ""
 
 # %s: The name of the color e.g: "vivid red".
-#: packages/components/src/color-palette/index.js:46
+#: packages/components/build-module/color-palette/index.js:61
 msgid "Color: %s"
 msgstr ""
 
 # %s: color hex code e.g: "#f00".
-#: packages/components/src/color-palette/index.js:48
+#: packages/components/build-module/color-palette/index.js:62
 msgid "Color code: %s"
 msgstr ""
 
-#: packages/components/src/color-palette/index.js:90
-msgid "Clear"
-msgstr ""
-
-#: packages/components/src/color-picker/alpha.js:162
+#: packages/components/build-module/color-picker/alpha.js:223
 msgid "Alpha value, from 0 (transparent) to 1 (fully opaque)."
 msgstr ""
 
-#: packages/components/src/color-picker/hue.js:154
+#: packages/components/build-module/color-picker/hue.js:220
 msgid "Hue value in degrees, from 0 to 359."
 msgstr ""
 
-#: packages/components/src/color-picker/hue.js:164
+#: packages/components/build-module/color-picker/hue.js:228
 msgid "Move the arrow left or right to change hue."
 msgstr ""
 
-#: packages/components/src/color-picker/inputs.js:106
+#: packages/components/build-module/color-picker/inputs.js:163
 msgid "Hue/saturation/lightness mode active"
 msgstr ""
 
-#: packages/components/src/color-picker/inputs.js:111
+#: packages/components/build-module/color-picker/inputs.js:169
 msgid "Hex color mode active"
 msgstr ""
 
-#: packages/components/src/color-picker/inputs.js:115
+#: packages/components/build-module/color-picker/inputs.js:174
 msgid "RGB mode active"
 msgstr ""
 
-#: packages/components/src/color-picker/inputs.js:165
+#: packages/components/build-module/color-picker/inputs.js:228
 msgid "Color value in hexadecimal"
 msgstr ""
 
-#: packages/components/src/color-picker/inputs.js:176
+#: packages/components/build-module/color-picker/inputs.js:236
 msgid "Color value in RGB"
 msgstr ""
 
-#: packages/components/src/color-picker/inputs.js:225
+#: packages/components/build-module/color-picker/inputs.js:275
 msgid "Color value in HSL"
 msgstr ""
 
-#: packages/components/src/color-picker/inputs.js:280
+#: packages/components/build-module/color-picker/inputs.js:322
 msgid "Change color format"
 msgstr ""
 
-#: packages/components/src/color-picker/saturation.js:168
+#: packages/components/build-module/color-picker/saturation.js:224
 msgid "Choose a shade"
 msgstr ""
 
-#: packages/components/src/color-picker/saturation.js:177
+#: packages/components/build-module/color-picker/saturation.js:232
 msgid ""
 "Use your arrow keys to change the base color. Move up to lighten the color, "
 "down to darken, left to increase saturation, and right to decrease "
 "saturation."
 msgstr ""
 
-#: packages/components/src/date-time/index.js:108
+#: packages/components/build-module/date-time/index.js:102
 msgid "Calendar Help"
 msgstr ""
 
-#: packages/components/src/date-time/index.js:60
+#: packages/components/build-module/date-time/index.js:75
 msgid "Click to Select"
 msgstr ""
 
-#: packages/components/src/date-time/index.js:62
+#: packages/components/build-module/date-time/index.js:75
 msgid ""
-"Click the right and left arrows to select other months in the past or the "
+"Click the right or left arrows to select other months in the past or the "
 "future."
 msgstr ""
 
-#: packages/components/src/date-time/index.js:63
+#: packages/components/build-module/date-time/index.js:75
 msgid "Click the desired day to select it."
 msgstr ""
 
-#: packages/components/src/date-time/index.js:66
+#: packages/components/build-module/date-time/index.js:75
 msgid "Navigating with a keyboard"
 msgstr ""
 
-#: packages/components/src/date-time/index.js:69
-msgid "Enter"
-msgstr ""
-
-#: packages/components/src/date-time/index.js:71
+#: packages/components/build-module/date-time/index.js:79
 msgid "Select the date in focus."
 msgstr ""
 
-#: packages/components/src/date-time/index.js:74
+#: packages/components/build-module/date-time/index.js:80
 msgid "Left and Right Arrows"
 msgstr ""
 
-#: packages/components/src/date-time/index.js:76
-msgid "Move backward (left) and forward (right) by one day."
+#: packages/components/build-module/date-time/index.js:83
+msgid "Move backward (left) or forward (right) by one day."
 msgstr ""
 
-#: packages/components/src/date-time/index.js:79
+#: packages/components/build-module/date-time/index.js:84
 msgid "Up and Down Arrows"
 msgstr ""
 
-#: packages/components/src/date-time/index.js:81
-msgid "Move backward (up) and forward (down) by one week."
+#: packages/components/build-module/date-time/index.js:87
+msgid "Move backward (up) or forward (down) by one week."
 msgstr ""
 
-#: packages/components/src/date-time/index.js:84
+#: packages/components/build-module/date-time/index.js:88
 msgid "Page Up and Page Down"
 msgstr ""
 
-#: packages/components/src/date-time/index.js:84
+#: packages/components/build-module/date-time/index.js:89
 msgid "PgUp/PgDn"
 msgstr ""
 
-#: packages/components/src/date-time/index.js:86
+#: packages/components/build-module/date-time/index.js:91
 msgid "Move backward (PgUp) or forward (PgDn) by one month."
 msgstr ""
 
-#: packages/components/src/date-time/index.js:89
+#: packages/components/build-module/date-time/index.js:92
 msgid "Home and End"
 msgstr ""
 
-#: packages/components/src/date-time/index.js:89
+#: packages/components/build-module/date-time/index.js:93
 msgid "Home/End"
 msgstr ""
 
-#: packages/components/src/date-time/index.js:91
+#: packages/components/build-module/date-time/index.js:95
 msgid "Go to the first (home) or last (end) day of a week."
 msgstr ""
 
-#: packages/components/src/date-time/index.js:96
+#: packages/components/build-module/date-time/index.js:98
 #: packages/edit-post/build-module/components/keyboard-shortcut-help-modal/index.js:87
 #: packages/edit-post/build-module/components/options-modal/index.js:38
 #: packages/editor/build-module/components/url-input/button.js:83
 msgid "Close"
 msgstr ""
 
-#: packages/components/src/date-time/time.js:202
+#: packages/components/build-module/date-time/time.js:301
 msgid "Date"
 msgstr ""
 
-#: packages/components/src/date-time/time.js:206
+#: packages/components/build-module/date-time/time.js:306
 msgid "Month"
 msgstr ""
 
-#: packages/components/src/date-time/time.js:212
+#: packages/components/build-module/date-time/time.js:313
 msgid "January"
 msgstr ""
 
-#: packages/components/src/date-time/time.js:213
+#: packages/components/build-module/date-time/time.js:315
 msgid "February"
 msgstr ""
 
-#: packages/components/src/date-time/time.js:214
+#: packages/components/build-module/date-time/time.js:317
 msgid "March"
 msgstr ""
 
-#: packages/components/src/date-time/time.js:215
+#: packages/components/build-module/date-time/time.js:319
 msgid "April"
 msgstr ""
 
-#: packages/components/src/date-time/time.js:216
+#: packages/components/build-module/date-time/time.js:321
 msgid "May"
 msgstr ""
 
-#: packages/components/src/date-time/time.js:217
+#: packages/components/build-module/date-time/time.js:323
 msgid "June"
 msgstr ""
 
-#: packages/components/src/date-time/time.js:218
+#: packages/components/build-module/date-time/time.js:325
 msgid "July"
 msgstr ""
 
-#: packages/components/src/date-time/time.js:219
+#: packages/components/build-module/date-time/time.js:327
 msgid "August"
 msgstr ""
 
-#: packages/components/src/date-time/time.js:220
+#: packages/components/build-module/date-time/time.js:329
 msgid "September"
 msgstr ""
 
-#: packages/components/src/date-time/time.js:221
+#: packages/components/build-module/date-time/time.js:331
 msgid "October"
 msgstr ""
 
-#: packages/components/src/date-time/time.js:222
+#: packages/components/build-module/date-time/time.js:333
 msgid "November"
 msgstr ""
 
-#: packages/components/src/date-time/time.js:223
+#: packages/components/build-module/date-time/time.js:335
 msgid "December"
 msgstr ""
 
-#: packages/components/src/date-time/time.js:228
+#: packages/components/build-module/date-time/time.js:338
 msgid "Day"
 msgstr ""
 
-#: packages/components/src/date-time/time.js:240
+#: packages/components/build-module/date-time/time.js:349
 msgid "Year"
 msgstr ""
 
-#: packages/components/src/date-time/time.js:253
+#: packages/components/build-module/date-time/time.js:358
 msgid "Time"
 msgstr ""
 
-#: packages/components/src/date-time/time.js:257
+#: packages/components/build-module/date-time/time.js:363
 msgid "Hours"
 msgstr ""
 
-#: packages/components/src/date-time/time.js:271
+#: packages/components/build-module/date-time/time.js:376
 msgid "Minutes"
 msgstr ""
 
-#: packages/components/src/date-time/time.js:290
+#: packages/components/build-module/date-time/time.js:392
 msgid "AM"
 msgstr ""
 
-#: packages/components/src/date-time/time.js:299
+#: packages/components/build-module/date-time/time.js:398
 msgid "PM"
 msgstr ""
 
-#: packages/components/src/drop-zone/index.js:78
+#: packages/components/build-module/drop-zone/index.js:112
 msgid "Drop files to upload"
 msgstr ""
 
 # accessibility text
-#: packages/components/src/external-link/index.js:32
+#: packages/components/build-module/external-link/index.js:42
 msgid "(opens in a new tab)"
 msgstr ""
 
-#: packages/components/src/font-size-picker/index.js:101
-msgid "Custom Size"
-msgstr ""
-
-#: packages/components/src/font-size-picker/index.js:42
-msgid "Font Size"
-msgstr ""
-
-#: packages/components/src/font-size-picker/index.js:56
-#: packages/editor/build-module/store/defaults.js:73
-msgid "Normal"
-msgstr ""
-
-#: packages/components/src/font-size-picker/index.js:82
-msgid "Custom font size"
-msgstr ""
-
-#: packages/components/src/font-size-picker/index.js:93
+#: packages/components/build-module/font-size-picker/index.js:104
 msgid "Reset font size"
 msgstr ""
 
-#: packages/components/src/form-token-field/index.js:530
+#: packages/components/build-module/font-size-picker/index.js:107
+msgid "Custom Size"
+msgstr ""
+
+#: packages/components/build-module/font-size-picker/index.js:49
+msgid "Font Size"
+msgstr ""
+
+#: packages/components/build-module/font-size-picker/index.js:93
+msgid "Custom font size"
+msgstr ""
+
+#: packages/components/build-module/form-token-field/index.js:588
 msgid "Add item"
 msgstr ""
 
-#: packages/components/src/form-token-field/index.js:587
+#: packages/components/build-module/form-token-field/index.js:636
 msgid "Separate with commas"
 msgstr ""
 
-#: packages/components/src/form-token-field/index.js:607
+#: packages/components/build-module/form-token-field/index.js:670
 msgid "Item added."
 msgstr ""
 
-#: packages/components/src/form-token-field/index.js:608
+#: packages/components/build-module/form-token-field/index.js:671
 msgid "Item removed."
 msgstr ""
 
-#: packages/components/src/form-token-field/index.js:609
+#: packages/components/build-module/form-token-field/index.js:672
 msgid "Remove item"
 msgstr ""
 
 # 1: term name, 2: term position in a set of terms, 3: total term set count.
-#: packages/components/src/form-token-field/token.js:46
+#: packages/components/build-module/form-token-field/token.js:54
 msgid "%1$s (%2$s of %3$s)"
 msgstr ""
 
-#: packages/components/src/modal/header.js:12
+#: packages/components/build-module/modal/header.js:20
 msgid "Close dialog"
 msgstr ""
 
-#: packages/components/src/notice/index.js:30
+#: packages/components/build-module/notice/index.js:50
 msgid "Dismiss this notice"
 msgstr ""
 
-# %s: The name of the color e.g: "vivid red" or color hex code if name is not available e.g: "#f00".
-#: packages/components/src/panel/color.js:21
+#: packages/components/build-module/panel/color.js:29
 msgid "(current color: %s)"
 msgstr ""
 
-#: packages/components/src/query-controls/index.js:32
+#: packages/components/build-module/query-controls/index.js:32
 msgid "Order by"
 msgstr ""
 
-#: packages/components/src/query-controls/index.js:36
+#: packages/components/build-module/query-controls/index.js:35
 msgid "Newest to Oldest"
 msgstr ""
 
-#: packages/components/src/query-controls/index.js:40
+#: packages/components/build-module/query-controls/index.js:38
 msgid "Oldest to Newest"
 msgstr ""
 
 # label for ordering posts by title in ascending order
-#: packages/components/src/query-controls/index.js:45
+#: packages/components/build-module/query-controls/index.js:42
 msgid "A → Z"
 msgstr ""
 
 # label for ordering posts by title in descending order
-#: packages/components/src/query-controls/index.js:50
+#: packages/components/build-module/query-controls/index.js:46
 msgid "Z → A"
 msgstr ""
 
-#: packages/components/src/query-controls/index.js:69
+#: packages/components/build-module/query-controls/index.js:66
 #: packages/editor/build-module/components/post-taxonomies/hierarchical-term-selector.js:195
 msgid "Category"
 msgstr ""
 
-#: packages/components/src/query-controls/index.js:70
+#: packages/components/build-module/query-controls/index.js:67
 msgid "All"
 msgstr ""
 
-#: packages/components/src/query-controls/index.js:77
+#: packages/components/build-module/query-controls/index.js:72
 msgid "Number of items"
 msgstr ""
 
 # %s: error message describing the problem
-#: packages/components/src/server-side-render/index.js:86
+#: packages/components/build-module/server-side-render/index.js:116
 msgid "Error loading block: %s"
 msgstr ""
 
-#: packages/components/src/server-side-render/index.js:92
+#: packages/components/build-module/server-side-render/index.js:119
 msgid "No results found."
 msgstr ""
 
@@ -1542,26 +1628,30 @@ msgstr ""
 msgid "View Posts"
 msgstr ""
 
-#: packages/edit-post/build-module/components/header/header-toolbar/index.js:24
-msgid "Editor Toolbar"
+#: packages/edit-post/build-module/components/header/header-toolbar/index.js:22
+msgid "Document and block tools"
 msgstr ""
 
-#: packages/edit-post/build-module/components/header/header-toolbar/index.js:30
+#: packages/edit-post/build-module/components/header/header-toolbar/index.js:22
+msgid "Document tools"
+msgstr ""
+
+#: packages/edit-post/build-module/components/header/header-toolbar/index.js:31
 msgid ""
 "Welcome to the wonderful world of blocks! Click the “+” (“Add block”) "
 "button to add a new block. There are blocks available for all kinds of "
 "content: you can insert text, headings, images, lists, and lots more!"
 msgstr ""
 
-#: packages/edit-post/build-module/components/header/index.js:35
+#: packages/edit-post/build-module/components/header/index.js:34
 msgid "Editor top bar"
 msgstr ""
 
-#: packages/edit-post/build-module/components/header/index.js:53
+#: packages/edit-post/build-module/components/header/index.js:47
 msgid "Settings"
 msgstr ""
 
-#: packages/edit-post/build-module/components/header/index.js:60
+#: packages/edit-post/build-module/components/header/index.js:54
 msgid ""
 "You’ll find more settings for your page and blocks in the sidebar. Click "
 "“Settings” to open it."
@@ -1577,6 +1667,14 @@ msgstr ""
 
 #: packages/edit-post/build-module/components/header/mode-switcher/index.js:43
 msgid "Editor"
+msgstr ""
+
+#: packages/edit-post/build-module/components/header/more-menu/index.js:19
+msgid "Show more tools & options"
+msgstr ""
+
+#: packages/edit-post/build-module/components/header/more-menu/index.js:21
+msgid "Hide more tools & options"
 msgstr ""
 
 #: packages/edit-post/build-module/components/header/options-menu-item/index.js:17
@@ -1616,130 +1714,134 @@ msgstr ""
 msgid "Work without distraction"
 msgstr ""
 
-#: packages/edit-post/build-module/components/keyboard-shortcut-help-modal/config.js:102
+#: packages/edit-post/build-module/components/keyboard-shortcut-help-modal/config.js:100
+msgid "Make the selected text italic."
+msgstr ""
+
+#: packages/edit-post/build-module/components/keyboard-shortcut-help-modal/config.js:103
+msgid "Underline the selected text."
+msgstr ""
+
+#: packages/edit-post/build-module/components/keyboard-shortcut-help-modal/config.js:106
 msgid "Convert the selected text into a link."
 msgstr ""
 
-#: packages/edit-post/build-module/components/keyboard-shortcut-help-modal/config.js:105
+#: packages/edit-post/build-module/components/keyboard-shortcut-help-modal/config.js:109
 msgid "Remove a link."
 msgstr ""
 
-#: packages/edit-post/build-module/components/keyboard-shortcut-help-modal/config.js:108
+#: packages/edit-post/build-module/components/keyboard-shortcut-help-modal/config.js:112
 msgid "Add a strikethrough to the selected text."
 msgstr ""
 
-#: packages/edit-post/build-module/components/keyboard-shortcut-help-modal/config.js:111
+#: packages/edit-post/build-module/components/keyboard-shortcut-help-modal/config.js:115
 msgid "Display the selected text in a monospaced font."
 msgstr ""
 
-#: packages/edit-post/build-module/components/keyboard-shortcut-help-modal/config.js:15
+#: packages/edit-post/build-module/components/keyboard-shortcut-help-modal/config.js:16
 msgid "Global shortcuts"
 msgstr ""
 
-#: packages/edit-post/build-module/components/keyboard-shortcut-help-modal/config.js:18
+#: packages/edit-post/build-module/components/keyboard-shortcut-help-modal/config.js:19
 msgid "Display this help."
 msgstr ""
 
-#: packages/edit-post/build-module/components/keyboard-shortcut-help-modal/config.js:21
+#: packages/edit-post/build-module/components/keyboard-shortcut-help-modal/config.js:22
 msgid "Save your changes."
 msgstr ""
 
-#: packages/edit-post/build-module/components/keyboard-shortcut-help-modal/config.js:24
+#: packages/edit-post/build-module/components/keyboard-shortcut-help-modal/config.js:25
 msgid "Undo your last changes."
 msgstr ""
 
-#: packages/edit-post/build-module/components/keyboard-shortcut-help-modal/config.js:27
+#: packages/edit-post/build-module/components/keyboard-shortcut-help-modal/config.js:28
 msgid "Redo your last undo."
 msgstr ""
 
-#: packages/edit-post/build-module/components/keyboard-shortcut-help-modal/config.js:30
+#: packages/edit-post/build-module/components/keyboard-shortcut-help-modal/config.js:31
 msgid "Show or hide the settings sidebar."
 msgstr ""
 
-#: packages/edit-post/build-module/components/keyboard-shortcut-help-modal/config.js:34
+#: packages/edit-post/build-module/components/keyboard-shortcut-help-modal/config.js:35
 msgid "Open the block navigation menu."
 msgstr ""
 
-#: packages/edit-post/build-module/components/keyboard-shortcut-help-modal/config.js:37
+#: packages/edit-post/build-module/components/keyboard-shortcut-help-modal/config.js:38
 msgid "Navigate to the next part of the editor."
 msgstr ""
 
-#: packages/edit-post/build-module/components/keyboard-shortcut-help-modal/config.js:41
+#: packages/edit-post/build-module/components/keyboard-shortcut-help-modal/config.js:42
 msgid "Navigate to the previous part of the editor."
 msgstr ""
 
-#: packages/edit-post/build-module/components/keyboard-shortcut-help-modal/config.js:45
+#: packages/edit-post/build-module/components/keyboard-shortcut-help-modal/config.js:46
 msgid "Navigate to the next part of the editor (alternative)."
 msgstr ""
 
-#: packages/edit-post/build-module/components/keyboard-shortcut-help-modal/config.js:48
+#: packages/edit-post/build-module/components/keyboard-shortcut-help-modal/config.js:49
 msgid "Navigate to the previous part of the editor (alternative)."
 msgstr ""
 
-#: packages/edit-post/build-module/components/keyboard-shortcut-help-modal/config.js:51
-msgid "Switch between Visual Editor and Code Editor."
+#: packages/edit-post/build-module/components/keyboard-shortcut-help-modal/config.js:52
+msgid "Navigate to the nearest toolbar."
 msgstr ""
 
 #: packages/edit-post/build-module/components/keyboard-shortcut-help-modal/config.js:55
+msgid "Switch between Visual Editor and Code Editor."
+msgstr ""
+
+#: packages/edit-post/build-module/components/keyboard-shortcut-help-modal/config.js:59
 msgid "Selection shortcuts"
 msgstr ""
 
-#: packages/edit-post/build-module/components/keyboard-shortcut-help-modal/config.js:58
+#: packages/edit-post/build-module/components/keyboard-shortcut-help-modal/config.js:62
 msgid "Select all text when typing. Press again to select all blocks."
 msgstr ""
 
-#: packages/edit-post/build-module/components/keyboard-shortcut-help-modal/config.js:61
+#: packages/edit-post/build-module/components/keyboard-shortcut-help-modal/config.js:65
 msgid "Clear selection."
 msgstr ""
 
 # The 'escape' key on a keyboard.
-#: packages/edit-post/build-module/components/keyboard-shortcut-help-modal/config.js:64
+#: packages/edit-post/build-module/components/keyboard-shortcut-help-modal/config.js:68
 msgid "Escape"
 msgstr ""
 
-#: packages/edit-post/build-module/components/keyboard-shortcut-help-modal/config.js:68
+#: packages/edit-post/build-module/components/keyboard-shortcut-help-modal/config.js:72
 msgid "Block shortcuts"
 msgstr ""
 
-#: packages/edit-post/build-module/components/keyboard-shortcut-help-modal/config.js:71
+#: packages/edit-post/build-module/components/keyboard-shortcut-help-modal/config.js:75
 msgid "Duplicate the selected block(s)."
 msgstr ""
 
-#: packages/edit-post/build-module/components/keyboard-shortcut-help-modal/config.js:74
+#: packages/edit-post/build-module/components/keyboard-shortcut-help-modal/config.js:78
 msgid "Remove the selected block(s)."
 msgstr ""
 
-#: packages/edit-post/build-module/components/keyboard-shortcut-help-modal/config.js:77
+#: packages/edit-post/build-module/components/keyboard-shortcut-help-modal/config.js:81
 msgid "Insert a new block before the selected block(s)."
 msgstr ""
 
-#: packages/edit-post/build-module/components/keyboard-shortcut-help-modal/config.js:80
+#: packages/edit-post/build-module/components/keyboard-shortcut-help-modal/config.js:84
 msgid "Insert a new block after the selected block(s)."
 msgstr ""
 
-#: packages/edit-post/build-module/components/keyboard-shortcut-help-modal/config.js:83
+#: packages/edit-post/build-module/components/keyboard-shortcut-help-modal/config.js:87
 msgid "Change the block type after adding a new paragraph."
 msgstr ""
 
 # The forward-slash character. e.g. '/'.
-#: packages/edit-post/build-module/components/keyboard-shortcut-help-modal/config.js:86
+#: packages/edit-post/build-module/components/keyboard-shortcut-help-modal/config.js:90
 msgid "Forward-slash"
 msgstr ""
 
-#: packages/edit-post/build-module/components/keyboard-shortcut-help-modal/config.js:90
+#: packages/edit-post/build-module/components/keyboard-shortcut-help-modal/config.js:94
 msgid "Text formatting"
 msgstr ""
 
-#: packages/edit-post/build-module/components/keyboard-shortcut-help-modal/config.js:93
+#: packages/edit-post/build-module/components/keyboard-shortcut-help-modal/config.js:97
 msgid "Make the selected text bold."
-msgstr ""
-
-#: packages/edit-post/build-module/components/keyboard-shortcut-help-modal/config.js:96
-msgid "Make the selected text italic."
-msgstr ""
-
-#: packages/edit-post/build-module/components/keyboard-shortcut-help-modal/config.js:99
-msgid "Underline the selected text."
 msgstr ""
 
 #: packages/edit-post/build-module/components/keyboard-shortcut-help-modal/index.js:80
@@ -1748,15 +1850,15 @@ msgid "Keyboard Shortcuts"
 msgstr ""
 
 # accessibility text for the publish landmark region.
-#: packages/edit-post/build-module/components/layout/index.js:59
+#: packages/edit-post/build-module/components/layout/index.js:58
 msgid "Editor publish"
 msgstr ""
 
-#: packages/edit-post/build-module/components/layout/index.js:69
+#: packages/edit-post/build-module/components/layout/index.js:68
 msgid "Editor content"
 msgstr ""
 
-#: packages/edit-post/build-module/components/layout/index.js:93
+#: packages/edit-post/build-module/components/layout/index.js:92
 msgid "Open publish panel"
 msgstr ""
 
@@ -1801,11 +1903,6 @@ msgstr ""
 msgid "Advanced Panels"
 msgstr ""
 
-#: packages/edit-post/build-module/components/sidebar/block-sidebar/index.js:20
-#: packages/edit-post/build-module/components/sidebar/document-sidebar/index.js:27
-msgid "Editor settings"
-msgstr ""
-
 #: packages/edit-post/build-module/components/sidebar/plugin-sidebar/index.js:46
 msgid "Editor plugins"
 msgstr ""
@@ -1839,30 +1936,46 @@ msgstr ""
 msgid "Visibility"
 msgstr ""
 
-#: packages/edit-post/build-module/components/sidebar/settings-header/index.js:22
+#: packages/edit-post/build-module/components/sidebar/settings-header/index.js:23
 msgid "Block"
 msgstr ""
 
-#: packages/edit-post/build-module/components/sidebar/settings-header/index.js:22
+#: packages/edit-post/build-module/components/sidebar/settings-header/index.js:23
 msgid "%d Block"
 msgid_plural "%d Blocks"
 msgstr[0] ""
 msgstr[1] ""
 
-#: packages/edit-post/build-module/components/sidebar/settings-header/index.js:25
-msgid "Close settings"
+# ARIA label for the Document Settings sidebar tab, selected.
+#: packages/edit-post/build-module/components/sidebar/settings-header/index.js:26
+msgid "Document settings (selected)"
 msgstr ""
 
-#: packages/edit-post/build-module/components/sidebar/settings-header/index.js:29
+# ARIA label for the Document Settings sidebar tab, not selected.
+#: packages/edit-post/build-module/components/sidebar/settings-header/index.js:27
 msgid "Document settings"
 msgstr ""
 
-#: packages/edit-post/build-module/components/sidebar/settings-header/index.js:31
+# ARIA label for the Block Settings sidebar tab, selected.
+#: packages/edit-post/build-module/components/sidebar/settings-header/index.js:33
+msgid "Block settings (selected)"
+msgstr ""
+
+# ARIA label for the Block Settings sidebar tab, not selected.
+#: packages/edit-post/build-module/components/sidebar/settings-header/index.js:34
+msgid "Block settings"
+msgstr ""
+
+#: packages/edit-post/build-module/components/sidebar/settings-header/index.js:41
+msgid "Close settings"
+msgstr ""
+
+#: packages/edit-post/build-module/components/sidebar/settings-header/index.js:47
 msgid "Document"
 msgstr ""
 
-#: packages/edit-post/build-module/components/sidebar/settings-header/index.js:34
-msgid "Block settings"
+#: packages/edit-post/build-module/components/sidebar/settings-sidebar/index.js:31
+msgid "Editor settings"
 msgstr ""
 
 #: packages/edit-post/build-module/components/sidebar/sidebar-header/index.js:32
@@ -1895,11 +2008,11 @@ msgstr ""
 msgid "Show Block Settings"
 msgstr ""
 
-#: packages/edit-post/build-module/hooks/components/media-upload/index.js:137
+#: packages/edit-post/build-module/hooks/components/media-upload/index.js:121
 msgid "Select"
 msgstr ""
 
-#: packages/edit-post/build-module/hooks/components/media-upload/index.js:90
+#: packages/edit-post/build-module/hooks/components/media-upload/index.js:88
 msgid "Select or Upload Media"
 msgstr ""
 
@@ -1924,7 +2037,7 @@ msgid "Copy All Content"
 msgstr ""
 
 #: packages/edit-post/build-module/plugins/index.js:24
-#: packages/editor/build-module/components/inserter/menu.js:340
+#: packages/editor/build-module/components/inserter/menu.js:369
 msgid "Manage All Reusable Blocks"
 msgstr ""
 
@@ -1976,7 +2089,7 @@ msgid "Current"
 msgstr ""
 
 #: packages/editor/build-module/components/block-compare/index.js:98
-#: packages/editor/build-module/components/block-list/block-invalid-warning.js:96
+#: packages/editor/build-module/components/block-list/block-invalid-warning.js:98
 msgid "Convert to HTML"
 msgstr ""
 
@@ -1996,9 +2109,9 @@ msgstr ""
 msgid "Advanced"
 msgstr ""
 
-#: packages/editor/build-module/components/block-list-appender/index.js:57
-#: packages/editor/build-module/components/default-block-appender/index.js:58
-#: packages/editor/build-module/components/inserter/index.js:32
+#: packages/editor/build-module/components/block-list-appender/index.js:51
+#: packages/editor/build-module/components/default-block-appender/index.js:57
+#: packages/editor/build-module/components/inserter/index.js:29
 msgid "Add block"
 msgstr ""
 
@@ -2010,33 +2123,26 @@ msgstr ""
 msgid "This block has encountered an error and cannot be previewed."
 msgstr ""
 
+#: packages/editor/build-module/components/block-list/block-invalid-warning.js:100
+msgid "This block contains unexpected or invalid content."
+msgstr ""
+
 #: packages/editor/build-module/components/block-list/block-invalid-warning.js:67
 msgid "Convert to Classic Block"
 msgstr ""
 
-#: packages/editor/build-module/components/block-list/block-invalid-warning.js:73
+# Dialog title to fix block content
+#: packages/editor/build-module/components/block-list/block-invalid-warning.js:74
 msgid "Resolve Block"
 msgstr ""
 
-#: packages/editor/build-module/components/block-list/block-invalid-warning.js:81
+#: packages/editor/build-module/components/block-list/block-invalid-warning.js:82
 #: packages/editor/build-module/components/block-settings-menu/block-convert-button.js:17
 msgid "Convert to Blocks"
 msgstr ""
 
-#: packages/editor/build-module/components/block-list/block-invalid-warning.js:91
-msgid "Resolve"
-msgstr ""
-
-#: packages/editor/build-module/components/block-list/block-invalid-warning.js:98
-msgid "This block contains unexpected or invalid content."
-msgstr ""
-
-#: packages/editor/build-module/components/block-list/block.js:428
+#: packages/editor/build-module/components/block-list/block.js:434
 msgid "Block: %s"
-msgstr ""
-
-#: packages/editor/build-module/components/block-list/insertion-point.js:100
-msgid "Insert block"
 msgstr ""
 
 #: packages/editor/build-module/components/block-mover/index.js:101
@@ -2094,7 +2200,7 @@ msgid_plural "Move %1$d blocks from position %2$d down by one place"
 msgstr[0] ""
 msgstr[1] ""
 
-#: packages/editor/build-module/components/block-navigation/dropdown.js:36
+#: packages/editor/build-module/components/block-navigation/dropdown.js:37
 #: packages/editor/build-module/components/block-navigation/index.js:66
 msgid "Block Navigation"
 msgstr ""
@@ -2155,10 +2261,6 @@ msgid ""
 "It will be permanently removed from all posts and pages that use it."
 msgstr ""
 
-#: packages/editor/build-module/components/block-styles/index.js:137
-msgid "Apply style variation \"%s\""
-msgstr ""
-
 #: packages/editor/build-module/components/block-switcher/index.js:106
 msgid "Change block type"
 msgstr ""
@@ -2193,7 +2295,7 @@ msgid ""
 "background color and/or a darker text color."
 msgstr ""
 
-#: packages/editor/build-module/components/default-block-appender/index.js:36
+#: packages/editor/build-module/components/default-block-appender/index.js:35
 #: packages/editor/build-module/components/post-text-editor/index.js:96
 msgid "Write your story"
 msgstr ""
@@ -2230,63 +2332,86 @@ msgstr ""
 msgid "Undo"
 msgstr ""
 
-#: packages/editor/build-module/components/error-boundary/index.js:80
+#: packages/editor/build-module/components/error-boundary/index.js:81
 msgid "Attempt Recovery"
 msgstr ""
 
-#: packages/editor/build-module/components/error-boundary/index.js:84
+#: packages/editor/build-module/components/error-boundary/index.js:85
 msgid "Copy Post Text"
 msgstr ""
 
-#: packages/editor/build-module/components/error-boundary/index.js:88
+#: packages/editor/build-module/components/error-boundary/index.js:89
 msgid "Copy Error"
 msgstr ""
 
-#: packages/editor/build-module/components/error-boundary/index.js:89
+#: packages/editor/build-module/components/error-boundary/index.js:90
 msgid "The editor has encountered an unexpected error."
 msgstr ""
 
-#: packages/editor/build-module/components/inserter-with-shortcuts/index.js:45
+#: packages/editor/build-module/components/inserter-with-shortcuts/index.js:44
 msgid "Add %s"
 msgstr ""
 
-#: packages/editor/build-module/components/inserter/menu.js:280
+#: packages/editor/build-module/components/inserter/inline-elements.js:28
+msgid "Inline Elements"
+msgstr ""
+
+#: packages/editor/build-module/components/inserter/menu.js:259
+#: packages/editor/build-module/components/post-taxonomies/hierarchical-term-selector.js:353
+msgid "%d result found."
+msgid_plural "%d results found."
+msgstr[0] ""
+msgstr[1] ""
+
+#: packages/editor/build-module/components/inserter/menu.js:310
 msgid "Search for a block"
 msgstr ""
 
-#: packages/editor/build-module/components/inserter/menu.js:289
+#: packages/editor/build-module/components/inserter/menu.js:319
 msgid "Available block types"
 msgstr ""
 
-#: packages/editor/build-module/components/inserter/menu.js:296
-msgid "Most Used"
-msgstr ""
-
-#: packages/editor/build-module/components/inserter/menu.js:328
+#: packages/editor/build-module/components/inserter/menu.js:357
 msgid "Reusable"
 msgstr ""
 
-#: packages/editor/build-module/components/inserter/menu.js:342
+#: packages/editor/build-module/components/inserter/menu.js:371
 msgid "No blocks found."
 msgstr ""
 
-#: packages/editor/build-module/components/media-placeholder/index.js:214
-msgid "Drag %s, upload a new one or select a file from your library."
+#: packages/editor/build-module/components/media-placeholder/index.js:197
+msgid "Drag a media file, upload a new one or select a file from your library."
 msgstr ""
 
-#: packages/editor/build-module/components/media-placeholder/index.js:226
+#: packages/editor/build-module/components/media-placeholder/index.js:200
+msgid "Drag an audio, upload a new one or select a file from your library."
+msgstr ""
+
+#: packages/editor/build-module/components/media-placeholder/index.js:202
+msgid "Drag an image, upload a new one or select a file from your library."
+msgstr ""
+
+#: packages/editor/build-module/components/media-placeholder/index.js:204
+msgid "Drag a video, upload a new one or select a file from your library."
+msgstr ""
+
+#: packages/editor/build-module/components/media-placeholder/index.js:209
+msgid "Media"
+msgstr ""
+
+#: packages/editor/build-module/components/media-placeholder/index.js:236
 msgid "Upload"
 msgstr ""
 
-#: packages/editor/build-module/components/media-placeholder/index.js:238
+#: packages/editor/build-module/components/media-placeholder/index.js:248
 msgid "Media Library"
 msgstr ""
 
-#: packages/editor/build-module/components/media-placeholder/index.js:247
+#: packages/editor/build-module/components/media-placeholder/index.js:257
 msgid "Insert from URL"
 msgstr ""
 
-#: packages/editor/build-module/components/media-placeholder/index.js:45
+#: packages/editor/build-module/components/media-placeholder/index.js:44
 msgid "Paste or type URL"
 msgstr ""
 
@@ -2334,13 +2459,16 @@ msgstr ""
 msgid "Remove image"
 msgstr ""
 
+#: packages/editor/build-module/components/post-featured-image/index.js:66
+msgid "Edit or update the image"
+msgstr ""
+
 #: packages/editor/build-module/components/post-format/index.js:22
 msgid "Aside"
 msgstr ""
 
 #: packages/editor/build-module/components/post-format/index.js:28
-#: packages/editor/build-module/components/rich-text/format-toolbar/index.js:165
-#: packages/editor/build-module/components/rich-text/formatting-controls.js:20
+#: packages/format-library/build-module/link/index.js:126
 msgid "Link"
 msgstr ""
 
@@ -2360,7 +2488,7 @@ msgstr ""
 msgid "Post Format"
 msgstr ""
 
-#: packages/editor/build-module/components/post-format/index.js:88
+#: packages/editor/build-module/components/post-format/index.js:89
 #: packages/editor/build-module/components/post-publish-panel/maybe-post-format-panel.js:36
 #: packages/editor/build-module/components/post-publish-panel/maybe-tags-panel.js:24
 msgid "Suggestion:"
@@ -2452,7 +2580,11 @@ msgstr ""
 msgid "Allow Pingbacks & Trackbacks"
 msgstr ""
 
-#: packages/editor/build-module/components/post-preview-button/index.js:126
+#: packages/editor/build-module/components/post-preview-button/index.js:124
+msgid "Generating preview…"
+msgstr ""
+
+#: packages/editor/build-module/components/post-preview-button/index.js:140
 msgid ""
 "Click “Preview” to load a preview of this page, so you can make sure you’re "
 "happy with your blocks."
@@ -2482,20 +2614,20 @@ msgstr ""
 msgid "Schedule"
 msgstr ""
 
-#: packages/editor/build-module/components/post-publish-panel/index.js:108
-msgid "Scheduled"
-msgstr ""
-
-#: packages/editor/build-module/components/post-publish-panel/index.js:108
-msgid "Published"
-msgstr ""
-
-#: packages/editor/build-module/components/post-publish-panel/index.js:112
+#: packages/editor/build-module/components/post-publish-panel/index.js:104
 msgid "Close panel"
 msgstr ""
 
-#: packages/editor/build-module/components/post-publish-panel/index.js:118
+#: packages/editor/build-module/components/post-publish-panel/index.js:110
 msgid "Always show pre-publish checks."
+msgstr ""
+
+#: packages/editor/build-module/components/post-publish-panel/index.js:91
+msgid "Scheduled"
+msgstr ""
+
+#: packages/editor/build-module/components/post-publish-panel/index.js:91
+msgid "Published"
 msgstr ""
 
 #: packages/editor/build-module/components/post-publish-panel/maybe-post-format-panel.js:39
@@ -2558,7 +2690,7 @@ msgid "Are you ready to schedule?"
 msgstr ""
 
 #: packages/editor/build-module/components/post-publish-panel/prepublish.js:37
-msgid "Your post will be published at the specified date and time."
+msgid "Your work will be published at the specified date and time."
 msgstr ""
 
 #: packages/editor/build-module/components/post-publish-panel/prepublish.js:39
@@ -2566,7 +2698,7 @@ msgid "Are you ready to publish?"
 msgstr ""
 
 #: packages/editor/build-module/components/post-publish-panel/prepublish.js:40
-msgid "Double-check your settings, then use the button to publish your post."
+msgid "Double-check your settings before publishing."
 msgstr ""
 
 #: packages/editor/build-module/components/post-publish-panel/prepublish.js:47
@@ -2577,15 +2709,15 @@ msgstr ""
 msgid "Publish:"
 msgstr ""
 
-#: packages/editor/build-module/components/post-publish-panel/toggle.js:51
+#: packages/editor/build-module/components/post-publish-panel/toggle.js:28
 msgid "Schedule…"
 msgstr ""
 
-#: packages/editor/build-module/components/post-publish-panel/toggle.js:51
+#: packages/editor/build-module/components/post-publish-panel/toggle.js:28
 msgid "Publish…"
 msgstr ""
 
-#: packages/editor/build-module/components/post-publish-panel/toggle.js:53
+#: packages/editor/build-module/components/post-publish-panel/toggle.js:30
 msgid ""
 "Finished writing? That’s great, let’s get this published right now. Just "
 "click “Publish” and you’re good to go."
@@ -2611,7 +2743,7 @@ msgstr ""
 msgid "Saving"
 msgstr ""
 
-#: packages/editor/build-module/components/post-schedule/label.js:11
+#: packages/editor/build-module/components/post-schedule/label.js:13
 msgid "Immediately"
 msgstr ""
 
@@ -2648,12 +2780,6 @@ msgstr ""
 msgid "Term"
 msgstr ""
 
-#: packages/editor/build-module/components/post-taxonomies/hierarchical-term-selector.js:353
-msgid "%d result found."
-msgid_plural "%d results found."
-msgstr[0] ""
-msgstr[1] ""
-
 #: packages/editor/build-module/components/post-taxonomies/hierarchical-term-selector.js:444
 msgid "Add new category"
 msgstr ""
@@ -2674,7 +2800,7 @@ msgstr ""
 msgid "Terms"
 msgstr ""
 
-#: packages/editor/build-module/components/post-title/index.js:153
+#: packages/editor/build-module/components/post-title/index.js:154
 msgid "Add title"
 msgstr ""
 
@@ -2724,32 +2850,14 @@ msgstr ""
 msgid "Visible to everyone."
 msgstr ""
 
-#: packages/editor/build-module/components/rich-text/core-tokens/image/index.js:16
-msgid "Inline Image"
+#: packages/editor/build-module/components/provider/index.js:48
+msgid ""
+"There is an autosave of this post that is more recent than the version "
+"below."
 msgstr ""
 
-#: packages/editor/build-module/components/rich-text/format-toolbar/index.js:165
-msgid "Unlink"
-msgstr ""
-
-#: packages/editor/build-module/components/rich-text/format-toolbar/link-container.js:212
-msgid "Link added."
-msgstr ""
-
-#: packages/editor/build-module/components/rich-text/formatting-controls.js:14
-msgid "Italic"
-msgstr ""
-
-#: packages/editor/build-module/components/rich-text/formatting-controls.js:27
-msgid "Strikethrough"
-msgstr ""
-
-#: packages/editor/build-module/components/rich-text/formatting-controls.js:8
-msgid "Bold"
-msgstr ""
-
-#: packages/editor/build-module/components/rich-text/tokens/ui/index.js:98
-msgid "Inline Elements"
+#: packages/editor/build-module/components/provider/index.js:51
+msgid "View the autosave"
 msgstr ""
 
 #: packages/editor/build-module/components/skip-to-selected-block/index.js:28
@@ -2804,7 +2912,7 @@ msgstr ""
 msgid "Reset the template"
 msgstr ""
 
-#: packages/editor/build-module/components/unsaved-changes-warning/index.js:71
+#: packages/editor/build-module/components/unsaved-changes-warning/index.js:54
 msgid "You have unsaved changes. If you proceed, they will be lost."
 msgstr ""
 
@@ -2880,65 +2988,43 @@ msgstr ""
 msgid "Very dark gray"
 msgstr ""
 
-#: packages/editor/build-module/store/defaults.js:69
-msgid "Small"
-msgstr ""
-
-#: packages/editor/build-module/store/defaults.js:77
-msgid "Medium"
-msgstr ""
-
-#: packages/editor/build-module/store/defaults.js:85
-msgid "Huge"
-msgstr ""
-
-#: packages/editor/build-module/store/effects.js:174
-msgid ""
-"There is an autosave of this post that is more recent than the version "
-"below."
-msgstr ""
-
-#: packages/editor/build-module/store/effects.js:178
-msgid "View the autosave"
-msgstr ""
-
-#: packages/editor/build-module/store/effects/posts.js:280
+#: packages/editor/build-module/store/effects/posts.js:287
 msgid "Publishing failed"
 msgstr ""
 
-#: packages/editor/build-module/store/effects/posts.js:281
+#: packages/editor/build-module/store/effects/posts.js:288
 msgid "Scheduling failed"
 msgstr ""
 
-#: packages/editor/build-module/store/effects/posts.js:283
+#: packages/editor/build-module/store/effects/posts.js:290
 msgid "Updating failed"
 msgstr ""
 
-#: packages/editor/build-module/store/effects/posts.js:290
+#: packages/editor/build-module/store/effects/posts.js:296
 msgid "Cloudflare is blocking REST API requests."
 msgstr ""
 
-#: packages/editor/build-module/store/effects/posts.js:292
+#: packages/editor/build-module/store/effects/posts.js:298
 msgid "Learn More"
 msgstr ""
 
-#: packages/editor/build-module/store/effects/posts.js:369
+#: packages/editor/build-module/store/effects/posts.js:381
 msgid "Trashing failed"
 msgstr ""
 
-#: packages/editor/build-module/store/effects/reusable-blocks.js:185
+#: packages/editor/build-module/store/effects/reusable-blocks.js:189
 msgid "Block created."
 msgstr ""
 
-#: packages/editor/build-module/store/effects/reusable-blocks.js:185
+#: packages/editor/build-module/store/effects/reusable-blocks.js:189
 msgid "Block updated."
 msgstr ""
 
-#: packages/editor/build-module/store/effects/reusable-blocks.js:296
+#: packages/editor/build-module/store/effects/reusable-blocks.js:299
 msgid "Block deleted."
 msgstr ""
 
-#: packages/editor/build-module/store/effects/reusable-blocks.js:389
+#: packages/editor/build-module/store/effects/reusable-blocks.js:391
 msgid "Untitled Reusable Block"
 msgstr ""
 
@@ -2959,28 +3045,65 @@ msgid "This file is empty."
 msgstr ""
 
 # %s: file name
-#: packages/editor/build-module/utils/media-upload/media-upload.js:188
+#: packages/editor/build-module/utils/media-upload/media-upload.js:183
 msgid "Error while uploading file %s to the media library."
 msgstr ""
 
-#: packages/keycodes/build-module/index.js:145
+#: packages/format-library/build-module/bold/index.js:34
+msgid "Bold"
+msgstr ""
+
+#: packages/format-library/build-module/image/index.js:22
+msgid "media"
+msgstr ""
+
+#: packages/format-library/build-module/image/index.js:81
+msgid "Inline Image"
+msgstr ""
+
+#: packages/format-library/build-module/italic/index.js:34
+msgid "Italic"
+msgstr ""
+
+#: packages/format-library/build-module/link/index.js:118
+msgid "Unlink"
+msgstr ""
+
+#: packages/format-library/build-module/link/index.js:89
+msgid "Link removed."
+msgstr ""
+
+#: packages/format-library/build-module/link/inline.js:216
+msgid "Link edited."
+msgstr ""
+
+#: packages/format-library/build-module/link/inline.js:218
+msgid "Link added."
+msgstr ""
+
+# accessibility label for external links, where the argument is the link text
+#: packages/format-library/build-module/link/inline.js:52
+msgid "%s (opens in a new tab)"
+msgstr ""
+
+#: packages/format-library/build-module/strikethrough/index.js:34
+msgid "Strikethrough"
+msgstr ""
+
+#: packages/keycodes/build-module/index.js:148
 msgid "Comma"
 msgstr ""
 
-#: packages/keycodes/build-module/index.js:145
+#: packages/keycodes/build-module/index.js:148
 msgid "Period"
 msgstr ""
 
-#: packages/keycodes/build-module/index.js:145
+#: packages/keycodes/build-module/index.js:148
 msgid "Backtick"
 msgstr ""
 
 #: packages/list-reusable-blocks/build-module/components/import-dropdown/index.js:32
 msgid "Import from JSON"
-msgstr ""
-
-#: packages/list-reusable-blocks/build-module/components/import-form/index.js:135
-msgid "Import"
 msgstr ""
 
 #: packages/list-reusable-blocks/build-module/components/import-form/index.js:91
@@ -2999,26 +3122,72 @@ msgstr ""
 msgid "Reusable block imported successfully!"
 msgstr ""
 
-#: packages/nux/build-module/components/dot-tip/index.js:42
+#: packages/nux/build-module/components/dot-tip/index.js:43
 msgid "Gutenberg tips"
 msgstr ""
 
-#: packages/nux/build-module/components/dot-tip/index.js:47
+#: packages/nux/build-module/components/dot-tip/index.js:48
 msgid "See next tip"
 msgstr ""
 
-#: packages/nux/build-module/components/dot-tip/index.js:47
+#: packages/nux/build-module/components/dot-tip/index.js:48
 msgid "Got it"
 msgstr ""
 
-#: packages/nux/build-module/components/dot-tip/index.js:50
+#: packages/nux/build-module/components/dot-tip/index.js:51
 msgid "Disable tips"
 msgstr ""
 
+#: packages/block-library/build-module/button/index.js:82
+msgctxt "block style"
+msgid "Rounded"
+msgstr ""
+
+#: packages/block-library/build-module/button/index.js:89
+msgctxt "block style"
+msgid "Squared"
+msgstr ""
+
+#: packages/block-library/build-module/pullquote/index.js:66
+#: packages/block-library/build-module/quote/index.js:56
+#: packages/block-library/build-module/table/index.js:101
+msgctxt "block style"
+msgid "Regular"
+msgstr ""
+
+#: packages/block-library/build-module/quote/index.js:60
+msgctxt "block style"
+msgid "Large"
+msgstr ""
+
 #: packages/block-library/build-module/classic/edit.js:151
-#: packages/edit-post/build-module/components/header/more-menu/index.js:29
 msgctxt "button to expand options"
 msgid "More"
+msgstr ""
+
+#: packages/block-library/build-module/classic/index.js:16
+msgctxt "block title"
+msgid "Classic"
+msgstr ""
+
+#: packages/block-library/build-module/embed/index.js:17
+msgctxt "block title"
+msgid "Embed"
+msgstr ""
+
+#: packages/block-library/build-module/embed/edit.js:366
+msgctxt "button label"
+msgid "Embed"
+msgstr ""
+
+#: packages/block-library/build-module/file/index.js:71
+msgctxt "button label"
+msgid "Download"
+msgstr ""
+
+#: packages/list-reusable-blocks/build-module/components/import-form/index.js:135
+msgctxt "button label"
+msgid "Import"
 msgstr ""
 
 #: packages/block-library/build-module/more/index.js:22
@@ -3031,9 +3200,40 @@ msgctxt "editor button"
 msgid "Left to right"
 msgstr ""
 
-#: packages/components/src/font-size-picker/index.js:56
+#: packages/components/build-module/date-time/index.js:76
+msgctxt "keyboard button"
+msgid "Enter"
+msgstr ""
+
+#: packages/components/build-module/font-size-picker/index.js:65
+#: packages/editor/build-module/store/defaults.js:73
+msgctxt "font size name"
+msgid "Normal"
+msgstr ""
+
+#: packages/components/build-module/font-size-picker/index.js:65
 msgctxt "font size name"
 msgid "Custom"
+msgstr ""
+
+#: packages/editor/build-module/store/defaults.js:69
+msgctxt "font size name"
+msgid "Small"
+msgstr ""
+
+#: packages/editor/build-module/store/defaults.js:77
+msgctxt "font size name"
+msgid "Medium"
+msgstr ""
+
+#: packages/editor/build-module/store/defaults.js:81
+msgctxt "font size name"
+msgid "Large"
+msgstr ""
+
+#: packages/editor/build-module/store/defaults.js:85
+msgctxt "font size name"
+msgid "Huge"
 msgstr ""
 
 #: packages/edit-post/build-module/components/header/writing-menu/index.js:18
@@ -3041,9 +3241,20 @@ msgctxt "noun"
 msgid "View"
 msgstr ""
 
-#: packages/editor/build-module/components/post-preview-button/index.js:124
+# Button to fix block content
+#: packages/editor/build-module/components/block-list/block-invalid-warning.js:93
+msgctxt "imperative verb"
+msgid "Resolve"
+msgstr ""
+
+#: packages/editor/build-module/components/post-preview-button/index.js:138
 msgctxt "imperative verb"
 msgid "Preview"
+msgstr ""
+
+#: packages/editor/build-module/components/inserter/menu.js:326
+msgctxt "blocks"
+msgid "Most Used"
 msgstr ""
 
 #: packages/editor/build-module/components/post-taxonomies/flat-term-selector.js:256

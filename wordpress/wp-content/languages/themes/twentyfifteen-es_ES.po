@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the Themes - Twenty Fifteen package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2018-08-30 18:58:07+0000\n"
+"PO-Revision-Date: 2018-11-06 22:31:16+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -188,7 +188,7 @@ msgstr "sin derivada"
 #: functions.php:230
 msgctxt "Inconsolata font: on or off"
 msgid "on"
-msgstr "activa"
+msgstr "on"
 
 #. Translators: If there are characters in your language that are not supported
 #. by Noto Serif, translate this to 'off'. Do not translate into your own
