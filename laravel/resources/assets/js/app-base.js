@@ -1498,8 +1498,8 @@ function JSmapLaunch(element)
 	var mapContent;
 	var mapTitle = JSlang('$maplaunch-title');
 	var mapText = JSlang('$maplaunch-text');
-	var mapIcon1 = JSmainUrl+"/css/base/maplaunch/google-maps.png";
-	var mapIcon2 = JSmainUrl+"/css/base/maplaunch/waze.png";
+	var mapIcon1 = JSmainUrl+'/img/base/maplaunch/google-maps.png';
+	var mapIcon2 = JSmainUrl+'/img/base/maplaunch/waze.png';
 	var mapCoords1 = $(element).data('map-coords-1').split(',');
 	var mapCoords2 = $(element).data('map-coords-2').split(',');
 	var mapIframe = $(element).data('map-iframe');
