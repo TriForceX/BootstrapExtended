@@ -118,7 +118,7 @@ if ( !defined('ABSPATH') )
 	define('ABSPATH', dirname(__FILE__) . '/');
 
 /** Delete database dir if is not local enviroment **/
-if ( !$localhost && is_dir('wp-bd'))
+if ( !$localhost && is_dir('wp-bd') )
 {
 	foreach(glob('wp-bd/{,.}*', GLOB_BRACE) as $filename)
 	{
