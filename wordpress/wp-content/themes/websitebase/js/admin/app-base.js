@@ -8,7 +8,7 @@ jQuery(document).ready(function(){
 
 /* ================================================= DOCUMENT READY ================================================= */
 	
-	//Lock admin bar buttons
+	// Lock admin bar buttons
 	jQuery('#wpadminbar #wp-admin-bar-site-name > .ab-item').click(function(e){
 		e.preventDefault();
 	});
@@ -16,10 +16,10 @@ jQuery(document).ready(function(){
 		e.preventDefault();
 	});
 	
-	//Replace admin bar buttons
+	// Replace admin bar buttons
 	jQuery('#wpadminbar #wp-admin-bar-view-site').find('a').attr('target','_blank');
 	
-	//Action for custom multiple checkbox control in theme customize
+	// Action for custom multiple checkbox control in theme customize
 	jQuery(document).on('click','.wp-core-ui .customize-control-checkbox-multiple input[type="checkbox"]',function(){
 
 		var checkbox_values = jQuery(this).parents('.customize-control').find('input[type="checkbox"]:checked').map(function(){
@@ -29,7 +29,7 @@ jQuery(document).ready(function(){
 		jQuery(this).parents('.customize-control').find('input[type="hidden"]').val(checkbox_values).trigger('change');
 	});
 	
-	//Action for custom WYSIWIG text control in theme customize
+	// Action for custom WYSIWIG text control in theme customize
 	if(jQuery('.wp-customizer').length > 0)
 	{
 		wp.customizerCtrlEditor = {

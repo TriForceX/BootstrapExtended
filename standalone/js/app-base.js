@@ -1,6 +1,6 @@
 /* ================================================= BASE FUNCTIONS ================================================= */
 
-//Global variables
+// Global variables
 var JSmainUrl = '$global-url';
 var JSisHome = JSexist($('*[data-js-home]'));
 var JSisMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini|BB10|PlayBook|MeeGo/i.test(navigator.userAgent);
@@ -9,7 +9,7 @@ var JShashTagAlignment = ['medium','top'];
 var JShashTagAnimate = true;
 var JSisNav = function(name, version)
 			  {
-					//Check plugin
+					// Check plugin
 					if($.fn.browser !== 'undefined')
 					{
 						var checkData = {
@@ -30,10 +30,10 @@ var JSisNav = function(name, version)
 					}
 			  };
 
-//IE8 Undefined console fix
+// IE8 Undefined console fix
 if (!window.console) console = {log: function() {}};
 
-//IE10 viewport hack for Surface/desktop Windows 8 bug
+// IE10 viewport hack for Surface/desktop Windows 8 bug
 (function(){
   'use strict';
 
@@ -49,22 +49,22 @@ if (!window.console) console = {log: function() {}};
 
 })();
 
-//Check attr function
+// Check attr function
 $.fn.JShasAttr = function(name)
 {  
-	//Dev log
+	// Console Log
 	JSconsole('[JS Function] Has Attr');
 	
 	return this.attr(name) !== undefined;
 };
 
-//Check outer height with padding/margin
+// Check outer height with padding/margin
 $.fn.JSouterHeight = function()
 {
-	//Dev log
+	// Console Log
 	JSconsole('[JS Function] Outer Height');
 	
-	if(!this[0]){ //Check value
+	if(!this[0]){ // Check value
 		return null;
 	}
 	else{
@@ -72,13 +72,13 @@ $.fn.JSouterHeight = function()
 	}
 };
 
-//Check outer width with padding/margin
+// Check outer width with padding/margin
 $.fn.JSouterWidth = function()
 {
-	//Dev log
+	// Console Log
 	JSconsole('[JS Function] Outer Width');
 	
-	if(!this[0]){ //Check value
+	if(!this[0]){ // Check value
 		return null;
 	}
 	else{
@@ -86,10 +86,10 @@ $.fn.JSouterWidth = function()
 	}
 };
 
-//Remove whitespaces between elements
+// Remove whitespaces between elements
 $.fn.JShtmlClean = function()
 {
-	//Dev log
+	// Console Log
 	JSconsole('[JS Function] HTML Clean');
 	
     this.contents().filter(function() {
@@ -105,10 +105,10 @@ $.fn.JShtmlClean = function()
     return this;
 };
 
-//Form validate
+// Form validate
 $.fn.JSvalidateForm = function(options)
 {	
-	//Dev log
+	// Console Log
 	JSconsole('[JS Function] Validate Form');
 	
 	var settings = $.extend({
@@ -128,11 +128,11 @@ $.fn.JSvalidateForm = function(options)
 		var align = settings.modalAlign;
 		var animate = settings.modalAnimate;
 		
-		if(!size || !size.match(/^(small|medium|large|extra-large)$/)){ //Check value
+		if(!size || !size.match(/^(small|medium|large|extra-large)$/)){ // Check value
 			size = 'medium';
 		}
 
-		if(!align || !align.match(/^(top|bottom|left|center|right)$/)){ //Check value
+		if(!align || !align.match(/^(top|bottom|left|center|right)$/)){ // Check value
 			align = 'top';
 		}
 
@@ -227,7 +227,7 @@ $.fn.JSvalidateForm = function(options)
 			}
 		};
 
-		//Select inputs
+		// Select inputs
 		$(this).find('select').not(settings.noValidate).each(function(){
 			if (!JSvalidateEmpty($(this).find('option:selected').attr('value'))) { 
 				if(settings.errorStyling){ $(this).parents('.form-group').addClass('has-error').removeClass('has-success'); }
@@ -238,7 +238,7 @@ $.fn.JSvalidateForm = function(options)
 			}
 		});
 		
-		//Textarea inputs
+		// Textarea inputs
 		$(this).find('textarea').not(settings.noValidate).each(function(){
 			if (!JSvalidateEmpty($.trim($(this).val()))) { 
 				if(settings.errorStyling){ $(this).parents('.form-group').addClass('has-error').removeClass('has-success'); }
@@ -249,7 +249,7 @@ $.fn.JSvalidateForm = function(options)
 			}
 		});
 		
-		//Checkbox & radio group inputs
+		// Checkbox & radio group inputs
 		$(this).find('[data-group="checkbox"], [data-group="radio"]').not(settings.noValidate).each(function(){
 			var type = $(this).data('group');
 			var item = $(this).find('input[type="'+type+'"]');
@@ -269,7 +269,7 @@ $.fn.JSvalidateForm = function(options)
 			}
 		});
 		
-		//Checkbox & radio input addons
+		// Checkbox & radio input addons
 		$(this).find('[data-group="checkbox-addon"], [data-group="radio-addon"]').not(settings.noValidate).each(function(){
 			var type = $(this).data('group').replace(/-addon/g,'');
 			var item = $(this).find('input[type="'+type+'"]');
@@ -291,12 +291,12 @@ $.fn.JSvalidateForm = function(options)
 			}
 		});
 		
-		//Input validation
+		// Input validation
 		$(this).find('.form-group').not('[data-group="checkbox-addon"], [data-group="radio-addon"]').find('input').not(settings.noValidate).each(function(){
 			formInputValidation($(this));
 		});
 		
-		//Custom validation
+		// Custom validation
 		if(settings.customValidate !== null){
 			var CVFunction = settings.customValidate[0];
 			var CVInput = settings.customValidate[1];
@@ -313,13 +313,13 @@ $.fn.JSvalidateForm = function(options)
 			});
 		}
 		
-		//Send error
+		// Send error
 		if(formError !== false)
 		{
-			//Check plugin
+			// Check plugin
 			if(typeof bootbox !== 'undefined')
 			{
-				//Bootbox alert
+				// Bootbox alert
 				bootbox.alert({
 					title: formErrorTitle,
 					message: formError,
@@ -332,16 +332,16 @@ $.fn.JSvalidateForm = function(options)
 			event.preventDefault();
 		}
 		
-		//Check Confirm mode
+		// Check Confirm mode
 		if(settings.hasConfirm && formError === false)
 		{
 			var formElement = $(this);
 			event.preventDefault();
 			
-			//Check plugin
+			// Check plugin
 			if(typeof bootbox !== 'undefined')
 			{
-				//Bootbox alert
+				// Bootbox alert
 				bootbox.confirm({
 					title: formConfirmTitle,
 					message: formConfirmText,
@@ -376,10 +376,10 @@ $.fn.JSvalidateForm = function(options)
 	});
 };
 
-//Form validate email
+// Form validate email
 function JSvalidateEmail(field)
 {
-	//Dev log
+	// Console Log
 	JSconsole('[JS Function] Validate Email');
 	
     var emailReg = /^([\w-\.]+@([\w-]+\.)+[\w-]{2,4})?$/;
@@ -391,10 +391,10 @@ function JSvalidateEmail(field)
     }
 }
 
-//Form validate numbers
+// Form validate numbers
 function JSvalidateNumber(field)
 {
-	//Dev log
+	// Console Log
 	JSconsole('[JS Function] Validate Number');
 	
     var numberReg = /^-?\d+(\.\d+)?$/;
@@ -406,10 +406,10 @@ function JSvalidateNumber(field)
     }
 }
 
-//Form validate empty
+// Form validate empty
 function JSvalidateEmpty(field)
 {
-	//Dev log
+	// Console Log
 	JSconsole('[JS Function] Validate Empty');
 	
     if(!field || /^\s*$/.test(field)){
@@ -420,10 +420,10 @@ function JSvalidateEmpty(field)
     }
 }
 
-//Convert string to boolean
+// Convert string to boolean
 function JStoBoolean(value)
 {
-	//Dev log
+	// Console Log
 	JSconsole('[JS Function] Convert To Boolean');
 	
     var strValue = String(value).toLowerCase();
@@ -434,10 +434,10 @@ function JStoBoolean(value)
     return strValue === 'true' || strValue === '1' ? true : false;
 }
 
-//Get max width between elements
+// Get max width between elements
 function JSgetMaxWidth(elems, getRect)
 {
-	//Dev log
+	// Console Log
 	JSconsole('[JS Function] Get Max Width');
 	
     return Math.max.apply(null, elems.map(function()
@@ -451,10 +451,10 @@ function JSgetMaxWidth(elems, getRect)
     }).get());
 }
 
-//Get max height between elements
+// Get max height between elements
 function JSgetMaxHeight(elems, getRect)
 {
-	//Dev log
+	// Console Log
 	JSconsole('[JS Function] Get Max Height');
 	
     return Math.max.apply(null, elems.map(function()
@@ -468,22 +468,22 @@ function JSgetMaxHeight(elems, getRect)
     }).get());
 }
 
-//Responsive Code
+// Responsive Code
 function JSresponsiveCode()
 {
 	var bodyWidth = document.body.clientWidth; //$(window).width();
 	var bodyHeight = $(window).height();
 	var bodyOrientation = {'landscape'	: bodyWidth > bodyHeight ? true : false,
 					  	   'portrait'	: bodyWidth < bodyHeight ? true : false}; 
-	var bodyScreen = {'xs'	: parseFloat('$screen-xs'), //480
-					  'sm'	: parseFloat('$screen-sm'), //768
-					  'md'	: parseFloat('$screen-md'), //992
-					  'lg'	: parseFloat('$screen-lg'), //1200
-					  'xl'	: parseFloat('$screen-xl')}; //1920
+	var bodyScreen = {'xs'	: parseFloat('$screen-xs'), //480,
+					  'sm'	: parseFloat('$screen-sm'), //768,
+					  'md'	: parseFloat('$screen-md'), //992,
+					  'lg'	: parseFloat('$screen-lg'), //1200,
+					  'xl'	: parseFloat('$screen-xl')}; //1920,
 
 	if(bodyWidth)
 	{
-		//Send data to event
+		// Send data to event
 		$(document).trigger("JSresponsiveCode", [bodyWidth, bodyHeight, bodyOrientation, bodyScreen]);
 	}
 	else
@@ -496,25 +496,25 @@ $(window).bind("load", JSresponsiveCode);
 $(window).bind("resize", JSresponsiveCode);
 $(window).bind("orientationchange", JSresponsiveCode);
 
-//LightGallery destroy function
+// LightGallery destroy function
 function JSdestroyLightGallery()
 {
-	//Dev log
+	// Console Log
 	JSconsole('[JS Function] Destroy Light Gallery');
 	
-	//Check plugin
+	// Check plugin
 	if(typeof $.fn.lightGallery !== 'undefined')
 	{
 		$(".JSlightGallery").lightGallery().data('lightGallery').destroy(true);
 	}
 }
-//Lightgallery load function
+// Lightgallery load function
 function JSloadLightGallery()
 {	
-	//Dev log
+	// Console Log
 	JSconsole('[JS Function] Load Light Gallery');
 	
-	//Check plugin
+	// Check plugin
 	if(typeof $.fn.lightGallery !== 'undefined')
 	{
 		$('.JSlightGallery').each(function(){ 
@@ -591,7 +591,7 @@ function JSloadLightGallery()
 					$('#lg-counter-current').html(currentSlide);
 					$('#lg-counter').removeClass('invisible');
 
-					//Prev & Next Pages
+					// Prev & Next Pages
 					if(galPageCurrent === 1)
 					{
 						$('.lg-outer .lg-thumb .lg-thumb-item:first-child').addClass('invisible');
@@ -608,7 +608,7 @@ function JSloadLightGallery()
 						$('.lg-outer .lg-thumb .lg-thumb-item:last-child').removeClass('invisible');
 					}
 
-					//Prev & Next Controls
+					// Prev & Next Controls
 					if(currentSlide === 1)
 					{
 						$('.lg-actions .lg-prev').addClass('invisible');
@@ -639,12 +639,12 @@ function JSloadLightGallery()
 					$('#lg-counter-current').html(currentSlide);
 					$('#lg-counter').removeClass('invisible');
 
-					//Prev & Next Controls
+					// Prev & Next Controls
 					if(currentSlide === 1)
 					{
 						$('.lg-actions .lg-prev').addClass('invisible');
 						$('.lg-actions .lg-next').removeClass('invisible');
-						//Close
+						// Close
 						if(current === 1)
 						{
 							if(galPageCurrent === 1)
@@ -653,7 +653,7 @@ function JSloadLightGallery()
 							}
 							else
 							{
-								//Redirect
+								// Redirect
 								$('.JSlightGallery').addClass('lightGalleryAuto');
 								$('.JSlightGallery').addClass('lightGalleryAutoPrev');
 							}
@@ -669,7 +669,7 @@ function JSloadLightGallery()
 					{
 						$('.lg-actions .lg-prev').removeClass('invisible');
 						$('.lg-actions .lg-next').addClass('invisible');
-						//Close
+						// Close
 						if(current === total)
 						{
 							if(galPageCurrent === galPageTotal)
@@ -678,7 +678,7 @@ function JSloadLightGallery()
 							}
 							else
 							{
-								//Redirect
+								// Redirect
 								$('.JSlightGallery').addClass('lightGalleryAuto');
 								$('.JSlightGallery').addClass('lightGalleryAutoNext');
 							}
@@ -697,13 +697,13 @@ function JSloadLightGallery()
 					{
 						if($(this).hasClass('lightGalleryAutoNext'))
 						{
-							//Stuff to do on close
-							$(document).trigger('onNextPageChange.lg'); //Send data to event
+							// Stuff to do on close
+							$(document).trigger('onNextPageChange.lg'); // Send data to event
 						}
 						else if($(this).hasClass('lightGalleryAutoPrev'))
 						{
-							//Stuff to do on close
-							$(document).trigger('onPrevPageChange.lg'); //Send data to event
+							// Stuff to do on close
+							$(document).trigger('onPrevPageChange.lg'); // Send data to event
 						}
 						$(this).removeClass('lightGalleryAuto');
 						$(this).removeClass('lightGalleryAutoPrev');
@@ -715,10 +715,10 @@ function JSloadLightGallery()
 	}
 }
 
-//ImgLiquid auto-fill background function
+// ImgLiquid auto-fill background function
 function JSimgFill(container)
 {	
-	//Dev log
+	// Console Log
 	JSconsole('[JS Function] Img Fill');
 	
 	var bgData = new Array();
@@ -729,31 +729,31 @@ function JSimgFill(container)
 	
 	bgData = $(container).data('img-fill').split(' ');
 	
-	//Check hotizontal align
-	if(!bgData[0]){ //Check value
+	// Check hotizontal align
+	if(!bgData[0]){ // Check value
 		bgData[0] = 'center';
 	}
 	
-	//Check vertical align
-	if(!bgData[1]){ //Check value
+	// Check vertical align
+	if(!bgData[1]){ // Check value
 		bgData[1] = 'center';
 	}
 	
-	//Check fill
-	if(!bgData[2]){ //Check value
+	// Check fill
+	if(!bgData[2]){ // Check value
 		bgData[2] = 'true';
 	}
 	
-	//Set variables
+	// Set variables
 	bgHorizontal = bgData[0];
 	bgVertical = bgData[1];
 	bgFill = bgData[2].indexOf('%') >= 0 || bgData[2].indexOf('px') >= 0 || bgData[2] === 'contain' ? false : true;
 	bgFillSize = bgData[2].indexOf('%') >= 0 || bgData[2].indexOf('px') >= 0 ? parseFloat(bgData[2].replace(/\x25|px/g, '')) : false;
 	
-	//Check plugin
+	// Check plugin
 	if($.fn.imgLiquid !== 'undefined')
 	{
-		//Set changes
+		// Set changes
 		$(container).imgLiquid({ 
 			horizontalAlign: bgHorizontal,
 			verticalAlign: bgVertical, 
@@ -761,17 +761,17 @@ function JSimgFill(container)
 		});
 	}
 	
-	//Set alternative fill
+	// Set alternative fill
 	if(bgFillSize)
 	{
 		$(container).css('background-size', (bgFillSize == 100 ? 'cover' : bgData[2]));
 	}
 }
 
-//Get element height changes
+// Get element height changes
 function JSelementHeightChange(elm, callback)
 {
-	//Dev log
+	// Console Log
 	JSconsole('[JS Function] Element Height Change');
 	
 	var lastHeight = $(elm).height(), newHeight;
@@ -790,7 +790,7 @@ function JSelementHeightChange(elm, callback)
 		elm.JSelementHeightChangeTimer = setTimeout(run, 200);
 	})();
 	
-	//Usage
+	// Usage
 	/*if(JSexist($(".container")))
 	{
 		JSelementHeightChange(".container", function(){
@@ -800,10 +800,10 @@ function JSelementHeightChange(elm, callback)
 	}*/
 }
 
-//Text cut function one line
+// Text cut function one line
 function JStextCut(container)
 {	
-	//Dev log
+	// Console Log
 	JSconsole('[JS Function] Text Cut One Line');
 	
 	$(container).each(function(){
@@ -812,10 +812,10 @@ function JStextCut(container)
 	});
 }
 
-//Text cut function multi line
+// Text cut function multi line
 function JStextCutMulti(container)
 {
-	//Dev log
+	// Console Log
 	JSconsole('[JS Function] Text Cut Multi Line');
 	
     var wordArray = container.html().split(' ');
@@ -826,10 +826,10 @@ function JStextCutMulti(container)
 	}
 }
 
-//Text auto size function
+// Text auto size function
 function JStextSize(container)
 {
-	//Dev log
+	// Console Log
 	JSconsole('[JS Function] Text Size');
 	
 	$(container).css('font-size','');
@@ -849,28 +849,28 @@ function JStextSize(container)
 	});
 }
 
-//Show alert modal box using BootBox plugin
+// Show alert modal box using BootBox plugin
 function JSmodalAlert(title, text, size, align, animate)
 {
-	//Dev log
+	// Console Log
 	JSconsole('[JS Function] Modal Alert');
 	
-	if(!size || !size.match(/^(small|medium|large|extra-large)$/)){ //Check value
+	if(!size || !size.match(/^(small|medium|large|extra-large)$/)){ // Check value
 		size = 'medium';
 	}
 	
-	if(!align || !align.match(/^(top|bottom|left|center|right)$/)){ //Check value
+	if(!align || !align.match(/^(top|bottom|left|center|right)$/)){ // Check value
 		align = 'top';
 	}
 	
-	if(!animate && animate != false){ //Check value
+	if(!animate && animate != false){ // Check value
 		animate = true;
 	}
 	
-	//Check plugin
+	// Check plugin
 	if(typeof bootbox !== 'undefined')
 	{
-		//Bootbox alert
+		// Bootbox alert
 		bootbox.alert({
 			title: title,
 			message: text,
@@ -882,28 +882,28 @@ function JSmodalAlert(title, text, size, align, animate)
 	}
 }
 
-//Show alert modal box using BootBox plugin (Content)
+// Show alert modal box using BootBox plugin (Content)
 function JSmodalContent(title, element, size, align, animate)
 {
-	//Dev log
+	// Console Log
 	JSconsole('[JS Function] Modal Content');
 	
-	if(!size || !size.match(/^(small|medium|large|extra-large)$/)){ //Check value
+	if(!size || !size.match(/^(small|medium|large|extra-large)$/)){ // Check value
 		size = 'medium';
 	}
 	
-	if(!align || !align.match(/^(top|bottom|left|center|right)$/)){ //Check value
+	if(!align || !align.match(/^(top|bottom|left|center|right)$/)){ // Check value
 		align = 'top';
 	}
 	
-	if(!animate && animate != false){ //Check value
+	if(!animate && animate != false){ // Check value
 		animate = true;
 	}
 	
-	//Check plugin
+	// Check plugin
 	if(typeof bootbox !== 'undefined')
 	{
-		//Bootbox alert
+		// Bootbox alert
 		bootbox.alert({
 			title: title,
 			message: $(element).html(),
@@ -915,25 +915,25 @@ function JSmodalContent(title, element, size, align, animate)
 	}
 }
 
-//Show alert modal box using BootBox plugin (Ajax)
+// Show alert modal box using BootBox plugin (Ajax)
 function JSmodalAjax(title, url, loading, size, align, animate)
 {
-	//Dev log
+	// Console Log
 	JSconsole('[JS Function] Modal Ajax');
 	
-	if(!size || !size.match(/^(small|medium|large|extra-large)$/)){ //Check value
+	if(!size || !size.match(/^(small|medium|large|extra-large)$/)){ // Check value
 		size = 'medium';
 	}
 	
-	if(!align || !align.match(/^(top|bottom|left|center|right)$/)){ //Check value
+	if(!align || !align.match(/^(top|bottom|left|center|right)$/)){ // Check value
 		align = 'top';
 	}
 	
-	if(!animate && animate != false){ //Check value
+	if(!animate && animate != false){ // Check value
 		animate = true;
 	}
 	
-	if(!loading){ //Check value
+	if(!loading){ // Check value
 		loading = false;
 	}
 	
@@ -942,22 +942,20 @@ function JSmodalAjax(title, url, loading, size, align, animate)
 		type: 'GET', 
 		dataType: 'html',
 		beforeSend: function(){
-			//Loading
-			JSconsole('JSmodalAjax Loading ...');
-			
-			//Show loading colored icon
+			// Loading
+			JSconsole('[JS Function] Modal Ajax Loading ...');
+			// Show loading colored icon
 			if(loading){
 				$("body").append("<div class='JSloading "+loading+"'></div>");
 			}
 		},
 		success: function(data){  
-			//Loaded
-			JSconsole("JSmodalAjax Loaded!");
-			
-			//Check plugin
+			// Loaded
+			JSconsole("[JS Function] Modal Ajax Loaded!");
+			// Check plugin
 			if(typeof bootbox !== 'undefined')
 			{
-				//Bootbox alert
+				// Bootbox alert
 				bootbox.alert({
 					title: title,
 					message: data,
@@ -973,12 +971,14 @@ function JSmodalAjax(title, url, loading, size, align, animate)
 			}
 		},
 		error: function(xhr, status, error){
-			//Error
-			JSconsole("JSmodalAjax Error! ("+xhr.status+")");
-				
+			//Error Text
+			var text = "";
+			//Check
 			if(!(xhr.responseText === undefined || xhr.responseText === null || xhr.responseText == '')){
-				JSconsole("---------------\n"+xhr.responseText);
+				text = "\n---------------\n"+xhr.responseText;
 			}
+			//Error log
+			JSconsole("[JS Function] Modal Ajax Error! ("+xhr.status+")"+text);
 			//Remove loading icon
 			if(loading){
 				$(".JSloading").remove();
@@ -987,10 +987,10 @@ function JSmodalAjax(title, url, loading, size, align, animate)
 	});
 }
 
-//YouTube get ID from URL
+// YouTube get ID from URL
 function JSyouTubeParser(url)
 {
-	//Dev log
+	// Console Log
 	JSconsole('[JS Function] YouTube URL Parser');
 	
     var regExp = /^.*((youtu.be\/)|(v\/)|(\/u\/\w\/)|(embed\/)|(watch\?))\??v?=?([^#\&\?]*).*/;
@@ -1005,10 +1005,10 @@ function JSyouTubeParser(url)
 	// http://www.youtube.com/watch?v=0zM3nApSvMg
 	// http://youtu.be/0zM3nApSvMg
 }
-//Vimemo get ID from URL
+// Vimemo get ID from URL
 function JSvimeoParser(url)
 {
-	//Dev log
+	// Console Log
 	JSconsole('[JS Function] Vimeo URL Parser');
 	
     var regExp = /^.*(vimeo\.com\/)((channels\/[A-z]+\/)|(groups\/[A-z]+\/videos\/))?([0-9]+)/;
@@ -1020,33 +1020,33 @@ function JSvimeoParser(url)
 	// http://vimeo.com/groups/*/videos/*
 }
 
-//Video launch modal box function
+// Video launch modal box function
 function JSvideoLaunch(title, url, share, autoplay, size, align, animate)
 {	
-	//Dev log
+	// Console Log
 	JSconsole('[JS Function] Video Launch');
 	
-	if(!title){ //Check value
+	if(!title){ // Check value
 		title = false;
 	}
 	
-	if(!size || !size.match(/^(small|medium|large|extra-large)$/)){ //Check value
+	if(!size || !size.match(/^(small|medium|large|extra-large)$/)){ // Check value
 		size = 'medium';
 	}
 	
-	if(!align || !align.match(/^(top|bottom|left|center|right)$/)){ //Check value
+	if(!align || !align.match(/^(top|bottom|left|center|right)$/)){ // Check value
 		align = 'top';
 	}
 	
-	if(!animate && animate != false){ //Check value
+	if(!animate && animate != false){ // Check value
 		animate = true;
 	}
 	
-	if(!share){ //Check value
+	if(!share){ // Check value
 		share = false;
 	}
 	
-	if(!autoplay){ //Check value
+	if(!autoplay){ // Check value
 		autoplay = false;
 	}
 	
@@ -1081,7 +1081,7 @@ function JSvideoLaunch(title, url, share, autoplay, size, align, animate)
 		embedUrl = 'https://www.facebook.com/plugins/video.php?href='+url+'&show_text=0'+embedAutoPlay;
 		embedShare = url;
 	}
-	else{ //Only ID will take YouTube as default
+	else{ // Only ID will take YouTube as default
 		ID = url;
 		if(autoplay){
 			embedAutoPlay = '&autoplay=1';
@@ -1102,7 +1102,7 @@ function JSvideoLaunch(title, url, share, autoplay, size, align, animate)
 							'</a>';
 	}
 	
-	//Check plugin
+	// Check plugin
 	if(typeof bootbox !== 'undefined')
 	{
 		bootbox.alert({
@@ -1113,7 +1113,7 @@ function JSvideoLaunch(title, url, share, autoplay, size, align, animate)
 			className: (animate == 'alternative' ? 'fade-2 '+align : align),
 			animate: (animate == 'alternative' ? true : animate),
 		}).on("shown.bs.modal", function(){
-			//Modify facebook src
+			// Modify facebook src
 			if (url.indexOf('facebook') >= 0){
 				var JSvideoLaunchIframeSRC = $(".JSvideoLaunchIframe iframe").attr("src");
 				var JSvideoLaunchIframeSRCwidth = $(".JSvideoLaunchIframe iframe").width();
@@ -1123,17 +1123,17 @@ function JSvideoLaunch(title, url, share, autoplay, size, align, animate)
 		});
 	}
 
-	//Tooltip load
+	// Tooltip load
 	$('.JSvideoLaunchText').tooltip({
 		title: embedShareText,
 		placement: 'bottom',
 		trigger: 'manual',
 	});
 
-	//Check plugin
+	// Check plugin
 	if(typeof ClipboardJS !== 'undefined')
 	{
-		//Clipboard
+		// Clipboard
 		var clipboard = new ClipboardJS('.JSvideoLaunchURL');
 
 		clipboard.on('success', function(){
@@ -1152,40 +1152,40 @@ function JSvideoLaunch(title, url, share, autoplay, size, align, animate)
 	}
 }
 
-//Capitalize first function
+// Capitalize first function
 function JScapitalizeFirst(string)
 {
-	//Dev log
+	// Console Log
 	JSconsole('[JS Function] Capitalize First');
 	
     return string.charAt(0).toUpperCase() + string.slice(1);
 }
 
-//Convert to slug function
+// Convert to slug function
 function JStoSlug(string)
 {
-	//Dev log
+	// Console Log
 	JSconsole('[JS Function] Convert To Slug');
 	
 	return string.toLowerCase().replace(/[^\w ]+/g,'').replace(/ +/g,'-');
 }
 
-//Auto scroll function
+// Auto scroll function
 function JSautoScroll(element, animated, distance)
 {
-	//Dev log
+	// Console Log
 	JSconsole('[JS Function] Auto Scroll');
 	
 	var target = $(element);
 	
-	if(!animated){ //Check value
+	if(!animated){ // Check value
 		animated = $(element).data('scroll-animated') < 500 ? 500 : $(element).data('scroll-animated');
 	}
 	else{
 		animated = animated < 500 ? 500 : animated;
 	}
 	
-	if(!distance){ //Check value
+	if(!distance){ // Check value
 		distance = $(element).data('scroll-distance') ? $(element).data('scroll-distance') : 0;
 	}
 
@@ -1197,39 +1197,39 @@ function JSautoScroll(element, animated, distance)
     }
 }
 
-//Disable right click menu
+// Disable right click menu
 function JSdisabledClick(element, title, message, size, align, animate)
 {
-	//Dev log
+	// Console Log
 	JSconsole('[JS Function] Check Disabled Click');
 	
-	if(!title){ //Check value
+	if(!title){ // Check value
 		title = false;
 	}
 	
-	if(!message){ //Check value
+	if(!message){ // Check value
 		message = false;
 	}
 	
-	if(!size || !size.match(/^(small|medium|large|extra-large)$/)){ //Check value
+	if(!size || !size.match(/^(small|medium|large|extra-large)$/)){ // Check value
 		size = 'medium';
 	}
 	
-	if(!align || !align.match(/^(top|bottom|left|center|right)$/)){ //Check value
+	if(!align || !align.match(/^(top|bottom|left|center|right)$/)){ // Check value
 		align = 'top';
 	}
 	
-	if(!animate && animate != false){ //Check value
+	if(!animate && animate != false){ // Check value
 		animate = true;
 	}
 	
 	$(document).on('contextmenu', element, function(e){
 		if(title && message)
 		{
-			//Check plugin
+			// Check plugin
 			if(typeof bootbox !== 'undefined')
 			{
-				//Bootbox alert
+				// Bootbox alert
 				bootbox.alert({
 					title: title,
 					message: message,
@@ -1244,10 +1244,10 @@ function JSdisabledClick(element, title, message, size, align, animate)
 	});
 }
 
-//Get URL parameter from URL (PHP $_GET like)
+// Get URL parameter from URL (PHP $_GET like)
 function JSgetUrlParameter(sParam)
 {
-	//Dev log
+	// Console Log
 	JSconsole('[JS Function] Get URL Parameter');
 	
 	var sPageURL = decodeURIComponent(window.location.search.substring(1)),
@@ -1263,16 +1263,15 @@ function JSgetUrlParameter(sParam)
 		}
 	}
 }
-//Get URL parameter from Script SRC (PHP $_GET like)
+// Get URL parameter from Script SRC (PHP $_GET like)
 function JSgetSrcParameter(sParam)
 {
-	//Dev log
+	// Console Log
 	JSconsole('[JS Function] Get Source Parameter');
 	
 	var scripts = document.getElementsByTagName('script');
 	var index = scripts.length - 1;
 	var myScript = scripts[index];
-	// myScript now contains our script object
 	var queryString = myScript.src.replace(/^[^\?]+\??/,'');
 
 	var sPageURL = queryString,
@@ -1289,33 +1288,33 @@ function JSgetSrcParameter(sParam)
 	}
 }
 
-//Convert strings to links function
+// Convert strings to links function
 function JSlinkify(inputText)
 {
-	//Dev log
+	// Console Log
 	JSconsole('[JS Function] Linkify');
 	
     var replacedText, replacePattern1, replacePattern2, replacePattern3;
 
-    //URLs starting with http://, https://, or ftp://
+    // URLs starting with http://, https://, or ftp://
     replacePattern1 = /(\b(https?|ftp):\/\/[-A-Z0-9+&@#\/%?=~_|!:,.;]*[-A-Z0-9+&@#\/%=~_|])/gim;
     replacedText = inputText.replace(replacePattern1, '<a href="$1" target="_blank">$1</a>');
 
-    //URLs starting with "www." (without // before it, or itd re-link the ones done above).
+    // URLs starting with "www." (without // before it, or itd re-link the ones done above).
     replacePattern2 = /(^|[^\/])(www\.[\S]+(\b|$))/gim;
     replacedText = replacedText.replace(replacePattern2, '$1<a href="http://$2" target="_blank">$2</a>');
 
-    //Change email addresses to mailto:: links.
+    // Change email addresses to mailto:: links.
     replacePattern3 = /(([a-zA-Z0-9\-\_\.])+@[a-zA-Z\_]+?(\.[a-zA-Z]{2,6})+)/gim;
     replacedText = replacedText.replace(replacePattern3, '<a href="mailto:$1">$1</a>');
 
     return replacedText;
 }
 
-//Remove HTML tags function
+// Remove HTML tags function
 function JSstripTags(container, items)
 {
-	//Dev log
+	// Console Log
 	JSconsole('[JS Function] Strip Tags');
 	
 	container.find("*").not(items).each(function() {
@@ -1323,10 +1322,10 @@ function JSstripTags(container, items)
 	});
 }
 
-//Check hasthag disabled links function
+// Check hasthag disabled links function
 function JShashTag(string)
 {	
-	//Dev log
+	// Console Log
 	JSconsole('[JS Function] Check Hash Tag');
 	
 	var textUrl = string;
@@ -1335,37 +1334,37 @@ function JShashTag(string)
 	var align = JShashTagAlignment[1];
 	var animate = JShashTagAnimate;
 	
-	if(!size || !size.match(/^(small|medium|large|extra-large)$/)){ //Check value
+	if(!size || !size.match(/^(small|medium|large|extra-large)$/)){ // Check value
 		size = 'medium';
 	}
 	
-	if(!align || !align.match(/^(top|bottom|left|center|right)$/)){ //Check value
+	if(!align || !align.match(/^(top|bottom|left|center|right)$/)){ // Check value
 		align = 'top';
 	}
 	
-	if(!animate && animate != false){ //Check value
+	if(!animate && animate != false){ // Check value
 		animate = true;
 	}
 	
-	//Exception 1
+	// Exception 1
 	for (var i = exceptions.length - 1; i >= 0; --i){
 		if (textUrl.indexOf(exceptions[i]) != -1){
 			return true;
 		}
 	}
 
-	//Exception 2
+	// Exception 2
 	if(textUrl == '#' || !textUrl.split('#')[1]){
 		return false;
 	}
 	else{
 		if(textUrl.indexOf(window.location.host) <= 0){
-			//Show alert
+			// Show alert
 			var section = textUrl.split('#')[1].replace(/-/g,' ');
-			//Check plugin
+			// Check plugin
 			if(typeof bootbox !== 'undefined')
 			{
-				//Bootbox alert
+				// Bootbox alert
 				bootbox.alert({
 					title: section,
 					message: JSlang('$disabled-text'),
@@ -1383,25 +1382,25 @@ function JShashTag(string)
 	}
 }
 
-//Window pop-up function
+// Window pop-up function
 function JSwindowPopup(element, errortitle, errormsg)
 {	
-	//Dev log
+	// Console Log
 	JSconsole('[JS Function] Window Pop-Up');
 	
 	var size = $(element).data('win-modal-size');
 	var align = $(element).data('win-modal-align');
 	var animate = $(element).data('win-modal-animate');
 	
-	if(!size || !size.match(/^(small|medium|large|extra-large)$/)){ //Check value
+	if(!size || !size.match(/^(small|medium|large|extra-large)$/)){ // Check value
 		size = 'medium';
 	}
 	
-	if(!align || !align.match(/^(top|bottom|left|center|right)$/)){ //Check value
+	if(!align || !align.match(/^(top|bottom|left|center|right)$/)){ // Check value
 		align = 'top';
 	}
 	
-	if(!animate && animate != false){ //Check value
+	if(!animate && animate != false){ // Check value
 		animate = true;
 	}
 	
@@ -1412,15 +1411,15 @@ function JSwindowPopup(element, errortitle, errormsg)
 	var getAlign = $(element).data('win-align').split(',');
 	var getScroll = $(element).data('win-scroll');
 	
-	if(!errortitle){ //Check value
+	if(!errortitle){ // Check value
 		errortitle = JSlang('$winpopup-title');
 	}
 	
-	if(!errormsg){ //Check value
+	if(!errormsg){ // Check value
 		errormsg = JSlang('$winpopup-text');
 	}
 	
-	//Horizontal Align
+	// Horizontal Align
 	if(getAlign[0] === 'right'){
 		leftPosition = window.screen.width;
 	}
@@ -1428,10 +1427,10 @@ function JSwindowPopup(element, errortitle, errormsg)
 		leftPosition = 0;
 	}
 	else{
-		leftPosition = (window.screen.width / 2) - ((getSize[0] / 2) + 10); //Allow for borders.
+		leftPosition = (window.screen.width / 2) - ((getSize[0] / 2) + 10); // Allow for borders.
 	}
 
-	//Vertical Align
+	// Vertical Align
 	if(getAlign[1] === 'top'){
 		topPosition = 0;
 	}
@@ -1439,10 +1438,10 @@ function JSwindowPopup(element, errortitle, errormsg)
 		topPosition = window.screen.height;
 	}
 	else{
-		topPosition = (window.screen.height / 2) - ((getSize[1] / 2) + 50); //Allow for title and status bars.
+		topPosition = (window.screen.height / 2) - ((getSize[1] / 2) + 50); // Allow for title and status bars.
 	}
 	
-    //Open the window.
+    // Open the window.
 	var newWin = window.open(getUrl,"WindowPopupJS","status=no,"+
 									"width="+getSize[0]+","+
 									"height="+getSize[1]+","+
@@ -1459,10 +1458,10 @@ function JSwindowPopup(element, errortitle, errormsg)
 	
 	if(!newWin || newWin.closed || typeof newWin.closed == 'undefined') 
 	{
-		//Check plugin
+		// Check plugin
 		if(typeof bootbox !== 'undefined')
 		{
-			//Bootbox alert
+			// Bootbox alert
 			bootbox.alert({
 				title: errortitle,
 				message: errormsg,
@@ -1475,25 +1474,25 @@ function JSwindowPopup(element, errortitle, errormsg)
 	}
 }
 
-//Map launch function
+// Map launch function
 function JSmapLaunch(element)
 {	
-	//Dev log
+	// Console Log
 	JSconsole('[JS Function] Map Launch');
 	
 	var size = $(element).data('map-modal-size');
 	var align = $(element).data('map-modal-align');
 	var animate = $(element).data('map-modal-animate');
 	
-	if(!size || !size.match(/^(small|medium|large|extra-large)$/)){ //Check value
+	if(!size || !size.match(/^(small|medium|large|extra-large)$/)){ // Check value
 		size = 'medium';
 	}
 	
-	if(!align || !align.match(/^(top|bottom|left|center|right)$/)){ //Check value
+	if(!align || !align.match(/^(top|bottom|left|center|right)$/)){ // Check value
 		align = 'top';
 	}
 	
-	if(!animate && animate != false){ //Check value
+	if(!animate && animate != false){ // Check value
 		animate = true;
 	}
 	
@@ -1512,7 +1511,7 @@ function JSmapLaunch(element)
 	var mapLaunchUrl2 = JSisMobile ? 'waze://?ll='+mapCoords2[0]+','+mapCoords2[1]+'&navigate=yes' : 
 										   'https://www.waze.com/livemap?zoom='+mapCoords2[2]+'&lat='+mapCoords2[0]+'&lon='+mapCoords2[1];
 	
-	if(mapIframe === undefined || mapIframe === null || mapIframe == ''){  //Check value
+	if(mapIframe === undefined || mapIframe === null || mapIframe == ''){  // Check value
 		mapIframe = false;
 	}
 	
@@ -1545,10 +1544,10 @@ function JSmapLaunch(element)
 						'	</div>'+
 						'</div>';
 	
-	//Check plugin
+	// Check plugin
 	if(typeof bootbox !== 'undefined')
 	{
-		//Bootbox alert
+		// Bootbox alert
 		bootbox.alert({
 			title: mapTitle,
 			message: mapIframe == false ? mapContentStyle1 : mapContentStyle2,
@@ -1560,10 +1559,10 @@ function JSmapLaunch(element)
 	}
 }
 
-//Paginator group
+// Paginator group
 function JSpaginator(container)
 {
-	//Dev log
+	// Console Log
 	JSconsole('[JS Function] Paginator');
 	
 	$(container).each(function(){ 
@@ -1591,10 +1590,10 @@ function JSpaginator(container)
 	});
 }
 
-//Paint & clean table
+// Paint & clean table
 function JSpaintTable(container)
 {
-	//Dev log
+	// Console Log
 	JSconsole('[JS Function] Paint Table');
 	
 	var paintCleanTable = container.data('paint-clean-table');
@@ -1610,21 +1609,21 @@ function JSpaintTable(container)
 	var getHeader = paintHeader ? paintHeaderAlt ? ':first-child, :nth-child(2)' : ':first-child' : '';
 	
 	container.find('table').each(function(){
-		//Clean table
+		// Clean table
 		$(this).attr('width','0');
 		$(this).attr('border','0');
 		$(this).attr('cellpadding','0');
 		$(this).attr('cellspacing','0');
 		if(paintCleanTable){ $(this).removeAttr('style'); }
 
-		//Clean cells
+		// Clean cells
 		$(this).find('tr, td, th').css('width','');
 		$(this).find('tr, td, th').css('height','');
 		$(this).find('tr, td, th').removeAttr('width');
 		$(this).find('tr, td, th').removeAttr('height');
 		if(paintCleanCell){ $(this).find('tr, td, th').removeAttr('style'); }
 		
-		//Fill empty cells
+		// Fill empty cells
 		if(paintEmpty)
 		{
 			$(this).find('tr').not(getHeader).find('td').each(function(){
@@ -1645,7 +1644,7 @@ function JSpaintTable(container)
 			});
 		}
 
-		//Paint groups
+		// Paint groups
 		if(paintGroup)
 		{
 			if(paintGroup == '1')
@@ -1673,7 +1672,7 @@ function JSpaintTable(container)
 	});
 }
 
-//Custom href function
+// Custom href function
 function JShref(element)
 {
 	element.each(function(){
@@ -1690,13 +1689,13 @@ function JShref(element)
 	});
 }
 
-//Custom Masonry function
+// Custom Masonry function
 function JSmasonry(element)
 {
-	//Dev log
+	// Console Log
 	JSconsole('[JS Function] Masonry');
 	
-	//Check plugin
+	// Check plugin
 	if(typeof imagesLoaded !== 'undefined')
 	{
 		element.imagesLoaded(function(){
@@ -1705,7 +1704,7 @@ function JSmasonry(element)
 			var origin = element.data('masonry-origin-left') ? element.data('masonry-origin-left') : true;
 			var order = element.data('masonry-horizontal-order') ? element.data('masonry-horizontal-order') : false;
 
-			//Check plugin
+			// Check plugin
 			if(typeof Masonry !== 'undefined')
 			{
 				if(typeof element.masonry() !== 'undefined')
@@ -1724,28 +1723,28 @@ function JSmasonry(element)
 	}
 }
 
-//Main Initialization
+// Main Initialization
 function JSmainInit()
 {
-	//Dev log
+	// Console Log
 	JSconsole('[JS Function] Main Init');
 	
-	//Tooltip load
+	// Tooltip load
 	$('*[data-toggle="tooltip"]').tooltip({ trigger: 'hover' });
 	
-	//Popover load
+	// Popover load
 	$('*[data-toggle="popover"]').popover();
 	
-	//Load LightGallery
+	// Load LightGallery
 	if(JSexist($('.JSlightGallery')))
 	{
 		JSloadLightGallery();
 	}
 	
-	//Check plugin
+	// Check plugin
 	if($.fn.swipe !== 'undefined')
 	{
-		//Touch swipe Bootstrap carousel
+		// Touch swipe Bootstrap carousel
 		$('*[data-ride="carousel"]').swipe({
 			swipe:function(event, direction, distance, duration, fingerCount, fingerData){
 					if(direction === 'right'){
@@ -1759,10 +1758,10 @@ function JSmainInit()
 		});
 	}
 	
-	//Check plugin
+	// Check plugin
 	if($.fn.dataTable !== 'undefined' || $.fn.DataTable !== 'undefined')
 	{
-		//Applu Data Tables
+		// Applu Data Tables
 		$('.JSdataTables').each(function(){
 			$(this).dataTable().fnDestroy();
 			$(this).DataTable({
@@ -1774,50 +1773,50 @@ function JSmainInit()
 		});
 	}
 	
-	//Check plugin
+	// Check plugin
 	if($.fn.timepicker !== 'undefined')
 	{
-		//Show on focus
+		// Show on focus
 		$(document).on('focusin', '.timepicker input', function(e){
 			$(this).timepicker('showWidget');
 		});
 	}
 	
-	//Apply Image Fill
+	// Apply Image Fill
 	$('.JSimgFill').each(function(){
 		JSimgFill($(this));
 	});
 	
-	//Apply Paginator
+	// Apply Paginator
 	$('.JSpaginator').each(function(){
 		JSpaginator($(this));
 	});
 	
-	//Apply Paint Table
+	// Apply Paint Table
 	$('.JSpaintTable').each(function(){
 		JSpaintTable($(this));
 	});
 	
-	//Apply Auto Scroll
+	// Apply Auto Scroll
 	$('.JSautoScroll').each(function(){
 		JSautoScroll($(this));
 	});
 	
-	//Apply Masonry
+	// Apply Masonry
 	$('.JSmasonry').each(function(){
 		JSmasonry($(this));
 	});
 	
-	//Apply Text Cut
+	// Apply Text Cut
 	$('.JStextCut').each(function(){
 		var target = $(this).data('text-cut') ? $(this).data('text-cut') : $(this);
 		JStextCut(target);
 	});
 	
-	//Check plugin
+	// Check plugin
 	if($.fn.rotate !== 'undefined')
 	{
-		//Apply Rotation
+		// Apply Rotation
 		$(".JSrotate").each(function(){
 			$(this).rotate({
 				angle: $(this).data('rotate-angle')
@@ -1826,7 +1825,7 @@ function JSmainInit()
 		});
 	}
 	
-	//Workarround for Holder JS in IE8
+	// Workarround for Holder JS in IE8
 	if(JSisNav('ie','8'))
 	{
 		$('img[data-src*="holder.js"]').each(function(){
@@ -1889,38 +1888,38 @@ $(document).ready(function(){
 
 /* ================================================= BASE DOCUMENT READY ================================================= */
 	
-	//Dev log
+	// Console Log
 	JSconsole('[JS State] Document Ready');
 	
-	//Disable button auto-focus
+	// Disable button auto-focus
 	$(document).on('shown.bs.modal', function(){
 		$('.modal .modal-footer .btn:focus').blur();
 		$('.modal').scrollTop(0);
 	});
 	
-	//Window Popup click
+	// Window Popup click
 	$(document).on('click', '.JSwindowPopup', function(){
 		JSwindowPopup($(this));
 	});
 	
-	//Map Launch click
+	// Map Launch click
 	$(document).on('click', '.JSmapLaunch', function(){
 		JSmapLaunch($(this));
 	});
 	
-	//Href Click
+	// Href Click
 	$(document).on('click', '.JShref', function(){
 		JShref($(this));
 	});
 	
-	//Check map launch alert
+	// Check map launch alert
 	$(document).on('click', '.JSmapLaunchAlert', function(e){
 		if (JSisMobile && !confirm(JSlang('$maplaunch-alert'))){
 		  e.preventDefault();
 		}
     });
 	
-	//Modal on disabled links
+	// Modal on disabled links
 	if(JSexist($('*[data-js-hashtag]')))
 	{
 		$(document).on("click", "a[href*=\\#]", function(e){
@@ -1931,14 +1930,14 @@ $(document).ready(function(){
 		});
 	}
 	
-	//Custom file input change
+	// Custom file input change
 	$(document).on('change', '.form-group .custom-file input[type="file"]', function(){
 		var placeholder = $(this).JShasAttr('placeholder') ? $(this).attr('placeholder') : '';
 		var filename = $(this)[0].files.length ? $(this)[0].files[0].name : placeholder;
 		$(this).parent().find('.custom-file-text > span').html(filename);
 	});
 	
-	//Check form reset
+	// Check form reset
 	$(document).on('click', 'form *[type="reset"]', function(e){
 		$(this).parents('form').find('.form-group').removeClass('has-error');
 		$(this).parents('form').find('.form-group').removeClass('has-warning');
@@ -1951,10 +1950,10 @@ $(document).ready(function(){
 		});
     });
 	
-	//Load responsive code
+	// Load responsive code
 	JSresponsiveCode();
 	
-	//Launch main functions
+	// Launch main functions
 	JSmainInit();
 	
 /* ================================================= BASE DOCUMENT READY ================================================= */
@@ -1965,7 +1964,7 @@ $(window).bind('load', function(){
 
 /* ================================================= BASE WINDOWS LOAD ================================================= */
 	
-	//Dev log
+	// Console Log
 	JSconsole('[JS State] Window Load');
 	
 /* ================================================= BASE WINDOWS LOAD ================================================= */
@@ -1976,15 +1975,15 @@ $(document).on("JSresponsiveCode", function(event, bodyWidth, bodyHeight, bodyOr
 
 /* ================================================= BASE RESPONSIVE CODE ================================================= */
 	
-	//Dev log
+	// Console Log
 	JSconsole('[JS State] Responsive Code');
 	
-	//Apply Text Size
+	// Apply Text Size
 	$('.JStextSize').each(function(){
 		JStextSize($(this));
 	});
 	
-	//Apply Text Cut Multiline
+	// Apply Text Cut Multiline
 	$('.JStextCutMulti').each(function(){
 		JStextCutMulti($(this));
 	});
@@ -1997,10 +1996,10 @@ $(document).ajaxStart(function(){
 
 /* ================================================= BASE AJAX START ================================================= */
 	
-	//Dev log
+	// Console Log
 	JSconsole('[JS State] Ajax Start');
 	
-	//Destroy LightGallery
+	// Destroy LightGallery
 	if(JSexist($('.JSlightGallery')))
 	{
 		JSdestroyLightGallery();
@@ -2014,10 +2013,10 @@ $(document).ajaxComplete(function(){
 
 /* ================================================= BASE AJAX COMPLETE ================================================= */
 	
-	//Dev log
+	// Console Log
 	JSconsole('[JS State] Ajax Complete');
 	
-	//Launch main functions
+	// Launch main functions
 	JSmainInit();
 	
 /* ================================================= BASE AJAX COMPLETE ================================================= */

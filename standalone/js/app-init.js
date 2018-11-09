@@ -1,12 +1,12 @@
 /* ================================================= BASE DEVELOPER ================================================= */
 
-//Check element existance
+// Check element existance
 function JSexist(elem)
 {
 	return elem.length > 0;
 }
 
-//Custom console log (developer mode)
+// Custom console log
 function JSconsole(data)
 {
 	if(!(JSexist($('*[data-js-console="false"]'))))
@@ -26,10 +26,10 @@ function JSconsole(data)
 
 /* ================================================= BASE LANGUAGE ================================================= */
 
-//Define language by default
+// Define language by default
 var JSmainLang = $('body').data('js-lang');
 var JSlanguage = {
-				//Form validation
+				// Form validation
 				'$validate-title': {
 					en: 'Form Alert',
 					es: 'Alerta Formulario',
@@ -86,7 +86,7 @@ var JSlanguage = {
 					en: 'Are you sure you want to send the previous info?',
 					es: '¿Estas seguro de que deseas enviar el formulario?',
 				},
-				//Video launch
+				// Video launch
 				'$videolaunch-title': {
 					en: 'Share Link',
 					es: 'Compartir Enlace',
@@ -95,7 +95,7 @@ var JSlanguage = {
 					en: 'Share link has been copied!',
 					es: '¡El enlace ha sido copiado!',
 				},
-				//Map launch
+				// Map launch
 				'$maplaunch-title': {
 					en: 'Map Select',
 					es: 'Mapa Dirección',
@@ -108,7 +108,7 @@ var JSlanguage = {
 					en: 'We remind you that you must have this app installed on your device. Do you want to continue?',
 					es: 'Le recordamos que debe tener esta aplicación instalada en su dispositivo. ¿Desea continuar?',
 				},
-				//Lightgallery
+				// Lightgallery
 				'$lgtitle-prev-text': {
 					en: 'Loading previous page ...',
 					es: 'Cargando página anterior ...',
@@ -129,12 +129,12 @@ var JSlanguage = {
 					en: 'Closing ...',
 					es: 'Cerrando ...',
 				},
-				//Check disabled
+				// Check disabled
 				'$disabled-text': {
 					en: 'This content is currently disabled.',
 					es: 'Este contenido esta deshabilitado por el momento.',
 				},
-				//Window popup error
+				// Window popup error
 				'$winpopup-title': {
 					en: 'Pop-up Blocked!',
 					es: 'Pop-up Bloqueado!',
@@ -145,15 +145,15 @@ var JSlanguage = {
 				},
 			};
 
-//Set default language
-if(JSmainLang === undefined || JSmainLang === null || JSmainLang == ''){ //Check value
+// Set default language
+if(JSmainLang === undefined || JSmainLang === null || JSmainLang == ''){ // Check value
 	JSmainLang = 'en';
 }
 
-//Parse language strings
+// Parse language strings
 function JSlang(string)
 {
-	//Dev log
+	// Console Log
 	JSconsole('[JS Function] Get Language');
 	
 	var text = JSlanguage[string][JSmainLang];

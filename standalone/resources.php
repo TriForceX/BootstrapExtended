@@ -8,9 +8,9 @@
  * 
  */
 		
-//Main Website Base Data
+// Main Website Base Data
 define('websitebase', serialize(array(
-	//Fields
+	// Fields
 	'lang' 				=> 'en-US',
 	'charset' 			=> 'UTF-8',
 	'title' 			=> 'Website Base',
@@ -39,16 +39,16 @@ define('websitebase', serialize(array(
 								 /*'$color-custom-3'	=> '#FFFFFF',*/),
 )));
 
-//Set Website Base Data
+// Set Website Base Data
 $websitebase = unserialize(constant('websitebase'));
 
-//Get the main PHP utilities
+// Get the main PHP utilities
 require_once('resources/php/utilities.php');
 
-//Enable main PHP utilities
+// Enable main PHP utilities
 class php extends utilities\php { }
 
-//Rebuild CSS & JS redirect clean
+// Rebuild CSS & JS redirect clean
 if(isset($_GET['rebuild']) && $_GET['rebuild'] == $websitebase['rebuild_pass'])
 {
 	header('Expires: Tue, 01 Jan 2000 00:00:00 GMT');

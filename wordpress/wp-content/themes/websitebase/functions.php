@@ -1,6 +1,6 @@
 <?php
 
-//Get the main PHP utilities
+// Get the main PHP utilities
 require_once('resources.php');
 
 /*
@@ -70,7 +70,7 @@ add_action('admin_bar_menu', 'remove_from_adminbar', 999);
 /*
 function remove_dashboard_widgets() 
 {
-	//General
+	// General
 	remove_action( 'welcome_panel', 'wp_welcome_panel' );
 	remove_meta_box( 'dashboard_right_now', 'dashboard', 'normal' );   // Right Now
 	remove_meta_box( 'dashboard_recent_comments', 'dashboard', 'normal' ); // Recent Comments
@@ -80,14 +80,14 @@ function remove_dashboard_widgets()
 	remove_meta_box( 'dashboard_recent_drafts', 'dashboard', 'side' );  // Recent Drafts
 	remove_meta_box( 'dashboard_primary', 'dashboard', 'side' );   // WordPress blog
 	remove_meta_box( 'dashboard_secondary', 'dashboard', 'side' );   // Other WordPress News
-	remove_meta_box( 'dashboard_activity', 'dashboard', 'normal' ); //Activity
+	remove_meta_box( 'dashboard_activity', 'dashboard', 'normal' ); // Activity
 	
-	//Example by user role: Remove 'Simple History' Plugin widget
+	// Example by user role: Remove 'Simple History' Plugin widget
 	if(!current_user_can('administrator')){
 		remove_meta_box('simple_history_dashboard_widget', 'dashboard', 'normal'); 
 	}
 	
-	//Example by user role: Remove 'Simple History' Plugin widget
+	// Example by user role: Remove 'Simple History' Plugin widget
 	if($user && isset($user->user_login) && 'user' == $user->user_login){
 		remove_meta_box('simple_history_dashboard_widget', 'dashboard', 'normal'); 
 	}
@@ -123,7 +123,7 @@ add_filter('pre_get_posts', 'custom_posts_per_page');
  * Usage: get_theme_mod2('slug');
  */
 /*
-//Customize Theme Text Field
+// Customize Theme Text Field
 $customize_theme_fields['field-text'] = array(
 	'panel'		=>	'',
 	'type'		=>	'text',
@@ -222,7 +222,7 @@ $customize_theme_fields['field-select'] = array(
  * Usage: Add the slug as a value of 'panel' in a $customize_theme_fields
  */
 /*
-//Customize Theme Panel
+// Customize Theme Panel
 $customize_theme_panels['custom-panel-1'] = array(
 	'priority'       => 10,
 	'capability'     => 'edit_theme_options',
@@ -256,7 +256,7 @@ add_action('init', 'register_custom_menus');
 /*
 function custom_widgets_init()
 {
-	//Sidebar
+	// Sidebar
 	register_sidebar(array(
 		'name'          => 'Custom Sidebar 1',
 		'id'            => 'custom-sidebar-1',
@@ -267,7 +267,7 @@ function custom_widgets_init()
 		'after_title'   => '</h2>',
 	));
 	
-	//Widget
+	// Widget
 	register_widget('custom_widget_1');
 }
 add_action('widgets_init', 'custom_widgets_init');
@@ -282,7 +282,7 @@ class custom_widget_1 extends WP_Widget
 {
 	function custom_widget_1()
 	{
-		//process widget
+		// Process widget
 		$widget_options = array(
 			'classname'=> 'custom_widget_1_classname',
 			'description'=> 'A custom widget 1.',
@@ -291,7 +291,7 @@ class custom_widget_1 extends WP_Widget
 	}
 	function form($instance)
 	{
-		//show widget form in admin panel
+		// Show widget form in admin panel
 		$default_settings = array(
 			'title' => 'Custom Boxes',
 			'cwbox_box_1'=>'',
@@ -327,7 +327,7 @@ class custom_widget_1 extends WP_Widget
 	}
 	function update($new_instance, $old_instance)
 	{
-		//update widget settings
+		// Update widget settings
 		$instance = $old_instance;
 		$instance['title'] = strip_tags($new_instance['title']);
 		$instance['cwbox_box_1'] = $new_instance['cwbox_box_1'];
@@ -339,7 +339,7 @@ class custom_widget_1 extends WP_Widget
 	}
 	function widget($args, $instance)
 	{
-		//display widget
+		// Display widget
 		extract($args);
 
 		echo $before_widget;
@@ -370,7 +370,7 @@ class custom_widget_1 extends WP_Widget
 /*
 function custom_capability()
 {
-	//Role add
+	// Role add
 	$role1 = get_role('editor');
 	$role1Perms = array('posts');
 	
@@ -389,12 +389,12 @@ function custom_capability()
 		$role1->add_cap('manage_categories_'.$role1Perm); 	
 	}
 	
-	//Individual add
+	// Individual add
 	if(!$role1->has_cap('edit_theme_options')){
 		$role1->add_cap('edit_theme_options'); 
 	}
 	
-	//Individual remove
+	// Individual remove
 	if($role1->has_cap('edit_theme_options')){
 		$role1->remove_cap('edit_theme_options'); 
 	}
@@ -409,15 +409,15 @@ add_action('admin_init', 'custom_capability');
 /*
 function hide_menu_items() 
 { 
-	//Remove Posts for everyone
-	remove_menu_page('edit.php'); //Posts
+	// Remove Posts for everyone
+	remove_menu_page('edit.php'); // Posts
 	
-	//Remove Tools for non administrator
+	// Remove Tools for non administrator
 	if(!current_user_can('administrator')){
-		remove_menu_page('tools.php'); //Tools
+		remove_menu_page('tools.php'); // Tools
 	}
 	
-	//Add theme options for editors
+	// Add theme options for editors
 	if(current_user_can('editor'))
 	{
 		remove_submenu_page( 'themes.php', 'themes.php' ); // hide the theme selection submenu
@@ -480,7 +480,7 @@ add_filter('excerpt_more', 'custom_excerpt_more');
 /*
 function filter_site_upload_size_limit($size)
 {
-	//Set the upload size limit to 10 MB for users lacking the 'manage_options' capability.
+	// Set the upload size limit to 10 MB for users lacking the 'manage_options' capability.
     $size = 1024 * 1100; // 1 MB.
     return $size;
 }
@@ -636,7 +636,6 @@ function hide_items_css()
 	global $typenow;
 
 	echo "<style>";
-	
 		if("page" == $typenow)
 		{
 			echo "#pageparentdiv,"; 
@@ -714,7 +713,7 @@ function create_custom_taxonomy_1()
 	$tax_item = 'Taxonomy Item';
 	$tax_slug = 'custom-taxonomy-1';
 	$tax_post_type = array('custom-post-type-1');
-	$tax_args = array('hierarchical'      => true, //false = NOT hierarchical (like tags)
+	$tax_args = array('hierarchical'      => true, // false = NOT hierarchical (like tags)
 					  'labels'            => array('name'              => _x($tax_title, 'taxonomy general name', 'websitebase'),
 												   'singular_name'     => _x($tax_item, 'taxonomy singular name', 'websitebase'),
 												   'menu_name'         => __($tax_title, 'websitebase'),

@@ -4,7 +4,7 @@ namespace utilities;
 
 /*
  * PHP Functions Utilities
- * Version 2.0
+ * Version 3.0
  * TriForce - Matías Silva
  * 
  * Site:     https://dev.gznetwork.com/websitebase
@@ -14,15 +14,15 @@ namespace utilities;
 
 class php
 {
-	//Main header data
+	// Main header data
 	public static function get_html_data($type)
     {
-		//Main data
+		// Main data
 		$websitebase = unserialize(constant('websitebase'));
 		return $websitebase[$type]; 
 	}
 	
-	//CSS, JS & HTML Minifier
+	// CSS, JS & HTML Minifier
 	public static function minify_code($type, $input)
 	{
 		switch($type)
@@ -153,7 +153,7 @@ class php
 		
 	}
 	
-	//Get extra code section
+	// Get extra code section
 	public static $section_code = array();
 
 	public static function section($name, $type)
@@ -172,10 +172,10 @@ class php
 		}
 	}
 	
-	//Build CSS & JS template files
+	// Build CSS & JS template files
 	public static function build_template($type, $minify = true, $mix = true, $url)
 	{
-		//Main data
+		// Main data
 		$websitebase = unserialize(constant('websitebase'));
 		
 		$info = '/*
@@ -191,7 +191,7 @@ class php
 		$final = $type == 'css' ? 'style.css' : 'app.js';
 		$buffer = null;
 		
-		//Defaults
+		// Defaults
 		$data['file'] = $type == 'css' ? array('css/style-base.css',
 											   'css/style-bootstrap.css',
 											   'css/style-theme.css') :
@@ -266,10 +266,10 @@ class php
 		}
 	}
 	
-	//Get main CSS & JS files
+	// Get main CSS & JS files
 	public static function get_template($type, $url)
     {
-		//Main data
+		// Main data
 		$websitebase = unserialize(constant('websitebase'));
 		
 		$local = str_replace('resources/php', '', dirname( __FILE__ ));
@@ -339,49 +339,49 @@ class php
 		}
 	}
 	
-    //Check if a string starts with the given string.
+    // Check if a string starts with the given string.
     public static function starts_with($string, $starts_with)
     {
         return strpos($string, $starts_with) === 0;
     }
 
-    //Check if a string ends with the given string.
+    // Check if a string ends with the given string.
     public static function ends_with($string, $ends_with)
     {
         return substr($string, -strlen($ends_with)) === $ends_with;
     }
 
-    //Check if a string contains another string.
+    // Check if a string contains another string.
     public static function str_contains($haystack, $needle)
     {
         return strpos($haystack, $needle) !== false;
     }
 
-    //Check if a string contains another string. This version is case insensitive.
+    // Check if a string contains another string. This version is case insensitive.
     public static function str_icontains($haystack, $needle)
     {
         return stripos($haystack, $needle) !== false;
     }
 	
-	//Check if a string is different with another.
+	// Check if a string is different with another.
     public static function str_compare($first, $second)
     {
         return strcmp($first, $second) !== 0;
     }
 	
-	//Check if a string is different with another. This version is case insensitive.
+	// Check if a string is different with another. This version is case insensitive.
     public static function str_icompare($first, $second)
     {
         return strcasecmp($first, $second) !== 0;
     }
 
-    //Strip all witespaces from the given string.
+    // Strip all witespaces from the given string.
     public static function strip_space($string)
     {
         return preg_replace('/\s+/', '', $string);
     }
 	
-	//Converts many english words that equate to true or false to boolean.
+	// Converts many english words that equate to true or false to boolean.
     public static function str_to_bool($string, $default = false)
     {
         $yes_words = 'affirmative|all right|aye|indubitably|most assuredly|ok|of course|okay|sure thing|y|yes+|yea|yep|sure|yeah|true|t|on|1|oui|vrai';
@@ -395,7 +395,7 @@ class php
         return $default;
     }
 	
-	//Converts all accent characters to normal characters
+	// Converts all accent characters to normal characters
     public static function remove_accents($string)
     {
 		$unwanted_array = array('Š'=>'S', 'š'=>'s', 'Ž'=>'Z', 'ž'=>'z', 'À'=>'A', 'Á'=>'A', 'Â'=>'A', 'Ã'=>'A', 'Ä'=>'A', 'Å'=>'A', 'Æ'=>'A', 'Ç'=>'C', 'È'=>'E', 'É'=>'E',
@@ -408,7 +408,7 @@ class php
 		return $string;
     }
 
-    //Sanitize a string by performing the following operation 
+    // Sanitize a string by performing the following operation 
     public static function sanitize_string($string)
     {
         $string = self::remove_accents($string);
@@ -419,7 +419,7 @@ class php
         return $string;
     }
     
-	//Convert strings to URL slug type
+	// Convert strings to URL slug type
     public static function slugify($string, $separator = '-', $css_mode = false)
     {
         // Compatibility with 1.0.* parameter ordering for semvar
@@ -443,7 +443,7 @@ class php
         return $slug;
     }
 	
-    //Convert the string to given length of charactes.
+    // Convert the string to given length of charactes.
     public static function limit_characters($string, $limit = 100, $append = '...')
     {
         if (mb_strlen($string) <= $limit){
@@ -452,7 +452,7 @@ class php
         return rtrim(mb_substr($string, 0, $limit, 'UTF-8')) . $append;
     }
 
-    //Convert the string to given length of words.
+    // Convert the string to given length of words.
     public static function limit_words($string, $limit = 100, $append = '...')
     {
         preg_match('/^\s*+(?:\S++\s*+){1,' . $limit . '}/u', $string, $matches);
@@ -463,7 +463,7 @@ class php
         return rtrim($matches[0]).$append;
     }
 	
-	//Check if is the main index page
+	// Check if is the main index page
 	public static function is_home()
 	{
 		$base = self::get_main_url().'/index.php';
@@ -471,7 +471,7 @@ class php
 		return strpos($base,$target);
     }
 	
-	//Check if the current domain is localhost
+	// Check if the current domain is localhost
 	public static function is_localhost($custom = null)
     {
 		$baselist = preg_match('/(::1|127.0.0.|192.168.|localhost)/i', $_SERVER['HTTP_HOST']);
@@ -480,13 +480,13 @@ class php
 		return $baselist || $whitelist ? true : false;
     }
 	
-	//Checks to see if the page is being server over SSL or not
+	// Checks to see if the page is being server over SSL or not
     public static function is_https()
     {
         return isset($_SERVER['HTTPS']) && !empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] != 'off';
     }
 	
-	//Returns the IP address of the client.
+	// Returns the IP address of the client.
     public static function get_client_ip($trust_proxy_headers = false)
     {
         if(!$trust_proxy_headers){
@@ -504,7 +504,7 @@ class php
         return $ip;
     }
 	
-	//Returns main domain also if is in a folder
+	// Returns main domain also if is in a folder
 	public static function get_main_url($remove = null)
     {
 		$protocol = self::is_https() ? 'https://' : 'http://';
@@ -516,7 +516,7 @@ class php
 		return $domain;
     }
 	
-	//Return the current URL.
+	// Return the current URL.
     public static function get_current_url($queryRemove = false)
     {
         $url = '';
@@ -540,8 +540,7 @@ class php
             $url .= '@';
         }
 
-        // We want the user to stay on the same host they are currently on, but beware of security issues
-        // see http://shiflett.org/blog/2006/mar/server-name-versus-http-host
+        // We want the user to stay on the same host they are currently on, but beware of security issues. See http://shiflett.org/blog/2006/mar/server-name-versus-http-host
         $url .= $_SERVER['HTTP_HOST'];
         $port = $_SERVER['SERVER_PORT'];
 
@@ -570,7 +569,7 @@ class php
         return $url;
     }
 	
-	//Access an array index, retrieving the value stored there if it exists or a default if it does not
+	// Access an array index, retrieving the value stored there if it exists or a default if it does not
     public static function array_get(&$var, $default = null)
     {
         if(isset($var)){
@@ -579,7 +578,7 @@ class php
         return $default;
     }
 	
-	//Add or remove query arguments to the URL
+	// Add or remove query arguments to the URL
     public static function add_query_arg($newKey, $newValue = null, $uri = null)
     {
         // Was an associative array of key => value pairs passed?
@@ -619,8 +618,7 @@ class php
             $queryParams = $newParams;
         }
 
-        // Strip out any query params that are set to false.
-        // Properly handle valueless parameters.
+        // Strip out any query params that are set to false. Properly handle valueless parameters.
         foreach($queryParams as $param => $value){
             if($value === false){
                 unset($queryParams[$param]);
@@ -647,7 +645,7 @@ class php
         return rtrim($nuri, '?');
     }
 
-    //Removes an item or list from the query string
+    // Removes an item or list from the query string
     public static function remove_query_arg($keys, $uri = null)
     {
         if(is_array($keys)){
@@ -656,7 +654,7 @@ class php
         return self::add_query_arg(array($keys => false), $uri);
     }
 	
-	//Convert page file name to words
+	// Convert page file name to words
 	public static function get_page_title($separator, $remove = false)
     {
 		$file = $_SERVER['SCRIPT_NAME'];
@@ -669,7 +667,7 @@ class php
 		return $result;
     }
 	
-	//Get custom date format
+	// Get custom date format
 	public static function show_date($date = 'auto', $format = 'Y-m-d', $lang = 'en', $abbr = false)
 	{
 		//Set Website Base Data
@@ -716,7 +714,7 @@ class php
 		return $finalDate;
 	}
 	
-	//Custom paginator
+	// Custom paginator
 	public static function custom_paginator($offset, $limit, $totalnum, $customclass = false, $customLeft = '&laquo;', $customRight = '&laquo;', $append = false, $parentDiv = false, $paginLimit = 12, $paginLimitMobile = 7)
 	{
 		if($append == false){
@@ -781,7 +779,7 @@ class php
 		return;
 	}
 	
-	//Get video embed url
+	// Get video embed url
 	public static function get_embed_video($url,$autoplay = false)
 	{
 		$videoCode = '';
@@ -802,7 +800,7 @@ class php
 		return $videoURL;
 	}
 	
-	//Get video id
+	// Get video id
 	public static function get_video_id($url)
 	{
 		$videoCode = '';
@@ -822,7 +820,7 @@ class php
 		return $videoID;
 	}
 	
-	//Convert string to UTF8
+	// Convert string to UTF8
 	public static function convert_to_utf8($string)
     {
 		// Map based on:
@@ -875,7 +873,7 @@ class php
 		return html_entity_decode(mb_convert_encoding(strtr($string, $map), 'UTF-8', 'ISO-8859-2'), ENT_QUOTES, 'UTF-8');
 	}
 	
-	//Get page code using cUrl
+	// Get page code using cUrl
 	public static function get_page_code($url, $start = null, $end = null, $agent = false)
 	{
 		/*
@@ -922,7 +920,7 @@ class php
 		}
 	}
 	
-	//Get external function
+	// Get external function
 	public static function get_function($name, $params = array())
 	{
 		if(function_exists($name)){
@@ -930,7 +928,7 @@ class php
 		}
 	}
 	
-	//Recursively remove directory
+	// Recursively remove directory
 	public static function remove_dir($dirPath)
 	{
 		if(is_dir($dirPath))

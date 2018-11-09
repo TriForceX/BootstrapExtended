@@ -8,9 +8,9 @@
  * 
  */
 
-//Main Website Base Data
+// Main Website Base Data
 define('websitebase', serialize(array(
-	//Fields
+	// Fields
 	'lang' 				=> get_bloginfo('language'),
 	'charset' 			=> get_option('blog_charset'),
 	'title' 			=> get_option('blogname'),
@@ -39,16 +39,16 @@ define('websitebase', serialize(array(
 								 /*'$color-custom-3'	=> '#FFFFFF',*/),
 )));
 
-//Set Website Base Data
+// Set Website Base Data
 $websitebase = unserialize(constant('websitebase'));
 
-//Get the main PHP utilities
+// Get the main PHP utilities
 require_once('resources/php/utilities.php');
 
-//Enable main PHP utilities
+// Enable main PHP utilities
 class php extends utilities\php { }
 
-//Rebuild CSS & JS redirect clean
+// Rebuild CSS & JS redirect clean
 if(isset($_GET['rebuild']) && $_GET['rebuild'] == $websitebase['rebuild_pass'])
 {
 	header('Expires: Tue, 01 Jan 2000 00:00:00 GMT');
@@ -71,42 +71,42 @@ if(isset($_GET['lastbuild']))
  * 
  */
 
-//Load theme language
+// Load theme language
 load_theme_textdomain('websitebase');
 
-//Prevent .htaccess to be modified by permalink rules
+// Prevent .htaccess to be modified by permalink rules
 add_filter('flush_rewrite_rules_hard','__return_false');
 
-//Custom login logo URL
+// Custom login logo URL
 add_filter('login_headerurl', 'login_logo_url');
 add_filter('login_headertitle', 'login_logo_url');
 
-//Add custom CSS & JS to admin
+// Add custom CSS & JS to admin
 add_action('admin_footer', 'add_custom_admin');
 add_action('login_footer', 'add_custom_admin');
 
-//Disable specific plugin update check 
+// Disable specific plugin update check 
 add_filter('site_transient_update_plugins', 'disable_plugin_updates');
 
-//Custom customize register functions
+// Custom customize register functions
 add_action('customize_register', 'custom_customize_register', 50);
 
-//Set template modifications
+// Set template modifications
 add_action('customize_register', 'custom_theme_settings');
 
-//Add custom CSS & JS to admin
+// Add custom CSS & JS to admin
 if(is_user_logged_in())
 {
 	add_action('wp_footer', 'add_custom_admin');
 }
 
-//Don't execute custom jpg quality if an image resizer is enabled
+// Don't execute custom jpg quality if an image resizer is enabled
 if(!check_plugin('resize-image-after-upload/resize-image-after-upload.php'))
 {
 	add_filter('jpeg_quality', 'custom_jpeg_quality');
 }
 
-//Add custom CSS & JS to admin
+// Add custom CSS & JS to admin
 function add_custom_admin() 
 {
 	echo '<link href="'.get_bloginfo('template_url').'/css/admin/style-base.css" rel="stylesheet">';
@@ -115,13 +115,13 @@ function add_custom_admin()
 	echo '<script src="'.get_bloginfo('template_url').'/js/admin/app-theme.js"></script>';
 }
 
-//Custom login logo URL
+// Custom login logo URL
 function login_logo_url()
 {
     return home_url();
 }
 
-//Get the slug inside post
+// Get the slug inside post
 function get_the_slug($id = null)
 {
 	if(empty($id))
@@ -137,7 +137,7 @@ function get_the_slug($id = null)
 	return $slug;
 }
 
-//Get the id by slug
+// Get the id by slug
 function get_id_by_slug($slug)
 {
 	global $wpdb;
@@ -145,7 +145,7 @@ function get_id_by_slug($slug)
 	return $id;
 }
 
-//Get post_type data (label, name, description, etc...)
+// Get post_type data (label, name, description, etc...)
 function get_post_type_data($type, $name = null)
 {
 	$post_type = empty($name) ? get_query_var('post_type') : $name;
@@ -153,7 +153,7 @@ function get_post_type_data($type, $name = null)
 	return $data->$type;
 }
 
-//Get taxonomy data (term_id, name, slug, term_group, term_taxonomy_id, taxonomy, description, parent, count, etc...)
+// Get taxonomy data (term_id, name, slug, term_group, term_taxonomy_id, taxonomy, description, parent, count, etc...)
 function get_taxonomy_data($type, $taxonomy, $id = null)
 {
 	$post_id = empty($id) ? get_the_ID() : $id;
@@ -169,40 +169,40 @@ function get_taxonomy_data($type, $taxonomy, $id = null)
 	} 
 }
 
-//Featured image
+// Featured image
 function featuredImg($post, $size = 'full')
 {
     $src = wp_get_attachment_image_src( get_post_thumbnail_id($post), $size, false); //$post->ID
     return $src[0];
 }
 
-//Featured image size
+// Featured image size
 function featuredImgSize($post, $prop)
 {
     $src = wp_get_attachment_image_src( get_post_thumbnail_id($post), 'full', false); //$post->ID
     return $prop == 'width' ? $src[1] : $src[2];
 }
 
-//Featured image field
+// Featured image field
 function featuredImgField($post, $field)
 {
     $value = get_post_meta(get_post_thumbnail_id($post), $field, true);
     return $value;
 }
 
-//Small function to check plugin without using is_plugin_active (due to it requires plugin.php)
+// Small function to check plugin without using is_plugin_active (due to it requires plugin.php)
 function check_plugin($plugin)
 {
 	return in_array($plugin, apply_filters('active_plugins', get_option('active_plugins')));
 }
 
-//Custom JPEG quality on upload
+// Custom JPEG quality on upload
 function custom_jpeg_quality()
 {
     return 100;
 }
 
-//Custom general fields
+// Custom general fields
 new new_general_setting();
 
 class new_general_setting 
@@ -259,7 +259,7 @@ class new_general_setting
 	}
 }
 
-//Custom customize register functions
+// Custom customize register functions
 function custom_customize_register($wp_customize)
 {
 	$wp_customize->remove_panel('themes');
@@ -273,10 +273,10 @@ function custom_customize_register($wp_customize)
 	$wp_customize->remove_section('custom_css');
 }
 
-//Set template modifications
+// Set template modifications
 function custom_theme_settings($wp_customize)
 {
-	//Custom panels
+	// Custom panels
 	global $customize_theme_panels;
 	
 	foreach($customize_theme_panels as $key => $value)
@@ -288,7 +288,7 @@ function custom_theme_settings($wp_customize)
 											 'description'    => $value['description']));
 	}
 	
-	//Set custom template control for multiple checkbox
+	// Set custom template control for multiple checkbox
 	class WP_Customize_Checkbox_Multiple_Control extends WP_Customize_Control 
 	{
 		public $type = 'checkbox-multiple';
@@ -330,7 +330,7 @@ function custom_theme_settings($wp_customize)
 		<?php }
 	}
 
-	//Set custom WYSIWIG text editor
+	// Set custom WYSIWIG text editor
 	class WP_Customize_WYSIWIG_Text_Editor_Control extends WP_Customize_Control
 	{
 		public $type = 'wysiwig-text';
@@ -366,7 +366,7 @@ function custom_theme_settings($wp_customize)
 		}
 	}
 	
-	//Custom fields
+	// Custom fields
 	global $customize_theme_fields;
 	
 	foreach ($customize_theme_fields as $key => $value)
@@ -384,7 +384,7 @@ function custom_theme_settings($wp_customize)
 			)
 		);
 
-		//Control type
+		// Control type
 		switch($value['type'])
 		{
 			case 'text':
@@ -460,7 +460,7 @@ function custom_theme_settings($wp_customize)
 	}
 }
 
-//Set template default values
+// Set template default values
 function get_theme_mod2($name)
 {
     global $customize_theme_fields;
@@ -475,14 +475,14 @@ function get_theme_mod2($name)
 	}
 }
 
-//Disable specific plugin update check 
+// Disable specific plugin update check 
 function disable_plugin_updates($value)
 {	
 	$disabledPlugins = array(
-							'advanced-custom-fields-pro/acf.php', //Updated manually
-							'admin-menu-editor-pro/menu-editor.php', //Updated manually (check the comment "//Manual update" in this file before update)
-							'enhaced-contextual-help/enhaced-contextual-help.php', //Updated manually (from https://git.io/fAjsr)
-							'wp-migrate-db-pro/wp-migrate-db-pro.php', //Updated manually (check the comment "//Manual update" oi this file before update)
+							'advanced-custom-fields-pro/acf.php', // Updated manually
+							'admin-menu-editor-pro/menu-editor.php', // Updated manually (check the comment "//Manual update" in this file before update)
+							'enhaced-contextual-help/enhaced-contextual-help.php', // Updated manually (from https://git.io/fAjsr)
+							'wp-migrate-db-pro/wp-migrate-db-pro.php', // Updated manually (check the comment "//Manual update" oi this file before update)
 							//'plugin-folder/plugin.php',
 							//'plugin-folder/plugin.php',
 							);
