@@ -134,7 +134,7 @@ $customize_theme_fields['field-text'] = array(
 );
 */
 /*
-// Customize Theme Text Field
+// Customize Theme Text Area Field
 $customize_theme_fields['field-text-area'] = array(
 	'panel'		=>	'',
 	'type'		=>	'textarea',
