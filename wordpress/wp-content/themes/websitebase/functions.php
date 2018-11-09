@@ -228,7 +228,7 @@ $customize_theme_panels['custom-panel-1'] = array(
 	'capability'     => 'edit_theme_options',
 	'theme_supports' => '',
 	'title'          => 'Custom Panel 1 Title',
-	'description'    => 'Custom Panel 1 Description',
+	'description'    => 'Custom Panel 1 Description'
 );
 */
 
