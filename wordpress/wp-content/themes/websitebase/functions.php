@@ -11,1140 +11,800 @@ require_once('resources.php');
  * 
  */
 
-//Load theme language
-load_theme_textdomain('websitebase');
+/*
+ * Enable post support
+ * Info: https://developer.wordpress.org/reference/functions/add_theme_support
+ */
+/*
+add_theme_support('post-formats');
+add_theme_support('post-thumbnails');
+add_theme_support('html5');
+add_theme_support('custom-logo');
+add_theme_support('custom-header-uploads');
+add_theme_support('custom-header');
+add_theme_support('custom-background');
+add_theme_support('title-tag');
+add_theme_support('starter-content');
+*/
 
-//Add custom CSS & JS to admin
-function add_custom_admin() 
+/* 
+ * Enable post type support
+ * Info: https://developer.wordpress.org/reference/functions/add_theme_support
+ */
+/*
+add_post_type_support('page', 'title');
+add_post_type_support('page', 'editor');
+add_post_type_support('page', 'author');
+add_post_type_support('page', 'thumbnail');
+add_post_type_support('page', 'excerpt');
+add_post_type_support('page', 'trackbacks');
+add_post_type_support('page', 'custom-fields');
+add_post_type_support('page', 'comments');
+add_post_type_support('page', 'revisions');
+add_post_type_support('page', 'page-attributes');
+add_post_type_support('page', 'post-formats');
+*/
+
+/*
+ * Remove items from adminbar
+ * Info: https://codex.wordpress.org/Function_Reference/remove_node
+ */
+/*
+function remove_from_adminbar($wp_admin_bar) 
 {
-	echo '<link href="'.get_bloginfo('template_url').'/css/admin/style-base.css" rel="stylesheet">';
-	echo '<link href="'.get_bloginfo('template_url').'/css/admin/style-theme.css" rel="stylesheet">';
-	echo '<script src="'.get_bloginfo('template_url').'/js/admin/app-base.js"></script>';
-	echo '<script src="'.get_bloginfo('template_url').'/js/admin/app-theme.js"></script>';
+	$wp_admin_bar->remove_node('wp-logo');
+	$wp_admin_bar->remove_node('comments');
+	$wp_admin_bar->remove_node('new-post');
+	$wp_admin_bar->remove_node('new-page');
+	$wp_admin_bar->remove_node('new-media');
+	$wp_admin_bar->remove_node('new-content');
+	$wp_admin_bar->remove_node('archive');
 }
-add_action('admin_footer', 'add_custom_admin');
-add_action('login_footer', 'add_custom_admin');
-if(is_user_logged_in())
+add_action('admin_bar_menu', 'remove_from_adminbar', 999);
+*/
+
+/*
+ * Remove dashboard widgets
+ * Info: https://codex.wordpress.org/Function_Reference/remove_meta_box
+ */
+/*
+function remove_dashboard_widgets() 
 {
-	add_action('wp_footer', 'add_custom_admin');
-}
-
-//Custom login logo URL
-function login_logo_url() {
-    return home_url();
-}
-add_filter('login_headerurl', 'login_logo_url');
-add_filter('login_headertitle', 'login_logo_url');
-
-//Prevent .htaccess to be modified by permalink rules
-add_filter('flush_rewrite_rules_hard','__return_false');
-
-//Get the slug inside post
-function get_the_slug($id = null)
-{
-  if(empty($id)){
-    global $post;
-    if(empty($post)){
-    	return ''; // No global $post var available.
+	//General
+	remove_action( 'welcome_panel', 'wp_welcome_panel' );
+	remove_meta_box( 'dashboard_right_now', 'dashboard', 'normal' );   // Right Now
+	remove_meta_box( 'dashboard_recent_comments', 'dashboard', 'normal' ); // Recent Comments
+	remove_meta_box( 'dashboard_incoming_links', 'dashboard', 'normal' );  // Incoming Links
+	remove_meta_box( 'dashboard_plugins', 'dashboard', 'normal' );   // Plugins
+	remove_meta_box( 'dashboard_quick_press', 'dashboard', 'side' );  // Quick Press
+	remove_meta_box( 'dashboard_recent_drafts', 'dashboard', 'side' );  // Recent Drafts
+	remove_meta_box( 'dashboard_primary', 'dashboard', 'side' );   // WordPress blog
+	remove_meta_box( 'dashboard_secondary', 'dashboard', 'side' );   // Other WordPress News
+	remove_meta_box( 'dashboard_activity', 'dashboard', 'normal' ); //Activity
+	
+	//Example by user role: Remove 'Simple History' Plugin widget
+	if(!current_user_can('administrator')){
+		remove_meta_box('simple_history_dashboard_widget', 'dashboard', 'normal'); 
 	}
-    $id = $post->ID;
-  }
-
-  $slug = basename(get_permalink($id));
-  return $slug;
+	
+	//Example by user role: Remove 'Simple History' Plugin widget
+	if($user && isset($user->user_login) && 'user' == $user->user_login){
+		remove_meta_box('simple_history_dashboard_widget', 'dashboard', 'normal'); 
+	}
 }
+add_action('wp_dashboard_setup', 'remove_dashboard_widgets');
+*/
 
-//Get the id by slug
-function get_id_by_slug($slug)
+/*
+ * Edit custom role capabilities
+ * Info: https://codex.wordpress.org/Function_Reference/add_cap
+ */
+/*
+function custom_capability()
 {
-	global $wpdb;
-	$id = $wpdb->get_var("SELECT ID FROM $wpdb->posts WHERE post_name = '".$slug."'");
-	return $id;
+	//Role add
+	$role1 = get_role('editor');
+	$role1Perms = array('posts');
+	
+	foreach($role1Perms as $rolePerm1)
+	{ 
+		$role1->add_cap('publish_'.$role1Perm); 
+		$role1->add_cap('edit_'.$role1Perm); 
+		$role1->add_cap('delete_'.$role1Perm);
+		$role1->add_cap('edit_published_'.$role1Perm); 
+		$role1->add_cap('delete_published_'.$role1Perm); 
+		$role1->add_cap('edit_others_'.$role1Perm); 
+		$role1->add_cap('delete_others_'.$role1Perm); 
+		$role1->add_cap('read_private_'.$role1Perm); 
+		$role1->add_cap('edit_private_'.$role1Perm);
+		$role1->add_cap('delete_private_'.$role1Perm);
+		$role1->add_cap('manage_categories_'.$role1Perm); 	
+	}
+	
+	//Individual add
+	if(!$role1->has_cap('edit_theme_options')){
+		$role1->add_cap('edit_theme_options'); 
+	}
+	
+	//Individual remove
+	if($role1->has_cap('edit_theme_options')){
+		$role1->remove_cap('edit_theme_options'); 
+	}
 }
+add_action('admin_init', 'custom_capability');
+*/
 
-//Get post_type data (label, name, description, etc...)
-function get_post_type_data($type, $name = null){
-	$post_type = empty($name) ? get_query_var('post_type') : $name;
-	$data = get_post_type_object($post_type);
-	return $data->$type;
+/*
+ * Hide menu items
+ * Info: https://codex.wordpress.org/Function_Reference/remove_menu_page
+ */
+/*
+function hide_menu_items() 
+{ 
+	//Remove Posts for everyone
+	remove_menu_page('edit.php'); //Posts
+	
+	//Remove Tools for non administrator
+	if(!current_user_can('administrator')){
+		remove_menu_page('tools.php'); //Tools
+	}
+	
+	//Add theme options for editors
+	if(current_user_can('editor'))
+	{
+		remove_submenu_page( 'themes.php', 'themes.php' ); // hide the theme selection submenu
+		remove_submenu_page( 'themes.php', 'widgets.php' ); // hide the widgets submenu
+		remove_submenu_page( 'themes.php', 'customize.php' ); // hide the customizer submenu
+		remove_submenu_page( 'themes.php', 'nav-menus.php' ); // hide the widgets submenu
+		remove_submenu_page( 'themes.php', 'theme-editor.php' ); // hide the widgets submenu
+    }
 }
+add_action('admin_menu', 'hide_menu_items');
+*/
 
-//Get taxonomy data (term_id, name, slug, term_group, term_taxonomy_id, taxonomy, description, parent, count, etc...)
-function get_taxonomy_data($type, $taxonomy, $id = null){
-	$post_id = empty($id) ? get_the_ID() : $id;
-	$post_terms = array_reverse(get_terms($taxonomy));
-	$current_terms = wp_get_post_terms($post_id, $taxonomy, array('fields' => 'slugs')); 
-
-	foreach($post_terms as $post_term){
-		if (in_array($post_term->slug, $current_terms)){
-			return $post_term->$type;
-		}
-	} 
-}
-
-//Featured image
-function featuredImg($post, $size = 'full')
+/*
+ * Posts data based on content type
+ * Info: Set post type properties before load, useful to enable paged post type
+ */
+/*
+function custom_posts_per_page($query)
 {
-    $src = wp_get_attachment_image_src( get_post_thumbnail_id($post), $size, false); //$post->ID
-    return $src[0];
+	if(!is_admin())
+	{
+        switch ($query->query_vars['post_type'])
+        {
+            case 'custom_post_type_slug':
+                $query->query_vars['posts_per_page'] = 6;
+                $query->query_vars['order'] = 'DESC';
+                $query->query_vars['orderby'] = 'date';
+                break;
+        }
+        return $query;
+    }
 }
+add_filter('pre_get_posts', 'custom_posts_per_page');
+*/
 
-//Featured image size
-function featuredImgSize($post, $prop)
+/* 
+ * Custom theme mods shortcut
+ * Usage: get_theme_mod2('slug');
+ */
+/*
+//Customize Theme Text Field
+$customize_theme_fields['field-text'] = array(
+	'panel'		=>	'',
+	'type'		=>	'text',
+	'title'		=>	'Field Text Button Title',
+	'desc'		=>	'Field Text Desctription',
+	'label'		=>	'Field Text Label Title',
+	'default'		=>	'Field Text Default Value'
+);
+*/
+/*
+// Customize Theme Text Field
+$customize_theme_fields['field-text-area'] = array(
+	'panel'		=>	'',
+	'type'		=>	'textarea',
+	'title'		=>	'Field Text Area Button Title',
+	'desc'		=>	'Field Text Area Desctription',
+	'label'		=>	'Field Text Area Label Title',
+	'default'	=>	'Field Text Area Default Value'
+);
+*/
+/*
+// Customize Theme Wysiwig Field
+$customize_theme_fields['field-text-wysiwig'] = array(
+	'panel'		=>	'',
+	'type'		=>	'wysiwig',
+	'title'		=>	'Field WYSIWIG Text Button Title',
+	'desc'		=>	'Field WYSIWIG Text Desctription',
+	'label'		=>	'Field WYSIWIG Text Label Title',
+	'default'	=>	'Field WYSIWIG Text Default Value'
+);
+*/
+/*
+// Customize Theme Image Field
+$customize_theme_fields['field-image'] = array(
+	'panel'		=>	'',
+	'type'		=>	'image',
+	'title'		=>	'Field Image Button Title',
+	'desc'		=>	'Field Image Desctription',
+	'label'		=>	'Field Image Label Title',
+	'default'	=>	get_bloginfo('template_url').'/img/base/favicon/global.png'
+);
+*/
+/*
+// Customize Theme File Field
+$customize_theme_fields['field-file'] = array(
+	'panel'		=>	'',
+	'type'		=>	'file',
+	'title'		=>	'Field File Button Title',
+	'desc'		=>	'Field File Desctription',
+	'label'		=>	'Field File Label Title',
+	'default'	=>	get_bloginfo('template_url').'/img/base/favicon/global.png'
+);
+*/
+/*
+// Customize Theme Checkbox Field
+$customize_theme_fields['field-checkbox'] = array(
+	'panel'		=>	'',
+	'type'		=>	'checkbox',
+	'title'		=>	'Field Checkbox Button Title',
+	'desc'		=>	'Field Checkbox Desctription',
+	'label'		=>	'Field Checkbox Label Title',
+	'default'	=>	'option-2', //Default
+	'choices'	=>	array('option-1'  => 'Option 1',
+						  'option-2'  => 'Option 2')
+);
+*/
+/*
+// Customize Theme Radio Field
+$customize_theme_fields['field-radio'] = array(
+	'panel'		=>	'',
+	'type'		=>	'radio',
+	'title'		=>	'Field Radio Button Title',
+	'desc'		=>	'Field Radio Desctription',
+	'label'		=>	'Field Radio Label Title',
+	'default'	=>	'option-2', //Default
+	'choices'	=>	array('option-1'  => 'Option 1',
+						  'option-2'  => 'Option 2')
+);
+*/
+/*
+// Customize Theme Select Field
+$customize_theme_fields['field-select'] = array(
+	'panel'		=>	'',
+	'type'		=>	'select',
+	'title'		=>	'Field Select Button Title',
+	'desc'		=>	'Field Select Desctription',
+	'label'		=>	'Field Select Label Title',
+	'default'	=>	'option-2', //Default
+	'choices'	=>	array('option-1'  => 'Option 1',
+						  'option-2'  => 'Option 2')
+);
+*/
+
+/* 
+ * Custom theme mods shortcut
+ * Usage: Add the slug as a value of 'panel' in a $customize_theme_fields
+ */
+/*
+//Customize Theme Panel
+$customize_theme_panels['custom-panel-1'] = array(
+	'priority'       => 10,
+	'capability'     => 'edit_theme_options',
+	'theme_supports' => '',
+	'title'          => 'Custom Panel 1 Title',
+	'description'    => 'Custom Panel 1 Description',
+);
+*/
+
+/*
+ * Register sidebars and widgets
+ * Info: https://codex.wordpress.org/Function_Reference/register_sidebar
+ */
+/*
+function custom_widgets_init()
 {
-    $src = wp_get_attachment_image_src( get_post_thumbnail_id($post), 'full', false); //$post->ID
-	if($prop == 'width'){
-		$data = $src[1];
-	}else{
-		$data = $src[2];
+	//Sidebar
+	register_sidebar(array(
+		'name'          => 'Custom Sidebar 1',
+		'id'            => 'custom-sidebar-1',
+		'description'	=> 'Custom Sidebar Description.',  
+		'before_widget' => '<div id="%1$s" class="%2$s">',
+		'after_widget'  => '</div>',
+		'before_title'  => '<h2 class="rounded">',
+		'after_title'   => '</h2>',
+	));
+	
+	//Widget
+	register_widget('custom_widget_1');
+}
+add_action('widgets_init', 'custom_widgets_init');
+*/
+
+/*
+ * Custom widget class
+ * Info: https://codex.wordpress.org/Widgets_API
+ */
+/*
+class custom_widget_1 extends WP_Widget
+{
+	function custom_widget_1()
+	{
+		//process widget
+		$widget_options = array(
+			'classname'=> 'custom_widget_1_classname',
+			'description'=> 'A custom widget 1.',
+		);
+		$this->WP_Widget('custom_widget_1', 'Custom Widget 1', $widget_options);
+	}
+	function form($instance)
+	{
+		//show widget form in admin panel
+		$default_settings = array(
+			'title' => 'Custom Boxes',
+			'cwbox_box_1'=>'',
+			'cwbox_box_2'=>'',
+			'cwbox_box_3'=>'',
+			'cwbox_box_4'=>'',
+		);
+		$instance = wp_parse_args(
+			(array) $instance,
+			$default_settings
+		);
+		$title = $instance['title'];
+		$cwbox_box_1 = $instance['cwbox_box_1'];
+		$cwbox_box_2 = $instance['cwbox_box_2'];
+		$cwbox_box_3 = $instance['cwbox_box_3'];
+		$cwbox_box_4 = $instance['cwbox_box_4'];
+		
+		echo '<p>
+				Title: <input class="widefat" name="'.$this->get_field_name('title').'" type="text" value="'.esc_attr($title).'"/>
+			</p>
+			<p>
+				Ads Box 1: <textarea class="widefat" name="'.$this->get_field_name('cwbox_box_1').'">'.esc_attr($cwbox_box_1).'</textarea>
+			</p>
+			<p>
+				Ads Box 2: <textarea class="widefat" name="'.$this->get_field_name('cwbox_box_2').'">'.esc_attr($cwbox_box_2).'</textarea>
+			</p>
+			<p>
+				Ads Box 3: <textarea class="widefat" name="'.$this->get_field_name('cwbox_box_3').'">'.esc_attr($cwbox_box_3).'</textarea>
+			</p>
+			<p>
+				Ads Box 4: <textarea class="widefat" name="'.$this->get_field_name('cwbox_box_4').'">'.esc_attr($cwbox_box_4).'</textarea>
+			</p>';
+	}
+	function update($new_instance, $old_instance)
+	{
+		//update widget settings
+		$instance = $old_instance;
+		$instance['title'] = strip_tags($new_instance['title']);
+		$instance['cwbox_box_1'] = $new_instance['cwbox_box_1'];
+		$instance['cwbox_box_2'] = $new_instance['cwbox_box_2'];
+		$instance['cwbox_box_3'] = $new_instance['cwbox_box_3'];
+		$instance['cwbox_box_4'] = $new_instance['cwbox_box_4'];
+
+		return $instance;
+	}
+	function widget($args, $instance)
+	{
+		//display widget
+		extract($args);
+
+		echo $before_widget;
+
+		$title = apply_filters('widget_title', $instance['title']);
+		$cwbox_box_1 = empty($instance['cwbox_box_1']) ? '' : $instance['cwbox_box_1'];
+		$cwbox_box_2 = empty($instance['cwbox_box_2']) ? '' : $instance['cwbox_box_2'];
+		$cwbox_box_3 = empty($instance['cwbox_box_3']) ? '' : $instance['cwbox_box_3'];
+		$cwbox_box_4 = empty($instance['cwbox_box_4']) ? '' : $instance['cwbox_box_4'];
+
+		if(!empty($title)){ echo $befor_title . $title . $after_title; }
+		echo '<ul class="cli_sb_cwbox_boxes">
+				<li>'.$cwbox_box_1.'</li>
+				<li>'.$cwbox_box_2.'</li>
+				<li>'.$cwbox_box_3.'</li>
+				<li>'.$cwbox_box_4.'</li>
+			</ul>';
+
+		echo $after_widget;
+	}
+}
+*/
+
+/* 
+ * Remove custom post type support
+ * Info: https://codex.wordpress.org/Function_Reference/remove_post_type_support
+ */
+/*
+function remove_custom_post_type_support()
+{
+	remove_post_type_support('post_type_slug', 'post_type_feature');
+}
+add_action('init', 'remove_custom_post_type_support');
+*/
+
+/* 
+/* Register custom menus
+/* Info: https://codex.wordpress.org/Function_Reference/register_nav_menus
+ */
+/*
+function register_custom_menus()
+{
+	register_nav_menus(
+		array(
+			'header-menu'	=> __('Header Menu'),
+			'extra-menu' 	=> __('Extra Menu')
+		)
+	);
+}
+add_action('init', 'register_custom_menus');
+*/
+
+/*
+ * Custom excerpt word limit
+ * Info: It will affect to get_the_excerpt();
+ */
+/*
+function custom_excerpt_length($length)
+{
+	global $typenow;
+	$amount = 150;
+	
+	//if("page" == $typenow){ 
+	//	$amount = 150; 
+	//}
+	
+	return $amount;
+}
+add_filter('excerpt_length', 'custom_excerpt_length', 999);
+*/
+
+/*
+ * Custom excerpt append word
+ * Info: It will affect to get_the_excerpt();
+ */
+/*
+function custom_excerpt_more($more)
+{
+    return ' ...';
+}
+add_filter('excerpt_more', 'custom_excerpt_more');
+*/
+
+/*
+ * Custom file size limit
+ * Info: It will affect to all file uploads
+ */
+/*
+function filter_site_upload_size_limit($size)
+{
+	//Set the upload size limit to 10 MB for users lacking the 'manage_options' capability.
+    $size = 1024 * 1100; // 1 MB.
+    return $size;
+}
+add_filter('upload_size_limit', 'filter_site_upload_size_limit', 20);
+*/
+
+/*
+ * Custom menu items order
+ * Info: It affect to admin sidebar menus
+ */
+/*
+function admin_menu_items_order()
+{
+    global $menu;
+    foreach ($menu as $key => $value)
+	{
+        if ('upload.php' == $value[2])
+		{
+            $oldkey = $key;
+        }
+    }
+    $newkey = 24; // use whatever index gets you the position you want,if this key is in use you will write over a menu item!
+    $menu[$newkey]=$menu[$oldkey];
+    $menu[$oldkey]=array();
+}
+add_action('admin_menu', 'admin_menu_items_order');
+*/
+
+/*
+ * Show future posts
+ * Info: It will affect to a post type
+ */
+/*
+function show_future_posts($data) 
+{
+    if($data['post_status'] == 'future' && $data['post_type'] == 'post-type')
+	{	
+        $data['post_status'] = 'publish';
 	}
     return $data;
 }
-
-//Featured image field
-function featuredImgField($post, $field)
-{
-    $value = get_post_meta(get_post_thumbnail_id($post), $field, true);
-    return $value;
-}
-
-//Small function to check plugin without using is_plugin_active (due to it requires plugin.php)
-function check_plugin($plugin)
-{
-	return in_array($plugin, apply_filters('active_plugins', get_option('active_plugins')));
-}
+add_filter('wp_insert_post_data', 'show_future_posts');
+*/
 
 /*
- * Wordpress Aditional Stuff
- * 
- * You can add more stuff above such as more functions, 
- * global variables, wordpress stuff, etc...
- * 
+ * Protect meta key (custom_fields)
+ * Info: It will hide a custom field on select box in edit fields
  */
-
-//Enable post thumbnails
-add_theme_support('post-thumbnails');
-
-//Remove custom post type support
-//function remove_custom_post_type_support() {
-//	remove_post_type_support('post_type_slug', 'post_type_feature');
-//}
-//add_action('init', 'remove_custom_post_type_support');
-
-//Custom JPEG quality on upload
-function custom_jpeg_quality()
+/*
+function protected_meta_filter($protected, $meta_key)
 {
-    return 100;
-}
-
-//Don't execute custom jpg quality if an image resizer is enabled
-if(!check_plugin('resize-image-after-upload/resize-image-after-upload.php'))
-{
-	add_filter('jpeg_quality', 'custom_jpeg_quality');
-}
-
-//Register custom menus
-//function register_custom_menus()
-//{
-//	register_nav_menus(
-//		array(
-//			'header-menu'	=> __('Header Menu'),
-//			'extra-menu' 	=> __('Extra Menu')
-//		)
-//	);
-//}
-//add_action('init', 'register_custom_menus');
-
-//Enable page excerpt
-//add_post_type_support('page', 'excerpt');
-
-//Custom excerpt word limit
-//function custom_excerpt_length($length)
-//{
-//	global $typenow;
-//	$amount = 150;
-//	
-//	/*if("page" == $typenow){
-//		$amount = 150;
-//	}*/
-//	
-//	return $amount;
-//}
-//add_filter('excerpt_length', 'custom_excerpt_length', 999);
-
-//Custom excerpt append word
-//function custom_excerpt_more($more)
-//{
-//    return ' ...';
-//}
-//add_filter('excerpt_more', 'custom_excerpt_more');
-
-//Custom file size limit
-//function filter_site_upload_size_limit($size)
-//{
-//	//Set the upload size limit to 10 MB for users lacking the 'manage_options' capability.
-//    $size = 1024 * 1100; // 1 MB.
-//    return $size;
-//}
-//add_filter('upload_size_limit', 'filter_site_upload_size_limit', 20);
-
-//Edit custom role capabilities
-//function custom_capability()
-//{
-//	$role1 = get_role('editor');
-//	
-//	//Per stuff
-//	/*$role1Perms = array('posts');
-//	
-//	foreach($role1Perms as $rolePerm1)
-//	{ 
-//		$role1->add_cap('publish_'.$role1Perm); 
-//		$role1->add_cap('edit_'.$role1Perm); 
-//		$role1->add_cap('delete_'.$role1Perm);
-//		$role1->add_cap('edit_published_'.$role1Perm); 
-//		$role1->add_cap('delete_published_'.$role1Perm); 
-//		$role1->add_cap('edit_others_'.$role1Perm); 
-//		$role1->add_cap('delete_others_'.$role1Perm); 
-//		$role1->add_cap('read_private_'.$role1Perm); 
-//		$role1->add_cap('edit_private_'.$role1Perm);
-//		$role1->add_cap('delete_private_'.$role1Perm);
-//		$role1->add_cap('manage_categories_'.$role1Perm); 	
-//	}*/
-//	
-//	//Individual add
-//	/*if(!$role1->has_cap('edit_theme_options')){
-//		$role1->add_cap('edit_theme_options'); 
-//	}*/
-//	
-//	//Individual remove
-//	/*if($role1->has_cap('edit_theme_options')){
-//		$role1->remove_cap('edit_theme_options'); 
-//	}*/
-//}
-//add_action('admin_init', 'custom_capability');
-
-
-//Hide menu items
-//function hide_menu_items() 
-//{ 
-//	//Remove Posts for everyone
-//	/*remove_menu_page('edit.php'); //Posts*/
-//	
-//	//Remove Tools for non administrator
-//	/*if(!current_user_can('administrator')){
-//		remove_menu_page('tools.php'); //Tools
-//	}*/
-//	
-//	//Add theme options for editors
-//	if(current_user_can('editor')) {
-//
-//		//remove_submenu_page( 'themes.php', 'themes.php' ); // hide the theme selection submenu
-//		//remove_submenu_page( 'themes.php', 'widgets.php' ); // hide the widgets submenu
-//		//remove_submenu_page( 'themes.php', 'customize.php' ); // hide the customizer submenu
-//		//remove_submenu_page( 'themes.php', 'nav-menus.php' ); // hide the widgets submenu
-//		//remove_submenu_page( 'themes.php', 'theme-editor.php' ); // hide the widgets submenu
-//    }
-//}
-//add_action('admin_menu', 'hide_menu_items'); 
-
-//Custom menu items order
-//function admin_menu_items_order()
-//{
-//    global $menu;
-//    foreach ( $menu as $key => $value ) {
-//        if ( 'upload.php' == $value[2] ) {
-//            $oldkey = $key;
-//        }
-//    }
-//    $newkey = 24; // use whatever index gets you the position you want,if this key is in use you will write over a menu item!
-//    $menu[$newkey]=$menu[$oldkey];
-//    $menu[$oldkey]=array();
-//}
-//add_action('admin_menu', 'admin_menu_items_order');
-
-//Remove dashboard widgets
-//function remove_dashboard_widgets() 
-//{
-//	//General
-//	remove_action( 'welcome_panel', 'wp_welcome_panel' );
-//	remove_meta_box( 'dashboard_right_now', 'dashboard', 'normal' );   // Right Now
-//	remove_meta_box( 'dashboard_recent_comments', 'dashboard', 'normal' ); // Recent Comments
-//	remove_meta_box( 'dashboard_incoming_links', 'dashboard', 'normal' );  // Incoming Links
-//	remove_meta_box( 'dashboard_plugins', 'dashboard', 'normal' );   // Plugins
-//	remove_meta_box( 'dashboard_quick_press', 'dashboard', 'side' );  // Quick Press
-//	remove_meta_box( 'dashboard_recent_drafts', 'dashboard', 'side' );  // Recent Drafts
-//	remove_meta_box( 'dashboard_primary', 'dashboard', 'side' );   // WordPress blog
-//	remove_meta_box( 'dashboard_secondary', 'dashboard', 'side' );   // Other WordPress News
-//	remove_meta_box( 'dashboard_activity', 'dashboard', 'normal' ); //Activity
-//	
-//	//Example by user role: Remove 'Simple History' Plugin widget
-//	/*if(!current_user_can('administrator')){
-//		remove_meta_box('simple_history_dashboard_widget', 'dashboard', 'normal'); 
-//	}*/
-//	//Example by user role: Remove 'Simple History' Plugin widget
-//	/*if($user && isset($user->user_login) && 'user' == $user->user_login){
-//		remove_meta_box('simple_history_dashboard_widget', 'dashboard', 'normal'); 
-//	}*/
-//}
-//add_action('wp_dashboard_setup', 'remove_dashboard_widgets');
-
-//Remove items from adminbar
-//function remove_from_adminbar($wp_admin_bar) 
-//{
-//	$wp_admin_bar->remove_node('wp-logo');
-//	$wp_admin_bar->remove_node('comments');
-//	$wp_admin_bar->remove_node('new-post');
-//	$wp_admin_bar->remove_node('new-page');
-//	$wp_admin_bar->remove_node('new-media');
-//	$wp_admin_bar->remove_node('new-content');
-//	$wp_admin_bar->remove_node('archive');
-//}
-//add_action('admin_bar_menu', 'remove_from_adminbar', 999);
-
-//Custom general fields
-new new_general_setting();
-
-class new_general_setting 
-{
-    function new_general_setting() 
-	{
-        add_filter('admin_init', array(&$this, 'register_fields'));
-    }
-    function register_fields() 
-	{
-		$new_fields = array(
-							array('blogkeywords'		, __('Site keywords', 'websitebase')),
-							array('bloganalytics'		, __('Analytics code', 'websitebase')),
-							array('blogauthor'			, __('Site author', 'websitebase')),
-							array('blognavcolor'		, __('Nav color', 'websitebase')),
-							array('blognavcolorapple'	, __('Nav color (Apple)', 'websitebase')),
-							);
-		
-		for($i = 0; $i < count($new_fields); ++$i)
-		{
-			register_setting('general', $new_fields[$i][0], 'esc_attr');
-			add_settings_field($new_fields[$i][0], '<label for="'.$new_fields[$i][0].'">'.$new_fields[$i][1].'</label>', array(&$this, 'new_field_'.$i.'_html'), 'general');
-		}
-    }
-    function new_field_0_html() 
-	{
-		$new_field_data = array('blogkeywords', __('Words to let search engines to found this site', 'websitebase'));
-		echo '<textarea style="max-width: 350px;min-height: 100px;width: 100%;" id="'.$new_field_data[0].'" name="'.$new_field_data[0].'">'.get_option($new_field_data[0], '').'</textarea>';
-		echo '<p class="description" id="'.$new_field_data[0].'-description">'.$new_field_data[1].'</p>';
-    }
-	function new_field_1_html() 
-	{
-		$new_field_data = array('bloganalytics', __('Code placed in the HTML head to track site analytics', 'websitebase'));
-        echo '<textarea style="max-width: 350px;min-height: 100px;width: 100%;" id="'.$new_field_data[0].'" name="'.$new_field_data[0].'">'.get_option($new_field_data[0], '').'</textarea>';
-		echo '<p class="description" id="'.$new_field_data[0].'-description">'.$new_field_data[1].'</p>';
-    }
-	function new_field_2_html() 
-	{
-		$new_field_data = array('blogauthor', __('Defines the site author', 'websitebase'));
-        echo '<input type="text" style="max-width: 350px;width: 100%;" id="'.$new_field_data[0].'" name="'.$new_field_data[0].'" value="'.get_option($new_field_data[0], '').'"/>';
-		echo '<p class="description" id="'.$new_field_data[0].'-description">'.$new_field_data[1].'</p>';
-    }
-	function new_field_3_html() 
-	{
-		$new_field_data = array('blognavcolor', __('Navigator bar color for most devices (use hexadecimal format)', 'websitebase'));
-        echo '<input type="text" style="max-width: 350px;width: 100%;" id="'.$new_field_data[0].'" name="'.$new_field_data[0].'" value="'.get_option($new_field_data[0], '').'"/>';
-		echo '<p class="description" id="'.$new_field_data[0].'-description">'.$new_field_data[1].'</p>';
-    }
-	function new_field_4_html() 
-	{
-		$new_field_data = array('blognavcolorapple', __('Navigator bar color for Apple devices (use black or black-translucent)', 'websitebase'));
-        echo '<input type="text" style="max-width: 350px;width: 100%;" id="'.$new_field_data[0].'" name="'.$new_field_data[0].'" value="'.get_option($new_field_data[0], '').'"/>';
-		echo '<p class="description" id="'.$new_field_data[0].'-description">'.$new_field_data[1].'</p>';
-    }
-}
-
-//Custom customize register functions
-function custom_customize_register($wp_customize)
-{
-	//Hide ections, settings, and controls
-	$wp_customize->remove_panel('themes');
-	$wp_customize->remove_panel('widgets');
-	$wp_customize->remove_section('title_tagline');
-	$wp_customize->remove_section('colors');
-	$wp_customize->remove_section('header_image');
-	$wp_customize->remove_section('background_image');
-	$wp_customize->remove_panel('nav_menus');
-	$wp_customize->remove_section('static_front_page');
-	$wp_customize->remove_section('custom_css');
-}
-add_action('customize_register', 'custom_customize_register', 50);
-
-//Set template values
-$customize_theme_fields = array(
-	//Text Field
-	//array('field-text' => 
-	//	  array(
-	//			'panel'		=>	'',
-	//			'type'		=>	'text',
-	//			'title'		=>	'Field Text Button Title',
-	//			'desc'		=>	'Field Text Desctription',
-	//			'label'		=>	'Field Text Label Title',
-	//			'default'	=>	'Field Text Default Value'
-	//			)
-	//),
-	//Text Area Field
-	//array('field-text-area' => 
-	//	  array(
-	//			'panel'		=>	'',
-	//			'type'		=>	'textarea',
-	//			'title'		=>	'Field Text Area Button Title',
-	//			'desc'		=>	'Field Text Area Desctription',
-	//			'label'		=>	'Field Text Area Label Title',
-	//			'default'	=>	'Field Text Area Default Value'
-	//			)
-	//),
-	//Wysiwig Field
-	//array('field-text-wysiwig' => 
-	//	  array(
-	//			'panel'		=>	'',
-	//			'type'		=>	'wysiwig',
-	//			'title'		=>	'Field WYSIWIG Text Button Title',
-	//			'desc'		=>	'Field WYSIWIG Text Desctription',
-	//			'label'		=>	'Field WYSIWIG Text Label Title',
-	//			'default'	=>	'Field WYSIWIG Text Default Value'
-	//			)
-	//),
-	//Image Field
-	//array('field-image' => 
-	//	  array(
-	//			'panel'		=>	'',
-	//			'type'		=>	'image',
-	//			'title'		=>	'Field Image Button Title',
-	//			'desc'		=>	'Field Image Desctription',
-	//			'label'		=>	'Field Image Label Title',
-	//			'default'	=>	get_bloginfo('template_url').'/img/base/favicon/global.png'
-	//			)
-	//),
-	//File Field
-	//array('field-file' => 
-	//	  array(
-	//			'panel'		=>	'',
-	//			'type'		=>	'file',
-	//			'title'		=>	'Field File Button Title',
-	//			'desc'		=>	'Field File Desctription',
-	//			'label'		=>	'Field File Label Title',
-	//			'default'	=>	get_bloginfo('template_url').'/img/base/favicon/global.png'
-	//			)
-	//),
-	//Checkbox Field
-	//array('field-checkbox' => 
-	//	  array(
-	//			'panel'		=>	'',
-	//		  	'type'		=>	'checkbox',
-	//			'title'		=>	'Field Checkbox Button Title',
-	//			'desc'		=>	'Field Checkbox Desctription',
-	//			'label'		=>	'Field Checkbox Label Title',
-	//			'default'	=>	'option-2', //Default
-	//			'choices'	=>	array(
-	//									'option-1'  => 'Option 1',
-	//									'option-2'  => 'Option 2',
-	//								)
-	//		)
-	//),
-	//Radio Field
-	//array('field-radio' => 
-	//	  array(
-	//			'panel'		=>	'',
-	//		  	'type'		=>	'radio',
-	//		  	'title'		=>	'Field Radio Button Title',
-	//		  	'desc'		=>	'Field Radio Desctription',
-	//		  	'label'		=>	'Field Radio Label Title',
-	//		  	'default'	=>	'option-2', //Default
-	//		  	'choices'	=>	array(
-	//									'option-1'  => 'Option 1',
-	//									'option-2'  => 'Option 2',
-	//								)
-	//		)
-	//),
-	//Select Field
-	//array('field-select' => 
-	//	  array(
-	//			'panel'		=>	'',
-	//		  	'type'		=>	'select',
-	//		  	'title'		=>	'Field Select Button Title',
-	//		  	'desc'		=>	'Field Select Desctription',
-	//		  	'label'		=>	'Field Select Label Title',
-	//		  	'default'	=>	'option-2', //Default
-	//		  	'choices'	=>	array(
-	//									'option-1'  => 'Option 1',
-	//									'option-2'  => 'Option 2',
-	//								)
-	//		)
-	//),
-);
-
-//Set template modifications
-function custom_theme_settings($wp_customize)
-{
-	//Custom panels
-	//$wp_customize->add_panel('custom-panel-1', 
-	//							 array(
-	//									'priority'       => 10,
-	//									'capability'     => 'edit_theme_options',
-	//									'theme_supports' => '',
-	//									'title'          => 'Custom Panel 1 Title',
-	//									'description'    => 'Custom Panel 1 Description',
-	//							 		)
-	//						);
+	$fields_target = array('custom-field');
 	
-	//Set custom template control for multiple checkbox
-	class WP_Customize_Checkbox_Multiple_Control extends WP_Customize_Control 
+    if(in_array($meta_key, $fields_target))
 	{
-		public $type = 'checkbox-multiple';
-
-		public function enqueue() 
-		{
-			wp_enqueue_script('custom_customize_register', get_bloginfo('template_url').'/js/admin/app-base.js', array('jquery'));
-		}
-
-		public function render_content() 
-		{
-			if ( empty( $this->choices ) )
-				return; ?>
-
-			<?php if ( !empty( $this->label ) ) : ?>
-				<span class="customize-control-title"><?php echo esc_html( $this->label ); ?></span>
-			<?php endif; ?>
-
-			<?php if ( !empty( $this->description ) ) : ?>
-				<span class="description customize-control-description"><?php echo $this->description; ?></span>
-			<?php endif; ?>
-
-			<?php $multi_values = !is_array( $this->value() ) ? explode( ',', $this->value() ) : $this->value(); ?>
-
-			<ul>
-				<?php foreach ( $this->choices as $value => $label ) : ?>
-
-					<li>
-						<label>
-							<input type="checkbox" value="<?php echo esc_attr( $value ); ?>" <?php checked( in_array( $value, $multi_values ) ); ?> /> 
-							<?php echo esc_html( $label ); ?>
-						</label>
-					</li>
-
-				<?php endforeach; ?>
-			</ul>
-
-			<input type="hidden" <?php $this->link(); ?> value="<?php echo esc_attr( implode( ',', $multi_values ) ); ?>" />
-		<?php }
+		return true;
 	}
-
-	//Set custom WYSIWIG text editor
-	class WP_Customize_WYSIWIG_Text_Editor_Control extends WP_Customize_Control
-	{
-		public $type = 'wysiwig-text';
-		
-		function enqueue() 
-		{
-			wp_enqueue_script('custom_customize_register', get_bloginfo('template_url').'/js/admin/app-base.js', array('jquery'));
-		}
-
-		public function render_content()
-		{
-		?>
-			<label>
-				<span class="customize-control-title"><?php echo esc_html( $this->label ); ?></span>
-				<?php
-					$settings = array(
-									'wpautop'		=> true,
-									'textarea_rows' => 10,
-									'media_buttons' => false,
-									'quicktags' 	=> false,
-									);
-					$this->filter_editor_setting_link();
-					wp_editor($this->value(), $this->id, $settings);
-				?>
-			</label>
-		<?php
-			do_action('admin_footer');
-			do_action('admin_print_footer_scripts');
-		}
-		private function filter_editor_setting_link()
-		{
-			add_filter('the_editor', function($output){ return preg_replace('/<textarea/', '<textarea '.$this->get_link(), $output, 1); });
-		}
-	}
-	
-	global $customize_theme_fields;
-	
-	foreach ($customize_theme_fields as $items)
-	{
-		foreach ($items as $key => $value)
-		{
-			$wp_customize->add_section($key,
-				array(
-					'title' 		=> $value['title'],
-					'description' 	=> $value['desc'],
-					'panel'			=> $value['panel'],
-				)
-			);
-			$wp_customize->add_setting($key,
-				array(
-					'default' 		=> $value['default'],
-				)
-			);
-			
-			//Control type
-			switch($value['type'])
-			{
-				case 'text':
-				case 'textarea':
-					$wp_customize->add_control($key,
-						array(
-							'label' 	=> $value['label'],
-							'section' 	=> $key,
-							'type' 		=> $value['type'], //text
-						)
-					);
-					break;
-				case 'radio':
-				case 'select':
-					$wp_customize->add_control($key,
-						array(
-							'label' 	=> $value['label'],
-							'section' 	=> $key,
-							'settings'	=> $key,
-							'type' 		=> $value['type'], //radio/select
-							'choices'  	=> $value['choices'],
-						)
-					);
-					break;
-				case 'checkbox':
-					$wp_customize->add_control( 
-						new WP_Customize_Checkbox_Multiple_Control($wp_customize, $key,
-							array(
-								'label' 	=> $value['label'],
-								'section' 	=> $key,
-								'settings'	=> $key,
-								'type' 		=> 'checkbox-multiple', //improved checkbox
-								'choices'  	=> $value['choices'],
-							)
-						)
-					);
-					break;
-				case 'wysiwig':
-					$wp_customize->add_control( 
-						new WP_Customize_WYSIWIG_Text_Editor_Control($wp_customize, $key,
-							array(
-								'label'   	=> $value['label'],
-								'section' 	=> $key,
-								'settings'	=> $key,
-								'type' 		=> 'wysiwig-text', //improved text editor
-							)
-						)
-					);
-					break;
-				case 'image':
-					$wp_customize->add_control( 
-						new WP_Customize_Image_Control($wp_customize, $key,
-							array(
-								'label'   	=> $value['label'],
-								'section' 	=> $key,
-								'settings'	=> $key,
-							)
-						)
-					);
-					break;
-				case 'file':
-					$wp_customize->add_control( 
-						new WP_Customize_Upload_Control($wp_customize, $key,
-							array(
-								'label'   	=> $value['label'],
-								'section' 	=> $key,
-								'settings'	=> $key,
-							)
-						)
-					);
-					break;
-			}
-		}
-	}
+	return $protected;
 }
-add_action('customize_register', 'custom_theme_settings');
+add_filter('is_protected_meta', 'protected_meta_filter', 10, 2);
+*/
 
-//Set template default values
-function get_theme_mod2($name)
+/*
+ * Hide meta key (attachment) by css
+ * Info: It will hide a field on attachment screen
+ */
+/*
+function remove_attachment_field() {
+	
+	$fields_normal = array('title','caption','alt','description');
+	$fields_custom = array('custom-field-1');
+	$fields_meta = array('custom-field-2');
+	
+	echo "<style>";
+	foreach ($fields_normal as $fields_normal_item)
+	{
+		echo ".attachment-details .setting[data-setting='".$fields_normal_item."'], .media-sidebar .setting[data-setting='".$fields_normal_item."'],";
+	}
+	foreach ($fields_custom as $fields_custom_item)
+	{
+		echo ".compat-item tr.compat-field-".$fields_custom_item.",";
+	}
+	echo ".remove_attachment_field_finish";
+	echo "{ display: none !important; }";
+	echo "</style>";
+	
+	echo "<script>jQuery(document).ready(function(){ ";
+	foreach ($fields_meta as $fields_meta_item)
+	{
+		echo 'jQuery("#metakeyselect option[value=';
+		echo "'".$fields_meta_item."'";
+		echo ']").remove();';
+	}
+	echo "});</script>";
+}
+add_action('admin_head', 'remove_attachment_field');
+*/
+
+/*
+ * Create new attachment fields
+ * Info: Create a custom attachment field screen
+ */
+/*
+function attachment_field_add($form_fields, $post)
 {
-    global $customize_theme_fields;
-
-	foreach ($customize_theme_fields as $items)
-	{
-		foreach ($items as $key => $value)
-		{
-			if($key == $name)
-			{
-				$field = get_theme_mod($key);
-				return empty($field) ? $value['default'] : get_theme_mod($key);
-			}
-		}
-	}
+	$form_fields['custom-field'] = array(
+		'label' => 'Custom Field',
+		'input' => 'text',
+		'value' => get_post_meta($post->ID, 'custom_field_id', true),
+		'helps' => 'Custom Field Help',
+	);
+	return $form_fields;
 }
+add_filter('attachment_fields_to_edit', 'attachment_field_add', 10, 2);
+*/
 
-//Show future posts
-//function show_future_posts($data) 
-//{
-//    if($data['post_status'] == 'future' && $data['post_type'] == 'post-type'){
-//		
-//        $data['post_status'] = 'publish';
-//	}
-//    return $data;
-//}
-//add_filter( 'wp_insert_post_data', 'show_future_posts' );
+/*
+ * Set new attachment fields
+ * Info: Set a custom attachment field screen
+ */
+/*
+function attachment_field_save($post, $attachment)
+{
+	if(isset($attachment['custom-field']))
+	{
+		update_post_meta($post['ID'], 'custom_field_id', $attachment['custom-field']);
+	}
+	return $post;
+}
+add_filter('attachment_fields_to_save', 'attachment_field_save', 10, 2);
+*/
 
-//Protect meta key (custom_fields)
-//function my_is_protected_meta_filter($protected, $meta_key)
-//{
-//	$fields_target = array(
-//							'custom-field',
-//						  );
-//	
-//    if(in_array($meta_key, $fields_target))
-//	{
-//		return true;
-//	}
-//	return $protected;
-//}
-//add_filter('is_protected_meta', 'my_is_protected_meta_filter', 10, 2);
+/*
+ * Increase post meta limit
+ * Info: Increase the custom field limit on select box (edit page screen)
+ */
+/*
+function customfield_limit_increase($limit)
+{
+	$limit = 100;
+	return $limit;
+}
+add_filter('postmeta_form_limit', 'customfield_limit_increase');
+*/
 
-//Hide meta key (attachment) by css
-//function remove_attachment_field() {
-//	
-//	$fields_normal = array(
-//							//"title",
-//						   	//"caption",
-//							//"alt",
-//							//"description"
-//						  );
-//	$fields_custom = array(
-//							//"custom-field"
-//						  );
-//	$fields_meta = array(
-//							//"custom-field",
-//						);
-//	
-//	echo "<style>";
-//	
-//	foreach ( $fields_normal as $fields_normal_item )
-//	{
-//		echo ".attachment-details .setting[data-setting='".$fields_normal_item."'], .media-sidebar .setting[data-setting='".$fields_normal_item."'],";
-//	}
-//	
-//	foreach ( $fields_custom as $fields_custom_item )
-//	{
-//		echo ".compat-item tr.compat-field-".$fields_custom_item.",";
-//	}
-//	
-//	echo ".remove_attachment_field_finish";
-//	echo "{ display: none !important; }";
-//	echo "</style>";
-//	
-//	echo "<script>jQuery(document).ready(function(){ ";
-//	
-//	foreach ( $fields_meta as $fields_meta_item )
-//	{
-//		echo 'jQuery("#metakeyselect option[value=';
-//		echo "'".$fields_meta_item."'";
-//		echo ']").remove();';
-//	}
-//	
-//	echo "});</script>";
-//	
-//}
-//add_action('admin_head', 'remove_attachment_field');
+/*
+ * Hide admin items using CSS
+ * Info: Hide elements on admin panel through CSS
+ */
+/*
+function hide_items_css()
+{
+	global $typenow;
 
-//Create new attachment fields
-//function be_attachment_field_credit($form_fields, $post)
-//{
-//	$form_fields['custom-field'] = array(
-//		'label' => 'Custom Field',
-//		'input' => 'text',
-//		'value' => get_post_meta( $post->ID, 'custom_field_id', true ),
-//		//'helps' => 'Custom Field Help',
-//	);
-//
-//	return $form_fields;
-//}
-//add_filter('attachment_fields_to_edit', 'be_attachment_field_credit', 10, 2);
-
-//Set new attachment fields
-//function be_attachment_field_credit_save($post, $attachment)
-//{
-//	
-//	if(isset( $attachment['custom-field']))
-//		update_post_meta($post['ID'], 'custom_field_id', $attachment['custom-field']);
-//
-//	return $post;
-//}
-//add_filter('attachment_fields_to_save', 'be_attachment_field_credit_save', 10, 2);
-
-//Increase post meta limit
-//function customfield_limit_increase($limit)
-//{
-//  $limit = 100;
-//  return $limit;
-//}
-//add_filter('postmeta_form_limit', 'customfield_limit_increase');
-
-//Custom widget class
-//class custom_widget_1 extends WP_Widget
-//{
-//	function custom_widget_1()
-//	{
-//		//process widget
-//		$widget_options = array(
-//			'classname'=> 'custom_widget_1_classname',
-//			'description'=> 'A custom widget 1.',
-//		);
-//		$this->WP_Widget('custom_widget_1', 'Custom Widget 1', $widget_options);
-//	}
-//	function form($instance)
-//	{
-//		//show widget form in admin panel
-//		$default_settings = array(
-//			'title' => 'Custom Boxes',
-//			'cwbox_box_1'=>'',
-//			'cwbox_box_2'=>'',
-//			'cwbox_box_3'=>'',
-//			'cwbox_box_4'=>'',
-//		);
-//		$instance = wp_parse_args(
-//			(array) $instance,
-//			$default_settings
-//		);
-//		$title = $instance['title'];
-//		$cwbox_box_1 = $instance['cwbox_box_1'];
-//		$cwbox_box_2 = $instance['cwbox_box_2'];
-//		$cwbox_box_3 = $instance['cwbox_box_3'];
-//		$cwbox_box_4 = $instance['cwbox_box_4'];
-//		
-//		echo '<p>
-//				Title: <input class="widefat" name="'.$this->get_field_name('title').'" type="text" value="'.esc_attr($title).'"/>
-//			</p>
-//			<p>
-//				Ads Box 1: <textarea class="widefat" name="'.$this->get_field_name('cwbox_box_1').'">'.esc_attr($cwbox_box_1).'</textarea>
-//			</p>
-//			<p>
-//				Ads Box 2: <textarea class="widefat" name="'.$this->get_field_name('cwbox_box_2').'">'.esc_attr($cwbox_box_2).'</textarea>
-//			</p>
-//			<p>
-//				Ads Box 3: <textarea class="widefat" name="'.$this->get_field_name('cwbox_box_3').'">'.esc_attr($cwbox_box_3).'</textarea>
-//			</p>
-//			<p>
-//				Ads Box 4: <textarea class="widefat" name="'.$this->get_field_name('cwbox_box_4').'">'.esc_attr($cwbox_box_4).'</textarea>
-//			</p>';
-//	}
-//	function update($new_instance, $old_instance)
-//	{
-//		//update widget settings
-//		$instance = $old_instance;
-//		$instance['title'] = strip_tags($new_instance['title']);
-//		$instance['cwbox_box_1'] = $new_instance['cwbox_box_1'];
-//		$instance['cwbox_box_2'] = $new_instance['cwbox_box_2'];
-//		$instance['cwbox_box_3'] = $new_instance['cwbox_box_3'];
-//		$instance['cwbox_box_4'] = $new_instance['cwbox_box_4'];
-//
-//		return $instance;
-//	}
-//	function widget($args, $instance)
-//	{
-//		//display widget
-//		extract($args);
-//
-//		echo $before_widget;
-//
-//		$title = apply_filters('widget_title', $instance['title']);
-//		$cwbox_box_1 = empty($instance['cwbox_box_1']) ? '' : $instance['cwbox_box_1'];
-//		$cwbox_box_2 = empty($instance['cwbox_box_2']) ? '' : $instance['cwbox_box_2'];
-//		$cwbox_box_3 = empty($instance['cwbox_box_3']) ? '' : $instance['cwbox_box_3'];
-//		$cwbox_box_4 = empty($instance['cwbox_box_4']) ? '' : $instance['cwbox_box_4'];
-//
-//		if(!empty($title)){ echo $befor_title . $title . $after_title; }
-//		echo '<ul class="cli_sb_cwbox_boxes">
-//				<li>'.$cwbox_box_1.'</li>
-//				<li>'.$cwbox_box_2.'</li>
-//				<li>'.$cwbox_box_3.'</li>
-//				<li>'.$cwbox_box_4.'</li>
-//			</ul>';
-//
-//		echo $after_widget;
-//	}
-//}
-
-//Register widgets and sidebars
-//function custom_widgets_init()
-//{
-//	//Sidebar
-//	register_sidebar(array(
-//		'name'          => 'Custom Sidebar 1',
-//		'id'            => 'custom-sidebar-1',
-//		'description'	=> 'Custom Sidebar Description.',  
-//		'before_widget' => '<div id="%1$s" class="%2$s">',
-//		'after_widget'  => '</div>',
-//		'before_title'  => '<h2 class="rounded">',
-//		'after_title'   => '</h2>',
-//	));
-//	
-//	//Widget
-//	register_widget('custom_widget_1');
-//}
-//add_action('widgets_init', 'custom_widgets_init');
-
-//Hide admin items using CSS
-//function hide_items_css()
-//{
-//	global $typenow;
-//
-//	echo "<style>";
-//	
-//		if("page" == $typenow){
-//			echo "#pageparentdiv,"; 
-//		}
-//		//
-//		if("page" == $typenow && $_GET["post"] == get_id_by_name('some-page-id')){
-//			echo "#postdivrich,";
-//		}
-//	
-//	
-//	echo ".remove_items_css_finish{ 
-//				visibility: hidden !important; 
-//				height: 0px !important; 
-//				overflow: hidden !important; 
-//				margin: 0 !important; 
-//				padding: 0 !important; 
-//				border: none !important; 
-//				position: absolute !important; 
-//				z-index: -1;
-//		  }
-//		  </style>";
-//}
-//add_action('admin_footer', 'hide_items_css');
-
-//Custom admin post filter by taxonomy
-//function custom_taxonomy_filter_1()
-//{
-//	global $typenow;
-// 
-//	// an array of all the taxonomyies you want to display. Use the taxonomy name or slug
-//	$taxonomies = array('custom-taxonomy-1');
-// 
-//	// must set this to the post type you want the filter(s) displayed on
-//	if($typenow == 'custom-post-type-1'){
-//		
-//		foreach ($taxonomies as $tax_slug){
-//			$tax_obj = get_taxonomy($tax_slug);
-//			$tax_name = $tax_obj->labels->name;
-//			$tax_terms = get_terms($tax_slug);
-//			
-//			echo "<select name='$tax_slug' id='$tax_slug' class='postform'>";
-//			echo "<option value=''>Show All $tax_name</option>";
-//			foreach($tax_terms as $tax_term){ 
-//				echo '<option value='. $tax_term->slug, $_GET[$tax_slug] == $tax_term->slug ? ' selected="selected"' : '','>' . $tax_term->name .'</option>'; //(' . $tax_term->count .')
-//			}
-//			echo "</select>";
-//		}
-//	}
-//}
-//add_action('restrict_manage_posts', 'custom_taxonomy_filter_1');
-
-//Custom taxonomy
-//function create_custom_taxonomy_1() 
-//{
-//	// Add new taxonomy, make it hierarchical (like categories)
-//	$nameFULL = 'Custom Taxonomy';
-//	$nameITEM = 'Taxonomy Item';
-//	$nameLANG = 0; //0 = English, 1 = Spanish
-//	$nameGENDER = 'o'; //a = Female, o = Male (Spanish case to end an item)
-//	$nameSLUG = 'deportes';
-//	$nameTYPE = array(
-//					  	'custom-post-type-1',
-//					 );
-//	
-//	$menuLANGTEXT = array(
-//						'search_items'      => array('Search '.$nameITEM, 'Buscar '.$nameITEM),
-//						'all_items'         => array('All '.$nameFULL, 'Tod'.$nameGENDER.'s l'.$nameGENDER.'s '.$nameFULL),
-//						'parent_item'       => array('Parent '.$nameITEM, $nameITEM.' Superior'),
-//						'parent_item_colon' => array('Parent '.$nameITEM.':', $nameITEM.' Superior:'),
-//						'edit_item'         => array('Edit '.$nameITEM, 'Editar '.$nameITEM),
-//						'update_item'       => array('Update '.$nameITEM, 'Actualizar '.$nameITEM),
-//						'add_new_item'      => array('Add New '.$nameITEM, 'Agregar Nuev'.$nameGENDER.' '.$nameITEM),
-//						'new_item_name'     => array('New '.$nameITEM.' Name', 'Nuevo Nombre '.$nameITEM),
-//						'menu_name'         => array($nameFULL, $nameFULL),
-//					);
-//	
-//	$menuARGS = array(
-//						'hierarchical'      => true, //false = NOT hierarchical (like tags)
-//						'labels'            => array(
-//													'name'              => _x($nameFULL, 'taxonomy general name', 'textdomain' ),
-//													'singular_name'     => _x($nameITEM, 'taxonomy singular name', 'textdomain' ),
-//													'menu_name'         => __($nameFULL, 'textdomain' ),
-//													'search_items'      => __($menuLANGTEXT['search_items'][$nameLANG], 'textdomain' ),
-//													'all_items'         => __($menuLANGTEXT['all_items'][$nameLANG], 'textdomain' ),
-//													'parent_item'       => __($menuLANGTEXT['parent_item'][$nameLANG], 'textdomain' ),
-//													'parent_item_colon' => __($menuLANGTEXT['parent_item_colon'][$nameLANG], 'textdomain' ),
-//													'edit_item'         => __($menuLANGTEXT['edit_item'][$nameLANG], 'textdomain' ),
-//													'update_item'       => __($menuLANGTEXT['update_item'][$nameLANG], 'textdomain' ),
-//													'add_new_item'      => __($menuLANGTEXT['add_new_item'][$nameLANG], 'textdomain' ),
-//													'new_item_name'     => __($menuLANGTEXT['new_item_name'][$nameLANG], 'textdomain' ),
-//													),
-//						'show_ui'           => true,
-//						'show_admin_column' => true,
-//						'query_var'         => true,
-//						'rewrite'           => array(
-//													'slug' => $nameSLUG,
-//													'with_front' => false),
-//													);
-//
-//	register_taxonomy( $nameSLUG, $nameTYPE, $menuARGS );
-//	
-//	//Add default items
-//	/*$parent_term = term_exists( $nameSLUG, $nameSLUG ); // array is returned if taxonomy is given
-//	$parent_term_id = $parent_term['term_id']; // get numeric term id
-//	
-//	$termNONAME1 = 'General';
-//	$termSLUG1 = 'general';
-//	wp_insert_term( $termNAME1, $nameSLUG, array( 'slug' => $termSLUG1,'parent'=> $parent_term_id ));*/
-//	
-//}
-//add_action('init', 'create_custom_taxonomy_1', 0);
-
-//Custom Post Type 1
-//function custom_post_type_1() 
-//{
-//	// Set UI labels for Custom Post Type
-//	$nameFULL = 'Custom Post Type 1';
-//	$nameITEM = 'Post Type 1 Item';
-//	$nameLANG = 0; //0 = English, 1 = Spanish
-//	$nameGENDER = 'o'; //a = Female, o = Male (Spanish case to end an item)
-//	$nameSLUG = 'custom-post-type-1';
-//	$nameTEMPLATE = 'websitebase';
-//	$menuPOSITION = 4;
-//	
-//	$menuLANGTEXT = array(
-//							'parent_item_colon' 	=> array('Parent '.$nameITEM, $nameITEM.' Superior'),
-//							'all_items' 			=> array('All '.$nameFULL, 'Tod'.$nameGENDER.'s l'.$nameGENDER.'s '.$nameFULL),
-//							'view_item' 			=> array('View '.$nameITEM, 'Ver '.$nameITEM),
-//							'add_new_item' 			=> array('Create New '.$nameITEM, 'Crear Nuev'.$nameGENDER.' '.$nameITEM),
-//							'add_new' 				=> array('Add '.$nameITEM, 'Agregar '.$nameITEM),
-//							'edit_item' 			=> array('Edit '.$nameITEM, 'Editar '.$nameITEM),
-//							'update_item' 			=> array('Update '.$nameITEM, 'Actualizar '.$nameITEM),
-//							'search_items' 			=> array('Search '.$nameITEM, 'Buscar '.$nameITEM),
-//							'not_found' 			=> array($nameITEM.' Not Found', $nameITEM.' No Encontrado'),
-//							'not_found_in_trash' 	=> array($nameITEM.' Not Found in Trash', $nameITEM.' No Encontrado en la Papelera'),
-//							'description' 			=> array('List '.$nameITEM, 'Listado de '.$nameITEM),
-//						);
-//	
-//	// Set other options for Custom Post Type
-//    $menuARGS = array(
-//							'label'               	=> __($nameSLUG, $nameTEMPLATE),
-//							'description'         	=> __($menuLANGTEXT['description'][$nameLANG], $nameTEMPLATE),
-//							'labels'              	=> array(
-//															'name'                => _x($nameFULL, 'Post Type General Name', $nameTEMPLATE),
-//														   	'singular_name'       => _x($nameITEM, 'Post Type Singular Name', $nameTEMPLATE),
-//														   	'menu_name'           => __($nameFULL, $nameTEMPLATE),
-//														   	'parent_item_colon'   => __($menuLANGTEXT['parent_item_colon'][$nameLANG], $nameTEMPLATE),
-//														   	'all_items'           => __($menuLANGTEXT['all_items'][$nameLANG], $nameTEMPLATE),
-//														   	'view_item'           => __($menuLANGTEXT['view_item'][$nameLANG], $nameTEMPLATE ),
-//														   	'add_new_item'        => __($menuLANGTEXT['add_new_item'][$nameLANG], $nameTEMPLATE),
-//														   	'add_new'             => __($menuLANGTEXT['add_new'][$nameLANG], $nameTEMPLATE),
-//														   	'edit_item'           => __($menuLANGTEXT['edit_item'][$nameLANG], $nameTEMPLATE),
-//														   	'update_item'         => __($menuLANGTEXT['update_item'][$nameLANG], $nameTEMPLATE),
-//														   	'search_items'        => __($menuLANGTEXT['search_items'][$nameLANG], $nameTEMPLATE),
-//														   	'not_found'           => __($menuLANGTEXT['not_found'][$nameLANG], $nameTEMPLATE),
-//														   	'not_found_in_trash'  => __($menuLANGTEXT['not_found_in_trash'][$nameLANG], $nameTEMPLATE),
-//														   	'not_found_in_trash'  => __($menuLANGTEXT['not_found_in_trash'][$nameLANG], $nameTEMPLATE),
-//															),
-//
-//							// Features this CPT supports in Post Editor
-//							'supports'            	=> array(
-//														   	'title', 
-//														   	'editor', 
-//														   	//'excerpt', 
-//														   	//'author',
-//														   	'thumbnail',
-//														   	//'comments',
-//														   	//'revisions',
-//														   	'custom-fields',
-//														  	),
-//		
-//							// You can associate this CPT with a taxonomy or custom taxonomy.
-//							'taxonomies'          	=> array(
-//														   	//'custom_taxonomy_1',
-//														   	//'post_tag',
-//														  	),
-//
-//							/* A hierarchical CPT is like Pages and can have
-//							* Parent and child items. A non-hierarchical CPT
-//							* is like Posts.
-//							*/    
-//							'hierarchical'        	=> false,
-//							'public'              	=> true,
-//							'show_ui'             	=> true,
-//							'show_in_menu'        	=> true,
-//							'show_in_nav_menus'   	=> true,
-//							'show_in_admin_bar'   	=> true,
-//							'menu_position'       	=> $menuPOSITION,
-//							'can_export'          	=> true,
-//							'has_archive'         	=> true,
-//							'exclude_from_search' 	=> false,
-//							'publicly_queryable'  	=> true,
-//							'capability_type'     	=> 'page',
-//    );
-//    
-//    // Registering your Custom Post Type
-//    register_post_type($nameSLUG, $menuARGS);
-//}
-//add_action('init', 'custom_post_type_1', 0);
+	echo "<style>";
+	
+		if("page" == $typenow)
+		{
+			echo "#pageparentdiv,"; 
+		}
+		if("page" == $typenow && $_GET["post"] == get_id_by_name('some-page-id'))
+		{
+			echo "#postdivrich,";
+		}
+	
+	echo ".remove_items_css_finish{ 
+		visibility: hidden !important; 
+		height: 0px !important; 
+		overflow: hidden !important; 
+		margin: 0 !important; 
+		padding: 0 !important; 
+		border: none !important; 
+		position: absolute !important; 
+		z-index: -1;
+	}</style>";
+}
+add_action('admin_footer', 'hide_items_css');
+*/
 
 //Remove custom post type
-//function delete_custom_post_type(){
-//    unregister_post_type('post_type_slug');
-//}
-//add_action('init','delete_custom_post_type');
+/*
+function delete_custom_post_type()
+{
+    unregister_post_type('post_type_slug');
+}
+add_action('init','delete_custom_post_type');
+*/
 
-//Posts data based on content type
-//function custom_posts_per_page($query)
-//{
-//	if(!is_admin()){
-//        switch ($query->query_vars['post_type'])
-//        {
-//            case 'custom_post_type_slug':
-//                $query->query_vars['posts_per_page'] = 6;
-//                $query->query_vars['order'] = 'DESC';
-//                $query->query_vars['orderby'] = 'date';
-//                break;
-//        }
-//        return $query;
-//    }
-//}
-//add_filter('pre_get_posts', 'custom_posts_per_page');
-
-//Disable specific plugin update check 
-function disable_plugin_updates($value)
-{	
-	$disabledPlugins = array(
-							'advanced-custom-fields-pro/acf.php', //Updated manually
-							'admin-menu-editor-pro/menu-editor.php', //Updated manually (check the comment "//Manual update" in this file before update)
-							'enhaced-contextual-help/enhaced-contextual-help.php', //Updated manually (from https://git.io/fAjsr)
-							'wp-migrate-db-pro/wp-migrate-db-pro.php', //Updated manually (check the comment "//Manual update" oi this file before update)
-							//'plugin-folder/plugin.php',
-							//'plugin-folder/plugin.php',
-							);
-	
-	foreach ($disabledPlugins as $disabledPlugin)
+/*
+ * Custom admin post filter by taxonomy
+ * Info: Show filter for custom taxonomy on post type item list
+ */
+/*
+function custom_taxonomy_filter_1()
+{
+	global $typenow;
+ 
+	// an array of all the taxonomyies you want to display. Use the taxonomy name or slug
+	$taxonomies = array('custom-taxonomy-1');
+ 
+	// must set this to the post type you want the filter(s) displayed on
+	if($typenow == 'custom-post-type-1')
 	{
-		if (isset($value) && is_object($value)) 
-		{
-			if (isset($value->response[$disabledPlugin])) 
-			{
-				unset($value->response[$disabledPlugin]);
+		foreach ($taxonomies as $tax_slug){
+			$tax_obj = get_taxonomy($tax_slug);
+			$tax_name = $tax_obj->labels->name;
+			$tax_terms = get_terms($tax_slug);
+			
+			echo "<select name='$tax_slug' id='$tax_slug' class='postform'>";
+			echo "<option value=''>Show All $tax_name</option>";
+			foreach($tax_terms as $tax_term)
+			{ 
+				echo '<option value='. $tax_term->slug, $_GET[$tax_slug] == $tax_term->slug ? ' selected="selected"' : '','>' . $tax_term->name .'</option>'; //(' . $tax_term->count .')
 			}
+			echo "</select>";
 		}
 	}
-	return $value;
 }
-add_filter('site_transient_update_plugins', 'disable_plugin_updates');
+add_action('restrict_manage_posts', 'custom_taxonomy_filter_1');
+*/
+
+/*
+ * Custom taxonomy
+ * Info: https://codex.wordpress.org/Function_Reference/register_taxonomy
+ */
+/*
+function create_custom_taxonomy_1() 
+{
+	// Add new taxonomy, make it hierarchical (like categories)
+	$tax_title = 'Custom Taxonomy';
+	$tax_item = 'Taxonomy Item';
+	$tax_slug = 'custom-taxonomy-1';
+	$tax_post_type = array('custom-post-type-1');
+	$tax_args = array('hierarchical'      => true, //false = NOT hierarchical (like tags)
+					  'labels'            => array('name'              => _x($tax_title, 'taxonomy general name', 'websitebase'),
+												   'singular_name'     => _x($tax_item, 'taxonomy singular name', 'websitebase'),
+												   'menu_name'         => __($tax_title, 'websitebase'),
+												   'search_items'      => __('Search '.$tax_item, 'websitebase'),
+												   'all_items'         => __('All '.$tax_title, 'websitebase'),
+												   'parent_item'       => __('Parent '.$tax_item, 'websitebase'),
+												   'parent_item_colon' => __('Parent '.$tax_item.':', 'websitebase'),
+												   'edit_item'         => __('Edit '.$tax_item, 'websitebase'),
+												   'update_item'       => __('Update '.$tax_item, 'websitebase'),
+												   'add_new_item'      => __('Add New '.$tax_item, 'twebsitebase ,
+												   'new_item_name'     => __($tax_title, 'websitebase')),
+					  'show_ui'           => true,
+					  'show_admin_column' => true,
+					  'query_var'         => true,
+					  'rewrite'           => array('slug' => $tax_slug,
+												   'with_front' => false),
+					);
+
+	register_taxonomy($tax_slug, $tax_post_type, $tax_args);
+	
+	//Add default items
+	$parent_term = term_exists( $tax_slug, $tax_slug ); // array is returned if taxonomy is given
+	$parent_term_id = $parent_term['term_id']; // get numeric term id
+	
+	$term_name_1 = 'General';
+	$term_slug_1 = 'general';
+	wp_insert_term($term_name_1, $tax_slug, array( 'slug' => $term_slug_1,'parent'=> $parent_term_id));
+}
+add_action('init', 'create_custom_taxonomy_1', 0);
+*/
+
+/*
+ * Custom Post Type 1
+ * Info: https://codex.wordpress.org/Function_Reference/register_post_type
+ */
+/*
+function custom_post_type_1() 
+{
+	// Set UI labels for Custom Post Type
+	$post_title = 'Custom Post Type 1';
+	$post_item = 'Post Type 1 Item';
+	$post_slug = 'custom-post-type-1';
+	$post_position = 4;
+	
+	// Set other options for Custom Post Type
+    $post_args = array('label'               	=> __($post_slug, 'websitebase'),
+					  'description'         	=> __('List '.$post_item, 'websitebase'),
+					  'labels'              	=> array('name'                => _x($post_title, 'Post Type General Name', 'websitebase'),
+														 'singular_name'       => _x($post_item, 'Post Type Singular Name', 'websitebase'),
+														 'menu_name'           => __($post_title, 'websitebase'),
+														 'parent_item_colon'   => __('Parent '.$post_item, 'websitebase'),
+														 'all_items'           => __('All '.$post_title, 'websitebase'),
+														 'view_item'           => __('View '.$post_item, 'websitebase'),
+														 'add_new_item'        => __('Create New '.$post_item, 'websitebase'),
+														 'add_new'             => __('Add '.$post_item, 'websitebase'),
+														 'edit_item'           => __('Edit '.$post_item, 'websitebase'),
+														 'update_item'         => __('Update '.$post_item, 'websitebase'),
+														 'search_items'        => __('Search '.$post_item, 'websitebase'),
+														 'not_found'           => __($post_item.' Not Found', 'websitebase'),
+														 'not_found_in_trash'  => __($post_item.' Not Found in Trash', 'websitebase'),
+														 'not_found_in_trash'  => __('List '.$post_item, 'websitebase')),
+					  // Features this CPT supports in Post Editor
+					  'supports'            	=> array('title',
+														 'editor',
+														 'excerpt',
+														 'author',
+														 'thumbnail',
+														 'comments',
+														 'revisions',
+														 'custom-fields'),
+					  // You can associate this CPT with a taxonomy or custom taxonomy.
+					  'taxonomies'          	=> array('custom_taxonomy_1',
+														 'post_tag'),
+					  // A hierarchical CPT is like Pages and can have Parent and child items. A non-hierarchical CPT is like Posts.
+					  'hierarchical'        	=> false,
+					  'public'              	=> true,
+					  'show_ui'             	=> true,
+					  'show_in_menu'        	=> true,
+					  'show_in_nav_menus'   	=> true,
+					  'show_in_admin_bar'   	=> true,
+					  'menu_position'       	=> $post_position,
+					  'can_export'          	=> true,
+					  'has_archive'         	=> true,
+					  'exclude_from_search' 	=> false,
+					  'publicly_queryable'  	=> true,
+					  'capability_type'     	=> 'page',
+    );
+    
+    // Registering your Custom Post Type
+    register_post_type($post_slug, $post_args);
+}
+add_action('init', 'custom_post_type_1', 0);
+*/

@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the Plugins - Gutenberg - Stable (latest release) package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2018-11-07 16:20:54+0000\n"
+"PO-Revision-Date: 2018-11-09 06:17:27+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -1469,10 +1469,6 @@ msgstr "La herramienta <em>Insertador</em>"
 msgid "Try selecting and removing or editing the caption, now you don&#8217;t have to be careful about selecting the image or other text by mistake and ruining the presentation."
 msgstr "Prueba a seleccionar o quitar o editar la leyenda, ahora ya no tienes porque ser cuidadoso a la hora de seleccionar la imagen u otro texto por error y arruinar la presentación."
 
-#: post-content.php:32
-msgid "If your theme supports it, you&#8217;ll see the \"wide\" button on the image toolbar. Give it a try."
-msgstr "Si tue tema es compatible veras el botón \"ancho\" en la barra de herramientas de la imagen. Pruébalo."
-
 #: post-content.php:26
 msgid "Handling images and media with the utmost care is a primary focus of the new editor. Hopefully, you&#8217;ll find aspects of adding captions or going full-width with your pictures much easier and robust than before."
 msgstr "Gestionar imágenes y medios con el máximo cuidado es un enfoque principal del nuevo editor. Afortunadamente encontrarás posibilidades para añadir leyendas o hacer de ancho completo tus fotos de un modo mucho más fácil y robusto que antes."
@@ -1514,6 +1510,10 @@ msgstr "Bloques de diseño, como botones, imágenes principales, separadores, et
 #: post-content.php:2
 msgid "Of Mountains &amp; Printing Presses"
 msgstr "Hablando de montañas e imprentas"
+
+#: post-content.php:32
+msgid "If your theme supports it, you&#8217;ll see the \"wide\" button on the image toolbar. Give it a try."
+msgstr "Si tu tema es compatible veras el botón \"ancho\" en la barra de herramientas de la imagen. Pruébalo."
 
 #: lib/compat.php:236
 msgid "Edit in Gutenberg"

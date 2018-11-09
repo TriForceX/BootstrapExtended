@@ -81,6 +81,18 @@
 }
 /* Attachment fields */
 
+/* New General Settings */
+.wp-core-ui #wpbody-content form .new_fields_html textarea{
+	max-width: 350px;
+	min-height: 100px;
+	width: 100%;
+}
+.wp-core-ui #wpbody-content form .new_fields_html input[type="text"]{
+	max-width: 350px;
+	width: 100%;
+}
+/* New General Settings */
+
 /* ================================================= BASE ADMIN ================================================= */
 
 /* ================================================= BASE PLUGINS ================================================= */
