@@ -22,7 +22,7 @@
 
 /* Login */
 .wp-core-ui.login #login h1 a{
-	background-image: url('base/logo.png');
+	background-image: url('base/login/logo.png');
     background-position: center center;
     background-repeat: no-repeat;
 	background-size:contain;
