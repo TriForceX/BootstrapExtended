@@ -965,21 +965,21 @@ function JSmodalAjax(title, url, loading, size, align, animate)
 					animate: (animate == 'alternative' ? true : animate),
 				});
 			}
-			//Remove loading icon
+			// Remove loading icon
 			if(loading){
 				$(".JSloading").remove();
 			}
 		},
 		error: function(xhr, status, error){
-			//Error Text
+			// Error Text
 			var text = "";
-			//Check
+			// Check
 			if(!(xhr.responseText === undefined || xhr.responseText === null || xhr.responseText == '')){
 				text = "\n---------------\n"+xhr.responseText;
 			}
-			//Error log
+			// Error log
 			JSconsole("[JS Function] Modal Ajax Error! ("+xhr.status+")"+text);
-			//Remove loading icon
+			// Remove loading icon
 			if(loading){
 				$(".JSloading").remove();
 			}
