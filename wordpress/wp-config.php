@@ -118,16 +118,16 @@ if ( !defined('ABSPATH') )
 	define('ABSPATH', dirname(__FILE__) . '/');
 
 /** Delete database dir if is not local enviroment **/
-if ( !$localhost && is_dir('wp-bd') )
+if ( !$localhost && is_dir('wp-db') )
 {
-	foreach(glob('wp-bd/{,.}*', GLOB_BRACE) as $filename)
+	foreach(glob('wp-db/{,.}*', GLOB_BRACE) as $filename)
 	{
 		if(is_file($filename))
 		{
 			unlink($filename);
 		}
 	}
-	rmdir('wp-bd');
+	rmdir('wp-db');
 }
 
 /** Sets up WordPress vars and included files. */
