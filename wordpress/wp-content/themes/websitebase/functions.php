@@ -119,7 +119,7 @@ add_filter('pre_get_posts', 'custom_posts_per_page');
 */
 
 /* 
- * Custom theme mods shortcut
+ * Custom theme mods fields
  * Usage: get_theme_mod2('slug');
  */
 /*
@@ -218,7 +218,7 @@ $customize_theme_fields['field-select'] = array(
 */
 
 /* 
- * Custom theme mods shortcut
+ * Custom theme mods panels
  * Usage: Add the slug as a value of 'panel' in a $customize_theme_fields
  */
 /*
