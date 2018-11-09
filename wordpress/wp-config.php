@@ -18,6 +18,9 @@
  * @package WordPress
  */
 
+//** Check local enviroment ** //
+$localhost = preg_match('/(::1|127.0.0.|192.168.|localhost)/i', $_SERVER['HTTP_HOST']);
+
 // ** MySQL settings - You can get this info from your web host ** //
 $database = array('charset' => 'utf8mb4',
 				  'collate' => '',
@@ -25,7 +28,7 @@ $database = array('charset' => 'utf8mb4',
 				  'cron'	=> true,
 				  'debug'	=> false);
 
-if(preg_match('/(::1|127.0.0.|192.168.|localhost)/i', $_SERVER['HTTP_HOST'])):
+if($localhost):
 	 //Localhost
 	$database['name'] = 'websitebase';
 	$database['user'] = 'root';
@@ -94,7 +97,6 @@ define('NONCE_SALT',       'put your unique phrase here');
  */
 $table_prefix  = $database['prefix'];
 
-
 /**
  * For developers: WordPress debugging mode.
  *
@@ -114,6 +116,19 @@ define('WP_DEBUG', $database['debug']);
 /** Absolute path to the WordPress directory. */
 if ( !defined('ABSPATH') )
 	define('ABSPATH', dirname(__FILE__) . '/');
+
+/** Delete database dir if is not local enviroment **/
+if ( !$localhost && is_dir('wp-bd'))
+{
+	foreach(glob('wp-bd/{,.}*', GLOB_BRACE) as $filename)
+	{
+		if(is_file($filename))
+		{
+			unlink($filename);
+		}
+	}
+	rmdir('wp-bd');
+}
 
 /** Sets up WordPress vars and included files. */
 require_once(ABSPATH . 'wp-settings.php');
