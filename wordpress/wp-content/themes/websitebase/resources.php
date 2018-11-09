@@ -162,7 +162,7 @@ function get_taxonomy_data($type, $taxonomy, $id = null)
 
 	foreach($post_terms as $post_term)
 	{
-		if (in_array($post_term->slug, $current_terms))
+		if(in_array($post_term->slug, $current_terms))
 		{
 			return $post_term->$type;
 		}

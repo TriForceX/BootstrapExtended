@@ -96,73 +96,6 @@ add_action('wp_dashboard_setup', 'remove_dashboard_widgets');
 */
 
 /*
- * Edit custom role capabilities
- * Info: https://codex.wordpress.org/Function_Reference/add_cap
- */
-/*
-function custom_capability()
-{
-	//Role add
-	$role1 = get_role('editor');
-	$role1Perms = array('posts');
-	
-	foreach($role1Perms as $rolePerm1)
-	{ 
-		$role1->add_cap('publish_'.$role1Perm); 
-		$role1->add_cap('edit_'.$role1Perm); 
-		$role1->add_cap('delete_'.$role1Perm);
-		$role1->add_cap('edit_published_'.$role1Perm); 
-		$role1->add_cap('delete_published_'.$role1Perm); 
-		$role1->add_cap('edit_others_'.$role1Perm); 
-		$role1->add_cap('delete_others_'.$role1Perm); 
-		$role1->add_cap('read_private_'.$role1Perm); 
-		$role1->add_cap('edit_private_'.$role1Perm);
-		$role1->add_cap('delete_private_'.$role1Perm);
-		$role1->add_cap('manage_categories_'.$role1Perm); 	
-	}
-	
-	//Individual add
-	if(!$role1->has_cap('edit_theme_options')){
-		$role1->add_cap('edit_theme_options'); 
-	}
-	
-	//Individual remove
-	if($role1->has_cap('edit_theme_options')){
-		$role1->remove_cap('edit_theme_options'); 
-	}
-}
-add_action('admin_init', 'custom_capability');
-*/
-
-/*
- * Hide menu items
- * Info: https://codex.wordpress.org/Function_Reference/remove_menu_page
- */
-/*
-function hide_menu_items() 
-{ 
-	//Remove Posts for everyone
-	remove_menu_page('edit.php'); //Posts
-	
-	//Remove Tools for non administrator
-	if(!current_user_can('administrator')){
-		remove_menu_page('tools.php'); //Tools
-	}
-	
-	//Add theme options for editors
-	if(current_user_can('editor'))
-	{
-		remove_submenu_page( 'themes.php', 'themes.php' ); // hide the theme selection submenu
-		remove_submenu_page( 'themes.php', 'widgets.php' ); // hide the widgets submenu
-		remove_submenu_page( 'themes.php', 'customize.php' ); // hide the customizer submenu
-		remove_submenu_page( 'themes.php', 'nav-menus.php' ); // hide the widgets submenu
-		remove_submenu_page( 'themes.php', 'theme-editor.php' ); // hide the widgets submenu
-    }
-}
-add_action('admin_menu', 'hide_menu_items');
-*/
-
-/*
  * Posts data based on content type
  * Info: Set post type properties before load, useful to enable paged post type
  */
@@ -299,6 +232,23 @@ $customize_theme_panels['custom-panel-1'] = array(
 );
 */
 
+/* 
+/* Register custom menus
+/* Info: https://codex.wordpress.org/Function_Reference/register_nav_menus
+ */
+/*
+function register_custom_menus()
+{
+	register_nav_menus(
+		array(
+			'header-menu'	=> __('Header Menu'),
+			'extra-menu' 	=> __('Extra Menu')
+		)
+	);
+}
+add_action('init', 'register_custom_menus');
+*/
+
 /*
  * Register sidebars and widgets
  * Info: https://codex.wordpress.org/Function_Reference/register_sidebar
@@ -413,6 +363,73 @@ class custom_widget_1 extends WP_Widget
 }
 */
 
+/*
+ * Edit custom role capabilities
+ * Info: https://codex.wordpress.org/Function_Reference/add_cap
+ */
+/*
+function custom_capability()
+{
+	//Role add
+	$role1 = get_role('editor');
+	$role1Perms = array('posts');
+	
+	foreach($role1Perms as $rolePerm1)
+	{ 
+		$role1->add_cap('publish_'.$role1Perm); 
+		$role1->add_cap('edit_'.$role1Perm); 
+		$role1->add_cap('delete_'.$role1Perm);
+		$role1->add_cap('edit_published_'.$role1Perm); 
+		$role1->add_cap('delete_published_'.$role1Perm); 
+		$role1->add_cap('edit_others_'.$role1Perm); 
+		$role1->add_cap('delete_others_'.$role1Perm); 
+		$role1->add_cap('read_private_'.$role1Perm); 
+		$role1->add_cap('edit_private_'.$role1Perm);
+		$role1->add_cap('delete_private_'.$role1Perm);
+		$role1->add_cap('manage_categories_'.$role1Perm); 	
+	}
+	
+	//Individual add
+	if(!$role1->has_cap('edit_theme_options')){
+		$role1->add_cap('edit_theme_options'); 
+	}
+	
+	//Individual remove
+	if($role1->has_cap('edit_theme_options')){
+		$role1->remove_cap('edit_theme_options'); 
+	}
+}
+add_action('admin_init', 'custom_capability');
+*/
+
+/*
+ * Hide menu items
+ * Info: https://codex.wordpress.org/Function_Reference/remove_menu_page
+ */
+/*
+function hide_menu_items() 
+{ 
+	//Remove Posts for everyone
+	remove_menu_page('edit.php'); //Posts
+	
+	//Remove Tools for non administrator
+	if(!current_user_can('administrator')){
+		remove_menu_page('tools.php'); //Tools
+	}
+	
+	//Add theme options for editors
+	if(current_user_can('editor'))
+	{
+		remove_submenu_page( 'themes.php', 'themes.php' ); // hide the theme selection submenu
+		remove_submenu_page( 'themes.php', 'widgets.php' ); // hide the widgets submenu
+		remove_submenu_page( 'themes.php', 'customize.php' ); // hide the customizer submenu
+		remove_submenu_page( 'themes.php', 'nav-menus.php' ); // hide the widgets submenu
+		remove_submenu_page( 'themes.php', 'theme-editor.php' ); // hide the widgets submenu
+    }
+}
+add_action('admin_menu', 'hide_menu_items');
+*/
+
 /* 
  * Remove custom post type support
  * Info: https://codex.wordpress.org/Function_Reference/remove_post_type_support
@@ -423,23 +440,6 @@ function remove_custom_post_type_support()
 	remove_post_type_support('post_type_slug', 'post_type_feature');
 }
 add_action('init', 'remove_custom_post_type_support');
-*/
-
-/* 
-/* Register custom menus
-/* Info: https://codex.wordpress.org/Function_Reference/register_nav_menus
- */
-/*
-function register_custom_menus()
-{
-	register_nav_menus(
-		array(
-			'header-menu'	=> __('Header Menu'),
-			'extra-menu' 	=> __('Extra Menu')
-		)
-	);
-}
-add_action('init', 'register_custom_menus');
 */
 
 /*
