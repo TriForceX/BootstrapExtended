@@ -51,7 +51,7 @@
 	<!-- Font Awesome -->
 	<link href="<?php echo get_bloginfo('template_url'); ?>/resources/font-awesome/css/all.css" rel="stylesheet">
 	<!-- Main CSS File -->
-	<?php echo php::get_template('css', get_bloginfo('template_url')); ?>
+	<?php echo php::get_template('css'); ?>
 	<!-- IE8 support of HTML5 elements and media queries -->
 	<!--[if lt IE 9]>
 	<script src="<?php echo get_bloginfo('template_url'); ?>/resources/html5shiv/js/html5shiv.min.js"></script>

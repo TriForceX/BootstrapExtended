@@ -268,13 +268,14 @@ class php
 	}
 	
 	// Get main CSS & JS files
-	public static function get_template($type, $url)
+	public static function get_template($type)
     {
 		// Main data
 		global $websitebase;
 		
 		$local = str_replace('resources/php', '', dirname( __FILE__ ));
 		$final = $type == 'css' ? 'style.css' : 'app.js';
+		$url = $websitebase['assets_url'];
 		
 		$minify = $websitebase['minify'];
 		$mix = $websitebase['mix'];

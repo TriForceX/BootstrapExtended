@@ -28,6 +28,7 @@ $websitebase = array(
 	'nav-color' 		=> get_option('blognavcolor'),
 	'nav-color-apple' 	=> get_option('blognavcolorapple'),
 	'timezone' 			=> get_option('timezone_string'),
+	'assets_url'		=> get_bloginfo('template_url'),
 	'rebuild_pass'		=> 'mypassword',
 	'minify'			=> true,
 	'mix'				=> true,
