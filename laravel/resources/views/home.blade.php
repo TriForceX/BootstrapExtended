@@ -181,6 +181,10 @@
 					<td>Enables social share buttons.</td>
 				</tr>
 				<tr>
+					<td class="notranslate">data-lg-hide-delay</td>
+					<td>Delay time (in miliseconds) to hide bars and thumbnails.</td>
+				</tr>
+				<tr>
 					<td class="notranslate">data-lg-gallery</td>
 					<td>Show the <b>previous</b> or <b>next</b> page controls inside the gallery. Includes auto redirection.</td>
 				</tr>
