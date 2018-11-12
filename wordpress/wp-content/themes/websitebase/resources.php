@@ -8,6 +8,12 @@
  * 
  */
 
+// Get the main PHP utilities
+require_once('resources/php/utilities.php');
+
+// Enable main PHP utilities
+class php extends utilities\php { }
+
 // Set Main Website Base Data
 $websitebase = array(
 	// Fields
@@ -38,12 +44,6 @@ $websitebase = array(
 								 /*'$color-custom-2'	=> '#FFFFFF',*/
 								 /*'$color-custom-3'	=> '#FFFFFF',*/),
 );
-
-// Get the main PHP utilities
-require_once('resources/php/utilities.php');
-
-// Enable main PHP utilities
-class php extends utilities\php { }
 
 // Rebuild CSS & JS redirect clean
 if(isset($_GET['rebuild']) && $_GET['rebuild'] == $websitebase['rebuild_pass'])
