@@ -18,7 +18,8 @@ class php
 	public static function get_html_data($type)
     {
 		// Main data
-		$websitebase = unserialize(constant('websitebase'));
+		global $websitebase;
+		
 		return $websitebase[$type]; 
 	}
 	
@@ -176,7 +177,7 @@ class php
 	public static function build_template($type, $minify = true, $mix = true, $url)
 	{
 		// Main data
-		$websitebase = unserialize(constant('websitebase'));
+		global $websitebase;
 		
 		$info = '/*
  * '.($type == 'css' ? 'StyleSheet' : 'Javascript').' File Parser
@@ -270,7 +271,7 @@ class php
 	public static function get_template($type, $url)
     {
 		// Main data
-		$websitebase = unserialize(constant('websitebase'));
+		global $websitebase;
 		
 		$local = str_replace('resources/php', '', dirname( __FILE__ ));
 		$final = $type == 'css' ? 'style.css' : 'app.js';

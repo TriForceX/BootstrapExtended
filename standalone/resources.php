@@ -8,8 +8,8 @@
  * 
  */
 		
-// Main Website Base Data
-define('websitebase', serialize(array(
+// Set Main Website Base Data
+$websitebase = array(
 	// Fields
 	'lang' 				=> 'en-US',
 	'charset' 			=> 'UTF-8',
@@ -37,10 +37,7 @@ define('websitebase', serialize(array(
 	'js_vars'			=> array('$color-custom'	=> '#FF0000',
 								 /*'$color-custom-2'	=> '#FFFFFF',*/
 								 /*'$color-custom-3'	=> '#FFFFFF',*/),
-)));
-
-// Set Website Base Data
-$websitebase = unserialize(constant('websitebase'));
+);
 
 // Get the main PHP utilities
 require_once('resources/php/utilities.php');
