@@ -519,6 +519,7 @@ function JSloadLightGallery()
 	{
 		$('.JSlightGallery').each(function(){ 
 			var galSelector = $(this).data('lg-item') === 'auto' ? 'a' : $(this).data('lg-item');
+			var galHideDelay = $(this).data('lg-hide-delay') ? $(this).data('lg-hide-delay') : 3000;
 			var galThumbnail = $(this).data('lg-thumb');
 			var galDownload = $(this).data('lg-download');
 			var galAutoplay = $(this).data('lg-autoplay');
@@ -558,6 +559,7 @@ function JSloadLightGallery()
 				loop: galLoop,
 				share: galShare,
 				galleryId: galID,
+				hideBarsDelay: galHideDelay,
 			}); 
 
 			if(JSexist($('.JSlightGalleryMode')) && galPageTotal > 1)
