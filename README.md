@@ -138,7 +138,7 @@ Base structure for web sites with reusable parts of source code or functions mai
    - I am aware of that, but i don't intend to get website working completely 100% in **IE8** or **IE9**, but at least i want to show website "navigable" and not destroyed.
 
 4. How can i use this stuff in plain **HTML** instead the **PHP** standalone?
-   - In the *Standalone* project turn off the **Mix** option _(in **resources.php** set **mix** to **false**)_. Next load the page, view the code in the navigator and copy it in a **HTML** page. Take a look in [this example](https://github.com/WebsiteBase/WebsiteBase.GitHub.io).
+   - In the *Standalone* project turn off the **Mix** option _(in **resources.php** set **mix** to **false**)_. Next load the page, view the code in the navigator and copy it in a **HTML** page (replacing the main url). Take a look in [this example](https://github.com/WebsiteBase/WebsiteBase.GitHub.io).
 
 # Recommended Tools for editing
 - [Visual Studio Code](https://code.visualstudio.com)
