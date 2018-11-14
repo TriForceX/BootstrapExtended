@@ -1,5 +1,141 @@
 == Changelog ==
 
+= 4.3.0 =
+
+* Allow toggling the core custom fields meta box.
+* Introduce Annotations API across Block and Formatting.
+* Allow using a YouTube URL (or other sources) in the Video block and transparently convert it to Embed.
+* Allow Alt+F10 keyboard shortcut to navigate to block toolbar regardless of the toolbar visibility (isTyping, etc).
+* Return focus to element that opened the post publish panel after it is closed.
+* Avoid unnecessary re-renders when navigating between blocks.
+* Improve interactions around Columns block.
+* Improve keyboard navigation through the Gallery block.
+* Use full parser in do_blocks with nested block support. This switch will allow dynamic blocks which contain nested blocks inside of them and it will pave the way for a filtering API to structurally process blocks.
+* Refactor contextual toolbar to work better with floats.
+* Auto-refresh Popovers position but only refresh if the anchor position changes.
+* Add min-width to audio block.
+* Avoid auto-saving with empty post content.
+* Display correct Taxonomy labels.
+* Fix incorrect import name.
+* Fix styling issue with checkboxes.
+* Add full set of reusable block post type labels (addresses “no blocks found” state).
+* Fix right to left block alignment.
+* Fix “updating failed” notices showing on long-open tabs.
+* Fix default PHP parser to cast inner blocks as arrays.
+* Fix JS/PHP inconsistencies with empty attributes on parsing.
+* Link to the source image in the media block.
+* Fix select all keyboard shortcut for Safari and Firefox.
+* Create multiple blocks when multiple files are drag and dropped.
+* Fixes potential theme syle.css clash.
+* Makes preview button a link (a11y).
+* Stop re-rendering all blocks on arrow navigation.
+* Add constraint tabbing to post publish panel (a11y).
+* Fix image uploading bug (incorrect JSON in apiFetch).
+* Fix taxonomy visibility for contributors.
+* Adds aria labels to images in gallery blocks during editing (a11y).
+* Formatting fix for blockquotes.
+* Hide custom fields when meta box is disabled.
+* Limits blockquote color auto-selection to solid color blocks for readability.
+* Fixes announcement on multi-selection of blocks (a11y).
+* Display upload errors in the image block.
+* Fixes selection of embed type blocks.
+* Fixes JSON attribute parsing.
+* Fixes post publish focus (a11y).
+* Resolve macOS Firefox / Safari sibling inserter behavior.
+* Fix visibility of sibling inserter on tab focus.
+* Fix issue with pasting from Word where an image would be created instead of text.
+* Fix multi-selection for float elements.
+* Fetch all tag terms, not just first 100.
+* Correctly displays media on the right.
+* Only show named image sizes.
+* Improves handling of paste action.
+* Updates displayed permalink after permalink is edited.
+* Adjust font size for contrast warning (a11y).
+* Better handles formatting – nested and Google Docs.
+* Fixes suggestion list scrolling when using keyboard (a11y).
+* Fixes block and menu navigation a11y.
+* Click to close dropdown popover.
+* Fix save lock control.
+* Timezone handling fix.
+* Improve a11y of empty text blocks.
+* Fix states for publish buttons.
+* Fix backspace behavior.
+* Change aria labels for paragraph blocks (a11y).
+* Add support for prepare RichText tree.
+* With this change we force the browser to treat the textarea for the
+* code editor as auto when handling direction for its display to preserve the ability to interact with the block delimiters.
+* Rename parentClientId to rootClientId.
+* Remove deprecated findDOMNode call from Tooltip component.
+* Remove unused ref assignment to RichText.
+* Remove redundant onClickOutside handler from Dropdown.
+* Refactor block state.
+* Remove Cloudflare warning for blocked API calls.
+* Remove _wpGutenbergCodeEditorSettings (dead code).
+* Adds periods to block a11y descriptions.
+* Refactor embed block.
+* Handle metabox warning exceptions.
+* Refactor RichText to update formatting bar on format availability changes.
+* Rename wp-polyfill-ecmascript.
+* Update translator comments for quote and pullquote.
+* Remove findDOMNode useage from NavigableToolbar.
+* Changes handling of dates to properly handling scheduling.
+* Remove findDomNode from withHoverAreas.
+* Fixes missing translator comments.
+* Refactor to import Format API components.
+* Refactor of change detection: initial edits.
+* Adds better translation comments to “resolve” and “resolve block”.
+* Adds option for blocks with child blocks to change selection behavior.
+* Allows blocks to disable being converted to reusable blocks.
+* Improve undo/redo states.
+* Updates parsing to better handle nested content.
+* Remove undefined className argument from save().
+* Use different tooltips for different alignment buttons.
+* Improve performance and handling of autosave.
+* Improve gallery upload for multiple images: load one by one.
+* Adds context variable to RichText component.
+* Avoid calling missing get_current_screen function.
+* Make cssnano remove all style comments.
+* Refactor normalizeBlockType.
+* Shows icon in block toolbar.
+* Makes kitchensink button removable from plugins.
+* Fix popover sizing on screen change (autorefresh)
+* Improvement to Columns block.
+* Update block description for consistency.
+* Refactor block styles registration.
+* Use apostrophe instead of single-quote character in strings.
+* Add transformations between video and media and text block.
+* Version update for NPM packages.
+* Update Lerna to latest version.
+* Validates link format in RichText.
+* Refactor contextual toolbar to work better with floats.
+* Move wp-polyfill-ecmascript override to scripts registration.
+* Improves consistency of parser tests.
+* Remove code coverage.
+* Adds mocking helpers for E2E tests.
+* Runs E2E tests with the user in author role.
+* Adds tests for Format API.
+* Adds E2E test for rapid enter presses.
+* Fix typo in documentation.
+* Fix typos in block API documentation.
+* Improved documentation and examples for withFilters.
+* Fix some broken links in documentation.
+* Fix typo and quote consistency.
+* Remove duplicated word.
+* Adds custom block icon instructions.
+* Update documentation on keyboard shortcuts.
+* Updates isSelectionEnabledDocumentation.
+* Update FontSizePicker component documentation.
+* Export `switchToBlockType` function.
+* Remove mobile RN test suite (temporary measure).
+* Improve styling of next page block.
+* Removes fixed cover on iOS (unsupported in mobile Safari).
+* Adds support for native media picker.
+* Remove onChange delay.
+* Exposes slot/fill pattern to mobile.
+* Expose @wordpress/editor to mobile.
+* Refreshes native post block merge.
+* Properly handle cancel on the media picker.
+
 = 4.2.0 =
 
 * Introduce the Formatting API for extending RichText.
