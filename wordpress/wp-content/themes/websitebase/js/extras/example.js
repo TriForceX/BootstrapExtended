@@ -49,20 +49,23 @@ function JSparseHtmlGallery(page)
 	}
 	
 	// Pages
-	for(var num = 1; num <= gallery_total; num++)
+	if(!$.trim($('.pagination').eq(0).text()))
 	{
-		var active = num == gallery_page ? 'active' : '';
-		
-		if(num == 1)
+		for(var num = 1; num <= gallery_total; num++)
 		{
-			$('.pagination').eq(0).append('<li><a href="?page='+gallery_prev+'" class="prev"><span aria-hidden="true">&laquo;</span></a></li>');
-		}
-		
-		$('.pagination').eq(0).append('<li class="'+active+'"><a href="?page='+num+'">'+num+'</a></li>');
-		
-		if(num == gallery_total)
-		{
-			$('.pagination').eq(0).append('<li><a href="?page='+gallery_next+'" class="next"><span aria-hidden="true">&raquo;</span></a></li>');
+			var active = num == gallery_page ? 'active' : '';
+
+			if(num == 1)
+			{
+				$('.pagination').eq(0).append('<li><a href="?page='+gallery_prev+'" class="prev"><span aria-hidden="true">&laquo;</span></a></li>');
+			}
+
+			$('.pagination').eq(0).append('<li class="'+active+'"><a href="?page='+num+'">'+num+'</a></li>');
+
+			if(num == gallery_total)
+			{
+				$('.pagination').eq(0).append('<li><a href="?page='+gallery_next+'" class="next"><span aria-hidden="true">&raquo;</span></a></li>');
+			}
 		}
 	}
 
