@@ -4,7 +4,7 @@
 function JSvalidateCustom(field)
 {
 	// Console Log
-	JSconsole('[JS Example] Validate Custom');
+	JSconsole('Example Validate Custom');
 	
 	if(field === 'Custom')
 	{
@@ -16,11 +16,64 @@ function JSvalidateCustom(field)
 	}
 }
 
+// Example Plain HTML Gallery Parser
+function JSparseHtmlGallery(page)
+{
+	JSdestroyLightGallery();
+	
+	if(page)
+	{
+		$('.JSlightGalleryMode').data('lg-page-current', page);
+	}
+	
+	var gallery_elem = $('.JSlightGalleryMode .col-md-3');
+	var gallery_page = parseInt($('.JSlightGalleryMode').data('lg-page-current'));
+	var gallery_total = parseInt($('.JSlightGalleryMode').data('lg-page-total'));
+	var gallery_prev = gallery_page <= 1 ? 1 : (gallery_page-1);
+	var gallery_next = gallery_page >= gallery_total ? gallery_total : (gallery_page+1);
+	var gallery_group = 4;
+	var gallery_group_prev = gallery_page <= 1 ? 0 : ((gallery_group * gallery_page) - gallery_group);
+	var gallery_group_next = gallery_page <= 1 ? gallery_group : (gallery_group * gallery_page);
+	
+	// Thumbs
+	for(var num = 0; num < gallery_elem.length; num++)
+	{
+		if(num >= gallery_group_prev && num < gallery_group_next)
+		{
+			gallery_elem.eq(num).removeClass('d-none');
+		}
+		else
+		{
+			gallery_elem.eq(num).remove();
+		}
+	}
+	
+	// Pages
+	for(var num = 1; num <= gallery_total; num++)
+	{
+		var active = num == gallery_page ? 'active' : '';
+		
+		if(num == 1)
+		{
+			$('.pagination').append('<li><a href="?page='+gallery_prev+'" class="prev"><span aria-hidden="true">&laquo;</span></a></li>');
+		}
+		
+		$('.pagination').append('<li class="'+active+'"><a href="?page='+num+'">'+num+'</a></li>');
+		
+		if(num == gallery_total)
+		{
+			$('.pagination').append('<li><a href="?page='+gallery_next+'" class="next"><span aria-hidden="true">&raquo;</span></a></li>');
+		}
+	}
+
+	JSloadLightGallery();
+}
+
 // Example Google Translate Widget styling function
 function JSgoogleTranslateStyles()
 {
 	// Console Log
-	JSconsole('[JS Example] Google Translate Styles');
+	JSconsole('Example Google Translate Styles');
 	
 	var css = '<style type="text/css" id="JSgoogleTranslateStyles">'+
 				'.goog-te-combo,'+
@@ -60,12 +113,16 @@ $(document).ready(function(){
 /* ================================================= EXAMPLE DOCUMENT READY ================================================= */
 	
 	// Console Log
-	JSconsole('[JS Example] Document Ready');
+	JSconsole('Example Document Ready');
+	
+	// Example Get URL parameters
+	var JSgetLanguage = JSgetUrlParameter('lang') ? JSgetUrlParameter('lang') : false;
+	var JSgetGallery = JSgetUrlParameter('page') ? JSgetUrlParameter('page') : false;
 	
 	// Set language on the fly
-	if(JSgetUrlParameter('lang-test'))
+	if(JSgetLanguage)
 	{
-		JSmainLang = JSgetUrlParameter('lang-test');
+		JSmainLang = JSgetLanguage;
 	}
 	
 	// Example add language string
@@ -76,19 +133,22 @@ $(document).ready(function(){
 	
 	// Example lightGallery prev page
 	$(document).on('onPrevPageChange.lg', function(event){
-		window.location.href = $('.JSpagePrev').attr('href');
+		window.location.href = $('.pagination .prev').attr('href');
 	});
 
 	// Example lightGallery next page
 	$(document).on('onNextPageChange.lg', function(event){
-		window.location.href = $('.JSpageNext').attr('href'); 
+		window.location.href = $('.pagination .next').attr('href'); 
 	});
 	
-	// Example scroll to gallery page
-	if(JSgetUrlParameter('page'))
+	// Example auto scroll to gallery page 2 & 3
+	if(JSgetGallery)
 	{
-		JSautoScroll(".JSlightGalleryExample", true, 70);
+		JSautoScroll('.JSlightGalleryExample', true, 70);
 	}
+	
+	// Example Plain HTML Gallery Parser
+	JSparseHtmlGallery(JSgetGallery);
 	
 	// Example form validation
 	$('.JSformExample').JSvalidateForm({
@@ -129,7 +189,7 @@ $(window).bind("load", function() {
 /* ================================================= EXAMPLE WINDOWS LOAD ================================================= */
 	
 	// Console Log
-	JSconsole('[JS Example] Window Load');
+	JSconsole('Example Window Load');
 	
 	// Example test progress bar on load
 	$(".JSloadProgressTest .progress-bar").css("width", "100%");
@@ -150,7 +210,7 @@ $(document).on("JSresponsiveCode", function(event, bodyWidth, bodyHeight, bodyOr
 /* ================================================= EXAMPLE RESPONSIVE CODE ================================================= */
 	
 	// Console Log
-	JSconsole('[JS Example] Responsive Code');
+	JSconsole('Example Responsive Code');
 	
 	// Example size detection
 	$("body").attr("window-size",bodyWidth+"x"+bodyHeight);
@@ -180,7 +240,7 @@ $(document).ajaxStart(function(){
 /* ================================================= EXAMPLE AJAX START ================================================= */
 	
 	// Console Log
-	JSconsole('[JS Example] Ajax Start');
+	JSconsole('Example Ajax Start');
 	
 /* ================================================= EXAMPLE AJAX START ================================================= */
 
@@ -191,7 +251,7 @@ $(document).ajaxComplete(function() {
 /* ================================================= EXAMPLE AJAX COMPLETE ================================================= */
 	
 	// Console Log
-	JSconsole('[JS Example] Ajax Complete');
+	JSconsole('Example Ajax Complete');
 	
 /* ================================================= EXAMPLE AJAX COMPLETE ================================================= */
 

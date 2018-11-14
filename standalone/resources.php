@@ -14,9 +14,8 @@ require_once('resources/php/utilities.php');
 // Enable main PHP utilities
 class php extends utilities\php { }
 		
-// Set Main Website Base Data
+// Set main Website Base data fields
 $websitebase = array(
-	// Fields
 	'lang' 				=> 'en-US',
 	'charset' 			=> 'UTF-8',
 	'title' 			=> 'Website Base',

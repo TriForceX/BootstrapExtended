@@ -14,9 +14,8 @@ require_once('resources/php/utilities.php');
 // Enable main PHP utilities
 class php extends utilities\php { }
 
-// Set Main Website Base Data
+// Set main Website Base data fields
 $websitebase = array(
-	// Fields
 	'lang' 				=> get_bloginfo('language'),
 	'charset' 			=> get_option('blog_charset'),
 	'title' 			=> get_option('blogname'),

@@ -505,7 +505,9 @@ function JSdestroyLightGallery()
 	// Check plugin
 	if(typeof $.fn.lightGallery !== 'undefined')
 	{
-		$(".JSlightGallery").lightGallery().data('lightGallery').destroy(true);
+		$('.JSlightGallery').each(function(){ 
+			$(this).off('onBeforeOpen.lg onBeforeSlide.lg onAfterOpen.lg onAfterSlide.lg onCloseAfter.lg').data('lightGallery').destroy(true);
+		}); 
 	}
 }
 // Lightgallery load function
@@ -530,88 +532,82 @@ function JSloadLightGallery()
 			var galPageCurrent = parseInt($(this).data('lg-page-current'));
 			var galLoadThumb = JSmainUrl+'/resources/lightgallery/img/loading.gif';
 			var galID = $('.JSlightGallery').index(this);
-
+			
+			// Set
 			if($(this).data('lg-title') !== 'auto')
 			{
 				$(this).find(galSelector).not('.lg-thumb-prev, .lg-thumb-next').attr('title', $(this).data('lg-title'));
 			}
-
+			
+			// Set
 			if(galGalleryMode === true)
 			{
 				$(this).addClass('JSlightGalleryMode');
 			}
-
-			if(JSexist($('.JSlightGalleryMode')) && galPageTotal > 1)
-			{
-				if($('.JSlightGalleryMode .lg-thumb-prev').length < 1 && $('.JSlightGalleryMode .lg-thumb-next').length < 1)
-				{
-					$('.JSlightGalleryMode').prepend('<div class="lg-thumb-prev" href="'+galLoadThumb+'" title="'+JSlang('$lgtitle-prev-text')+'"><img src="#"></div>');
-					$('.JSlightGalleryMode').append('<div class="lg-thumb-next" href="'+galLoadThumb+'" title="'+JSlang('$lgtitle-next-text')+'"><img src="#"></div>');
-				}
-			}
 			
-			$(this).lightGallery({
-				selector: galSelector+', .lg-thumb-prev, .lg-thumb-next', 
-				thumbnail: galThumbnail,
-				download: galDownload,
-				autoplayControls: galAutoplay,
-				hash: galGalleryMode === true ? false : true,
-				loop: galLoop,
-				share: galShare,
-				galleryId: galID,
-				hideBarsDelay: galHideDelay,
-			}); 
-
-			if(JSexist($('.JSlightGalleryMode')) && galPageTotal > 1)
+			// Events
+			if($(this).hasClass('JSlightGalleryMode') && galPageTotal > 1)
 			{
 				var total;
 				var totalSlide;
 				var current;
 				var currentSlide;
+				
+				if(!JSexist($('.lg-thumb-prev')) && !JSexist($('.lg-thumb-next')))
+				{
+					$('.JSlightGalleryMode').prepend('<div class="lg-thumb-prev" href="'+galLoadThumb+'" title="'+JSlang('$lgtitle-prev-text')+'"><img src="#"></div>');
+					$('.JSlightGalleryMode').append('<div class="lg-thumb-next" href="'+galLoadThumb+'" title="'+JSlang('$lgtitle-next-text')+'"><img src="#"></div>');
+				}
 
-				$('.JSlightGallery.JSlightGalleryMode').on('onBeforeOpen.lg',function(){
+				$(this).on('onBeforeOpen.lg',function(){
 					$('#lg-counter').addClass('invisible');
 				});
 
-				$('.JSlightGallery.JSlightGalleryMode').on('onBeforeSlide.lg',function(){
+				$(this).on('onBeforeSlide.lg',function(){
 					$('#lg-counter').addClass('invisible');
 				});
 
-				$('.JSlightGallery.JSlightGalleryMode').on('onAfterOpen.lg',function(){
+				$(this).on('onAfterOpen.lg',function(){
 					var galThumbPrevHTML = '<div><span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span><strong>'+JSlang('$lgtitle-prev-button')+'</strong></div>';
 					var galThumbNextHTML = '<div><span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span><strong>'+JSlang('$lgtitle-next-button')+'</strong></div>';
-
+					
 					$('.lg-outer .lg-thumb .lg-thumb-item:first-child').addClass('JSlightGalleryNoBorder').append(galThumbPrevHTML);
 					$('.lg-outer .lg-thumb .lg-thumb-item:last-child').addClass('JSlightGalleryNoBorder').append(galThumbNextHTML);
 
-					total = parseInt($('#lg-counter-all').html());
+					$('#lg-counter').prepend('<span id="lg-counter-current-new">1</span>');
+					$('#lg-counter').append('<span id="lg-counter-all-new">1</span>');
+
+					$('#lg-counter-all').addClass('hide');
+					$('#lg-counter-current').addClass('hide');
+
+					total = parseInt($('#lg-counter-all').html()); 
 					totalSlide = total <= 2 ? 1 : (total - 2);
-					current = parseInt($('#lg-counter-current').html());
+					current = parseInt($('#lg-counter-current').html()); 
 					currentSlide = current <= 2 ? 1 : (current == total ? totalSlide : (current - 1));
 
-					$('#lg-counter-all').html(totalSlide);
-					$('#lg-counter-current').html(currentSlide);
+					$('#lg-counter-all-new').html(totalSlide);
+					$('#lg-counter-current-new').html(currentSlide);
 					$('#lg-counter').removeClass('invisible');
-
+					
 					// Prev & Next Pages
-					if(galPageCurrent === 1)
+					if(galPageCurrent == 1)
 					{
-						$('.lg-outer .lg-thumb .lg-thumb-item:first-child').addClass('invisible');
-						$('.lg-outer .lg-thumb .lg-thumb-item:last-child').removeClass('invisible');
+						$('.JSlightGalleryNoBorder:first-child').addClass('invisible');
+						$('.JSlightGalleryNoBorder:last-child').removeClass('invisible');
 					}
-					else if(galPageCurrent === galPageTotal)
+					else if(galPageCurrent == galPageTotal)
 					{
-						$('.lg-outer .lg-thumb .lg-thumb-item:first-child').removeClass('invisible');
-						$('.lg-outer .lg-thumb .lg-thumb-item:last-child').addClass('invisible');
+						$('.JSlightGalleryNoBorder:first-child').removeClass('invisible');
+						$('.JSlightGalleryNoBorder:last-child').addClass('invisible');
 					}
 					else
 					{
-						$('.lg-outer .lg-thumb .lg-thumb-item:first-child').removeClass('invisible');
-						$('.lg-outer .lg-thumb .lg-thumb-item:last-child').removeClass('invisible');
+						$('.JSlightGalleryNoBorder:first-child').removeClass('invisible');
+						$('.JSlightGalleryNoBorder:last-child').removeClass('invisible');
 					}
 
 					// Prev & Next Controls
-					if(currentSlide === 1)
+					if(currentSlide == 1)
 					{
 						$('.lg-actions .lg-prev').addClass('invisible');
 						$('.lg-actions .lg-next').removeClass('invisible');
@@ -633,29 +629,27 @@ function JSloadLightGallery()
 					}
 				});
 
-				$('.JSlightGallery.JSlightGalleryMode').on('onAfterSlide.lg',function(){
-					current = parseInt($('#lg-counter-current').html());
+				$(this).on('onAfterSlide.lg',function(){
+					current = parseInt($('#lg-counter-current').html()); 
 					currentSlide = current <= 2 ? 1 : (current == total ? totalSlide : (current - 1));
 
-					$('#lg-counter-all').html(totalSlide);
-					$('#lg-counter-current').html(currentSlide);
+					$('#lg-counter-current-new').html(currentSlide);
 					$('#lg-counter').removeClass('invisible');
-
+					
 					// Prev & Next Controls
-					if(currentSlide === 1)
+					if(currentSlide == 1)
 					{
 						$('.lg-actions .lg-prev').addClass('invisible');
 						$('.lg-actions .lg-next').removeClass('invisible');
-						// Close
-						if(current === 1)
+
+						if(current == 1) // Close
 						{
-							if(galPageCurrent === 1)
+							if(galPageCurrent == 1)
 							{
 								$('.lg-outer .lg-sub-html').html(JSlang('$lgtitle-gallery-close'));
 							}
-							else
+							else // Redirect
 							{
-								// Redirect
 								$('.JSlightGallery').addClass('lightGalleryAuto');
 								$('.JSlightGallery').addClass('lightGalleryAutoPrev');
 							}
@@ -671,16 +665,15 @@ function JSloadLightGallery()
 					{
 						$('.lg-actions .lg-prev').removeClass('invisible');
 						$('.lg-actions .lg-next').addClass('invisible');
-						// Close
-						if(current === total)
+
+						if(current == total) // Close
 						{
-							if(galPageCurrent === galPageTotal)
+							if(galPageCurrent == galPageTotal)
 							{
 								$('.lg-outer .lg-sub-html').html(JSlang('$lgtitle-gallery-close'));
 							}
-							else
+							else // Redirect
 							{
-								// Redirect
 								$('.JSlightGallery').addClass('lightGalleryAuto');
 								$('.JSlightGallery').addClass('lightGalleryAutoNext');
 							}
@@ -694,17 +687,15 @@ function JSloadLightGallery()
 					}
 				});
 
-				$('.JSlightGallery.JSlightGalleryMode').on('onCloseAfter.lg',function(){
+				$(this).on('onCloseAfter.lg',function(){
 					if($(this).hasClass('lightGalleryAuto'))
 					{
-						if($(this).hasClass('lightGalleryAutoNext'))
+						if($(this).hasClass('lightGalleryAutoNext')) // Stuff to do on close
 						{
-							// Stuff to do on close
 							$(document).trigger('onNextPageChange.lg'); // Send data to event
 						}
-						else if($(this).hasClass('lightGalleryAutoPrev'))
+						else if($(this).hasClass('lightGalleryAutoPrev')) // Stuff to do on close
 						{
-							// Stuff to do on close
 							$(document).trigger('onPrevPageChange.lg'); // Send data to event
 						}
 						$(this).removeClass('lightGalleryAuto');
@@ -713,6 +704,19 @@ function JSloadLightGallery()
 					}
 				});
 			}
+			
+			// Launch
+			$(this).lightGallery({
+				selector: galSelector+', .lg-thumb-prev, .lg-thumb-next', 
+				thumbnail: galThumbnail,
+				download: galDownload,
+				autoplayControls: galAutoplay,
+				hash: galGalleryMode === true ? false : true,
+				loop: galLoop,
+				share: galShare,
+				galleryId: galID,
+				hideBarsDelay: galHideDelay,
+			});
 		});
 	}
 }
