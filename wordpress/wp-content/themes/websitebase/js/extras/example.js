@@ -55,14 +55,14 @@ function JSparseHtmlGallery(page)
 		
 		if(num == 1)
 		{
-			$('.pagination').append('<li><a href="?page='+gallery_prev+'" class="prev"><span aria-hidden="true">&laquo;</span></a></li>');
+			$('.pagination').eq(0).append('<li><a href="?page='+gallery_prev+'" class="prev"><span aria-hidden="true">&laquo;</span></a></li>');
 		}
 		
-		$('.pagination').append('<li class="'+active+'"><a href="?page='+num+'">'+num+'</a></li>');
+		$('.pagination').eq(0).append('<li class="'+active+'"><a href="?page='+num+'">'+num+'</a></li>');
 		
 		if(num == gallery_total)
 		{
-			$('.pagination').append('<li><a href="?page='+gallery_next+'" class="next"><span aria-hidden="true">&raquo;</span></a></li>');
+			$('.pagination').eq(0).append('<li><a href="?page='+gallery_next+'" class="next"><span aria-hidden="true">&raquo;</span></a></li>');
 		}
 	}
 
