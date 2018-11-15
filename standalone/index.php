@@ -16,7 +16,7 @@
 			<ul class="nav navbar-nav">
 				<li class="active"><a href="/" class="notranslate">Home</a></li>
 				<li class="dropdown">
-					<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Information <span class="caret"></span></a>
+					<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Info <span class="caret"></span></a>
 					<ul class="dropdown-menu dropdown-overflow-lg notranslate" role="menu">
 						<li><a href="https://github.com/TriForceX/WebsiteBase/wiki" target="_blank">Wiki</a></li>
 						<li><a href="https://github.com/TriForceX/WebsiteBase" target="_blank">Repository</a></li>
