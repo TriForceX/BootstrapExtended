@@ -4,7 +4,7 @@
 <!-- ================================================= NAV MENU ================================================= -->
 <nav class="navbar navbar-inverse navbar-fixed-top">
 	<div class="container">
-		<div class="navbar-header">
+		<div class="navbar-header d-block d-sm-none d-md-block">
 			<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-collapse">
 				<span class="sr-only">Toggle navigation</span>
 				<span class="icon-bar"></span>
@@ -14,10 +14,10 @@
 			<a class="navbar-brand notranslate" href="/">Website Base</a>
 		</div>
 		<div class="navbar-collapse collapse">
-			<ul class="nav navbar-nav">
+			<ul class="nav navbar-nav navbar-right float-sm-left float-md-right">
 				<li class="active"><a href="/" class="notranslate">Home</a></li>
 				<li class="dropdown">
-					<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Info <span class="caret"></span></a>
+					<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Information <span class="caret"></span></a>
 					<ul class="dropdown-menu dropdown-overflow-lg notranslate" role="menu">
 						<li><a href="https://github.com/TriForceX/WebsiteBase/wiki" target="_blank">Wiki</a></li>
 						<li><a href="https://github.com/TriForceX/WebsiteBase" target="_blank">Repository</a></li>
