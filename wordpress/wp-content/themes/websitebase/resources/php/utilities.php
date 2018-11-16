@@ -507,15 +507,12 @@ class php
     }
 	
 	// Returns main domain also if is in a folder
-	public static function get_main_url($remove = null)
+	public static function get_main_url()
     {
 		$protocol = self::is_https() ? 'https://' : 'http://';
 		$domain = $protocol.$_SERVER['SERVER_NAME'].dirname($_SERVER['PHP_SELF']);
 		
-		if($remove != null){
-			$domain = str_replace($remove,'',$domain);
-		}
-		return $domain;
+		return rtrim($domain, '/');
     }
 	
 	// Return the current URL.
