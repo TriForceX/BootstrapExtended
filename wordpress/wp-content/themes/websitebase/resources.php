@@ -260,8 +260,6 @@ class new_general_setting
 function custom_customize_register($wp_customize)
 {
 	$wp_customize->remove_panel('themes');
-	$wp_customize->remove_panel('widgets');
-	$wp_customize->remove_panel('nav_menus');
 	$wp_customize->remove_section('title_tagline');
 	$wp_customize->remove_section('colors');
 	$wp_customize->remove_section('header_image');
