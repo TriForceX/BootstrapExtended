@@ -30,9 +30,9 @@ $this->extend('../layout');
             <dl>
                 <dt>UTF-8 rendering:</dt>
                 <dd><?php echo $encoding->OK?> <span id="loco-utf8-check"><?php echo $encoding->tick?></span></dd>
-                
+
                 <dt>Multibyte support:</dt>
-                <dd><?php echo $encoding->mbstring?'Yes':'No'?></dd>
+                <dd><?php echo $encoding->mbstring?></dd>
             </dl>
         </div>
     
