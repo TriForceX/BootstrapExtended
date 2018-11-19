@@ -42,8 +42,6 @@
 <script src="<?php echo php::get_main_url(); ?>/resources/moment/js/locales.min.js"></script>
 <!-- Tempus Dominus -->
 <script src="<?php echo php::get_main_url(); ?>/resources/tempusdominus/js/tempusdominus-bootstrap-4.min.js"></script>
-<!-- imgLiquid -->
-<script src="<?php echo php::get_main_url(); ?>/resources/imgliquid/js/imgliquid.min.js"></script>
 <!-- LightGallery -->
 <script src="<?php echo php::get_main_url(); ?>/resources/lightgallery/js/lightgallery-all.min.js"></script>
 <!-- Clipboard -->
