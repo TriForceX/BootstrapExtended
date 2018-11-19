@@ -23,7 +23,7 @@ $websitebase = array(
 	'keywords' 			=> 'html, jquery, javascript, php, responsive, css3',
 	'author' 			=> 'TriForce',
 	'mobile-capable' 	=> 'yes',
-	'viewport' 			=> 'width=device-width, initial-scale=1, user-scalable=no',
+	'viewport' 			=> 'width=device-width, initial-scale=1, shrink-to-fit=no',
 	'nav-color' 		=> '#333333',
 	'nav-color-apple' 	=> 'black',
 	'timezone' 			=> date_default_timezone_get(),
