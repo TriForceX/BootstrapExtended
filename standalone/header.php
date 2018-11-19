@@ -29,12 +29,12 @@
 	<!-- Nav Tab & App Icons -->
 	<link href="<?php echo php::get_main_url(); ?>/img/base/favicon/apple.png" rel="apple-touch-icon">
 	<link href="<?php echo php::get_main_url(); ?>/img/base/favicon/global.png" rel="shortcut icon">
-	<!-- Bootstrap Core -->
-	<link href="<?php echo php::get_main_url(); ?>/resources/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 	<!-- jQuery UI -->
 	<link href="<?php echo php::get_main_url(); ?>/resources/jquery-ui/css/jquery-ui.min.css" rel="stylesheet">
 	<link href="<?php echo php::get_main_url(); ?>/resources/jquery-ui/css/jquery-ui.structure.min.css" rel="stylesheet">
 	<link href="<?php echo php::get_main_url(); ?>/resources/jquery-ui/css/jquery-ui.theme.min.css" rel="stylesheet">
+	<!-- Bootstrap -->
+	<link href="<?php echo php::get_main_url(); ?>/resources/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 	<!-- Data Tables Bootstrap -->
 	<link href="<?php echo php::get_main_url(); ?>/resources/datatables/css/dataTables.bootstrap4.min.css" rel="stylesheet">
 	<!-- Tempus Dominus -->
@@ -46,7 +46,7 @@
     <!-- Hover CSS -->
 	<link href="<?php echo php::get_main_url(); ?>/resources/hover/css/hover.min.css" rel="stylesheet">
 	<!-- Font Awesome -->
-	<link href="<?php echo php::get_main_url(); ?>/resources/font-awesome/css/all.css" rel="stylesheet">
+	<link href="<?php echo php::get_main_url(); ?>/resources/fontawesome/css/all.min.css" rel="stylesheet">
 	<!-- Main CSS File -->
 	<?php echo php::get_template('css'); ?>
 	

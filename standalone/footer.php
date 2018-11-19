@@ -28,7 +28,7 @@
 <script src="<?php echo php::get_main_url(); ?>/resources/jquery-rotate/js/jQueryRotate.js"></script>
 <!-- Touch Swipe -->
 <script src="<?php echo php::get_main_url(); ?>/resources/touchswipe/js/jquery.touchSwipe.min.js"></script>
-<!-- Bootbox Modals -->
+<!-- Bootbox -->
 <script src="<?php echo php::get_main_url(); ?>/resources/bootbox/js/bootbox.min.js"></script>
 <!-- Holder -->
 <script src="<?php echo php::get_main_url(); ?>/resources/holder/js/holder.min.js"></script>
@@ -46,7 +46,7 @@
 <script src="<?php echo php::get_main_url(); ?>/resources/imgliquid/js/imgliquid.min.js"></script>
 <!-- LightGallery -->
 <script src="<?php echo php::get_main_url(); ?>/resources/lightgallery/js/lightgallery-all.min.js"></script>
-<!-- Clipboard JS -->
+<!-- Clipboard -->
 <script src="<?php echo php::get_main_url(); ?>/resources/clipboard/js/clipboard.min.js"></script>
 <!-- Masonry -->
 <script src="<?php echo php::get_main_url(); ?>/resources/masonry/js/masonry.pkgd.min.js"></script>
