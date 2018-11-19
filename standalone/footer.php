@@ -30,13 +30,12 @@
 <script src="<?php echo php::get_main_url(); ?>/resources/touchswipe/js/jquery.touchSwipe.min.js"></script>
 <!-- Bootbox Modals -->
 <script src="<?php echo php::get_main_url(); ?>/resources/bootbox/js/bootbox.min.js"></script>
-<!-- Holder JS -->
-<!--[if gt IE 8]><!-- -->
+<!-- Holder -->
 <script src="<?php echo php::get_main_url(); ?>/resources/holder/js/holder.min.js"></script>
-<!--<![endif]-->
-<!-- Bootstrap Data Tables -->
+<!-- Data Tables -->
 <script src="<?php echo php::get_main_url(); ?>/resources/datatables/js/jquery.dataTables.min.js"></script>
-<script src="<?php echo php::get_main_url(); ?>/resources/datatables/js/dataTables.bootstrap.min.js"></script>
+<!-- Data Tables Bootstrap -->
+<script src="<?php echo php::get_main_url(); ?>/resources/datatables/js/dataTables.bootstrap4.min.js"></script>
 <!-- Bootstrap Date Picker -->
 <script src="<?php echo php::get_main_url(); ?>/resources/bootstrap-datepicker/js/bootstrap-datepicker.min.js"></script>
 <!-- Bootstrap Time Picker -->

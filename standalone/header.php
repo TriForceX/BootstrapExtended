@@ -36,7 +36,7 @@
 	<link href="<?php echo php::get_main_url(); ?>/resources/jquery-ui/css/jquery-ui.structure.min.css" rel="stylesheet">
 	<link href="<?php echo php::get_main_url(); ?>/resources/jquery-ui/css/jquery-ui.theme.min.css" rel="stylesheet">
 	<!-- Bootstrap Data Tables -->
-	<link href="<?php echo php::get_main_url(); ?>/resources/datatables/css/dataTables.bootstrap.min.css" rel="stylesheet">
+	<link href="<?php echo php::get_main_url(); ?>/resources/datatables/css/dataTables.bootstrap4.min.css" rel="stylesheet">
 	<!-- Bootstrap Date Picker -->
 	<link href="<?php echo php::get_main_url(); ?>/resources/bootstrap-datepicker/css/bootstrap-datepicker3.min.css" rel="stylesheet">
 	<!-- Bootstrap Time Picker -->
