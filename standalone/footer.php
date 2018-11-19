@@ -12,6 +12,10 @@
 
 <!-- jQuery -->
 <script src="<?php echo php::get_main_url(); ?>/resources/jquery/js/jquery.min.js"></script>
+<!-- Popper -->
+<script src="<?php echo php::get_main_url(); ?>/resources/popper/js/popper.min.js"></script>
+<!-- Bootstrap -->
+<script src="<?php echo php::get_main_url(); ?>/resources/bootstrap/js/bootstrap.min.js"></script>
 <!-- jQuery UI -->
 <script src="<?php echo php::get_main_url(); ?>/resources/jquery-ui/js/jquery-ui.min.js"></script>
 <!-- jQuqey Browser -->
@@ -24,8 +28,6 @@
 <script src="<?php echo php::get_main_url(); ?>/resources/jquery-rotate/js/jQueryRotate.js"></script>
 <!-- Touch Swipe -->
 <script src="<?php echo php::get_main_url(); ?>/resources/touchswipe/js/jquery.touchSwipe.min.js"></script>
-<!-- Bootstrap 3 -->
-<script src="<?php echo php::get_main_url(); ?>/resources/bootstrap/js/bootstrap.min.js"></script>
 <!-- Bootbox Modals -->
 <script src="<?php echo php::get_main_url(); ?>/resources/bootbox/js/bootbox.min.js"></script>
 <!-- Holder JS -->
@@ -41,13 +43,8 @@
 <script src="<?php echo php::get_main_url(); ?>/resources/bootstrap-timepicker/js/bootstrap-timepicker.min.js"></script>
 <!-- imgLiquid -->
 <script src="<?php echo php::get_main_url(); ?>/resources/imgliquid/js/imgliquid.min.js"></script>
-<!-- LightGallery Lightbox -->
-<!--[if lt IE 9]>
-<script src="<?php echo php::get_main_url(); ?>/resources/lightgallery/js/lightgallery.js"></script>
-<![endif]-->
-<!--[if gt IE 8]><!-- -->
+<!-- LightGallery -->
 <script src="<?php echo php::get_main_url(); ?>/resources/lightgallery/js/lightgallery-all.min.js"></script>
-<!--<![endif]-->
 <!-- Clipboard JS -->
 <script src="<?php echo php::get_main_url(); ?>/resources/clipboard/js/clipboard.min.js"></script>
 <!-- Masonry -->

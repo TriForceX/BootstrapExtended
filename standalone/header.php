@@ -29,14 +29,12 @@
 	<!-- Nav Tab & App Icons -->
 	<link href="<?php echo php::get_main_url(); ?>/img/base/favicon/apple.png" rel="apple-touch-icon">
 	<link href="<?php echo php::get_main_url(); ?>/img/base/favicon/global.png" rel="shortcut icon">
+	<!-- Bootstrap Core -->
+	<link href="<?php echo php::get_main_url(); ?>/resources/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 	<!-- jQuery UI -->
 	<link href="<?php echo php::get_main_url(); ?>/resources/jquery-ui/css/jquery-ui.min.css" rel="stylesheet">
 	<link href="<?php echo php::get_main_url(); ?>/resources/jquery-ui/css/jquery-ui.structure.min.css" rel="stylesheet">
 	<link href="<?php echo php::get_main_url(); ?>/resources/jquery-ui/css/jquery-ui.theme.min.css" rel="stylesheet">
-	<!-- Bootstrap Core -->
-	<link href="<?php echo php::get_main_url(); ?>/resources/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-	<!-- Bootstrap Theme -->
-	<!-- <link href="<?php echo php::get_main_url(); ?>/resources/bootstrap/css/bootstrap-theme.min.css" rel="stylesheet"> -->
 	<!-- Bootstrap Data Tables -->
 	<link href="<?php echo php::get_main_url(); ?>/resources/datatables/css/dataTables.bootstrap.min.css" rel="stylesheet">
 	<!-- Bootstrap Date Picker -->
@@ -53,12 +51,6 @@
 	<link href="<?php echo php::get_main_url(); ?>/resources/font-awesome/css/all.css" rel="stylesheet">
 	<!-- Main CSS File -->
 	<?php echo php::get_template('css'); ?>
-	<!-- IE8 support of HTML5 elements and media queries -->
-	<!--[if lt IE 9]>
-	<script src="<?php echo php::get_main_url(); ?>/resources/html5shiv/js/html5shiv.min.js"></script>
-	<script src="<?php echo php::get_main_url(); ?>/resources/respond/js/respond.min.js"></script>
-	<script src="<?php echo php::get_main_url(); ?>/resources/rem/js/rem.js"></script>
-	<![endif]-->
 	
 	<!-- ******** HEADER RESOURCES ******** -->
 	
