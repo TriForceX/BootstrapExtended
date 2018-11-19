@@ -36,10 +36,12 @@
 <script src="<?php echo php::get_main_url(); ?>/resources/datatables/js/jquery.dataTables.min.js"></script>
 <!-- Data Tables Bootstrap -->
 <script src="<?php echo php::get_main_url(); ?>/resources/datatables/js/dataTables.bootstrap4.min.js"></script>
-<!-- Bootstrap Date Picker -->
-<script src="<?php echo php::get_main_url(); ?>/resources/bootstrap-datepicker/js/bootstrap-datepicker.min.js"></script>
-<!-- Bootstrap Time Picker -->
-<script src="<?php echo php::get_main_url(); ?>/resources/bootstrap-timepicker/js/bootstrap-timepicker.min.js"></script>
+<!-- Moment -->
+<script src="<?php echo php::get_main_url(); ?>/resources/moment/js/moment.min.js"></script>
+<!-- Moment Locales -->
+<script src="<?php echo php::get_main_url(); ?>/resources/moment/js/locales.min.js"></script>
+<!-- Tempus Dominus -->
+<script src="<?php echo php::get_main_url(); ?>/resources/tempusdominus/js/tempusdominus-bootstrap-4.min.js"></script>
 <!-- imgLiquid -->
 <script src="<?php echo php::get_main_url(); ?>/resources/imgliquid/js/imgliquid.min.js"></script>
 <!-- LightGallery -->

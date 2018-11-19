@@ -35,13 +35,11 @@
 	<link href="<?php echo php::get_main_url(); ?>/resources/jquery-ui/css/jquery-ui.min.css" rel="stylesheet">
 	<link href="<?php echo php::get_main_url(); ?>/resources/jquery-ui/css/jquery-ui.structure.min.css" rel="stylesheet">
 	<link href="<?php echo php::get_main_url(); ?>/resources/jquery-ui/css/jquery-ui.theme.min.css" rel="stylesheet">
-	<!-- Bootstrap Data Tables -->
+	<!-- Data Tables Bootstrap -->
 	<link href="<?php echo php::get_main_url(); ?>/resources/datatables/css/dataTables.bootstrap4.min.css" rel="stylesheet">
-	<!-- Bootstrap Date Picker -->
-	<link href="<?php echo php::get_main_url(); ?>/resources/bootstrap-datepicker/css/bootstrap-datepicker3.min.css" rel="stylesheet">
-	<!-- Bootstrap Time Picker -->
-	<link href="<?php echo php::get_main_url(); ?>/resources/bootstrap-timepicker/css/bootstrap-timepicker.min.css" rel="stylesheet">
-	<!-- LightGallery Lightbox -->
+	<!-- Tempus Dominus -->
+	<link href="<?php echo php::get_main_url(); ?>/resources/tempusdominus/css/tempusdominus-bootstrap-4.min.css" rel="stylesheet">
+	<!-- LightGallery -->
 	<link href="<?php echo php::get_main_url(); ?>/resources/lightgallery/css/lightgallery.min.css" rel="stylesheet">
 	<link href="<?php echo php::get_main_url(); ?>/resources/lightgallery/css/lg-transitions.min.css" rel="stylesheet">
 	<link href="<?php echo php::get_main_url(); ?>/resources/lightgallery/css/lg-fb-comment-box.min.css" rel="stylesheet">
