@@ -19,7 +19,7 @@
 /* Tables */
 
 /* Modal */
-.modal{
+.modal {
 	z-index: 1070 !important;
 }
 .modal-backdrop{
@@ -39,6 +39,132 @@
 	font-size: 1.3rem;
 }
 /* Modal */
+
+/* Navbar */
+.navbar-toggler {
+	padding: .25rem;
+}
+/* Navbar */
+
+/* Dropdown */
+.dropdown-item {
+	padding: .25rem 1rem;
+}
+.dropdown-header {
+	padding: .5rem 1rem;
+}
+.dropdown-divider {
+	border-color: #cccccc;
+}
+/* Dropdown */
+
+/* ================================================= BOOTSTRAP ADDITIONS ================================================= */
+
+/* Modal Size */
+@media (min-width: $screen-lg) {
+	.modal-xl {
+		max-width: 1110px;
+	}
+}
+@media (max-width: $screen-lg) {
+	.modal-xl {
+		max-width: 800px;
+	}
+}
+@media (max-width: $screen-md) {
+	.modal-xl {
+		max-width: 500px;
+	}
+}
+@media (max-width: $screen-sm) {
+	.modal-xl {
+		max-width: initial;
+	}
+}
+/* Modal Size */
+
+/* Modal Align */
+.modal {
+	padding: 0px 30px !important;
+}
+.modal-dialog {
+	margin: 30px auto;
+	width: 100%;
+}
+@media (max-width: $screen-sm) {
+	.modal {
+		padding: 0px 15px !important;
+	}
+	.modal-dialog {
+		margin: 15px auto;
+	}
+	.modal-dialog.modal-sm {
+		max-width: 300px;
+	}
+}
+.modal.center,
+.modal.bottom,
+.modal.top {
+  text-align: center;
+}
+.modal.left {
+  text-align: left;
+}
+.modal.right {
+  text-align: right;
+}
+.modal.center:before,
+.modal.bottom:before,
+.modal.top:before,
+.modal.left:before,
+.modal.right:before {
+	display: inline-block;
+	content: " ";
+	height: 100%;
+}
+.modal.center:before {
+	vertical-align: middle;
+}
+.modal.bottom:before {
+	vertical-align: bottom;
+}
+.modal.top:before {
+	vertical-align: top;
+}
+.modal.center .modal-dialog,
+.modal.bottom .modal-dialog,
+.modal.top .modal-dialog,
+.modal.left .modal-dialog,
+.modal.right .modal-dialog {
+	display: inline-block;
+	text-align: left;
+	vertical-align: middle;
+}
+.modal.center .modal-dialog {
+	vertical-align: middle;
+}
+.modal.bottom .modal-dialog {
+	vertical-align: bottom;
+}
+.modal.top .modal-dialog {
+	vertical-align: top;
+}
+/* Modal Align */
+
+/* Modal Alternative Fade */
+.modal.fade-2 .modal-dialog {
+    -moz-transition: none !important;
+    -o-transition: none !important;
+    -webkit-transition: none !important;
+    transition: none !important;
+
+    -moz-transform: none !important;
+    -ms-transform: none !important;
+    -o-transform: none !important;
+    -webkit-transform: none !important;
+    transform: none !important;
+}
+/* Modal Alternative Fade */
 
 /* Dropdown Overflow */
 .dropdown .dropdown-overflow,
@@ -87,4 +213,4 @@
 }
 /* Dropdown Overflow */
 
-/* ================================================= BOOTSTRAP  ================================================= */
+/* ================================================= BOOTSTRAP ADDITIONS ================================================= */

@@ -121,6 +121,28 @@ a.ui-button:active,
 }
 /* TinyMCE */
 
+/* Data Tables */
+table.dataTable thead .sorting::before, table.dataTable thead .sorting::after, table.dataTable thead .sorting_asc::before, table.dataTable thead .sorting_asc::after, table.dataTable thead .sorting_desc::before, table.dataTable thead .sorting_desc::after, table.dataTable thead .sorting_asc_disabled::before, table.dataTable thead .sorting_asc_disabled::after, table.dataTable thead .sorting_desc_disabled::before, table.dataTable thead .sorting_desc_disabled::after {
+	bottom: 0.6em;
+}
+div.dataTables_wrapper div.dataTables_length select{
+	vertical-align: initial;
+}
+@media (max-width: $screen-sm) {
+	.dataTables_wrapper .dataTables_length,
+	.dataTables_wrapper .dataTables_info {
+		margin-right: -15px !important;
+	}
+	.dataTables_wrapper .dataTables_filter,
+	.dataTables_wrapper .dataTables_paginate{
+		margin-left: -15px !important;
+	}
+	.dataTables_wrapper .dataTables_paginate .pagination {
+		justify-content: flex-start !important;
+	}
+}
+/* Data Tables */
+
 /* ================================================= BASE RESOURCES ================================================= */
 
 /* ================================================= BASE JAVASCRIPT ================================================= */
