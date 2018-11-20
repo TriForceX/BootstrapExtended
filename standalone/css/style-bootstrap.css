@@ -1,5 +1,45 @@
 /* ================================================= BOOTSTRAP ================================================= */
 
+/* Font size */
+.h6,
+.form-control,
+.btn,
+.dropdown-menu,
+.input-group-text,
+.popover-header {
+	font-size: 0.9rem;
+}
+/* Font size */
+
+/* Tables */
+.table td, 
+.table th {
+	padding: .6rem;
+}
+/* Tables */
+
+/* Modal */
+.modal{
+	z-index: 1070 !important;
+}
+.modal-backdrop{
+	z-index: 1060 !important;
+}
+.modal-header,
+.modal-body,
+.modal-footer {
+	padding: 0.9rem;
+}
+.modal-header,
+.modal-footer {
+	border-color: #cccccc;
+}
+.modal-title {
+	line-height: 1.3;
+	font-size: 1.3rem;
+}
+/* Modal */
+
 /* Dropdown Overflow */
 .dropdown .dropdown-overflow,
 .dropdown .dropdown-overflow-sm,

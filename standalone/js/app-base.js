@@ -568,8 +568,8 @@ function JSloadLightGallery()
 				});
 
 				$(this).on('onAfterOpen.lg',function(){
-					var galThumbPrevHTML = '<div><span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span><strong>'+JSlang('$lgtitle-prev-button')+'</strong></div>';
-					var galThumbNextHTML = '<div><span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span><strong>'+JSlang('$lgtitle-next-button')+'</strong></div>';
+					var galThumbPrevHTML = '<div><i class="fas fa-angle-left"></i><strong>'+JSlang('$lgtitle-prev-button')+'</strong></div>';
+					var galThumbNextHTML = '<div><i class="fas fa-angle-right"></i><strong>'+JSlang('$lgtitle-next-button')+'</strong></div>';
 					
 					$('.lg-outer .lg-thumb .lg-thumb-item:first-child').addClass('JSlightGalleryNoBorder').append(galThumbPrevHTML);
 					$('.lg-outer .lg-thumb .lg-thumb-item:last-child').addClass('JSlightGalleryNoBorder').append(galThumbNextHTML);
@@ -577,8 +577,8 @@ function JSloadLightGallery()
 					$('#lg-counter').prepend('<span id="lg-counter-current-new">1</span>');
 					$('#lg-counter').append('<span id="lg-counter-all-new">1</span>');
 
-					$('#lg-counter-all').addClass('hide');
-					$('#lg-counter-current').addClass('hide');
+					$('#lg-counter-all').addClass('d-none');
+					$('#lg-counter-current').addClass('d-none');
 
 					total = parseInt($('#lg-counter-all').html()); 
 					totalSlide = total <= 2 ? 1 : (total - 2);

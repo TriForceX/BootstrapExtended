@@ -13,6 +13,10 @@ body {
 	background-color: white;
   	overflow-x: hidden;
 }
+body,
+h6 {
+	font-size: 0.9rem;
+}
 img {
 	outline: 0;
 	border: 0;
@@ -68,12 +72,6 @@ a.ui-button:active,
 /* LightGallery */
 .lg-on {
 	overflow: hidden !important;
-}
-.lg-backdrop {
-	z-index: 1055; /*real: 1040 - bootstrap modal: 1040*/
-}
-.lg-outer {
-	z-index: 1060; /*real: 1050 - bootstrap modal: 1050*/
 }
 .lg-outer .lg-thumb {
 	margin-left: auto !important;
@@ -154,9 +152,9 @@ a.ui-button:active,
 	color: white;
 	text-align: center;
 }
-.JSlightGalleryNoBorder div span {
-	font-size: 30px;
-	margin-top: 10px;
+.JSlightGalleryNoBorder div i {
+	font-size: 45px;
+	margin-top: 2px;
 }
 .JSlightGalleryNoBorder div strong {
 	display: inline-block;
