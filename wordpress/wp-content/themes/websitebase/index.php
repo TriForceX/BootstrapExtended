@@ -17,7 +17,7 @@
 				<li class="active"><a href="/" class="notranslate">Home</a></li>
 				<li class="dropdown">
 					<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Information <span class="caret"></span></a>
-					<ul class="dropdown-menu dropdown-overflow-lg notranslate" role="menu">
+					<ul class="dropdown-menu notranslate" role="menu">
 						<li><a href="https://github.com/TriForceX/WebsiteBase/wiki" target="_blank">Wiki</a></li>
 						<li><a href="https://github.com/TriForceX/WebsiteBase" target="_blank">Repository</a></li>
 					</ul>
@@ -53,7 +53,7 @@
 				</li>
 				<li class="dropdown">
 					<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Utilities <span class="caret"></span></a>
-					<ul class="dropdown-menu dropdown-overflow-lg notranslate" role="menu">
+					<ul class="dropdown-menu notranslate" role="menu">
 						<li><a href="https://www.w3schools.com" target="_blank">W3 Schools Tutorials</a></li>
 						<li><a href="https://www.w3schools.com/howto/" target="_blank">W3 Schools How To</a></li>
 						<li><a href="http://bootsnipp.com" target="_blank">Bootstrap Snippets</a></li>
