@@ -4,43 +4,43 @@
 .dropdown .dropdown-overflow,
 .dropdown .dropdown-overflow-sm,
 .dropdown .dropdown-overflow-md,
-.dropdown .dropdown-overflow-lg{
+.dropdown .dropdown-overflow-lg {
 	overflow: hidden;
 	overflow-y: auto;
 }
-.dropdown .dropdown-overflow{
+.dropdown .dropdown-overflow {
 	max-height: 120px;
 }
-.dropdown .dropdown-overflow-sm{
+.dropdown .dropdown-overflow-sm {
 	max-height: 195px;
 }
-.dropdown .dropdown-overflow-md{
+.dropdown .dropdown-overflow-md {
 	max-height: 400px;
 }
-.dropdown .dropdown-overflow-lg{
+.dropdown .dropdown-overflow-lg {
 	max-height: 500px;
 }
 @media (max-width: $screen-lg) {
-	.dropdown .dropdown-overflow-lg{
+	.dropdown .dropdown-overflow-lg {
 		max-height: 400px;
 	}
 }
 @media (max-width: $screen-md) {
 	.dropdown .dropdown-overflow-md,
-	.dropdown .dropdown-overflow-lg{
+	.dropdown .dropdown-overflow-lg {
 		max-height: 195px;
 	}
 }
 @media (max-width: $screen-sm) {
 	.dropdown .dropdown-overflow-sm,
 	.dropdown .dropdown-overflow-md,
-	.dropdown .dropdown-overflow-lg{
+	.dropdown .dropdown-overflow-lg {
 		max-height: 120px;
 	}
 	.dropdown .dropdown-overflow,
 	.dropdown .dropdown-overflow-sm,
 	.dropdown .dropdown-overflow-md,
-	.dropdown .dropdown-overflow-lg{
+	.dropdown .dropdown-overflow-lg {
 		overflow: auto;
 		max-height: none;
 	}

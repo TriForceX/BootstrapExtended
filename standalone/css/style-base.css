@@ -9,35 +9,29 @@
 @viewport         { width: device-width; }
 
 /* General HTML */
-body{
+body {
 	background-color: white;
   	overflow-x: hidden;
 }
-img{
+img {
 	outline: 0;
 	border: 0;
 }
-a, a:visited, a:hover, a:active, a:focus{
+a, a:visited, a:hover, a:active, a:focus {
 	text-decoration: none;
 	cursor: pointer;
 	outline: 0;
 }
-ul{
-	padding-left: 13px;
-}
-ol{
-	padding-left: 16px;
-}
 th[align='center'],
-td[align='center']{
+td[align='center'] {
 	text-align: center !important;
 }
 th[align='right'],
-td[align='right']{
+td[align='right'] {
 	text-align: right !important;
 }
 th[align='left'],
-td[align='left']{
+td[align='left'] {
 	text-align: left !important;
 }
 /* General HTML */
@@ -47,17 +41,17 @@ td[align='left']{
 /* ================================================= BASE RESOURCES ================================================= */
 
 /* UI Date Picker */
-.ui-datepicker{
+.ui-datepicker {
 	font-size: 12px;
 }
-.ui-datepicker .ui-datepicker-next{
+.ui-datepicker .ui-datepicker-next {
 	cursor: pointer;
 }
-.ui-datepicker .ui-datepicker-prev{
+.ui-datepicker .ui-datepicker-prev {
 	cursor: pointer;
 }
 .ui-datepicker .ui-datepicker-next-hover,
-.ui-datepicker .ui-datepicker-prev-hover{
+.ui-datepicker .ui-datepicker-prev-hover {
 	background: transparent !important;
 	border: none;
 }
@@ -66,33 +60,34 @@ td[align='left']{
 .ui-widget-header .ui-state-active, 
 a.ui-button:active, 
 .ui-button:active, 
-.ui-button.ui-state-active:hover{
+.ui-button.ui-state-active:hover {
 	font-weight: bold;
 }
+/* UI Date Picker */
 
 /* LightGallery */
-.lg-on{
+.lg-on {
 	overflow: hidden !important;
 }
-.lg-backdrop{
+.lg-backdrop {
 	z-index: 1055; /*real: 1040 - bootstrap modal: 1040*/
 }
-.lg-outer{
+.lg-outer {
 	z-index: 1060; /*real: 1050 - bootstrap modal: 1050*/
 }
-.lg-outer .lg-thumb{
+.lg-outer .lg-thumb {
 	margin-left: auto !important;
 	margin-right: auto !important;
 }
 .lg-sub-html,
-.lg-thumb-outer{
+.lg-thumb-outer {
 	transition: all 0.4s ease !important;
 	-moz-transition: all 0.4s ease !important;
 	-webkit-transition: all 0.4s ease !important;
 	-o-transition: all 0.4s ease !important;
 }
 .lg-hide-items .lg-sub-html,
-.lg-hide-items .lg-thumb-outer{
+.lg-hide-items .lg-thumb-outer {
 	-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
 	filter: alpha(opacity=0);
 	-moz-opacity: 0;
@@ -105,33 +100,24 @@ a.ui-button:active,
 }
 /* LightGallery */
 
-/* Aditional Hover CSS */
-.hvr-opacity{
+/* Hover CSS */
+.hvr-opacity {
 	transition: opacity 0.4s ease;
 	-moz-transition: opacity 0.4s ease;
 	-webkit-transition: opacity 0.4s ease;
 	-o-transition: opacity 0.4s ease;
 }
-.hvr-opacity:hover{
+.hvr-opacity:hover {
 	opacity: 0.6;
 	transition: opacity 0.4s ease;
 	-moz-transition: opacity 0.4s ease;
 	-webkit-transition: opacity 0.4s ease;
 	-o-transition: opacity 0.4s ease;
 }
-/* Aditional Hover CSS */
-
-/* Time Picker */
-.bootstrap-timepicker-widget table td input{
-	border: 1px solid #cccccc;
-	border-radius: 0px;
-	width: 30px;
-	padding: 3px;
-}
-/* Time Picker */
+/* Hover CSS */
 
 /* TinyMCE */
-.mce-container-body{
+.mce-container-body {
 	overflow: hidden;
 	overflow-x: auto;
 }
@@ -142,25 +128,25 @@ a.ui-button:active,
 /* ================================================= BASE JAVASCRIPT ================================================= */
 
 /* JS Href */
-.JShref{
+.JShref {
 	cursor: pointer;
 }
 /* JS Href */
 
 /* JS LightGallery */
 .JSlightGallery .lg-thumb-prev,
-.JSlightGallery .lg-thumb-next{
+.JSlightGallery .lg-thumb-next {
 	display: none;
 }
 .JSlightGalleryNoBorder img,
-.JSlightGalleryNoBorder img{
+.JSlightGalleryNoBorder img {
 	display: none;
 }
-.JSlightGalleryNoBorder{
+.JSlightGalleryNoBorder {
 	border-color: transparent !important;
 	position: relative;
 }
-.JSlightGalleryNoBorder div{
+.JSlightGalleryNoBorder div {
 	position: absolute;
 	width: 100%;
 	top: 0px;
@@ -168,11 +154,11 @@ a.ui-button:active,
 	color: white;
 	text-align: center;
 }
-.JSlightGalleryNoBorder div span{
+.JSlightGalleryNoBorder div span {
 	font-size: 30px;
 	margin-top: 10px;
 }
-.JSlightGalleryNoBorder div strong{
+.JSlightGalleryNoBorder div strong {
 	display: inline-block;
 	width: 100%;
 	margin-top: 5px;
@@ -182,19 +168,19 @@ a.ui-button:active,
 /* JS LightGallery */
 
 /* JS Rotate */
-.JSrotate{
+.JSrotate {
 	visibility: hidden;
 }
 /* JS Rotate */
 
 /* JS Auto Background */
-.JSimgFill img{
+.JSimgFill img {
 	display: none;
 }
 /* JS Auto Background */
 
 /* JS Text Cut One Line */
-.JStextCutElem > div{
+.JStextCutElem > div {
 	position: relative;
 }
 .JStextCutElem > div:before {
@@ -213,13 +199,13 @@ a.ui-button:active,
 /* JS Text Cut One Line */
 
 /* JS Text Cut Multi Line */
-.JStextCutMulti{
+.JStextCutMulti {
 	overflow: hidden;
 }
 /* JS Text Cut Multi Line */
 
 /* JS Video Launch */
-.JSvideoLaunchIframe{
+.JSvideoLaunchIframe {
 	background-color: #EEE;
 	border: 1px solid #CCC;
 	display: inline-block;
@@ -227,17 +213,17 @@ a.ui-button:active,
 	height: auto;
 }
 
-.JSvideoLaunchIframe iframe{
+.JSvideoLaunchIframe iframe {
 	border: 0px;
 }
-.JSvideoLaunchURL{
+.JSvideoLaunchURL {
 	display: inline-block;
 	width: 100%;
 	text-align: center;
 	margin-bottom: -10px;
 	margin-top: 10px;
 }
-.JSvideoLaunchButton{
+.JSvideoLaunchButton {
 	color: white;
 	font-weight: normal;
 	background-color: red;
@@ -251,11 +237,11 @@ a.ui-button:active,
 	cursor: pointer;
 	vertical-align: middle;
 }
-.JSvideoLaunchButton span{
+.JSvideoLaunchButton span {
 	vertical-align: initial;
 	font-size: 11px;
 }
-.JSvideoLaunchText{
+.JSvideoLaunchText {
 	display: inline-block;
 	border: 1px solid #a0a0a0;
 	font-size: 12px;
@@ -280,7 +266,7 @@ a.ui-button:active,
 	-ms-user-select: none; /* Internet Explorer & Edge */
 	user-select: none;
 }
-.JSvideoLaunchCopy{
+.JSvideoLaunchCopy {
 	position: absolute;
 	width: 1px;
 	height: 1px;
@@ -290,7 +276,7 @@ a.ui-button:active,
 /* JS Video Launch */
 
 /* JS Loading */
-.JSloading{
+.JSloading {
 	background-color: transparent;
 	position: fixed;
 	width: 100%;
@@ -299,7 +285,7 @@ a.ui-button:active,
 	top: 0px;
 	left: 0px;
 }
-.JSloading:before{
+.JSloading:before {
 	position: absolute;
 	width: 100%;
 	height: 100%;
@@ -311,7 +297,7 @@ a.ui-button:active,
 	opacity: 0.7;
 	content: "";
 }
-.JSloading:after{
+.JSloading:after {
 	background-image: url("../img/base/loading/black.gif");
 	background-position: center center;
 	background-repeat: no-repeat;
@@ -328,35 +314,35 @@ a.ui-button:active,
 }
 .JSloading.static,
 .JSloading.static:before,
-.JSloading.static:after{
+.JSloading.static:after {
 	position: absolute;
 }
-.JSloading.red:after{
+.JSloading.red:after {
 	background-image: url("../img/base/loading/red.gif");
 	background-color: #d2040d;
 }
-.JSloading.blue:after{
+.JSloading.blue:after {
 	background-image: url("../img/base/loading/blue.gif");
 	background-color: #486ca5;
 }
-.JSloading.green:after{
+.JSloading.green:after {
 	background-image: url("../img/base/loading/green.gif");
 	background-color: #1f7b5d;
 }
-.JSloading.yellow:after{
+.JSloading.yellow:after {
 	background-image: url("../img/base/loading/yellow.gif");
 	background-color: #faa425;
 }
 /* JS Loading */
 
 /* JS Map Launch */
-.JSmapLaunchInfo{
+.JSmapLaunchInfo {
 	display: inline-block;
 	width: 100%;
 	height: auto;
 	text-align: center;
 }
-.JSmapLaunchIframe{
+.JSmapLaunchIframe {
 	background-color: #EEE;
 	border: 1px solid #CCC;
 	display: inline-block;
@@ -364,29 +350,29 @@ a.ui-button:active,
 	height: auto;
 	margin-bottom: 10px;
 }
-.JSmapLaunchIframe iframe{
+.JSmapLaunchIframe iframe {
 	border: 0px;
 }
-.JSmapLaunchInfo span{
+.JSmapLaunchInfo span {
 	font-size: 14px;
 }
-.JSmapLaunchInfo .well{
+.JSmapLaunchInfo .well {
 	padding: 10px;
 	font-style: italic;
 }
-.JSmapLaunchInfo > .JSmapLaunchIcons{
+.JSmapLaunchInfo > .JSmapLaunchIcons {
 	display: inline-block;
 	width: 100%;
 	height: auto;
 	margin-top: 15px;
 }
-.JSmapLaunchInfo > .JSmapLaunchIcons img{
+.JSmapLaunchInfo > .JSmapLaunchIcons img {
 	width: 90px;
 	height: auto;
 	vertical-align: middle;
 	margin: 0px 5px;
 }
-.JSmapLaunchInfo > .JSmapLaunchIcons.small img{
+.JSmapLaunchInfo > .JSmapLaunchIcons.small img {
 	width: 60px;
 }
 /* JS Map Launch */

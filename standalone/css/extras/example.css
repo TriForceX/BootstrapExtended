@@ -1,5 +1,5 @@
 /* ================================================= EXAMPLE FONTS ================================================= */
-@font-face{
+@font-face {
 	font-family: 'BebasNeue';
 	src: url('fonts/bebasneue/BebasNeue.eot');
 	src: url('fonts/bebasneue/BebasNeue.eot?#iefix') format('embedded-opentype'),  
@@ -21,12 +21,12 @@
 /* ================================================= EXAMPLE CONTENT ================================================= */
 
 /* Google Translate Widget */
-#google_translate_element{
+#google_translate_element {
 	position: relative;
 	display: block;
 	padding: 6px 0px;
 }
-.goog-te-banner-frame{
+.goog-te-banner-frame {
 	display: none !important;
 }
 .goog-te-gadget,
@@ -35,11 +35,11 @@
 .goog-te-ftab *,
 .goog-te-menu *,
 .goog-te-menu2 *,
-.goog-te-balloon *{
+.goog-te-balloon * {
 	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif !important;
 	font-size: 12px !important;
 }
-.goog-te-menu-value span{
+.goog-te-menu-value span {
 	text-transform: capitalize !important;
 }
 /* Google Translate Widget */
