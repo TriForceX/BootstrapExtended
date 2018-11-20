@@ -1,26 +1,22 @@
 # Custom Bootstrap Website Base
 https://websitebase.github.io
 
-Base structure for web sites with reusable parts of source code or functions mainly based on Bootstrap and another libraries. You can visit the website above for a running example.
+Base structure for websites with reusable parts of source code or functions mainly based on Bootstrap and another libraries. You can visit the website above for a running example.
 
 # Base
 - Standalone *(PHP 5.4+)*
 - Wordpress *(Ver 4.9.6)*
 - Laravel *(Ver 5.2, Experimental)*
-- Bootstrap 3 *(Ver 3.3.7)*
+- Bootstrap 4 *(Ver 4.1.3)*
 
 # Resources
 - BootBox JS
-- Bootstrap Date Picker
-- Bootstrap Time Picker
 - Clipboard JS
 - Data Tables
 - Font Awesome
 - Holder JS
 - Hover CSS
-- HTML5 Shiv
 - Images Loaded
-- ImgLiquid JS
 - jQuery
 - jQuery Browser
 - jQuery Cookie
@@ -29,26 +25,26 @@ Base structure for web sites with reusable parts of source code or functions mai
 - jQuery UI
 - Light Gallery
 - Masonry JS
-- REM Unit Polyfill
-- Respond JS
+- Moment JS
 - PHP Mailer
+- Popper JS
+- Tempus Dominus
 - TinyMCE
 - Touch Swipe
 
 # Functions & Code Snippets
-- HTML header data class
+- HTML header data through PHP
 - PHP main utility class
-- CSS & JS built in PHP with minify & auto-build features
+- CSS & JS built in PHP with minify & mix features
 - Custom .htaccess file with force HTTPS & WWW options
 - PHP Features:
-	- Global variables for CSS & JS usage
+	- CSS & JS template generator
 	- Minify CSS, JS and HTML
-	- PHP error handle & warnings
 	- Send E-Mails with PHPMailer
 	- Check ends/start of string
 	- Check string contains another string
 	- Compare strings
-	- Strip all witespaces to string
+	- Strip all whitespaces to string
 	- Convert string to boolean
 	- Remove accents
 	- Sanitize Strings
@@ -75,7 +71,7 @@ Base structure for web sites with reusable parts of source code or functions mai
 	- Get max width & height between elements
 	- Responsive code detection
 	- LightGallery improved functions/events
-	- ImgLiquid auto-fill background images
+	- Image auto-fill background images
 	- Get element height changes
 	- Text cut one line function
 	- Text cut multi line function
@@ -95,9 +91,10 @@ Base structure for web sites with reusable parts of source code or functions mai
 	- Map launch function for Google Maps and Waze
 	- Table painter & cleaner
 	- Check validations for home page, mobile and navigators
+	- Anchor tag functionallity for any HTML tag
+	- Easy Masonry JS usage
 - CSS Features:
-	- Some features from Bootstrap 4
-	- Some Bootstrap 3 & 4 improved classes
+	- Some Bootstrap improved and custom classes
 	- Custom Bootstrap's carousel classes
 	- Custom Datepicker colors
 	- Custom Bootstrap's tooltip colors
@@ -131,11 +128,11 @@ Base structure for web sites with reusable parts of source code or functions mai
 1. How i can use the functions described above?
    - I will try to add all the explanation in the **Wiki** page. To access it [click here](https://github.com/TriForceX/WebsiteBase/wiki).
    
-2. Why **Bootstrap 3.3.7** instead the newer **Bootstrap 4**?
-   - In a few words, BS4 dropped the compatibility in **Internet Explorer 8 and 9**. Some people is still using **Windows 7** and this comes with **IE8** by default.
+2. What about **Bootstrap 3.3.7** and its **Internet Explorer 8 & 9** compatibility?
+   - I will no longer support **IE8 & 9** due doesn't make a sense nowadays, but anyway if you want to give support, you can access the last _Website Base_ commit for **Bootstrap 3.3.7** [here](https://github.com/TriForceX/WebsiteBase/tree/v3.3.7).
    
-3. There's some stuff still not working on **Internet Explorer 8 and 9**, what about that?
-   - I am aware of that, but i don't intend to get website working completely 100% in **IE8** or **IE9**, but at least i want to show website "navigable" and not destroyed.
+3. What happen if an **Internet Explorer 8 & 9** user access a website which uses this project?
+   - A screen will appear with a message that will indicate him the steps to update his navigator to a newer one.
 
 4. How can i use this stuff in plain **HTML** instead the **PHP** standalone?
    - In the *Standalone* project turn off the **Mix** option _(in **resources.php** set **mix** to **false**)_. Next load the page, view the code in the navigator and copy it in a **HTML** page (replacing the main url). Take a look in [this example](https://github.com/WebsiteBase/WebsiteBase.GitHub.io).
