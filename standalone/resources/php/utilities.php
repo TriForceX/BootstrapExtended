@@ -782,22 +782,22 @@ class php
 	}
 	
 	// Get video embed url
-	public static function get_embed_video($url,$autoplay = false)
+	public static function get_embed_video($url, $autoplay = false)
 	{
 		$videoCode = '';
 		$videoURL = '';
-		$videoAutplay = $autoplay === true ? 1 : 0;
+		$videoAutoPlay = $autoplay === true ? 1 : 0;
 
 		if(self::str_contains($url,'youtube')){
 			preg_match('/^.*((youtu.be\/)|(v\/)|(\/u\/\w\/)|(embed\/)|(watch\?))\??v?=?([^#\&\?]*).*/', $url, $videoCode);
-			$videoURL = 'https://www.youtube.com/embed/'.$videoCode[7].'?rel=0&autoplay='.$videoAutplay;
+			$videoURL = 'https://www.youtube.com/embed/'.$videoCode[7].'?rel=0&autoplay='.$videoAutoPlay;
 		}
 		elseif(self::str_contains($url,'vimeo')){
 			preg_match('/^.*(vimeo\.com\/)((channels\/[A-z]+\/)|(groups\/[A-z]+\/videos\/))?([0-9]+)/', $url, $videoCode);
-			$videoURL = 'https://player.vimeo.com/video/'.$videoCode[5].'?autoplay='.$videoAutplay;
+			$videoURL = 'https://player.vimeo.com/video/'.$videoCode[5].'?autoplay='.$videoAutoPlay;
 		}
 		elseif(self::str_contains($url,'facebook')){
-			$videoURL = 'https://www.facebook.com/plugins/video.php?href='.$url.'&show_text=0&autoplay='.$videoAutplay;
+			$videoURL = 'https://www.facebook.com/plugins/video.php?href='.urlencode($url).'&show_text=0&mute=0&autoplay='.$videoAutoPlay;
 		}
 		return $videoURL;
 	}

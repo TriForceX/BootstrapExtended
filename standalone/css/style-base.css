@@ -125,8 +125,11 @@ a.ui-button:active,
 table.dataTable thead .sorting::before, table.dataTable thead .sorting::after, table.dataTable thead .sorting_asc::before, table.dataTable thead .sorting_asc::after, table.dataTable thead .sorting_desc::before, table.dataTable thead .sorting_desc::after, table.dataTable thead .sorting_asc_disabled::before, table.dataTable thead .sorting_asc_disabled::after, table.dataTable thead .sorting_desc_disabled::before, table.dataTable thead .sorting_desc_disabled::after {
 	bottom: 0.6em;
 }
-div.dataTables_wrapper div.dataTables_length select{
+div.dataTables_wrapper div.dataTables_length select {
 	vertical-align: initial;
+}
+div.dataTables_wrapper div.dataTables_paginate ul.pagination {
+	margin: 5px 0px 2px 0px;
 }
 @media (max-width: $screen-sm) {
 	.dataTables_wrapper .dataTables_length,
@@ -247,7 +250,7 @@ div.dataTables_wrapper div.dataTables_length select{
 	color: white;
 	font-weight: normal;
 	background-color: red;
-	border-radius: 3px;
+	border-radius: 4px;
 	font-size: 12px;
 	padding: 3px 5px;
 	margin-right: 5px;
@@ -257,9 +260,9 @@ div.dataTables_wrapper div.dataTables_length select{
 	cursor: pointer;
 	vertical-align: middle;
 }
-.JSvideoLaunchButton span {
-	vertical-align: initial;
-	font-size: 11px;
+.JSvideoLaunchButton i {
+	vertical-align: text-top;
+	font-size: 16px;
 }
 .JSvideoLaunchText {
 	display: inline-block;
@@ -269,7 +272,7 @@ div.dataTables_wrapper div.dataTables_length select{
 	padding: 2px 5px;
 	color: black;
 	background-color: white;
-	border-radius: 3px;
+	border-radius: 4px;
 	width: 285px;
 	max-width: 100%;
 	margin-bottom: 10px;
@@ -384,7 +387,7 @@ div.dataTables_wrapper div.dataTables_length select{
 	display: inline-block;
 	width: 100%;
 	height: auto;
-	margin-top: 15px;
+	margin-bottom: -4px;
 }
 .JSmapLaunchInfo > .JSmapLaunchIcons img {
 	width: 90px;

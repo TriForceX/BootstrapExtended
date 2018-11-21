@@ -140,9 +140,15 @@
 	
 		<!-- Description -->
 		
+		<!-- Prettify -->
+
+		<script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js"></script>
+		
+		<!-- Prettify -->
+		
 		<!-- lightGallery -->
 
-		<h2 class="notranslate">Light Gallery <span class="badge badge-danger">Plugin</span></h2>
+		<h2 class="notranslate">Light Gallery <span class="badge badge-danger">Custom</span></h2>
 	
 		<p>A customizable, modular, responsive, gallery plugin for <b>jQuery</b>. Below you will find an improved usage method via <code>data-lg-attributes</code> applied to the main gallery container.</p>
 	
@@ -231,7 +237,7 @@
 			</div>
 		</div>
 		<figure class="highlight">
-			<pre><code class="language-html" data-lang="html">&lt;div class="JSlightGallery" data-lg-item="auto" data-lg-title="auto" data-lg-thumb="false" data-lg-download="false" data-lg-share="true" data-lg-autoplay="true" data-lg-loop="false" data-lg-gallery="false"&gt;<br>...<br>&lt;/div&gt;</code></pre>
+			<pre class="prettyprint"><code class="language-html" data-lang="html">&lt;div class="JSlightGallery" data-lg-item="auto" data-lg-title="auto" data-lg-thumb="false" data-lg-download="false" data-lg-share="true" data-lg-autoplay="true" data-lg-loop="false" data-lg-gallery="false"&gt;<br>...<br>&lt;/div&gt;</code></pre>
 		</figure>
 	
 		<h2 class="JSlightGalleryScroll">Gallery Mode</h2>
@@ -336,10 +342,10 @@
 		</div>
 		
 		<figure class="highlight">
-			<pre><code class="language-html" data-lang="html">&lt;div class="JSlightGallery" data-lg-item="auto" data-lg-title="Gallery Title" data-lg-thumb="true" data-lg-download="true" data-lg-share="true" data-lg-autoplay="true" data-lg-loop="false" data-lg-gallery="true" data-lg-page-total="3" data-lg-page-current="1"&gt;<br>...<br>&lt;/div&gt;</code></pre>
+			<pre class="prettyprint"><code class="language-html" data-lang="html">&lt;div class="JSlightGallery" data-lg-item="auto" data-lg-title="Gallery Title" data-lg-thumb="true" data-lg-download="true" data-lg-share="true" data-lg-autoplay="true" data-lg-loop="false" data-lg-gallery="true" data-lg-page-total="3" data-lg-page-current="1"&gt;<br>...<br>&lt;/div&gt;</code></pre>
 		</figure>
 
-		<div class="card">
+		<div class="card mb-3">
 			<div class="card-header">
 				Note for gallery paginator
 			</div>
@@ -856,28 +862,128 @@
 			</table>
 		</div>
 		<figure class="highlight">
-			<pre><code class="language-html" data-lang="html">&lt;table class="table table-striped table-bordered JSdataTables" data-paging="true" data-searching="true" data-info="true" data-ordering="true"&gt;<br>...<br>&lt;/table&gt;</code></pre>
+			<pre class="prettyprint"><code class="language-html" data-lang="html">&lt;table class="table table-striped table-bordered JSdataTables" data-paging="true" data-searching="true" data-info="true" data-ordering="true"&gt;<br>...<br>&lt;/table&gt;</code></pre>
 		</figure>
 
 		<!-- Data Tables -->
 		
 		<!-- Modal Alert -->
 
-		<h2 class="notranslate">Modal Alert BootBox <span class="badge badge-danger">Plugin</span></h2>
+		<h2 class="notranslate">Modal Alert <span class="badge badge-danger">Custom</span></h2>
 		
 		<p>Launch a custom modal box using <b>BootBox</b> features, the function structure is <code>JSmodalAlert(title, text, size, align, animate)</code>. You can alternatively set a size and alignment classes like <b>horizontal vertical</b> (For example: <code>right center</code>).</p>
 
 		<div class="bs-example">
-			<button type="button" class="btn btn-primary my-1 my-xl-0" onclick="JSmodalAlert('Small Size Box','This is a text shown in a modal box','small','center right')">Show Alert Small Size (Centered)</button>
-			<button type="button" class="btn btn-primary my-1 my-xl-0" onclick="JSmodalAlert('Medium Size Box','This is a text shown in a modal box')">Show Alert Medium Size (By default)</button>
-			<button type="button" class="btn btn-primary my-1 my-xl-0" onclick="JSmodalAlert('Large Size Box','This is a text shown in a modal box','large')">Show Alert Large Size</button>
-			<button type="button" class="btn btn-primary my-1 my-xl-0" onclick="JSmodalAlert('Extra Large Size Box','This is a text shown in a modal box','extra-large')">Show Alert Extra Large Size</button>
+			<button type="button" class="btn btn-primary my-1 my-xl-0 mw-100 text-truncate" onclick="JSmodalAlert('Small Size Box','This is a text shown in a modal box','small','center')">Show Alert Small Size (Centered)</button>
+			<button type="button" class="btn btn-primary my-1 my-xl-0 mw-100 text-truncate" onclick="JSmodalAlert('Medium Size Box','This is a text shown in a modal box')">Show Alert Medium Size (By default)</button>
+			<button type="button" class="btn btn-primary my-1 my-xl-0 mw-100 text-truncate" onclick="JSmodalAlert('Large Size Box','This is a text shown in a modal box','large')">Show Alert Large Size</button>
+			<button type="button" class="btn btn-primary my-1 my-xl-0 mw-100 text-truncate" onclick="JSmodalAlert('Extra Large Size Box','This is a text shown in a modal box','extra-large')">Show Alert Extra Large Size</button>
 		</div>
 		<figure class="highlight">
-			<pre><code class="language-html" data-lang="html">&lt;a onclick="JSmodalAlert('Small Size Box','This is a text shown in a modal box','small','center')">Click Here&lt;/a&gt;<br>&lt;a onclick="JSmodalAlert('Medium Size Box','This is a text shown in a modal box')">Click Here&lt;/a&gt;<br>&lt;a onclick="JSmodalAlert('Large Size Box','This is a text shown in a modal box','large')">Click Here&lt;/a&gt;<br>&lt;a onclick="JSmodalAlert('Extra Large Size Box','This is a text shown in a modal box','extra-large')">Click Here&lt;/a&gt;</code></pre>
+			<pre class="prettyprint"><code class="language-html" data-lang="html">&lt;a onclick="JSmodalAlert('Small Size Box','This is a text shown in a modal box','small','center')">Click Here&lt;/a&gt;<br>&lt;a onclick="JSmodalAlert('Medium Size Box','This is a text shown in a modal box')">Click Here&lt;/a&gt;<br>&lt;a onclick="JSmodalAlert('Large Size Box','This is a text shown in a modal box','large')">Click Here&lt;/a&gt;<br>&lt;a onclick="JSmodalAlert('Extra Large Size Box','This is a text shown in a modal box','extra-large')">Click Here&lt;/a&gt;</code></pre>
 		</figure>
 
 		<!-- Modal Alert -->
+		
+		<!-- Modal Content -->
+
+		<h2 class="notranslate">Modal Content <span class="badge badge-danger">Custom</span></h2>
+		
+		<p>Launch a custom modal box using <b>BootBox</b> features, the function shows the content from an element, the structure is <code>JSmodalContent(title, element, size, align, animate)</code>. You can alternatively set a size and alignment classes like <b>horizontal vertical</b> (For example: <code>right center</code>).</p>
+
+		<div class="bs-example">
+			<button type="button" class="btn btn-primary my-1 my-xl-0 mw-100 text-truncate" onclick="JSmodalContent('Small Size Box','.JSmodalContentExample','small','center')">Show Content Small Size (Centered)</button>
+			<button type="button" class="btn btn-primary my-1 my-xl-0 mw-100 text-truncate" onclick="JSmodalContent('Medium Size Box','.JSmodalContentExample')">Show Content Medium Size (By default)</button>
+			<button type="button" class="btn btn-primary my-1 my-xl-0 mw-100 text-truncate" onclick="JSmodalContent('Large Size Box','.JSmodalContentExample','large')">Show Content Large Size</button>
+			<button type="button" class="btn btn-primary my-1 my-xl-0 mw-100 text-truncate" onclick="JSmodalContent('Extra Large Size Box','.JSmodalContentExample','extra-large')">Show Alert Extra Large Size</button>
+			<div class="JSmodalContentExample d-none">
+				Hello <b>World!</b><br><i>This is my message in <u>HTML</u> from a hidden element...</i>
+			</div>
+		</div>
+		<figure class="highlight">
+			<pre class="prettyprint"><code class="language-html" data-lang="html">&lt;div class="JSmodalContentExample d-none"&gt;<br>	Hello &lt;b&gt;World!&lt;/b&gt;&lt;br&gt;<br>	&lt;i&gt;This is my message in &lt;u&gt;HTML&lt;/u&gt; from a hidden element...&lt;/i&gt;<br>&lt;/div&gt;<br>&lt;a onclick="JSmodalContent('Small Size Box','.JSmodalContentExample','small')">Click Here&lt;/a&gt;<br>&lt;a onclick="JSmodalContent('Medium Size Box','.JSmodalContentExample')">Click Here&lt;/a&gt;<br>&lt;a onclick="JSmodalContent('Large Size Box','.JSmodalContentExample','large')">Click Here&lt;/a&gt;<br>&lt;a onclick="JSmodalContent('Extra Large Size Box','.JSmodalContentExample','extra-large')">Click Here&lt;/a&gt;</code></pre>
+		</figure>
+
+		<!-- Modal Content -->
+		
+		<!-- Video Launch -->
+
+		<h2 class="notranslate">Video Launch <span class="badge badge-danger">Custom</span></h2>
+		
+		<p>Launch a modal box using <b>BootBox</b> with a basic video player, the function structure is <code>JSvideoLaunch(title, url, share, autoplay, size, align, animate)</code>. You can alternatively set a size and alignment classes like <b>horizontal vertical</b> (For example: <code>right center</code>).</p>
+
+		<div class="bs-example">
+			<button type="button" class="btn btn-primary my-1 my-xl-0 mw-100 text-truncate" onclick="JSvideoLaunch('My YouTube Video','https://www.youtube.com/watch?v=AW3SppO7qfY',true,true,'medium','center')">YouTube Video (Medium size + Center Aligned)</button>
+			<button type="button" class="btn btn-primary my-1 my-xl-0 mw-100 text-truncate" onclick="JSvideoLaunch('My Vimeo Video','https://vimeo.com/158181618',false,false,'large')">Vimeo Video (Large size + No share URL + No autoplay)</button>
+			<button type="button" class="btn btn-primary my-1 my-xl-0 mw-100 text-truncate" onclick="JSvideoLaunch('My Facebook Video','https://www.facebook.com/mdbootstrap/videos/778803232324056')">Facebook Video (Only title + URL)</button>
+		</div>
+		<figure class="highlight">
+			<pre class="prettyprint"><code class="language-html" data-lang="html">&lt;a onclick="JSvideoLaunch('My YouTube Video','https://youtube.com/watch?v=ae6aeo9-Kn8',true,true,'medium','center')">Click Here&lt;/a&gt;<br>&lt;a onclick="JSvideoLaunch('My Vimeo Video','https://vimeo.com/214352663',false,false,'large')">Click Here&lt;/a&gt;<br>&lt;a onclick="JSvideoLaunch('My Facebook Video','https://web.facebook.com/ign/videos/275980713021701/')">Click Here&lt;/a&gt;</code></pre>
+		</figure>
+
+		<!-- Video Launch -->
+		
+		<!-- Map launch -->
+
+		<h2 class="notranslate">Map Launch <span class="badge badge-danger">Plugin</span></h2>
+		
+		<p>Show a modal box using <b>BootBox</b> with map options such as <code>Google Maps</code> and <code>Waze</code>. Below you will find an improved usage method via <code>data-map</code> attributes.</p>
+
+		<table class="table table-bordered table-striped js-options-table">
+			<thead>
+				<tr>
+					<th>Name</th>
+					<th>Description</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td class="notranslate">data-map-address</td>
+					<td>The map address to search</code>
+					</td>
+				</tr>
+				<tr>
+					<td class="notranslate">data-map-coords-1</td>
+					<td>Desired address coords from <code>Google Maps</code> <b>latitude</b>, <b>longitude</b>, <b>zoom</b>
+					</td>
+				</tr>
+				<tr>
+					<td class="notranslate">data-map-coords-2</td>
+					<td>Desired address coords from <code>Waze</code> <b>latitude</b>, <b>longitude</b>, <b>zoom</b>
+					</td>
+				</tr>
+				<tr>
+					<td class="notranslate">data-map-iframe</td>
+					<td>Alternative to show an iframe for <code>Google Maps</code> with <code>true</code> or <code>false</code> 
+					</td>
+				</tr>
+				<tr>
+					<td class="notranslate">data-map-modal-size</td>
+					<td>Alternative to set modal size classes like <code>small</code>, <code>medium</code>, <code>large</code> or <code>extra-large</code>
+					</td>
+				</tr>
+				<tr>
+					<td class="notranslate">data-map-modal-align</td>
+					<td>Alternative to set modal alignment classes like <b>horizontal vertical</b> (For example: <code>right center</code>)
+					</td>
+				</tr>
+				<tr>
+					<td class="notranslate">data-map-modal-animate</td>
+					<td>Alternative to change or disable the modal animation. You can choose between <code>true</code>, <code>false</code> or <code>alternative</code></td>
+				</tr>
+			</tbody>
+		</table>
+
+		<div class="bs-example">
+			<button type="button" class="btn btn-primary my-1 my-xl-0 mw-100 text-truncate JSmapLaunch" data-map-address="Renato Sánchez 4265, Las Condes, Santiago, Chile" data-map-coords-1="-33.4176466,-70.585256,17" data-map-coords-2="-33.41748,-70.58519,17" data-map-modal-size="small" data-map-modal-align="center" data-map-modal-animate="true">Show Map Launch (Normal & Centered)</button>
+			<button type="button" class="btn btn-primary my-1 my-xl-0 mw-100 text-truncate JSmapLaunch" data-map-address="Renato Sánchez 4265, Las Condes, Santiago, Chile" data-map-coords-1="-33.4176466,-70.585256,17" data-map-coords-2="-33.41748,-70.58519,17" data-map-iframe="true">Show Map Launch (With Map)</button>
+		</div>
+		<figure class="highlight">
+			<pre class="prettyprint"><code class="language-html" data-lang="html">&lt;button type="button" class="btn btn-primary JSmapLaunch" data-map-address="Renato Sánchez 4265, Las Condes, Santiago, Chile" data-map-coords-1="-33.4176466,-70.585256,17" data-map-coords-2="-33.41748,-70.58519,17" data-map-modal-size="small" data-map-modal-align="center"&gt;Show Map Launch (Normal & Centered)&lt;/button&gt;
+&lt;button type="button" class="btn btn-primary JSmapLaunch" data-map-address="Renato Sánchez 4265, Las Condes, Santiago, Chile" data-map-coords-1="-33.4176466,-70.585256,17" data-map-coords-2="-33.41748,-70.58519,17" data-map-iframe="true"&gt;Show Map Launch (With Map)&lt;/button&gt;</code></pre>
+		</figure>
+
+		<!-- Map Launch -->
 
 		<!-- MAIN CONTAINER -->
 	</div>

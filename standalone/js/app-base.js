@@ -128,11 +128,11 @@ $.fn.JSvalidateForm = function(options)
 		var align = settings.modalAlign;
 		var animate = settings.modalAnimate;
 		
-		if(!size || !size.match(/^(small|medium|large|extra-large)$/)){ // Check value
+		if(!size || !size.match(/\b(small|medium|large|extra-large)\b/)){ // Check value
 			size = 'medium';
 		}
 
-		if(!align || !align.match(/^(top|bottom|left|center|right)$/)){ // Check value
+		if(!align || !align.match(/\b(top|bottom|left|center|right)\b/)){ // Check value
 			align = 'top';
 		}
 
@@ -861,11 +861,11 @@ function JSmodalAlert(title, text, size, align, animate)
 	// Console Log
 	JSconsole('[JS Function] Modal Alert');
 	
-	if(!size || !size.match(/^(small|medium|large|extra-large)$/)){ // Check value
+	if(!size || !size.match(/\b(small|medium|large|extra-large)\b/)){ // Check value
 		size = 'medium';
 	}
 	
-	if(!align || !align.match(/^(top|bottom|left|center|right)$/)){ // Check value
+	if(!align || !align.match(/\b(top|bottom|left|center|right)\b/)){ // Check value
 		align = 'top';
 	}
 	
@@ -894,11 +894,11 @@ function JSmodalContent(title, element, size, align, animate)
 	// Console Log
 	JSconsole('[JS Function] Modal Content');
 	
-	if(!size || !size.match(/^(small|medium|large|extra-large)$/)){ // Check value
+	if(!size || !size.match(/\b(small|medium|large|extra-large)\b/)){ // Check value
 		size = 'medium';
 	}
 	
-	if(!align || !align.match(/^(top|bottom|left|center|right)$/)){ // Check value
+	if(!align || !align.match(/\b(top|bottom|left|center|right)\b/)){ // Check value
 		align = 'top';
 	}
 	
@@ -927,11 +927,11 @@ function JSmodalAjax(title, url, loading, size, align, animate)
 	// Console Log
 	JSconsole('[JS Function] Modal Ajax');
 	
-	if(!size || !size.match(/^(small|medium|large|extra-large)$/)){ // Check value
+	if(!size || !size.match(/\b(small|medium|large|extra-large)\b/)){ // Check value
 		size = 'medium';
 	}
 	
-	if(!align || !align.match(/^(top|bottom|left|center|right)$/)){ // Check value
+	if(!align || !align.match(/\b(top|bottom|left|center|right)\b/)){ // Check value
 		align = 'top';
 	}
 	
@@ -1026,6 +1026,23 @@ function JSvimeoParser(url)
 	// http://vimeo.com/groups/*/videos/*
 }
 
+// Facebook get ID from URL
+function JSfacebookParser(url)
+{
+	// Console Log
+	JSconsole('[JS Function] Facebook URL Parser');
+	
+    var regExp = /videos\/(\d+)+|v=(\d+)|video_id=(\d+)|vb.\d+\/(\d+)/;
+    var match = url.match(regExp);
+    return match[1] !== undefined ? match[1] : 
+		   match[2] !== undefined ? match[2] : 
+		   match[3] !== undefined ? match[3] : undefined;
+	
+	// https://www.facebook.com/revistapegn/videos/10153713928657635/
+	// https://www.facebook.com/video.php?v=100000000000000
+	// https://www.facebook.com/username/videos/vb.100000724987616/709948045706022/?type=2&theater
+}
+
 // Video launch modal box function
 function JSvideoLaunch(title, url, share, autoplay, size, align, animate)
 {	
@@ -1036,11 +1053,11 @@ function JSvideoLaunch(title, url, share, autoplay, size, align, animate)
 		title = false;
 	}
 	
-	if(!size || !size.match(/^(small|medium|large|extra-large)$/)){ // Check value
+	if(!size || !size.match(/\b(small|medium|large|extra-large)\b/)){ // Check value
 		size = 'medium';
 	}
 	
-	if(!align || !align.match(/^(top|bottom|left|center|right)$/)){ // Check value
+	if(!align || !align.match(/\b(top|bottom|left|center|right)\b/)){ // Check value
 		align = 'top';
 	}
 	
@@ -1063,7 +1080,8 @@ function JSvideoLaunch(title, url, share, autoplay, size, align, animate)
 	var embedShareText = JSlang('$videolaunch-text');
 	var embedAutoPlay = '';
 	
-	if(url.indexOf('youtube') >= 0){
+	if(url.indexOf('youtube') >= 0)
+	{
 		ID = JSyouTubeParser(url);
 		if(autoplay){
 			embedAutoPlay = '&autoplay=1';
@@ -1071,7 +1089,8 @@ function JSvideoLaunch(title, url, share, autoplay, size, align, animate)
 		embedUrl = 'https://www.youtube.com/embed/'+ID+'?rel=0'+embedAutoPlay;
 		embedShare = 'https://youtu.be/'+ID;
 	}
-	else if(url.indexOf('vimeo') >= 0){
+	else if(url.indexOf('vimeo') >= 0)
+	{
 		ID = JSvimeoParser(url);
 		if(autoplay){
 			embedAutoPlay = '?autoplay=1';
@@ -1079,30 +1098,26 @@ function JSvideoLaunch(title, url, share, autoplay, size, align, animate)
 		embedUrl = 'https://player.vimeo.com/video/'+ID+''+embedAutoPlay;
 		embedShare = 'https://vimeo.com/'+ID;
 	}
-	else if(url.indexOf('facebook') >= 0){
-		ID = '';
+	else if(url.indexOf('facebook') >= 0)
+	{
+		//ID = JSfacebookParser(url);
+		ID = encodeURIComponent(url);
 		if(autoplay){
 			embedAutoPlay = '&autoplay=1';
 		}
-		embedUrl = 'https://www.facebook.com/plugins/video.php?href='+url+'&show_text=0'+embedAutoPlay;
+		//embedUrl = 'https://www.facebook.com/video/embed?video_id='+ID+'&show_text=0'+embedAutoPlay;
+		embedUrl = 'https://www.facebook.com/plugins/video.php?href='+ID+'&show_text=0&mute=0&'+embedAutoPlay;
 		embedShare = url;
 	}
-	else{ // Only ID will take YouTube as default
-		ID = url;
-		if(autoplay){
-			embedAutoPlay = '&autoplay=1';
-		}
-		embedUrl = 'https://www.youtube.com/embed/'+ID+'?rel=0'+embedAutoPlay;
-		embedShare = 'https://youtu.be/'+ID;
-	}
 	
-	var content = '<div class="JSvideoLaunchIframe embed-responsive embed-responsive-16by9">'+
-			  		'	<iframe class="embed-responsive-item" src="'+embedUrl+'" frameborder="0" allowfullscreen></iframe>'+
+	var content = '<div class="JSvideoLaunchIframe embed-responsive embed-responsive embed-responsive-16by9">'+
+			  		'	<iframe class="embed-responsive-item" src="'+embedUrl+'" frameborder="0" allowTransparency="true" allowFullScreen="true"></iframe>'+
 			  		'</div>';
 	
-	if(share){
+	if(share)
+	{
 		content = content+'<a class="JSvideoLaunchURL" data-clipboard-action="copy" data-clipboard-target=".JSvideoLaunchCopy">'+
-							'	<div class="JSvideoLaunchButton">'+embedShareTitle+' <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span></div>'+
+							'	<div class="JSvideoLaunchButton">'+embedShareTitle+' <i class="fas fa-angle-right"></i><strong></div>'+
 							'	<div class="JSvideoLaunchText">'+embedShare+'</div>'+
 							'	<div class="JSvideoLaunchCopy">'+embedShare+'</div>'+
 							'</a>';
@@ -1120,13 +1135,16 @@ function JSvideoLaunch(title, url, share, autoplay, size, align, animate)
 			animate: (animate == 'alternative' ? true : animate),
 		}).on("shown.bs.modal", function(){
 			// Modify facebook src
-			if (url.indexOf('facebook') >= 0){
-				var JSvideoLaunchIframeSRC = $(".JSvideoLaunchIframe iframe").attr("src");
-				var JSvideoLaunchIframeSRCwidth = $(".JSvideoLaunchIframe iframe").width();
-				var JSvideoLaunchIframeSRCheight = $(".JSvideoLaunchIframe iframe").height();
-				$(".JSvideoLaunchIframe iframe").attr("src",JSvideoLaunchIframeSRC+"&width="+JSvideoLaunchIframeSRCwidth+"&height="+JSvideoLaunchIframeSRCheight);
+			if (url.indexOf('facebook') >= 0)
+			{
+				var JSvideoLaunchElem = $('.JSvideoLaunchIframe iframe');
+				var JSvideoLaunchData = {'url' 		: JSvideoLaunchElem.attr('src'),
+										 'width'	: parseInt(JSvideoLaunchElem.width()), 
+										 'height'	: parseInt(JSvideoLaunchElem.height())};
+				
+				JSvideoLaunchElem.attr('src', JSvideoLaunchData['url']+'&width='+JSvideoLaunchData['width']+'&height='+JSvideoLaunchData['height']);
 			}
-		});
+		})
 	}
 
 	// Tooltip load
@@ -1217,11 +1235,11 @@ function JSdisabledClick(element, title, message, size, align, animate)
 		message = false;
 	}
 	
-	if(!size || !size.match(/^(small|medium|large|extra-large)$/)){ // Check value
+	if(!size || !size.match(/\b(small|medium|large|extra-large)\b/)){ // Check value
 		size = 'medium';
 	}
 	
-	if(!align || !align.match(/^(top|bottom|left|center|right)$/)){ // Check value
+	if(!align || !align.match(/\b(top|bottom|left|center|right)\b/)){ // Check value
 		align = 'top';
 	}
 	
@@ -1340,11 +1358,11 @@ function JShashTag(string)
 	var align = JShashTagAlignment[1];
 	var animate = JShashTagAnimate;
 	
-	if(!size || !size.match(/^(small|medium|large|extra-large)$/)){ // Check value
+	if(!size || !size.match(/\b(small|medium|large|extra-large)\b/)){ // Check value
 		size = 'medium';
 	}
 	
-	if(!align || !align.match(/^(top|bottom|left|center|right)$/)){ // Check value
+	if(!align || !align.match(/\b(top|bottom|left|center|right)\b/)){ // Check value
 		align = 'top';
 	}
 	
@@ -1398,11 +1416,11 @@ function JSwindowPopup(element, errortitle, errormsg)
 	var align = $(element).data('win-modal-align');
 	var animate = $(element).data('win-modal-animate');
 	
-	if(!size || !size.match(/^(small|medium|large|extra-large)$/)){ // Check value
+	if(!size || !size.match(/\b(small|medium|large|extra-large)\b/)){ // Check value
 		size = 'medium';
 	}
 	
-	if(!align || !align.match(/^(top|bottom|left|center|right)$/)){ // Check value
+	if(!align || !align.match(/\b(top|bottom|left|center|right)\b/)){ // Check value
 		align = 'top';
 	}
 	
@@ -1490,11 +1508,11 @@ function JSmapLaunch(element)
 	var align = $(element).data('map-modal-align');
 	var animate = $(element).data('map-modal-animate');
 	
-	if(!size || !size.match(/^(small|medium|large|extra-large)$/)){ // Check value
+	if(!size || !size.match(/\b(small|medium|large|extra-large)\b/)){ // Check value
 		size = 'medium';
 	}
 	
-	if(!align || !align.match(/^(top|bottom|left|center|right)$/)){ // Check value
+	if(!align || !align.match(/\b(top|bottom|left|center|right)\b/)){ // Check value
 		align = 'top';
 	}
 	
@@ -1522,7 +1540,7 @@ function JSmapLaunch(element)
 	}
 	
 	mapContentStyle1 = '<div class="JSmapLaunchInfo">'+
-						'	<span class="label label-primary">'+mapText+'</span>'+
+						'	<span class="badge badge-primary mb-3">'+mapText+'</span>'+
 						'	<div class="JSmapLaunchIcons">'+
 						'		<a href="'+mapLaunchUrl1+'" target="_blank">'+
 						'			<img src="'+mapIcon1+'">'+
@@ -1531,15 +1549,15 @@ function JSmapLaunch(element)
 						'			<img src="'+mapIcon2+'">'+
 						'		</a>'+
 						'	</div>'+
-						'	<div class="well mb-0 mt-3">'+mapAddress+'</div>'+
+						'	<div class="card card-header p-2 mb-0 mt-3">'+mapAddress+'</div>'+
 						'</div>';
 	
 	mapContentStyle2 = '<div class="JSmapLaunchInfo">'+
-						'	<div class="well mb-4">'+mapAddress+'</div>'+
+						'	<div class="card card-header p-2 mb-3">'+mapAddress+'</div>'+
 						'	<div class="JSmapLaunchIframe embed-responsive embed-responsive-16by9">'+
 						'		<iframe class="embed-responsive-item" src="https://maps.google.com/maps?q='+mapAddressUrl+'&z='+mapCoords1[2]+'&output=embed" frameborder="0" allowfullscreen></iframe>'+
 						'	</div>'+
-						'	<span class="label label-primary">'+mapText+'</span>'+
+						'	<span class="badge badge-primary mb-3">'+mapText+'</span>'+
 						'	<div class="JSmapLaunchIcons small">'+
 						'		<a href="'+mapLaunchUrl1+'" target="_blank">'+
 						'			<img src="'+mapIcon1+'">'+
@@ -1828,63 +1846,6 @@ function JSmainInit()
 				angle: $(this).data('rotate-angle')
 			});
 			$(this).css('visibility','visible');
-		});
-	}
-	
-	// Workarround for Holder JS in IE8
-	if(JSisNav('ie','8'))
-	{
-		$('img[data-src*="holder.js"]').each(function(){
-			var src = $(this).data('src');
-			var size = src.split('/');
-			var getSize = size[1].split('x');
-			var text = src.split('text=').pop().split('&').shift();
-			var getText = text.replace(/ \\n /g,'<br>');
-			var theme = src.split('theme=').pop().split('&').shift();
-			var bg, fg;
-			
-			switch(theme){
-	            case 'gray':
-	                bg = '#EEEEEE';
-	                fg = '#AAAAAA';
-	            	break;
-	            case 'social':
-	                bg = '#3a5a97';
-	                fg = '#FFFFFF';
-	            	break;
-	            case 'industrial':
-	                bg = '#434A52';
-	                fg = '#C2F200';
-	            	break;
-	            case 'sky':
-	                bg = '#0D8FDB';
-	                fg = '#FFFFFF';
-	            	break;
-	            case 'vine':
-	                bg = '#39DBAC';
-	                fg = '#1E292C';
-	            	break;
-	            case 'lava':
-	                bg = '#F8591A';
-	                fg = '#1C2846';
-	            	break;
-				default:
-	                bg = '#777777';
-	                fg = '#555555';
-	            	break;
-	        }
-			
-			$(this).css({
-						'visibility' :	'hidden',
-						'width'		 :	getSize[0].replace(/p/g,''),
-						'height'	 :	getSize[1].replace(/p/g,''),
-						});
-			
-			var fakeImage = '<div class="d-table position-absolute w-100 h-100" style="background-color: '+bg+'; color: '+fg+'; top: 0px; font-size: 45px; font-weight: bold">'+
-							'	<div class="d-table-cell align-middle text-center">'+getText+'</div>'+
-							'</div>';
-			
-			$(this).wrapAll('<div class="d-inline-block"></div>').after(fakeImage);
 		});
 	}
 }

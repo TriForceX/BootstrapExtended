@@ -12,10 +12,6 @@
 
 <!-- jQuery -->
 <script src="<?php echo php::get_main_url(); ?>/resources/jquery/js/jquery.min.js"></script>
-<!-- Popper -->
-<script src="<?php echo php::get_main_url(); ?>/resources/popper/js/popper.min.js"></script>
-<!-- Bootstrap -->
-<script src="<?php echo php::get_main_url(); ?>/resources/bootstrap/js/bootstrap.min.js"></script>
 <!-- jQuery UI -->
 <script src="<?php echo php::get_main_url(); ?>/resources/jquery-ui/js/jquery-ui.min.js"></script>
 <!-- jQuqey Browser -->
@@ -26,6 +22,10 @@
 <script src="<?php echo php::get_main_url(); ?>/resources/jquery-fullscreen/js/jquery.fullscreen.min.js"></script>
 <!-- jQuery Rotate -->
 <script src="<?php echo php::get_main_url(); ?>/resources/jquery-rotate/js/jQueryRotate.js"></script>
+<!-- Popper -->
+<script src="<?php echo php::get_main_url(); ?>/resources/popper/js/popper.min.js"></script>
+<!-- Bootstrap -->
+<script src="<?php echo php::get_main_url(); ?>/resources/bootstrap/js/bootstrap.min.js"></script>
 <!-- Touch Swipe -->
 <script src="<?php echo php::get_main_url(); ?>/resources/touchswipe/js/jquery.touchSwipe.min.js"></script>
 <!-- Bootbox -->
