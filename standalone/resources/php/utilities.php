@@ -509,6 +509,9 @@ class php
 	// Returns main domain also if is in a folder
 	public static function get_main_url($remove = null)
     {
+		// Main data
+		global $websitebase;
+		
 		$protocol = self::is_https() ? 'https://' : 'http://';
 		$domain = $protocol.$_SERVER['SERVER_NAME'].dirname($_SERVER['PHP_SELF']);
 		
