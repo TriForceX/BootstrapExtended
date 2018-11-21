@@ -27,6 +27,7 @@ $websitebase = array(
 	'nav-color' 		=> '#7840a2',
 	'nav-color-apple' 	=> 'black',
 	'timezone' 			=> date_default_timezone_get(),
+	'custom_main_url'	=> false,
 	'assets_url'		=> php::get_main_url(),
 	'rebuild_pass'		=> 'mypassword',
 	'minify'			=> true,
