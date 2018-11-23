@@ -222,4 +222,31 @@
 }
 /* Dropdown Overflow */
 
+/* Custom file language */
+.custom-file-input:lang(es) ~ .custom-file-label::after {
+    content: "Elejir";
+}
+.custom-file-input:lang(en) ~ .custom-file-label::after {
+    content: "Browse";
+}
+/* Custom file language */
+
+/* Textarea resize */
+.form-group textarea.textarea-no-resize {
+	resize: none;
+	-webkit-appearance: none;
+	-moz-appearance: none;
+}
+.form-group textarea.textarea-resize-x {
+	resize: horizontal;
+	-webkit-appearance: horizontal;
+	-moz-appearance: horizontal;
+}
+.form-group textarea.textarea-resize-y {
+	resize: vertical;
+	-webkit-appearance: vertical;
+	-moz-appearance: vertical;
+}
+/* Textarea resize */
+
 /* ================================================= BOOTSTRAP ADDITIONS ================================================= */

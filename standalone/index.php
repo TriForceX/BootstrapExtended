@@ -985,6 +985,140 @@
 
 		<!-- Map Launch -->
 
+		<!-- Form Validation -->
+
+		<h2 class="notranslate">Form Validation <span class="badge badge-danger">Custom</span></h2>
+
+		<p>Basic validation for forms. The elements validated are <code>input</code>, <code>select</code>, <code>checkbox</code>, <code>radio</code> and <code>textarea</code>. The main function is <code>$(elem).JSvalidateForm(options);</code></p></p>
+		
+		<div class="bs-example notranslate">
+			<form class="JSformExample" method="post" action="javascript:JSmodalAlert('Form Success!','The form passed sucessfully! Thanks!');">
+				<div class="form-group">
+					<label for="example-input-username">User Name</label>
+					<div class="input-group">
+						<span class="input-group-prepend">
+							<span class="input-group-text">
+								<i class="align-self-center fas fa-user"></i>
+							</span>
+						</span>
+						<input type="text" class="form-control" id="example-input-username" name="example-input-username" placeholder="Type your User Name">
+					</div>
+				</div>
+				<div class="form-group">
+					<label for="example-input-password">Password</label>
+					<div class="input-group">
+						<span class="input-group-prepend">
+							<span class="input-group-text">
+								<i class="align-self-center fas fa-key"></i>
+							</span>
+						</span>
+						<input type="password" class="form-control" id="example-input-password" name="example-input-password" placeholder="Type your Password">
+					</div>
+				</div>
+				<div class="form-group">
+					<label for="example-input-firstname">First Name</label>
+					<input type="text" class="form-control" id="example-input-firstname" name="example-input-firstname" placeholder="Type your First Name">
+				</div>
+				<div class="form-group">
+					<label for="example-input-lastname">Last Name</label>
+					<input type="text" class="form-control" id="example-input-lastname" name="example-input-lastname" placeholder="Type your Last Name (Optional)">
+				</div>
+				<div class="form-group">
+					<label for="example-input-age">Age</label>
+					<input type="number" step="any" class="form-control" id="example-input-age" name="example-input-age" placeholder="Type your Age">
+				</div>
+				<div class="form-group">
+					<label for="example-input-custom">Custom Input</label>
+					<input type="text" class="form-control" id="example-input-custom" name="example-input-custom" placeholder="Type the word 'Custom'">
+				</div>
+				<div class="form-group">
+					<label for="example-input-email">E-Mail address</label>
+					<input type="email" class="form-control" id="example-input-email" name="example-input-email" placeholder="Type your E-Mail">
+				</div>
+				<div class="form-group">
+					<label for="example-input-tel">Phone Number</label>
+					<input type="tel" class="form-control" id="example-input-tel" name="example-input-tel" placeholder="Type your Phone Number">
+				</div>
+				<div class="form-group has-feedback">
+					<label for="example-select">Select Item</label>
+					<select class="custom-select" id="example-select" name="example-select">
+						<option>Select an item</option>
+						<option value="1">Item 1</option>
+						<option value="2">Item 2</option>
+						<option value="3">Item 3</option>
+						<option value="4">Item 4</option>
+						<option value="5">Item 5</option>
+					</select>
+				</div>
+				<div class="form-group">
+					<label for="example-textarea">Message</label>
+					<textarea class="form-control textarea-no-resize" rows="3" id="example-textarea" name="example-textarea" placeholder="Write a Message"></textarea>
+				</div>
+				<div class="form-group">
+					<div class="custom-file">
+						<input type="file" class="custom-file-input" id="example-file" lang="en">
+						<label class="custom-file-label" for="example-file">Select File</label>
+					</div>
+				</div>
+				
+				<div class="form-group">
+					<label for="example-website-url">Website</label>
+					<div class="input-group">
+						<span class="input-group-prepend">
+							<label for="example-website-enable" class="input-group-text">
+								<input class="mr-2" type="checkbox" name="example-website-enable" id="example-website-enable"> 
+								Enable
+							</label>
+						</span>
+						<input type="text" class="form-control" name="example-website-url" id="example-website-url" placeholder="Type your Website URL">
+					</div>
+				</div>
+				<div class="form-group">
+					<label for="example-social-url">Social Network</label>
+					<div class="row">
+						<div class="col-xs-12 col-sm-6 mb-3 mb-sm-0">
+							<div class="input-group">
+								<span class="input-group-prepend">
+									<label for="example-social-enable" class="input-group-text">
+										<input type="radio" name="example-social-enable" id="example-social-1" autocomplete="off" value="Social 1 Enable">
+									</label>
+								</span>
+								<input type="text" class="form-control" name="example-social-1-url" id="example-social-1-url" placeholder="Type your Social Network URL">
+							</div>
+						</div>
+						<div class="col-xs-12 col-sm-6 mb-3 mb-sm-0">
+							<div class="input-group">
+								<span class="input-group-prepend">
+									<label for="example-social-enable" class="input-group-text">
+										<input type="radio" name="example-social-enable" id="example-social-2" autocomplete="off" value="Social 2 Enable">
+									</label>
+								</span>
+								<input type="text" class="form-control" name="example-social-2-url" id="example-social-2-url" placeholder="Type your Social Network URL">
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="form-group mb-0">
+					<button type="reset" class="btn btn-default">Reset</button>
+					<button type="submit" class="btn btn-primary">Submit</button>
+				</div>
+			</form>
+		</div>
+		<figure class="highlight">
+			<pre class="prettyprint"><code class="language-js" data-lang="js">$(".JSformExample").JSvalidateForm({
+	noValidate: "#example-input-lastname",
+	hasConfirm: true,
+	customValidate: null,
+	resetSubmit: true,
+	errorStyling: true,
+	modalSize: 'medium',
+	modalAlign: 'top',
+	modalAnimate: true,
+});</code></pre>
+		</figure>
+
+		<!-- Form Validation -->
+
 		<!-- MAIN CONTAINER -->
 	</div>
 </div>
