@@ -387,7 +387,6 @@ div.dataTables_wrapper div.dataTables_paginate ul.pagination {
 	display: inline-block;
 	width: 100%;
 	height: auto;
-	margin-bottom: -4px;
 }
 .JSmapLaunchInfo > .JSmapLaunchIcons img {
 	width: 90px;

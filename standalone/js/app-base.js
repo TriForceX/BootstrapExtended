@@ -325,7 +325,7 @@ $.fn.JSvalidateForm = function(options)
 					message: formError,
 					size: size,
 					backdrop: true,
-					className: (animate == 'alternative' ? 'fade-2 '+align : align),
+					className: (animate == 'alternative' ? 'nofade '+align : align),
 					animate: (animate == 'alternative' ? true : animate),
 				});
 			}
@@ -347,7 +347,7 @@ $.fn.JSvalidateForm = function(options)
 					message: formConfirmText,
 					size: size,
 					backdrop: true,
-					className: (animate == 'alternative' ? 'fade-2 '+align : align),
+					className: (animate == 'alternative' ? 'nofade '+align : align),
 					animate: (animate == 'alternative' ? true : animate),
 					callback: function(result){
 						if(result){
@@ -882,7 +882,7 @@ function JSmodalAlert(title, text, size, align, animate)
 			message: text,
 			size: size,
 			backdrop: true,
-			className: (animate == 'alternative' ? 'fade-2 '+align : align),
+			className: (animate == 'alternative' ? 'nofade '+align : align),
 			animate: (animate == 'alternative' ? true : animate),
 		});
 	}
@@ -915,7 +915,7 @@ function JSmodalContent(title, element, size, align, animate)
 			message: $(element).html(),
 			size: size,
 			backdrop: true,
-			className: (animate == 'alternative' ? 'fade-2 '+align : align),
+			className: (animate == 'alternative' ? 'nofade '+align : align),
 			animate: (animate == 'alternative' ? true : animate),
 		});
 	}
@@ -967,7 +967,7 @@ function JSmodalAjax(title, url, loading, size, align, animate)
 					message: data,
 					size: size,
 					backdrop: true,
-					className: (animate == 'alternative' ? 'fade-2 '+align : align),
+					className: (animate == 'alternative' ? 'nofade '+align : align),
 					animate: (animate == 'alternative' ? true : animate),
 				});
 			}
@@ -1131,7 +1131,7 @@ function JSvideoLaunch(title, url, share, autoplay, size, align, animate)
 			message: content,
 			size: size,
 			backdrop: true,
-			className: (animate == 'alternative' ? 'fade-2 '+align : align),
+			className: (animate == 'alternative' ? 'nofade '+align : align),
 			animate: (animate == 'alternative' ? true : animate),
 		}).on("shown.bs.modal", function(){
 			// Modify facebook src
@@ -1259,7 +1259,7 @@ function JSdisabledClick(element, title, message, size, align, animate)
 					message: message,
 					size: size,
 					backdrop: true,
-					className: (animate == 'alternative' ? 'fade-2 '+align : align),
+					className: (animate == 'alternative' ? 'nofade '+align : align),
 					animate: (animate == 'alternative' ? true : animate),
 				});
 			}
@@ -1394,7 +1394,7 @@ function JShashTag(string)
 					message: JSlang('$disabled-text'),
 					size: size,
 					backdrop: true,
-					className: (animate == 'alternative' ? 'fade-2 '+align : align),
+					className: (animate == 'alternative' ? 'nofade '+align : align),
 					animate: (animate == 'alternative' ? true : animate),
 				});
 			}
@@ -1491,7 +1491,7 @@ function JSwindowPopup(element, errortitle, errormsg)
 				message: errormsg,
 				size: size,
 				backdrop: true,
-				className: (animate == 'alternative' ? 'fade-2 '+align : align),
+				className: (animate == 'alternative' ? 'nofade '+align : align),
 				animate: (animate == 'alternative' ? true : animate),
 			});
 		}
@@ -1540,7 +1540,7 @@ function JSmapLaunch(element)
 	}
 	
 	mapContentStyle1 = '<div class="JSmapLaunchInfo">'+
-						'	<span class="badge badge-primary mb-3">'+mapText+'</span>'+
+						'	<span class="badge badge-primary mb-2">'+mapText+'</span>'+
 						'	<div class="JSmapLaunchIcons">'+
 						'		<a href="'+mapLaunchUrl1+'" target="_blank">'+
 						'			<img src="'+mapIcon1+'">'+
@@ -1549,7 +1549,7 @@ function JSmapLaunch(element)
 						'			<img src="'+mapIcon2+'">'+
 						'		</a>'+
 						'	</div>'+
-						'	<div class="card card-header p-2 mb-0 mt-3">'+mapAddress+'</div>'+
+						'	<div class="card card-header p-2 mb-0 mt-2">'+mapAddress+'</div>'+
 						'</div>';
 	
 	mapContentStyle2 = '<div class="JSmapLaunchInfo">'+
@@ -1557,7 +1557,7 @@ function JSmapLaunch(element)
 						'	<div class="JSmapLaunchIframe embed-responsive embed-responsive-16by9">'+
 						'		<iframe class="embed-responsive-item" src="https://maps.google.com/maps?q='+mapAddressUrl+'&z='+mapCoords1[2]+'&output=embed" frameborder="0" allowfullscreen></iframe>'+
 						'	</div>'+
-						'	<span class="badge badge-primary mb-3">'+mapText+'</span>'+
+						'	<span class="badge badge-primary mb-2">'+mapText+'</span>'+
 						'	<div class="JSmapLaunchIcons small">'+
 						'		<a href="'+mapLaunchUrl1+'" target="_blank">'+
 						'			<img src="'+mapIcon1+'">'+
@@ -1577,7 +1577,7 @@ function JSmapLaunch(element)
 			message: mapIframe == false ? mapContentStyle1 : mapContentStyle2,
 			size: size,
 			backdrop: true,
-			className: (animate == 'alternative' ? 'fade-2 '+align : align),
+			className: (animate == 'alternative' ? 'nofade '+align : align),
 			animate: (animate == 'alternative' ? true : animate),
 		});
 	}

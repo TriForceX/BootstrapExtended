@@ -75,20 +75,20 @@
 						<a class="dropdown-item" href="https://getbootstrap.com/docs/4.1/layout/grid/" target="_blank">Grid</a>
 						<a class="dropdown-item" href="https://getbootstrap.com/docs/4.1/components/buttons/" target="_blank">Components</a>
 						<div class="dropdown-divider"></div>
-						<a class="dropdown-header" href="https://getbootstrap.com/docs/4.1/examples/starter-template/" target="_blank">Starter Template</a>
-						<a class="dropdown-header" href="https://getbootstrap.com/docs/4.1/examples/grid/" target="_blank">Grid</a>
-						<a class="dropdown-header" href="https://getbootstrap.com/docs/4.1/examples/jumbotron/" target="_blank">Jumborton</a>
-						<a class="dropdown-header" href="https://getbootstrap.com/docs/4.1/examples/album/" target="_blank">Album</a>
-						<a class="dropdown-header" href="https://getbootstrap.com/docs/4.1/examples/pricing/" target="_blank">Pricing</a>
-						<a class="dropdown-header" href="https://getbootstrap.com/docs/4.1/examples/checkout/" target="_blank">Checkout</a>
-						<a class="dropdown-header" href="https://getbootstrap.com/docs/4.1/examples/product/" target="_blank">Product</a>
-						<a class="dropdown-header" href="https://getbootstrap.com/docs/4.1/examples/cover/" target="_blank">Cover</a>
-						<a class="dropdown-header" href="https://getbootstrap.com/docs/4.1/examples/carousel/" target="_blank">Carousel</a>
-						<a class="dropdown-header" href="https://getbootstrap.com/docs/4.1/examples/blog/" target="_blank">Blog</a>
-						<a class="dropdown-header" href="https://getbootstrap.com/docs/4.1/examples/dashboard/" target="_blank">Dashboard</a>
-						<a class="dropdown-header" href="https://getbootstrap.com/docs/4.1/examples/sign-in/" target="_blank">Sign-In</a>
-						<a class="dropdown-header" href="https://getbootstrap.com/docs/4.1/examples/sticky-footer/" target="_blank">Sticky Footer</a>
-						<a class="dropdown-header" href="https://getbootstrap.com/docs/4.1/examples/sticky-footer-navbar/" target="_blank">Sticky Footer Navbar</a>
+						<a class="dropdown-item" href="https://getbootstrap.com/docs/4.1/examples/starter-template/" target="_blank">Starter Template</a>
+						<a class="dropdown-item" href="https://getbootstrap.com/docs/4.1/examples/grid/" target="_blank">Grid</a>
+						<a class="dropdown-item" href="https://getbootstrap.com/docs/4.1/examples/jumbotron/" target="_blank">Jumborton</a>
+						<a class="dropdown-item" href="https://getbootstrap.com/docs/4.1/examples/album/" target="_blank">Album</a>
+						<a class="dropdown-item" href="https://getbootstrap.com/docs/4.1/examples/pricing/" target="_blank">Pricing</a>
+						<a class="dropdown-item" href="https://getbootstrap.com/docs/4.1/examples/checkout/" target="_blank">Checkout</a>
+						<a class="dropdown-item" href="https://getbootstrap.com/docs/4.1/examples/product/" target="_blank">Product</a>
+						<a class="dropdown-item" href="https://getbootstrap.com/docs/4.1/examples/cover/" target="_blank">Cover</a>
+						<a class="dropdown-item" href="https://getbootstrap.com/docs/4.1/examples/carousel/" target="_blank">Carousel</a>
+						<a class="dropdown-item" href="https://getbootstrap.com/docs/4.1/examples/blog/" target="_blank">Blog</a>
+						<a class="dropdown-item" href="https://getbootstrap.com/docs/4.1/examples/dashboard/" target="_blank">Dashboard</a>
+						<a class="dropdown-item" href="https://getbootstrap.com/docs/4.1/examples/sign-in/" target="_blank">Sign-In</a>
+						<a class="dropdown-item" href="https://getbootstrap.com/docs/4.1/examples/sticky-footer/" target="_blank">Sticky Footer</a>
+						<a class="dropdown-item" href="https://getbootstrap.com/docs/4.1/examples/sticky-footer-navbar/" target="_blank">Sticky Footer Navbar</a>
 					</div>
 				</li>
 				<li class="nav-item pl-0 pl-md-2">
@@ -918,7 +918,7 @@
 			<button type="button" class="btn btn-primary my-1 my-xl-0 mw-100 text-truncate" onclick="JSvideoLaunch('My Facebook Video','https://www.facebook.com/mdbootstrap/videos/778803232324056')">Facebook Video (Only title + URL)</button>
 		</div>
 		<figure class="highlight">
-			<pre class="prettyprint"><code class="language-html" data-lang="html">&lt;a onclick="JSvideoLaunch('My YouTube Video','https://youtube.com/watch?v=ae6aeo9-Kn8',true,true,'medium','center')">Click Here&lt;/a&gt;<br>&lt;a onclick="JSvideoLaunch('My Vimeo Video','https://vimeo.com/214352663',false,false,'large')">Click Here&lt;/a&gt;<br>&lt;a onclick="JSvideoLaunch('My Facebook Video','https://web.facebook.com/ign/videos/275980713021701/')">Click Here&lt;/a&gt;</code></pre>
+			<pre class="prettyprint"><code class="language-html" data-lang="html">&lt;a onclick="JSvideoLaunch('My YouTube Video','https://www.youtube.com/watch?v=AW3SppO7qfY',true,true,'medium','center')">Click Here&lt;/a&gt;<br>&lt;a onclick="JSvideoLaunch('My Vimeo Video','https://vimeo.com/158181618',false,false,'large')">Click Here&lt;/a&gt;<br>&lt;a onclick="JSvideoLaunch('My Facebook Video','https://www.facebook.com/mdbootstrap/videos/778803232324056')">Click Here&lt;/a&gt;</code></pre>
 		</figure>
 
 		<!-- Video Launch -->
@@ -938,37 +938,37 @@
 			</thead>
 			<tbody>
 				<tr>
-					<td class="notranslate">data-map-address</td>
+					<td class="text-nowrap notranslate">data-map-address</td>
 					<td>The map address to search</code>
 					</td>
 				</tr>
 				<tr>
-					<td class="notranslate">data-map-coords-1</td>
+					<td class="text-nowrap notranslate">data-map-coords-1</td>
 					<td>Desired address coords from <code>Google Maps</code> <b>latitude</b>, <b>longitude</b>, <b>zoom</b>
 					</td>
 				</tr>
 				<tr>
-					<td class="notranslate">data-map-coords-2</td>
+					<td class="text-nowrap notranslate">data-map-coords-2</td>
 					<td>Desired address coords from <code>Waze</code> <b>latitude</b>, <b>longitude</b>, <b>zoom</b>
 					</td>
 				</tr>
 				<tr>
-					<td class="notranslate">data-map-iframe</td>
+					<td class="text-nowrap notranslate">data-map-iframe</td>
 					<td>Alternative to show an iframe for <code>Google Maps</code> with <code>true</code> or <code>false</code> 
 					</td>
 				</tr>
 				<tr>
-					<td class="notranslate">data-map-modal-size</td>
+					<td class="text-nowrap notranslate">data-map-modal-size</td>
 					<td>Alternative to set modal size classes like <code>small</code>, <code>medium</code>, <code>large</code> or <code>extra-large</code>
 					</td>
 				</tr>
 				<tr>
-					<td class="notranslate">data-map-modal-align</td>
+					<td class="text-nowrap notranslate">data-map-modal-align</td>
 					<td>Alternative to set modal alignment classes like <b>horizontal vertical</b> (For example: <code>right center</code>)
 					</td>
 				</tr>
 				<tr>
-					<td class="notranslate">data-map-modal-animate</td>
+					<td class="text-nowrap notranslate">data-map-modal-animate</td>
 					<td>Alternative to change or disable the modal animation. You can choose between <code>true</code>, <code>false</code> or <code>alternative</code></td>
 				</tr>
 			</tbody>
