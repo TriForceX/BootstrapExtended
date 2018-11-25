@@ -1056,7 +1056,7 @@
 				</div>
 				<div class="form-group">
 					<div class="custom-file">
-						<input type="file" class="custom-file-input" id="example-file" lang="en">
+						<input type="file" class="custom-file-input" id="example-file" lang="en" placeholder="Select File">
 						<label class="custom-file-label" for="example-file">Select File</label>
 					</div>
 				</div>

@@ -162,65 +162,65 @@ $.fn.JSvalidateForm = function(options)
 			switch(element.attr('type')){
 				case 'text':
 					if (!JSvalidateEmpty(element.val())) { 
-						if(settings.errorStyling){ element.parents('.form-group').addClass('has-error').removeClass('has-success'); }
+						if(settings.errorStyling){ element.addClass('is-invalid').removeClass('is-valid'); }
 						formError = formErrorText.text;
 					}
 					else{
-						if(settings.errorStyling){ element.parents('.form-group').removeClass('has-error').addClass('has-success'); }
+						if(settings.errorStyling){ element.removeClass('is-invalid').addClass('is-valid'); }
 					}
 					break;
 				case 'number':
 					if (!JSvalidateEmpty(element.val()) || !JSvalidateNumber(element.val())) { 
-						if(settings.errorStyling){ element.parents('.form-group').addClass('has-error').removeClass('has-success'); }
+						if(settings.errorStyling){ element.addClass('is-invalid').removeClass('is-valid'); }
 						formError = formErrorText.number;
 					}
 					else{
-						if(settings.errorStyling){ element.parents('.form-group').removeClass('has-error').addClass('has-success'); }
+						if(settings.errorStyling){ element.removeClass('is-invalid').addClass('is-valid'); }
 					}
 					break;
 				case 'tel':
 					if (!JSvalidateEmpty(element.val())) { 
-						if(settings.errorStyling){ element.parents('.form-group').addClass('has-error').removeClass('has-success'); }
+						if(settings.errorStyling){ element.addClass('is-invalid').removeClass('is-valid'); }
 						formError = formErrorText.tel;
 					}
 					else{
-						if(settings.errorStyling){ element.parents('.form-group').removeClass('has-error').addClass('has-success'); }
+						if(settings.errorStyling){ element.removeClass('is-invalid').addClass('is-valid'); }
 					}
 					break;
 				case 'email':
 					if (!JSvalidateEmpty(element.val()) || !JSvalidateEmail(element.val())) { 
-						if(settings.errorStyling){ element.parents('.form-group').addClass('has-error').removeClass('has-success'); }
+						if(settings.errorStyling){ element.addClass('is-invalid').removeClass('is-valid'); }
 						formError = formErrorText.email;
 					}
 					else{
-						if(settings.errorStyling){ element.parents('.form-group').removeClass('has-error').addClass('has-success'); }
+						if(settings.errorStyling){ element.removeClass('is-invalid').addClass('is-valid'); }
 					}
 					break;
 				case 'password':
 					if (!JSvalidateEmpty(element.val())) { 
-						if(settings.errorStyling){ element.parents('.form-group').addClass('has-error').removeClass('has-success'); }
+						if(settings.errorStyling){ element.addClass('is-invalid').removeClass('is-valid'); }
 						formError = formErrorText.pass;
 					}
 					else{
-						if(settings.errorStyling){ element.parents('.form-group').removeClass('has-error').addClass('has-success'); }
+						if(settings.errorStyling){ element.removeClass('is-invalid').addClass('is-valid'); }
 					}
 					break;
 				case 'search':
 					if (!JSvalidateEmpty(element.val())) { 
-						if(settings.errorStyling){ element.parents('.form-group').addClass('has-error').removeClass('has-success'); }
+						if(settings.errorStyling){ element.addClass('is-invalid').removeClass('is-valid'); }
 						formError = formErrorText.search;
 					}
 					else{
-						if(settings.errorStyling){ element.parents('.form-group').removeClass('has-error').addClass('has-success'); }
+						if(settings.errorStyling){ element.removeClass('is-invalid').addClass('is-valid'); }
 					}
 					break;
 				case 'file':
 					if (!JSvalidateEmpty(element.val())) { 
-						if(settings.errorStyling){ element.parents('.form-group').addClass('has-error').removeClass('has-success'); }
+						if(settings.errorStyling){ element.addClass('is-invalid').removeClass('is-valid'); }
 						formError = formErrorText.file;
 					}
 					else{
-						if(settings.errorStyling){ element.parents('.form-group').removeClass('has-error').addClass('has-success'); }
+						if(settings.errorStyling){ element.removeClass('is-invalid').addClass('is-valid'); }
 					}
 					break;
 				default: break;
@@ -230,22 +230,22 @@ $.fn.JSvalidateForm = function(options)
 		// Select inputs
 		$(this).find('select').not(settings.noValidate).each(function(){
 			if (!JSvalidateEmpty($(this).find('option:selected').attr('value'))) { 
-				if(settings.errorStyling){ $(this).parents('.form-group').addClass('has-error').removeClass('has-success'); }
+				if(settings.errorStyling){ $(this).addClass('is-invalid').removeClass('is-valid'); }
 				formError = formErrorText.select;
 			}
 			else{
-				if(settings.errorStyling){ $(this).parents('.form-group').removeClass('has-error').addClass('has-success'); }
+				if(settings.errorStyling){ $(this).removeClass('is-invalid').addClass('is-valid'); }
 			}
 		});
 		
 		// Textarea inputs
 		$(this).find('textarea').not(settings.noValidate).each(function(){
 			if (!JSvalidateEmpty($.trim($(this).val()))) { 
-				if(settings.errorStyling){ $(this).parents('.form-group').addClass('has-error').removeClass('has-success'); }
+				if(settings.errorStyling){ $(this).addClass('is-invalid').removeClass('is-valid'); }
 				formError = formErrorText.textarea;
 			}
 			else{
-				if(settings.errorStyling){ $(this).parents('.form-group').removeClass('has-error').addClass('has-success'); }
+				if(settings.errorStyling){ $(this).removeClass('is-invalid').addClass('is-valid'); }
 			}
 		});
 		
@@ -261,11 +261,11 @@ $.fn.JSvalidateForm = function(options)
 				}
 			}
 			if(!check){
-				if(settings.errorStyling){ item.parents('.form-group').addClass('has-error').removeClass('has-success'); }
+				if(settings.errorStyling){ item.addClass('is-invalid').removeClass('is-valid'); }
 				formError = formErrorText[type];
 			}
 			else{
-				if(settings.errorStyling){ item.parents('.form-group').removeClass('has-error').addClass('has-success'); }
+				if(settings.errorStyling){ item.removeClass('is-invalid').addClass('is-valid'); }
 			}
 		});
 		
@@ -281,7 +281,7 @@ $.fn.JSvalidateForm = function(options)
 				}
 			}
 			if(!check){
-				if(settings.errorStyling){ item.parents('.form-group').addClass('has-error').removeClass('has-success'); }
+				if(settings.errorStyling){ item.addClass('is-invalid').removeClass('is-valid'); }
 				formError = formErrorText[type];
 			}
 			else{
@@ -304,11 +304,11 @@ $.fn.JSvalidateForm = function(options)
 			
 			$(CVInput).each(function(){
 				if (!window[CVFunction]($(this).val())) { 
-					if(settings.errorStyling){ $(this).parents('.form-group').addClass('has-error').removeClass('has-success'); }
+					if(settings.errorStyling){ $(this).addClass('is-invalid').removeClass('is-valid'); }
 					formError = CVMessage;
 				}
 				else{
-					if(settings.errorStyling){ $(this).parents('.form-group').removeClass('has-error').addClass('has-success'); }
+					if(settings.errorStyling){ $(this).removeClass('is-invalid').addClass('is-valid'); }
 				}
 			});
 		}
@@ -354,14 +354,13 @@ $.fn.JSvalidateForm = function(options)
 							formElement.unbind("submit").submit();
 							if(settings.resetSubmit){
 								formElement.trigger('reset');
-								if(settings.errorStyling){ formElement.find('.form-group').removeClass('has-error'); }
-								if(settings.errorStyling){ formElement.find('.form-group').removeClass('has-warning'); }
-								if(settings.errorStyling){ formElement.find('.form-group').removeClass('has-success'); }
+								if(settings.errorStyling){ formElement.find('.is-invalid').removeClass('is-invalid'); }
+								if(settings.errorStyling){ formElement.find('.is-valid').removeClass('is-valid'); }
 								formElement.find('input[type="checkbox"]').prop('checked', false).parent().removeClass('active');
 								formElement.find('input[type="radio"]').prop('checked', false).parent().removeClass('active');
 								formElement.find('.form-group input[type="file"]').each(function(){
 									var placeholder = $(this).JShasAttr('placeholder') ? $(this).attr('placeholder') : '';
-									$(this).parent().find('.custom-file-text > span').html(placeholder);
+									$(this).parent().find('.custom-file-label').html(placeholder);
 								});
 							}
 							formElement.JSvalidateForm({
@@ -1901,14 +1900,13 @@ $(document).ready(function(){
 	$(document).on('change', '.form-group .custom-file input[type="file"]', function(){
 		var placeholder = $(this).JShasAttr('placeholder') ? $(this).attr('placeholder') : '';
 		var filename = $(this)[0].files.length ? $(this)[0].files[0].name : placeholder;
-		$(this).parent().find('.custom-file-text > span').html(filename);
+		$(this).parent().find('.custom-file-label').html(filename);
 	});
 	
 	// Check form reset
 	$(document).on('click', 'form *[type="reset"]', function(e){
-		$(this).parents('form').find('.form-group').removeClass('has-error');
-		$(this).parents('form').find('.form-group').removeClass('has-warning');
-		$(this).parents('form').find('.form-group').removeClass('has-success');
+		$(this).parents('form').find('.is-invalid').removeClass('is-invalid');
+		$(this).parents('form').find('.is-valid').removeClass('is-valid');
 		$(this).parents('form').find('.form-group input[type="checkbox"]').prop('checked', false).parent().removeClass('active');
 		$(this).parents('form').find('.form-group input[type="radio"]').prop('checked', false).parent().removeClass('active');
 		$(this).parents('form').find('.form-group input[type="file"]').each(function(){
