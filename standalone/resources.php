@@ -16,7 +16,7 @@ class php extends utilities\php { }
 
 // Set main Website Base data fields
 $websitebase = array(
-	'debug'				=> true,
+	'debug'				=> false,
 	'lang' 				=> 'en-US',
 	'charset' 			=> 'UTF-8',
 	'title' 			=> 'Website Base',
