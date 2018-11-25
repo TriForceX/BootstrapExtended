@@ -13,9 +13,10 @@ require_once('resources/php/utilities.php');
 
 // Enable main PHP utilities
 class php extends utilities\php { }
-		
+
 // Set main Website Base data fields
 $websitebase = array(
+	'debug'				=> true,
 	'lang' 				=> 'en-US',
 	'charset' 			=> 'UTF-8',
 	'title' 			=> 'Website Base',
@@ -46,6 +47,12 @@ $websitebase = array(
 								 /*'$color-custom-3'	=> '#FFFFFF',*/),
 );
 
+// Set default timezone if not exist
+if(!ini_get('date.timezone'))
+{
+	date_default_timezone_set('GMT');
+}
+
 // Rebuild CSS & JS redirect clean
 if(isset($_GET['rebuild']) && $_GET['rebuild'] == $websitebase['rebuild_pass'])
 {
@@ -60,3 +67,6 @@ if(isset($_GET['lastbuild']))
 {
 	header('Location: '.php::get_main_url());
 }
+
+// Check error warnings
+php::debug();

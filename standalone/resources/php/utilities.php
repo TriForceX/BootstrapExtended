@@ -14,6 +14,38 @@ namespace utilities;
 
 class php
 {
+	// Error handle
+	public static function debug()
+    {
+		// Main data
+		global $websitebase;
+		
+		if($websitebase['debug'])
+		{
+			if($websitebase['debug'] === 'handle')
+			{
+				ob_start(
+					function()
+					{
+						$error = error_get_last();
+						$output = null;
+						foreach ($error as $info => $string)
+						{
+							$output .= '<tr><td>'.$info.'</td><td>'.$string.'</td>';
+						}
+						return '<table border="1">'.$output.'</table>';
+					}
+				);
+			}
+			else
+			{
+				ini_set('display_errors', 1);
+				ini_set('display_startup_errors', 1);
+				error_reporting(E_ALL);
+			}
+		}
+	}
+	
 	// Main header data
 	public static function get_html_data($type)
     {
