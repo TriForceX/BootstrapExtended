@@ -55,7 +55,7 @@
 					<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown03" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 					Utilities
 					</a>
-					<div class="dropdown-menu dropdown-overflow-lg" aria-labelledby="navbarDropdown03">
+					<div class="dropdown-menu" aria-labelledby="navbarDropdown03">
 						<a class="dropdown-item" href="https://www.w3schools.com" target="_blank">W3 Schools Tutorials</a>
 						<a class="dropdown-item" href="https://www.w3schools.com/howto/" target="_blank">W3 Schools How To</a>
 						<a class="dropdown-item" href="https://bootsnipp.com/tags/4.1.1" target="_blank">Bootstrap Snippets</a>
@@ -88,7 +88,7 @@
 						<a class="dropdown-item" href="https://getbootstrap.com/docs/4.1/examples/dashboard/" target="_blank">Dashboard</a>
 						<a class="dropdown-item" href="https://getbootstrap.com/docs/4.1/examples/sign-in/" target="_blank">Sign-In</a>
 						<a class="dropdown-item" href="https://getbootstrap.com/docs/4.1/examples/sticky-footer/" target="_blank">Sticky Footer</a>
-						<a class="dropdown-item" href="https://getbootstrap.com/docs/4.1/examples/sticky-footer-navbar/" target="_blank">Sticky Footer Navbar</a>
+						<a class="dropdown-item text-truncate" href="https://getbootstrap.com/docs/4.1/examples/sticky-footer-navbar/" target="_blank">Sticky Footer Navbar</a>
 					</div>
 				</li>
 				<li class="nav-item pl-0 pl-md-2">
