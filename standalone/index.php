@@ -992,7 +992,7 @@
 		<p>Basic validation for forms. The elements validated are <code>input</code>, <code>select</code>, <code>checkbox</code>, <code>radio</code> and <code>textarea</code>. The main function is <code>$(elem).JSvalidateForm(options);</code></p></p>
 		
 		<div class="bs-example notranslate">
-			<form class="JSformExample" method="post" action="javascript:JSmodalAlert('Form Success!','The form passed sucessfully! Thanks!');">
+			<form class="JSformExample needs-validation" novalidate method="post" action="javascript:JSmodalAlert('Form Success!','The form passed sucessfully! Thanks!');">
 				<div class="form-group">
 					<label for="example-input-username">User Name</label>
 					<div class="input-group">
@@ -1001,7 +1001,13 @@
 								<i class="align-self-center fas fa-user"></i>
 							</span>
 						</span>
-						<input type="text" class="form-control" id="example-input-username" name="example-input-username" placeholder="Type your User Name">
+						<input type="text" class="form-control" id="example-input-username" name="example-input-username" placeholder="Type your User Name" required>
+						<div class="valid-feedback">
+							Looks good!
+						</div>
+						<div class="invalid-feedback">
+							Please choose a username.
+						</div>
 					</div>
 				</div>
 				<div class="form-group">
@@ -1055,6 +1061,7 @@
 					<textarea class="form-control textarea-no-resize" rows="3" id="example-textarea" name="example-textarea" placeholder="Write a Message"></textarea>
 				</div>
 				<div class="form-group">
+					<label for="example-file">Select File</label>
 					<div class="custom-file">
 						<input type="file" class="custom-file-input" id="example-file" lang="en" placeholder="Select File">
 						<label class="custom-file-label" for="example-file">Select File</label>
