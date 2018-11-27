@@ -232,21 +232,107 @@
 /* Custom file language */
 
 /* Textarea resize */
-.form-group textarea.textarea-no-resize {
+.form-group textarea.textarea-no-resize,
+.form-row textarea.textarea-no-resize{
 	resize: none;
 	-webkit-appearance: none;
 	-moz-appearance: none;
 }
-.form-group textarea.textarea-resize-x {
+.form-group textarea.textarea-resize-x,
+.form-row textarea.textarea-resize-x{
 	resize: horizontal;
 	-webkit-appearance: horizontal;
 	-moz-appearance: horizontal;
 }
-.form-group textarea.textarea-resize-y {
+.form-group textarea.textarea-resize-y,
+.form-row textarea.textarea-resize-y{
 	resize: vertical;
 	-webkit-appearance: vertical;
 	-moz-appearance: vertical;
 }
 /* Textarea resize */
+
+/* Form validation addon */
+.was-validated .input-group-text-valid {
+	border-color: #28a745;
+	background-color: rgba(40, 167, 69, 0.25);
+}
+.was-validated .input-group-text-invalid {
+	border-color: #dc3545;
+	background-color: rgba(220, 53, 69, 0.25);
+}
+.was-validated .input-group-text-warning {
+	border-color: #faa425;
+	background-color: rgba(255, 200, 118, 0.25);
+}
+/* Form validation addon */
+
+/* Form custom input */
+.was-validated .custom-file-input:valid ~ .custom-file-label:after {
+	background-color: rgba(40, 167, 69, 0.25);
+}
+.was-validated .custom-file-input:invalid ~ .custom-file-label:after {
+	background-color: rgba(220, 53, 69, 0.25);
+}
+/* Form custom input */
+
+/* Form validation warning */
+.is-warning:valid {
+	border-color: #faa425 !important;
+}
+.is-warning:valid:focus {
+	border-color: #faa425 !important;
+	box-shadow: 0 0 0 0.2rem rgba(255, 200, 118, 0.25) !important;
+}
+.warning-feedback {
+	display: none;
+	width: 100%;
+	margin-top: 0.25rem;
+	font-size: 80%;
+	color: #faa425;
+}
+.warning-tooltip {
+	position: absolute;
+	top: 100%;
+	z-index: 5;
+	display: none;
+	max-width: 100%;
+	padding: 0.25rem 0.5rem;
+	margin-top: .1rem;
+	font-size: 0.875rem;
+	line-height: 1.5;
+	color: #fff;
+	background-color: rgba(255, 200, 118, 0.9);
+	border-radius: 0.25rem;
+}
+.was-validated .form-control.is-warning:valid ~ .warning-feedback,
+.was-validated .form-control.is-warning:valid ~ .warning-tooltip, 
+.was-validated .custom-select.is-warning:valid ~ .warning-feedback,
+.was-validated .custom-select.is-warning:valid ~ .warning-tooltip,
+.was-validated .form-control-file.is-warning:valid ~ .warning-feedback,
+.was-validated .form-control-file.is-warning:valid ~ .warning-tooltip,
+.was-validated .form-check-input.is-warning:valid ~ .warning-feedback,
+.was-validated .form-check-input.is-warning:valid ~ .warning-tooltip,
+.was-validated .custom-control-input.is-warning:valid ~ .warning-feedback,
+.was-validated .custom-control-input.is-warning:valid ~ .warning-tooltip,
+.was-validated .custom-file-input.is-warning:valid ~ .warning-feedback,
+.was-validated .custom-file-input.is-warning:valid ~ .warning-tooltip {
+	display: block;
+}
+.was-validated .form-control.is-warning:valid ~ .valid-feedback,
+.was-validated .form-control.is-warning:valid ~ .valid-tooltip, 
+.was-validated .custom-select.is-warning:valid ~ .valid-feedback,
+.was-validated .custom-select.is-warning:valid ~ .valid-tooltip,
+.was-validated .form-control-file.is-warning:valid ~ .valid-feedback,
+.was-validated .form-control-file.is-warning:valid ~ .valid-tooltip,
+.was-validated .form-check-input.is-warning:valid ~ .valid-feedback,
+.was-validated .form-check-input.is-warning:valid ~ .valid-tooltip,
+.was-validated .custom-control-input.is-warning:valid ~ .valid-feedback,
+.was-validated .custom-control-input.is-warning:valid ~ .valid-tooltip,
+.was-validated .custom-file-input.is-warning:valid ~ .valid-feedback,
+.was-validated .custom-file-input.is-warning:valid ~ .valid-tooltip {
+	display: none;
+}
+/* Form validation warning */
 
 /* ================================================= BOOTSTRAP ADDITIONS ================================================= */

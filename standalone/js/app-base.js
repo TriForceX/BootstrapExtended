@@ -106,310 +106,321 @@ $.fn.JShtmlClean = function()
 };
 
 // Form validate
-//$.fn.JSvalidateForm = function(options)
-//{	
-//	// Console Log
-//	JSconsole('[JS Function] Validate Form');
-//	
-//	var settings = $.extend({
-//		noValidate		: '',
-//		hasConfirm		: false,
-//		customValidate	: null,
-//		resetSubmit		: true,
-//		errorStyling	: true,
-//		modalSize		: 'medium',
-//		modalAlign		: 'top',
-//		modalAnimate	: true,
-//	}, options);
-//	
-//	// Fetch all the forms we want to apply custom Bootstrap validation styles to
-//	var forms = document.getElementsByClassName('needs-validation');
-//	var forms2 = $(this).get(0);
-//	console.log(forms);
-//	console.log(forms2);
-//	// Loop over them and prevent submission
-//	var validation = Array.prototype.filter.call(forms, function(form) {
-//		form.addEventListener('submit', function(event) {
-//			if (form.checkValidity() === false) {
-//				event.preventDefault();
-//				event.stopPropagation();
-//			}
-//			form.classList.add('was-validated');
-//		}, false);
-//	});
-//};
-
-// Form validate
 $.fn.JSvalidateForm = function(options)
 {	
 	// Console Log
 	JSconsole('[JS Function] Validate Form');
 	
+	// Default settings
 	var settings = $.extend({
 		noValidate		: '',
 		hasConfirm		: false,
 		customValidate	: null,
 		resetSubmit		: true,
 		errorStyling	: true,
+		errorScroll		: false,
 		modalSize		: 'medium',
 		modalAlign		: 'top',
 		modalAnimate	: true,
 	}, options);
 	
-	$(this).submit(function(event){ 
-		
-		var size = settings.modalSize;
-		var align = settings.modalAlign;
-		var animate = settings.modalAnimate;
-		
-		if(!size || !size.match(/\b(small|medium|large|extra-large)\b/)){ // Check value
-			size = 'medium';
-		}
-
-		if(!align || !align.match(/\b(top|bottom|left|center|right)\b/)){ // Check value
-			align = 'top';
-		}
-
-		if(!animate && animate != false){ //Check value
-			animate = true;
-		}
-		
-		var formError = false;
-		var formConfirmTitle = JSlang('$validate-confirm-title');
-		var formConfirmText = JSlang('$validate-confirm-text');
-		var formErrorTitle = JSlang('$validate-title');
-		var formErrorText = {
-							 'text'		: JSlang('$validate-normal'), 
-							 'number'	: JSlang('$validate-number'), 
-							 'tel'		: JSlang('$validate-tel'), 
-							 'pass'		: JSlang('$validate-pass'), 
-							 'email'	: JSlang('$validate-email'),
-							 'search'	: JSlang('$validate-search'),
-							 'checkbox'	: JSlang('$validate-checkbox'),
-							 'radio'	: JSlang('$validate-radio'),
-							 'textarea'	: JSlang('$validate-textarea'),
-							 'select'	: JSlang('$validate-select'),
-							 'file'		: JSlang('$validate-file'),
-							};
-		
-		var formInputValidation = function(element){
-			switch(element.attr('type')){
-				case 'text':
-					if (!JSvalidateEmpty(element.val())) { 
-						if(settings.errorStyling){ element.addClass('is-invalid').removeClass('is-valid'); }
-						formError = formErrorText.text;
-					}
-					else{
-						if(settings.errorStyling){ element.removeClass('is-invalid').addClass('is-valid'); }
-					}
-					break;
-				case 'number':
-					if (!JSvalidateEmpty(element.val()) || !JSvalidateNumber(element.val())) { 
-						if(settings.errorStyling){ element.addClass('is-invalid').removeClass('is-valid'); }
-						formError = formErrorText.number;
-					}
-					else{
-						if(settings.errorStyling){ element.removeClass('is-invalid').addClass('is-valid'); }
-					}
-					break;
-				case 'tel':
-					if (!JSvalidateEmpty(element.val())) { 
-						if(settings.errorStyling){ element.addClass('is-invalid').removeClass('is-valid'); }
-						formError = formErrorText.tel;
-					}
-					else{
-						if(settings.errorStyling){ element.removeClass('is-invalid').addClass('is-valid'); }
-					}
-					break;
-				case 'email':
-					if (!JSvalidateEmpty(element.val()) || !JSvalidateEmail(element.val())) { 
-						if(settings.errorStyling){ element.addClass('is-invalid').removeClass('is-valid'); }
-						formError = formErrorText.email;
-					}
-					else{
-						if(settings.errorStyling){ element.removeClass('is-invalid').addClass('is-valid'); }
-					}
-					break;
-				case 'password':
-					if (!JSvalidateEmpty(element.val())) { 
-						if(settings.errorStyling){ element.addClass('is-invalid').removeClass('is-valid'); }
-						formError = formErrorText.pass;
-					}
-					else{
-						if(settings.errorStyling){ element.removeClass('is-invalid').addClass('is-valid'); }
-					}
-					break;
-				case 'search':
-					if (!JSvalidateEmpty(element.val())) { 
-						if(settings.errorStyling){ element.addClass('is-invalid').removeClass('is-valid'); }
-						formError = formErrorText.search;
-					}
-					else{
-						if(settings.errorStyling){ element.removeClass('is-invalid').addClass('is-valid'); }
-					}
-					break;
-				case 'file':
-					if (!JSvalidateEmpty(element.val())) { 
-						if(settings.errorStyling){ element.addClass('is-invalid').removeClass('is-valid'); }
-						formError = formErrorText.file;
-					}
-					else{
-						if(settings.errorStyling){ element.removeClass('is-invalid').addClass('is-valid'); }
-					}
-					break;
-				default: break;
-			}
-		};
-
-		// Select inputs
-		$(this).find('select').not(settings.noValidate).each(function(){
-			if (!JSvalidateEmpty($(this).find('option:selected').attr('value'))) { 
-				if(settings.errorStyling){ $(this).addClass('is-invalid').removeClass('is-valid'); }
-				formError = formErrorText.select;
-			}
-			else{
-				if(settings.errorStyling){ $(this).removeClass('is-invalid').addClass('is-valid'); }
-			}
-		});
-		
-		// Textarea inputs
-		$(this).find('textarea').not(settings.noValidate).each(function(){
-			if (!JSvalidateEmpty($.trim($(this).val()))) { 
-				if(settings.errorStyling){ $(this).addClass('is-invalid').removeClass('is-valid'); }
-				formError = formErrorText.textarea;
-			}
-			else{
-				if(settings.errorStyling){ $(this).removeClass('is-invalid').addClass('is-valid'); }
-			}
-		});
-		
-		// Checkbox & radio group inputs
-		$(this).find('[data-group="checkbox"], [data-group="radio"]').not(settings.noValidate).each(function(){
-			var type = $(this).data('group');
-			var item = $(this).find('input[type="'+type+'"]');
-			var check = false;
-		
-			for (var i = item.length -1; i >= 0; i--){
-				if(item.eq(i).is(":checked")){
-					check = true;
-				}
-			}
-			if(!check){
-				if(settings.errorStyling){ item.addClass('is-invalid').removeClass('is-valid'); }
-				formError = formErrorText[type];
-			}
-			else{
-				if(settings.errorStyling){ item.removeClass('is-invalid').addClass('is-valid'); }
-			}
-		});
-		
-		// Checkbox & radio input addons
-		$(this).find('[data-group="checkbox-addon"], [data-group="radio-addon"]').not(settings.noValidate).each(function(){
-			var type = $(this).data('group').replace(/-addon/g,'');
-			var item = $(this).find('input[type="'+type+'"]');
-			var check = false;
-		
-			for (var i = item.length -1; i >= 0; i--){
-				if(item.eq(i).is(":checked")){
-					check = true;
-				}
-			}
-			if(!check){
-				if(settings.errorStyling){ item.addClass('is-invalid').removeClass('is-valid'); }
-				formError = formErrorText[type];
-			}
-			else{
-				$(this).find('input[type="'+type+'"]:checked').parents('.input-group').find('input').each(function(){
-					formInputValidation($(this));
-				});
-			}
-		});
-		
-		// Input validation
-		$(this).find('.form-group').not('[data-group="checkbox-addon"], [data-group="radio-addon"]').find('input').not(settings.noValidate).each(function(){
-			formInputValidation($(this));
-			$(this).addClass('was-validated');
-		});
-		
-		// Custom validation
-		if(settings.customValidate !== null){
-			var CVFunction = settings.customValidate[0];
-			var CVInput = settings.customValidate[1];
-			var CVMessage = settings.customValidate[2];
+	// Prevent multiple submision
+	var submitted = false;
+	
+	// Fetch all the forms we want to apply custom Bootstrap validation styles to
+	var forms = $.makeArray($(this));
+	
+	// Loop over them and prevent submission
+	Array.prototype.filter.call(forms, function(form){
+		$(form).submit(function(event){ 
 			
-			$(CVInput).each(function(){
-				if (!window[CVFunction]($(this).val())) { 
-					if(settings.errorStyling){ $(this).addClass('is-invalid').removeClass('is-valid'); }
-					formError = CVMessage;
+			$(document).on('hidden.bs.modal', function(){
+				submitted = false;
+			});
+			
+			if(!submitted){
+				submitted = true;
+			}else{
+				return false;
+			}
+			
+			var size = settings.modalSize;
+			var align = settings.modalAlign;
+			var animate = settings.modalAnimate;
+
+			if(!size || !size.match(/\b(small|medium|large|extra-large)\b/)){ // Check value
+				size = 'medium';
+			}
+
+			if(!align || !align.match(/\b(top|bottom|left|center|right)\b/)){ // Check value
+				align = 'top';
+			}
+
+			if(!animate && animate != false){ //Check value
+				animate = true;
+			}
+
+			var formError = false;
+			var formElement = $(form);
+			var formConfirmTitle = JSlang('$validate-confirm-title');
+			var formConfirmText = JSlang('$validate-confirm-text');
+			var formErrorTitle = JSlang('$validate-title');
+			var formErrorText = {
+								 'text'		: JSlang('$validate-normal'), 
+								 'number'	: JSlang('$validate-number'), 
+								 'tel'		: JSlang('$validate-tel'), 
+								 'pass'		: JSlang('$validate-pass'), 
+								 'email'	: JSlang('$validate-email'),
+								 'search'	: JSlang('$validate-search'),
+								 'checkbox'	: JSlang('$validate-checkbox'),
+								 'radio'	: JSlang('$validate-radio'),
+								 'textarea'	: JSlang('$validate-textarea'),
+								 'select'	: JSlang('$validate-select'),
+								 'file'		: JSlang('$validate-file'),
+								};
+			
+			// Enable validation class
+			formElement.addClass('was-validated');
+			
+			// Paint input group elements
+			$(this).find('input').not(settings.noValidate).each(function(){
+				JSformPaintInputGroup($(this));
+			});
+			
+			// Check valid elements with required attr
+			if(form.checkValidity() === false /*&& !JSexist('.is-warning')*/)
+			{
+				formError = formErrorText.text;
+			}
+			
+			// Custom validations
+			var formInputValidation = function(element){
+				switch(element.attr('type')){
+					case 'text':
+						if (!JSvalidateEmpty(element.val())) { 
+							if(settings.errorStyling){ element.addClass('is-warning'); }
+							formError = formErrorText.text;
+						}
+						else{
+							if(settings.errorStyling){ element.removeClass('is-warning'); }
+						}
+						break;
+					case 'number':
+						if (!JSvalidateEmpty(element.val()) || !JSvalidateNumber(element.val())) { 
+							if(settings.errorStyling){ element.addClass('is-warning'); }
+							formError = formErrorText.number;
+						}
+						else{
+							if(settings.errorStyling){ element.removeClass('is-warning'); }
+						}
+						break;
+					case 'tel':
+						if (!JSvalidateEmpty(element.val())) { 
+							if(settings.errorStyling){ element.addClass('is-warning'); }
+							formError = formErrorText.tel;
+						}
+						else{
+							if(settings.errorStyling){ element.removeClass('is-warning'); }
+						}
+						break;
+					case 'email':
+						if (!JSvalidateEmpty(element.val()) || !JSvalidateEmail(element.val())) { 
+							if(settings.errorStyling){ element.addClass('is-warning'); }
+							formError = formErrorText.email;
+						}
+						else{
+							if(settings.errorStyling){ element.removeClass('is-warning'); }
+						}
+						break;
+					case 'password':
+						if (!JSvalidateEmpty(element.val())) { 
+							if(settings.errorStyling){ element.addClass('is-warning'); }
+							formError = formErrorText.pass;
+						}
+						else{
+							if(settings.errorStyling){ element.removeClass('is-warning'); }
+						}
+						break;
+					case 'search':
+						if (!JSvalidateEmpty(element.val())) { 
+							if(settings.errorStyling){ element.addClass('is-warning'); }
+							formError = formErrorText.search;
+						}
+						else{
+							if(settings.errorStyling){ element.removeClass('is-warning'); }
+						}
+						break;
+					case 'file':
+						if (!JSvalidateEmpty(element.val())) { 
+							if(settings.errorStyling){ element.addClass('is-warning'); }
+							formError = formErrorText.file;
+						}
+						else{
+							if(settings.errorStyling){ element.removeClass('is-warning'); }
+						}
+						break;
+					default: break;
+				}
+			};
+
+			// Select inputs
+			$(this).find('select').not(settings.noValidate).each(function(){
+				if (!JSvalidateEmpty($(this).find('option:selected').attr('value'))) { 
+					if(settings.errorStyling){ $(this).addClass('is-warning'); }
+					formError = formErrorText.select;
 				}
 				else{
-					if(settings.errorStyling){ $(this).removeClass('is-invalid').addClass('is-valid'); }
+					if(settings.errorStyling){ $(this).removeClass('is-warning'); }
 				}
 			});
-		}
-		
-		// Send error
-		if(formError !== false)
-		{
-			// Check plugin
-			if(typeof bootbox !== 'undefined')
-			{
-				// Bootbox alert
-				bootbox.alert({
-					title: formErrorTitle,
-					message: formError,
-					size: size,
-					backdrop: true,
-					className: (animate == 'alternative' ? 'nofade '+align : align),
-					animate: (animate == 'alternative' ? true : animate),
-				});
-			}
-			event.preventDefault();
-		}
-		
-		// Check Confirm mode
-		if(settings.hasConfirm && formError === false)
-		{
-			var formElement = $(this);
-			event.preventDefault();
-          	event.stopPropagation();
+
+			// Textarea inputs
+			$(this).find('textarea').not(settings.noValidate).each(function(){
+				if (!JSvalidateEmpty($.trim($(this).val()))) { 
+					if(settings.errorStyling){ $(this).addClass('is-warning'); }
+					formError = formErrorText.textarea;
+				}
+				else{
+					if(settings.errorStyling){ $(this).removeClass('is-warning'); }
+				}
+			});
 			
-			// Check plugin
-			if(typeof bootbox !== 'undefined')
-			{
-				// Bootbox alert
-				bootbox.confirm({
-					title: formConfirmTitle,
-					message: formConfirmText,
-					size: size,
-					backdrop: true,
-					className: (animate == 'alternative' ? 'nofade '+align : align),
-					animate: (animate == 'alternative' ? true : animate),
-					callback: function(result){
-						if(result){
-							formElement.unbind("submit").submit();
-							if(settings.resetSubmit){
-								formElement.trigger('reset');
-								if(settings.errorStyling){ formElement.find('.is-invalid').removeClass('is-invalid'); }
-								if(settings.errorStyling){ formElement.find('.is-valid').removeClass('is-valid'); }
-								formElement.find('input[type="checkbox"]').prop('checked', false).parent().removeClass('active');
-								formElement.find('input[type="radio"]').prop('checked', false).parent().removeClass('active');
-								formElement.find('.form-group input[type="file"]').each(function(){
-									var placeholder = $(this).JShasAttr('placeholder') ? $(this).attr('placeholder') : '';
-									$(this).parent().find('.custom-file-label').html(placeholder);
-								});
-							}
-							formElement.JSvalidateForm({
-								noValidate: settings.noValidate,
-								hasConfirm: settings.hasConfirm,
-							});
-						}
+			// Checkbox & radio group inputs
+			$(this).find('.form-group-checkbox, .form-group-radio').not(settings.noValidate).each(function(){
+				var item = $(this).find('input');
+				var type = $(this).find('input').attr('type');
+				var check = false;
+
+				for (var i = item.length -1; i >= 0; i--){
+					if(item.eq(i).is(":checked")){
+						check = true;
+					}
+				}
+				if(!check){
+					if(settings.errorStyling){ item.addClass('is-warning'); }
+					item.attr('required','');
+					formError = formErrorText[type];
+				}
+				else{
+					if(settings.errorStyling){ item.removeClass('is-warning'); }
+					item.removeAttr('required');
+				}
+			});
+
+			// Input validation
+			$(this).find('input').not(settings.noValidate).each(function(){
+				// Load function
+				formInputValidation($(this));
+			});
+			
+			// Custom validation
+			if(settings.customValidate !== null){
+				var CVFunction = settings.customValidate[0];
+				var CVInput = settings.customValidate[1];
+				var CVMessage = settings.customValidate[2];
+
+				$(CVInput).each(function(){
+					if (!window[CVFunction]($(this).val())) { 
+						if(settings.errorStyling){ $(this).addClass('is-warning'); }
+						formError = CVMessage;
+					}
+					else{
+						if(settings.errorStyling){ $(this).removeClass('is-warning'); }
 					}
 				});
 			}
-		}
+			
+			// Send error
+			if(formError !== false)
+			{
+				// Check plugin
+				if(typeof bootbox !== 'undefined')
+				{
+					// Bootbox alert
+					bootbox.alert({
+						title: formErrorTitle,
+						message: formError,
+						size: size,
+						backdrop: true,
+						className: (animate == 'alternative' ? 'nofade '+align : align),
+						animate: (animate == 'alternative' ? true : animate),
+					});
+				}
+				event.preventDefault();
+				event.stopPropagation();
+			}
+
+			// Check Confirm mode
+			if(settings.hasConfirm && formError === false)
+			{
+				event.preventDefault();
+				event.stopPropagation();
+				
+				// Check plugin
+				if(typeof bootbox !== 'undefined')
+				{
+					// Bootbox alert
+					bootbox.confirm({
+						title: formConfirmTitle,
+						message: formConfirmText,
+						size: size,
+						backdrop: true,
+						className: (animate == 'alternative' ? 'nofade '+align : align),
+						animate: (animate == 'alternative' ? true : animate),
+						callback: function(result){
+							if(result)
+							{
+								formElement.unbind('submit').submit();
+								if(settings.resetSubmit)
+								{
+									formElement.removeClass('was-validated');
+									formElement.trigger('reset');
+									if(settings.errorStyling){ formElement.find('.is-warning').removeClass('is-warning'); }
+									formElement.find('input[type="checkbox"]').prop('checked', false).parent().removeClass('active');
+									formElement.find('input[type="radio"]').prop('checked', false).parent().removeClass('active');
+									formElement.find('input[type="file"]').each(function(){
+										var placeholder = $(this).JShasAttr('placeholder') ? $(this).attr('placeholder') : '';
+										$(this).parent().find('.custom-file-label').html(placeholder);
+									});
+								}
+								formElement.JSvalidateForm({
+									noValidate: settings.noValidate,
+									hasConfirm: settings.hasConfirm,
+								});
+							}
+						}
+					});
+				}
+			}
+		});
 	});
 };
+
+// Form paint input group
+function JSformPaintInputGroup(element)
+{
+	if(element.is(':valid'))
+	{
+		if(element.hasClass('is-warning'))
+		{
+			element.parents('.input-group').find('.input-group-text').removeClass('input-group-text-valid');
+			element.parents('.input-group').find('.input-group-text').removeClass('input-group-text-invalid');
+			element.parents('.input-group').find('.input-group-text').addClass('input-group-text-warning');
+		}
+		else
+		{
+			element.parents('.input-group').find('.input-group-text').addClass('input-group-text-valid');
+			element.parents('.input-group').find('.input-group-text').removeClass('input-group-text-invalid');
+			element.parents('.input-group').find('.input-group-text').removeClass('input-group-text-warning');
+		}
+	}
+	else if(element.is(':invalid'))
+	{
+		element.parents('.input-group').find('.input-group-text').removeClass('input-group-text-valid');
+		element.parents('.input-group').find('.input-group-text').addClass('input-group-text-invalid');
+		element.parents('.input-group').find('.input-group-text').removeClass('input-group-text-warning');
+	}
+}
 
 // Form validate email
 function JSvalidateEmail(field)
@@ -1933,22 +1944,58 @@ $(document).ready(function(){
 	}
 	
 	// Custom file input change
-	$(document).on('change', '.form-group .custom-file input[type="file"]', function(){
+	$(document).on('change', 'form .custom-file input[type="file"]', function(){
 		var placeholder = $(this).JShasAttr('placeholder') ? $(this).attr('placeholder') : '';
 		var filename = $(this)[0].files.length ? $(this)[0].files[0].name : placeholder;
 		$(this).parent().find('.custom-file-label').html(filename);
+		$(this).removeClass('is-warning');
 	});
 	
 	// Check form reset
 	$(document).on('click', 'form *[type="reset"]', function(e){
-		$(this).parents('form').find('.is-invalid').removeClass('is-invalid');
-		$(this).parents('form').find('.is-valid').removeClass('is-valid');
-		$(this).parents('form').find('.form-group input[type="checkbox"]').prop('checked', false).parent().removeClass('active');
-		$(this).parents('form').find('.form-group input[type="radio"]').prop('checked', false).parent().removeClass('active');
-		$(this).parents('form').find('.form-group input[type="file"]').each(function(){
+		$(this).parents('form').removeClass('was-validated');
+		$(this).parents('form').find('.is-warning').removeClass('is-warning');
+		$(this).parents('form').find('input[type="checkbox"]').prop('checked', false).parent().removeClass('active');
+		$(this).parents('form').find('input[type="radio"]').prop('checked', false).parent().removeClass('active');
+		$(this).parents('form').find('input[type="file"]').each(function(){
 			var placeholder = $(this).JShasAttr('placeholder') ? $(this).attr('placeholder') : '';
 			$(this).parent().find('.custom-file-text > span').html(placeholder);
 		});
+    });
+	
+	// Check change form group checkbox & radio
+	$(document).on('change', '.form-group-checkbox input, .form-group-radio input', function(){
+		var item = $(this).parents('.form-group-checkbox, .form-group-radio').find('input');
+		var type = $(this).find('input').attr('type');
+		var check = false;
+
+		for (var i = item.length -1; i >= 0; i--){
+			if(item.eq(i).is(":checked")){
+				check = true;
+			}
+		}
+		if(!check){
+			item.attr('required','');
+		}
+		else{
+			item.removeAttr('required');
+		}
+	});
+	
+	// Check blur
+	$(document).on('input', 'form input', function(e){
+		JSformPaintInputGroup($(this));
+    });
+	
+	// Check input
+	$(document).on('input', 'form .form-control', function(e){
+		$(this).removeClass('is-warning');
+    });
+	
+	
+	// Check input select
+	$(document).on('input', 'form select', function(e){
+		$(this).removeClass('is-warning');
     });
 	
 	// Load responsive code
