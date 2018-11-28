@@ -174,15 +174,6 @@
 	overflow: hidden;
 	overflow-y: auto;
 }
-.dropdown .dropdown-overflow:after,
-.dropdown .dropdown-overflow-sm:after,
-.dropdown .dropdown-overflow-md:after,
-.dropdown .dropdown-overflow-lg:after {
-	content: "";
-	width: 100%;
-	height: 0.5rem;
-	display: block;
-}
 .dropdown .dropdown-overflow {
 	max-height: 120px;
 }
@@ -230,6 +221,25 @@
     content: "Browse";
 }
 /* Custom file language */
+
+/* Card overflow */
+.card .card-overflow,
+.card .card-overflow-sm,
+.card .card-overflow-md,
+.card .card-overflow-lg {
+	overflow-y: auto;
+	max-height: 108px;
+}
+.card .card-overflow-sm{
+	max-height: 156px;
+}
+.card .card-overflow-md{
+	max-height: 204px;
+}
+.card .card-overflow-lg{
+	max-height: 252px;
+}
+/* Card overflow */
 
 /* Textarea resize */
 .form-group textarea.textarea-no-resize,

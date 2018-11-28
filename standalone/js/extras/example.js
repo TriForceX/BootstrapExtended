@@ -155,14 +155,16 @@ $(document).ready(function(){
 	
 	// Example form validation
 	$('.JSformExample').JSvalidateForm({
-		noValidate: '#example-input-lastname',
+		noValidate: null,//'#example-input-lastname',
 		hasConfirm: true,
-		customValidate: ['JSvalidateCustom', '#example-input-custom', 'Please fill the Custom Field.'],
 		resetSubmit: true,
 		errorStyling: true,
+		errorScroll: true,
+		errorModal: true,
 		modalSize: 'medium',
 		modalAlign: 'top',
 		modalAnimate: true,
+		customValidate: ['JSvalidateCustom', '#example-input-custom', 'Please fill the Custom Field.'],
 	});
 	
 	// Example prevent title translation by Google

@@ -1055,116 +1055,37 @@
 					</div>
 				</div>
 				<!-- Input text + optional -->
-				<!-- Input num -->
-				<div class="form-group">
-					<label for="example-input-age">Age</label>
-					<input type="number" step="any" class="form-control" id="example-input-age" name="example-input-age" placeholder="Type your Age" required>
-					<div class="valid-feedback">
-						Looks good!
-					</div>
-					<div class="invalid-feedback">
-						Please choose an age.
-					</div>
-				</div>
-				<!-- Input num -->
-				<!-- Custom input (validation) -->
-				<div class="form-group">
-					<label for="example-input-custom">Custom Input</label>
-					<input type="text" class="form-control" id="example-input-custom" name="example-input-custom" placeholder="Type the word 'Custom'" required>
-					<div class="valid-feedback">
-						Looks good!
-					</div>
-					<div class="invalid-feedback">
-						Please fill the field.
-					</div>
-					<div class="warning-feedback">
-						Please type "Custom" (without quotes).
-					</div>
-				</div>
-				<!-- Custom input (validation) -->
-				<!-- Input Email -->
-				<div class="form-group">
-					<label for="example-input-email">E-Mail address</label>
-					<input type="email" class="form-control" id="example-input-email" name="example-input-email" placeholder="Type your E-Mail" required>
-					<div class="valid-feedback">
-						Looks good!
-					</div>
-					<div class="invalid-feedback">
-						Please choose an email.
-					</div>
-					<div class="warning-feedback">
-						Please type a valid e-mail with @ and a domain.
-					</div>
-				</div>
-				<!-- Input Email -->
-				<!-- Input Tel -->
-				<div class="form-group">
-					<label for="example-input-tel">Phone Number</label>
-					<input type="tel" class="form-control" id="example-input-tel" name="example-input-tel" placeholder="Type your Phone Number" required>
-					<div class="valid-feedback">
-						Looks good!
-					</div>
-					<div class="invalid-feedback">
-						Please choose a phone number.
-					</div>
-				</div>
-				<!-- Input Tel -->
-				<!-- Select -->
-				<div class="form-group has-feedback">
-					<label for="example-select">Select Item</label>
-					<select class="custom-select" id="example-select" name="example-select" required>
-						<option value="" selected="true">Select an item</option>
-						<option value="1">Item 1</option>
-						<option value="2">Item 2</option>
-						<option value="3">Item 3</option>
-						<option value="4">Item 4</option>
-						<option value="">Item 5 (Empty value)</option>
-					</select>
-					<div class="valid-feedback">
-						Looks good!
-					</div>
-					<div class="invalid-feedback">
-						Please choose an option.
-					</div>
-					<div class="warning-feedback">
-						Please choose an option with a value.
-					</div>
-				</div>
-				<!-- Select -->
-				<!-- Text area -->
-				<div class="form-group">
-					<label for="example-textarea">Message</label>
-					<textarea class="form-control textarea-no-resize" rows="3" id="example-textarea" name="example-textarea" placeholder="Write a Message" required></textarea>
-					<div class="valid-feedback">
-						Looks good!
-					</div>
-					<div class="invalid-feedback">
-						Please write a message.
-					</div>
-					<div class="warning-feedback">
-						Please dont fill with blank spaces.
-					</div>
-				</div>
-				<!-- Text area -->
-				<!-- Input file -->
-				<div class="form-group">
-					<label for="example-file">Select File</label>
-					<div class="custom-file">
-						<input type="file" class="custom-file-input" id="example-file" lang="en" placeholder="Select File" autocomplete="off" required>
-						<label class="custom-file-label" for="example-file">Select File</label>
+				<!-- Input email + input Tel -->
+				<div class="form-row">
+					<div class="col-12 col-sm-6 mb-3">
+						<label for="example-input-email">E-Mail address</label>
+						<input type="email" class="form-control" id="example-input-email" name="example-input-email" placeholder="Type your E-Mail" required>
 						<div class="valid-feedback">
 							Looks good!
 						</div>
 						<div class="invalid-feedback">
-							Please select a file.
+							Please choose an email.
+						</div>
+						<div class="warning-feedback">
+							Please type a valid e-mail with @ and a domain.
+						</div>
+					</div>
+					<div class="col-12 col-sm-6 mb-3">
+						<label for="example-input-tel">Phone Number</label>
+						<input type="tel" class="form-control" id="example-input-tel" name="example-input-tel" placeholder="Type your Phone Number" required>
+						<div class="valid-feedback">
+							Looks good!
+						</div>
+						<div class="invalid-feedback">
+							Please choose a phone number.
 						</div>
 					</div>
 				</div>
-				<!-- Input file -->
+				<!-- Input email + input Tel -->
 				<!-- Input group + form row -->
 				<div class="form-row">
 					<div class="col-12">
-						<label for="example-social-url">Social Network</label>
+						<label for="example-social-url">Social Networks</label>
 					</div>
 					<div class="col-12 col-sm-6 mb-3">
 						<div class="input-group">
@@ -1200,6 +1121,85 @@
 					</div>
 				</div>
 				<!-- Input group + form row -->
+				<!-- Input num -->
+				<div class="form-group">
+					<label for="example-input-age">Age</label>
+					<input type="number" step="any" class="form-control" id="example-input-age" name="example-input-age" placeholder="Type your Age" required>
+					<div class="valid-feedback">
+						Looks good!
+					</div>
+					<div class="invalid-feedback">
+						Please choose an age.
+					</div>
+				</div>
+				<!-- Input num -->
+				<!-- Custom input (validation) -->
+				<div class="form-group">
+					<label for="example-input-custom">Custom Input</label>
+					<input type="text" class="form-control" id="example-input-custom" name="example-input-custom" placeholder="Type the word 'Custom'" required>
+					<div class="valid-feedback">
+						Looks good!
+					</div>
+					<div class="invalid-feedback">
+						Please fill the field.
+					</div>
+					<div class="warning-feedback">
+						Please type "Custom" (without quotes).
+					</div>
+				</div>
+				<!-- Custom input (validation) -->
+				<!-- Select -->
+				<div class="form-group has-feedback">
+					<label for="example-select">Select Item</label>
+					<select class="custom-select" id="example-select" name="example-select" required>
+						<option value="" selected="true">Select an item</option>
+						<option value="1">Item 1</option>
+						<option value="2">Item 2</option>
+						<option value="3">Item 3</option>
+						<option value="4">Item 4</option>
+						<option value="">Item 5 (Empty value)</option>
+					</select>
+					<div class="valid-feedback">
+						Looks good!
+					</div>
+					<div class="invalid-feedback">
+						Please choose an option.
+					</div>
+					<div class="warning-feedback">
+						Please choose an option with a filled value.
+					</div>
+				</div>
+				<!-- Select -->
+				<!-- Text area -->
+				<div class="form-group">
+					<label for="example-textarea">Message</label>
+					<textarea class="form-control textarea-no-resize" rows="3" id="example-textarea" name="example-textarea" placeholder="Write a Message" required></textarea>
+					<div class="valid-feedback">
+						Looks good!
+					</div>
+					<div class="invalid-feedback">
+						Please write a message.
+					</div>
+					<div class="warning-feedback">
+						Please dont fill with blank spaces.
+					</div>
+				</div>
+				<!-- Text area -->
+				<!-- Input file -->
+				<div class="form-group">
+					<label for="example-file">Select File</label>
+					<div class="custom-file">
+						<input type="file" class="custom-file-input" id="example-file" lang="en" placeholder="Select File" autocomplete="off" required>
+						<label class="custom-file-label" for="example-file">Select File</label>
+						<div class="valid-feedback">
+							Looks good!
+						</div>
+						<div class="invalid-feedback">
+							Please select a file.
+						</div>
+					</div>
+				</div>
+				<!-- Input file -->
 				<!-- Input range -->
 				<div class="form-group">
 					<label for="example-range">Example range</label>
@@ -1208,22 +1208,11 @@
 				<!-- Input range -->
 				<!-- Input checkbox -->
 				<div class="form-group form-group-checkbox">
-					<label for="example-checkbox-1">Checkbox</label>
+					<label for="example-checkbox-single">Checkbox Single</label>
+					<!-- Checkbox -->
 					<div class="custom-control custom-checkbox">
-						<input type="checkbox" class="custom-control-input" id="example-checkbox-1" name="example-checkbox-1" autocomplete="off" required>
-						<label class="custom-control-label" for="example-checkbox-1">Check this custom checkbox</label>
-					</div>
-					<div class="custom-control custom-checkbox">
-						<input type="checkbox" class="custom-control-input" id="example-checkbox-2" name="example-checkbox-2" autocomplete="off" required>
-						<label class="custom-control-label" for="example-checkbox-2">Check this custom checkbox</label>
-					</div>
-					<div class="custom-control custom-checkbox">
-						<input type="checkbox" class="custom-control-input" id="example-checkbox-3" name="example-checkbox-3" autocomplete="off" required>
-						<label class="custom-control-label" for="example-checkbox-3">Check this custom checkbox</label>
-					</div>
-					<div class="custom-control custom-checkbox">
-						<input type="checkbox" class="custom-control-input" id="example-checkbox-4" name="example-checkbox-4" autocomplete="off" required>
-						<label class="custom-control-label" for="example-checkbox-4">Check this custom checkbox</label>
+						<input type="checkbox" class="custom-control-input" id="example-checkbox-single" name="example-checkbox-single" autocomplete="off" required>
+						<label class="custom-control-label" for="example-checkbox-single">Single checkbox</label>
 						<div class="valid-feedback">
 							Looks good!
 						</div>
@@ -1231,48 +1220,63 @@
 							Please check an option.
 						</div>
 					</div>
+					<!-- Checkbox -->
 				</div>
 				<!-- Input checkbox -->
-				<!-- Input radio -->
-				<div class="form-group form-group-radio">
-					<label for="example-checkbox-1">Radio</label>
-					<div class="custom-control custom-radio">
-						<input type="radio" class="custom-control-input" id="example-radio-1" name="example-radio" autocomplete="off" required>
-						<label class="custom-control-label" for="example-radio-1">Toggle this custom radio</label>
+				<!-- Input checkbox group -->
+				<div class="form-group form-group-checkbox">
+					<label for="example-checkbox-group-1">Checkbox Group</label>
+					<!-- Checkbox -->
+					<div class="custom-control custom-checkbox">
+						<input type="checkbox" class="custom-control-input" id="example-checkbox-group-1" name="example-checkbox-group-1" autocomplete="off" required>
+						<label class="custom-control-label" for="example-checkbox-group-1">Group checkbox 1</label>
 					</div>
-					<div class="custom-control custom-radio mb-3">
-						<input type="radio" class="custom-control-input" id="example-radio-2" name="example-radio" autocomplete="off" required>
-						<label class="custom-control-label" for="example-radio-2">Or toggle this other custom radio</label>
+					<div class="custom-control custom-checkbox">
+						<input type="checkbox" class="custom-control-input" id="example-checkbox-group-2" name="example-checkbox-group-2" autocomplete="off" required>
+						<label class="custom-control-label" for="example-checkbox-group-2">Group checkbox 2</label>
+					</div>
+					<div class="custom-control custom-checkbox">
+						<input type="checkbox" class="custom-control-input" id="example-checkbox-group-3" name="example-checkbox-group-3" autocomplete="off" required>
+						<label class="custom-control-label" for="example-checkbox-group-3">Group checkbox 3</label>
+					</div>
+					<div class="custom-control custom-checkbox">
+						<input type="checkbox" class="custom-control-input" id="example-checkbox-group-4" name="example-checkbox-group-4" autocomplete="off" required>
+						<label class="custom-control-label" for="example-checkbox-group-4">Group checkbox 4</label>
 						<div class="valid-feedback">
 							Looks good!
 						</div>
 						<div class="invalid-feedback">
-							Please choose one of the options.
+							Please check an option.
 						</div>
 					</div>
+					<!-- Checkbox -->
 				</div>
-				<!-- Input radio -->
-				<!-- Input checkbox overflow -->
+				<!-- Input checkbox group -->
+				<!-- Input checkbox group overflow -->
 				<div class="form-group form-group-checkbox">
-					<label for="input-campeonato-cancha">Checkbox Overflow</label>
+					<label for="example-checkbox-group-a">Checkbox Group Overflow</label>
 					<div class="card">
-						<div class="card-body p-2 page-checkbox-overflow">
+						<div class="card-body card-overflow p-2">
 							<!-- Checkbox -->
 							<div class="custom-control custom-checkbox">
-								<input type="checkbox" class="custom-control-input" id="example-checkbox-4" name="example-checkbox-4" autocomplete="off" required>
-								<label class="custom-control-label" for="example-checkbox-4">Check this custom checkbox</label>
+								<input type="checkbox" class="custom-control-input" id="example-checkbox-group-a" name="example-checkbox-group-a" autocomplete="off" required>
+								<label class="custom-control-label" for="example-checkbox-group-a">Group checkbox A</label>
 							</div>
 							<div class="custom-control custom-checkbox">
-								<input type="checkbox" class="custom-control-input" id="example-checkbox-5" name="example-checkbox-5" autocomplete="off" required>
-								<label class="custom-control-label" for="example-checkbox-5">Check this custom checkbox</label>
+								<input type="checkbox" class="custom-control-input" id="example-checkbox-group-b" name="example-checkbox-group-b" autocomplete="off" required>
+								<label class="custom-control-label" for="example-checkbox-group-b">Group checkbox B</label>
 							</div>
 							<div class="custom-control custom-checkbox">
-								<input type="checkbox" class="custom-control-input" id="example-checkbox-6" name="example-checkbox-6" autocomplete="off" required>
-								<label class="custom-control-label" for="example-checkbox-6">Check this custom checkbox</label>
+								<input type="checkbox" class="custom-control-input" id="example-checkbox-group-c" name="example-checkbox-group-c" autocomplete="off" required>
+								<label class="custom-control-label" for="example-checkbox-group-c">Group checkbox C</label>
 							</div>
 							<div class="custom-control custom-checkbox">
-								<input type="checkbox" class="custom-control-input" id="example-checkbox-7" name="example-checkbox-7" autocomplete="off" required>
-								<label class="custom-control-label" for="example-checkbox-7">Check this custom checkbox</label>
+								<input type="checkbox" class="custom-control-input" id="example-checkbox-group-d" name="example-checkbox-group-d" autocomplete="off" required>
+								<label class="custom-control-label" for="example-checkbox-group-d">Group checkbox D</label>
+							</div>
+							<div class="custom-control custom-checkbox">
+								<input type="checkbox" class="custom-control-input" id="example-checkbox-group-e" name="example-checkbox-group-e" autocomplete="off" required>
+								<label class="custom-control-label" for="example-checkbox-group-e">Group checkbox E</label>
 								<div class="valid-feedback">
 									Looks good!
 								</div>
@@ -1284,7 +1288,81 @@
 						</div>
 					</div>
 				</div>
-				<!-- Checkbox overflow -->
+				<!-- Input checkbox group overflow -->
+				<!-- Input radio -->
+				<div class="form-group form-group-radio">
+					<label for="example-radio-single">Radio Group</label>
+					<!-- Radios -->
+					<div class="custom-control custom-radio">
+						<input type="radio" class="custom-control-input" id="example-radio-single-1" name="example-radio-single" autocomplete="off" required>
+						<label class="custom-control-label" for="example-radio-single-1">Radio option 1</label>
+					</div>
+					<div class="custom-control custom-radio">
+						<input type="radio" class="custom-control-input" id="example-radio-single-2" name="example-radio-single" autocomplete="off" required>
+						<label class="custom-control-label" for="example-radio-single-2">Radio option 2</label>
+						<div class="valid-feedback">
+							Looks good!
+						</div>
+						<div class="invalid-feedback">
+							Please choose one of the options.
+						</div>
+					</div>
+					<!-- Radios -->
+				</div>
+				<!-- Input radio -->
+				<!-- Input radio overflow -->
+				<div class="form-group form-group-radio">
+					<label for="example-radio-group-a">Radio Group Overflow</label>
+					<div class="card">
+						<div class="card-body card-overflow p-2">
+							<!-- Radios -->
+							<div class="custom-control custom-radio">
+								<input type="radio" class="custom-control-input" id="example-radio-group-a" name="example-radio-group" autocomplete="off" required>
+								<label class="custom-control-label" for="example-radio-group-a">Radio option A</label>
+							</div>
+							<div class="custom-control custom-radio">
+								<input type="radio" class="custom-control-input" id="example-radio-group-b" name="example-radio-group" autocomplete="off" required>
+								<label class="custom-control-label" for="example-radio-group-b">Radio option B</label>
+							</div>
+							<div class="custom-control custom-radio">
+								<input type="radio" class="custom-control-input" id="example-radio-group-c" name="example-radio-group" autocomplete="off" required>
+								<label class="custom-control-label" for="example-radio-group-c">Radio option C</label>
+							</div>
+							<div class="custom-control custom-radio">
+								<input type="radio" class="custom-control-input" id="example-radio-group-d" name="example-radio-group" autocomplete="off" required>
+								<label class="custom-control-label" for="example-radio-group-d">Radio option D</label>
+							</div>
+							<div class="custom-control custom-radio">
+								<input type="radio" class="custom-control-input" id="example-radio-group-e" name="example-radio-group" autocomplete="off" required>
+								<label class="custom-control-label" for="example-radio-group-e">Radio option E</label>
+								<div class="valid-feedback">
+									Looks good!
+								</div>
+								<div class="invalid-feedback">
+									Please choose one of the options.
+								</div>
+							</div>
+							<!-- Radios -->
+						</div>
+					</div>
+				</div>
+				<!-- Input radio overflow -->
+				<!-- Button checkbox -->
+				<div class="form-group">
+					<label for="example-radio-button-1">Radio Buttons</label>
+					<div class="btn-group btn-group-toggle w-100" data-toggle="buttons">
+						<label class="btn btn-secondary active">
+							<input type="radio" name="example-radio-button" id="example-radio-button-1" autocomplete="off" checked> Option 1
+						</label>
+						<label class="btn btn-secondary">
+							<input type="radio" name="example-radio-button" id="example-radio-button-2" autocomplete="off"> Option 2
+						</label>
+						<label class="btn btn-secondary">
+							<input type="radio" name="example-radio-button" id="example-radio-button-3" autocomplete="off"> Option 3
+						</label>
+					</div>
+				</div>
+				<!-- Button checkbox -->
 				<!-- Submit + reset -->
 				<div class="form-group mb-0">
 					<button type="reset" class="btn btn-default">Reset</button>
@@ -1294,16 +1372,17 @@
 			</form>
 		</div>
 		<figure class="highlight">
-			<pre class="prettyprint"><code class="language-js" data-lang="js">$(".JSformExample").JSvalidateForm({
-	noValidate: "#example-input-lastname",
+			<pre class="prettyprint"><code class="language-js" data-lang="js">$('.JSformExample').JSvalidateForm({
+	noValidate: '#example-input-lastname',
 	hasConfirm: true,
-	customValidate: null,
 	resetSubmit: true,
 	errorStyling: true,
 	errorScroll: true,
+	errorModal: true,
 	modalSize: 'medium',
 	modalAlign: 'top',
 	modalAnimate: true,
+	customValidate: ['JSvalidateCustom', '#example-input-custom', 'Please fill the Custom Field.'],
 });</code></pre>
 		</figure>
 

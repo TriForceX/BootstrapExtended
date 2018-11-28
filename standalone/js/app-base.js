@@ -119,10 +119,16 @@ $.fn.JSvalidateForm = function(options)
 		resetSubmit		: true,
 		errorStyling	: true,
 		errorScroll		: false,
+		errorModal		: true,
 		modalSize		: 'medium',
 		modalAlign		: 'top',
 		modalAnimate	: true,
 	}, options);
+	
+	// Input scroll
+	var inputScroll = function(element){
+		$('html, body').animate({scrollTop: (element.offset().top - 90)}, 1000);
+	};
 	
 	// Prevent multiple submision
 	var submitted = false;
@@ -134,14 +140,18 @@ $.fn.JSvalidateForm = function(options)
 	Array.prototype.filter.call(forms, function(form){
 		$(form).submit(function(event){ 
 			
-			$(document).on('hidden.bs.modal', function(){
-				submitted = false;
-			});
-			
-			if(!submitted){
-				submitted = true;
-			}else{
-				return false;
+			// Check modal
+			if(settings.errorModal)
+			{
+				$(document).on('hidden.bs.modal', function(){
+					submitted = false;
+				});
+				
+				if(!submitted){
+					submitted = true;
+				}else{
+					return false;
+				}
 			}
 			
 			var size = settings.modalSize;
@@ -161,6 +171,7 @@ $.fn.JSvalidateForm = function(options)
 			}
 
 			var formError = false;
+			var formScroll = false;
 			var formElement = $(form);
 			var formConfirmTitle = JSlang('$validate-confirm-title');
 			var formConfirmText = JSlang('$validate-confirm-text');
@@ -179,8 +190,43 @@ $.fn.JSvalidateForm = function(options)
 								 'file'		: JSlang('$validate-file'),
 								};
 			
+			// Submit function
+			var formSubmit = function(){
+				// Submit
+				formElement.unbind('submit').submit();
+				// Reset
+				if(settings.resetSubmit)
+				{
+					if(settings.errorStyling){ formElement.removeClass('was-validated'); }
+					if(settings.errorStyling){ formElement.find('.is-warning').removeClass('is-warning'); }
+					formElement.trigger('reset');
+					formElement.find('input[type="checkbox"]').prop('checked', false).parent().removeClass('active');
+					formElement.find('input[type="radio"]').prop('checked', false).parent().removeClass('active');
+					formElement.find('input[type="file"]').each(function(){
+						var placeholder = $(this).JShasAttr('placeholder') ? $(this).attr('placeholder') : '';
+						$(this).parent().find('.custom-file-label').html(placeholder);
+					});
+				}
+				// Enable
+				formElement.JSvalidateForm({
+					noValidate		: settings.noValidate,
+					hasConfirm		: settings.hasConfirm,
+					customValidate	: settings.customValidate,
+					resetSubmit		: settings.resetSubmit,
+					errorStyling	: settings.errorStyling,
+					errorScroll		: settings.errorScroll,
+					errorModal		: settings.errorModal,
+					modalSize		: settings.modalSize,
+					modalAlign		: settings.modalAlign,
+					modalAnimate	: settings.modalAnimate,
+				});
+			};
+			
 			// Enable validation class
-			formElement.addClass('was-validated');
+			if(settings.errorStyling)
+			{
+				formElement.addClass('was-validated');
+			}
 			
 			// Paint input group elements
 			$(this).find('input').not(settings.noValidate).each(function(){
@@ -188,7 +234,7 @@ $.fn.JSvalidateForm = function(options)
 			});
 			
 			// Check valid elements with required attr
-			if(form.checkValidity() === false /*&& !JSexist('.is-warning')*/)
+			if(form.checkValidity() === false)
 			{
 				formError = formErrorText.text;
 			}
@@ -200,6 +246,7 @@ $.fn.JSvalidateForm = function(options)
 						if (!JSvalidateEmpty(element.val())) { 
 							if(settings.errorStyling){ element.addClass('is-warning'); }
 							formError = formErrorText.text;
+							formScroll = $(element);
 						}
 						else{
 							if(settings.errorStyling){ element.removeClass('is-warning'); }
@@ -209,6 +256,7 @@ $.fn.JSvalidateForm = function(options)
 						if (!JSvalidateEmpty(element.val()) || !JSvalidateNumber(element.val())) { 
 							if(settings.errorStyling){ element.addClass('is-warning'); }
 							formError = formErrorText.number;
+							formScroll = $(element);
 						}
 						else{
 							if(settings.errorStyling){ element.removeClass('is-warning'); }
@@ -218,6 +266,7 @@ $.fn.JSvalidateForm = function(options)
 						if (!JSvalidateEmpty(element.val())) { 
 							if(settings.errorStyling){ element.addClass('is-warning'); }
 							formError = formErrorText.tel;
+							formScroll = $(element);
 						}
 						else{
 							if(settings.errorStyling){ element.removeClass('is-warning'); }
@@ -227,6 +276,7 @@ $.fn.JSvalidateForm = function(options)
 						if (!JSvalidateEmpty(element.val()) || !JSvalidateEmail(element.val())) { 
 							if(settings.errorStyling){ element.addClass('is-warning'); }
 							formError = formErrorText.email;
+							formScroll = $(element);
 						}
 						else{
 							if(settings.errorStyling){ element.removeClass('is-warning'); }
@@ -236,6 +286,7 @@ $.fn.JSvalidateForm = function(options)
 						if (!JSvalidateEmpty(element.val())) { 
 							if(settings.errorStyling){ element.addClass('is-warning'); }
 							formError = formErrorText.pass;
+							formScroll = $(element);
 						}
 						else{
 							if(settings.errorStyling){ element.removeClass('is-warning'); }
@@ -245,6 +296,7 @@ $.fn.JSvalidateForm = function(options)
 						if (!JSvalidateEmpty(element.val())) { 
 							if(settings.errorStyling){ element.addClass('is-warning'); }
 							formError = formErrorText.search;
+							formScroll = $(element);
 						}
 						else{
 							if(settings.errorStyling){ element.removeClass('is-warning'); }
@@ -254,6 +306,7 @@ $.fn.JSvalidateForm = function(options)
 						if (!JSvalidateEmpty(element.val())) { 
 							if(settings.errorStyling){ element.addClass('is-warning'); }
 							formError = formErrorText.file;
+							formScroll = $(element);
 						}
 						else{
 							if(settings.errorStyling){ element.removeClass('is-warning'); }
@@ -268,6 +321,7 @@ $.fn.JSvalidateForm = function(options)
 				if (!JSvalidateEmpty($(this).find('option:selected').attr('value'))) { 
 					if(settings.errorStyling){ $(this).addClass('is-warning'); }
 					formError = formErrorText.select;
+					formScroll = $(this);
 				}
 				else{
 					if(settings.errorStyling){ $(this).removeClass('is-warning'); }
@@ -279,6 +333,7 @@ $.fn.JSvalidateForm = function(options)
 				if (!JSvalidateEmpty($.trim($(this).val()))) { 
 					if(settings.errorStyling){ $(this).addClass('is-warning'); }
 					formError = formErrorText.textarea;
+					formScroll = $(this);
 				}
 				else{
 					if(settings.errorStyling){ $(this).removeClass('is-warning'); }
@@ -297,12 +352,11 @@ $.fn.JSvalidateForm = function(options)
 					}
 				}
 				if(!check){
-					if(settings.errorStyling){ item.addClass('is-warning'); }
 					item.attr('required','');
 					formError = formErrorText[type];
+					formScroll = $(item);
 				}
 				else{
-					if(settings.errorStyling){ item.removeClass('is-warning'); }
 					item.removeAttr('required');
 				}
 			});
@@ -323,6 +377,7 @@ $.fn.JSvalidateForm = function(options)
 					if (!window[CVFunction]($(this).val())) { 
 						if(settings.errorStyling){ $(this).addClass('is-warning'); }
 						formError = CVMessage;
+						formScroll = $(this);
 					}
 					else{
 						if(settings.errorStyling){ $(this).removeClass('is-warning'); }
@@ -333,63 +388,84 @@ $.fn.JSvalidateForm = function(options)
 			// Send error
 			if(formError !== false)
 			{
-				// Check plugin
-				if(typeof bootbox !== 'undefined')
-				{
-					// Bootbox alert
-					bootbox.alert({
-						title: formErrorTitle,
-						message: formError,
-						size: size,
-						backdrop: true,
-						className: (animate == 'alternative' ? 'nofade '+align : align),
-						animate: (animate == 'alternative' ? true : animate),
-					});
+				// Check scroll
+				if(settings.errorScroll)
+				{ 
+					inputScroll(formScroll);
 				}
+				
+				// Check modal
+				if(settings.errorModal)
+				{
+					// Check plugin
+					if(typeof bootbox !== 'undefined')
+					{
+						// Bootbox alert
+						bootbox.alert({
+							title: formErrorTitle,
+							message: formError,
+							size: size,
+							backdrop: true,
+							className: (animate == 'alternative' ? 'nofade '+align : align),
+							animate: (animate == 'alternative' ? true : animate),
+						});
+					}
+				}
+				
 				event.preventDefault();
 				event.stopPropagation();
 			}
 
 			// Check Confirm mode
-			if(settings.hasConfirm && formError === false)
+			if(formError === false)
 			{
 				event.preventDefault();
 				event.stopPropagation();
 				
-				// Check plugin
-				if(typeof bootbox !== 'undefined')
+				// Check scroll
+				if(settings.errorScroll)
+				{ 
+					inputScroll(formElement.find('*[type="submit"]'));
+				}
+				
+				// Check confirm
+				if(settings.hasConfirm)
 				{
-					// Bootbox alert
-					bootbox.confirm({
-						title: formConfirmTitle,
-						message: formConfirmText,
-						size: size,
-						backdrop: true,
-						className: (animate == 'alternative' ? 'nofade '+align : align),
-						animate: (animate == 'alternative' ? true : animate),
-						callback: function(result){
-							if(result)
-							{
-								formElement.unbind('submit').submit();
-								if(settings.resetSubmit)
-								{
-									formElement.removeClass('was-validated');
-									formElement.trigger('reset');
-									if(settings.errorStyling){ formElement.find('.is-warning').removeClass('is-warning'); }
-									formElement.find('input[type="checkbox"]').prop('checked', false).parent().removeClass('active');
-									formElement.find('input[type="radio"]').prop('checked', false).parent().removeClass('active');
-									formElement.find('input[type="file"]').each(function(){
-										var placeholder = $(this).JShasAttr('placeholder') ? $(this).attr('placeholder') : '';
-										$(this).parent().find('.custom-file-label').html(placeholder);
-									});
+					// Check modal
+					if(settings.errorModal)
+					{
+						// Check plugin
+						if(typeof bootbox !== 'undefined')
+						{
+							// Bootbox alert
+							bootbox.confirm({
+								title: formConfirmTitle,
+								message: formConfirmText,
+								size: size,
+								backdrop: true,
+								className: (animate == 'alternative' ? 'nofade '+align : align),
+								animate: (animate == 'alternative' ? true : animate),
+								callback: function(result){
+									if(result)
+									{
+										formSubmit();
+									}
 								}
-								formElement.JSvalidateForm({
-									noValidate: settings.noValidate,
-									hasConfirm: settings.hasConfirm,
-								});
-							}
+							});
 						}
-					});
+					}
+					else
+					{
+						// Confirm
+						if(confirm(formConfirmText))
+						{
+							formSubmit();
+						}
+					}
+				}
+				else
+				{
+					formSubmit();
 				}
 			}
 		});
@@ -1982,20 +2058,10 @@ $(document).ready(function(){
 		}
 	});
 	
-	// Check blur
-	$(document).on('input', 'form input', function(e){
+	// Check form input
+	$(document).on('input', 'form input, form select, form textarea', function(e){
+		$(this).removeClass('is-warning');
 		JSformPaintInputGroup($(this));
-    });
-	
-	// Check input
-	$(document).on('input', 'form .form-control', function(e){
-		$(this).removeClass('is-warning');
-    });
-	
-	
-	// Check input select
-	$(document).on('input', 'form select', function(e){
-		$(this).removeClass('is-warning');
     });
 	
 	// Load responsive code

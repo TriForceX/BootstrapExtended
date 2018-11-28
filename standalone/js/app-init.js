@@ -71,8 +71,8 @@ var JSlanguage = {
 					es: 'Por favor escriba un mensaje.',
 				},
 				'$validate-select': {
-					en: 'Please select an option.',
-					es: 'Por favor seleccione una opción.',
+					en: 'Please select a valid option.',
+					es: 'Por favor seleccione una opción válida.',
 				},
 				'$validate-file': {
 					en: 'Please select a file.',
