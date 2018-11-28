@@ -1348,7 +1348,7 @@
 				</div>
 				<!-- Input radio overflow -->
 				<!-- Button checkbox -->
-				<div class="form-group">
+				<div class="form-group form-group-radio">
 					<label for="example-radio-button-1">Radio Buttons</label>
 					<div class="btn-group btn-group-toggle w-100" data-toggle="buttons">
 						<label class="btn btn-secondary active">
