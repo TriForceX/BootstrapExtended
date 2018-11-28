@@ -262,6 +262,30 @@
 }
 /* Textarea resize */
 
+/* Form custom input */
+.was-validated .custom-file-input:valid ~ .custom-file-label:after {
+	background-color: rgba(40, 167, 69, 0.25);
+}
+.was-validated .custom-file-input:invalid ~ .custom-file-label:after {
+	background-color: rgba(220, 53, 69, 0.25);
+}
+/* Form custom input */
+
+/* Form input group append & prepend */
+.input-group > .input-group-append:last-child > .btn:not(:last-child):not(.dropdown-toggle), 
+.input-group > .input-group-append:last-child > .input-group-text:not(:last-child), 
+.input-group > .input-group-append:not(:last-child) > .btn, 
+.input-group > .input-group-append:not(:last-child) > .input-group-text {
+	border-top-right-radius: 0.25rem;
+	border-bottom-right-radius: 0.25rem;
+}
+.input-group > .input-group-prepend ~ .custom-select:not(:last-child), 
+.input-group > .input-group-prepend ~ .form-control:not(:last-child) {
+	border-top-right-radius: 0.25rem;
+	border-bottom-right-radius: 0.25rem;
+}
+/* Form input group append & prepend */
+
 /* Form validation addon */
 .was-validated .input-group-text-valid {
 	border-color: #28a745;
@@ -276,15 +300,6 @@
 	background-color: rgba(255, 200, 118, 0.25);
 }
 /* Form validation addon */
-
-/* Form custom input */
-.was-validated .custom-file-input:valid ~ .custom-file-label:after {
-	background-color: rgba(40, 167, 69, 0.25);
-}
-.was-validated .custom-file-input:invalid ~ .custom-file-label:after {
-	background-color: rgba(220, 53, 69, 0.25);
-}
-/* Form custom input */
 
 /* Form validation warning */
 .was-validated .is-warning:valid {
@@ -344,5 +359,22 @@
 	display: none;
 }
 /* Form validation warning */
+
+/* Carousel circle indicators */
+.carousel-indicators li {
+	width: 12px;
+	height: 12px;
+	border-radius: 300px;
+}
+/* Carousel circle indicators */
+
+/* Carousel control no mobile */
+@media (max-width: $screen-sm) {
+	.carousel-no-mobile .carousel-control-prev,
+	.carousel-no-mobile .carousel-control-next {
+		display: none;
+	}
+}
+/* Carousel control no mobile */
 
 /* ================================================= BOOTSTRAP ADDITIONS ================================================= */

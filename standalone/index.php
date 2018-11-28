@@ -1016,12 +1016,13 @@
 				<div class="form-group">
 					<label for="example-input-password">Password</label>
 					<div class="input-group">
-						<div class="input-group-prepend">
+						
+						<input type="password" class="form-control" id="example-input-password" name="example-input-password" placeholder="Type your Password" required>
+						<div class="input-group-append">
 							<span class="input-group-text">
 								<i class="align-self-center fas fa-key"></i>
 							</span>
 						</div>
-						<input type="password" class="form-control" id="example-input-password" name="example-input-password" placeholder="Type your Password" required>
 						<div class="valid-feedback">
 							Looks good!
 						</div>
@@ -1397,6 +1398,72 @@
 		</figure>
 
 		<!-- Form Validation -->
+
+		<!-- Carousel Rxample -->
+		
+		<h2 class="notranslate">Carousel <span class="badge badge-danger">Custom</span></h2>
+
+		<p>Custom classes for <b>Bootstrap</b> carousel. You can access <a href="https://getbootstrap.com/docs/4.1/components/carousel/" target="_blank">here</a> for more information about <b>base</b> code. <i>Note: Touch gestures was added <b>(right or left)</b></i></p>
+
+		<table class="table table-bordered table-striped js-options-table">
+			<thead>
+				<tr>
+					<th>Name</th>
+					<th>Description</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td class="text-nowrap notranslate">carousel-circle</td>
+					<td>Adding this class will change the indicators to <b>circle</b> buttons
+					</td>
+				</tr>
+				<tr>
+					<td class="text-nowrap notranslate">carousel-nomobile</td>
+					<td>Adding this class will disable the <b>left</b> and <b>right</b> controls on mobile devices
+					</td>
+				</tr>
+			</tbody>
+		</table>
+
+		<div class="bs-example mb-4">
+			<!-- Carousel -->
+			<div id="carouselExampleIndicators" class="carousel slide carousel-circle carousel-no-mobile" data-ride="carousel">
+				<ol class="carousel-indicators">
+					<li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+					<li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+					<li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+				</ol>
+				<div class="carousel-inner">
+					<div class="carousel-item active">
+						<img class="d-block w-100" data-src="holder.js/1140x500/?auto=yes&theme=sky&text=First Slide" alt="First slide">
+					</div>
+					<div class="carousel-item">
+						<img class="d-block w-100" data-src="holder.js/1140x500/?auto=yes&theme=vine&text=Second Slide" alt="Second slide">
+					</div>
+					<div class="carousel-item">
+						<img class="d-block w-100" data-src="holder.js/1140x500/?auto=yes&theme=lava&text=Third Slide" alt="Third slide">
+					</div>
+				</div>
+				<a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+					<span class="carousel-control-prev-icon" aria-hidden="true"></span>
+					<span class="sr-only">Previous</span>
+				</a>
+				<a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+					<span class="carousel-control-next-icon" aria-hidden="true"></span>
+					<span class="sr-only">Next</span>
+				</a>
+			</div>
+			<!-- Carousel -->
+		</div>
+
+		<!-- More Functions -->
+
+		<h2 class="notranslate">More stuff! <span class="badge badge-danger">Wiki</span></h2>
+
+		<p>There is more classes and functions in the whole code, just play and try it. Look at the <code>css/extras/example.css</code> or <code>js/extras/example.js</code> for some code examples. Remember to check the <b>Wiki</b> for more stuff. You can access it <a href="https://github.com/TriForceX/WebsiteBase/wiki" target="_blank">here</a>.</p>
+
+		<!-- More Functions -->
 
 		<!-- MAIN CONTAINER -->
 	</div>

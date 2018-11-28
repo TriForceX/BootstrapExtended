@@ -200,8 +200,8 @@ $.fn.JSvalidateForm = function(options)
 					if(settings.errorStyling){ formElement.removeClass('was-validated'); }
 					if(settings.errorStyling){ formElement.find('.is-warning').removeClass('is-warning'); }
 					formElement.trigger('reset');
-					formElement.find('input[type="checkbox"]').prop('checked', false).parent().removeClass('active');
-					formElement.find('input[type="radio"]').prop('checked', false).parent().removeClass('active');
+					formElement.find('input[type="checkbox"]').prop('checked', false).removeAttr('checked').parent().removeClass('active');
+					formElement.find('input[type="radio"]').prop('checked', false).removeAttr('checked').parent().removeClass('active');
 					formElement.find('input[type="file"]').each(function(){
 						var placeholder = $(this).JShasAttr('placeholder') ? $(this).attr('placeholder') : '';
 						$(this).parent().find('.custom-file-label').html(placeholder);
@@ -2041,8 +2041,8 @@ $(document).ready(function(){
 	$(document).on('click', 'form *[type="reset"]', function(e){
 		$(this).parents('form').removeClass('was-validated');
 		$(this).parents('form').find('.is-warning').removeClass('is-warning');
-		$(this).parents('form').find('input[type="checkbox"]').prop('checked', false).parent().removeClass('active');
-		$(this).parents('form').find('input[type="radio"]').prop('checked', false).parent().removeClass('active');
+		$(this).parents('form').find('input[type="checkbox"]').prop('checked', false).removeAttr('checked').parent().removeClass('active');
+		$(this).parents('form').find('input[type="radio"]').prop('checked', false).removeAttr('checked').parent().removeClass('active');
 		$(this).parents('form').find('input[type="file"]').each(function(){
 			var placeholder = $(this).JShasAttr('placeholder') ? $(this).attr('placeholder') : '';
 			$(this).parent().find('.custom-file-text > span').html(placeholder);
