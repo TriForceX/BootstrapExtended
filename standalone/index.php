@@ -1365,7 +1365,7 @@
 				<!-- Button checkbox -->
 				<!-- Submit + reset -->
 				<div class="form-group mb-0">
-					<button type="reset" class="btn btn-default">Reset</button>
+					<button type="reset" class="btn btn-danger">Reset</button>
 					<button type="submit" class="btn btn-primary">Submit</button>
 				</div>
 				<!-- Submit + reset -->
