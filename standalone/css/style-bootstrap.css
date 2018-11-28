@@ -287,10 +287,10 @@
 /* Form custom input */
 
 /* Form validation warning */
-.is-warning:valid {
+.was-validated .is-warning:valid {
 	border-color: #faa425 !important;
 }
-.is-warning:valid:focus {
+.was-validated .is-warning:valid:focus {
 	border-color: #faa425 !important;
 	box-shadow: 0 0 0 0.2rem rgba(255, 200, 118, 0.25) !important;
 }
