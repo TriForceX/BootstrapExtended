@@ -1,21 +1,5 @@
 /* ================================================= EXAMPLE FUNCTIONS ================================================= */
 
-// Example form validate custom function
-function JSvalidateCustom(field)
-{
-	// Console Log
-	JSconsole('Example Validate Custom');
-	
-	if(field === 'Custom')
-	{
-		return true;
-	}
-	else
-	{
-		return false;
-	}
-}
-
 // Example Plain HTML Gallery Parser
 function JSparseHtmlGallery(page)
 {
@@ -155,7 +139,7 @@ $(document).ready(function(){
 	
 	// Example form validation
 	$('.JSformExample').JSvalidateForm({
-		noValidate: null,//'#example-input-lastname',
+		noValidate: '#example-input-lastname',
 		hasConfirm: true,
 		resetSubmit: true,
 		errorStyling: true,
@@ -164,7 +148,17 @@ $(document).ready(function(){
 		modalSize: 'medium',
 		modalAlign: 'top',
 		modalAnimate: true,
-		customValidate: ['JSvalidateCustom', '#example-input-custom', 'Please fill the Custom Field.'],
+		customValidate: function(result){
+			// Custom function
+			if($('#example-input-custom').val() != 'Custom') 
+			{
+				// Send error
+				result = {'element'	: $('#example-input-custom'), 
+						  'error'	: 'Please type "Custom" (without quotes).'};
+			}
+			// Return result
+			return result;
+		},
 	});
 	
 	// Example prevent title translation by Google

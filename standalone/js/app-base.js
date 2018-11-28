@@ -369,7 +369,7 @@ $.fn.JSvalidateForm = function(options)
 			
 			// Custom validation
 			if(settings.customValidate !== null){
-				var CVFunction = settings.customValidate[0];
+				/*var CVFunction = settings.customValidate[0];
 				var CVInput = settings.customValidate[1];
 				var CVMessage = settings.customValidate[2];
 
@@ -382,7 +382,17 @@ $.fn.JSvalidateForm = function(options)
 					else{
 						if(settings.errorStyling){ $(this).removeClass('is-warning'); }
 					}
-				});
+				});*/
+				
+				if($.type(settings.customValidate()) === 'object')
+				{
+					var customInput = settings.customValidate()['element'];
+					var customError = settings.customValidate()['error'];
+					
+					if(settings.errorStyling){ customInput.addClass('is-warning'); }
+					formError = customError;
+					formScroll = customInput;
+				}
 			}
 			
 			// Send error

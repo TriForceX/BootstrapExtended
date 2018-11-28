@@ -1382,7 +1382,17 @@
 	modalSize: 'medium',
 	modalAlign: 'top',
 	modalAnimate: true,
-	customValidate: ['JSvalidateCustom', '#example-input-custom', 'Please fill the Custom Field.'],
+	customValidate: function(result){
+		// Custom function
+		if($('#example-input-custom').val() != 'Custom') 
+		{
+			// Send error
+			result = {'element' : $('#example-input-custom'), 
+				  'error'   : 'Please type "Custom" (without quotes).'};
+		}
+		// Return result
+		return result;
+	},
 });</code></pre>
 		</figure>
 
