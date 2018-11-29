@@ -152,7 +152,7 @@
 /* Modal Align */
 
 /* Modal Alternative Fade */
-.modal.nofade .modal-dialog {
+.modal.fade-2 .modal-dialog {
     -moz-transition: none !important;
     -o-transition: none !important;
     -webkit-transition: none !important;
