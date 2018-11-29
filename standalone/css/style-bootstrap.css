@@ -204,17 +204,12 @@
 	}
 }
 @media (max-width: $screen-sm) {
-	.dropdown .dropdown-overflow-sm,
-	.dropdown .dropdown-overflow-md,
-	.dropdown .dropdown-overflow-lg {
-		max-height: 120px;
-	}
 	.dropdown .dropdown-overflow,
 	.dropdown .dropdown-overflow-sm,
 	.dropdown .dropdown-overflow-md,
 	.dropdown .dropdown-overflow-lg {
-		overflow: auto;
-		max-height: none;
+		max-height: 135px;
+		margin-bottom: 10px;
 	}
 }
 /* Dropdown Overflow */

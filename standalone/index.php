@@ -55,7 +55,7 @@
 					<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown03" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 					Utilities
 					</a>
-					<div class="dropdown-menu" aria-labelledby="navbarDropdown03">
+					<div class="dropdown-menu dropdown-overflow-lg" aria-labelledby="navbarDropdown03">
 						<a class="dropdown-item" href="https://www.w3schools.com" target="_blank">W3 Schools Tutorials</a>
 						<a class="dropdown-item" href="https://www.w3schools.com/howto/" target="_blank">W3 Schools How To</a>
 						<a class="dropdown-item" href="https://bootsnipp.com/tags/4.1.1" target="_blank">Bootstrap Snippets</a>
