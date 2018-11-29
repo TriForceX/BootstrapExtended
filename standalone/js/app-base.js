@@ -432,12 +432,6 @@ $.fn.JSvalidateForm = function(options)
 				event.preventDefault();
 				event.stopPropagation();
 				
-				// Check scroll
-				if(settings.errorScroll)
-				{ 
-					inputScroll(formElement.find('*[type="submit"]'));
-				}
-				
 				// Check confirm
 				if(settings.hasConfirm)
 				{
@@ -637,9 +631,13 @@ function JSdestroyLightGallery()
 	// Check plugin
 	if(typeof $.fn.lightGallery !== 'undefined')
 	{
-		$('.JSlightGallery').each(function(){ 
-			$(this).off('onBeforeOpen.lg onBeforeSlide.lg onAfterOpen.lg onAfterSlide.lg onCloseAfter.lg').data('lightGallery').destroy(true);
-		}); 
+		// Check hash
+		if(!window.location.hash.substring(1).match(/\b(lg=|slide=)\b/))
+		{
+			$('.JSlightGallery').each(function(){ 
+				$(this).off('onBeforeOpen.lg onBeforeSlide.lg onAfterOpen.lg onAfterSlide.lg onCloseAfter.lg').data('lightGallery').destroy(true);
+			});
+		}
 	}
 }
 // Lightgallery load function

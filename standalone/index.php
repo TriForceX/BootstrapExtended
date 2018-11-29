@@ -1072,13 +1072,12 @@
 				<div class="form-group">
 					<label for="example-input-password">Password</label>
 					<div class="input-group">
-						
-						<input type="password" class="form-control" id="example-input-password" name="example-input-password" placeholder="Type your Password" required>
-						<div class="input-group-append">
+						<div class="input-group-prepend">
 							<span class="input-group-text">
 								<i class="align-self-center fas fa-key"></i>
 							</span>
 						</div>
+						<input type="password" class="form-control" id="example-input-password" name="example-input-password" placeholder="Type your Password" required>
 						<div class="valid-feedback">
 							Looks good!
 						</div>
