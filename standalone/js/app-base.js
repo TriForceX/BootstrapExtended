@@ -368,22 +368,8 @@ $.fn.JSvalidateForm = function(options)
 			});
 			
 			// Custom validation
-			if(settings.customValidate !== null){
-				/*var CVFunction = settings.customValidate[0];
-				var CVInput = settings.customValidate[1];
-				var CVMessage = settings.customValidate[2];
-
-				$(CVInput).each(function(){
-					if (!window[CVFunction]($(this).val())) { 
-						if(settings.errorStyling){ $(this).addClass('is-warning'); }
-						formError = CVMessage;
-						formScroll = $(this);
-					}
-					else{
-						if(settings.errorStyling){ $(this).removeClass('is-warning'); }
-					}
-				});*/
-				
+			if(settings.customValidate !== null)
+			{
 				if($.type(settings.customValidate()) === 'object')
 				{
 					var customInput = settings.customValidate()['element'];
@@ -601,7 +587,7 @@ function JSresponsiveCode()
 	var bodyHeight = $(window).height();
 	var bodyOrientation = {'landscape'	: bodyWidth > bodyHeight ? true : false,
 					  	   'portrait'	: bodyWidth < bodyHeight ? true : false}; 
-	var bodyScreen = {'xs'	: parseFloat('$screen-xs'), //480,
+	var bodyScreen = {'xs'	: parseFloat('$screen-xs'),	//480,
 					  'sm'	: parseFloat('$screen-sm'), //768,
 					  'md'	: parseFloat('$screen-md'), //992,
 					  'lg'	: parseFloat('$screen-lg'), //1200,
@@ -610,7 +596,7 @@ function JSresponsiveCode()
 	if(bodyWidth)
 	{
 		// Send data to event
-		$(document).trigger("JSresponsiveCode", [bodyWidth, bodyHeight, bodyOrientation, bodyScreen]);
+		$(document).trigger('JSresponsiveCode', [bodyWidth, bodyHeight, bodyOrientation, bodyScreen]);
 	}
 	else
 	{
@@ -618,9 +604,9 @@ function JSresponsiveCode()
 	}
 }
 
-$(window).bind("load", JSresponsiveCode);
-$(window).bind("resize", JSresponsiveCode);
-$(window).bind("orientationchange", JSresponsiveCode);
+$(window).bind('load', JSresponsiveCode);
+$(window).bind('resize', JSresponsiveCode);
+$(window).bind('orientationchange', JSresponsiveCode);
 
 // LightGallery destroy function
 function JSdestroyLightGallery()
@@ -851,11 +837,11 @@ function JSloadLightGallery()
 	}
 }
 
-// ImgLiquid auto-fill background function
+// Image background fill function
 function JSimgFill(container)
 {	
 	// Console Log
-	JSconsole('[JS Function] Img Fill');
+	JSconsole('[JS Function] Image Background Fill');
 	
 	var bgData = new Array();
 	var bgVertical;
@@ -864,6 +850,7 @@ function JSimgFill(container)
 	var bgFillSize;
 	
 	bgData = $(container).data('img-fill').split(' ');
+	bgSource = $(container).find('img').attr('src');
 	
 	// Check hotizontal align
 	if(!bgData[0]){ // Check value
@@ -877,31 +864,18 @@ function JSimgFill(container)
 	
 	// Check fill
 	if(!bgData[2]){ // Check value
-		bgData[2] = 'true';
+		bgData[2] = 'cover';
 	}
 	
 	// Set variables
 	bgHorizontal = bgData[0];
 	bgVertical = bgData[1];
-	bgFill = bgData[2].indexOf('%') >= 0 || bgData[2].indexOf('px') >= 0 || bgData[2] === 'contain' ? false : true;
-	bgFillSize = bgData[2].indexOf('%') >= 0 || bgData[2].indexOf('px') >= 0 ? parseFloat(bgData[2].replace(/\x25|px/g, '')) : false;
+	bgFill = bgData[2].indexOf('%') >= 0 || bgData[2].indexOf('px') >= 0 ? (bgData[2] == 100 ? 'cover' : parseFloat(bgData[2].replace(/\x25|px/g, ''))) : bgData[2];
 	
-	// Check plugin
-	if($.fn.imgLiquid !== 'undefined')
-	{
-		// Set changes
-		$(container).imgLiquid({ 
-			horizontalAlign: bgHorizontal,
-			verticalAlign: bgVertical, 
-			fill: bgFill,
-		});
-	}
-	
-	// Set alternative fill
-	if(bgFillSize)
-	{
-		$(container).css('background-size', (bgFillSize == 100 ? 'cover' : bgData[2]));
-	}
+	// Set position and size
+	$(container).css({'background-image'	: 'url('+bgSource+')',
+					  'background-position'	: bgHorizontal+' '+bgVertical,
+					  'background-size'		: bgFill});
 }
 
 // Get element height changes
@@ -925,15 +899,6 @@ function JSelementHeightChange(elm, callback)
 
 		elm.JSelementHeightChangeTimer = setTimeout(run, 200);
 	})();
-	
-	// Usage
-	/*if(JSexist($(".container")))
-	{
-		JSelementHeightChange(".container", function(){
-			console.log('Container height has changed');
-			JSresponsiveCode();
-		});
-	}*/
 }
 
 // Text cut function one line
@@ -971,7 +936,7 @@ function JStextSize(container)
 	$(container).css('font-size','');
 	$(container).each(function (i,box){
 		var width = $(box).width(),
-			html = '<span style="white-space:nowrap"></span>',
+			html = '<span class="text-nowrap"></span>',
 			line = $(box).wrapInner(html).children()[0],
 			n = $(container).css('font-size').replace(/px|em/g,'');
 
@@ -1230,12 +1195,12 @@ function JSvideoLaunch(title, url, share, autoplay, size, align, animate)
 	}
 	else if(url.indexOf('facebook') >= 0)
 	{
-		//ID = JSfacebookParser(url);
+		// ID = JSfacebookParser(url); // WIP
 		ID = encodeURIComponent(url);
 		if(autoplay){
 			embedAutoPlay = '&autoplay=1';
 		}
-		//embedUrl = 'https://www.facebook.com/video/embed?video_id='+ID+'&show_text=0'+embedAutoPlay;
+		// embedUrl = 'https://www.facebook.com/video/embed?video_id='+ID+'&show_text=0'+embedAutoPlay; // WIP
 		embedUrl = 'https://www.facebook.com/plugins/video.php?href='+ID+'&show_text=0&mute=0&'+embedAutoPlay;
 		embedShare = url;
 	}
@@ -1246,11 +1211,14 @@ function JSvideoLaunch(title, url, share, autoplay, size, align, animate)
 	
 	if(share)
 	{
-		content = content+'<a class="JSvideoLaunchURL" data-clipboard-action="copy" data-clipboard-target=".JSvideoLaunchCopy">'+
-							'	<div class="JSvideoLaunchButton">'+embedShareTitle+' <i class="fas fa-angle-right"></i><strong></div>'+
-							'	<div class="JSvideoLaunchText">'+embedShare+'</div>'+
-							'	<div class="JSvideoLaunchCopy">'+embedShare+'</div>'+
-							'</a>';
+		content = content+'<div class="input-group input-group-sm mt-2 JSvideoLaunchURL" data-clipboard-action="copy" data-clipboard-target=".JSvideoLaunchCopy">'+
+							'	<div class="input-group-prepend">'+
+							'		<span class="input-group-text">'+
+							'			'+embedShareTitle+' <i class="ml-2 far fa-copy"></i>'+
+							'		</span>'+
+							'	</div>'+
+							'	<input type="text" class="form-control text-center JSvideoLaunchCopy" id="example-input-username" name="example-input-username" value="'+embedShare+'">'+
+							'</div>';
 	}
 	
 	// Check plugin
@@ -1278,7 +1246,7 @@ function JSvideoLaunch(title, url, share, autoplay, size, align, animate)
 	}
 
 	// Tooltip load
-	$('.JSvideoLaunchText').tooltip({
+	$('.JSvideoLaunchCopy').tooltip({
 		title: embedShareText,
 		placement: 'bottom',
 		trigger: 'manual',
@@ -1291,7 +1259,7 @@ function JSvideoLaunch(title, url, share, autoplay, size, align, animate)
 		var clipboard = new ClipboardJS('.JSvideoLaunchURL');
 
 		clipboard.on('success', function(){
-			$('.JSvideoLaunchText').tooltip('show');
+			$('.JSvideoLaunchCopy').tooltip('show');
 		});
 
 		clipboard.on('error', function(){

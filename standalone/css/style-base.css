@@ -239,63 +239,6 @@ div.dataTables_wrapper div.dataTables_paginate ul.pagination {
 .JSvideoLaunchIframe iframe {
 	border: 0px;
 }
-.JSvideoLaunchURL {
-	display: inline-block;
-	width: 100%;
-	text-align: center;
-	margin-bottom: -10px;
-	margin-top: 10px;
-}
-.JSvideoLaunchButton {
-	color: white;
-	font-weight: normal;
-	background-color: red;
-	border-radius: 4px;
-	font-size: 12px;
-	padding: 3px 5px;
-	margin-right: 5px;
-	padding-left: 8px;
-	display: inline-block;
-	margin-bottom: 10px;
-	cursor: pointer;
-	vertical-align: middle;
-}
-.JSvideoLaunchButton i {
-	vertical-align: text-top;
-	font-size: 16px;
-}
-.JSvideoLaunchText {
-	display: inline-block;
-	border: 1px solid #a0a0a0;
-	font-size: 12px;
-	font-weight: normal;
-	padding: 2px 5px;
-	color: black;
-	background-color: white;
-	border-radius: 4px;
-	width: 285px;
-	max-width: 100%;
-	margin-bottom: 10px;
-	cursor: pointer;
-	text-align: center;
-	vertical-align: middle;
-	white-space: nowrap;
-	overflow: hidden;
-	text-overflow: ellipsis;
-	-webkit-touch-callout: none; /* iOS Safari */
-	-webkit-user-select: none; /* Safari */
-	-khtml-user-select: none; /* Konqueror HTML */
-	-moz-user-select: none; /* Firefox */
-	-ms-user-select: none; /* Internet Explorer & Edge */
-	user-select: none;
-}
-.JSvideoLaunchCopy {
-	position: absolute;
-	width: 1px;
-	height: 1px;
-	overflow: hidden;
-	opacity: 0;
-}
 /* JS Video Launch */
 
 /* JS Loading */

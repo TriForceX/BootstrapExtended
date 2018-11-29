@@ -23,7 +23,7 @@
 <!-- jQuery Rotate -->
 <script src="<?php echo php::get_main_url(); ?>/resources/jquery-rotate/js/jQueryRotate.js"></script>
 <!-- Popper -->
-<script src="<?php echo php::get_main_url(); ?>/resources/popper/js/popper.min.js"></script>
+<script src="<?php echo php::get_main_url(); ?>/resources/popper/js/popper.js"></script>
 <!-- Bootstrap -->
 <script src="<?php echo php::get_main_url(); ?>/resources/bootstrap/js/bootstrap.min.js"></script>
 <!-- Touch Swipe -->
