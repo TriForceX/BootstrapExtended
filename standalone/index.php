@@ -913,12 +913,12 @@
 		<p>Launch a modal box using <b>BootBox</b> with a basic video player, the function structure is <code>JSvideoLaunch(title, url, share, autoplay, size, align, animate)</code>. You can alternatively set a size and alignment classes like <b>horizontal vertical</b> (For example: <code>right center</code>). For animate options you can choose between <b>true</b>, <b>false</b> or <b>'alternative'</b></p>
 
 		<div class="bs-example">
-			<button type="button" class="btn btn-primary my-1 my-xl-0 mw-100 text-truncate" onclick="JSvideoLaunch('My YouTube Video','https://www.youtube.com/watch?v=AW3SppO7qfY',true,true,'medium','center')">YouTube Video (Medium size + Center Aligned)</button>
-			<button type="button" class="btn btn-primary my-1 my-xl-0 mw-100 text-truncate" onclick="JSvideoLaunch('My Vimeo Video','https://vimeo.com/158181618',false,false,'large')">Vimeo Video (Large size + No share URL + No autoplay)</button>
-			<button type="button" class="btn btn-primary my-1 my-xl-0 mw-100 text-truncate" onclick="JSvideoLaunch('My Facebook Video','https://www.facebook.com/mdbootstrap/videos/778803232324056')">Facebook Video (Only title + URL)</button>
+			<button type="button" class="btn btn-primary my-1 my-xl-0 mw-100 text-truncate" onclick="JSvideoLaunch('My YouTube Video','https://www.youtube.com/watch?v=AW3SppO7qfY',true,false,'medium','center')">YouTube Video (Default size + Center Aligned)</button>
+			<button type="button" class="btn btn-primary my-1 my-xl-0 mw-100 text-truncate" onclick="JSvideoLaunch('My Facebook Video','https://www.facebook.com/mdbootstrap/videos/778803232324056',true,true,'large')">Facebook Video (Large size + Autoplay)</button>
+			<button type="button" class="btn btn-primary my-1 my-xl-0 mw-100 text-truncate" onclick="JSvideoLaunch('My Vimeo Video','https://vimeo.com/158181618',false,false)">Vimeo Video (No share URL + No Autoplay)</button>
 		</div>
 		<figure class="highlight">
-			<pre class="prettyprint"><code class="language-html" data-lang="html">&lt;a onclick="JSvideoLaunch('My YouTube Video','https://www.youtube.com/watch?v=AW3SppO7qfY',true,true,'medium','center')">Click Here&lt;/a&gt;<br>&lt;a onclick="JSvideoLaunch('My Vimeo Video','https://vimeo.com/158181618',false,false,'large')">Click Here&lt;/a&gt;<br>&lt;a onclick="JSvideoLaunch('My Facebook Video','https://www.facebook.com/mdbootstrap/videos/778803232324056')">Click Here&lt;/a&gt;</code></pre>
+			<pre class="prettyprint"><code class="language-html" data-lang="html">&lt;a onclick="JSvideoLaunch('My YouTube Video','https://www.youtube.com/watch?v=AW3SppO7qfY',true,false,'medium','center')">Click Here&lt;/a&gt;<br>&lt;a onclick="JSvideoLaunch('My Facebook Video','https://www.facebook.com/mdbootstrap/videos/778803232324056',true,true,'large')">Click Here&lt;/a&gt;<br>&lt;a onclick="JSvideoLaunch('My Vimeo Video','https://vimeo.com/158181618',false,false)">Click Here&lt;/a&gt;</code></pre>
 		</figure>
 
 		<!-- Video Launch -->
@@ -1474,7 +1474,7 @@
 					</td>
 				</tr>
 				<tr>
-					<td class="text-nowrap notranslate">carousel-nomobile</td>
+					<td class="text-nowrap notranslate">carousel-no-mobile</td>
 					<td>Adding this class will disable the <b>left</b> and <b>right</b> controls on mobile devices
 					</td>
 				</tr>

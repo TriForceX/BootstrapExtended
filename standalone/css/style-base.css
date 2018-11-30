@@ -231,13 +231,16 @@ div.dataTables_wrapper div.dataTables_paginate ul.pagination {
 .JSvideoLaunchIframe {
 	background-color: #EEE;
 	border: 1px solid #CCC;
-	display: inline-block;
+	display: block;
 	width: 100%;
 	height: auto;
 }
 
 .JSvideoLaunchIframe iframe {
 	border: 0px;
+}
+.JSvideoLaunchCopy {
+	background-color: white !important;
 }
 /* JS Video Launch */
 

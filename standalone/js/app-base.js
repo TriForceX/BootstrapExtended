@@ -1211,13 +1211,13 @@ function JSvideoLaunch(title, url, share, autoplay, size, align, animate)
 	
 	if(share)
 	{
-		content = content+'<div class="input-group input-group-sm mt-2 JSvideoLaunchURL" data-clipboard-action="copy" data-clipboard-target=".JSvideoLaunchCopy">'+
+		content = content+'<div class="input-group input-group-sm mt-3 JSvideoLaunchURL" data-clipboard-action="copy" data-clipboard-target=".JSvideoLaunchCopy">'+
 							'	<div class="input-group-prepend">'+
 							'		<span class="input-group-text">'+
 							'			'+embedShareTitle+' <i class="ml-2 far fa-copy"></i>'+
 							'		</span>'+
 							'	</div>'+
-							'	<input type="text" class="form-control text-center JSvideoLaunchCopy" id="example-input-username" name="example-input-username" value="'+embedShare+'">'+
+							'	<input type="text" class="form-control text-center JSvideoLaunchCopy" value="'+embedShare+'" readonly>'+
 							'</div>';
 	}
 	
