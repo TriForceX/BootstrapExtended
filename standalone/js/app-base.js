@@ -30,6 +30,45 @@ var JSisNav = function(name, version)
 					}
 			  };
 
+// Custom modal box
+var JScustomModal = function(title, text, size, align, className)
+					{
+						var modalSize;
+
+						switch(size){
+							case 'small': modalSize = 'modal-sm'; break;
+							case 'large': modalSize = 'modal-lg'; break;
+							case 'extra-large': modalSize = 'modal-xl'; break;
+							default:  break;
+						}
+
+						var html = '<div class="modal fade '+align+' '+className+'" tabindex="-1" role="dialog" id="JScustomModal">'+
+									'	<div class="modal-dialog '+modalSize+'" role="document">'+
+									'		<div class="modal-content">'+
+									'			<div class="modal-header">'+
+									'				<h5 class="modal-title">'+title+'</h5>'+
+									'				<button type="button" class="close" data-dismiss="modal" aria-label="Ok">'+
+									'					<span aria-hidden="true">&times;</span>'+
+									'				</button>'+
+									'			</div>'+
+									'			<div class="modal-body">'+
+									'				'+text+
+									'			</div>'+
+									'			<div class="modal-footer">'+
+									'				<button type="button" class="btn btn-secondary" data-dismiss="modal">OK</button>'+
+									//'				<button type="button" class="btn btn-primary">Save changes</button>'+
+									'			</div>'+
+									'		</div>'+
+									'	</div>'+
+									'</div>';
+
+						$('body').append(html);
+						$('#JScustomModal').modal('show'); 
+					};
+
+var JSmodalBox = {'alert' : function(options){ JScustomModal(options.title, options.message, options.size, options.className) },
+				  'confirm' : function(options){ JScustomModal(options.title, options.message, options.size, options.className) }};
+
 // IE8 Undefined console fix
 if (!window.console) console = {log: function() {}};
 
@@ -1439,7 +1478,7 @@ function JSstripTags(container, items)
 	// Console Log
 	JSconsole('[JS Function] Strip Tags');
 	
-	container.find("*").not(items).each(function() {
+	container.find("*").not(items).each(function(){
 		$(this).remove();
 	});
 }
@@ -1888,7 +1927,7 @@ function JSmainInit()
 			$(this).dataTable().fnDestroy();
 			$(this).DataTable({
 					initComplete: function(settings,json){
-						$(".dataTables_wrapper").removeClass("container-fluid");
+						$('.dataTables_wrapper').removeClass('container-fluid');
 					},
 				}
 			);
@@ -1983,6 +2022,11 @@ $(document).ready(function(){
 		  e.preventDefault();
 		}
     });
+	
+	// Remove custom modal box
+	$(document).on('hidden.bs.modal', '#JScustomModal', function(){
+		$(this).remove();
+	});
 	
 	// Modal on disabled links
 	if(JSexist($('*[data-js-hashtag]')))
