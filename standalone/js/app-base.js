@@ -1660,8 +1660,6 @@ function JSmapLaunch(element)
 	var mapContent;
 	var mapTitle = JSlang('$maplaunch-title');
 	var mapText = JSlang('$maplaunch-text');
-	var mapIcon1 = JSmainUrl+'/img/base/maplaunch/google-maps.png';
-	var mapIcon2 = JSmainUrl+'/img/base/maplaunch/waze.png';
 	var mapCoords1 = $(element).data('map-coords-1').split(',');
 	var mapCoords2 = $(element).data('map-coords-2').split(',');
 	var mapIframe = $(element).data('map-iframe');
@@ -1679,12 +1677,7 @@ function JSmapLaunch(element)
 	mapContentStyle1 = '<div class="JSmapLaunchInfo">'+
 						'	<span class="badge badge-primary mb-2">'+mapText+'</span>'+
 						'	<div class="JSmapLaunchIcons">'+
-						'		<a href="'+mapLaunchUrl1+'" target="_blank">'+
-						'			<img src="'+mapIcon1+'">'+
-						'		</a>'+
-						'		<a class="JSmapLaunchAlert" href="'+mapLaunchUrl2+'" target="_blank">'+
-						'			<img src="'+mapIcon2+'">'+
-						'		</a>'+
+						'		<a class="JSmapLaunchGMaps" href="'+mapLaunchUrl1+'" target="_blank"></a><a class="JSmapLaunchWaze" href="'+mapLaunchUrl2+'" target="_blank"></a>'+
 						'	</div>'+
 						'	<div class="card card-header p-2 mb-0 mt-2">'+mapAddress+'</div>'+
 						'</div>';
@@ -1696,12 +1689,7 @@ function JSmapLaunch(element)
 						'	</div>'+
 						'	<span class="badge badge-primary mb-2">'+mapText+'</span>'+
 						'	<div class="JSmapLaunchIcons small">'+
-						'		<a href="'+mapLaunchUrl1+'" target="_blank">'+
-						'			<img src="'+mapIcon1+'">'+
-						'		</a>'+
-						'		<a class="JSmapLaunchAlert" href="'+mapLaunchUrl2+'" target="_blank">'+
-						'			<img src="'+mapIcon2+'">'+
-						'		</a>'+
+						'		<a class="JSmapLaunchGMaps" href="'+mapLaunchUrl1+'" target="_blank"></a><a class="JSmapLaunchWaze" href="'+mapLaunchUrl2+'" target="_blank"></a>'+
 						'	</div>'+
 						'</div>';
 	
@@ -2055,7 +2043,7 @@ $(document).ready(function(){
 	});
 	
 	// Check map launch alert
-	$(document).on('click', '.JSmapLaunchAlert', function(e){
+	$(document).on('click', '.JSmapLaunchWaze', function(e){
 		if (JSisMobile && !confirm(JSlang('$maplaunch-alert'))){
 		  e.preventDefault();
 		}

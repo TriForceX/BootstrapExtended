@@ -334,14 +334,31 @@ div.dataTables_wrapper div.dataTables_paginate ul.pagination {
 	width: 100%;
 	height: auto;
 }
-.JSmapLaunchInfo > .JSmapLaunchIcons img {
-	width: 90px;
-	height: auto;
-	vertical-align: middle;
-	margin: 0px 5px;
+.JSmapLaunchInfo > .JSmapLaunchIcons .JSmapLaunchGMaps,
+.JSmapLaunchInfo > .JSmapLaunchIcons .JSmapLaunchWaze {
+	background-position: center center;
+	background-repeat: no-repeat;
+	background-size: contain;
+	width: 85px;
+	height: 85px;
+	vertical-align: bottom;
+	margin: 0px 3px;
+	display: inline-block;
 }
-.JSmapLaunchInfo > .JSmapLaunchIcons.small img {
-	width: 60px;
+.JSmapLaunchInfo > .JSmapLaunchIcons .JSmapLaunchGMaps {
+	background-image: url("../img/base/maplaunch/google-maps.svg");
+}
+.JSmapLaunchInfo > .JSmapLaunchIcons .JSmapLaunchWaze {
+	background-image: url("../img/base/maplaunch/waze.svg");
+	height: 80px;
+}
+.JSmapLaunchInfo > .JSmapLaunchIcons.small .JSmapLaunchGMaps,
+.JSmapLaunchInfo > .JSmapLaunchIcons.small .JSmapLaunchWaze{
+	width: 55px;
+	height: 55px;
+}
+.JSmapLaunchInfo > .JSmapLaunchIcons.small .JSmapLaunchWaze {
+	height: 50px;
 }
 /* JS Map Launch */
 
