@@ -48,8 +48,11 @@
 	<link href="<?php echo php::get_main_url(); ?>/resources/hover/css/hover.min.css" rel="stylesheet">
 	<!-- Font Awesome -->
 	<link href="<?php echo php::get_main_url(); ?>/resources/fontawesome/css/all.min.css" rel="stylesheet">
+	<!-- Check Old Browser -->
+	<script src="<?php echo php::get_main_url(); ?>/js/app-browser.js"></script>
 	<!-- Main CSS File -->
 	<?php echo php::get_template('css'); ?>
+	
 	
 	<!-- ******** HEADER RESOURCES ******** -->
 	
