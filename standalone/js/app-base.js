@@ -441,8 +441,8 @@ $.fn.JSvalidateForm = function(options)
 							message: formError,
 							size: size,
 							backdrop: true,
-							className: (animate == 'alternative' ? 'fade-2 '+align : align),
-							animate: (animate == 'alternative' ? true : animate),
+							className: (animate == 'alt' ? 'fade-2 '+align : align),
+							animate: (animate == 'alt' ? true : animate),
 						});
 					}
 				}
@@ -472,8 +472,8 @@ $.fn.JSvalidateForm = function(options)
 								message: formConfirmText,
 								size: size,
 								backdrop: true,
-								className: (animate == 'alternative' ? 'fade-2 '+align : align),
-								animate: (animate == 'alternative' ? true : animate),
+								className: (animate == 'alt' ? 'fade-2 '+align : align),
+								animate: (animate == 'alt' ? true : animate),
 								callback: function(result){
 									if(result)
 									{
@@ -1016,8 +1016,8 @@ function JSmodalAlert(title, text, size, align, animate)
 			message: text,
 			size: size,
 			backdrop: true,
-			className: (animate == 'alternative' ? 'fade-2 '+align : align),
-			animate: (animate == 'alternative' ? true : animate),
+			className: (animate == 'alt' ? 'fade-2 '+align : align),
+			animate: (animate == 'alt' ? true : animate),
 		});
 	}
 }
@@ -1049,8 +1049,8 @@ function JSmodalContent(title, element, size, align, animate)
 			message: $(element).html(),
 			size: size,
 			backdrop: true,
-			className: (animate == 'alternative' ? 'fade-2 '+align : align),
-			animate: (animate == 'alternative' ? true : animate),
+			className: (animate == 'alt' ? 'fade-2 '+align : align),
+			animate: (animate == 'alt' ? true : animate),
 		});
 	}
 }
@@ -1101,8 +1101,8 @@ function JSmodalAjax(title, url, loading, size, align, animate)
 					message: data,
 					size: size,
 					backdrop: true,
-					className: (animate == 'alternative' ? 'fade-2 '+align : align),
-					animate: (animate == 'alternative' ? true : animate),
+					className: (animate == 'alt' ? 'fade-2 '+align : align),
+					animate: (animate == 'alt' ? true : animate),
 				});
 			}
 			// Remove loading icon
@@ -1268,8 +1268,8 @@ function JSvideoLaunch(title, url, share, autoplay, size, align, animate)
 			message: content,
 			size: size,
 			backdrop: true,
-			className: (animate == 'alternative' ? 'fade-2 '+align : align),
-			animate: (animate == 'alternative' ? true : animate),
+			className: (animate == 'alt' ? 'fade-2 '+align : align),
+			animate: (animate == 'alt' ? true : animate),
 		}).on("shown.bs.modal", function(){
 			// Modify facebook src
 			if (url.indexOf('facebook') >= 0)
@@ -1396,8 +1396,8 @@ function JSdisabledClick(element, title, message, size, align, animate)
 					message: message,
 					size: size,
 					backdrop: true,
-					className: (animate == 'alternative' ? 'fade-2 '+align : align),
-					animate: (animate == 'alternative' ? true : animate),
+					className: (animate == 'alt' ? 'fade-2 '+align : align),
+					animate: (animate == 'alt' ? true : animate),
 				});
 			}
 		}
@@ -1531,8 +1531,8 @@ function JShashTag(string)
 					message: JSlang('$disabled-text'),
 					size: size,
 					backdrop: true,
-					className: (animate == 'alternative' ? 'fade-2 '+align : align),
-					animate: (animate == 'alternative' ? true : animate),
+					className: (animate == 'alt' ? 'fade-2 '+align : align),
+					animate: (animate == 'alt' ? true : animate),
 				});
 			}
 			return false;
@@ -1628,8 +1628,8 @@ function JSwindowPopup(element, errortitle, errormsg)
 				message: errormsg,
 				size: size,
 				backdrop: true,
-				className: (animate == 'alternative' ? 'fade-2 '+align : align),
-				animate: (animate == 'alternative' ? true : animate),
+				className: (animate == 'alt' ? 'fade-2 '+align : align),
+				animate: (animate == 'alt' ? true : animate),
 			});
 		}
 	}
@@ -1702,8 +1702,8 @@ function JSmapLaunch(element)
 			message: mapIframe == false ? mapContentStyle1 : mapContentStyle2,
 			size: size,
 			backdrop: true,
-			className: (animate == 'alternative' ? 'fade-2 '+align : align),
-			animate: (animate == 'alternative' ? true : animate),
+			className: (animate == 'alt' ? 'fade-2 '+align : align),
+			animate: (animate == 'alt' ? true : animate),
 		});
 	}
 }

@@ -871,7 +871,7 @@
 
 		<h2 class="notranslate">Modal Alert <span class="badge badge-danger">Custom</span></h2>
 		
-		<p>Launch a custom modal box using <b>BootBox</b> features, the function structure is <code>JSmodalAlert(title, text, size, align, animate)</code>. You can alternatively set a size and alignment classes like <b>horizontal vertical</b> (For example: <code>right center</code>). For animate options you can choose between <b>true</b>, <b>false</b> or <b>'alternative'</b></p>
+		<p>Launch a custom modal box using <b>BootBox</b> features, the function structure is <code>JSmodalAlert(title, text, size, align, animate)</code>. You can alternatively set a size and alignment classes like <b>horizontal vertical</b> (For example: <code>right center</code>). For animate options you can choose between <b>true</b>, <b>false</b> or <b>'alt'</b> for an alternative animation.</p>
 
 		<div class="bs-example">
 			<button type="button" class="btn btn-primary my-1 my-xl-0 mw-100 text-truncate" onclick="JSmodalAlert('Small Size Box','This is a text shown in a modal box','small','center')">Show Alert Small Size (Centered)</button>
@@ -889,7 +889,7 @@
 
 		<h2 class="notranslate">Modal Content <span class="badge badge-danger">Custom</span></h2>
 		
-		<p>Launch a custom modal box using <b>BootBox</b> features, the function shows the content from an element, the structure is <code>JSmodalContent(title, element, size, align, animate)</code>. You can alternatively set a size and alignment classes like <b>horizontal vertical</b> (For example: <code>right center</code>). For animate options you can choose between <b>true</b>, <b>false</b> or <b>'alternative'</b></p>
+		<p>Launch a custom modal box using <b>BootBox</b> features, the function shows the content from an element, the structure is <code>JSmodalContent(title, element, size, align, animate)</code>. You can alternatively set a size and alignment classes like <b>horizontal vertical</b> (For example: <code>right center</code>). For animate options you can choose between <b>true</b>, <b>false</b> or <b>'alt'</b> for an alternative animation.</p>
 
 		<div class="bs-example">
 			<button type="button" class="btn btn-primary my-1 my-xl-0 mw-100 text-truncate" onclick="JSmodalContent('Small Size Box','.JSmodalContentExample','small','center')">Show Content Small Size (Centered)</button>
@@ -910,7 +910,7 @@
 
 		<h2 class="notranslate">Video Launch <span class="badge badge-danger">Custom</span></h2>
 		
-		<p>Launch a modal box using <b>BootBox</b> with a basic video player, the function structure is <code>JSvideoLaunch(title, url, share, autoplay, size, align, animate)</code>. You can alternatively set a size and alignment classes like <b>horizontal vertical</b> (For example: <code>right center</code>). For animate options you can choose between <b>true</b>, <b>false</b> or <b>'alternative'</b></p>
+		<p>Launch a modal box using <b>BootBox</b> with a basic video player, the function structure is <code>JSvideoLaunch(title, url, share, autoplay, size, align, animate)</code>. You can alternatively set a size and alignment classes like <b>horizontal vertical</b> (For example: <code>right center</code>). For animate options you can choose between <b>true</b>, <b>false</b> or <b>'alt'</b> for an alternative animation.</p>
 
 		<div class="bs-example">
 			<button type="button" class="btn btn-primary my-1 my-xl-0 mw-100 text-truncate" onclick="JSvideoLaunch('My YouTube Video','https://www.youtube.com/watch?v=AW3SppO7qfY',true,false,'medium','center')">YouTube Video (Default size + Center Aligned)</button>
@@ -969,7 +969,7 @@
 				</tr>
 				<tr>
 					<td class="text-nowrap notranslate">data-map-modal-animate</td>
-					<td>Alternative to change or disable the modal animation. You can choose between <code>true</code>, <code>false</code> or <code>'alternative'</code></td>
+					<td>Alternative to change or disable the modal animation. You can choose between <code>true</code>, <code>false</code> or <code>'alt'</code> for an alternative animation.</td>
 				</tr>
 			</tbody>
 		</table>
@@ -1025,18 +1025,18 @@
 				</tr>
 				<tr>
 					<td class="text-nowrap notranslate">data-win-modal-animate</td>
-					<td>Alternative to change or disable the modal animation. You can choose between <code>true</code>, <code>false</code> or <code>'alternative'</code></td>
+					<td>Alternative to change or disable the modal animation. You can choose between <code>true</code>, <code>false</code> or <code>'alt'</code> for an alternative animation.</td>
 				</tr>
 			</tbody>
 		</table>
 
 		<div class="bs-example">
-			<button type="button" class="btn btn-primary my-1 my-xl-0 mw-100 text-truncate JSwindowPopup" data-win-url="http://getbootstrap.com/docs/3.3" data-win-size="640x480" data-win-align="center,center" data-win-scroll="yes">Center Center 640 x 480</button>
-			<button type="button" class="btn btn-primary my-1 my-xl-0 mw-100 text-truncate JSwindowPopup" data-win-url="http://getbootstrap.com/docs/3.3" data-win-size="320x480" data-win-align="right,bottom" data-win-scroll="yes">Right Bottom 320 x 480</button>
-			<button type="button" class="btn btn-primary my-1 my-xl-0 mw-100 text-truncate JSwindowPopup" data-win-url="http://getbootstrap.com/docs/3.3" data-win-size="320x480" data-win-align="left,top" data-win-scroll="yes">Left Top 320 x 480</button>
+			<button type="button" class="btn btn-primary my-1 my-xl-0 mw-100 text-truncate JSwindowPopup" data-win-url="http://getbootstrap.com" data-win-size="640x480" data-win-align="center,center" data-win-scroll="yes">Center Center 640 x 480</button>
+			<button type="button" class="btn btn-primary my-1 my-xl-0 mw-100 text-truncate JSwindowPopup" data-win-url="http://getbootstrap.com" data-win-size="320x480" data-win-align="right,bottom" data-win-scroll="yes">Right Bottom 320 x 480</button>
+			<button type="button" class="btn btn-primary my-1 my-xl-0 mw-100 text-truncate JSwindowPopup" data-win-url="http://getbootstrap.com" data-win-size="320x480" data-win-align="left,top" data-win-scroll="yes">Left Top 320 x 480</button>
 		</div>
 		<figure class="highlight">
-			<pre class="prettyprint"><code class="language-html" data-lang="html">&lt;a class="JSwindowPopup" data-win-url="http://getbootstrap.com/docs/3.3" data-win-size="640x480" data-win-align="center,center" data-win-scroll="yes">Click Here&lt;/a&gt;<br>&lt;a class="JSwindowPopup" data-win-url="http://getbootstrap.com/docs/3.3" data-win-size="320x480" data-win-align="right,bottom" data-win-scroll="yes">Click Here&lt;/a&gt;<br>&lt;a class="JSwindowPopup" data-win-url="http://getbootstrap.com/docs/3.3" data-win-size="320x480" data-win-align="left,top" data-win-scroll="yes">Click Here&lt;/a&gt;</code></pre>
+			<pre class="prettyprint"><code class="language-html" data-lang="html">&lt;a class="JSwindowPopup" data-win-url="http://getbootstrap.com" data-win-size="640x480" data-win-align="center,center" data-win-scroll="yes">Click Here&lt;/a&gt;<br>&lt;a class="JSwindowPopup" data-win-url="http://getbootstrap.com" data-win-size="320x480" data-win-align="right,bottom" data-win-scroll="yes">Click Here&lt;/a&gt;<br>&lt;a class="JSwindowPopup" data-win-url="http://getbootstrap.com" data-win-size="320x480" data-win-align="left,top" data-win-scroll="yes">Click Here&lt;/a&gt;</code></pre>
 		</figure>
 				
 		<!-- Window Popup -->
