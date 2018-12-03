@@ -1668,18 +1668,18 @@ function JSmapLaunch(element)
 	var mapLaunchUrl1 = JSisMobile ? 'https://maps.google.com/maps?q='+mapCoords1[0]+','+mapCoords1[1]+','+mapCoords1[2]+'z' : 
 										   'https://www.google.com/maps/search/'+mapAddressUrl+'/@'+mapCoords1[0]+','+mapCoords1[1]+','+mapCoords1[2]+'z';
 	var mapLaunchUrl2 = JSisMobile ? 'waze://?ll='+mapCoords2[0]+','+mapCoords2[1]+'&navigate=yes' : 
-										   'https://www.waze.com/livemap?zoom='+mapCoords2[2]+'&lat='+mapCoords2[0]+'&lon='+mapCoords2[1];
-	
+										   'https://www.waze.com/ul?zoom='+mapCoords2[2]+'&ll='+mapCoords2[1]+','+mapCoords2[0]+'&navigate=yes';
+
 	if(mapIframe === undefined || mapIframe === null || mapIframe == ''){  // Check value
 		mapIframe = false;
 	}
 	
 	mapContentStyle1 = '<div class="JSmapLaunchInfo">'+
 						'	<span class="badge badge-primary mb-2">'+mapText+'</span>'+
-						'	<div class="JSmapLaunchIcons">'+
+						'	<span class="d-inline-block w-100 JSmapLaunchIcons1">'+
 						'		<a class="JSmapLaunchGMaps" href="'+mapLaunchUrl1+'" target="_blank"></a><a class="JSmapLaunchWaze" href="'+mapLaunchUrl2+'" target="_blank"></a>'+
-						'	</div>'+
-						'	<div class="card card-header p-2 mb-0 mt-2">'+mapAddress+'</div>'+
+						'	</span>'+
+						'	<div class="card card-header p-2 mb-0 mt-3">'+mapAddress+'</div>'+
 						'</div>';
 	
 	mapContentStyle2 = '<div class="JSmapLaunchInfo">'+
@@ -1688,9 +1688,9 @@ function JSmapLaunch(element)
 						'		<iframe class="embed-responsive-item" src="https://maps.google.com/maps?q='+mapAddressUrl+'&z='+mapCoords1[2]+'&output=embed" frameborder="0" allowfullscreen></iframe>'+
 						'	</div>'+
 						'	<span class="badge badge-primary mb-2">'+mapText+'</span>'+
-						'	<div class="JSmapLaunchIcons small">'+
+						'	<span class="d-inline-block w-100 JSmapLaunchIcons2">'+
 						'		<a class="JSmapLaunchGMaps" href="'+mapLaunchUrl1+'" target="_blank"></a><a class="JSmapLaunchWaze" href="'+mapLaunchUrl2+'" target="_blank"></a>'+
-						'	</div>'+
+						'	</span>'+
 						'</div>';
 	
 	// Check plugin

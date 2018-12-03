@@ -329,13 +329,8 @@ div.dataTables_wrapper div.dataTables_paginate ul.pagination {
 	padding: 10px;
 	font-style: italic;
 }
-.JSmapLaunchInfo > .JSmapLaunchIcons {
-	display: inline-block;
-	width: 100%;
-	height: auto;
-}
-.JSmapLaunchInfo > .JSmapLaunchIcons .JSmapLaunchGMaps,
-.JSmapLaunchInfo > .JSmapLaunchIcons .JSmapLaunchWaze {
+.JSmapLaunchInfo .JSmapLaunchGMaps,
+.JSmapLaunchInfo .JSmapLaunchWaze {
 	background-position: center center;
 	background-repeat: no-repeat;
 	background-size: contain;
@@ -345,19 +340,19 @@ div.dataTables_wrapper div.dataTables_paginate ul.pagination {
 	margin: 0px 3px;
 	display: inline-block;
 }
-.JSmapLaunchInfo > .JSmapLaunchIcons .JSmapLaunchGMaps {
+.JSmapLaunchInfo .JSmapLaunchGMaps {
 	background-image: url("../img/base/maplaunch/google-maps.svg");
 }
-.JSmapLaunchInfo > .JSmapLaunchIcons .JSmapLaunchWaze {
+.JSmapLaunchInfo  .JSmapLaunchWaze {
 	background-image: url("../img/base/maplaunch/waze.svg");
 	height: 80px;
 }
-.JSmapLaunchInfo > .JSmapLaunchIcons.small .JSmapLaunchGMaps,
-.JSmapLaunchInfo > .JSmapLaunchIcons.small .JSmapLaunchWaze{
+.JSmapLaunchInfo .JSmapLaunchIcons2 .JSmapLaunchGMaps,
+.JSmapLaunchInfo .JSmapLaunchIcons2 .JSmapLaunchWaze{
 	width: 55px;
 	height: 55px;
 }
-.JSmapLaunchInfo > .JSmapLaunchIcons.small .JSmapLaunchWaze {
+.JSmapLaunchInfo .JSmapLaunchIcons2 .JSmapLaunchWaze {
 	height: 50px;
 }
 /* JS Map Launch */

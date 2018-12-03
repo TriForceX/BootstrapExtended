@@ -2,7 +2,7 @@
 
 <!-- ================================================= NAV MENU ================================================= -->
 
-<nav class="navbar navbar-expand-md navbar-dark bg-dark sticky-top">
+<nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
 	<div class="container">
 		<!-- NAVBAR CONTAINER -->
 		
