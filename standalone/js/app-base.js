@@ -1884,6 +1884,29 @@ function JSmasonry(element)
 	}
 }
 
+// Remove accents on strings
+function JSremoveAccents(string)
+{
+	return string.replace(/[áÁàÀâÂäÄãÃåÅæÆ]/g, 'a')
+				.replace(/[çÇ]/g, 'c')
+				.replace(/[éÉèÈêÊëË]/g, 'e')
+				.replace(/[íÍìÌîÎïÏîĩĨĬĭ]/g, 'i')
+				.replace(/[ñÑ]/g, 'n')
+				.replace(/[óÓòÒôÔöÖœŒ]/g, 'o')
+				.replace(/[ß]/g, 's')
+				.replace(/[úÚùÙûÛüÜ]/g, 'u')
+				.replace(/[ýÝŷŶŸÿ]/g, 'n')
+				.replace(/[áÁàÀâÂäÄãÃåÅæÆ]/g, 'a')
+				.replace(/[çÇ]/g, 'c')
+				.replace(/[éÉèÈêÊëË]/g, 'e')
+				.replace(/[íÍìÌîÎïÏîĩĨĬĭ]/g, 'i')
+				.replace(/[ñÑ]/g, 'n')
+				.replace(/[óÓòÒôÔöÖœŒ]/g, 'o')
+				.replace(/[ß]/g, 's')
+				.replace(/[úÚùÙûÛüÜ]/g, 'u')
+				.replace(/[ýÝŷŶŸÿ]/g, 'n');
+}
+
 // Main Initialization
 function JSmainInit()
 {
@@ -1922,6 +1945,21 @@ function JSmainInit()
 	// Check plugin
 	if($.fn.dataTable !== 'undefined' || $.fn.DataTable !== 'undefined')
 	{
+		// Apply replacements on search string
+		$.fn.DataTable.ext.type.search.string = function(data){
+			return !data ? '' : typeof data === 'string' ? JSremoveAccents(data) : data;
+		};
+		
+		// Apply replacements on html string
+		$.fn.DataTable.ext.type.search.html = function(data){
+			return !data ? '' : typeof data === 'string' ? JSremoveAccents(data.replace( /<.*?>/g, '' )) : data;
+		};
+		
+		// Remove accented character from search input as well
+		$(document).on('keyup', '.dataTables_filter input[type=search]', function(e){
+			$(this).val(JSremoveAccents($(this).val()));
+		});
+		
 		// Applu Data Tables
 		$('.JSdataTables').each(function(){
 			$(this).dataTable().fnDestroy();
