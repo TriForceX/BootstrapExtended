@@ -25,39 +25,32 @@
 	
 	<!-- ******** HEADER RESOURCES ******** -->
 	
-	<!-- Nav Tab & App Icons -->
+	<!-- Apple Touch Icon -->
 	<link href="{{ url('assets/img/base/favicon/apple.png') }}" rel="apple-touch-icon">
-	<link href="{{ url('assets/img/base/favicon/global.png') }}" rel="shortcut icon">
+	<!-- Favicon -->
+	<link href="{{ url('assets/img/base/favicon/global.png') }}" rel="icon">
+	<!-- Bootstrap -->
+	<link href="{{ url('assets/resources/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
+	<!-- Data Tables Bootstrap -->
+	<link href="{{ url('assets/resources/datatables/css/dataTables.bootstrap4.min.css') }}" rel="stylesheet">
+	<!-- Tempus Dominus -->
+	<link href="{{ url('assets/resources/tempusdominus/css/tempusdominus-bootstrap-4.min.css') }}" rel="stylesheet">
 	<!-- jQuery UI -->
 	<link href="{{ url('assets/resources/jquery-ui/css/jquery-ui.min.css') }}" rel="stylesheet">
 	<link href="{{ url('assets/resources/jquery-ui/css/jquery-ui.structure.min.css') }}" rel="stylesheet">
 	<link href="{{ url('assets/resources/jquery-ui/css/jquery-ui.theme.min.css') }}" rel="stylesheet">
-	<!-- Bootstrap Core -->
-	<link href="{{ url('assets/resources/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
-	<!-- Bootstrap Theme -->
-	<!-- <link href="{{ url('assets/resources/bootstrap/css/bootstrap-theme.min.css') }}" rel="stylesheet"> -->
-	<!-- Bootstrap Data Tables -->
-	<link href="{{ url('assets/resources/datatables/css/dataTables.bootstrap.min.css') }}" rel="stylesheet">
-	<!-- Bootstrap Date Picker -->
-	<link href="{{ url('assets/resources/bootstrap-datepicker/css/bootstrap-datepicker3.min.css') }}" rel="stylesheet">
-	<!-- Bootstrap Time Picker -->
-	<link href="{{ url('assets/resources/bootstrap-timepicker/css/bootstrap-timepicker.min.css') }}" rel="stylesheet">
-	<!-- LightGallery Lightbox -->
+	<!-- LightGallery -->
 	<link href="{{ url('assets/resources/lightgallery/css/lightgallery.min.css') }}" rel="stylesheet">
 	<link href="{{ url('assets/resources/lightgallery/css/lg-transitions.min.css') }}" rel="stylesheet">
 	<link href="{{ url('assets/resources/lightgallery/css/lg-fb-comment-box.min.css') }}" rel="stylesheet">
     <!-- Hover CSS -->
 	<link href="{{ url('assets/resources/hover/css/hover.min.css') }}" rel="stylesheet">
 	<!-- Font Awesome -->
-	<link href="{{ url('assets/resources/font-awesome/css/all.css') }}" rel="stylesheet">
+	<link href="{{ url('assets/resources/fontawesome/css/all.min.css') }}" rel="stylesheet">
+	<!-- Check Old Browser -->
+	<script src="{{ url('assets/js/app-browser.js') }}"></script>
 	<!-- Main CSS File -->
     <link href="{{ url('assets/css/all.css') }}" rel="stylesheet">
-	<!-- IE8 support of HTML5 elements and media queries -->
-	<!--[if lt IE 9]>
-	<script src="{{ url('assets/resources/html5shiv/js/html5shiv.min.js') }}"></script>
-	<script src="{{ url('assets/resources/respond/js/respond.min.js') }}"></script>
-	<script src="{{ url('assets/resources/rem/js/rem.js') }}"></script>
-	<![endif]-->
 	
 	<!-- ******** HEADER RESOURCES ******** -->
     
@@ -114,33 +107,29 @@
 <script src="{{ url('assets/resources/jquery-fullscreen/js/jquery.fullscreen.min.js') }}"></script>
 <!-- jQuery Rotate -->
 <script src="{{ url('assets/resources/jquery-rotate/js/jQueryRotate.js') }}"></script>
+<!-- Popper -->
+<script src="{{ url('assets/resources/popper/js/popper.js') }}"></script>
+<!-- Bootstrap -->
+<script src="{{ url('assets/resources/bootstrap/js/bootstrap.min.js') }}"></script>
 <!-- Touch Swipe -->
 <script src="{{ url('assets/resources/touchswipe/js/jquery.touchSwipe.min.js') }}"></script>
-<!-- Bootstrap 3 -->
-<script src="{{ url('assets/resources/bootstrap/js/bootstrap.min.js') }}"></script>
-<!-- Bootbox Modals -->
+<!-- Bootbox -->
 <script src="{{ url('assets/resources/bootbox/js/bootbox.min.js') }}"></script>
-<!-- Holder JS -->
-<!--[if gt IE 8]><!-- -->
+<!-- Holder -->
 <script src="{{ url('assets/resources/holder/js/holder.min.js') }}"></script>
-<!--<![endif]-->
-<!-- Bootstrap Data Tables -->
+<!-- Data Tables -->
 <script src="{{ url('assets/resources/datatables/js/jquery.dataTables.min.js') }}"></script>
-<script src="{{ url('assets/resources/datatables/js/dataTables.bootstrap.min.js') }}"></script>
-<!-- Bootstrap Date Picker -->
-<script src="{{ url('assets/resources/bootstrap-datepicker/js/bootstrap-datepicker.min.js') }}"></script>
-<!-- Bootstrap Time Picker -->
-<script src="{{ url('assets/resources/bootstrap-timepicker/js/bootstrap-timepicker.min.js') }}"></script>
-<!-- imgLiquid -->
-<script src="{{ url('assets/resources/imgliquid/js/imgliquid.min.js') }}"></script>
-<!-- LightGallery Lightbox -->
-<!--[if lt IE 9]>
-<script src="{{ url('assets/resources/lightgallery/js/lightgallery.js') }}"></script>
-<![endif]-->
-<!--[if gt IE 8]><!-- -->
+<!-- Data Tables Bootstrap -->
+<script src="{{ url('assets/resources/datatables/js/dataTables.bootstrap4.min.js') }}"></script>
+<!-- Moment -->
+<script src="{{ url('assets/resources/moment/js/moment.min.js') }}"></script>
+<!-- Moment Locales -->
+<script src="{{ url('assets/resources/moment/js/locales.min.js') }}"></script>
+<!-- Tempus Dominus -->
+<script src="{{ url('assets/resources/tempusdominus/js/tempusdominus-bootstrap-4.min.js') }}"></script>
+<!-- LightGallery -->
 <script src="{{ url('assets/resources/lightgallery/js/lightgallery-all.min.js') }}"></script>
-<!--<![endif]-->
-<!-- Clipboard JS -->
+<!-- Clipboard -->
 <script src="{{ url('assets/resources/clipboard/js/clipboard.min.js') }}"></script>
 <!-- Masonry -->
 <script src="{{ url('assets/resources/masonry/js/masonry.pkgd.min.js') }}"></script>

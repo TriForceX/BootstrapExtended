@@ -1,21 +1,5 @@
 /* ================================================= EXAMPLE FUNCTIONS ================================================= */
 
-// Example form validate custom function
-function JSvalidateCustom(field)
-{
-	// Console Log
-	JSconsole('Example Validate Custom');
-	
-	if(field === 'Custom')
-	{
-		return true;
-	}
-	else
-	{
-		return false;
-	}
-}
-
 // Example Plain HTML Gallery Parser
 function JSparseHtmlGallery(page)
 {
@@ -26,12 +10,12 @@ function JSparseHtmlGallery(page)
 		$('.JSlightGalleryMode').data('lg-page-current', page);
 	}
 	
-	var gallery_elem = $('.JSlightGalleryMode .col-md-3');
+	var gallery_group = 5;
+	var gallery_elem = $('.JSlightGalleryMode .col-12');
 	var gallery_page = parseInt($('.JSlightGalleryMode').data('lg-page-current'));
 	var gallery_total = parseInt($('.JSlightGalleryMode').data('lg-page-total'));
 	var gallery_prev = gallery_page <= 1 ? 1 : (gallery_page-1);
 	var gallery_next = gallery_page >= gallery_total ? gallery_total : (gallery_page+1);
-	var gallery_group = 4;
 	var gallery_group_prev = gallery_page <= 1 ? 0 : ((gallery_group * gallery_page) - gallery_group);
 	var gallery_group_next = gallery_page <= 1 ? gallery_group : (gallery_group * gallery_page);
 	
@@ -57,14 +41,14 @@ function JSparseHtmlGallery(page)
 
 			if(num == 1)
 			{
-				$('.pagination').eq(0).append('<li><a href="?page='+gallery_prev+'" class="prev"><span aria-hidden="true">&laquo;</span></a></li>');
+				$('.pagination').eq(0).append('<li class="page-item"><a class="page-link prev" href="?page='+gallery_prev+'" class="prev"><span aria-hidden="true">&laquo;</span></a></li>');
 			}
 
-			$('.pagination').eq(0).append('<li class="'+active+'"><a href="?page='+num+'">'+num+'</a></li>');
+			$('.pagination').eq(0).append('<li class="page-item '+active+'"><a class="page-link" href="?page='+num+'">'+num+'</a></li>');
 
 			if(num == gallery_total)
 			{
-				$('.pagination').eq(0).append('<li><a href="?page='+gallery_next+'" class="next"><span aria-hidden="true">&raquo;</span></a></li>');
+				$('.pagination').eq(0).append('<li class="page-item"><a class="page-link next" href="?page='+gallery_next+'" class="next"><span aria-hidden="true">&raquo;</span></a></li>');
 			}
 		}
 	}
@@ -84,7 +68,7 @@ function JSgoogleTranslateStyles()
 				'.goog-te-ftab *,'+
 				'.goog-te-menu *,'+
 				'.goog-te-menu2 *,'+
-				'.goog-te-balloon *{'+
+				'.goog-te-balloon * {'+
 				'	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif !important;'+
 				'	font-size: 12px !important;'+
 				'}'+
@@ -147,7 +131,7 @@ $(document).ready(function(){
 	// Example auto scroll to gallery page 2 & 3
 	if(JSgetGallery)
 	{
-		JSautoScroll('.JSlightGalleryExample', true, 70);
+		JSautoScroll('.JSlightGalleryScroll', true, 70);
 	}
 	
 	// Example Plain HTML Gallery Parser
@@ -157,12 +141,24 @@ $(document).ready(function(){
 	$('.JSformExample').JSvalidateForm({
 		noValidate: '#example-input-lastname',
 		hasConfirm: true,
-		customValidate: ['JSvalidateCustom', '#example-input-custom', 'Please fill the Custom Field.'],
 		resetSubmit: true,
 		errorStyling: true,
+		errorScroll: true,
+		errorModal: true,
 		modalSize: 'medium',
 		modalAlign: 'top',
 		modalAnimate: true,
+		customValidate: function(result){
+			// Custom function
+			if($('#example-input-custom').val() != 'Custom') 
+			{
+				// Send error
+				result = {'element'	: $('#example-input-custom'), 
+						  'error'	: 'Please type "Custom" (without quotes).'};
+			}
+			// Return result
+			return result;
+		},
 	});
 	
 	// Example prevent title translation by Google

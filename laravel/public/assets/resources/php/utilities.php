@@ -14,6 +14,38 @@ namespace utilities;
 
 class php
 {
+	// Error handle
+	public static function debug()
+    {
+		// Main data
+		global $websitebase;
+		
+		if($websitebase['debug'])
+		{
+			if($websitebase['debug'] === 'handle')
+			{
+				ob_start(
+					function()
+					{
+						$error = error_get_last();
+						$output = null;
+						foreach ($error as $info => $string)
+						{
+							$output .= '<tr><td>'.$info.'</td><td>'.$string.'</td>';
+						}
+						return '<table border="1">'.$output.'</table>';
+					}
+				);
+			}
+			else
+			{
+				ini_set('display_errors', 1);
+				ini_set('display_startup_errors', 1);
+				error_reporting(E_ALL);
+			}
+		}
+	}
+	
 	// Main header data
 	public static function get_html_data($type)
     {
@@ -188,7 +220,8 @@ class php
  * Source:   https://github.com/triforcex/websitebase
  * 
  */';
-		$local = str_replace('resources/php', '', dirname( __FILE__ ));
+		$path = str_replace(array('/', '\\'), DIRECTORY_SEPARATOR, 'resources/php');
+		$local = str_replace($path, '', dirname( __FILE__ ));
 		$final = $type == 'css' ? 'style.css' : 'app.js';
 		$buffer = null;
 		
@@ -273,14 +306,10 @@ class php
 		// Main data
 		global $websitebase;
 		
-		$local = str_replace('resources/php', '', dirname( __FILE__ ));
-		$final = $type == 'css' ? 'style.css' : 'app.js';
 		$url = $websitebase['assets_url'];
-		
 		$minify = $websitebase['minify'];
 		$mix = $websitebase['mix'];
-		
-		$compare = true;
+		$final = $type == 'css' ? 'style.css' : 'app.js';
 		
 		if(self::is_localhost())
 		{
@@ -509,11 +538,17 @@ class php
 	// Returns main domain also if is in a folder
 	public static function get_main_url($remove = null)
     {
+		// Main data
+		global $websitebase;
+		
 		$protocol = self::is_https() ? 'https://' : 'http://';
 		$domain = $protocol.$_SERVER['SERVER_NAME'].dirname($_SERVER['PHP_SELF']);
 		
 		if($remove != null){
 			$domain = str_replace($remove,'',$domain);
+		}
+		if($websitebase['custom_main_url'] != false){
+			$domain = $websitebase['custom_main_url'];
 		}
 		return rtrim($domain, '/');
     }
@@ -782,22 +817,22 @@ class php
 	}
 	
 	// Get video embed url
-	public static function get_embed_video($url,$autoplay = false)
+	public static function get_embed_video($url, $autoplay = false)
 	{
 		$videoCode = '';
 		$videoURL = '';
-		$videoAutplay = $autoplay === true ? 1 : 0;
+		$videoAutoPlay = $autoplay === true ? 1 : 0;
 
 		if(self::str_contains($url,'youtube')){
 			preg_match('/^.*((youtu.be\/)|(v\/)|(\/u\/\w\/)|(embed\/)|(watch\?))\??v?=?([^#\&\?]*).*/', $url, $videoCode);
-			$videoURL = 'https://www.youtube.com/embed/'.$videoCode[7].'?rel=0&autoplay='.$videoAutplay;
+			$videoURL = 'https://www.youtube.com/embed/'.$videoCode[7].'?rel=0&autoplay='.$videoAutoPlay;
 		}
 		elseif(self::str_contains($url,'vimeo')){
 			preg_match('/^.*(vimeo\.com\/)((channels\/[A-z]+\/)|(groups\/[A-z]+\/videos\/))?([0-9]+)/', $url, $videoCode);
-			$videoURL = 'https://player.vimeo.com/video/'.$videoCode[5].'?autoplay='.$videoAutplay;
+			$videoURL = 'https://player.vimeo.com/video/'.$videoCode[5].'?autoplay='.$videoAutoPlay;
 		}
 		elseif(self::str_contains($url,'facebook')){
-			$videoURL = 'https://www.facebook.com/plugins/video.php?href='.$url.'&show_text=0&autoplay='.$videoAutplay;
+			$videoURL = 'https://www.facebook.com/plugins/video.php?href='.urlencode($url).'&show_text=0&mute=0&autoplay='.$videoAutoPlay;
 		}
 		return $videoURL;
 	}
