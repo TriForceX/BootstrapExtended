@@ -22,33 +22,29 @@
 <script src="<?php echo get_bloginfo('template_url'); ?>/resources/jquery-fullscreen/js/jquery.fullscreen.min.js"></script>
 <!-- jQuery Rotate -->
 <script src="<?php echo get_bloginfo('template_url'); ?>/resources/jquery-rotate/js/jQueryRotate.js"></script>
+<!-- Popper -->
+<script src="<?php echo get_bloginfo('template_url'); ?>/resources/popper/js/popper.js"></script>
+<!-- Bootstrap -->
+<script src="<?php echo get_bloginfo('template_url'); ?>/resources/bootstrap/js/bootstrap.min.js"></script>
 <!-- Touch Swipe -->
 <script src="<?php echo get_bloginfo('template_url'); ?>/resources/touchswipe/js/jquery.touchSwipe.min.js"></script>
-<!-- Bootstrap 3 -->
-<script src="<?php echo get_bloginfo('template_url'); ?>/resources/bootstrap/js/bootstrap.min.js"></script>
-<!-- Bootbox Modals -->
+<!-- Bootbox -->
 <script src="<?php echo get_bloginfo('template_url'); ?>/resources/bootbox/js/bootbox.min.js"></script>
-<!-- Holder JS -->
-<!--[if gt IE 8]><!-- -->
+<!-- Holder -->
 <script src="<?php echo get_bloginfo('template_url'); ?>/resources/holder/js/holder.min.js"></script>
-<!--<![endif]-->
-<!-- Bootstrap Data Tables -->
+<!-- Data Tables -->
 <script src="<?php echo get_bloginfo('template_url'); ?>/resources/datatables/js/jquery.dataTables.min.js"></script>
-<script src="<?php echo get_bloginfo('template_url'); ?>/resources/datatables/js/dataTables.bootstrap.min.js"></script>
-<!-- Bootstrap Date Picker -->
-<script src="<?php echo get_bloginfo('template_url'); ?>/resources/bootstrap-datepicker/js/bootstrap-datepicker.min.js"></script>
-<!-- Bootstrap Time Picker -->
-<script src="<?php echo get_bloginfo('template_url'); ?>/resources/bootstrap-timepicker/js/bootstrap-timepicker.min.js"></script>
-<!-- imgLiquid -->
-<script src="<?php echo get_bloginfo('template_url'); ?>/resources/imgliquid/js/imgliquid.min.js"></script>
-<!-- LightGallery Lightbox -->
-<!--[if lt IE 9]>
-<script src="<?php echo get_bloginfo('template_url'); ?>/resources/lightgallery/js/lightgallery.js"></script>
-<![endif]-->
-<!--[if gt IE 8]><!-- -->
+<!-- Data Tables Bootstrap -->
+<script src="<?php echo get_bloginfo('template_url'); ?>/resources/datatables/js/dataTables.bootstrap4.min.js"></script>
+<!-- Moment -->
+<script src="<?php echo get_bloginfo('template_url'); ?>/resources/moment/js/moment.min.js"></script>
+<!-- Moment Locales -->
+<script src="<?php echo get_bloginfo('template_url'); ?>/resources/moment/js/locales.min.js"></script>
+<!-- Tempus Dominus -->
+<script src="<?php echo get_bloginfo('template_url'); ?>/resources/tempusdominus/js/tempusdominus-bootstrap-4.min.js"></script>
+<!-- LightGallery -->
 <script src="<?php echo get_bloginfo('template_url'); ?>/resources/lightgallery/js/lightgallery-all.min.js"></script>
-<!--<![endif]-->
-<!-- Clipboard JS -->
+<!-- Clipboard -->
 <script src="<?php echo get_bloginfo('template_url'); ?>/resources/clipboard/js/clipboard.min.js"></script>
 <!-- Masonry -->
 <script src="<?php echo get_bloginfo('template_url'); ?>/resources/masonry/js/masonry.pkgd.min.js"></script>

@@ -16,6 +16,7 @@ class php extends utilities\php { }
 
 // Set main Website Base data fields
 $websitebase = array(
+	'debug'				=> false,
 	'lang' 				=> get_bloginfo('language'),
 	'charset' 			=> get_option('blog_charset'),
 	'title' 			=> get_option('blogname'),
@@ -27,6 +28,7 @@ $websitebase = array(
 	'nav-color' 		=> get_option('blognavcolor'),
 	'nav-color-apple' 	=> get_option('blognavcolorapple'),
 	'timezone' 			=> get_option('timezone_string'),
+	'custom_main_url'	=> false,
 	'assets_url'		=> get_bloginfo('template_url'),
 	'rebuild_pass'		=> 'mypassword',
 	'minify'			=> true,
@@ -45,6 +47,12 @@ $websitebase = array(
 								 /*'$color-custom-3'	=> '#FFFFFF',*/),
 );
 
+// Set default timezone if not exist
+if(!ini_get('date.timezone'))
+{
+	date_default_timezone_set('GMT');
+}
+
 // Rebuild CSS & JS redirect clean
 if(isset($_GET['rebuild']) && $_GET['rebuild'] == $websitebase['rebuild_pass'])
 {
@@ -59,6 +67,9 @@ if(isset($_GET['lastbuild']))
 {
 	header('Location: '.get_bloginfo('url'));
 }
+
+// Check error warnings
+php::debug();
 
 /*
  * Wordpress Base Stuff

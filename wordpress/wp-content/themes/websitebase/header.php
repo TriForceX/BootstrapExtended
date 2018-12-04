@@ -25,39 +25,32 @@
 	
 	<!-- ******** HEADER RESOURCES ******** -->
 	
-	<!-- Nav Tab & App Icons -->
+	<!-- Apple Touch Icon -->
 	<link href="<?php echo get_bloginfo('template_url'); ?>/img/base/favicon/apple.png" rel="apple-touch-icon">
-	<link href="<?php echo get_bloginfo('template_url'); ?>/img/base/favicon/global.png" rel="shortcut icon">
+	<!-- Favicon -->
+	<link href="<?php echo get_bloginfo('template_url'); ?>/img/base/favicon/global.png" rel="icon">
+	<!-- Bootstrap -->
+	<link href="<?php echo get_bloginfo('template_url'); ?>/resources/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+	<!-- Data Tables Bootstrap -->
+	<link href="<?php echo get_bloginfo('template_url'); ?>/resources/datatables/css/dataTables.bootstrap4.min.css" rel="stylesheet">
+	<!-- Tempus Dominus -->
+	<link href="<?php echo get_bloginfo('template_url'); ?>/resources/tempusdominus/css/tempusdominus-bootstrap-4.min.css" rel="stylesheet">
 	<!-- jQuery UI -->
 	<link href="<?php echo get_bloginfo('template_url'); ?>/resources/jquery-ui/css/jquery-ui.min.css" rel="stylesheet">
 	<link href="<?php echo get_bloginfo('template_url'); ?>/resources/jquery-ui/css/jquery-ui.structure.min.css" rel="stylesheet">
 	<link href="<?php echo get_bloginfo('template_url'); ?>/resources/jquery-ui/css/jquery-ui.theme.min.css" rel="stylesheet">
-	<!-- Bootstrap Core -->
-	<link href="<?php echo get_bloginfo('template_url'); ?>/resources/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-	<!-- Bootstrap Theme -->
-	<!-- <link href="<?php echo get_bloginfo('template_url'); ?>/resources/bootstrap/css/bootstrap-theme.min.css" rel="stylesheet"> -->
-	<!-- Bootstrap Data Tables -->
-	<link href="<?php echo get_bloginfo('template_url'); ?>/resources/datatables/css/dataTables.bootstrap.min.css" rel="stylesheet">
-	<!-- Bootstrap Date Picker -->
-	<link href="<?php echo get_bloginfo('template_url'); ?>/resources/bootstrap-datepicker/css/bootstrap-datepicker3.min.css" rel="stylesheet">
-	<!-- Bootstrap Time Picker -->
-	<link href="<?php echo get_bloginfo('template_url'); ?>/resources/bootstrap-timepicker/css/bootstrap-timepicker.min.css" rel="stylesheet">
-	<!-- LightGallery Lightbox -->
+	<!-- LightGallery -->
 	<link href="<?php echo get_bloginfo('template_url'); ?>/resources/lightgallery/css/lightgallery.min.css" rel="stylesheet">
 	<link href="<?php echo get_bloginfo('template_url'); ?>/resources/lightgallery/css/lg-transitions.min.css" rel="stylesheet">
 	<link href="<?php echo get_bloginfo('template_url'); ?>/resources/lightgallery/css/lg-fb-comment-box.min.css" rel="stylesheet">
     <!-- Hover CSS -->
 	<link href="<?php echo get_bloginfo('template_url'); ?>/resources/hover/css/hover.min.css" rel="stylesheet">
 	<!-- Font Awesome -->
-	<link href="<?php echo get_bloginfo('template_url'); ?>/resources/font-awesome/css/all.css" rel="stylesheet">
+	<link href="<?php echo get_bloginfo('template_url'); ?>/resources/fontawesome/css/all.min.css" rel="stylesheet">
+	<!-- Check Old Browser -->
+	<script src="<?php echo get_bloginfo('template_url'); ?>/js/app-browser.js"></script>
 	<!-- Main CSS File -->
 	<?php echo php::get_template('css'); ?>
-	<!-- IE8 support of HTML5 elements and media queries -->
-	<!--[if lt IE 9]>
-	<script src="<?php echo get_bloginfo('template_url'); ?>/resources/html5shiv/js/html5shiv.min.js"></script>
-	<script src="<?php echo get_bloginfo('template_url'); ?>/resources/respond/js/respond.min.js"></script>
-	<script src="<?php echo get_bloginfo('template_url'); ?>/resources/rem/js/rem.js"></script>
-	<![endif]-->
 	
 	<!-- ******** HEADER RESOURCES ******** -->
 	

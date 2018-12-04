@@ -30,6 +30,45 @@ var JSisNav = function(name, version)
 					}
 			  };
 
+// Custom modal box
+var JScustomModal = function(title, text, size, align, className)
+					{
+						var modalSize;
+
+						switch(size){
+							case 'small': modalSize = 'modal-sm'; break;
+							case 'large': modalSize = 'modal-lg'; break;
+							case 'extra-large': modalSize = 'modal-xl'; break;
+							default:  break;
+						}
+
+						var html = '<div class="modal fade '+align+' '+className+'" tabindex="-1" role="dialog" id="JScustomModal">'+
+									'	<div class="modal-dialog '+modalSize+'" role="document">'+
+									'		<div class="modal-content">'+
+									'			<div class="modal-header">'+
+									'				<h5 class="modal-title">'+title+'</h5>'+
+									'				<button type="button" class="close" data-dismiss="modal" aria-label="Ok">'+
+									'					<span aria-hidden="true">&times;</span>'+
+									'				</button>'+
+									'			</div>'+
+									'			<div class="modal-body">'+
+									'				'+text+
+									'			</div>'+
+									'			<div class="modal-footer">'+
+									'				<button type="button" class="btn btn-secondary" data-dismiss="modal">OK</button>'+
+									//'				<button type="button" class="btn btn-primary">Save changes</button>'+
+									'			</div>'+
+									'		</div>'+
+									'	</div>'+
+									'</div>';
+
+						$('body').append(html);
+						$('#JScustomModal').modal('show'); 
+					};
+
+var JSmodalBox = {'alert' : function(options){ JScustomModal(options.title, options.message, options.size, options.className) },
+				  'confirm' : function(options){ JScustomModal(options.title, options.message, options.size, options.className) }};
+
 // IE8 Undefined console fix
 if (!window.console) console = {log: function() {}};
 
@@ -111,270 +150,382 @@ $.fn.JSvalidateForm = function(options)
 	// Console Log
 	JSconsole('[JS Function] Validate Form');
 	
+	// Default settings
 	var settings = $.extend({
 		noValidate		: '',
 		hasConfirm		: false,
 		customValidate	: null,
 		resetSubmit		: true,
 		errorStyling	: true,
+		errorScroll		: false,
+		errorModal		: true,
 		modalSize		: 'medium',
 		modalAlign		: 'top',
 		modalAnimate	: true,
 	}, options);
 	
-	$(this).submit(function(event){ 
-		
-		var size = settings.modalSize;
-		var align = settings.modalAlign;
-		var animate = settings.modalAnimate;
-		
-		if(!size || !size.match(/^(small|medium|large|extra-large)$/)){ // Check value
-			size = 'medium';
-		}
-
-		if(!align || !align.match(/^(top|bottom|left|center|right)$/)){ // Check value
-			align = 'top';
-		}
-
-		if(!animate && animate != false){ //Check value
-			animate = true;
-		}
-		
-		var formError = false;
-		var formConfirmTitle = JSlang('$validate-confirm-title');
-		var formConfirmText = JSlang('$validate-confirm-text');
-		var formErrorTitle = JSlang('$validate-title');
-		var formErrorText = {
-							 'text'		: JSlang('$validate-normal'), 
-							 'number'	: JSlang('$validate-number'), 
-							 'tel'		: JSlang('$validate-tel'), 
-							 'pass'		: JSlang('$validate-pass'), 
-							 'email'	: JSlang('$validate-email'),
-							 'search'	: JSlang('$validate-search'),
-							 'checkbox'	: JSlang('$validate-checkbox'),
-							 'radio'	: JSlang('$validate-radio'),
-							 'textarea'	: JSlang('$validate-textarea'),
-							 'select'	: JSlang('$validate-select'),
-							 'file'		: JSlang('$validate-file'),
-							};
-		
-		var formInputValidation = function(element){
-			switch(element.attr('type')){
-				case 'text':
-					if (!JSvalidateEmpty(element.val())) { 
-						if(settings.errorStyling){ element.parents('.form-group').addClass('has-error').removeClass('has-success'); }
-						formError = formErrorText.text;
-					}
-					else{
-						if(settings.errorStyling){ element.parents('.form-group').removeClass('has-error').addClass('has-success'); }
-					}
-					break;
-				case 'number':
-					if (!JSvalidateEmpty(element.val()) || !JSvalidateNumber(element.val())) { 
-						if(settings.errorStyling){ element.parents('.form-group').addClass('has-error').removeClass('has-success'); }
-						formError = formErrorText.number;
-					}
-					else{
-						if(settings.errorStyling){ element.parents('.form-group').removeClass('has-error').addClass('has-success'); }
-					}
-					break;
-				case 'tel':
-					if (!JSvalidateEmpty(element.val())) { 
-						if(settings.errorStyling){ element.parents('.form-group').addClass('has-error').removeClass('has-success'); }
-						formError = formErrorText.tel;
-					}
-					else{
-						if(settings.errorStyling){ element.parents('.form-group').removeClass('has-error').addClass('has-success'); }
-					}
-					break;
-				case 'email':
-					if (!JSvalidateEmpty(element.val()) || !JSvalidateEmail(element.val())) { 
-						if(settings.errorStyling){ element.parents('.form-group').addClass('has-error').removeClass('has-success'); }
-						formError = formErrorText.email;
-					}
-					else{
-						if(settings.errorStyling){ element.parents('.form-group').removeClass('has-error').addClass('has-success'); }
-					}
-					break;
-				case 'password':
-					if (!JSvalidateEmpty(element.val())) { 
-						if(settings.errorStyling){ element.parents('.form-group').addClass('has-error').removeClass('has-success'); }
-						formError = formErrorText.pass;
-					}
-					else{
-						if(settings.errorStyling){ element.parents('.form-group').removeClass('has-error').addClass('has-success'); }
-					}
-					break;
-				case 'search':
-					if (!JSvalidateEmpty(element.val())) { 
-						if(settings.errorStyling){ element.parents('.form-group').addClass('has-error').removeClass('has-success'); }
-						formError = formErrorText.search;
-					}
-					else{
-						if(settings.errorStyling){ element.parents('.form-group').removeClass('has-error').addClass('has-success'); }
-					}
-					break;
-				case 'file':
-					if (!JSvalidateEmpty(element.val())) { 
-						if(settings.errorStyling){ element.parents('.form-group').addClass('has-error').removeClass('has-success'); }
-						formError = formErrorText.file;
-					}
-					else{
-						if(settings.errorStyling){ element.parents('.form-group').removeClass('has-error').addClass('has-success'); }
-					}
-					break;
-				default: break;
-			}
-		};
-
-		// Select inputs
-		$(this).find('select').not(settings.noValidate).each(function(){
-			if (!JSvalidateEmpty($(this).find('option:selected').attr('value'))) { 
-				if(settings.errorStyling){ $(this).parents('.form-group').addClass('has-error').removeClass('has-success'); }
-				formError = formErrorText.select;
-			}
-			else{
-				if(settings.errorStyling){ $(this).parents('.form-group').removeClass('has-error').addClass('has-success'); }
-			}
-		});
-		
-		// Textarea inputs
-		$(this).find('textarea').not(settings.noValidate).each(function(){
-			if (!JSvalidateEmpty($.trim($(this).val()))) { 
-				if(settings.errorStyling){ $(this).parents('.form-group').addClass('has-error').removeClass('has-success'); }
-				formError = formErrorText.textarea;
-			}
-			else{
-				if(settings.errorStyling){ $(this).parents('.form-group').removeClass('has-error').addClass('has-success'); }
-			}
-		});
-		
-		// Checkbox & radio group inputs
-		$(this).find('[data-group="checkbox"], [data-group="radio"]').not(settings.noValidate).each(function(){
-			var type = $(this).data('group');
-			var item = $(this).find('input[type="'+type+'"]');
-			var check = false;
-		
-			for (var i = item.length -1; i >= 0; i--){
-				if(item.eq(i).is(":checked")){
-					check = true;
-				}
-			}
-			if(!check){
-				if(settings.errorStyling){ item.parents('.form-group').addClass('has-error').removeClass('has-success'); }
-				formError = formErrorText[type];
-			}
-			else{
-				if(settings.errorStyling){ item.parents('.form-group').removeClass('has-error').addClass('has-success'); }
-			}
-		});
-		
-		// Checkbox & radio input addons
-		$(this).find('[data-group="checkbox-addon"], [data-group="radio-addon"]').not(settings.noValidate).each(function(){
-			var type = $(this).data('group').replace(/-addon/g,'');
-			var item = $(this).find('input[type="'+type+'"]');
-			var check = false;
-		
-			for (var i = item.length -1; i >= 0; i--){
-				if(item.eq(i).is(":checked")){
-					check = true;
-				}
-			}
-			if(!check){
-				if(settings.errorStyling){ item.parents('.form-group').addClass('has-error').removeClass('has-success'); }
-				formError = formErrorText[type];
-			}
-			else{
-				$(this).find('input[type="'+type+'"]:checked').parents('.input-group').find('input').each(function(){
-					formInputValidation($(this));
-				});
-			}
-		});
-		
-		// Input validation
-		$(this).find('.form-group').not('[data-group="checkbox-addon"], [data-group="radio-addon"]').find('input').not(settings.noValidate).each(function(){
-			formInputValidation($(this));
-		});
-		
-		// Custom validation
-		if(settings.customValidate !== null){
-			var CVFunction = settings.customValidate[0];
-			var CVInput = settings.customValidate[1];
-			var CVMessage = settings.customValidate[2];
+	// Input scroll
+	var inputScroll = function(element){
+		$('html, body').animate({scrollTop: (element.offset().top - 90)}, 1000);
+	};
+	
+	// Prevent multiple submision
+	var submitted = false;
+	
+	// Fetch all the forms we want to apply custom Bootstrap validation styles to
+	var forms = $.makeArray($(this));
+	
+	// Loop over them and prevent submission
+	Array.prototype.filter.call(forms, function(form){
+		$(form).submit(function(event){ 
 			
-			$(CVInput).each(function(){
-				if (!window[CVFunction]($(this).val())) { 
-					if(settings.errorStyling){ $(this).parents('.form-group').addClass('has-error').removeClass('has-success'); }
-					formError = CVMessage;
+			// Check modal
+			if(settings.errorModal)
+			{
+				$(document).on('hidden.bs.modal', function(){
+					submitted = false;
+				});
+				
+				if(!submitted){
+					submitted = true;
+				}else{
+					return false;
+				}
+			}
+			
+			var size = settings.modalSize;
+			var align = settings.modalAlign;
+			var animate = settings.modalAnimate;
+
+			if(!size || !size.match(/\b(small|medium|large|extra-large)\b/)){ // Check value
+				size = 'medium';
+			}
+
+			if(!align || !align.match(/\b(top|bottom|left|center|right)\b/)){ // Check value
+				align = 'top';
+			}
+
+			if(!animate && animate != false){ //Check value
+				animate = true;
+			}
+
+			var formError = false;
+			var formScroll = false;
+			var formElement = $(form);
+			var formConfirmTitle = JSlang('$validate-confirm-title');
+			var formConfirmText = JSlang('$validate-confirm-text');
+			var formErrorTitle = JSlang('$validate-title');
+			var formErrorText = {
+								 'text'		: JSlang('$validate-normal'), 
+								 'number'	: JSlang('$validate-number'), 
+								 'tel'		: JSlang('$validate-tel'), 
+								 'pass'		: JSlang('$validate-pass'), 
+								 'email'	: JSlang('$validate-email'),
+								 'search'	: JSlang('$validate-search'),
+								 'checkbox'	: JSlang('$validate-checkbox'),
+								 'radio'	: JSlang('$validate-radio'),
+								 'textarea'	: JSlang('$validate-textarea'),
+								 'select'	: JSlang('$validate-select'),
+								 'file'		: JSlang('$validate-file'),
+								};
+			
+			// Submit function
+			var formSubmit = function(){
+				// Submit
+				formElement.unbind('submit').submit();
+				// Reset
+				if(settings.resetSubmit)
+				{
+					if(settings.errorStyling){ formElement.removeClass('was-validated'); }
+					if(settings.errorStyling){ formElement.find('.is-warning').removeClass('is-warning'); }
+					formElement.trigger('reset');
+					formElement.find('input[type="checkbox"]').prop('checked', false).removeAttr('checked').parent().removeClass('active');
+					formElement.find('input[type="radio"]').prop('checked', false).removeAttr('checked').parent().removeClass('active');
+					formElement.find('input[type="file"]').each(function(){
+						var placeholder = $(this).JShasAttr('placeholder') ? $(this).attr('placeholder') : '';
+						$(this).parent().find('.custom-file-label').html(placeholder);
+					});
+				}
+				// Enable
+				formElement.JSvalidateForm({
+					noValidate		: settings.noValidate,
+					hasConfirm		: settings.hasConfirm,
+					customValidate	: settings.customValidate,
+					resetSubmit		: settings.resetSubmit,
+					errorStyling	: settings.errorStyling,
+					errorScroll		: settings.errorScroll,
+					errorModal		: settings.errorModal,
+					modalSize		: settings.modalSize,
+					modalAlign		: settings.modalAlign,
+					modalAnimate	: settings.modalAnimate,
+				});
+			};
+			
+			// Enable validation class
+			if(settings.errorStyling)
+			{
+				formElement.addClass('was-validated');
+			}
+			
+			// Paint input group elements
+			$(this).find('input').not(settings.noValidate).each(function(){
+				JSformPaintInputGroup($(this));
+			});
+			
+			// Check valid elements with required attr
+			if(form.checkValidity() === false)
+			{
+				formError = formErrorText.text;
+			}
+			
+			// Custom validations
+			var formInputValidation = function(element){
+				switch(element.attr('type')){
+					case 'text':
+						if (!JSvalidateEmpty(element.val())) { 
+							if(settings.errorStyling){ element.addClass('is-warning'); }
+							formError = formErrorText.text;
+							formScroll = $(element);
+						}
+						else{
+							if(settings.errorStyling){ element.removeClass('is-warning'); }
+						}
+						break;
+					case 'number':
+						if (!JSvalidateEmpty(element.val()) || !JSvalidateNumber(element.val())) { 
+							if(settings.errorStyling){ element.addClass('is-warning'); }
+							formError = formErrorText.number;
+							formScroll = $(element);
+						}
+						else{
+							if(settings.errorStyling){ element.removeClass('is-warning'); }
+						}
+						break;
+					case 'tel':
+						if (!JSvalidateEmpty(element.val())) { 
+							if(settings.errorStyling){ element.addClass('is-warning'); }
+							formError = formErrorText.tel;
+							formScroll = $(element);
+						}
+						else{
+							if(settings.errorStyling){ element.removeClass('is-warning'); }
+						}
+						break;
+					case 'email':
+						if (!JSvalidateEmpty(element.val()) || !JSvalidateEmail(element.val())) { 
+							if(settings.errorStyling){ element.addClass('is-warning'); }
+							formError = formErrorText.email;
+							formScroll = $(element);
+						}
+						else{
+							if(settings.errorStyling){ element.removeClass('is-warning'); }
+						}
+						break;
+					case 'password':
+						if (!JSvalidateEmpty(element.val())) { 
+							if(settings.errorStyling){ element.addClass('is-warning'); }
+							formError = formErrorText.pass;
+							formScroll = $(element);
+						}
+						else{
+							if(settings.errorStyling){ element.removeClass('is-warning'); }
+						}
+						break;
+					case 'search':
+						if (!JSvalidateEmpty(element.val())) { 
+							if(settings.errorStyling){ element.addClass('is-warning'); }
+							formError = formErrorText.search;
+							formScroll = $(element);
+						}
+						else{
+							if(settings.errorStyling){ element.removeClass('is-warning'); }
+						}
+						break;
+					case 'file':
+						if (!JSvalidateEmpty(element.val())) { 
+							if(settings.errorStyling){ element.addClass('is-warning'); }
+							formError = formErrorText.file;
+							formScroll = $(element);
+						}
+						else{
+							if(settings.errorStyling){ element.removeClass('is-warning'); }
+						}
+						break;
+					default: break;
+				}
+			};
+
+			// Select inputs
+			$(this).find('select').not(settings.noValidate).each(function(){
+				if (!JSvalidateEmpty($(this).find('option:selected').attr('value'))) { 
+					if(settings.errorStyling){ $(this).addClass('is-warning'); }
+					formError = formErrorText.select;
+					formScroll = $(this);
 				}
 				else{
-					if(settings.errorStyling){ $(this).parents('.form-group').removeClass('has-error').addClass('has-success'); }
+					if(settings.errorStyling){ $(this).removeClass('is-warning'); }
 				}
 			});
-		}
-		
-		// Send error
-		if(formError !== false)
-		{
-			// Check plugin
-			if(typeof bootbox !== 'undefined')
-			{
-				// Bootbox alert
-				bootbox.alert({
-					title: formErrorTitle,
-					message: formError,
-					size: size,
-					backdrop: true,
-					className: (animate == 'alternative' ? 'fade-2 '+align : align),
-					animate: (animate == 'alternative' ? true : animate),
-				});
-			}
-			event.preventDefault();
-		}
-		
-		// Check Confirm mode
-		if(settings.hasConfirm && formError === false)
-		{
-			var formElement = $(this);
-			event.preventDefault();
+
+			// Textarea inputs
+			$(this).find('textarea').not(settings.noValidate).each(function(){
+				if (!JSvalidateEmpty($.trim($(this).val()))) { 
+					if(settings.errorStyling){ $(this).addClass('is-warning'); }
+					formError = formErrorText.textarea;
+					formScroll = $(this);
+				}
+				else{
+					if(settings.errorStyling){ $(this).removeClass('is-warning'); }
+				}
+			});
 			
-			// Check plugin
-			if(typeof bootbox !== 'undefined')
+			// Checkbox & radio group inputs
+			$(this).find('.form-group-checkbox, .form-group-radio').not(settings.noValidate).each(function(){
+				var item = $(this).find('input');
+				var type = $(this).find('input').attr('type');
+				var check = false;
+
+				for (var i = item.length -1; i >= 0; i--){
+					if(item.eq(i).is(":checked")){
+						check = true;
+					}
+				}
+				if(!check){
+					item.attr('required','');
+					formError = formErrorText[type];
+					formScroll = $(item);
+				}
+				else{
+					item.removeAttr('required');
+				}
+			});
+
+			// Input validation
+			$(this).find('input').not(settings.noValidate).each(function(){
+				// Load function
+				formInputValidation($(this));
+			});
+			
+			// Custom validation
+			if(settings.customValidate !== null)
 			{
-				// Bootbox alert
-				bootbox.confirm({
-					title: formConfirmTitle,
-					message: formConfirmText,
-					size: size,
-					backdrop: true,
-					className: (animate == 'alternative' ? 'fade-2 '+align : align),
-					animate: (animate == 'alternative' ? true : animate),
-					callback: function(result){
-						if(result){
-							formElement.unbind("submit").submit();
-							if(settings.resetSubmit){
-								formElement.trigger('reset');
-								if(settings.errorStyling){ formElement.find('.form-group').removeClass('has-error'); }
-								if(settings.errorStyling){ formElement.find('.form-group').removeClass('has-warning'); }
-								if(settings.errorStyling){ formElement.find('.form-group').removeClass('has-success'); }
-								formElement.find('input[type="checkbox"]').prop('checked', false).parent().removeClass('active');
-								formElement.find('input[type="radio"]').prop('checked', false).parent().removeClass('active');
-								formElement.find('.form-group input[type="file"]').each(function(){
-									var placeholder = $(this).JShasAttr('placeholder') ? $(this).attr('placeholder') : '';
-									$(this).parent().find('.custom-file-text > span').html(placeholder);
-								});
-							}
-							formElement.JSvalidateForm({
-								noValidate: settings.noValidate,
-								hasConfirm: settings.hasConfirm,
+				if($.type(settings.customValidate()) === 'object')
+				{
+					var customInput = settings.customValidate()['element'];
+					var customError = settings.customValidate()['error'];
+					
+					if(settings.errorStyling){ customInput.addClass('is-warning'); }
+					formError = customError;
+					formScroll = customInput;
+				}
+			}
+			
+			// Send error
+			if(formError !== false)
+			{
+				// Check scroll
+				if(settings.errorScroll)
+				{ 
+					inputScroll(formScroll);
+				}
+				
+				// Check modal
+				if(settings.errorModal)
+				{
+					// Check plugin
+					if(typeof bootbox !== 'undefined')
+					{
+						// Bootbox alert
+						bootbox.alert({
+							title: formErrorTitle,
+							message: formError,
+							size: size,
+							backdrop: true,
+							className: (animate == 'alt' ? 'fade-2 '+align : align),
+							animate: (animate == 'alt' ? true : animate),
+						});
+					}
+				}
+				
+				event.preventDefault();
+				event.stopPropagation();
+			}
+
+			// Check Confirm mode
+			if(formError === false)
+			{
+				event.preventDefault();
+				event.stopPropagation();
+				
+				// Check confirm
+				if(settings.hasConfirm)
+				{
+					// Check modal
+					if(settings.errorModal)
+					{
+						// Check plugin
+						if(typeof bootbox !== 'undefined')
+						{
+							// Bootbox alert
+							bootbox.confirm({
+								title: formConfirmTitle,
+								message: formConfirmText,
+								size: size,
+								backdrop: true,
+								className: (animate == 'alt' ? 'fade-2 '+align : align),
+								animate: (animate == 'alt' ? true : animate),
+								callback: function(result){
+									if(result)
+									{
+										formSubmit();
+									}
+								}
 							});
 						}
 					}
-				});
+					else
+					{
+						// Confirm
+						if(confirm(formConfirmText))
+						{
+							formSubmit();
+						}
+					}
+				}
+				else
+				{
+					formSubmit();
+				}
 			}
-		}
+		});
 	});
 };
+
+// Form paint input group
+function JSformPaintInputGroup(element)
+{
+	if(element.is(':valid'))
+	{
+		if(element.hasClass('is-warning'))
+		{
+			element.parents('.input-group').find('.input-group-text').removeClass('input-group-text-valid');
+			element.parents('.input-group').find('.input-group-text').removeClass('input-group-text-invalid');
+			element.parents('.input-group').find('.input-group-text').addClass('input-group-text-warning');
+		}
+		else
+		{
+			element.parents('.input-group').find('.input-group-text').addClass('input-group-text-valid');
+			element.parents('.input-group').find('.input-group-text').removeClass('input-group-text-invalid');
+			element.parents('.input-group').find('.input-group-text').removeClass('input-group-text-warning');
+		}
+	}
+	else if(element.is(':invalid'))
+	{
+		element.parents('.input-group').find('.input-group-text').removeClass('input-group-text-valid');
+		element.parents('.input-group').find('.input-group-text').addClass('input-group-text-invalid');
+		element.parents('.input-group').find('.input-group-text').removeClass('input-group-text-warning');
+	}
+}
 
 // Form validate email
 function JSvalidateEmail(field)
@@ -475,7 +626,7 @@ function JSresponsiveCode()
 	var bodyHeight = $(window).height();
 	var bodyOrientation = {'landscape'	: bodyWidth > bodyHeight ? true : false,
 					  	   'portrait'	: bodyWidth < bodyHeight ? true : false}; 
-	var bodyScreen = {'xs'	: parseFloat('$screen-xs'), //480,
+	var bodyScreen = {'xs'	: parseFloat('$screen-xs'),	//480,
 					  'sm'	: parseFloat('$screen-sm'), //768,
 					  'md'	: parseFloat('$screen-md'), //992,
 					  'lg'	: parseFloat('$screen-lg'), //1200,
@@ -484,7 +635,7 @@ function JSresponsiveCode()
 	if(bodyWidth)
 	{
 		// Send data to event
-		$(document).trigger("JSresponsiveCode", [bodyWidth, bodyHeight, bodyOrientation, bodyScreen]);
+		$(document).trigger('JSresponsiveCode', [bodyWidth, bodyHeight, bodyOrientation, bodyScreen]);
 	}
 	else
 	{
@@ -492,9 +643,9 @@ function JSresponsiveCode()
 	}
 }
 
-$(window).bind("load", JSresponsiveCode);
-$(window).bind("resize", JSresponsiveCode);
-$(window).bind("orientationchange", JSresponsiveCode);
+$(window).bind('load', JSresponsiveCode);
+$(window).bind('resize', JSresponsiveCode);
+$(window).bind('orientationchange', JSresponsiveCode);
 
 // LightGallery destroy function
 function JSdestroyLightGallery()
@@ -505,9 +656,13 @@ function JSdestroyLightGallery()
 	// Check plugin
 	if(typeof $.fn.lightGallery !== 'undefined')
 	{
-		$('.JSlightGallery').each(function(){ 
-			$(this).off('onBeforeOpen.lg onBeforeSlide.lg onAfterOpen.lg onAfterSlide.lg onCloseAfter.lg').data('lightGallery').destroy(true);
-		}); 
+		// Check hash
+		if(!window.location.hash.substring(1).match(/\b(lg=|slide=)\b/))
+		{
+			$('.JSlightGallery').each(function(){ 
+				$(this).off('onBeforeOpen.lg onBeforeSlide.lg onAfterOpen.lg onAfterSlide.lg onCloseAfter.lg').data('lightGallery').destroy(true);
+			});
+		}
 	}
 }
 // Lightgallery load function
@@ -568,8 +723,8 @@ function JSloadLightGallery()
 				});
 
 				$(this).on('onAfterOpen.lg',function(){
-					var galThumbPrevHTML = '<div><span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span><strong>'+JSlang('$lgtitle-prev-button')+'</strong></div>';
-					var galThumbNextHTML = '<div><span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span><strong>'+JSlang('$lgtitle-next-button')+'</strong></div>';
+					var galThumbPrevHTML = '<div><i class="fas fa-angle-left"></i><strong>'+JSlang('$lgtitle-prev-button')+'</strong></div>';
+					var galThumbNextHTML = '<div><i class="fas fa-angle-right"></i><strong>'+JSlang('$lgtitle-next-button')+'</strong></div>';
 					
 					$('.lg-outer .lg-thumb .lg-thumb-item:first-child').addClass('JSlightGalleryNoBorder').append(galThumbPrevHTML);
 					$('.lg-outer .lg-thumb .lg-thumb-item:last-child').addClass('JSlightGalleryNoBorder').append(galThumbNextHTML);
@@ -577,8 +732,8 @@ function JSloadLightGallery()
 					$('#lg-counter').prepend('<span id="lg-counter-current-new">1</span>');
 					$('#lg-counter').append('<span id="lg-counter-all-new">1</span>');
 
-					$('#lg-counter-all').addClass('hide');
-					$('#lg-counter-current').addClass('hide');
+					$('#lg-counter-all').addClass('d-none');
+					$('#lg-counter-current').addClass('d-none');
 
 					total = parseInt($('#lg-counter-all').html()); 
 					totalSlide = total <= 2 ? 1 : (total - 2);
@@ -721,11 +876,11 @@ function JSloadLightGallery()
 	}
 }
 
-// ImgLiquid auto-fill background function
+// Image background fill function
 function JSimgFill(container)
 {	
 	// Console Log
-	JSconsole('[JS Function] Img Fill');
+	JSconsole('[JS Function] Image Background Fill');
 	
 	var bgData = new Array();
 	var bgVertical;
@@ -734,6 +889,7 @@ function JSimgFill(container)
 	var bgFillSize;
 	
 	bgData = $(container).data('img-fill').split(' ');
+	bgSource = $(container).find('img').attr('src');
 	
 	// Check hotizontal align
 	if(!bgData[0]){ // Check value
@@ -747,31 +903,18 @@ function JSimgFill(container)
 	
 	// Check fill
 	if(!bgData[2]){ // Check value
-		bgData[2] = 'true';
+		bgData[2] = 'cover';
 	}
 	
 	// Set variables
 	bgHorizontal = bgData[0];
 	bgVertical = bgData[1];
-	bgFill = bgData[2].indexOf('%') >= 0 || bgData[2].indexOf('px') >= 0 || bgData[2] === 'contain' ? false : true;
-	bgFillSize = bgData[2].indexOf('%') >= 0 || bgData[2].indexOf('px') >= 0 ? parseFloat(bgData[2].replace(/\x25|px/g, '')) : false;
+	bgFill = bgData[2].indexOf('%') >= 0 || bgData[2].indexOf('px') >= 0 ? (bgData[2] == 100 ? 'cover' : parseFloat(bgData[2].replace(/\x25|px/g, ''))) : bgData[2];
 	
-	// Check plugin
-	if($.fn.imgLiquid !== 'undefined')
-	{
-		// Set changes
-		$(container).imgLiquid({ 
-			horizontalAlign: bgHorizontal,
-			verticalAlign: bgVertical, 
-			fill: bgFill,
-		});
-	}
-	
-	// Set alternative fill
-	if(bgFillSize)
-	{
-		$(container).css('background-size', (bgFillSize == 100 ? 'cover' : bgData[2]));
-	}
+	// Set position and size
+	$(container).css({'background-image'	: 'url('+bgSource+')',
+					  'background-position'	: bgHorizontal+' '+bgVertical,
+					  'background-size'		: bgFill});
 }
 
 // Get element height changes
@@ -795,15 +938,6 @@ function JSelementHeightChange(elm, callback)
 
 		elm.JSelementHeightChangeTimer = setTimeout(run, 200);
 	})();
-	
-	// Usage
-	/*if(JSexist($(".container")))
-	{
-		JSelementHeightChange(".container", function(){
-			console.log('Container height has changed');
-			JSresponsiveCode();
-		});
-	}*/
 }
 
 // Text cut function one line
@@ -841,7 +975,7 @@ function JStextSize(container)
 	$(container).css('font-size','');
 	$(container).each(function (i,box){
 		var width = $(box).width(),
-			html = '<span style="white-space:nowrap"></span>',
+			html = '<span class="text-nowrap"></span>',
 			line = $(box).wrapInner(html).children()[0],
 			n = $(container).css('font-size').replace(/px|em/g,'');
 
@@ -861,11 +995,11 @@ function JSmodalAlert(title, text, size, align, animate)
 	// Console Log
 	JSconsole('[JS Function] Modal Alert');
 	
-	if(!size || !size.match(/^(small|medium|large|extra-large)$/)){ // Check value
+	if(!size || !size.match(/\b(small|medium|large|extra-large)\b/)){ // Check value
 		size = 'medium';
 	}
 	
-	if(!align || !align.match(/^(top|bottom|left|center|right)$/)){ // Check value
+	if(!align || !align.match(/\b(top|bottom|left|center|right)\b/)){ // Check value
 		align = 'top';
 	}
 	
@@ -882,8 +1016,8 @@ function JSmodalAlert(title, text, size, align, animate)
 			message: text,
 			size: size,
 			backdrop: true,
-			className: (animate == 'alternative' ? 'fade-2 '+align : align),
-			animate: (animate == 'alternative' ? true : animate),
+			className: (animate == 'alt' ? 'fade-2 '+align : align),
+			animate: (animate == 'alt' ? true : animate),
 		});
 	}
 }
@@ -894,11 +1028,11 @@ function JSmodalContent(title, element, size, align, animate)
 	// Console Log
 	JSconsole('[JS Function] Modal Content');
 	
-	if(!size || !size.match(/^(small|medium|large|extra-large)$/)){ // Check value
+	if(!size || !size.match(/\b(small|medium|large|extra-large)\b/)){ // Check value
 		size = 'medium';
 	}
 	
-	if(!align || !align.match(/^(top|bottom|left|center|right)$/)){ // Check value
+	if(!align || !align.match(/\b(top|bottom|left|center|right)\b/)){ // Check value
 		align = 'top';
 	}
 	
@@ -915,8 +1049,8 @@ function JSmodalContent(title, element, size, align, animate)
 			message: $(element).html(),
 			size: size,
 			backdrop: true,
-			className: (animate == 'alternative' ? 'fade-2 '+align : align),
-			animate: (animate == 'alternative' ? true : animate),
+			className: (animate == 'alt' ? 'fade-2 '+align : align),
+			animate: (animate == 'alt' ? true : animate),
 		});
 	}
 }
@@ -927,11 +1061,11 @@ function JSmodalAjax(title, url, loading, size, align, animate)
 	// Console Log
 	JSconsole('[JS Function] Modal Ajax');
 	
-	if(!size || !size.match(/^(small|medium|large|extra-large)$/)){ // Check value
+	if(!size || !size.match(/\b(small|medium|large|extra-large)\b/)){ // Check value
 		size = 'medium';
 	}
 	
-	if(!align || !align.match(/^(top|bottom|left|center|right)$/)){ // Check value
+	if(!align || !align.match(/\b(top|bottom|left|center|right)\b/)){ // Check value
 		align = 'top';
 	}
 	
@@ -967,8 +1101,8 @@ function JSmodalAjax(title, url, loading, size, align, animate)
 					message: data,
 					size: size,
 					backdrop: true,
-					className: (animate == 'alternative' ? 'fade-2 '+align : align),
-					animate: (animate == 'alternative' ? true : animate),
+					className: (animate == 'alt' ? 'fade-2 '+align : align),
+					animate: (animate == 'alt' ? true : animate),
 				});
 			}
 			// Remove loading icon
@@ -1026,6 +1160,23 @@ function JSvimeoParser(url)
 	// http://vimeo.com/groups/*/videos/*
 }
 
+// Facebook get ID from URL
+function JSfacebookParser(url)
+{
+	// Console Log
+	JSconsole('[JS Function] Facebook URL Parser');
+	
+    var regExp = /videos\/(\d+)+|v=(\d+)|video_id=(\d+)|vb.\d+\/(\d+)/;
+    var match = url.match(regExp);
+    return match[1] !== undefined ? match[1] : 
+		   match[2] !== undefined ? match[2] : 
+		   match[3] !== undefined ? match[3] : undefined;
+	
+	// https://www.facebook.com/revistapegn/videos/10153713928657635/
+	// https://www.facebook.com/video.php?v=100000000000000
+	// https://www.facebook.com/username/videos/vb.100000724987616/709948045706022/?type=2&theater
+}
+
 // Video launch modal box function
 function JSvideoLaunch(title, url, share, autoplay, size, align, animate)
 {	
@@ -1036,11 +1187,11 @@ function JSvideoLaunch(title, url, share, autoplay, size, align, animate)
 		title = false;
 	}
 	
-	if(!size || !size.match(/^(small|medium|large|extra-large)$/)){ // Check value
+	if(!size || !size.match(/\b(small|medium|large|extra-large)\b/)){ // Check value
 		size = 'medium';
 	}
 	
-	if(!align || !align.match(/^(top|bottom|left|center|right)$/)){ // Check value
+	if(!align || !align.match(/\b(top|bottom|left|center|right)\b/)){ // Check value
 		align = 'top';
 	}
 	
@@ -1063,7 +1214,8 @@ function JSvideoLaunch(title, url, share, autoplay, size, align, animate)
 	var embedShareText = JSlang('$videolaunch-text');
 	var embedAutoPlay = '';
 	
-	if(url.indexOf('youtube') >= 0){
+	if(url.indexOf('youtube') >= 0)
+	{
 		ID = JSyouTubeParser(url);
 		if(autoplay){
 			embedAutoPlay = '&autoplay=1';
@@ -1071,7 +1223,8 @@ function JSvideoLaunch(title, url, share, autoplay, size, align, animate)
 		embedUrl = 'https://www.youtube.com/embed/'+ID+'?rel=0'+embedAutoPlay;
 		embedShare = 'https://youtu.be/'+ID;
 	}
-	else if(url.indexOf('vimeo') >= 0){
+	else if(url.indexOf('vimeo') >= 0)
+	{
 		ID = JSvimeoParser(url);
 		if(autoplay){
 			embedAutoPlay = '?autoplay=1';
@@ -1079,33 +1232,32 @@ function JSvideoLaunch(title, url, share, autoplay, size, align, animate)
 		embedUrl = 'https://player.vimeo.com/video/'+ID+''+embedAutoPlay;
 		embedShare = 'https://vimeo.com/'+ID;
 	}
-	else if(url.indexOf('facebook') >= 0){
-		ID = '';
+	else if(url.indexOf('facebook') >= 0)
+	{
+		// ID = JSfacebookParser(url); // WIP
+		ID = encodeURIComponent(url);
 		if(autoplay){
 			embedAutoPlay = '&autoplay=1';
 		}
-		embedUrl = 'https://www.facebook.com/plugins/video.php?href='+url+'&show_text=0'+embedAutoPlay;
+		// embedUrl = 'https://www.facebook.com/video/embed?video_id='+ID+'&show_text=0'+embedAutoPlay; // WIP
+		embedUrl = 'https://www.facebook.com/plugins/video.php?href='+ID+'&show_text=0&mute=0&'+embedAutoPlay;
 		embedShare = url;
 	}
-	else{ // Only ID will take YouTube as default
-		ID = url;
-		if(autoplay){
-			embedAutoPlay = '&autoplay=1';
-		}
-		embedUrl = 'https://www.youtube.com/embed/'+ID+'?rel=0'+embedAutoPlay;
-		embedShare = 'https://youtu.be/'+ID;
-	}
 	
-	var content = '<div class="JSvideoLaunchIframe embed-responsive embed-responsive-16by9">'+
-			  		'	<iframe class="embed-responsive-item" src="'+embedUrl+'" frameborder="0" allowfullscreen></iframe>'+
+	var content = '<div class="JSvideoLaunchIframe embed-responsive embed-responsive embed-responsive-16by9">'+
+			  		'	<iframe class="embed-responsive-item" src="'+embedUrl+'" frameborder="0" allowTransparency="true" allowFullScreen="true"></iframe>'+
 			  		'</div>';
 	
-	if(share){
-		content = content+'<a class="JSvideoLaunchURL" data-clipboard-action="copy" data-clipboard-target=".JSvideoLaunchCopy">'+
-							'	<div class="JSvideoLaunchButton">'+embedShareTitle+' <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span></div>'+
-							'	<div class="JSvideoLaunchText">'+embedShare+'</div>'+
-							'	<div class="JSvideoLaunchCopy">'+embedShare+'</div>'+
-							'</a>';
+	if(share)
+	{
+		content = content+'<div class="input-group input-group-sm mt-3 JSvideoLaunchURL" data-clipboard-action="copy" data-clipboard-target=".JSvideoLaunchCopy">'+
+							'	<div class="input-group-prepend">'+
+							'		<span class="input-group-text">'+
+							'			'+embedShareTitle+' <i class="ml-2 far fa-copy"></i>'+
+							'		</span>'+
+							'	</div>'+
+							'	<input type="text" class="form-control text-center JSvideoLaunchCopy" value="'+embedShare+'" readonly>'+
+							'</div>';
 	}
 	
 	// Check plugin
@@ -1116,21 +1268,24 @@ function JSvideoLaunch(title, url, share, autoplay, size, align, animate)
 			message: content,
 			size: size,
 			backdrop: true,
-			className: (animate == 'alternative' ? 'fade-2 '+align : align),
-			animate: (animate == 'alternative' ? true : animate),
+			className: (animate == 'alt' ? 'fade-2 '+align : align),
+			animate: (animate == 'alt' ? true : animate),
 		}).on("shown.bs.modal", function(){
 			// Modify facebook src
-			if (url.indexOf('facebook') >= 0){
-				var JSvideoLaunchIframeSRC = $(".JSvideoLaunchIframe iframe").attr("src");
-				var JSvideoLaunchIframeSRCwidth = $(".JSvideoLaunchIframe iframe").width();
-				var JSvideoLaunchIframeSRCheight = $(".JSvideoLaunchIframe iframe").height();
-				$(".JSvideoLaunchIframe iframe").attr("src",JSvideoLaunchIframeSRC+"&width="+JSvideoLaunchIframeSRCwidth+"&height="+JSvideoLaunchIframeSRCheight);
+			if (url.indexOf('facebook') >= 0)
+			{
+				var JSvideoLaunchElem = $('.JSvideoLaunchIframe iframe');
+				var JSvideoLaunchData = {'url' 		: JSvideoLaunchElem.attr('src'),
+										 'width'	: parseInt(JSvideoLaunchElem.width()), 
+										 'height'	: parseInt(JSvideoLaunchElem.height())};
+				
+				JSvideoLaunchElem.attr('src', JSvideoLaunchData['url']+'&width='+JSvideoLaunchData['width']+'&height='+JSvideoLaunchData['height']);
 			}
-		});
+		})
 	}
 
 	// Tooltip load
-	$('.JSvideoLaunchText').tooltip({
+	$('.JSvideoLaunchCopy').tooltip({
 		title: embedShareText,
 		placement: 'bottom',
 		trigger: 'manual',
@@ -1143,7 +1298,7 @@ function JSvideoLaunch(title, url, share, autoplay, size, align, animate)
 		var clipboard = new ClipboardJS('.JSvideoLaunchURL');
 
 		clipboard.on('success', function(){
-			$('.JSvideoLaunchText').tooltip('show');
+			$('.JSvideoLaunchCopy').tooltip('show');
 		});
 
 		clipboard.on('error', function(){
@@ -1217,11 +1372,11 @@ function JSdisabledClick(element, title, message, size, align, animate)
 		message = false;
 	}
 	
-	if(!size || !size.match(/^(small|medium|large|extra-large)$/)){ // Check value
+	if(!size || !size.match(/\b(small|medium|large|extra-large)\b/)){ // Check value
 		size = 'medium';
 	}
 	
-	if(!align || !align.match(/^(top|bottom|left|center|right)$/)){ // Check value
+	if(!align || !align.match(/\b(top|bottom|left|center|right)\b/)){ // Check value
 		align = 'top';
 	}
 	
@@ -1241,8 +1396,8 @@ function JSdisabledClick(element, title, message, size, align, animate)
 					message: message,
 					size: size,
 					backdrop: true,
-					className: (animate == 'alternative' ? 'fade-2 '+align : align),
-					animate: (animate == 'alternative' ? true : animate),
+					className: (animate == 'alt' ? 'fade-2 '+align : align),
+					animate: (animate == 'alt' ? true : animate),
 				});
 			}
 		}
@@ -1323,7 +1478,7 @@ function JSstripTags(container, items)
 	// Console Log
 	JSconsole('[JS Function] Strip Tags');
 	
-	container.find("*").not(items).each(function() {
+	container.find("*").not(items).each(function(){
 		$(this).remove();
 	});
 }
@@ -1340,11 +1495,11 @@ function JShashTag(string)
 	var align = JShashTagAlignment[1];
 	var animate = JShashTagAnimate;
 	
-	if(!size || !size.match(/^(small|medium|large|extra-large)$/)){ // Check value
+	if(!size || !size.match(/\b(small|medium|large|extra-large)\b/)){ // Check value
 		size = 'medium';
 	}
 	
-	if(!align || !align.match(/^(top|bottom|left|center|right)$/)){ // Check value
+	if(!align || !align.match(/\b(top|bottom|left|center|right)\b/)){ // Check value
 		align = 'top';
 	}
 	
@@ -1376,8 +1531,8 @@ function JShashTag(string)
 					message: JSlang('$disabled-text'),
 					size: size,
 					backdrop: true,
-					className: (animate == 'alternative' ? 'fade-2 '+align : align),
-					animate: (animate == 'alternative' ? true : animate),
+					className: (animate == 'alt' ? 'fade-2 '+align : align),
+					animate: (animate == 'alt' ? true : animate),
 				});
 			}
 			return false;
@@ -1398,11 +1553,11 @@ function JSwindowPopup(element, errortitle, errormsg)
 	var align = $(element).data('win-modal-align');
 	var animate = $(element).data('win-modal-animate');
 	
-	if(!size || !size.match(/^(small|medium|large|extra-large)$/)){ // Check value
+	if(!size || !size.match(/\b(small|medium|large|extra-large)\b/)){ // Check value
 		size = 'medium';
 	}
 	
-	if(!align || !align.match(/^(top|bottom|left|center|right)$/)){ // Check value
+	if(!align || !align.match(/\b(top|bottom|left|center|right)\b/)){ // Check value
 		align = 'top';
 	}
 	
@@ -1413,8 +1568,8 @@ function JSwindowPopup(element, errortitle, errormsg)
     var leftPosition;
 	var topPosition;
 	var getUrl = $(element).data('win-url');
-	var getSize = $(element).data('win-size').split('x');
-	var getAlign = $(element).data('win-align').split(',');
+	var getSize = $(element).data('win-size').split(' ');
+	var getAlign = $(element).data('win-align').split(' ');
 	var getScroll = $(element).data('win-scroll');
 	
 	if(!errortitle){ // Check value
@@ -1473,8 +1628,8 @@ function JSwindowPopup(element, errortitle, errormsg)
 				message: errormsg,
 				size: size,
 				backdrop: true,
-				className: (animate == 'alternative' ? 'fade-2 '+align : align),
-				animate: (animate == 'alternative' ? true : animate),
+				className: (animate == 'alt' ? 'fade-2 '+align : align),
+				animate: (animate == 'alt' ? true : animate),
 			});
 		}
 	}
@@ -1490,11 +1645,11 @@ function JSmapLaunch(element)
 	var align = $(element).data('map-modal-align');
 	var animate = $(element).data('map-modal-animate');
 	
-	if(!size || !size.match(/^(small|medium|large|extra-large)$/)){ // Check value
+	if(!size || !size.match(/\b(small|medium|large|extra-large)\b/)){ // Check value
 		size = 'medium';
 	}
 	
-	if(!align || !align.match(/^(top|bottom|left|center|right)$/)){ // Check value
+	if(!align || !align.match(/\b(top|bottom|left|center|right)\b/)){ // Check value
 		align = 'top';
 	}
 	
@@ -1505,8 +1660,6 @@ function JSmapLaunch(element)
 	var mapContent;
 	var mapTitle = JSlang('$maplaunch-title');
 	var mapText = JSlang('$maplaunch-text');
-	var mapIcon1 = JSmainUrl+'/img/base/maplaunch/google-maps.png';
-	var mapIcon2 = JSmainUrl+'/img/base/maplaunch/waze.png';
 	var mapCoords1 = $(element).data('map-coords-1').split(',');
 	var mapCoords2 = $(element).data('map-coords-2').split(',');
 	var mapIframe = $(element).data('map-iframe');
@@ -1515,39 +1668,29 @@ function JSmapLaunch(element)
 	var mapLaunchUrl1 = JSisMobile ? 'https://maps.google.com/maps?q='+mapCoords1[0]+','+mapCoords1[1]+','+mapCoords1[2]+'z' : 
 										   'https://www.google.com/maps/search/'+mapAddressUrl+'/@'+mapCoords1[0]+','+mapCoords1[1]+','+mapCoords1[2]+'z';
 	var mapLaunchUrl2 = JSisMobile ? 'waze://?ll='+mapCoords2[0]+','+mapCoords2[1]+'&navigate=yes' : 
-										   'https://www.waze.com/livemap?zoom='+mapCoords2[2]+'&lat='+mapCoords2[0]+'&lon='+mapCoords2[1];
-	
+										   'https://www.waze.com/ul?zoom='+mapCoords2[2]+'&ll='+mapCoords2[1]+','+mapCoords2[0]+'&navigate=yes';
+
 	if(mapIframe === undefined || mapIframe === null || mapIframe == ''){  // Check value
 		mapIframe = false;
 	}
 	
 	mapContentStyle1 = '<div class="JSmapLaunchInfo">'+
-						'	<span class="label label-primary">'+mapText+'</span>'+
-						'	<div class="JSmapLaunchIcons">'+
-						'		<a href="'+mapLaunchUrl1+'" target="_blank">'+
-						'			<img src="'+mapIcon1+'">'+
-						'		</a>'+
-						'		<a class="JSmapLaunchAlert" href="'+mapLaunchUrl2+'" target="_blank">'+
-						'			<img src="'+mapIcon2+'">'+
-						'		</a>'+
-						'	</div>'+
-						'	<div class="well mb-0 mt-3">'+mapAddress+'</div>'+
+						'	<span class="badge badge-primary mb-2">'+mapText+'</span>'+
+						'	<span class="d-inline-block w-100 JSmapLaunchIcons1">'+
+						'		<a class="JSmapLaunchGMaps" href="'+mapLaunchUrl1+'" target="_blank"></a><a class="JSmapLaunchWaze" href="'+mapLaunchUrl2+'" target="_blank"></a>'+
+						'	</span>'+
+						'	<div class="card card-header p-2 mb-0 mt-3">'+mapAddress+'</div>'+
 						'</div>';
 	
 	mapContentStyle2 = '<div class="JSmapLaunchInfo">'+
-						'	<div class="well mb-4">'+mapAddress+'</div>'+
+						'	<div class="card card-header p-2 mb-3">'+mapAddress+'</div>'+
 						'	<div class="JSmapLaunchIframe embed-responsive embed-responsive-16by9">'+
 						'		<iframe class="embed-responsive-item" src="https://maps.google.com/maps?q='+mapAddressUrl+'&z='+mapCoords1[2]+'&output=embed" frameborder="0" allowfullscreen></iframe>'+
 						'	</div>'+
-						'	<span class="label label-primary">'+mapText+'</span>'+
-						'	<div class="JSmapLaunchIcons small">'+
-						'		<a href="'+mapLaunchUrl1+'" target="_blank">'+
-						'			<img src="'+mapIcon1+'">'+
-						'		</a>'+
-						'		<a class="JSmapLaunchAlert" href="'+mapLaunchUrl2+'" target="_blank">'+
-						'			<img src="'+mapIcon2+'">'+
-						'		</a>'+
-						'	</div>'+
+						'	<span class="badge badge-primary mb-2">'+mapText+'</span>'+
+						'	<span class="d-inline-block w-100 JSmapLaunchIcons2">'+
+						'		<a class="JSmapLaunchGMaps" href="'+mapLaunchUrl1+'" target="_blank"></a><a class="JSmapLaunchWaze" href="'+mapLaunchUrl2+'" target="_blank"></a>'+
+						'	</span>'+
 						'</div>';
 	
 	// Check plugin
@@ -1559,8 +1702,8 @@ function JSmapLaunch(element)
 			message: mapIframe == false ? mapContentStyle1 : mapContentStyle2,
 			size: size,
 			backdrop: true,
-			className: (animate == 'alternative' ? 'fade-2 '+align : align),
-			animate: (animate == 'alternative' ? true : animate),
+			className: (animate == 'alt' ? 'fade-2 '+align : align),
+			animate: (animate == 'alt' ? true : animate),
 		});
 	}
 }
@@ -1729,6 +1872,29 @@ function JSmasonry(element)
 	}
 }
 
+// Remove accents on strings
+function JSremoveAccents(string)
+{
+	return string.replace(/[áÁàÀâÂäÄãÃåÅæÆ]/g, 'a')
+				.replace(/[çÇ]/g, 'c')
+				.replace(/[éÉèÈêÊëË]/g, 'e')
+				.replace(/[íÍìÌîÎïÏîĩĨĬĭ]/g, 'i')
+				.replace(/[ñÑ]/g, 'n')
+				.replace(/[óÓòÒôÔöÖœŒ]/g, 'o')
+				.replace(/[ß]/g, 's')
+				.replace(/[úÚùÙûÛüÜ]/g, 'u')
+				.replace(/[ýÝŷŶŸÿ]/g, 'n')
+				.replace(/[áÁàÀâÂäÄãÃåÅæÆ]/g, 'a')
+				.replace(/[çÇ]/g, 'c')
+				.replace(/[éÉèÈêÊëË]/g, 'e')
+				.replace(/[íÍìÌîÎïÏîĩĨĬĭ]/g, 'i')
+				.replace(/[ñÑ]/g, 'n')
+				.replace(/[óÓòÒôÔöÖœŒ]/g, 'o')
+				.replace(/[ß]/g, 's')
+				.replace(/[úÚùÙûÛüÜ]/g, 'u')
+				.replace(/[ýÝŷŶŸÿ]/g, 'n');
+}
+
 // Main Initialization
 function JSmainInit()
 {
@@ -1767,24 +1933,30 @@ function JSmainInit()
 	// Check plugin
 	if($.fn.dataTable !== 'undefined' || $.fn.DataTable !== 'undefined')
 	{
+		// Apply replacements on search string
+		$.fn.DataTable.ext.type.search.string = function(data){
+			return !data ? '' : typeof data === 'string' ? JSremoveAccents(data) : data;
+		};
+		
+		// Apply replacements on html string
+		$.fn.DataTable.ext.type.search.html = function(data){
+			return !data ? '' : typeof data === 'string' ? JSremoveAccents(data.replace( /<.*?>/g, '' )) : data;
+		};
+		
+		// Remove accented character from search input as well
+		$(document).on('keyup', '.dataTables_filter input[type=search]', function(e){
+			$(this).val(JSremoveAccents($(this).val()));
+		});
+		
 		// Applu Data Tables
 		$('.JSdataTables').each(function(){
 			$(this).dataTable().fnDestroy();
 			$(this).DataTable({
 					initComplete: function(settings,json){
-						$(".dataTables_wrapper").removeClass("container-fluid");
+						$('.dataTables_wrapper').removeClass('container-fluid');
 					},
 				}
 			);
-		});
-	}
-	
-	// Check plugin
-	if($.fn.timepicker !== 'undefined')
-	{
-		// Show on focus
-		$(document).on('focusin', '.timepicker input', function(e){
-			$(this).timepicker('showWidget');
 		});
 	}
 	
@@ -1830,63 +2002,6 @@ function JSmainInit()
 			$(this).css('visibility','visible');
 		});
 	}
-	
-	// Workarround for Holder JS in IE8
-	if(JSisNav('ie','8'))
-	{
-		$('img[data-src*="holder.js"]').each(function(){
-			var src = $(this).data('src');
-			var size = src.split('/');
-			var getSize = size[1].split('x');
-			var text = src.split('text=').pop().split('&').shift();
-			var getText = text.replace(/ \\n /g,'<br>');
-			var theme = src.split('theme=').pop().split('&').shift();
-			var bg, fg;
-			
-			switch(theme){
-	            case 'gray':
-	                bg = '#EEEEEE';
-	                fg = '#AAAAAA';
-	            	break;
-	            case 'social':
-	                bg = '#3a5a97';
-	                fg = '#FFFFFF';
-	            	break;
-	            case 'industrial':
-	                bg = '#434A52';
-	                fg = '#C2F200';
-	            	break;
-	            case 'sky':
-	                bg = '#0D8FDB';
-	                fg = '#FFFFFF';
-	            	break;
-	            case 'vine':
-	                bg = '#39DBAC';
-	                fg = '#1E292C';
-	            	break;
-	            case 'lava':
-	                bg = '#F8591A';
-	                fg = '#1C2846';
-	            	break;
-				default:
-	                bg = '#777777';
-	                fg = '#555555';
-	            	break;
-	        }
-			
-			$(this).css({
-						'visibility' :	'hidden',
-						'width'		 :	getSize[0].replace(/p/g,''),
-						'height'	 :	getSize[1].replace(/p/g,''),
-						});
-			
-			var fakeImage = '<div class="d-table position-absolute w-100 h-100" style="background-color: '+bg+'; color: '+fg+'; top: 0px; font-size: 45px; font-weight: bold">'+
-							'	<div class="d-table-cell align-middle text-center">'+getText+'</div>'+
-							'</div>';
-			
-			$(this).wrapAll('<div class="d-inline-block"></div>').after(fakeImage);
-		});
-	}
 }
 /* ================================================= BASE FUNCTIONS ================================================= */
 
@@ -1919,11 +2034,16 @@ $(document).ready(function(){
 	});
 	
 	// Check map launch alert
-	$(document).on('click', '.JSmapLaunchAlert', function(e){
+	$(document).on('click', '.JSmapLaunchWaze', function(e){
 		if (JSisMobile && !confirm(JSlang('$maplaunch-alert'))){
 		  e.preventDefault();
 		}
     });
+	
+	// Remove custom modal box
+	$(document).on('hidden.bs.modal', '#JScustomModal', function(){
+		$(this).remove();
+	});
 	
 	// Modal on disabled links
 	if(JSexist($('*[data-js-hashtag]')))
@@ -1937,23 +2057,48 @@ $(document).ready(function(){
 	}
 	
 	// Custom file input change
-	$(document).on('change', '.form-group .custom-file input[type="file"]', function(){
+	$(document).on('change', 'form .custom-file input[type="file"]', function(){
 		var placeholder = $(this).JShasAttr('placeholder') ? $(this).attr('placeholder') : '';
 		var filename = $(this)[0].files.length ? $(this)[0].files[0].name : placeholder;
-		$(this).parent().find('.custom-file-text > span').html(filename);
+		$(this).parent().find('.custom-file-label').html(filename);
+		$(this).removeClass('is-warning');
 	});
 	
 	// Check form reset
 	$(document).on('click', 'form *[type="reset"]', function(e){
-		$(this).parents('form').find('.form-group').removeClass('has-error');
-		$(this).parents('form').find('.form-group').removeClass('has-warning');
-		$(this).parents('form').find('.form-group').removeClass('has-success');
-		$(this).parents('form').find('.form-group input[type="checkbox"]').prop('checked', false).parent().removeClass('active');
-		$(this).parents('form').find('.form-group input[type="radio"]').prop('checked', false).parent().removeClass('active');
-		$(this).parents('form').find('.form-group input[type="file"]').each(function(){
+		$(this).parents('form').removeClass('was-validated');
+		$(this).parents('form').find('.is-warning').removeClass('is-warning');
+		$(this).parents('form').find('input[type="checkbox"]').prop('checked', false).removeAttr('checked').parent().removeClass('active');
+		$(this).parents('form').find('input[type="radio"]').prop('checked', false).removeAttr('checked').parent().removeClass('active');
+		$(this).parents('form').find('input[type="file"]').each(function(){
 			var placeholder = $(this).JShasAttr('placeholder') ? $(this).attr('placeholder') : '';
 			$(this).parent().find('.custom-file-text > span').html(placeholder);
 		});
+    });
+	
+	// Check change form group checkbox & radio
+	$(document).on('change', '.form-group-checkbox input, .form-group-radio input', function(){
+		var item = $(this).parents('.form-group-checkbox, .form-group-radio').find('input');
+		var type = $(this).find('input').attr('type');
+		var check = false;
+
+		for (var i = item.length -1; i >= 0; i--){
+			if(item.eq(i).is(":checked")){
+				check = true;
+			}
+		}
+		if(!check){
+			item.attr('required','');
+		}
+		else{
+			item.removeAttr('required');
+		}
+	});
+	
+	// Check form input
+	$(document).on('input', 'form input, form select, form textarea', function(e){
+		$(this).removeClass('is-warning');
+		JSformPaintInputGroup($(this));
     });
 	
 	// Load responsive code
