@@ -53,7 +53,6 @@
 	<!-- Main CSS File -->
 	<?php echo php::get_template('css'); ?>
 	
-	
 	<!-- ******** HEADER RESOURCES ******** -->
 	
 	<!-- Extra Code -->
