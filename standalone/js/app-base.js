@@ -1,7 +1,6 @@
 /* ================================================= BASE FUNCTIONS ================================================= */
 
 // Global variables
-var JSmainUrl = '$global-url';
 var JSisHome = JSexist($('*[data-js-home]'));
 var JSisMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini|BB10|PlayBook|MeeGo/i.test(navigator.userAgent);
 var JShashTagExceptions = ['#carousel'];
