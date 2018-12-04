@@ -1568,8 +1568,8 @@ function JSwindowPopup(element, errortitle, errormsg)
     var leftPosition;
 	var topPosition;
 	var getUrl = $(element).data('win-url');
-	var getSize = $(element).data('win-size').split('x');
-	var getAlign = $(element).data('win-align').split(',');
+	var getSize = $(element).data('win-size').split(' ');
+	var getAlign = $(element).data('win-align').split(' ');
 	var getScroll = $(element).data('win-scroll');
 	
 	if(!errortitle){ // Check value

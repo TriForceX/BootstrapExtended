@@ -64,6 +64,21 @@
 }
 /* Badge */
 
+/* Form input group append & prepend */
+.input-group > .input-group-append:last-child > .btn:not(:last-child):not(.dropdown-toggle), 
+.input-group > .input-group-append:last-child > .input-group-text:not(:last-child), 
+.input-group > .input-group-append:not(:last-child) > .btn, 
+.input-group > .input-group-append:not(:last-child) > .input-group-text {
+	border-top-right-radius: 0.25rem;
+	border-bottom-right-radius: 0.25rem;
+}
+.input-group > .input-group-prepend ~ .custom-select:not(:last-child), 
+.input-group > .input-group-prepend ~ .form-control:not(:last-child) {
+	border-top-right-radius: 0.25rem;
+	border-bottom-right-radius: 0.25rem;
+}
+/* Form input group append & prepend */
+
 /* ================================================= BOOTSTRAP ADDITIONS ================================================= */
 
 /* Modal Size */
@@ -272,21 +287,6 @@
 }
 /* Form custom input */
 
-/* Form input group append & prepend */
-.input-group > .input-group-append:last-child > .btn:not(:last-child):not(.dropdown-toggle), 
-.input-group > .input-group-append:last-child > .input-group-text:not(:last-child), 
-.input-group > .input-group-append:not(:last-child) > .btn, 
-.input-group > .input-group-append:not(:last-child) > .input-group-text {
-	border-top-right-radius: 0.25rem;
-	border-bottom-right-radius: 0.25rem;
-}
-.input-group > .input-group-prepend ~ .custom-select:not(:last-child), 
-.input-group > .input-group-prepend ~ .form-control:not(:last-child) {
-	border-top-right-radius: 0.25rem;
-	border-bottom-right-radius: 0.25rem;
-}
-/* Form input group append & prepend */
-
 /* Form validation addon */
 .was-validated .input-group-text-valid {
 	border-color: #28a745;
@@ -362,7 +362,7 @@
 /* Form validation warning */
 
 /* Carousel circle indicators */
-.carousel-indicators li {
+.carousel-rounded .carousel-indicators li {
 	width: 12px;
 	height: 12px;
 	border-radius: 300px;

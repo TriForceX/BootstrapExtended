@@ -61,50 +61,60 @@ Base structure for websites with reusable parts of source code or functions main
 	- Get external functions
 	- Remove directory (recursively)
 - JS Features:
+	- Custom console log for websitebase functions (JSconsole)
 	- Custom language support
-	- Custom console log (developer)
+	- Browser detection
+	- Mobile detection
+	- Custom modal trigger function
 	- Check attr function
 	- Check outer width & height with padding/margin
 	- Remove whitespaces between elements
-	- Form validation
+	- Custom form validation
 	- Convert string to boolean
 	- Get max width & height between elements
-	- Responsive code detection
+	- Custom responsive code event
 	- LightGallery improved functions/events
 	- Image auto-fill background images
-	- Get element height changes
+	- Detect element height changes
 	- Text cut one line function
 	- Text cut multi line function
 	- Text auto size function
-	- Show alert modal box using BootBox plugin (plain text, html content & ajax)
+	- Custom modal box using BootBox plugin (plain text, html content & ajax)
 	- Video launch modal box function for YouTube, Vimeo and Facebook
-	- Capitalize first function
+	- Capitalize first character function
 	- Convert to slug function
 	- Auto scroll function
-	- Disable right click menu on element
+	- Disable right click menu on elements
 	- Get URL parameter from URL (PHP $_GET like)
-	- Get URL parameter from Script SRC (PHP $_GET like)
+	- Get URL parameter from script SRC (PHP $_GET like)
 	- Convert strings to links function
 	- Remove HTML tags function
 	- Check hashtag links function
-	- Window pop-up function
+	- Custom window pop-up function
 	- Map launch function for Google Maps and Waze
+	- Custom paginator function
 	- Table painter & cleaner
-	- Check validations for home page, mobile and navigators
 	- Anchor tag functionallity for any HTML tag
 	- Easy Masonry JS usage
+	- Remove accents from strings
 - CSS Features:
-	- Some Bootstrap improved and custom classes
-	- Custom Bootstrap's carousel classes
-	- Custom Datepicker colors
-	- Custom Bootstrap's tooltip colors
-	- Custom loading classes for ajax purposes
-	- Custom form validation classes
+	- Some Bootstrap modified classes to resemble its previous version
+	- Custom modal extra large size
+	- Custom modal alignment (top bottom center left and right)
+	- Custom modal alternative fade effect
+	- Custom dropdown overflow
+	- Custom file input button language
+	- Custom card overflow
+	- Custom textarea overflow disable
+	- Custom form warning validation
+	- Custom rounded carousel indicators
+	- Custom carousel controls hidden on mobile
+	- Custom gradient text truncate
 	- Collection of CSS3 hover effects
 	- Included "BebasNeue" example font face
 - Wordpress Features:
-	- A bunch of Wordpress functions and snippets
-	- Custom database configuration for wp-config
+	- A bunch of Wordpress functions and snippets (see wiki)
+	- Custom multiple database configuration for wp-config
 	- Cron and error reporting enable/disable
 	- Admin Panel CSS & JS injection
 	- Admin Menu Editor (Plugin)

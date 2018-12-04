@@ -27,6 +27,7 @@ function JSconsole(data)
 /* ================================================= BASE LANGUAGE ================================================= */
 
 // Define language by default
+var JSLangDetect = navigator.language || navigator.userLanguage;
 var JSmainLang = $('body').data('js-lang');
 var JSlanguage = {
 				// Form validation
@@ -146,8 +147,9 @@ var JSlanguage = {
 			};
 
 // Set default language
-if(JSmainLang === undefined || JSmainLang === null || JSmainLang == ''){ // Check value
-	JSmainLang = 'en';
+if(JSmainLang === undefined || JSmainLang === null || JSmainLang == '')
+{
+	JSmainLang = /\es/i.test(JSLangDetect) ? 'es' : 'en';
 }
 
 // Parse language strings

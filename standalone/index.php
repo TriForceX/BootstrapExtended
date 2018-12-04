@@ -152,61 +152,6 @@
 	
 		<p>A customizable, modular, responsive, gallery plugin for <b>jQuery</b>. Below you will find an improved usage method via <code>data-lg-attributes</code> applied to the main gallery container.</p>
 	
-		<table class="table table-bordered table-striped">
-			<thead>
-				<tr>
-					<th>Name</th>
-					<th>Description</th>
-				</tr>
-			</thead>
-			<tbody>
-				<tr>
-					<td class="text-nowrap notranslate">data-lg-item</td>
-					<td>Defines which element contains the image <b>url</b> and the <b>thumbnail</b>. If is <code>auto</code> it will takes all <code>&lt;a&gt;</code> tag.</td>
-				</tr>
-				<tr>
-					<td class="text-nowrap notranslate">data-lg-title</td>
-					<td>Set a custom title to all images in the gallery. If is <code>auto</code> it will takes all <code>&lt;a&gt;</code> title attribute.</td>
-				</tr>
-				<tr>
-					<td class="text-nowrap notranslate">data-lg-thumb</td>
-					<td>Defines if thumbnails will be shown when the gallery is executed.</td>
-				</tr>
-				<tr>
-					<td class="text-nowrap notranslate">data-lg-download</td>
-					<td>Enables downloads, the download url will be taken from <code>data-src</code> or <code>href</code>.</td>
-				</tr>
-				<tr>
-					<td class="text-nowrap notranslate">data-lg-autoplay</td>
-					<td>Enables autoplay controls.</td>
-				</tr>
-				<tr>
-					<td class="text-nowrap notranslate">data-lg-loop</td>
-					<td>When you get the last image it will change to the first image.</td>
-				</tr>
-				<tr>
-					<td class="text-nowrap notranslate">data-lg-share</td>
-					<td>Enables social share buttons.</td>
-				</tr>
-				<tr>
-					<td class="text-nowrap notranslate">data-lg-hide-delay</td>
-					<td>Delay time (in miliseconds) to hide bars and thumbnails.</td>
-				</tr>
-				<tr>
-					<td class="text-nowrap notranslate">data-lg-gallery</td>
-					<td>Show the <b>previous</b> or <b>next</b> page controls inside the gallery. Includes auto redirection.</td>
-				</tr>
-				<tr>
-					<td class="text-nowrap notranslate">data-lg-page-total</td>
-					<td>Set the <b>total amount</b> of the gallery pages. This is <b>show</b> or <b>hide</b> the <b>previous</b> or <b>next</b> controls inside the gallery.</td>
-				</tr>
-				<tr>
-					<td class="text-nowrap notranslate">data-lg-page-current</td>
-					<td>Set the current <b>active</b> page. This is <b>show</b> or <b>hide</b> the <b>previous</b> or <b>next</b> controls inside the gallery.</td>
-				</tr>
-			</tbody>
-		</table>
-	
 		<div class="bs-example">
 			<div class="row JSlightGallery" data-lg-item="auto" data-lg-title="auto" data-lg-thumb="false" data-lg-download="false" data-lg-share="true" data-lg-autoplay="true" data-lg-loop="false" data-lg-gallery="false">
 				<div class="col-12 col-md py-2 py-md-0">
@@ -240,7 +185,7 @@
 			<pre class="prettyprint"><code class="language-html" data-lang="html">&lt;div class="JSlightGallery" data-lg-item="auto" data-lg-title="auto" data-lg-thumb="false" data-lg-download="false" data-lg-share="true" data-lg-autoplay="true" data-lg-loop="false" data-lg-gallery="false"&gt;<br>...<br>&lt;/div&gt;</code></pre>
 		</figure>
 	
-		<h2 class="JSlightGalleryScroll">Gallery Mode</h2>
+		<h2 class="JSlightGalleryScroll">Gallery Mode <span class="badge badge-danger">Custom</span></h2>
 		<p>This mode allows to improve the way to show paged galleries executing custom functions when you get the <code>first</code> or <code>last</code> page.</p>
 
 		<div class="bs-example">
@@ -344,23 +289,6 @@
 		<figure class="highlight">
 			<pre class="prettyprint"><code class="language-html" data-lang="html">&lt;div class="JSlightGallery" data-lg-item="auto" data-lg-title="Gallery Title" data-lg-thumb="true" data-lg-download="true" data-lg-share="true" data-lg-autoplay="true" data-lg-loop="false" data-lg-gallery="true" data-lg-page-total="3" data-lg-page-current="1"&gt;<br>...<br>&lt;/div&gt;</code></pre>
 		</figure>
-
-		<div class="card mb-3">
-			<div class="card-header">
-				Note for gallery paginator
-			</div>
-			<div class="card-body">
-				<p class="card-text">Remember to add the <b>previous</b> and <b>next</b> events in the <b>JS</b> to detect which actions will be executed on each case. Take a look in the file <code>extras/example.js</code> for <code>onPrevPageChange.lg</code> and <code>onNextPageChange.lg</code> events examples.</p>
-			</div>
-		</div>
-	
-		<!-- lightGallery -->
-		
-		<!-- Data Tables -->
-
-		<h2 class="notranslate">Data Tables <span class="badge badge-danger">Plugin</span></h2>
-		
-		<p>Improve the way to show plain or dynamic <b>HTML tables</b>. Below you will find the usage method via <code>data</code> attributes.</p>
 		
 		<table class="table table-bordered table-striped">
 			<thead>
@@ -371,23 +299,65 @@
 			</thead>
 			<tbody>
 				<tr>
-					<td class="text-nowrap notranslate">data-paging</td>
-					<td>Enables a paginator</td>
+					<td class="text-nowrap notranslate">data-lg-item</td>
+					<td>Defines which element contains the image <b>url</b> and the <b>thumbnail</b>. If is <code>auto</code> it will takes all <code>&lt;a&gt;</code> tag.</td>
 				</tr>
 				<tr>
-					<td class="text-nowrap notranslate"> data-searching</td>
-					<td>Enables a search box to filter results</td>
+					<td class="text-nowrap notranslate">data-lg-title</td>
+					<td>Set a custom title to all images in the gallery. If is <code>auto</code> it will takes all <code>&lt;a&gt;</code> title attribute.</td>
 				</tr>
 				<tr>
-					<td class="text-nowrap notranslate">data-info</td>
-					<td>Show info at the table footer</td>
+					<td class="text-nowrap notranslate">data-lg-thumb</td>
+					<td>Defines if thumbnails will be shown when the gallery is executed.</td>
 				</tr>
 				<tr>
-					<td class="text-nowrap notranslate">data-ordering</td>
-					<td>Enables ordering by column</td>
+					<td class="text-nowrap notranslate">data-lg-download</td>
+					<td>Enables downloads, the download url will be taken from <code>data-src</code> or <code>href</code>.</td>
+				</tr>
+				<tr>
+					<td class="text-nowrap notranslate">data-lg-autoplay</td>
+					<td>Enables autoplay controls.</td>
+				</tr>
+				<tr>
+					<td class="text-nowrap notranslate">data-lg-loop</td>
+					<td>When you get the last image it will change to the first image.</td>
+				</tr>
+				<tr>
+					<td class="text-nowrap notranslate">data-lg-share</td>
+					<td>Enables social share buttons.</td>
+				</tr>
+				<tr>
+					<td class="text-nowrap notranslate">data-lg-hide-delay</td>
+					<td>Delay time (in miliseconds) to hide bars and thumbnails.</td>
+				</tr>
+				<tr>
+					<td class="text-nowrap notranslate">data-lg-gallery</td>
+					<td>Show the <b>previous</b> or <b>next</b> page controls inside the gallery. Includes auto redirection.</td>
+				</tr>
+				<tr>
+					<td class="text-nowrap notranslate">data-lg-page-total</td>
+					<td>Set the <b>total amount</b> of the gallery pages. This is <b>show</b> or <b>hide</b> the <b>previous</b> or <b>next</b> controls inside the gallery.</td>
+				</tr>
+				<tr>
+					<td class="text-nowrap notranslate">data-lg-page-current</td>
+					<td>Set the current <b>active</b> page. This is <b>show</b> or <b>hide</b> the <b>previous</b> or <b>next</b> controls inside the gallery.</td>
 				</tr>
 			</tbody>
 		</table>
+
+		<div class="card mb-3">
+			<div class="card-body">
+				For gallery paginator remember to add the <b>previous</b> and <b>next</b> events in the <b>JS</b> to detect which actions will be executed on each case. Take a look in the file <code>extras/example.js</code> for <code>onPrevPageChange.lg</code> and <code>onNextPageChange.lg</code> events examples. For more information <a href="http://sachinchoolur.github.io/lightGallery/" target="_blank">click here</a>.
+			</div>
+		</div>
+	
+		<!-- lightGallery -->
+		
+		<!-- Data Tables -->
+
+		<h2 class="notranslate">Data Tables <span class="badge badge-danger">Plugin</span></h2>
+		
+		<p>Improve the way to show plain or dynamic <b>HTML tables</b>. Below you will find the usage method via <code>data</code> attributes.</p>
 
 		<div class="bs-example table-responsive notranslate">
 			<table class="table table-striped table-bordered JSdataTables" data-paging="true" data-searching="true" data-info="true" data-ordering="true" cellspacing="0" cellpadding="0" border="0">
@@ -864,6 +834,39 @@
 		<figure class="highlight">
 			<pre class="prettyprint"><code class="language-html" data-lang="html">&lt;table class="table table-striped table-bordered JSdataTables" data-paging="true" data-searching="true" data-info="true" data-ordering="true"&gt;<br>...<br>&lt;/table&gt;</code></pre>
 		</figure>
+		
+		<table class="table table-bordered table-striped">
+			<thead>
+				<tr>
+					<th>Name</th>
+					<th>Description</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td class="text-nowrap notranslate">data-paging</td>
+					<td>Enables a paginator</td>
+				</tr>
+				<tr>
+					<td class="text-nowrap notranslate"> data-searching</td>
+					<td>Enables a search box to filter results</td>
+				</tr>
+				<tr>
+					<td class="text-nowrap notranslate">data-info</td>
+					<td>Show info at the table footer</td>
+				</tr>
+				<tr>
+					<td class="text-nowrap notranslate">data-ordering</td>
+					<td>Enables ordering by column</td>
+				</tr>
+			</tbody>
+		</table>
+		
+		<div class="card mb-3">
+			<div class="card-body">
+				You can take a look on the original project page <a href="https://datatables.net/examples/styling/bootstrap4" target="_blank">clicking here</a> for more information, setup and usage.
+			</div>
+		</div>
 
 		<!-- Data Tables -->
 		
@@ -929,6 +932,15 @@
 		
 		<p>Show a modal box using <b>BootBox</b> with map options such as <code>Google Maps</code> and <code>Waze</code>. Below you will find an improved usage method via <code>data-map</code> attributes.</p>
 
+		<div class="bs-example">
+			<button type="button" class="btn btn-primary my-1 my-xl-0 mw-100 text-truncate JSmapLaunch" data-map-address="Renato Sánchez 4265, Las Condes, Santiago, Chile" data-map-coords-1="-33.4176466,-70.585256,17" data-map-coords-2="-33.41748,-70.58519,17" data-map-modal-size="small" data-map-modal-align="center" data-map-modal-animate="true">Show Map Launch (Normal & Centered)</button>
+			<button type="button" class="btn btn-primary my-1 my-xl-0 mw-100 text-truncate JSmapLaunch" data-map-address="Renato Sánchez 4265, Las Condes, Santiago, Chile" data-map-coords-1="-33.4176466,-70.585256,17" data-map-coords-2="-33.41748,-70.58519,17" data-map-iframe="true">Show Map Launch (With Map)</button>
+		</div>
+		<figure class="highlight">
+			<pre class="prettyprint"><code class="language-html" data-lang="html">&lt;button type="button" class="btn btn-primary JSmapLaunch" data-map-address="Renato Sánchez 4265, Las Condes, Santiago, Chile" data-map-coords-1="-33.4176466,-70.585256,17" data-map-coords-2="-33.41748,-70.58519,17" data-map-modal-size="small" data-map-modal-align="center"&gt;Show Map Launch (Normal & Centered)&lt;/button&gt;
+&lt;button type="button" class="btn btn-primary JSmapLaunch" data-map-address="Renato Sánchez 4265, Las Condes, Santiago, Chile" data-map-coords-1="-33.4176466,-70.585256,17" data-map-coords-2="-33.41748,-70.58519,17" data-map-iframe="true"&gt;Show Map Launch (With Map)&lt;/button&gt;</code></pre>
+		</figure>
+		
 		<table class="table table-bordered table-striped js-options-table">
 			<thead>
 				<tr>
@@ -974,15 +986,6 @@
 			</tbody>
 		</table>
 
-		<div class="bs-example">
-			<button type="button" class="btn btn-primary my-1 my-xl-0 mw-100 text-truncate JSmapLaunch" data-map-address="Renato Sánchez 4265, Las Condes, Santiago, Chile" data-map-coords-1="-33.4176466,-70.585256,17" data-map-coords-2="-33.41748,-70.58519,17" data-map-modal-size="small" data-map-modal-align="center" data-map-modal-animate="true">Show Map Launch (Normal & Centered)</button>
-			<button type="button" class="btn btn-primary my-1 my-xl-0 mw-100 text-truncate JSmapLaunch" data-map-address="Renato Sánchez 4265, Las Condes, Santiago, Chile" data-map-coords-1="-33.4176466,-70.585256,17" data-map-coords-2="-33.41748,-70.58519,17" data-map-iframe="true">Show Map Launch (With Map)</button>
-		</div>
-		<figure class="highlight">
-			<pre class="prettyprint"><code class="language-html" data-lang="html">&lt;button type="button" class="btn btn-primary JSmapLaunch" data-map-address="Renato Sánchez 4265, Las Condes, Santiago, Chile" data-map-coords-1="-33.4176466,-70.585256,17" data-map-coords-2="-33.41748,-70.58519,17" data-map-modal-size="small" data-map-modal-align="center"&gt;Show Map Launch (Normal & Centered)&lt;/button&gt;
-&lt;button type="button" class="btn btn-primary JSmapLaunch" data-map-address="Renato Sánchez 4265, Las Condes, Santiago, Chile" data-map-coords-1="-33.4176466,-70.585256,17" data-map-coords-2="-33.41748,-70.58519,17" data-map-iframe="true"&gt;Show Map Launch (With Map)&lt;/button&gt;</code></pre>
-		</figure>
-
 		<!-- Map Launch -->
 
 		<!-- Window Popup -->
@@ -990,6 +993,15 @@
 		<h2 class="notranslate">Window Pop-Up <span class="badge badge-danger">Custom</span></h2>
 
 		<p>Launch a custom pop-up window via javascript. Below you will find an improved usage method via <code>data-win-attributes</code>.</p>
+
+		<div class="bs-example">
+			<button type="button" class="btn btn-primary my-1 my-xl-0 mw-100 text-truncate JSwindowPopup" data-win-url="http://getbootstrap.com" data-win-size="640 480" data-win-align="center center" data-win-scroll="yes">Center Center 640 x 480</button>
+			<button type="button" class="btn btn-primary my-1 my-xl-0 mw-100 text-truncate JSwindowPopup" data-win-url="http://getbootstrap.com" data-win-size="320 480" data-win-align="right bottom" data-win-scroll="yes">Right Bottom 320 x 480</button>
+			<button type="button" class="btn btn-primary my-1 my-xl-0 mw-100 text-truncate JSwindowPopup" data-win-url="http://getbootstrap.com" data-win-size="320 480" data-win-align="left top" data-win-scroll="yes">Left Top 320 x 480</button>
+		</div>
+		<figure class="highlight">
+			<pre class="prettyprint"><code class="language-html" data-lang="html">&lt;a class="JSwindowPopup" data-win-url="http://getbootstrap.com" data-win-size="640 480" data-win-align="center center" data-win-scroll="yes">Click Here&lt;/a&gt;<br>&lt;a class="JSwindowPopup" data-win-url="http://getbootstrap.com" data-win-size="320 480" data-win-align="right bottom" data-win-scroll="yes">Click Here&lt;/a&gt;<br>&lt;a class="JSwindowPopup" data-win-url="http://getbootstrap.com" data-win-size="320 480" data-win-align="left top" data-win-scroll="yes">Click Here&lt;/a&gt;</code></pre>
+		</figure>
 
 		<table class="table table-bordered table-striped js-options-table">
 			<thead>
@@ -1005,11 +1017,11 @@
 				</tr>
 				<tr>
 					<td class="text-nowrap notranslate">data-win-size</td>
-					<td>Width & Height (in pixels) of the pop-up, Need to be written like <b>Width</b>x<b>Height</b></td>
+					<td>Pop-up width & height, Need to be written in <code>width height</code></td>
 				</tr>
 				<tr>
 					<td class="text-nowrap notranslate">data-win-align</td>
-					<td>Horizontal & Vertical alignment (in pixels) of the pop-up, Need to be written like <b>horizontal</b>,<b>vertical</b> and the values can be <code>left</code>, <code>center</code> or <code>right</code></td>
+					<td>Pop-up horizontal & vertical alignment. Need to be written in <code>horizontal veritcal</code> and the values can be <code>left</code>, <code>center</code> or <code>right</code></td>
 				</tr>
 				<tr>
 					<td class="text-nowrap notranslate">data-win-scroll</td>
@@ -1029,15 +1041,6 @@
 				</tr>
 			</tbody>
 		</table>
-
-		<div class="bs-example">
-			<button type="button" class="btn btn-primary my-1 my-xl-0 mw-100 text-truncate JSwindowPopup" data-win-url="http://getbootstrap.com" data-win-size="640x480" data-win-align="center,center" data-win-scroll="yes">Center Center 640 x 480</button>
-			<button type="button" class="btn btn-primary my-1 my-xl-0 mw-100 text-truncate JSwindowPopup" data-win-url="http://getbootstrap.com" data-win-size="320x480" data-win-align="right,bottom" data-win-scroll="yes">Right Bottom 320 x 480</button>
-			<button type="button" class="btn btn-primary my-1 my-xl-0 mw-100 text-truncate JSwindowPopup" data-win-url="http://getbootstrap.com" data-win-size="320x480" data-win-align="left,top" data-win-scroll="yes">Left Top 320 x 480</button>
-		</div>
-		<figure class="highlight">
-			<pre class="prettyprint"><code class="language-html" data-lang="html">&lt;a class="JSwindowPopup" data-win-url="http://getbootstrap.com" data-win-size="640x480" data-win-align="center,center" data-win-scroll="yes">Click Here&lt;/a&gt;<br>&lt;a class="JSwindowPopup" data-win-url="http://getbootstrap.com" data-win-size="320x480" data-win-align="right,bottom" data-win-scroll="yes">Click Here&lt;/a&gt;<br>&lt;a class="JSwindowPopup" data-win-url="http://getbootstrap.com" data-win-size="320x480" data-win-align="left,top" data-win-scroll="yes">Click Here&lt;/a&gt;</code></pre>
-		</figure>
 				
 		<!-- Window Popup -->
 
@@ -1452,6 +1455,12 @@
 });</code></pre>
 		</figure>
 
+		<div class="card mb-3">
+			<div class="card-body">
+				You can take a look for more form elements usage <a href="https://getbootstrap.com/docs/4.1/components/forms/" target="_blank">clicking here</a>.
+			</div>
+		</div>
+
 		<!-- Form Validation -->
 
 		<!-- Carousel Rxample -->
@@ -1460,30 +1469,9 @@
 
 		<p>Custom classes for <b>Bootstrap</b> carousel. You can access <a href="https://getbootstrap.com/docs/4.1/components/carousel/" target="_blank">here</a> for more information about <b>base</b> code. <i>Note: Touch gestures was added <b>(right or left)</b></i></p>
 
-		<table class="table table-bordered table-striped js-options-table">
-			<thead>
-				<tr>
-					<th>Name</th>
-					<th>Description</th>
-				</tr>
-			</thead>
-			<tbody>
-				<tr>
-					<td class="text-nowrap notranslate">carousel-circle</td>
-					<td>Adding this class will change the indicators to <b>circle</b> buttons
-					</td>
-				</tr>
-				<tr>
-					<td class="text-nowrap notranslate">carousel-no-mobile</td>
-					<td>Adding this class will disable the <b>left</b> and <b>right</b> controls on mobile devices
-					</td>
-				</tr>
-			</tbody>
-		</table>
-
 		<div class="bs-example mb-4">
 			<!-- Carousel -->
-			<div id="carouselExampleIndicators" class="carousel slide carousel-circle carousel-no-mobile" data-ride="carousel">
+			<div id="carouselExampleIndicators" class="carousel slide carousel-rounded carousel-no-mobile" data-ride="carousel">
 				<ol class="carousel-indicators">
 					<li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
 					<li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
@@ -1510,6 +1498,33 @@
 				</a>
 			</div>
 			<!-- Carousel -->
+		</div>
+
+		<table class="table table-bordered table-striped js-options-table">
+			<thead>
+				<tr>
+					<th>Name</th>
+					<th>Description</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td class="text-nowrap notranslate">carousel-rounded</td>
+					<td>Adding this class will change the indicators to <b>rounded</b> buttons
+					</td>
+				</tr>
+				<tr>
+					<td class="text-nowrap notranslate">carousel-no-mobile</td>
+					<td>Adding this class will disable the <b>left</b> and <b>right</b> controls on mobile devices
+					</td>
+				</tr>
+			</tbody>
+		</table>
+
+		<div class="card mb-3">
+			<div class="card-body">
+				You can take a look for more carousel examples <a href="https://getbootstrap.com/docs/4.1/components/carousel/" target="_blank">clicking here</a>.
+			</div>
 		</div>
 
 		<!-- More Functions -->
