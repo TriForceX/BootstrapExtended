@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the Plugins - Custom Post Type UI - Stable (latest release) package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2018-10-23 20:38:16+0000\n"
+"PO-Revision-Date: 2018-12-03 18:48:46+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -10,6 +10,14 @@ msgstr ""
 "X-Generator: GlotPress/2.4.0-alpha\n"
 "Language: es\n"
 "Project-Id-Version: Plugins - Custom Post Type UI - Stable (latest release)\n"
+
+#: inc/taxonomies.php:887
+msgid "Sets a callback function name for the meta box display. Hierarchical default: post_categories_meta_box, non-hierarchical default: post_tags_meta_box. To remove the metabox completely, use \"false\"."
+msgstr "Fija un nombre de función de llamada de retorno para la visualización de la caja meta. Jerárquico por defecto: post_categories_meta_box, por defecto no jerárquico: post_tags_meta_box. Para eliminar la caja meta por completo, utiliza \"false\"."
+
+#: inc/taxonomies.php:842
+msgid "(Custom Post Type UI default: true) Whether to show this taxonomy data in the WP REST API."
+msgstr "(Por defecto de Custom Post Type UI: true) Si quieres mostrar los datos de esta taxonomía en la WP REST API."
 
 #: inc/wp-cli.php:104
 msgid "Successfully saved data to file."
@@ -52,31 +60,27 @@ msgstr "Indica si estás importando tipos de contenido o taxonomías"
 msgid "Review %s"
 msgstr "Escribe una reseña sobre %s"
 
-#: inc/tools.php:831
+#: inc/tools.php:837
 msgid "All Custom Post Type UI Taxonomies"
 msgstr "Todas las taxonomías de Custom Post Type UI"
 
-#: inc/tools.php:812
+#: inc/tools.php:818
 msgid "All Custom Post Type UI Post Types"
 msgstr "Todos los tipos de contenido de Custom Post Type UI"
 
-#: inc/tools.php:780
+#: inc/tools.php:786
 msgid "Export Taxonomies settings"
 msgstr "Exportar ajustes de taxonomías"
 
-#: inc/tools.php:742
+#: inc/tools.php:748
 msgid "Export Post Types settings"
 msgstr "Exportar ajustes de tipos de contenido"
 
-#: inc/taxonomies.php:884
-msgid "Sets a callback function name for the meta box display. Hierarchical default: post_categories_meta_box, non-hierarchical default: post_tags_meta_box."
-msgstr "Establece una función de respuesta para mostrar la metabox. Valor prdeterminado para jerárquico: post_categories_meta_box para no jerárquico: post_tags_meta_box."
-
-#: inc/taxonomies.php:883
+#: inc/taxonomies.php:886
 msgid "Metabox callback"
 msgstr "Respuesta de la metabox"
 
-#: inc/taxonomies.php:855
+#: inc/taxonomies.php:858
 msgid "(default: WP_REST_Terms_Controller) Custom controller to use instead of WP_REST_Terms_Controller."
 msgstr "(predeterminado: WP_REST_Terms_Controller) Controlador predeterminado que usar en vez de WP_REST_Terms_Controller."
 
@@ -116,7 +120,7 @@ msgstr "El tipo de contenido usado para comprobar las capacidades de lectura, ed
 msgid "(default: WP_REST_Posts_Controller) Custom controller to use instead of WP_REST_Posts_Controller."
 msgstr "(predeterminado: WP_REST_Posts_Controller) Controlador personalizado que usar en vez de WP_REST_Posts_Controller."
 
-#: inc/post-types.php:689 inc/taxonomies.php:854
+#: inc/post-types.php:689 inc/taxonomies.php:857
 msgid "REST API controller class"
 msgstr "Clase del controlador de la REST API"
 
@@ -151,7 +155,7 @@ msgid "Gutenberg is coming with WordPress 5.0. For post types to have \"Gutenber
 msgstr "Gutenberg viene a WordPress 5.0. Para que los tipos de contenido funcionen con Gutenberg, el parámetro \"Show in REST\" debe estar establecido en true. Estamos cambiando esto para ayudar a los usuarios a tener una mejor integración."
 
 #: inc/about.php:92
-msgid "Adjusted default \"Show in REST\" paramter."
+msgid "Adjusted default \"Show in REST\" parameter."
 msgstr "Ajustado el valor del parámetro \"Show in REST\"."
 
 #: inc/about.php:89
@@ -183,7 +187,7 @@ msgstr "Vea nuestra página de diseños"
 msgid "Please note that %s this plugin will not handle display %s of registered post types or taxonomies in your current theme. It simply registers them for you. To display your data, check out %s. %s to see some examples that are available with Custom Post Type UI Extended. If all else fails, visit us on the %s"
 msgstr "Por favor, ten en cuenta %s que este plugin no maneja la visualización %s de los tipo de contenidos o taxonomías que tengas registrados en tu tema actual. Simplemente los registra por ti. Para visualizar tu información, comprueba %s. %s para ver algunos ejemplos disponibles con Custom Post Type UI Extended. Si todo lo demás falla, visítanos en %s"
 
-#: inc/tools.php:814
+#: inc/tools.php:820
 msgid "All of the selectable code snippets below are useful if you wish to migrate away from Custom Post Type UI and retain your existing registered post types or taxonomies."
 msgstr "Todos estos fragmentos de código te serán útiles si quieres migrar desde Custom Post Type UI y mantener tus tipos de contenido y taxonomías  registrados."
 
@@ -251,13 +255,9 @@ msgstr "Objeto"
 msgid "Remove these ads?"
 msgstr "¿Quieres quitar los anuncios?"
 
-#: inc/taxonomies.php:875
+#: inc/taxonomies.php:878
 msgid "(default: false) Whether to show the taxonomy in the quick/bulk edit panel."
 msgstr "(por defecto: falso) Si mostrar o no la taxonomía en el panel de edición rápido/en masa."
-
-#: inc/taxonomies.php:839
-msgid "(default: false) Whether to show this taxonomy data in the WP REST API."
-msgstr "(por defecto: falso) si mostrar o no la información de esta taxonomía en la WP REST API."
 
 #: inc/taxonomies.php:799
 msgid "(default: false) Should the permastruct allow hierarchical urls."
@@ -503,7 +503,7 @@ msgstr "Acerca"
 msgid "Please provide a post type to attach to."
 msgstr "Proporciona un tipo de contenido al que añadirlo."
 
-#: inc/taxonomies.php:874
+#: inc/taxonomies.php:877
 msgid "Show in quick/bulk edit panel."
 msgstr "Mostrar en el panel de edición rápida/en masa."
 
@@ -815,15 +815,15 @@ msgstr "(por defecto: slug del tipo de contenido) La query var tiene que configu
 msgid "Custom Query Var Slug"
 msgstr "Slug de la query var personalizada"
 
-#: inc/post-types.php:682 inc/taxonomies.php:847
+#: inc/post-types.php:682 inc/taxonomies.php:850
 msgid "Slug to use in REST API URLs."
 msgstr "Slug para usar en las URL de la REST API."
 
-#: inc/post-types.php:681 inc/taxonomies.php:846
+#: inc/post-types.php:681 inc/taxonomies.php:849
 msgid "REST API base slug"
 msgstr "Slug base de la REST API"
 
-#: inc/post-types.php:673 inc/taxonomies.php:838
+#: inc/post-types.php:673 inc/taxonomies.php:841
 msgid "Show in REST API"
 msgstr "Mostrar en REST API "
 
@@ -865,23 +865,23 @@ msgstr "Ejemplos de nombres de archivo de ficheros."
 msgid "Template Hierarchy"
 msgstr "Jerarquía de plantillas"
 
-#: inc/tools.php:883
+#: inc/tools.php:889
 msgid "Send debug info"
 msgstr "Enviar información de depuración"
 
-#: inc/tools.php:874
+#: inc/tools.php:880
 msgid "Please provide an email address to send debug information to: "
 msgstr "Por favor, proporciona una dirección de correo electrónico para enviar información de depuración a:"
 
-#: inc/tools.php:842
+#: inc/tools.php:848
 msgid "%s Taxonomy"
 msgstr "%s Taxonomía"
 
-#: inc/tools.php:825
+#: inc/tools.php:831
 msgid "%s Post Type"
 msgstr "%s Tipo de contenido"
 
-#: inc/tools.php:715
+#: inc/tools.php:721
 msgid "This will not export the associated posts or taxonomy terms, just the settings."
 msgstr "Esto no exportará las entradas asociadas o los términos de la taxonomía, solo los ajustes."
 
@@ -897,19 +897,19 @@ msgstr "Novedades en la versión %s"
 msgid "If you have sought support for Custom Post Type UI on the forums, you may be requested to send the information below to the plugin developer. Simply insert the email they provided in the input field at the bottom and click the \"Send debug info\" button. Only the data below will be sent to them."
 msgstr "Si has buscado ayuda sobre Custom Post Type UI en los foros, es posible que te hayan pedido que le envíes esta información al autor del plugin. Simplemente escribe en el campo de abajo la dirección de correo electrónico que te han dado y haz clic en \"Enviar información de depuración\". Solo se enviarán estos datos que ves."
 
-#. Author URI of the plugin/theme
+#. Author URI of the plugin
 msgid "https://webdevstudios.com/"
 msgstr "https://webdevstudios.com/"
 
-#. Author of the plugin/theme
+#. Author of the plugin
 msgid "WebDevStudios"
 msgstr "WebDevStudios"
 
-#. Description of the plugin/theme
+#. Description of the plugin
 msgid "Admin panel for creating custom post types and custom taxonomies in WordPress"
 msgstr "Panel de administración para crear tipos de contenido personalizados y taxonomías personalizadas en WordPress"
 
-#. Plugin URI of the plugin/theme
+#. Plugin URI of the plugin
 msgid "https://github.com/WebDevStudios/custom-post-type-ui/"
 msgstr "https://github.com/WebDevStudios/custom-post-type-ui/"
 
@@ -917,11 +917,11 @@ msgstr "https://github.com/WebDevStudios/custom-post-type-ui/"
 msgid "Please choose a different taxonomy name. %s is already registered."
 msgstr "Por favor, elige un nombre de taxonomía diferente. %s ya está en uso."
 
-#: inc/taxonomies.php:1145
+#: inc/taxonomies.php:1148
 msgid "Please provide a taxonomy name"
 msgstr "Por favor, proporciona un nombre de taxonomía"
 
-#: inc/taxonomies.php:1072
+#: inc/taxonomies.php:1075
 msgid "Please provide a taxonomy to delete"
 msgstr "Por favor, proporciona una taxonomía a eliminar"
 
@@ -1060,15 +1060,15 @@ msgstr "(p. ej. Todos los actores)"
 msgid "Custom taxonomy label. Used in the admin menu for displaying taxonomies."
 msgstr "Etiqueta de taxonomía personalizada. Usada en el menú de administración para mostrar taxonomías."
 
-#: inc/taxonomies.php:375 inc/taxonomies.php:938
+#: inc/taxonomies.php:375 inc/taxonomies.php:941
 msgid "Add Taxonomy"
 msgstr "Añadir taxonomía"
 
-#: inc/taxonomies.php:363 inc/taxonomies.php:926
+#: inc/taxonomies.php:363 inc/taxonomies.php:929
 msgid "Delete Taxonomy"
 msgstr "Borrar taxonomía "
 
-#: inc/taxonomies.php:352 inc/taxonomies.php:915
+#: inc/taxonomies.php:352 inc/taxonomies.php:918
 msgid "Save Taxonomy"
 msgstr "Guardar taxonomía"
 
@@ -1363,8 +1363,8 @@ msgstr "Público"
 #: inc/taxonomies.php:596 inc/taxonomies.php:612 inc/taxonomies.php:632
 #: inc/taxonomies.php:650 inc/taxonomies.php:670 inc/taxonomies.php:690
 #: inc/taxonomies.php:710 inc/taxonomies.php:739 inc/taxonomies.php:768
-#: inc/taxonomies.php:790 inc/taxonomies.php:810 inc/taxonomies.php:830
-#: inc/taxonomies.php:866
+#: inc/taxonomies.php:790 inc/taxonomies.php:810 inc/taxonomies.php:831
+#: inc/taxonomies.php:869
 msgid "True"
 msgstr "Verdadero"
 
@@ -1376,7 +1376,7 @@ msgstr "Verdadero"
 #: inc/taxonomies.php:647 inc/taxonomies.php:667 inc/taxonomies.php:687
 #: inc/taxonomies.php:707 inc/taxonomies.php:736 inc/taxonomies.php:765
 #: inc/taxonomies.php:787 inc/taxonomies.php:807 inc/taxonomies.php:827
-#: inc/taxonomies.php:863
+#: inc/taxonomies.php:866
 msgid "False"
 msgstr "Falso"
 
@@ -1540,7 +1540,7 @@ msgstr "El archivo en el front-end"
 msgid "Labels"
 msgstr "Etiquetas"
 
-#: inc/listings.php:76 inc/post-types.php:911
+#: inc/post-types.php:911 inc/listings.php:76
 msgid "Supports"
 msgstr "Soportes"
 
@@ -1552,7 +1552,7 @@ msgstr "Tipo de contenido"
 msgid "Post Types and Taxonomies registered by Custom Post Type UI."
 msgstr "Tipos de contenido y taxonomías registrados por Custom Post Type UI."
 
-#: inc/tools.php:359
+#: inc/tools.php:362
 msgid "No post types to display at this time"
 msgstr "No hay tipos de contenidos para mostrar en este momento"
 
@@ -1560,71 +1560,71 @@ msgstr "No hay tipos de contenidos para mostrar en este momento"
 msgid "No taxonomies to display at this time"
 msgstr "No hay taxonomías que mostrar en este momento"
 
-#: inc/tools.php:817 inc/tools.php:826 inc/tools.php:834 inc/tools.php:843
+#: inc/tools.php:823 inc/tools.php:832 inc/tools.php:840 inc/tools.php:849
 msgid "Copy/paste the code below into your functions.php file."
 msgstr "Copia/pega el siguiente código en tu archivo functions.php"
 
-#: inc/tools.php:810
+#: inc/tools.php:816
 msgid "Get Post Type and Taxonomy Code"
 msgstr "Descargar el código de Tipos de Contenido y Taxonomías"
 
-#: inc/tools.php:792
+#: inc/tools.php:798
 msgid "Use the content above to import current taxonomies into a different WordPress site. You can also use this to simply back up your taxonomy settings."
 msgstr "Usa el código de aquí arriba para importar las taxonomías actuales a otra instalación de WordPress. También puedes usarlo para hacerte una copia de seguridad de los ajustes de tus taxonomías actuales."
 
-#: inc/tools.php:786
+#: inc/tools.php:792
 msgid "No taxonomies registered yet."
 msgstr "No se han registrado taxonomías aún."
 
-#: inc/tools.php:771
+#: inc/tools.php:777
 msgid "To import taxonomies from a different WordPress site, paste the exported content from that site and click the \"Import\" button."
 msgstr "Para importar taxonomías registradas en otra instalación de WordPress pega el código en este caja y haz clic en \"Importar\"."
 
-#: inc/tools.php:761
+#: inc/tools.php:767
 msgid "Import Taxonomies"
 msgstr "Importar taxonomías"
 
-#: inc/tools.php:754
+#: inc/tools.php:760
 msgid "Use the content above to import current post types into a different WordPress site. You can also use this to simply back up your post type settings."
 msgstr "Usa el contenido de arriba para importar los tipos de contenido actual en otro sitio diferente de WordPress. También puedes usar esto para hacer una simple copia de seguridad de tus ajustes del tipo de contenido"
 
-#: inc/tools.php:751 inc/tools.php:789
+#: inc/tools.php:757 inc/tools.php:795
 msgid "To copy the system info, click below then press Ctrl + C (PC) or Cmd + C (Mac)."
 msgstr "Para cambiar la información del sistema, haz clic abajo y presiona Ctrl + C (PC) or Cmd + C (Mac)."
 
-#: inc/tools.php:748
+#: inc/tools.php:754
 msgid "No post types registered yet."
 msgstr "No se han registrado tipos de contenido personalizados aún."
 
-#: inc/tools.php:737 inc/tools.php:775
+#: inc/tools.php:743 inc/tools.php:781
 msgid "Import"
 msgstr "Importar"
 
-#: inc/tools.php:733
+#: inc/tools.php:739
 msgid "To import post types from a different WordPress site, paste the exported content from that site and click the \"Import\" button."
 msgstr "Para importar los tipos de contenido registrados en otra instalación de WordPress pega el código en este caja y haz clic en \"Importar\"."
 
-#: inc/tools.php:729 inc/tools.php:767
+#: inc/tools.php:735 inc/tools.php:773
 msgid "Importing will overwrite previous registered settings."
 msgstr "Al importar se borrarán todos los ajustes registrados previamente."
 
-#: inc/tools.php:729 inc/tools.php:767
+#: inc/tools.php:735 inc/tools.php:773
 msgid "Note:"
 msgstr "Nota:"
 
-#: inc/tools.php:726 inc/tools.php:764
+#: inc/tools.php:732 inc/tools.php:770
 msgid "Paste content here."
 msgstr "Pega el contenido aquí."
 
-#: inc/tools.php:723
+#: inc/tools.php:729
 msgid "Import Post Types"
 msgstr "Importar Tipos de Contenido"
 
-#: inc/tools.php:714
+#: inc/tools.php:720
 msgid "NOTE"
 msgstr "NOTA"
 
-#: inc/tools.php:708
+#: inc/tools.php:714
 msgid "If you are wanting to migrate registered post types or taxonomies from this site to another, that will also use Custom Post Type UI, use the import and export functionality. If you are moving away from Custom Post Type UI, use the information in the \"Get Code\" tab."
 msgstr "Si vas a migrar los tipos de contenidos y taxonomías a una instalación nueva donde vayas a seguir usando el plugin \"Custom Post Type UI\" hazlo mediante la función de importar y exportar que ves en esta página. Si vas a dejar de usar este plugin ve a la pestaña \"Descargar el código\"."
 
@@ -1735,7 +1735,7 @@ msgstr "%s ha sido añadido con éxito"
 msgid "Help"
 msgstr "Ayuda"
 
-#: inc/listings.php:75 inc/listings.php:288 inc/post-types.php:592
+#: inc/post-types.php:592 inc/listings.php:75 inc/listings.php:288
 #: inc/taxonomies.php:586
 msgid "Settings"
 msgstr "Configuración"
@@ -1776,9 +1776,7 @@ msgstr "Seguir en Twitter:"
 msgid "%s version %s by %s"
 msgstr "%s versión %s por %s"
 
-#. #-#-#-#-#  custom-post-type-ui-code.pot (Custom Post Type UI 1.6.0) 
-#. #-#-#-#-#
-#. Plugin Name of the plugin/theme
+#. Plugin Name of the plugin
 #: inc/about.php:55 inc/utility.php:107 inc/utility.php:122
 msgid "Custom Post Type UI"
 msgstr "Custom Post Type UI"

@@ -2,7 +2,7 @@
 Contributors: matveb, joen, karmatosed
 Requires at least: 4.9.8
 Tested up to: 4.9
-Stable tag: 4.3.0
+Stable tag: 4.6.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -81,72 +81,4 @@ See also <a href="https://github.com/WordPress/gutenberg/blob/master/CONTRIBUTIN
 
 = Latest =
 
-#  Changelog
-
-* Improves discoverability of permalinks by adding permalink panel to the document sidebar.
-* Improves margins, column child block, and mobile display of columns.
-* Allow for programmatically removing editor document panels.
-* Replaces the uploading indicator of images and galleries with a spinner and faded out image.
-* Toolbar for floats was a little offset beyond the mobile breakpoint, now fixed.
-* Text and code editing blocks did not have width set, now set to fill the space.
-* Correctly align URL input autocomplete.
-* Improve animations: new, consistent naming convention, adds editor prefix, and moves keyframe animations (which don’t work well with mixins) into the edit post style.
-* Hover styles were showing on mobile, where hover is not available – now disabled.
-* Click and drag was incorrectly triggering a selection event in the block list under the popover, resulting in the popover dismissing. This was causing blocks to be selected when trying to set links to open in a new tab, for example. Fixed by preventing the mouse down event from propagating.
-* Adds some padding to the block inserter so that it never overlaps text in nested contexts or mobile views.
-* Better handle images larger than the editor by allowing a 2.5x buffer. Allows images inserted in TwentyNineteen and other themes that have a wider than 580px editor width, to look as expected, but prevents infinite resizing of images.
-* Stop mousedown event propagating through the toolbar, fixing problem of unexpectedly selecting blocks.
-* Improve the way that long words are broken on multiple lines, using word-break: keep-all;
-* Preserve the ratio of video backgrounds in cover blocks, videos may be cropped to fit but will keep their original ratio.
-* It was not possible to scroll a long menu on first load of Gutenberg, fixed by removing sticky-menu.
-* Properly check for allowed types of Media in Media Placeholder components.
-* “Resolve” and “Convert to HTML” buttons were not clickable (regression), now resolved.
-* Exclude HTML editing from Columns and Column blocks.
-* Better handle links without href, which were showing as `undefined`.
-* Renders block appender after the template is processed, to prevent incorrectly inserting new paragraphs.
-* Parent pages were being lost when draft pages were autosaved, fixed by removing parent pages from autosave requests and refactoring to stop using “parent” as the path argument name.
-* Adding line breaks in formatted content in quote blocks were not working correctly, fixed by persisting formats when new lines are added.
-* Prevent users in the contributor role from using blocks that require upload privileges.
-* Fix block selection in removing blocks, correct typo in comparison.
-* Japanese text (double byte characters) was not usable in the list block, fixed by changing handling of composition events.
-* Better handles different text encodings (e.g. emoji) within a block in block validation.
-* Use a query argument instead of data to prevent error being thrown on post refresh.
-* Keyboard navigation was not working as expected in Firefox, added extra key binding.
-* Adds missing alt values to images when editing.
-* Better communicate block nesting level by using unordered lists.
-* Fix sidebar icons being incorrectly announced in NVDA by adding a span with `aria-hidden=”true”`.
-* Fixes block toolbar aria label to announce “block tools toolbar” rather than “block toolbar (a11y).
-* Adjusts focus on media and text blocks to select the overall block, not the child paragraph block.
-* Refactors i18n module to replaces Jed with Tannin for significant performance improvements.
-* Replace `getSelectedBlock` and `getMultiSelectedBlocks` with more performant `getSelectedBlockClientId` and a `getBlocks` selectors in copy handler.
-* Replace `getBlock` selector in favor of the more performant `getBlockName`.
-* Replace `getSelectedBlock` with more performant `getSelectedBlockClientId` and new `isBlockValid` selectors in the BlockToolbar.
-* Replace `getSelectedBlock` with more performant `getSelectedBlockClientId` and new `isBlockValid` selectors in the Block Inspector.
-* Replaces `getInserterItems` with a new `hasInserterItems` selector which is more performant, and makes some adjustments to memorization.
-* Avoid using the `getSelectedBlock` selector in autocompleters.
-* Remove use of `getBlock` selector in the DefaultBlockAppender and EditorKeyboardShortcuts components.
-* Move undo handling out of TinyMCE and into the RichText component.
-* `is_gutenberg_page` incorrectly assumes `get_current_screen` exists, add check.
-* Brings code inline with CSS standards by switching font weight to numeric values.
-* Wrapped component would not the most up-to-date store values if it incurred a store state change during its own mount (e.g. dispatching during its own constructor), resolved by rerunning selection.
-* Display an error message if Javascript is disabled.
-* Update to React 16.6.3.
-* Adds missing components dependency for RichText.
-* Refactors list block to remove previously exposed RichText/TinyMCE logic.
-* Removes `focusOnMount` prop from NavigableToolbar components, which was generating a warning.
-* Refactor checks for upload permissions, removing unnecessary checks for store permissions.
-* Use the large image size when inserting images in both galleries and image blocks.
-* Fixes dependency of `wp-polyfill` which needs to be registered before React and React-Dom when plugins (like Yoast) rely on Gutenberg’s React.
-* Mark `onSplit` as unstable as it is pending refactor.
-* Remove 4.4 deprecated features.
-* Fix SCSS syntax error.
-* Remove export of previously removed function.
-* Add an E2E test for unsupported blocks.
-* Refactor E2E utility functions.
-* Formatting updates to copy guidelines.
-* Makes headings consistent in the dropdown documentation.
-* Removes outdated documentation referring to function support in `registerBlockType`.
-* Fixes some typos and line breaks in block design documentation.
-* Fixes some typos and improves readability of README.
-* Adds toolbar to the editing block, and edit button.
-* Passes the `isSelected` prop down to the implementation of RichText components to make them respond properly to focus changes.
+* Parser: Make attribute parsing possessive (Fix High CPU usage).

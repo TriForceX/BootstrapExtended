@@ -38,4 +38,12 @@ class Mailer extends MailerAbstract {
 
 		return implode( '<br>', $mail_text );
 	}
+
+	/**
+	 * @inheritdoc
+	 */
+	public function is_mailer_complete() {
+
+		return true;
+	}
 }

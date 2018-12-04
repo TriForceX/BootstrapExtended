@@ -1,7 +1,7 @@
 <?php
 /* THIS IS A GENERATED FILE. DO NOT EDIT DIRECTLY. */
 $generated_i18n_strings = array(
-	// Reference: packages/annotations/build-module/format/annotation.js:55
+	// Reference: packages/annotations/build-module/format/annotation.js:160
 	__( 'Annotation', 'gutenberg' ),
 
 	// Reference: packages/api-fetch/build-module/index.js:100
@@ -27,42 +27,42 @@ $generated_i18n_strings = array(
 	// Reference: packages/block-library/build-module/archives/index.js:16
 	__( 'Display a monthly archive of your posts.', 'gutenberg' ),
 
-	// Reference: packages/block-library/build-module/audio/edit.js:186
+	// Reference: packages/block-library/build-module/audio/edit.js:203
 	__( 'Edit audio', 'gutenberg' ),
 
-	// Reference: packages/block-library/build-module/audio/edit.js:190
+	// Reference: packages/block-library/build-module/audio/edit.js:207
 	__( 'Audio Settings', 'gutenberg' ),
 
-	// Reference: packages/block-library/build-module/audio/edit.js:192
+	// Reference: packages/block-library/build-module/audio/edit.js:209
 	// Reference: packages/block-library/build-module/video/edit.js:234
 	__( 'Autoplay', 'gutenberg' ),
 
-	// Reference: packages/block-library/build-module/audio/edit.js:196
+	// Reference: packages/block-library/build-module/audio/edit.js:213
 	// Reference: packages/block-library/build-module/video/edit.js:238
 	__( 'Loop', 'gutenberg' ),
 
-	// Reference: packages/block-library/build-module/audio/edit.js:200
+	// Reference: packages/block-library/build-module/audio/edit.js:217
 	// Reference: packages/block-library/build-module/video/edit.js:250
 	__( 'Preload', 'gutenberg' ),
 
-	// Reference: packages/block-library/build-module/audio/edit.js:210
+	// Reference: packages/block-library/build-module/audio/edit.js:227
 	// Reference: packages/block-library/build-module/video/edit.js:259
 	__( 'Auto', 'gutenberg' ),
 
-	// Reference: packages/block-library/build-module/audio/edit.js:213
+	// Reference: packages/block-library/build-module/audio/edit.js:230
 	// Reference: packages/block-library/build-module/video/edit.js:262
 	__( 'Metadata', 'gutenberg' ),
 
-	// Reference: packages/block-library/build-module/audio/edit.js:216
+	// Reference: packages/block-library/build-module/audio/edit.js:233
 	// Reference: packages/block-library/build-module/gallery/edit.js:37
-	// Reference: packages/block-library/build-module/image/edit.js:321
+	// Reference: packages/block-library/build-module/image/edit.js:373
 	// Reference: packages/block-library/build-module/video/edit.js:265
 	__( 'None', 'gutenberg' ),
 
-	// Reference: packages/block-library/build-module/audio/edit.js:225
+	// Reference: packages/block-library/build-module/audio/edit.js:242
 	// Reference: packages/block-library/build-module/embed/embed-preview.js:73
 	// Reference: packages/block-library/build-module/gallery/gallery-image.js:173
-	// Reference: packages/block-library/build-module/image/edit.js:642
+	// Reference: packages/block-library/build-module/image/edit.js:703
 	// Reference: packages/block-library/build-module/video/edit.js:295
 	__( 'Write caption…', 'gutenberg' ),
 
@@ -78,11 +78,11 @@ $generated_i18n_strings = array(
 	__( 'Name:', 'gutenberg' ),
 
 	// Reference: packages/block-library/build-module/block/edit-panel/index.js:116
-	// Reference: packages/editor/build-module/components/post-permalink/editor.js:92
+	// Reference: packages/editor/build-module/components/post-permalink/editor.js:98
 	__( 'Save', 'gutenberg' ),
 
 	// Reference: packages/block-library/build-module/block/edit-panel/index.js:95
-	// Reference: packages/editor/build-module/components/post-permalink/index.js:138
+	// Reference: packages/editor/build-module/components/post-permalink/index.js:146
 	// Reference: packages/format-library/build-module/link/inline.js:131
 	__( 'Edit', 'gutenberg' ),
 
@@ -93,7 +93,7 @@ $generated_i18n_strings = array(
 	__( 'Reusable Block', 'gutenberg' ),
 
 	// Reference: packages/block-library/build-module/block/index.js:14
-	__( 'Create content, and save it to reuse across your site. Update the block, and the changes apply everywhere it’s used.', 'gutenberg' ),
+	__( 'Create content, and save it for you and other contributors to reuse across your site. Update the block, and the changes apply everywhere it’s used.', 'gutenberg' ),
 
 	// Reference: packages/block-library/build-module/block/indicator/index.js:12
 	/* translators: %s: title/name of the reusable block */
@@ -151,10 +151,10 @@ $generated_i18n_strings = array(
 	// Reference: packages/block-library/build-module/categories/index.js:16
 	__( 'Display a list of all categories.', 'gutenberg' ),
 
-	// Reference: packages/block-library/build-module/classic/edit.js:168
+	// Reference: packages/block-library/build-module/classic/edit.js:162
 	__( 'Insert Media', 'gutenberg' ),
 
-	// Reference: packages/block-library/build-module/classic/edit.js:221
+	// Reference: packages/block-library/build-module/classic/edit.js:215
 	__( 'Classic', 'gutenberg' ),
 
 	// Reference: packages/block-library/build-module/classic/index.js:17
@@ -181,12 +181,13 @@ $generated_i18n_strings = array(
 	__( 'Add a block that displays content in multiple columns, then add whatever content blocks you’d like.', 'gutenberg' ),
 
 	// Reference: packages/block-library/build-module/columns/index.js:176
-	// Reference: packages/block-library/build-module/gallery/edit.js:255
+	// Reference: packages/block-library/build-module/gallery/edit.js:269
 	// Reference: packages/block-library/build-module/latest-posts/edit.js:144
 	// Reference: packages/block-library/build-module/text-columns/index.js:100
 	__( 'Columns', 'gutenberg' ),
 
 	// Reference: packages/block-library/build-module/cover/index.js:283
+	// Reference: packages/block-library/build-module/media-text/media-container.js:46
 	__( 'Edit media', 'gutenberg' ),
 
 	// Reference: packages/block-library/build-module/cover/index.js:289
@@ -292,7 +293,7 @@ $generated_i18n_strings = array(
 	__( 'Embed a Tumblr post.', 'gutenberg' ),
 
 	// Reference: packages/block-library/build-module/embed/core-embeds.js:294
-	// Reference: packages/block-library/build-module/media-text/index.js:34
+	// Reference: packages/block-library/build-module/media-text/index.js:77
 	__( 'video', 'gutenberg' ),
 
 	// Reference: packages/block-library/build-module/embed/core-embeds.js:295
@@ -323,7 +324,7 @@ $generated_i18n_strings = array(
 	__( 'Embed Spotify content.', 'gutenberg' ),
 
 	// Reference: packages/block-library/build-module/embed/core-embeds.js:78
-	// Reference: packages/block-library/build-module/media-text/index.js:34
+	// Reference: packages/block-library/build-module/media-text/index.js:77
 	__( 'image', 'gutenberg' ),
 
 	// Reference: packages/block-library/build-module/embed/core-embeds.js:79
@@ -413,32 +414,32 @@ $generated_i18n_strings = array(
 	__( 'The download button is hidden.', 'gutenberg' ),
 
 	// Reference: packages/block-library/build-module/file/inspector.js:27
-	// Reference: packages/edit-post/build-module/components/sidebar/post-link/index.js:54
+	// Reference: packages/edit-post/build-module/components/sidebar/post-link/index.js:57
 	// Reference: packages/editor/build-module/components/media-placeholder/index.js:46
 	// Reference: packages/editor/build-module/components/url-input/index.js:292
 	__( 'URL', 'gutenberg' ),
 
 	// Reference: packages/block-library/build-module/file/inspector.js:33
 	// Reference: packages/block-library/build-module/gallery/edit.js:34
-	// Reference: packages/block-library/build-module/image/edit.js:324
+	// Reference: packages/block-library/build-module/image/edit.js:376
 	__( 'Media File', 'gutenberg' ),
 
 	// Reference: packages/block-library/build-module/file/inspector.js:36
 	// Reference: packages/block-library/build-module/gallery/edit.js:31
-	// Reference: packages/block-library/build-module/image/edit.js:327
+	// Reference: packages/block-library/build-module/image/edit.js:379
 	__( 'Attachment Page', 'gutenberg' ),
 
 	// Reference: packages/block-library/build-module/file/inspector.js:41
 	__( 'Text Link Settings', 'gutenberg' ),
 
 	// Reference: packages/block-library/build-module/file/inspector.js:43
-	// Reference: packages/block-library/build-module/gallery/edit.js:266
-	// Reference: packages/block-library/build-module/image/edit.js:504
+	// Reference: packages/block-library/build-module/gallery/edit.js:280
+	// Reference: packages/block-library/build-module/image/edit.js:558
 	__( 'Link To', 'gutenberg' ),
 
 	// Reference: packages/block-library/build-module/file/inspector.js:48
-	// Reference: packages/block-library/build-module/image/edit.js:515
-	// Reference: packages/format-library/build-module/link/inline.js:302
+	// Reference: packages/block-library/build-module/image/edit.js:569
+	// Reference: packages/format-library/build-module/link/inline.js:298
 	__( 'Open in New Tab', 'gutenberg' ),
 
 	// Reference: packages/block-library/build-module/file/inspector.js:52
@@ -447,43 +448,43 @@ $generated_i18n_strings = array(
 	// Reference: packages/block-library/build-module/file/inspector.js:54
 	__( 'Show Download Button', 'gutenberg' ),
 
-	// Reference: packages/block-library/build-module/gallery/edit.js:142
+	// Reference: packages/block-library/build-module/gallery/edit.js:158
 	__( 'Thumbnails are cropped to align.', 'gutenberg' ),
 
-	// Reference: packages/block-library/build-module/gallery/edit.js:142
+	// Reference: packages/block-library/build-module/gallery/edit.js:158
 	__( 'Thumbnails are not cropped.', 'gutenberg' ),
 
-	// Reference: packages/block-library/build-module/gallery/edit.js:228
+	// Reference: packages/block-library/build-module/gallery/edit.js:242
 	__( 'Edit Gallery', 'gutenberg' ),
 
-	// Reference: packages/block-library/build-module/gallery/edit.js:240
-	// Reference: packages/block-library/build-module/gallery/index.js:71
+	// Reference: packages/block-library/build-module/gallery/edit.js:254
+	// Reference: packages/block-library/build-module/gallery/index.js:86
 	// Reference: packages/editor/build-module/components/post-format/index.js:25
 	__( 'Gallery', 'gutenberg' ),
 
-	// Reference: packages/block-library/build-module/gallery/edit.js:241
+	// Reference: packages/block-library/build-module/gallery/edit.js:255
 	__( 'Drag images, upload new ones or select files from your library.', 'gutenberg' ),
 
-	// Reference: packages/block-library/build-module/gallery/edit.js:253
+	// Reference: packages/block-library/build-module/gallery/edit.js:267
 	__( 'Gallery Settings', 'gutenberg' ),
 
-	// Reference: packages/block-library/build-module/gallery/edit.js:261
+	// Reference: packages/block-library/build-module/gallery/edit.js:275
 	__( 'Crop Images', 'gutenberg' ),
 
-	// Reference: packages/block-library/build-module/gallery/edit.js:301
+	// Reference: packages/block-library/build-module/gallery/edit.js:315
 	__( 'Upload an image', 'gutenberg' ),
 
 	// Reference: packages/block-library/build-module/gallery/gallery-image.js:168
 	__( 'Remove Image', 'gutenberg' ),
 
-	// Reference: packages/block-library/build-module/gallery/index.js:72
-	__( 'Display multiple images in a rich gallery.', 'gutenberg' ),
-
-	// Reference: packages/block-library/build-module/gallery/index.js:87
+	// Reference: packages/block-library/build-module/gallery/index.js:102
 	__( 'images', 'gutenberg' ),
 
-	// Reference: packages/block-library/build-module/gallery/index.js:87
+	// Reference: packages/block-library/build-module/gallery/index.js:102
 	__( 'photos', 'gutenberg' ),
+
+	// Reference: packages/block-library/build-module/gallery/index.js:87
+	__( 'Display multiple images in a rich gallery.', 'gutenberg' ),
 
 	// Reference: packages/block-library/build-module/heading/edit.js:38
 	__( 'Heading Settings', 'gutenberg' ),
@@ -501,16 +502,16 @@ $generated_i18n_strings = array(
 	/* translators: %s: heading level e.g: "1", "2", "3" */
 	__( 'Heading %d', 'gutenberg' ),
 
-	// Reference: packages/block-library/build-module/heading/index.js:57
+	// Reference: packages/block-library/build-module/heading/index.js:58
 	__( 'Heading', 'gutenberg' ),
 
-	// Reference: packages/block-library/build-module/heading/index.js:58
+	// Reference: packages/block-library/build-module/heading/index.js:59
 	__( 'Introduce new sections and organize content to help visitors (and search engines) understand the structure of your content.', 'gutenberg' ),
 
-	// Reference: packages/block-library/build-module/heading/index.js:69
+	// Reference: packages/block-library/build-module/heading/index.js:70
 	__( 'title', 'gutenberg' ),
 
-	// Reference: packages/block-library/build-module/heading/index.js:69
+	// Reference: packages/block-library/build-module/heading/index.js:70
 	__( 'subtitle', 'gutenberg' ),
 
 	// Reference: packages/block-library/build-module/html/index.js:14
@@ -523,7 +524,7 @@ $generated_i18n_strings = array(
 	__( 'embed', 'gutenberg' ),
 
 	// Reference: packages/block-library/build-module/html/index.js:81
-	// Reference: packages/edit-post/build-module/components/sidebar/post-link/index.js:80
+	// Reference: packages/edit-post/build-module/components/sidebar/post-link/index.js:92
 	// Reference: packages/editor/build-module/components/block-preview/index.js:32
 	__( 'Preview', 'gutenberg' ),
 
@@ -533,65 +534,71 @@ $generated_i18n_strings = array(
 	// Reference: packages/block-library/build-module/html/index.js:92
 	__( 'HTML', 'gutenberg' ),
 
-	// Reference: packages/block-library/build-module/image/edit.js:330
+	// Reference: packages/block-library/build-module/image/edit.js:382
 	__( 'Custom URL', 'gutenberg' ),
 
-	// Reference: packages/block-library/build-module/image/edit.js:408
+	// Reference: packages/block-library/build-module/image/edit.js:462
 	__( 'Edit image', 'gutenberg' ),
 
-	// Reference: packages/block-library/build-module/image/edit.js:450
+	// Reference: packages/block-library/build-module/image/edit.js:504
 	__( 'Image Settings', 'gutenberg' ),
 
-	// Reference: packages/block-library/build-module/image/edit.js:452
+	// Reference: packages/block-library/build-module/image/edit.js:506
 	// Reference: packages/block-library/build-module/media-text/edit.js:202
 	__( 'Alt Text (Alternative Text)', 'gutenberg' ),
 
-	// Reference: packages/block-library/build-module/image/edit.js:455
+	// Reference: packages/block-library/build-module/image/edit.js:509
 	// Reference: packages/block-library/build-module/media-text/edit.js:205
 	__( 'Alternative text describes your image to people who can’t see it. Add a short description with its key details.', 'gutenberg' ),
 
-	// Reference: packages/block-library/build-module/image/edit.js:465
+	// Reference: packages/block-library/build-module/image/edit.js:519
 	__( 'Image Dimensions', 'gutenberg' ),
 
-	// Reference: packages/block-library/build-module/image/edit.js:470
+	// Reference: packages/block-library/build-module/image/edit.js:524
 	__( 'Width', 'gutenberg' ),
 
-	// Reference: packages/block-library/build-module/image/edit.js:478
+	// Reference: packages/block-library/build-module/image/edit.js:532
 	__( 'Height', 'gutenberg' ),
 
-	// Reference: packages/block-library/build-module/image/edit.js:486
+	// Reference: packages/block-library/build-module/image/edit.js:540
 	__( 'Image Size', 'gutenberg' ),
 
-	// Reference: packages/block-library/build-module/image/edit.js:501
+	// Reference: packages/block-library/build-module/image/edit.js:555
 	// Reference: packages/components/build-module/font-size-picker/index.js:106
 	// Reference: packages/components/build-module/range-control/index.js:78
 	__( 'Reset', 'gutenberg' ),
 
-	// Reference: packages/block-library/build-module/image/edit.js:502
+	// Reference: packages/block-library/build-module/image/edit.js:556
 	// Reference: packages/editor/build-module/components/url-popover/index.js:66
 	__( 'Link Settings', 'gutenberg' ),
 
-	// Reference: packages/block-library/build-module/image/edit.js:509
+	// Reference: packages/block-library/build-module/image/edit.js:563
 	__( 'Link URL', 'gutenberg' ),
 
-	// Reference: packages/block-library/build-module/image/edit.js:546
+	// Reference: packages/block-library/build-module/image/edit.js:573
+	__( 'Link CSS Class', 'gutenberg' ),
+
+	// Reference: packages/block-library/build-module/image/edit.js:577
+	__( 'Link Rel', 'gutenberg' ),
+
+	// Reference: packages/block-library/build-module/image/edit.js:604
 	__( 'This image has an empty alt attribute; its file name is %s', 'gutenberg' ),
 
-	// Reference: packages/block-library/build-module/image/edit.js:548
+	// Reference: packages/block-library/build-module/image/edit.js:606
 	__( 'This image has an empty alt attribute', 'gutenberg' ),
 
-	// Reference: packages/block-library/build-module/image/index.js:110
-	// Reference: packages/format-library/build-module/image/index.js:22
-	__( 'photo', 'gutenberg' ),
-
-	// Reference: packages/block-library/build-module/image/index.js:95
+	// Reference: packages/block-library/build-module/image/index.js:107
 	// Reference: packages/editor/build-module/components/media-placeholder/index.js:235
 	// Reference: packages/editor/build-module/components/post-format/index.js:31
 	// Reference: packages/format-library/build-module/image/index.js:21
 	__( 'Image', 'gutenberg' ),
 
-	// Reference: packages/block-library/build-module/image/index.js:96
+	// Reference: packages/block-library/build-module/image/index.js:108
 	__( 'Insert an image to make a visual statement.', 'gutenberg' ),
+
+	// Reference: packages/block-library/build-module/image/index.js:122
+	// Reference: packages/format-library/build-module/image/index.js:22
+	__( 'photo', 'gutenberg' ),
 
 	// Reference: packages/block-library/build-module/latest-comments/edit.js:102
 	__( 'Display Excerpt', 'gutenberg' ),
@@ -642,22 +649,22 @@ $generated_i18n_strings = array(
 	// Reference: packages/block-library/build-module/latest-posts/index.js:57
 	__( 'recent posts', 'gutenberg' ),
 
-	// Reference: packages/block-library/build-module/list/index.js:227
+	// Reference: packages/block-library/build-module/list/index.js:230
 	__( 'Write list…', 'gutenberg' ),
 
-	// Reference: packages/block-library/build-module/list/index.js:54
+	// Reference: packages/block-library/build-module/list/index.js:55
 	__( 'List', 'gutenberg' ),
 
-	// Reference: packages/block-library/build-module/list/index.js:55
+	// Reference: packages/block-library/build-module/list/index.js:56
 	__( 'Create a bulleted or numbered list.', 'gutenberg' ),
 
-	// Reference: packages/block-library/build-module/list/index.js:63
+	// Reference: packages/block-library/build-module/list/index.js:64
 	__( 'bullet list', 'gutenberg' ),
 
-	// Reference: packages/block-library/build-module/list/index.js:63
+	// Reference: packages/block-library/build-module/list/index.js:64
 	__( 'ordered list', 'gutenberg' ),
 
-	// Reference: packages/block-library/build-module/list/index.js:63
+	// Reference: packages/block-library/build-module/list/index.js:64
 	__( 'numbered list', 'gutenberg' ),
 
 	// Reference: packages/block-library/build-module/media-text/edit.js:167
@@ -672,14 +679,11 @@ $generated_i18n_strings = array(
 	// Reference: packages/block-library/build-module/media-text/edit.js:194
 	__( 'Stack on mobile', 'gutenberg' ),
 
-	// Reference: packages/block-library/build-module/media-text/index.js:25
+	// Reference: packages/block-library/build-module/media-text/index.js:68
 	__( 'Media & Text', 'gutenberg' ),
 
-	// Reference: packages/block-library/build-module/media-text/index.js:26
-	__( 'Set media and words side-by-side media for a richer layout.', 'gutenberg' ),
-
-	// Reference: packages/block-library/build-module/media-text/media-container.js:46
-	__( 'Edit Media', 'gutenberg' ),
+	// Reference: packages/block-library/build-module/media-text/index.js:69
+	__( 'Set media and words side-by-side for a richer layout.', 'gutenberg' ),
 
 	// Reference: packages/block-library/build-module/media-text/media-container.js:89
 	__( 'Media area', 'gutenberg' ),
@@ -706,7 +710,7 @@ $generated_i18n_strings = array(
 	__( 'Hide the teaser before the "More" tag', 'gutenberg' ),
 
 	// Reference: packages/block-library/build-module/more/index.js:23
-	__( 'Want to show only an excerpt of this post on your homepage? Use this block to define where you want the separation.', 'gutenberg' ),
+	__( 'Mark the excerpt of this content. Content before this block will be shown in the excerpt on your archives page.', 'gutenberg' ),
 
 	// Reference: packages/block-library/build-module/nextpage/edit.js:10
 	__( 'Page break', 'gutenberg' ),
@@ -764,12 +768,12 @@ $generated_i18n_strings = array(
 	__( 'Write preformatted text…', 'gutenberg' ),
 
 	// Reference: packages/block-library/build-module/pullquote/edit.js:106
-	// Reference: packages/block-library/build-module/quote/index.js:246
+	// Reference: packages/block-library/build-module/quote/index.js:251
 	/* translators: placeholder text used for the quote */
 	__( 'Write quote…', 'gutenberg' ),
 
 	// Reference: packages/block-library/build-module/pullquote/edit.js:111
-	// Reference: packages/block-library/build-module/quote/index.js:256
+	// Reference: packages/block-library/build-module/quote/index.js:261
 	/* translators: placeholder text used for the citation */
 	__( 'Write citation…', 'gutenberg' ),
 
@@ -1153,7 +1157,7 @@ $generated_i18n_strings = array(
 	__( 'Drop files to upload', 'gutenberg' ),
 
 	// Reference: packages/components/build-module/external-link/index.js:42
-	// Reference: packages/editor/build-module/components/post-preview-button/index.js:149
+	// Reference: packages/editor/build-module/components/post-preview-button/index.js:155
 	/* translators: accessibility text */
 	__( '(opens in a new tab)', 'gutenberg' ),
 
@@ -1191,7 +1195,7 @@ $generated_i18n_strings = array(
 	// Reference: packages/components/build-module/modal/header.js:20
 	__( 'Close dialog', 'gutenberg' ),
 
-	// Reference: packages/components/build-module/notice/index.js:50
+	// Reference: packages/components/build-module/notice/index.js:57
 	__( 'Dismiss this notice', 'gutenberg' ),
 
 	// Reference: packages/components/build-module/query-controls/index.js:32
@@ -1232,11 +1236,11 @@ $generated_i18n_strings = array(
 	__( 'View Posts', 'gutenberg' ),
 
 	// Reference: packages/edit-post/build-module/components/header/header-toolbar/index.js:24
-	/* translators: accessibility text for the editor toolbar when Unified Toolbar is on */
+	/* translators: accessibility text for the editor toolbar when Top Toolbar is on */
 	__( 'Document and block tools', 'gutenberg' ),
 
 	// Reference: packages/edit-post/build-module/components/header/header-toolbar/index.js:26
-	/* translators: accessibility text for the editor toolbar when Unified Toolbar is off */
+	/* translators: accessibility text for the editor toolbar when Top Toolbar is off */
 	__( 'Document tools', 'gutenberg' ),
 
 	// Reference: packages/edit-post/build-module/components/header/header-toolbar/index.js:35
@@ -1245,10 +1249,10 @@ $generated_i18n_strings = array(
 	// Reference: packages/edit-post/build-module/components/header/index.js:34
 	__( 'Editor top bar', 'gutenberg' ),
 
-	// Reference: packages/edit-post/build-module/components/header/index.js:52
+	// Reference: packages/edit-post/build-module/components/header/index.js:55
 	__( 'Settings', 'gutenberg' ),
 
-	// Reference: packages/edit-post/build-module/components/header/index.js:59
+	// Reference: packages/edit-post/build-module/components/header/index.js:62
 	__( 'You’ll find more settings for your page and blocks in the sidebar. Click “Settings” to open it.', 'gutenberg' ),
 
 	// Reference: packages/edit-post/build-module/components/header/mode-switcher/index.js:24
@@ -1277,7 +1281,7 @@ $generated_i18n_strings = array(
 	__( 'Tools', 'gutenberg' ),
 
 	// Reference: packages/edit-post/build-module/components/header/writing-menu/index.js:21
-	__( 'Unified Toolbar', 'gutenberg' ),
+	__( 'Top Toolbar', 'gutenberg' ),
 
 	// Reference: packages/edit-post/build-module/components/header/writing-menu/index.js:22
 	__( 'Access all block and document tools in a single place', 'gutenberg' ),
@@ -1396,14 +1400,14 @@ $generated_i18n_strings = array(
 	// Reference: packages/edit-post/build-module/plugins/keyboard-shortcuts-help-menu-item/index.js:19
 	__( 'Keyboard Shortcuts', 'gutenberg' ),
 
-	// Reference: packages/edit-post/build-module/components/layout/index.js:58
+	// Reference: packages/edit-post/build-module/components/layout/index.js:59
 	/* translators: accessibility text for the publish landmark region. */
 	__( 'Editor publish', 'gutenberg' ),
 
-	// Reference: packages/edit-post/build-module/components/layout/index.js:68
+	// Reference: packages/edit-post/build-module/components/layout/index.js:69
 	__( 'Editor content', 'gutenberg' ),
 
-	// Reference: packages/edit-post/build-module/components/layout/index.js:92
+	// Reference: packages/edit-post/build-module/components/layout/index.js:93
 	__( 'Open publish panel', 'gutenberg' ),
 
 	// Reference: packages/edit-post/build-module/components/options-modal/index.js:40
@@ -1453,11 +1457,8 @@ $generated_i18n_strings = array(
 	// Reference: packages/edit-post/build-module/components/sidebar/plugin-sidebar/index.js:51
 	__( 'Pin to toolbar', 'gutenberg' ),
 
-	// Reference: packages/edit-post/build-module/components/sidebar/post-link/index.js:50
+	// Reference: packages/edit-post/build-module/components/sidebar/post-link/index.js:53
 	__( 'Permalink', 'gutenberg' ),
-
-	// Reference: packages/edit-post/build-module/components/sidebar/post-link/index.js:88
-	__( 'Permalink Settings', 'gutenberg' ),
 
 	// Reference: packages/edit-post/build-module/components/sidebar/post-schedule/index.js:18
 	// Reference: packages/editor/build-module/components/post-publish-button/label.js:36
@@ -1473,31 +1474,21 @@ $generated_i18n_strings = array(
 	__( 'Visibility', 'gutenberg' ),
 
 	// Reference: packages/edit-post/build-module/components/sidebar/settings-header/index.js:23
+	/* translators: ARIA label for the Document sidebar tab, selected. */
+	__( 'Document (selected)', 'gutenberg' ),
+
+	// Reference: packages/edit-post/build-module/components/sidebar/settings-header/index.js:30
+	/* translators: ARIA label for the Block sidebar tab, selected. */
+	__( 'Block (selected)', 'gutenberg' ),
+
+	// Reference: packages/edit-post/build-module/components/sidebar/settings-header/index.js:31
+	/* translators: ARIA label for the Block sidebar tab, not selected. */
 	__( 'Block', 'gutenberg' ),
 
-	// Reference: packages/edit-post/build-module/components/sidebar/settings-header/index.js:23
-	_n_noop( '%d Block', '%d Blocks', 'gutenberg' ),
-
-	// Reference: packages/edit-post/build-module/components/sidebar/settings-header/index.js:26
-	/* translators: ARIA label for the Document Settings sidebar tab, selected. */
-	__( 'Document settings (selected)', 'gutenberg' ),
-
-	// Reference: packages/edit-post/build-module/components/sidebar/settings-header/index.js:27
-	/* translators: ARIA label for the Document Settings sidebar tab, not selected. */
-	__( 'Document settings', 'gutenberg' ),
-
-	// Reference: packages/edit-post/build-module/components/sidebar/settings-header/index.js:33
-	/* translators: ARIA label for the Block Settings sidebar tab, selected. */
-	__( 'Block settings (selected)', 'gutenberg' ),
-
-	// Reference: packages/edit-post/build-module/components/sidebar/settings-header/index.js:34
-	/* translators: ARIA label for the Block Settings sidebar tab, not selected. */
-	__( 'Block settings', 'gutenberg' ),
-
-	// Reference: packages/edit-post/build-module/components/sidebar/settings-header/index.js:41
+	// Reference: packages/edit-post/build-module/components/sidebar/settings-header/index.js:38
 	__( 'Close settings', 'gutenberg' ),
 
-	// Reference: packages/edit-post/build-module/components/sidebar/settings-header/index.js:47
+	// Reference: packages/edit-post/build-module/components/sidebar/settings-header/index.js:44
 	__( 'Document', 'gutenberg' ),
 
 	// Reference: packages/edit-post/build-module/components/sidebar/settings-sidebar/index.js:32
@@ -1508,10 +1499,10 @@ $generated_i18n_strings = array(
 	// Reference: packages/editor/build-module/components/url-input/index.js:328
 	__( '(no title)', 'gutenberg' ),
 
-	// Reference: packages/edit-post/build-module/components/text-editor/index.js:18
+	// Reference: packages/edit-post/build-module/components/text-editor/index.js:20
 	__( 'Editing Code', 'gutenberg' ),
 
-	// Reference: packages/edit-post/build-module/components/text-editor/index.js:22
+	// Reference: packages/edit-post/build-module/components/text-editor/index.js:24
 	__( 'Exit Code Editor', 'gutenberg' ),
 
 	// Reference: packages/edit-post/build-module/components/visual-editor/block-inspector-button.js:32
@@ -1551,10 +1542,10 @@ $generated_i18n_strings = array(
 	// Reference: packages/editor/build-module/components/inserter/menu.js:369
 	__( 'Manage All Reusable Blocks', 'gutenberg' ),
 
-	// Reference: packages/edit-post/build-module/store/effects.js:122
+	// Reference: packages/edit-post/build-module/store/effects.js:125
 	__( 'Visual editor selected', 'gutenberg' ),
 
-	// Reference: packages/edit-post/build-module/store/effects.js:122
+	// Reference: packages/edit-post/build-module/store/effects.js:125
 	__( 'Code editor selected', 'gutenberg' ),
 
 	// Reference: packages/editor/build-module/components/alignment-toolbar/index.js:24
@@ -1597,16 +1588,13 @@ $generated_i18n_strings = array(
 	// Reference: packages/editor/build-module/components/block-list/block-invalid-warning.js:98
 	__( 'Convert to HTML', 'gutenberg' ),
 
-	// Reference: packages/editor/build-module/components/block-inspector/index.js:36
-	__( 'Coming Soon', 'gutenberg' ),
-
-	// Reference: packages/editor/build-module/components/block-inspector/index.js:48
+	// Reference: packages/editor/build-module/components/block-inspector/index.js:47
 	__( 'No block selected.', 'gutenberg' ),
 
-	// Reference: packages/editor/build-module/components/block-inspector/index.js:63
+	// Reference: packages/editor/build-module/components/block-inspector/index.js:62
 	__( 'Styles', 'gutenberg' ),
 
-	// Reference: packages/editor/build-module/components/block-inspector/index.js:70
+	// Reference: packages/editor/build-module/components/block-inspector/index.js:69
 	__( 'Advanced', 'gutenberg' ),
 
 	// Reference: packages/editor/build-module/components/block-list-appender/index.js:51
@@ -1850,6 +1838,14 @@ It will be permanently removed from all posts and pages that use it.', 'gutenber
 	// Reference: packages/editor/build-module/components/media-placeholder/index.js:47
 	__( 'Paste or type URL', 'gutenberg' ),
 
+	// Reference: packages/editor/build-module/components/multi-selection-inspector/index.js:36
+	/* translators: %d: number of blocks */
+	_n_noop( '%d block', '%d blocks', 'gutenberg' ),
+
+	// Reference: packages/editor/build-module/components/multi-selection-inspector/index.js:40
+	/* translators: %d: number of words */
+	_n_noop( '%d word', '%d words', 'gutenberg' ),
+
 	// Reference: packages/editor/build-module/components/page-attributes/order.js:44
 	__( 'Order', 'gutenberg' ),
 
@@ -1916,77 +1912,66 @@ It will be permanently removed from all posts and pages that use it.', 'gutenber
 	// Reference: packages/editor/build-module/components/post-last-revision/index.js:26
 	_n_noop( '%d Revision', '%d Revisions', 'gutenberg' ),
 
-	// Reference: packages/editor/build-module/components/post-locked-modal/index.js:176
+	// Reference: packages/editor/build-module/components/post-locked-modal/index.js:181
 	__( 'Someone else has taken over this post.', 'gutenberg' ),
 
-	// Reference: packages/editor/build-module/components/post-locked-modal/index.js:176
+	// Reference: packages/editor/build-module/components/post-locked-modal/index.js:181
 	__( 'This post is already being edited.', 'gutenberg' ),
 
-	// Reference: packages/editor/build-module/components/post-locked-modal/index.js:184
+	// Reference: packages/editor/build-module/components/post-locked-modal/index.js:189
 	__( 'Avatar', 'gutenberg' ),
 
-	// Reference: packages/editor/build-module/components/post-locked-modal/index.js:188
-	/* translators: 'post' is generic and may be of any type (post, page, etc.). */
-	__( '%s now has editing control of this post. Don\'t worry, your changes up to this moment have been saved', 'gutenberg' ),
+	// Reference: packages/editor/build-module/components/post-locked-modal/index.js:193
+	/* translators: %s: user's display name */
+	__( '%s now has editing control of this post. Don’t worry, your changes up to this moment have been saved.', 'gutenberg' ),
 
-	// Reference: packages/editor/build-module/components/post-locked-modal/index.js:190
-	/* translators: 'post' is generic and may be of any type (post, page, etc.). */
-	__( 'Another user now has editing control of this post. Don\'t worry, your changes up to this moment have been saved', 'gutenberg' ),
+	// Reference: packages/editor/build-module/components/post-locked-modal/index.js:193
+	__( 'Another user now has editing control of this post. Don’t worry, your changes up to this moment have been saved.', 'gutenberg' ),
 
-	// Reference: packages/editor/build-module/components/post-locked-modal/index.js:192
-	__( 'View all posts', 'gutenberg' ),
-
-	// Reference: packages/editor/build-module/components/post-locked-modal/index.js:194
-	/* translators: 'post' is generic and may be of any type (post, page, etc.). */
+	// Reference: packages/editor/build-module/components/post-locked-modal/index.js:201
+	/* translators: %s: user's display name */
 	__( '%s is currently working on this post, which means you cannot make changes, unless you take over.', 'gutenberg' ),
 
-	// Reference: packages/editor/build-module/components/post-locked-modal/index.js:196
-	/* translators: 'post' is generic and may be of any type (post, page, etc.). */
+	// Reference: packages/editor/build-module/components/post-locked-modal/index.js:201
 	__( 'Another user is currently working on this post, which means you cannot make changes, unless you take over.', 'gutenberg' ),
 
-	// Reference: packages/editor/build-module/components/post-locked-modal/index.js:202
-	__( 'All Posts', 'gutenberg' ),
-
-	// Reference: packages/editor/build-module/components/post-locked-modal/index.js:206
+	// Reference: packages/editor/build-module/components/post-locked-modal/index.js:211
 	__( 'Take Over', 'gutenberg' ),
 
 	// Reference: packages/editor/build-module/components/post-pending-status/index.js:25
 	__( 'Pending Review', 'gutenberg' ),
 
-	// Reference: packages/editor/build-module/components/post-permalink/editor.js:77
+	// Reference: packages/editor/build-module/components/post-permalink/editor.js:83
 	__( 'Edit post permalink', 'gutenberg' ),
 
-	// Reference: packages/editor/build-module/components/post-permalink/index.js:117
-	__( 'Permalink:', 'gutenberg' ),
-
-	// Reference: packages/editor/build-module/components/post-permalink/index.js:144
-	__( 'Change Permalinks', 'gutenberg' ),
-
-	// Reference: packages/editor/build-module/components/post-permalink/index.js:94
+	// Reference: packages/editor/build-module/components/post-permalink/index.js:102
 	__( 'Permalink copied', 'gutenberg' ),
 
-	// Reference: packages/editor/build-module/components/post-permalink/index.js:94
+	// Reference: packages/editor/build-module/components/post-permalink/index.js:102
 	__( 'Copy the permalink', 'gutenberg' ),
+
+	// Reference: packages/editor/build-module/components/post-permalink/index.js:124
+	__( 'Permalink:', 'gutenberg' ),
+
+	// Reference: packages/editor/build-module/components/post-permalink/index.js:152
+	__( 'Change Permalinks', 'gutenberg' ),
 
 	// Reference: packages/editor/build-module/components/post-pingbacks/index.js:24
 	__( 'Allow Pingbacks & Trackbacks', 'gutenberg' ),
 
-	// Reference: packages/editor/build-module/components/post-preview-button/index.js:151
+	// Reference: packages/editor/build-module/components/post-preview-button/index.js:157
 	__( 'Click “Preview” to load a preview of this page, so you can make sure you’re happy with your blocks.', 'gutenberg' ),
 
 	// Reference: packages/editor/build-module/components/post-preview-button/index.js:38
 	__( 'Generating preview…', 'gutenberg' ),
 
 	// Reference: packages/editor/build-module/components/post-publish-button/index.js:107
-	// Reference: packages/editor/build-module/components/post-publish-panel/toggle.js:35
 	__( 'Schedule…', 'gutenberg' ),
 
 	// Reference: packages/editor/build-module/components/post-publish-button/index.js:107
-	// Reference: packages/editor/build-module/components/post-publish-panel/toggle.js:35
 	__( 'Publish…', 'gutenberg' ),
 
 	// Reference: packages/editor/build-module/components/post-publish-button/index.js:117
-	// Reference: packages/editor/build-module/components/post-publish-panel/toggle.js:37
 	__( 'Finished writing? That’s great, let’s get this published right now. Just click “Publish” and you’re good to go.', 'gutenberg' ),
 
 	// Reference: packages/editor/build-module/components/post-publish-button/label.js:21
@@ -2007,16 +1992,16 @@ It will be permanently removed from all posts and pages that use it.', 'gutenber
 	// Reference: packages/editor/build-module/components/post-publish-button/label.js:33
 	__( 'Schedule', 'gutenberg' ),
 
-	// Reference: packages/editor/build-module/components/post-publish-panel/index.js:106
+	// Reference: packages/editor/build-module/components/post-publish-panel/index.js:107
 	__( 'Close panel', 'gutenberg' ),
 
-	// Reference: packages/editor/build-module/components/post-publish-panel/index.js:114
+	// Reference: packages/editor/build-module/components/post-publish-panel/index.js:115
 	__( 'Always show pre-publish checks.', 'gutenberg' ),
 
-	// Reference: packages/editor/build-module/components/post-publish-panel/index.js:93
+	// Reference: packages/editor/build-module/components/post-publish-panel/index.js:94
 	__( 'Scheduled', 'gutenberg' ),
 
-	// Reference: packages/editor/build-module/components/post-publish-panel/index.js:93
+	// Reference: packages/editor/build-module/components/post-publish-panel/index.js:94
 	__( 'Published', 'gutenberg' ),
 
 	// Reference: packages/editor/build-module/components/post-publish-panel/maybe-post-format-panel.js:39
@@ -2180,17 +2165,17 @@ It will be permanently removed from all posts and pages that use it.', 'gutenber
 	// Reference: packages/editor/build-module/components/provider/index.js:51
 	__( 'View the autosave', 'gutenberg' ),
 
-	// Reference: packages/editor/build-module/components/rich-text/list-edit.js:66
+	// Reference: packages/editor/build-module/components/rich-text/list-edit.js:102
+	__( 'Indent list item', 'gutenberg' ),
+
+	// Reference: packages/editor/build-module/components/rich-text/list-edit.js:71
 	__( 'Convert to unordered list', 'gutenberg' ),
 
-	// Reference: packages/editor/build-module/components/rich-text/list-edit.js:77
+	// Reference: packages/editor/build-module/components/rich-text/list-edit.js:83
 	__( 'Convert to ordered list', 'gutenberg' ),
 
-	// Reference: packages/editor/build-module/components/rich-text/list-edit.js:88
+	// Reference: packages/editor/build-module/components/rich-text/list-edit.js:95
 	__( 'Outdent list item', 'gutenberg' ),
-
-	// Reference: packages/editor/build-module/components/rich-text/list-edit.js:94
-	__( 'Indent list item', 'gutenberg' ),
 
 	// Reference: packages/editor/build-module/components/skip-to-selected-block/index.js:28
 	__( 'Skip to the selected block', 'gutenberg' ),
@@ -2255,76 +2240,76 @@ It will be permanently removed from all posts and pages that use it.', 'gutenber
 	// Reference: packages/editor/build-module/hooks/custom-class-name.js:59
 	__( 'Additional CSS Class', 'gutenberg' ),
 
-	// Reference: packages/editor/build-module/store/defaults.js:101
+	// Reference: packages/editor/build-module/store/defaults.js:102
 	__( 'Full Size', 'gutenberg' ),
 
-	// Reference: packages/editor/build-module/store/defaults.js:25
+	// Reference: packages/editor/build-module/store/defaults.js:26
 	__( 'Pale pink', 'gutenberg' ),
 
-	// Reference: packages/editor/build-module/store/defaults.js:29
+	// Reference: packages/editor/build-module/store/defaults.js:30
 	__( 'Vivid red', 'gutenberg' ),
 
-	// Reference: packages/editor/build-module/store/defaults.js:33
+	// Reference: packages/editor/build-module/store/defaults.js:34
 	__( 'Luminous vivid orange', 'gutenberg' ),
 
-	// Reference: packages/editor/build-module/store/defaults.js:37
+	// Reference: packages/editor/build-module/store/defaults.js:38
 	__( 'Luminous vivid amber', 'gutenberg' ),
 
-	// Reference: packages/editor/build-module/store/defaults.js:41
+	// Reference: packages/editor/build-module/store/defaults.js:42
 	__( 'Light green cyan', 'gutenberg' ),
 
-	// Reference: packages/editor/build-module/store/defaults.js:45
+	// Reference: packages/editor/build-module/store/defaults.js:46
 	__( 'Vivid green cyan', 'gutenberg' ),
 
-	// Reference: packages/editor/build-module/store/defaults.js:49
+	// Reference: packages/editor/build-module/store/defaults.js:50
 	__( 'Pale cyan blue', 'gutenberg' ),
 
-	// Reference: packages/editor/build-module/store/defaults.js:53
+	// Reference: packages/editor/build-module/store/defaults.js:54
 	__( 'Vivid cyan blue', 'gutenberg' ),
 
-	// Reference: packages/editor/build-module/store/defaults.js:57
+	// Reference: packages/editor/build-module/store/defaults.js:58
 	__( 'Very light gray', 'gutenberg' ),
 
-	// Reference: packages/editor/build-module/store/defaults.js:61
+	// Reference: packages/editor/build-module/store/defaults.js:62
 	__( 'Cyan bluish gray', 'gutenberg' ),
 
-	// Reference: packages/editor/build-module/store/defaults.js:65
+	// Reference: packages/editor/build-module/store/defaults.js:66
 	__( 'Very dark gray', 'gutenberg' ),
 
-	// Reference: packages/editor/build-module/store/defaults.js:92
+	// Reference: packages/editor/build-module/store/defaults.js:93
 	__( 'Thumbnail', 'gutenberg' ),
 
-	// Reference: packages/editor/build-module/store/defaults.js:95
+	// Reference: packages/editor/build-module/store/defaults.js:96
 	__( 'Medium', 'gutenberg' ),
 
-	// Reference: packages/editor/build-module/store/defaults.js:98
+	// Reference: packages/editor/build-module/store/defaults.js:99
 	__( 'Large', 'gutenberg' ),
 
-	// Reference: packages/editor/build-module/store/effects.js:205
-	__( '%s blocks selected.', 'gutenberg' ),
+	// Reference: packages/editor/build-module/store/effects.js:207
+	_n_noop( '%s block selected.', '%s blocks selected.', 'gutenberg' ),
 
-	// Reference: packages/editor/build-module/store/effects/posts.js:271
+	// Reference: packages/editor/build-module/store/effects/posts.js:270
 	__( 'Publishing failed', 'gutenberg' ),
 
-	// Reference: packages/editor/build-module/store/effects/posts.js:272
+	// Reference: packages/editor/build-module/store/effects/posts.js:271
 	__( 'Scheduling failed', 'gutenberg' ),
 
-	// Reference: packages/editor/build-module/store/effects/posts.js:274
+	// Reference: packages/editor/build-module/store/effects/posts.js:273
 	__( 'Updating failed', 'gutenberg' ),
 
-	// Reference: packages/editor/build-module/store/effects/posts.js:351
+	// Reference: packages/editor/build-module/store/effects/posts.js:350
 	__( 'Trashing failed', 'gutenberg' ),
 
-	// Reference: packages/editor/build-module/store/effects/reusable-blocks.js:189
+	// Reference: packages/editor/build-module/store/effects/reusable-blocks.js:192
 	__( 'Block created.', 'gutenberg' ),
 
-	// Reference: packages/editor/build-module/store/effects/reusable-blocks.js:189
+	// Reference: packages/editor/build-module/store/effects/reusable-blocks.js:192
 	__( 'Block updated.', 'gutenberg' ),
 
-	// Reference: packages/editor/build-module/store/effects/reusable-blocks.js:299
+	// Reference: packages/editor/build-module/store/effects/reusable-blocks.js:304
 	__( 'Block deleted.', 'gutenberg' ),
 
-	// Reference: packages/editor/build-module/store/effects/reusable-blocks.js:391
+	// Reference: packages/editor/build-module/store/effects/reusable-blocks.js:396
 	__( 'Untitled Reusable Block', 'gutenberg' ),
 
 	// Reference: packages/editor/build-module/utils/media-upload/media-upload.js:149
@@ -2361,13 +2346,13 @@ It will be permanently removed from all posts and pages that use it.', 'gutenber
 	// Reference: packages/format-library/build-module/link/index.js:89
 	__( 'Link removed.', 'gutenberg' ),
 
-	// Reference: packages/format-library/build-module/link/inline.js:244
+	// Reference: packages/format-library/build-module/link/inline.js:239
 	__( 'Warning: the link has been inserted but may have errors. Please test it.', 'gutenberg' ),
 
-	// Reference: packages/format-library/build-module/link/inline.js:246
+	// Reference: packages/format-library/build-module/link/inline.js:241
 	__( 'Link edited.', 'gutenberg' ),
 
-	// Reference: packages/format-library/build-module/link/inline.js:248
+	// Reference: packages/format-library/build-module/link/inline.js:243
 	__( 'Link inserted', 'gutenberg' ),
 
 	// Reference: packages/format-library/build-module/link/inline.js:58
@@ -2427,7 +2412,7 @@ It will be permanently removed from all posts and pages that use it.', 'gutenber
 	// Reference: packages/block-library/build-module/quote/index.js:62
 	_x( 'Large', 'block style', 'gutenberg' ),
 
-	// Reference: packages/block-library/build-module/classic/edit.js:152
+	// Reference: packages/block-library/build-module/classic/edit.js:146
 	_x( 'More', 'button to expand options', 'gutenberg' ),
 
 	// Reference: packages/block-library/build-module/classic/index.js:16
@@ -2455,22 +2440,22 @@ It will be permanently removed from all posts and pages that use it.', 'gutenber
 	_x( 'Enter', 'keyboard button', 'gutenberg' ),
 
 	// Reference: packages/components/build-module/font-size-picker/index.js:66
-	// Reference: packages/editor/build-module/store/defaults.js:74
+	// Reference: packages/editor/build-module/store/defaults.js:75
 	_x( 'Normal', 'font size name', 'gutenberg' ),
 
 	// Reference: packages/components/build-module/font-size-picker/index.js:66
 	_x( 'Custom', 'font size name', 'gutenberg' ),
 
-	// Reference: packages/editor/build-module/store/defaults.js:70
+	// Reference: packages/editor/build-module/store/defaults.js:71
 	_x( 'Small', 'font size name', 'gutenberg' ),
 
-	// Reference: packages/editor/build-module/store/defaults.js:78
+	// Reference: packages/editor/build-module/store/defaults.js:79
 	_x( 'Medium', 'font size name', 'gutenberg' ),
 
-	// Reference: packages/editor/build-module/store/defaults.js:82
+	// Reference: packages/editor/build-module/store/defaults.js:83
 	_x( 'Large', 'font size name', 'gutenberg' ),
 
-	// Reference: packages/editor/build-module/store/defaults.js:86
+	// Reference: packages/editor/build-module/store/defaults.js:87
 	_x( 'Huge', 'font size name', 'gutenberg' ),
 
 	// Reference: packages/edit-post/build-module/components/header/writing-menu/index.js:18
@@ -2480,7 +2465,7 @@ It will be permanently removed from all posts and pages that use it.', 'gutenber
 	/* translators: Button to fix block content */
 	_x( 'Resolve', 'imperative verb', 'gutenberg' ),
 
-	// Reference: packages/editor/build-module/components/post-preview-button/index.js:145
+	// Reference: packages/editor/build-module/components/post-preview-button/index.js:151
 	_x( 'Preview', 'imperative verb', 'gutenberg' ),
 
 	// Reference: packages/editor/build-module/components/inserter/menu.js:326
