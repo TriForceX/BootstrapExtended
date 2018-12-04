@@ -136,12 +136,12 @@ Base structure for websites with reusable parts of source code or functions main
 
 # Questions & Answers
 1. How i can use the functions described above?
-   - I will try to add all the explanation in the **Wiki** page. To access it [click here](https://github.com/TriForceX/WebsiteBase/wiki).
+   - I will try to add all the explanation in the **Wiki** page. To access it [click here](https://github.com/TriForceX/WebsiteBase/wiki). 
    
 2. What about **Bootstrap 3.3.7** and its **Internet Explorer 8 & 9** compatibility?
-   - I will no longer support **IE8 & 9** due doesn't make a sense nowadays, but anyway if you want to give support, you can access the last _Website Base_ commit for **Bootstrap 3.3.7** [here](https://github.com/TriForceX/WebsiteBase/tree/v3.3.7).
+   - **Bootstrap 4** dropped **IE8**, **IE9**, and **iOS 6** support. Is now only **IE10+** and **iOS 7+**. Anyway if you want to give support, you can access the last _Website Base_ commit for **Bootstrap 3.3.7** [here](https://github.com/TriForceX/WebsiteBase/tree/v3.3.7).
    
-3. What happen if an **Internet Explorer 8 & 9** user access a website which uses this project?
+3. What happen if an **Internet Explorer 8 & 9** or **iOS 6** user access a website which uses this project?
    - A screen will appear with a message that will indicate him the steps to update his navigator to a newer one.
 
 4. How can i use this stuff in plain **HTML** instead the **PHP** standalone?

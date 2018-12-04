@@ -137,7 +137,7 @@ function JSoldBrowserCheck(system)
 }
 
 // Do check version
-if((JSoldBrowserCheck('iexplorer') > -1 && JSoldBrowserCheck('iexplorer') <= 10.0) || (JSoldBrowserCheck('ios') > -1 && JSoldBrowserCheck('ios') < 7))
+if((JSoldBrowserCheck('iexplorer') > -1 && JSoldBrowserCheck('iexplorer') < 10.0) || (JSoldBrowserCheck('ios') > -1 && JSoldBrowserCheck('ios') < 7))
 {
 	// Stop page loading
 	if(window.stop) 
