@@ -1960,15 +1960,6 @@ function JSmainInit()
 		});
 	}
 	
-	// Check plugin
-	if($.fn.timepicker !== 'undefined')
-	{
-		// Show on focus
-		$(document).on('focusin', '.timepicker input', function(e){
-			$(this).timepicker('showWidget');
-		});
-	}
-	
 	// Apply Image Fill
 	$('.JSimgFill').each(function(){
 		JSimgFill($(this));
