@@ -13,7 +13,7 @@ var JSisNav = function(name, version)
 					{
 						var checkData = {
 					 					'ie' 			: { 'name' : 'Microsoft Internet Explorer', 'internal' : $.browser.msie },
-					 					'edge' 			: { 'name' : 'Microsoft Edge', 'internal' : '' },
+					 					'edge' 			: { 'name' : 'Microsoft Edge', 'internal' : undefined },
 					 					'chrome' 		: { 'name' : 'Chrome', 'internal' : $.browser.webkit },
 					 					'firefox' 		: { 'name' : 'Firefox', 'internal' : $.browser.mozilla },
 					 					'safari' 		: { 'name' : 'Safari', 'internal' : $.browser.webkit },
@@ -24,7 +24,7 @@ var JSisNav = function(name, version)
 						var checkVersion = version === undefined ? true : ($.browser.version == version);
 						var checkInternal = checkData[name].internal === undefined ? true : (checkData[name].internal === true);
 						var checkFinal = checkBrowser && checkVersion && checkInternal ? true : false;
-					
+						
 						return checkFinal;
 					}
 			  };
@@ -1249,14 +1249,14 @@ function JSvideoLaunch(title, url, share, autoplay, size, align, animate)
 	
 	if(share)
 	{
-		content = content+'<div class="input-group input-group-sm mt-3 JSvideoLaunchURL" data-clipboard-action="copy" data-clipboard-target=".JSvideoLaunchCopy">'+
+		content = content+'<a class="input-group input-group-sm mt-3 JSvideoLaunchURL" data-clipboard-target=".JSvideoLaunchCopy" href="'+embedShare+'" target="_blank">'+
 							'	<div class="input-group-prepend">'+
 							'		<span class="input-group-text">'+
 							'			'+embedShareTitle+' <i class="ml-2 far fa-copy"></i>'+
 							'		</span>'+
 							'	</div>'+
 							'	<input type="text" class="form-control text-center JSvideoLaunchCopy" value="'+embedShare+'" readonly>'+
-							'</div>';
+							'</a>';
 	}
 	
 	// Check plugin
@@ -1283,33 +1283,32 @@ function JSvideoLaunch(title, url, share, autoplay, size, align, animate)
 		})
 	}
 
-	// Tooltip load
-	$('.JSvideoLaunchCopy').tooltip({
-		title: embedShareText,
-		placement: 'bottom',
-		trigger: 'manual',
-	});
-
-	// Check plugin
-	if(typeof ClipboardJS !== 'undefined')
+	// Disable text select
+	if(JSexist($('.JSvideoLaunchURL')))
 	{
-		// Clipboard
-		var clipboard = new ClipboardJS('.JSvideoLaunchURL');
-
-		clipboard.on('success', function(){
-			$('.JSvideoLaunchCopy').tooltip('show');
-			$('.JSvideoLaunchCopy:focus').blur();
+		// Tooltip load
+		$('.JSvideoLaunchCopy').tooltip({
+			title: embedShareText,
+			placement: 'bottom',
+			trigger: 'manual',
 		});
+		
+		// Check plugin
+		if(typeof ClipboardJS !== 'undefined')
+		{
+			// Clipboard
+			var clipboard = new ClipboardJS('.JSvideoLaunchURL');
 
-		clipboard.on('error', function(){
-			$('.JSvideoLaunchURL').attr('target','blank');
-			$('.JSvideoLaunchURL').attr('href',embedShare);
-		});
-	}
-	else
-	{
-		$('.JSvideoLaunchURL').attr('target','blank');
-		$('.JSvideoLaunchURL').attr('href',embedShare);
+			clipboard.on('success', function(e){
+				// Show tooltip
+				$('.JSvideoLaunchCopy').tooltip('show');
+				
+				// Disable click
+				$(document).on('click', '.JSvideoLaunchURL', function(e){
+					e.preventDefault();
+				});
+			});
+		}
 	}
 }
 
@@ -2044,6 +2043,14 @@ $(document).ready(function(){
 	$(document).on('hidden.bs.modal', '#JScustomModal', function(){
 		$(this).remove();
 	});
+	
+	// Disable select on input
+	if(!JSisNav('edge'))
+	{
+		$(document).on('select', '.JSvideoLaunchCopy', function(){
+			this.selectionStart = this.selectionEnd;
+		});
+	}
 	
 	// Modal on disabled links
 	if(JSexist($('*[data-js-hashtag]')))
