@@ -1,18 +1,33 @@
 /* ================================================= BASE BROWSER ================================================= */
 
+// CHeck and set language
+var JSoldBrowserLangGet = navigator.language || navigator.userLanguage;
+var JSoldBrowserLang = /\es/i.test(JSoldBrowserLangGet) ? 'es' : 'en';
+var JSoldBrowserText = {'title': { 
+							en: 'Update your browser',
+							es: 'Actualiza tu navegador',
+						},
+						'desc': {
+							en: 'You are using an old browser, please update.',
+							es: 'Estas usando un navegador viejo, por favor actualízalo.',
+						},
+						'error': {
+							en: 'The code was stopped due you are using an old browser.',
+							es: 'Código detenido debido a que estás utilizando un navegador viejo.',
+						}};
+
 // Update browser screen
 function JSoldBrowserScreen()
 {
-	// Create style element
+	// Create style element and get main URL from SRC
 	var css = document.createElement('style');
-
-	// Get main URL from SRC
 	var index = document.getElementsByTagName('script').length - 1;
 	var url = document.getElementsByTagName('script')[index].getAttribute('src').replace(/\/js\/app-browser.js/g,'');
 
 	// Set style code
 	var style = 'body {										'+
 				'	background: white !important;			'+
+				'	overflow: hidden !important;			'+
 				'}											'+
 				'body *{									'+
 				'	visibility: hidden !important; 			'+
@@ -36,6 +51,12 @@ function JSoldBrowserScreen()
 				'	vertical-align: middle;					'+
 				'	text-align: center;						'+
 				'	padding: 15px;							'+
+				'}											'+
+				'.JSoldBrowserElem > div > h1 {				'+
+				'	margin-bottom: 8px;						'+
+				'}											'+
+				'.JSoldBrowserElem > div > p {				'+
+				'	margin-bottom: 16px;					'+
 				'}											'+
 				'.JSoldBrowserElem > div > a {				'+
 				'	margin: 0px 5px 10px 5px;				'+
@@ -66,29 +87,32 @@ function JSoldBrowserScreen()
 	css.type = 'text/css';
 
 	// Set to IE or other browsers
-	if(css.styleSheet) css.styleSheet.cssText = style;
-	else css.appendChild(document.createTextNode(style));
+	if(css.styleSheet)
+	{
+		css.styleSheet.cssText = style;
+	}
+	else
+	{
+		css.appendChild(document.createTextNode(style));
+	}
 
 	// Append to head
 	document.getElementsByTagName('head')[0].appendChild(css);
 
 	// Set browser screen element
 	var htmlElems = '<div>'+
-					'	<h1>Update your browser</h1>'+
-					'	<p>You are using an old browser, please update.</p>'+
+					'	<h1>'+JSoldBrowserText.title[JSoldBrowserLang]+'</h1>'+
+					'	<p>'+JSoldBrowserText.desc[JSoldBrowserLang]+'</p>'+
 					'	<a target="_blank" href="https://www.mozilla.org/firefox/new">'+
 					'		<img src="'+url+'/img/base/browser/firefox.png">'+
 					'		<span>Mozilla Firefox</span>'+
-					'	</a>'+
-					'	<a target="_blank" href="https://www.google.com/chrome">'+
+					'	</a><a target="_blank" href="https://www.google.com/chrome">'+
 					'		<img src="'+url+'/img/base/browser/chrome.png">'+
 					'		<span>Google Chrome</span>'+
-					'	</a>'+
-					'	<a target="_blank" href="https://www.opera.com/download">'+
+					'	</a><a target="_blank" href="https://www.opera.com/download">'+
 					'		<img src="'+url+'/img/base/browser/opera.png">'+
 					'		<span>Opera Browser</span>'+
-					'	</a>'+
-					'	<a target="_blank" href="https://www.microsoft.com/en-us/download/internet-explorer-11-for-windows-7-details.aspx">'+
+					'	</a><a target="_blank" href="https://www.microsoft.com/en-us/download/internet-explorer-11-for-windows-7-details.aspx">'+
 					'		<img src="'+url+'/img/base/browser/iexplorer.png">'+
 					'		<span>Internet Explorer 11</span>'+
 					'	</a>'+
@@ -139,7 +163,7 @@ function JSoldBrowserCheck(system)
 // Do check version
 if((JSoldBrowserCheck('iexplorer') > -1 && JSoldBrowserCheck('iexplorer') < 10.0) || (JSoldBrowserCheck('ios') > -1 && JSoldBrowserCheck('ios') < 7))
 {
-	// Stop page loading
+	// Stop page loading on IE or others
 	if(window.stop) 
 	{ 
 		window.stop();
@@ -153,7 +177,7 @@ if((JSoldBrowserCheck('iexplorer') > -1 && JSoldBrowserCheck('iexplorer') < 10.0
 	JSoldBrowserScreen();
 	
 	// Throw an error
-	throw new Error('You are using an old browser, please update.');
+	throw new Error(JSoldBrowserText.error[JSoldBrowserLang]);
 }
 		
 /* ================================================= BASE BROWSER ================================================= */
