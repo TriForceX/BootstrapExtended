@@ -1298,6 +1298,7 @@ function JSvideoLaunch(title, url, share, autoplay, size, align, animate)
 
 		clipboard.on('success', function(){
 			$('.JSvideoLaunchCopy').tooltip('show');
+			$('.JSvideoLaunchCopy:focus').blur();
 		});
 
 		clipboard.on('error', function(){
