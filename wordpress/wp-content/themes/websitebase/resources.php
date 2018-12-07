@@ -9,7 +9,7 @@
  */
 
 // Get the main PHP utilities
-require_once('resources/php/utilities.php');
+require_once('resources/utilities.php');
 
 // Enable main PHP utilities
 class php extends utilities\php { }
