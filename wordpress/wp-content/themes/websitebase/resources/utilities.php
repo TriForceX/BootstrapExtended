@@ -220,8 +220,7 @@ class php
  * Source:   https://github.com/triforcex/websitebase
  * 
  */';
-		$path = str_replace(array('/', '\\'), DIRECTORY_SEPARATOR, 'resources/php');
-		$local = str_replace($path, '', dirname( __FILE__ ));
+		$local = str_replace('resources', '', dirname( __FILE__ ));
 		$final = $type == 'css' ? 'style.css' : 'app.js';
 		$buffer = null;
 		
