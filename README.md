@@ -5,7 +5,7 @@ Base structure for websites with reusable parts of source code or functions main
 
 # Base
 - Standalone *(PHP 5.4+)*
-- Wordpress *(Ver 4.9.6)*
+- Wordpress *(Ver 5.0)*
 - Laravel *(Ver 5.2, Experimental)*
 - Bootstrap 4 *(Ver 4.1.3)*
 
