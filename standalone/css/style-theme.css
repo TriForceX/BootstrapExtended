@@ -5,15 +5,22 @@
 /* ================================================= THEME FONTS ================================================= */
 
 /*
-'$screen-xs'	=> '480px',
-'$screen-sm'	=> '768px',
-'$screen-md'	=> '992px',
-'$screen-lg'	=> '1200px', 
-'$screen-xl' 	=> '1920px', 
-*/
+'$screen-xs-up'		=> '575.98px',
+'$screen-sm-up'		=> '767.98px',
+'$screen-md-up'		=> '991.98px',
+'$screen-lg-up'		=> '1199.98px', 
+'$screen-xl-up' 	=> '1919.98px', 
 
-/*
-@media (max-width: $screen-size) {
+'$screen-xs-down'	=> '575.98px',
+'$screen-sm-down'	=> '767.98px',
+'$screen-md-down'	=> '991.98px',
+'$screen-lg-down'	=> '1199.98px', 
+'$screen-xl-down' 	=> '1919.98px', 
+
+@media (max-width: $screen-size-up) {
+	...
+}
+@media (min-width: $screen-size-down) {
 	...
 }
 */

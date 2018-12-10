@@ -131,7 +131,7 @@ div.dataTables_wrapper div.dataTables_length select {
 div.dataTables_wrapper div.dataTables_paginate ul.pagination {
 	margin: 5px 0px 2px 0px;
 }
-@media (max-width: $screen-sm) {
+@media (max-width: $screen-sm-up) {
 	.dataTables_wrapper .dataTables_length,
 	.dataTables_wrapper .dataTables_info {
 		margin-right: -15px !important;

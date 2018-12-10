@@ -625,11 +625,11 @@ function JSresponsiveCode()
 	var bodyHeight = $(window).height();
 	var bodyOrientation = {'landscape'	: bodyWidth > bodyHeight ? true : false,
 					  	   'portrait'	: bodyWidth < bodyHeight ? true : false}; 
-	var bodyScreen = {'xs'	: parseFloat('$screen-xs'),	//480,
-					  'sm'	: parseFloat('$screen-sm'), //768,
-					  'md'	: parseFloat('$screen-md'), //992,
-					  'lg'	: parseFloat('$screen-lg'), //1200,
-					  'xl'	: parseFloat('$screen-xl')}; //1920,
+	var bodyScreen = {'xs'	: { 'up' : parseFloat('$screen-xs-up'), 'down' : parseFloat('$screen-xs-down') },	//up: 575.98, down: 576
+					  'sm'	: { 'up' : parseFloat('$screen-sm-up'), 'down' : parseFloat('$screen-sm-down') }, 	//up: 767.98, down: 768
+					  'md'	: { 'up' : parseFloat('$screen-md-up'), 'down' : parseFloat('$screen-md-down') }, 	//up: 991.98, down: 992
+					  'lg'	: { 'up' : parseFloat('$screen-lg-up'), 'down' : parseFloat('$screen-lg-down') }, 	//up: 1199.98, down: 1200
+					  'xl'	: { 'up' : parseFloat('$screen-xl-up'), 'down' : parseFloat('$screen-xl-down') }}; 	//up: 1919.98, down: 1920
 
 	if(bodyWidth)
 	{
@@ -2129,7 +2129,7 @@ $(window).bind('load', function(){
 
 });
 
-$(document).on("JSresponsiveCode", function(event, bodyWidth, bodyHeight, bodyOrientation, bodyScreen){
+$(document).on('JSresponsiveCode', function(event, bodyWidth, bodyHeight, bodyOrientation, bodyScreen){
 
 /* ================================================= BASE RESPONSIVE CODE ================================================= */
 	

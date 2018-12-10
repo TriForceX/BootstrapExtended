@@ -183,7 +183,7 @@ $(document).ready(function(){
 
 });
 
-$(window).bind("load", function() {
+$(window).bind('load', function() {
 
 /* ================================================= EXAMPLE WINDOWS LOAD ================================================= */
 	
@@ -204,7 +204,7 @@ $(window).bind("load", function() {
 
 });
 
-$(document).on("JSresponsiveCode", function(event, bodyWidth, bodyHeight, bodyOrientation, bodyScreen){
+$(document).on('JSresponsiveCode', function(event, bodyWidth, bodyHeight, bodyOrientation, bodyScreen){
 
 /* ================================================= EXAMPLE RESPONSIVE CODE ================================================= */
 	
@@ -212,22 +212,22 @@ $(document).on("JSresponsiveCode", function(event, bodyWidth, bodyHeight, bodyOr
 	JSconsole('Example Responsive Code');
 	
 	// Example size detection
-	$("body").attr("window-size",bodyWidth+"x"+bodyHeight);
+	$('body').attr('window-size',bodyWidth+'x'+bodyHeight);
 	
 	// Example lower than tablet
-	if(bodyWidth < bodyScreen.sm)
+	if(bodyWidth < bodyScreen.sm.up)
 	{
-		console.log('Tablet size and lower!');
+		JSconsole('Tablet size and lower!');
 	}
 	
 	// Example orientation
 	if(bodyOrientation.landscape)
 	{ 
-		$("body").attr("window-orientation","landscape");
+		$('body').attr('window-orientation','landscape');
 	}
 	else
 	{ 
-		$("body").attr("window-orientation","portrait");
+		$('body').attr('window-orientation','portrait');
 	}
 	
 /* ================================================= EXAMPLE RESPONSIVE CODE ================================================= */

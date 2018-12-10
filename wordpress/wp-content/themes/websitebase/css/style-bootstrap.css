@@ -82,22 +82,22 @@
 /* ================================================= BOOTSTRAP ADDITIONS ================================================= */
 
 /* Modal Size */
-@media (min-width: $screen-lg) {
+@media (min-width: $screen-lg-down) {
 	.modal-xl {
 		max-width: 1110px;
 	}
 }
-@media (max-width: $screen-lg) {
+@media (max-width: $screen-lg-up) {
 	.modal-xl {
-		max-width: 800px;
+		max-width: 930px;
 	}
 }
-@media (max-width: $screen-md) {
+@media (max-width: $screen-md-up) {
 	.modal-xl {
 		max-width: 500px;
 	}
 }
-@media (max-width: $screen-sm) {
+@media (max-width: $screen-sm-up) {
 	.modal-xl {
 		max-width: initial;
 	}
@@ -112,7 +112,7 @@
 	margin: 30px auto;
 	width: 100%;
 }
-@media (max-width: $screen-sm) {
+@media (max-width: $screen-sm-up) {
 	.modal {
 		padding: 0px 15px !important;
 	}
@@ -207,18 +207,18 @@
 .dropdown .dropdown-overflow-lg {
 	max-height: 500px;
 }
-@media (max-width: $screen-lg) {
+@media (max-width: $screen-lg-up) {
 	.dropdown .dropdown-overflow-lg {
 		max-height: 400px;
 	}
 }
-@media (max-width: $screen-md) {
+@media (max-width: $screen-md-up) {
 	.dropdown .dropdown-overflow-md,
 	.dropdown .dropdown-overflow-lg {
 		max-height: 195px;
 	}
 }
-@media (max-width: $screen-sm) {
+@media (max-width: $screen-sm-up) {
 	.dropdown .dropdown-overflow,
 	.dropdown .dropdown-overflow-sm,
 	.dropdown .dropdown-overflow-md,
@@ -370,7 +370,7 @@
 /* Carousel circle indicators */
 
 /* Carousel control no mobile */
-@media (max-width: $screen-sm) {
+@media (max-width: $screen-sm-up) {
 	.carousel-no-mobile .carousel-control-prev,
 	.carousel-no-mobile .carousel-control-next {
 		display: none;

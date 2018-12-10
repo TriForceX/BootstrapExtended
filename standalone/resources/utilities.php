@@ -216,7 +216,7 @@ class php
  * Version 3.0
  * TriForce - Matias Silva
  * 
- * Site:     https://dev.gznetwork.com/websitebase
+ * Site:     https://websitebase.github.io
  * Source:   https://github.com/triforcex/websitebase
  * 
  */';
@@ -233,11 +233,18 @@ class php
 											   'js/app-theme.js');
 		
 		$data['vars'] = array('$global-url'	=> $url,
-							  '$screen-xs'	=> $type == 'css' ? '480px' : '480',
-							  '$screen-sm'	=> $type == 'css' ? '768px' : '768',
-							  '$screen-md'	=> $type == 'css' ? '992px' : '992',
-							  '$screen-lg'	=> $type == 'css' ? '1200px' : '1200',
-							  '$screen-xl' 	=> $type == 'css' ? '1920px' : '1920');
+							  // Media queries for max-width
+							  '$screen-xs-up'	=> $type == 'css' ? '575.98px' : '575.98',
+							  '$screen-sm-up'	=> $type == 'css' ? '767.98px' : '767.98',
+							  '$screen-md-up'	=> $type == 'css' ? '991.98px' : '991.98',
+							  '$screen-lg-up'	=> $type == 'css' ? '1199.98px' : '1199.98',
+							  '$screen-xl-up' 	=> $type == 'css' ? '1919.98px' : '1919.98',
+							  // Media queries for min-width
+							  '$screen-xs-down'	=> $type == 'css' ? '576px' : '576',
+							  '$screen-sm-down'	=> $type == 'css' ? '768px' : '768',
+							  '$screen-md-down'	=> $type == 'css' ? '992px' : '992',
+							  '$screen-lg-down'	=> $type == 'css' ? '1200px' : '1200',
+							  '$screen-xl-down' => $type == 'css' ? '1920px' : '1920',);
 		
 		$data['file'] = array_merge($data['file'], $websitebase[$type.'_file']);
 		$data['vars'] = array_merge($data['vars'], $websitebase[$type.'_vars']);
