@@ -79,7 +79,7 @@ function JSoldBrowserScreen()
 				'	padding: 5px 0px;						'+
 				'	display: none;							'+
 				'}											'+
-				'.JSoldBrowserElem > div > a:hover > span {	'+
+				'.JSoldBrowserElem > div > .active > span {	'+
 				'	display: block;							'+
 				'}											';
 
@@ -112,7 +112,7 @@ function JSoldBrowserScreen()
 					'	</a><a target="_blank" href="https://www.opera.com/download">'+
 					'		<img src="'+url+'/img/base/browser/opera.png">'+
 					'		<span>Opera Browser</span>'+
-					'	</a><a target="_blank" href="https://www.microsoft.com/en-us/download/internet-explorer-11-for-windows-7-details.aspx">'+
+					'	</a><a target="_blank" href="https://www.microsoft.com/en-us/download/internet-explorer.aspx">'+
 					'		<img src="'+url+'/img/base/browser/iexplorer.png">'+
 					'		<span>Internet Explorer 11</span>'+
 					'	</a>'+
@@ -124,6 +124,14 @@ function JSoldBrowserScreen()
 	content.className = 'JSoldBrowserElem';
 	content.innerHTML = htmlElems;
 	elem.firstChild.parentNode.insertBefore(content, elem.firstChild.nextSibling);
+	
+	// Icon hover
+	var icon = document.getElementsByTagName('a');
+	for(var num = 0; num < icon.length; num++)
+	{
+		icon[num].onmouseover = function(){ this.className = 'active'; };
+   		icon[num].onmouseout = function(){ this.removeAttribute('class'); };
+	}
 }
 
 // Check browser
@@ -164,14 +172,7 @@ function JSoldBrowserCheck(system)
 if((JSoldBrowserCheck('iexplorer') > -1 && JSoldBrowserCheck('iexplorer') < 10.0) || (JSoldBrowserCheck('ios') > -1 && JSoldBrowserCheck('ios') < 7))
 {
 	// Stop page loading on IE or others
-	if(window.stop) 
-	{ 
-		window.stop();
-	}
-	else if(document.execCommand)
-	{ 
-		document.execCommand('Stop');
-	}
+	try { window.stop(); } catch (exception) { document.execCommand('Stop'); }
 
 	// Load update screen
 	JSoldBrowserScreen();
