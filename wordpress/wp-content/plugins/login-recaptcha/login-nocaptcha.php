@@ -4,8 +4,8 @@ Plugin Name: Login No Captcha reCAPTCHA
 Plugin URI: https://wordpress.org/plugins/login-recaptcha/
 Description: Adds a Google reCAPTCHA No Captcha checkbox to the login form, thwarting automated hacking attempts
 Author: Robert Peake
-Version: 1.2.5
-Author URI: http://www.robertpeake.com/
+Version: 1.3
+Author URI: https://github.com/cyberscribe/login-recaptcha
 Text Domain: login_nocaptcha
 Domain Path: /languages/
 */
@@ -27,8 +27,8 @@ class LoginNocaptcha {
             add_action('login_enqueue_scripts', array('LoginNocaptcha', 'enqueue_scripts_css'));
             add_action('admin_enqueue_scripts', array('LoginNocaptcha', 'enqueue_scripts_css'));
             add_action('login_form',array('LoginNocaptcha', 'nocaptcha_form'));
-            // TODO: add back-end processing of lost password form and then uncomment this line
-            // add_action('lostpassword_form',array('LoginNocaptcha', 'nocaptcha_form'));
+            add_action('lostpassword_form',array('LoginNocaptcha', 'nocaptcha_form'));
+            add_action('lostpassword_post',array('LoginNocaptcha', 'authenticate'));
             add_action('plugins_loaded', array('LoginNocaptcha', 'action_plugins_loaded'));
             add_action('authenticate', array('LoginNocaptcha', 'authenticate'), 30, 3);
             add_filter( 'shake_error_codes', array('LoginNocaptcha', 'add_shake_error_codes') );
@@ -39,6 +39,7 @@ class LoginNocaptcha {
         if ( in_array( 'woocommerce/woocommerce.php', apply_filters( 'active_plugins', get_option( 'active_plugins' ) ) ) ) {
             add_action('wp_head', array('LoginNocaptcha', 'enqueue_scripts_css'));
             add_action('woocommerce_login_form',array('LoginNocaptcha', 'nocaptcha_form'));
+            add_action('woocommerce_lostpassword_form',array('LoginNocaptcha', 'nocaptcha_form'));
         }
     }
 
@@ -161,13 +162,14 @@ class LoginNocaptcha {
         echo '</noscript>'."\n";
     }
 
-    public static function authenticate($user, $username, $password) {
+    public static function authenticate($user_or_email, $username = null, $password = null) {
         if (isset($_SERVER['PHP_SELF']) && basename($_SERVER['PHP_SELF']) !== 'wp-login.php' && //calling context must be wp-login.php
-            !isset($_POST['woocommerce-login-nonce']) ) { //or a WooCommerce login form, otherwise bypass reCaptcha checking
-            return $user;
+            !isset($_POST['woocommerce-login-nonce']) && !isset($_POST['woocommerce-lost-password-nonce']) ) { //or a WooCommerce form 
+            //otherwise bypass reCaptcha checking
+            return $user_or_email;
         }
         if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
-          return $user;
+          return $user_or_email;
         }
         if (isset($_POST['g-recaptcha-response'])) {
             $response = LoginNocaptcha::filter_string($_POST['g-recaptcha-response']);
@@ -190,13 +192,13 @@ class LoginNocaptcha {
             if (is_object($g_response)) {
                 if ( $g_response->success ) {
                     update_option('login_nocaptcha_working', true);
-                    return $user; // success, let them in
+                    return $user_or_email; // success, let them in
                 } else {
                     if ( isset($g_response->{'error-codes'}) && $g_response->{'error-codes'} && in_array('missing-input-response', $g_response->{'error-codes'})) {
                         update_option('login_nocaptcha_working', true);
-                        if (is_wp_error($user)) {
-                            $user->add('no_captcha', __('<strong>ERROR</strong>&nbsp;: Please check the ReCaptcha box.','login_nocaptcha'));
-                            return $user;
+                        if (is_wp_error($user_or_email)) {
+                            $user_or_email->add('no_captcha', __('<strong>ERROR</strong>&nbsp;: Please check the ReCaptcha box.','login_nocaptcha'));
+                            return $user_or_email;
                         } else {
                             return new WP_Error('no_captcha', __('<strong>ERROR</strong>&nbsp;: Please check the ReCaptcha box.','login_nocaptcha'));
                         }
@@ -207,12 +209,12 @@ class LoginNocaptcha {
                         update_option('login_nocaptcha_error', sprintf(__('Login NoCaptcha is not working. <a href="%s">Please check your settings</a>. The message from Google was: %s', 'login_nocaptcha'), 
                                                                'options-general.php?page=login-recaptcha/admin.php',
                                                                 self::get_google_errors_as_string($g_response)));
-                        return $user; //invalid secret entered; prevent lockouts
+                        return $user_or_email; //invalid secret entered; prevent lockouts
                     } else if( isset($g_response->{'error-codes'})) {
                         update_option('login_nocaptcha_working', true);
-                        if (is_wp_error($user)) {
-                            $user->add('invalid_captcha', __('<strong>ERROR</strong>&nbsp;: Incorrect ReCaptcha, please try again.','login_nocaptcha'));
-                            return $user;
+                        if (is_wp_error($user_or_email)) {
+                            $user_or_email->add('invalid_captcha', __('<strong>ERROR</strong>&nbsp;: Incorrect ReCaptcha, please try again.','login_nocaptcha'));
+                            return $user_or_email;
                         } else {
                             return new WP_Error('invalid_captcha', __('<strong>ERROR</strong>&nbsp;: Incorrect ReCaptcha, please try again.','login_nocaptcha'));
                         }
@@ -220,20 +222,23 @@ class LoginNocaptcha {
                         update_option('login_nocaptcha_working', false);
                         update_option('login_nocaptcha_google_error', 'error');
                         update_option('login_nocaptcha_error', sprintf(__('Login NoCaptcha is not working. <a href="%s">Please check your settings</a>.', 'login_nocaptcha'), 'options-general.php?page=login-recaptcha/admin.php').' '.__('The response from Google was not valid.','login_nocaptcha'));
-                        return $user; //not a sane response, prevent lockouts
+                        return $user_or_email; //not a sane response, prevent lockouts
                     }
                 }
             } else {
                 update_option('login_nocaptcha_working', false);
                 update_option('login_nocaptcha_google_error', 'error');
                 update_option('login_nocaptcha_error', sprintf(__('Login NoCaptcha is not working. <a href="%s">Please check your settings</a>.', 'login_nocaptcha'), 'options-general.php?page=login-recaptcha/admin.php').' '.__('The response from Google was not valid.','login_nocaptcha'));
-                return $user; //not a sane response, prevent lockouts
+                return $user_or_email; //not a sane response, prevent lockouts
             }
         } else {
             update_option('login_nocaptcha_working', true);
-            if (is_wp_error($user)) {
-                $user->add('no_captcha', __('<strong>ERROR</strong>&nbsp;: Please check the ReCaptcha box.','login_nocaptcha'));
-                return $user;
+            if (isset($_POST['action']) && $_POST['action'] === 'lostpassword') {
+                return new WP_Error('no_captcha', __('<strong>ERROR</strong>&nbsp;: Please check the ReCaptcha box.','login_nocaptcha'));
+            }
+            if (is_wp_error($user_or_email)) {
+                $user_or_email->add('no_captcha', __('<strong>ERROR</strong>&nbsp;: Please check the ReCaptcha box.','login_nocaptcha'));
+                return $user_or_email;
             } else {
                 return new WP_Error('no_captcha', __('<strong>ERROR</strong>&nbsp;: Please check the ReCaptcha box.','login_nocaptcha'));
             }

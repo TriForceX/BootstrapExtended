@@ -2,16 +2,16 @@
 Contributors: robertpeake, robert.peake
 Tags: google,nocaptcha,recaptcha,security,login,bots
 Requires at least: 3.0.0
-Tested up to: 4.9.5
-Stable tag: 1.2.5
+Tested up to: 5.0
+Stable tag: 1.3
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-Adds a Google No Captcha ReCaptcha checkbox to your Wordpress login screen.
+Adds a Google No Captcha ReCaptcha checkbox to your Wordpress and Woocommerce login and forgot password screens.
 
 == Description ==
 
-Adds a Google No Captcha ReCaptcha checkbox to your Wordpress login screen. Denies access to automated scripts while making it easy on humans to log in by checking a box. As Google says, it is "Tough on bots, easy on humans."
+Adds a Google No Captcha ReCaptcha checkbox to your Wordpress and Woocommerce login and forgot password screens. Denies access to automated scripts while making it easy on humans to log in by checking a box. As Google says, it is "Tough on bots, easy on humans."
 
 == Installation ==
 
@@ -55,6 +55,12 @@ This plugin is not affiliated with or endorsed by Google in any way. Google is a
 2. Login screen once configured
 
 == Changelog ==
+
+= 1.3 =
+
+ * Added reCaptcha to lost password form
+ * Added Russian translation
+ * Tested with 5.0
 
 = 1.2.5 =
 
