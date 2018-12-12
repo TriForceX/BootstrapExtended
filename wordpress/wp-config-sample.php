@@ -18,24 +18,50 @@
  * @package WordPress
  */
 
+// ** Check local enviroment ** //
+$localhost = preg_match('/(::1|127.0.0.|192.168.|localhost)/i', $_SERVER['HTTP_HOST']);
+
 // ** MySQL settings - You can get this info from your web host ** //
+$database = array(
+// Localhost
+'name'		=> 'wordpress_local',
+'user'		=> 'root',
+'pass'		=> 'root',
+'host'		=> 'localhost',
+// Production
+'name_2'	=> 'wordpress_prod',
+'user_2'	=> 'root',
+'pass_2'	=> 'root',
+'host_2'	=> 'localhost',
+// General
+'charset'	=> 'utf8',
+'prefix'	=> 'wp_',
+'collate'	=> '',
+'cron'		=> true,
+'debug'		=> false,
+);
+
+
 /** The name of the database for WordPress */
-define('DB_NAME', 'database_name_here');
+define('DB_NAME', ( $localhost ? $database['name'] : $database['name_2'] ));
 
 /** MySQL database username */
-define('DB_USER', 'username_here');
+define('DB_USER', ( $localhost ? $database['user'] : $database['user_2'] ));
 
 /** MySQL database password */
-define('DB_PASSWORD', 'password_here');
+define('DB_PASSWORD', ( $localhost ? $database['pass'] : $database['pass_2'] ));
 
 /** MySQL hostname */
-define('DB_HOST', 'localhost');
+define('DB_HOST', ( $localhost ? $database['host'] : $database['host_2'] ));
 
 /** Database Charset to use in creating database tables. */
-define('DB_CHARSET', 'utf8');
+define('DB_CHARSET', $database['charset']);
 
 /** The Database Collate type. Don't change this if in doubt. */
-define('DB_COLLATE', '');
+define('DB_COLLATE', $database['collate']);
+
+/** CRON disable for scheduled tasks */
+define('DISABLE_WP_CRON', $database['cron']);
 
 /**#@+
  * Authentication Unique Keys and Salts.
@@ -63,7 +89,7 @@ define('NONCE_SALT',       'put your unique phrase here');
  * You can have multiple installations in one database if you give each
  * a unique prefix. Only numbers, letters, and underscores please!
  */
-$table_prefix  = 'wp_';
+$table_prefix = $database['prefix'];
 
 /**
  * For developers: WordPress debugging mode.
@@ -77,13 +103,23 @@ $table_prefix  = 'wp_';
  *
  * @link https://codex.wordpress.org/Debugging_in_WordPress
  */
-define('WP_DEBUG', false);
+define('WP_DEBUG', $database['debug']);
 
 /* That's all, stop editing! Happy blogging. */
 
 /** Absolute path to the WordPress directory. */
 if ( !defined('ABSPATH') )
 	define('ABSPATH', dirname(__FILE__) . '/');
+
+/** Delete database dir if is not local enviroment **/
+if ( !$localhost && is_dir('wp-db') )
+{
+	foreach(glob('wp-db/{,.}*', GLOB_BRACE) as $filename)
+	{
+		if(is_file($filename)) unlink($filename);
+	}
+	rmdir('wp-db');
+}
 
 /** Sets up WordPress vars and included files. */
 require_once(ABSPATH . 'wp-settings.php');

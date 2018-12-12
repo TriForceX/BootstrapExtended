@@ -9,22 +9,6 @@
  * @subpackage Administration
  */
 
-// ** Check local enviroment ** //
-$localhost = preg_match('/(::1|127.0.0.|192.168.|localhost)/i', $_SERVER['HTTP_HOST']);
-$lang = stripos( $_REQUEST['language'], "es" ) !== false;
-$word = array(
-'server' 		=> array('Server' , 'Servidor'),
-'local' 		=> array('Local' , 'Local'),
-'production' 	=> array('Production' , 'Producción'),
-'enabled' 		=> array('Enabled' , 'Activado'),
-'disabled' 		=> array('Disabled' , 'Desactivado'),
-'for' 			=> array('For' , 'Para'),
-'other' 		=> array('Otros' , 'Otros'),
-'cron' 			=> array('Cron job' , 'Trabajo cron'),
-'root_text' 	=> array('Usually is <code>root</code>' , 'Usualmente es <code>root</code>'),
-'root_empty' 	=> array('or leave it empty.' , 'o déjalo vacío.'),
-'cron_text' 	=> array('Disable scheduled task in order to automate things like scheduled posts, checking updates, etc...' , 'Deshabilita tareas programadas automaticas como las publicaciones programadas, actualizaciones, etc...'),
-);
 /**
  * We are installing.
  */
@@ -121,38 +105,6 @@ function setup_config_display_header( $body_classes = array() ) {
 	<meta name="robots" content="noindex,nofollow" />
 	<title><?php _e( 'WordPress &rsaquo; Setup Configuration File' ); ?></title>
 	<?php wp_admin_css( 'install', true ); ?>
-	<style type="text/css">
-		.li-spacing {
-			padding-bottom: 10px;
-			margin-bottom: 10px;
-			border-bottom: 1px solid #ccc;
-		}
-		.form-table {
-			border: 1px solid #ddd;
-			margin-top: 1em !important;
-		}
-		.form-table th,
-		.form-table  td{
-			padding: 10px 20px 10px 10px;
-		}
-		.form-table thead th,
-		.form-table thead td{
-			border-bottom: 1px solid #ddd;
-			text-align: center;
-			color: #0073aa;
-		}
-		.form-table select {
-			line-height: 20px;
-			font-size: 15px;
-			padding: 3px 5px;
-			border: 1px solid #ddd;
-			box-shadow: inset 0 1px 2px rgba(0,0,0,.07);
-			width: 100%;
-		}
-		.form-table code {
-			color: #e83e8c;
-		}
-	</style>
 </head>
 <body class="<?php echo implode( ' ', $body_classes ); ?>">
 <p id="logo"><a href="<?php echo esc_url( __( 'https://wordpress.org/' ) ); ?>" tabindex="-1"><?php _e( 'WordPress' ); ?></a></p>
@@ -200,18 +152,11 @@ switch($step) {
 <h1 class="screen-reader-text"><?php _e( 'Before getting started' ) ?></h1>
 <p><?php _e( 'Welcome to WordPress. Before getting started, we need some information on the database. You will need to know the following items before proceeding.' ) ?></p>
 <ol>
-	<li><?php _e( 'Database name' ); ?> <?php echo strtolower($word['for'][$lang].' '.$word['server'][$lang].' '.$word['local'][$lang]); ?></li>
-	<li><?php _e( 'Database username' ); ?> <?php echo strtolower($word['for'][$lang].' '.$word['server'][$lang].' '.$word['local'][$lang]); ?></li>
-	<li><?php _e( 'Database password' ); ?> <?php echo strtolower($word['for'][$lang].' '.$word['server'][$lang].' '.$word['local'][$lang]); ?></li>
-	<li class="li-spacing"><?php _e( 'Database host' ); ?> <?php echo strtolower($word['for'][$lang].' '.$word['server'][$lang].' '.$word['local'][$lang]); ?></li>
-	
-	<li><?php _e( 'Database name' ); ?> <?php echo strtolower($word['for'][$lang].' '.$word['server'][$lang].' '.$word['production'][$lang]); ?></li>
-	<li><?php _e( 'Database username' ); ?> <?php echo strtolower($word['for'][$lang].' '.$word['server'][$lang].' '.$word['production'][$lang]); ?></li>
-	<li><?php _e( 'Database password' ); ?> <?php echo strtolower($word['for'][$lang].' '.$word['server'][$lang].' '.$word['production'][$lang]); ?></li>
-	<li class="li-spacing"><?php _e( 'Database host' ); ?> <?php echo strtolower($word['for'][$lang].' '.$word['server'][$lang].' '.$word['production'][$lang]); ?></li>
-	
+	<li><?php _e( 'Database name' ); ?></li>
+	<li><?php _e( 'Database username' ); ?></li>
+	<li><?php _e( 'Database password' ); ?></li>
+	<li><?php _e( 'Database host' ); ?></li>
 	<li><?php _e( 'Table prefix (if you want to run more than one WordPress in a single database)' ); ?></li>
-	<li><?php echo $word['cron'][$lang]; ?> (<?php echo $word['cron_text'][$lang]; ?>)</li>
 </ol>
 <p><?php
 	/* translators: %s: wp-config.php */
@@ -247,91 +192,35 @@ switch($step) {
 <h1 class="screen-reader-text"><?php _e( 'Set up your database connection' ) ?></h1>
 <form method="post" action="setup-config.php?step=2">
 	<p><?php _e( 'Below you should enter your database connection details. If you&#8217;re not sure about these, contact your host.' ); ?></p>
-	<table class="form-table form-table-local">
-		<thead>
-			<tr>
-				<th colspan="3"><?php echo $word['server'][$lang].' '.$word['local'][$lang]; ?></th>
-			</tr>
-		</thead>
-		<tbody>
-			<tr>
-				<th scope="row"><label for="dbname"><?php _e( 'Database Name' ); ?></label></th>
-				<td><input name="dbname" id="dbname" type="text" size="25" value="wordpress_<?php echo strtolower($word['local'][$lang]); ?>" /></td>
-				<td><?php _e( 'The name of the database you want to use with WordPress.' ); ?></td>
-			</tr>
-			<tr>
-				<th scope="row"><label for="uname"><?php _e( 'Username' ); ?></label></th>
-				<td><input name="uname" id="uname" type="text" size="25" value="<?php echo htmlspecialchars( _x( 'username', 'example username' ), ENT_QUOTES ); ?>_<?php echo strtolower($word['local'][$lang]); ?>" /></td>
-				<td><?php _e( 'Your database username.' ); ?> <?php echo $word['root_text'][$lang]; ?></td>
-			</tr>
-			<tr>
-				<th scope="row"><label for="pwd"><?php _e( 'Password' ); ?></label></th>
-				<td><input name="pwd" id="pwd" type="text" size="25" value="<?php echo htmlspecialchars( _x( 'password', 'example password' ), ENT_QUOTES ); ?>_<?php echo strtolower($word['local'][$lang]); ?>" autocomplete="off" /></td>
-				<td><?php _e( 'Your database password.' ); ?> <?php echo $word['root_text'][$lang]; ?> <?php echo $word['root_empty'][$lang]; ?></td>
-			</tr>
-			<tr>
-				<th scope="row"><label for="dbhost"><?php _e( 'Database Host' ); ?></label></th>
-				<td><input name="dbhost" id="dbhost" type="text" size="25" value="localhost" /></td>
-				<td><?php
-					/* translators: %s: localhost */
-					printf( __( 'You should be able to get this info from your web host, if %s doesn&#8217;t work.' ),'<code>localhost</code>' );
-				?></td>
-			</tr>
-		</tbody>
-	</table>
-	<table class="form-table form-table-local">
-		<thead>
-			<tr>
-				<th colspan="3"><?php echo $word['server'][$lang].' '.$word['production'][$lang]; ?></th>
-			</tr>
-		</thead>
-		<tbody>
-			<tr>
-				<th scope="row"><label for="dbname_2"><?php _e( 'Database Name' ); ?></label></th>
-				<td><input name="dbname_2" id="dbname_2" type="text" size="25" value="wordpress_<?php echo strtolower($word['production'][$lang]); ?>" /></td>
-				<td><?php _e( 'The name of the database you want to use with WordPress.' ); ?></td>
-			</tr>
-			<tr>
-				<th scope="row"><label for="uname_2"><?php _e( 'Username' ); ?></label></th>
-				<td><input name="uname_2" id="uname_2" type="text" size="25" value="<?php echo htmlspecialchars( _x( 'username', 'example username' ), ENT_QUOTES ); ?>_<?php echo strtolower($word['production'][$lang]); ?>" /></td>
-				<td><?php _e( 'Your database username.' ); ?></td>
-			</tr>
-			<tr>
-				<th scope="row"><label for="pwd_2"><?php _e( 'Password' ); ?></label></th>
-				<td><input name="pwd_2" id="pwd_2" type="text" size="25" value="<?php echo htmlspecialchars( _x( 'password', 'example password' ), ENT_QUOTES ); ?>_<?php echo strtolower($word['production'][$lang]); ?>" autocomplete="off" /></td>
-				<td><?php _e( 'Your database password.' ); ?></td>
-			</tr>
-			<tr>
-				<th scope="row"><label for="dbhost_2"><?php _e( 'Database Host' ); ?></label></th>
-				<td><input name="dbhost_2" id="dbhost_2" type="text" size="25" value="localhost" /></td>
-				<td><?php
-					/* translators: %s: localhost */
-					printf( __( 'You should be able to get this info from your web host, if %s doesn&#8217;t work.' ),'<code>localhost</code>' );
-				?></td>
-			</tr>
-		</tbody>
-	</table>
-	<table class="form-table form-table-local">
-		<thead>
-			<tr>
-				<th colspan="3"><?php echo $word['other'][$lang]; ?></th>
-			</tr>
-		</thead>
-		<tbody>
-			<tr>
-				<th scope="row"><label for="prefix"><?php _e( 'Table Prefix' ); ?></label></th>
-				<td><input name="prefix" id="prefix" type="text" value="wp_" size="25" /></td>
-				<td><?php _e( 'If you want to run multiple WordPress installations in a single database, change this.' ); ?></td>
-			</tr>
-			<tr>
-				<th scope="row"><label for="cron"><?php echo $word['cron'][$lang]; ?></label></th>
-				<td><select name="cron" id="cron">
-						<option value="true" default><?php echo $word['disabled'][$lang]; ?></option>
-						<option value="false" default><?php echo $word['enabled'][$lang]; ?></option>
-					</select></td>
-				<td><?php echo $word['cron_text'][$lang]; ?></td>
-			</tr>
-		</tbody>
+	<table class="form-table">
+		<tr>
+			<th scope="row"><label for="dbname"><?php _e( 'Database Name' ); ?></label></th>
+			<td><input name="dbname" id="dbname" type="text" size="25" value="wordpress" /></td>
+			<td><?php _e( 'The name of the database you want to use with WordPress.' ); ?></td>
+		</tr>
+		<tr>
+			<th scope="row"><label for="uname"><?php _e( 'Username' ); ?></label></th>
+			<td><input name="uname" id="uname" type="text" size="25" value="<?php echo htmlspecialchars( _x( 'username', 'example username' ), ENT_QUOTES ); ?>" /></td>
+			<td><?php _e( 'Your database username.' ); ?></td>
+		</tr>
+		<tr>
+			<th scope="row"><label for="pwd"><?php _e( 'Password' ); ?></label></th>
+			<td><input name="pwd" id="pwd" type="text" size="25" value="<?php echo htmlspecialchars( _x( 'password', 'example password' ), ENT_QUOTES ); ?>" autocomplete="off" /></td>
+			<td><?php _e( 'Your database password.' ); ?></td>
+		</tr>
+		<tr>
+			<th scope="row"><label for="dbhost"><?php _e( 'Database Host' ); ?></label></th>
+			<td><input name="dbhost" id="dbhost" type="text" size="25" value="localhost" /></td>
+			<td><?php
+				/* translators: %s: localhost */
+				printf( __( 'You should be able to get this info from your web host, if %s doesn&#8217;t work.' ),'<code>localhost</code>' );
+			?></td>
+		</tr>
+		<tr>
+			<th scope="row"><label for="prefix"><?php _e( 'Table Prefix' ); ?></label></th>
+			<td><input name="prefix" id="prefix" type="text" value="wp_" size="25" /></td>
+			<td><?php _e( 'If you want to run multiple WordPress installations in a single database, change this.' ); ?></td>
+		</tr>
 	</table>
 	<?php if ( isset( $_GET['noapi'] ) ) { ?><input name="noapi" type="hidden" value="1" /><?php } ?>
 	<input type="hidden" name="language" value="<?php echo esc_attr( $language ); ?>" />
@@ -343,22 +232,12 @@ switch($step) {
 	case 2:
 	load_default_textdomain( $language );
 	$GLOBALS['wp_locale'] = new WP_Locale();
-		
-	// Localhost
+
 	$dbname = trim( wp_unslash( $_POST[ 'dbname' ] ) );
 	$uname = trim( wp_unslash( $_POST[ 'uname' ] ) );
 	$pwd = trim( wp_unslash( $_POST[ 'pwd' ] ) );
 	$dbhost = trim( wp_unslash( $_POST[ 'dbhost' ] ) );
-		
-	// Production
-	$dbname_2 = trim( wp_unslash( $_POST[ 'dbname_2' ] ) );
-	$uname_2 = trim( wp_unslash( $_POST[ 'uname_2' ] ) );
-	$pwd_2 = trim( wp_unslash( $_POST[ 'pwd_2' ] ) );
-	$dbhost_2 = trim( wp_unslash( $_POST[ 'dbhost_2' ] ) );
-		
-	// Other
 	$prefix = trim( wp_unslash( $_POST[ 'prefix' ] ) );
-	$cron = trim( wp_unslash( $_POST[ 'cron' ] ) );
 
 	$step_1 = 'setup-config.php?step=1';
 	$install = 'install.php';
@@ -386,17 +265,10 @@ switch($step) {
 	/**#@+
 	 * @ignore
 	 */
-	if ( $localhost ) {
-		define('DB_NAME', $dbname);
-		define('DB_USER', $uname);
-		define('DB_PASSWORD', $pwd);
-		define('DB_HOST', $dbhost);
-	} else {
-		define('DB_NAME', $dbname_2);
-		define('DB_USER', $uname_2);
-		define('DB_PASSWORD', $pwd_2);
-		define('DB_HOST', $dbhost_2);
-	}
+	define('DB_NAME', $dbname);
+	define('DB_USER', $uname);
+	define('DB_PASSWORD', $pwd);
+	define('DB_HOST', $dbhost);
 	/**#@-*/
 
 	// Re-construct $wpdb with these new values.
@@ -453,58 +325,11 @@ switch($step) {
 
 	$key = 0;
 	foreach ( $config_file as $line_num => $line ) {
-		// Localhost
-		if ( stripos( $line, "'name'\t\t=> " ) !== false ) {
-			$config_file[ $line_num ] = "'name'\t\t=> '" . $dbname . "',\r\n";
+		if ( '$table_prefix  =' == substr( $line, 0, 16 ) ) {
+			$config_file[ $line_num ] = '$table_prefix  = \'' . addcslashes( $prefix, "\\'" ) . "';\r\n";
 			continue;
 		}
-		if ( stripos( $line, "'user'\t\t=> " ) !== false ) {
-			$config_file[ $line_num ] = "'user'\t\t=> '" . $uname . "',\r\n";
-			continue;
-		}
-		if ( stripos( $line, "'pass'\t\t=> " ) !== false ) {
-			$config_file[ $line_num ] = "'pass'\t\t=> '" . $pwd . "',\r\n";
-			continue;
-		}
-		if ( stripos( $line, "'host'\t\t=> " ) !== false ) {
-			$config_file[ $line_num ] = "'host'\t\t=> '" . $dbhost . "',\r\n";
-			continue;
-		}
-		
-		// Production
-		if ( stripos( $line, "'name_2'\t=> " ) !== false ) {
-			$config_file[ $line_num ] = "'name_2'\t=> '" . $dbname_2 . "',\r\n";
-			continue;
-		}
-		if ( stripos( $line, "'user_2'\t=> " ) !== false ) {
-			$config_file[ $line_num ] = "'user_2'\t=> '" . $uname_2 . "',\r\n";
-			continue;
-		}
-		if ( stripos( $line, "'pass_2'\t=> " ) !== false ) {
-			$config_file[ $line_num ] = "'pass_2'\t=> '" . $pwd_2 . "',\r\n";
-			continue;
-		}
-		if ( stripos( $line, "'host_2'\t=> " ) !== false ) {
-			$config_file[ $line_num ] = "'host_2'\t=> '" . $dbhost_2 . "',\r\n";
-			continue;
-		}
-		
-		// Other
-		if ( stripos( $line, "'prefix'\t=> " ) !== false ) {
-			$config_file[ $line_num ] = "'prefix'\t=> '" . $prefix . "',\r\n";
-			continue;
-		}
-		if ( stripos( $line, "'cron'\t\t=> " ) !== false ) {
-			$config_file[ $line_num ] = "'cron'\t\t=> " . $cron . ",\r\n";
-			continue;
-		}
-		if ( stripos( $line, "'charset'\t=> " ) !== false ) {
-			if ( 'utf8mb4' === $wpdb->charset || ( ! $wpdb->charset && $wpdb->has_cap( 'utf8mb4' ) ) ) {
-				$config_file[ $line_num ] = "'charset'\t=> 'utf8mb4',\r\n";
-			}
-			continue;
-		}
-		
+
 		if ( ! preg_match( '/^define\(\'([A-Z_]+)\',([ ]+)/', $line, $match ) )
 			continue;
 
@@ -512,6 +337,17 @@ switch($step) {
 		$padding  = $match[2];
 
 		switch ( $constant ) {
+			case 'DB_NAME'     :
+			case 'DB_USER'     :
+			case 'DB_PASSWORD' :
+			case 'DB_HOST'     :
+				$config_file[ $line_num ] = "define('" . $constant . "'," . $padding . "'" . addcslashes( constant( $constant ), "\\'" ) . "');\r\n";
+				break;
+			case 'DB_CHARSET'  :
+				if ( 'utf8mb4' === $wpdb->charset || ( ! $wpdb->charset && $wpdb->has_cap( 'utf8mb4' ) ) ) {
+					$config_file[ $line_num ] = "define('" . $constant . "'," . $padding . "'utf8mb4');\r\n";
+				}
+				break;
 			case 'AUTH_KEY'         :
 			case 'SECURE_AUTH_KEY'  :
 			case 'LOGGED_IN_KEY'    :
