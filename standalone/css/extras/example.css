@@ -51,6 +51,12 @@ body {
 .goog-te-menu-value span {
 	text-transform: capitalize !important;
 }
+.goog-te-menu-value span:nth-last-of-type(1) {
+	font-size: 9px !important;
+}
+.goog-te-menu-frame {
+	box-shadow: none !important;
+}
 /* Google Translate Widget */
 
 /* Hightlight */
