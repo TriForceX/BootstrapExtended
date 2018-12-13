@@ -15,17 +15,19 @@ $localhost = preg_match('/(::1|127.0.0.|192.168.|localhost)/i', $_SERVER['HTTP_H
 // ** Set custom language strings ** //
 $lang = stripos( $_REQUEST['language'], 'es' ) !== false;
 $word = array(
-'server' 		=> array('Server' , 'Servidor'),
-'local' 		=> array('Local' , 'Local'),
-'production' 	=> array('Production' , 'Producción'),
-'enabled' 		=> array('Enabled' , 'Activado'),
-'disabled' 		=> array('Disabled' , 'Desactivado'),
-'for' 			=> array('For' , 'Para'),
-'other' 		=> array('Otros' , 'Otros'),
-'cron' 			=> array('Cron job' , 'Trabajo cron'),
-'root_text' 	=> array('Usually is <code>root</code>' , 'Usualmente es <code>root</code>'),
-'root_empty' 	=> array('or leave it empty.' , 'o déjalo vacío.'),
-'cron_text' 	=> array('Disable scheduled task in order to automate things like scheduled posts, checking updates, etc...' , 'Deshabilita tareas programadas automaticas como las publicaciones programadas, actualizaciones, etc...'),
+'server' 			=> array('Server' , 'Servidor'),
+'local' 			=> array('Local' , 'Local'),
+'production' 		=> array('Production' , 'Producción'),
+'local_server' 		=> array('Local server' , 'Servidor local'),
+'production_server'	=> array('Production server' , 'Servidor producción'),
+'enabled' 			=> array('Enabled' , 'Activado'),
+'disabled' 			=> array('Disabled' , 'Desactivado'),
+'for' 				=> array('For' , 'Para'),
+'other' 			=> array('Otros' , 'Otros'),
+'cron' 				=> array('Cron job' , 'Trabajo cron'),
+'root_text' 		=> array('Usually is <code>root</code>' , 'Usualmente es <code>root</code>'),
+'root_empty' 		=> array('or leave it empty.' , 'o déjalo vacío.'),
+'cron_text' 		=> array('Disable scheduled task in order to automate things like scheduled posts, checking updates, etc...' , 'Deshabilita tareas programadas automaticas como las publicaciones programadas, actualizaciones, etc...'),
 );
 
 /**
@@ -203,15 +205,15 @@ switch($step) {
 <h1 class="screen-reader-text"><?php _e( 'Before getting started' ) ?></h1>
 <p><?php _e( 'Welcome to WordPress. Before getting started, we need some information on the database. You will need to know the following items before proceeding.' ) ?></p>
 <ol>
-	<li><?php _e( 'Database name' ); ?> <?php echo strtolower($word['for'][$lang].' '.$word['server'][$lang].' '.$word['local'][$lang]); ?></li>
-	<li><?php _e( 'Database username' ); ?> <?php echo strtolower($word['for'][$lang].' '.$word['server'][$lang].' '.$word['local'][$lang]); ?></li>
-	<li><?php _e( 'Database password' ); ?> <?php echo strtolower($word['for'][$lang].' '.$word['server'][$lang].' '.$word['local'][$lang]); ?></li>
-	<li class="li-spacing"><?php _e( 'Database host' ); ?> <?php echo strtolower($word['for'][$lang].' '.$word['server'][$lang].' '.$word['local'][$lang]); ?></li>
+	<li><?php _e( 'Database name' ); ?> (<?php echo strtolower($word['local_server'][$lang]); ?>)</li>
+	<li><?php _e( 'Database username' ); ?> (<?php echo strtolower($word['local_server'][$lang]); ?>)</li>
+	<li><?php _e( 'Database password' ); ?> (<?php echo strtolower($word['local_server'][$lang]); ?>)</li>
+	<li class="li-spacing"><?php _e( 'Database host' ); ?> (<?php echo strtolower($word['local_server'][$lang]); ?>)</li>
 	
-	<li><?php _e( 'Database name' ); ?> <?php echo strtolower($word['for'][$lang].' '.$word['server'][$lang].' '.$word['production'][$lang]); ?></li>
-	<li><?php _e( 'Database username' ); ?> <?php echo strtolower($word['for'][$lang].' '.$word['server'][$lang].' '.$word['production'][$lang]); ?></li>
-	<li><?php _e( 'Database password' ); ?> <?php echo strtolower($word['for'][$lang].' '.$word['server'][$lang].' '.$word['production'][$lang]); ?></li>
-	<li class="li-spacing"><?php _e( 'Database host' ); ?> <?php echo strtolower($word['for'][$lang].' '.$word['server'][$lang].' '.$word['production'][$lang]); ?></li>
+	<li><?php _e( 'Database name' ); ?> (<?php echo strtolower($word['production_server'][$lang]); ?>)</li>
+	<li><?php _e( 'Database username' ); ?> (<?php echo strtolower($word['production_server'][$lang]); ?>)</li>
+	<li><?php _e( 'Database password' ); ?> (<?php echo strtolower($word['production_server'][$lang]); ?>)</li>
+	<li class="li-spacing"><?php _e( 'Database host' ); ?> (<?php echo strtolower($word['production_server'][$lang]); ?>)</li>
 	
 	<li><?php _e( 'Table prefix (if you want to run more than one WordPress in a single database)' ); ?></li>
 	<li><?php echo $word['cron'][$lang]; ?> (<?php echo $word['cron_text'][$lang]; ?>)</li>
@@ -253,7 +255,7 @@ switch($step) {
 	<table class="form-table form-table-local">
 		<thead>
 			<tr>
-				<th colspan="3"><?php echo $word['server'][$lang].' '.$word['local'][$lang]; ?></th>
+				<th colspan="3"><?php echo $word['local_server'][$lang]; ?></th>
 			</tr>
 		</thead>
 		<tbody>
@@ -285,7 +287,7 @@ switch($step) {
 	<table class="form-table form-table-local">
 		<thead>
 			<tr>
-				<th colspan="3"><?php echo $word['server'][$lang].' '.$word['production'][$lang]; ?></th>
+				<th colspan="3"><?php echo $word['production_server'][$lang]; ?></th>
 			</tr>
 		</thead>
 		<tbody>
