@@ -20,17 +20,17 @@ $word = array(
 'production' 		=> array('Production', 'Producción'),
 'local_server' 		=> array('Local server', 'Servidor local'),
 'production_server'	=> array('Production server', 'Servidor producción'),
-'directory' 		=> array('Directory', 'Directorio'),
+'directory' 		=> array('Main directory', 'Directorio principal'),
 'directory_text' 	=> array('Main site directory in <code>server</code>. If is in root directory write a <code>/</code> symbol.', 'Directorio principal en el <code>servidor</code>. Si está en la raíz escribe el símbolo <code>/</code> únicamente.'),
 'enabled' 			=> array('Enabled', 'Activado'),
 'disabled' 			=> array('Disabled', 'Desactivado'),
 'other' 			=> array('Otros', 'Otros'),
 'https' 			=> array('Force https', 'Forzar https'),
-'https_text' 		=> array('Forces <code>https</code> protocol on production domain.', 'Fuerza el protocolo <code>https</code> en el dominio in producción.'),
+'https_text' 		=> array('Forces <code>https</code> protocol on production domain', 'Fuerza el protocolo <code>https</code> en el dominio in producción'),
 'www' 				=> array('Force www', 'Forzar www'),
-'www_text' 			=> array('Forces <code>www</code> on production domain.', 'Fuerza el <code>www</code> en el dominio in producción.'),
-'cron' 				=> array('Cron job', 'Trabajo cron'),
-'cron_text' 		=> array('Disable scheduled task in order to automate things like scheduled posts, checking updates, etc...', 'Deshabilita tareas programadas automaticas como las publicaciones programadas, actualizaciones, etc...'),
+'www_text' 			=> array('Forces <code>www</code> on production domain', 'Fuerza el <code>www</code> en el dominio in producción'),
+'cron' 				=> array('Cron jobs', 'Trabajos cron'),
+'cron_text' 		=> array('Disable scheduled tasks in order to automate things like posts, updates and others', 'Deshabilita tareas programadas automaticas como posts, actualizaciones y otros'),
 'root_empty' 		=> array('or leave it empty.', 'o déjalo vacío.'),
 'root_text' 		=> array('Usually is <code>root</code>.', 'Usualmente es <code>root</code>.'),
 
@@ -160,7 +160,8 @@ function setup_config_display_header( $body_classes = array() ) {
 			box-shadow: inset 0 1px 2px rgba(0,0,0,.07);
 			width: 100%;
 		}
-		.form-table code {
+		.form-table code,
+		li code{
 			color: #e83e8c;
 		}
 	</style>
@@ -214,15 +215,19 @@ switch($step) {
 	<li><?php _e( 'Database name' ); ?> (<?php echo strtolower($word['local_server'][$lang]); ?>)</li>
 	<li><?php _e( 'Database username' ); ?> (<?php echo strtolower($word['local_server'][$lang]); ?>)</li>
 	<li><?php _e( 'Database password' ); ?> (<?php echo strtolower($word['local_server'][$lang]); ?>)</li>
-	<li class="li-spacing"><?php _e( 'Database host' ); ?> (<?php echo strtolower($word['local_server'][$lang]); ?>)</li>
+	<li><?php _e( 'Database host' ); ?> (<?php echo strtolower($word['local_server'][$lang]); ?>)</li>
+	<li class="li-spacing"><?php echo $word['directory'][$lang]; ?> (<?php echo strtolower($word['local_server'][$lang]); ?>)</li>
 	
 	<li><?php _e( 'Database name' ); ?> (<?php echo strtolower($word['production_server'][$lang]); ?>)</li>
 	<li><?php _e( 'Database username' ); ?> (<?php echo strtolower($word['production_server'][$lang]); ?>)</li>
 	<li><?php _e( 'Database password' ); ?> (<?php echo strtolower($word['production_server'][$lang]); ?>)</li>
-	<li class="li-spacing"><?php _e( 'Database host' ); ?> (<?php echo strtolower($word['production_server'][$lang]); ?>)</li>
+	<li><?php _e( 'Database host' ); ?> (<?php echo strtolower($word['production_server'][$lang]); ?>)</li>
+	<li class="li-spacing"><?php echo $word['directory'][$lang]; ?> (<?php echo strtolower($word['production_server'][$lang]); ?>)</li>
 	
 	<li><?php _e( 'Table prefix (if you want to run more than one WordPress in a single database)' ); ?></li>
-	<li><?php echo $word['cron'][$lang]; ?> (<?php echo $word['cron_text'][$lang]; ?>)</li>
+	<li><?php echo $word['cron'][$lang]; ?> (<?php echo strtolower($word['cron_text'][$lang]); ?>)</li>
+	<li><?php echo $word['https'][$lang]; ?> (<?php echo strtolower($word['https_text'][$lang]); ?>)</li>
+	<li><?php echo $word['www'][$lang]; ?> (<?php echo strtolower($word['www_text'][$lang]); ?>)</li>
 </ol>
 <p><?php
 	/* translators: %s: wp-config.php */
@@ -350,7 +355,7 @@ switch($step) {
 						<option value="true" default><?php echo $word['disabled'][$lang]; ?></option>
 						<option value="false" default><?php echo $word['enabled'][$lang]; ?></option>
 					</select></td>
-				<td><?php echo $word['cron_text'][$lang]; ?></td>
+				<td><?php echo $word['cron_text'][$lang]; ?>.</td>
 			</tr>
 			<tr>
 				<th scope="row"><label for="https"><?php echo $word['https'][$lang]; ?></label></th>
@@ -358,7 +363,7 @@ switch($step) {
 						<option value="false" default><?php echo $word['disabled'][$lang]; ?></option>
 						<option value="true" default><?php echo $word['enabled'][$lang]; ?></option>
 					</select></td>
-				<td><?php echo $word['https_text'][$lang]; ?></td>
+				<td><?php echo $word['https_text'][$lang]; ?>.</td>
 			</tr>
 			<tr>
 				<th scope="row"><label for="www"><?php echo $word['www'][$lang]; ?></label></th>
@@ -366,7 +371,7 @@ switch($step) {
 						<option value="false" default><?php echo $word['disabled'][$lang]; ?></option>
 						<option value="true" default><?php echo $word['enabled'][$lang]; ?></option>
 					</select></td>
-				<td><?php echo $word['www_text'][$lang]; ?></td>
+				<td><?php echo $word['www_text'][$lang]; ?>.</td>
 			</tr>
 		</tbody>
 	</table>
