@@ -155,32 +155,32 @@ RewriteEngine On
 # ---------------------------------------------------------------------------
 
 # [Remove HTTPS]
-# RewriteCond %{HTTP_HOST} !^(1::|127\.0\.0\..*|192\.168\..*|localhost)$ [NC]
-# RewriteCond %{HTTPS} !=off
-# RewriteRule ^(.*)$ http://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+# [Remove HTTPS] RewriteCond %{HTTP_HOST} !^(1::|127\.0\.0\..*|192\.168\..*|localhost)$ [NC]
+# [Remove HTTPS] RewriteCond %{HTTPS} !=off
+# [Remove HTTPS] RewriteRule ^(.*)$ http://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
 
 # [Force HTTPS]
-# RewriteCond %{HTTP_HOST} !^(1::|127\.0\.0\..*|192\.168\..*|localhost)$ [NC]
-# RewriteCond %{HTTPS} !=on
-# RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+# [Force HTTPS] RewriteCond %{HTTP_HOST} !^(1::|127\.0\.0\..*|192\.168\..*|localhost)$ [NC]
+# [Force HTTPS] RewriteCond %{HTTPS} !=on
+# [Force HTTPS] RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
 
 # ---------------------------------------------------------------------------
 # Remove/Force WWW with HTTPS support
 # ---------------------------------------------------------------------------
 
 # [Remove WWW]
-# RewriteCond %{HTTP_HOST} !^(1::|127\.0\.0\..*|192\.168\..*|localhost)$ [NC]
-# RewriteCond %{HTTP_HOST} ^www\.
-# RewriteCond %{HTTPS}s ^on(s)|off
-# RewriteCond http%1://%{HTTP_HOST} ^(https?://)(www\.)?(.+)$
-# RewriteRule ^ %1%3%{REQUEST_URI} [R=301,L]
+# [Remove WWW] RewriteCond %{HTTP_HOST} !^(1::|127\.0\.0\..*|192\.168\..*|localhost)$ [NC]
+# [Remove WWW] RewriteCond %{HTTP_HOST} ^www\.
+# [Remove WWW] RewriteCond %{HTTPS}s ^on(s)|off
+# [Remove WWW] RewriteCond http%1://%{HTTP_HOST} ^(https?://)(www\.)?(.+)$
+# [Remove WWW] RewriteRule ^ %1%3%{REQUEST_URI} [R=301,L]
 
 # [Force WWW]
-# RewriteCond %{HTTP_HOST} !^(1::|127\.0\.0\..*|192\.168\..*|localhost)$ [NC]
-# RewriteCond %{HTTP_HOST} !=""
-# RewriteCond %{HTTP_HOST} !^www\. [NC]
-# RewriteCond %{HTTPS}s ^on(s)|off
-# RewriteRule ^ http%1://www.%{HTTP_HOST}%{REQUEST_URI} [R=301,L]
+# [Force WWW] RewriteCond %{HTTP_HOST} !^(1::|127\.0\.0\..*|192\.168\..*|localhost)$ [NC]
+# [Force WWW] RewriteCond %{HTTP_HOST} !=""
+# [Force WWW] RewriteCond %{HTTP_HOST} !^www\. [NC]
+# [Force WWW] RewriteCond %{HTTPS}s ^on(s)|off
+# [Force WWW] RewriteRule ^ http%1://www.%{HTTP_HOST}%{REQUEST_URI} [R=301,L]
 
 # ---------------------------------------------------------------------------
 # Set base and prevents requests from being rewritten
@@ -219,7 +219,7 @@ EOD;
 /** Remove base content from .htaccess file */
 if ( constant('WP_CUSTOM_HTACCESS') )
 {
-	$htaccess = dirname(__FILE__) . '/.htaccess';
+	$htaccess = dirname(__FILE__) . DIRECTORY_SEPARATOR . '.htaccess';
 	if(!file_exists($htaccess))
 	{
 		file_put_contents($htaccess, $htaccess_template);

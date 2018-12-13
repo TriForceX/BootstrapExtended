@@ -15,19 +15,25 @@ $localhost = preg_match('/(::1|127.0.0.|192.168.|localhost)/i', $_SERVER['HTTP_H
 // ** Set custom language strings ** //
 $lang = stripos( $_REQUEST['language'], 'es' ) !== false;
 $word = array(
-'server' 			=> array('Server' , 'Servidor'),
-'local' 			=> array('Local' , 'Local'),
-'production' 		=> array('Production' , 'Producción'),
-'local_server' 		=> array('Local server' , 'Servidor local'),
-'production_server'	=> array('Production server' , 'Servidor producción'),
-'enabled' 			=> array('Enabled' , 'Activado'),
-'disabled' 			=> array('Disabled' , 'Desactivado'),
-'for' 				=> array('For' , 'Para'),
-'other' 			=> array('Otros' , 'Otros'),
-'cron' 				=> array('Cron job' , 'Trabajo cron'),
-'root_text' 		=> array('Usually is <code>root</code>' , 'Usualmente es <code>root</code>'),
-'root_empty' 		=> array('or leave it empty.' , 'o déjalo vacío.'),
-'cron_text' 		=> array('Disable scheduled task in order to automate things like scheduled posts, checking updates, etc...' , 'Deshabilita tareas programadas automaticas como las publicaciones programadas, actualizaciones, etc...'),
+'server' 			=> array('Server', 'Servidor'),
+'local' 			=> array('Local', 'Local'),
+'production' 		=> array('Production', 'Producción'),
+'local_server' 		=> array('Local server', 'Servidor local'),
+'production_server'	=> array('Production server', 'Servidor producción'),
+'directory' 		=> array('Directory', 'Directorio'),
+'directory_text' 	=> array('Main site directory in <code>server</code>. If is in root directory write a <code>/</code> symbol.', 'Directorio principal en el <code>servidor</code>. Si está en la raíz escribe el símbolo <code>/</code> únicamente.'),
+'enabled' 			=> array('Enabled', 'Activado'),
+'disabled' 			=> array('Disabled', 'Desactivado'),
+'other' 			=> array('Otros', 'Otros'),
+'https' 			=> array('Force https', 'Forzar https'),
+'https_text' 		=> array('Forces <code>https</code> protocol on production domain.', 'Fuerza el protocolo <code>https</code> en el dominio in producción.'),
+'www' 				=> array('Force www', 'Forzar www'),
+'www_text' 			=> array('Forces <code>www</code> on production domain.', 'Fuerza el <code>www</code> en el dominio in producción.'),
+'cron' 				=> array('Cron job', 'Trabajo cron'),
+'cron_text' 		=> array('Disable scheduled task in order to automate things like scheduled posts, checking updates, etc...', 'Deshabilita tareas programadas automaticas como las publicaciones programadas, actualizaciones, etc...'),
+'root_empty' 		=> array('or leave it empty.', 'o déjalo vacío.'),
+'root_text' 		=> array('Usually is <code>root</code>.', 'Usualmente es <code>root</code>.'),
+
 );
 
 /**
@@ -261,7 +267,7 @@ switch($step) {
 		<tbody>
 			<tr>
 				<th scope="row"><label for="dbname"><?php _e( 'Database Name' ); ?></label></th>
-				<td><input name="dbname" id="dbname" type="text" size="25" value="wordpress_<?php echo strtolower($word['local'][$lang]); ?>" /></td>
+				<td><input name="dbname" id="dbname" type="text" size="25" value="wordpress_<?php echo strtolower($word['local'][$lang]); ?>_db" /></td>
 				<td><?php _e( 'The name of the database you want to use with WordPress.' ); ?></td>
 			</tr>
 			<tr>
@@ -282,6 +288,11 @@ switch($step) {
 					printf( __( 'You should be able to get this info from your web host, if %s doesn&#8217;t work.' ),'<code>localhost</code>' );
 				?></td>
 			</tr>
+			<tr>
+				<th scope="row"><label for="directory"><?php echo $word['directory'][$lang]; ?></label></th>
+				<td><input name="directory" id="directory" type="text" size="25" value="/wordpress/" /></td>
+				<td><?php echo $word['directory_text'][$lang]; ?></td>
+			</tr>
 		</tbody>
 	</table>
 	<table class="form-table form-table-local">
@@ -293,7 +304,7 @@ switch($step) {
 		<tbody>
 			<tr>
 				<th scope="row"><label for="dbname_2"><?php _e( 'Database Name' ); ?></label></th>
-				<td><input name="dbname_2" id="dbname_2" type="text" size="25" value="wordpress_<?php echo strtolower($word['production'][$lang]); ?>" /></td>
+				<td><input name="dbname_2" id="dbname_2" type="text" size="25" value="wordpress_<?php echo strtolower($word['production'][$lang]); ?>_db" /></td>
 				<td><?php _e( 'The name of the database you want to use with WordPress.' ); ?></td>
 			</tr>
 			<tr>
@@ -313,6 +324,11 @@ switch($step) {
 					/* translators: %s: localhost */
 					printf( __( 'You should be able to get this info from your web host, if %s doesn&#8217;t work.' ),'<code>localhost</code>' );
 				?></td>
+			</tr>
+			<tr>
+				<th scope="row"><label for="directory_2"><?php echo $word['directory'][$lang]; ?></label></th>
+				<td><input name="directory_2" id="directory_2" type="text" size="25" value="/" /></td>
+				<td><?php echo $word['directory_text'][$lang]; ?></td>
 			</tr>
 		</tbody>
 	</table>
@@ -336,6 +352,22 @@ switch($step) {
 					</select></td>
 				<td><?php echo $word['cron_text'][$lang]; ?></td>
 			</tr>
+			<tr>
+				<th scope="row"><label for="https"><?php echo $word['https'][$lang]; ?></label></th>
+				<td><select name="https" id="https">
+						<option value="false" default><?php echo $word['disabled'][$lang]; ?></option>
+						<option value="true" default><?php echo $word['enabled'][$lang]; ?></option>
+					</select></td>
+				<td><?php echo $word['https_text'][$lang]; ?></td>
+			</tr>
+			<tr>
+				<th scope="row"><label for="www"><?php echo $word['www'][$lang]; ?></label></th>
+				<td><select name="www" id="www">
+						<option value="false" default><?php echo $word['disabled'][$lang]; ?></option>
+						<option value="true" default><?php echo $word['enabled'][$lang]; ?></option>
+					</select></td>
+				<td><?php echo $word['www_text'][$lang]; ?></td>
+			</tr>
 		</tbody>
 	</table>
 	<?php if ( isset( $_GET['noapi'] ) ) { ?><input name="noapi" type="hidden" value="1" /><?php } ?>
@@ -354,16 +386,20 @@ switch($step) {
 	$uname = trim( wp_unslash( $_POST[ 'uname' ] ) );
 	$pwd = trim( wp_unslash( $_POST[ 'pwd' ] ) );
 	$dbhost = trim( wp_unslash( $_POST[ 'dbhost' ] ) );
+	$directory = !empty( trim( $_POST[ 'directory' ] ) ) ? trim( $_POST[ 'directory' ] ) : '/';
 		
 	// Production
 	$dbname_2 = trim( wp_unslash( $_POST[ 'dbname_2' ] ) );
 	$uname_2 = trim( wp_unslash( $_POST[ 'uname_2' ] ) );
 	$pwd_2 = trim( wp_unslash( $_POST[ 'pwd_2' ] ) );
 	$dbhost_2 = trim( wp_unslash( $_POST[ 'dbhost_2' ] ) );
+	$directory_2 = !empty( trim( $_POST[ 'directory_2' ] ) ) ? trim( $_POST[ 'directory_2' ] ) : '/';
 		
 	// Other
 	$prefix = trim( wp_unslash( $_POST[ 'prefix' ] ) );
 	$cron = trim( wp_unslash( $_POST[ 'cron' ] ) );
+	$https = trim( wp_unslash( $_POST[ 'https' ] ) );
+	$www = trim( wp_unslash( $_POST[ 'www' ] ) );
 
 	$step_1 = 'setup-config.php?step=1';
 	$install = 'install.php';
@@ -475,6 +511,10 @@ switch($step) {
 			$config_file[ $line_num ] = "'host'\t\t=> '" . $dbhost . "',\r\n";
 			continue;
 		}
+		if ( stripos( $line, "/wordpress_local/" ) !== false ) {
+			$config_file[ $line_num ] = str_replace('/wordpress_local/', preg_replace('#/+#', '/', '/'.$directory.'/'), $line);
+			continue;
+		}
 		
 		// Production
 		if ( stripos( $line, "'name_2'\t=> " ) !== false ) {
@@ -493,6 +533,10 @@ switch($step) {
 			$config_file[ $line_num ] = "'host_2'\t=> '" . $dbhost_2 . "',\r\n";
 			continue;
 		}
+		if ( stripos( $line, "/wordpress_prod/" ) !== false ) {
+			$config_file[ $line_num ] = str_replace('/wordpress_prod/', preg_replace('#/+#', '/', '/'.$directory_2.'/'), $line);
+			continue;
+		}
 		
 		// Other
 		if ( stripos( $line, "'prefix'\t=> " ) !== false ) {
@@ -507,6 +551,22 @@ switch($step) {
 			if ( 'utf8mb4' === $wpdb->charset || ( ! $wpdb->charset && $wpdb->has_cap( 'utf8mb4' ) ) ) {
 				$config_file[ $line_num ] = "'charset'\t=> 'utf8mb4',\r\n";
 			}
+			continue;
+		}
+		if ( stripos( $line, "# [Remove HTTPS] " ) !== false ) {
+			$config_file[ $line_num ] = $https == 'true' ? str_replace('# [Remove HTTPS] ', '# ', $line) : str_replace('# [Remove HTTPS] ', '', $line);
+			continue;
+		}
+		if ( stripos( $line, "# [Force HTTPS] " ) !== false ) {
+			$config_file[ $line_num ] = $https == 'true' ? str_replace('# [Force HTTPS] ', '', $line) : str_replace('# [Force HTTPS] ', '# ', $line);
+			continue;
+		}
+		if ( stripos( $line, "# [Remove WWW] " ) !== false ) {
+			$config_file[ $line_num ] = $www == 'true' ? str_replace('# [Remove WWW] ', '# ', $line) : str_replace('# [Remove WWW] ', '', $line);
+			continue;
+		}
+		if ( stripos( $line, "# [Force WWW] " ) !== false ) {
+			$config_file[ $line_num ] = $www == 'true' ? str_replace('# [Force WWW] ', '', $line) : str_replace('# [Force WWW] ', '# ', $line);
 			continue;
 		}
 		
