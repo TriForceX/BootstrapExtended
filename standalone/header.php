@@ -26,10 +26,10 @@
 	
 	<!-- ******** HEADER RESOURCES ******** -->
 	
+	<!-- Favicon -->
+	<link href="<?php echo php::get_main_url(); ?>/img/base/favicon/all.png" rel="icon">
 	<!-- Apple Touch Icon -->
 	<link href="<?php echo php::get_main_url(); ?>/img/base/favicon/apple.png" rel="apple-touch-icon">
-	<!-- Favicon -->
-	<link href="<?php echo php::get_main_url(); ?>/img/base/favicon/global.png" rel="icon">
 	<!-- Bootstrap -->
 	<link href="<?php echo php::get_main_url(); ?>/resources/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 	<!-- Data Tables Bootstrap -->
