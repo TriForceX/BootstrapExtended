@@ -11,7 +11,9 @@
 
 // ** Check local enviroment ** //
 $localhost = preg_match('/(::1|127.0.0.|192.168.|localhost)/i', $_SERVER['HTTP_HOST']);
-$lang = stripos( $_REQUEST['language'], "es" ) !== false;
+
+// ** Set custom language strings ** //
+$lang = stripos( $_REQUEST['language'], 'es' ) !== false;
 $word = array(
 'server' 		=> array('Server' , 'Servidor'),
 'local' 		=> array('Local' , 'Local'),
@@ -25,6 +27,7 @@ $word = array(
 'root_empty' 	=> array('or leave it empty.' , 'o déjalo vacío.'),
 'cron_text' 	=> array('Disable scheduled task in order to automate things like scheduled posts, checking updates, etc...' , 'Deshabilita tareas programadas automaticas como las publicaciones programadas, actualizaciones, etc...'),
 );
+
 /**
  * We are installing.
  */

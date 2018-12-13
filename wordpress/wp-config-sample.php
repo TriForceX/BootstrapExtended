@@ -8,9 +8,11 @@
  *
  * This file contains the following configurations:
  *
- * * MySQL settings
+ * * MySQL settings for local & production
+ * * Default theme
  * * Secret keys
  * * Database table prefix
+ * * Disable cron job
  * * ABSPATH
  *
  * @link https://codex.wordpress.org/Editing_wp-config.php
@@ -34,6 +36,7 @@ $database = array(
 'pass_2'	=> 'root',
 'host_2'	=> 'localhost',
 // General
+'theme'		=> 'websitebase',
 'charset'	=> 'utf8',
 'prefix'	=> 'wp_',
 'collate'	=> '',
@@ -60,8 +63,11 @@ define('DB_CHARSET', $database['charset']);
 /** The Database Collate type. Don't change this if in doubt. */
 define('DB_COLLATE', $database['collate']);
 
-/** CRON disable for scheduled tasks */
+/** Cron job disable for scheduled tasks */
 define('DISABLE_WP_CRON', $database['cron']);
+
+/** Set default theme */
+define('WP_DEFAULT_THEME', $database['theme']);
 
 /**#@+
  * Authentication Unique Keys and Salts.
@@ -111,7 +117,7 @@ define('WP_DEBUG', $database['debug']);
 if ( !defined('ABSPATH') )
 	define('ABSPATH', dirname(__FILE__) . '/');
 
-/** Delete database dir if is not local enviroment **/
+/** Delete database dir if is not local enviroment */
 if ( !$localhost && is_dir('wp-db') )
 {
 	foreach(glob('wp-db/{,.}*', GLOB_BRACE) as $filename)
