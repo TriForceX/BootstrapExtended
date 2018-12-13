@@ -1,4 +1,4 @@
-# BEGIN WordPress
+# CUSTOM WordPress
 
 <IfModule mod_rewrite.c>
 
@@ -71,4 +71,4 @@ Options -Indexes
 
 </IfModule>
 
-# END WordPress
+# CUSTOM WordPress

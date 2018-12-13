@@ -13,6 +13,7 @@
  * * Secret keys
  * * Database table prefix
  * * Disable cron job
+ * * Custom .htaccess file
  * * ABSPATH
  *
  * @link https://codex.wordpress.org/Editing_wp-config.php
@@ -40,6 +41,7 @@ $database = array(
 'charset'	=> 'utf8',
 'prefix'	=> 'wp_',
 'collate'	=> '',
+'htaccess'	=> true,
 'cron'		=> true,
 'debug'		=> false,
 );
@@ -68,6 +70,9 @@ define('DISABLE_WP_CRON', $database['cron']);
 
 /** Set default theme */
 define('WP_DEFAULT_THEME', $database['theme']);
+
+/** Set custom .htaccess */
+define('WP_CUSTOM_HTACCESS', $database['htaccess']);
 
 /**#@+
  * Authentication Unique Keys and Salts.
@@ -125,6 +130,15 @@ if ( !$localhost && is_dir('wp-db') )
 		if(is_file($filename)) unlink($filename);
 	}
 	rmdir('wp-db');
+}
+
+/** Remove base content from .htaccess file */
+if ( constant('WP_CUSTOM_HTACCESS') )
+{
+	$htaccess= '.htaccess';
+	$content = file_get_contents($htaccess);
+	$remove = preg_replace('/# BEGIN WordPress[\s\S]+?# END WordPress/', '', $content);
+	file_put_contents($htaccess, $remove);
 }
 
 /** Sets up WordPress vars and included files. */

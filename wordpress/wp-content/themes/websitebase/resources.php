@@ -82,9 +82,6 @@ php::debug();
 // Load theme language
 load_theme_textdomain('websitebase');
 
-// Prevent .htaccess to be modified by permalink rules
-add_filter('flush_rewrite_rules_hard','__return_false');
-
 // Custom login logo URL
 add_filter('login_headerurl', 'login_logo_url');
 add_filter('login_headertitle', 'login_logo_url');
@@ -101,6 +98,12 @@ add_action('customize_register', 'custom_customize_register', 50);
 
 // Set template modifications
 add_action('customize_register', 'custom_theme_settings');
+
+// Prevent .htaccess to be modified by permalink rules
+if(constant('WP_CUSTOM_HTACCESS'))
+{
+	add_filter('flush_rewrite_rules_hard','__return_false');
+}
 
 // Add custom CSS & JS to admin
 if(is_user_logged_in())
