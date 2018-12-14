@@ -1,4 +1,4 @@
-# CUSTOM WordPress
+# BEGIN WordPress
 
 <IfModule mod_rewrite.c>
 
@@ -7,6 +7,37 @@
 # ---------------------------------------------------------------------------
 
 RewriteEngine On
+
+# ---------------------------------------------------------------------------
+# Set base and prevents requests from being rewritten
+# ---------------------------------------------------------------------------
+
+RewriteBase /
+RewriteRule ^index\.php$ - [L]
+
+# ---------------------------------------------------------------------------
+# Rewrite for localhost and production enviroments
+# ---------------------------------------------------------------------------
+
+# [Localhost]
+RewriteCond %{HTTP_HOST} ^(1::|127\.0\.0\..*|192\.168\..*|localhost)$ [NC]
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule . /wordpress_local/index.php [L]
+
+# [Production]
+RewriteCond %{HTTP_HOST} !^(1::|127\.0\.0\..*|192\.168\..*|localhost)$ [NC]
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule . /wordpress_prod/index.php [L]
+
+</IfModule>
+
+# END WordPress
+
+# CUSTOM Settings
+
+<IfModule mod_rewrite.c>
 
 # ---------------------------------------------------------------------------
 # Remove/Force HTTPS
@@ -41,29 +72,6 @@ RewriteEngine On
 # [Force WWW] RewriteRule ^ http%1://www.%{HTTP_HOST}%{REQUEST_URI} [R=301,L]
 
 # ---------------------------------------------------------------------------
-# Set base and prevents requests from being rewritten
-# ---------------------------------------------------------------------------
-
-RewriteBase /
-RewriteRule ^index\.php$ - [L]
-
-# ---------------------------------------------------------------------------
-# Rewrite for localhost and production enviroments
-# ---------------------------------------------------------------------------
-
-# [Localhost]
-RewriteCond %{HTTP_HOST} ^(1::|127\.0\.0\..*|192\.168\..*|localhost)$ [NC]
-RewriteCond %{REQUEST_FILENAME} !-f
-RewriteCond %{REQUEST_FILENAME} !-d
-RewriteRule . /wordpress_local/index.php [L]
-
-# [Production]
-RewriteCond %{HTTP_HOST} !^(1::|127\.0\.0\..*|192\.168\..*|localhost)$ [NC]
-RewriteCond %{REQUEST_FILENAME} !-f
-RewriteCond %{REQUEST_FILENAME} !-d
-RewriteRule . /wordpress_prod/index.php [L]
-
-# ---------------------------------------------------------------------------
 # Dont allow directory listing
 # ---------------------------------------------------------------------------
 
@@ -71,4 +79,4 @@ Options -Indexes
 
 </IfModule>
 
-# CUSTOM WordPress
+# CUSTOM Settings
