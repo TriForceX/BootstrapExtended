@@ -133,7 +133,7 @@ if ( !$localhost && is_dir('wp-db') )
 }
 
 /** Change back .htaccess permisions after install */
-if ( constant('WP_CUSTOM_HTACCESS') && stripos( $_SERVER['PHP_SELF'], 'install.php' ) === false )
+if ( constant('WP_CUSTOM_HTACCESS') && !defined('WP_INSTALLING') )
 {
 	if( file_exists( ABSPATH . '.htaccess' ) && !is_writable( ABSPATH . '.htaccess' ) )
 	{
