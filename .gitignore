@@ -11,10 +11,14 @@ standalone/css/style.css
 standalone/js/app.js
 standalone/css/*.min.*
 standalone/js/*.min.*
+standalone/css/extras/*.min.*
+standalone/js/extras/*.min.*
 wordpress/wp-content/themes/websitebase/css/style.css
 wordpress/wp-content/themes/websitebase/js/app.js
 wordpress/wp-content/themes/websitebase/css/*.min.*
 wordpress/wp-content/themes/websitebase/js/*.min.*
+wordpress/wp-content/themes/websitebase/css/extras/*.min.*
+wordpress/wp-content/themes/websitebase/js/extras/*.min.*
 wordpress/.htaccess
 wordpress/wp-config.php
 ##
