@@ -80,6 +80,19 @@ if ( file_exists( ABSPATH . 'wp-config-sample.php' ) ) {
 	) );
 }
 
+// Setup default .htaccess file.
+if ( file_exists( ABSPATH . '.htaccess-sample' ) ) {
+	$htaccess_file = file( ABSPATH . '.htaccess-sample' );
+} elseif ( file_exists( dirname( ABSPATH ) . '/.htaccess-sample' ) ) {
+	$htaccess_file = file( dirname( ABSPATH ) . '/.htaccess-sample' );
+} else {
+	wp_die( sprintf(
+		/* translators: %s: .htaccess-sample */
+		__( 'Sorry, I need a %s file to work from. Please re-upload this file to your WordPress installation.' ),
+		'<code>.htaccess-sample</code>'
+	) );
+}
+
 // Check if wp-config.php has been created
 if ( file_exists( ABSPATH . 'wp-config.php' ) ) {
 	wp_die( '<p>' . sprintf(
@@ -516,10 +529,6 @@ switch($step) {
 			$config_file[ $line_num ] = "'host'\t\t=> '" . $dbhost . "',\r\n";
 			continue;
 		}
-		if ( stripos( $line, "/wordpress_local/" ) !== false ) {
-			$config_file[ $line_num ] = str_replace('/wordpress_local/', preg_replace('#/+#', '/', '/'.$directory.'/'), $line);
-			continue;
-		}
 		
 		// Production
 		if ( stripos( $line, "'name_2'\t=> " ) !== false ) {
@@ -538,10 +547,6 @@ switch($step) {
 			$config_file[ $line_num ] = "'host_2'\t=> '" . $dbhost_2 . "',\r\n";
 			continue;
 		}
-		if ( stripos( $line, "/wordpress_prod/" ) !== false ) {
-			$config_file[ $line_num ] = str_replace('/wordpress_prod/', preg_replace('#/+#', '/', '/'.$directory_2.'/'), $line);
-			continue;
-		}
 		
 		// Other
 		if ( stripos( $line, "'prefix'\t=> " ) !== false ) {
@@ -556,22 +561,6 @@ switch($step) {
 			if ( 'utf8mb4' === $wpdb->charset || ( ! $wpdb->charset && $wpdb->has_cap( 'utf8mb4' ) ) ) {
 				$config_file[ $line_num ] = "'charset'\t=> 'utf8mb4',\r\n";
 			}
-			continue;
-		}
-		if ( stripos( $line, "# [Remove HTTPS] " ) !== false ) {
-			$config_file[ $line_num ] = $https == 'true' ? str_replace('# [Remove HTTPS] ', '# ', $line) : str_replace('# [Remove HTTPS] ', '', $line);
-			continue;
-		}
-		if ( stripos( $line, "# [Force HTTPS] " ) !== false ) {
-			$config_file[ $line_num ] = $https == 'true' ? str_replace('# [Force HTTPS] ', '', $line) : str_replace('# [Force HTTPS] ', '# ', $line);
-			continue;
-		}
-		if ( stripos( $line, "# [Remove WWW] " ) !== false ) {
-			$config_file[ $line_num ] = $www == 'true' ? str_replace('# [Remove WWW] ', '# ', $line) : str_replace('# [Remove WWW] ', '', $line);
-			continue;
-		}
-		if ( stripos( $line, "# [Force WWW] " ) !== false ) {
-			$config_file[ $line_num ] = $www == 'true' ? str_replace('# [Force WWW] ', '', $line) : str_replace('# [Force WWW] ', '# ', $line);
 			continue;
 		}
 		
@@ -592,6 +581,35 @@ switch($step) {
 			case 'NONCE_SALT'       :
 				$config_file[ $line_num ] = "define('" . $constant . "'," . $padding . "'" . $secret_keys[$key++] . "');\r\n";
 				break;
+		}
+	}
+	unset( $line );
+		
+	foreach ( $htaccess_file as $line_num => $line ) {
+		// HTACCESS
+		if ( stripos( $line, "# [Remove HTTPS] " ) !== false ) {
+			$htaccess_file[ $line_num ] = $https == 'true' ? str_replace('# [Remove HTTPS] ', '# ', $line) : str_replace('# [Remove HTTPS] ', '', $line);
+			continue;
+		}
+		if ( stripos( $line, "# [Force HTTPS] " ) !== false ) {
+			$htaccess_file[ $line_num ] = $https == 'true' ? str_replace('# [Force HTTPS] ', '', $line) : str_replace('# [Force HTTPS] ', '# ', $line);
+			continue;
+		}
+		if ( stripos( $line, "# [Remove WWW] " ) !== false ) {
+			$htaccess_file[ $line_num ] = $www == 'true' ? str_replace('# [Remove WWW] ', '# ', $line) : str_replace('# [Remove WWW] ', '', $line);
+			continue;
+		}
+		if ( stripos( $line, "# [Force WWW] " ) !== false ) {
+			$htaccess_file[ $line_num ] = $www == 'true' ? str_replace('# [Force WWW] ', '', $line) : str_replace('# [Force WWW] ', '# ', $line);
+			continue;
+		}
+		if ( stripos( $line, "/wordpress_local/" ) !== false ) {
+			$htaccess_file[ $line_num ] = str_replace('/wordpress_local/', preg_replace('#/+#', '/', '/'.$directory.'/'), $line);
+			continue;
+		}
+		if ( stripos( $line, "/wordpress_prod/" ) !== false ) {
+			$htaccess_file[ $line_num ] = str_replace('/wordpress_prod/', preg_replace('#/+#', '/', '/'.$directory_2.'/'), $line);
+			continue;
 		}
 	}
 	unset( $line );
@@ -640,6 +658,23 @@ if ( ! /iPad|iPod|iPhone/.test( navigator.userAgent ) ) {
 		}
 		fclose( $handle );
 		chmod( $path_to_wp_config, 0666 );
+		
+		/*
+		 * If this file doesn't exist, then we are using the .htaccess-sample
+		 * file one level up, which is for the develop repo.
+		 */
+		if ( file_exists( ABSPATH . '.htaccess-sample' ) )
+			$path_to_htaccess = ABSPATH . '.htaccess';
+		else
+			$path_to_htaccess = dirname( ABSPATH ) . '/.htaccess';
+
+		$handle_2 = fopen( $path_to_htaccess, 'w' );
+		foreach ( $htaccess_file as $line ) {
+			fwrite( $handle_2, $line );
+		}
+		fclose( $handle_2 );
+		chmod( $path_to_htaccess, 0444 );
+		
 		setup_config_display_header();
 ?>
 <h1 class="screen-reader-text"><?php _e( 'Successful database connection' ) ?></h1>
