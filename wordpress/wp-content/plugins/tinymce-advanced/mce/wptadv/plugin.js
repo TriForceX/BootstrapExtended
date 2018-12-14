@@ -65,12 +65,36 @@
 
 		if ( noAutop ) {
 			editor.on( 'beforeSetContent', function( event ) {
-				var autop = typeof window.wp !== 'undefined' && window.wp.editor && window.wp.editor.autop;
+				var autop;
+				var wp = window.wp;
+				
+				if ( ! wp ) {
+					return;
+				}
+
+				autop = wp.editor && wp.editor.autop;
+
+				if ( ! autop ) {
+					autop = wp.oldEditor && wp.oldEditor.autop;
+				}
 
 				if ( event.load && autop && event.content && event.content.indexOf( '\n' ) > -1 && ! /<p>/i.test( event.content ) ) {
 					event.content = autop( event.content );
 				}
 			}, true );
+
+			if ( editor.settings.classic_block_editor ) {
+				editor.on( 'beforeGetContent', function( event ) {
+					// Mark all paragraph tags so they are not stripped by the Block Editor...
+					if ( event.format !== 'raw' ) {
+						editor.$( 'p' ).each( function ( i, node ) {
+							if ( ! node.hasAttributes() ) {
+								editor.$( node ).attr( 'data-tadv-p', 'keep' );
+							}
+						} )
+					}
+				}, true );
+			}
 		}
 
 		return {

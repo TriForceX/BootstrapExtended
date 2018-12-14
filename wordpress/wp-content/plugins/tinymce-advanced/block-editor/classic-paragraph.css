@@ -1,0 +1,33 @@
+/* Tweaks for "Classic Paragraph" */
+
+/* Toolbar */
+.editor-block-list__block[data-type="core/paragraph"] .editor-block-contextual-toolbar .editor-block-switcher {
+	display: none;
+}
+
+@media (min-width: 600px) {
+	.editor-block-list__block[data-type="core/paragraph"] .editor-block-contextual-toolbar {
+	    float: right;
+	    margin-right: 23px;
+	    transform: translateY(-13px);
+	    top: 14px;
+	}
+	
+	.editor-block-list__block[data-type="core/paragraph"] .editor-block-contextual-toolbar .components-toolbar {
+	    background: transparent;
+	    border: none;
+	}
+
+	.editor-block-list__block[data-type="core/paragraph"] .editor-block-contextual-toolbar .editor-block-toolbar {
+	    margin-top: 0;
+	    border: none;
+	}
+	
+	.editor-block-list__block[data-type="core/paragraph"] .editor-block-contextual-toolbar .editor-block-toolbar::before {
+	    content: "";
+	    display: block;
+	    border-left: 1px solid #e2e4e7;
+	    margin-top: 4px;
+	    margin-bottom: 4px;
+	}
+}
