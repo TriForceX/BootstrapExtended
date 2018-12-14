@@ -673,7 +673,7 @@ if ( ! /iPad|iPod|iPhone/.test( navigator.userAgent ) ) {
 			fwrite( $handle_2, $line );
 		}
 		fclose( $handle_2 );
-		chmod( $path_to_htaccess, 0444 );
+		chmod( $path_to_htaccess, 0644 );
 		
 		setup_config_display_header();
 ?>

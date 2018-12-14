@@ -132,14 +132,11 @@ if ( !$localhost && is_dir('wp-db') )
 	rmdir('wp-db');
 }
 
-/** Change back .htaccess permisions after install */
-if ( constant('WP_CUSTOM_HTACCESS') && !defined('WP_INSTALLING') )
-{
-	if( file_exists( ABSPATH . '.htaccess' ) && !is_writable( ABSPATH . '.htaccess' ) )
-	{
-		chmod( ABSPATH . '.htaccess', 0666 );
-	}
-}
-
 /** Sets up WordPress vars and included files. */
 require_once(ABSPATH . 'wp-settings.php');
+
+/** Prevent .htaccess to be modified by permalink rules */
+if(constant('WP_CUSTOM_HTACCESS'))
+{
+	add_filter('flush_rewrite_rules_hard','__return_false');
+}
