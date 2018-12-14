@@ -113,4 +113,10 @@ body {
 }
 /* Example element */
 
+/* Admin bar */
+#wpadminbar {
+	display: none !important;
+}
+/* Admin bar */
+
 /* ================================================= EXAMPLE CONTENT ================================================= */

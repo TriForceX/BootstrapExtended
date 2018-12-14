@@ -9,6 +9,13 @@
 RewriteEngine On
 
 # ---------------------------------------------------------------------------
+# Allow any files or directories that exist to be displayed directly
+# ---------------------------------------------------------------------------
+
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+
+# ---------------------------------------------------------------------------
 # Set base and prevents requests from being rewritten
 # ---------------------------------------------------------------------------
 
@@ -21,14 +28,10 @@ RewriteRule ^index\.php$ - [L]
 
 # [Localhost]
 RewriteCond %{HTTP_HOST} ^(1::|127\.0\.0\..*|192\.168\..*|localhost)$ [NC]
-RewriteCond %{REQUEST_FILENAME} !-f
-RewriteCond %{REQUEST_FILENAME} !-d
 RewriteRule . /wordpress_local/index.php [L]
 
 # [Production]
 RewriteCond %{HTTP_HOST} !^(1::|127\.0\.0\..*|192\.168\..*|localhost)$ [NC]
-RewriteCond %{REQUEST_FILENAME} !-f
-RewriteCond %{REQUEST_FILENAME} !-d
 RewriteRule . /wordpress_prod/index.php [L]
 
 </IfModule>

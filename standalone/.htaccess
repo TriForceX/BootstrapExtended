@@ -9,6 +9,21 @@
 RewriteEngine On
 
 # ---------------------------------------------------------------------------
+# Allow any files or directories that exist to be displayed directly
+# ---------------------------------------------------------------------------
+
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+
+</IfModule>
+
+# END Standalone
+
+# CUSTOM Settings
+
+<IfModule mod_rewrite.c>
+
+# ---------------------------------------------------------------------------
 # Remove/Force HTTPS
 # ---------------------------------------------------------------------------
 
@@ -27,11 +42,11 @@ RewriteEngine On
 # ---------------------------------------------------------------------------
 
 # [Remove WWW]
-RewriteCond %{HTTP_HOST} !^(1::|127\.0\.0\..*|192\.168\..*|localhost)$ [NC]
-RewriteCond %{HTTP_HOST} ^www\.
-RewriteCond %{HTTPS}s ^on(s)|off
-RewriteCond http%1://%{HTTP_HOST} ^(https?://)(www\.)?(.+)$
-RewriteRule ^ %1%3%{REQUEST_URI} [R=301,L]
+# RewriteCond %{HTTP_HOST} !^(1::|127\.0\.0\..*|192\.168\..*|localhost)$ [NC]
+# RewriteCond %{HTTP_HOST} ^www\.
+# RewriteCond %{HTTPS}s ^on(s)|off
+# RewriteCond http%1://%{HTTP_HOST} ^(https?://)(www\.)?(.+)$
+# RewriteRule ^ %1%3%{REQUEST_URI} [R=301,L]
 
 # [Force WWW]
 # RewriteCond %{HTTP_HOST} !^(1::|127\.0\.0\..*|192\.168\..*|localhost)$ [NC]
@@ -41,13 +56,6 @@ RewriteRule ^ %1%3%{REQUEST_URI} [R=301,L]
 # RewriteRule ^ http%1://www.%{HTTP_HOST}%{REQUEST_URI} [R=301,L]
 
 # ---------------------------------------------------------------------------
-# Allow any files or directories that exist to be displayed directly
-# ---------------------------------------------------------------------------
-
-RewriteCond %{REQUEST_FILENAME} !-f
-RewriteCond %{REQUEST_FILENAME} !-d
-
-# ---------------------------------------------------------------------------
 # Dont allow directory listing
 # ---------------------------------------------------------------------------
 
@@ -55,4 +63,4 @@ Options -Indexes
 
 </IfModule>
 
-# END Standalone
+# CUSTOM Settings
