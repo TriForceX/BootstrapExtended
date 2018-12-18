@@ -32,7 +32,7 @@ if(get_option('template')=='websitebase')
 { 
 	add_action('admin_footer', function(){ ?>
 	<script type="text/javascript">
-	var websitebaseMsg = 'Due to you are using <strong>Website Base</strong> theme, remember to prepend <strong>http</strong> or <strong>https</strong> to your <i>Local & Production</i> URL.';
+	var websitebaseMsg = '<?php _e('Due to you are using <strong>Website Base</strong> theme, remember to prepend <strong>http</strong> or <strong>https</strong> to your <i>Local & Production</i> URL', 'websitebase'); ?>';
 	jQuery('#wpmdb-main #migrate-form .step-two').prepend('<div class="notification-message warning-notice inline-message">'+websitebaseMsg+'</div>');
 	</script>
 	<? });
