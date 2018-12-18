@@ -5,7 +5,7 @@ Base structure for websites with reusable parts of source code or functions main
 
 # Base
 - Standalone *(PHP 5.4+)*
-- Wordpress *(Ver 5.0)*
+- Wordpress *(Ver 5.0.1)*
 - Bootstrap 4 *(Ver 4.1.3)*
 
 # Resources
@@ -112,10 +112,10 @@ Base structure for websites with reusable parts of source code or functions main
 	- Collection of CSS3 hover effects
 	- Included "BebasNeue" example font face
 - Wordpress Features:
-	- A bunch of Wordpress functions and snippets (see wiki)
-	- Custom multiple database configuration for wp-config
-	- Cron and error reporting enable/disable
-	- Admin Panel CSS & JS injection
+	- Custom setup for localhost & production enviroments
+	- Custom htaccess with force HTTPS & WWW options
+	- Custom WordPress functions and snippets (see also wiki)
+	- Admin Panel CSS & JS injections
 	- Admin Menu Editor (Plugin)
 	- Advanced Custom Fields (Plugin)
 	- Classic Editor (Plugin)
@@ -140,7 +140,7 @@ Base structure for websites with reusable parts of source code or functions main
    - **Bootstrap 4** dropped **IE8**, **IE9**, and **iOS 6** support. Is now only **IE10+** and **iOS 7+**. Anyway if you want to give support, you can access the last _Website Base_ commit for **Bootstrap 3.3.7** [here](https://github.com/TriForceX/WebsiteBase/tree/v3.3.7).
    
 3. What happen if an **Internet Explorer 8 & 9** or **iOS 6** user access a website which uses this project?
-   - A screen will appear with a message that will indicate him the steps to update his navigator to a newer one.
+   - A screen will appear with a message with an advice to update his navigator to a newer one.
 
 4. How can i use this stuff in plain **HTML** instead the **PHP** standalone?
    - In the *Standalone* project turn off the **Mix** option _(in **resources.php** set **mix** to **false**)_. Next load the page, view the code in the navigator and copy it in a **HTML** page (replacing the main url). Take a look in [this example](https://github.com/WebsiteBase/WebsiteBase.GitHub.io).
