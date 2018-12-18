@@ -13,10 +13,10 @@ Extends and enhances TinyMCE, the visual editor used in both the Classic Editor 
 == Description ==
 
 For WordPress version 5.0 and newer the TinyMCE Advanced plugin introduces a "Hybrid Mode" for the new Block Editor (Gutenberg). 
-It brings the best of both editors together, enhances the Classic Block and adds a new Classic Paragraph Block that replaces the default Paragraph Block. 
+It brings the best of both editors together, enhances the Classic Block and adds a new Classic Paragraph Block that includes the TinyMCE editor. 
 
 If you are not quite ready to switch to the Block Editor, or have plugins that cannot be used there (yet), using Hybrid Mode is your best option. 
-It lets you to continue to use the familiar "Classic" editor inside the Classic Block, and at the same time gives you access to all blocks and new features in the Block Editor. 
+It lets you to continue to use the familiar "Classic" editor inside the Classic and Classic Paragraph Block, and at the same time gives you access to all blocks and new features in the Block Editor. 
 
 If you want to continue to use the previous editor in WordPress 5.0 and newer, this plugin has an option to replace the new editor with the previous one. If you prefer to have access to both editors side by side or to allow your users to switch editors, it would be better to install the [Classic Editor plugin](https://wordpress.org/plugins/classic-editor/). TinyMCE Advanced is fully compatible with the Classic Editor plugin and similar plugins that restore use of the previous WordPress editor.
 
@@ -28,10 +28,12 @@ In addition this plugin adds some commonly used options as keeping the paragraph
 = Some of the features added by this plugin =
 
 * Hybrid mode that lets you use the best of both editors.
-* Support for creating and editing tables in the Classic Block or the Classic Editor.
-* More options when inserting lists in the Classic Block or the Classic Editor.
-* Search and Replace in the Classic Block or the Classic Editor.
-* Ability to set Font Family and Font Sizes in the Classic Block or the Classic Editor.
+* Includes a "Classic Paragraph Block" that can be used instead of or together with the default Paragraph Block.
+* Supports converting of most default blocks to "classic" paragraphs, and from classic paragraphs back to the default blocks.
+* Support for creating and editing tables in the Classic Blocks and the Classic Editor.
+* More options when inserting lists in the Classic Blocks and the Classic Editor.
+* Search and Replace in the Classic Blocks and the Classic Editor.
+* Ability to set Font Family and Font Sizes in the Classic Blocks and the Classic Editor.
 * And many others.
 
 = Privacy =
@@ -45,6 +47,11 @@ In that terms TinyMCE Advanced does not affect your website's user privacy in an
 Best is to install directly from WordPress. If manual installation is required, please make sure that the plugin files are in a folder named "tinymce-advanced" (not two nested folders) in the WordPress plugins folder, usually "wp-content/plugins".
 
 == Changelog ==
+
+= 4.8.2 =
+* Fixes and improvements for 4.8.1.
+* Added separate option to enable the Classic Paragraph Block.
+* Added converting of most default blocks to classic paragraphs, and from classic paragraphs to default blocks.
 
 = 4.8.1 =
 * Updated for WordPress 5.0.
@@ -252,5 +259,5 @@ Please post on the support forum or visit the homepage for [TinyMCE Advanced](ht
 
 == Upgrade Notice ==
 
-= 4.8.1 =
-Updated for WordPress 5.0 and the Block Editor (Gutenebrg). Adds a "Classic Paragraph Block" with TinyMCE that replaces the default Paragraph Block.
+= 4.8.2 =
+Fixes and improvements for 4.8.1. Includes a Classic Paragraph Block. Can convert most default blocks to and from classic paragraphs.

@@ -1,3 +1,10 @@
+/**
+ * This file is part of the TinyMCE Advanced WordPress plugin and is released under the same license.
+ * For more information please see tinymce-advanced.php.
+ *
+ * Copyright (c) 2007-2018 Andrew Ozz. All rights reserved.
+ */
+
 ( function( wp, _ ) {
 	if ( ! wp ) {
 		return;
@@ -11,17 +18,32 @@
 	const { Path, Rect, SVG } = wp.components;
 	const { BACKSPACE, DELETE, F10 } = wp.keycodes;
 	const { addFilter } = wp.hooks;
-	const { registerBlockType, setDefaultBlockName } = wp.blocks;
 
-	addFilter( 'blocks.registerBlockType', 'tadv-reregister-block', function ( settings, name ) {
-		if ( name === 'core/paragraph' ) {
-			settings = settingsParagraph;
-		} else if ( name === 'core/freeform' ) {
+	const { PluginBlockSettingsMenuItem } = wp.editPost;
+	const { registerPlugin } = wp.plugins;
+	const { join, split, create, toHTMLString } = wp.richText;
+	const { get, assign } = _;
+
+	const {
+		registerBlockType,
+		setDefaultBlockName,
+		setFreeformContentHandlerName,
+		createBlock,
+		getBlockContent,
+		rawHandler,
+	} = wp.blocks;
+
+	const tadvSettings = window.tadvBlockRegister || {};
+	const addClassicParagraph = tadvSettings && tadvSettings.classicParagraph;
+	const defaultBlock = addClassicParagraph ? 'tadv/classic-paragraph' : 'core/freeform';
+
+	addFilter( 'blocks.registerBlockType', 'tadv-reregister-blocks', function ( settings, name ) {
+		if ( name === 'core/freeform' ) {
 			settings = settingsClassic;
-		} else if ( name === 'core/video' ) {
+
 			// Ughhhhh :-(
 			setTimeout( function() {
-				setDefaultBlockName( 'core/freeform' );
+				setDefaultBlockName( defaultBlock );
 			}, 0 );
 		}
 
@@ -30,18 +52,30 @@
 
 	function isTmceEmpty( editor ) {
 		const body = editor.getBody();
-		
+
 		if ( body.childNodes.length > 1 ) {
 			return false;
 		} else if ( body.childNodes.length === 0 ) {
 			return true;
 		}
-		
+
 		if ( body.childNodes[ 0 ].childNodes.length > 1 ) {
 			return false;
 		}
-		
+
 		return /^\n?$/.test( body.innerText || body.textContent );
+	}
+
+	function getTitle( blockName ) {
+		if ( blockName === 'core/freeform' ) {
+			return _x( 'Classic', 'block title' );
+		} else {
+			if ( tadvSettings && tadvSettings.classicParagraphTitle ) {
+				return tadvSettings.classicParagraphTitle;
+			}
+
+			return __( 'Classic Paragraph' );
+		}
 	}
 
 	class ClassicEdit extends Component {
@@ -93,10 +127,6 @@
 					fixed_toolbar_container: `#toolbar-${ clientId }`,
 					setup: this.onSetup,
 				},
-			} );
-
-			setAttributes( {
-				tadvType: 'classic',
 			} );
 		}
 
@@ -184,7 +214,7 @@
 					ref: ( ref ) => this.ref = ref,
 					className: "block-library-classic__toolbar",
 					onClick: this.focus,
-					'data-placeholder': __( 'Classic' ),
+					'data-placeholder': getTitle( this.props.name ),
 					onKeyDown: this.onToolbarKeyDown,
 				} ),
 				createElement( 'div', {
@@ -198,8 +228,51 @@
 
 	const settings = {
 		keywords: [ __( 'text' ) ],
+		category: 'common',
+
+		icon: 'welcome-widgets-menus',
+
+		/*
+		icon: {
+		    background: '#f8f9f9',
+		    foreground: '#006289',
+		    src: 'welcome-widgets-menus',
+		},
+		*/
+
+		attributes: {
+			content: {
+				type: 'string',
+				source: 'html',
+			},
+		},
+
+		merge( attributes, attributesToMerge ) {
+			return {
+				content: attributes.content + attributesToMerge.content,
+			};
+		},
+
+		edit: ClassicEdit,
+
+		save( { attributes } ) {
+			const { content } = attributes;
+
+			return createElement( RawHTML, null, content );
+		},
+	};
+
+	const settingsClassic = assign( {}, settings, {
+		title: getTitle( 'core/freeform' ),
+		name: 'core/freeform',
 
 		description: __( 'Use the classic WordPress editor.' ),
+
+		supports: {
+			className: false,
+			customClassName: false,
+			reusable: false,
+		},
 
 		icon: createElement( SVG, { viewBox: "0 0 24 24", xmlns: "http://www.w3.org/2000/svg" },
 			createElement( Path, { d: "M0,0h24v24H0V0z M0,0h24v24H0V0z", fill: "none" } ),
@@ -216,73 +289,109 @@
 			createElement( Rect, { x: "17", y: "11", width: "2", height: "2" } ),
 			createElement( Rect, { x: "17", y: "8", width: "2", height: "2" } )
 		),
+	} );
 
-		attributes: {
-			content: {
-				type: 'string',
-				source: 'html',
-			},
-			tadvType: {
-				type: 'string',
-				default: '',
-			},
-		},
+	const settingsParagraph = assign( {}, settings, {
+		title: getTitle( 'tadv/classic-paragraph' ),
+		name: 'tadv/classic-paragraph',
+
+		description: tadvSettings ? tadvSettings.description : __( 'Paragraph block with TinyMCE, the classic WordPress editor.' ),
 
 		supports: {
 			className: false,
 			customClassName: false,
-			reusable: false,
-		},
-
-		merge( attributes, attributesToMerge ) {
-			return {
-				content: attributes.content + attributesToMerge.content,
-			};
+			reusable: true,
 		},
 
 		transforms: {
-			from: [
-				{
-					type: 'raw',
-					priority: 15,
-					selector: '*',
-				},
-			],
+			from: ( () => {
+				const out = [];
+				[
+					'core/freeform',
+					'core/code',
+					'core/cover',
+					'core/embed',
+					'core/gallery',
+					'core/heading',
+					'core/html',
+					'core/image',
+					'core/list',
+					'core/media-text',
+					'core/preformatted',
+					'core/nextpage',
+					'core/more',
+					'core/quote',
+					'core/pullquote',
+					'core/separator',
+			//		'core/shortcode',
+					'core/subhead',
+					'core/table',
+					'core/verse',
+					'core/video',
+					'core/audio',
+				].forEach( ( blockName ) => {
+					out.push( {
+						type: 'block',
+						blocks: [ blockName ],
+						transform: ( attributes ) => {
+							const html = getBlockContent( createBlock( blockName, attributes ) );
+							return createBlock( 'tadv/classic-paragraph', { content: html } );
+						},
+					} );
+				} );
+
+				out.push(
+					{
+						type: 'raw',
+						priority: 21,
+						isMatch: () => true,
+					},
+					{
+						type: 'block',
+						isMultiBlock: true,
+						blocks: [ 'core/paragraph' ],
+						transform: ( attributes ) => {
+							const html = toHTMLString( {
+								value: join( attributes.map( ( { content } ) =>
+									create( { html: content } )
+								), '\u2028' ),
+								multilineTag: 'p',
+							} );
+
+							return createBlock( 'tadv/classic-paragraph', { content: html } );
+						},
+					},
+				);
+
+				return out;
+			} )(),
 			to: [
 				{
-					type: 'raw',
+					type: 'block',
 					blocks: [ 'core/freeform' ],
-					transform: ( { content } ) => {
-						return createBlock( 'core/freeform', {
-							content,
-						} );
-					},
+					transform: ( attributes ) => createBlock( 'core/freeform', attributes ),
 				},
+				{
+					type: 'block',
+					blocks: [ 'core/paragraph' ],
+					transform: ( attributes ) => {
+						let html = attributes.content;
+
+						if ( ! html ) {
+							html = '&shy;';
+						} else if ( html.indexOf( '</p>' ) === -1 ) {
+							html += '&shy;';
+						}
+
+						return rawHandler( { HTML: html } );
+					},
+				}
 			],
 		},
-
-		edit: ClassicEdit,
-
-		save( { attributes } ) {
-			const { content } = attributes;
-
-			return createElement( RawHTML, null, content );
-		},
-	};
-
-	const settingsClassic = _.assign( {}, settings, {
-		title: _x( 'Classic', 'block title' ),
-		name: 'core/freeform',
-		category: 'formatting',
 	} );
 
-	const settingsParagraph = _.assign( {}, settings, {
-		title: __( 'Classic Paragraph' ),
-		name: 'core/paragraph',
-		category: 'common',
-	} );
-
-//	registerBlockType( 'core/paragraph', settingsParagraph );
-//	registerBlockType( 'core/freeform', settingsClassic );
+	if ( addClassicParagraph ) {
+		registerBlockType( 'tadv/classic-paragraph', settingsParagraph );
+	}
 
 } )( window.wp, window.lodash );

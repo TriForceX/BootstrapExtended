@@ -3,7 +3,7 @@
  * This file is part of the TinyMCE Advanced WordPress plugin and is released under the same license.
  * For more information please see tinymce-advanced.php.
  *
- * Copyright (c) 2007-2016 Andrew Ozz. All rights reserved.
+ * Copyright (c) 2007-2018 Andrew Ozz. All rights reserved.
  */
 
 if ( ! defined( 'TADV_ADMIN_PAGE' ) ) {
@@ -16,9 +16,6 @@ if ( ! current_user_can( 'manage_options' ) ) {
 }
 
 $message = '';
-
-$this->set_paths();
-$imgpath = TADV_URL . 'images/';
 $tadv_options_updated = false;
 $settings = $admin_settings = array();
 
@@ -104,10 +101,6 @@ if ( isset( $_POST['tadv-save'] ) ) {
 	} else {
 		$this->save_settings( $import );
 	}
-}
-
-if ( empty( $_POST ) ) {
-	$this->check_plugin_version();
 }
 
 $this->load_settings();
@@ -326,7 +319,7 @@ for ( $i = 1; $i < 5; $i++ ) {
 </p>
 
 <div class="tadv-mce-menu tadv-block-editor mce-container mce-menubar mce-toolbar mce-first mce-stack-layout-item
-	<?php if ( $this->check_user_setting( 'menubar' ) ) { echo ' enabled'; } ?>">
+	<?php if ( $this->check_user_setting( 'menubar_block' ) ) { echo ' enabled'; } ?>">
 	<div class="mce-container-body mce-flow-layout">
 		<div class="mce-widget mce-btn mce-menubtn mce-first mce-flow-layout-item">
 			<button type="button">
@@ -481,7 +474,7 @@ for ( $i = 1; $i < 5; $i++ ) {
 	<h3><?php _e( 'Options', 'tinymce-advanced' ); ?></h3>
 
 	<div>
-		<input type="checkbox" name="options[]" value="no_merge_toolbars" id="merge_toolbars" <?php if ( ! $this->check_user_setting('no_merge_toolbars') ) echo ' checked'; ?> />
+		<input type="checkbox" name="options[]" value="merge_toolbars" id="merge_toolbars" <?php if ( $this->check_user_setting( 'merge_toolbars' ) ) echo ' checked'; ?> />
 		<label for="merge_toolbars"><?php _e( 'Append all buttons to the top toolbar in the Classic and Classic Paragraph blocks.', 'tinymce-advanced' ); ?></label>
 		<p><?php _e( 'This affects buttons that are added by other plugins. These buttons will be appended to the top toolbar row instead of forming second, third, and forth rows.', 'tinymce-advanced' ); ?></p>
 	</div>
@@ -521,23 +514,32 @@ if ( ! is_multisite() || current_user_can( 'manage_sites' ) ) {
 	<div class="advanced-options">
 	<h3><?php _e( 'Advanced Options', 'tinymce-advanced' ); ?></h3>
 	<div>
-		<input type="checkbox" name="admin_options[]" value="no_hybrid_mode" id="no_hybrid_mode" <?php if ( ! $this->check_admin_setting( 'no_hybrid_mode' ) ) echo ' checked'; ?> />
-		<label for="no_hybrid_mode"><?php _e( 'Hybrid Block Editor Mode', 'tinymce-advanced' ); ?></label>
-		<p><strong><?php _e( 'Brings the best of both editors together!', 'tinymce-advanced' ); ?></strong></p>
+		<input type="checkbox" name="admin_options[]" value="hybrid_mode" id="hybrid_mode" <?php if ( $this->check_admin_setting( 'hybrid_mode' ) ) echo ' checked'; ?> />
+		<label for="hybrid_mode"><?php _e( 'Hybrid Block Editor Mode', 'tinymce-advanced' ); ?></label>
 		<p>
-			<?php _e( 'You can continue to use the familiar TinyMCE Editor in the (new and improved) &#8220;Classic&#8221; Paragraph Block, and at the same time have access to all blocks and new goodies of the Block Editor.', 'tinymce-advanced' ); ?>
-		</p>
-		<p>
-			<?php _e( 'Selecting this option makes the Classic Block in the Block Editor more prominent and adds a new &#8220;Classic Paragraph Block&#8221; that includes the TinyMCE Editor and replaces the Paragraph Block.', 'tinymce-advanced' ); ?>
-			<?php _e( 'Most existing TinyMCE plugins and add-ons will continue to work in the Classic Paragraph Block as well as in the Classic Block.', 'tinymce-advanced' ); ?>
-			<?php _e( 'This makes the Block Editor more familiar, easier to use, and much more compatible with your existing workflow.', 'tinymce-advanced' ); ?>
-		</p>
-		<p>
-			<?php _e( 'Note: The Classic Paragraph Block and the Classic Block are interchangeable. When saving a post that contains several successive Classic Paragraph blocks, they will be merged into one Classic Block.', 'tinymce-advanced' ); ?>
-			<?php _e( 'This will keep the blocks compatible should you decide to uninstall this plugin or turn the above option off.', 'tinymce-advanced' ); ?>
+			<strong><?php _e( 'Brings the best of both editors together.', 'tinymce-advanced' ); ?></strong>
+			<?php _e( 'Selecting this option makes the Classic Block in the Block Editor somewhat more prominent and adds improvements and fixes for it.', 'tinymce-advanced' ); ?>
+			<?php _e( 'By default most existing TinyMCE plugins and add-ons will continue to work there.', 'tinymce-advanced' ); ?>
 		</p>
 		<?php echo $preselect ?>
 	</div>
+	
+	<div>
+		<input type="checkbox" name="admin_options[]" value="classic_paragraph_block" id="classic_paragraph_block" <?php if ( $this->check_admin_setting( 'classic_paragraph_block' ) ) echo ' checked'; ?> />
+		<label for="classic_paragraph_block"><?php _e( 'Add &#8220;Classic Paragraph&#8221; Block.', 'tinymce-advanced' ); ?></label>
+		<p>
+			<?php _e( 'The Classic Paragraph Block includes the familiar TinyMCE editor and behaves similarly to the Classic Block.', 'tinymce-advanced' ); ?>
+			<?php _e( 'You can add multiple paragraphs, tables, galleries, embed video, set fonts and colors, and generally use everything that is available in the Classic Editor and the Classic Block.', 'tinymce-advanced' ); ?>
+			<?php _e( 'Also, like the Classic Block, most existing TinyMCE plugins and add-ons will continue to work.', 'tinymce-advanced' ); ?>
+			<?php _e( 'This makes the Block Editor more familiar, easier to use, easier to get used to, and more compatible with your existing workflow.', 'tinymce-advanced' ); ?>
+		</p>
+		<p>
+			<?php _e( 'It has several advantages over the Classic Block. Most importantly, nearly all default blocks can be converted to classic paragraphs.', 'tinymce-advanced' ); ?>
+			<?php _e( 'It can be used everywhere instead of the default Paragraph Block including in columns, when creating reusable blocks, etc.', 'tinymce-advanced' ); ?>
+		</p>
+		<?php echo $preselect ?>
+	</div>
+
 	<div>
 		<?php
 

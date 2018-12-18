@@ -4,6 +4,7 @@
  *
  * Copyright (c) 2007-2018 Andrew Ozz. All rights reserved.
  */
+ 
 ( function( tinymce ) {
 	tinymce.PluginManager.add( 'wptadv', function( editor ) {
 		var noAutop = ( ! editor.settings.wpautop && editor.settings.tadv_noautop );

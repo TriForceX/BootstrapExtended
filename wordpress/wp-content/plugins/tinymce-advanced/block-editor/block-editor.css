@@ -1,7 +1,18 @@
+/**
+ * This file is part of the TinyMCE Advanced WordPress plugin and is released under the same license.
+ * For more information please see tinymce-advanced.php.
+ *
+ * Copyright (c) 2007-2018 Andrew Ozz. All rights reserved.
+ */
+
 /* Fixes for the Block Editor */
 
 .block-library-classic__toolbar .mce-menubar {
-	height: 2.8em !important;
+	min-height: 38px;
+}
+
+.block-library-classic__toolbar .mce-menubar + .mce-toolbar-grp .mce-container-body .mce-toolbar {
+	padding: 0;
 }
 
 .block-library-classic__toolbar .mce-btn .mce-txt {
@@ -10,14 +21,12 @@
 
 .block-library-classic__toolbar .mce-menubar > .mce-container-body {
 	padding-top: 0.5em;
+	white-space: normal;
+	width: calc(100% - 36px) !important;
 }
 
 .block-library-classic__toolbar .mce-menubar i.mce-caret {
 	margin-top: 0.4em;
-}
-
-.editor-block-list__block[data-type="core/freeform"] .block-library-classic__toolbar .mce-menubar + .mce-toolbar-grp .mce-toolbar {
-	padding: 0;
 }
 
 /* Classic Block styling regressions fixes */
@@ -132,6 +141,10 @@
 /* Toolbars (some get appended to <body>) */
 div.mce-toolbar-grp .mce-btn:hover button,
 div.mce-toolbar-grp .mce-btn:hover i,
+div.mce-toolbar-grp .mce-btn.mce-active button,
+div.mce-toolbar-grp .mce-btn.mce-active:hover button,
+div.mce-toolbar-grp .mce-btn.mce-active i,
+div.mce-toolbar-grp .mce-btn.mce-active:hover i
 div.mce-inline-toolbar-grp .mce-btn:hover button,
 div.mce-inline-toolbar-grp .mce-btn:hover i,
 div.mce-inline-toolbar-grp .mce-btn.mce-active button,
@@ -248,13 +261,13 @@ div.mce-menu-has-icons i.mce-ico {
 	}
 
 	.edit-post-layout .editor-styles-wrapper .wp-block {
-		min-width: 640px;
 		margin-left: auto;
     	margin-right: auto;
 	}
 
-	.edit-post-layout.is-sidebar-opened .editor-styles-wrapper .wp-block {
-		min-width: 520px;
+
+	.edit-post-layout .wp-block-columns .editor-styles-wrapper .wp-block {
+		min-width: 0;
 	}
 }
 

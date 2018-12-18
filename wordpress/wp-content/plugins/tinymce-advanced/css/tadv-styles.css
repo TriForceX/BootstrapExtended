@@ -35,6 +35,14 @@
 	font-weight: bold;
 }
 
+.tinymce-advanced label {
+    vertical-align: baseline;
+}
+
+.tinymce-advanced input[type="checkbox"] {
+	vertical-align: text-bottom;
+}
+
 .advanced-options {
 	margin: 40px 0;
 }
@@ -328,10 +336,10 @@ div.tadv-error {
 	margin: 6px 0;
 }
 
-#tadvadmin label {
-    vertical-align: text-bottom;
+.tadv-block-editor.tadvdropzone {
+	height: 60px;
 }
 
-.tadv-block-editor.tadvdropzone {
+#toolbar_classic_block {
 	height: 60px;
 }
