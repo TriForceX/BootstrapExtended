@@ -211,18 +211,18 @@ switch($step) {
 	<li><?php _e( 'Database username' ); ?> (<?php echo strtolower(__('Local server', 'websitebase')); ?>)</li>
 	<li><?php _e( 'Database password' ); ?> (<?php echo strtolower(__('Local server', 'websitebase')); ?>)</li>
 	<li><?php _e( 'Database host' ); ?> (<?php echo strtolower(__('Local server', 'websitebase')); ?>)</li>
-	<li class="li-spacing"><?php echo __('Main directory', 'websitebase'); ?> (<?php echo strtolower(__('Local server', 'websitebase')); ?>)</li>
+	<li class="li-spacing"><?php _e('Main directory', 'websitebase'); ?> (<?php echo strtolower(__('Local server', 'websitebase')); ?>)</li>
 	
 	<li><?php _e( 'Database name' ); ?> (<?php echo strtolower(__('Production server', 'websitebase')); ?>)</li>
 	<li><?php _e( 'Database username' ); ?> (<?php echo strtolower(__('Production server', 'websitebase')); ?>)</li>
 	<li><?php _e( 'Database password' ); ?> (<?php echo strtolower(__('Production server', 'websitebase')); ?>)</li>
 	<li><?php _e( 'Database host' ); ?> (<?php echo strtolower(__('Production server', 'websitebase')); ?>)</li>
-	<li class="li-spacing"><?php echo __('Main directory', 'websitebase'); ?> (<?php echo strtolower(__('Production server', 'websitebase')); ?>)</li>
+	<li class="li-spacing"><?php _e('Main directory', 'websitebase'); ?> (<?php echo strtolower(__('Production server', 'websitebase')); ?>)</li>
 	
 	<li><?php _e( 'Table prefix (if you want to run more than one WordPress in a single database)' ); ?></li>
-	<li><?php echo __('Cron jobs', 'websitebase'); ?> (<?php echo strtolower(__('Disable scheduled tasks in order to automate things like posts, updates and others', 'websitebase')); ?>)</li>
-	<li><?php echo __('Force https', 'websitebase'); ?> (<?php echo strtolower(__('Forces <code>https</code> protocol on production domain', 'websitebase')); ?>)</li>
-	<li><?php echo __('Force www', 'websitebase'); ?> (<?php echo strtolower(__('Forces <code>www</code> on production domain', 'websitebase')); ?>)</li>
+	<li><?php _e('Cron jobs', 'websitebase'); ?> (<?php echo strtolower(__('Disable scheduled tasks in order to automate things like posts, updates and others', 'websitebase')); ?>)</li>
+	<li><?php _e('Force https', 'websitebase'); ?> (<?php echo strtolower(__('Forces <code>https</code> protocol on production domain', 'websitebase')); ?>)</li>
+	<li><?php _e('Force www', 'websitebase'); ?> (<?php echo strtolower(__('Forces <code>www</code> on production domain', 'websitebase')); ?>)</li>
 </ol>
 <p><?php
 	/* translators: %s: wp-config.php */
@@ -261,7 +261,7 @@ switch($step) {
 	<table class="form-table form-table-local">
 		<thead>
 			<tr>
-				<th colspan="3"><?php echo __('Local server', 'websitebase'); ?></th>
+				<th colspan="3"><?php _e('Local server', 'websitebase'); ?></th>
 			</tr>
 		</thead>
 		<tbody>
@@ -273,12 +273,12 @@ switch($step) {
 			<tr>
 				<th scope="row"><label for="uname"><?php _e( 'Username' ); ?></label></th>
 				<td><input name="uname" id="uname" type="text" size="25" value="<?php echo htmlspecialchars( _x( 'username', 'example username' ), ENT_QUOTES ); ?>_<?php echo strtolower(__('Local', 'websitebase')); ?>" /></td>
-				<td><?php _e( 'Your database username.' ); ?> <?php echo __('Usually is <code>root</code>', 'websitebase'); ?>.</td>
+				<td><?php _e( 'Your database username.' ); ?> <?php _e('Usually is <code>root</code>', 'websitebase'); ?>.</td>
 			</tr>
 			<tr>
 				<th scope="row"><label for="pwd"><?php _e( 'Password' ); ?></label></th>
 				<td><input name="pwd" id="pwd" type="text" size="25" value="<?php echo htmlspecialchars( _x( 'password', 'example password' ), ENT_QUOTES ); ?>_<?php echo strtolower(__('Local', 'websitebase')); ?>" autocomplete="off" /></td>
-				<td><?php _e( 'Your database password.' ); ?> <?php echo __('Usually is <code>root</code>', 'websitebase'); ?>. <i>(<?php echo __('Or leave it empty', 'websitebase'); ?>).</i></td>
+				<td><?php _e( 'Your database password.' ); ?> <?php _e('Usually is <code>root</code>', 'websitebase'); ?>. <i>(<?php _e('Or leave it empty', 'websitebase'); ?>).</i></td>
 			</tr>
 			<tr>
 				<th scope="row"><label for="dbhost"><?php _e( 'Database Host' ); ?></label></th>
@@ -289,16 +289,16 @@ switch($step) {
 				?></td>
 			</tr>
 			<tr>
-				<th scope="row"><label for="directory"><?php echo __('Main directory', 'websitebase'); ?></label></th>
+				<th scope="row"><label for="directory"><?php _e('Main directory', 'websitebase'); ?></label></th>
 				<td><input name="directory" id="directory" type="text" size="25" value="/wordpress/" /></td>
-				<td><?php echo __('Main site directory in <code>server</code>. If is in root directory write a <code>/</code> symbol', 'websitebase'); ?>.</td>
+				<td><?php _e('Main site directory in <code>server</code>. If is in root directory write a <code>/</code> symbol', 'websitebase'); ?>.</td>
 			</tr>
 		</tbody>
 	</table>
 	<table class="form-table form-table-local">
 		<thead>
 			<tr>
-				<th colspan="3"><?php echo __('Production server', 'websitebase'); ?></th>
+				<th colspan="3"><?php _e('Production server', 'websitebase'); ?></th>
 			</tr>
 		</thead>
 		<tbody>
@@ -326,16 +326,16 @@ switch($step) {
 				?></td>
 			</tr>
 			<tr>
-				<th scope="row"><label for="directory_2"><?php echo __('Main directory', 'websitebase'); ?></label></th>
+				<th scope="row"><label for="directory_2"><?php _e('Main directory', 'websitebase'); ?></label></th>
 				<td><input name="directory_2" id="directory_2" type="text" size="25" value="/" /></td>
-				<td><?php echo __('Main site directory in <code>server</code>. If is in root directory write a <code>/</code> symbol', 'websitebase'); ?>.</td>
+				<td><?php _e('Main site directory in <code>server</code>. If is in root directory write a <code>/</code> symbol', 'websitebase'); ?>.</td>
 			</tr>
 		</tbody>
 	</table>
 	<table class="form-table form-table-local">
 		<thead>
 			<tr>
-				<th colspan="3"><?php echo __('Others', 'websitebase'); ?></th>
+				<th colspan="3"><?php _e('Others', 'websitebase'); ?></th>
 			</tr>
 		</thead>
 		<tbody>
@@ -345,28 +345,28 @@ switch($step) {
 				<td><?php _e( 'If you want to run multiple WordPress installations in a single database, change this.' ); ?></td>
 			</tr>
 			<tr>
-				<th scope="row"><label for="cron"><?php echo __('Cron jobs', 'websitebase'); ?></label></th>
+				<th scope="row"><label for="cron"><?php _e('Cron jobs', 'websitebase'); ?></label></th>
 				<td><select name="cron" id="cron">
-						<option value="true" default><?php echo __('Disabled', 'websitebase'); ?></option>
-						<option value="false" default><?php echo __('Enabled', 'websitebase'); ?></option>
+						<option value="true" default><?php _e('Disabled', 'websitebase'); ?></option>
+						<option value="false"><?php _e('Enabled', 'websitebase'); ?></option>
 					</select></td>
-				<td><?php echo __('Disable scheduled tasks in order to automate things like posts, updates and others', 'websitebase'); ?>.</td>
+				<td><?php _e('Disable scheduled tasks in order to automate things like posts, updates and others', 'websitebase'); ?>.</td>
 			</tr>
 			<tr>
-				<th scope="row"><label for="https"><?php echo __('Force https', 'websitebase'); ?></label></th>
+				<th scope="row"><label for="https"><?php _e('Force https', 'websitebase'); ?></label></th>
 				<td><select name="https" id="https">
-						<option value="false" default><?php echo __('Disabled', 'websitebase'); ?></option>
-						<option value="true" default><?php echo __('Enabled', 'websitebase'); ?></option>
+						<option value="false" default><?php _e('Disabled', 'websitebase'); ?></option>
+						<option value="true"><?php _e('Enabled', 'websitebase'); ?></option>
 					</select></td>
-				<td><?php echo __('Forces <code>https</code> protocol on production domain', 'websitebase'); ?>.</td>
+				<td><?php _e('Forces <code>https</code> protocol on production domain', 'websitebase'); ?>.</td>
 			</tr>
 			<tr>
-				<th scope="row"><label for="www"><?php echo __('Force www', 'websitebase'); ?></label></th>
+				<th scope="row"><label for="www"><?php _e('Force www', 'websitebase'); ?></label></th>
 				<td><select name="www" id="www">
-						<option value="false" default><?php echo __('Disabled', 'websitebase'); ?></option>
-						<option value="true" default><?php echo __('Enabled', 'websitebase'); ?></option>
+						<option value="false" default><?php _e('Disabled', 'websitebase'); ?></option>
+						<option value="true"><?php _e('Enabled', 'websitebase'); ?></option>
 					</select></td>
-				<td><?php echo __('Forces <code>www</code> on production domain', 'websitebase'); ?>.</td>
+				<td><?php _e('Forces <code>www</code> on production domain', 'websitebase'); ?>.</td>
 			</tr>
 		</tbody>
 	</table>
