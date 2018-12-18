@@ -913,7 +913,7 @@ class php
 			chr(0xB7) => '&middot;',
 			chr(0xBB) => '&raquo;',
 		);
-		return html_entity_decode(mb_convert_encoding(strtr($string, $map), 'UTF-8', 'ISO-8859-2'), ENT_QUOTES, 'UTF-8');
+		return html_entity_decode(iconv('ISO-8859-2', 'UTF-8', strtr($string, $map)), ENT_QUOTES, 'UTF-8');
 	}
 	
 	// Get page code using cUrl
