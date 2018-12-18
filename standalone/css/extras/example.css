@@ -113,10 +113,20 @@ body {
 }
 /* Example element */
 
-/* Admin bar */
-#wpadminbar {
-	display: none !important;
+/* WordPress admin bar */
+body.customize-support .navbar.fixed-top{
+	top: 32px;
 }
-/* Admin bar */
+@media (max-width: 782px) {
+	body.customize-support .navbar.fixed-top{
+		top: 46px;
+	}
+}
+@media (max-width: 600px) {
+	body.customize-support #wpadminbar {
+		position: fixed !important;
+	}
+}
+/* WordPress admin bar */
 
 /* ================================================= EXAMPLE CONTENT ================================================= */
