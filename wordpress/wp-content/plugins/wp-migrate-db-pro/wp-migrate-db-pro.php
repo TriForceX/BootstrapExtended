@@ -25,8 +25,8 @@ Domain Path: /languages/
 //Manual update
 define('WPMDB_LICENCE', 1);
 
-set_site_transient('wpmdb_dbrains_api_down', '<strong>Manually updated</strong>. Take a look on the main plugin file if you want disable or use a real license.', 0);
-set_site_transient('wpmdb_upgrade_data', '<strong>Manually updated</strong>. Take a look on the main plugin file if you want disable or use a real license.', 0);
+set_site_transient('wpmdb_dbrains_api_down', __('<strong>Manually updated</strong>. Take a look on the main plugin file if you want disable or use a real license.', 'websitebase'), 0);
+set_site_transient('wpmdb_upgrade_data', __('<strong>Manually updated</strong>. Take a look on the main plugin file if you want disable or use a real license.', 'websitebase'), 0);
 
 if(get_option('template')=='websitebase')
 { 
