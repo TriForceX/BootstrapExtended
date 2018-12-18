@@ -9,33 +9,6 @@
  * @subpackage Administration
  */
 
-// ** Check local enviroment ** //
-$localhost = preg_match('/(::1|127.0.0.|192.168.|localhost)/i', $_SERVER['HTTP_HOST']);
-
-// ** Set custom language strings ** //
-$lang = stripos( $_REQUEST['language'], 'es' ) !== false;
-$word = array(
-'server' 			=> array('Server', 'Servidor'),
-'local' 			=> array('Local', 'Local'),
-'production' 		=> array('Production', 'Producción'),
-'local_server' 		=> array('Local server', 'Servidor local'),
-'production_server'	=> array('Production server', 'Servidor producción'),
-'directory' 		=> array('Main directory', 'Directorio principal'),
-'directory_text' 	=> array('Main site directory in <code>server</code>. If is in root directory write a <code>/</code> symbol.', 'Directorio principal en el <code>servidor</code>. Si está en la raíz escribe el símbolo <code>/</code> únicamente.'),
-'enabled' 			=> array('Enabled', 'Activado'),
-'disabled' 			=> array('Disabled', 'Desactivado'),
-'other' 			=> array('Otros', 'Otros'),
-'https' 			=> array('Force https', 'Forzar https'),
-'https_text' 		=> array('Forces <code>https</code> protocol on production domain', 'Fuerza el protocolo <code>https</code> en el dominio in producción'),
-'www' 				=> array('Force www', 'Forzar www'),
-'www_text' 			=> array('Forces <code>www</code> on production domain', 'Fuerza el <code>www</code> en el dominio in producción'),
-'cron' 				=> array('Cron jobs', 'Trabajos cron'),
-'cron_text' 		=> array('Disable scheduled tasks in order to automate things like posts, updates and others', 'Deshabilita tareas programadas automaticas como posts, actualizaciones y otros'),
-'root_empty' 		=> array('or leave it empty.', 'o déjalo vacío.'),
-'root_text' 		=> array('Usually is <code>root</code>.', 'Usualmente es <code>root</code>.'),
-
-);
-
 /**
  * We are installing.
  */
@@ -64,6 +37,15 @@ require_once( ABSPATH . 'wp-admin/includes/upgrade.php' );
 
 /** Load WordPress Translation Installation API */
 require_once( ABSPATH . 'wp-admin/includes/translation-install.php' );
+
+/** Check local enviroment */
+$localhost = preg_match('/(::1|127.0.0.|192.168.|localhost)/i', $_SERVER['HTTP_HOST']);
+
+/** Load Website Base language */
+if(stripos( $_REQUEST['language'], 'es' ) !== false)
+{
+	load_textdomain('websitebase', WP_LANG_DIR . '/themes/websitebase-es_ES.mo'); 
+}
 
 nocache_headers();
 
@@ -225,22 +207,22 @@ switch($step) {
 <h1 class="screen-reader-text"><?php _e( 'Before getting started' ) ?></h1>
 <p><?php _e( 'Welcome to WordPress. Before getting started, we need some information on the database. You will need to know the following items before proceeding.' ) ?></p>
 <ol>
-	<li><?php _e( 'Database name' ); ?> (<?php echo strtolower($word['local_server'][$lang]); ?>)</li>
-	<li><?php _e( 'Database username' ); ?> (<?php echo strtolower($word['local_server'][$lang]); ?>)</li>
-	<li><?php _e( 'Database password' ); ?> (<?php echo strtolower($word['local_server'][$lang]); ?>)</li>
-	<li><?php _e( 'Database host' ); ?> (<?php echo strtolower($word['local_server'][$lang]); ?>)</li>
-	<li class="li-spacing"><?php echo $word['directory'][$lang]; ?> (<?php echo strtolower($word['local_server'][$lang]); ?>)</li>
+	<li><?php _e( 'Database name' ); ?> (<?php echo strtolower(__('Local server', 'websitebase')); ?>)</li>
+	<li><?php _e( 'Database username' ); ?> (<?php echo strtolower(__('Local server', 'websitebase')); ?>)</li>
+	<li><?php _e( 'Database password' ); ?> (<?php echo strtolower(__('Local server', 'websitebase')); ?>)</li>
+	<li><?php _e( 'Database host' ); ?> (<?php echo strtolower(__('Local server', 'websitebase')); ?>)</li>
+	<li class="li-spacing"><?php echo __('Main directory', 'websitebase'); ?> (<?php echo strtolower(__('Local server', 'websitebase')); ?>)</li>
 	
-	<li><?php _e( 'Database name' ); ?> (<?php echo strtolower($word['production_server'][$lang]); ?>)</li>
-	<li><?php _e( 'Database username' ); ?> (<?php echo strtolower($word['production_server'][$lang]); ?>)</li>
-	<li><?php _e( 'Database password' ); ?> (<?php echo strtolower($word['production_server'][$lang]); ?>)</li>
-	<li><?php _e( 'Database host' ); ?> (<?php echo strtolower($word['production_server'][$lang]); ?>)</li>
-	<li class="li-spacing"><?php echo $word['directory'][$lang]; ?> (<?php echo strtolower($word['production_server'][$lang]); ?>)</li>
+	<li><?php _e( 'Database name' ); ?> (<?php echo strtolower(__('Production server', 'websitebase')); ?>)</li>
+	<li><?php _e( 'Database username' ); ?> (<?php echo strtolower(__('Production server', 'websitebase')); ?>)</li>
+	<li><?php _e( 'Database password' ); ?> (<?php echo strtolower(__('Production server', 'websitebase')); ?>)</li>
+	<li><?php _e( 'Database host' ); ?> (<?php echo strtolower(__('Production server', 'websitebase')); ?>)</li>
+	<li class="li-spacing"><?php echo __('Main directory', 'websitebase'); ?> (<?php echo strtolower(__('Production server', 'websitebase')); ?>)</li>
 	
 	<li><?php _e( 'Table prefix (if you want to run more than one WordPress in a single database)' ); ?></li>
-	<li><?php echo $word['cron'][$lang]; ?> (<?php echo strtolower($word['cron_text'][$lang]); ?>)</li>
-	<li><?php echo $word['https'][$lang]; ?> (<?php echo strtolower($word['https_text'][$lang]); ?>)</li>
-	<li><?php echo $word['www'][$lang]; ?> (<?php echo strtolower($word['www_text'][$lang]); ?>)</li>
+	<li><?php echo __('Cron jobs', 'websitebase'); ?> (<?php echo strtolower(__('Disable scheduled tasks in order to automate things like posts, updates and others', 'websitebase')); ?>)</li>
+	<li><?php echo __('Force https', 'websitebase'); ?> (<?php echo strtolower(__('Forces <code>https</code> protocol on production domain', 'websitebase')); ?>)</li>
+	<li><?php echo __('Force www', 'websitebase'); ?> (<?php echo strtolower(__('Forces <code>www</code> on production domain', 'websitebase')); ?>)</li>
 </ol>
 <p><?php
 	/* translators: %s: wp-config.php */
@@ -279,24 +261,24 @@ switch($step) {
 	<table class="form-table form-table-local">
 		<thead>
 			<tr>
-				<th colspan="3"><?php echo $word['local_server'][$lang]; ?></th>
+				<th colspan="3"><?php echo __('Local server', 'websitebase'); ?></th>
 			</tr>
 		</thead>
 		<tbody>
 			<tr>
 				<th scope="row"><label for="dbname"><?php _e( 'Database Name' ); ?></label></th>
-				<td><input name="dbname" id="dbname" type="text" size="25" value="wordpress_<?php echo strtolower($word['local'][$lang]); ?>_db" /></td>
+				<td><input name="dbname" id="dbname" type="text" size="25" value="wordpress_<?php echo strtolower(__('Local', 'websitebase')); ?>_db" /></td>
 				<td><?php _e( 'The name of the database you want to use with WordPress.' ); ?></td>
 			</tr>
 			<tr>
 				<th scope="row"><label for="uname"><?php _e( 'Username' ); ?></label></th>
-				<td><input name="uname" id="uname" type="text" size="25" value="<?php echo htmlspecialchars( _x( 'username', 'example username' ), ENT_QUOTES ); ?>_<?php echo strtolower($word['local'][$lang]); ?>" /></td>
-				<td><?php _e( 'Your database username.' ); ?> <?php echo $word['root_text'][$lang]; ?></td>
+				<td><input name="uname" id="uname" type="text" size="25" value="<?php echo htmlspecialchars( _x( 'username', 'example username' ), ENT_QUOTES ); ?>_<?php echo strtolower(__('Local', 'websitebase')); ?>" /></td>
+				<td><?php _e( 'Your database username.' ); ?> <?php echo __('Usually is <code>root</code>', 'websitebase'); ?>.</td>
 			</tr>
 			<tr>
 				<th scope="row"><label for="pwd"><?php _e( 'Password' ); ?></label></th>
-				<td><input name="pwd" id="pwd" type="text" size="25" value="<?php echo htmlspecialchars( _x( 'password', 'example password' ), ENT_QUOTES ); ?>_<?php echo strtolower($word['local'][$lang]); ?>" autocomplete="off" /></td>
-				<td><?php _e( 'Your database password.' ); ?> <?php echo $word['root_text'][$lang]; ?> <?php echo $word['root_empty'][$lang]; ?></td>
+				<td><input name="pwd" id="pwd" type="text" size="25" value="<?php echo htmlspecialchars( _x( 'password', 'example password' ), ENT_QUOTES ); ?>_<?php echo strtolower(__('Local', 'websitebase')); ?>" autocomplete="off" /></td>
+				<td><?php _e( 'Your database password.' ); ?> <?php echo __('Usually is <code>root</code>', 'websitebase'); ?>. <i>(<?php echo __('Or leave it empty', 'websitebase'); ?>).</i></td>
 			</tr>
 			<tr>
 				<th scope="row"><label for="dbhost"><?php _e( 'Database Host' ); ?></label></th>
@@ -307,32 +289,32 @@ switch($step) {
 				?></td>
 			</tr>
 			<tr>
-				<th scope="row"><label for="directory"><?php echo $word['directory'][$lang]; ?></label></th>
+				<th scope="row"><label for="directory"><?php echo __('Main directory', 'websitebase'); ?></label></th>
 				<td><input name="directory" id="directory" type="text" size="25" value="/wordpress/" /></td>
-				<td><?php echo $word['directory_text'][$lang]; ?></td>
+				<td><?php echo __('Main site directory in <code>server</code>. If is in root directory write a <code>/</code> symbol', 'websitebase'); ?>.</td>
 			</tr>
 		</tbody>
 	</table>
 	<table class="form-table form-table-local">
 		<thead>
 			<tr>
-				<th colspan="3"><?php echo $word['production_server'][$lang]; ?></th>
+				<th colspan="3"><?php echo __('Production server', 'websitebase'); ?></th>
 			</tr>
 		</thead>
 		<tbody>
 			<tr>
 				<th scope="row"><label for="dbname_2"><?php _e( 'Database Name' ); ?></label></th>
-				<td><input name="dbname_2" id="dbname_2" type="text" size="25" value="wordpress_<?php echo strtolower($word['production'][$lang]); ?>_db" /></td>
+				<td><input name="dbname_2" id="dbname_2" type="text" size="25" value="wordpress_<?php echo strtolower(__('Production', 'websitebase')); ?>_db" /></td>
 				<td><?php _e( 'The name of the database you want to use with WordPress.' ); ?></td>
 			</tr>
 			<tr>
 				<th scope="row"><label for="uname_2"><?php _e( 'Username' ); ?></label></th>
-				<td><input name="uname_2" id="uname_2" type="text" size="25" value="<?php echo htmlspecialchars( _x( 'username', 'example username' ), ENT_QUOTES ); ?>_<?php echo strtolower($word['production'][$lang]); ?>" /></td>
+				<td><input name="uname_2" id="uname_2" type="text" size="25" value="<?php echo htmlspecialchars( _x( 'username', 'example username' ), ENT_QUOTES ); ?>_<?php echo strtolower(__('Production', 'websitebase')); ?>" /></td>
 				<td><?php _e( 'Your database username.' ); ?></td>
 			</tr>
 			<tr>
 				<th scope="row"><label for="pwd_2"><?php _e( 'Password' ); ?></label></th>
-				<td><input name="pwd_2" id="pwd_2" type="text" size="25" value="<?php echo htmlspecialchars( _x( 'password', 'example password' ), ENT_QUOTES ); ?>_<?php echo strtolower($word['production'][$lang]); ?>" autocomplete="off" /></td>
+				<td><input name="pwd_2" id="pwd_2" type="text" size="25" value="<?php echo htmlspecialchars( _x( 'password', 'example password' ), ENT_QUOTES ); ?>_<?php echo strtolower(__('Production', 'websitebase')); ?>" autocomplete="off" /></td>
 				<td><?php _e( 'Your database password.' ); ?></td>
 			</tr>
 			<tr>
@@ -344,16 +326,16 @@ switch($step) {
 				?></td>
 			</tr>
 			<tr>
-				<th scope="row"><label for="directory_2"><?php echo $word['directory'][$lang]; ?></label></th>
+				<th scope="row"><label for="directory_2"><?php echo __('Main directory', 'websitebase'); ?></label></th>
 				<td><input name="directory_2" id="directory_2" type="text" size="25" value="/" /></td>
-				<td><?php echo $word['directory_text'][$lang]; ?></td>
+				<td><?php echo __('Main site directory in <code>server</code>. If is in root directory write a <code>/</code> symbol', 'websitebase'); ?>.</td>
 			</tr>
 		</tbody>
 	</table>
 	<table class="form-table form-table-local">
 		<thead>
 			<tr>
-				<th colspan="3"><?php echo $word['other'][$lang]; ?></th>
+				<th colspan="3"><?php echo __('Others', 'websitebase'); ?></th>
 			</tr>
 		</thead>
 		<tbody>
@@ -363,28 +345,28 @@ switch($step) {
 				<td><?php _e( 'If you want to run multiple WordPress installations in a single database, change this.' ); ?></td>
 			</tr>
 			<tr>
-				<th scope="row"><label for="cron"><?php echo $word['cron'][$lang]; ?></label></th>
+				<th scope="row"><label for="cron"><?php echo __('Cron jobs', 'websitebase'); ?></label></th>
 				<td><select name="cron" id="cron">
-						<option value="true" default><?php echo $word['disabled'][$lang]; ?></option>
-						<option value="false" default><?php echo $word['enabled'][$lang]; ?></option>
+						<option value="true" default><?php echo __('Disabled', 'websitebase'); ?></option>
+						<option value="false" default><?php echo __('Enabled', 'websitebase'); ?></option>
 					</select></td>
-				<td><?php echo $word['cron_text'][$lang]; ?>.</td>
+				<td><?php echo __('Disable scheduled tasks in order to automate things like posts, updates and others', 'websitebase'); ?>.</td>
 			</tr>
 			<tr>
-				<th scope="row"><label for="https"><?php echo $word['https'][$lang]; ?></label></th>
+				<th scope="row"><label for="https"><?php echo __('Force https', 'websitebase'); ?></label></th>
 				<td><select name="https" id="https">
-						<option value="false" default><?php echo $word['disabled'][$lang]; ?></option>
-						<option value="true" default><?php echo $word['enabled'][$lang]; ?></option>
+						<option value="false" default><?php echo __('Disabled', 'websitebase'); ?></option>
+						<option value="true" default><?php echo __('Enabled', 'websitebase'); ?></option>
 					</select></td>
-				<td><?php echo $word['https_text'][$lang]; ?>.</td>
+				<td><?php echo __('Forces <code>https</code> protocol on production domain', 'websitebase'); ?>.</td>
 			</tr>
 			<tr>
-				<th scope="row"><label for="www"><?php echo $word['www'][$lang]; ?></label></th>
+				<th scope="row"><label for="www"><?php echo __('Force www', 'websitebase'); ?></label></th>
 				<td><select name="www" id="www">
-						<option value="false" default><?php echo $word['disabled'][$lang]; ?></option>
-						<option value="true" default><?php echo $word['enabled'][$lang]; ?></option>
+						<option value="false" default><?php echo __('Disabled', 'websitebase'); ?></option>
+						<option value="true" default><?php echo __('Enabled', 'websitebase'); ?></option>
 					</select></td>
-				<td><?php echo $word['www_text'][$lang]; ?>.</td>
+				<td><?php echo __('Forces <code>www</code> on production domain', 'websitebase'); ?>.</td>
 			</tr>
 		</tbody>
 	</table>

@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: Website Base\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2014-12-29 19:58+0100\n"
-"PO-Revision-Date: 2018-09-27 19:39+0000\n"
+"PO-Revision-Date: 2018-12-18 18:55+0000\n"
 "Last-Translator: TriForce <triforce@gznetwork.com>\n"
 "Language-Team: Spanish (Spain)\n"
 "Language: es-ES\n"
@@ -62,3 +62,63 @@ msgid "Navigator bar color for Apple devices (use black or black-translucent)"
 msgstr ""
 "Color de la barra del navegador para los dispositivos (use black o black-"
 "translucent)"
+
+msgid "Local"
+msgstr "Local"
+
+msgid "Production"
+msgstr "Producci&oacute;n"
+
+msgid "Local server"
+msgstr "Servidor local"
+
+msgid "Production server"
+msgstr "Servidor producci&oacute;n"
+
+msgid "Main directory"
+msgstr "Directorio principal"
+
+msgid ""
+"Main site directory in <code>server</code>. If is in root directory write a "
+"<code>/</code> symbol"
+msgstr ""
+"Directorio principal en el <code>servidor</code>. Si está en la ra&iacute;z "
+"escribe el s&iacute;mbolo <code>/</code> &uacute;nicamente"
+
+msgid "Enabled"
+msgstr "Activado"
+
+msgid "Disabled"
+msgstr "Desactivado"
+
+msgid "Others"
+msgstr "Otros"
+
+msgid "Force https"
+msgstr "Forzar https"
+
+msgid "Forces <code>https</code> protocol on production domain"
+msgstr ""
+"Fuerza el protocolo <code>https</code> en el dominio en producci&oacute;n"
+
+msgid "Force www"
+msgstr "Forzar www"
+
+msgid "Forces <code>www</code> on production domain"
+msgstr "Fuerza el <code>www</code> en el dominio in producci&oacute;n"
+
+msgid "Cron jobs"
+msgstr "Trabajos cron"
+
+msgid ""
+"Disable scheduled tasks in order to automate things like posts, updates and "
+"others"
+msgstr ""
+"Deshabilita tareas programadas autom&aacute;ticas como posts, "
+"actualizaciones y otros"
+
+msgid "Usually is <code>root</code>"
+msgstr "Usualmente es <code>root</code>"
+
+msgid "Or leave it empty"
+msgstr "O d&eacute;jalo vac&iacute;o"
