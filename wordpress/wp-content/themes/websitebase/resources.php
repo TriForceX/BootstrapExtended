@@ -99,12 +99,6 @@ add_action('customize_register', 'custom_customize_register', 50);
 // Set template modifications
 add_action('customize_register', 'custom_theme_settings');
 
-// Prevent .htaccess to be modified by permalink rules
-if(constant('WP_CUSTOM_HTACCESS'))
-{
-	add_filter('flush_rewrite_rules_hard','__return_false');
-}
-
 // Add custom CSS & JS to admin
 if(is_user_logged_in())
 {
