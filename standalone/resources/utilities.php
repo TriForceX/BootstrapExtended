@@ -343,21 +343,21 @@ class php
 			}
 			else
 			{
-				$data['file'] = $type == 'css' ? array('css/style-base.css',
-													   'css/style-bootstrap.css',
-													   'css/style-theme.css') :
-												 array('js/app-init.js',
-													   'js/app-base.js',
-													   'js/app-theme.js');
-
-				$data['file'] = array_merge($data['file'], $websitebase[$type.'_file']);
-				
 				if(isset($_GET['rebuild']) && $_GET['rebuild'] == $websitebase['rebuild_pass'])
 				{
 					return self::build_template($type, $minify, $mix, $url);
 				}
 				else
 				{
+					$data['file'] = $type == 'css' ? array('css/style-base.css',
+														   'css/style-bootstrap.css',
+														   'css/style-theme.css') :
+													 array('js/app-init.js',
+														   'js/app-base.js',
+														   'js/app-theme.js');
+
+					$data['file'] = array_merge($data['file'], $websitebase[$type.'_file']);
+					
 					foreach($data['file'] as $file)
 					{
 						$file_mix = str_replace('.'.$type, '.min.'.$type, $file);
