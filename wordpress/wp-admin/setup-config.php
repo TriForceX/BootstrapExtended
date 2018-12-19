@@ -138,8 +138,11 @@ function setup_config_display_header( $body_classes = array() ) {
 			margin-top: 1em !important;
 		}
 		.form-table th,
-		.form-table  td{
+		.form-table td{
 			padding: 10px 20px 10px 10px;
+		}
+		.form-table thead {
+			cursor: pointer;
 		}
 		.form-table thead th,
 		.form-table thead td{
@@ -256,15 +259,15 @@ switch($step) {
 		setup_config_display_header();
 	?>
 <h1 class="screen-reader-text"><?php _e( 'Set up your database connection' ) ?></h1>
-<form method="post" action="setup-config.php?step=2">
+<form method="post" action="setup-config.php?step=2" id="form-step-2">
 	<p><?php _e( 'Below you should enter your database connection details. If you&#8217;re not sure about these, contact your host.' ); ?></p>
-	<table class="form-table form-table-local">
+	<table class="form-table" id="form-table-local">
 		<thead>
 			<tr>
-				<th colspan="3"><?php _e('Local server', 'websitebase'); ?></th>
+				<th colspan="3"><?php _e('Local server', 'websitebase'); ?> <span>&plus;</span></th>
 			</tr>
 		</thead>
-		<tbody>
+		<tbody style="display: none">
 			<tr>
 				<th scope="row"><label for="dbname"><?php _e( 'Database Name' ); ?></label></th>
 				<td><input name="dbname" id="dbname" type="text" size="25" value="wordpress_<?php echo strtolower(__('Local', 'websitebase')); ?>_db" /></td>
@@ -295,13 +298,13 @@ switch($step) {
 			</tr>
 		</tbody>
 	</table>
-	<table class="form-table form-table-local">
+	<table class="form-table" id="form-table-production">
 		<thead>
 			<tr>
-				<th colspan="3"><?php _e('Production server', 'websitebase'); ?></th>
+				<th colspan="3"><?php _e('Production server', 'websitebase'); ?> <span>&plus;</span></th>
 			</tr>
 		</thead>
-		<tbody>
+		<tbody style="display: none">
 			<tr>
 				<th scope="row"><label for="dbname_2"><?php _e( 'Database Name' ); ?></label></th>
 				<td><input name="dbname_2" id="dbname_2" type="text" size="25" value="wordpress_<?php echo strtolower(__('Production', 'websitebase')); ?>_db" /></td>
@@ -332,13 +335,13 @@ switch($step) {
 			</tr>
 		</tbody>
 	</table>
-	<table class="form-table form-table-local">
+	<table class="form-table" id="form-table-more">
 		<thead>
 			<tr>
-				<th colspan="3"><?php _e('Others', 'websitebase'); ?></th>
+				<th colspan="3"><?php _e('More settings', 'websitebase'); ?> <span>&plus;</span></th>
 			</tr>
 		</thead>
-		<tbody>
+		<tbody style="display: none">
 			<tr>
 				<th scope="row"><label for="prefix"><?php _e( 'Table Prefix' ); ?></label></th>
 				<td><input name="prefix" id="prefix" type="text" value="wp_" size="25" /></td>
@@ -669,5 +672,47 @@ if ( ! /iPad|iPod|iPhone/.test( navigator.userAgent ) ) {
 }
 ?>
 <?php wp_print_scripts( 'language-chooser' ); ?>
+<script type="text/javascript">
+	<?php if ( $localhost ) { ?>
+	jQuery('#form-table-local').find('tbody').css('display','table-row-group');
+	jQuery('#form-table-local').find('thead span').html('&minus;');
+	<?php } else { ?>
+	jQuery('#form-table-production').find('tbody').css('display','table-row-group');
+	jQuery('#form-table-production').find('thead span').html('&minus;');
+	<?php } ?>
+	
+	var formTableOpen = null;
+	jQuery(".form-table thead").click(function(e) {
+		if(formTableOpen === this)
+		{
+			jQuery(this).parents('.form-table').find('tbody').css('display','none');
+			jQuery(this).parents('.form-table').find('thead span').html('&plus;');
+			formTableOpen = null;
+		}
+		else
+		{
+			jQuery('.form-table').find('tbody').css('display','none');
+			jQuery('.form-table').find('thead span').html('&plus;');
+			jQuery(this).parents('.form-table').find('tbody').css('display','table-row-group');
+			jQuery(this).parents('.form-table').find('thead span').html('&minus;');
+			formTableOpen = this;
+		}
+	});
+	
+	jQuery("#form-step-2").submit(function(e) {
+		var formTableString = '<?php _e('Remember to check &quot;More settings&quot; for HTTPS and WWW options. Do you want to continue?', 'websitebase'); ?>';
+		var formTableText = jQuery("<div/>").html(formTableString).text();
+		
+		if(!confirm(formTableText))
+		{
+			jQuery('.form-table').find('tbody').css('display','none');
+			jQuery('.form-table').find('thead span').html('&plus;');
+			jQuery('#form-table-more').find('tbody').css('display','table-row-group');
+			jQuery('#form-table-more').find('thead span').html('&minus;');
+			formTableOpen = jQuery('#form-table-more').find('thead')[0];
+			e.preventDefault();
+		}
+	});
+</script>
 </body>
 </html>
