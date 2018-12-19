@@ -220,7 +220,7 @@ class php
  * Source:   https://github.com/triforcex/websitebase
  * 
  */';
-		$local = str_replace('resources', '', dirname( __FILE__ ));
+		$local = str_replace(DIRECTORY_SEPARATOR.'resources', '', dirname( __FILE__ ));
 		$final = $type == 'css' ? 'style.css' : 'app.js';
 		$buffer = null;
 		
@@ -312,6 +312,7 @@ class php
 		// Main data
 		global $websitebase;
 		
+		$local = str_replace(DIRECTORY_SEPARATOR.'resources', '', dirname( __FILE__ ));
 		$url = $websitebase['assets_url'];
 		$minify = $websitebase['minify'];
 		$mix = $websitebase['mix'];
@@ -325,7 +326,11 @@ class php
 		{
 			if($mix)
 			{
-				if(isset($_GET['rebuild']) && $_GET['rebuild'] == $websitebase['rebuild_pass'])
+				if(!file_exists($local.'/'.$type.'/'.$final))
+				{
+					return self::build_template($type, $minify, $mix, $url);
+				}
+				elseif(isset($_GET['rebuild']) && $_GET['rebuild'] == $websitebase['rebuild_pass'])
 				{
 					return self::build_template($type, $minify, $mix, $url);
 				}
@@ -343,19 +348,23 @@ class php
 			}
 			else
 			{
-				if(isset($_GET['rebuild']) && $_GET['rebuild'] == $websitebase['rebuild_pass'])
+				$data['file'] = $type == 'css' ? array('css/style-base.css',
+													   'css/style-bootstrap.css',
+													   'css/style-theme.css') :
+												 array('js/app-init.js',
+													   'js/app-base.js',
+													   'js/app-theme.js');
+
+				if(!file_exists(str_replace('.'.$type, '.min.'.$type, $local.'/'.$data['file'][0])))
+				{
+					return self::build_template($type, $minify, $mix, $url);
+				}
+				elseif(isset($_GET['rebuild']) && $_GET['rebuild'] == $websitebase['rebuild_pass'])
 				{
 					return self::build_template($type, $minify, $mix, $url);
 				}
 				else
 				{
-					$data['file'] = $type == 'css' ? array('css/style-base.css',
-														   'css/style-bootstrap.css',
-														   'css/style-theme.css') :
-													 array('js/app-init.js',
-														   'js/app-base.js',
-														   'js/app-theme.js');
-
 					$data['file'] = array_merge($data['file'], $websitebase[$type.'_file']);
 					
 					foreach($data['file'] as $file)
