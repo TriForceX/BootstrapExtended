@@ -47,6 +47,13 @@ if(stripos( $_REQUEST['language'], 'es' ) !== false)
 	load_textdomain('websitebase', WP_LANG_DIR . '/themes/websitebase-es_ES.mo'); 
 }
 
+/** Sanitize title with underscore */
+function sanitize_title_2( $title )
+{
+    $text = sanitize_title( html_entity_decode( $title ) );
+    return str_replace('-', '_', $text);
+}
+
 nocache_headers();
 
 // Support wp-config-sample.php one level up, for the develop repo.
@@ -270,17 +277,17 @@ switch($step) {
 		<tbody style="display: none">
 			<tr>
 				<th scope="row"><label for="dbname"><?php _e( 'Database Name' ); ?></label></th>
-				<td><input name="dbname" id="dbname" type="text" size="25" value="wordpress_<?php echo strtolower(__('Local', 'websitebase')); ?>_db" /></td>
+				<td><input name="dbname" id="dbname" type="text" size="25" value="<?php echo sanitize_title_2(__('Database', 'websitebase').' '.__('Local', 'websitebase')); ?>" /></td>
 				<td><?php _e( 'The name of the database you want to use with WordPress.' ); ?></td>
 			</tr>
 			<tr>
 				<th scope="row"><label for="uname"><?php _e( 'Username' ); ?></label></th>
-				<td><input name="uname" id="uname" type="text" size="25" value="<?php echo htmlspecialchars( _x( 'username', 'example username' ), ENT_QUOTES ); ?>_<?php echo strtolower(__('Local', 'websitebase')); ?>" /></td>
+				<td><input name="uname" id="uname" type="text" size="25" value="<?php echo sanitize_title_2(__('User').'_'.__('Local', 'websitebase')); ?>" /></td>
 				<td><?php _e( 'Your database username.' ); ?> <?php _e('Usually is <code>root</code>', 'websitebase'); ?>.</td>
 			</tr>
 			<tr>
 				<th scope="row"><label for="pwd"><?php _e( 'Password' ); ?></label></th>
-				<td><input name="pwd" id="pwd" type="text" size="25" value="<?php echo htmlspecialchars( _x( 'password', 'example password' ), ENT_QUOTES ); ?>_<?php echo strtolower(__('Local', 'websitebase')); ?>" autocomplete="off" /></td>
+				<td><input name="pwd" id="pwd" type="text" size="25" value="<?php echo sanitize_title_2(__('Password').'_'.__('Local', 'websitebase')); ?>" autocomplete="off" /></td>
 				<td><?php _e( 'Your database password.' ); ?> <?php _e('Usually is <code>root</code>', 'websitebase'); ?>. <i>(<?php _e('Or leave it empty', 'websitebase'); ?>).</i></td>
 			</tr>
 			<tr>
@@ -307,17 +314,17 @@ switch($step) {
 		<tbody style="display: none">
 			<tr>
 				<th scope="row"><label for="dbname_2"><?php _e( 'Database Name' ); ?></label></th>
-				<td><input name="dbname_2" id="dbname_2" type="text" size="25" value="wordpress_<?php echo strtolower(__('Production', 'websitebase')); ?>_db" /></td>
+				<td><input name="dbname_2" id="dbname_2" type="text" size="25" value="<?php echo sanitize_title_2(__('Database', 'websitebase').' '.__('Production', 'websitebase')); ?>" /></td>
 				<td><?php _e( 'The name of the database you want to use with WordPress.' ); ?></td>
 			</tr>
 			<tr>
 				<th scope="row"><label for="uname_2"><?php _e( 'Username' ); ?></label></th>
-				<td><input name="uname_2" id="uname_2" type="text" size="25" value="<?php echo htmlspecialchars( _x( 'username', 'example username' ), ENT_QUOTES ); ?>_<?php echo strtolower(__('Production', 'websitebase')); ?>" /></td>
+				<td><input name="uname_2" id="uname_2" type="text" size="25" value="<?php echo sanitize_title_2(__('User').'_'.__('Production', 'websitebase')); ?>" /></td>
 				<td><?php _e( 'Your database username.' ); ?></td>
 			</tr>
 			<tr>
 				<th scope="row"><label for="pwd_2"><?php _e( 'Password' ); ?></label></th>
-				<td><input name="pwd_2" id="pwd_2" type="text" size="25" value="<?php echo htmlspecialchars( _x( 'password', 'example password' ), ENT_QUOTES ); ?>_<?php echo strtolower(__('Production', 'websitebase')); ?>" autocomplete="off" /></td>
+				<td><input name="pwd_2" id="pwd_2" type="text" size="25" value="<?php echo sanitize_title_2(__('Password').'_'.__('Production', 'websitebase')); ?>" autocomplete="off" /></td>
 				<td><?php _e( 'Your database password.' ); ?></td>
 			</tr>
 			<tr>
