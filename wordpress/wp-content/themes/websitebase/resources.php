@@ -79,9 +79,6 @@ php::debug();
  * 
  */
 
-// Load theme language
-load_theme_textdomain('websitebase');
-
 // Custom login logo URL
 add_filter('login_headerurl', 'login_logo_url');
 add_filter('login_headertitle', 'login_logo_url');
@@ -98,6 +95,12 @@ add_action('customize_register', 'custom_customize_register', 50);
 
 // Set template modifications
 add_action('customize_register', 'custom_theme_settings');
+
+// Load theme language
+if(stripos(get_bloginfo('language'), 'es') !== false)
+{
+	load_textdomain('websitebase', WP_LANG_DIR . '/themes/websitebase-es_ES.mo'); 
+}
 
 // Add custom CSS & JS to admin
 if(is_user_logged_in())
