@@ -19,6 +19,6 @@ wordpress/wp-content/themes/websitebase/css/*.min.*
 wordpress/wp-content/themes/websitebase/js/*.min.*
 wordpress/wp-content/themes/websitebase/css/extras/*.min.*
 wordpress/wp-content/themes/websitebase/js/extras/*.min.*
-wordpress/.htaccess
 wordpress/wp-config.php
+wordpress/.htaccess
 ##

@@ -68,6 +68,7 @@ include( ABSPATH . 'wp-admin/admin-header.php' );
 				/* translators: 1: WordPress version number, 2: plural number of bugs. */
 					_n(
 						'<strong>Version %1$s</strong> addressed %2$s bug.',
+						'<strong>Version %1$s</strong> addressed %2$s bugs.',
 						73
 					),
 					'5.0.2',
