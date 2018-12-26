@@ -218,11 +218,11 @@ class new_general_setting
     }
     function new_register_fields() 
 	{
-		$fields = array('blogkeywords' 		=> array(__('Site keywords', 'websitebase'), __('Words to let search engines to found this site', 'websitebase')),
-						'bloganalytics' 	=> array(__('Analytics code', 'websitebase'), __('Code placed in the HTML head to track site analytics', 'websitebase')),
-						'blogauthor'	 	=> array(__('Site author', 'websitebase'), __('Defines the site author', 'websitebase')),
-						'blognavcolor' 		=> array(__('Nav color', 'websitebase'), __('Navigator bar color for most devices (use hexadecimal format)', 'websitebase')),
-						'blognavcolorapple' => array(__('Nav color (Apple)', 'websitebase'), __('Navigator bar color for Apple devices (use black or black-translucent)', 'websitebase')));
+		$fields = array('blogkeywords' 		=> array(__('Site keywords', 'websitebase'), __('Words to let search engines to found this site.', 'websitebase')),
+						'bloganalytics' 	=> array(__('Analytics code', 'websitebase'), __('Code placed in the HTML head to track site analytics.', 'websitebase')),
+						'blogauthor'	 	=> array(__('Site author', 'websitebase'), __('Defines the site author.', 'websitebase')),
+						'blognavcolor' 		=> array(__('Nav color', 'websitebase'), __('Navigator bar color for most devices (use hexadecimal format).', 'websitebase')),
+						'blognavcolorapple' => array(__('Nav color (Apple)', 'websitebase'), __('Navigator bar color for Apple devices.', 'websitebase')));
 		
 		foreach($fields as $key => $value)
 		{
@@ -247,16 +247,30 @@ class new_general_setting
 					  </div>';
 				break;
 			case 'blogauthor':
+				echo '<div class="new_fields_html">
+						  <input type="text" id="'.$args['slug'].'" name="'.$args['slug'].'" value="'.get_option($args['slug'], get_option('blogname')).'"/>
+						  <p class="description" id="'.$args['slug'].'-description">'.$args['description'].'</p>
+					  </div>';
+				break;
 			case 'blognavcolor':
+				echo '<div class="new_fields_html">
+						  <input type="color" id="'.$args['slug'].'" name="'.$args['slug'].'" value="'.get_option($args['slug'], '#7840a2').'"/>
+						  <p class="description" id="'.$args['slug'].'-description">'.$args['description'].'</p>
+					  </div>';
+				break;
 			case 'blognavcolorapple':
 				echo '<div class="new_fields_html">
-						  <input type="text" id="'.$args['slug'].'" name="'.$$args['slug'].'" value="'.get_option($args['slug'], '').'"/>
+						  <select type="text" id="'.$args['slug'].'" name="'.$args['slug'].'">
+						  	  <option value="default" '.(get_option($args['slug'], '') == 'default' ? 'selected' : '').'>'.__('Default', 'websitebase').'</option>
+							  <option value="black" '.(get_option($args['slug'], '') == 'black' ? 'selected' : '').'>'.__('Black', 'websitebase').'</option>
+							  <option value="black-translucent" '.(get_option($args['slug'], '') == 'black-translucent' ? 'selected' : '').'>'.__('Black translucent', 'websitebase').'</option>
+						  </select>
 						  <p class="description" id="'.$args['slug'].'-description">'.$args['description'].'</p>
 					  </div>';
 				break;
 			default:
 				echo '<div class="new_fields_html">
-						  <input type="text" id="'.$args['slug'].'" name="'.$$args['slug'].'" value="'.get_option($args['slug'], '').'"/>
+						  <input type="text" id="'.$args['slug'].'" name="'.$args['slug'].'" value="'.get_option($args['slug'], '').'"/>
 						  <p class="description" id="'.$args['slug'].'-description">'.$args['description'].'</p>
 					  </div>';
 				break;
