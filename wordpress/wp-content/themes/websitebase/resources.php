@@ -282,13 +282,16 @@ function custom_theme_settings($wp_customize)
 	// Custom panels
 	global $customize_theme_panels;
 	
-	foreach($customize_theme_panels as $key => $value)
+	if(!empty($customize_theme_panels))
 	{
-		$wp_customize->add_panel($key, array('priority'       => $value['priority'],
-											 'capability'     => $value['capability'],
-											 'theme_supports' => $value['theme_supports'],
-											 'title'          => $value['title'],
-											 'description'    => $value['description']));
+		foreach($customize_theme_panels as $key => $value)
+		{
+			$wp_customize->add_panel($key, array('priority'       => $value['priority'],
+												 'capability'     => $value['capability'],
+												 'theme_supports' => $value['theme_supports'],
+												 'title'          => $value['title'],
+												 'description'    => $value['description']));
+		}
 	}
 	
 	// Set custom template control for multiple checkbox
@@ -372,93 +375,96 @@ function custom_theme_settings($wp_customize)
 	// Custom fields
 	global $customize_theme_fields;
 	
-	foreach ($customize_theme_fields as $key => $value)
+	if(!empty($customize_theme_fields))
 	{
-		$wp_customize->add_section($key,
-			array(
-				'title' 		=> $value['title'],
-				'description' 	=> $value['desc'],
-				'panel'			=> $value['panel'],
-			)
-		);
-		$wp_customize->add_setting($key,
-			array(
-				'default' 		=> $value['default'],
-			)
-		);
-
-		// Control type
-		switch($value['type'])
+		foreach ($customize_theme_fields as $key => $value)
 		{
-			case 'text':
-			case 'textarea':
-				$wp_customize->add_control($key,
-					array(
-						'label' 	=> $value['label'],
-						'section' 	=> $key,
-						'type' 		=> $value['type'], //text
-					)
-				);
-				break;
-			case 'radio':
-			case 'select':
-				$wp_customize->add_control($key,
-					array(
-						'label' 	=> $value['label'],
-						'section' 	=> $key,
-						'settings'	=> $key,
-						'type' 		=> $value['type'], //radio/select
-						'choices'  	=> $value['choices'],
-					)
-				);
-				break;
-			case 'checkbox':
-				$wp_customize->add_control( 
-					new WP_Customize_Checkbox_Multiple_Control($wp_customize, $key,
+			$wp_customize->add_section($key,
+				array(
+					'title' 		=> $value['title'],
+					'description' 	=> $value['desc'],
+					'panel'			=> $value['panel'],
+				)
+			);
+			$wp_customize->add_setting($key,
+				array(
+					'default' 		=> $value['default'],
+				)
+			);
+
+			// Control type
+			switch($value['type'])
+			{
+				case 'text':
+				case 'textarea':
+					$wp_customize->add_control($key,
+						array(
+							'label' 	=> $value['label'],
+							'section' 	=> $key,
+							'type' 		=> $value['type'], //text
+						)
+					);
+					break;
+				case 'radio':
+				case 'select':
+					$wp_customize->add_control($key,
 						array(
 							'label' 	=> $value['label'],
 							'section' 	=> $key,
 							'settings'	=> $key,
-							'type' 		=> 'checkbox-multiple', //improved checkbox
+							'type' 		=> $value['type'], //radio/select
 							'choices'  	=> $value['choices'],
 						)
-					)
-				);
-				break;
-			case 'wysiwig':
-				$wp_customize->add_control( 
-					new WP_Customize_WYSIWIG_Text_Editor_Control($wp_customize, $key,
-						array(
-							'label'   	=> $value['label'],
-							'section' 	=> $key,
-							'settings'	=> $key,
-							'type' 		=> 'wysiwig-text', //improved text editor
+					);
+					break;
+				case 'checkbox':
+					$wp_customize->add_control( 
+						new WP_Customize_Checkbox_Multiple_Control($wp_customize, $key,
+							array(
+								'label' 	=> $value['label'],
+								'section' 	=> $key,
+								'settings'	=> $key,
+								'type' 		=> 'checkbox-multiple', //improved checkbox
+								'choices'  	=> $value['choices'],
+							)
 						)
-					)
-				);
-				break;
-			case 'image':
-				$wp_customize->add_control( 
-					new WP_Customize_Image_Control($wp_customize, $key,
-						array(
-							'label'   	=> $value['label'],
-							'section' 	=> $key,
-							'settings'	=> $key,
+					);
+					break;
+				case 'wysiwig':
+					$wp_customize->add_control( 
+						new WP_Customize_WYSIWIG_Text_Editor_Control($wp_customize, $key,
+							array(
+								'label'   	=> $value['label'],
+								'section' 	=> $key,
+								'settings'	=> $key,
+								'type' 		=> 'wysiwig-text', //improved text editor
+							)
 						)
-					)
-				);
-				break;
-			case 'file':
-				$wp_customize->add_control( 
-					new WP_Customize_Upload_Control($wp_customize, $key,
-						array(
-							'label'   	=> $value['label'],
-							'section' 	=> $key,
-							'settings'	=> $key,
+					);
+					break;
+				case 'image':
+					$wp_customize->add_control( 
+						new WP_Customize_Image_Control($wp_customize, $key,
+							array(
+								'label'   	=> $value['label'],
+								'section' 	=> $key,
+								'settings'	=> $key,
+							)
 						)
-					)
-				);
-				break;
+					);
+					break;
+				case 'file':
+					$wp_customize->add_control( 
+						new WP_Customize_Upload_Control($wp_customize, $key,
+							array(
+								'label'   	=> $value['label'],
+								'section' 	=> $key,
+								'settings'	=> $key,
+							)
+						)
+					);
+					break;
+			}
 		}
 	}
 }
