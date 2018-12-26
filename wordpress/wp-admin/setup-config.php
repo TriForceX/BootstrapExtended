@@ -44,14 +44,14 @@ $localhost = preg_match('/(::1|127.0.0.|192.168.|localhost)/i', $_SERVER['HTTP_H
 /** Load Website Base language */
 if(stripos( $_REQUEST['language'], 'es' ) !== false)
 {
-	load_textdomain('websitebase', WP_LANG_DIR . '/themes/websitebase-es_ES.mo'); 
+	load_textdomain( 'websitebase' , WP_LANG_DIR . '/themes/websitebase-es_ES.mo' ); 
 }
 
 /** Sanitize title with underscore */
 function sanitize_title_2( $title )
 {
     $text = sanitize_title( html_entity_decode( $title ) );
-    return str_replace('-', '_', $text);
+    return str_replace( '-' , '_' , $text );
 }
 
 nocache_headers();
