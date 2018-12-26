@@ -1074,7 +1074,7 @@ class SimplePluginLogger extends SimpleLogger {
 
 						case 'plugin_install_source':
 							if ( ! isset( $context[ $key ] ) ) {
-								continue;
+								break;
 							}
 
 							if ( 'web' == $context[ $key ] ) {
@@ -1092,7 +1092,7 @@ class SimplePluginLogger extends SimpleLogger {
 
 						case 'plugin_install_source_file':
 							if ( ! isset( $context['plugin_upload_name'] ) || ! isset( $context['plugin_install_source'] ) ) {
-								continue;
+								break;
 							}
 
 							if ( 'upload' == $context['plugin_install_source'] ) {
@@ -1102,7 +1102,7 @@ class SimplePluginLogger extends SimpleLogger {
 
 							break;
 
-						default;
+						default:
 							$desc_output = esc_html( $context[ $key ] );
 							break;
 					}// End switch().

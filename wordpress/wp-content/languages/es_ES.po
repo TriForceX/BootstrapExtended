@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WordPress - 5.0.x - Development package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2018-12-17 09:04:18+0000\n"
+"PO-Revision-Date: 2018-12-26 13:33:36+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -92,7 +92,7 @@ msgid "Top Toolbar"
 msgstr "Barra de herramientas superior"
 
 #. translators: %d: number of words
-#: wp-includes/js/dist/editor.js:29341
+#: wp-includes/js/dist/editor.js:29365
 msgid "%d word"
 msgid_plural "%d words"
 msgstr[0] "%d palabra"
@@ -119,35 +119,35 @@ msgstr "Esta imagen tiene un atributo ALT vacío; su nombre de archivo es %s"
 msgid "Permalink"
 msgstr "Enlace permanente"
 
-#: wp-includes/js/dist/editor.js:24818
+#: wp-includes/js/dist/editor.js:24842
 msgid "To edit the featured image, you need permission to upload media."
 msgstr "Para editar la imagen destacada necesitas permisos para subir medios."
 
-#: wp-includes/js/dist/editor.js:22816
+#: wp-includes/js/dist/editor.js:22840
 msgid "Given your current role, you can only link a video, you cannot upload."
 msgstr "Con tu perfil actual solo puedes enlazar un vídeo, no puedes subirlo."
 
-#: wp-includes/js/dist/editor.js:22814
+#: wp-includes/js/dist/editor.js:22838
 msgid "Given your current role, you can only link an image, you cannot upload."
 msgstr "Con tu perfil actual solo puedes enlazar una imagen, no puedes subirla."
 
-#: wp-includes/js/dist/editor.js:22812
+#: wp-includes/js/dist/editor.js:22836
 msgid "Given your current role, you can only link an audio, you cannot upload."
 msgstr "Con tu perfil actual solo puedes enlazar un audio, no puedes subirlo."
 
-#: wp-includes/js/dist/editor.js:22809
+#: wp-includes/js/dist/editor.js:22833
 msgid "Given your current role, you can only link a media file, you cannot upload."
 msgstr "Con tu perfil actual solo puedes enlazar un archivo de medios, no puedes subirlo."
 
-#: wp-includes/js/dist/editor.js:22788
+#: wp-includes/js/dist/editor.js:22812
 msgid "To edit this block, you need permission to upload media."
 msgstr "Para editar este bloque necesitas permisos para subir medios."
 
-#: wp-includes/js/dist/editor.js:14827
+#: wp-includes/js/dist/editor.js:14841
 msgid "(selected block)"
 msgstr "(bloque seleccionado)"
 
-#: wp-includes/js/dist/editor.js:16939
+#: wp-includes/js/dist/editor.js:16953
 msgid "Block tools"
 msgstr "Herramientas del bloque"
 
@@ -171,42 +171,42 @@ msgstr "Bloque vacío; empieza a escribir o teclea una barra inclinada hacia ade
 msgid "Paragraph block"
 msgstr "Bloque de párrafo"
 
-#: wp-includes/js/dist/editor.js:13874
+#: wp-includes/js/dist/editor.js:13888
 msgid "%s block selected."
 msgid_plural "%s blocks selected."
 msgstr[0] "%s bloque seleccionado."
 msgstr[1] "%s bloques seleccionados."
 
-#: wp-includes/js/dist/editor.js:23127
+#: wp-includes/js/dist/editor.js:23151
 msgid "Link selected"
 msgstr "Enlace seleccionado"
 
-#: wp-includes/js/dist/editor.js:28179
+#: wp-includes/js/dist/editor.js:28203
 msgid "Start writing with text or HTML"
 msgstr "Empieza a escribir texto o HTML"
 
-#: wp-includes/js/dist/editor.js:28171
+#: wp-includes/js/dist/editor.js:28195
 msgid "Type text or HTML"
 msgstr "Escribe texto o HTML"
 
-#: wp-includes/js/dist/editor.js:19224
+#: wp-includes/js/dist/editor.js:19248
 #: wp-includes/js/dist/block-library.js:1732
 msgid "Start writing or type / to choose a block"
 msgstr "Empieza a escribir o teclea / para elegir un bloque"
 
-#: wp-includes/js/dist/editor.js:30100
+#: wp-includes/js/dist/editor.js:30124
 msgid "Block icon"
 msgstr "Icono del bloque"
 
-#: wp-includes/js/dist/editor.js:14455
+#: wp-includes/js/dist/editor.js:14469
 msgid "Align text right"
 msgstr "Alinear texto a la derecha"
 
-#: wp-includes/js/dist/editor.js:14451
+#: wp-includes/js/dist/editor.js:14465
 msgid "Align text center"
 msgstr "Alinear texto al centro"
 
-#: wp-includes/js/dist/editor.js:14447
+#: wp-includes/js/dist/editor.js:14461
 msgid "Align text left"
 msgstr "Alinear texto a la izquierda"
 
@@ -222,7 +222,7 @@ msgstr "Apilar en móvil"
 msgid "Custom Fields"
 msgstr "Campos personalizados"
 
-#: wp-includes/js/dist/editor.js:27048
+#: wp-includes/js/dist/editor.js:27072
 msgid "Scheduled"
 msgstr "Programada"
 
@@ -614,19 +614,19 @@ msgstr "Mostrar medios a la izquierda"
 msgid "Write list…"
 msgstr "Escribe una lista…"
 
-#: wp-includes/js/dist/editor.js:20829
+#: wp-includes/js/dist/editor.js:20853
 msgid "Indent list item"
 msgstr "Añadir sangría al elemento de la lista"
 
-#: wp-includes/js/dist/editor.js:20822
+#: wp-includes/js/dist/editor.js:20846
 msgid "Outdent list item"
 msgstr "Reducir sangría al elemento de la lista"
 
-#: wp-includes/js/dist/editor.js:20810
+#: wp-includes/js/dist/editor.js:20834
 msgid "Convert to ordered list"
 msgstr "Convertir a lista ordenada"
 
-#: wp-includes/js/dist/editor.js:20798
+#: wp-includes/js/dist/editor.js:20822
 msgid "Convert to unordered list"
 msgstr "Convertir a lista desordenada"
 
@@ -1366,7 +1366,7 @@ msgid "Close settings"
 msgstr "Cerrar ajustes"
 
 #. translators: %d: number of blocks
-#: wp-includes/js/dist/editor.js:29337
+#: wp-includes/js/dist/editor.js:29361
 msgid "%d block"
 msgid_plural "%d blocks"
 msgstr[0] "%d bloque"
@@ -1577,7 +1577,7 @@ msgstr "Modo de enfoque"
 
 #: wp-includes/js/dist/edit-post.js:2602
 msgid "Access all block and document tools in a single place"
-msgstr "Accede a todos las herramientas de bloques y documentos desde un solo lugar"
+msgstr "Accede a todas las herramientas de bloques y documentos desde un solo lugar"
 
 #: wp-includes/js/dist/edit-post.js:2598
 msgctxt "noun"
@@ -1633,822 +1633,822 @@ msgid "Document and block tools"
 msgstr "Herramientas del documento y los bloques"
 
 #. translators: %s: file name
-#: wp-includes/js/dist/editor.js:22443
+#: wp-includes/js/dist/editor.js:22467
 msgid "Error while uploading file %s to the media library."
 msgstr "Error al subir el archivo %s a la biblioteca de medios."
 
-#: wp-includes/js/dist/editor.js:22353
+#: wp-includes/js/dist/editor.js:22377
 msgid "This file is empty."
 msgstr "Este archivo está vacío."
 
-#: wp-includes/js/dist/editor.js:22327
+#: wp-includes/js/dist/editor.js:22351
 msgid "Sorry, this file type is not supported here."
 msgstr "Lo siento, este tipo de archivo no es compatible aquí."
 
-#: wp-includes/js/dist/editor.js:13203
+#: wp-includes/js/dist/editor.js:13217
 msgid "Untitled Reusable Block"
 msgstr "Bloque reutilizable sin título"
 
-#: wp-includes/js/dist/editor.js:13111
+#: wp-includes/js/dist/editor.js:13125
 msgid "Block deleted."
 msgstr "Bloque borrado."
 
-#: wp-includes/js/dist/editor.js:12999
+#: wp-includes/js/dist/editor.js:13013
 msgid "Block created."
 msgstr "Bloque creado."
 
-#: wp-includes/js/dist/editor.js:13612
+#: wp-includes/js/dist/editor.js:13626
 msgid "Trashing failed"
 msgstr "Fallo al enviar a la papelera"
 
-#: wp-includes/js/dist/editor.js:13535
+#: wp-includes/js/dist/editor.js:13549
 msgid "Updating failed"
 msgstr "Fallo al actualizar"
 
-#: wp-includes/js/dist/editor.js:13533
+#: wp-includes/js/dist/editor.js:13547
 msgid "Scheduling failed"
 msgstr "Fallo al programar"
 
-#: wp-includes/js/dist/editor.js:13531 wp-includes/js/dist/editor.js:13532
+#: wp-includes/js/dist/editor.js:13545 wp-includes/js/dist/editor.js:13546
 msgid "Publishing failed"
 msgstr "Fallo al publicar"
 
-#: wp-includes/js/dist/editor.js:8309
+#: wp-includes/js/dist/editor.js:8310
 msgctxt "font size name"
 msgid "Huge"
 msgstr "Enorme"
 
-#: wp-includes/js/dist/editor.js:8305
+#: wp-includes/js/dist/editor.js:8306
 msgctxt "font size name"
 msgid "Large"
 msgstr "Grande"
 
-#: wp-includes/js/dist/editor.js:8301
+#: wp-includes/js/dist/editor.js:8302
 msgctxt "font size name"
 msgid "Medium"
 msgstr "Medio"
 
-#: wp-includes/js/dist/editor.js:8293
+#: wp-includes/js/dist/editor.js:8294
 msgctxt "font size name"
 msgid "Small"
 msgstr "Pequeño"
 
-#: wp-includes/js/dist/editor.js:8284
+#: wp-includes/js/dist/editor.js:8285
 msgid "Cyan bluish gray"
 msgstr "Gris azulado cian"
 
-#: wp-includes/js/dist/editor.js:8280
+#: wp-includes/js/dist/editor.js:8281
 msgid "Very light gray"
 msgstr "Gris muy claro"
 
-#: wp-includes/js/dist/editor.js:8276
+#: wp-includes/js/dist/editor.js:8277
 msgid "Vivid cyan blue"
 msgstr "Azul cian vivo"
 
-#: wp-includes/js/dist/editor.js:8272
+#: wp-includes/js/dist/editor.js:8273
 msgid "Pale cyan blue"
 msgstr "Azul cian pálido"
 
-#: wp-includes/js/dist/editor.js:8268
+#: wp-includes/js/dist/editor.js:8269
 msgid "Vivid green cyan"
 msgstr "Cian verde vivo"
 
-#: wp-includes/js/dist/editor.js:8264
+#: wp-includes/js/dist/editor.js:8265
 msgid "Light green cyan"
 msgstr "Cian verde claro"
 
-#: wp-includes/js/dist/editor.js:8260
+#: wp-includes/js/dist/editor.js:8261
 msgid "Luminous vivid amber"
 msgstr "Ambar vivo luminoso"
 
-#: wp-includes/js/dist/editor.js:8256
+#: wp-includes/js/dist/editor.js:8257
 msgid "Luminous vivid orange"
 msgstr "Naranja vivo luminoso"
 
-#: wp-includes/js/dist/editor.js:8252
+#: wp-includes/js/dist/editor.js:8253
 msgid "Vivid red"
 msgstr "Rojo vivo"
 
-#: wp-includes/js/dist/editor.js:8248
+#: wp-includes/js/dist/editor.js:8249
 msgid "Pale pink"
 msgstr "Rosa pálido"
 
-#: wp-includes/js/dist/editor.js:33349
+#: wp-includes/js/dist/editor.js:33373
 msgid "Additional CSS Class"
 msgstr "Clase CSS adicional"
 
-#: wp-includes/js/dist/editor.js:33253
+#: wp-includes/js/dist/editor.js:33277
 msgid "Anchors lets you link directly to a section on a page."
 msgstr "Los anclajes te permiten enlazar directamente a una sección de una página."
 
-#: wp-includes/js/dist/editor.js:33252
+#: wp-includes/js/dist/editor.js:33276
 msgid "HTML Anchor"
 msgstr "Anclaje HTML"
 
-#: wp-includes/js/dist/editor.js:22151
+#: wp-includes/js/dist/editor.js:22175
 #: wp-includes/js/dist/block-library.js:3320
 msgid "Link Settings"
 msgstr "Ajustes del enlace"
 
-#: wp-includes/js/dist/editor.js:23295
+#: wp-includes/js/dist/editor.js:23319
 msgid "Insert Link"
 msgstr "Insertar enlace"
 
-#: wp-includes/js/dist/editor.js:29059
+#: wp-includes/js/dist/editor.js:29083
 msgid "You have unsaved changes. If you proceed, they will be lost."
 msgstr "Tienes cambios sin guardar. Si sigues se perderán."
 
-#: wp-includes/js/dist/editor.js:24091
+#: wp-includes/js/dist/editor.js:24115
 msgid "Reset the template"
 msgstr "Restablecer la plantilla"
 
-#: wp-includes/js/dist/editor.js:24088
+#: wp-includes/js/dist/editor.js:24112
 msgid "Keep it as is"
 msgstr "Mantenerla como está"
 
-#: wp-includes/js/dist/editor.js:24085
+#: wp-includes/js/dist/editor.js:24109
 msgid "The content of your post doesn’t match the template assigned to your post type."
 msgstr "El contenido de tu entrada no se ajusta a la plantilla asignada a tu tipo de contenido."
 
-#: wp-includes/js/dist/editor.js:24076
+#: wp-includes/js/dist/editor.js:24100
 msgid "Resetting the template may result in loss of content, do you want to continue?"
 msgstr "Restablecer la plantilla puede resultar en pérdida de contenido, ¿quieres continuar?"
 
-#: wp-includes/js/dist/editor.js:28946
+#: wp-includes/js/dist/editor.js:28970
 msgid "Document Outline"
 msgstr "Esquema del documento"
 
-#: wp-includes/js/dist/editor.js:28938
+#: wp-includes/js/dist/editor.js:28962
 msgid "Paragraphs"
 msgstr "Párrafos"
 
-#: wp-includes/js/dist/editor.js:28934
+#: wp-includes/js/dist/editor.js:28958
 msgid "Headings"
 msgstr "Encabezados"
 
-#: wp-includes/js/dist/editor.js:28928
+#: wp-includes/js/dist/editor.js:28952
 msgid "Document Statistics"
 msgstr "Estadísticas del documento"
 
-#: wp-includes/js/dist/editor.js:28988
+#: wp-includes/js/dist/editor.js:29012
 msgid "Content structure"
 msgstr "Estructura del contenido"
 
-#: wp-includes/js/dist/editor.js:29107
+#: wp-includes/js/dist/editor.js:29131
 msgid "Skip to the selected block"
 msgstr "Saltar al bloque seleccionado"
 
-#: wp-includes/js/dist/editor.js:32788
+#: wp-includes/js/dist/editor.js:32812
 msgid "View the autosave"
 msgstr "Ver el guardado automático"
 
-#: wp-includes/js/dist/editor.js:32785
+#: wp-includes/js/dist/editor.js:32809
 msgid "There is an autosave of this post that is more recent than the version below."
 msgstr "Hay un guardado automático de esta entrada que es más reciente que la versión de abajo."
 
-#: wp-includes/js/dist/editor.js:25973
+#: wp-includes/js/dist/editor.js:25997
 msgid "Protected with a password you choose. Only those with the password can view this post."
 msgstr "Protegida con una contraseña que tú elijas. Solo los que tengan la contraseña pueden ver esta entrada."
 
-#: wp-includes/js/dist/editor.js:25969
+#: wp-includes/js/dist/editor.js:25993
 msgid "Only visible to site admins and editors."
 msgstr "Solo visible para administradores y editores del sitio."
 
-#: wp-includes/js/dist/editor.js:25965
+#: wp-includes/js/dist/editor.js:25989
 msgid "Visible to everyone."
 msgstr "Visible por todos"
 
-#: wp-includes/js/dist/editor.js:26129
+#: wp-includes/js/dist/editor.js:26153
 msgid "Use a secure password"
 msgstr "Usa una contraseña segura"
 
-#: wp-includes/js/dist/editor.js:26123
+#: wp-includes/js/dist/editor.js:26147
 msgid "Create password"
 msgstr "Crear contraseña"
 
-#: wp-includes/js/dist/editor.js:26094
+#: wp-includes/js/dist/editor.js:26118
 msgid "Post Visibility"
 msgstr "Visibilidad de la entrada"
 
-#: wp-includes/js/dist/editor.js:26033
+#: wp-includes/js/dist/editor.js:26057
 msgid "Would you like to privately publish this post now?"
 msgstr "¿Te gustaría publicar ahora en privado esta entrada?"
 
-#: wp-includes/js/dist/editor.js:28792
+#: wp-includes/js/dist/editor.js:28816
 msgid "Move to trash"
 msgstr "Mover a la papelera"
 
-#: wp-includes/js/dist/editor.js:28684 wp-includes/js/dist/editor.js:28689
+#: wp-includes/js/dist/editor.js:28708 wp-includes/js/dist/editor.js:28713
 msgid "Add title"
 msgstr "Añadir título"
 
-#: wp-includes/js/dist/editor.js:27926
+#: wp-includes/js/dist/editor.js:27950
 msgctxt "term"
 msgid "Available %s"
 msgstr "%s disponible"
 
-#: wp-includes/js/dist/editor.js:27925 wp-includes/js/dist/editor.js:27926
+#: wp-includes/js/dist/editor.js:27949 wp-includes/js/dist/editor.js:27950
 msgid "Terms"
 msgstr "Términos"
 
-#: wp-includes/js/dist/editor.js:27925
+#: wp-includes/js/dist/editor.js:27949
 msgctxt "term"
 msgid "Search %s"
 msgstr "Buscar %s"
 
-#: wp-includes/js/dist/editor.js:27920
+#: wp-includes/js/dist/editor.js:27944
 msgid "Parent Term"
 msgstr "Término superior"
 
-#: wp-includes/js/dist/editor.js:27918 wp-includes/js/dist/editor.js:27919
+#: wp-includes/js/dist/editor.js:27942 wp-includes/js/dist/editor.js:27943
 msgid "Add new term"
 msgstr "Añadir nuevo término"
 
-#: wp-includes/js/dist/editor.js:27918 wp-includes/js/dist/editor.js:27919
+#: wp-includes/js/dist/editor.js:27942 wp-includes/js/dist/editor.js:27943
 msgid "Add new category"
 msgstr "Añadir nueva categoría"
 
-#: wp-includes/js/dist/editor.js:26520
+#: wp-includes/js/dist/editor.js:26544
 msgctxt "term"
 msgid "Remove %s"
 msgstr "Quitar %s"
 
-#: wp-includes/js/dist/editor.js:26519
+#: wp-includes/js/dist/editor.js:26543
 msgctxt "term"
 msgid "%s removed"
 msgstr "%s quitada"
 
-#: wp-includes/js/dist/editor.js:26518 wp-includes/js/dist/editor.js:27670
+#: wp-includes/js/dist/editor.js:26542 wp-includes/js/dist/editor.js:27694
 msgctxt "term"
 msgid "%s added"
 msgstr "%s añadida"
 
-#: wp-includes/js/dist/editor.js:26517 wp-includes/js/dist/editor.js:27670
+#: wp-includes/js/dist/editor.js:26541 wp-includes/js/dist/editor.js:27694
 msgid "Term"
 msgstr "Término"
 
-#: wp-includes/js/dist/editor.js:26517
+#: wp-includes/js/dist/editor.js:26541
 msgid "Tag"
 msgstr "Etiqueta"
 
-#: wp-includes/js/dist/editor.js:26516
+#: wp-includes/js/dist/editor.js:26540
 msgid "Add New Term"
 msgstr "Añadir nuevo término"
 
-#: wp-includes/js/dist/editor.js:27164
+#: wp-includes/js/dist/editor.js:27188
 msgid "Switch to Draft"
 msgstr "Cambiar a borrador"
 
-#: wp-includes/js/dist/editor.js:27150
+#: wp-includes/js/dist/editor.js:27174
 msgid "Are you sure you want to unschedule this post?"
 msgstr "¿Estás seguro de querer anular la programación de esta entrada?"
 
-#: wp-includes/js/dist/editor.js:27148
+#: wp-includes/js/dist/editor.js:27172
 msgid "Are you sure you want to unpublish this post?"
 msgstr "¿Estás seguro de querer anular la publicación de esta entrada?"
 
-#: wp-includes/js/dist/editor.js:27454
+#: wp-includes/js/dist/editor.js:27478
 msgid "Stick to the Front Page"
 msgstr "Fijar en portada"
 
-#: wp-includes/js/dist/editor.js:26253
+#: wp-includes/js/dist/editor.js:26277
 msgid "Immediately"
 msgstr "Inmediatamente"
 
-#: wp-includes/js/dist/editor.js:27290
+#: wp-includes/js/dist/editor.js:27314
 msgid "Saving"
 msgstr "Guardando"
 
-#: wp-includes/js/dist/editor.js:27290
+#: wp-includes/js/dist/editor.js:27314
 msgid "Autosaving"
 msgstr "Guardando automáticamente"
 
-#: wp-includes/js/dist/editor.js:25913
+#: wp-includes/js/dist/editor.js:25937
 msgid "Finished writing? That’s great, let’s get this published right now. Just click “Publish” and you’re good to go."
 msgstr "¿Terminaste de escribir? Genial, publiquemos esto ahora mismo. Solo tienes que hacer clic en «Publicar» y habrás terminado."
 
-#: wp-includes/js/dist/editor.js:25903
+#: wp-includes/js/dist/editor.js:25927
 msgid "Publish…"
 msgstr "Publicar…"
 
-#: wp-includes/js/dist/editor.js:26797
+#: wp-includes/js/dist/editor.js:26821
 msgid "Publish:"
 msgstr "Publicar: "
 
-#: wp-includes/js/dist/editor.js:26791
+#: wp-includes/js/dist/editor.js:26815
 msgid "Visibility:"
 msgstr "Visibilidad:"
 
-#: wp-includes/js/dist/editor.js:26784
+#: wp-includes/js/dist/editor.js:26808
 msgid "Double-check your settings before publishing."
 msgstr "Vuelve a comprobar tus ajustes antes de publicar."
 
-#: wp-includes/js/dist/editor.js:26783
+#: wp-includes/js/dist/editor.js:26807
 msgid "Are you ready to publish?"
 msgstr "¿Estás listo para publicar?"
 
-#: wp-includes/js/dist/editor.js:26781
+#: wp-includes/js/dist/editor.js:26805
 msgid "Your work will be published at the specified date and time."
 msgstr "Tu trabajo se publicará en la fecha y hora establecidas."
 
-#: wp-includes/js/dist/editor.js:26780
+#: wp-includes/js/dist/editor.js:26804
 msgid "Are you ready to schedule?"
 msgstr "¿Estás listo para programar?"
 
-#: wp-includes/js/dist/editor.js:26778
+#: wp-includes/js/dist/editor.js:26802
 msgid "When you’re ready, submit your work for review, and an Editor will be able to approve it for you."
 msgstr "Cuando estés listo, envía tu trabajo para revisión, y un editor podrá aprobártelo."
 
-#: wp-includes/js/dist/editor.js:26777
+#: wp-includes/js/dist/editor.js:26801
 msgid "Are you ready to submit for review?"
 msgstr "¿Estás listo para enviarlo a revisión?"
 
-#: wp-includes/js/dist/editor.js:26931
+#: wp-includes/js/dist/editor.js:26955
 msgid "Copy Link"
 msgstr "Copiar enlace"
 
-#: wp-includes/js/dist/editor.js:26931 wp-includes/js/dist/edit-post.js:1057
+#: wp-includes/js/dist/editor.js:26955 wp-includes/js/dist/edit-post.js:1057
 #: wp-includes/js/dist/block-library.js:8566
 msgid "Copied!"
 msgstr "¡Copiado!"
 
 #. translators: %s: post type singular name
-#: wp-includes/js/dist/editor.js:26919
+#: wp-includes/js/dist/editor.js:26943
 msgid "%s address"
 msgstr "dirección del %s"
 
-#: wp-includes/js/dist/editor.js:26914
+#: wp-includes/js/dist/editor.js:26938
 msgid "What’s next?"
 msgstr "¿Y ahora qué?"
 
-#: wp-includes/js/dist/editor.js:26904
+#: wp-includes/js/dist/editor.js:26928
 msgid "is now live."
 msgstr "está ahora visible."
 
-#: wp-includes/js/dist/editor.js:26904
+#: wp-includes/js/dist/editor.js:26928
 msgid "is now scheduled. It will go live on"
 msgstr "está ahora programada. Estará disponible el"
 
-#: wp-includes/js/dist/editor.js:26597
+#: wp-includes/js/dist/editor.js:26621
 msgid "Tags help users and search engines navigate your site and find your content. Add a few keywords to describe your post."
 msgstr "Las etiquetas ayudan a los usuarios y a los motores de búsqueda a navegar por tu sitio y encontrar tu contenido. Añade unas cuantas palabras clave que describan tu entrada."
 
-#: wp-includes/js/dist/editor.js:26593
+#: wp-includes/js/dist/editor.js:26617
 msgid "Add tags"
 msgstr "Añade etiquetas"
 
-#: wp-includes/js/dist/editor.js:26707
+#: wp-includes/js/dist/editor.js:26731
 msgid "Apply the \"%1$s\" format."
 msgstr "Aplica el formato \"%1$s\"."
 
-#: wp-includes/js/dist/editor.js:26704
+#: wp-includes/js/dist/editor.js:26728
 msgid "Your theme uses post formats to highlight different kinds of content, like images or videos. Apply a post format to see this special styling."
 msgstr "Tu tema utiliza formatos de entrada para destacar los distintos tipos de contenido, como imágenes o vídeos. Aplica un formato de entrada para ver estos estilos especiales."
 
-#: wp-includes/js/dist/editor.js:26700
+#: wp-includes/js/dist/editor.js:26724
 msgid "Use a post format"
 msgstr "Usa un formato de entrada"
 
-#: wp-includes/js/dist/editor.js:27069
+#: wp-includes/js/dist/editor.js:27093
 msgid "Always show pre-publish checks."
 msgstr "Mostrar siempre las comprobaciones previas a la publicación."
 
-#: wp-includes/js/dist/editor.js:27061
+#: wp-includes/js/dist/editor.js:27085
 msgid "Close panel"
 msgstr "Cerrar panel"
 
-#: wp-includes/js/dist/editor.js:25764
+#: wp-includes/js/dist/editor.js:25788
 msgid "Submit for Review"
 msgstr "Enviar a revisión"
 
-#: wp-includes/js/dist/editor.js:25760
+#: wp-includes/js/dist/editor.js:25784
 msgid "Scheduling…"
 msgstr "Programando…"
 
-#: wp-includes/js/dist/editor.js:25758
+#: wp-includes/js/dist/editor.js:25782
 msgid "Updating…"
 msgstr "Actualizando..."
 
-#: wp-includes/js/dist/editor.js:25756
+#: wp-includes/js/dist/editor.js:25780
 msgid "Publishing…"
 msgstr "Publicando..."
 
-#: wp-includes/js/dist/editor.js:25321
+#: wp-includes/js/dist/editor.js:25345
 msgid "Click “Preview” to load a preview of this page, so you can make sure you’re happy with your blocks."
 msgstr "Haz clic en «Vista previa» para cargar una previsualización de esta página, para asegurarte de que estás satisfecho con tus bloques."
 
-#: wp-includes/js/dist/editor.js:25315
+#: wp-includes/js/dist/editor.js:25339
 msgctxt "imperative verb"
 msgid "Preview"
 msgstr "Vista previa"
 
-#: wp-includes/js/dist/editor.js:25201 wp-includes/js/dist/editor.js:25204
+#: wp-includes/js/dist/editor.js:25225 wp-includes/js/dist/editor.js:25228
 msgid "Generating preview…"
 msgstr "Generando vista previa…"
 
-#: wp-includes/js/dist/editor.js:25719
+#: wp-includes/js/dist/editor.js:25743
 msgid "Allow Pingbacks & Trackbacks"
 msgstr "Permitir pingbacks y trackbacks"
 
-#: wp-includes/js/dist/editor.js:28496
+#: wp-includes/js/dist/editor.js:28520
 msgid "Change Permalinks"
 msgstr "Cambiar enlaces permanentes"
 
-#: wp-includes/js/dist/editor.js:28468
+#: wp-includes/js/dist/editor.js:28492
 msgid "Permalink:"
 msgstr "Enlace permanente:"
 
-#: wp-includes/js/dist/editor.js:28446
+#: wp-includes/js/dist/editor.js:28470
 msgid "Copy the permalink"
 msgstr "Copia el enlace permanente"
 
-#: wp-includes/js/dist/editor.js:28446
+#: wp-includes/js/dist/editor.js:28470
 msgid "Permalink copied"
 msgstr "Enlace permanente copiado"
 
-#: wp-includes/js/dist/editor.js:28305
+#: wp-includes/js/dist/editor.js:28329
 msgid "Edit post permalink"
 msgstr "Editar enlace permanente de la entrada"
 
-#: wp-includes/js/dist/editor.js:25574
+#: wp-includes/js/dist/editor.js:25598
 msgid "Take Over"
 msgstr "Tomar el control"
 
 #. translators: %s: user's display name
-#: wp-includes/js/dist/editor.js:25564
+#: wp-includes/js/dist/editor.js:25588
 msgid "Another user is currently working on this post, which means you cannot make changes, unless you take over."
 msgstr "Hay otro usuario trabajando ahora mismo en esta entrada, lo que quiere decir que tú no puedes hacer cambios, a no ser que tomes el control."
 
 #. translators: %s: user's display name
-#: wp-includes/js/dist/editor.js:25564
+#: wp-includes/js/dist/editor.js:25588
 msgid "%s is currently working on this post, which means you cannot make changes, unless you take over."
 msgstr "%s está trabajando ahora mismo en esta entrada, lo que quiere decir que tú no puedes hacer cambios a no ser que tomes el control."
 
 #. translators: %s: user's display name
-#: wp-includes/js/dist/editor.js:25556
+#: wp-includes/js/dist/editor.js:25580
 msgid "Another user now has editing control of this post. Don’t worry, your changes up to this moment have been saved."
 msgstr "Otro usuario tiene ahora el control de edición de esta entrada. No te preocupes, se han cambiado tus cambios hasta este momento."
 
 #. translators: %s: user's display name
-#: wp-includes/js/dist/editor.js:25556
+#: wp-includes/js/dist/editor.js:25580
 msgid "%s now has editing control of this post. Don’t worry, your changes up to this moment have been saved."
 msgstr "%s tiene ahora el control de edición de esta entrada. No te preocupes, se han guardado tus cambios hasta este momento."
 
-#: wp-includes/js/dist/editor.js:25552
+#: wp-includes/js/dist/editor.js:25576
 msgid "Avatar"
 msgstr "Avatar"
 
-#: wp-includes/js/dist/editor.js:25544
+#: wp-includes/js/dist/editor.js:25568
 msgid "This post is already being edited."
 msgstr "Esta entrada está siendo editada."
 
-#: wp-includes/js/dist/editor.js:25544
+#: wp-includes/js/dist/editor.js:25568
 msgid "Someone else has taken over this post."
 msgstr "Alguien ha tomado el control de esta entrada."
 
-#: wp-includes/js/dist/editor.js:25145
+#: wp-includes/js/dist/editor.js:25169
 msgid "%d Revision"
 msgid_plural "%d Revisions"
 msgstr[0] "%d revisión"
 msgstr[1] "%d revisiones"
 
-#: wp-includes/js/dist/editor.js:25035
+#: wp-includes/js/dist/editor.js:25059
 msgid "Post Format"
 msgstr "Formato de entrada:"
 
-#: wp-includes/js/dist/editor.js:25009
+#: wp-includes/js/dist/editor.js:25033
 msgid "Chat"
 msgstr "Chat"
 
-#: wp-includes/js/dist/editor.js:24997
+#: wp-includes/js/dist/editor.js:25021
 msgid "Standard"
 msgstr "Estándar"
 
-#: wp-includes/js/dist/editor.js:24982
+#: wp-includes/js/dist/editor.js:25006
 msgid "Aside"
 msgstr "Minientrada"
 
-#: wp-includes/js/dist/editor.js:24870
+#: wp-includes/js/dist/editor.js:24894
 #: wp-includes/js/dist/block-library.js:13233
 msgid "Replace image"
 msgstr "Reemplazar imagen"
 
-#: wp-includes/js/dist/editor.js:24849
+#: wp-includes/js/dist/editor.js:24873
 msgid "Edit or update the image"
 msgstr "Edita o actualiza la imagen"
 
-#: wp-includes/js/dist/editor.js:24678
+#: wp-includes/js/dist/editor.js:24702
 msgid "Learn more about manual excerpts"
 msgstr "Aprende más sobre extractos manuales"
 
-#: wp-includes/js/dist/editor.js:24670
+#: wp-includes/js/dist/editor.js:24694
 msgid "Write an excerpt (optional)"
 msgstr "Escribe un extracto (opcional)"
 
-#: wp-includes/js/dist/editor.js:24637
+#: wp-includes/js/dist/editor.js:24661
 msgid "Allow Comments"
 msgstr "Permitir comentarios"
 
-#: wp-includes/js/dist/editor.js:19994
+#: wp-includes/js/dist/editor.js:20018
 msgid "(%s: %s)"
 msgstr "(%s: %s)"
 
-#: wp-includes/js/dist/editor.js:24380
+#: wp-includes/js/dist/editor.js:24404
 msgid "no parent"
 msgstr "sin superior"
 
-#: wp-includes/js/dist/editor.js:24375
+#: wp-includes/js/dist/editor.js:24399
 msgid "no title"
 msgstr "sin título"
 
-#: wp-includes/js/dist/editor.js:24276
+#: wp-includes/js/dist/editor.js:24300
 msgid "Order"
 msgstr "Orden"
 
-#: wp-includes/js/dist/editor.js:22806
+#: wp-includes/js/dist/editor.js:22830
 msgid "Drag a video, upload a new one or select a file from your library."
 msgstr "Arrastra un vídeo, sube uno nuevo o elige un archivo de tu biblioteca."
 
-#: wp-includes/js/dist/editor.js:22804
+#: wp-includes/js/dist/editor.js:22828
 msgid "Drag an image, upload a new one or select a file from your library."
 msgstr "Arrastra una imagen, sube una nueva o elige un archivo de tu biblioteca."
 
-#: wp-includes/js/dist/editor.js:22802
+#: wp-includes/js/dist/editor.js:22826
 msgid "Drag an audio, upload a new one or select a file from your library."
 msgstr "Arrastra un audio, sube uno nuevo o elige un archivo de tu biblioteca."
 
-#: wp-includes/js/dist/editor.js:22799
+#: wp-includes/js/dist/editor.js:22823
 msgid "Drag a media file, upload a new one or select a file from your library."
 msgstr "Arrastra un archivo de medios, sube uno nuevo o elige un archivo de tu biblioteca."
 
-#: wp-includes/js/dist/editor.js:22639
+#: wp-includes/js/dist/editor.js:22663
 msgid "Paste or type URL"
 msgstr "Pega o teclea la URL"
 
-#: wp-includes/js/dist/editor.js:17642 wp-includes/js/dist/edit-post.js:1156
+#: wp-includes/js/dist/editor.js:17656 wp-includes/js/dist/edit-post.js:1156
 msgid "Manage All Reusable Blocks"
 msgstr "Gestionar todos los bloques reutilizables"
 
-#: wp-includes/js/dist/editor.js:17630
+#: wp-includes/js/dist/editor.js:17644
 msgid "Reusable"
 msgstr "Reutilizable"
 
-#: wp-includes/js/dist/editor.js:17599
+#: wp-includes/js/dist/editor.js:17613
 msgctxt "blocks"
 msgid "Most Used"
 msgstr "Más utilizados"
 
-#: wp-includes/js/dist/editor.js:17592
+#: wp-includes/js/dist/editor.js:17606
 msgid "Available block types"
 msgstr "Tipos de bloques disponibles"
 
-#: wp-includes/js/dist/editor.js:17580 wp-includes/js/dist/editor.js:17583
+#: wp-includes/js/dist/editor.js:17594 wp-includes/js/dist/editor.js:17597
 msgid "Search for a block"
 msgstr "Buscar un bloque"
 
-#: wp-includes/js/dist/editor.js:17532 wp-includes/js/dist/editor.js:27828
+#: wp-includes/js/dist/editor.js:17546 wp-includes/js/dist/editor.js:27852
 msgid "%d result found."
 msgid_plural "%d results found."
 msgstr[0] "%d resultado encontrado."
 msgstr[1] "%d resultados encontrados."
 
-#: wp-includes/js/dist/editor.js:17264
+#: wp-includes/js/dist/editor.js:17278
 msgid "Inline Elements"
 msgstr "Elementos integrados"
 
-#: wp-includes/js/dist/editor.js:18195
+#: wp-includes/js/dist/editor.js:18209
 msgid "Add %s"
 msgstr "Añadir %s"
 
-#: wp-includes/js/dist/editor.js:30496
+#: wp-includes/js/dist/editor.js:30520
 msgid "The editor has encountered an unexpected error."
 msgstr "El editor ha encontrado un error inesperado."
 
-#: wp-includes/js/dist/editor.js:30495
+#: wp-includes/js/dist/editor.js:30519
 msgid "Copy Error"
 msgstr "Copiar error"
 
-#: wp-includes/js/dist/editor.js:30491
+#: wp-includes/js/dist/editor.js:30515
 msgid "Copy Post Text"
 msgstr "Copiar texto de la entrada"
 
-#: wp-includes/js/dist/editor.js:30487
+#: wp-includes/js/dist/editor.js:30511
 msgid "Attempt Recovery"
 msgstr "Intentar recuperación"
 
-#: wp-includes/js/dist/editor.js:23468
+#: wp-includes/js/dist/editor.js:23492
 msgid "(Click to focus this heading)"
 msgstr "(Haz clic para resaltar este encabezado)"
 
-#: wp-includes/js/dist/editor.js:23514
+#: wp-includes/js/dist/editor.js:23538
 msgid "(Multiple H1 headings are not recommended)"
 msgstr "(No se recomiendan varios H1)"
 
-#: wp-includes/js/dist/editor.js:23509
+#: wp-includes/js/dist/editor.js:23533
 msgid "(Your theme may already use a H1 for the post title)"
 msgstr "(Tu tema puede que ya use un H1 para el título de la entrada)"
 
-#: wp-includes/js/dist/editor.js:23504
+#: wp-includes/js/dist/editor.js:23528
 msgid "(Incorrect heading level)"
 msgstr "(Nivel de encabezado incorrecto)"
 
-#: wp-includes/js/dist/editor.js:23499
+#: wp-includes/js/dist/editor.js:23523
 msgid "(Empty heading)"
 msgstr "(Encabezado vacío)"
 
-#: wp-includes/js/dist/editor.js:15259
+#: wp-includes/js/dist/editor.js:15273
 msgid "This color combination may be hard for people to read. Try using a brighter background color and/or a darker text color."
 msgstr "Esta combinación de color puede ser difícil de leer para la gente. Trata de usar un color de fondo más claro y/o un color de texto más oscuro."
 
-#: wp-includes/js/dist/editor.js:15259
+#: wp-includes/js/dist/editor.js:15273
 msgid "This color combination may be hard for people to read. Try using a darker background color and/or a brighter text color."
 msgstr "Esta combinación de color puede ser difícil de leer para la gente. Trata de usar un color de fondo más oscuro y/o un color de texto más claro."
 
-#: wp-includes/js/dist/editor.js:19907
+#: wp-includes/js/dist/editor.js:19931
 msgid "(current %s: %s)"
 msgstr "(actual %s: %s)"
 
-#: wp-includes/js/dist/editor.js:30153
+#: wp-includes/js/dist/editor.js:30177
 msgid "Transform To:"
 msgstr "Transformar a:"
 
-#: wp-includes/js/dist/editor.js:30146
+#: wp-includes/js/dist/editor.js:30170
 msgid "Block Styles"
 msgstr "Estilos de bloque"
 
-#: wp-includes/js/dist/editor.js:30123
+#: wp-includes/js/dist/editor.js:30147
 msgid "Change type of %d block"
 msgid_plural "Change type of %d blocks"
 msgstr[0] "Cambiar el tipo de %d bloque"
 msgstr[1] "Cambiar el tipo de %d bloques"
 
-#: wp-includes/js/dist/editor.js:30123
+#: wp-includes/js/dist/editor.js:30147
 msgid "Change block type"
 msgstr "Cambiar tipo de bloque"
 
-#: wp-includes/js/dist/editor.js:29723
+#: wp-includes/js/dist/editor.js:29747
 msgid "Remove from Reusable Blocks"
 msgstr "Quitar de los bloques reutilizables"
 
-#: wp-includes/js/dist/editor.js:29642
+#: wp-includes/js/dist/editor.js:29666
 msgid "Convert to Regular Block"
 msgstr "Convertir a bloque normal"
 
-#: wp-includes/js/dist/editor.js:29638
+#: wp-includes/js/dist/editor.js:29662
 msgid "Add to Reusable Blocks"
 msgstr "Añadir a los bloques reutilizables"
 
-#: wp-includes/js/dist/editor.js:29990
+#: wp-includes/js/dist/editor.js:30014
 msgid "Remove Block"
 msgstr "Quitar bloque"
 
-#: wp-includes/js/dist/editor.js:29969
+#: wp-includes/js/dist/editor.js:29993
 msgid "Insert After"
 msgstr "Insertar después"
 
-#: wp-includes/js/dist/editor.js:29964
+#: wp-includes/js/dist/editor.js:29988
 msgid "Insert Before"
 msgstr "Insertar antes"
 
-#: wp-includes/js/dist/editor.js:29959
+#: wp-includes/js/dist/editor.js:29983
 msgid "Duplicate"
 msgstr "Duplicar"
 
-#: wp-includes/js/dist/editor.js:16150 wp-includes/js/dist/editor.js:16157
-#: wp-includes/js/dist/editor.js:29923
+#: wp-includes/js/dist/editor.js:16164 wp-includes/js/dist/editor.js:16171
+#: wp-includes/js/dist/editor.js:29947
 msgid "More options"
 msgstr "Más opciones"
 
-#: wp-includes/js/dist/editor.js:29923
+#: wp-includes/js/dist/editor.js:29947
 msgid "Hide options"
 msgstr "Ocultar opciones"
 
-#: wp-includes/js/dist/editor.js:29575
+#: wp-includes/js/dist/editor.js:29599
 msgid "Edit visually"
 msgstr "Editar visualmente"
 
-#: wp-includes/js/dist/editor.js:29575
+#: wp-includes/js/dist/editor.js:29599
 msgid "Edit as HTML"
 msgstr "Editar como HTML"
 
-#: wp-includes/js/dist/editor.js:14855 wp-includes/js/dist/editor.js:14930
+#: wp-includes/js/dist/editor.js:14869 wp-includes/js/dist/editor.js:14944
 msgid "Block Navigation"
 msgstr "Navegación de bloques"
 
 #. translators: 1: Number of selected blocks, 2: Position of selected blocks
-#: wp-includes/js/dist/editor.js:15585
+#: wp-includes/js/dist/editor.js:15599
 msgid "Move %1$d block from position %2$d down by one place"
 msgid_plural "Move %1$d blocks from position %2$d down by one place"
 msgstr[0] "Mueve %1$d bloque de la posición %2$d a un sitio más abajo"
 msgstr[1] "Mueve %1$d bloques de la posición %2$d a un sitio más abajo"
 
 #. translators: 1: Number of selected blocks, 2: Position of selected blocks
-#: wp-includes/js/dist/editor.js:15580
+#: wp-includes/js/dist/editor.js:15594
 msgid "Move %1$d block from position %2$d up by one place"
 msgid_plural "Move %1$d blocks from position %2$d up by one place"
 msgstr[0] "Mueve %1$d bloque de la posición %2$d un sitio más arriba"
 msgstr[1] "Mueve %1$d bloques de la posición %2$d un sitio más arriba"
 
-#: wp-includes/js/dist/editor.js:15575
+#: wp-includes/js/dist/editor.js:15589
 msgid "Blocks cannot be moved down as they are already at the bottom"
 msgstr "Los bloques no se pueden mover hacia abajo porque ya están en el fondo"
 
-#: wp-includes/js/dist/editor.js:15571
+#: wp-includes/js/dist/editor.js:15585
 msgid "Blocks cannot be moved up as they are already at the top"
 msgstr "Los bloques no se pueden mover arriba porque ya están al principio"
 
 #. translators: %s: Type of block (i.e. Text, Image etc)
-#: wp-includes/js/dist/editor.js:15551
+#: wp-includes/js/dist/editor.js:15565
 msgid "Block %s is at the beginning of the content and can’t be moved up"
 msgstr "El bloque %s está al principio del contenido y no puede moverse arriba"
 
 #. translators: 1: Type of block (i.e. Text, Image etc), 2: Position of
 #. selected block, 3: New position
-#: wp-includes/js/dist/editor.js:15545
+#: wp-includes/js/dist/editor.js:15559
 msgid "Move %1$s block from position %2$d up to position %3$d"
 msgstr "Mueve %1$s bloque de la posición %2$d a la posición %3$d"
 
 #. translators: %s: Type of block (i.e. Text, Image etc)
-#: wp-includes/js/dist/editor.js:15539
+#: wp-includes/js/dist/editor.js:15553
 msgid "Block %s is at the end of the content and can’t be moved down"
 msgstr "El bloque %s está al final del contenido y no puede moverse abajo"
 
 #. translators: 1: Type of block (i.e. Text, Image etc), 2: Position of
 #. selected block, 3: New position
-#: wp-includes/js/dist/editor.js:15533
+#: wp-includes/js/dist/editor.js:15547
 msgid "Move %1$s block from position %2$d down to position %3$d"
 msgstr "Mueve %1$s bloque de la posición %2$d a la posición %3$d"
 
 #. translators: %s: Type of block (i.e. Text, Image etc)
-#: wp-includes/js/dist/editor.js:15527
+#: wp-includes/js/dist/editor.js:15541
 msgid "Block %s is the only block, and cannot be moved"
 msgstr "El bloque %s es el único bloque, y no puede moverse"
 
-#: wp-includes/js/dist/editor.js:18887
+#: wp-includes/js/dist/editor.js:18901
 msgid "Block: %s"
 msgstr "Bloque: %s"
 
-#: wp-includes/js/dist/editor.js:16425
+#: wp-includes/js/dist/editor.js:16439
 msgid "This block contains unexpected or invalid content."
 msgstr "Este bloque contiene contenido inesperado o no válido."
 
 #. translators: Button to fix block content
-#: wp-includes/js/dist/editor.js:16418
+#: wp-includes/js/dist/editor.js:16432
 msgctxt "imperative verb"
 msgid "Resolve"
 msgstr "Resuelve"
 
-#: wp-includes/js/dist/editor.js:16407 wp-includes/js/dist/editor.js:29774
+#: wp-includes/js/dist/editor.js:16421 wp-includes/js/dist/editor.js:29798
 msgid "Convert to Blocks"
 msgstr "Convertir a bloques"
 
 #. translators: Dialog title to fix block content
-#: wp-includes/js/dist/editor.js:16399
+#: wp-includes/js/dist/editor.js:16413
 msgid "Resolve Block"
 msgstr "Resolver bloque"
 
-#: wp-includes/js/dist/editor.js:16392
+#: wp-includes/js/dist/editor.js:16406
 msgid "Convert to Classic Block"
 msgstr "Convertir a bloque clásico"
 
-#: wp-includes/js/dist/editor.js:16486
+#: wp-includes/js/dist/editor.js:16500
 msgid "This block has encountered an error and cannot be previewed."
 msgstr "Este bloque ha encontrado un error y no puede previsualizarse."
 
-#: wp-includes/js/dist/editor.js:17736 wp-includes/js/dist/editor.js:19256
-#: wp-includes/js/dist/editor.js:19355
+#: wp-includes/js/dist/editor.js:17750 wp-includes/js/dist/editor.js:19280
+#: wp-includes/js/dist/editor.js:19379
 msgid "Add block"
 msgstr "Añadir bloque"
 
-#: wp-includes/js/dist/editor.js:29400
+#: wp-includes/js/dist/editor.js:29424
 msgid "No block selected."
 msgstr "Ningún bloque seleccionado."
 
-#: wp-includes/js/dist/editor.js:16309
+#: wp-includes/js/dist/editor.js:16323
 msgid "After Conversion"
 msgstr "Después de la conversión"
 
-#: wp-includes/js/dist/editor.js:16305 wp-includes/js/dist/editor.js:16423
+#: wp-includes/js/dist/editor.js:16319 wp-includes/js/dist/editor.js:16437
 msgid "Convert to HTML"
 msgstr "Convertir a HTML"
 
-#: wp-includes/js/dist/editor.js:16302
+#: wp-includes/js/dist/editor.js:16316
 msgid "Current"
 msgstr "Actual"
 
-#: wp-includes/js/dist/editor.js:14572
+#: wp-includes/js/dist/editor.js:14586
 msgid "Change Alignment"
 msgstr "Cambiar alineación"
 
-#: wp-includes/js/dist/editor.js:14545
+#: wp-includes/js/dist/editor.js:14559
 msgid "Full width"
 msgstr "Ancho completo"
 
-#: wp-includes/js/dist/editor.js:14541
+#: wp-includes/js/dist/editor.js:14555
 msgid "Wide width"
 msgstr "Ancho amplio"
 
-#: wp-includes/js/dist/editor.js:14477
+#: wp-includes/js/dist/editor.js:14491
 msgid "Change Text Alignment"
 msgstr "Cambiar alineación del texto"
 
@@ -2461,7 +2461,7 @@ msgstr "Error al cargar el bloque: %s"
 msgid "Number of items"
 msgstr "Número de elementos"
 
-#: wp-includes/js/dist/components.js:33458 wp-includes/js/dist/editor.js:27670
+#: wp-includes/js/dist/components.js:33458 wp-includes/js/dist/editor.js:27694
 msgid "Category"
 msgstr "Categoría"
 
@@ -2528,7 +2528,7 @@ msgctxt "font size name"
 msgid "Custom"
 msgstr "Personalizado"
 
-#: wp-includes/js/dist/components.js:31007 wp-includes/js/dist/editor.js:8297
+#: wp-includes/js/dist/components.js:31007 wp-includes/js/dist/editor.js:8298
 msgctxt "font size name"
 msgid "Normal"
 msgstr "Normal"
@@ -2538,7 +2538,7 @@ msgid "Custom font size"
 msgstr "Tamaño de fuente personalizado"
 
 #. translators: accessibility text
-#: wp-includes/js/dist/components.js:30779 wp-includes/js/dist/editor.js:25319
+#: wp-includes/js/dist/components.js:30779 wp-includes/js/dist/editor.js:25343
 msgid "(opens in a new tab)"
 msgstr "(abre en una nueva pestaña)"
 
@@ -2680,18 +2680,18 @@ msgid "Custom color picker"
 msgstr "Selector de color personalizado"
 
 #: wp-includes/js/dist/components.js:26577
-#: wp-includes/js/dist/components.js:31817 wp-includes/js/dist/editor.js:23030
+#: wp-includes/js/dist/components.js:31817 wp-includes/js/dist/editor.js:23054
 msgid "No results."
 msgstr "No hay resultados."
 
 #: wp-includes/js/dist/components.js:26575
-#: wp-includes/js/dist/components.js:31815 wp-includes/js/dist/editor.js:23028
+#: wp-includes/js/dist/components.js:31815 wp-includes/js/dist/editor.js:23052
 msgid "%d result found, use up and down arrow keys to navigate."
 msgid_plural "%d results found, use up and down arrow keys to navigate."
 msgstr[0] "%d resultado encontrado, utiliza las teclas arriba y abajo para navegar."
 msgstr[1] "%d resultados encontrados, utiliza las teclas arriba y abajo para navegar."
 
-#: wp-includes/post.php:252 wp-includes/js/dist/editor.js:12999
+#: wp-includes/post.php:252 wp-includes/js/dist/editor.js:13013
 msgid "Block updated."
 msgstr "Bloque actualizado."
 
@@ -2723,7 +2723,7 @@ msgstr "Navegación por la lista de bloques"
 msgid "Filter blocks list"
 msgstr "Filtrar lista de bloques"
 
-#: wp-includes/post.php:243 wp-includes/js/dist/editor.js:17644
+#: wp-includes/post.php:243 wp-includes/js/dist/editor.js:17658
 msgid "No blocks found."
 msgstr "No se han encontrado bloques."
 
@@ -2777,7 +2777,7 @@ msgstr "Bloques"
 msgid "M j, Y g:i a"
 msgstr "j \\d\\e M, Y H:i"
 
-#: wp-includes/js/dist/editor.js:28942
+#: wp-includes/js/dist/editor.js:28966
 msgid "Blocks"
 msgstr "Bloques"
 
@@ -3668,7 +3668,7 @@ msgid "Displays an image gallery."
 msgstr "Muestra una galería de imágenes."
 
 #: wp-includes/widgets/class-wp-widget-media-gallery.php:25
-#: wp-includes/js/dist/editor.js:24985
+#: wp-includes/js/dist/editor.js:25009
 #: wp-includes/js/dist/block-library.js:5078
 #: wp-includes/js/dist/block-library.js:5234
 msgid "Gallery"
@@ -3801,7 +3801,7 @@ msgstr "Descartar cambios"
 msgid "Please save your changes in order to share the preview."
 msgstr "Por favor, guarda los cambios para compartir la vista previa."
 
-#: wp-includes/js/dist/editor.js:25903
+#: wp-includes/js/dist/editor.js:25927
 msgid "Schedule…"
 msgstr "Programado…"
 
@@ -5030,7 +5030,7 @@ msgid "Suggested image dimensions: %1$s by %2$s pixels."
 msgstr "Dimensiones de imagen sugeridas: %1$s por %2$s píxeles."
 
 #: wp-includes/script-loader.php:1027 wp-includes/functions.php:2161
-#: wp-includes/js/dist/editor.js:22314
+#: wp-includes/js/dist/editor.js:22338
 msgid "Sorry, this file type is not permitted for security reasons."
 msgstr "Lo siento, este tipo de archivo no está permitido por motivos de seguridad."
 
@@ -5722,7 +5722,7 @@ msgstr "Ruta base REST para la taxonomía."
 msgid "+ %s"
 msgstr "+ %s"
 
-#: wp-includes/l10n.php:1412
+#: wp-includes/l10n.php:1409
 msgctxt "default site language"
 msgid "Site Default"
 msgstr "Predeterminado del sitio"
@@ -7679,7 +7679,7 @@ msgstr "La plantilla no está disponible. Los temas necesitan un archivo de plan
 msgid "Invalid object type"
 msgstr "Tipo de objeto no válido"
 
-#: wp-includes/class-wp-editor.php:1263 wp-includes/js/dist/editor.js:23188
+#: wp-includes/class-wp-editor.php:1263 wp-includes/js/dist/editor.js:23212
 msgid "Paste URL or type to search"
 msgstr "Pega la URL o teclea para buscar"
 
@@ -8416,7 +8416,7 @@ msgstr "Desplegar/Plegar sección: %s"
 #. 'characters_including_spaces'. Otherwise, enter 'words'. Do not translate
 #. into your own language.
 #: wp-includes/script-loader.php:1884 wp-includes/formatting.php:3373
-#: wp-includes/js/dist/editor.js:28892
+#: wp-includes/js/dist/editor.js:28916
 msgctxt "Word count type. Do not translate!"
 msgid "words"
 msgstr "words"
@@ -9400,12 +9400,12 @@ msgstr "%s debe definir una conexión de base de datos para utilizarla con el es
 msgid "You need to pass an array of types."
 msgstr "Tienes que pasar una matriz de tipos."
 
-#: wp-includes/l10n.php:1404
+#: wp-includes/l10n.php:1401
 msgctxt "translations"
 msgid "Installed"
 msgstr "Instalada"
 
-#: wp-includes/l10n.php:1438
+#: wp-includes/l10n.php:1435
 msgctxt "translations"
 msgid "Available"
 msgstr "Disponible"
@@ -10501,7 +10501,7 @@ msgstr "Color del texto"
 msgid "Background color"
 msgstr "Color de fondo"
 
-#: wp-includes/js/dist/editor.js:24451
+#: wp-includes/js/dist/editor.js:24475
 msgid "Template:"
 msgstr "Plantilla:"
 
@@ -10626,7 +10626,7 @@ msgstr "Restaurar el último borrador"
 msgid "Visual aids"
 msgstr "Ayudas visuales"
 
-#: wp-includes/class-wp-editor.php:1042 wp-includes/js/dist/editor.js:14529
+#: wp-includes/class-wp-editor.php:1042 wp-includes/js/dist/editor.js:14543
 msgid "Align left"
 msgstr "Alineación izquierda"
 
@@ -10642,7 +10642,7 @@ msgstr "El pegado es ahora en modo de texto plano. Los contenidos se pegarán co
 msgid "Decrease indent"
 msgstr "Reducir sangría"
 
-#: wp-includes/class-wp-editor.php:1040 wp-includes/js/dist/editor.js:14533
+#: wp-includes/class-wp-editor.php:1040 wp-includes/js/dist/editor.js:14547
 msgid "Align center"
 msgstr "Alineación centrada"
 
@@ -10667,7 +10667,7 @@ msgstr "Aumentar sangría"
 msgid "Numbered list"
 msgstr "Lista numerada"
 
-#: wp-includes/class-wp-editor.php:1041 wp-includes/js/dist/editor.js:14537
+#: wp-includes/class-wp-editor.php:1041 wp-includes/js/dist/editor.js:14551
 msgid "Align right"
 msgstr "Alineación derecha"
 
@@ -10682,13 +10682,13 @@ msgstr "Selecciona un area al que mover el widget."
 
 #: wp-includes/class-wp-customize-widgets.php:685
 #: wp-includes/class-wp-customize-nav-menus.php:948
-#: wp-includes/js/dist/editor.js:15817
+#: wp-includes/js/dist/editor.js:15831
 msgid "Move up"
 msgstr "Subir"
 
 #: wp-includes/class-wp-customize-widgets.php:684
 #: wp-includes/class-wp-customize-nav-menus.php:949
-#: wp-includes/js/dist/editor.js:15834
+#: wp-includes/js/dist/editor.js:15848
 msgid "Move down"
 msgstr "Bajar"
 
@@ -10752,7 +10752,7 @@ msgstr "https://es.wordpress.org/support/"
 msgid "https://wordpress.org/"
 msgstr "https://es.wordpress.org/"
 
-#: wp-includes/js/dist/editor.js:25000
+#: wp-includes/js/dist/editor.js:25024
 msgid "Status"
 msgstr "Estado"
 
@@ -11152,7 +11152,7 @@ msgstr "Titula esta imagen&hellip;"
 msgid "Random Order"
 msgstr "Orden aleatorio"
 
-#: wp-includes/media.php:3549 wp-includes/js/dist/editor.js:22870
+#: wp-includes/media.php:3549 wp-includes/js/dist/editor.js:22894
 msgid "Insert from URL"
 msgstr "Insertar desde URL"
 
@@ -11180,7 +11180,7 @@ msgstr "No se han encontrado elementos."
 msgid "Reverse order"
 msgstr "Orden inverso"
 
-#: wp-includes/js/dist/editor.js:24806
+#: wp-includes/js/dist/editor.js:24830
 msgid "Set featured image"
 msgstr "Asignar imagen destacada"
 
@@ -11225,8 +11225,8 @@ msgid "Manage Video"
 msgstr "Administrar vídeo"
 
 #: wp-includes/widgets/class-wp-widget-media-video.php:25
-#: wp-includes/post.php:2479 wp-includes/js/dist/editor.js:22829
-#: wp-includes/js/dist/editor.js:25003
+#: wp-includes/post.php:2479 wp-includes/js/dist/editor.js:22853
+#: wp-includes/js/dist/editor.js:25027
 #: wp-includes/js/dist/block-library.js:13284
 msgid "Video"
 msgstr "Vídeo"
@@ -11260,8 +11260,8 @@ msgid "Insert into page"
 msgstr "Insertar en la página"
 
 #: wp-includes/widgets/class-wp-widget-media-audio.php:25
-#: wp-includes/post.php:2478 wp-includes/js/dist/editor.js:22825
-#: wp-includes/js/dist/editor.js:25006
+#: wp-includes/post.php:2478 wp-includes/js/dist/editor.js:22849
+#: wp-includes/js/dist/editor.js:25030
 #: wp-includes/js/dist/block-library.js:5957
 msgid "Audio"
 msgstr "Audio"
@@ -11302,7 +11302,7 @@ msgstr "Detalles del adjunto"
 
 #: wp-includes/media-template.php:696 wp-includes/media-template.php:771
 #: wp-includes/media-template.php:945 wp-includes/media.php:3181
-#: wp-includes/js/dist/editor.js:8321
+#: wp-includes/js/dist/editor.js:8322
 msgid "Large"
 msgstr "Grande"
 
@@ -11347,7 +11347,7 @@ msgstr "Arrastra archivos para subirlos"
 msgid "Create Gallery"
 msgstr "Crear galería"
 
-#: wp-includes/media.php:3515 wp-includes/js/dist/editor.js:22861
+#: wp-includes/media.php:3515 wp-includes/js/dist/editor.js:22885
 msgid "Media Library"
 msgstr "Biblioteca de medios"
 
@@ -11609,7 +11609,7 @@ msgid "Colors"
 msgstr "Colores"
 
 #: wp-includes/script-loader.php:1296 wp-includes/script-loader.php:1470
-#: wp-includes/js/dist/editor.js:27306
+#: wp-includes/js/dist/editor.js:27330
 msgid "Saved"
 msgstr "Guardado"
 
@@ -11710,7 +11710,7 @@ msgid "Change image"
 msgstr "Cambiar imagen"
 
 #: wp-includes/customize/class-wp-customize-header-image-control.php:113
-#: wp-includes/js/dist/editor.js:24808
+#: wp-includes/js/dist/editor.js:24832
 msgid "Remove image"
 msgstr "Quitar imagen"
 
@@ -11738,11 +11738,11 @@ msgstr "Archivos permitidos"
 msgid "Remove"
 msgstr "Quitar"
 
-#: wp-includes/js/dist/editor.js:22849
+#: wp-includes/js/dist/editor.js:22873
 msgid "Upload"
 msgstr "Subir"
 
-#: wp-includes/js/dist/editor.js:24804 wp-includes/js/dist/edit-post.js:3904
+#: wp-includes/js/dist/editor.js:24828 wp-includes/js/dist/edit-post.js:3904
 #: wp-includes/js/dist/edit-post.js:4685
 msgid "Featured Image"
 msgstr "Imagen destacada"
@@ -11874,7 +11874,7 @@ msgstr "Descripción corta"
 msgid "Your latest posts"
 msgstr "Tus últimas entradas"
 
-#: wp-includes/js/dist/editor.js:29415
+#: wp-includes/js/dist/editor.js:29439
 msgid "Styles"
 msgstr "Estilos"
 
@@ -12279,7 +12279,7 @@ msgstr "Todas las páginas"
 msgid "All Posts"
 msgstr "Todas las entradas"
 
-#: wp-includes/class-wp-editor.php:1133 wp-includes/js/dist/editor.js:24988
+#: wp-includes/class-wp-editor.php:1133 wp-includes/js/dist/editor.js:25012
 #: wp-includes/js/dist/format-library.js:1192
 #: wp-includes/js/dist/format-library.js:1292
 msgid "Link"
@@ -12305,7 +12305,7 @@ msgstr "Navegación de comentarios"
 msgid "Toolbar"
 msgstr "Barra de herramientas"
 
-#: wp-includes/js/dist/editor.js:8288
+#: wp-includes/js/dist/editor.js:8289
 msgid "Very dark gray"
 msgstr "Gris muy oscuro"
 
@@ -12321,7 +12321,7 @@ msgstr "Precarga"
 msgid "Poster"
 msgstr "Cartel"
 
-#: wp-includes/js/dist/editor.js:28932
+#: wp-includes/js/dist/editor.js:28956
 msgid "Words"
 msgstr "Palabras"
 
@@ -12663,7 +12663,7 @@ msgstr "j F Y"
 msgid "Choose from the most used tags"
 msgstr "Elige entre las etiquetas más utilizadas"
 
-#: wp-includes/js/dist/editor.js:22340
+#: wp-includes/js/dist/editor.js:22364
 msgid "This file exceeds the maximum upload size for this site."
 msgstr "El tamaño del archivo excede el tamaño permitido en este sitio."
 
@@ -12676,7 +12676,7 @@ msgstr "Categorías"
 msgid "All Tags"
 msgstr "Todas las etiquetas"
 
-#: wp-includes/taxonomy.php:518 wp-includes/js/dist/editor.js:27920
+#: wp-includes/taxonomy.php:518 wp-includes/js/dist/editor.js:27944
 msgid "Parent Category"
 msgstr "Categoría superior"
 
@@ -12688,7 +12688,7 @@ msgstr "Categoría superior:"
 msgid "Update Tag"
 msgstr "Actualizar etiqueta"
 
-#: wp-includes/taxonomy.php:523 wp-includes/js/dist/editor.js:26516
+#: wp-includes/taxonomy.php:523 wp-includes/js/dist/editor.js:26540
 msgid "Add New Tag"
 msgstr "Añadir nueva etiqueta"
 
@@ -13638,7 +13638,7 @@ msgstr "Error al guardar los cambios."
 msgid "Submitted on:"
 msgstr "Enviado el:"
 
-#: wp-includes/script-loader.php:1445 wp-includes/js/dist/editor.js:25972
+#: wp-includes/script-loader.php:1445 wp-includes/js/dist/editor.js:25996
 msgid "Password Protected"
 msgstr "Protegida con contraseña"
 
@@ -13725,8 +13725,8 @@ msgstr "de"
 
 #: wp-includes/script-loader.php:1011
 #: wp-includes/widgets/class-wp-widget-media-image.php:25
-#: wp-includes/class-wp-editor.php:1089 wp-includes/js/dist/editor.js:22827
-#: wp-includes/js/dist/editor.js:24991
+#: wp-includes/class-wp-editor.php:1089 wp-includes/js/dist/editor.js:22851
+#: wp-includes/js/dist/editor.js:25015
 #: wp-includes/js/dist/block-library.js:3616
 #: wp-includes/js/dist/format-library.js:498
 msgid "Image"
@@ -14060,7 +14060,7 @@ msgstr "Insertar etiqueta de salto de página"
 msgid "Fill Screen"
 msgstr "Rellenar pantalla"
 
-#: wp-includes/js/dist/editor.js:24994
+#: wp-includes/js/dist/editor.js:25018
 #: wp-includes/js/dist/block-library.js:4295
 msgid "Quote"
 msgstr "Cita"
@@ -14304,8 +14304,8 @@ msgstr "Párrafo"
 msgid "Font Size"
 msgstr "Tamaño de fuente"
 
-#: wp-includes/js/dist/editor.js:25049 wp-includes/js/dist/editor.js:26590
-#: wp-includes/js/dist/editor.js:26697
+#: wp-includes/js/dist/editor.js:25073 wp-includes/js/dist/editor.js:26614
+#: wp-includes/js/dist/editor.js:26721
 msgid "Suggestion:"
 msgstr "Sugerencia:"
 
@@ -15253,7 +15253,7 @@ msgstr "Temas"
 msgid "Sites"
 msgstr "Sitios"
 
-#: wp-includes/js/dist/editor.js:23295
+#: wp-includes/js/dist/editor.js:23319
 msgid "Edit Link"
 msgstr "Editar enlace"
 
@@ -15355,7 +15355,7 @@ msgstr "Ayuda"
 #: wp-includes/script-loader.php:1262 wp-includes/script-loader.php:1490
 #: wp-includes/widgets/class-wp-widget-recent-posts.php:91
 #: wp-includes/blocks/latest-comments.php:31 wp-includes/media.php:3143
-#: wp-includes/js/dist/editor.js:23219 wp-includes/js/dist/editor.js:26912
+#: wp-includes/js/dist/editor.js:23243 wp-includes/js/dist/editor.js:26936
 #: wp-includes/js/dist/edit-post.js:4232
 msgid "(no title)"
 msgstr "(sin título)"
@@ -15380,7 +15380,7 @@ msgstr "Elegir"
 #: wp-includes/script-loader.php:1298 wp-includes/script-loader.php:1921
 #: wp-includes/class-wp-customize-manager.php:5301
 #: wp-includes/class-wp-editor.php:1056 wp-includes/class-wp-editor.php:1710
-#: wp-includes/js/dist/components.js:29589 wp-includes/js/dist/editor.js:23313
+#: wp-includes/js/dist/components.js:29589 wp-includes/js/dist/editor.js:23337
 #: wp-includes/js/dist/edit-post.js:3485 wp-includes/js/dist/edit-post.js:3883
 msgid "Close"
 msgstr "Cerrar"
@@ -15441,15 +15441,15 @@ msgstr "Añadir o quitar etiquetas"
 
 #: wp-includes/script-loader.php:1260 wp-includes/script-loader.php:1439
 #: wp-includes/script-loader.php:1520 wp-includes/media.php:3499
-#: wp-includes/js/dist/editor.js:25766
+#: wp-includes/js/dist/editor.js:25790
 msgid "Update"
 msgstr "Actualizar"
 
-#: wp-includes/js/dist/editor.js:25768
+#: wp-includes/js/dist/editor.js:25792
 msgid "Schedule"
 msgstr "Programar"
 
-#: wp-includes/script-loader.php:1443 wp-includes/js/dist/editor.js:25964
+#: wp-includes/script-loader.php:1443 wp-includes/js/dist/editor.js:25988
 msgid "Public"
 msgstr "Público"
 
@@ -15458,7 +15458,7 @@ msgid "Public, Sticky"
 msgstr "Pública, fija"
 
 #: wp-includes/script-loader.php:1442 wp-includes/post.php:802
-#: wp-includes/post.php:822 wp-includes/js/dist/editor.js:25968
+#: wp-includes/post.php:822 wp-includes/js/dist/editor.js:25992
 msgid "Private"
 msgstr "Privada"
 
@@ -15470,7 +15470,7 @@ msgstr "Aceptar"
 msgid "Privately Published"
 msgstr "Publicada como privada"
 
-#: wp-includes/script-loader.php:1440 wp-includes/js/dist/editor.js:27315
+#: wp-includes/script-loader.php:1440 wp-includes/js/dist/editor.js:27339
 msgid "Save as Pending"
 msgstr "Guardar como pendiente"
 
@@ -15479,7 +15479,7 @@ msgid "Image URL"
 msgstr "URL de la imagen"
 
 #: wp-includes/media.php:4022 wp-includes/class-wp-editor.php:1106
-#: wp-includes/js/dist/editor.js:22822
+#: wp-includes/js/dist/editor.js:22846
 msgid "Media"
 msgstr "Medios"
 
@@ -15511,13 +15511,13 @@ msgstr "Tamaño"
 
 #: wp-includes/media-template.php:697 wp-includes/media-template.php:772
 #: wp-includes/media-template.php:946 wp-includes/media.php:3182
-#: wp-includes/js/dist/editor.js:8324
+#: wp-includes/js/dist/editor.js:8325
 msgid "Full Size"
 msgstr "Tamaño completo"
 
 #: wp-includes/media-template.php:695 wp-includes/media-template.php:770
 #: wp-includes/media-template.php:944 wp-includes/media.php:3180
-#: wp-includes/js/dist/editor.js:8318
+#: wp-includes/js/dist/editor.js:8319
 msgid "Medium"
 msgstr "Medio"
 
@@ -15566,11 +15566,11 @@ msgstr "¿El archivo &#8220;%s&#8221; no existe?"
 
 #: wp-includes/media-template.php:694 wp-includes/media-template.php:769
 #: wp-includes/media-template.php:943 wp-includes/media.php:3179
-#: wp-includes/js/dist/editor.js:8315
+#: wp-includes/js/dist/editor.js:8316
 msgid "Thumbnail"
 msgstr "Miniatura"
 
-#: wp-includes/class-wp-editor.php:1052 wp-includes/js/dist/editor.js:23995
+#: wp-includes/class-wp-editor.php:1052 wp-includes/js/dist/editor.js:24019
 msgid "Redo"
 msgstr "Rehacer"
 
@@ -15620,7 +15620,7 @@ msgstr "Responder"
 
 #: wp-includes/script-loader.php:1287 wp-includes/script-loader.php:1441
 #: wp-includes/class-wp-customize-manager.php:4622
-#: wp-includes/js/dist/editor.js:27315
+#: wp-includes/js/dist/editor.js:27339
 msgid "Save Draft"
 msgstr "Solo guardar"
 
@@ -15649,7 +15649,7 @@ msgstr "Comentarios recientes"
 
 #: wp-includes/media-template.php:1246
 #: wp-includes/class-wp-customize-manager.php:4156
-#: wp-includes/class-wp-editor.php:1122 wp-includes/js/dist/editor.js:17039
+#: wp-includes/class-wp-editor.php:1122 wp-includes/js/dist/editor.js:17053
 #: wp-includes/js/dist/edit-post.js:4856
 #: wp-includes/js/dist/block-library.js:8893
 msgid "Preview"
@@ -15659,7 +15659,7 @@ msgstr "Vista previa"
 msgid "RSS"
 msgstr "RSS"
 
-#: wp-includes/js/dist/editor.js:23320
+#: wp-includes/js/dist/editor.js:23344
 msgid "Submit"
 msgstr "Enviar"
 
@@ -15718,7 +15718,7 @@ msgstr "Descripción"
 msgid "Name"
 msgstr "Nombre"
 
-#: wp-includes/class-wp-editor.php:1092 wp-includes/js/dist/editor.js:29422
+#: wp-includes/class-wp-editor.php:1092 wp-includes/js/dist/editor.js:29446
 msgid "Advanced"
 msgstr "Avanzado"
 
@@ -15729,8 +15729,8 @@ msgstr "Destino"
 #: wp-includes/widgets/class-wp-widget-categories.php:30
 #: wp-includes/widgets/class-wp-widget-categories.php:47
 #: wp-includes/category-template.php:523
-#: wp-includes/theme-compat/sidebar.php:97 wp-includes/js/dist/editor.js:27925
-#: wp-includes/js/dist/editor.js:27926
+#: wp-includes/theme-compat/sidebar.php:97 wp-includes/js/dist/editor.js:27949
+#: wp-includes/js/dist/editor.js:27950
 #: wp-includes/js/dist/block-library.js:6553
 #: wp-includes/js/dist/block-library.js:6607
 #: wp-includes/js/dist/block-library.js:6659
@@ -15738,7 +15738,7 @@ msgid "Categories"
 msgstr "Categorías"
 
 #: wp-includes/script-loader.php:1469 wp-includes/class-wp-editor.php:1124
-#: wp-includes/js/dist/editor.js:28320
+#: wp-includes/js/dist/editor.js:28344
 #: wp-includes/js/dist/block-library.js:11218
 msgid "Save"
 msgstr "Guardar"
@@ -15774,7 +15774,7 @@ msgstr "Extracto"
 
 #: wp-includes/script-loader.php:1285 wp-includes/script-loader.php:1437
 #: wp-includes/class-wp-customize-manager.php:4617
-#: wp-includes/js/dist/editor.js:25771 wp-includes/js/dist/edit-post.js:4394
+#: wp-includes/js/dist/editor.js:25795 wp-includes/js/dist/edit-post.js:4394
 msgid "Publish"
 msgstr "Publicar"
 
@@ -15783,13 +15783,13 @@ msgid "Comments"
 msgstr "Comentarios"
 
 #: wp-includes/class-wp-customize-widgets.php:751 wp-includes/media.php:3538
-#: wp-includes/class-wp-editor.php:1264 wp-includes/js/dist/editor.js:22645
+#: wp-includes/class-wp-editor.php:1264 wp-includes/js/dist/editor.js:22669
 #: wp-includes/js/dist/block-library.js:6183
 #: wp-includes/js/dist/format-library.js:910
 msgid "Apply"
 msgstr "Aplicar"
 
-#: wp-includes/class-wp-editor.php:1051 wp-includes/js/dist/editor.js:24033
+#: wp-includes/class-wp-editor.php:1051 wp-includes/js/dist/editor.js:24057
 msgid "Undo"
 msgstr "Deshacer"
 
@@ -15805,7 +15805,7 @@ msgstr "hace %s"
 
 #: wp-includes/class-wp-editor.php:1262
 #: wp-includes/class-walker-comment.php:236
-#: wp-includes/class-walker-comment.php:340 wp-includes/js/dist/editor.js:28490
+#: wp-includes/class-walker-comment.php:340 wp-includes/js/dist/editor.js:28514
 #: wp-includes/js/dist/block-library.js:11197
 #: wp-includes/js/dist/format-library.js:950
 msgid "Edit"
@@ -15831,14 +15831,14 @@ msgstr "Comentario"
 #: wp-includes/customize/class-wp-customize-nav-menu-item-control.php:86
 #: wp-includes/class-wp-editor.php:1139 wp-includes/class-wp-editor.php:1715
 #: wp-includes/class-wp-customize-nav-menus.php:1111
-#: wp-includes/js/dist/editor.js:22638 wp-includes/js/dist/editor.js:23183
+#: wp-includes/js/dist/editor.js:22662 wp-includes/js/dist/editor.js:23207
 #: wp-includes/js/dist/edit-post.js:4821
 #: wp-includes/js/dist/block-library.js:8280
 msgid "URL"
 msgstr "URL"
 
 #: wp-includes/class-wp-editor.php:1086 wp-includes/theme-compat/sidebar.php:27
-#: wp-includes/js/dist/editor.js:24581
+#: wp-includes/js/dist/editor.js:24605
 msgid "Author"
 msgstr "Autor"
 
@@ -15859,19 +15859,19 @@ msgstr "d/m/Y"
 msgid "Draft"
 msgstr "Borrador"
 
-#: wp-includes/post.php:801 wp-includes/js/dist/editor.js:25676
+#: wp-includes/post.php:801 wp-includes/js/dist/editor.js:25700
 msgid "Pending Review"
 msgstr "Pendiente de revisión"
 
 #: wp-includes/script-loader.php:1286 wp-includes/script-loader.php:1447
 #: wp-includes/post.php:803 wp-includes/post.php:823
-#: wp-includes/js/dist/editor.js:27048
+#: wp-includes/js/dist/editor.js:27072
 msgid "Published"
 msgstr "Publicada"
 
 #: wp-includes/media-template.php:382 wp-includes/media-template.php:563
 #: wp-includes/revision.php:34 wp-includes/class-wp-editor.php:1082
-#: wp-includes/js/dist/editor.js:23584
+#: wp-includes/js/dist/editor.js:23608
 msgid "Title"
 msgstr "Título"
 

@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the Themes - Twenty Nineteen package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2018-12-03 17:02:57+0000\n"
+"PO-Revision-Date: 2018-12-20 17:18:25+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -19,6 +19,11 @@ msgstr "Twenty Nineteen"
 msgid "A new Gutenberg-ready theme."
 msgstr "Un nuevo tema preparado para Gutenberg."
 
+#. translators: %s: parent post link
+#: single.php:31
+msgid "<span class=\"meta-nav\">Published in</span><span class=\"post-title\">%s</span>"
+msgstr "<span class=\"meta-nav\">Publicado en</span> <span class=\"post-title\">%s</span>"
+
 #: image.php:87
 msgctxt "Parent post link"
 msgid "<span class=\"meta-nav\">Published in</span><br><span class=\"post-title\">%title</span>"
@@ -28,11 +33,11 @@ msgstr "<span class=\"meta-nav\">Publicado en </span><br><span class=\"post-titl
 msgid "Twenty Nineteen requires at least WordPress version 4.7. You are running version %s. Please upgrade and try again."
 msgstr "Twenty Nineteen requiere al menos la versión 4.7 de WordPress. Se está ejecutando la versión %s. Por favor, actualiza y vuelve a intentarlo."
 
-#: inc/template-functions.php:219
+#: inc/template-functions.php:216
 msgid "Back"
 msgstr "Volver"
 
-#: inc/template-functions.php:211
+#: inc/template-functions.php:208
 msgid "More"
 msgstr "Más"
 
@@ -189,22 +194,17 @@ msgstr "Menú superior"
 msgid ", "
 msgstr ", "
 
-#: single.php:37
+#: single.php:38
 msgid "Next Post"
 msgstr "Siguiente entrada"
 
-#: single.php:41
+#: single.php:42
 msgid "Previous post:"
 msgstr "Entrada anterior:"
 
-#: single.php:38
+#: single.php:39
 msgid "Next post:"
 msgstr "Siguiente entrada:"
-
-#: single.php:30
-msgctxt "Parent post link"
-msgid "<span class=\"meta-nav\">Published in</span><br/><span class=\"post-title\">%title</span>"
-msgstr "<span class=\"meta-nav\">Publicado en</span><span class=\"post-title\">%title</span>"
 
 #: template-parts/post/discussion-meta.php:18
 msgid "No comments"
@@ -217,19 +217,20 @@ msgid_plural "%d Comments"
 msgstr[0] "%d comentario"
 msgstr[1] "%d comentarios"
 
-#: template-parts/post/author-bio.php:13
+#. translators: %s: post author
+#: template-parts/post/author-bio.php:17
 msgid "Published by %s"
 msgstr "Publicado por %s"
 
-#: single.php:40
+#: single.php:41
 msgid "Previous Post"
 msgstr "Entrada anterior"
 
-#: inc/template-tags.php:232
+#: inc/template-tags.php:234
 msgid "Older posts"
 msgstr "Entradas más antiguas"
 
-#: inc/template-tags.php:231
+#: inc/template-tags.php:230
 msgid "Newer posts"
 msgstr "Entradas más recientes"
 
@@ -275,21 +276,20 @@ msgstr[1] "%1$s respuestas a &ldquo;%2$s&rdquo;"
 msgid "Leave a comment"
 msgstr "Deja un comentario"
 
-#: classes/class-twentynineteen-walker-comment.php:87
+#: classes/class-twentynineteen-walker-comment.php:92
 msgid "Your comment is awaiting moderation."
 msgstr "Tu comentario está pendiente de moderación."
 
-#: classes/class-twentynineteen-walker-comment.php:82
+#: classes/class-twentynineteen-walker-comment.php:87
 msgid "Edit"
 msgstr "Editar"
 
 #. translators: 1: comment date, 2: comment time
-#: classes/class-twentynineteen-walker-comment.php:74
+#: classes/class-twentynineteen-walker-comment.php:79
 msgid "%1$s at %2$s"
 msgstr "%1$s a las %2$s"
 
-#. translators: %s: comment author link
-#: classes/class-twentynineteen-walker-comment.php:60
+#: classes/class-twentynineteen-walker-comment.php:59
 msgid "%s <span class=\"screen-reader-text says\">says:</span>"
 msgstr "%s <span class=\"screen-reader-text says\">dice:</span>"
 
@@ -317,7 +317,7 @@ msgstr "Una respuesta a &ldquo;%s&rdquo;"
 msgid "Join the Conversation"
 msgstr "Únete a la conversación"
 
-#: template-parts/post/author-bio.php:18
+#: template-parts/post/author-bio.php:26
 msgid "View more posts"
 msgstr "Ver más entradas"
 
