@@ -143,7 +143,7 @@ Base structure for websites with reusable parts of source code or functions main
    - A screen will appear with a message with an advice to update his navigator to a newer one.
 
 4. How can i use this stuff in plain **HTML** instead the **PHP** standalone?
-   - In the *Standalone* project turn off the **Mix** option _(in **resources.php** set **mix** to **false**)_. Next load the page, view the code in the navigator and copy it in a **HTML** page (replacing the main url). Take a look in [this example](https://github.com/WebsiteBase/WebsiteBase.GitHub.io).
+   - In a *Standalone* project open **resources.php**, set the **custom_main_url** and **assets_url** _(also you can disable **Mix** and **Minify**)_. Next view the page source in navigator and copy it in a **HTML** page. Look for an example [here](https://github.com/WebsiteBase/WebsiteBase.GitHub.io).
 
 # Recommended Tools for editing
 - [Visual Studio Code](https://code.visualstudio.com)
