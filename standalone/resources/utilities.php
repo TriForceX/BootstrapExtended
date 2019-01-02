@@ -323,7 +323,7 @@ class php
 		$mix = $websitebase['mix'];
 		$final = $type == 'css' ? 'style.css' : 'app.js';
 		
-		if(!self::is_localhost())
+		if(self::is_localhost())
 		{
 			return self::build_template($type, $minify, $mix, $url);
 		}
