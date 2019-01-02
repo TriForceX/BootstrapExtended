@@ -680,6 +680,10 @@ if ( ! /iPad|iPod|iPhone/.test( navigator.userAgent ) ) {
 ?>
 <?php wp_print_scripts( 'language-chooser' ); ?>
 <script type="text/javascript">
+	jQuery('#setup[action="?step=0"]').each(function(e) {
+		jQuery(this).find('option[value="es_ES"]').remove().clone().insertAfter('#setup[action="?step=0"] > select > option:first-child').append(' de España');
+	});
+	
 	<?php if ( $localhost ) { ?>
 	jQuery('#form-table-local').find('tbody').css('display','table-row-group');
 	jQuery('#form-table-local').find('thead span').html('&minus;');
