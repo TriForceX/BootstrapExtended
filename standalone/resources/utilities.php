@@ -216,8 +216,9 @@ class php
  * Version 3.0
  * TriForce - Matias Silva
  * 
- * Site:     https://websitebase.github.io
- * Source:   https://github.com/triforcex/websitebase
+ * Build:     '.gmdate('d M Y H:i:s').' GMT
+ * Site:      https://websitebase.github.io
+ * Source:    https://github.com/triforcex/websitebase
  * 
  */';
 		$local = str_replace(DIRECTORY_SEPARATOR.'resources', '', dirname( __FILE__ ));
