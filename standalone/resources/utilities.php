@@ -255,11 +255,13 @@ class php
 			foreach($data['file'] as $file)
 			{
 				$buffer .= file_get_contents($local.'/'.$file);
-				$file_mix = str_replace('.'.$type, '.min.'.$type, $file);
+				$file_min = str_replace('.'.$type, '.min.'.$type, $file);
+				$file_dist = str_replace('.'.$type, '.dist.'.$type, $file);
 
-				if(file_exists($local.'/'.$file_mix))
+				if(file_exists($local.'/'.$file_min) || file_exists($local.'/'.$file_dist))
 				{
-					unlink($local.'/'.$file_mix);
+					unlink($local.'/'.$file_min);
+					unlink($local.'/'.$file_dist);
 				}
 			}
 
@@ -286,22 +288,24 @@ class php
 				$key = array_keys($data['vars']);
 				$buffer = str_replace($key, $data['vars'], $buffer);
 				$content = $minify == true ? self::minify_code($type, $buffer) : $buffer;
-				$file_mix = str_replace('.'.$type, '.min.'.$type, $file);
+				$file_min = str_replace('.'.$type, '.min.'.$type, $file);
+				$file_dist = str_replace('.'.$type, '.dist.'.$type, $file);
 
-				if(file_exists($local.'/'.$type.'/'.$final))
+				if(file_exists($local.'/'.$type.'/'.$final) || ($minify ? file_exists($local.'/'.$file_dist) : file_exists($local.'/'.$file_min)))
 				{
 					unlink($local.'/'.$type.'/'.$final);
+					unlink(($minify ? $local.'/'.$file_dist : $local.'/'.$file_min));
 				}
 
-				file_put_contents($local.'/'.$file_mix, $info.$content);
+				file_put_contents($local.'/'.($minify ? $file_min : $file_dist), $info.$content);
 
 				if($type == 'css')
 				{
-					echo '<link href="'.$url.'/'.$file_mix.'" rel="stylesheet">'."\n".($file === end($data['file']) ? '' : "\t");
+					echo '<link href="'.$url.'/'.($minify ? $file_min : $file_dist).'" rel="stylesheet">'."\n".($file === end($data['file']) ? '' : "\t");
 				}
 				else
 				{
-					echo '<script src="'.$url.'/'.$file_mix.'"></script>'."\n";
+					echo '<script src="'.$url.'/'.($minify ? $file_min : $file_dist).'"></script>'."\n";
 				}
 			}
 		}
@@ -319,7 +323,7 @@ class php
 		$mix = $websitebase['mix'];
 		$final = $type == 'css' ? 'style.css' : 'app.js';
 		
-		if(self::is_localhost())
+		if(!self::is_localhost())
 		{
 			return self::build_template($type, $minify, $mix, $url);
 		}
@@ -355,8 +359,11 @@ class php
 												 array('js/app-init.js',
 													   'js/app-base.js',
 													   'js/app-theme.js');
+				
+				$find_min = str_replace('.'.$type, '.min.'.$type, $local.'/'.$data['file'][0]);
+				$find_dist = str_replace('.'.$type, '.dist.'.$type, $local.'/'.$data['file'][0]);
 
-				if(!file_exists(str_replace('.'.$type, '.min.'.$type, $local.'/'.$data['file'][0])))
+				if(($minify ? !file_exists($find_min) : !file_exists($find_dist)))
 				{
 					return self::build_template($type, $minify, $mix, $url);
 				}
@@ -370,15 +377,16 @@ class php
 					
 					foreach($data['file'] as $file)
 					{
-						$file_mix = str_replace('.'.$type, '.min.'.$type, $file);
+						$file_min = str_replace('.'.$type, '.min.'.$type, $file);
+						$file_dist = str_replace('.'.$type, '.dist.'.$type, $file);
 						
 						if($type == 'css')
 						{
-							echo '<link href="'.$url.'/'.$file_mix.'" rel="stylesheet">'."\n".($file === end($data['file']) ? '' : "\t");
+							echo '<link href="'.$url.'/'.($minify ? $file_min : $file_dist).'" rel="stylesheet">'."\n".($file === end($data['file']) ? '' : "\t");
 						}
 						else
 						{
-							echo '<script src="'.$url.'/'.$file_mix.'"></script>'."\n";
+							echo '<script src="'.$url.'/'.($minify ? $file_min : $file_dist).'"></script>'."\n";
 						}
 					}
 				}
