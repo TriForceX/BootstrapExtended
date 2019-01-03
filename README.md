@@ -1,7 +1,7 @@
 # Custom Bootstrap Website Base
 https://websitebase.github.io
 
-Base structure for websites with reusable parts of source code or functions mainly based on Bootstrap and another libraries. You can visit the website above for a running example.
+Bootstrap base structure for websites with reusable parts of source code or functions mainly based on Bootstrap and another libraries. You can visit the website above for a running example.
 
 # Base
 - Standalone *(PHP 5.4+)*
