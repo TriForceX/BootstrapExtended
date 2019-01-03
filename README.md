@@ -6,7 +6,7 @@ Base structure for websites with reusable parts of source code or functions main
 # Base
 - Standalone *(PHP 5.4+)*
 - WordPress *(Ver 5.0.2)*
-- Bootstrap 4 *(Ver 4.1.3)*
+- Bootstrap 4 *(Ver 4.2.1)*
 
 # Resources
 - BootBox JS
