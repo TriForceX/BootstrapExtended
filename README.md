@@ -116,6 +116,7 @@ Base structure for websites with reusable parts of source code or functions main
 	- Custom htaccess with force HTTPS & WWW options
 	- Custom WordPress functions and snippets (see also wiki)
 	- Admin Panel CSS & JS injections
+	- Akismet Anti-Spam (Plugin)
 	- Admin Menu Editor (Plugin)
 	- Advanced Custom Fields (Plugin)
 	- Classic Editor (Plugin)
