@@ -1465,11 +1465,11 @@
 		
 		<h2 class="notranslate">Carousel <span class="badge badge-danger">Custom</span></h2>
 
-		<p>Custom classes for <b>Bootstrap</b> carousel. You can access <a href="https://getbootstrap.com/docs/4.1/components/carousel/" target="_blank">here</a> for more information about <b>base</b> code. <i>Note: Touch gestures was added <b>(right or left)</b></i></p>
+		<p>Custom classes for <b>Bootstrap</b> carousel. <i>Note: Touch gestures was added <b>(right or left)</b></i></p>
 
 		<div class="bs-example mb-4">
 			<!-- Carousel -->
-			<div id="carouselExampleIndicators" class="carousel slide carousel-rounded carousel-no-mobile" data-ride="carousel">
+			<div id="carouselExampleIndicators" class="carousel slide carousel-control-fixed-md carousel-control-hide carousel-control-opacity carousel-indicators-dots carousel-indicators-hide" data-ride="carousel">
 				<ol class="carousel-indicators">
 					<li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
 					<li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
@@ -1486,14 +1486,26 @@
 						<img class="d-block w-100" data-src="holder.js/1140x500/?auto=yes&theme=lava&text=Third Slide" alt="Third slide">
 					</div>
 				</div>
-				<a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+				<!-- Using BS4 icons -->
+				<!--<a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
 					<span class="carousel-control-prev-icon" aria-hidden="true"></span>
 					<span class="sr-only">Previous</span>
 				</a>
 				<a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
 					<span class="carousel-control-next-icon" aria-hidden="true"></span>
 					<span class="sr-only">Next</span>
+				</a>-->
+				<!-- Using BS4 icons -->
+				<!-- Using FA icons -->
+				<a class="carousel-control-prev" href="#carousel-home-banner" role="button" data-slide="prev">
+					<i class="fas fa-angle-left"></i>
+					<span class="sr-only">Previous</span>
 				</a>
+				<a class="carousel-control-next" href="#carousel-home-banner" role="button" data-slide="next">
+					<i class="fas fa-angle-right"></i>
+					<span class="sr-only">Next</span>
+				</a>
+				<!-- Using FA icons -->
 			</div>
 			<!-- Carousel -->
 		</div>
@@ -1507,13 +1519,34 @@
 			</thead>
 			<tbody>
 				<tr>
-					<td class="text-nowrap notranslate">carousel-rounded</td>
-					<td>Adding this class will change the indicators to <b>rounded</b> buttons
+					<td class="text-nowrap notranslate">carousel-shadows</td>
+					<td>Adds shadows to <b>indicators</b>, <b>captions</b> and <b>controls</b> <i>(Only using as Font Awesome icons)</i>.
 					</td>
 				</tr>
 				<tr>
-					<td class="text-nowrap notranslate">carousel-no-mobile</td>
-					<td>Adding this class will disable the <b>left</b> and <b>right</b> controls on mobile devices
+					<td class="text-nowrap notranslate">carousel-indicators-dots</td>
+					<td>Change the indicators to <b>dots</b> buttons.
+					</td>
+				</tr>
+				
+				<tr>
+					<td class="text-nowrap notranslate">carousel-indicators-hide</td>
+					<td>Hide the <b>indicators</b> controls on small screens.
+					</td>
+				</tr>
+				<tr>
+					<td class="text-nowrap notranslate">carousel-control-opacity</td>
+					<td>Removes the hover opacity on <b>left</b> and <b>right</b> controls .
+					</td>
+				</tr>
+				<tr>
+					<td class="text-nowrap notranslate">carousel-control-hide</td>
+					<td>Hide the <b>left</b> and <b>right</b> controls on small screens.
+					</td>
+				</tr>
+				<tr>
+					<td class="text-nowrap notranslate">carousel-control-fixed</td>
+					<td>Disable the <b>left</b> and <b>right</b> controls width with percentage. To increase sizes add the proper size at the end of class <i>(For example: carousel-control-fixed-lg)</i>. Sizes are <code>sm</code>, <code>md</code>, <code>lg</code> and <code>xl</code>.
 					</td>
 				</tr>
 			</tbody>

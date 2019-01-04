@@ -361,18 +361,76 @@
 }
 /* Form validation warning */
 
-/* Carousel circle indicators */
-.carousel-rounded .carousel-indicators li {
+/* Carousel dots indicators */
+.carousel-indicators-dots .carousel-indicators {
+	margin-bottom: 1.5rem;
+}
+.carousel-indicators-dots .carousel-indicators li {
 	width: 12px;
 	height: 12px;
+	border-top: none;
+	border-bottom: none;
 	border-radius: 300px;
 }
-/* Carousel circle indicators */
+/* Carousel dots indicators */
+
+/* Carousel fixed controls */
+.carousel-control-fixed .carousel-control-prev,
+.carousel-control-fixed .carousel-control-next {
+	width: 60px;
+}
+.carousel-control-fixed-sm .carousel-control-prev,
+.carousel-control-fixed-sm .carousel-control-next {
+	width: 70px;
+}
+.carousel-control-fixed-md .carousel-control-prev,
+.carousel-control-fixed-md .carousel-control-next {
+	width: 80px;
+}
+.carousel-control-fixed-lg .carousel-control-prev,
+.carousel-control-fixed-lg .carousel-control-next {
+	width: 90px;
+}
+.carousel-control-fixed-xl .carousel-control-prev,
+.carousel-control-fixed-xl .carousel-control-next {
+	width: 100px;
+}
+/* Carousel fixed controls */
+
+/* Carousel controls without opacity */
+.carousel-control-opacity .carousel-control-prev,
+.carousel-control-opacity .carousel-control-next {
+	opacity: 1;
+}
+/* Carousel controls without opacity */
+
+/* Carousel controls with Font Awesome */
+.carousel .carousel-control-prev i, 
+.carousel .carousel-control-next i {
+	font-size: 35px;
+}
+/* Carousel controls with Font Awesome */
+
+/* Carousel shadows */
+.carousel-shadows .carousel-control-prev i, 
+.carousel-shadows .carousel-control-next i {
+	text-shadow: 2px 2px 12px black;
+}
+.carousel-shadows .carousel-indicators li {
+	box-shadow: 2px 2px 12px black;
+}
+.carousel-shadows .carousel-caption {
+	text-shadow: 2px 2px 3px black, 2px 2px 3px rgba(0,0,0,0.5);
+}
+/* Carousel shadows */
 
 /* Carousel control no mobile */
 @media (max-width: $screen-sm-up) {
-	.carousel-no-mobile .carousel-control-prev,
-	.carousel-no-mobile .carousel-control-next {
+	.carousel-control-hide .carousel-indicators {
+		display: none;
+	}
+	.carousel-control-hide .carousel-control-prev,
+	.carousel-control-hide .carousel-control-next {
 		display: none;
 	}
 }
