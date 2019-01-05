@@ -24,7 +24,7 @@ $websitebase = array(
 	'keywords' 			=> get_option('blogkeywords'),
 	'author' 			=> get_option('blogauthor'),
 	'mobile-capable' 	=> 'yes',
-	'viewport' 			=> 'width=device-width, initial-scale=1, user-scalable=no',
+	'viewport' 			=> 'width=device-width, initial-scale=1, user-scalable=no, shrink-to-fit=no',
 	'nav-color' 		=> get_option('blognavcolor'),
 	'nav-color-apple' 	=> get_option('blognavcolorapple'),
 	'timezone' 			=> get_option('timezone_string'),
