@@ -4,39 +4,43 @@ https://websitebase.github.io
 Base structure for websites with reusable parts of source code or functions mainly based on Bootstrap + PHP and another libraries. You can visit the website above for a running example.
 
 # Base
-- Standalone *(PHP 5.4+)*
-- WordPress *(Ver 5.0.2)*
-- Bootstrap 4 *(Ver 4.2.1)*
+Name | Version
+------------ | ------------
+Standalone | PHP 5.4+
+WordPress  | 5.0.2
+Bootstrap | 4.2.1
+jQuery | 3.3.1
 
 # Resources
-- BootBox JS
-- Clipboard JS
-- Data Tables
-- Font Awesome
-- Holder JS
-- Hover CSS
-- Images Loaded
-- jQuery
-- jQuery Browser
-- jQuery Cookie
-- jQuery Fullscreen
-- jQuery Rotate
-- jQuery UI
-- Light Gallery
-- Masonry JS
-- Moment JS
-- PHP Mailer
-- Popper JS
-- Tempus Dominus
-- TinyMCE
-- Touch Swipe
+Name | Source
+------------ | ------------
+BootBox JS [Visit](http://bootboxjs.com/)
+Clipboard JS | [Visit](https://clipboardjs.com/)
+Data Tables | [Visit](https://datatables.net/examples/styling/bootstrap4)
+Font Awesome | [Visit](https://fontawesome.com/start)
+Holder JS | [Visit](http://holderjs.com/)
+Hover CSS | [Visit](http://ianlunn.github.io/Hover/)
+Images Loaded | [Visit](https://imagesloaded.desandro.com)
+jQuery Browser | [Visit](https://github.com/pupunzi/jquery.mb.browser)
+jQuery Cookie | [Visit](https://github.com/js-cookie/js-cookie)
+jQuery Fullscreen | [Visit](https://github.com/kayahr/jquery-fullscreen-plugin)
+jQuery Rotate | [Visit](http://jqueryrotate.com/)
+jQuery UI | [Visit](https://jqueryui.com/)
+Light Gallery | [Visit](http://sachinchoolur.github.io/lightGallery/)
+Masonry JS | [Visit](https://masonry.desandro.com/)
+Moment JS | [Visit](https://momentjs.com/)
+PHP Mailer | [Visit](https://github.com/PHPMailer/PHPMailer/)
+Popper JS | [Visit](https://popper.js.org/)
+Tempus Dominus | [Visit](https://tempusdominus.github.io/bootstrap-4/)
+TinyMCE | [Visit](https://www.tiny.cloud/)
+Touch Swipe | [Visit](http://labs.rampinteractive.co.uk/touchSwipe/demos/)
 
 # Functions & Code Snippets
 - HTML header data through PHP
 - PHP main utility class
 - CSS & JS built in PHP with minify & mix features
 - Custom .htaccess file with force HTTPS & WWW options
-- PHP Features:
+- **PHP Features:**
 	- CSS & JS template generator
 	- Minify CSS, JS and HTML
 	- Send E-Mails with PHPMailer
@@ -59,7 +63,7 @@ Base structure for websites with reusable parts of source code or functions main
 	- Get website parts with cUrl
 	- Get external functions
 	- Remove directory (recursively)
-- JS Features:
+- **JS Features:**
 	- Custom console log for websitebase functions (JSconsole)
 	- Custom language support
 	- Browser detection
@@ -96,7 +100,7 @@ Base structure for websites with reusable parts of source code or functions main
 	- Anchor tag functionallity for any HTML tag
 	- Easy Masonry JS usage
 	- Remove accents from strings
-- CSS Features:
+- **CSS Features:**
 	- Some Bootstrap modified classes to resemble its previous version
 	- Custom modal extra large size
 	- Custom modal alignment (top bottom center left and right)
@@ -111,7 +115,7 @@ Base structure for websites with reusable parts of source code or functions main
 	- Custom gradient text truncate
 	- Collection of CSS3 hover effects
 	- Included "BebasNeue" example font face
-- Wordpress Features:
+- **Wordpress Features:**
 	- Custom setup for localhost & production enviroments
 	- Custom htaccess with force HTTPS & WWW options
 	- Custom WordPress functions and snippets (see also wiki)

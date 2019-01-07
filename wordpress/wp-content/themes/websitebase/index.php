@@ -43,6 +43,7 @@
 						<a class="dropdown-item" href="https://jqueryui.com/" target="_blank">jQuery UI</a>
 						<a class="dropdown-item" href="http://sachinchoolur.github.io/lightGallery/" target="_blank">Light Gallery</a>
                         <a class="dropdown-item" href="https://masonry.desandro.com/" target="_blank">Masonry JS</a>
+                        <a class="dropdown-item" href="https://momentjs.com/" target="_blank">Moment JS</a>
 						<a class="dropdown-item" href="https://github.com/PHPMailer/PHPMailer/" target="_blank">PHP Mailer</a>
 						<a class="dropdown-item" href="https://popper.js.org/" target="_blank">Popper</a>
 						<a class="dropdown-item" href="https://tempusdominus.github.io/bootstrap-4/" target="_blank">Tempus Dominus</a>
