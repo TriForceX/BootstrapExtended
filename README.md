@@ -14,7 +14,7 @@ jQuery | 3.3.1
 # Resources
 Name | Source
 ------------ | ------------
-BootBox JS [Visit](http://bootboxjs.com/)
+BootBox JS | [Visit](http://bootboxjs.com/)
 Clipboard JS | [Visit](https://clipboardjs.com/)
 Data Tables | [Visit](https://datatables.net/examples/styling/bootstrap4)
 Font Awesome | [Visit](https://fontawesome.com/start)
