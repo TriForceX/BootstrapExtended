@@ -100,6 +100,11 @@ function JSoldBrowserScreen()
 	document.getElementsByTagName('head')[0].appendChild(css);
 
 	// Set browser screen element
+	var htmlIEdiv = '<a target="_blank" href="https://www.microsoft.com/en-us/download/internet-explorer.aspx">'+
+					'	<img src="'+url+'/img/base/browser/iexplorer.png">'+
+					'	<span>Internet Explorer 11</span>'+
+					'</a>';
+	
 	var htmlElems = '<div>'+
 					'	<h1>'+JSoldBrowserText.title[JSoldBrowserLang]+'</h1>'+
 					'	<p>'+JSoldBrowserText.desc[JSoldBrowserLang]+'</p>'+
@@ -112,10 +117,7 @@ function JSoldBrowserScreen()
 					'	</a><a target="_blank" href="https://www.opera.com/download">'+
 					'		<img src="'+url+'/img/base/browser/opera.png">'+
 					'		<span>Opera Browser</span>'+
-					'	</a><a target="_blank" href="https://www.microsoft.com/en-us/download/internet-explorer.aspx">'+
-					'		<img src="'+url+'/img/base/browser/iexplorer.png">'+
-					'		<span>Internet Explorer 11</span>'+
-					'	</a>'+
+					'	</a>'+(JSoldBrowserCheck('ios') > -1 ? '' : htmlIEdiv)+
 					'</div>';
 	
 	// Append to html
