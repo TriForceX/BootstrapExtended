@@ -1,10 +1,13 @@
 /* ================================================= THEME FUNCTIONS ================================================= */
 
-
+if(typeof $ !== 'function')
+{
+	var $ = jQuery;
+}
 
 /* ================================================= THEME FUNCTIONS ================================================= */
 
-jQuery(document).ready(function(){
+$(document).ready(function(){
 
 /* ================================================= THEME DOCUMENT READY ================================================= */
 	
@@ -14,7 +17,7 @@ jQuery(document).ready(function(){
 
 });
 
-jQuery(window).bind("load", function(){
+$(window).bind('load', function(){
 
 /* ================================================= THEME WINDOWS LOAD ================================================= */
 	
@@ -24,7 +27,7 @@ jQuery(window).bind("load", function(){
 
 });
 
-jQuery(document).ajaxStart(function(){
+$(document).ajaxStart(function(){
 
 /* ================================================= THEME AJAX START ================================================= */
 	
@@ -34,7 +37,7 @@ jQuery(document).ajaxStart(function(){
 
 });
 
-jQuery(document).ajaxComplete(function(){
+$(document).ajaxComplete(function(){
 
 /* ================================================= THEME AJAX COMPLETE ================================================= */
 	

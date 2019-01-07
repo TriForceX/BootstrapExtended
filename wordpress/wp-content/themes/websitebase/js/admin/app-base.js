@@ -1,42 +1,45 @@
 /* ================================================= THEME FUNCTIONS ================================================= */
 
-
+if(typeof $ !== 'function')
+{
+	var $ = jQuery;
+}
 
 /* ================================================= THEME FUNCTIONS ================================================= */
 
-jQuery(document).ready(function(){
+$(document).ready(function(){
 
 /* ================================================= DOCUMENT READY ================================================= */
 	
 	// Lock admin bar buttons
-	jQuery('#wpadminbar #wp-admin-bar-site-name > .ab-item').click(function(e){
+	$('#wpadminbar #wp-admin-bar-site-name > .ab-item').click(function(e){
 		e.preventDefault();
 	});
-	jQuery('#wpadminbar #wp-admin-bar-new-content > .ab-item').click(function(e){
+	$('#wpadminbar #wp-admin-bar-new-content > .ab-item').click(function(e){
 		e.preventDefault();
 	});
 	
 	// Replace admin bar buttons
-	jQuery('#wpadminbar #wp-admin-bar-view-site').find('a').attr('target','_blank');
+	$('#wpadminbar #wp-admin-bar-view-site').find('a').attr('target','_blank');
 	
 	// Action for custom multiple checkbox control in theme customize
-	jQuery(document).on('click','.wp-core-ui .customize-control-checkbox-multiple input[type="checkbox"]',function(){
+	$(document).on('click','.wp-core-ui .customize-control-checkbox-multiple input[type="checkbox"]',function(){
 
-		var checkbox_values = jQuery(this).parents('.customize-control').find('input[type="checkbox"]:checked').map(function(){
+		var checkbox_values = $(this).parents('.customize-control').find('input[type="checkbox"]:checked').map(function(){
 							  		return this.value;
 							  }).get().join(',');
 
-		jQuery(this).parents('.customize-control').find('input[type="hidden"]').val(checkbox_values).trigger('change');
+		$(this).parents('.customize-control').find('input[type="hidden"]').val(checkbox_values).trigger('change');
 	});
 	
 	// Action for custom WYSIWIG text control in theme customize
-	if(jQuery('.wp-customizer').length > 0)
+	if($('.wp-customizer').length > 0)
 	{
 		wp.customizerCtrlEditor = {
 			init: function() {
-				jQuery(window).load(function(){
-					jQuery('textarea.wp-editor-area').each(function(){
-						var tArea = jQuery(this),
+				$(window).load(function(){
+					$('textarea.wp-editor-area').each(function(){
+						var tArea = $(this),
 							id = tArea.attr('id'),
 							editor = tinyMCE.get(id),
 							setChange,
@@ -74,7 +77,7 @@ jQuery(document).ready(function(){
 
 });
 
-jQuery(window).bind("load", function(){
+$(window).bind('load', function(){
 
 /* ================================================= THEME WINDOWS LOAD ================================================= */
 	
@@ -84,7 +87,7 @@ jQuery(window).bind("load", function(){
 
 });
 
-jQuery(document).ajaxStart(function(){
+$(document).ajaxStart(function(){
 
 /* ================================================= THEME AJAX START ================================================= */
 	
@@ -94,7 +97,7 @@ jQuery(document).ajaxStart(function(){
 
 });
 
-jQuery(document).ajaxComplete(function(){
+$(document).ajaxComplete(function(){
 
 /* ================================================= THEME AJAX COMPLETE ================================================= */
 	
