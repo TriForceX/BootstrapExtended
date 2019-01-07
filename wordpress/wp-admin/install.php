@@ -411,6 +411,10 @@ wp_print_scripts( $scripts_to_print );
 <script type="text/javascript">
 jQuery( function( $ ) {
 	$( '.hide-if-no-js' ).removeClass( 'hide-if-no-js' );
+	
+	$( '#setup[action="?step=1"]' ).each(function( e ) {
+		$( this ).find( 'option[value="es_ES"]' ).remove().clone().insertAfter( '#setup[action="?step=1"] > select > option:first-child' ).append( ' de Espa&ntilde;a' );
+	} );
 } );
 </script>
 </body>

@@ -145,14 +145,14 @@ function setup_config_display_header( $body_classes = array() ) {
 			margin-top: 1em !important;
 		}
 		.form-table th,
-		.form-table td{
+		.form-table td {
 			padding: 10px 20px 10px 10px;
 		}
 		.form-table thead {
 			cursor: pointer;
 		}
 		.form-table thead th,
-		.form-table thead td{
+		.form-table thead td {
 			border-bottom: 1px solid #ddd;
 			text-align: center;
 			color: #0073aa;
@@ -217,22 +217,22 @@ switch($step) {
 <h1 class="screen-reader-text"><?php _e( 'Before getting started' ) ?></h1>
 <p><?php _e( 'Welcome to WordPress. Before getting started, we need some information on the database. You will need to know the following items before proceeding.' ) ?></p>
 <ol>
-	<li><?php _e( 'Database name' ); ?> (<?php echo strtolower(__('Local server', 'websitebase')); ?>)</li>
-	<li><?php _e( 'Database username' ); ?> (<?php echo strtolower(__('Local server', 'websitebase')); ?>)</li>
-	<li><?php _e( 'Database password' ); ?> (<?php echo strtolower(__('Local server', 'websitebase')); ?>)</li>
-	<li><?php _e( 'Database host' ); ?> (<?php echo strtolower(__('Local server', 'websitebase')); ?>)</li>
-	<li class="li-spacing"><?php _e('Main directory', 'websitebase'); ?> (<?php echo strtolower(__('Local server', 'websitebase')); ?>)</li>
+	<li><?php _e( 'Database name' ); ?> (<?php echo strtolower( __( 'Local server', 'websitebase' ) ); ?>)</li>
+	<li><?php _e( 'Database username' ); ?> (<?php echo strtolower( __( 'Local server', 'websitebase' ) ); ?>)</li>
+	<li><?php _e( 'Database password' ); ?> (<?php echo strtolower( __( 'Local server', 'websitebase' ) ); ?>)</li>
+	<li><?php _e( 'Database host' ); ?> (<?php echo strtolower( __( 'Local server', 'websitebase' ) ); ?>)</li>
+	<li class="li-spacing"><?php _e('Main directory', 'websitebase'); ?> (<?php echo strtolower( __( 'Local server', 'websitebase' ) ); ?>)</li>
 	
-	<li><?php _e( 'Database name' ); ?> (<?php echo strtolower(__('Production server', 'websitebase')); ?>)</li>
-	<li><?php _e( 'Database username' ); ?> (<?php echo strtolower(__('Production server', 'websitebase')); ?>)</li>
-	<li><?php _e( 'Database password' ); ?> (<?php echo strtolower(__('Production server', 'websitebase')); ?>)</li>
-	<li><?php _e( 'Database host' ); ?> (<?php echo strtolower(__('Production server', 'websitebase')); ?>)</li>
-	<li class="li-spacing"><?php _e('Main directory', 'websitebase'); ?> (<?php echo strtolower(__('Production server', 'websitebase')); ?>)</li>
+	<li><?php _e( 'Database name' ); ?> (<?php echo strtolower( __( 'Production server', 'websitebase' ) ); ?>)</li>
+	<li><?php _e( 'Database username' ); ?> (<?php echo strtolower( __( 'Production server', 'websitebase' ) ); ?>)</li>
+	<li><?php _e( 'Database password' ); ?> (<?php echo strtolower( __( 'Production server', 'websitebase' ) ); ?>)</li>
+	<li><?php _e( 'Database host' ); ?> (<?php echo strtolower( __('Production server', 'websitebase' ) ); ?>)</li>
+	<li class="li-spacing"><?php _e( 'Main directory', 'websitebase' ); ?> (<?php echo strtolower( __( 'Production server', 'websitebase' ) ); ?>)</li>
 	
 	<li><?php _e( 'Table prefix (if you want to run more than one WordPress in a single database)' ); ?></li>
-	<li><?php _e('Cron jobs', 'websitebase'); ?> (<?php echo strtolower(__('Disable scheduled tasks in order to automate things like posts, updates and others', 'websitebase')); ?>)</li>
-	<li><?php _e('Force https', 'websitebase'); ?> (<?php echo strtolower(__('Forces <code>https</code> protocol on production domain', 'websitebase')); ?>)</li>
-	<li><?php _e('Force www', 'websitebase'); ?> (<?php echo strtolower(__('Forces <code>www</code> on production domain', 'websitebase')); ?>)</li>
+	<li><?php _e( 'Cron jobs', 'websitebase' ); ?> (<?php echo strtolower( __( 'Disable scheduled tasks in order to automate things like posts, updates, etc...', 'websitebase' ) ); ?>)</li>
+	<li><?php _e( 'Force https', 'websitebase' ); ?> (<?php echo strtolower( __( 'Forces <code>https</code> protocol on production domain', 'websitebase' ) ); ?>)</li>
+	<li><?php _e( 'Force www', 'websitebase' ); ?> (<?php echo strtolower( __( 'Forces <code>www</code> on production domain', 'websitebase' ) ); ?>)</li>
 </ol>
 <p><?php
 	/* translators: %s: wp-config.php */
@@ -271,60 +271,60 @@ switch($step) {
 	<table class="form-table" id="form-table-local">
 		<thead>
 			<tr>
-				<th colspan="3"><?php _e('Local server', 'websitebase'); ?> <span>&plus;</span></th>
+				<th colspan="3"><?php _e( 'Local server', 'websitebase' ); ?> <span>&plus;</span></th>
 			</tr>
 		</thead>
 		<tbody style="display: none">
 			<tr>
 				<th scope="row"><label for="dbname"><?php _e( 'Database Name' ); ?></label></th>
-				<td><input name="dbname" id="dbname" type="text" size="25" value="<?php echo sanitize_title_2(__('Database', 'websitebase').' '.__('Local', 'websitebase')); ?>" /></td>
+				<td><input name="dbname" id="dbname" type="text" size="25" value="<?php echo sanitize_title_2( __( 'Database', 'websitebase' ) . ' ' . __( 'Local', 'websitebase' ) ); ?>" /></td>
 				<td><?php _e( 'The name of the database you want to use with WordPress.' ); ?></td>
 			</tr>
 			<tr>
 				<th scope="row"><label for="uname"><?php _e( 'Username' ); ?></label></th>
-				<td><input name="uname" id="uname" type="text" size="25" value="<?php echo sanitize_title_2(__('User').'_'.__('Local', 'websitebase')); ?>" /></td>
+				<td><input name="uname" id="uname" type="text" size="25" value="<?php echo sanitize_title_2( __( 'User' ) . '_' . __( 'Local', 'websitebase' ) ); ?>" /></td>
 				<td><?php _e( 'Your database username.' ); ?> <?php _e('Usually is <code>root</code>', 'websitebase'); ?>.</td>
 			</tr>
 			<tr>
 				<th scope="row"><label for="pwd"><?php _e( 'Password' ); ?></label></th>
-				<td><input name="pwd" id="pwd" type="text" size="25" value="<?php echo sanitize_title_2(__('Password').'_'.__('Local', 'websitebase')); ?>" autocomplete="off" /></td>
-				<td><?php _e( 'Your database password.' ); ?> <?php _e('Usually is <code>root</code>', 'websitebase'); ?>. <i>(<?php _e('Or leave it empty', 'websitebase'); ?>).</i></td>
+				<td><input name="pwd" id="pwd" type="text" size="25" value="<?php echo sanitize_title_2( __( 'Password' ) . '_' . __( 'Local', 'websitebase' ) ); ?>" autocomplete="off" /></td>
+				<td><?php _e( 'Your database password.' ); ?> <?php _e( 'Usually is <code>root</code>', 'websitebase' ); ?>. <i>(<?php _e( 'Or leave it empty', 'websitebase' ); ?>).</i></td>
 			</tr>
 			<tr>
 				<th scope="row"><label for="dbhost"><?php _e( 'Database Host' ); ?></label></th>
 				<td><input name="dbhost" id="dbhost" type="text" size="25" value="localhost" /></td>
 				<td><?php
 					/* translators: %s: localhost */
-					printf( __( 'You should be able to get this info from your web host, if %s doesn&#8217;t work.' ),'<code>localhost</code>' );
+					printf( __( 'You should be able to get this info from your web host, if %s doesn&#8217;t work.' ), '<code>localhost</code>' );
 				?></td>
 			</tr>
 			<tr>
-				<th scope="row"><label for="directory"><?php _e('Main directory', 'websitebase'); ?></label></th>
+				<th scope="row"><label for="directory"><?php _e( 'Main directory', 'websitebase' ); ?></label></th>
 				<td><input name="directory" id="directory" type="text" size="25" value="/wordpress/" /></td>
-				<td><?php _e('Main site directory in <code>server</code>. If is in root directory write a <code>/</code> symbol', 'websitebase'); ?>.</td>
+				<td><?php _e( 'Main site directory in <code>server</code>. If is in root directory write a <code>/</code> symbol', 'websitebase' ); ?>.</td>
 			</tr>
 		</tbody>
 	</table>
 	<table class="form-table" id="form-table-production">
 		<thead>
 			<tr>
-				<th colspan="3"><?php _e('Production server', 'websitebase'); ?> <span>&plus;</span></th>
+				<th colspan="3"><?php _e( 'Production server', 'websitebase' ); ?> <span>&plus;</span></th>
 			</tr>
 		</thead>
 		<tbody style="display: none">
 			<tr>
 				<th scope="row"><label for="dbname_2"><?php _e( 'Database Name' ); ?></label></th>
-				<td><input name="dbname_2" id="dbname_2" type="text" size="25" value="<?php echo sanitize_title_2(__('Database', 'websitebase').' '.__('Production', 'websitebase')); ?>" /></td>
+				<td><input name="dbname_2" id="dbname_2" type="text" size="25" value="<?php echo sanitize_title_2( __( 'Database', 'websitebase') . ' ' . __( 'Production', 'websitebase' ) ); ?>" /></td>
 				<td><?php _e( 'The name of the database you want to use with WordPress.' ); ?></td>
 			</tr>
 			<tr>
 				<th scope="row"><label for="uname_2"><?php _e( 'Username' ); ?></label></th>
-				<td><input name="uname_2" id="uname_2" type="text" size="25" value="<?php echo sanitize_title_2(__('User').'_'.__('Production', 'websitebase')); ?>" /></td>
+				<td><input name="uname_2" id="uname_2" type="text" size="25" value="<?php echo sanitize_title_2( __( 'User') . '_' . __( 'Production', 'websitebase' ) ); ?>" /></td>
 				<td><?php _e( 'Your database username.' ); ?></td>
 			</tr>
 			<tr>
 				<th scope="row"><label for="pwd_2"><?php _e( 'Password' ); ?></label></th>
-				<td><input name="pwd_2" id="pwd_2" type="text" size="25" value="<?php echo sanitize_title_2(__('Password').'_'.__('Production', 'websitebase')); ?>" autocomplete="off" /></td>
+				<td><input name="pwd_2" id="pwd_2" type="text" size="25" value="<?php echo sanitize_title_2( __( 'Password') . '_' . __( 'Production', 'websitebase' ) ); ?>" autocomplete="off" /></td>
 				<td><?php _e( 'Your database password.' ); ?></td>
 			</tr>
 			<tr>
@@ -332,20 +332,20 @@ switch($step) {
 				<td><input name="dbhost_2" id="dbhost_2" type="text" size="25" value="localhost" /></td>
 				<td><?php
 					/* translators: %s: localhost */
-					printf( __( 'You should be able to get this info from your web host, if %s doesn&#8217;t work.' ),'<code>localhost</code>' );
+					printf( __( 'You should be able to get this info from your web host, if %s doesn&#8217;t work.' ), '<code>localhost</code>' );
 				?></td>
 			</tr>
 			<tr>
-				<th scope="row"><label for="directory_2"><?php _e('Main directory', 'websitebase'); ?></label></th>
+				<th scope="row"><label for="directory_2"><?php _e( 'Main directory', 'websitebase' ); ?></label></th>
 				<td><input name="directory_2" id="directory_2" type="text" size="25" value="/" /></td>
-				<td><?php _e('Main site directory in <code>server</code>. If is in root directory write a <code>/</code> symbol', 'websitebase'); ?>.</td>
+				<td><?php _e( 'Main site directory in <code>server</code>. If is in root directory write a <code>/</code> symbol', 'websitebase'); ?>.</td>
 			</tr>
 		</tbody>
 	</table>
 	<table class="form-table" id="form-table-more">
 		<thead>
 			<tr>
-				<th colspan="3"><?php _e('More settings', 'websitebase'); ?> <span>&plus;</span></th>
+				<th colspan="3"><?php _e( 'More settings', 'websitebase' ); ?> <span>&plus;</span></th>
 			</tr>
 		</thead>
 		<tbody style="display: none">
@@ -355,28 +355,28 @@ switch($step) {
 				<td><?php _e( 'If you want to run multiple WordPress installations in a single database, change this.' ); ?></td>
 			</tr>
 			<tr>
-				<th scope="row"><label for="cron"><?php _e('Cron jobs', 'websitebase'); ?></label></th>
+				<th scope="row"><label for="cron"><?php _e( 'Cron jobs', 'websitebase' ); ?></label></th>
 				<td><select name="cron" id="cron">
-						<option value="true" default><?php _e('Disabled', 'websitebase'); ?></option>
-						<option value="false"><?php _e('Enabled', 'websitebase'); ?></option>
+						<option value="true" default><?php _e( 'Disabled', 'websitebase' ); ?></option>
+						<option value="false"><?php _e( 'Enabled', 'websitebase' ); ?></option>
 					</select></td>
-				<td><?php _e('Disable scheduled tasks in order to automate things like posts, updates and others', 'websitebase'); ?>.</td>
+				<td><?php _e( 'Disable scheduled tasks in order to automate things like posts, updates, etc...', 'websitebase' ); ?></td>
 			</tr>
 			<tr>
-				<th scope="row"><label for="https"><?php _e('Force https', 'websitebase'); ?></label></th>
+				<th scope="row"><label for="https"><?php _e( 'Force https', 'websitebase' ); ?></label></th>
 				<td><select name="https" id="https">
-						<option value="false" default><?php _e('Disabled', 'websitebase'); ?></option>
-						<option value="true"><?php _e('Enabled', 'websitebase'); ?></option>
+						<option value="false" default><?php _e( 'Disabled', 'websitebase' ); ?></option>
+						<option value="true"><?php _e( 'Enabled', 'websitebase' ); ?></option>
 					</select></td>
-				<td><?php _e('Forces <code>https</code> protocol on production domain', 'websitebase'); ?>.</td>
+				<td><?php _e( 'Forces <code>https</code> protocol on production domain', 'websitebase' ); ?>.</td>
 			</tr>
 			<tr>
-				<th scope="row"><label for="www"><?php _e('Force www', 'websitebase'); ?></label></th>
+				<th scope="row"><label for="www"><?php _e( 'Force www', 'websitebase' ); ?></label></th>
 				<td><select name="www" id="www">
-						<option value="false" default><?php _e('Disabled', 'websitebase'); ?></option>
-						<option value="true"><?php _e('Enabled', 'websitebase'); ?></option>
+						<option value="false" default><?php _e( 'Disabled', 'websitebase' ); ?></option>
+						<option value="true"><?php _e( 'Enabled', 'websitebase' ); ?></option>
 					</select></td>
-				<td><?php _e('Forces <code>www</code> on production domain', 'websitebase'); ?>.</td>
+				<td><?php _e( 'Forces <code>www</code> on production domain', 'websitebase' ); ?>.</td>
 			</tr>
 		</tbody>
 	</table>
@@ -680,50 +680,52 @@ if ( ! /iPad|iPod|iPhone/.test( navigator.userAgent ) ) {
 ?>
 <?php wp_print_scripts( 'language-chooser' ); ?>
 <script type="text/javascript">
-	jQuery('#setup[action="?step=0"]').each(function(e) {
-		jQuery(this).find('option[value="es_ES"]').remove().clone().insertAfter('#setup[action="?step=0"] > select > option:first-child').append(' de España');
-	});
+jQuery( function( $ ) {
+	$( '#setup[action="?step=0"]' ).each( function( e ) {
+		$( this ).find( 'option[value="es_ES"]' ).remove().clone().insertAfter( '#setup[action="?step=0"] > select > option:first-child' ).append( ' de Espa&ntilde;a' );
+	} );
 	
 	<?php if ( $localhost ) { ?>
-	jQuery('#form-table-local').find('tbody').css('display','table-row-group');
-	jQuery('#form-table-local').find('thead span').html('&minus;');
+	$( '#form-table-local' ).find( 'tbody' ).css( 'display', 'table-row-group' );
+	$( '#form-table-local' ).find( 'thead span' ).html( '&minus;' );
 	<?php } else { ?>
-	jQuery('#form-table-production').find('tbody').css('display','table-row-group');
-	jQuery('#form-table-production').find('thead span').html('&minus;');
+	$( '#form-table-production' ).find( 'tbody' ).css( 'display', 'table-row-group' );
+	$( '#form-table-production' ).find( 'thead span' ).html( '&minus;' );
 	<?php } ?>
 	
 	var formTableOpen = null;
-	jQuery(".form-table thead").click(function(e) {
-		if(formTableOpen === this)
+	$( ".form-table thead" ).click( function( e ) {
+		if( formTableOpen === this )
 		{
-			jQuery(this).parents('.form-table').find('tbody').css('display','none');
-			jQuery(this).parents('.form-table').find('thead span').html('&plus;');
+			$( this ).parents( '.form-table' ).find( 'tbody' ).css( 'display', 'none' );
+			$( this ).parents( '.form-table' ).find( 'thead span' ).html( '&plus;' );
 			formTableOpen = null;
 		}
 		else
 		{
-			jQuery('.form-table').find('tbody').css('display','none');
-			jQuery('.form-table').find('thead span').html('&plus;');
-			jQuery(this).parents('.form-table').find('tbody').css('display','table-row-group');
-			jQuery(this).parents('.form-table').find('thead span').html('&minus;');
+			$( '.form-table' ).find( 'tbody' ).css( 'display', 'none' );
+			$( '.form-table' ).find( 'thead span' ).html( '&plus;' );
+			$( this ).parents( '.form-table' ).find( 'tbody' ).css( 'display', 'table-row-group' );
+			$( this ).parents( '.form-table' ).find( 'thead span' ).html( '&minus;' );
 			formTableOpen = this;
 		}
-	});
+	} );
 	
-	jQuery("#form-step-2").submit(function(e) {
-		var formTableString = '<?php _e('Remember to check &quot;More settings&quot; for HTTPS and WWW options. Do you want to continue?', 'websitebase'); ?>';
-		var formTableText = jQuery("<div/>").html(formTableString).text();
+	$( "#form-step-2" ).submit( function( e ) {
+		var formTableString = '<?php _e( 'Remember to check &quot;More settings&quot; for HTTPS and WWW options. Do you want to continue?', 'websitebase' ); ?>';
+		var formTableText = $( '<div/>' ).html( formTableString ).text(  );
 		
-		if(!confirm(formTableText))
+		if( !confirm( formTableText ) )
 		{
-			jQuery('.form-table').find('tbody').css('display','none');
-			jQuery('.form-table').find('thead span').html('&plus;');
-			jQuery('#form-table-more').find('tbody').css('display','table-row-group');
-			jQuery('#form-table-more').find('thead span').html('&minus;');
-			formTableOpen = jQuery('#form-table-more').find('thead')[0];
+			$( '.form-table' ).find( 'tbody' ).css( 'display', 'none' );
+			$( '.form-table' ).find( 'thead span' ).html( '&plus;' );
+			$( '#form-table-more' ).find( 'tbody' ).css( 'display', 'table-row-group' );
+			$( '#form-table-more' ).find( 'thead span' ).html( '&minus;' );
+			formTableOpen = $( '#form-table-more' ).find( 'thead' )[0];
 			e.preventDefault();
 		}
-	});
+	} );
+} );
 </script>
 </body>
 </html>
