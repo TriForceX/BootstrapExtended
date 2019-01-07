@@ -11,30 +11,6 @@ WordPress  | 5.0.2
 Bootstrap | 4.2.1
 jQuery | 3.3.1
 
-# Resources
-Name | Source
------------- | ------------
-BootBox JS | [Visit](http://bootboxjs.com/)
-Clipboard JS | [Visit](https://clipboardjs.com/)
-Data Tables | [Visit](https://datatables.net/examples/styling/bootstrap4)
-Font Awesome | [Visit](https://fontawesome.com/start)
-Holder JS | [Visit](http://holderjs.com/)
-Hover CSS | [Visit](http://ianlunn.github.io/Hover/)
-Images Loaded | [Visit](https://imagesloaded.desandro.com)
-jQuery Browser | [Visit](https://github.com/pupunzi/jquery.mb.browser)
-jQuery Cookie | [Visit](https://github.com/js-cookie/js-cookie)
-jQuery Fullscreen | [Visit](https://github.com/kayahr/jquery-fullscreen-plugin)
-jQuery Rotate | [Visit](http://jqueryrotate.com/)
-jQuery UI | [Visit](https://jqueryui.com/)
-Light Gallery | [Visit](http://sachinchoolur.github.io/lightGallery/)
-Masonry JS | [Visit](https://masonry.desandro.com/)
-Moment JS | [Visit](https://momentjs.com/)
-PHP Mailer | [Visit](https://github.com/PHPMailer/PHPMailer/)
-Popper JS | [Visit](https://popper.js.org/)
-Tempus Dominus | [Visit](https://tempusdominus.github.io/bootstrap-4/)
-TinyMCE | [Visit](https://www.tiny.cloud/)
-Touch Swipe | [Visit](http://labs.rampinteractive.co.uk/touchSwipe/demos/)
-
 # Functions & Code Snippets
 - HTML header data through PHP
 - PHP main utility class
@@ -136,6 +112,30 @@ Touch Swipe | [Visit](http://labs.rampinteractive.co.uk/touchSwipe/demos/)
 	- Simple History (Plugin)
 	- TinyMCE (Plugin)
 	- User Role Editor (Plugin)
+
+# Resources
+Name | Source
+------------ | ------------
+BootBox JS | [Visit](http://bootboxjs.com/)
+Clipboard JS | [Visit](https://clipboardjs.com/)
+Data Tables | [Visit](https://datatables.net/examples/styling/bootstrap4)
+Font Awesome | [Visit](https://fontawesome.com/start)
+Holder JS | [Visit](http://holderjs.com/)
+Hover CSS | [Visit](http://ianlunn.github.io/Hover/)
+Images Loaded | [Visit](https://imagesloaded.desandro.com)
+jQuery Browser | [Visit](https://github.com/pupunzi/jquery.mb.browser)
+jQuery Cookie | [Visit](https://github.com/js-cookie/js-cookie)
+jQuery Fullscreen | [Visit](https://github.com/kayahr/jquery-fullscreen-plugin)
+jQuery Rotate | [Visit](http://jqueryrotate.com/)
+jQuery UI | [Visit](https://jqueryui.com/)
+Light Gallery | [Visit](http://sachinchoolur.github.io/lightGallery/)
+Masonry JS | [Visit](https://masonry.desandro.com/)
+Moment JS | [Visit](https://momentjs.com/)
+PHP Mailer | [Visit](https://github.com/PHPMailer/PHPMailer/)
+Popper JS | [Visit](https://popper.js.org/)
+Tempus Dominus | [Visit](https://tempusdominus.github.io/bootstrap-4/)
+TinyMCE | [Visit](https://www.tiny.cloud/)
+Touch Swipe | [Visit](http://labs.rampinteractive.co.uk/touchSwipe/demos/)
 
 # Questions & Answers
 1. How i can use the functions described above?
