@@ -9,11 +9,11 @@ var JSoldBrowserText = {title: {
 						},
 						desc: {
 							en: 'You are using an old browser, please update.',
-							es: 'Estas usando un navegador viejo, por favor actualízalo.',
+							es: 'Estas usando un navegador antiguo, por favor actualízalo.',
 						},
 						error: {
 							en: 'The code was stopped due you are using an old browser.',
-							es: 'Código detenido debido a que estás utilizando un navegador viejo.',
+							es: 'Código detenido debido a que estás utilizando un navegador antiguo.',
 						}};
 
 // Update browser screen
