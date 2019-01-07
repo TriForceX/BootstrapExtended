@@ -3,15 +3,15 @@
 // CHeck and set language
 var JSoldBrowserLangGet = navigator.language || navigator.userLanguage;
 var JSoldBrowserLang = /\es/i.test(JSoldBrowserLangGet) ? 'es' : 'en';
-var JSoldBrowserText = {'title': { 
+var JSoldBrowserText = {title: { 
 							en: 'Update your browser',
 							es: 'Actualiza tu navegador',
 						},
-						'desc': {
+						desc: {
 							en: 'You are using an old browser, please update.',
 							es: 'Estas usando un navegador viejo, por favor actualízalo.',
 						},
-						'error': {
+						error: {
 							en: 'The code was stopped due you are using an old browser.',
 							es: 'Código detenido debido a que estás utilizando un navegador viejo.',
 						}};
