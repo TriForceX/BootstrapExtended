@@ -32,8 +32,29 @@ if(get_option('template')=='websitebase')
 { 
 	add_action('admin_footer', function(){ ?>
 	<script type="text/javascript">
-	var websitebaseMsg = '<?php _e('Due to you are using <strong>Website Base</strong> theme, remember to prepend <strong>http</strong> or <strong>https</strong> to your <i>Local & Production</i> URL', 'websitebase'); ?>';
-	jQuery('#wpmdb-main #migrate-form .step-two').prepend('<div class="notification-message warning-notice inline-message">'+websitebaseMsg+'</div>');
+	jQuery(function($){
+		var wpmigrateForm 		= $('#wpmdb-main #migrate-form');
+		var wpmigrateOldUrl 	= wpmigrateForm.find('.step-two #find-and-replace-sort #old-url');
+		var wpmigrateNewUrl 	= wpmigrateForm.find('.step-two #find-and-replace-sort #new-url');
+		var wpmigrateNewPath 	= wpmigrateForm.find('.step-two #find-and-replace-sort #new-path');
+		var wpmigrateContent	= wpmigrateForm.find('.step-two');
+		var wpmigrateAlert 		= '<?php _e('Due to you are using <strong>Website Base</strong> theme, remember to prepend <strong>http</strong> or <strong>https</strong> to your <i>Local & Production</i> URL', 'websitebase'); ?>';
+		
+		wpmigrateContent.prepend('<div class="notification-message warning-notice inline-message">'+wpmigrateAlert+'</div>');
+		wpmigrateNewPath.attr('placeholder', 'New file path or URL');
+		
+		if(!(wpmigrateOldUrl.val().indexOf(window.location.protocol) >= 0))
+		{
+			wpmigrateOldUrl.val(window.location.protocol+wpmigrateOldUrl.val());
+		}
+		
+		wpmigrateNewUrl.blur(function(e){
+			if(!(wpmigrateNewUrl.val().indexOf('http://') >= 0 || wpmigrateNewUrl.val().indexOf('https://') >= 0))
+			{
+				wpmigrateNewUrl.val(window.location.protocol+'//'+wpmigrateNewUrl.val());
+			}
+		});
+	});
 	</script>
 	<? });
 }
