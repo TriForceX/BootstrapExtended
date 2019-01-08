@@ -36,7 +36,7 @@ if(get_option('template') == 'websitebase')
 		if($('#wpmdb-main #migrate-form').length > 0)
 		{
 			var wpmigrateForm 		= $('#wpmdb-main #migrate-form');
-			var wpmigrateZip 		= wpmigrateForm.find('.option-section #gzip_file');
+			var wpmigrateGZip 		= wpmigrateForm.find('.option-section #gzip_file');
 			var wpmigrateOldUrl 	= wpmigrateForm.find('.step-two #find-and-replace-sort #old-url');
 			var wpmigrateNewUrl 	= wpmigrateForm.find('.step-two #find-and-replace-sort #new-url');
 			var wpmigrateNewPath 	= wpmigrateForm.find('.step-two #find-and-replace-sort #new-path');
@@ -45,7 +45,7 @@ if(get_option('template') == 'websitebase')
 
 			wpmigrateContent.prepend('<div class="notification-message warning-notice inline-message">'+wpmigrateAlert+'</div>');
 			wpmigrateNewPath.attr('placeholder', 'New file path or URL');
-			wpmigrateZip.prop('checked', false);
+			wpmigrateGZip.prop('checked', false);
 
 			if(!(wpmigrateOldUrl.val().indexOf(window.location.protocol) >= 0))
 			{
