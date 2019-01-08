@@ -580,19 +580,19 @@ switch($step) {
 	foreach ( $htaccess_file as $line_num => $line ) {
 		// HTACCESS
 		if ( stripos( $line, "# r_https #" ) !== false ) {
-			$htaccess_file[ $line_num ] = $https == 'true' ? str_replace('# r_https #', '# ', $line) : str_replace('# r_https #', '', $line);
+			$htaccess_file[ $line_num ] = $https == 'true' ? str_replace('# r_https # ', '# ', $line) : str_replace('# r_https # ', '', $line);
 			continue;
 		}
 		if ( stripos( $line, "# f_https #" ) !== false ) {
-			$htaccess_file[ $line_num ] = $https == 'true' ? str_replace('# f_https #', '', $line) : str_replace('# f_https #', '# ', $line);
+			$htaccess_file[ $line_num ] = $https == 'true' ? str_replace('# f_https # ', '', $line) : str_replace('# f_https # ', '# ', $line);
 			continue;
 		}
 		if ( stripos( $line, "# r_www #" ) !== false ) {
-			$htaccess_file[ $line_num ] = $www == 'true' ? str_replace('# r_www #', '# ', $line) : str_replace('# r_www #', '', $line);
+			$htaccess_file[ $line_num ] = $www == 'true' ? str_replace('# r_www # ', '# ', $line) : str_replace('# r_www # ', '', $line);
 			continue;
 		}
 		if ( stripos( $line, "# f_www #" ) !== false ) {
-			$htaccess_file[ $line_num ] = $www == 'true' ? str_replace('# f_www #', '', $line) : str_replace('# f_www #', '# ', $line);
+			$htaccess_file[ $line_num ] = $www == 'true' ? str_replace('# f_www # ', '', $line) : str_replace('# f_www # ', '# ', $line);
 			continue;
 		}
 		if ( stripos( $line, "/wordpress_local/" ) !== false ) {
