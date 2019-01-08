@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WordPress - 5.0.x - Development - Administration package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2018-12-13 10:30:04+0000\n"
+"PO-Revision-Date: 2019-01-08 10:06:36+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -25,6 +25,11 @@ msgstr "1"
 msgctxt "default GMT offset or timezone string"
 msgid "0"
 msgstr "0"
+
+#. translators: %s: https://wordpress.org/plugins/classic-editor
+#: wp-admin/edit-form-blocks.php:412
+msgid "The block editor requires JavaScript. Please enable JavaScript in your browser settings, or try the <a href=\"%s\">Classic Editor plugin</a>."
+msgstr "El editor de bloques requiere JavaScript. Por favor, activa JavaScript en los ajustes de tu navegador, o prueba el <a href=\"%s\">plugin Classic Editor</a>."
 
 #: wp-admin/post.php:44
 msgid "A post type mismatch has been detected."
@@ -92,7 +97,7 @@ msgid "The Gutenberg plugin has been deactivated, as the features are now includ
 msgstr "El plugin Gutenberg ha sido desactivado, ya que las características están incluidas ahora por defecto en WordPress %1$s. Si quisieras seguir probando los cambios futuros en la experiencia de edición de WordPress, por favor, %2$sreactiva el plugin Gutenberg%3$s."
 
 #. Translators: Use this to specify the CSS font family for the default font
-#: wp-admin/edit-form-blocks.php:182
+#: wp-admin/edit-form-blocks.php:178
 msgctxt "CSS Font Family for Editor Font"
 msgid "Noto Serif"
 msgstr "Noto Serif"
@@ -308,7 +313,7 @@ msgstr[1] "%s bloques actualizados."
 msgid "<strong>ERROR</strong>: \"Table Prefix\" must not be empty."
 msgstr "<strong>ERROR</strong>: El «Prefijo de tabla» no debe estar vacío."
 
-#: wp-admin/edit-form-blocks.php:161
+#: wp-admin/edit-form-blocks.php:157
 msgid "Default template"
 msgstr "Plantilla por defecto"
 
@@ -328,6 +333,10 @@ msgstr "Acerca de"
 msgctxt "personal data group label"
 msgid "About"
 msgstr "Acerca de"
+
+#: wp-admin/edit-form-blocks.php:413
+msgid "https://wordpress.org/plugins/classic-editor/"
+msgstr "https://es.wordpress.org/plugins/classic-editor/"
 
 #: wp-admin/includes/upgrade.php:303
 #: wp-admin/includes/class-wp-internal-pointers.php:167 wp-admin/privacy.php:63
@@ -5252,15 +5261,15 @@ msgstr "Para navegar entre revisiones <strong>arrastra el deslizador a la izquie
 msgid "Loading&hellip;"
 msgstr "Cargando&hellip;"
 
-#: wp-admin/post.php:220
+#: wp-admin/post.php:221
 msgid "The item you are trying to move to the Trash no longer exists."
 msgstr "El artículo que estás tratando de mover a la papelera ya no existe."
 
-#: wp-admin/post.php:261
+#: wp-admin/post.php:262
 msgid "This item has already been deleted."
 msgstr "Este elemento ya ha sido borrado."
 
-#: wp-admin/post.php:243
+#: wp-admin/post.php:244
 msgid "The item you are trying to restore from the Trash no longer exists."
 msgstr "El elemento que intentas restaurar de la papelera ya no existe."
 
@@ -5501,7 +5510,7 @@ msgstr "Borrador creado el %1$s a las %2$s"
 msgid "%s has taken over and is currently editing."
 msgstr "%s ha tomado la posesión y está editando en este momento."
 
-#: wp-admin/post.php:230
+#: wp-admin/post.php:231
 msgid "You cannot move this item to the Trash. %s is currently editing."
 msgstr "No puedes mover este elemento a la papelera. %s lo está editando en este momento."
 
@@ -8424,16 +8433,16 @@ msgstr "Tu contraseña elegida."
 msgid "No thanks, do not remind me again"
 msgstr "No gracias, no me lo recuerdes de nuevo"
 
-#: wp-admin/post.php:272 wp-admin/post.php:275 wp-admin/upload.php:164
+#: wp-admin/post.php:273 wp-admin/post.php:276 wp-admin/upload.php:164
 #: wp-admin/edit.php:144 wp-admin/edit.php:147
 msgid "Error in deleting."
 msgstr "Error al eliminar."
 
-#: wp-admin/post.php:252 wp-admin/upload.php:152 wp-admin/edit.php:128
+#: wp-admin/post.php:253 wp-admin/upload.php:152 wp-admin/edit.php:128
 msgid "Error in restoring from Trash."
 msgstr "Error al restaurar de la papelera."
 
-#: wp-admin/post.php:234 wp-admin/upload.php:140 wp-admin/edit.php:114
+#: wp-admin/post.php:235 wp-admin/upload.php:140 wp-admin/edit.php:114
 msgid "Error in moving to Trash."
 msgstr "Error moviendo a la papelera."
 
@@ -8451,11 +8460,11 @@ msgid_plural "%s comments moved to the Trash."
 msgstr[0] "%s comentario movido a la papelera."
 msgstr[1] "%s comentarios movidos a la papelera."
 
-#: wp-admin/post.php:249 wp-admin/upload.php:149 wp-admin/edit.php:125
+#: wp-admin/post.php:250 wp-admin/upload.php:149 wp-admin/edit.php:125
 msgid "Sorry, you are not allowed to restore this item from the Trash."
 msgstr "Lo siento, no tienes permisos para restaurar este elemento de la papelera."
 
-#: wp-admin/post.php:226 wp-admin/upload.php:137 wp-admin/edit.php:106
+#: wp-admin/post.php:227 wp-admin/upload.php:137 wp-admin/edit.php:106
 msgid "Sorry, you are not allowed to move this item to the Trash."
 msgstr "Lo siento, no tienes permisos para mover este elemento a la papelera."
 
@@ -11651,7 +11660,7 @@ msgstr "Lo siento, no tienes permisos para editar páginas con este nombre de us
 msgid "Sorry, you are not allowed to edit posts as this user."
 msgstr "Lo siento, no tienes permisos para editar entradas con este usuario."
 
-#: wp-admin/edit-tags.php:100 wp-admin/post.php:267 wp-admin/themes.php:43
+#: wp-admin/edit-tags.php:100 wp-admin/post.php:268 wp-admin/themes.php:43
 #: wp-admin/upload.php:161 wp-admin/edit.php:140
 msgid "Sorry, you are not allowed to delete this item."
 msgstr "Lo siento, no tienes permisos para borrar este elemento."
