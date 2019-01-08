@@ -148,7 +148,7 @@ Touch Swipe | [Visit](http://labs.rampinteractive.co.uk/touchSwipe/demos/)
    - A screen will appear with a message with an advice to update his navigator to a newer one.
 
 4. How can i use this stuff in plain **HTML** instead the **PHP** standalone?
-   - In a *Standalone* project open **resources.php**, set a **custom_main_url** and **assets_url** _(also you can disable **Mix** and **Minify**)_. Next view the page source in navigator and copy it in a **HTML** page. Look for an example [here](https://github.com/WebsiteBase/WebsiteBase.GitHub.io).
+   - I left a compiled demo in the **html** folder, you can take a look there. Also you can download it [here](https://github.com/WebsiteBase/WebsiteBase.GitHub.io/archive/master.zip).
 
 # Recommended Tools for editing
 - [Visual Studio Code](https://code.visualstudio.com)
