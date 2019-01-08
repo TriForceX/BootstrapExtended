@@ -28,7 +28,7 @@ define('WPMDB_LICENCE', 1);
 set_site_transient('wpmdb_dbrains_api_down', __('<strong>Manually updated</strong>. Take a look on the main plugin file if you want disable or use a real license.', 'websitebase'), 0);
 set_site_transient('wpmdb_upgrade_data', __('<strong>Manually updated</strong>. Take a look on the main plugin file if you want disable or use a real license.', 'websitebase'), 0);
 
-if(get_option('template')=='websitebase')
+if(get_option('template') == 'websitebase')
 { 
 	add_action('admin_footer', function(){ ?>
 	<script type="text/javascript">
@@ -36,6 +36,7 @@ if(get_option('template')=='websitebase')
 		if($('#wpmdb-main #migrate-form').length > 0)
 		{
 			var wpmigrateForm 		= $('#wpmdb-main #migrate-form');
+			var wpmigrateZip 		= wpmigrateForm.find('.option-section #gzip_file');
 			var wpmigrateOldUrl 	= wpmigrateForm.find('.step-two #find-and-replace-sort #old-url');
 			var wpmigrateNewUrl 	= wpmigrateForm.find('.step-two #find-and-replace-sort #new-url');
 			var wpmigrateNewPath 	= wpmigrateForm.find('.step-two #find-and-replace-sort #new-path');
@@ -44,6 +45,7 @@ if(get_option('template')=='websitebase')
 
 			wpmigrateContent.prepend('<div class="notification-message warning-notice inline-message">'+wpmigrateAlert+'</div>');
 			wpmigrateNewPath.attr('placeholder', 'New file path or URL');
+			wpmigrateZip.prop('checked', false);
 
 			if(!(wpmigrateOldUrl.val().indexOf(window.location.protocol) >= 0))
 			{
