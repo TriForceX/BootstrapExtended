@@ -3,7 +3,7 @@ Contributors: azaozz
 Tags: block editor, classic editor, editor, Gutenberg, formatting, tinymce, write
 Requires at least: 4.9.8
 Tested up to: 5.0
-Stable tag: 4.8.0
+Stable tag: 4.8.2
 Requires PHP: 5.2
 License: GPLv2
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
