@@ -1475,11 +1475,11 @@
 
 		<div class="bs-example mb-4">
 			<!-- Carousel -->
-			<div id="carouselExampleIndicators" class="carousel slide carousel-control-fixed-md carousel-control-hide carousel-control-opacity carousel-indicators-dots carousel-indicators-hide" data-ride="carousel">
+			<div id="carousel-example" class="carousel slide carousel-control-fixed-md carousel-control-hide carousel-control-opacity carousel-indicators-dots carousel-indicators-hide" data-ride="carousel">
 				<ol class="carousel-indicators">
-					<li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-					<li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-					<li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+					<li data-target="#carousel-example" data-slide-to="0" class="active"></li>
+					<li data-target="#carousel-example" data-slide-to="1"></li>
+					<li data-target="#carousel-example" data-slide-to="2"></li>
 				</ol>
 				<div class="carousel-inner">
 					<div class="carousel-item active">
@@ -1493,21 +1493,21 @@
 					</div>
 				</div>
 				<!-- Using BS4 icons -->
-				<!--<a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+				<!--<a class="carousel-control-prev" href="#carousel-example" role="button" data-slide="prev">
 					<span class="carousel-control-prev-icon" aria-hidden="true"></span>
 					<span class="sr-only">Previous</span>
 				</a>
-				<a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+				<a class="carousel-control-next" href="#carousel-example" role="button" data-slide="next">
 					<span class="carousel-control-next-icon" aria-hidden="true"></span>
 					<span class="sr-only">Next</span>
 				</a>-->
 				<!-- Using BS4 icons -->
 				<!-- Using FA icons -->
-				<a class="carousel-control-prev" href="#carousel-home-banner" role="button" data-slide="prev">
+				<a class="carousel-control-prev" href="#carousel-example" role="button" data-slide="prev">
 					<i class="fas fa-angle-left"></i>
 					<span class="sr-only">Previous</span>
 				</a>
-				<a class="carousel-control-next" href="#carousel-home-banner" role="button" data-slide="next">
+				<a class="carousel-control-next" href="#carousel-example" role="button" data-slide="next">
 					<i class="fas fa-angle-right"></i>
 					<span class="sr-only">Next</span>
 				</a>
