@@ -51,7 +51,14 @@ if(get_option('template') == 'websitebase')
 			{
 				wpmigrateOldUrl.val(window.location.protocol+wpmigrateOldUrl.val());
 			}
-
+			
+			wpmigrateOldUrl.blur(function(e){
+				if(!(wpmigrateOldUrl.val().indexOf('http://') >= 0 || wpmigrateOldUrl.val().indexOf('https://') >= 0))
+				{
+					wpmigrateOldUrl.val(window.location.protocol+'//'+wpmigrateOldUrl.val());
+				}
+			});
+			
 			wpmigrateNewUrl.blur(function(e){
 				if(!(wpmigrateNewUrl.val().indexOf('http://') >= 0 || wpmigrateNewUrl.val().indexOf('https://') >= 0))
 				{
