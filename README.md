@@ -58,7 +58,7 @@ jQuery | 3.3.1
 	- Text cut one line function
 	- Text cut multiline function
 	- Text auto size function
-	- Custom modal box using _BootBox_ plugin _(¡Plain text, HTML content and Ajax)_
+	- Custom modal box using _BootBox_ plugin _(Plain text, HTML content and Ajax)_
 	- Video launch modal box function for _YouTube_, _Vimeo_ and _Facebook_
 	- Capitalize first character function
 	- Convert to slug function
@@ -79,7 +79,7 @@ jQuery | 3.3.1
 - **CSS Features:**
 	- Some _Bootstrap_ modified classes to resemble its previous version
 	- Custom modal extra large size
-	- Custom modal alignment _(Top, bottom, center, left and right)_
+	- Custom modal alignment _(Top, Bottom, Center, Left and Right)_
 	- Custom modal alternative fade effect
 	- Custom dropdown overflow
 	- Custom file input button language
@@ -166,4 +166,4 @@ Touch Swipe | [Visit](http://labs.rampinteractive.co.uk/touchSwipe/demos/)
 - [XAMP Server (All)](https://www.apachefriends.org)
 
 # About
-I coded the most of the code snippets and functions *(from scratch or searching the whole internet)*. About the included libraries im not the author, but i try to let other people find the best way to use them *(original authors are linked in the demo page)*. If you have any question feel free to contact me at triforce@gznetwork.com
+I coded the most of the code snippets and functions *(from scratch or searching the whole internet)*. About the included libraries im not the author, but i try to let other people find the best way to use them *(original authors are mentioned and linked on [resources](https://github.com/TriForceX/WebsiteBase#resources) section)*. If you have any question feel free to contact me at triforce@gznetwork.com
