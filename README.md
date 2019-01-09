@@ -4,12 +4,12 @@ https://websitebase.github.io
 Base structure for websites with reusable parts of source code or functions mainly based on **Bootstrap** + **PHP** and another libraries. You can visit the website above for a running example.
 
 # Base
-Name | Version
+Name | Version | Info
 ------------ | ------------
-Standalone | PHP 5.4+
-WordPress  | 5.0.2
-Bootstrap | 4.2.1
-jQuery | 3.3.1
+Standalone | PHP 5.4+ | [Visit](http://php.net/)
+WordPress  | 5.0.2 | [Visit](https://wordpress.org/)
+Bootstrap | 4.2.1 | [Visit](https://getbootstrap.com/)
+jQuery | 3.3.1 | [Visit](https://jquery.com/)
 
 # Functions & Code Snippets
 - Custom _HTML_ header data through _PHP_
@@ -20,7 +20,7 @@ jQuery | 3.3.1
 	- Custom _CSS_ & _JS_ template generator
 	- Minify _CSS_, _JS_ and _HTML_
 	- Send E-Mails with PHPMailer
-	- Check ends/start of string
+	- Check ends or start of string
 	- Check string contains another string
 	- Compare strings
 	- Strip all whitespaces to string
@@ -40,13 +40,13 @@ jQuery | 3.3.1
 	- Get external functions
 	- Remove directory (recursively)
 - **JS Features:**
-	- Custom console log for _WebsiteBase_ functions (JSconsole)
+	- Custom console log for _WebsiteBase_ functions _(JSconsole)_
 	- Custom language support
 	- Browser detection
 	- Mobile detection
 	- Custom modal trigger function
 	- Check attr function
-	- Check outer width & height with padding/margin
+	- Check outer width or height with padding or margin
 	- Remove whitespaces between elements
 	- Custom form validation
 	- Convert string to boolean
@@ -94,7 +94,7 @@ jQuery | 3.3.1
 - **Wordpress Features:**
 	- Custom setup for _localhost_ & _production_ enviroments
 	- Custom _htaccess_ with force _HTTPS_ & _WWW_ options
-	- Custom _WordPress_ functions and snippets (see also wiki)
+	- Custom _WordPress_ functions and snippets _(See also [wiki](https://github.com/TriForceX/WebsiteBase/wiki))_
 	- Admin panel _CSS_ & _JS_ injections
 	- **Pre-Installed Plugins:**
 		- Akismet Anti-Spam
