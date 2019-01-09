@@ -26,10 +26,10 @@ jQuery | 3.3.1
 	- Strip all whitespaces to string
 	- Convert string to boolean
 	- Remove accents
-	- Sanitize Strings
+	- Sanitize strings
 	- Convert to slug
 	- Limit character/words
-	- Get main url, protocol, https, current url, and more...
+	- Get _Main URL_, _Protocol_, _HTTPS_, _Current Url_, and more...
 	- Array index access
 	- Add & remove _URL_ query argument
 	- Convert string to _UTF-8_
@@ -79,7 +79,7 @@ jQuery | 3.3.1
 - **CSS Features:**
 	- Some _Bootstrap_ modified classes to resemble its previous version
 	- Custom modal extra large size
-	- Custom modal alignment _(top bottom center left and right)_
+	- Custom modal alignment _(top, bottom, center, left and right)_
 	- Custom modal alternative fade effect
 	- Custom dropdown overflow
 	- Custom file input button language
@@ -90,29 +90,29 @@ jQuery | 3.3.1
 	- Custom carousel controls hidden on mobile
 	- Custom gradient text truncate
 	- Collection of custom hover effects
-	- Included "BebasNeue" example font face
+	- Included _BebasNeue_ example font face
 - **Wordpress Features:**
 	- Custom setup for _localhost_ & _production_ enviroments
 	- Custom _htaccess_ with force _HTTPS_ & _WWW_ options
 	- Custom _WordPress_ functions and snippets (see also wiki)
 	- Admin panel _CSS_ & _JS_ injections
 	- **Pre-Installed Plugins:**
-		- Akismet Anti-Spam (Plugin)
-		- Admin Menu Editor (Plugin)
-		- Advanced Custom Fields (Plugin)
-		- Classic Editor (Plugin)
-		- Custom Post Type UI (Plugin)
-		- Enhaced Context Help (Plugin)
-		- Gutenberg Editor (Plugin)
-		- Loco Translate (Plugin)
-		- Login reCaptcha (Plugin)
-		- Mail SMTP (Plugin)
-		- Migrate DB (Plugin)
-		- Resize Image After Upload (Plugin)
-		- Simple Custom Post Order (Plugin)
-		- Simple History (Plugin)
-		- TinyMCE (Plugin)
-		- User Role Editor (Plugin)
+		- Akismet Anti-Spam
+		- Admin Menu Editor
+		- Advanced Custom Fields
+		- Classic Editor
+		- Custom Post Type UI
+		- Enhaced Context Help
+		- Gutenberg Editor
+		- Loco Translate
+		- Login reCaptcha
+		- Mail SMTP
+		- Migrate DB
+		- Resize Image After Upload
+		- Simple Custom Post Order
+		- Simple History
+		- TinyMCE
+		- User Role Editor
 
 # Resources
 Name | Source
