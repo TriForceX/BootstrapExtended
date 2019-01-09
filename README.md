@@ -29,7 +29,7 @@ jQuery | 3.3.1
 	- Sanitize strings
 	- Convert to slug
 	- Limit character/words
-	- Get _Main URL_, _Protocol_, _HTTPS_, _Current Url_, and more...
+	- Get _Main URL_, _Protocol_, _HTTPS_, _Current URL_, and more...
 	- Array index access
 	- Add & remove _URL_ query argument
 	- Convert string to _UTF-8_
@@ -40,7 +40,7 @@ jQuery | 3.3.1
 	- Get external functions
 	- Remove directory (recursively)
 - **JS Features:**
-	- Custom console log for websitebase functions (JSconsole)
+	- Custom console log for _WebsiteBase_ functions (JSconsole)
 	- Custom language support
 	- Browser detection
 	- Mobile detection
@@ -58,7 +58,7 @@ jQuery | 3.3.1
 	- Text cut one line function
 	- Text cut multiline function
 	- Text auto size function
-	- Custom modal box using _BootBox_ plugin (plain text, html content & ajax)
+	- Custom modal box using _BootBox_ plugin _(¡Plain text, HTML content and Ajax)_
 	- Video launch modal box function for _YouTube_, _Vimeo_ and _Facebook_
 	- Capitalize first character function
 	- Convert to slug function
@@ -79,7 +79,7 @@ jQuery | 3.3.1
 - **CSS Features:**
 	- Some _Bootstrap_ modified classes to resemble its previous version
 	- Custom modal extra large size
-	- Custom modal alignment _(top, bottom, center, left and right)_
+	- Custom modal alignment _(Top, bottom, center, left and right)_
 	- Custom modal alternative fade effect
 	- Custom dropdown overflow
 	- Custom file input button language
