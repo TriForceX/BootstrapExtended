@@ -5,7 +5,7 @@ Base structure for websites with reusable parts of source code or functions main
 
 # Base
 Name | Version | Info
------------- | ------------
+------------ | ------------ | ------------
 Standalone | PHP 5.4+ | [Visit](http://php.net/)
 WordPress  | 5.0.2 | [Visit](https://wordpress.org/)
 Bootstrap | 4.2.1 | [Visit](https://getbootstrap.com/)
@@ -94,7 +94,7 @@ jQuery | 3.3.1 | [Visit](https://jquery.com/)
 - **Wordpress Features:**
 	- Custom setup for _localhost_ & _production_ enviroments
 	- Custom _htaccess_ with force _HTTPS_ & _WWW_ options
-	- Custom _WordPress_ functions and snippets _(See also [wiki](https://github.com/TriForceX/WebsiteBase/wiki))_
+	- Custom _WordPress_ functions and snippets _(See [Wiki](https://github.com/TriForceX/WebsiteBase/wiki))_
 	- Admin panel _CSS_ & _JS_ injections
 	- **Pre-Installed Plugins:**
 		- Akismet Anti-Spam
