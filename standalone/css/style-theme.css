@@ -11,11 +11,11 @@
 '$screen-lg-up'		=> '1199.98px', 
 '$screen-xl-up' 	=> '1919.98px', 
 
-'$screen-xs-down'	=> '575.98px',
-'$screen-sm-down'	=> '767.98px',
-'$screen-md-down'	=> '991.98px',
-'$screen-lg-down'	=> '1199.98px', 
-'$screen-xl-down' 	=> '1919.98px', 
+'$screen-xs-down'	=> '576px',
+'$screen-sm-down'	=> '768px',
+'$screen-md-down'	=> '992px',
+'$screen-lg-down'	=> '1200px', 
+'$screen-xl-down' 	=> '1920px', 
 
 @media (max-width: $screen-size-up) {
 	...
