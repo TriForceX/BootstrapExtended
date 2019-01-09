@@ -14,7 +14,7 @@ $(document).ready(function(){
 
 });
 
-$(window).bind("load", function(){
+$(window).bind('load', function(){
 
 /* ================================================= THEME WINDOWS LOAD ================================================= */
 	
@@ -24,7 +24,7 @@ $(window).bind("load", function(){
 
 });
 
-$(document).on("JSresponsiveCode", function(event, bodyWidth, bodyHeight, bodyOrientation, bodyScreen){
+$(document).on('JSresponsiveCode', function(event, bodyWidth, bodyHeight, bodyOrientation, bodyScreen){
 
 /* ================================================= THEME RESPONSIVE CODE ================================================= */
 	
