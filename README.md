@@ -1,7 +1,7 @@
 # Custom Bootstrap Website Base
 https://websitebase.github.io
 
-Base structure for websites with reusable parts of source code or functions mainly based on Bootstrap + PHP and another libraries. You can visit the website above for a running example.
+Base structure for websites with reusable parts of source code or functions mainly based on **Bootstrap** + **PHP** and another libraries. You can visit the website above for a running example.
 
 # Base
 Name | Version
@@ -12,13 +12,13 @@ Bootstrap | 4.2.1
 jQuery | 3.3.1
 
 # Functions & Code Snippets
-- HTML header data through PHP
-- PHP main utility class
-- CSS & JS built in PHP with minify & mix features
-- Custom .htaccess file with force HTTPS & WWW options
+- Custom _HTML_ header data through _PHP_
+- Custom _PHP_ main utility class
+- Custom _CSS_ & _JS_ built in _PHP_ with minify & mix features
+- Custom _htaccess_ file with force _HTTPS_ & _WWW_ options
 - **PHP Features:**
-	- CSS & JS template generator
-	- Minify CSS, JS and HTML
+	- Custom _CSS_ & _JS_ template generator
+	- Minify _CSS_, _JS_ and _HTML_
 	- Send E-Mails with PHPMailer
 	- Check ends/start of string
 	- Check string contains another string
@@ -31,11 +31,11 @@ jQuery | 3.3.1
 	- Limit character/words
 	- Get main url, protocol, https, current url, and more...
 	- Array index access
-	- Add & remove URL query argument
-	- Convert string to UTF-8
+	- Add & remove _URL_ query argument
+	- Convert string to _UTF-8_
 	- Custom show date format
 	- Custom paginator
-	- Get YouTube, Vimeo and Facebook ID and embed code URL
+	- Get _YouTube_, _Vimeo_ and _Facebook_ ID and embed code URL
 	- Get website parts with cUrl
 	- Get external functions
 	- Remove directory (recursively)
@@ -52,34 +52,34 @@ jQuery | 3.3.1
 	- Convert string to boolean
 	- Get max width & height between elements
 	- Custom responsive code event
-	- LightGallery improved functions/events
+	- _LightGallery_ improved & custom functions
 	- Image auto-fill background images
 	- Detect element height changes
 	- Text cut one line function
-	- Text cut multi line function
+	- Text cut multiline function
 	- Text auto size function
-	- Custom modal box using BootBox plugin (plain text, html content & ajax)
-	- Video launch modal box function for YouTube, Vimeo and Facebook
+	- Custom modal box using _BootBox_ plugin (plain text, html content & ajax)
+	- Video launch modal box function for _YouTube_, _Vimeo_ and _Facebook_
 	- Capitalize first character function
 	- Convert to slug function
 	- Auto scroll function
 	- Disable right click menu on elements
-	- Get URL parameter from URL (PHP $_GET like)
-	- Get URL parameter from script SRC (PHP $_GET like)
+	- Get URL parameter from _URL_
+	- Get URL parameter from script _SRC_
 	- Convert strings to links function
-	- Remove HTML tags function
+	- Remove _HTML_ tags function
 	- Check hashtag links function
 	- Custom window pop-up function
-	- Map launch function for Google Maps and Waze
+	- Map launch function for _Google Maps_ and _Waze_
 	- Custom paginator function
 	- Table painter & cleaner
-	- Anchor tag functionallity for any HTML tag
-	- Easy Masonry JS usage
+	- Anchor tag functionallity for any _HTML_ tag
+	- Custom _Masonry_ usage
 	- Remove accents from strings
 - **CSS Features:**
-	- Some Bootstrap modified classes to resemble its previous version
+	- Some _Bootstrap_ modified classes to resemble its previous version
 	- Custom modal extra large size
-	- Custom modal alignment (top bottom center left and right)
+	- Custom modal alignment _(top bottom center left and right)_
 	- Custom modal alternative fade effect
 	- Custom dropdown overflow
 	- Custom file input button language
@@ -89,13 +89,13 @@ jQuery | 3.3.1
 	- Custom rounded carousel indicators
 	- Custom carousel controls hidden on mobile
 	- Custom gradient text truncate
-	- Collection of CSS3 hover effects
+	- Collection of custom hover effects
 	- Included "BebasNeue" example font face
 - **Wordpress Features:**
-	- Custom setup for localhost & production enviroments
-	- Custom htaccess with force HTTPS & WWW options
-	- Custom WordPress functions and snippets (see also wiki)
-	- Admin Panel CSS & JS injections
+	- Custom setup for _localhost_ & _production_ enviroments
+	- Custom _htaccess_ with force _HTTPS_ & _WWW_ options
+	- Custom _WordPress_ functions and snippets (see also wiki)
+	- Admin panel _CSS_ & _JS_ injections
 	- **Pre-Installed Plugins:**
 		- Akismet Anti-Spam (Plugin)
 		- Admin Menu Editor (Plugin)
