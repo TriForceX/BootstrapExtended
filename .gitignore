@@ -19,6 +19,12 @@ wordpress/wp-content/themes/websitebase/css/*[.min., .dist.]*
 wordpress/wp-content/themes/websitebase/js/*[.min., .dist.]*
 wordpress/wp-content/themes/websitebase/css/extras/*[.min., .dist.]*
 wordpress/wp-content/themes/websitebase/js/extras/*[.min., .dist.]*
+##
+
+## wordpress files to ignore
+wordpress/wp-admin/install.php
+wordpress/wp-admin/setup-config.php
+wordpress/wp-config-sample.php
 wordpress/wp-config.php
 wordpress/.htaccess
 ##
