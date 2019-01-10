@@ -1,0 +1,22 @@
+## generic files to ignore
+*~
+*.lock
+*.DS_Store
+*.swp
+*.out
+##
+
+## websitebase files to ignore
+wp-content/themes/websitebase/css/style.css
+wp-content/themes/websitebase/js/app.js
+wp-content/themes/websitebase/css/*[.min., .dist.]*
+wp-content/themes/websitebase/js/*[.min., .dist.]*
+wp-content/themes/websitebase/css/extras/*[.min., .dist.]*
+wp-content/themes/websitebase/js/extras/*[.min., .dist.]*
+##
+
+## wordpress files to update manually
+wordpress/wp-admin/install.php
+wordpress/wp-admin/setup-config.php
+wordpress/wp-config-sample.php
+##
