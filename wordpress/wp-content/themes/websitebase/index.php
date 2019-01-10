@@ -1534,7 +1534,11 @@
 					<td>Change the indicators to <b>dots</b> buttons.
 					</td>
 				</tr>
-				
+				<tr>
+					<td class="text-nowrap notranslate">carousel-indicators-2x</td>
+					<td>Increases the height of <b>indicators</b> buttons <i>(it will not work for dots style)</i>.
+					</td>
+				</tr>
 				<tr>
 					<td class="text-nowrap notranslate">carousel-indicators-hide</td>
 					<td>Hide the <b>indicators</b> controls on small screens.

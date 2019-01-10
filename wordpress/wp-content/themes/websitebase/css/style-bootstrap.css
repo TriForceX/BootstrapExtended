@@ -362,10 +362,10 @@
 /* Form validation warning */
 
 /* Carousel dots indicators */
-.carousel-indicators-dots .carousel-indicators {
+.carousel-indicators-dots:not(.carousel-indicators-2x) .carousel-indicators {
 	margin-bottom: 1.5rem;
 }
-.carousel-indicators-dots .carousel-indicators li {
+.carousel-indicators-dots:not(.carousel-indicators-2x) .carousel-indicators li {
 	width: 12px;
 	height: 12px;
 	border-top: none;
@@ -373,6 +373,17 @@
 	border-radius: 300px;
 }
 /* Carousel dots indicators */
+
+/* Carousel indicators height 2x */
+.carousel-indicators-2x:not(.carousel-indicators-dots) .carousel-indicators {
+	margin-bottom: 1.5rem;
+}
+.carousel-indicators-2x:not(.carousel-indicators-dots) .carousel-indicators li {
+	height: 6px;
+	border-top: none;
+	border-bottom: none;
+}
+/* Carousel indicators height 2x */
 
 /* Carousel fixed controls */
 .carousel-control-fixed .carousel-control-prev,
@@ -412,8 +423,8 @@
 /* Carousel controls with Font Awesome */
 
 /* Carousel shadows */
-.carousel-shadows .carousel-control-prev i, 
-.carousel-shadows .carousel-control-next i {
+.carousel-shadows .carousel-control-prev *[class*="fa-"], 
+.carousel-shadows .carousel-control-next *[class*="fa-"] {
 	text-shadow: 2px 2px 12px black;
 }
 .carousel-shadows .carousel-indicators li {
