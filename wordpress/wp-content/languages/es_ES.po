@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WordPress - 5.0.x - Development package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2018-12-26 13:33:36+0000\n"
+"PO-Revision-Date: 2019-01-09 20:15:01+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -7506,7 +7506,7 @@ msgstr "El siguiente grupo de atajos de formato se aplican mientras escribes o c
 
 #: wp-login.php:958
 msgid "Your session has expired. Please log in to continue where you left off."
-msgstr "Tu sesión ha expirado. Por favor, identifícate de nuevo para continuar donde lo dejaste."
+msgstr "Tu sesión ha caducado. Por favor, identifícate de nuevo para continuar donde lo dejaste."
 
 #. translators: 1: display name, 2: user_login
 #: wp-includes/user.php:1126
