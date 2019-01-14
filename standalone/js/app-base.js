@@ -1243,19 +1243,19 @@ function JSvideoLaunch(title, url, share, autoplay, size, align, animate)
 		embedShare = url;
 	}
 	
-	var content = '<div class="JSvideoLaunchIframe embed-responsive embed-responsive embed-responsive-16by9">'+
+	var content = '<div class="embed-responsive embed-responsive embed-responsive-16by9">'+
 			  		'	<iframe class="embed-responsive-item" src="'+embedUrl+'" frameborder="0" allowTransparency="true" allowFullScreen="true"></iframe>'+
 			  		'</div>';
 	
 	if(share)
 	{
-		content = content+'<a class="input-group input-group-sm mt-3 JSvideoLaunchURL" data-clipboard-target=".JSvideoLaunchCopy" href="'+embedShare+'" target="_blank">'+
+		content = content+'<a class="input-group input-group-sm p-3" data-clipboard-target=".JSvideoLaunchModal .form-control" href="'+embedShare+'" target="_blank">'+
 							'	<div class="input-group-prepend">'+
 							'		<span class="input-group-text">'+
 							'			'+embedShareTitle+' <i class="ml-2 far fa-copy"></i>'+
 							'		</span>'+
 							'	</div>'+
-							'	<input type="text" class="form-control text-center JSvideoLaunchCopy" value="'+embedShare+'" readonly>'+
+							'	<input type="text" class="form-control text-center" value="'+embedShare+'" readonly>'+
 							'</a>';
 	}
 	
@@ -1267,13 +1267,18 @@ function JSvideoLaunch(title, url, share, autoplay, size, align, animate)
 			message: content,
 			size: size,
 			backdrop: true,
-			className: (animate == 'alt' ? 'fade-2 '+align : align),
+			className: (animate == 'alt' ? 'fade-2 '+align : align)+' JSvideoLaunchModal',
 			animate: (animate == 'alt' ? true : animate),
+			buttons: {
+ 				ok: {
+ 					label: JSlang('$modal-close'),
+ 				}
+ 			}
 		}).on("shown.bs.modal", function(){
 			// Modify facebook src
 			if (url.indexOf('facebook') >= 0)
 			{
-				var JSvideoLaunchElem = $('.JSvideoLaunchIframe iframe');
+				var JSvideoLaunchElem = $('.JSvideoLaunchModal iframe');
 				var JSvideoLaunchData = {'url' 		: JSvideoLaunchElem.attr('src'),
 										 'width'	: parseInt(JSvideoLaunchElem.width()), 
 										 'height'	: parseInt(JSvideoLaunchElem.height())};
@@ -1284,10 +1289,10 @@ function JSvideoLaunch(title, url, share, autoplay, size, align, animate)
 	}
 
 	// Disable text select
-	if(JSexist($('.JSvideoLaunchURL')))
+	if(JSexist($('.JSvideoLaunchModal .input-group')))
 	{
 		// Tooltip load
-		$('.JSvideoLaunchCopy').tooltip({
+		$('.JSvideoLaunchModal .form-control').tooltip({
 			title: embedShareText,
 			placement: 'bottom',
 			trigger: 'manual',
@@ -1297,14 +1302,14 @@ function JSvideoLaunch(title, url, share, autoplay, size, align, animate)
 		if(typeof ClipboardJS !== 'undefined')
 		{
 			// Clipboard
-			var clipboard = new ClipboardJS('.JSvideoLaunchURL');
+			var clipboard = new ClipboardJS('.JSvideoLaunchModal .input-group');
 
 			clipboard.on('success', function(e){
 				// Show tooltip
-				$('.JSvideoLaunchCopy').tooltip('show');
+				$('.JSvideoLaunchModal .form-control').tooltip('show');
 				
 				// Disable click
-				$(document).on('click', '.JSvideoLaunchURL', function(e){
+				$(document).on('click', '.JSvideoLaunchModal .input-group', function(e){
 					e.preventDefault();
 				});
 			});

@@ -228,26 +228,27 @@ div.dataTables_wrapper div.dataTables_paginate ul.pagination {
 /* JS Text Cut Multi Line */
 
 /* JS Video Launch */
-.JSvideoLaunchIframe {
-	background-color: #EEE;
-	border: 1px solid #CCC;
-	display: block;
-	width: 100%;
-	height: auto;
+.JSvideoLaunchModal .modal-body {
+ 	padding: 0px !important;
 }
-
-.JSvideoLaunchIframe iframe {
-	border: 0px;
+.JSvideoLaunchModal .embed-responsive {
+	 background-color: #eee;
+	 display: block;
+	 width: 100%;
+	 height: auto;
 }
-.JSvideoLaunchCopy {
-	background-color: white !important;
-	cursor: pointer;
-	-webkit-touch-callout: none; 
-	-webkit-user-select: none; 
-	-khtml-user-select: none; 
-	-moz-user-select: none; 
-	-ms-user-select: none; 
-	user-select: none;
+.JSvideoLaunchModal .embed-responsive iframe {
+ 	border: 0px;
+}
+.JSvideoLaunchModal .form-control {
+	 background-color: white !important;
+	 cursor: pointer;
+	 -webkit-touch-callout: none;
+	 -webkit-user-select: none;
+	 -khtml-user-select: none;
+	 -moz-user-select: none;
+	 -ms-user-select: none;
+	 user-select: none
 }
 /* JS Video Launch */
 

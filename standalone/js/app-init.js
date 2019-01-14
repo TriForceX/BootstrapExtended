@@ -150,6 +150,19 @@ var JSlanguage = {
 					en: 'Please add this site to your exception list and try again.',
 					es: 'Por favor agrega este sitio a la lista de excepciones e inténtalo denuevo.',
 				},
+				// Modal
+				'$modal-close': {
+					en: 'Close',
+					es: 'Cerrar',
+				},
+				'$modal-confirm': {
+					en: 'Confirm',
+					es: 'Confirmar',
+				},
+				'$modal-send': {
+					en: 'Send',
+					es: 'Enviar',
+				},
 			};
 
 // Set default language
