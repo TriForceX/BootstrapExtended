@@ -21,6 +21,20 @@
 /* Modal */
 .modal {
 	z-index: 1070 !important;
+	overflow-y: hidden !important;
+}
+.modal-open:not(.modal-scroll) {
+	overflow-y: auto;
+	padding-right: 0px !important;
+}
+.modal-open:not(.modal-scroll) .fixed-top {
+	right: -15px;
+}
+.modal-scroll {
+	overflow-y: hidden;
+}
+.modal-scroll .modal{
+	overflow-y: auto !important;
 }
 .modal-backdrop{
 	z-index: 1060 !important;

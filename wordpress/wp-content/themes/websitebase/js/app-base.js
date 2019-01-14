@@ -143,6 +143,30 @@ $.fn.JShtmlClean = function()
     return this;
 };
 
+// Get element height changes
+$.fn.JSheightChange = function(callback) 
+{
+	// Console Log
+	JSconsole('[JS Function] Element Height Changes');
+	
+	var elm = this; 
+    var lastHeight = elm.height(), newHeight;
+	(function run(){
+		newHeight = elm.height();
+		if(lastHeight !== newHeight){
+			callback();
+		}
+		
+		lastHeight = newHeight;
+
+		if(elm.JSelementHeightChangeTimer){
+		  clearTimeout(elm.JSelementHeightChangeTimer);
+		}
+
+		elm.JSelementHeightChangeTimer = setTimeout(run, 30);
+	})();
+};
+
 // Form validate
 $.fn.JSvalidateForm = function(options)
 {	
@@ -914,29 +938,6 @@ function JSimgFill(container)
 	$(container).css({'background-image'	: 'url('+bgSource+')',
 					  'background-position'	: bgHorizontal+' '+bgVertical,
 					  'background-size'		: bgFill});
-}
-
-// Get element height changes
-function JSelementHeightChange(elm, callback)
-{
-	// Console Log
-	JSconsole('[JS Function] Element Height Change');
-	
-	var lastHeight = $(elm).height(), newHeight;
-	(function run(){
-		newHeight = $(elm).height();
-		if(lastHeight !== newHeight){
-			callback();
-		}
-		
-		lastHeight = newHeight;
-
-		if(elm.JSelementHeightChangeTimer){
-		  clearTimeout(elm.JSelementHeightChangeTimer);
-		}
-
-		elm.JSelementHeightChangeTimer = setTimeout(run, 200);
-	})();
 }
 
 // Text cut function one line
@@ -1828,6 +1829,9 @@ function JSpaintTable(container)
 // Custom href function
 function JShref(element)
 {
+	// Console Log
+	JSconsole('[JS Function] Auto Href');
+	
 	element.each(function(){
 		var url = $(this).attr('href');
 		
@@ -1879,6 +1883,9 @@ function JSmasonry(element)
 // Remove accents on strings
 function JSremoveAccents(string)
 {
+	// Console Log
+	JSconsole('[JS Function] Remove Accents');
+	
 	return string.replace(/[áÁàÀâÂäÄãÃåÅæÆ]/g, 'a')
 				.replace(/[çÇ]/g, 'c')
 				.replace(/[éÉèÈêÊëË]/g, 'e')
@@ -1898,6 +1905,36 @@ function JSremoveAccents(string)
 				.replace(/[úÚùÙûÛüÜ]/g, 'u')
 				.replace(/[ýÝŷŶŸÿ]/g, 'n');
 }
+
+// Check modal scrollbars
+function JSmodalScrollBar()
+{
+	if(JSexist($('.modal')))
+	{
+		// Console Log
+		JSconsole('[JS Function] Modal Scrollbar');
+		
+		var bodyHeight = $(window).height();
+		var modalElem = $('.modal .modal-dialog');
+		var modalHeight = modalElem.height() + parseFloat(modalElem.css('margin-top')) + parseFloat(modalElem.css('margin-bottom'));
+		
+		if(modalHeight > bodyHeight)
+		{
+			$('body').addClass('modal-scroll');
+		}
+		else
+		{
+			$('body').removeClass('modal-scroll');
+		}
+		
+		$('.modal .modal-dialog').JSheightChange(function(){
+			JSmodalScrollBar();
+		});
+	}
+}
+
+$(window).bind('resize', JSmodalScrollBar);
+$(window).bind('orientationchange', JSmodalScrollBar);
 
 // Main Initialization
 function JSmainInit()
@@ -2007,6 +2044,7 @@ function JSmainInit()
 		});
 	}
 }
+
 /* ================================================= BASE FUNCTIONS ================================================= */
 
 $(document).ready(function(){
@@ -2016,8 +2054,14 @@ $(document).ready(function(){
 	// Console Log
 	JSconsole('[JS State] Document Ready');
 	
+	// Remove custom modal scroll
+	$(document).on('hide.bs.modal', function(){
+		$('body').removeClass('modal-scroll');
+	});
+	
 	// Disable button auto-focus
 	$(document).on('shown.bs.modal', function(){
+		JSmodalScrollBar();
 		$('.modal .modal-footer .btn:focus').blur();
 		$('.modal').scrollTop(0);
 	});
