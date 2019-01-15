@@ -175,9 +175,9 @@ $.fn.JSvalidateForm = function(options)
 	
 	// Default settings
 	var settings = $.extend({
-		noValidate		: '',
+		noValidate		: false,
 		hasConfirm		: false,
-		customValidate	: null,
+		customValidate	: false,
 		resetSubmit		: true,
 		errorStyling	: true,
 		errorScroll		: false,
@@ -430,9 +430,9 @@ $.fn.JSvalidateForm = function(options)
 			});
 			
 			// Custom validation
-			if(settings.customValidate !== null)
+			if(settings.customValidate !== false)
 			{
-				if($.type(settings.customValidate()) === 'object')
+				if($.isFunction(settings.customValidate))
 				{
 					var customInput = settings.customValidate()['element'];
 					var customError = settings.customValidate()['error'];

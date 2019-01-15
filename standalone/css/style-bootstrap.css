@@ -317,8 +317,14 @@
 /* Form validation addon */
 
 /* Form validation warning */
+.form-control.is-warning,
 .was-validated .is-warning:valid {
 	border-color: #faa425 !important;
+	padding-right: 2.25rem;
+	background-repeat: no-repeat;
+	background-position: center right calc(2.25rem / 4);
+	background-size: calc(2.25rem / 2) calc(2.25rem / 2);
+	background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 9 8'%3e%3cpath fill='%23faa425' d='M8.9,6.7L5.3,0.4C5.1,0.2,4.8,0,4.5,0C4.2,0,3.9,0.2,3.7,0.4L0.1,6.7C0,7,0,7.3,0.1,7.6C0.3,7.9,0.6,8,0.9,8 h7.2c0.3,0,0.6-0.2,0.8-0.4C9,7.3,9,7,8.9,6.7z M4.5,7C4.2,7,3.9,6.8,3.9,6.4c0-0.3,0.3-0.6,0.6-0.6c0.3,0,0.6,0.3,0.6,0.6 C5.1,6.8,4.8,7,4.5,7z M5.1,4.5c0,0.3-0.3,0.6-0.6,0.6h0c-0.3,0-0.6-0.3-0.6-0.6V2.2c0-0.3,0.3-0.6,0.6-0.6h0c0.3,0,0.6,0.3,0.6,0.6 V4.5z'/%3E%3C/svg%3E%0A") !important;
 }
 .was-validated .is-warning:valid:focus {
 	border-color: #faa425 !important;
