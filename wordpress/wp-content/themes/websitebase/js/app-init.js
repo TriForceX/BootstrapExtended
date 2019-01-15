@@ -151,6 +151,10 @@ var JSlanguage = {
 					es: 'Por favor agrega este sitio a la lista de excepciones e inténtalo denuevo.',
 				},
 				// Modal
+				'$modal-open': {
+					en: 'Open',
+					es: 'Abrir',
+				},
 				'$modal-close': {
 					en: 'Close',
 					es: 'Cerrar',

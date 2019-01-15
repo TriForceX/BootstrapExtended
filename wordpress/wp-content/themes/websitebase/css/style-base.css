@@ -228,8 +228,14 @@ div.dataTables_wrapper div.dataTables_paginate ul.pagination {
 /* JS Text Cut Multi Line */
 
 /* JS Video Launch */
+.JSvideoLaunchModal .modal-content {
+	border: none !important;
+}
 .JSvideoLaunchModal .modal-body {
  	padding: 0px !important;
+}
+.JSvideoLaunchModal.no-footer .modal-footer {
+	display: none !important;
 }
 .JSvideoLaunchModal .embed-responsive {
 	 background-color: #eee;

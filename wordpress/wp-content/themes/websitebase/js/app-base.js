@@ -1268,14 +1268,23 @@ function JSvideoLaunch(title, url, share, autoplay, size, align, animate)
 			message: content,
 			size: size,
 			backdrop: true,
-			className: (animate == 'alt' ? 'fade-2 '+align : align)+' JSvideoLaunchModal',
+			className: (animate == 'alt' ? 'fade-2 '+align : align)+' JSvideoLaunchModal '+(share ? 'no-footer' : ''),
 			animate: (animate == 'alt' ? true : animate),
 			buttons: {
  				ok: {
  					label: JSlang('$modal-close'),
- 				}
- 			}
+					className: 'btn-primary'
+ 				},
+ 			},
+			callback: function(result){
+				if(result)
+				{
+					$('.JSvideoLaunchModal .modal-footer a')[0].click();
+				}
+			}
 		}).on("shown.bs.modal", function(){
+			// Add external url
+			$('.JSvideoLaunchModal .modal-footer').prepend('<a class="btn btn-success" href="'+embedShare+'" target="_blank">'+JSlang('$modal-open')+'</a>');
 			// Modify facebook src
 			if (url.indexOf('facebook') >= 0)
 			{
