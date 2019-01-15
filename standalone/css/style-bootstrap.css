@@ -317,7 +317,6 @@
 /* Form validation addon */
 
 /* Form validation warning */
-.form-control.is-warning,
 .was-validated .is-warning:valid {
 	border-color: #faa425 !important;
 	padding-right: 2.25rem;
