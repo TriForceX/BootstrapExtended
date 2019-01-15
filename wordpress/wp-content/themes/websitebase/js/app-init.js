@@ -166,7 +166,7 @@ var JSlanguage = {
 			};
 
 // Set default language
-if(JSmainLang === undefined || JSmainLang === null || JSmainLang == '')
+if(JSmainLang === undefined || JSmainLang === null || JSmainLang == 'auto' || JSmainLang == '')
 {
 	JSmainLang = /\es/i.test(JSLangDetect) ? 'es' : 'en';
 }
