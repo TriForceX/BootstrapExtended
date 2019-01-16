@@ -77,6 +77,10 @@ var JSlanguage = {
 					en: 'Please write a message.',
 					es: 'Por favor escriba un mensaje.',
 				},
+				'$validate-recaptcha': {
+					en: 'Please confirm that you not are a robot.',
+					es: 'Por favor confirma que no eres un robot.',
+				},
 				'$validate-select': {
 					en: 'Please select a valid option.',
 					es: 'Por favor seleccione una opción válida.',
@@ -166,6 +170,18 @@ var JSlanguage = {
 				'$modal-send': {
 					en: 'Send',
 					es: 'Enviar',
+				},
+				'$modal-agree': {
+					en: 'Agree',
+					es: 'Aceptar',
+				},
+				'$modal-decline': {
+					en: 'Decline',
+					es: 'Rechazar',
+				},
+				'$modal-cancel': {
+					en: 'Cancel',
+					es: 'Cancelar',
 				},
 			};
 

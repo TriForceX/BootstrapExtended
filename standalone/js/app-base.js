@@ -234,22 +234,23 @@ $.fn.JSvalidateForm = function(options)
 
 			var formError = false;
 			var formScroll = false;
-			var formElement = $(form);
+			var formElement = $(this);
 			var formConfirmTitle = JSlang('$validate-confirm-title');
 			var formConfirmText = JSlang('$validate-confirm-text');
 			var formErrorTitle = JSlang('$validate-title');
 			var formErrorText = {
-								 'text'		: JSlang('$validate-normal'), 
-								 'number'	: JSlang('$validate-number'), 
-								 'tel'		: JSlang('$validate-tel'), 
-								 'pass'		: JSlang('$validate-pass'), 
-								 'email'	: JSlang('$validate-email'),
-								 'search'	: JSlang('$validate-search'),
-								 'checkbox'	: JSlang('$validate-checkbox'),
-								 'radio'	: JSlang('$validate-radio'),
-								 'textarea'	: JSlang('$validate-textarea'),
-								 'select'	: JSlang('$validate-select'),
-								 'file'		: JSlang('$validate-file'),
+								 'text'		 : JSlang('$validate-normal'), 
+								 'number'	 : JSlang('$validate-number'), 
+								 'tel'		 : JSlang('$validate-tel'), 
+								 'pass'		 : JSlang('$validate-pass'), 
+								 'email'	 : JSlang('$validate-email'),
+								 'search'	 : JSlang('$validate-search'),
+								 'checkbox'	 : JSlang('$validate-checkbox'),
+								 'radio'	 : JSlang('$validate-radio'),
+								 'textarea'	 : JSlang('$validate-textarea'),
+								 'recaptcha' : JSlang('$validate-recaptcha'),
+								 'select'	 : JSlang('$validate-select'),
+								 'file'		 : JSlang('$validate-file'),
 								};
 			
 			// Submit function
@@ -284,6 +285,7 @@ $.fn.JSvalidateForm = function(options)
 				});
 			};
 			
+			
 			// Enable validation class
 			if(settings.errorStyling)
 			{
@@ -291,7 +293,7 @@ $.fn.JSvalidateForm = function(options)
 			}
 			
 			// Paint input group elements
-			$(this).find('input').not(settings.noValidate).each(function(){
+			formElement.find('input').not(settings.noValidate).each(function(){
 				JSformPaintInputGroup($(this));
 			});
 			
@@ -300,6 +302,12 @@ $.fn.JSvalidateForm = function(options)
 			{
 				formError = formErrorText.text;
 			}
+			
+			// Remove non validated inputs
+			formElement.find(settings.noValidate).each(function(){
+				// Remove requirement
+				$(this).removeAttr('required');
+			});
 			
 			// Custom validations
 			var formInputValidation = function(element){
@@ -379,7 +387,7 @@ $.fn.JSvalidateForm = function(options)
 			};
 
 			// Select inputs
-			$(this).find('select').not(settings.noValidate).each(function(){
+			formElement.find('select').not(settings.noValidate).each(function(){
 				if (!JSvalidateEmpty($(this).find('option:selected').attr('value'))) { 
 					if(settings.errorStyling){ $(this).addClass('is-warning'); }
 					formError = formErrorText.select;
@@ -391,10 +399,10 @@ $.fn.JSvalidateForm = function(options)
 			});
 
 			// Textarea inputs
-			$(this).find('textarea').not(settings.noValidate).each(function(){
+			formElement.find('textarea').not(settings.noValidate).each(function(){
 				if (!JSvalidateEmpty($.trim($(this).val()))) { 
 					if(settings.errorStyling){ $(this).addClass('is-warning'); }
-					formError = formErrorText.textarea;
+					formError = $(this).hasClass('g-recaptcha-response') ? formErrorText.recaptcha : formErrorText.textarea; // Google reCAPTCHA
 					formScroll = $(this);
 				}
 				else{
@@ -403,7 +411,7 @@ $.fn.JSvalidateForm = function(options)
 			});
 			
 			// Checkbox & radio group inputs
-			$(this).find('.form-group-checkbox, .form-group-radio').not(settings.noValidate).each(function(){
+			formElement.find('.form-group-checkbox, .form-group-radio').not(settings.noValidate).each(function(){
 				var item = $(this).find('input');
 				var type = $(this).find('input').attr('type');
 				var check = false;
@@ -424,7 +432,7 @@ $.fn.JSvalidateForm = function(options)
 			});
 
 			// Input validation
-			$(this).find('input').not(settings.noValidate).each(function(){
+			formElement.find('input').not(settings.noValidate).each(function(){
 				// Load function
 				formInputValidation($(this));
 			});
@@ -434,12 +442,15 @@ $.fn.JSvalidateForm = function(options)
 			{
 				if($.isFunction(settings.customValidate))
 				{
-					var customInput = settings.customValidate()['element'];
-					var customError = settings.customValidate()['error'];
-					
-					if(settings.errorStyling){ customInput.addClass('is-warning'); }
-					formError = customError;
-					formScroll = customInput;
+					if(typeof settings.customValidate() !== 'undefined')
+					{
+						var customInput = settings.customValidate().element;
+						var customError = settings.customValidate().error;
+
+						if(settings.errorStyling){ customInput.addClass('is-warning'); }
+						formError = customError;
+						formScroll = customInput;
+					}
 				}
 			}
 			
@@ -497,6 +508,14 @@ $.fn.JSvalidateForm = function(options)
 								backdrop: true,
 								className: (animate == 'alt' ? 'fade-2 '+align : align),
 								animate: (animate == 'alt' ? true : animate),
+								buttons: {
+									confirm: {
+										label: JSlang('$modal-agree')
+									},
+									cancel: {
+										label: JSlang('$modal-cancel')
+									},
+								},
 								callback: function(result){
 									if(result)
 									{
