@@ -2172,6 +2172,11 @@ $(document).ready(function(){
 			var placeholder = $(this).JShasAttr('placeholder') ? $(this).attr('placeholder') : '';
 			$(this).parent().find('.custom-file-text > span').html(placeholder);
 		});
+		// Check plugin
+		if(typeof grecaptcha !== 'undefined')
+		{
+			grecaptcha.reset();
+		}
     });
 	
 	// Check change form group checkbox & radio
