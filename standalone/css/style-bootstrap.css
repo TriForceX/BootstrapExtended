@@ -36,7 +36,7 @@
 	padding-right: 0px !important;
 }
 .modal-open:not(.modal-scroll) .fixed-top {
-	right: -15px;
+	padding: .5rem 1rem !important;
 }
 .modal-scroll {
 	overflow-y: hidden;

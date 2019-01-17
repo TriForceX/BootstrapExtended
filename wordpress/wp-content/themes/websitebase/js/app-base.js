@@ -2100,6 +2100,14 @@ $(document).ready(function(){
 		$('.modal').scrollTop(0);
 	});
 	
+	// Fix adding modal-open when triggered from JS
+	$(document).on('hidden.bs.modal', function(){
+		if(JSexist($('.modal:visible')))
+		{
+			$('body').addClass('modal-open');
+		}
+	});
+	
 	// Window Popup click
 	$(document).on('click', '.JSwindowPopup', function(){
 		JSwindowPopup($(this));
