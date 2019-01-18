@@ -97,9 +97,9 @@ jQuery | 3.3.1 | [Visit](https://jquery.com/)
 	- Custom _WordPress_ functions and snippets _(See [Wiki](https://github.com/TriForceX/WebsiteBase/wiki))_
 	- Admin panel _CSS_ & _JS_ injections
 	- **Pre-Installed Plugins:**
-		- Akismet Anti-Spam
 		- Admin Menu Editor
 		- Advanced Custom Fields
+		- Antispam Bee
 		- Classic Editor
 		- Custom Post Type UI
 		- Enhaced Context Help

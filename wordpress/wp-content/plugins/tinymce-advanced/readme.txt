@@ -8,27 +8,27 @@ Requires PHP: 5.2
 License: GPLv2
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-Extends and enhances TinyMCE, the visual editor used in both the Classic Editor and the new Block Editor in WordPress.
+Extends and enhances the Block Editor (Gutenberg) and the Classic Editor (TinyMCE).
 
 == Description ==
 
-For WordPress version 5.0 and newer the TinyMCE Advanced plugin introduces a "Hybrid Mode" for the new Block Editor (Gutenberg). 
-It brings the best of both editors together, enhances the Classic Block and adds a new Classic Paragraph Block that includes the TinyMCE editor. 
+TinyMCE Advanced introduces a "Classic Paragraph" block and a "Hybrid Mode" for the new Block Editor (Gutenberg). 
+If you are not quite ready to switch to the Block Editor, or have plugins that cannot be used there (yet), using the Classic Paragraph block and Hybrid Mode is your best option. 
+It lets you to continue to use the familiar TinyMCE editor for most tasks, and at the same time gives you full access to all blocks and new features in the Block Editor.
 
-If you are not quite ready to switch to the Block Editor, or have plugins that cannot be used there (yet), using Hybrid Mode is your best option. 
-It lets you to continue to use the familiar "Classic" editor inside the Classic and Classic Paragraph Block, and at the same time gives you access to all blocks and new features in the Block Editor. 
+Version 5.0 is a major update of TinyMCE Advanced. It introduces additional buttons and settings for the "Rich Text" toolbars in the Block Editor. Similarly to the Classic Editor toolbars, most of the buttons can be added, removed or rearranged. 
 
-If you want to continue to use the previous editor in WordPress 5.0 and newer, this plugin has an option to replace the new editor with the previous one. If you prefer to have access to both editors side by side or to allow your users to switch editors, it would be better to install the [Classic Editor plugin](https://wordpress.org/plugins/classic-editor/). TinyMCE Advanced is fully compatible with the Classic Editor plugin and similar plugins that restore use of the previous WordPress editor.
+If you want to continue to use the previous ("classic") editor in WordPress 5.0 and newer, this plugin has an option to replace the new editor with the previous one. If you prefer to have access to both editors side by side or to allow your users to switch editors, it would be better to install the [Classic Editor plugin](https://wordpress.org/plugins/classic-editor/). TinyMCE Advanced is fully compatible with the Classic Editor plugin and similar plugins that restore use of the previous WordPress editor.
 
-As always this plugin will let you add, remove and arrange the buttons that are shown on the Visual Editor toolbar in the Classic Block in the new Block Editor, and in the Classic Editor (when enabled by a plugin). You can configure up to four rows of buttons including Font Sizes, Font Family, text and background colors, tables, etc. It will also let you enable the editor menu, see the [screenshots](screenshots). 
+As always this plugin will let you add, remove and arrange the buttons that are shown on the Visual Editor toolbar in the Classic Paragraph and Classic blocks in the new Block Editor, and in the Classic Editor (when enabled by a plugin). There you can configure up to four rows of buttons including Font Sizes, Font Family, text and background colors, tables, etc. 
 
 It includes 15 plugins for [TinyMCE](https://tinymce.com/) that are automatically enabled or disabled depending on the buttons you have chosen.
-In addition this plugin adds some commonly used options as keeping the paragraph tags in the Text editor and importing the CSS classes from the theme's editor-style.css.
+In addition this plugin adds options for keeping the paragraph tags in text mode and importing the CSS classes from the theme's editor-style.css.
 
 = Some of the features added by this plugin =
 
 * Hybrid mode that lets you use the best of both editors.
-* Includes a "Classic Paragraph Block" that can be used instead of or together with the default Paragraph Block.
+* Includes a "Classic Paragraph" Block that can be used instead of or together with the default Paragraph Block.
 * Supports converting of most default blocks to "classic" paragraphs, and from classic paragraphs back to the default blocks.
 * Support for creating and editing tables in the Classic Blocks and the Classic Editor.
 * More options when inserting lists in the Classic Blocks and the Classic Editor.
@@ -47,6 +47,14 @@ In that terms TinyMCE Advanced does not affect your website's user privacy in an
 Best is to install directly from WordPress. If manual installation is required, please make sure that the plugin files are in a folder named "tinymce-advanced" (not two nested folders) in the WordPress plugins folder, usually "wp-content/plugins".
 
 == Changelog ==
+
+= 5.0.0 = 
+* Added several new buttons to the rich-text toolbar in the Block Editor.
+* Added functionality to add, remove and arrange most buttons on the rich-text toolbar in the Block Editor.
+* Added alternative location for buttons for the rich-text component. That lets users move buttons that are not used frequently out of the way.
+* Added settings for selected text color and background color.
+* Improved fixes and enhancements for the Classic Block.
+* Improved the Classic Paragraph Block and added support for converting from most blocks to classic paragraphs, and converting a classic paragraph into separate blocks.
 
 = 4.8.2 =
 * Fixes and improvements for 4.8.1.
@@ -211,16 +219,6 @@ Improved language selection, improved compatibility with WordPress 2.3 and TinyM
 = 2.0 =
 Includes an admin page for arranging the TinyMCE toolbar buttons, easy installation, a lot of bugfixes, customized "Smilies" plugin that uses the built-in WordPress smilies, etc. The admin page uses jQuery and jQuery UI that lets you "drag and drop" the TinyMCE buttons to arrange your own toolbars and enables/disables the corresponding plugins depending on the used buttons.
 
-== Upgrade Notice ==
-
-= 4.2.3 =
-Updated for WordPress 4.3 and TinyMCE 4.2.3.
-
-= 4.1.9 =
-Updated for WordPress 4.2 and TinyMCE 4.1.9.
-
-= 4.1 =
-Includes the `textpattern` plugin that supports some of the markdown syntax while typing, and the updated 'table' plugin that supports background and border color for tables.
 
 == Frequently Asked Questions ==
 
@@ -242,7 +240,7 @@ Make sure the "Disable the visual editor when writing" checkbox under "Users - Y
 
 = I still see the "old" buttons in the editor =
 
-Click the "Restore Default Settings" button on the plugin settings page and then set the buttons again and save.
+Re-save the settings or click the "Restore Default Settings" button on the plugin settings page and then set the buttons again and save.
 
 = Other questions? More screenshots? =
 
@@ -250,14 +248,15 @@ Please post on the support forum or visit the homepage for [TinyMCE Advanced](ht
 
 == Screenshots ==
 
-1. Classic Paragraph Block.
-2. The Classic Editor (TinyMCE) toolbars settings.
-3. The Classic Block (Block Editor) toolbars settings.
-4. Editor options.
-5. Advanced plugin options.
-6. Administration options.
+1. Rich-text toolbar and selected text color settings.
+2. The Classic Paragraph Block.
+3. Converting several paragraphs into one classic paragraph.
+4. Converting several paragraphs into one classic paragraph.
+5. Settings for the rich-text toolbar, the Formatting toolbar and the selected text color.
+6. Settings for the toolbars in Classic Paragraph and Classic blocks.
+7. Additional options (defaults are shown).
 
 == Upgrade Notice ==
 
-= 4.8.2 =
-Fixes and improvements for 4.8.1. Includes a Classic Paragraph Block. Can convert most default blocks to and from classic paragraphs.
+= 5.0.0 =
+Major upgrade. Includes additional buttons and settings for the toolbars in the Block Editor.

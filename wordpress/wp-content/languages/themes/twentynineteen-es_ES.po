@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the Themes - Twenty Nineteen package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2018-12-20 17:18:25+0000\n"
+"PO-Revision-Date: 2019-01-15 19:34:15+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -11,13 +11,13 @@ msgstr ""
 "Language: es\n"
 "Project-Id-Version: Themes - Twenty Nineteen\n"
 
+#. Description of the theme
+msgid "Our 2019 default theme is designed to show off the power of the block editor. It features custom styles for all the default blocks, and is built so that what you see in the editor looks like what you'll see on your website. Twenty Nineteen is designed to be adaptable to a wide range of websites, whether you’re running a photo blog, launching a new business, or supporting a non-profit. Featuring ample whitespace and modern sans-serif headlines paired with classic serif body text, it's built to be beautiful on all screen sizes."
+msgstr "Nuestro tema por defecto de 2019 se ha diseñado para mostrar la potencia del editor de bloques. Tiene estilos personalizados para todos los bloques por defecto, y está creado para que lo que se vea en el editor sea igual que lo que se ve en tu sitio web. Twenty Nineteen está diseñado para adaptarse a un amplio abanico de sitios web, ya tengas un fotoblog, estés lanzando un nuevo negocio o apoyando a una organización sin ánimo de lucro. Con un diseño de amplios espacios y modernos titulares sin serifas a juego con textos con serifas clásicas, está hecho para ser bello en todos los tamaños de pantalla."
+
 #. Theme Name of the theme
 msgid "Twenty Nineteen"
 msgstr "Twenty Nineteen"
-
-#. Description of the theme
-msgid "A new Gutenberg-ready theme."
-msgstr "Un nuevo tema preparado para Gutenberg."
 
 #. translators: %s: parent post link
 #: single.php:31
@@ -37,7 +37,7 @@ msgstr "Twenty Nineteen requiere al menos la versión 4.7 de WordPress. Se está
 msgid "Back"
 msgstr "Volver"
 
-#: inc/template-functions.php:208
+#: inc/template-functions.php:209
 msgid "More"
 msgstr "Más"
 
@@ -158,9 +158,9 @@ msgstr "Menú de enlaces sociales"
 msgid "Skip to content"
 msgstr "Ir al contenido"
 
-#: image.php:52 template-parts/content/content.php:49
+#: image.php:52 template-parts/content/content-page.php:27
+#: template-parts/content/content.php:49
 #: template-parts/content/content-single.php:40
-#: template-parts/content/content-page.php:27
 msgid "Pages:"
 msgstr "Páginas:"
 
@@ -253,10 +253,10 @@ msgctxt "yearly archives date format"
 msgid "Y"
 msgstr "Y"
 
-#. translators: %s: Name of current post. Only visible to screen readers.
 #. translators: %s: Name of current post. Only visible to screen readers
-#: inc/template-tags.php:120 template-parts/content/content-page.php:41
-#: template-parts/header/entry-header.php:32
+#. translators: %s: Name of current post. Only visible to screen readers.
+#: template-parts/content/content-page.php:41
+#: template-parts/header/entry-header.php:32 inc/template-tags.php:120
 msgid "Edit <span class=\"screen-reader-text\">%s</span>"
 msgstr "Editar <span class=\"screen-reader-text\">%s</span>"
 
@@ -276,20 +276,20 @@ msgstr[1] "%1$s respuestas a &ldquo;%2$s&rdquo;"
 msgid "Leave a comment"
 msgstr "Deja un comentario"
 
-#: classes/class-twentynineteen-walker-comment.php:92
+#: classes/class-twentynineteen-walker-comment.php:100
 msgid "Your comment is awaiting moderation."
 msgstr "Tu comentario está pendiente de moderación."
 
-#: classes/class-twentynineteen-walker-comment.php:87
+#: classes/class-twentynineteen-walker-comment.php:95
 msgid "Edit"
 msgstr "Editar"
 
 #. translators: 1: comment date, 2: comment time
-#: classes/class-twentynineteen-walker-comment.php:79
+#: classes/class-twentynineteen-walker-comment.php:87
 msgid "%1$s at %2$s"
 msgstr "%1$s a las %2$s"
 
-#: classes/class-twentynineteen-walker-comment.php:59
+#: classes/class-twentynineteen-walker-comment.php:67
 msgid "%s <span class=\"screen-reader-text says\">says:</span>"
 msgstr "%s <span class=\"screen-reader-text says\">dice:</span>"
 

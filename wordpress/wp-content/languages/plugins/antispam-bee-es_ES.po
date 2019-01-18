@@ -1,0 +1,433 @@
+# Translation of Plugins - Antispam Bee - Stable (latest release) in Spanish (Spain)
+# This file is distributed under the same license as the Plugins - Antispam Bee - Stable (latest release) package.
+msgid ""
+msgstr ""
+"PO-Revision-Date: 2018-09-16 14:30:35+0000\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: GlotPress/2.4.0-alpha\n"
+"Language: es\n"
+"Project-Id-Version: Plugins - Antispam Bee - Stable (latest release)\n"
+
+#: inc/gui.class.php:540
+msgid "https://wordpress.org/support/plugin/antispam-bee"
+msgstr "https://wordpress.org/support/plugin/antispam-bee"
+
+#: inc/gui.class.php:537
+msgid "https://github.com/pluginkollektiv/antispam-bee/wiki/"
+msgstr "https://github.com/pluginkollektiv/antispam-bee/wiki/"
+
+#: inc/gui.class.php:478
+msgid "If checked, you will delete all data Antispam Bee creates, when uninstalling the plugin."
+msgstr "Si está marcado, eliminarán todos los datos que Antispam Bee crea al desinstalar el plugin."
+
+#: inc/gui.class.php:477
+msgid "Delete Antispam Bee data when uninstalling"
+msgstr "Borrar datos de Antispam Bee al desinstalar"
+
+#: antispam_bee.php:2504
+msgid "Trackback"
+msgstr "Trackback"
+
+#: antispam_bee.php:2504
+msgid "Comment"
+msgstr "Comentario"
+
+#: antispam_bee.php:424
+msgid "Identical Post title and blog title"
+msgstr "Título de la entrada y del blog idénticos"
+
+#. Description of the plugin/theme
+msgid "Antispam plugin with a sophisticated toolset for effective day to day comment and trackback spam-fighting. Built with data protection and privacy in mind."
+msgstr "Un plugin Antispam con un sofisticado conjunto de herramientas para la lucha efectiva contra el spam de los comentarios y trackbacks día a día. Construido con la protección de datos y privacidad en mente."
+
+#: inc/gui.class.php:275
+msgid "Block or allow comments from specific countries"
+msgstr "Bloquear o permitir comentarios de países específicos"
+
+#. translators: The number of spam comments Antispam Bee blocked so far.
+#: antispam_bee.php:684
+msgid "%d Blocked"
+msgstr "%d bloqueado"
+
+#: antispam_bee.php:415
+msgid "Honeypot"
+msgstr "Honeypot"
+
+#: inc/gui.class.php:564
+msgid "Spanish"
+msgstr "Español"
+
+#: inc/gui.class.php:563
+msgid "Italian"
+msgstr "Italiano"
+
+#: inc/gui.class.php:562
+msgid "French"
+msgstr "Francés"
+
+#: inc/gui.class.php:561
+msgid "English"
+msgstr "Inglés"
+
+#: inc/gui.class.php:560
+msgid "German"
+msgstr "Alemán"
+
+#: inc/gui.class.php:537
+msgid "Manual"
+msgstr "Manual"
+
+#: inc/gui.class.php:534
+msgid "FAQ"
+msgstr "FAQ"
+
+#: inc/gui.class.php:534
+msgid "https://wordpress.org/plugins/antispam-bee/faq/"
+msgstr "https://es.wordpress.org/plugins/antispam-bee/faq/"
+
+#: inc/gui.class.php:515
+msgid "No spam check for link notifications"
+msgstr "No revisión de spam para las notificaciones de enlaces"
+
+#: inc/gui.class.php:498
+msgid "Generate statistics as a dashboard widget"
+msgstr "Generar estadísticas en un widget de escritorio"
+
+#: inc/gui.class.php:491
+msgid "Various options"
+msgstr "Opciones diversas"
+
+#: inc/gui.class.php:442
+msgid "Pings"
+msgstr "Pings"
+
+#: inc/gui.class.php:441
+msgid "Comments"
+msgstr "Comentarios"
+
+#: inc/gui.class.php:402
+msgid "Spam-Notification by email"
+msgstr "Notificación de spam por correo electrónico"
+
+#: inc/gui.class.php:374
+msgid "Language"
+msgstr "Idioma"
+
+#. translators: 1: opening <a> tag with link to documentation. 2: closing </a>
+#. tag.
+#: inc/gui.class.php:353
+msgid "Detect and approve only the specified language. Please note the %1$sprivacy notice%2$s for this option."
+msgstr "Detectar y aprobar solamente el idioma especificado. Ten en cuenta la %1$saviso de privacidad%2$s para esta opción."
+
+#: inc/gui.class.php:346
+msgid "https://github.com/pluginkollektiv/antispam-bee/wiki/en-Documentation#allow-comments-only-in-certain-language"
+msgstr "https://github.com/pluginkollektiv/antispam-bee/wiki/en-Documentation#allow-comments-only-in-certain-language"
+
+#: inc/gui.class.php:340
+msgid "Allow comments only in certain language"
+msgstr "Únicamente permitir comentarios en un idioma determinado"
+
+#. translators: 1: opening <a> tag with link to ISO codes reference. 2: closing
+#. </a> tag.
+#: inc/gui.class.php:326
+msgid "Whitelist  %1$sISO Codes%2$s for this option."
+msgstr "Lista blanca de %1$sCódigos ISO%2$s para esta opción."
+
+#. translators: 1: opening <a> tag with link to ISO codes reference. 2: closing
+#. </a> tag.
+#: inc/gui.class.php:311
+msgid "Blacklist  %1$sISO Codes%2$s for this option."
+msgstr "Lista negra de %1$sCódigos ISO%2$s para esta opción."
+
+#: inc/gui.class.php:305 inc/gui.class.php:320
+msgid "e.g. BF, SG, YE"
+msgstr "Por ejemplo: BF, SG, YE"
+
+#: inc/gui.class.php:299
+msgid "https://www.iso.org/iso/country_names_and_code_elements"
+msgstr "https://www.iso.org/iso/country_names_and_code_elements"
+
+#. translators: 1: opening <a> tag with link to documentation. 2: closing </a>
+#. tag.
+#: inc/gui.class.php:287
+msgid "Filtering the requests depending on country. Please note the %1$sprivacy notice%2$s for this option."
+msgstr "Filtrado de solicitudes dependiendo del país. Ten en cuenta la %1$saviso de privacidad%2$s para esta opción."
+
+#: inc/gui.class.php:281
+msgid "https://github.com/pluginkollektiv/antispam-bee/wiki/en-Documentation#block-comments-from-specific-countries"
+msgstr "https://github.com/pluginkollektiv/antispam-bee/wiki/en-Documentation#block-comments-from-specific-countries"
+
+#: inc/gui.class.php:268
+msgid "Check for spam data on your own blog"
+msgstr "Verificación de datos de spam en tu blog"
+
+#: inc/gui.class.php:260
+msgid "Predefined and custom patterns by plugin hook"
+msgstr "Patrones predefinidos y personalizados por el look del plugin"
+
+#: inc/gui.class.php:252
+msgid "Validation of the IP address used"
+msgstr "Validación de la dirección IP usada"
+
+#. translators: 1: opening <a> tag with link to documentation. 2: closing </a>
+#. tag
+#: inc/gui.class.php:222
+msgid "Check if commenter has a Gravatar image. Please note the %1$sprivacy notice%2$s for this option."
+msgstr "Compruebe si el comentarista tiene una imagen de Gravatar. Tenga en cuenta la %1$saviso de privacidad%2$s para esta opción."
+
+#: inc/gui.class.php:216
+msgid "https://github.com/pluginkollektiv/antispam-bee/wiki/en-Documentation#trust-commenters-with-a-gravatar"
+msgstr "https://github.com/pluginkollektiv/antispam-bee/wiki/en-Documentation#trust-commenters-with-a-gravatar"
+
+#: inc/gui.class.php:202
+msgid "No review of already commented users"
+msgstr "Ninguna revisión de usuarios ya comentados"
+
+#: antispam_bee.php:545 inc/gui.class.php:540
+msgid "Support"
+msgstr "Soporte"
+
+#: antispam_bee.php:544 inc/gui.class.php:531
+msgid "Donate"
+msgstr "Dona"
+
+#: antispam_bee.php:423
+msgid "Regular Expression"
+msgstr "Expresión Regular"
+
+#: antispam_bee.php:422
+msgid "Comment Language"
+msgstr "Idioma del comentario"
+
+#: antispam_bee.php:421
+msgid "BBCode"
+msgstr "BBCode"
+
+#: antispam_bee.php:420
+msgid "Country Check"
+msgstr "Comprobación de país"
+
+#: antispam_bee.php:419
+msgid "Local DB Spam"
+msgstr "BD local de spam"
+
+#: antispam_bee.php:418
+msgid "Fake IP"
+msgstr "IP falsa"
+
+#: antispam_bee.php:417
+msgid "Empty Data"
+msgstr "Datos vacíos"
+
+#: antispam_bee.php:416
+msgid "Comment time"
+msgstr "Fecha del comentario"
+
+#. Author URI of the plugin/theme
+msgid "https://pluginkollektiv.org"
+msgstr "https://pluginkollektiv.org"
+
+#. Author of the plugin/theme
+msgid "pluginkollektiv"
+msgstr "pluginkollektiv"
+
+#. Plugin URI of the plugin/theme
+msgid "https://wordpress.org/plugins/antispam-bee/"
+msgstr "https://es.wordpress.org/plugins/antispam-bee/"
+
+#. Plugin Name of the plugin/theme
+msgid "Antispam Bee"
+msgstr "Antispam Bee"
+
+#: inc/gui.class.php:543
+msgid "Save Changes"
+msgstr "Guardar cambios"
+
+#: inc/gui.class.php:523
+msgid "Check for comment forms on archive pages"
+msgstr "Comprueba si hay formularios de comentarios en las páginas de archivo"
+
+#: inc/gui.class.php:522
+msgid "Comment form used outside of posts"
+msgstr "Formulario de comentarios que se utiliza fuera de las entradas"
+
+#: inc/gui.class.php:514
+msgid "Do not check trackbacks / pingbacks"
+msgstr "No comprobar trackbacks / pingbacks"
+
+#: inc/gui.class.php:507
+msgid "Amount of identified spam comments"
+msgstr "Cantidad de comentarios de spam identificados"
+
+#: inc/gui.class.php:506
+msgid "Spam counter on the dashboard"
+msgstr "Contador de correo no deseado en el escritorio "
+
+#: inc/gui.class.php:499
+msgid "Daily updates of spam detection rate"
+msgstr "Las actualizaciones diarias de la tasa de detección de spam"
+
+#: inc/gui.class.php:488
+msgid "More"
+msgstr "Mas "
+
+#: inc/gui.class.php:457
+msgid "For multiple selections press Ctrl/CMD"
+msgstr "Para seleccionar varias opciones de pulse Ctrl/CMD"
+
+#: inc/gui.class.php:456
+msgid "Delete comments by spam reasons"
+msgstr "Borrar los comentarios por razones de spam"
+
+#: inc/gui.class.php:449
+msgid "Other types of spam will be deleted immediately"
+msgstr "Otros tipos de spam serán eliminados de inmediato"
+
+#. translators: %s is the select field.
+#: inc/gui.class.php:437
+msgid "Limit approval to %s"
+msgstr "Limita la aprobación a %s"
+
+#: inc/gui.class.php:425
+msgid "Cleaning up the database from old entries"
+msgstr "Limpiando la base de datos de entradas antiguas "
+
+#. translators: $s is an input field containing the number of days.
+#: inc/gui.class.php:421
+msgid "Delete existing spam after %s days"
+msgstr "Borrar el spam existente después de %s días"
+
+#: inc/gui.class.php:411
+msgid "Spam reason as a table column in the spam overview"
+msgstr "Razón de spam como columna de la tabla en el resumen de spam"
+
+#: inc/gui.class.php:410
+msgid "Do not save the spam reason"
+msgstr "No guardar el motivo del spam"
+
+#: inc/gui.class.php:403
+msgid "Notify admins by e-mail about incoming spam"
+msgstr "Notificar por correo electrónico a los administradores sobre el spam entrante"
+
+#: inc/gui.class.php:395
+msgid "Keep the spam in my blog."
+msgstr "Guarda el spam en mi blog."
+
+#: inc/gui.class.php:394
+msgid "Mark as spam, do not delete"
+msgstr "Marcar como spam, no borrar"
+
+#: inc/gui.class.php:387
+msgid "Other antispam tools"
+msgstr "Otras herramientas de antispam"
+
+#: inc/gui.class.php:384
+msgid "Advanced"
+msgstr "Avanzado"
+
+#: inc/gui.class.php:267
+msgid "Look in the local spam database"
+msgstr "Busque en la base de datos de correo no deseado local"
+
+#: inc/gui.class.php:259
+msgid "Use regular expressions"
+msgstr "Usa expresiones regulares"
+
+#: inc/gui.class.php:251
+msgid "Validate the ip address of commenters"
+msgstr "Validación de la dirección IP de comentaristas"
+
+#: inc/gui.class.php:244
+msgid "Review the comment contents for BBCode links"
+msgstr "Revisar el contenido de comentario para los enlaces BBCode"
+
+#: inc/gui.class.php:243
+msgid "BBCode is spam"
+msgstr "BBCode es spam"
+
+#: inc/gui.class.php:236
+msgid "Not recommended when using page caching"
+msgstr "No se recomienda cuando se utiliza el caché de páginas"
+
+#: inc/gui.class.php:235
+msgid "Consider the comment time"
+msgstr "Considera el tiempo del comentario "
+
+#: inc/gui.class.php:210
+msgid "Trust commenters with a Gravatar"
+msgstr "Confía en los comentaristas con Gravatar"
+
+#: inc/gui.class.php:201
+msgid "Trust approved commenters"
+msgstr "Confía en comentaristas aprobados "
+
+#: inc/gui.class.php:194
+msgid "Filter in the execution order"
+msgstr "Filtro en la orden de ejecución"
+
+#: inc/gui.class.php:191
+msgid "Antispam filter"
+msgstr "Filtro antispam"
+
+#: inc/gui.class.php:25 inc/gui.class.php:29
+msgid "Cheatin&#8217; uh?"
+msgstr "¿Haciendo trampas?"
+
+#: antispam_bee.php:2540
+msgid "http://antispambee.com"
+msgstr "http://antispambee.com"
+
+#: antispam_bee.php:2539
+msgid "Notify message by Antispam Bee"
+msgstr "Mensaje de notificación de Antispam Bee"
+
+#: antispam_bee.php:2535
+msgid "Spam list"
+msgstr "Lista de spam"
+
+#: antispam_bee.php:2531
+msgid "Approve it"
+msgstr "Aprobarlo "
+
+#: antispam_bee.php:2525
+msgid "Delete it"
+msgstr "Borrarlo "
+
+#: antispam_bee.php:2519
+msgid "Trash it"
+msgstr "Eliminarlo "
+
+#: antispam_bee.php:2510 inc/columns.class.php:28 inc/gui.class.php:468
+msgid "Spam Reason"
+msgstr "Causa de spam"
+
+#: antispam_bee.php:2503
+msgid "Type"
+msgstr "Tipo"
+
+#: antispam_bee.php:2495
+msgid "Author"
+msgstr "Autor"
+
+#: antispam_bee.php:2491
+msgid "New spam comment on your post"
+msgstr "Nuevo comentario spam en tu entrada"
+
+#: antispam_bee.php:2484
+msgid "Content removed by Antispam Bee"
+msgstr "Contenido eliminado por Antispam Bee"
+
+#: antispam_bee.php:2476
+msgid "Comment marked as spam"
+msgstr "Comentario marcado como spam "
+
+#: antispam_bee.php:791
+msgid "No data available."
+msgstr "No hay datos disponibles. "
+
+#: antispam_bee.php:520
+msgid "Settings"
+msgstr "Configuración"
