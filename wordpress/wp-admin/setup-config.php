@@ -711,18 +711,24 @@ jQuery( function( $ ) {
 		}
 	} );
 	
+	var formTableConfirm = false;
 	$( "#form-step-2" ).submit( function( e ) {
-		var formTableString = '<?php _e( 'Remember to check &quot;More settings&quot; for HTTPS and WWW options. Do you want to continue?', 'websitebase' ); ?>';
-		var formTableText = $( '<div/>' ).html( formTableString ).text(  );
-		
-		if( !confirm( formTableText ) )
+		if( !formTableConfirm )
 		{
-			$( '.form-table' ).find( 'tbody' ).css( 'display', 'none' );
-			$( '.form-table' ).find( 'thead span' ).html( '&plus;' );
-			$( '#form-table-more' ).find( 'tbody' ).css( 'display', 'table-row-group' );
-			$( '#form-table-more' ).find( 'thead span' ).html( '&minus;' );
-			formTableOpen = $( '#form-table-more' ).find( 'thead' )[0];
-			e.preventDefault();
+			var formTableString = '<?php _e( 'Remember to check &quot;More settings&quot; for HTTPS and WWW options. Do you want to continue?', 'websitebase' ); ?>';
+			var formTableText = $( '<div/>' ).html( formTableString ).text(  );
+
+			if( !confirm( formTableText ) )
+			{
+				$( '.form-table' ).find( 'tbody' ).css( 'display', 'none' );
+				$( '.form-table' ).find( 'thead span' ).html( '&plus;' );
+				$( '#form-table-more' ).find( 'tbody' ).css( 'display', 'table-row-group' );
+				$( '#form-table-more' ).find( 'thead span' ).html( '&minus;' );
+				formTableOpen = $( '#form-table-more' ).find( 'thead' )[0];
+				e.preventDefault();
+			}
+			
+			formTableConfirm = true;
 		}
 	} );
 } );
