@@ -491,7 +491,7 @@
 
 /* Carousel control no mobile */
 @media (max-width: $screen-sm-up) {
-	.carousel-control-hide .carousel-indicators {
+	.carousel-indicators-hide .carousel-indicators {
 		display: none;
 	}
 	.carousel-control-hide .carousel-control-prev,
