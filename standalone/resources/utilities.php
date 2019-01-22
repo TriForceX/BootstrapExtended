@@ -239,13 +239,13 @@ class php
 							  '$screen-sm-up'	=> $type == 'css' ? '767.98px' : '767.98',
 							  '$screen-md-up'	=> $type == 'css' ? '991.98px' : '991.98',
 							  '$screen-lg-up'	=> $type == 'css' ? '1199.98px' : '1199.98',
-							  '$screen-xl-up' 	=> $type == 'css' ? '1919.98px' : '1919.98',
+							  '$screen-xl-up' 	=> $type == 'css' ? '1359.98px' : '1359.98',
 							  // Media queries for min-width
 							  '$screen-xs-down'	=> $type == 'css' ? '576px' : '576',
 							  '$screen-sm-down'	=> $type == 'css' ? '768px' : '768',
 							  '$screen-md-down'	=> $type == 'css' ? '992px' : '992',
 							  '$screen-lg-down'	=> $type == 'css' ? '1200px' : '1200',
-							  '$screen-xl-down' => $type == 'css' ? '1920px' : '1920',);
+							  '$screen-xl-down' => $type == 'css' ? '1366px' : '1366',);
 		
 		$data['file'] = array_merge($data['file'], $websitebase[$type.'_file']);
 		$data['vars'] = array_merge($data['vars'], $websitebase[$type.'_vars']);

@@ -678,7 +678,7 @@ function JSresponsiveCode()
 					  'sm'	: { 'up' : parseFloat('$screen-sm-up'), 'down' : parseFloat('$screen-sm-down') }, 	//up: 767.98, down: 768
 					  'md'	: { 'up' : parseFloat('$screen-md-up'), 'down' : parseFloat('$screen-md-down') }, 	//up: 991.98, down: 992
 					  'lg'	: { 'up' : parseFloat('$screen-lg-up'), 'down' : parseFloat('$screen-lg-down') }, 	//up: 1199.98, down: 1200
-					  'xl'	: { 'up' : parseFloat('$screen-xl-up'), 'down' : parseFloat('$screen-xl-down') }}; 	//up: 1919.98, down: 1920
+					  'xl'	: { 'up' : parseFloat('$screen-xl-up'), 'down' : parseFloat('$screen-xl-down') }}; 	//up: 1359.98, down: 1366
 
 	if(bodyWidth)
 	{
