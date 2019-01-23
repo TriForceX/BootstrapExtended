@@ -1707,7 +1707,7 @@ function JSmapLaunch(element)
 	var mapLaunchUrl1 = JSisMobile ? 'https://maps.google.com/maps?q='+mapCoords1[0]+','+mapCoords1[1]+','+mapCoords1[2]+'z' : 
 										   'https://www.google.com/maps/search/'+mapAddressUrl+'/@'+mapCoords1[0]+','+mapCoords1[1]+','+mapCoords1[2]+'z';
 	var mapLaunchUrl2 = JSisMobile ? 'waze://?ll='+mapCoords2[0]+','+mapCoords2[1]+'&navigate=yes' : 
-										   'https://www.waze.com/ul?zoom='+mapCoords2[2]+'&ll='+mapCoords2[1]+','+mapCoords2[0]+'&navigate=yes';
+										   'https://www.waze.com/ul?zoom='+mapCoords2[2]+'&ll='+mapCoords2[0]+','+mapCoords2[1]+'&navigate=yes';
 
 	if(mapIframe === undefined || mapIframe === null || mapIframe == ''){  // Check value
 		mapIframe = false;
