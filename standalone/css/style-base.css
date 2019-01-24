@@ -216,7 +216,7 @@ div.dataTables_wrapper div.dataTables_paginate ul.pagination {
 	right: 0;
 	top: 0;
 	white-space: nowrap;
-	overflow-x: hidden;
+	overflow: hidden;
 	text-overflow: ellipsis;
 }
 /* JS Text Cut One Line */
