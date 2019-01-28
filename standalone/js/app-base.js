@@ -983,12 +983,33 @@ function JStextCutMulti(container)
 	// Console Log
 	JSconsole('[JS Function] Text Cut Multi Line');
 	
-    var wordArray = container.html().split(' ');
-	while(container.prop('scrollHeight') > container.height())
-	{
-		wordArray.pop();
-		container.html(wordArray.join(' ') + '...');
-	}
+	container.each(function(){
+		// Save initial text to be able to regrow when space increases
+		var object_data = $(this).data();
+		
+		if(typeof object_data.oldtext != 'undefined')
+		{
+			$(this).text(object_data.oldtext);
+		}
+		else
+		{
+			object_data.oldtext = $(this).text();
+			$(this).data(object_data);
+		}
+
+		// Truncate and ellipsis
+		var client_height = this.clientHeight;
+		var max_turns = 100; 
+		var count_turns = 0;
+		
+		while(this.scrollHeight > client_height && count_turns < max_turns) 
+		{
+			count_turns++;
+			$(this).text(function (index, text) {
+				return text.replace(/\W*\s(\S)*$/, '...');
+			});
+		}
+	});
 }
 
 // Text auto size function
@@ -2238,9 +2259,7 @@ $(document).on('JSresponsiveCode', function(event, bodyWidth, bodyHeight, bodyOr
 	});
 	
 	// Apply Text Cut Multiline
-	$('.JStextCutMulti').each(function(){
-		JStextCutMulti($(this));
-	});
+	JStextCutMulti($('.JStextCutMulti'));
 	
 /* ================================================= BASE RESPONSIVE CODE ================================================= */
 
