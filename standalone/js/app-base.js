@@ -1102,7 +1102,7 @@ function JSmodalContent(title, element, size, align, animate)
 }
 
 // Show alert modal box using BootBox plugin (Ajax)
-function JSmodalAjax(title, url, loading, size, align, animate)
+function JSmodalAjax(title, url, method, type, loading, size, align, animate)
 {
 	// Console Log
 	JSconsole('[JS Function] Modal Ajax');
@@ -1123,21 +1123,33 @@ function JSmodalAjax(title, url, loading, size, align, animate)
 		loading = false;
 	}
 	
+	if(!method){ // Check value
+		method = 'GET';
+	}
+	
+	if(!type){ // Check value
+		type = 'html';
+	}
+	
+	var request_time = new Date().getTime();
+	
 	$.ajax({
 		url: url,
-		type: 'GET', 
-		dataType: 'html',
+		type: method, 
+		dataType: type,
 		beforeSend: function(){
 			// Loading
 			JSconsole('[JS Function] Modal Ajax Loading ...');
 			// Show loading colored icon
 			if(loading){
-				$("body").append("<div class='JSloading "+loading+"'></div>");
+				$('body').append('<div class="JSloading '+loading+'"></div>');
 			}
 		},
-		success: function(data){  
+		success: function(data){
+			// Load time
+			var load_time = parseFloat((new Date().getTime() - request_time) / 1000).toFixed(2);
 			// Loaded
-			JSconsole("[JS Function] Modal Ajax Loaded!");
+			JSconsole('[JS Function] Modal Ajax Loaded in '+load_time+'s');
 			// Check plugin
 			if(typeof bootbox !== 'undefined')
 			{
@@ -1153,21 +1165,21 @@ function JSmodalAjax(title, url, loading, size, align, animate)
 			}
 			// Remove loading icon
 			if(loading){
-				$(".JSloading").remove();
+				$('.JSloading').remove();
 			}
 		},
 		error: function(xhr, status, error){
 			// Error Text
-			var text = "";
-			// Check
+			var details;
+			// Error Check
 			if(!(xhr.responseText === undefined || xhr.responseText === null || xhr.responseText == '')){
-				text = "\n---------------\n"+xhr.responseText;
+				details = '[JS Function] Modal Ajax Error Details:\n'+xhr.responseText;
 			}
 			// Error log
-			JSconsole("[JS Function] Modal Ajax Error! ("+xhr.status+")"+text);
+			JSconsole('[JS Function] Modal Ajax Error ('+xhr.status+')\n'+details);
 			// Remove loading icon
 			if(loading){
-				$(".JSloading").remove();
+				$('.JSloading').remove();
 			}
 		}
 	});
