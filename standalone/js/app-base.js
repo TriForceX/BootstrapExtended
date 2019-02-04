@@ -1092,7 +1092,7 @@ function JSmodalContent(title, element, size, align, animate)
 		// Bootbox alert
 		bootbox.alert({
 			title: title,
-			message: $(element).html(),
+			message: $(element).clone().removeClass('d-none').prop('outerHTML'),
 			size: size,
 			backdrop: true,
 			className: (animate == 'alt' ? 'fade-2 '+align : align),
