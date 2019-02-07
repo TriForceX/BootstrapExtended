@@ -519,11 +519,17 @@ class php
     }
 	
 	// Check if is the main index page
-	public static function is_home()
+	public static function is_home($url = null)
 	{
-		$base = self::get_main_url().'/index.php';
-		$target = $_SERVER['SCRIPT_NAME'];
-		return strpos($base,$target);
+		if($url != null){
+			$base = self::get_main_url();
+			return $url == $base;
+		}
+		else{
+			$base = self::get_main_url().'/index.php';
+			$target = $_SERVER['SCRIPT_NAME'];
+			return strpos($base, $target);
+		}
     }
 	
 	// Check if the current domain is localhost
@@ -625,9 +631,9 @@ class php
             $url .= $_SERVER['REQUEST_URI'];
         }
 		if($queryRemove){
-			$url = rtrim(strtok($url,'?'), '/');
+			$url = strtok($url,'?');
 		}
-        return $url;
+        return rtrim($url, '/');
     }
 	
 	// Access an array index, retrieving the value stored there if it exists or a default if it does not
