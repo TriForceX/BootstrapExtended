@@ -221,7 +221,7 @@ class php
  * Source:    https://github.com/triforcex/websitebase
  * 
  */';
-		$local = str_replace(DIRECTORY_SEPARATOR.'resources', '', dirname( __FILE__ ));
+		$local = $websitebase['local_dir'];
 		$final = $type == 'css' ? 'style.css' : 'app.js';
 		$buffer = null;
 		
@@ -317,7 +317,7 @@ class php
 		// Main data
 		global $websitebase;
 		
-		$local = str_replace(DIRECTORY_SEPARATOR.'resources', '', dirname( __FILE__ ));
+		$local = $websitebase['local_dir'];
 		$url = $websitebase['assets_url'];
 		$minify = $websitebase['minify'];
 		$mix = $websitebase['mix'];
