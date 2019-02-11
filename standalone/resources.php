@@ -14,6 +14,9 @@ require_once('resources/utilities.php');
 // Enable main PHP utilities
 class php extends utilities\php { }
 
+// Set default timezone if not exist
+if(!ini_get('date.timezone')) date_default_timezone_set('GMT');
+
 // Set main Website Base data fields
 $websitebase = array(
 	'debug'				=> false,
@@ -27,7 +30,7 @@ $websitebase = array(
 	'viewport' 			=> 'width=device-width, initial-scale=1, user-scalable=no, shrink-to-fit=no',
 	'nav-color' 		=> '#7840a2',
 	'nav-color-apple' 	=> 'black',
-	'timezone' 			=> date_default_timezone_get(),
+	'timezone' 			=> date_default_timezone_get(), // 'America/New_York',
 	'local_dir'			=> dirname(__FILE__),
 	'custom_main_url'	=> false,
 	'assets_url'		=> php::get_main_url(),
@@ -47,12 +50,6 @@ $websitebase = array(
 								 /*'$color-custom-2'	=> '#FFFFFF',*/
 								 /*'$color-custom-3'	=> '#FFFFFF',*/),
 );
-
-// Set default timezone if not exist
-if(!ini_get('date.timezone'))
-{
-	date_default_timezone_set('GMT');
-}
 
 // Rebuild CSS & JS redirect clean
 if(isset($_GET['rebuild']) && $_GET['rebuild'] == $websitebase['rebuild_pass'])

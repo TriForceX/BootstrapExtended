@@ -519,11 +519,11 @@ class php
     }
 	
 	// Check if is the main index page
-	public static function is_home($url = null)
+	public static function is_home($compare = null)
 	{
-		if($url != null){
+		if($compare != null){
 			$base = self::get_main_url();
-			return $url == $base;
+			return $compare == $base;
 		}
 		else{
 			$base = self::get_main_url().'/index.php';
@@ -738,7 +738,7 @@ class php
 	public static function show_date($date = 'auto', $format = 'Y-m-d', $lang = 'en', $abbr = false)
 	{
 		//Set Website Base Data
-		$websitebase = unserialize(constant('websitebase'));
+		global $websitebase;
 		
 		date_default_timezone_set($websitebase['timezone']);
 		
