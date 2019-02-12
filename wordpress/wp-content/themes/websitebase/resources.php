@@ -175,6 +175,14 @@ function get_taxonomy_data($type, $taxonomy, $id = null)
 	} 
 }
 
+// Retrieves the attachment ID from the file URL
+function get_file_id($url)
+{
+	global $wpdb;
+	$attachment = $wpdb->get_col($wpdb->prepare("SELECT ID FROM $wpdb->posts WHERE guid='%s';", $url));
+	return $attachment[0];
+}
+
 // Featured image
 function featuredImg($post, $size = 'full')
 {
