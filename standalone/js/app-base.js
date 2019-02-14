@@ -177,7 +177,6 @@ $.fn.JSvalidateForm = function(options)
 	var settings = $.extend({
 		noValidate		: false,
 		hasConfirm		: false,
-		customValidate	: false,
 		resetSubmit		: true,
 		errorStyling	: true,
 		errorScroll		: false,
@@ -185,6 +184,8 @@ $.fn.JSvalidateForm = function(options)
 		modalSize		: 'medium',
 		modalAlign		: 'top',
 		modalAnimate	: true,
+		customValidate	: false,
+		customSubmit	: false,
 	}, options);
 	
 	// Input scroll
@@ -256,7 +257,23 @@ $.fn.JSvalidateForm = function(options)
 			// Submit function
 			var formSubmit = function(){
 				// Submit
-				formElement.unbind('submit').submit();
+				if(settings.customSubmit !== false)
+				{
+					formElement.unbind('submit');
+					
+					if($.isFunction(settings.customSubmit))
+					{
+						if(typeof settings.customSubmit() !== 'undefined')
+						{
+							settings.customSubmit();
+						}
+					}
+				}
+				else
+				{
+					formElement.unbind('submit').submit();
+				}
+				
 				// Reset
 				if(settings.resetSubmit)
 				{
