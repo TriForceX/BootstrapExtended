@@ -286,13 +286,14 @@ $.fn.JSvalidateForm = function(options)
 						var placeholder = $(this).JShasAttr('placeholder') ? $(this).attr('placeholder') : '';
 						$(this).parent().find('.custom-file-label').html(placeholder);
 					});
-					
-					// Check plugin
-					if(typeof grecaptcha !== 'undefined')
-					{
-						grecaptcha.reset();
-					}
 				}
+				
+				// Check plugin
+				if(typeof grecaptcha !== 'undefined')
+				{
+					grecaptcha.reset();
+				}
+				
 				// Enable
 				formElement.JSvalidateForm({
 					noValidate		: settings.noValidate,
