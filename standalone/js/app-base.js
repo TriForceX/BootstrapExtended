@@ -167,6 +167,20 @@ $.fn.JSheightChange = function(callback)
 	})();
 };
 
+// Remove specific inline stule
+$.fn.JSremoveStyle = function(style)
+{
+	var search = new RegExp(style + '[^;]+;?', 'g');
+
+	return this.each(function()
+	{
+		$(this).attr('style', function(i, style)
+		{
+			return style && style.replace(search, '');
+		});
+	});
+};
+
 // Form validate
 $.fn.JSvalidateForm = function(options)
 {	
@@ -1290,7 +1304,7 @@ function JSvideoLaunch(title, url, share, autoplay, size, align, animate)
 	var embedShareText = JSlang('$videolaunch-text');
 	var embedAutoPlay = '';
 	
-	if(url.indexOf('youtube') >= 0)
+	if(url.indexOf('youtube') >= 0 || url.indexOf('youtu.be') >= 0)
 	{
 		ID = JSyouTubeParser(url);
 		if(autoplay){
