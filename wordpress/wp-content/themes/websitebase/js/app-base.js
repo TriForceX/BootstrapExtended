@@ -1436,30 +1436,33 @@ function JStoSlug(string)
 }
 
 // Auto scroll function
-function JSautoScroll(element, animated, distance)
+function JSautoScroll(element, speed, distance)
 {
 	// Console Log
 	JSconsole('[JS Function] Auto Scroll');
 	
-	var target = $(element);
+	var mobile = element.data('scroll-mobile') ? JSisMobile : true;
 	
-	if(!animated){ // Check value
-		animated = $(element).data('scroll-animated') < 500 ? 500 : $(element).data('scroll-animated');
-	}
-	else{
-		animated = animated < 500 ? 500 : animated;
-	}
-	
-	if(!distance){ // Check value
-		distance = $(element).data('scroll-distance') ? $(element).data('scroll-distance') : 0;
-	}
+	if(mobile)
+	{
+		if(!speed){ // Check value
+			speed = element.data('scroll-speed') < 500 ? 500 : element.data('scroll-speed');
+		}
+		else{
+			speed = speed < 500 ? 500 : speed;
+		}
 
-    if(animated){
-        $('html, body').animate({scrollTop: (target.offset().top - distance)}, animated);
-    }
-    else{
-        $('html, body').scrollTop(target.offset().top - distance);
-    }
+		if(!distance){ // Check value
+			distance = element.data('scroll-distance') ? element.data('scroll-distance') : 0;
+		}
+
+		if(speed){
+			$('html, body').animate({scrollTop: (element.offset().top - distance)}, speed);
+		}
+		else{
+			$('html, body').scrollTop(element.offset().top - distance);
+		}
+	}
 }
 
 // Disable right click menu
