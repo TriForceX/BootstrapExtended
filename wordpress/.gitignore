@@ -8,9 +8,13 @@
 
 ## websitebase files to ignore
 wp-content/themes/websitebase/css/style.css
+wp-content/themes/websitebase/css/*.min.css
+wp-content/themes/websitebase/css/*.dist.css
 wp-content/themes/websitebase/js/app.js
-wp-content/themes/websitebase/css/*[.min., .dist.]*
-wp-content/themes/websitebase/js/*[.min., .dist.]*
-wp-content/themes/websitebase/css/extras/*[.min., .dist.]*
-wp-content/themes/websitebase/js/extras/*[.min., .dist.]*
+wp-content/themes/websitebase/js/*.min.js
+wp-content/themes/websitebase/js/*.dist.js
+wp-content/themes/websitebase/css/extras/*.min.css
+wp-content/themes/websitebase/css/extras/*.dist.css
+wp-content/themes/websitebase/js/extras/*.min.js
+wp-content/themes/websitebase/js/extras/*.dist.js
 ##

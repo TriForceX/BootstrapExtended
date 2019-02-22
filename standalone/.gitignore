@@ -8,9 +8,13 @@
 
 ## websitebase files to ignore
 css/style.css
+css/*.min.css
+css/*.dist.css
 js/app.js
-css/*[.min., .dist.]*
-js/*[.min., .dist.]*
-css/extras/*[.min., .dist.]*
-js/extras/*[.min., .dist.]*
+js/*.min.js
+js/*.dist.js
+css/extras/*.min.css
+css/extras/*.dist.css
+js/extras/*.min.js
+js/extras/*.dist.js
 ##
