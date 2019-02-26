@@ -1195,6 +1195,10 @@ function JSmodalAjax(title, url, method, type, loading, size, align, animate)
 					animate: (animate == 'alt' ? true : animate),
 				});
 			}
+		},
+		complete: function(data){
+			// Complete
+			JSconsole('[JS Function] Modal Ajax Complete!');
 			// Remove loading icon
 			if(loading){
 				$('.JSloading').remove();
@@ -1436,31 +1440,34 @@ function JStoSlug(string)
 }
 
 // Auto scroll function
-function JSautoScroll(element, speed, distance)
+function JSautoScroll(element, speed, distance, mobile)
 {
 	// Console Log
 	JSconsole('[JS Function] Auto Scroll');
 	
-	var mobile = element.data('scroll-mobile') ? JSisMobile : true;
+	var options = {
+		'speed' 	: !speed ? false : speed,
+		'distance'	: !distance ? 0 : distance,
+		'mobile'	: !mobile ? true : mobile,
+	};
 	
-	if(mobile)
+	if(element.data('scroll-mobile')){
+		options.mobile = JSisMobile;
+	}
+	if(element.data('scroll-speed')){
+		options.speed = element.data('scroll-speed');
+	}
+	if(element.data('scroll-distance')){
+		options.distance = element.data('scroll-distance');
+	}
+	
+	if(options.mobile)
 	{
-		if(!speed){ // Check value
-			speed = element.data('scroll-speed') < 500 ? 500 : element.data('scroll-speed');
+		if(options.speed){
+			$('html, body').animate({scrollTop: (element.offset().top - options.distance)}, options.speed);
 		}
 		else{
-			speed = speed < 500 ? 500 : speed;
-		}
-
-		if(!distance){ // Check value
-			distance = element.data('scroll-distance') ? element.data('scroll-distance') : 0;
-		}
-
-		if(speed){
-			$('html, body').animate({scrollTop: (element.offset().top - distance)}, speed);
-		}
-		else{
-			$('html, body').scrollTop(element.offset().top - distance);
+			$('html, body').scrollTop(element.offset().top - options.distance);
 		}
 	}
 }
@@ -1822,9 +1829,9 @@ function JSpaginator(container)
 	JSconsole('[JS Function] Paginator');
 	
 	$(container).each(function(){ 
-		var limit = $(container).data('paginator-limit') ? $(container).data('paginator-limit') : 10;
-		var limitMobile = $(container).data('paginator-limit-mobile') ? $(container).data('paginator-limit-mobile') : 5;
-		var exceptions = $(container).data('paginator-exceptions') ? $(container).data('paginator-exceptions') : '';
+		var limit = $(this).data('paginator-limit') ? $(this).data('paginator-limit') : 10;
+		var limitMobile = $(this).data('paginator-limit-mobile') ? $(this).data('paginator-limit-mobile') : 5;
+		var exceptions = $(this).data('paginator-exceptions') ? $(this).data('paginator-exceptions') : '';
 
 		var items = $(this).find("a").not(exceptions);
 		var amount = ((JSisMobile) ? limitMobile : limit);
