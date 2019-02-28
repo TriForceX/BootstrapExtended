@@ -68,7 +68,7 @@ if(get_option('template') == 'websitebase')
 		}
 	});
 	</script>
-	<? });
+	<?php });
 }
 
 $GLOBALS['wpmdb_meta']['wp-migrate-db-pro']['version'] = '1.8.4';
