@@ -320,6 +320,8 @@ $.fn.JSvalidateForm = function(options)
 					modalSize		: settings.modalSize,
 					modalAlign		: settings.modalAlign,
 					modalAnimate	: settings.modalAnimate,
+					customValidate	: settings.customValidate,
+					customSubmit	: settings.customSubmit,
 				});
 			};
 			
