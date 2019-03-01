@@ -1856,24 +1856,55 @@ function JSpaginator(container)
 }
 
 // Paint & clean table
-function JSpaintTable(container)
+function JSpaintTable(element, group, groupType, header, headerAlt, cleanTable, cleanCell, empty)
 {
 	// Console Log
 	JSconsole('[JS Function] Paint Table');
 	
-	var paintCleanTable = container.data('paint-clean-table');
-	var paintCleanCell = container.data('paint-clean-cell');
-	var paintGroup = container.data('paint-group');
-	var paintGroupType = container.data('paint-group-type');
-	var paintHeader = container.data('paint-header');
-	var paintHeaderAlt = container.data('paint-header-alt');
-	var paintEmpty = container.data('paint-empty');
+	var options = {
+		'group' 		: !group ? false : group,
+		'groupType' 	: !groupType ? false : groupType,
+		'header' 		: !header ? false : header,
+		'cleanTable' 	: !cleanTable ? false : cleanTable,
+		'cleanCell' 	: !cleanCell ? false : cleanCell,
+		'empty' 		: !empty ? false : empty,
+	};
+	
+	if(element.data('paint-group')){
+		options.group = element.data('paint-group');
+	}
+	if(element.data('paint-group-type')){
+		options.groupType = element.data('paint-group-type');
+	}
+	if(element.data('paint-header')){
+		options.header = element.data('paint-header');
+	}
+	if(element.data('paint-header-alt')){
+		options.headerAlt = element.data('paint-header-alt');
+	}
+	if(element.data('paint-clean-table')){
+		options.cleanTable = element.data('paint-clean-table');
+	}
+	if(element.data('paint-clean-cell')){
+		options.cleanCell = element.data('paint-clean-cell');
+	}
+	if(element.data('paint-empty')){
+		options.empty = element.data('paint-empty');
+	}
+	
+	var paintGroup = options.group;
+	var paintGroupType = options.groupType;
+	var paintHeader = options.header;
+	var paintHeaderAlt = options.headerAlt;
+	var paintCleanTable = options.cleanTable;
+	var paintCleanCell = options.cleanCell;
+	var paintEmpty = options.empty;
 
 	var getEmpty = paintEmpty ? paintEmpty : 'none';
 	var getType = paintGroupType == 'even' ? 'tr:nth-child(even)' : 'tr:nth-child(odd)';
 	var getHeader = paintHeader ? paintHeaderAlt ? ':first-child, :nth-child(2)' : ':first-child' : '';
 	
-	container.find('table').each(function(){
+	element.find('table').each(function(){
 		// Clean table
 		$(this).attr('width','0');
 		$(this).attr('border','0');
