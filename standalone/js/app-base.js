@@ -991,7 +991,7 @@ function JSimgFill(container)
 	// Set variables
 	bgHorizontal = bgData[0];
 	bgVertical = bgData[1];
-	bgFill = bgData[2].indexOf('%') >= 0 || bgData[2].indexOf('px') >= 0 ? (bgData[2] == 100 ? 'cover' : parseFloat(bgData[2].replace(/\x25|px/g, ''))) : bgData[2];
+	bgFill = bgData[2];
 	
 	// Set position and size
 	$(container).css({'background-image'	: 'url('+bgSource+')',

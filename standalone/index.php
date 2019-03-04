@@ -1055,7 +1055,7 @@
 		<p>Basic validation for forms. The elements validated are <code>input</code>, <code>select</code>, <code>checkbox</code>, <code>radio</code> and <code>textarea</code>. The main function is <code>$(elem).JSvalidateForm(options);</code></p></p>
 		
 		<div class="bs-example notranslate">
-			<form class="JSformExample" novalidate method="post" action="javascript:JSmodalAlert('Form Success!','The form passed sucessfully! Thanks!');">
+			<form class="JSformExample" novalidate method="post" action="/">
 				<!-- Input text + input group -->
 				<div class="form-group">
 					<label for="example-input-username">User Name</label>
@@ -1455,6 +1455,10 @@
 		}
 		// Return result
 		return result;
+	},
+	customSubmit: function(){
+		// Custom submit
+		JSmodalAlert('Form Success!', 'The form passed sucessfully! Thanks!');
 	},
 });</code></pre>
 		</figure>

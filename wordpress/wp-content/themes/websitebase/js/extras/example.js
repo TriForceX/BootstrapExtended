@@ -159,6 +159,10 @@ $(document).ready(function(){
 			// Return result
 			return result;
 		},
+		customSubmit: function(){
+			// Custom submit
+			JSmodalAlert('Form Success!','The form passed sucessfully! Thanks!');
+		},
 	});
 	
 	// Example prevent title translation by Google
