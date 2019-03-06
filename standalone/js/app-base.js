@@ -2109,6 +2109,9 @@ function JSmainInit()
 	// Tempus Dominus date picker load remove class
 	$('*[data-toggle="datetimepicker"]').removeClass('datetimepicker-input');
 	
+	// Tempus Dominus date picker readonly add/remove
+	$('*[data-toggle="datetimepicker"][readonly]').removeAttr('readonly').removeProp('readonly').addClass('before-readonly');
+	
 	// Load LightGallery
 	if(JSexist($('.JSlightGallery')))
 	{
@@ -2266,6 +2269,26 @@ $(document).ready(function(){
 	$(document).on('toggle change hide keydown keyup', '*[data-toggle="datetimepicker"]', function(){ 
     	$(this).addClass('datetimepicker-input');
     });
+	
+	// Tempus Dominus date picker readonly add/remove
+	$(document).on('focus', '*[data-toggle="datetimepicker"]', function(){ 
+		if($(this).hasClass('before-readonly'))
+		{
+			$(this).prop('readonly','readonly')
+					.attr('readonly','readonly')
+					.removeClass('before-readonly')
+					.addClass('after-readonly');
+		}
+	});
+	$(document).on('blur', '*[data-toggle="datetimepicker"]', function(){ 
+		if($(this).hasClass('after-readonly'))
+		{
+			$(this).removeAttr('readonly')
+					.removeProp('readonly')
+					.removeClass('after-readonly')
+					.addClass('before-readonly');
+		}
+	});
 	
 	// Disable select on input
 	if(!JSisNav('edge'))
