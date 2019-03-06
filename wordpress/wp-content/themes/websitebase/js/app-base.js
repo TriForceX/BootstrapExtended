@@ -87,6 +87,21 @@ if (!window.console) console = {log: function() {}};
 
 })();
 
+// Set FontAwesome 5 for Tempus Dominus
+$.fn.datetimepicker.Constructor.Default = $.extend({}, $.fn.datetimepicker.Constructor.Default, {
+	icons: {
+		time: 		'far fa-clock',
+		date: 		'far fa-calendar-alt',
+		up: 		'fas fa-angle-up',
+		down: 		'fas fa-angle-down',
+		previous: 	'fas fa-angle-left',
+		next: 		'fas fa-angle-right',
+		today: 		'far fa-calendar-check',
+		clear: 		'far fa-trash-alt',
+		close: 		'fas fa-times'
+	} 
+});
+
 // Check attr function
 $.fn.JShasAttr = function(name)
 {  
@@ -2091,6 +2106,9 @@ function JSmainInit()
 	// Popover load
 	$('*[data-toggle="popover"]').popover();
 	
+	// Tempus Dominus date picker load remove class
+	$('*[data-toggle="datetimepicker"]').removeClass('datetimepicker-input');
+	
 	// Load LightGallery
 	if(JSexist($('.JSlightGallery')))
 	{
@@ -2243,6 +2261,11 @@ $(document).ready(function(){
 	$(document).on('hidden.bs.modal', '#JScustomModal', function(){
 		$(this).remove();
 	});
+	
+	// Add class back to Tempus Dominus date picker
+	$(document).on('toggle change hide keydown keyup', '*[data-toggle="datetimepicker"]', function(){ 
+    	$(this).addClass('datetimepicker-input');
+    });
 	
 	// Disable select on input
 	if(!JSisNav('edge'))

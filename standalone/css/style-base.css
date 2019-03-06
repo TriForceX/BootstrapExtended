@@ -146,6 +146,15 @@ div.dataTables_wrapper div.dataTables_paginate ul.pagination {
 }
 /* Data Tables */
 
+/* Tempus Dominus Date Picker */
+.bootstrap-datetimepicker-widget.dropdown-menu {
+	width: auto !important;
+}
+*[data-toggle="datetimepicker"][readonly] {
+	background: inherit;
+}
+/* Tempus Dominus Date Picker */
+
 /* ================================================= BASE RESOURCES ================================================= */
 
 /* ================================================= BASE JAVASCRIPT ================================================= */
