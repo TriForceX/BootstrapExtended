@@ -986,7 +986,7 @@ function JSimgFill(container)
 	var bgFillSize;
 	
 	bgData = $(container).data('img-fill').split(' ');
-	bgSource = $(container).find('img').attr('src');
+	bgSource = $(container).find('img').attr('src').replace(/\s/g,'%20');
 	
 	// Check hotizontal align
 	if(!bgData[0]){ // Check value
