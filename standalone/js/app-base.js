@@ -986,7 +986,8 @@ function JSimgFill(container)
 	var bgFillSize;
 	
 	bgData = $(container).data('img-fill').split(' ');
-	bgSource = $(container).find('img').attr('src').replace(/\s/g,'%20');
+	bgSource = encodeURI($(container).find('img').attr('src'));
+	bgSourceFinal = bgSource.replace('(','%28').replace(')','%29');
 	
 	// Check hotizontal align
 	if(!bgData[0]){ // Check value
@@ -1009,7 +1010,7 @@ function JSimgFill(container)
 	bgFill = bgData[2];
 	
 	// Set position and size
-	$(container).css({'background-image'	: 'url('+bgSource+')',
+	$(container).css({'background-image'	: 'url('+bgSourceFinal+')',
 					  'background-position'	: bgHorizontal+' '+bgVertical,
 					  'background-size'		: bgFill});
 }
