@@ -853,7 +853,7 @@ class php
 		$videoURL = '';
 		$videoAutoPlay = $autoplay === true ? 1 : 0;
 
-		if(self::str_contains($url,'youtube')){
+		if(self::str_contains($url,'youtube') || self::str_contains($url,'youtu.be')){
 			preg_match('/^.*((youtu.be\/)|(v\/)|(\/u\/\w\/)|(embed\/)|(watch\?))\??v?=?([^#\&\?]*).*/', $url, $videoCode);
 			$videoURL = 'https://www.youtube.com/embed/'.$videoCode[7].'?rel=0&autoplay='.$videoAutoPlay;
 		}
