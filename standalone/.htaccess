@@ -1,24 +1,3 @@
-# BEGIN Standalone
-
-<IfModule mod_rewrite.c>
-
-# ---------------------------------------------------------------------------
-# Enable mod rewrite engine
-# ---------------------------------------------------------------------------
-
-RewriteEngine On
-
-# ---------------------------------------------------------------------------
-# Allow any files or directories that exist to be displayed directly
-# ---------------------------------------------------------------------------
-
-RewriteCond %{REQUEST_FILENAME} !-f
-RewriteCond %{REQUEST_FILENAME} !-d
-
-</IfModule>
-
-# END Standalone
-
 # CUSTOM Settings
 
 <IfModule mod_rewrite.c>
@@ -64,3 +43,24 @@ Options -Indexes
 </IfModule>
 
 # CUSTOM Settings
+
+# BEGIN Standalone
+
+<IfModule mod_rewrite.c>
+
+# ---------------------------------------------------------------------------
+# Enable mod rewrite engine
+# ---------------------------------------------------------------------------
+
+RewriteEngine On
+
+# ---------------------------------------------------------------------------
+# Allow any files or directories that exist to be displayed directly
+# ---------------------------------------------------------------------------
+
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+
+</IfModule>
+
+# END Standalone
