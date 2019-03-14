@@ -873,7 +873,7 @@ class php
 		$videoCode = '';
 		$videoID = '';
 
-		if(self::str_contains($url,'youtube')){
+		if(self::str_contains($url,'youtube') || self::str_contains($url,'youtu.be')){
 			preg_match('/^.*((youtu.be\/)|(v\/)|(\/u\/\w\/)|(embed\/)|(watch\?))\??v?=?([^#\&\?]*).*/', $url, $videoCode);
 			$videoID = $videoCode[7];
 		}
