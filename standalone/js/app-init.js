@@ -183,6 +183,11 @@ var JSlanguage = {
 					en: 'Cancel',
 					es: 'Cancelar',
 				},
+				// Table scroll
+				'$table-scroll': {
+					en: 'Slide to the sides',
+					es: 'Deslize hacia los lados',
+				},
 			};
 
 // Set default language

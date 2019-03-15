@@ -389,4 +389,68 @@ div.dataTables_wrapper div.dataTables_paginate ul.pagination {
 }
 /* JS Map Launch */
 
+/* JS Table Scroll */
+.JStableScroll {
+	position: relative;
+	z-index: 10;
+}
+.JStableScrollLeft, 
+.JStableScrollRight {
+	z-index: 20;
+	position: absolute;
+	width: 60px;
+	height: 100%;
+	top: 0px;
+	display: none;
+	cursor: pointer;
+}
+.JStableScrollLeft *[class*="fa-"],
+.JStableScrollRight *[class*="fa-"] {
+	font-size: 30px;
+    text-shadow: 2px 2px 10px white;
+	position: absolute;
+	top: 50%;
+	color: #333;
+}
+.JStableScrollLeft *[class*="fa-"] {
+	left: 0px;
+}
+.JStableScrollRight *[class*="fa-"] {
+	right: 0px;
+}
+.JStableScrollLeft {
+	left: 0px;
+	text-align: left;
+	background: -moz-linear-gradient(left, rgba(255,255,255,1) 0%, rgba(255,255,255,0) 100%);
+	background: -webkit-linear-gradient(left, rgba(255,255,255,1) 0%,rgba(255,255,255,0) 100%);
+	background: linear-gradient(to right, rgba(255,255,255,1) 0%,rgba(255,255,255,0) 100%);
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#00ffffff',GradientType=1 );
+}
+.JStableScrollRight {
+	right: 0px;
+	text-align: right;
+	background: -moz-linear-gradient(left, rgba(255,255,255,0) 0%, rgba(255,255,255,1) 100%);
+	background: -webkit-linear-gradient(left, rgba(255,255,255,0) 0%,rgba(255,255,255,1) 100%);
+	background: linear-gradient(to right, rgba(255,255,255,0) 0%,rgba(255,255,255,1) 100%);
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00ffffff', endColorstr='#ffffff',GradientType=1 );
+}
+.JStableScrollFooter {
+	display: none;
+	position: fixed;
+	bottom: 0px;
+	background: red;
+	left: 0px;
+	width: 100%;
+	text-align: center;
+	color: white;
+	padding: 10px;
+	z-index: 999;
+}
+.JStableScrollFooter *[class*="fa-"] {
+	font-size: 20px;
+	vertical-align: text-bottom;
+	padding-left: 5px;
+}
+/* JS Table Scroll */
+
 /* ================================================= BASE JAVASCRIPT ================================================= */

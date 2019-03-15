@@ -2095,6 +2095,83 @@ function JSmodalScrollBar()
 $(window).bind('resize', JSmodalScrollBar);
 $(window).bind('orientationchange', JSmodalScrollBar);
 
+// Table scroll function
+function JStableScroll(element, color)
+{
+	if(!color){
+		color = 'black';
+	}
+	
+	// Console Log
+	JSconsole('[JS Function] Table Scroll');
+	
+	element.each(function(index){
+		
+		if(element.data('scroll-color')){
+			color = element.data('scroll-color');
+		}
+		
+		var table = $(this);
+		var textLeft = '<i class="fas fa-angle-left" style="color: '+color+'"></i>';
+		var textRight = '<i class="fas fa-angle-right" style="color: '+color+'"></i>';
+		var textFooter = JSlang('$table-scroll')+' <i class="fas fa-exchange-alt"></i>';
+		var paddingLeft = $(this).parent().css('padding-left');
+		var paddingRight = $(this).parent().css('padding-right');
+		
+		if($('.JStableScrollFooter[data-index="'+index+'"]').length < 1)
+		{
+			table.after('<div class="JStableScrollFooter" data-index="'+index+'" style="background-color: '+color+'">'+textFooter+'</div>');
+		}
+		
+		if($('.JStableScrollLeft[data-index="'+index+'"]').length < 1)
+		{
+			table.after('<div class="JStableScrollLeft" data-index="'+index+'">'+textLeft+'</div>');
+		}
+		if($('.JStableScrollRight[data-index="'+index+'"]').length < 1)
+		{
+			table.after('<div class="JStableScrollRight" data-index="'+index+'">'+textRight+'</div>');
+		}
+		
+		$('.JStableScrollLeft[data-index="'+index+'"]').css('left', paddingLeft);
+		$('.JStableScrollRight[data-index="'+index+'"]').css('right', paddingRight);
+		
+		if(table.find('table').width() > table.width())
+		{
+			// Scroll display
+			$('.JStableScrollLeft[data-index="'+index+'"]').css('display', table.scrollLeft() == 0 ? 'none' : 'block');
+			$('.JStableScrollRight[data-index="'+index+'"]').css('display', table.scrollLeft() == 0 ? 'block' : 'none');
+			
+			// Scroll event
+			table.bind('scroll', function(e){
+				$('.JStableScrollLeft[data-index="'+index+'"]').css('display', $(this).scrollLeft() == 0 ? 'none' : 'block');
+				$('.JStableScrollRight[data-index="'+index+'"]').css('display', $(this).scrollLeft() == 0 ? 'block' : 'none');
+			});
+
+			// Scroll click
+			$('.JStableScrollLeft[data-index="'+index+'"]').bind('click', function(e){
+				table.stop().animate({ scrollLeft: "-=" + 900 + "px" }, 1200);
+			});
+			$('.JStableScrollRight[data-index="'+index+'"]').bind('click', function(e){
+				table.stop().animate({ scrollLeft: "+=" + 900 + "px" }, 1200);
+			});
+			
+			// Footer
+			if(JSisMobile)
+			{
+				$('.JStableScrollFooter[data-index="'+index+'"]').css('display', 'block');
+			}
+		}
+		else
+		{
+			$('.JStableScrollLeft[data-index="'+index+'"]').css('display', 'none');
+			$('.JStableScrollRight[data-index="'+index+'"]').css('display', 'none');
+			
+			// Footer
+			$('.JStableScrollFooter[data-index="'+index+'"]').css('display', 'none');
+		}
+	});
+}
+
 // Main Initialization
 function JSmainInit()
 {
@@ -2360,9 +2437,6 @@ $(document).ready(function(){
 		JSformPaintInputGroup($(this));
     });
 	
-	// Load responsive code
-	JSresponsiveCode();
-	
 	// Launch main functions
 	JSmainInit();
 	
@@ -2391,6 +2465,11 @@ $(document).on('JSresponsiveCode', function(event, bodyWidth, bodyHeight, bodyOr
 	// Apply Text Size
 	$('.JStextSize').each(function(){
 		JStextSize($(this));
+	});
+	
+	// Apply Table Scroll
+	$('.JStableScroll').each(function(){
+		JStableScroll($(this));
 	});
 	
 	// Apply Text Cut Multiline
