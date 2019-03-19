@@ -229,8 +229,7 @@ class php
 		$data['file'] = $type == 'css' ? array('css/style-base.css',
 											   'css/style-bootstrap.css',
 											   'css/style-theme.css') :
-										 array('js/app-init.js',
-											   'js/app-base.js',
+										 array('js/app-base.js',
 											   'js/app-theme.js');
 		
 		$data['vars'] = array('$global-url'	=> $url,
@@ -356,8 +355,7 @@ class php
 				$data['file'] = $type == 'css' ? array('css/style-base.css',
 													   'css/style-bootstrap.css',
 													   'css/style-theme.css') :
-												 array('js/app-init.js',
-													   'js/app-base.js',
+												 array('js/app-base.js',
 													   'js/app-theme.js');
 				
 				$find_min = str_replace('.'.$type, '.min.'.$type, $local.'/'.$data['file'][0]);

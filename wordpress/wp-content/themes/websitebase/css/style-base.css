@@ -221,14 +221,14 @@ div.dataTables_wrapper div.dataTables_paginate ul.pagination {
 /* JS Text Size */
 
 /* JS Text Cut One Line */
-.JStextCutElem > div {
+.JStextCutElem > .JStextCutInner {
 	position: relative;
 }
-.JStextCutElem > div:before {
+.JStextCutElem > .JStextCutInner:before {
 	content: "&nbsp;";
 	visibility: hidden;
 }
-.JStextCutElem > div > div {
+.JStextCutElem > .JStextCutInner > span {
 	position: absolute;
 	left: 0;
 	right: 0;
@@ -409,8 +409,9 @@ div.dataTables_wrapper div.dataTables_paginate ul.pagination {
 	font-size: 30px;
     text-shadow: 2px 2px 10px white;
 	position: absolute;
-	top: 50%;
 	color: #333;
+	top: 50%;
+	transform: translateY(-50%);
 }
 .JStableScrollLeft *[class*="fa-"] {
 	left: 0px;
