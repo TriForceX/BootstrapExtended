@@ -2081,6 +2081,7 @@ function JSpaginator(container)
 			}
 			else
 			{
+				items.slice(i, i+amount).wrapAll('<div class="JSpageGroup"></div>');
 			}
 		}
 
