@@ -2070,23 +2070,28 @@ function JSpaginator(container)
 		var limitMobile = $(this).data('paginator-limit-mobile') ? $(this).data('paginator-limit-mobile') : 5;
 		var exceptions = $(this).data('paginator-exceptions') ? $(this).data('paginator-exceptions') : '';
 
-		var items = $(this).find("a").not(exceptions);
-		var amount = ((JSisMobile) ? limitMobile : limit);
+		var items = $(this).find('a').not(exceptions);
+		var amount = ((JSisMobile) ? limitMobile+1 : limit+1);
 		
 		for(var i = 0; i < items.length; i+=amount)
 		{
-			if(items.slice(i, i+amount).hasClass("JSpageActive"))
+			if(items.slice(i, i+amount).hasClass('JSpageActive'))
 			{
-				items.slice(i, i+amount).wrapAll("<div class='JSpageGroup JSpageActive'></div>");
+				items.slice(i, i+amount).wrapAll('<div class="JSpageGroup JSpageActive"></div>');
 			}
 			else
 			{
-				items.slice(i, i+amount).wrapAll("<div class='JSpageGroup'></div>");
 			}
 		}
 
 		$(this).find(".JSpageItems .JSpageGroup.JSpageActive").prev().addClass("JSpageGroupPrev");
 		$(this).find(".JSpageItems .JSpageGroup.JSpageActive").next().addClass("JSpageGroupNext");
+		
+		if($(this).find(".JSpageItems .JSpageGroup.JSpageActive").next().find(".JSpageNext").length == 1 &&
+		   $(this).find(".JSpageItems .JSpageGroup.JSpageActive").next().find("a").length == 1)
+		{
+			$(this).find(".JSpageItems .JSpageGroup.JSpageGroupNext").removeClass("JSpageGroupNext");
+		}
 	});
 }
 
