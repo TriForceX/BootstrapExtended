@@ -84,7 +84,9 @@ class php
 						// Replace `(border|outline):none` with `(border|outline):0`
 						'#(?<=[\{;])(border|outline):none(?=[;\}\!])#',
 						// Remove empty selector(s)
-						'#(\/\*(?>.*?\*\/))|(^|[\{\}])(?:[^\s\{\}]+)\{\}#s'
+						'#(\/\*(?>.*?\*\/))|(^|[\{\}])(?:[^\s\{\}]+)\{\}#s',
+						// Add spaces to plus and minus symbols for calc
+						'#calc\((.*?)([\+\-\*])(.*?)\)#s',
 					),
 					array(
 						'$1',
@@ -97,7 +99,8 @@ class php
 						'$1$2$4$5',
 						'$1$2$3',
 						'$1:0',
-						'$1$2'
+						'$1$2',
+						'calc($1 $2 $3)$4',
 					),
 				$input);
 				break;
