@@ -3,13 +3,13 @@
  * Version 3.0
  * TriForce - Matias Silva
  * 
- * Build:     03 Apr 2019 15:09:44 GMT
+ * Build:     02 Aug 2019 16:51:57 GMT
  * Site:      https://websitebase.github.io
  * Source:    https://github.com/triforcex/websitebase
  * 
  *//* ================================================= BASE VARIABLEs ================================================= */
 
-var JSmainUrl = 'https://websitebase.github.io';
+var JSmainUrl = '';
 var JSmainLang = $('body').data('js-lang');
 
 /* ================================================= BASE VARIABLEs ================================================= */
@@ -439,6 +439,7 @@ $.fn.JSvalidateForm = function(options)
 		modalAnimate	: true,
 		customValidate	: false,
 		customSubmit	: false,
+		customTitle		: false,
 	}, options);
 	
 	// Input scroll
@@ -491,7 +492,7 @@ $.fn.JSvalidateForm = function(options)
 			var formElement = $(this);
 			var formConfirmTitle = JSlang('$validate-confirm-title');
 			var formConfirmText = JSlang('$validate-confirm-text');
-			var formErrorTitle = JSlang('$validate-title');
+			var formErrorTitle = settings.customTitle ? settings.customTitle : JSlang('$validate-title');
 			var formErrorText = {
 								 'text'		 : JSlang('$validate-normal'), 
 								 'number'	 : JSlang('$validate-number'), 

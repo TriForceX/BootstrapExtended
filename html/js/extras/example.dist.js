@@ -3,7 +3,7 @@
  * Version 3.0
  * TriForce - Matias Silva
  * 
- * Build:     03 Apr 2019 15:09:44 GMT
+ * Build:     02 Aug 2019 16:51:57 GMT
  * Site:      https://websitebase.github.io
  * Source:    https://github.com/triforcex/websitebase
  * 
@@ -157,6 +157,7 @@ $(document).ready(function(){
 		modalSize: 'medium',
 		modalAlign: 'top',
 		modalAnimate: true,
+		customTitle: false,
 		customValidate: function(result){
 			// Custom function
 			if($('#example-input-custom').val() != 'Custom') 

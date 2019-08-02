@@ -1445,6 +1445,7 @@
 	modalSize: 'medium',
 	modalAlign: 'top',
 	modalAnimate: true,
+	customTitle: false,
 	customValidate: function(result){
 		// Custom function
 		if($('#example-input-custom').val() != 'Custom') 

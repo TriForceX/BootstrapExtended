@@ -430,6 +430,7 @@ $.fn.JSvalidateForm = function(options)
 		modalAnimate	: true,
 		customValidate	: false,
 		customSubmit	: false,
+		customTitle		: false,
 	}, options);
 	
 	// Input scroll
@@ -482,7 +483,7 @@ $.fn.JSvalidateForm = function(options)
 			var formElement = $(this);
 			var formConfirmTitle = JSlang('$validate-confirm-title');
 			var formConfirmText = JSlang('$validate-confirm-text');
-			var formErrorTitle = JSlang('$validate-title');
+			var formErrorTitle = settings.customTitle ? settings.customTitle : JSlang('$validate-title');
 			var formErrorText = {
 								 'text'		 : JSlang('$validate-normal'), 
 								 'number'	 : JSlang('$validate-number'), 
