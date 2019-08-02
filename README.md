@@ -101,6 +101,7 @@ jQuery | 3.3.1 | [Visit](https://jquery.com/)
 		- Advanced Custom Fields
 		- Antispam Bee
 		- Classic Editor
+		- Duplicate Post
 		- Custom Post Type UI
 		- Enhaced Context Help
 		- Gutenberg Editor
