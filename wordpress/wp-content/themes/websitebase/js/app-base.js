@@ -861,7 +861,7 @@ function JSvalidateNumber(field)
 	// Console Log
 	JSconsole('[JS Function] Validate Number');
 	
-    var numberReg = /^-?\d+(\.\d+)?$/;
+    var numberReg = /^-?\d+(\,\d+)?$/;
     
 	if (!numberReg.test(field)){
         return false;
@@ -2331,6 +2331,8 @@ function JStableScroll(element, color)
 	// Console Log
 	JSconsole('[JS Function] Table Scroll');
 	
+	var maxTableWidth = JSgetMaxWidth(element.find('table'));
+	
 	element.each(function(index){
 		
 		if(!element.hasClass('JStableScroll'))
@@ -2364,9 +2366,9 @@ function JStableScroll(element, color)
 		}
 		
 		$('.JStableScrollLeft[data-index="'+index+'"]').css('left', paddingLeft);
-		$('.JStableScrollRight[data-index="'+index+'"]').css('right', paddingRight);
+		$('.JStableScrollRight[data-index="'+index+'"]').css('right', paddingRight, maxTableWidth);
 		
-		if(table.find('table').width() > table.width())
+		if(/*table.find('table').width()*/ maxTableWidth > table.width())
 		{
 			// Scroll display
 			$('.JStableScrollLeft[data-index="'+index+'"]').css('display', table.scrollLeft() == 0 ? 'none' : 'block');
