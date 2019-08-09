@@ -109,6 +109,7 @@ jQuery | 3.3.1 | [Visit](https://jquery.com/)
 		- Login reCaptcha
 		- Mail SMTP
 		- Migrate DB
+		- Radio Buttons for Taxonomies
 		- Resize Image After Upload
 		- Simple Custom Post Order
 		- Simple History
