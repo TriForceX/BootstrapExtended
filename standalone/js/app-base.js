@@ -519,6 +519,16 @@ $.fn.JSvalidateForm = function(options)
 					formElement.unbind('submit').submit();
 				}
 				
+				// Check reCaptcha v2
+				if(JSexist($('.g-recaptcha')) && $('.g-recaptcha').JShasAttr('data-sitekey'))
+				{
+					// Check plugin
+					if(typeof grecaptcha !== 'undefined')
+					{
+						grecaptcha.reset();
+					}
+				}
+				
 				// Reset
 				if(settings.resetSubmit)
 				{
@@ -533,17 +543,10 @@ $.fn.JSvalidateForm = function(options)
 					});
 				}
 				
-				// Check plugin
-				if(typeof grecaptcha !== 'undefined')
-				{
-					grecaptcha.reset();
-				}
-				
 				// Enable
 				formElement.JSvalidateForm({
 					noValidate		: settings.noValidate,
 					hasConfirm		: settings.hasConfirm,
-					customValidate	: settings.customValidate,
 					resetSubmit		: settings.resetSubmit,
 					errorStyling	: settings.errorStyling,
 					errorScroll		: settings.errorScroll,
@@ -2629,6 +2632,16 @@ $(document).ready(function(){
 	
 	// Check form reset
 	$(document).on('click', 'form *[type="reset"]', function(e){
+		// Check reCaptcha v2
+		if(JSexist($('.g-recaptcha')) && $('.g-recaptcha').JShasAttr('data-sitekey'))
+		{
+			// Check plugin
+			if(typeof grecaptcha !== 'undefined')
+			{
+				grecaptcha.reset();
+			}
+		}
+		
 		$(this).parents('form').removeClass('was-validated');
 		$(this).parents('form').find('.is-warning').removeClass('is-warning');
 		$(this).parents('form').find('input[type="checkbox"]').prop('checked', false).removeAttr('checked').parent().removeClass('active');
@@ -2637,11 +2650,6 @@ $(document).ready(function(){
 			var placeholder = $(this).JShasAttr('placeholder') ? $(this).attr('placeholder') : '';
 			$(this).parent().find('.custom-file-text > span').html(placeholder);
 		});
-		// Check plugin
-		if(typeof grecaptcha !== 'undefined')
-		{
-			grecaptcha.reset();
-		}
     });
 	
 	// Check change form group checkbox & radio
