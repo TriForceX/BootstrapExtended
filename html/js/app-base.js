@@ -2385,10 +2385,10 @@ function JStableScroll(element, color)
 
 			// Scroll click
 			$('.JStableScrollLeft[data-index="'+index+'"]').bind('click', function(e){
-				table.stop().animate({ scrollLeft: "-=" + 900 + "px" }, 1200);
+				table.stop().animate({ scrollLeft: "-=" + maxTableWidth + "px" }, 1200);
 			});
 			$('.JStableScrollRight[data-index="'+index+'"]').bind('click', function(e){
-				table.stop().animate({ scrollLeft: "+=" + 900 + "px" }, 1200);
+				table.stop().animate({ scrollLeft: "+=" + maxTableWidth + "px" }, 1200);
 			});
 			
 			// Footer
