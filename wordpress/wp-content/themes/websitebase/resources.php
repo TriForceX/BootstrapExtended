@@ -14,9 +14,6 @@ require_once('resources/utilities.php');
 // Enable main PHP utilities
 class php extends utilities\php { }
 
-// Set default timezone if not exist
-if(!ini_get('date.timezone')) date_default_timezone_set('GMT');
-
 // Set main Website Base data fields
 $websitebase = array(
 	'debug'				=> false,
@@ -50,6 +47,9 @@ $websitebase = array(
 								 /*'$color-custom-2'	=> '#FFFFFF',*/
 								 /*'$color-custom-3'	=> '#FFFFFF',*/),
 );
+
+// Set default timezone
+date_default_timezone_set($websitebase['timezone']);
 
 // Rebuild CSS & JS redirect clean
 if(isset($_GET['rebuild']) && $_GET['rebuild'] == $websitebase['rebuild_pass'])

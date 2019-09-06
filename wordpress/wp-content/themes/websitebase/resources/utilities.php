@@ -738,8 +738,6 @@ class php
 		//Set Website Base Data
 		global $websitebase;
 		
-		date_default_timezone_set($websitebase['timezone']);
-		
 		$finalDate = $date == 'auto' ? date($format) : date($format, strtotime($date));
 		$langSet = $lang == 'es' ? 1 : 0;
 		$langAbbr = $abbr ? 1 : 0;
