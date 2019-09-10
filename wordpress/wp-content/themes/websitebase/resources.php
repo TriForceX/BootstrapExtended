@@ -198,11 +198,11 @@ function custom_jpeg_quality()
 }
 
 // Custom general fields
-new new_general_setting();
+$custom_settings = new custom_settings();
 
-class new_general_setting 
+class custom_settings
 {
-    function new_general_setting() 
+    function custom_settings() 
 	{
         add_filter('admin_init', array(&$this, 'new_register_fields'));
     }
