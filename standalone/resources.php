@@ -1,4 +1,5 @@
 <?php
+
 /*
  * PHP Main Resources
  * TriForce - Matías Silva
@@ -34,37 +35,17 @@ $websitebase = array(
 	'rebuild_pass'		=> 'mypassword',
 	'minify'			=> true,
 	'mix'				=> true,
-	'css_file'			=> array('css/extras/example.css',
-								 /*'css/extras/example-2.css',*/
-								 /*'css/extras/example-3.css',*/),
-	'css_vars'			=> array('$color-custom'	=> '#FF0000',
-								 /*'$color-custom-2'	=> '#FFFFFF',*/
-								 /*'$color-custom-3'	=> '#FFFFFF',*/),
-	'js_file'			=> array('js/extras/example.js',
-								 /*'js/extras/example-2.js',*/
-								 /*'js/extras/example-3.js',*/),
-	'js_vars'			=> array('$color-custom'	=> '#FF0000',
-								 /*'$color-custom-2'	=> '#FFFFFF',*/
-								 /*'$color-custom-3'	=> '#FFFFFF',*/),
+	'css_file'			=> array('css/extras/example.css'),
+	'css_vars'			=> array('$color-custom'	=> '#FF0000'),
+	'js_file'			=> array('js/extras/example.js'),
+	'js_vars'			=> array('$color-custom'	=> '#FF0000'),
 );
 
 // Set default timezone
 date_default_timezone_set($websitebase['timezone']);
 
 // Rebuild CSS & JS redirect clean
-if(isset($_GET['rebuild']) && $_GET['rebuild'] == $websitebase['rebuild_pass'])
-{
-	header('Expires: Tue, 01 Jan 2000 00:00:00 GMT');
-	header('Last-Modified: '.gmdate('d M Y H:i:s').' GMT');
-	header('Cache-Control: no-store, no-cache, must-revalidate, max-age=0');
-	header('Cache-Control: post-check=0, pre-check=0', false);
-	header('Pragma: no-cache');
-	header('Location: '.php::get_main_url().'?lastbuild');
-}
-if(isset($_GET['lastbuild']))
-{
-	header('Location: '.php::get_main_url());
-}
+php::check_rebuild();
 
 // Check error warnings
 php::debug();

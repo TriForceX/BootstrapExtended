@@ -20,29 +20,20 @@ class php
 		// Main data
 		global $websitebase;
 		
-		if($websitebase['debug'])
+		if($websitebase['debug'] == 1)
 		{
-			if($websitebase['debug'] === 'handle')
-			{
-				ob_start(
-					function()
-					{
-						$error = error_get_last();
-						$output = null;
-						foreach ($error as $info => $string)
-						{
-							$output .= '<tr><td>'.$info.'</td><td>'.$string.'</td>';
-						}
-						return '<table border="1">'.$output.'</table>';
-					}
-				);
-			}
-			else
-			{
-				ini_set('display_errors', 1);
-				ini_set('display_startup_errors', 1);
-				error_reporting(E_ALL);
-			}
+			ini_set('display_errors', 1);
+			ini_set('display_startup_errors', 1);
+			error_reporting(E_ALL);
+		}
+		elseif($websitebase['debug'] == 2)
+		{
+			ob_start(function(){
+				$error = error_get_last();
+				$output = null;
+				foreach ($error as $info => $string) $output .= '<tr><td>'.$info.'</td><td>'.$string.'</td>';
+				return '<table border="1">'.$output.'</table>';
+			});
 		}
 	}
 	
@@ -389,6 +380,26 @@ class php
 					}
 				}
 			}
+		}
+	}
+	
+	public static function check_rebuild()
+	{
+		// Main data
+		global $websitebase;
+		
+		if(isset($_GET['rebuild']) && $_GET['rebuild'] == $websitebase['rebuild_pass'])
+		{
+			header('Expires: Tue, 01 Jan 2000 00:00:00 GMT');
+			header('Last-Modified: '.gmdate('d M Y H:i:s').' GMT');
+			header('Cache-Control: no-store, no-cache, must-revalidate, max-age=0');
+			header('Cache-Control: post-check=0, pre-check=0', false);
+			header('Pragma: no-cache');
+			header('Location: '.self::get_main_url().'?lastbuild');
+		}
+		if(isset($_GET['lastbuild']))
+		{
+			header('Location: '.self::get_main_url());
 		}
 	}
 	

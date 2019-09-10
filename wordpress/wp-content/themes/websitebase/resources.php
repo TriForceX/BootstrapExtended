@@ -1,4 +1,5 @@
 <?php
+
 /*
  * PHP Main Resources
  * TriForce - Matías Silva
@@ -27,44 +28,24 @@ $websitebase = array(
 	'viewport' 			=> 'width=device-width, initial-scale=1, user-scalable=no, shrink-to-fit=no',
 	'nav-color' 		=> get_option('blognavcolor'),
 	'nav-color-apple' 	=> get_option('blognavcolorapple'),
-	'timezone' 			=> get_option('timezone_string'), // 'America/New_York',
+	'timezone' 			=> wp_get_timezone_string(), // 'America/New_York',
 	'local_dir'			=> dirname(__FILE__),
 	'custom_main_url'	=> false,
 	'assets_url'		=> get_bloginfo('template_url'),
 	'rebuild_pass'		=> 'mypassword',
 	'minify'			=> true,
 	'mix'				=> true,
-	'css_file'			=> array('css/extras/example.css',
-								 /*'css/extras/example-2.css',*/
-								 /*'css/extras/example-3.css',*/),
-	'css_vars'			=> array('$color-custom'	=> '#FF0000',
-								 /*'$color-custom-2'	=> '#FFFFFF',*/
-								 /*'$color-custom-3'	=> '#FFFFFF',*/),
-	'js_file'			=> array('js/extras/example.js',
-								 /*'js/extras/example-2.js',*/
-								 /*'js/extras/example-3.js',*/),
-	'js_vars'			=> array('$color-custom'	=> '#FF0000',
-								 /*'$color-custom-2'	=> '#FFFFFF',*/
-								 /*'$color-custom-3'	=> '#FFFFFF',*/),
+	'css_file'			=> array('css/extras/example.css'),
+	'css_vars'			=> array('$color-custom'	=> '#FF0000'),
+	'js_file'			=> array('js/extras/example.js'),
+	'js_vars'			=> array('$color-custom'	=> '#FF0000'),
 );
 
 // Set default timezone
 date_default_timezone_set($websitebase['timezone']);
 
 // Rebuild CSS & JS redirect clean
-if(isset($_GET['rebuild']) && $_GET['rebuild'] == $websitebase['rebuild_pass'])
-{
-	header('Expires: Tue, 01 Jan 2000 00:00:00 GMT');
-	header('Last-Modified: '.gmdate('d M Y H:i:s').' GMT');
-	header('Cache-Control: no-store, no-cache, must-revalidate, max-age=0');
-	header('Cache-Control: post-check=0, pre-check=0', false);
-	header('Pragma: no-cache');
-	header('Location: '.get_bloginfo('url').'?lastbuild');
-}
-if(isset($_GET['lastbuild']))
-{
-	header('Location: '.get_bloginfo('url'));
-}
+php::check_rebuild();
 
 // Check error warnings
 php::debug();
@@ -530,4 +511,32 @@ function disable_plugin_updates($value)
 		}
 	}
 	return $value;
+}
+
+// Returns the timezone string for a site, even if it's set to a UTC offset
+function wp_get_timezone_string() 
+{
+    // if site timezone string exists, return it
+    if ( $timezone = get_option( 'timezone_string' ) )
+        return $timezone;
+    // get UTC offset, if it isn't set then return UTC
+    if ( 0 === ( $utc_offset = get_option( 'gmt_offset', 0 ) ) )
+        return 'UTC';
+    // adjust UTC offset from hours to seconds
+    $utc_offset *= 3600;
+    // attempt to guess the timezone string from the UTC offset
+    if ( $timezone = timezone_name_from_abbr( '', $utc_offset, 0 ) ) {
+        return $timezone;
+    }
+    // last try, guess timezone string manually
+    $is_dst = date( 'I' );
+
+    foreach ( timezone_abbreviations_list() as $abbr ) {
+        foreach ( $abbr as $city ) {
+            if ( $city['dst'] == $is_dst && $city['offset'] == $utc_offset )
+                return $city['timezone_id'];
+        }
+    }
+    // fallback to UTC
+    return 'UTC';
 }
