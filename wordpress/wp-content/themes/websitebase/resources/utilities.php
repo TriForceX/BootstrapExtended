@@ -38,7 +38,7 @@ class php
 	}
 	
 	// Main header data
-	public static function get_html_data($type)
+	public static function get_data($type)
     {
 		// Main data
 		global $websitebase;
@@ -731,14 +731,19 @@ class php
     }
 	
 	// Convert page file name to words
-	public static function get_page_title($separator, $remove = false)
+	public static function get_page_title($separator, ...$replacements)
     {
 		$file = $_SERVER['SCRIPT_NAME'];
 		$file = substr($file, strrpos($file, '/') + 1);
 		$result = preg_replace('/\.php|.html(?=\s|$)/', '', $file);
 		$result = preg_replace('/[\.\,\:\-\_]+/', ' ', $result);
-		$result = $remove ? str_replace($remove, '', $result) : $result;
-		$result = self::str_contains($file,'index') ? '' : ' '.$separator.' '.ucwords($result);
+		$result = ucwords($result);
+		if($replacements){
+			foreach ($replacements as $replace){
+				$result = str_replace($replace[0], $replace[1], $result);
+			}
+		}
+		$result = self::str_contains($file,'index') ? '' : ' '.$separator.' '.$result;
 		
 		return $result;
     }

@@ -1,25 +1,25 @@
 <!DOCTYPE html>
-<html lang="<?php echo php::get_html_data('lang'); ?>">
+<html lang="<?php echo php::get_data('lang'); ?>">
 <head>
-	<title><?php echo php::get_html_data('title'); ?><?php echo wp_title('&raquo;'); ?></title>
+	<title><?php echo php::get_data('title'); ?><?php echo wp_title('&raquo;'); ?></title>
 	
 	<!-- ******** META TAGS ******** -->
 	
 	<!-- HTML Charset -->
-	<meta charset="<?php echo php::get_html_data('charset'); ?>">
+	<meta charset="<?php echo php::get_data('charset'); ?>">
 	<!-- Mobile Enable -->
-	<meta name="mobile-web-app-capable" content="<?php echo php::get_html_data('mobile-capable'); ?>">
-	<meta name="apple-mobile-web-app-capable" content="<?php echo php::get_html_data('mobile-capable'); ?>">
-	<meta name="viewport" content="<?php echo php::get_html_data('viewport'); ?>">
+	<meta name="mobile-web-app-capable" content="<?php echo php::get_data('mobile-capable'); ?>">
+	<meta name="apple-mobile-web-app-capable" content="<?php echo php::get_data('mobile-capable'); ?>">
+	<meta name="viewport" content="<?php echo php::get_data('viewport'); ?>">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<!-- Nav Bar Mobile Color -->
-	<meta name="theme-color" content="<?php echo php::get_html_data('nav-color'); ?>">
-	<meta name="msapplication-navbutton-color" content="<?php echo php::get_html_data('nav-color'); ?>">
-	<meta name="apple-mobile-web-app-status-bar-style" content="<?php echo php::get_html_data('nav-color-apple'); ?>">
+	<meta name="theme-color" content="<?php echo php::get_data('nav-color'); ?>">
+	<meta name="msapplication-navbutton-color" content="<?php echo php::get_data('nav-color'); ?>">
+	<meta name="apple-mobile-web-app-status-bar-style" content="<?php echo php::get_data('nav-color-apple'); ?>">
 	<!-- Meta Details -->
-	<meta name="description" content="<?php echo php::get_html_data('description'); ?>">
-	<meta name="keywords" content="<?php echo php::get_html_data('keywords'); ?>">
-	<meta name="author" content="<?php echo php::get_html_data('author'); ?>">
+	<meta name="description" content="<?php echo php::get_data('description'); ?>">
+	<meta name="keywords" content="<?php echo php::get_data('keywords'); ?>">
+	<meta name="author" content="<?php echo php::get_data('author'); ?>">
 	
 	<!-- ******** META TAGS ******** -->
 	
