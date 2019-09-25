@@ -207,7 +207,7 @@ class php
  * Version 3.0
  * TriForce - Matias Silva
  * 
- * Build:     '.gmdate('d M Y H:i:s').' GMT
+ * Compiled:  '.date('d M Y H:i:s').' ('.date_default_timezone_get().')
  * Site:      https://websitebase.github.io
  * Source:    https://github.com/triforcex/websitebase
  * 
@@ -315,19 +315,19 @@ class php
 		
 		if(self::is_localhost())
 		{
-			return self::build_template($type, $minify, $mix, $url);
+			self::build_template($type, $minify, $mix, $url);
 		}
 		else
 		{
 			if($mix)
 			{
-				if(!file_exists($local.'/'.$type.'/'.$final))
+				if(isset($_GET['rebuild']) && $_GET['rebuild'] == $websitebase['rebuild_pass'])
 				{
-					return self::build_template($type, $minify, $mix, $url);
+					self::build_template($type, $minify, $mix, $url);
 				}
-				elseif(isset($_GET['rebuild']) && $_GET['rebuild'] == $websitebase['rebuild_pass'])
+				elseif(!file_exists($local.'/'.$type.'/'.$final))
 				{
-					return self::build_template($type, $minify, $mix, $url);
+					self::build_template($type, $minify, $mix, $url);
 				}
 				else
 				{
@@ -352,13 +352,13 @@ class php
 				$find_min = str_replace('.'.$type, '.min.'.$type, $local.'/'.$data['file'][0]);
 				$find_dist = str_replace('.'.$type, '.dist.'.$type, $local.'/'.$data['file'][0]);
 
-				if(($minify ? !file_exists($find_min) : !file_exists($find_dist)))
+				if(isset($_GET['rebuild']) && $_GET['rebuild'] == $websitebase['rebuild_pass'])
 				{
-					return self::build_template($type, $minify, $mix, $url);
+					self::build_template($type, $minify, $mix, $url);
 				}
-				elseif(isset($_GET['rebuild']) && $_GET['rebuild'] == $websitebase['rebuild_pass'])
+				elseif(!file_exists(($minify ? $find_min : $find_dist)))
 				{
-					return self::build_template($type, $minify, $mix, $url);
+					self::build_template($type, $minify, $mix, $url);
 				}
 				else
 				{
@@ -395,11 +395,14 @@ class php
 			header('Cache-Control: no-store, no-cache, must-revalidate, max-age=0');
 			header('Cache-Control: post-check=0, pre-check=0', false);
 			header('Pragma: no-cache');
-			header('Location: '.self::get_main_url().'?lastbuild');
-		}
-		if(isset($_GET['lastbuild']))
-		{
-			header('Location: '.self::get_main_url());
+			?>
+			<script type="text/javascript">
+				function URLremoveParam(url, param) {
+					return url.replace(new RegExp('^([^#]*\?)(([^#]*)&)?'+param+'(\=[^&#]*)?(&|#|$)'),'$1$3$5').replace(/^([^#]*)((\?)&|\?(#|$))/,'$1$3$4');
+				}
+				window.history.pushState({}, null, URLremoveParam(window.location.href, 'rebuild'));
+			</script>
+			<?php
 		}
 	}
 	

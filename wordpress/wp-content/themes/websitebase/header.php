@@ -68,9 +68,9 @@
 </head>
 <body data-js-lang="en" data-js-hashtag="true" <?php echo is_home() ? 'data-js-home="true"' : ''; ?> data-js-console="false">
 <!-- ================================================= ANALYTICS ================================================= -->
-<?php if(php::is_localhost()): ?>
+<?php if(php::is_localhost() || isset($_GET['rebuild'])): ?>
 <script>
-	function ga(){ console.log('Google Analytics:\n', arguments); } //Dont track in localhost
+	console.log('Do not tracking analytics (Localhost or Rebuild)'); function ga(){ console.log('Google Analytics:\n', arguments); } 
 </script>
 <?php else: ?>
 <?php echo php::convert_to_utf8(get_option('bloganalytics'))."\n"; ?>
