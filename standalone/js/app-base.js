@@ -2,6 +2,9 @@
 
 var JSmainUrl = '$global-url';
 var JSmainLang = $('body').data('js-lang');
+var JSmainDebug = $('body').data('js-debug');
+var JSisHome = $('body').data('js-home');
+var JSisMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini|BB10|PlayBook|MeeGo/i.test(navigator.userAgent);
 
 /* ================================================= BASE VARIABLEs ================================================= */
 
@@ -13,18 +16,18 @@ function JSexist(elem)
 	return elem.length > 0;
 }
 
-// Custom console log
-function JSconsole(data)
+// Custom console log (0 = false, 1 = true, 2 = Base only)
+function JSconsole()
 {
-	if(!(JSexist($('*[data-js-console="false"]'))))
+	if(JSmainDebug)
 	{
-		if(/\[JS/i.test(data) && JSexist($('*[data-js-console="base"]')))
+		if(/\[JS(.*?)\]/i.test(arguments[0]) && JSmainDebug == 2)
 		{
-			console.log('%c'+data, 'color: orange');
+			console.log('%c'+arguments[0], 'color: orange');
 		}
-		else if(!(/\[JS/i.test(data)))
-		{		
-			console.log(data);
+		if(!(/\[JS(.*?)\]/i.test(arguments[0])) && JSmainDebug != 2)
+		{
+			console.log.apply(this, arguments);
 		}
 	}
 }
@@ -216,8 +219,6 @@ function JSlang(string)
 /* ================================================= BASE FUNCTIONS ================================================= */
 
 // Global variables
-var JSisHome = JSexist($('*[data-js-home]'));
-var JSisMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini|BB10|PlayBook|MeeGo/i.test(navigator.userAgent);
 var JShashTagExceptions = ['#carousel'];
 var JShashTagAlignment = ['medium','top'];
 var JShashTagAnimate = true;
@@ -1240,7 +1241,7 @@ function JStextCut(container)
 	// Console Log
 	JSconsole('[JS Function] Text Cut Single Line');
 	
-	var target = container.data('text-cut') ? container.data('text-cut') : container;
+	var target = container.data('text-cut') ? $(container.data('text-cut')) : container;
 	
 	target.addClass('JStextCutElem');
 	

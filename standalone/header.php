@@ -59,7 +59,7 @@
 	<?php echo php::section('header','get'); ?>
 	
 </head>
-<body data-js-lang="en" data-js-hashtag="true" <?php echo php::is_home() ? 'data-js-home="true"' : ''; ?> data-js-console="false">
+<body data-js-lang="en" data-js-hashtag="true" data-js-home="<?php echo php::is_home() ? 'true' : 'false'; ?>" data-js-debug="<?php php::is_localhost() ? 'true' : 'false'; ?>">
 <!-- ================================================= ANALYTICS ================================================= -->
 <?php if(php::is_localhost() || isset($_GET['rebuild'])): ?>
 <script>
