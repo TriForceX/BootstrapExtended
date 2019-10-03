@@ -12,6 +12,23 @@ namespace utilities;
  * 
  */
 
+// Get minify code
+require_once 'minify/src/Minify.php';
+require_once 'minify/src/CSS.php';
+require_once 'minify/src/JS.php';
+require_once 'minify/src/Exception.php';
+require_once 'minify/src/Exceptions/BasicException.php';
+require_once 'minify/src/Exceptions/FileImportException.php';
+require_once 'minify/src/Exceptions/IOException.php';
+
+// Get path converter
+require_once 'path-converter/src/ConverterInterface.php';
+require_once 'path-converter/src/Converter.php';
+
+// Get classes
+use MatthiasMullie\Minify;
+use MatthiasMullie\PathConverter\Converter;
+
 class php
 {
 	// Error handle
@@ -52,69 +69,12 @@ class php
 		switch($type)
 		{
 			case 'css':
-				if(trim($input) === "") return $input;
-				return preg_replace(
-					array(
-						// Remove comment(s)
-						'#("(?:[^"\\\]++|\\\.)*+"|\'(?:[^\'\\\\]++|\\\.)*+\')|\/\*(?!\!)(?>.*?\*\/)|^\s*|\s*$#s',
-						// Remove unused white-space(s)
-						'#("(?:[^"\\\]++|\\\.)*+"|\'(?:[^\'\\\\]++|\\\.)*+\'|\/\*(?>.*?\*\/))|\s*+;\s*+(})\s*+|\s*+([*$~^|]?+=|[{};,>~]|\s(?![0-9\.])|!important\b)\s*+|([[(:])\s++|\s++([])])|\s++(:)\s*+(?!(?>[^{}"\']++|"(?:[^"\\\]++|\\\.)*+"|\'(?:[^\'\\\\]++|\\\.)*+\')*+{)|^\s++|\s++\z|(\s)\s+#si',
-						// Replace `0(cm|em|ex|in|mm|pc|pt|px|vh|vw|%)` with `0`
-						'#(?<=[\s:])(0)(cm|em|ex|in|mm|pc|pt|px|vh|vw|%)#si',
-						// Replace `:0 0 0 0` with `:0`
-						'#:(0\s+0|0\s+0\s+0\s+0)(?=[;\}]|\!important)#i',
-						// Replace `background-position:0` with `background-position:0 0`
-						'#(background-position):0(?=[;\}])#si',
-						// Replace `0.6` with `.6`, but only when preceded by `:`, `,`, `-` or a white-space
-						'#(?<=[\s:,\-])0+\.(\d+)#s',
-						// Minify string value
-						'#(\/\*(?>.*?\*\/))|(?<!content\:)([\'"])([a-z_][a-z0-9\-_]*?)\2(?=[\s\{\}\];,])#si',
-						'#(\/\*(?>.*?\*\/))|(\burl\()([\'"])([^\s]+?)\3(\))#si',
-						// Minify HEX color code
-						'#(?<=[\s:,\-]\#)([a-f0-6]+)\1([a-f0-6]+)\2([a-f0-6]+)\3#i',
-						// Replace `(border|outline):none` with `(border|outline):0`
-						'#(?<=[\{;])(border|outline):none(?=[;\}\!])#',
-						// Remove empty selector(s)
-						'#(\/\*(?>.*?\*\/))|(^|[\{\}])(?:[^\s\{\}]+)\{\}#s',
-					),
-					array(
-						'$1',
-						'$1$2$3$4$5$6$7',
-						'$1',
-						':0',
-						'$1:0 0',
-						'.$1',
-						'$1$3',
-						'$1$2$4$5',
-						'$1$2$3',
-						'$1:0',
-						'$1$2',
-					),
-				$input);
+				$minifier = new Minify\CSS($input);
+				return $minifier->minify();
 				break;
 			case 'js':
-				if(trim($input) === "") return $input;
-				return preg_replace(
-					array(
-						// Remove comment(s)
-						'#\s*("(?:[^"\\\]++|\\\.)*+"|\'(?:[^\'\\\\]++|\\\.)*+\')\s*|\s*\/\*(?!\!|@cc_on)(?>[\s\S]*?\*\/)\s*|\s*(?<![\:\=])\/\/.*(?=[\n\r]|$)|^\s*|\s*$#',
-						// Remove white-space(s) outside the string and regex
-						'#("(?:[^"\\\]++|\\\.)*+"|\'(?:[^\'\\\\]++|\\\.)*+\'|\/\*(?>.*?\*\/)|\/(?!\/)[^\n\r]*?\/(?=[\s.,;]|[gimuy]|$))|\s*([!%&*\(\)\-=+\[\]\{\}|;:,.<>?\/])\s*#s',
-						// Remove the last semicolon
-						'#;+\}#',
-						// Minify object attribute(s) except JSON attribute(s). From `{'foo':'bar'}` to `{foo:'bar'}`
-						'#([\{,])([\'])(\d+|[a-z_][a-z0-9_]*)\2(?=\:)#i',
-						// --ibid. From `foo['bar']` to `foo.bar`
-						'#([a-z0-9_\)\]])\[([\'"])([a-z_][a-z0-9_]*)\2\]#i'
-					),
-					array(
-						'$1',
-						'$1$2',
-						'}',
-						'$1$3',
-						'$1.$3'
-					),
-				$input);
+				$minifier = new Minify\JS($input);
+				return $minifier->minify();
 				break;
 			case 'html':
 				if(trim($input) === "") return $input;
@@ -125,18 +85,18 @@ class php
 				// Minify inline CSS declaration(s)
 				if(strpos($input, ' style=') !== false) {
 					$input = preg_replace_callback('#<([^<]+?)\s+style=([\'"])(.*?)\2(?=[\/\s>])#s', function($matches) {
-						return '<' . $matches[1] . ' style=' . $matches[2] . self::minify_css($matches[3]) . $matches[2];
+						return '<' . $matches[1] . ' style=' . $matches[2] . self::minify_code('css', $matches[3]) . $matches[2];
 					}, $input);
 				}
 				if(strpos($input, '</style>') !== false) {
-				  $input = preg_replace_callback('#<style(.*?)>(.*?)</style>#is', function($matches) {
-					return '<style' . $matches[1] .'>'. self::minify_css($matches[2]) . '</style>';
-				  }, $input);
+					$input = preg_replace_callback('#<style(.*?)>(.*?)</style>#is', function($matches) {
+						return '<style' . $matches[1] .'>'. self::minify_code('css', $matches[2]) . '</style>';
+					}, $input);
 				}
 				if(strpos($input, '</script>') !== false) {
-				  $input = preg_replace_callback('#<script(.*?)>(.*?)</script>#is', function($matches) {
-					return '<script' . $matches[1] .'>'. self::minify_js($matches[2]) . '</script>';
-				  }, $input);
+					$input = preg_replace_callback('#<script(.*?)>(.*?)</script>#is', function($matches) {
+						return '<script' . $matches[1] .'>'. self::minify_code('js', $matches[2]) . '</script>';
+					}, $input);
 				}
 
 				return preg_replace(
@@ -174,7 +134,6 @@ class php
 				break;
 			default: break;
 		}
-		
 	}
 	
 	// Get extra code section
@@ -203,13 +162,12 @@ class php
 		global $websitebase;
 		
 		$info = '/*
- * '.($type == 'css' ? 'StyleSheet' : 'Javascript').' File Parser
- * Version 3.0
- * TriForce - Matias Silva
+ * '.($type == 'css' ? 'StyleSheet' : 'JavaScript').' File Parser
+ * Version 4.0
+ * Developed by TriForce
  * 
  * Compiled:  '.date('d M Y H:i:s').' ('.date_default_timezone_get().')
- * Site:      https://websitebase.github.io
- * Source:    https://github.com/triforcex/websitebase
+ * Source:    https://github.com/TriForceX/WebsiteBase
  * 
  */';
 		$local = $websitebase['local_dir'];
