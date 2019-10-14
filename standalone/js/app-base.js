@@ -1186,6 +1186,7 @@ function JSloadLightGallery()
 				hash: galGalleryMode === true ? false : true,
 				loop: galLoop,
 				share: galShare,
+				googlePlus: false,
 				galleryId: galID,
 				hideBarsDelay: galHideDelay,
 			});
