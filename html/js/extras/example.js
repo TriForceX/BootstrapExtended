@@ -131,7 +131,7 @@ $(document).ready(function(){
 	// Example auto scroll to gallery page 2 & 3
 	if(JSgetGallery)
 	{
-		JSautoScroll('.JSlightGalleryScroll', true, 70);
+		JSautoScroll($('.JSlightGalleryScroll'), 1000, 70, false);
 	}
 	
 	// Example Plain HTML Gallery Parser
