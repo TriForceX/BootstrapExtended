@@ -32,18 +32,14 @@ use MatthiasMullie\PathConverter\Converter;
 class php
 {
 	// Error handle
-	public static function debug()
+	public static function debug($enable = false)
     {
-		// Main data
-		global $websitebase;
-		
-		if($websitebase['debug'] == 1)
-		{
-			ini_set('display_errors', 1);
-			ini_set('display_startup_errors', 1);
-			error_reporting(E_ALL);
-		}
-		elseif($websitebase['debug'] == 2)
+		// Warnings
+		ini_set('display_errors', $enable ? 1 : 0);
+		ini_set('display_startup_errors', $enable ? 1 : 0);
+		error_reporting($enable ? E_ALL : 0);
+		// Handle
+		if($enable == 2)
 		{
 			ob_start(function(){
 				$error = error_get_last();
