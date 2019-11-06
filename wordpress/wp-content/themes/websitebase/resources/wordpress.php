@@ -338,6 +338,7 @@ function custom_theme_settings($wp_customize)
 					'title' 		=> $value['title'],
 					'description' 	=> $value['desc'],
 					'panel'			=> $value['panel'],
+					'priority'		=> $value['priority'],
 				)
 			);
 			$wp_customize->add_setting($key,
