@@ -73,7 +73,8 @@
 }
 .wp-core-ui .attachment-details .setting span, 
 .wp-core-ui .compat-item label span, 
-.wp-core-ui .media-sidebar .setting span {
+.wp-core-ui .media-sidebar .setting span,
+.wp-core-ui .attachment-details p {
     float: left;
 	width: 100%;
 	min-width:100%;
