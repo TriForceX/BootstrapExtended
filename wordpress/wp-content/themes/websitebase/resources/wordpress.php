@@ -148,15 +148,13 @@ function custom_jpeg_quality()
 }
 
 // Custom general fields
-$custom_settings = new custom_settings();
-
 class custom_settings
 {
-    function custom_settings() 
+    public function __construct()
 	{
         add_filter('admin_init', array(&$this, 'new_register_fields'));
     }
-    function new_register_fields() 
+    public function new_register_fields() 
 	{
 		$fields = array('blogkeywords' 		=> array(__('Site keywords', 'websitebase'), __('Words to let search engines to found this site.', 'websitebase')),
 						'bloganalytics' 	=> array(__('Analytics code', 'websitebase'), __('Code placed in the HTML head to track site analytics.', 'websitebase')),
@@ -175,7 +173,7 @@ class custom_settings
 			add_settings_field($args['slug'], '<label for="'.$args['slug'].'">'.$args['title'].'</label>', array(&$this, 'new_fields_html'), 'general', 'default', $args);
 		}
     }
-	function new_fields_html(array $args)
+	public function new_fields_html(array $args)
 	{
 		switch($args['slug'])
 		{
@@ -217,6 +215,7 @@ class custom_settings
 		}
 	}
 }
+$custom_settings = new custom_settings();
 
 // Custom customize register functions
 function custom_customize_register($wp_customize)
