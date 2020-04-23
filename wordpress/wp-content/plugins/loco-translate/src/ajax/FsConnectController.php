@@ -11,6 +11,7 @@ class Loco_ajax_FsConnectController extends Loco_mvc_AjaxController {
     
     
     /**
+     * @param Loco_fs_File existing file path (must exist)
      * @return bool
      */
     private function authorizeDelete( Loco_fs_File $file ){
@@ -21,19 +22,28 @@ class Loco_ajax_FsConnectController extends Loco_mvc_AjaxController {
                 return false;
             }
         }
-        // else no dependants failed deltable test
+        // else no dependants failed deletable test
         return true;
+    }
+    
+    
+    /**
+     * @param Loco_fs_File file being moved (must exist)
+     * @param Loco_fs_File target path (should not exist)
+     * @return bool
+     */
+    private function authorizeMove( Loco_fs_File $source, Loco_fs_File $target = null ){
+        return $this->api->authorizeMove($source,$target);
     }
 
 
-
     /**
+     * @param Loco_fs_File new file path (should not exist)
      * @return bool
      */
     private function authorizeCreate( Loco_fs_File $file ){
         return $this->api->authorizeCreate($file);
     }
-
 
 
     /**
@@ -57,37 +67,73 @@ class Loco_ajax_FsConnectController extends Loco_mvc_AjaxController {
     }
 
 
-
     /**
      * {@inheritdoc}
      */
     public function render(){
-        
+        // establish operation being authorized (create,delete,etc..)
         $post = $this->validate();
-
-        $func = 'authorize'.ucfirst($post->auth);
+        $type = $post->auth;
+        $func = 'authorize'.ucfirst($type);
         $auth = array( $this, $func );
         if( ! is_callable($auth) ){
             throw new Loco_error_Exception('Unexpected file operation');
         }
-        
+        // all auth methods require at least one file argument
         $file = new Loco_fs_File( $post->path );
         $base = loco_constant('WP_CONTENT_DIR');
         $file->normalize($base);
-        
-        $this->api = new Loco_api_WordPressFileSystem;
-        
+        $args = array($file);
+        // some auth methods also require a destination/target (move,copy,etc..)
+        if( $dest = $post->dest ){
+            $file = new Loco_fs_File($dest);
+            $file->normalize($base);
+            $args[] = $file;
+        }
+        // call auth method and respond with status and prompt HTML if connect required
         try {
-            if( call_user_func( $auth, $file ) ){
+            $this->api = new Loco_api_WordPressFileSystem;
+            if( call_user_func_array($auth,$args) ){
                 $this->set( 'authed', true );
                 $this->set( 'valid', $this->api->getOutputCredentials() );
                 $this->set( 'creds', $this->api->getInputCredentials() );
                 $this->set( 'method', $this->api->getFileSystem()->method );
                 $this->set( 'success', __('Connected to remote file system','loco-translate') );
+                // warning when writing to this location is risky (overwrites during wp update)
+                if( Loco_data_Settings::get()->fs_protect && $file->getUpdateType() ){
+                    if( 'create' === $type ){
+                        $message = __('This file may be overwritten or deleted when you update WordPress','loco-translate');
+                    }
+                    else if( 'delete' === $type ){
+                        $message = __('This directory is managed by WordPress, be careful what you delete','loco-translate');
+                    }
+                    else if( 'move' === $type ){
+                        $message = __('This directory is managed by WordPress. Removed files may be restored during updates','loco-translate');
+                    }
+                    else {
+                        $message = __('Changes to this file may be overwritten or deleted when you update WordPress','loco-translate');
+                    }
+                    $this->set('warning',$message);
+                }
             }
             else if( $html = $this->api->getForm() ){
                 $this->set( 'authed', false );
                 $this->set( 'prompt', $html );
+                // supporting text based on file operation type explains why auth is required
+                if( 'create' === $type ){
+                    $message = __('Creating this file requires permission','loco-translate');
+                }
+                else if( 'delete' === $type ){
+                    $message = __('Deleting this file requires permission','loco-translate');
+                }
+                else if( 'move' === $type ){
+                    $message = __('This move operation requires permission','loco-translate');
+                }
+                else {
+                    $message = __('Saving this file requires permission','loco-translate');
+                }
+                // message is printed before default text, so needs delimiting.
+                $this->set('message',$message.'.');
             }
             else {
                 throw new Loco_error_Exception('Failed to get credentials form');

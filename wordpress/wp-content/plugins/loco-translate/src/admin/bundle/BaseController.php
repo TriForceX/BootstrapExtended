@@ -28,7 +28,6 @@ abstract class Loco_admin_bundle_BaseController extends Loco_mvc_AdminController
     }
 
 
-
     /**
      * Commit bundle config to database
      * @return Loco_admin_bundle_BaseController 
@@ -44,7 +43,6 @@ abstract class Loco_admin_bundle_BaseController extends Loco_mvc_AdminController
     }
 
 
-
     /**
      * Remove bundle config from database
      * @return Loco_admin_bundle_BaseController 
@@ -58,7 +56,6 @@ abstract class Loco_admin_bundle_BaseController extends Loco_mvc_AdminController
         }
         return $this;
     }
-
 
 
     /**
@@ -79,7 +76,6 @@ abstract class Loco_admin_bundle_BaseController extends Loco_mvc_AdminController
 
         return $this->project;
     }
-
 
 
     /**
@@ -134,46 +130,25 @@ abstract class Loco_admin_bundle_BaseController extends Loco_mvc_AdminController
 
         // may have fs credentials saved in session
         try {
-            $session = Loco_data_Session::get();
-            if( isset($session['loco-fs']) ){
-                $fields['connection_type'] = $session['loco-fs']['connection_type'];
+            if( Loco_data_Settings::get()->fs_persist ){
+                $session = Loco_data_Session::get();
+                if( isset($session['loco-fs']) ){
+                    $fields['connection_type'] = $session['loco-fs']['connection_type'];
+                }
             }
         }
         catch( Exception $e ){
             Loco_error_AdminNotices::debug( $e->getMessage() );
         }
 
-        // specific wording based on file operation type
-        if( 'create' === $type ){
-            $this->set('fsPrompt', __('Creating this file requires permission','loco-translate') );
-        }
-        else if( 'delete' === $type ){
-            $this->set('fsPrompt', __('Deleting this file requires permission','loco-translate') );
-        }
-        else {
-            $this->set('fsPrompt', __('Saving this file requires permission','loco-translate') );
-        }
-        
         // Run pre-checks that may determine file should not be written
         if( $relpath ){
             $file = new Loco_fs_File( $relpath );
             $file->normalize( loco_constant('WP_CONTENT_DIR') );
-            // total file system block makes connection type irrelevent
+            // total file system block makes connection type irrelevant
             try {
                 $api = new Loco_api_WordPressFileSystem;
                 $api->preAuthorize($file);
-                // else just warn if file is sensitive (system)
-                if( Loco_data_Settings::get()->fs_protect && ( $systype = $file->getUpdateType() ) ){
-                    if( 'create' === $type ){
-                        $this->set('fsWarning', __('This file may be overwritten or deleted when you update WordPress','loco-translate' ) );
-                    }
-                    else if( 'delete' === $type ){
-                        $this->set('fsWarning', __('This directory is managed by WordPress, be careful what you delete','loco-translate' ) );
-                    }
-                    else {
-                        $this->set('fsWarning', __('Changes to this file may be overwritten or deleted when you update WordPress','loco-translate' ) );
-                    }
-                }
             }
             catch( Loco_error_WriteException $e ){
                 $this->set('fsLocked', $e->getMessage() );
@@ -182,6 +157,5 @@ abstract class Loco_admin_bundle_BaseController extends Loco_mvc_AdminController
         
         return $fields;
     }
-
 
 }

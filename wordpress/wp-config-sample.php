@@ -8,71 +8,34 @@
  *
  * This file contains the following configurations:
  *
- * * MySQL settings for local & production
- * * Default theme
+ * * MySQL settings
  * * Secret keys
  * * Database table prefix
- * * Disable cron job
- * * Custom .htaccess file
  * * ABSPATH
  *
- * @link https://codex.wordpress.org/Editing_wp-config.php
+ * @link https://wordpress.org/support/article/editing-wp-config-php/
  *
  * @package WordPress
  */
 
-// ** Check local enviroment ** //
-$localhost = preg_match('/(::1|127.0.0.|192.168.|localhost)/i', $_SERVER['HTTP_HOST']);
-
 // ** MySQL settings - You can get this info from your web host ** //
-$database = array(
-// Localhost
-'name'		=> 'wordpress_local',
-'user'		=> 'root',
-'pass'		=> 'root',
-'host'		=> 'localhost',
-// Production
-'name_2'	=> 'wordpress_prod',
-'user_2'	=> 'root',
-'pass_2'	=> 'root',
-'host_2'	=> 'localhost',
-// General
-'theme'		=> 'websitebase',
-'charset'	=> 'utf8',
-'prefix'	=> 'wp_',
-'collate'	=> '',
-'htaccess'	=> true,
-'cron'		=> true,
-'debug'		=> false,
-);
-
-
 /** The name of the database for WordPress */
-define('DB_NAME', ( $localhost ? $database['name'] : $database['name_2'] ));
+define( 'DB_NAME', 'database_name_here' );
 
 /** MySQL database username */
-define('DB_USER', ( $localhost ? $database['user'] : $database['user_2'] ));
+define( 'DB_USER', 'username_here' );
 
 /** MySQL database password */
-define('DB_PASSWORD', ( $localhost ? $database['pass'] : $database['pass_2'] ));
+define( 'DB_PASSWORD', 'password_here' );
 
 /** MySQL hostname */
-define('DB_HOST', ( $localhost ? $database['host'] : $database['host_2'] ));
+define( 'DB_HOST', 'localhost' );
 
 /** Database Charset to use in creating database tables. */
-define('DB_CHARSET', $database['charset']);
+define( 'DB_CHARSET', 'utf8' );
 
 /** The Database Collate type. Don't change this if in doubt. */
-define('DB_COLLATE', $database['collate']);
-
-/** Cron job disable for scheduled tasks */
-define('DISABLE_WP_CRON', $database['cron']);
-
-/** Set default theme */
-define('WP_DEFAULT_THEME', $database['theme']);
-
-/** Set custom .htaccess */
-define('WP_CUSTOM_HTACCESS', $database['htaccess']);
+define( 'DB_COLLATE', '' );
 
 /**#@+
  * Authentication Unique Keys and Salts.
@@ -83,14 +46,14 @@ define('WP_CUSTOM_HTACCESS', $database['htaccess']);
  *
  * @since 2.6.0
  */
-define('AUTH_KEY',         'put your unique phrase here');
-define('SECURE_AUTH_KEY',  'put your unique phrase here');
-define('LOGGED_IN_KEY',    'put your unique phrase here');
-define('NONCE_KEY',        'put your unique phrase here');
-define('AUTH_SALT',        'put your unique phrase here');
-define('SECURE_AUTH_SALT', 'put your unique phrase here');
-define('LOGGED_IN_SALT',   'put your unique phrase here');
-define('NONCE_SALT',       'put your unique phrase here');
+define( 'AUTH_KEY',         'put your unique phrase here' );
+define( 'SECURE_AUTH_KEY',  'put your unique phrase here' );
+define( 'LOGGED_IN_KEY',    'put your unique phrase here' );
+define( 'NONCE_KEY',        'put your unique phrase here' );
+define( 'AUTH_SALT',        'put your unique phrase here' );
+define( 'SECURE_AUTH_SALT', 'put your unique phrase here' );
+define( 'LOGGED_IN_SALT',   'put your unique phrase here' );
+define( 'NONCE_SALT',       'put your unique phrase here' );
 
 /**#@-*/
 
@@ -100,7 +63,7 @@ define('NONCE_SALT',       'put your unique phrase here');
  * You can have multiple installations in one database if you give each
  * a unique prefix. Only numbers, letters, and underscores please!
  */
-$table_prefix = $database['prefix'];
+$table_prefix = 'wp_';
 
 /**
  * For developers: WordPress debugging mode.
@@ -110,33 +73,18 @@ $table_prefix = $database['prefix'];
  * in their development environments.
  *
  * For information on other constants that can be used for debugging,
- * visit the Codex.
+ * visit the documentation.
  *
- * @link https://codex.wordpress.org/Debugging_in_WordPress
+ * @link https://wordpress.org/support/article/debugging-in-wordpress/
  */
-define('WP_DEBUG', $database['debug']);
+define( 'WP_DEBUG', false );
 
-/* That's all, stop editing! Happy blogging. */
+/* That's all, stop editing! Happy publishing. */
 
 /** Absolute path to the WordPress directory. */
-if ( !defined('ABSPATH') )
-	define('ABSPATH', dirname(__FILE__) . '/');
-
-/** Delete database dir if is not local enviroment */
-if ( !$localhost && is_dir('wp-backup') )
-{
-	foreach( glob( 'wp-backup/{,.}*', GLOB_BRACE ) as $filename )
-	{
-		if( is_file( $filename ) ) unlink( $filename );
-	}
-	rmdir('wp-backup');
+if ( ! defined( 'ABSPATH' ) ) {
+	define( 'ABSPATH', __DIR__ . '/' );
 }
 
 /** Sets up WordPress vars and included files. */
-require_once(ABSPATH . 'wp-settings.php');
-
-/** Prevent .htaccess to be modified by permalink rules */
-if(constant('WP_CUSTOM_HTACCESS'))
-{
-	add_filter('flush_rewrite_rules_hard','__return_false');
-}
+require_once ABSPATH . 'wp-settings.php';

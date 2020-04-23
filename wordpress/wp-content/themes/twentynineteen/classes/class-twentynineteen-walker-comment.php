@@ -4,13 +4,13 @@
  *
  * @package WordPress
  * @subpackage Twenty_Nineteen
- * @since 1.0.0
+ * @since Twenty Nineteen 1.0
  */
 
 /**
  * This class outputs custom comment walker for HTML5 friendly WordPress comment and threaded replies.
  *
- * @since 1.0.0
+ * @since Twenty Nineteen 1.0
  */
 class TwentyNineteen_Walker_Comment extends Walker_Comment {
 
@@ -33,10 +33,9 @@ class TwentyNineteen_Walker_Comment extends Walker_Comment {
 				<footer class="comment-meta">
 					<div class="comment-author vcard">
 						<?php
-						$comment_author_link = get_comment_author_link( $comment );
-						$comment_author_url  = get_comment_author_url( $comment );
-						$comment_author      = get_comment_author( $comment );
-						$avatar              = get_avatar( $comment, $args['avatar_size'] );
+						$comment_author_url = get_comment_author_url( $comment );
+						$comment_author     = get_comment_author( $comment );
+						$avatar             = get_avatar( $comment, $args['avatar_size'] );
 						if ( 0 != $args['avatar_size'] ) {
 							if ( empty( $comment_author_url ) ) {
 								echo $avatar;
@@ -44,13 +43,6 @@ class TwentyNineteen_Walker_Comment extends Walker_Comment {
 								printf( '<a href="%s" rel="external nofollow" class="url">', $comment_author_url );
 								echo $avatar;
 							}
-						}
-						/*
-						 * Using the `check` icon instead of `check_circle`, since we can't add a
-						 * fill color to the inner check shape when in circle form.
-						 */
-						if ( twentynineteen_is_comment_by_post_author( $comment ) ) {
-							printf( '<span class="post-author-badge" aria-hidden="true">%s</span>', twentynineteen_get_icon_svg( 'check', 24 ) );
 						}
 
 						/*
@@ -62,8 +54,8 @@ class TwentyNineteen_Walker_Comment extends Walker_Comment {
 						}
 
 						printf(
-							/* translators: %s: comment author link */
 							wp_kses(
+								/* translators: %s: Comment author link. */
 								__( '%s <span class="screen-reader-text says">says:</span>', 'twentynineteen' ),
 								array(
 									'span' => array(
@@ -71,7 +63,7 @@ class TwentyNineteen_Walker_Comment extends Walker_Comment {
 									),
 								)
 							),
-							'<b class="fn">' . get_comment_author_link( $comment ) . '</b>'
+							'<b class="fn">' . $comment_author . '</b>'
 						);
 
 						if ( ! empty( $comment_author_url ) ) {
@@ -83,7 +75,7 @@ class TwentyNineteen_Walker_Comment extends Walker_Comment {
 					<div class="comment-metadata">
 						<a href="<?php echo esc_url( get_comment_link( $comment, $args ) ); ?>">
 							<?php
-								/* translators: 1: comment date, 2: comment time */
+								/* translators: 1: Comment date, 2: Comment time. */
 								$comment_timestamp = sprintf( __( '%1$s at %2$s', 'twentynineteen' ), get_comment_date( '', $comment ), get_comment_time() );
 							?>
 							<time datetime="<?php comment_time( 'c' ); ?>" title="<?php echo $comment_timestamp; ?>">
@@ -96,9 +88,19 @@ class TwentyNineteen_Walker_Comment extends Walker_Comment {
 						?>
 					</div><!-- .comment-metadata -->
 
+					<?php
+					$commenter = wp_get_current_commenter();
+					if ( $commenter['comment_author_email'] ) {
+						$moderation_note = __( 'Your comment is awaiting moderation.', 'twentynineteen' );
+					} else {
+						$moderation_note = __( 'Your comment is awaiting moderation. This is a preview, your comment will be visible after it has been approved.', 'twentynineteen' );
+					}
+					?>
+
 					<?php if ( '0' == $comment->comment_approved ) : ?>
-					<p class="comment-awaiting-moderation"><?php _e( 'Your comment is awaiting moderation.', 'twentynineteen' ); ?></p>
+					<p class="comment-awaiting-moderation"><?php echo $moderation_note; ?></p>
 					<?php endif; ?>
+
 				</footer><!-- .comment-meta -->
 
 				<div class="comment-content">

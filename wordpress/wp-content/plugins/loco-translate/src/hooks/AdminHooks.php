@@ -46,9 +46,7 @@ class Loco_hooks_AdminHooks extends Loco_hooks_Hookable {
                 Loco_package_Listener::create();
                 // trigger post-upgrade process if required
                 $opts = Loco_data_Settings::get();
-                if( $opts->migrate() ){
-                    // would trigger upgrade handlers here in future releases
-                }
+                $opts->migrate();
             }
         }
     }
@@ -88,10 +86,17 @@ class Loco_hooks_AdminHooks extends Loco_hooks_Hookable {
 
     /**
      * plugin_action_links action callback
+     * @param string[]
+     * @param string
+     * @return string[]
      */
     public function on_plugin_action_links( $links, $plugin = '' ){
          try {
              if( $plugin && current_user_can('loco_admin') && Loco_package_Plugin::get_plugin($plugin) ){
+                // coerce links to array
+                if( ! is_array($links) ){
+                    $links = $links && is_string($links) ? (array) $links : array();
+                }
                 // ok to add "translate" link into meta row
                 $href = Loco_mvc_AdminRouter::generate('plugin-view', array( 'bundle' => $plugin) );
                 $links[] = '<a href="'.esc_attr($href).'">'.esc_html__('Translate','loco-translate').'</a>';
@@ -102,7 +107,6 @@ class Loco_hooks_AdminHooks extends Loco_hooks_Hookable {
          }
          return $links;
     }
-
 
 
     /**
@@ -116,9 +120,10 @@ class Loco_hooks_AdminHooks extends Loco_hooks_Hookable {
     }
 
 
-
     /**
      * pre_update_option_{$option} filter callback for $option = "active_plugins"
+     * @param array active plugins
+     * @return array
      */
     public function filter_pre_update_option_active_plugins( $value = null ){
         $this->purge_wp_cache();
@@ -126,9 +131,10 @@ class Loco_hooks_AdminHooks extends Loco_hooks_Hookable {
     }
 
 
-
     /**
      * pre_update_site_option_{$option} filter callback for $option = "active_sitewide_plugins"
+     * @param array active sitewide plugins
+     * @return array
      */
     public function filter_pre_update_site_option_active_sitewide_plugins( $value = null ){
         $this->purge_wp_cache();

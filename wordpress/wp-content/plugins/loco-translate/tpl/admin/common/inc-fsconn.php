@@ -18,45 +18,48 @@
             <a href="<?php $this->route('config')->e('href')?>#loco--fs-protect"><?php esc_html_e('Settings','loco-translate')?></a>
         </nav>
     </div><?php
- 
- 
+
+
+    // else specific file may be protected from updates by the bundle config
+    elseif( $params->has('fsDenied') ):?>
+    <div class="has-nav notice inline notice-locked">
+    <p>
+        <strong class="has-icon"><?php esc_html_e('Read only','loco-translate')?>:</strong>
+        <span><?php esc_html_e('File is protected by the bundle configuration','loco-translate')?>.</span>
+    </p>
+    </div><?php
+
+
     // else render remote connection form
-    else:
-        
-    if( $params->has('fsWarning') ):?> 
+    else:?> 
     <div id="loco-fs-warn" class="has-nav notice inline notice-info jshide">
         <p>
             <strong class="has-icon"><?php esc_html_e('Notice','loco-translate')?>:</strong>
-            <span><?php echo esc_html($fsWarning)?>.</span>
+            <span class="loco-msg"><!-- warning to be loaded by ajax --></span>
         </p>
         <nav>
             <a href="<?php echo $help?>#wp" target="_blank"><?php esc_html_e('Documentation','loco-translate')?></a>
             <span>|</span>
             <a href="<?php $this->route('config')->e('href')?>#loco--fs-protect"><?php esc_html_e('Settings','loco-translate')?></a>
         </nav>
-    </div><?php
-    endif?> 
-        
-    <form id="loco-fs" class="has-nav notice inline notice-locked jshide">
+    </div>
+    <form id="loco-fs" class="has-nav notice inline notice-locked jshide jsonly">
         <p>
             <strong class="has-icon"><?php
                 // Translators: When a file or folder cannot be modified due to filesystem permissions
                 esc_html_e('Write protected','loco-translate')?>:
             </strong>
-            <span><?php
-                $params->e('fsPrompt')?>.
+            <span class="loco-msg">
+                <!-- specific reason to be loaded by ajax -->
             </span>
             <span><?php 
-                esc_html_e('Click "Connect" to authenticate with the server','loco-translate')?>.</span>
-        </p><?php
-        // remote connect button required when not pre-authed
-        if( ! $fsFields->has('connection_type') ):?> 
+                esc_html_e('Click "Connect" to authenticate with the server','loco-translate')?>.
+            </span>
+        </p>
         <nav>
             <button type="button" class="button button-small button-primary"><?php esc_html_e('Connect','loco-translate')?></button>
             <a class="button button-small" href="<?php echo $help?>#remote" target="_blank"> ? </a>
         </nav><?php
-        // else form will remain hidden
-        endif;
         $fsFields->_e();?> 
     </form><?php
     endif;

@@ -16,12 +16,6 @@ class Loco_admin_config_PrefsController extends Loco_admin_config_BaseController
         $opts = Loco_data_Preferences::get();
         $this->set( 'opts', $opts );
         
-        // default value for Last-Translator credit
-        $user = wp_get_current_user();
-        $name = $user->get('display_name') or $name = 'nobody';
-        $email = $user->get('user_email') or $email = 'nobody@localhost';
-        $this->set('credit', sprintf('%s <%s>', $name, $email ) );
-        
         // handle save action 
         $nonce = $this->setNonce('save-prefs');
         try {

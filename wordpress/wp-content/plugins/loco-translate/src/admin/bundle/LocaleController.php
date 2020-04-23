@@ -75,7 +75,7 @@ class Loco_admin_bundle_LocaleController extends Loco_mvc_AdminController {
             $modified = max( $modified, $file->modified() );
             $project = $package->getProject($file);
             // do similarly to Loco_admin_bundle_ViewController::createFileParams
-            $meta = Loco_gettext_Metadata::load($file)->persistIfDirty( 0, true );
+            $meta = Loco_gettext_Metadata::load($file);
             $dir = new Loco_fs_LocaleDirectory( $file->dirname() );
             // arguments for deep link into project
             $slug = $project->getSlug();
@@ -91,7 +91,6 @@ class Loco_admin_bundle_LocaleController extends Loco_mvc_AdminController {
             // append data required for PO table row, except use bundle data instead of locale data
             $translations[$type][] = new Loco_mvc_ViewParams( array (
                 // bundle info
-                'type' => $type,
                 'title' => $project->getName(),
                 'domain' => $domain,
                 'short' => ! $slug || $project->isDomainDefault() ? $domain : $domain.'→'.$slug,
@@ -108,6 +107,7 @@ class Loco_admin_bundle_LocaleController extends Loco_mvc_AdminController {
                 'view' =>   Loco_mvc_AdminRouter::generate( $type.'-file-view', $args ),
                 'info' =>   Loco_mvc_AdminRouter::generate( $type.'-file-info', $args ),
                 'edit' =>   Loco_mvc_AdminRouter::generate( $type.'-file-edit', $args ),
+                'move' =>   Loco_mvc_AdminRouter::generate( $type.'-file-move', $args ),
                 'delete' => Loco_mvc_AdminRouter::generate( $type.'-file-delete', $args ),
                 'copy' =>   Loco_mvc_AdminRouter::generate( $type.'-msginit', $args ),
             ) );

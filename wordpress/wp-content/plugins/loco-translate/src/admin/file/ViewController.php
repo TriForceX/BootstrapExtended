@@ -34,6 +34,7 @@ class Loco_admin_file_ViewController extends Loco_admin_file_BaseController {
     public function render(){
         
         // file must exist for editing
+        /* @var Loco_fs_File $file */
         $file = $this->get('file');
         $name = $file->basename();
         $type = strtolower( $file->extension() );
@@ -57,22 +58,22 @@ class Loco_admin_file_ViewController extends Loco_admin_file_BaseController {
             $this->set('modified', $file->modified() );
             $data = Loco_gettext_Data::load( $file );
         }
-        catch( Exception $e ){
+        catch( Loco_error_ParseException $e ){
             Loco_error_AdminNotices::add( Loco_error_Exception::convert($e) );
             $data = Loco_gettext_Data::dummy();
         }
 
         $this->set( 'meta', Loco_gettext_Metadata::create($file, $data) );
 
-        // binary MO will be hex-formated in template
+        // binary MO will be hex-formatted in template
         if( 'mo' === $type ){
             $this->set('bin', $file->getContents() );
             return $this->view('admin/file/view-mo' );
         }
-       
+        
         // else is a PO or POT file 
         $this->enqueueScript('poview');//->enqueueScript('min/highlight');
-        $lines = preg_split('/\\R/u', loco_ensure_utf8( $file->getContents() ) );
+        $lines = preg_split('/(?:\\n|\\r\\n?)/', Loco_gettext_Data::ensureUtf8( $file->getContents() ) );
         $this->set( 'lines', $lines );
         
         // ajax parameters required for pulling reference sources

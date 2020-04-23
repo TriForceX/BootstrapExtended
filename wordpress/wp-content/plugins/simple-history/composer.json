@@ -9,11 +9,13 @@
 	],
 	"homepage": "http://simple-history.com/",
 	"minimum-stability": "dev",
-	"require-dev": {},
-	"require": {
-		"php": ">=5.3.0"
+	"require-dev": {
+		"squizlabs/php_codesniffer": "3.*"
 	},
-	"version": "2.29.1",
+	"require": {
+		"php": ">=5.2.0"
+	},
+	"version": "2.33",
 	"authors": [
 		{
 			"name": "Pär Thernström",

@@ -1,0 +1,408 @@
+# Translation of Plugins - Duplicate Post - Stable (latest release) in Spanish (Spain)
+# This file is distributed under the same license as the Plugins - Duplicate Post - Stable (latest release) package.
+msgid ""
+msgstr ""
+"PO-Revision-Date: 2019-12-11 22:18:34+0000\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: GlotPress/2.4.0-alpha\n"
+"Language: es\n"
+"Project-Id-Version: Plugins - Duplicate Post - Stable (latest release)\n"
+
+#: duplicate-post-admin.php:797
+msgid "Donate to support Duplicate Post"
+msgstr "Dona para apoyar Duplicate Post"
+
+#: duplicate-post-admin.php:378
+msgid "Copy &#8220;%s&#8221; to a new draft"
+msgstr "Copiar &#8220;%s&#8221; a un nuevo borrador"
+
+#: duplicate-post-admin.php:375
+msgid "Clone &#8220;%s&#8221;"
+msgstr "Clonar &#8220;%s&#8221;"
+
+#: duplicate-post-admin.php:356
+msgid "Delete reference to original item: <span class=\"duplicate_post_original_item_title_span\">%s</span>"
+msgstr "Borrar la referencia al elemento original: <span class=\"duplicate_post_original_item_title_span\">%s</span>"
+
+#. translators: Original item link (to view or edit) or title.
+#: duplicate-post-admin.php:325
+msgid "Original: %s"
+msgstr "Original: %s"
+
+#: duplicate-post-admin.php:300
+msgid "Delete reference to original item: <span class=\"duplicate_post_original_item_title_span\"></span>"
+msgstr "Borrar la referencia al elemento original: <span class=\"duplicate_post_original_item_title_span\"></span>"
+
+#: duplicate-post-admin.php:271
+msgid "Original item"
+msgstr "Elemento original"
+
+#: duplicate-post-admin.php:213
+msgid "Accessibility of the user interface has been improved"
+msgstr "La accesibilidad de la interfaz de usuario se ha mejorado"
+
+#: duplicate-post-admin.php:212
+msgid "New options to show the original in the post list or in the edit screen!"
+msgstr "¡Nuevas opciones con las que mostrar el original en la lista de entradas o en la pantalla del editor!"
+
+#: duplicate-post-options.php:615
+msgid "After the title in the Post list"
+msgstr "Después del título en la lista de entradas"
+
+#: duplicate-post-options.php:610
+msgid "you'll also be able to delete the reference to the original item with a checkbox in Quick Edit"
+msgstr "también podrás borrar la referencia al elemento original con una casilla en la edición rápida"
+
+#: duplicate-post-options.php:609
+msgid "In a column in the Post list"
+msgstr "En una columna en la lista de entradas"
+
+#: duplicate-post-options.php:604
+msgid "you'll also be able to delete the reference to the original item with a checkbox"
+msgstr "también podrás borrar la referencia al elemento original con una casilla"
+
+#: duplicate-post-options.php:603
+msgid "In a metabox in the Edit screen [Classic editor]"
+msgstr "En una caja meta en la pantalla del editor (editor clásico)"
+
+#: duplicate-post-options.php:598
+msgid "Show original item:"
+msgstr "Mostrar elemento original:"
+
+#: duplicate-post-options.php:593
+msgid "You can also use the template tag duplicate_post_clone_post_link( $link, $before, $after, $id ). You can find more info about this on the <a href=\"%s\">developer&apos;s guide for Duplicate Post</a>"
+msgstr "También puedes usar la etiqueta de plantilla duplicate_post_clone_post_link( $link, $before, $after, $id ). Puedes descubrir más sobre esto en la <a href=\"%s\">guía para desarrolladores de Duplicate Post</a>"
+
+#: duplicate-post-options.php:351
+msgid "Settings sections"
+msgstr "Secciones de ajustes"
+
+#: duplicate-post-options.php:97
+msgid "Support forum for Duplicate Post"
+msgstr "Foro de soporte de Duplicate Post"
+
+#: duplicate-post-options.php:96
+msgid "Translate Duplicate Post"
+msgstr "Traduce Duplicate Post"
+
+#: duplicate-post-options.php:95 duplicate-post-admin.php:796
+msgid "Documentation for Duplicate Post"
+msgstr "Documentación de Duplicate Post"
+
+#: duplicate-post-options.php:92 duplicate-post-admin.php:216
+msgid "Support the plugin by making a donation or becoming a patron!"
+msgstr "¡Apoya al plugin haciendo una donación o convirtiéndote en un patrón!"
+
+#: duplicate-post.php:52
+msgid "Settings for Duplicate Post"
+msgstr "Ajustes de Duplicate Post"
+
+#. translators: %s: post title
+#: duplicate-post-common.php:133
+msgid "View &#8220;%s&#8221;"
+msgstr "Ver &#8220;%s&#8221;"
+
+#: duplicate-post-common.php:124
+msgid "Preview &#8220;%s&#8221;"
+msgstr "Vista previa &#8220;%s&#8221;"
+
+#: duplicate-post-common.php:114
+msgid "Edit &#8220;%s&#8221;"
+msgstr "Editar &#8220;%s&#8221;"
+
+#: duplicate-post-options.php:583
+msgid "now works on Edit screen too - check this option to use with Gutenberg enabled"
+msgstr "ahora también funciona en la pantalla de edición - marca esta opción para usarla con Gutenberg activado"
+
+#: duplicate-post-admin.php:210
+msgid "What's new in Duplicate Post version %s:"
+msgstr "Novedades en Duplicate Post versión %s:"
+
+#: duplicate-post-admin.php:422
+msgid "Current user is not allowed to copy posts."
+msgstr "El usuario actual no tiene permisos para copiar entradas."
+
+#: duplicate-post-admin.php:215
+msgid "Check out the documentation"
+msgstr "Revisa la documentación"
+
+#: duplicate-post-options.php:90 duplicate-post-admin.php:216
+msgid "Serving the WordPress community since November 2007."
+msgstr "Sirviendo a la comunidad WordPress desde noviembre de 2007."
+
+#. Plugin URI of the plugin
+msgid "https://duplicate-post.lopo.it/"
+msgstr "https://duplicate-post.lopo.it/"
+
+#: duplicate-post-options.php:425
+msgid "you probably want this unchecked, unless you have very special requirements"
+msgstr "probablemente quieras dejar esto desmarcado, a menos que tengas requisitos muy especiales"
+
+#: duplicate-post-options.php:95 duplicate-post-admin.php:796
+msgid "Documentation"
+msgstr "Documentación"
+
+#: duplicate-post-options.php:622
+msgid "Show update notice"
+msgstr "Mostrar aviso de actualización"
+
+#: duplicate-post-options.php:587
+msgid "Bulk Actions"
+msgstr "Acciones masivas"
+
+#: duplicate-post-options.php:488
+msgid "You can use * to match zero or more alphanumeric characters or underscores: e.g. field*"
+msgstr "Puedes usar * para hacer coincidir cero o más caracteres alfanuméricos o guiones bajos: p. ej. campo* "
+
+#: duplicate-post-options.php:434
+msgid "Menu order"
+msgstr "Orden de menú"
+
+#: duplicate-post-options.php:419
+msgid "Author"
+msgstr "Autor"
+
+#: duplicate-post-options.php:416
+msgctxt "post format"
+msgid "Format"
+msgstr "Formato"
+
+#: duplicate-post-options.php:413
+msgid "Template"
+msgstr "Plantilla"
+
+#: duplicate-post-options.php:410
+msgid "Featured Image"
+msgstr "Imagen destacada"
+
+#: duplicate-post-options.php:97
+msgid "Support Forum"
+msgstr "Foro de soporte"
+
+#: duplicate-post-admin.php:215
+msgid "Please <a href=\"%s\">review the settings</a> to make sure it works as you expect."
+msgstr "Por favor <a href=\"%s\">revisa los ajustes</a> para asegurarte de que funciona como debería."
+
+#: duplicate-post-admin.php:807
+msgid "%s item copied."
+msgid_plural "%s items copied."
+msgstr[0] "%s elemento copiado."
+msgstr[1] "%s elementos copiados."
+
+#: duplicate-post-options.php:561 duplicate-post-options.php:592
+msgid "Whether the links are displayed for custom post types registered by themes or plugins depends on their use of standard WordPress UI elements"
+msgstr "Que los enlaces se muestren para los tipos de contenido personalizados registrados por temas o plugins depende del uso que le den a los elementos de la interfaz estándar de WordPress"
+
+#: duplicate-post-options.php:560
+msgid "Select the post types you want the plugin to be enabled"
+msgstr "Elige los tipos de entrada que quieres que active el plugin"
+
+#: duplicate-post-options.php:551
+msgid "Enable for these post types"
+msgstr "Activo para estos tipos de contenidos"
+
+#: duplicate-post-options.php:545
+msgid "Passwords and contents of password-protected posts may become visible to undesired users and visitors"
+msgstr "Las contraseñas y los contenidos de entradas protegidas con contraseña pueden convertirse en visibles para usuarios no deseados y visitantes "
+
+#: duplicate-post-options.php:495
+msgid "Show/hide private taxonomies"
+msgstr "Mostrar/ocultar taxonomías privadas"
+
+#: duplicate-post-options.php:473
+msgid "Add this number to the original menu order (blank or zero to retain the value)"
+msgstr "Añadir este número al orden de menú original (vacío o cero para mantener el valor)"
+
+#: duplicate-post-options.php:467
+msgid "Increase menu order by"
+msgstr "Subir el orden del menú en"
+
+#: duplicate-post-options.php:431
+msgid "except pingbacks and trackbacks"
+msgstr "salvo pingbacks y trackbacks"
+
+#: duplicate-post-options.php:431
+msgid "Comments"
+msgstr "Comentarios"
+
+#: duplicate-post-options.php:428
+msgid "Children"
+msgstr "Hijos"
+
+#: duplicate-post-options.php:425
+msgid "Attachments"
+msgstr "Adjuntos"
+
+#: duplicate-post-options.php:422
+msgid "Password"
+msgstr "Contraseña"
+
+#: duplicate-post-options.php:407
+msgid "Content"
+msgstr "Contenido"
+
+#: duplicate-post-options.php:404
+msgid "Excerpt"
+msgstr "Extracto"
+
+#: duplicate-post-options.php:401
+msgid "Slug"
+msgstr "Slug"
+
+#: duplicate-post-options.php:398
+msgid "Status"
+msgstr "Estado"
+
+#: duplicate-post-options.php:395
+msgid "Date"
+msgstr "Fecha"
+
+#: duplicate-post-options.php:392
+msgid "Title"
+msgstr "Título"
+
+#: duplicate-post-options.php:388
+msgid "Post/page elements to copy"
+msgstr "Elementos de la página o entrada a copiar"
+
+#: duplicate-post-options.php:376
+msgid "Display"
+msgstr "Visualización"
+
+#: duplicate-post-options.php:367
+msgid "Permissions"
+msgstr "Permisos"
+
+#: duplicate-post-options.php:358
+msgid "What to copy"
+msgstr "Qué copiar"
+
+#: duplicate-post-admin.php:703
+msgid "Untitled"
+msgstr "Sin título"
+
+#: duplicate-post-admin.php:684
+msgid "Copy features for this post type are not enabled in options page"
+msgstr "La copia de características para este tipo de entrada no se encuentra activa en la página de opciones"
+
+#: duplicate-post-admin.php:219
+msgid "Dismiss this notice."
+msgstr "Descartar este aviso."
+
+#. Author URI of the plugin
+msgid "https://lopo.it"
+msgstr "https://lopo.it"
+
+#. Author of the plugin
+msgid "Enrico Battocchi"
+msgstr "Enrico Battocchi"
+
+#. Description of the plugin
+msgid "Clone posts and pages."
+msgstr "Clona entradas y páginas."
+
+#: duplicate-post.php:53
+msgid "Settings"
+msgstr "Ajustes"
+
+#: duplicate-post-options.php:633
+msgid "Save Changes"
+msgstr "Guardar los cambios"
+
+#: duplicate-post-options.php:583
+msgid "Admin bar"
+msgstr "Barra de administración"
+
+#: duplicate-post-options.php:581
+msgid "Edit screen"
+msgstr "Pantalla de edición"
+
+#: duplicate-post-options.php:579
+msgid "Post list"
+msgstr "Lista de entradas"
+
+#: duplicate-post-options.php:575
+msgid "Show links in"
+msgstr "Mostrar enlaces en"
+
+#: duplicate-post-options.php:544
+msgid "Warning: users will be able to copy all posts, even those of other users"
+msgstr "Advertencia: los usuarios podrán hacer copias de todas las entradas, incluso las de otros usuarios"
+
+#: duplicate-post-options.php:527
+msgid "Roles allowed to copy"
+msgstr "Perfiles a los que se permite hacer copias"
+
+#: duplicate-post-options.php:460
+msgid "Suffix to be added after the title, e.g. \"(dup)\" (blank for no suffix)"
+msgstr "Sufijo a añadir después del título original. p.e. “(dupl.)” (dejar en blanco para no añadir sufijo)"
+
+#: duplicate-post-options.php:454
+msgid "Title suffix"
+msgstr "Sufijo del título"
+
+#: duplicate-post-options.php:447
+msgid "Prefix to be added before the title, e.g. \"Copy of\" (blank for no prefix)"
+msgstr "Prefijo a añadir antes del título original. p.e. \"Copia de\" (dejar en blanco para no añadir prefijo)"
+
+#: duplicate-post-options.php:441
+msgid "Title prefix"
+msgstr "Prefijo del título"
+
+#: duplicate-post-options.php:512
+msgid "Select the taxonomies you don't want to be copied"
+msgstr "Selecciona las taxonomías que no quieres que se copien"
+
+#: duplicate-post-options.php:493
+msgid "Do not copy these taxonomies"
+msgstr "No copiar estas taxonomías"
+
+#: duplicate-post-options.php:487
+msgid "Comma-separated list of meta fields that must not be copied"
+msgstr "Lista separada por coma de los campos meta que no deben ser copiados"
+
+#: duplicate-post-options.php:480
+msgid "Do not copy these fields"
+msgstr "No copiar estos campos"
+
+#. Plugin Name of the plugin
+#: duplicate-post-options.php:49
+msgid "Duplicate Post"
+msgstr "Duplicate Post"
+
+#: duplicate-post-options.php:49 duplicate-post-options.php:79
+msgid "Duplicate Post Options"
+msgstr "Opciones de Duplicate Post"
+
+#: duplicate-post-options.php:96
+msgid "Translate"
+msgstr "Traducir"
+
+#: duplicate-post-admin.php:797
+msgid "Donate"
+msgstr "Donar"
+
+#: duplicate-post-admin.php:466
+msgid "Copy creation failed, could not find original:"
+msgstr "Ha fallado la creación de la copia. No se ha encontrado el original:"
+
+#: duplicate-post-admin.php:426
+msgid "No post to duplicate has been supplied!"
+msgstr "¡No se ha proporcionado ninguna entrada para duplicar!"
+
+#: duplicate-post-admin.php:379
+msgid "New Draft"
+msgstr "Nuevo borrador"
+
+#: duplicate-post-common.php:78 duplicate-post-common.php:81
+#: duplicate-post-common.php:172 duplicate-post-common.php:184
+#: duplicate-post-admin.php:395
+msgid "Copy to a new draft"
+msgstr "Copiar en un borrador nuevo"
+
+#: duplicate-post-admin.php:376 duplicate-post-admin.php:831
+msgid "Clone"
+msgstr "Clonar"

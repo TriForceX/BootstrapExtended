@@ -7,7 +7,7 @@
     if( $this->has('breadcrumb') ):?> 
     <h1>
         <ul><?php
-            /* @var $item Loco_pages_ViewParams */
+            /* @var Loco_mvc_ViewParams[] $breadcrumb */
             foreach( $breadcrumb as $item ):?> 
             <li><?php
                 if( $item->href ):?> 
@@ -32,13 +32,7 @@
     
     if( $this->has('tabs') ):?> 
     <h2 class="nav-tab-wrapper"><?php
-        /* @var $back Loco_pages_ViewParams *
-        if( $back && $back->href ):?> 
-        <a href="<?php $back->e('href')?>" class="nav-tab" title="<?php $back->e('name')?>" rel="up">
-            <span class="icon icon-back"></span>
-        </a><?php
-        endif;*/
-        /* @var $item Loco_pages_ViewParams */
+        /* @var Loco_mvc_ViewParams[] $tabs */
         foreach( $tabs as $item ):?> 
         <a href="<?php $item->e('href')?>" class="nav-tab<?php echo $item->active?' nav-tab-active':''?>">
             <?php $item->e('name')?> 
@@ -48,7 +42,15 @@
     endif?> 
 
 
-    <div id="loco-notices"><?php 
+    <div id="loco-notices">
+        <noscript>
+            <div class="notice inline notice-danger">
+                <p>
+                    <strong class="has-icon icon-warn">JavaScript disabled:</strong>
+                    <span>Loco Translate requires JavaScript for most functions to work as expected.</span>
+                </p>
+            </div>
+        </noscript><?php 
         // flush message buffer
         do_action('loco_admin_notices');
         // standard file system dialogues
@@ -65,10 +67,12 @@
 </div>
 
 
-<?php if( $this->has('js') ):?> 
+<?php 
+/* @var Loco_mvc_ViewParams $js */
+if( $this->has('js') ):?> 
 <script>
 /*<![CDATA[*/
-var locoConf = <?php echo $js->exportJson()?>;
+window.locoConf = <?php echo $js->exportJson()?>;
 /*]]>*/
 </script><?php
 endif;

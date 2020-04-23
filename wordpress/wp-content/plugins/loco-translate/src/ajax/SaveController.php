@@ -43,11 +43,17 @@ class Loco_ajax_SaveController extends Loco_ajax_common_BundleController {
         // force the use of remote file system when configured from front end
         $api = new Loco_api_WordPressFileSystem;
 
-        // data posted must be valid
-        $data = Loco_gettext_Data::fromSource( $post->data );
+        // data posted may be either 'multipart/form-data' (recommended for large files)
+        if( isset($_FILES['po']) ){
+            $data = Loco_gettext_Data::fromSource( Loco_data_Upload::src('po') );
+        }
+        // else 'application/x-www-form-urlencoded' by default
+        else {
+            $data = Loco_gettext_Data::fromSource( $post->data );
+        }
         
         // WordPress-ize some headers that differ from JavaScript libs
-        if( $locale ){
+        if( $compile = (bool) $locale ){
             $head = $data->getHeaders();
             $head['Language'] = strtr( $locale, '-', '_' );
         }
@@ -80,6 +86,7 @@ class Loco_ajax_SaveController extends Loco_ajax_common_BundleController {
         }
         catch( Exception $e ){
             // editor permitted to save files not in a bundle, so catching failures
+            $bundle = null;
         }
         
         // start success data with bytes written and timestamp
@@ -89,25 +96,68 @@ class Loco_ajax_SaveController extends Loco_ajax_common_BundleController {
         $this->set('modified', $mtime);
         $this->set('datetime', Loco_mvc_ViewParams::date_i18n($mtime) );
 
-        // Compile MO file unless saving template
-        if( $locale ){
+        // Compile MO and JSON files unless saving template
+        if( $compile ){
             try {
                 $mofile = $pofile->cloneExtension('mo');
                 $api->authorizeSave( $mofile );
                 $bytes = $mofile->putContents( $data->msgfmt() );
                 $this->set( 'mobytes', $bytes );
                 Loco_error_AdminNotices::success( __('PO file saved and MO file compiled','loco-translate') );
+                
             }
             catch( Exception $e ){
                 Loco_error_AdminNotices::debug( $e->getMessage() );
                 Loco_error_AdminNotices::warn( __('PO file saved, but MO file compilation failed','loco-translate') );
                 $this->set( 'mobytes', 0 );
+                // prevent further compilation if MO failed
+                $compile = false;
             }
         }
         else {
             Loco_error_AdminNotices::success( __('POT file saved','loco-translate') );
         }
 
+        /*/ Compile JSON translations for WordPress >= 5
+        if( $compile && $bundle && function_exists('wp_set_script_translations') ){
+            $bytes = 0;
+            try {
+                list($domain) = Loco_package_Project::splitId( $this->get('domain') );
+                
+                // hash file reference according to WordPress logic (see load_script_textdomain)
+                $base = $pofile->dirname().'/'.$pofile->filename();
+                foreach( $data->exportRefs('\\.jsx?') as $ref => $messages ){
+                    if( '.min.js' === substr($ref,-7) ) {
+                        $ref = substr($ref,0,-7).'.js';
+                    }
+                    // filter similarly to WP's `load_script_textdomain_relative_path` which is called from `load_script_textdomain`
+                    $ref = apply_filters( 'loco_script_relative_path', $ref, $domain );
+                    // referenced file must exist in bundle, or will never be loaded and so not require a .json file
+                    $file = new Loco_fs_File( $bundle->getDirectoryPath().'/'.$ref );
+                    if( $file->exists() && ! $file->isDirectory() ){
+                        $file = new Loco_fs_File( $base.'-'.md5($ref).'.json' );
+                        $api->authorizeSave( $file );
+                        $bytes += $file->putContents( $data->jedize($domain,$messages) );
+                    }
+                    else {
+                        Loco_error_AdminNotices::warn( sprintf('%s not found in bundle',$ref) );
+                    }
+                }
+
+                // single JSON file containing all .js ref from this file
+                if( $messages = $data->splitJs() ){
+                    $file = $pofile->cloneExtension('json');
+                    $api->authorizeSave( $file );
+                    $bytes = $file->putContents( $data->jedize($domain,$messages) );
+                }
+            }
+            catch( Exception $e ){
+                Loco_error_AdminNotices::debug( $e->getMessage() );
+                Loco_error_AdminNotices::warn( __('JSON compilation failed','loco-translate') );
+            }
+            $this->set( 'jsbytes', $bytes );
+        }*/
+        
         return parent::render();
     }
     

@@ -14,6 +14,8 @@
  * @property string $max_php_size Skip PHP source files this size or larger
  * @property bool $po_utf8_bom Whether to prepend PO and POT files with UTF-8 byte order mark
  * @property string $po_width PO/POT file maximum line width (wrapping) zero to disable
+ * @property bool $jed_pretty Whether to pretty print JSON JED files
+ * @property bool $ajax_files Whether to submit PO data as concrete files (requires Blob support in Ajax)
  */
 class Loco_data_Settings extends Loco_data_Serializable {
 
@@ -41,6 +43,8 @@ class Loco_data_Settings extends Loco_data_Serializable {
         'max_php_size' => '100K',
         'po_utf8_bom' => false,
         'po_width' => '79',
+        'jed_pretty' => false,
+        'ajax_files' => true,
     );
 
 
@@ -109,8 +113,7 @@ class Loco_data_Settings extends Loco_data_Serializable {
         }
         else if( is_array($default) ){
             if( ! is_array($value) ){
-                // TODO use a standard CSV split for array values?
-                $value = preg_split( '/[\s,]+/', trim($value), -1, PREG_SPLIT_NO_EMPTY );
+                $value = preg_split( '/[\\s,]+/', trim($value), -1, PREG_SPLIT_NO_EMPTY );
             }
         }
         else {
@@ -153,26 +156,17 @@ class Loco_data_Settings extends Loco_data_Serializable {
 
 
     /**
-     * Run migration in case plugin has been upgraded from 1.x => 2.x since settings last saved
+     * Run migration in case plugin has been upgraded since settings last saved
      * @return bool whether upgrade has occurred
      */
     public function migrate(){
-        $existed = (bool) get_option('loco_settings');
-        // migrate 1.x branch settings if first run of 2.x
-        if( ! $existed ){
-            $this->gen_hash = get_option('loco-translate-gen_hash','0');
-            $this->use_fuzzy = get_option('loco-translate-use_fuzzy', '1' );
-            $this->num_backups = get_option('loco-translate-num_backups','1');
+        $updated = false;
+        // Always update version number in settings after an upgrade
+        if( version_compare($this->version,loco_plugin_version(),'<') ){
             $this->persist();
+            $updated = true;
         }
-        // running of plugin in 1.x legacy mode is disabled as of 2.0.15
-        if( false !== get_option('loco-branch',false) ){
-            delete_option('loco-branch');
-            delete_option('loco-translate-gen_hash');
-            delete_option('loco-translate-use_fuzzy');
-            delete_option('loco-translate-num_backups');
-        }
-        return ! $existed;
+        return $updated;
     }
 
 
@@ -212,7 +206,7 @@ class Loco_data_Settings extends Loco_data_Serializable {
     
     
     /**
-     * Map a file extension to registered types
+     * Map a file extension to registered types, defaults to "php"
      * @param string
      * @return string php, js or twig
      */
@@ -222,4 +216,5 @@ class Loco_data_Settings extends Loco_data_Serializable {
         $types['twig'] = 'twig'; // <- temporary hack in lieu of dedicated twig extractor
         return isset($types[$x]) ? $types[$x] : 'php';
     }
+   
 }

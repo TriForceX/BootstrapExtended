@@ -65,6 +65,7 @@ class Loco_admin_file_EditController extends Loco_admin_file_BaseController {
         }
         // Fine if not, this just means sync isn't possible.
         catch( Loco_error_Exception $e ){
+            Loco_error_AdminNotices::add( $e );
             Loco_error_AdminNotices::debug( sprintf("Sync is disabled because this file doesn't relate to a known set of translations", $bundle ) );
             $project = null;
         }
@@ -129,7 +130,7 @@ class Loco_admin_file_EditController extends Loco_admin_file_BaseController {
         
         // notify if template is locked (save and sync will be disabled)
         if( is_null($locale) && $project && $project->isPotLocked() ){
-            Loco_error_AdminNotices::warn('Template is protected from updates by the bundle configuration');
+            $this->set('fsDenied', true );
             $readonly = true;
         }
         
@@ -139,20 +140,20 @@ class Loco_admin_file_EditController extends Loco_admin_file_BaseController {
         $this->set( 'js', new Loco_mvc_ViewParams( array(
             'podata' => $data->jsonSerialize(),
             'powrap' => (int) Loco_data_Settings::get()->po_width,
+            'multipart' => (bool) Loco_data_Settings::get()->ajax_files,
             'locale' => $locale ? $locale->jsonSerialize() : null,
             'potpath' => $locale && $potfile ? $potfile->getRelativePath($wp_content) : null,
             'popath' => $this->get('path'),
             'readonly' => $readonly,
             'project' => $project ? array (
                 'bundle' => $bundle->getId(),
-                'domain' => $project->getId(),
+                'domain' => (string) $project->getId(),
             ) : null,
             'nonces' => $readonly ? null : array (
                 'save' => wp_create_nonce('save'),
                 'sync' => wp_create_nonce('sync'),
             ),
         ) ) );
-        
         $this->set( 'ui', new Loco_mvc_ViewParams( array(
              // Translators: button for adding a new string when manually editing a POT file
              'add'      => _x('Add','Editor','loco-translate'),

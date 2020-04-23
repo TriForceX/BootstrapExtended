@@ -31,7 +31,7 @@ class Loco_fs_LocaleFile extends Loco_fs_File {
             $this->prefix = implode( '-', $parts );
             // handle situations where suffixless name is wrongly taken as the prefix
             // e.g. "de.po" is valid but "hello.po" is not. 
-            // There are still some  ambigous situations, e.g. "foo-bar.po" is valid, but nonsense
+            // There are still some  ambiguous situations, e.g. "foo-bar.po" is valid, but nonsense
             if( ! $this->prefix && ! $this->getLocale()->isValid() ){
                 $this->prefix = $this->suffix;
                 $this->suffix = '';
@@ -43,7 +43,7 @@ class Loco_fs_LocaleFile extends Loco_fs_File {
     
     
     /**
-     * @var Loco_Locale
+     * @return Loco_Locale
      */
     public function getLocale(){
         if( ! $this->locale ){
@@ -58,8 +58,8 @@ class Loco_fs_LocaleFile extends Loco_fs_File {
     }
 
 
-
     /**
+     * @param Loco_locale
      * @return Loco_fs_LocaleFile
      */
     public function cloneLocale( Loco_locale $locale ){
@@ -80,7 +80,7 @@ class Loco_fs_LocaleFile extends Loco_fs_File {
     
 
     /**
-     * Get prefix (or stem) from name that comes before locale suffix
+     * Get prefix (or stem) from name that comes before locale suffix.
      * @return string
      */
     public function getPrefix(){
@@ -99,7 +99,6 @@ class Loco_fs_LocaleFile extends Loco_fs_File {
     }
 
 
-    
     /**
      * Test if file is suffix only, e.g. "en_US.po"
      * @return bool
@@ -110,7 +109,6 @@ class Loco_fs_LocaleFile extends Loco_fs_File {
     }
 
 
-    
     /**
      * Test if file is prefix only, e.g. "incorrect.po"
      * @return bool

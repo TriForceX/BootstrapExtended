@@ -48,8 +48,8 @@ $this->extend('../layout');
                 <dt>JSON decoding:</dt>
                 <dd><?php echo $encoding->json?></dd>
     
-                <dt>Ajax test result:</dt>
-                <dd id="loco-ajax-check"><span class="inline-spinner"> </span></dd>
+                <dt class="jsonly">Ajax test result:</dt>
+                <dd class="jsonly" id="loco-ajax-check"><span class="inline-spinner"> </span></dd>
             </dl>
         </div>
     
@@ -90,23 +90,6 @@ $this->extend('../layout');
                 
             </dl>
         </div>
-
-        <?php /*div class="panel" id="loco-ob">
-            <h3>
-                Output buffering
-                <a href="#loco-ob" class="loco-anchor" aria-hidden="true"></a>
-            </h3>
-            <dl><?php
-                foreach( $ob as $key => $value ):?>
-                    <dt>
-                        <?php echo $ob->escape($key)?>:
-                    </dt>
-                    <dd>
-                    <?php $ob->e($key)?>
-                    </dd><?php
-                endforeach?>
-            </dl>
-        </div*/?>
 
         <div class="panel" id="loco-debug">
             <h3>

@@ -8,6 +8,7 @@
         
         syncParams = null,
         saveParams = null,
+        ajaxUpload = conf.multipart,
         
         // UI translation
         translator = loco.l10n,
@@ -36,6 +37,13 @@
         saveButton,
         innerDiv = document.getElementById('loco-editor-inner')
     ;
+    
+    
+    // warn if ajax uploads are enabled but not supported
+    if( ajaxUpload && ! ( window.FormData && window.Blob ) ){
+        ajaxUpload = false;
+        loco.notices.warn("Your browser doesn't support Ajax file uploads. Falling back to standard postdata");
+    }
 
 
     /**
@@ -105,6 +113,21 @@
 
 
     /**
+     * @param params {Object}
+     * @return FormData
+     */
+    function initMultiPart( params ){
+        var p, data = new FormData;
+        for( p in params ){
+            if( params.hasOwnProperty(p) ) {
+                data.append(p, params[p]);
+            }
+        }
+        return data;
+    }
+
+
+    /**
      * Post full editor contents to "posave" endpoint
      */    
     function doSaveAction( callback ){
@@ -114,13 +137,19 @@
             // Update saved time update
             $('#loco-po-modified').text( result.datetime||'[datetime error]' );
         }
-        saveParams.locale = String( messages.locale() || '' );
+        var postData = $.extend( {locale:String(messages.locale()||'')}, saveParams||{} );
         if( fsConnect ){
-            fsConnect.applyCreds( saveParams );
+            fsConnect.applyCreds(postData);
         }
-        // adding PO source last for easier debugging in network inspector
-        saveParams.data = String( messages );
-        loco.ajax.post( 'save', saveParams, onSuccess, callback );
+        // submit PO as concrete file if configured
+        if( ajaxUpload ){
+            postData = initMultiPart(postData);
+            postData.append('po', new Blob([String(messages)],{type:'application/x-gettext'}), String(postData.path).split('/').pop()||'untitled.po' );
+        }
+        else {
+            postData.data = String(messages);
+        }
+        loco.ajax.post( 'save', postData, onSuccess, callback );
     }
     
 

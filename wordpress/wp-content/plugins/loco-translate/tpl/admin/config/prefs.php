@@ -4,6 +4,7 @@
  */
 
 $this->extend('../layout');
+/* @var Loco_data_Preferences $opts */
 ?> 
 
     <form action="" method="post" enctype="application/x-www-form-urlencoded">
@@ -17,7 +18,7 @@ $this->extend('../layout');
                                 <span><?php esc_html_e('Translator credit','loco-translate')?></span>
                             </legend>
                             <p>
-                                <input type="text" size="64" name="opts[credit]" id="loco--credit" value="<?php echo esc_attr($opts->credit)?>" placeholder="<?php echo esc_attr($credit)?>" />
+                                <input type="text" size="64" name="opts[credit]" id="loco--credit" value="<?php echo esc_attr($opts->credit)?>" placeholder="<?php echo esc_attr($opts->default_credit())?>" />
                             </p>
                         </fieldset>
                     </td>

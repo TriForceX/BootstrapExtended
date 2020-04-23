@@ -1,17 +1,17 @@
 === Login No Captcha reCAPTCHA ===
 Contributors: robertpeake, robert.peake
 Tags: google,nocaptcha,recaptcha,security,login,bots
-Requires at least: 3.0.0
-Tested up to: 5.0
-Stable tag: 1.3
+Requires at least: 4.6
+Tested up to: 5.3.2
+Stable tag: 1.6.8
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-Adds a Google No Captcha ReCaptcha checkbox to your Wordpress and Woocommerce login and forgot password screens.
+Adds a Google No Captcha ReCaptcha checkbox to your Wordpress and Woocommerce login, forgot password, and user registration pages.
 
 == Description ==
 
-Adds a Google No Captcha ReCaptcha checkbox to your Wordpress and Woocommerce login and forgot password screens. Denies access to automated scripts while making it easy on humans to log in by checking a box. As Google says, it is "Tough on bots, easy on humans."
+Adds a Google No Captcha ReCaptcha checkbox to your Wordpress and Woocommerce login, forgot password, and user registration pages. Denies access to automated scripts while making it easy on humans to log in by checking a box. As Google says, it is "Tough on bots, easy on humans."
 
 == Installation ==
 
@@ -28,6 +28,18 @@ The No Captcha is a very simple, Google-supported test to quickly deny access to
 = There are a lot of other plugins for this, why should I install <em>this</em> one? =
 
 I've gone to great lengths to try to make sure this plugin is easy to use and install, that it is compatible with different Wordpress configurations, supports multiple languages, and that you won't accidentally lock yourself out of the admin by using it. I use it myself on my own sites as well. So far, it just works.
+
+= Does this plugin support [insert name] custom login page plugin? =
+
+Probably not. Many custom login form plugins do not call the standard <a href="https://codex.wordpress.org/Plugin_API/Action_Reference/login_form">login_form</a> action hook from their login forms, making it impossible to correctly render the captcha after the password prompt. For this reason, this plugin only supports the default wp-login.php and WooCommerce forms. Many such plugins do offer captcha fields (sometimes as a paid upgrade). This plugin tries to do just a few things well.
+
+= Does this plugin add a CAPTCHA to comment forms? =
+
+No. This plugin is designed to thwart automated hacking attempts, not prevent comment spam. Most good comment plugins have their own spam prevention methods. This plugin tries to do just a few things well.
+
+= Does this plugin add a CAPTCHA to custom forms? =
+
+No. This plugin is designed to thwart automated hacking attempts, not prevent spam from custom forms. Most good custom form plugins have their own spam prevention methods. Many of them support a CAPTCHA field already. This plugin tries to do just a few things well.
 
 = Can I help? =
 
@@ -55,6 +67,73 @@ This plugin is not affiliated with or endorsed by Google in any way. Google is a
 2. Login screen once configured
 
 == Changelog ==
+
+= 1.6.8 =
+
+ * Prevent information disclosure by only returning error about blank captcha, not login status
+
+= 1.6.7 =
+
+ * Revert CSS styling changes after multiple reports of problems
+ * Add German language support
+
+= 1.6.6 =
+
+ * CSS styling improvement
+ *
+= 1.6.5 =
+
+ * Tested with 5.3
+ 
+= 1.6.4 =
+
+ * Tested with 5.2
+ * Using callback to disable submit buttons
+
+= 1.6.3 =
+
+ * Resolve issue with captcha not displaying on embedded login form on WooCommerce checkout page
+ 
+= 1.6.2 =
+
+ * Resolve fatal error with old versions of PHP (reported on 5.4.45)
+
+= 1.6.1 = 
+
+ * Disable submit buttons via javascript on Woo forms
+ * Improve error messaging
+
+= 1.6 =
+
+ * Added IP whitelist functionality (thanks @farley1122)
+ * More comprehensive protection of signup endpoints, including wp-signup.php and my-account page
+
+= 1.5 =
+
+ * Resolve issue introduced in 1.4x whereby captcha was being be bypassed
+ * ALL USERS STRONGLY ENCOURAGED TO UPDATE FOR SECURITY REASONS AND NOT USE 1.4x
+
+= 1.4.1 =
+
+ * Align language text domain with plugin tag to allow translation contributions
+
+= 1.4 =
+
+ * Added support for registration forms (thanks to d2roth)
+ * Align filter/hook calls with codex
+ * Increase priority (earlier execution) of login checking (prevents unnecessary alerts from e.g. WordFence)
+
+= 1.3.3 =
+
+ * Fixed bug with fallback to cURL in cases where TLS is misconfigured
+
+= 1.3.2 =
+
+ * Compatibility fix for use of empty() language construct in php 5.x
+ 
+= 1.3.1 =
+
+ * Added experimental support for v3 (hidden for now)
 
 = 1.3 =
 

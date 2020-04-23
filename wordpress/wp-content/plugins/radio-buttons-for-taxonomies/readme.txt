@@ -3,8 +3,8 @@ Contributors: helgatheviking
 Donate link: https://www.paypal.com/fundraiser/charity/1451316
 Tags: taxonomy, admin, interface, ui, post, radio, terms, metabox
 Requires at least: 4.5.0
-Tested up to: 5.1.1
-Stable tag: 2.0.2
+Tested up to: 5.3.2
+Stable tag: 2.0.5
 License: GPLv3 or later
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -18,7 +18,7 @@ Originally based on the the [class by Stephen Harris](https://github.com/stephen
 
 = Support =
 
-Support is handled in the [WordPress forums](http://wordpress.org/support/plugin/radio-buttons-for-taxonomies). Please note that support is limited and does not cover any custom implementation of the plugin. Before posting a question, read the [FAQ](http://wordpress.org/plugins/nav-menu-roles/faq/) and confirm that the problem still exists with a default theme and with all other plugins disabled.
+Support is handled in the [WordPress forums](http://wordpress.org/support/plugin/radio-buttons-for-taxonomies). Please note that support is limited and does not cover any custom implementation of the plugin. Before posting a question, read the [FAQ](https://wordpress.org/plugins/radio-buttons-for-taxonomies/#faq) and confirm that the problem still exists with a default theme and with all other plugins disabled.
 
 Please report any bugs, errors, warnings, code problems to [Github](https://github.com/helgatheviking/Radio-Buttons-for-Taxonomies/issues)
 
@@ -52,6 +52,15 @@ add_filter( 'radio_buttons_for_taxonomies_no_term_genre', '__return_FALSE' );
 `
 
 == Changelog ==
+
+= 2.0.5 =
+* Fix: Admin settings- Get all taxonomies with show_ui=true.
+
+= 2.0.4 =
+* Fix: Settings link on plugin page.
+
+= 2.0.3 =
+* Fix: Stop breaking quick edit on Taxonomy pages.
 
 = 2.0.2 =
 * Update from [Gutenberg source](https://github.com/WordPress/gutenberg/pull/14786)

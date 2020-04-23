@@ -118,8 +118,6 @@ class WordPress_Radio_Taxonomy {
 	 */
 	public function metabox( $post, $box ) {
 
-		wp_enqueue_script( 'radiotax' );
-
 		$defaults = array( 'taxonomy' => 'category' );
 		if ( ! isset( $box['args'] ) || ! is_array( $box['args'] ) ) {
 			$args = array();
@@ -453,8 +451,9 @@ class WordPress_Radio_Taxonomy {
 			$single_term = intval( array_shift( $terms ) );
 
 			// set the single terms
-			if ( current_user_can( $this->tax_obj->cap->assign_terms ) ) 
+			if ( current_user_can( $this->tax_obj->cap->assign_terms ) ) {
 				wp_set_object_terms( $post_id, $single_term, $this->taxonomy );
+			}
 
 		}		
 
@@ -479,12 +478,9 @@ class WordPress_Radio_Taxonomy {
 	/**
 	 * Add nonces to quick edit and bulk edit
 	 *
-	 * @return HTML
 	 * @since 1.7.0
 	 */
 	public function quick_edit_nonce() {
-		
-		wp_enqueue_script( 'radiotax' );
 
 		if ( $this->printNonce ) {
 			$this->printNonce = FALSE;

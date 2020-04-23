@@ -8,9 +8,9 @@ class Loco_fs_File {
      * @var Loco_fs_FileWriter
      */
     private $w;
-    
+
     /**
-     * Full original path to file
+     * Path to file
      * @var string
      */
     private $path;
@@ -36,18 +36,20 @@ class Loco_fs_File {
 
     /**
      * Check if a path is absolute and return fixed slashes for readability
+     * @param string
      * @return string fixed path, or "" if not absolute
      */
     public static function abs( $path ){
-        if( $path = (string) $path ){
-            $chr1 = $path{0};
+        $path = (string) $path;
+        if( '' !== $path ){
+            $chr1 = substr($path,0,1);
             // return unmodified path if starts "/"
             if( '/' === $chr1 ){
                 return $path;
             }
             // Windows drive path if "X:" or network path if "\\"
-            if( isset($path{1}) ){
-                $chr2 = $path{1};
+            $chr2 = (string) substr($path,1,1);
+            if( '' !== $chr2 ){
                 if( ':' === $chr2 ||  ( '\\' === $chr1 && '\\' === $chr2 ) ){
                     return strtoupper($chr1).$chr2.strtr( substr($path,2), '\\', '/' );
                 }
@@ -60,6 +62,7 @@ class Loco_fs_File {
 
     /**
      * Create file with initial, unvalidated path
+     * @param string
      */    
     public function __construct( $path ){
         $this->setPath( $path );
@@ -106,6 +109,7 @@ class Loco_fs_File {
 
     /**
      * Copy write context with our file reference
+     * @param Loco_fs_FileWriter 
      * @return Loco_fs_File
      */
     private function cloneWriteContext( Loco_fs_FileWriter $context = null ){
@@ -304,6 +308,8 @@ class Loco_fs_File {
 
     /**
      * Set file mode
+     * @param int file mode integer e.g 0664
+     * @param bool whether to set recursively (directories)
      * @return Loco_fs_File
      */
     public function chmod( $mode, $recursive = false ){
@@ -379,7 +385,9 @@ class Loco_fs_File {
 
 
     /**
-     * 
+     * @param string
+     * @param string[]
+     * @return array
      */
     private static function explode( $path, array $b ){
         $a = explode( '/', $path );
@@ -405,7 +413,8 @@ class Loco_fs_File {
 
     /**
      * Get path relative to given location, unless path is already relative
-     * @return string
+     * @param string base path
+     * @return string path relative to given base
      */
     public function getRelativePath( $base ){
         $path = $this->normalize();
@@ -417,10 +426,10 @@ class Loco_fs_File {
             // if we are below given base path, return ./relative
             if( substr($path,0,$length) === $base ){
                 ++$length;
-                if( isset($path{$length}) ){
+                if( strlen($path) > $length ){
                     return substr( $path, $length );
                 }
-                // else paths were idenitcal
+                // else paths were identical
                 return '';
             }
             // else attempt to find nearest common root
@@ -439,7 +448,6 @@ class Loco_fs_File {
         // else return unmodified
         return $path;
     }
-
 
 
     /**
@@ -509,20 +517,22 @@ class Loco_fs_File {
 
 
     /**
-     * @return Loco_fs_Directory
+     * @return Loco_fs_Directory|null
      */
     public function getParent(){
+        $dir = null;
         $path = $this->dirname();
         if( '.' !== $path && $this->path !== $path ){ 
             $dir = new Loco_fs_Directory( $path );
             $dir->cloneWriteContext( $this->w );
-            return $dir;
         }
-    }    
-    
+        return $dir;
+    }
+
 
     /**
      * Copy this file for real
+     * @param string new path
      * @throws Loco_error_WriteException
      * @return Loco_fs_File new file
      */
@@ -530,8 +540,20 @@ class Loco_fs_File {
         $copy = clone $this;
         $copy->path = $dest;
         $copy->clearStat();
-        $this->getWriteContext()->copy( $copy );
+        $this->getWriteContext()->copy($copy);
         return $copy;
+    }
+
+
+    /**
+     * Move/rename this file for real
+     * @param Loco_fs_File target file with new path
+     * @throws Loco_error_WriteException
+     * @return Loco_fs_File original file that should no longer exist
+     */
+    public function move( Loco_fs_File $dest ){
+        $this->getWriteContext()->move($dest);
+        return $this->clearStat();
     }
 
 
@@ -547,9 +569,9 @@ class Loco_fs_File {
     }
 
 
-
     /**
      * Copy this object with an alternative file extension
+     * @param string new extension
      * @return Loco_fs_File
      */
     public function cloneExtension( $ext ){
@@ -566,7 +588,6 @@ class Loco_fs_File {
     }
 
 
-
     /**
      * Ensure full parent directory tree exists
      * @return Loco_fs_Directory
@@ -581,16 +602,15 @@ class Loco_fs_File {
     }
 
 
-
     /**
-     * @return int bytes written to file
+     * @param string file contents
+     * @return int number of bytes written to file
      */
     public function putContents( $data ){
         $this->getWriteContext()->putContents($data);
         $this->clearStat();
         return $this->size();
     }
-
 
 
     /**

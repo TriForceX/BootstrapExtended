@@ -18,7 +18,8 @@ if ( ! current_user_can( 'manage_options' ) ) {
 $message = '';
 $tadv_options_updated = false;
 $settings = $admin_settings = array();
-$images_url = plugins_url( 'images', __FILE__ );
+$images_url = plugins_url( 'plugin-assets/images', __FILE__ );
+$form_action = esc_url( remove_query_arg( array( 'tadv-import-file-complete' ), wp_unslash( $_SERVER['REQUEST_URI'] ) ) );
 
 if ( isset( $_POST['tadv-save'] ) ) {
 	check_admin_referer( 'tadv-save-buttons-order' );
@@ -35,36 +36,6 @@ if ( isset( $_POST['tadv-save'] ) ) {
 	update_option( 'tadv_settings', $this->get_default_user_settings() );
 
 	$message = '<div class="updated notice notice-success is-dismissible"><p>' .  __( 'Default settings restored.', 'tinymce-advanced' ) . '</p></div>';
-} elseif ( isset( $_POST['tadv-export-settings'] ) ) {
-	check_admin_referer( 'tadv-save-buttons-order' );
-
-	$this->load_settings();
-	$output = array( 'settings' => $this->user_settings );
-
-	// TODO: only admin || SA
-	$output['admin_settings'] = $this->admin_settings;
-
-	?>
-	<div class="wrap tinymce-advanced">
-	<h2><?php _e( 'TinyMCE Advanced Settings Export', 'tinymce-advanced' ); ?></h2>
-
-	<div class="tadv-import-export">
-	<p>
-	<?php _e( 'The settings are exported as a JSON encoded string.', 'tinymce-advanced' ); ?>
-	<?php _e( 'Please copy the content and save it in a <b>text</b> (.txt) file, using a plain text editor like Notepad.', 'tinymce-advanced' ); ?>
-	<?php _e( 'It is important that the export is not changed in any way, no spaces, line breaks, etc.', 'tinymce-advanced' ); ?>
-	</p>
-
-	<form action="">
-		<p><textarea readonly="readonly" id="tadv-export"><?php echo json_encode( $output ); ?></textarea></p>
-		<p><button type="button" class="button" id="tadv-export-select"><?php _e( 'Select All', 'tinymce-advanced' ); ?></button></p>
-	</form>
-	<p><a href=""><?php _e( 'Back to Editor Settings', 'tinymce-advanced' ); ?></a></p>
-	</div>
-	</div>
-	<?php
-
-	return;
 } elseif ( isset( $_POST['tadv-import-settings'] ) ) {
 	check_admin_referer( 'tadv-save-buttons-order' );
 
@@ -74,33 +45,60 @@ if ( isset( $_POST['tadv-save'] ) ) {
 	<h2><?php _e( 'TinyMCE Advanced Settings Import', 'tinymce-advanced' ); ?></h2>
 
 	<div class="tadv-import-export">
-	<p><?php _e( 'The settings are imported from a JSON encoded string. Please paste the exported string in the text area below.', 'tinymce-advanced' );	?></p>
-
-	<form action="" method="post">
-		<p><textarea id="tadv-import" name="tadv-import"></textarea></p>
-		<p>
-			<button type="button" class="button" id="tadv-import-verify"><?php _e( 'Verify', 'tinymce-advanced' ); ?></button>
-			<input type="submit" class="button button-primary alignright" name="tadv-import-submit" value="<?php _e( 'Import', 'tinymce-advanced' ); ?>" />
-		</p>
-		<?php wp_nonce_field('tadv-import'); ?>
-		<p id="tadv-import-error"></p>
-	</form>
-	<p><a href=""><?php _e( 'Back to Editor Settings', 'tinymce-advanced' ); ?></a></p>
+		<form action="" method="post" enctype="multipart/form-data" class="import-file">
+			<p><?php _e( 'The settings are imported from a previously exported settings file.', 'tinymce-advanced' ); ?></p>
+			<p><input type="file" name="tadv-import"></p>
+			<p><input type="submit" class="button button-primary" name="tadv-import-file" value="<?php _e( 'Import settings', 'tinymce-advanced' ); ?>" /></p>
+			<?php wp_nonce_field( 'tadv-import-settings', 'tadv-import-settings-nonce', false ); ?>
+		</form>
+		<hr>
+		<form action="<?php echo $form_action; ?>" method="post">
+			<p><?php _e( 'Alternatively the settings can be imported from a JSON encoded string. Please paste the exported string in the text area below.', 'tinymce-advanced' );	?></p>
+			<p><textarea id="tadv-import" name="tadv-import"></textarea></p>
+			<p>
+				<button type="button" class="button" id="tadv-import-verify"><?php _e( 'Verify', 'tinymce-advanced' ); ?></button>
+				<input type="submit" class="button button-primary alignright" name="tadv-import-submit" value="<?php _e( 'Import settings from string', 'tinymce-advanced' ); ?>" />
+			</p>
+			<?php wp_nonce_field( 'tadv-import-settings', 'tadv-import-settings-nonce', false ); ?>
+			<p id="tadv-import-error"></p>
+		</form>
+		<p><a href=""><?php _e( 'Back to Editor Settings', 'tinymce-advanced' ); ?></a></p>
 	</div>
 	</div>
 	<?php
 
 	return;
 } elseif ( isset( $_POST['tadv-import-submit'] ) && ! empty( $_POST['tadv-import'] ) && is_string( $_POST['tadv-import'] ) ) {
-	check_admin_referer( 'tadv-import' );
+	check_admin_referer( 'tadv-import-settings', 'tadv-import-settings-nonce' );
 
 	// TODO: all users
 	$import = json_decode( trim( wp_unslash( $_POST['tadv-import'] ) ), true );
 
 	if ( ! is_array( $import ) ) {
-		$message = '<div class="error"><p>' .  __( 'Importing of settings failed.', 'tinymce-advanced' ) . '</p></div>';
+		$message = '<div class="error notice is-dismissible"><p>' .  __( 'Importing of settings failed.', 'tinymce-advanced' ) . '</p></div>';
 	} else {
 		$this->save_settings( $import );
+		$message = '<div class="updated notice notice-success is-dismissible"><p>' . __( 'Settings imported successfully.', 'tinymce-advanced' ) . '</p></div>';
+	}
+} elseif ( isset( $_GET['tadv-import-file-complete'] ) ) {
+	$err = (int) $_GET['tadv-import-file-complete'];
+
+	switch( $err ) {
+		case 1:
+			$message = __( 'Importing of settings failed. Please import a valid settings file.', 'tinymce-advanced' );
+			break;
+		case 2:
+			$message = __( 'Importing of settings failed. The imported file is empty.', 'tinymce-advanced' );
+			break;
+		case 3:
+			$message = __( 'Importing of settings failed. The imported file is invalid.', 'tinymce-advanced' );
+			break;
+	}
+
+	if ( empty( $message ) ) {
+		$message = '<div class="updated notice notice-success is-dismissible"><p>' . __( 'Settings imported successfully.', 'tinymce-advanced' ) . '</p></div>';
+	} else {
+		$message = '<div class="error notice is-dismissible"><p>' . $message . '</p></div>';
 	}
 }
 
@@ -133,7 +131,7 @@ if ( isset( $_POST['tadv-save'] ) && empty( $message ) ) {
 $dashicons_arrow = is_rtl() ? 'dashicons-arrow-left' : 'dashicons-arrow-right';
 
 ?>
-<form id="tadvadmin" method="post" action="">
+<form id="tadvadmin" method="post" action="<?php echo $form_action; ?>">
 
 <div class="toggle">
 	<p class="tadv-submit tadv-submit-top">
@@ -163,52 +161,147 @@ $dashicons_arrow = is_rtl() ? 'dashicons-arrow-left' : 'dashicons-arrow-right';
 	<div>
 		<p class="toolbar-block-title">
 			<strong><?php _e( 'Main toolbar', 'tinymce-advanced' ); ?></strong>
-			<?php _e( '(shown above the block)', 'tinymce-advanced' ); ?>
-			<span class="tadv-popout-help-toggle dashicons dashicons-editor-help"></span>
+			<br>
+			<span class="tma-help tadv-popout-help-toggle">
+				<span class="dashicons dashicons-editor-help"></span>
+				<?php _e( 'Limitations for the Block Editor toolbar', 'tinymce-advanced' ); ?>
+			</span>
 		</p>
 
 		<div class="tadv-popout-help hidden">
-			<p>
-				<?php _e( 'Current limitations for the Block Editor toolbar:', 'tinymce-advanced' ); ?>
-				<span class="tadv-popout-help-close dashicons dashicons-no-alt"></span>
-			</p>
-
-			<ul>
-				<li><?php _e( 'The alignment buttons cannot be arranged.', 'tinymce-advanced' ); ?></li>
-				<li><?php _e( 'The Bold, Italic, and Strikethrough buttons can be disabled or moved to the side toolbar but cannot be reordered.', 'tinymce-advanced' ); ?></li>
-				<li><?php _e( 'The Link button cannot be moved to the side toolbar.', 'tinymce-advanced' ); ?></li>
-			</ul>
+			<span class="tadv-popout-help-close dashicons dashicons-no-alt"></span>
+			<ol>
+				<li><?php _e( 'The Align Left, Align Center, Align Right, Bold, Italic, and Link buttons cannot be moved or arranged.', 'tinymce-advanced' ); ?></li>
+				<li><?php _e( 'All other buttons are always shown in a drop-down. The users are not allowed to add any of them to the main toolbar.', 'tinymce-advanced' ); ?></li>
+				<li><?php _e( 'All buttons that are shown in the drop-down are auto-arranged by alphabetical order. The users are not allowed to arrange them.', 'tinymce-advanced' ); ?></li>
+				<li><?php _e( 'The drop-down cannot be empty and the Inline Image and Text Color items cannot be placed in the side toolbar.', 'tinymce-advanced' ); ?>
+			</ol>
 		</div>
 
 		<div class="toolbar-block-wrap toolbar-wrap">
-			<?php $toolbar_left_src = is_rtl() ? $images_url . '/toolbar-left-rtl.png' : $images_url . '/toolbar-left.png'; ?>
-			<img width="155" height="36" class="toolbar-block-left" src="<?php echo $toolbar_left_src; ?>">
+			<div role="toolbar" aria-orientation="horizontal" class="tma-block-toolbar-wrap editor-block-toolbar" aria-label="Block toolbar example representation">
 
-			<ul id="toolbar_block" class="components-toolbar block-toolbar">
-			<?php
+			<div class="editor-block-switcher block-editor-block-switcher">
+				<div class="components-toolbar">
+					<button type="button" class="components-button components-icon-button editor-block-switcher__toggle block-editor-block-switcher__toggle">
+						<span class="editor-block-icon block-editor-block-icon has-colors">
+							<svg width="24" height="24" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" role="img" aria-hidden="true" focusable="false"><path d="M11 5v7H9.5C7.6 12 6 10.4 6 8.5S7.6 5 9.5 5H11m8-2H9.5C6.5 3 4 5.5 4 8.5S6.5 14 9.5 14H11v7h2V5h2v16h2V5h2V3z"></path></svg>
+						</span>
+					</button>
+				</div>
+			</div>
 
-			foreach( $this->toolbar_block as $button_id ) {
-				if ( isset( $all_block_buttons[ $button_id ] ) ) {
-					$name = $all_block_buttons[ $button_id ]['name'];
-					$icon = $all_block_buttons[ $button_id ]['icon'];
-					unset( $all_block_buttons[ $button_id ] );
-				} else {
-					continue;
-				}
+			<div class="components-toolbar">
+				<div>
+					<button type="button" aria-label="Align text left" aria-pressed="false" class="components-button components-icon-button components-toolbar__control">
+						<span class="dashicons dashicons-editor-alignleft"></span>
+					</button>
+				</div>
 
-				?><li class="<?php echo str_replace( '/', '-', $button_id ); ?>">
-					<div title="<?php echo $name; ?>" aria-pressed="false" class="components-icon-button">
-						<?php echo $icon; ?>
+				<div>
+					<button type="button" aria-label="Align text center" aria-pressed="false" class="components-button components-icon-button components-toolbar__control">
+						<span class="dashicons dashicons-editor-aligncenter"></span>
+					</button>
+				</div>
+
+				<div>
+					<button type="button" aria-label="Align text right" aria-pressed="false" class="components-button components-icon-button components-toolbar__control">
+						<span class="dashicons dashicons-editor-alignright"></span>
+					</button>
+				</div>
+			</div>
+
+			<?php if ( is_rtl() ) : ?>
+			<div class="components-toolbar">
+				<div>
+					<button type="button" aria-label="Left to right" aria-pressed="false" class="components-button components-icon-button components-toolbar__control">
+						<span class="dashicons dashicons-editor-ltr"></span>
+					</button>
+				</div>
+			</div>
+			<?php endif; ?>
+
+			<div class="editor-format-toolbar block-editor-format-toolbar">
+				<div class="components-toolbar">
+					<div>
+						<button type="button" aria-label="Bold" aria-pressed="false" class="components-button components-icon-button components-toolbar__control">
+							<span class="dashicons dashicons-editor-bold"></span>
+						</button>
 					</div>
-					<input type="hidden" name="toolbar_block[]" value="<?php echo $button_id; ?>">
-				</li><?php
-			}
 
-			?>
-			</ul>
+					<div>
+						<button type="button" aria-label="Italic" aria-pressed="false" class="components-button components-icon-button components-toolbar__control">
+							<span class="dashicons dashicons-editor-italic"></span>
+						</button>
+					</div>
 
-			<img height="36" class="toolbar-block-right" src="<?php echo $images_url; ?>/toolbar-right.png">
-		</div><?php // toolbar-block-wrap end ?>
+					<div>
+						<button type="button" aria-label="Link" aria-pressed="false" class="components-button components-icon-button components-toolbar__control">
+							<span class="dashicons dashicons-admin-links"></span>
+						</button>
+					</div>
+
+					<div class="components-dropdown-menu">
+						<button type="button" aria-label="More Rich Text Controls" aria-haspopup="true" aria-expanded="false" class="components-button components-icon-button components-dropdown-menu__toggle has-text">
+							<span class="components-dropdown-menu__indicator"></span>
+						</button>
+					</div>
+				</div>
+			</div>
+
+			<div>
+				<div class="components-toolbar">
+					<div>
+						<button type="button" aria-label="More options" aria-expanded="false" class="components-button components-icon-button components-toolbar__control editor-block-settings-menu__toggle block-editor-block-settings-menu__toggle">
+							<svg aria-hidden="true" role="img" focusable="false" class="dashicon dashicons-ellipsis" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20"><path d="M5 10c0 1.1-.9 2-2 2s-2-.9-2-2 .9-2 2-2 2 .9 2 2zm12-2c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm-7 0c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z"></path></svg>
+						</button>
+					</div>
+				</div>
+			</div>
+
+			</div><?php // .editor-block-toolbar end ?>
+		</div>
+		<div class="tma-block-dropdown-toolbar-wrap">
+			<div class="tma-block-dropdown-toolbar-arrow"></div>
+			<div class="tma-block-dropdown-toolbar">
+				<div class="tma-block-dropdown-toolbar-inner-wrap">
+					<ul id="toolbar_block" class="toolbar-block-dropdown container-block">
+					<?php
+
+					// Block editor limitation: only the buttons in the overflow drop-down/sub-toolbar can be moved (but not arranged).
+					$excluded_block_buttons = array(
+						'core/bold',
+						'core/italic',
+						'core/link',
+					);
+
+					foreach( $this->toolbar_block as $button_id ) {
+						if ( in_array( $button_id, $excluded_block_buttons, true ) ) {
+							continue;
+						}
+
+						if ( isset( $all_block_buttons[ $button_id ] ) ) {
+							$name = $all_block_buttons[ $button_id ]['name'];
+							$icon = $all_block_buttons[ $button_id ]['icon'];
+							unset( $all_block_buttons[ $button_id ] );
+						} else {
+							continue;
+						}
+
+						?><li class="<?php echo str_replace( '/', '-', $button_id ); ?>">
+							<div type="button" title="<?php echo $name; ?>" aria-pressed="false" class="tma-components-icon-button">
+								<?php echo $icon; ?>
+								<span class="block-button-name"><?php echo $name; ?></span>
+							</div>
+							<input type="hidden" name="toolbar_block[]" value="<?php echo $button_id; ?>">
+						</li><?php
+					}
+
+					?>
+					</ul>
+				</div>
+			</div>
+		</div>
 
 		<p class="toolbar-block-title">
 			<strong><?php _e( 'Alternative side toolbar', 'tinymce-advanced' ); ?></strong>
@@ -219,7 +312,7 @@ $dashicons_arrow = is_rtl() ? 'dashicons-arrow-left' : 'dashicons-arrow-right';
 				<?php _e( 'Formatting', 'tinymce-advanced' ); ?>
 				<span class="dashicons dashicons-arrow-up-alt2"></span>
 			</div>
-			<ul id="toolbar_block_side" class="components-toolbar block-toolbar-side container-block"><?php
+			<ul id="toolbar_block_side" class="tma-components-toolbar block-toolbar-side container-block"><?php
 
 
 			foreach( $this->toolbar_block_side as $button_id ) {
@@ -232,8 +325,9 @@ $dashicons_arrow = is_rtl() ? 'dashicons-arrow-left' : 'dashicons-arrow-right';
 				}
 
 				?><li class="<?php echo str_replace( '/', '-', $button_id ); ?>">
-					<div type="button" title="<?php echo $name; ?>" aria-pressed="false" class="components-icon-button">
+					<div type="button" title="<?php echo $name; ?>" aria-pressed="false" class="tma-components-icon-button">
 						<?php echo $icon; ?>
+						<span class="block-button-name"><?php echo $name; ?></span>
 					</div>
 					<input type="hidden" name="toolbar_block_side[]" value="<?php echo $button_id; ?>">
 				</li><?php
@@ -247,23 +341,22 @@ $dashicons_arrow = is_rtl() ? 'dashicons-arrow-left' : 'dashicons-arrow-right';
 			<strong><?php _e( 'Unused buttons for the blocks toolbars', 'tinymce-advanced' ); ?></strong>
 		</p>
 		<div class="toolbar-unused-wrap toolbar-wrap">
-			<ul id="toolbar_block_unused" class="components-toolbar block-toolbar-unused container-block">
-			<?php
+			<ul id="toolbar_block_unused" class="tma-components-toolbar block-toolbar-unused container-block"><?php
 
 			foreach( $all_block_buttons as $button_id => $button ) {
 				$name = $button['name'];
 				$icon = $button['icon'];
 
 				?><li class="<?php echo str_replace( '/', '-', $button_id ); ?>">
-					<div type="button" title="<?php echo $name; ?>" aria-pressed="false" class="components-icon-button">
+					<div type="button" title="<?php echo $name; ?>" aria-pressed="false" class="tma-components-icon-button">
 						<?php echo $icon; ?>
+						<span class="block-button-name"><?php echo $name; ?></span>
 					</div>
 					<input type="hidden" name="toolbar_block_unused[]" value="<?php echo $button_id; ?>">
 				</li><?php
 			}
 
-			?>
-			</ul>
+			?></ul>
 		</div><?php // toolbar-unused-wrap end ?>
 
 		<?php $colors_preview_src = is_rtl() ? $images_url . '/colors-rtl.png' : $images_url . '/colors.png' ?>
@@ -285,7 +378,10 @@ $dashicons_arrow = is_rtl() ? 'dashicons-arrow-left' : 'dashicons-arrow-right';
 
 			<table class="form-table panel-block-colors-settings"><tbody>
 				<tr class="panel-block-colors-settings__text">
-					<th><?php _e( 'Enable setting of selected text color', 'tinymce-advanced' ); ?></th>
+					<th>
+						<?php _e( 'Enable setting of selected text color', 'tinymce-advanced' ); ?>
+						<span class="small-info"><?php _e( '(this will replace the default text color popup in WP 5.4 and newer)', 'tinymce-advanced' ); ?></span>
+					</th>
 					<td>
 						<p>
 							<input type="radio" name="selected_text_color" id="selected_text_color_yes" value="yes"<?php if ( $this->check_user_setting( 'selected_text_color' ) ) echo ' checked'; ?>>
@@ -378,35 +474,35 @@ $dashicons_arrow = is_rtl() ? 'dashicons-arrow-left' : 'dashicons-arrow-right';
 			</div>
 		</div>
 	</div>
-	
+
 	<div class="tadvdropzone tadv-block-editor mce-toolbar">
 		<ul id="toolbar_classic_block" class="container-classic-block">
 		<?php
-	
+
 		$mce_text_buttons = array( 'styleselect', 'formatselect', 'fontselect', 'fontsizeselect' );
 		$all_buttons_block = $all_buttons;
-	
+
 		// Remove the toolbar-toggle
 		unset( $all_buttons_block['wp_adv'] );
-	
+
 		foreach( $this->toolbar_classic_block as $button_id ) {
 			$name = '';
-	
+
 			if ( strpos( $button_id, 'separator' ) !== false || in_array( $button_id, array( 'moveforward', 'movebackward', 'absolute' ) ) ) {
 				continue;
 			}
-	
+
 			if ( isset( $all_buttons_block[ $button_id ] ) ) {
 				$name = $all_buttons_block[ $button_id ];
 				unset( $all_buttons_block[ $button_id ] );
 			} else {
 				continue;
 			}
-	
+
 			?>
 			<li class="tadvmodule" id="<?php echo $button_id; ?>">
 				<?php
-	
+
 				if ( in_array( $button_id, $mce_text_buttons, true ) ) {
 					?>
 					<div class="tadvitem mce-widget mce-btn mce-menubtn mce-fixed-width mce-listbox">
@@ -426,12 +522,12 @@ $dashicons_arrow = is_rtl() ? 'dashicons-arrow-left' : 'dashicons-arrow-right';
 					</div>
 					<?php
 				}
-	
+
 				?>
 			</li>
 			<?php
 		}
-	
+
 		?>
 		</ul>
 	</div>
@@ -440,7 +536,7 @@ $dashicons_arrow = is_rtl() ? 'dashicons-arrow-left' : 'dashicons-arrow-right';
 <p><?php _e( 'Drop buttons in the toolbars, or drag the buttons to rearrange them.', 'tinymce-advanced' ); ?></p>
 
 <div class="unuseddiv">
-	<p><strong><?php _e( 'Unused Buttons for the Classic Block toolbars', 'tinymce-advanced' ); ?></strong></p>
+	<p><strong><?php _e( 'Unused Buttons for the Classic Paragraph and Classic blocks toolbars', 'tinymce-advanced' ); ?></strong></p>
 	<div>
 		<ul id="unused-classic-block" class="unused container-classic-block">
 		<?php
@@ -486,7 +582,7 @@ $dashicons_arrow = is_rtl() ? 'dashicons-arrow-left' : 'dashicons-arrow-right';
 </div><!-- /block-editor -->
 
 <div id="classic-editor">
-<h4><?php _e( 'Toolbars for the Classic Editor (TinyMCE)', 'tinymce-advanced' ); ?></h4>
+<h4><?php _e( 'Toolbars for the Classic Editor', 'tinymce-advanced' ); ?></h4>
 
 <div class="tadvzones">
 <p>
@@ -652,14 +748,7 @@ for ( $i = 1; $i < 5; $i++ ) {
 	</div><!-- /highlighted -->
 </div>
 </div><!-- /classic-editor -->
-<?php
-$preselect = false;
 
-if ( ! function_exists( 'use_block_editor_for_post_type' ) ) {
-	$preselect = '<p>' . __( 'This setting applies to WordPress 5.0 or later. You can pre-select it and it will be enabled as soon as you upgrade.', 'tinymce-advanced' ) . '</p>';
-}
-
-?>
 <div class="advanced-options">
 	<h3><?php _e( 'Options', 'tinymce-advanced' ); ?></h3>
 
@@ -667,7 +756,6 @@ if ( ! function_exists( 'use_block_editor_for_post_type' ) ) {
 		<input type="checkbox" name="options[]" value="merge_toolbars" id="merge_toolbars" <?php if ( $this->check_user_setting( 'merge_toolbars' ) ) echo ' checked'; ?> />
 		<label for="merge_toolbars"><?php _e( 'Append all buttons to the top toolbar in the Classic Paragraph and Classic blocks.', 'tinymce-advanced' ); ?></label>
 		<p><?php _e( 'This affects buttons that are added by other plugins. These buttons will be appended to the top toolbar row instead of forming second, third, and forth rows.', 'tinymce-advanced' ); ?></p>
-		<?php echo $preselect; ?>
 	</div>
 
 	<div>
@@ -703,30 +791,27 @@ if ( ! is_multisite() || current_user_can( 'manage_sites' ) ) {
 	<div class="advanced-options">
 	<h3><?php _e( 'Advanced Options', 'tinymce-advanced' ); ?></h3>
 	<div>
-		<input type="checkbox" name="admin_options[]" value="hybrid_mode" id="hybrid_mode" <?php if ( $this->check_admin_setting( 'hybrid_mode' ) ) echo ' checked'; ?> />
-		<label for="hybrid_mode"><?php _e( 'Hybrid Block Editor Mode', 'tinymce-advanced' ); ?></label>
-		<p>
-			<strong><?php _e( 'Brings the best of both editors together.', 'tinymce-advanced' ); ?></strong>
-			<?php _e( 'Selecting this option makes the Classic Block in the Block Editor somewhat more prominent and adds improvements and fixes for it.', 'tinymce-advanced' ); ?>
-			<?php _e( 'It also makes the Classic Block or the Classic Paragraph Block the default block inserted on pressing Enter in the title, or clicking under the last block.', 'tinymce-advanced' ); ?>
-		</p>
-		<?php echo $preselect; ?>
-	</div>
-
-	<div>
 		<input type="checkbox" name="admin_options[]" value="classic_paragraph_block" id="classic_paragraph_block" <?php if ( $this->check_admin_setting( 'classic_paragraph_block' ) ) echo ' checked'; ?> />
-		<label for="classic_paragraph_block"><?php _e( 'Add &#8220;Classic Paragraph&#8221; Block.', 'tinymce-advanced' ); ?></label>
+		<label for="classic_paragraph_block"><?php _e( 'Add Classic Paragraph block', 'tinymce-advanced' ); ?></label>
 		<p>
-			<?php _e( 'The Classic Paragraph Block includes the familiar TinyMCE editor and is an extended and enhanced Classic Block.', 'tinymce-advanced' ); ?>
+			<?php _e( 'The Classic Paragraph block includes the familiar TinyMCE editor and is an extended and enhanced Classic block.', 'tinymce-advanced' ); ?>
 			<?php _e( 'You can add multiple paragraphs, tables, galleries, embed video, set fonts and colors, and generally use everything that is available in the Classic Editor.', 'tinymce-advanced' ); ?>
-			<?php _e( 'Also, like the Classic Block, most existing TinyMCE plugins and add-ons will continue to work.', 'tinymce-advanced' ); ?>
+			<?php _e( 'Also, like the Classic block, most existing TinyMCE plugins and add-ons will continue to work.', 'tinymce-advanced' ); ?>
 			<?php _e( 'This makes the Block Editor more familiar, easier to use, easier to get used to, and more compatible with your existing workflow.', 'tinymce-advanced' ); ?>
 		</p>
 		<p>
 			<?php _e( 'In addition most default blocks can be transformed into classic paragraphs, and a Classic Paragraph can be converted to multiple blocks.', 'tinymce-advanced' ); ?>
-			<?php _e( 'It can be used everywhere instead of the Paragraph Block including in columns, when creating reusable blocks, etc.', 'tinymce-advanced' ); ?>
+			<?php _e( 'It can be used everywhere instead of the Paragraph block including in columns, when creating reusable blocks, etc.', 'tinymce-advanced' ); ?>
 		</p>
-		<?php echo $preselect; ?>
+	</div>
+
+	<div>
+		<input type="checkbox" name="admin_options[]" value="hybrid_mode" id="hybrid_mode" <?php if ( $this->check_admin_setting( 'hybrid_mode' ) ) echo ' checked'; ?> />
+		<label for="hybrid_mode"><?php _e( 'Make the Classic Paragraph or Classic block the default block (hybrid mode)', 'tinymce-advanced' ); ?></label>
+		<p>
+			<?php _e( 'The default block is inserted on pressing Enter in the title, or clicking under the last block.', 'tinymce-advanced' ); ?>
+			<?php _e( 'Selecting this option also adds some improvements and fixes for the Classic block.', 'tinymce-advanced' ); ?>
+		</p>
 	</div>
 
 	<div>
@@ -745,12 +830,12 @@ if ( ! is_multisite() || current_user_can( 'manage_sites' ) ) {
 				<?php
 
 				$text = __( 'If you prefer to use both editors side by side, do not enable this option. It is better to install the %1$sClassic Editor plugin%2$s.', 'tinymce-advanced' );
-				$url = 'https://wordpress.org/plugins/classic-editor/';
+				/* translators: URL to (localised) Classic Editor plugin. */
+				$url = __( 'https://wordpress.org/plugins/classic-editor/', 'tinymce-advanced' );
 				printf( $text, '<a href="' . esc_url( $url ) . '">', '</a>' );
 
 				?>
 			</p>
-			<?php echo $preselect; ?>
 			<?php
 		}
 
@@ -758,13 +843,12 @@ if ( ! is_multisite() || current_user_can( 'manage_sites' ) ) {
 	</div>
 	<div>
 		<input type="checkbox" name="admin_options[]" value="no_autop" id="no_autop" <?php if ( $this->check_admin_setting( 'no_autop' ) ) echo ' checked'; ?> />
-		<label for="no_autop"><?php _e( 'Keep paragraph tags', 'tinymce-advanced' ); ?></label>
-		<p><strong><?php _e( 'Recommended for better compatibility with the Block Editor (Gutenberg).', 'tinymce-advanced' ); ?></strong></p>
+		<label for="no_autop"><?php _e( 'Keep paragraph tags in the Classic block and the Classic Editor', 'tinymce-advanced' ); ?></label>
 		<p>
-			<?php _e( 'Stop removing the &lt;p&gt; and &lt;br&gt; tags when saving and show them in the Text editor.', 'tinymce-advanced' ); ?>
-			<?php _e( 'This will make it possible to use more advanced coding in the Text editor without the back-end filtering affecting it much.', 'tinymce-advanced' ); ?>
+			<?php _e( 'Stop removing &lt;p&gt; and &lt;br&gt; tags in the Classic Editor and show them in the Text tab.', 'tinymce-advanced' ); ?>
+			<?php _e( 'This will make it possible to use more advanced coding in the Text tab without the back-end filtering affecting it much.', 'tinymce-advanced' ); ?>
 			<?php _e( 'However it may behave unexpectedly in rare cases, so test it thoroughly before enabling it permanently.', 'tinymce-advanced' ); ?>
-			<?php _e( 'Line breaks in the Text editor would still affect the output, in particular do not use empty lines, line breaks inside HTML tags or multiple &lt;br&gt; tags.', 'tinymce-advanced' ); ?>
+			<?php _e( 'Line breaks in the Text tab in the Classic Editor would still affect the output, in particular do not use empty lines, line breaks inside HTML tags or multiple &lt;br&gt; tags.', 'tinymce-advanced' ); ?>
 		</p>
 	</div>
 	<?php
@@ -802,21 +886,68 @@ if ( ! is_multisite() || current_user_can( 'manage_sites' ) ) {
 		?>
 		</p>
 	</div>
-	<div>
-		<input type="checkbox" name="admin_options[]" value="paste_images" id="paste_images" <?php if ( $this->check_admin_setting( 'paste_images' ) ) echo ' checked'; ?> />
-		<label for="paste_images"><?php _e( 'Enable pasting of image source', 'tinymce-advanced' ); ?></label>
-		<p>
-			<?php _e( 'Works only in Firefox and Safari. These browsers support pasting of images directly in the editor and convert them to base64 encoded text.', 'tinymce-advanced' ); ?>
-			<?php _e( 'This is not acceptable for larger images like photos or graphics, but may be useful in some cases for very small images like icons, not larger than 2-3KB.', 'tinymce-advanced' ); ?>
-			<?php _e( 'These images will not be available in the Media Library.', 'tinymce-advanced' ); ?>
-		</p>
+	<div class="advanced-table-options">
+		<h4><?php _e( 'Advanced options for tables', 'tinymce-advanced' ); ?></h4>
+		<div>
+			<input type="checkbox" name="admin_options[]" value="table_resize_bars" id="table_resize_bars" <?php if ( $this->check_admin_setting( 'table_resize_bars' ) ) echo ' checked'; ?> />
+			<label for="table_resize_bars"><?php _e( 'Enable resizing of tables, rows, and columns by dragging with the mouse', 'tinymce-advanced' ); ?></label>
+			<p>
+				<?php _e( 'When enabled the whole table, rows, and columns can be resized by dragging but the sizes are set with inline CSS styles.', 'tinymce-advanced' ); ?>
+				<?php _e( 'This may override some styles that are set by your theme and usually makes the table non-responsive when viewed on a small screen like a smartphone.', 'tinymce-advanced' ); ?>
+				<?php _e( 'When a row or a column is resized the inline styles are updated on all table rows and cells.', 'tinymce-advanced' ); ?>
+			</p>
+			<p>
+				<?php _e( 'Disabling this option will stop the editor from adding inline CSS styles and will produce cleaner HTML code.', 'tinymce-advanced' ); ?>
+				<?php _e( 'Then the table, the rows and the cells can be resized by typing the size values in the advanced options tabs.', 'tinymce-advanced' ); ?>
+			</p>
+			<p>
+				<span class="dashicons dashicons-info"></span>
+				<?php _e( 'This option does not affect inline styles on tables in existing posts. To reset table size or remove all formatting for the whole table please see the two buttons at the bottom of the Format menu.', 'tinymce-advanced' ); ?>
+			</p>
+		</div>
+		<div>
+			<input type="checkbox" name="admin_options[]" value="table_default_attributes" id="table_default_attributes" <?php if ( $this->check_admin_setting( 'table_default_attributes' ) ) echo ' checked'; ?> />
+			<label for="table_default_attributes"><?php _e( 'When inserting a table set the HTML border attribute to 1', 'tinymce-advanced' ); ?></label>
+			<p>
+				<?php _e( 'This will add a border around the table unless it is overriden by your theme.', 'tinymce-advanced' ); ?>
+				<?php _e( 'To set other default attributes or inline styles use the Advanced TinyMCE Configuration plugin.', 'tinymce-advanced' ); ?>
+			</p>
+		</div>
+		<div>
+			<input type="checkbox" name="admin_options[]" value="table_grid" id="table_grid" <?php if ( $this->check_admin_setting( 'table_grid' ) ) echo ' checked'; ?> />
+			<label for="table_grid"><?php _e( 'When inserting a table show a grid where the number of rows and columns can be selected by dragging with the mouse', 'tinymce-advanced' ); ?></label>
+			<p>
+				<?php _e( 'If the grid is disabled the number of rows and columns can be typed in the Insert Table dialog.', 'tinymce-advanced' ); ?>
+			</p>
+		</div>
+		<div>
+			<input type="checkbox" name="admin_options[]" value="table_tab_navigation" id="table_tab_navigation" <?php if ( $this->check_admin_setting( 'table_tab_navigation' ) ) echo ' checked'; ?> />
+			<label for="table_tab_navigation"><?php _e( 'Jump to the next cell when pressing the tab key while editing a table', 'tinymce-advanced' ); ?></label>
+			<p>
+				<?php _e( 'When disabled, pressing the tab key will jump outside the editor area.', 'tinymce-advanced' ); ?>
+			</p>
+		</div>
+		<div>
+			<input type="checkbox" name="admin_options[]" value="table_advtab" id="table_advtab" <?php if ( $this->check_admin_setting( 'table_advtab' ) ) echo ' checked'; ?> />
+			<label for="table_advtab"><?php _e( 'Show the advanced tabs in the table properties dialogs', 'tinymce-advanced' ); ?></label>
+			<p>
+				<?php _e( 'The advanced tabs allow setting of inline CSS styles on the table, each row, and each cell. They have fields for easier setting of border, border color and background color styles.', 'tinymce-advanced' ); ?>
+			</p>
+			<p>
+				<span class="dashicons dashicons-warning"></span>
+				<?php _e( 'To keep the table more responsive please use percentage values when setting widths.', 'tinymce-advanced' ); ?>
+			</p>
+		</div>
 	</div>
+	<hr>
 	<div>
-		<p class="tadv-help">
+		<p class="tadv-help" id="advanced-tinymce-config">
+		<span class="dashicons dashicons-external"></span>
 		<?php
 
-		$text = __( 'For other advanced TinyMCE settings, including settings for the Classic Block in the Block Editor, you can use the %1$sAdvanced TinyMCE Configuration plugin%2$s.', 'tinymce-advanced' );
-		$url = 'https://wordpress.org/plugins/advanced-tinymce-configuration/';
+		$text = __( 'For other advanced TinyMCE settings, including settings for the Classic Paragraph block and more advanced table options, you can use the %1$sAdvanced TinyMCE Configuration plugin%2$s.', 'tinymce-advanced' );
+		/* translators: URL to (localised) Advanced TinyMCE Configuration plugin. */
+		$url = __( 'https://wordpress.org/plugins/advanced-tinymce-configuration/', 'tinymce-advanced' );
 		printf( $text, '<a href="' . esc_url( $url ) . '">', '</a>' );
 
 		?>
@@ -829,6 +960,11 @@ if ( ! is_multisite() || current_user_can( 'manage_sites' ) ) {
 	<div>
 		<h4><?php _e( 'Settings import and export', 'tinymce-advanced' ); ?></h4>
 		<p>
+			<?php _e( 'The settings are exported as a JSON encoded file.', 'tinymce-advanced' ); ?>
+			<?php _e( 'It is important that the exported file is not edited in any way.', 'tinymce-advanced' ); ?>
+		</p>
+		<p>
+			<?php wp_nonce_field( 'tadv-export-settings', 'tadv-export-settings-nonce', false ); ?>
 			<input type="submit" class="button" name="tadv-export-settings" value="<?php _e( 'Export Settings', 'tinymce-advanced' ); ?>" /> &nbsp;
 			<input type="submit" class="button" name="tadv-import-settings" value="<?php _e( 'Import Settings', 'tinymce-advanced' ); ?>" />
 		</p>
