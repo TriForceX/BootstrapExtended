@@ -1,4 +1,4 @@
-<FilesMatch ".*\.(css|js|otf|eot|svg|ttf|woff|woff2|png|gif|jpg|css\.map|scss)$">
+<FilesMatch ".*\.(css|js|ts|otf|eot|svg|ttf|woff|woff2|png|gif|jpg|css\.map|js\.map|scss)$">
 	# Apache 2.4
 	<IfModule mod_authz_core.c>
 		Require all granted

@@ -244,7 +244,7 @@ jQuery(function($) {
     //If a submenu is highlighted, so must be its parent.
     //In some cases, if we decide to stick with the WP-selected highlighted menu,
     //this might not be the case and we'll need to fix it.
-    var parentOfHighlightedMenu = $('.wp-submenu a.current', '#adminmenu').closest('.menu-top');
+    var parentOfHighlightedMenu = $('.wp-submenu a.current', '#adminmenu').closest('.menu-top').first();
     parentOfHighlightedMenu
         .add('> a.menu-top', parentOfHighlightedMenu)
         .removeClass('wp-not-current-submenu')

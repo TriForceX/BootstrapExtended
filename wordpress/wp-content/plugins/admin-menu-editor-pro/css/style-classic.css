@@ -97,21 +97,23 @@ a.ws_button:hover {
            Export and import
 *************************************/
 
-.ui-dialog {
+.settings_page_menu_editor .ui-dialog {
 	background: white;
 	border: 1px solid #c0c0c0;
 }
 
-.ui-dialog-titlebar {
+.settings_page_menu_editor .ui-dialog-titlebar {
 	background-color: #86A7E3;
+	height: 22px;
 }
 
-.ui-dialog-title {
+.settings_page_menu_editor .ui-dialog-title {
 	color: white;
 }
 
-.ui-dialog-titlebar-close {
+.settings_page_menu_editor .ui-button.ui-dialog-titlebar-close {
 	background-color: transparent;
+	background-image: none;
 	border-style: none;
 
 	color: white; /* WP default: #666; */
@@ -121,20 +123,20 @@ a.ws_button:hover {
 	top: 0;
 	right: 0;
 	width: 36px;
-	height: 30px;
+	height: 22px;
 	text-align: center;
 }
 
-.ui-dialog-titlebar-close::before {
+.settings_page_menu_editor .ui-dialog-titlebar-close::before {
 	font: normal 20px/30px 'dashicons';
 	content: '\f158';
 
 	vertical-align: top;
 	width: 36px;
-	height: 30px;
+	height: 22px;
 }
 
-.ui-dialog-titlebar-close:hover {
+.settings_page_menu_editor .ui-dialog-titlebar-close:hover {
 	background: transparent none;
 	color: #004665;
 }

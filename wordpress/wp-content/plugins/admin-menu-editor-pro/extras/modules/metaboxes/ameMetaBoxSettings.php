@@ -5,9 +5,24 @@ class ameMetaBoxSettings implements ArrayAccess {
 	const FORMAT_VERSION = '1.0';
 
 	private $screens = array();
+	private $isInitialRefreshDone = false;
 
 	public function isEmpty() {
 		return empty($this->screens);
+	}
+
+	/**
+	 * @return bool
+	 */
+	public function isFirstRefreshDone() {
+		return $this->isInitialRefreshDone;
+	}
+
+	/**
+	 * @param bool $isRefreshDone
+	 */
+	public function setFirstRefreshState($isRefreshDone) {
+		$this->isInitialRefreshDone = $isRefreshDone;
 	}
 
 	public function toArray() {
@@ -21,26 +36,11 @@ class ameMetaBoxSettings implements ArrayAccess {
 				'version' => self::FORMAT_VERSION,
 			),
 			'screens' => $screenSettings,
+			'isInitialRefreshDone' => $this->isInitialRefreshDone,
 		);
 	}
 
-	public function toJSON() {
-		return json_encode($this->toArray());
-	}
-
-	public static function fromJSON($json) {
-		$input = json_decode($json, true);
-
-		if ($input === null) {
-			throw new ameInvalidJsonException('Cannot parse meta box data. The input is not valid JSON.');
-		}
-
-		if (!is_array($input)) {
-			throw new ameInvalidMetaBoxDataException(sprintf(
-				'Failed to decode meta box data. Expected type: array, actual type: %s',
-				gettype($input)
-			));
-		}
+	public static function fromArray($input) {
 		if (
 			!isset($input['format']['name'], $input['format']['version'])
 			|| ($input['format']['name'] !== self::FORMAT_NAME)
@@ -64,7 +64,32 @@ class ameMetaBoxSettings implements ArrayAccess {
 			$settings->screens[$screenId] = ameMetaBoxCollection::fromArray($collectionData, $screenId);
 		}
 
+		if ( isset($input['isInitialRefreshDone']) && is_scalar($input['isInitialRefreshDone']) ) {
+			$settings->isInitialRefreshDone = !empty($input['isInitialRefreshDone']);
+		}
+
 		return $settings;
+	}
+
+	public function toJSON() {
+		return json_encode($this->toArray());
+	}
+
+	public static function fromJSON($json) {
+		$input = json_decode($json, true);
+
+		if ($input === null) {
+			throw new ameInvalidJsonException('Cannot parse meta box data. The input is not valid JSON.');
+		}
+
+		if (!is_array($input)) {
+			throw new ameInvalidMetaBoxDataException(sprintf(
+				'Failed to decode meta box data. Expected type: array, actual type: %s',
+				gettype($input)
+			));
+		}
+
+		return self::fromArray($input);
 	}
 
 	/**

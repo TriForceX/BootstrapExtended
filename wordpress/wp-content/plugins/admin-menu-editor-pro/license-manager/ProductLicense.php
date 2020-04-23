@@ -12,6 +12,13 @@ class Wslm_ProductLicense implements ArrayAccess {
         if ( !isset($this->data['addons']) ) {
         	$this->data['addons'] = array();
         }
+
+        $integerFields = array('license_id', 'max_sites', 'customer_id');
+        foreach($integerFields as $field) {
+	        if ( isset($this->data[$field]) && is_string($this->data[$field]) && is_numeric($this->data[$field]) ) {
+		        $this->data[$field] = intval($this->data[$field]);
+	        }
+        }
     }
 
     public function getData() {

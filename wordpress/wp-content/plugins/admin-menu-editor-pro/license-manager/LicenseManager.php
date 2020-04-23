@@ -30,7 +30,7 @@ class Wslm_LicenseManagerClient {
     /** @var Wslm_ProductLicense */
     private $license = null;
 
-    /** @var Puc_v4p4_Plugin_UpdateChecker */
+    /** @var Puc_v4p8_Plugin_UpdateChecker */
     private $updateChecker = null;
 
     /**
@@ -77,7 +77,6 @@ class Wslm_LicenseManagerClient {
 		if ( empty($this->optionName) ) {
 			$this->optionName = 'wsh_license_manager-' . $this->productSlug;
 		}
-        $this->load();
 
 		//Set up the periodic update checks
 		$this->cronHook = 'check_license_updates-' . $this->getProductSlug();
@@ -114,6 +113,14 @@ class Wslm_LicenseManagerClient {
 			$this->tokenHistory = isset($options['token_history']) ? $options['token_history'] : array();
 		} else {
 			$this->tokenHistory = null;
+		}
+	}
+
+	protected function lazyLoad() {
+		static $isLoaded = false;
+		if ( !$isLoaded ) {
+			$this->load();
+			$isLoaded = true;
 		}
 	}
 
@@ -169,6 +176,7 @@ class Wslm_LicenseManagerClient {
 	 * @return Wslm_ProductLicense
 	 */
 	public function getLicense() {
+		$this->lazyLoad();
 		if ( $this->license === null ) {
 			return $this->createLicenseObject(array(
 				'status' => 'no_license_yet',
@@ -179,12 +187,14 @@ class Wslm_LicenseManagerClient {
 	}
 
 	public function hasExistingLicense() {
+		$this->lazyLoad();
 		return ($this->getSiteToken() !== null)
 			&& ($this->license !== null)
 			&& $this->license->isExisting();
 	}
 
 	public function checkForLicenseUpdates() {
+		$this->lazyLoad();
 		if ( $this->shouldCheckForUpdates() ) {
 			$result = $this->requestLicenseDetails();
 
@@ -284,6 +294,7 @@ class Wslm_LicenseManagerClient {
 	 * @return Wslm_ProductLicense|WP_Error
 	 */
 	private function processActivationResponse($result, $licenseKey = null, $siteToken = null) {
+		$this->lazyLoad();
 		if ( $result->success() ) {
 			//Success! Lets save our license data.
 			$this->license = $this->createLicenseObject($result->response->license);
@@ -391,6 +402,7 @@ class Wslm_LicenseManagerClient {
 	 * @return string|null
 	 */
 	public function getLicenseKey() {
+		$this->lazyLoad();
 		if (is_string($this->licenseKey) && $this->licenseKey !== '') {
 			return $this->licenseKey;
 		}
@@ -401,6 +413,7 @@ class Wslm_LicenseManagerClient {
 	 * @return string|null
 	 */
 	public function getSiteToken() {
+		$this->lazyLoad();
 		if (is_string($this->siteToken) && $this->siteToken !== '') {
 			return $this->siteToken;
 		}
@@ -411,6 +424,7 @@ class Wslm_LicenseManagerClient {
 	 * @return array
 	 */
 	public function getTokenHistory() {
+		$this->lazyLoad();
 		return isset($this->tokenHistory) ? $this->tokenHistory : array();
 	}
 
@@ -435,7 +449,7 @@ class Wslm_LicenseManagerClient {
 	 * Register filters that will add license details to update requests and download URLs.
 	 * Add-ons can use this method to easily re-use the same license key as the main plugin.
 	 *
-	 * @param Puc_v4p4_Plugin_UpdateChecker $updateChecker
+	 * @param Puc_v4p8_Plugin_UpdateChecker $updateChecker
 	 */
 	public function addUpdateFiltersTo($updateChecker) {
 		$updateChecker->addQueryArgFilter(array($this, 'filterUpdateChecks'));
@@ -459,11 +473,12 @@ class Wslm_LicenseManagerClient {
     }
 
     /**
-       * @param Puc_v4p4_Plugin_Info|null $pluginInfo
+       * @param Puc_v4p8_Plugin_Info|null $pluginInfo
        * @param array $result
-       * @return Puc_v4p4_Plugin_Info|null
+       * @return Puc_v4p8_Plugin_Info|null
        */
     public function refreshLicenseFromPluginInfo($pluginInfo, $result) {
+	    $this->lazyLoad();
         if ( !is_wp_error($result) && isset($result['response']['code']) && ($result['response']['code'] == 200) && !empty($result['body']) ){
             $apiResponse = json_decode($result['body']);
             if ( is_object($apiResponse) && isset($apiResponse->license) ) {
@@ -478,8 +493,8 @@ class Wslm_LicenseManagerClient {
 	 * Add license data to the update download URL if we have a valid license,
 	 * or remove the URL (thus disabling one-click updates) if we don't.
 	 *
-	 * @param Puc_v4p4_Plugin_Update|Puc_v4p4_Plugin_Info $pluginInfo
-	 * @return Puc_v4p4_Plugin_Update|Puc_v4p4_Plugin_Info
+	 * @param Puc_v4p8_Plugin_Update|Puc_v4p8_Plugin_Info $pluginInfo
+	 * @return Puc_v4p8_Plugin_Update|Puc_v4p8_Plugin_Info
 	 */
 	public function filterUpdateDownloadUrl($pluginInfo) {
 		if ( isset($pluginInfo, $pluginInfo->download_url) && !empty($pluginInfo->download_url) ) {

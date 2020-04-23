@@ -1,10 +1,3 @@
-<div class="wrap">
-	<?php echo '<', WPMenuEditor::$admin_heading_tag, ' id="ws_ame_editor_heading">'; ?>
-		<?php echo apply_filters('admin_menu_editor-self_page_title', 'Menu Editor'); ?>
-	<?php echo '</', WPMenuEditor::$admin_heading_tag, '>'; ?>
-
-	<?php do_action('admin_menu_editor-display_tabs'); ?>
-
 <div id="ame-dashboard-widget-editor">
 
 	<?php require AME_ROOT_DIR . '/modules/actor-selector/actor-selector-template.php'; ?>
@@ -153,8 +146,6 @@
 	<div class="clear"></div>
 
 	<?php require dirname(__FILE__) . '/import-dialog-template.php'; ?>
-</div>
-
 </div>
 
 <div style="display: none;">

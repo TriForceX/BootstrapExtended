@@ -11,6 +11,7 @@ interface MetaBoxEditorSettings {
 		version: string
 	},
 	screens: {[id: string] : MetaBoxPropertyMap;};
+	isInitialRefreshDone: boolean;
 }
 
 class AmeMetaBoxEditor {
@@ -19,14 +20,14 @@ class AmeMetaBoxEditor {
 	screens: Array<AmeMetaBoxCollection>;
 
 	actorSelector: AmeActorSelector;
-	selectedActor: KnockoutComputed<AmeBaseActor|null>;
+	selectedActor: KnockoutComputed<IAmeActor|null>;
 
 	settingsData: KnockoutObservable<string>;
 	canAnyBoxesBeDeleted: boolean = false;
 
 	isSlugWarningEnabled: KnockoutObservable<boolean>;
 
-	private forceRefreshUrl: string;
+	private readonly forceRefreshUrl: string;
 
 	constructor(settings: MetaBoxEditorSettings, forceRefreshUrl: string) {
 		this.actorSelector = new AmeActorSelector(AmeActors, true);
@@ -87,7 +88,8 @@ class AmeMetaBoxEditor {
 				name: collectionFormatName,
 				version: collectionFormatVersion
 			},
-			screens: {}
+			screens: {},
+			isInitialRefreshDone: true
 		};
 
 		const _ = AmeMetaBoxEditor._;
@@ -129,7 +131,7 @@ class AmeMetaBox {
 
 	canBeDeleted: boolean = false;
 
-	private initialProperties: MetaBoxPropertyMap;
+	private readonly initialProperties: MetaBoxPropertyMap;
 	protected metaBoxEditor: AmeMetaBoxEditor;
 
 	constructor(settings: MetaBoxPropertyMap, metaBoxEditor: AmeMetaBoxEditor) {
@@ -181,12 +183,12 @@ class AmeMetaBox {
 
 				const actor = metaBoxEditor.selectedActor();
 				if (actor !== null) {
-					this.grantAccess.set(actor.id, checked);
+					this.grantAccess.set(actor.getId(), checked);
 				} else {
 					//Enable/disable all.
 					_.forEach(
 						metaBoxEditor.actorSelector.getVisibleActors(),
-						(anActor) => { this.grantAccess.set(anActor.id, checked); }
+						(anActor) => { this.grantAccess.set(anActor.getId(), checked); }
 					);
 				}
 			}
@@ -207,12 +209,12 @@ class AmeMetaBox {
 			write: (checked) => {
 				const actor = metaBoxEditor.selectedActor();
 				if (actor !== null) {
-					this.defaultVisibility.set(actor.id, checked);
+					this.defaultVisibility.set(actor.getId(), checked);
 				} else {
 					//Enable/disable all.
 					_.forEach(
 						metaBoxEditor.actorSelector.getVisibleActors(),
-						(anActor) => { this.defaultVisibility.set(anActor.id, checked); }
+						(anActor) => { this.defaultVisibility.set(anActor.getId(), checked); }
 					);
 				}
 			}
@@ -224,13 +226,13 @@ class AmeMetaBox {
 	}
 
 	private static actorHasAccess(
-		actor: AmeBaseActor,
+		actor: IAmeActor,
 		grants: AmeActorAccessDictionary,
 		roleDefault: boolean = true,
 		superAdminDefault: boolean | null = true
 	) {
 		//Is there a setting for this actor specifically?
-		let hasAccess = grants.get(actor.id, null);
+		let hasAccess = grants.get(actor.getId(), null);
 		if (hasAccess !== null) {
 			return hasAccess;
 		}
@@ -290,7 +292,7 @@ interface MetaBoxPropertyMap {
 
 class AmeActorAccessDictionary {
 	items: { [actorId: string] : KnockoutObservable<boolean>; } = {};
-	private numberOfObservables: KnockoutObservable<number>;
+	private readonly numberOfObservables: KnockoutObservable<number>;
 
 	constructor(initialData?: AmeDictionary<boolean>) {
 		this.numberOfObservables = ko.observable(0);

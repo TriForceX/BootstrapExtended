@@ -16,6 +16,8 @@
   #adminmenu#adminmenu#adminmenu a.ame-has-custom-dashicon > .wp-menu-image::before {
     font-family: "dashicons", sans-serif !important;
     font-size: 20px !important; }
+  #adminmenu#adminmenu#adminmenu a.ame-has-custom-dashicon > .wp-menu-image {
+    background-image: none; }
   #adminmenu#adminmenu#adminmenu a.ame-has-custom-dashicon .dashicons-menu:before {
     content: "\f333" !important; }
   #adminmenu#adminmenu#adminmenu a.ame-has-custom-dashicon .dashicons-admin-site:before {

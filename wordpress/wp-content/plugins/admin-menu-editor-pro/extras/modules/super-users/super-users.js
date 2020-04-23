@@ -45,6 +45,7 @@ var AmeSuperUsers = /** @class */ (function () {
         AmeSelectUsersDialog.open({
             selectedUsers: AmeSuperUsers._.map(this.superUsers(), 'userLogin'),
             users: AmeSuperUsers._.indexBy(this.superUsers(), 'userLogin'),
+            actorManager: AmeActors,
             currentUserLogin: this.currentUserLogin,
             alwaysIncludeCurrentUser: false,
             save: function (selectedUsers) {
@@ -84,4 +85,3 @@ jQuery(function () {
     var superUserVM = new AmeSuperUsers(wsAmeSuperUserSettings);
     ko.applyBindings(superUserVM, document.getElementById('ame-super-user-settings'));
 });
-//# sourceMappingURL=super-users.js.map

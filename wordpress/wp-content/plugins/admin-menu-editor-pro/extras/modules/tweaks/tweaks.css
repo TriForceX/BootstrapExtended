@@ -1,0 +1,81 @@
+.ame-twm-section {
+  position: relative;
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.04);
+  background: #fff;
+  margin-bottom: 20px; }
+  .ame-twm-section .ws-ame-postbox-header {
+    position: relative;
+    font-size: 14px;
+    margin: 0;
+    line-height: 1.4;
+    border: 1px solid #ccd0d4; }
+    .ame-twm-section .ws-ame-postbox-header h3 {
+      padding: 10px 12px;
+      margin: 0;
+      font-size: 1em;
+      line-height: 1;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+      overflow: hidden; }
+  .ame-twm-section .ws-ame-postbox-toggle {
+    color: #72777c;
+    background: #fff;
+    display: block;
+    font: normal 20px/1 dashicons;
+    text-align: center;
+    cursor: pointer;
+    border: none;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    width: 36px;
+    height: 100%;
+    padding: 0; }
+    .ame-twm-section .ws-ame-postbox-toggle:hover {
+      color: #23282d; }
+    .ame-twm-section .ws-ame-postbox-toggle:active, .ame-twm-section .ws-ame-postbox-toggle:focus {
+      outline: none;
+      padding: 0; }
+    .ame-twm-section .ws-ame-postbox-toggle:before {
+      content: '\f142';
+      display: inline-block;
+      vertical-align: middle; }
+    .ame-twm-section .ws-ame-postbox-toggle:after {
+      display: inline-block;
+      content: "";
+      vertical-align: middle;
+      height: 100%; }
+  .ame-twm-section .ws-ame-postbox-content {
+    border: 1px solid #ccd0d4;
+    border-top: none;
+    padding: 12px; }
+  .ame-twm-section.ws-ame-closed-postbox .ws-ame-postbox-content {
+    display: none; }
+  .ame-twm-section.ws-ame-closed-postbox .ws-ame-postbox-toggle:before {
+    content: '\f140'; }
+  .ame-twm-section .ws-ame-postbox-content {
+    padding-top: 8px; }
+
+.ame-twm-tweak-children {
+  margin-left: 2em; }
+
+.ame-twm-tweak input[type=checkbox]:indeterminate:before {
+  content: '\25a0';
+  color: #1e8cbe;
+  margin: -3px 0 0 -1px;
+  font: 400 14px/1 dashicons;
+  float: left;
+  display: inline-block;
+  vertical-align: middle;
+  width: 16px;
+  -webkit-font-smoothing: antialiased; }
+
+.ame-twm-tweak {
+  font-size: 14px;
+  line-height: 1.65; }
+
+#ame-tweak-manager #ws_actor_selector_container {
+  margin-bottom: 8px; }
+
+/*# sourceMappingURL=tweaks.css.map */

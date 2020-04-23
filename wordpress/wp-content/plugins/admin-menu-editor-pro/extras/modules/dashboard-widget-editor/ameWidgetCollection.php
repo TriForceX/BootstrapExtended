@@ -262,17 +262,11 @@ class ameWidgetCollection {
 	}
 
 	/**
-	 * @param string $json
-	 * @return self|null
+	 * @param array $input
+	 * @return self
 	 */
-	public static function fromJSON($json) {
-		$input = json_decode($json, true);
-
-		if ($input === null) {
-			throw new ameInvalidJsonException('Cannot parse widget data. The input is not valid JSON.');
-		}
-
-		if (!is_array($input)) {
+	public static function fromArray($input) {
+		if ( !is_array($input) ) {
 			throw new ameInvalidWidgetDataException(sprintf(
 				'Failed to decode widget data. Expected type: array, actual type: %s',
 				gettype($input)
@@ -309,8 +303,21 @@ class ameWidgetCollection {
 		}
 
 		$collection->siteComponentHash = isset($input['siteComponentHash']) ? strval($input['siteComponentHash']) : '';
-
 		return $collection;
+	}
+
+	/**
+	 * @param string $json
+	 * @return self|null
+	 */
+	public static function fromJSON($json) {
+		$input = json_decode($json, true);
+
+		if ($input === null) {
+			throw new ameInvalidJsonException('Cannot parse widget data. The input is not valid JSON.');
+		}
+
+		return self::fromArray($input);
 	}
 }
 

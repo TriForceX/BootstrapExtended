@@ -1,4 +1,10 @@
-<div id="ws_menu_access_editor" title="Permissions">
+<?php
+$ameDialogClasses = array();
+if ( isset($GLOBALS['wp_version']) && version_compare($GLOBALS['wp_version'], '5.3-RC1', '>=') ) {
+	$ameDialogClasses[] = 'ame-is-wp53-plus';
+}
+?>
+<div id="ws_menu_access_editor" title="Permissions" class="<?php echo implode(' ', $ameDialogClasses); ?>">
 
 	<div class="ws_dialog_panel">
 		<div class="error inline" id="ws_hardcoded_role_error">

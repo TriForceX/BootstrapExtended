@@ -286,61 +286,63 @@ a.ws_edit_link {
 //                  Dialogs
 //==============================================
 
-.ui-dialog {
-	background: white;
-	border: 1px solid #c0c0c0;
-	border-radius: 0;
-}
+.settings_page_menu_editor {
+	.ui-dialog {
+		background: white;
+		border: 1px solid #c0c0c0;
+		border-radius: 0;
+	}
 
-.ui-dialog-titlebar {
-	background-color: #fcfcfc;
-	border-bottom: 1px solid #dfdfdf;
-	height: auto;
-	padding: 0;
-
-	.ui-dialog-titlebar-close {
-		background: none;
-		border-style: none;
-
-		color: #666;
-		cursor: pointer;
+	.ui-dialog-titlebar {
+		background-color: #fcfcfc;
+		border-bottom: 1px solid #dfdfdf;
+		height: auto;
 		padding: 0;
-		margin: 0;
-		position: absolute;
-		top: 0;
-		right: 0;
 
-		width: 36px;
-		height: 36px;
+		.ui-button.ui-dialog-titlebar-close {
+			background: none;
+			border-style: none;
 
-		text-align: center;
+			color: #666;
+			cursor: pointer;
+			padding: 0;
+			margin: 0;
+			position: absolute;
+			top: 0;
+			right: 0;
 
-		.ui-icon, .ui-button-text {
-			display: none;
+			width: 36px;
+			height: 36px;
+
+			text-align: center;
+
+			.ui-icon, .ui-button-text {
+				display: none;
+			}
+		}
+
+		.ui-dialog-titlebar-close::before {
+			font: normal 20px/36px 'dashicons';
+			content: '\f158';
+
+			vertical-align: middle;
+			width: 36px;
+			height: 36px;
+		}
+
+		.ui-dialog-titlebar-close:hover {
+			background: transparent none;
+			color: #2ea2cc;
 		}
 	}
 
-	.ui-dialog-titlebar-close::before {
-		font: normal 20px/36px 'dashicons';
-		content: '\f158';
+	.ui-dialog-title {
+		color: #444444;
+		font-size: 18px;
+		font-weight: 600;
+		line-height: 36px;
 
-		vertical-align: middle;
-		width: 36px;
-		height: 36px;
+		padding: 0 36px 0 8px;
+		display: block;
 	}
-
-	.ui-dialog-titlebar-close:hover {
-		background: transparent none;
-		color: #2ea2cc;
-	}
-}
-
-.ui-dialog-title {
-	color: #444444;
-	font-size: 18px;
-	font-weight: 600;
-	line-height: 36px;
-
-	padding: 0 36px 0 8px;
-	display: block;
 }

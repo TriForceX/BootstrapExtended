@@ -33,29 +33,10 @@ $hide_button_extra_tooltip = 'When "All" is selected, this will hide the menu fr
 
 //Output the "Upgrade to Pro" message
 if ( !apply_filters('admin_menu_editor_is_pro', false) ){
-	//Pseudo-randomly decide whether to show the VAC link.
-	$is_vac_link_visible = (hexdec( substr(md5(get_site_url() . 'vc3'), -3) ) % 100) <= 20; //20% of sites will see it.
 	?>
 	<script type="text/javascript">
 	(function($){
-		var screenLinks = $('#screen-meta-links'),
-			showVacLink = (<?php echo $is_vac_link_visible ? 'true' : 'false' ?>);
-
-		if (showVacLink) {
-			screenLinks.append(
-				$('<div>', {
-					'class' : 'custom-screen-meta-link-wrap',
-					'id'    : 'ws-visual-admin-customizer-ad'
-				}).append($('<a>', {
-					'href'  : 'https://wordpress.org/plugins/visual-admin-customizer/',
-					'class' : 'show-settings custom-screen-meta-link',
-					'title' : 'A free plugin for customizing the WordPress admin interface',
-					'target': '_blank',
-					'text'  : 'Visual Admin Customizer'
-				}))
-			);
-		}
-
+		var screenLinks = $('#screen-meta-links');
 		screenLinks.append(
 			'<div id="ws-pro-version-notice" class="custom-screen-meta-link-wrap">' +
 				'<a href="http://adminmenueditor.com/upgrade-to-pro/?utm_source=Admin%2BMenu%2BEditor%2Bfree&utm_medium=text_link&utm_content=top_upgrade_link&utm_campaign=Plugins" id="ws-pro-version-notice-link" class="show-settings custom-screen-meta-link" target="_blank" title="View Pro version details">Upgrade to Pro</a>' +

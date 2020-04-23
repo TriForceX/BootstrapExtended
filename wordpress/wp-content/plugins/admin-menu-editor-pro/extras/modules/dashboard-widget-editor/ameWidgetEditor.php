@@ -1,26 +1,23 @@
 <?php
+require_once AME_ROOT_DIR . '/extras/exportable-module.php';
 
-class ameWidgetEditor {
+class ameWidgetEditor extends ameModule implements ameExportableModule {
 	//Note: Class constants require PHP 5.3 or better.
 	const OPTION_NAME = 'ws_ame_dashboard_widgets';
 	const MAX_IMPORT_FILE_SIZE = 2097152; //2 MiB
+
+	protected $tabSlug = 'dashboard-widgets';
+	protected $tabTitle = 'Dashboard Widgets';
 
 	/**
 	 * @var ameWidgetCollection
 	 */
 	private $dashboardWidgets;
 
-	/**
-	 * @var WPMenuEditor
-	 */
-	private $menuEditor;
-
 	private $shouldRefreshWidgets = false;
 
 	public function __construct($menuEditor) {
-		$this->menuEditor = $menuEditor;
-
-		$this->loadSettings();
+		parent::__construct($menuEditor);
 
 		if ( is_network_admin() ) {
 			//This module doesn't work in the network admin.
@@ -29,11 +26,6 @@ class ameWidgetEditor {
 
 		add_action('wp_dashboard_setup', array($this, 'setupDashboard'), 200);
 
-		add_action('admin_menu_editor-enqueue_scripts-dashboard-widgets', array($this, 'enqueueScripts'));
-		add_action('admin_menu_editor-enqueue_styles-dashboard-widgets', array($this, 'enqueueStyles'));
-
-		add_action('admin_menu_editor-tabs', array($this, 'addSettingsTab'));
-		add_action('admin_menu_editor-section-dashboard-widgets', array($this, 'displayUi'));
 		add_action('admin_menu_editor-header', array($this, 'handleFormSubmission'), 10, 2);
 
 		ajaw_v1_CreateAction('ws-ame-export-widgets')
@@ -51,6 +43,7 @@ class ameWidgetEditor {
 	public function setupDashboard() {
 		global $wp_meta_boxes;
 
+		$this->loadSettings();
 		$changesDetected = $this->dashboardWidgets->merge($wp_meta_boxes['dashboard']);
 
 		//Store new widgets and changed defaults.
@@ -96,7 +89,8 @@ class ameWidgetEditor {
 		}
 	}
 
-	public function enqueueScripts() {
+	public function enqueueTabScripts() {
+		//TODO: Remove this later, it's already registered in register_base_dependencies.
 		wp_register_auto_versioned_script(
 			'knockout',
 			plugins_url('js/knockout.js', $this->menuEditor->plugin_file)
@@ -118,6 +112,7 @@ class ameWidgetEditor {
 		);
 
 		//Automatically refresh the list of available dashboard widgets.
+		$this->loadSettings();
 		$query = $this->menuEditor->get_query_params();
 		$this->shouldRefreshWidgets = empty($query['ame-widget-refresh-done'])
 			&& (
@@ -163,23 +158,18 @@ class ameWidgetEditor {
 		);
 	}
 
-	public function enqueueStyles() {
+	public function enqueueTabStyles() {
 		wp_enqueue_auto_versioned_style(
 			'ame-dashboard-widget-editor-css',
 			plugins_url('dashboard-widget-editor.css', __FILE__)
 		);
 	}
 
-	public function addSettingsTab($tabs) {
-		$tabs['dashboard-widgets'] = 'Dashboard Widgets';
-		return $tabs;
-	}
-
-	public function displayUi() {
+	public function displaySettingsPage() {
 		if ( $this->shouldRefreshWidgets ) {
 			require dirname(__FILE__) . '/widget-refresh-template.php';
 		} else {
-			require dirname(__FILE__) . '/dashboard-widget-editor-template.php';
+			parent::displaySettingsPage();
 		}
 	}
 
@@ -311,11 +301,11 @@ class ameWidgetEditor {
 	}
 
 	private function loadSettings() {
-		if ( $this->menuEditor->get_plugin_option('menu_config_scope') === 'site' ) {
-			$settings = get_option(self::OPTION_NAME, null);
-		} else {
-			$settings = get_site_option(self::OPTION_NAME, null);
+		if ( isset($this->dashboardWidgets) ) {
+			return $this->dashboardWidgets;
 		}
+
+		$settings = $this->getScopedOption(self::OPTION_NAME, null);
 		if ( empty($settings) ) {
 			$this->dashboardWidgets = new ameWidgetCollection();
 		} else {
@@ -327,11 +317,41 @@ class ameWidgetEditor {
 	private function saveSettings() {
 		//Save per site or site-wide based on plugin configuration.
 		$settings = $this->dashboardWidgets->toJSON();
-		if ( $this->menuEditor->get_plugin_option('menu_config_scope') === 'site' ) {
-			update_option(self::OPTION_NAME, $settings);
-		} else {
-			WPMenuEditor::atomic_update_site_option(self::OPTION_NAME, $settings);
+		$this->setScopedOption(self::OPTION_NAME, $settings);
+	}
+
+	public function exportSettings() {
+		$dashboardWidgets = $this->loadSettings();
+		if ( !$dashboardWidgets || $dashboardWidgets->isEmpty() ) {
+			return null;
 		}
+		return $dashboardWidgets->toArray();
+	}
+
+	public function importSettings($newSettings) {
+		if ( empty($newSettings) ) {
+			return;
+		}
+
+		$this->loadSettings();
+		$collection = ameWidgetCollection::fromArray($newSettings);
+
+		//Merge standard widgets from the existing config with the imported config.
+		//Otherwise, we could end up with imported defaults that are incorrect for this site.
+		$collection->mergeWithWrappersFrom($this->dashboardWidgets);
+
+		$collection->siteComponentHash = $this->generateCompontentHash();
+
+		$this->dashboardWidgets = $collection;
+		$this->saveSettings();
+	}
+
+	public function getExportOptionLabel() {
+		return 'Dashboard widgets';
+	}
+
+	public function getExportOptionDescription() {
+		return '';
 	}
 
 	public function userCanEditWidgets() {

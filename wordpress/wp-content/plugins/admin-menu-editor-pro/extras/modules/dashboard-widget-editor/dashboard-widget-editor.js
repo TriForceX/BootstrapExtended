@@ -7,9 +7,9 @@
 /// <reference path="../../../modules/actor-selector/actor-selector.ts" />
 var AmeDashboardWidgetEditor = /** @class */ (function () {
     function AmeDashboardWidgetEditor(widgetSettings, selectedActor, isMultisite) {
+        var _this = this;
         if (selectedActor === void 0) { selectedActor = null; }
         if (isMultisite === void 0) { isMultisite = false; }
-        var _this = this;
         this.isMultisite = false;
         this.newWidgetCounter = 0;
         this.isMultisite = isMultisite;
@@ -144,7 +144,7 @@ var AmeDashboardWidgetEditor = /** @class */ (function () {
                 grantAccess: _.pick(this.welcomePanel.grantAccess.getAll(), function (hasAccess, actorId) {
                     //Remove "allow" settings for actors that can't actually see the panel.
                     return AmeActors.hasCapByDefault(actorId, 'edit_theme_options') || !hasAccess;
-                })
+                }),
             },
             siteComponentHash: this.initialWidgetSettings.siteComponentHash
         };
@@ -269,4 +269,3 @@ jQuery(function () {
     ameWidgetEditor = new AmeDashboardWidgetEditor(wsWidgetEditorData.widgetSettings, wsWidgetEditorData.selectedActor, wsWidgetEditorData.isMultisite);
     ko.applyBindings(ameWidgetEditor, document.getElementById('ame-dashboard-widget-editor'));
 });
-//# sourceMappingURL=dashboard-widget-editor.js.map

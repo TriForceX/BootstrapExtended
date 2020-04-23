@@ -53,7 +53,8 @@ var AmeMetaBoxEditor = /** @class */ (function () {
                 name: collectionFormatName,
                 version: collectionFormatVersion
             },
-            screens: {}
+            screens: {},
+            isInitialRefreshDone: true
         };
         var _ = AmeMetaBoxEditor._;
         _.forEach(this.screens, function (collection) {
@@ -122,11 +123,11 @@ var AmeMetaBox = /** @class */ (function () {
                 }
                 var actor = metaBoxEditor.selectedActor();
                 if (actor !== null) {
-                    _this.grantAccess.set(actor.id, checked);
+                    _this.grantAccess.set(actor.getId(), checked);
                 }
                 else {
                     //Enable/disable all.
-                    _.forEach(metaBoxEditor.actorSelector.getVisibleActors(), function (anActor) { _this.grantAccess.set(anActor.id, checked); });
+                    _.forEach(metaBoxEditor.actorSelector.getVisibleActors(), function (anActor) { _this.grantAccess.set(anActor.getId(), checked); });
                 }
             }
         });
@@ -146,11 +147,11 @@ var AmeMetaBox = /** @class */ (function () {
             write: function (checked) {
                 var actor = metaBoxEditor.selectedActor();
                 if (actor !== null) {
-                    _this.defaultVisibility.set(actor.id, checked);
+                    _this.defaultVisibility.set(actor.getId(), checked);
                 }
                 else {
                     //Enable/disable all.
-                    _.forEach(metaBoxEditor.actorSelector.getVisibleActors(), function (anActor) { _this.defaultVisibility.set(anActor.id, checked); });
+                    _.forEach(metaBoxEditor.actorSelector.getVisibleActors(), function (anActor) { _this.defaultVisibility.set(anActor.getId(), checked); });
                 }
             }
         });
@@ -162,7 +163,7 @@ var AmeMetaBox = /** @class */ (function () {
         if (roleDefault === void 0) { roleDefault = true; }
         if (superAdminDefault === void 0) { superAdminDefault = true; }
         //Is there a setting for this actor specifically?
-        var hasAccess = grants.get(actor.id, null);
+        var hasAccess = grants.get(actor.getId(), null);
         if (hasAccess !== null) {
             return hasAccess;
         }
@@ -295,4 +296,3 @@ jQuery(function () {
         });
     });
 });
-//# sourceMappingURL=metabox-editor.js.map

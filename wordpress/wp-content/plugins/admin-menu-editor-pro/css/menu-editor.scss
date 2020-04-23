@@ -1,5 +1,7 @@
 /* Admin Menu Editor CSS file */
 
+@import "boxes";
+
 #ws_menu_editor {
 	min-width: 780px;
 }
@@ -11,6 +13,7 @@
 $mainContainerWidth: 310px;
 $mainContainerBorderWidth: 1px;
 $mainContainerBorderRadius: 0px;
+$mainContainerBorderColor: $amePostboxBorderColor; //Was #cdd5d5 before WP 5.3.
 
 .ws_main_container {
 	margin: 2px;
@@ -18,7 +21,7 @@ $mainContainerBorderRadius: 0px;
 	float: left;
 	display:block;
 
-	border: $mainContainerBorderWidth solid #cdd5d5;
+	border: $mainContainerBorderWidth solid $mainContainerBorderColor;
 	box-shadow: 0 1px 1px rgba(0,0,0,0.04);
 	background-color: #FFFFFF;
 
@@ -101,6 +104,8 @@ $mainContainerBorderRadius: 0px;
 /**
  * The checkbox that lets the user show/hide a menu for the currently selected actor.
  */
+@import "_indeterminate-checkbox.scss";
+
 #ws_menu_editor .ws_actor_access_checkbox,
 #ws_menu_editor input[type="checkbox"].ws_actor_access_checkbox /* Ensure we override WP defaults. */
 {
@@ -109,28 +114,7 @@ $mainContainerBorderRadius: 0px;
     margin-top: 1px;
     vertical-align: text-top;
 
-	&:indeterminate:before {
-		content: '\25a0'; //Unicode black square. Another option would be BLACK LARGE SQUARE (U+2B1B).
-		color: #1e8cbe;
-
-		//Large square.
-		//margin: -6px 0 0 -1px;
-		//font: 400 18px/1 dashicons;
-
-		//Smaller square.
-		margin: -3px 0 0 -1px;
-		font: 400 14px/1 dashicons;
-
-		//Even smaller square.
-		//margin: -2px 0 0 -1px;
-		//font: 400 13px/1 dashicons;
-
-		float: left;
-		display: inline-block;
-		vertical-align: middle;
-		width: 16px;
-		-webkit-font-smoothing: antialiased;
-	}
+	@include ame-indeterminate-checkbox;
 }
 
 @media screen and (max-width: 782px) {
@@ -426,6 +410,10 @@ $mainContainerBorderRadius: 0px;
 	vertical-align: top;
 
 	background: url("../images/pencil_delete_gray.png") no-repeat center;
+
+	.ame-is-wp53-plus & {
+		margin-top: 5px;
+	}
 }
 
 .ws_reset_button:hover {
@@ -446,6 +434,8 @@ $mainContainerBorderRadius: 0px;
 
 /* The input box in each field editor */
 $basicInputWidth: 254px;
+$basicInputWp53Height: 28px;
+
 #ws_menu_editor .ws_editbox input[type="text"], 
 #ws_menu_editor .ws_editbox select {
 	display: block;
@@ -458,6 +448,10 @@ $basicInputWidth: 254px;
 
 	padding-top: 3px;
 	padding-bottom: 3px;
+
+	.ame-is-wp53-plus & {
+		height: $basicInputWp53Height;
+	}
 }
 
 #ws_menu_editor .ws_edit_field label {
@@ -471,15 +465,22 @@ $basicInputWidth: 254px;
 
 #ws_menu_editor input[type="text"].ws_field_value {
 	min-height: 25px;
+
+	.ame-is-wp53-plus & {
+		min-height: $basicInputWp53Height;
+	}
 }
 
 /* Dropdown button for combo-box fields */
+$dropdownButtonWidth: 25px;
+
 #ws_menu_editor .ws_dropdown_button,
 #ws_menu_access_editor .ws_dropdown_button
 {
 	box-sizing: border-box;
-	width: 20px;
+	width: $dropdownButtonWidth;
 	height: 25px;
+	min-height: 25px;
 	
 	margin: 1px 1px 1px 0;
 	padding: 0;
@@ -507,9 +508,31 @@ $basicInputWidth: 254px;
 	-webkit-border-bottom-left-radius: 0;
 }
 
+.ame-is-wp53-plus #ws_menu_editor .ws_dropdown_button,
+#ws_menu_access_editor.ame-is-wp53-plus .ws_dropdown_button
+{
+	height: $basicInputWp53Height;
+
+	border-color: #7e8993;
+	background-color: white;
+	border-left-style: none;
+
+	font-size: 10px !important;
+	line-height: 24px;
+	color: #555;
+
+	&:hover {
+		color: #23282d;
+	}
+}
+
 #ws_menu_access_editor .ws_dropdown_button {
 	display: inline-block;
 	height: 27px;
+}
+
+#ws_menu_access_editor.ame-is-wp53-plus .ws_dropdown_button {
+	height: 30px;
 }
 
 #ws_menu_editor .ws_dropdown_button {
@@ -543,8 +566,12 @@ to accommodate the drop-down button.
 	height: 27px;
 }
 
+#ws_menu_access_editor.ame-is-wp53-plus input.ws_has_dropdown {
+	height: 30px;
+}
+
 #ws_menu_editor .ws_has_dropdown input.ws_field_value {
-	width: 234px;
+	width: $basicInputWidth - $dropdownButtonWidth;
 }
 
 /* Unlike others, this field is just a single checkbox, so it has a smaller height */
@@ -883,6 +910,13 @@ $activeToolTabBackground: #FDFDFD;
 
     box-sizing: border-box;
     height: 25px;
+	min-height: 25px;
+
+	.ame-is-wp53-plus & {
+		height: $basicInputWp53Height;
+		min-height: $basicInputWp53Height;
+		margin-top: 1px;
+	}
 }
 
 /* Current icon node (CSS class version, for the built-in WP icon sprites) */
@@ -899,6 +933,10 @@ $activeToolTabBackground: #FDFDFD;
 	position: relative;
 	top: -3px;
 	left: -3px;
+
+	.ame-is-wp53-plus & {
+		top: -1px;
+	}
 }
 
 /* Current icon node (image version) */
@@ -1119,6 +1157,7 @@ $colorFieldRightMargin: 5px;
     width: $colorFieldWidth;
 
     margin-right: $colorFieldRightMargin;
+	margin-left: 1px;
     padding: 2px 4px;
 
 	font-size: 12px;
@@ -1127,6 +1166,18 @@ $colorFieldRightMargin: 5px;
     cursor: pointer;
 
 	line-height: $colorFieldHeight - 6px;
+
+	.ame-is-wp53-plus & {
+		border-color: #7e8993;
+		border-radius: 4px;
+
+		margin-top: 1px;
+		margin-bottom: 1px;
+
+		padding: 3px 8px;
+		height: 28px;
+		line-height: 20px;
+	}
 }
 
 .ws_open_color_editor {
@@ -1160,6 +1211,8 @@ $colorFieldRightMargin: 5px;
 	position: fixed;
 	left: 0;
 	top: 0;
+	right: 0;
+	bottom: 0;
 	opacity: 0.70;
 	-moz-opacity: 0.70;
 	filter: alpha(opacity=70);
@@ -1172,69 +1225,71 @@ $colorFieldRightMargin: 5px;
     z-index: 10000;
 }
 
-.ui-dialog {
-	background: white;
-	border: 1px solid #c0c0c0;
+.settings_page_menu_editor {
+	.ui-dialog {
+		background: white;
+		border: 1px solid #c0c0c0;
 
-	padding: 0;
-	
-	-moz-border-radius: 5px;
-    -webkit-border-radius: 5px;
-    border-radius: 5px;
+		padding: 0;
 
-	.ui-dialog-content {
-		padding: 8px 8px 8px 8px;
-		font-size: 1.1em;
+		-moz-border-radius: 5px;
+		-webkit-border-radius: 5px;
+		border-radius: 5px;
+
+		.ui-dialog-content {
+			padding: 8px 8px 8px 8px;
+			font-size: 1.1em;
+		}
 	}
-}
 
-.ui-dialog-titlebar {
-	display: block;
-	height: 22px;
-	margin: 0;
-	padding: 4px 4px 4px 8px;
-	
-	background-color: #86A7E3;
-	font-size: 1.0em;
-	line-height: 22px;
+	.ui-dialog-titlebar {
+		display: block;
+		height: 22px;
+		margin: 0;
+		padding: 4px 4px 4px 8px;
 
-    -webkit-border-top-left-radius: 4px;
-    -webkit-border-top-right-radius: 4px;
+		background-color: #86A7E3;
+		font-size: 1.0em;
+		line-height: 22px;
 
-    -moz-border-radius-topleft: 4px;
-    -moz-border-radius-topright: 4px;
+		-webkit-border-top-left-radius: 4px;
+		-webkit-border-top-right-radius: 4px;
 
-    border-top-left-radius: 4px;
-    border-top-right-radius: 4px;
+		-moz-border-radius-topleft: 4px;
+		-moz-border-radius-topright: 4px;
 
-    border-bottom: 1px solid #809fd9;
-}
+		border-top-left-radius: 4px;
+		border-top-right-radius: 4px;
 
-.ui-dialog-title {
-	color: white;
-	font-weight: bold;
-}
+		border-bottom: 1px solid #809fd9;
+	}
 
-.ui-dialog-titlebar-close {
-	background: #86A7E3 url(../images/x.png) no-repeat center;
-	width: 22px;
-	height: 22px;
-	display: block;
-	float: right;
-	color: white;
-	
-	border-radius: 3px;
-	-moz-border-radius: 3px;
-	-webkit-border-radius: 3px;
-}
+	.ui-dialog-title {
+		color: white;
+		font-weight: bold;
+	}
 
-.ui-dialog-titlebar-close:hover {
-	/*background-image: url(../images/x-light.png);*/
-	background-color: #a6c2f5;
-}
+	.ui-button.ui-dialog-titlebar-close {
+		background: #86A7E3 url(../images/x.png) no-repeat center;
+		width: 22px;
+		height: 22px;
+		display: block;
+		float: right;
+		color: white;
 
-.ui-icon-closethick {
-	
+		border-radius: 3px;
+		-moz-border-radius: 3px;
+		-webkit-border-radius: 3px;
+	}
+
+	.ui-dialog-titlebar-close:hover {
+		/*background-image: url(../images/x-light.png);*/
+		background-color: #a6c2f5;
+	}
+
+	.ui-icon-closethick {
+
+	}
 }
 
 #export_dialog .ws_dialog_panel {
@@ -2044,6 +2099,14 @@ $userSelectionPanelPadding: 10px;
 .ame-add-on-details-link::after {
 	/*content: " \f504";
 	font-family: dashicons, sans-serif;*/
+}
+
+/*********************************************
+      WordPress 5.3+ consistent styles
+**********************************************/
+
+.ame-is-wp53-plus .ws_edit_field input[type="button"] {
+	margin-top: 1px;
 }
 
 /*********************************************

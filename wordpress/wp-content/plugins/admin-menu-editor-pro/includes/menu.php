@@ -40,7 +40,7 @@ abstract class ameMenu {
 				$compared = version_compare($arr['format']['version'], self::format_version);
 				if ( $compared > 0 ) {
 					throw new InvalidMenuException(sprintf(
-						"Can't load a menu created by a newer version of the plugin. Menu format: '%s', newest supported format: '%s'.",
+						"Can't load a menu created by a newer version of the plugin. Menu format: '%s', newest supported format: '%s'. Try updating the plugin.",
 						$arr['format']['version'],
 						self::format_version
 					));
@@ -49,6 +49,12 @@ abstract class ameMenu {
 				if ( ($compared === 0) && isset($arr['format']['is_normalized']) ) {
 					$is_normalized = $arr['format']['is_normalized'];
 				}
+			} else if ( isset($arr['format'], $arr['format']['name']) ) {
+				//This is not an admin menu configuration. It's something else with a "format" header.
+				throw new InvalidMenuException(sprintf(
+					'Unknown menu configuration format: "%s".',
+					esc_html($arr['format']['name'])
+				));
 			} else {
 				return self::load_menu_40($arr);
 			}
@@ -93,7 +99,7 @@ abstract class ameMenu {
 				$is_valid_preset = true;
 				foreach($preset as $property => $color) {
 					//Note: It would good to check $property against a list of known color names.
-					if ( !is_string($property) || !is_string($color) || !preg_match('/^\#[0-9a-f]{6}$/i', $color) ) {
+					if ( !is_string($property) || !is_string($color) || !preg_match('/^#[0-9a-f]{6}$/i', $color) ) {
 						$is_valid_preset = false;
 						break;
 					}
@@ -169,6 +175,7 @@ abstract class ameMenu {
 	 * @static
 	 * @param array $arr
 	 * @return array
+	 * @throws InvalidMenuException
 	 */
 	private static function load_menu_40($arr) {
 		//This is *very* basic and might need to be improved.
@@ -176,7 +183,7 @@ abstract class ameMenu {
 		return self::load_array($menu, true);
 	}
 
-	private static function add_format_header($menu) {
+	public static function add_format_header($menu) {
 		if ( !isset($menu['format']) || !is_array($menu['format']) ) {
 			$menu['format'] = array();
 		}
@@ -199,7 +206,22 @@ abstract class ameMenu {
 	 */
 	public static function to_json($menu) {
 		$menu = self::add_format_header($menu);
-		return json_encode($menu);
+		$result = json_encode($menu);
+		if ( !is_string($result) ) {
+			$message = sprintf(
+				'Failed to encode the menu configuration as JSON. json_encode returned a %s.',
+				gettype($result)
+			);
+			if ( function_exists('json_last_error') ) {
+				/** @noinspection PhpComposerExtensionStubsInspection */
+				$message .= sprintf(' JSON error code: %d.', json_last_error());
+			}
+			if ( function_exists('json_last_error_msg') ) {
+				$message .= sprintf(' JSON error message: %s', json_last_error_msg());
+			}
+			throw new RuntimeException($message);
+		}
+		return $result;
 	}
 
   /**

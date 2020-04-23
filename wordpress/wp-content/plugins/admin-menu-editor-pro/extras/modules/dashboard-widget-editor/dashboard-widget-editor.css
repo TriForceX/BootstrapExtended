@@ -32,7 +32,7 @@
 #ame-major-widget-actions {
   box-sizing: border-box;
   background: white;
-  border: 1px solid #E5E5E5;
+  border: 1px solid #ccd0d4;
   box-shadow: 0 1px 1px rgba(0, 0, 0, 0.04); }
 
 .ame-dashboard-widget {
@@ -47,7 +47,7 @@
   font-size: 13px;
   font-weight: 600;
   line-height: 1.4em;
-  border: 1px solid #E5E5E5;
+  border: 1px solid #ccd0d4;
   box-shadow: 0 1px 1px rgba(0, 0, 0, 0.04); }
   .ame-widget-top h3 {
     padding: 15px;
@@ -68,7 +68,7 @@
     text-align: center;
     text-decoration: none;
     outline: none;
-    color: #A0A5AA; }
+    color: #72777c; }
     .ame-widget-top .ame-widget-title-action:before {
       display: inline-block;
       content: '\f140';
@@ -80,7 +80,7 @@
       vertical-align: middle;
       height: 100%; }
     .ame-widget-top .ame-widget-title-action:hover {
-      color: #777; }
+      color: #23282d; }
   body.rtl .ame-widget-top .ame-widget-title-action {
     left: 0;
     right: auto; }
@@ -118,7 +118,7 @@
   display: none;
   background: white;
   padding: 15px;
-  border: 1px solid #E5E5E5;
+  border: 1px solid #ccd0d4;
   box-shadow: 0 1px 1px rgba(0, 0, 0, 0.04);
   border-top: none; }
   .ame-widget-properties ame-widget-property {
@@ -143,6 +143,18 @@
   content: '\f142'; }
 .ame-open-dashboard-widget .ame-widget-top {
   box-shadow: none; }
+
+.ame-widget-access-checkbox:indeterminate:before,
+input[type="checkbox"].ame-widget-access-checkbox:indeterminate:before {
+  content: '\25a0';
+  color: #1e8cbe;
+  margin: -3px 0 0 -1px;
+  font: 400 14px/1 dashicons;
+  float: left;
+  display: inline-block;
+  vertical-align: middle;
+  width: 16px;
+  -webkit-font-smoothing: antialiased; }
 
 /*
  * Import dialog

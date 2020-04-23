@@ -1,6 +1,8 @@
 <?php
+require_once AME_ROOT_DIR . '/extras/exportable-module.php';
 
-class ameMetaBoxEditor extends ameModule {
+/** @noinspection PhpUnused Actually used in menu-editor-core.php */
+class ameMetaBoxEditor extends ameModule implements ameExportableModule {
 	const OPTION_NAME = 'ws_ame_meta_boxes';
 	const FORCE_REFRESH_PARAM = 'ame-force-meta-box-refresh';
 
@@ -24,6 +26,8 @@ class ameMetaBoxEditor extends ameModule {
 
 		add_action('add_meta_boxes', array($this, 'addDelayedMetaBoxHook'), 10, 1);
 		add_filter('default_hidden_meta_boxes', array($this, 'filterDefaultHiddenBoxes'), 10, 2);
+		//Gutenberg support.
+		add_action('enqueue_block_editor_assets', array($this, 'enqueueGutenbergScripts'), 200);
 
 		add_action('admin_menu_editor-header', array($this, 'handleFormSubmission'), 10, 2);
 
@@ -39,7 +43,36 @@ class ameMetaBoxEditor extends ameModule {
 	}
 
 	public function addDelayedMetaBoxHook($postType) {
-		add_action('add_meta_boxes_' . $postType, array($this, 'processMetaBoxes'), 2000, 0);
+		/*
+		 * Some plugins add their meta boxes using the "admin_head" action (example: WPML) or other non-standard hooks.
+		 * Unfortunately, this means we can't reliably catch all boxes by using "add_meta_boxes" or "do_meta_boxes".
+		 * We use the "in_admin_header" action instead because it runs after the meta box related actions and after most
+		 * other header hooks.
+		 *
+		 * However, this workaround is not fully reliable because there are parts of WP admin that output meta boxes
+		 * immediately after registering them. Examples:
+		 *   /wp-admin/edit-form-comment.php
+		 *   /wp-admin/edit-link-form.php
+		 *
+		 * Partial solution: Let's use the "in_admin_header" hook only on "Edit $CPT" pages.
+		 */
+		$latePriority = 2000;
+
+		//Is the current page a post editing screen?
+		$currentScreen = get_current_screen();
+		if ( !empty($currentScreen) ) {
+			if (
+				isset($currentScreen->base)
+				&& ($currentScreen->base === 'post')
+				&& !empty($postType)
+				&& !did_action('in_admin_header')
+			) {
+				add_action('in_admin_header', array($this, 'processMetaBoxes'), $latePriority, 0);
+				return;
+			}
+		}
+
+		add_action('add_meta_boxes_' . $postType, array($this, 'processMetaBoxes'), $latePriority, 0);
 	}
 
 	public function processMetaBoxes() {
@@ -170,13 +203,8 @@ class ameMetaBoxEditor extends ameModule {
 	}
 
 	private function saveSettings() {
-		//Save per site or site-wide based on plugin configuration.
 		$json = $this->settings->toJSON();
-		if ( $this->menuEditor->get_plugin_option('menu_config_scope') === 'site' ) {
-			update_option(self::OPTION_NAME, $json);
-		} else {
-			WPMenuEditor::atomic_update_site_option(self::OPTION_NAME, $json);
-		}
+		$this->setScopedOption(self::OPTION_NAME, $json);
 	}
 
 	private function loadSettings() {
@@ -184,14 +212,7 @@ class ameMetaBoxEditor extends ameModule {
 			return $this->settings;
 		}
 
-		$scope = $this->menuEditor->get_plugin_option('menu_config_scope');
-		$json = null;
-
-		if ( $scope === 'site' ) {
-			$json = get_option(self::OPTION_NAME, null);
-		} else {
-			$json = get_site_option(self::OPTION_NAME, null);
-		}
+		$json = $this->getScopedOption(self::OPTION_NAME, null);
 
 		if ( empty($json) ) {
 			$this->settings = new ameMetaBoxSettings();
@@ -200,6 +221,33 @@ class ameMetaBoxEditor extends ameModule {
 		}
 
 		return $this->settings;
+	}
+
+	public function exportSettings() {
+		$this->loadSettings();
+		if ( $this->settings->isEmpty() ) {
+			return null;
+		}
+		return $this->settings->toArray();
+	}
+
+	public function importSettings($newSettings) {
+		if ( empty($newSettings) || !is_array($newSettings) ) {
+			return;
+		}
+
+		$settings = ameMetaBoxSettings::fromArray($newSettings);
+		$settings->setFirstRefreshState(true);
+		$this->settings = $settings;
+		$this->saveSettings();
+	}
+
+	public function getExportOptionLabel() {
+		return 'Meta boxes';
+	}
+
+	public function getExportOptionDescription() {
+		return '';
 	}
 
 	public function enqueueTabScripts() {
@@ -212,6 +260,7 @@ class ameMetaBoxEditor extends ameModule {
 			&& (
 				$this->settings->isEmpty()
 				|| (!empty($query[self::FORCE_REFRESH_PARAM]) && check_admin_referer(self::FORCE_REFRESH_PARAM))
+				|| (!$this->settings->isFirstRefreshDone())
 			);
 
 		if ( $this->shouldRefreshMetaBoxes ) {
@@ -304,6 +353,7 @@ class ameMetaBoxEditor extends ameModule {
 
 			//Save settings.
 			$settings = ameMetaBoxSettings::fromJSON($post['settings']);
+			$settings->setFirstRefreshState(true);
 			$this->settings = $settings;
 			$this->saveSettings();
 
@@ -314,6 +364,12 @@ class ameMetaBoxEditor extends ameModule {
 
 	public function displaySettingsPage() {
 		if ( $this->shouldRefreshMetaBoxes ) {
+			if ( !$this->settings->isFirstRefreshDone() ) {
+				//Let's update the initial refresh flag before the refresh actually happens.
+				//This helps prevent an infinite loop when the initial refresh fails.
+				$this->settings->setFirstRefreshState(true);
+				$this->saveSettings();
+			}
 			$this->outputTemplate('box-refresh');
 		} else {
 			parent::displaySettingsPage();
@@ -325,4 +381,60 @@ class ameMetaBoxEditor extends ameModule {
 		$this->settings = null;
 	}
 
+	/**
+	 * Add a script that will remove Gutenberg document panels that correspond to hidden meta boxes.
+	 */
+	public function enqueueGutenbergScripts() {
+		$currentScreen = get_current_screen();
+		if ( empty($currentScreen) ) {
+			return;
+		}
+		$currentUser = wp_get_current_user();
+
+		$boxesToPanels = array(
+			'slugdiv'          => 'post-link',
+			'postexcerpt'      => 'post-excerpt',
+			'postimagediv'     => 'featured-image',
+			'commentstatusdiv' => 'discussion-panel',
+			'categorydiv'      => 'taxonomy-panel-category',
+			'pageparentdiv'    => 'page-attributes',
+		);
+
+		$panelsToRemove = array();
+		$metaBoxes = $this->getScreenSettings($currentScreen->id);
+		$presentBoxes = $metaBoxes->getPresentBoxes();
+		foreach ($presentBoxes as $box) {
+			if ( $box->isAvailableTo($currentUser, $this->menuEditor) ) {
+				continue;
+			}
+
+			//What's the panel name for this box?
+			$boxId = $box->getId();
+			if ( isset($boxesToPanels[$boxId]) ) {
+				$panelsToRemove[] = $boxesToPanels[$boxId];
+			} else if ( preg_match('/^tagsdiv-(?P<taxonomy>.++)$/', $boxId, $matches) ) {
+				$panelsToRemove[] = 'taxonomy-panel-' . $matches['taxonomy'];
+			}
+			//We deliberately skip non-core boxes. For now, the remove_meta_box() call
+			//in processMetaBoxes() seems to remove them effectively.
+		}
+
+		if ( empty($panelsToRemove) ) {
+			return;
+		}
+
+		wp_enqueue_auto_versioned_script(
+			'ame-hide-gutenberg-panels',
+			plugins_url('hide-gutenberg-panels.js', __FILE__),
+			array('wp-data', 'wp-blocks', 'wp-edit-post')
+		);
+
+		wp_localize_script(
+			'ame-hide-gutenberg-panels',
+			'wsAmeGutenbergPanelData',
+			array(
+				'panelsToRemove' => $panelsToRemove
+			)
+		);
+	}
 }

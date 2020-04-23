@@ -1,0 +1,27 @@
+@import "../../../css/indeterminate-checkbox";
+@import "../../../css/boxes";
+
+.ame-twm-section {
+	@include ame-emulated-postbox();
+
+	.ws-ame-postbox-content {
+		padding-top: 8px;
+	}
+}
+
+.ame-twm-tweak-children {
+	margin-left: 2em;
+}
+
+.ame-twm-tweak input[type=checkbox] {
+	@include ame-indeterminate-checkbox;
+}
+
+.ame-twm-tweak {
+	font-size: 14px;
+	line-height: 1.65;
+}
+
+#ame-tweak-manager #ws_actor_selector_container {
+	margin-bottom: 8px;
+}

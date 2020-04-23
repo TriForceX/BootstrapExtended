@@ -43,6 +43,53 @@ if(!check_plugin('resize-image-after-upload/resize-image-after-upload.php'))
 	add_filter('jpeg_quality', 'custom_jpeg_quality');
 }
 
+// Force http/https on input URL field
+if(check_plugin('wp-migrate-db-pro/wp-migrate-db-pro.php') || check_plugin('wp-migrate-db/wp-migrate-db.php'))
+{
+	add_filter('admin_footer', 'wp_migrate_db_js');
+    
+    function wp_migrate_db_js() 
+    { ?>
+	<script type="text/javascript">
+	jQuery(function($){
+		if($('#wpmdb-main #migrate-form').length > 0)
+		{
+			var wpmigrateForm 		= $('#wpmdb-main #migrate-form');
+			var wpmigrateGZip 		= wpmigrateForm.find('.option-section #gzip_file');
+			var wpmigrateOldUrl 	= wpmigrateForm.find('.step-two #find-and-replace-sort #old-url');
+			var wpmigrateNewUrl 	= wpmigrateForm.find('.step-two #find-and-replace-sort #new-url');
+			var wpmigrateNewPath 	= wpmigrateForm.find('.step-two #find-and-replace-sort #new-path');
+			var wpmigrateContent	= wpmigrateForm.find('.step-two');
+			var wpmigrateAlert 		= '<?php _e('Due to you are using <strong>Website Base</strong> theme, remember to prepend <strong>http</strong> or <strong>https</strong> to your <i>Local & Production</i> URL', 'websitebase'); ?>';
+
+			wpmigrateContent.prepend('<div class="notification-message warning-notice inline-message">'+wpmigrateAlert+'</div>');
+			wpmigrateNewPath.attr('placeholder', 'New file path or URL');
+			wpmigrateGZip.prop('checked', false);
+
+			if(!(wpmigrateOldUrl.val().indexOf(window.location.protocol) >= 0))
+			{
+				wpmigrateOldUrl.val(window.location.protocol+wpmigrateOldUrl.val());
+			}
+			
+			wpmigrateOldUrl.blur(function(e){
+				if(!(wpmigrateOldUrl.val().indexOf('http://') >= 0 || wpmigrateOldUrl.val().indexOf('https://') >= 0))
+				{
+					wpmigrateOldUrl.val(window.location.protocol+'//'+wpmigrateOldUrl.val());
+				}
+			});
+			
+			wpmigrateNewUrl.blur(function(e){
+				if(!(wpmigrateNewUrl.val().indexOf('http://') >= 0 || wpmigrateNewUrl.val().indexOf('https://') >= 0))
+				{
+					wpmigrateNewUrl.val(window.location.protocol+'//'+wpmigrateNewUrl.val());
+				}
+			});
+		}
+	});
+	</script>
+	<?php }
+}
+
 // Add custom CSS & JS to admin
 function add_custom_admin() 
 {
@@ -442,10 +489,9 @@ function get_theme_mod2($name)
 function disable_plugin_updates($value)
 {	
 	$disabledPlugins = array(
-							'advanced-custom-fields-pro/acf.php', // Updated manually
-							'admin-menu-editor-pro/menu-editor.php', // Updated manually (check the comment "//Manual update" in this file before update)
-							'enhaced-contextual-help/enhaced-contextual-help.php', // Updated manually (from https://git.io/fAjsr)
-							'wp-migrate-db-pro/wp-migrate-db-pro.php', // Updated manually (check the comment "//Manual update" oi this file before update)
+							'advanced-custom-fields-pro/acf.php', // Manually updated from GitHub repositories
+							'admin-menu-editor-pro/menu-editor.php', // Manually updated from GitHub repositories
+							'enhanced-contextual-help/enhanced-contextual-help.php', // Manually updated from https://github.com/TriForceX/WPEnhancedHelp
 							//'plugin-folder/plugin.php',
 							//'plugin-folder/plugin.php',
 							);

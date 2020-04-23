@@ -654,6 +654,22 @@ class Wslm_LicenseServer {
 	}
 
 	private function sanitizeSiteUrl($url) {
+		//Convert Punycode domain names to UTF-8.
+		$domain = @parse_url($url, PHP_URL_HOST);
+		if ( $domain && preg_match('/xn--./', $domain) && is_callable('idn_to_utf8') ) {
+			/** @noinspection PhpComposerExtensionStubsInspection */
+			$converted = idn_to_utf8($domain);
+			if ($converted && ($converted !== $domain)) {
+				$url = preg_replace_callback(
+					'/' . preg_quote($domain, '/') . '/',
+					function() use ($converted) {
+						return $converted;
+					},
+					$url,
+					1
+				);
+			}
+		}
 		return rtrim($url, '/');
 	}
 

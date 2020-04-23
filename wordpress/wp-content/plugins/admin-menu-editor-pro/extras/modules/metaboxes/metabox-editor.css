@@ -15,7 +15,7 @@
 #ame-mb-screen-list {
   display: inline-block;
   background: white;
-  border: 1px solid #E5E5E5;
+  border: 1px solid #ccd0d4;
   box-shadow: 0 1px 1px rgba(0, 0, 0, 0.04);
   padding: 10px 8px;
   padding-top: 0; }
@@ -26,7 +26,7 @@
 
 #ame-mb-main-actions {
   background: white;
-  border: 1px solid #E5E5E5;
+  border: 1px solid #ccd0d4;
   box-shadow: 0 1px 1px rgba(0, 0, 0, 0.04);
   padding: 10px 8px;
   box-sizing: border-box;

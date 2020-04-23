@@ -14,8 +14,6 @@ jQuery(function($) {
 	 * the AJAX request won't be triggered. It will be sent only once the function stops
 	 * being called for N milliseconds. Additionally, it will wait at least N milliseconds
 	 * between requests.
-	 *
-	 * @param string menuUrls
 	 */
 	var flagAsSeen = (function() {
 		var queue = [],
@@ -54,6 +52,9 @@ jQuery(function($) {
 			timeout = null;
 		}
 
+		/**
+		 * @param string menuUrl
+		 */
 		return function(menuUrl) {
 			if ((menuUrl === '') || seenOnThisPage.hasOwnProperty(menuUrl)) {
 				return;
@@ -126,6 +127,18 @@ jQuery(function($) {
 	$newItems.filter('.current, .wp-has-current-submenu').each(function() {
 		maybeFlagItem($(this));
 	});
+
+	//Flag any hidden items as seen. The user can't actually click hidden items,
+	//so the parent menu would permanently stay highlighted if we didn't do this.
+	if (foundNewMenus) {
+		//We want to run after all other $(document).ready callbacks because some
+		//of them might hide admin menu items by calling $('selector').hide().
+		setTimeout(function() {
+			$newItems.filter(':hidden').not('.wp-submenu-head').each(function() {
+				maybeFlagItem($(this));
+			});
+		}, 60);
+	}
 
 	if (foundNewMenus) {
 		$adminMenu.on('mouseenter click focusin', 'li.ws-nmh-is-new-menu', function() {

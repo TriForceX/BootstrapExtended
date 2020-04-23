@@ -37,6 +37,7 @@ class wsNewMenuHighlighter {
 		'post-new.php'                      => true,
 		'profile.php'                       => true,
 		'privacy.php'                       => true,
+		'site-health.php'                   => true,
 		'theme-editor.php'                  => true,
 		'themes.php'                        => true,
 		'tools.php'                         => true,
@@ -51,6 +52,8 @@ class wsNewMenuHighlighter {
 		'sites.php'                         => true,
 		'theme-install.php'                 => true,
 		'upgrade.php'                       => true,
+		//Hidden ACF menu. It's used to show the "Welcome to Advanced Custom Fields" page.
+		'edit.php?post_type=acf-field-group&page=acf-settings-info' => true,
 	);
 
 	private $menusWithNewSubmenus = array();
@@ -198,7 +201,7 @@ class wsNewMenuHighlighter {
 			'ws-nmh-admin-script',
 			plugins_url('assets/highlight-menus.js', __FILE__),
 			$dependencies,
-			'20170503'
+			'20191111'
 		);
 
 		wp_localize_script(

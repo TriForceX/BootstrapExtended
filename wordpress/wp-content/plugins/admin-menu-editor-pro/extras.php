@@ -15,6 +15,9 @@ define('AME_RC_ONLY_CUSTOM', 1);
  */
 define('AME_RC_USE_DEFAULT_ACCESS', 2);
 
+require_once AME_ROOT_DIR . '/extras/exportable-module.php';
+require_once AME_ROOT_DIR . '/extras/persistent-pro-module.php';
+require_once AME_ROOT_DIR . '/extras/import-export/import-export.php';
 
 class wsMenuEditorExtras {
 	/** @var WPMenuEditor */
@@ -52,6 +55,8 @@ class wsMenuEditorExtras {
 
 		$this->virtual_cap_mode = WPMenuEditor::ALL_VIRTUAL_CAPS;
 
+		add_filter('admin_menu_editor-available_modules', array($this, 'filter_available_modules'), 10, 1);
+
 		//Clear per-user caches when their roles or capabilities change.
 		add_action('updated_user_meta', array($this, 'clear_user_cap_cache'), 10, 0);
 		add_action('deleted_user_meta', array($this, 'clear_user_cap_cache'), 10, 0);
@@ -72,6 +77,9 @@ class wsMenuEditorExtras {
 			'wp-name',     //Weblog title
 			'wp-version',  //Current WP version
 			'wp-user-display-name', //Current user's display name,
+			'wp-user-first-name',   // first name,
+			'wp-user-last-name',    // last name,
+			'wp-user-login',        // and username/login.
 			'wp-logout-url', //A URL that lets the current user log out.
 		);
 		foreach($info_shortcodes as $tag){
@@ -99,6 +107,9 @@ class wsMenuEditorExtras {
 		add_action( 'wp_ajax_export_custom_menu', array($this,'ajax_export_custom_menu') );
 		//Add the "Import" and "Export" buttons
 		add_action('admin_menu_editor-sidebar', array($this, 'add_extra_buttons'));
+
+		//Initialise the universal import/export handler.
+		wsAmeImportExportFeature::get_instance($this->wp_menu_editor);
 		
 		add_filter('admin_menu_editor-self_page_title', array($this, 'pro_page_title'), 10, 0);
 		add_filter('admin_menu_editor-self_menu_title', array($this, 'pro_menu_title'), 10, 0);
@@ -119,6 +130,9 @@ class wsMenuEditorExtras {
 			$this->wp_menu_editor->get_magic_hook_priority()
 		);
 
+		//Add extra scripts to the menu editor.
+		add_action('admin_menu_editor-register_scripts', array($this, 'register_extra_scripts'));
+		add_filter('admin_menu_editor-editor_script_dependencies', array($this, 'add_extra_editor_dependencies'));
 
 		/**
 		 * Access management extensions.
@@ -213,7 +227,7 @@ class wsMenuEditorExtras {
 		if ( empty($code) ){
 			$code = isset($atts[0]) ? $atts[0] : '';
 		}
-		
+
 		$info = '['.$code.']'; //Default value
 		switch($code){
 			case 'wp-wpurl':
@@ -237,8 +251,19 @@ class wsMenuEditorExtras {
 				break;
 
 			case 'wp-user-display-name':
-				$user = wp_get_current_user();
-				$info = is_object($user) ? strval($user->get('display_name')) : '';
+				$info = $this->get_current_user_property('display_name');
+				break;
+
+			case 'wp-user-first-name':
+				$info = $this->get_current_user_property('first_name');
+				break;
+
+			case 'wp-user-last-name':
+				$info = $this->get_current_user_property('last_name');
+				break;
+
+			case 'wp-user-login':
+				$info = $this->get_current_user_property('user_login');
 				break;
 
 			case 'wp-logout-url':
@@ -247,6 +272,14 @@ class wsMenuEditorExtras {
 		}
 		
 		return $info;
+	}
+
+	private function get_current_user_property($property) {
+		$user = wp_get_current_user();
+		if (is_object($user)) {
+			return strval($user->get($property));
+		}
+		return '';
 	}
 
 	/**
@@ -269,8 +302,10 @@ class wsMenuEditorExtras {
 			//but it still seems wrong to go this far just to extract a <span> tag.
 			$title = $this->current_shortcode_item['defaults']['menu_title'];
 			if ( stripos($title, '<span') !== false ) {
+				/** @noinspection PhpComposerExtensionStubsInspection */
 				$dom = new domDocument;
 				if ( @$dom->loadHTML($title) ) {
+					/** @noinspection PhpComposerExtensionStubsInspection */
 					$xpath = new DOMXpath($dom);
 					$result = $xpath->query('//span[contains(@class,"update-plugins") or contains(@class,"awaiting-mod")]');
 					if ( $result->length > 0 ) {
@@ -449,7 +484,7 @@ class wsMenuEditorExtras {
 		}
 
 		$styles = array(
-			'border' => 'none',
+			'border' => '0 none',
 			'width'  => '100%',
 			'min-height' => '300px',
 		);
@@ -462,6 +497,8 @@ class wsMenuEditorExtras {
 			unset($styles['min-height']);
 		}
 
+		$is_scrolling_disabled = !empty($item['is_iframe_scroll_disabled']);
+
 		$style_attr = '';
 		foreach($styles as $property => $value) {
 			$style_attr .= $property . ': ' . $value . ';';
@@ -472,12 +509,17 @@ class wsMenuEditorExtras {
 		?>
 		<div class="wrap">
 		<?php echo $heading; ?>
-		<!--suppress HtmlUnknownAttribute "frameborder" is in fact allowed here -->
+		<!--suppress HtmlDeprecatedAttribute "frameborder" is used for backwards compatibility only -->
 			<iframe
 			src="<?php echo esc_attr($item['file']); ?>" 
 			style="<?php echo esc_attr($style_attr); ?>>"
 			id="ws-framed-page"
-			frameborder="0" 
+			frameborder="0"
+			<?php
+			if ( $is_scrolling_disabled ) {
+				echo ' scrolling="no" ';
+			}
+			?>
 		></iframe>
 		</div>
 		<?php
@@ -498,21 +540,43 @@ class wsMenuEditorExtras {
 				var empiricalFudgeFactor = 29; //Based on the default admin theme in WP 4.1 (without the test helper output).
 				var initialHeight = maxHeight - empiricalFudgeFactor;
 
+				//Match the height of the frame to its contents. This only works if the frame
+				//is in the same origin and it has already finished loading.
+				var contentHeight = null;
+				var isContentHeightUsed = false;
+				try {
+					contentHeight = frame.contents().height();
+					if ((contentHeight > initialHeight) && (contentHeight > 100)) {
+						initialHeight = contentHeight;
+						isContentHeightUsed = true;
+					}
+				} catch (error) {
+					//The frame is probably on a different origin and we can't access its contents.
+					contentHeight = null;
+				}
+
 				frame.height(initialHeight);
 
-				setTimeout(function() {
-					//Check if there's a scroll bar and reduce the height just enough to get rid of it.
-					//Sometimes it's not possible to avoid scrolling because another part of the page is too tall,
-					//so we have a minimum height limit.
-					var scrollDelta = $(document).height() - $(window).height();
-					if (scrollDelta > 0) {
-						frame.height(Math.max(initialHeight - scrollDelta, minHeight));
-					}
-				}, 1)
+				if (!isContentHeightUsed) {
+					setTimeout(function () {
+						//Check if there's a scroll bar and reduce the height just enough to get rid of it.
+						//Sometimes it's not possible to avoid scrolling because another part of the page is too tall,
+						//so we have a minimum height limit.
+						var scrollDelta = $(document).height() - $(window).height();
+						if (scrollDelta > 0) {
+							frame.height(Math.max(initialHeight - scrollDelta, minHeight));
+						}
+					}, 1)
+				}
 			}
 
-			jQuery(function(){
+			jQuery(function($){
 				wsResizeFrame();
+
+				$('#ws-framed-page').on('load', function () {
+					//For same-origin frames, we can auto-resize the frame once it finishes loading.
+					wsResizeFrame();
+				});
 			});
 			</script>
 		<?php
@@ -764,20 +828,21 @@ wsEditorData.importMenuNonce = "<?php echo esc_js(wp_create_nonce('import_custom
 </script>
 		<?php
 	}
-	
-    /**
-     * Prepare a custom menu for export. 
-     *
-     * Expects menu data to be in $_POST['data'].
-     * Outputs a JSON-encoded object with three fields : 
-     * 	download_url - the URL that can be used to download the exported menu.
-     *	filename - export file name.
-     *	filesize - export file size (in bytes).
-     *
-     * If something goes wrong, the response object will contain an 'error' field with an error message.
-     *
-     * @return void
-     */
+
+	/**
+	 * Prepare a custom menu for export.
+	 *
+	 * Expects menu data to be in $_POST['data'].
+	 * Outputs a JSON-encoded object with three fields :
+	 *    download_url - the URL that can be used to download the exported menu.
+	 *    filename - export file name.
+	 *    filesize - export file size (in bytes).
+	 *
+	 * If something goes wrong, the response object will contain an 'error' field with an error message.
+	 *
+	 * @return void
+	 * @throws InvalidMenuException
+	 */
 	function ajax_export_custom_menu(){
 		$wp_menu_editor = $this->wp_menu_editor;
 		if (!$wp_menu_editor->current_user_can_edit_menu() || !check_ajax_referer('export_custom_menu', false, false)){
@@ -916,36 +981,7 @@ wsEditorData.importMenuNonce = "<?php echo esc_js(wp_create_nonce('import_custom
 
 			//Check for general upload errors.
 			if ($file_data['error'] != UPLOAD_ERR_OK) {
-				switch($file_data['error']) {
-					case UPLOAD_ERR_INI_SIZE:
-						$message = sprintf(
-							'The uploaded file exceeds the upload_max_filesize directive in php.ini. Limit: %s',
-							strval(ini_get('upload_max_filesize'))
-						);
-						break;
-					case UPLOAD_ERR_FORM_SIZE:
-						$message = "The uploaded file exceeds the internal file size limit. Please contact the developer.";
-						break;
-					case UPLOAD_ERR_PARTIAL:
-						$message = "The file was only partially uploaded";
-						break;
-					case UPLOAD_ERR_NO_FILE:
-						$message = "No file was uploaded";
-						break;
-					case UPLOAD_ERR_NO_TMP_DIR:
-						$message = "Missing a temporary folder";
-						break;
-					case UPLOAD_ERR_CANT_WRITE:
-						$message = "Failed to write file to disk";
-						break;
-					case UPLOAD_ERR_EXTENSION:
-						$message = "File upload stopped by a PHP extension";
-						break;
-
-					default:
-						$message = 'Unknown upload error #' . $file_data['error'];
-						break;
-				}
+				$message = self::get_upload_error_message($file_data['error']);
 				$this->output_for_jquery_form( $wp_menu_editor->json_encode(array('error' => $message)) );
 				die();
 			}
@@ -998,6 +1034,40 @@ wsEditorData.importMenuNonce = "<?php echo esc_js(wp_create_nonce('import_custom
 		}
 	}
 
+	public static function get_upload_error_message($errorCode) {
+		switch($errorCode) {
+			case UPLOAD_ERR_INI_SIZE:
+				$message = sprintf(
+					'The uploaded file exceeds the upload_max_filesize directive in php.ini. Limit: %s',
+					strval(ini_get('upload_max_filesize'))
+				);
+				break;
+			case UPLOAD_ERR_FORM_SIZE:
+				$message = "The uploaded file exceeds the MAX_FILE_SIZE directive that was specified in the HTML form.";
+				break;
+			case UPLOAD_ERR_PARTIAL:
+				$message = "The file was only partially uploaded.";
+				break;
+			case UPLOAD_ERR_NO_FILE:
+				$message = "No file was uploaded.";
+				break;
+			case UPLOAD_ERR_NO_TMP_DIR:
+				$message = "Missing a temporary folder.";
+				break;
+			case UPLOAD_ERR_CANT_WRITE:
+				$message = "Failed to write file to disk.";
+				break;
+			case UPLOAD_ERR_EXTENSION:
+				$message = "File upload stopped by a PHP extension.";
+				break;
+
+			default:
+				$message = 'Unknown upload error #' . $errorCode;
+				break;
+		}
+		return $message;
+	}
+
 	/**
 	 * Utility method that outputs data in a format suitable to the jQuery Form plugin.
 	 *
@@ -1033,7 +1103,25 @@ wsEditorData.importMenuNonce = "<?php echo esc_js(wp_create_nonce('import_custom
 		<input type="button" id='ws_import_menu' value="Import" class="button ws_main_button" />
 		<?php
 	}
-	
+
+	public function register_extra_scripts() {
+		wp_register_auto_versioned_script(
+			'ame-menu-editor-extras',
+			plugins_url('extras/menu-editor-extras.js', $this->wp_menu_editor->plugin_file),
+			array('jquery')
+		);
+	}
+
+	/**
+	 * @param array $dependencies
+	 * @return array
+	 */
+	public function add_extra_editor_dependencies($dependencies) {
+		$dependencies[] = 'ame-menu-editor-extras';
+		return $dependencies;
+	}
+
+
 	function hook_user_has_cap($allcaps, /** @noinspection PhpUnusedParameterInspection */ $caps, $args){
 		//Add "user:user_login" to the user's capabilities. This makes it possible to restrict
 		//menu access on a per-user basis.
@@ -1781,7 +1869,7 @@ wsEditorData.importMenuNonce = "<?php echo esc_js(wp_create_nonce('import_custom
 		} elseif ( !empty($item['icon_url']) ) {
 
 			$item['menu_title'] = sprintf(
-				'<div class="ame-submenu-icon"><img src="%1$s"></div>%2$s',
+				'<div class="ame-submenu-icon"><img src="%1$s" alt="Menu icon"></div>%2$s',
 				esc_attr($item['icon_url']),
 				$item['menu_title']
 			);
@@ -1928,7 +2016,12 @@ wsEditorData.importMenuNonce = "<?php echo esc_js(wp_create_nonce('import_custom
 	 * Enqueue the user-defined menu color scheme, if any.
 	 */
 	public function enqueue_menu_color_style() {
-		$custom_menu = $this->wp_menu_editor->load_custom_menu();
+		try {
+			$custom_menu = $this->wp_menu_editor->load_custom_menu();
+		} catch (InvalidMenuException $e) {
+			//This exception is best handled elsewhere.
+			return;
+		}
 		if ( empty($custom_menu) || empty($custom_menu['color_css']) ) {
 			return;
 		}
@@ -1954,7 +2047,11 @@ wsEditorData.importMenuNonce = "<?php echo esc_js(wp_create_nonce('import_custom
 			$config_id = (string) ($_GET['ame_config_id']);
 		}
 
-		$custom_menu = $this->wp_menu_editor->load_custom_menu($config_id);
+		try {
+			$custom_menu = $this->wp_menu_editor->load_custom_menu($config_id);
+		} catch (InvalidMenuException $e) {
+			return;
+		}
 		if ( empty($custom_menu) || empty($custom_menu['color_css']) ) {
 			return;
 		}
@@ -2201,6 +2298,32 @@ wsEditorData.importMenuNonce = "<?php echo esc_js(wp_create_nonce('import_custom
 
 	public function enable_virtual_caps() {
 		$this->disable_virtual_caps = false;
+	}
+
+	public function filter_available_modules($modules) {
+		$modules['plugin-visibility'] = array_merge(
+			$modules['plugin-visibility'],
+			array(
+				'path' => AME_ROOT_DIR . '/extras/modules/plugin-visibility/plugin-visibility.php',
+				'className' => 'amePluginVisibilityPro',
+				'title' => 'Plugins',
+			)
+		);
+		/*$modules['role-editor'] = array(
+			'path' => AME_ROOT_DIR . '/extras/modules/role-editor/load.php',
+			'className' => 'ameRoleEditor',
+			'requiredPhpVersion' => '5.3.6',
+			'title' => 'Role Editor',
+		);//*/
+
+		$modules['tweaks'] = array(
+			'path' => AME_ROOT_DIR . '/extras/modules/tweaks/tweaks.php',
+			'className'    => 'ameTweakManager',
+			'title'        => 'Tweaks',
+			'requiredPhpVersion' => '5.4',
+		);
+
+		return $modules;
 	}
 }
 

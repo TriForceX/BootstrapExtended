@@ -3,7 +3,7 @@
 class Wslm_BasicPluginLicensingUI {
 	private $licenseManager;
 	/**
-	 * @var Puc_v4p2_Plugin_UpdateChecker
+	 * @var Puc_v4p8_Plugin_UpdateChecker
 	 */
 	private $updateChecker;
 	private $pluginFile;
@@ -194,9 +194,6 @@ class Wslm_BasicPluginLicensingUI {
 		$result = $this->licenseManager->licenseThisSite($this->triedLicenseKey);
 		if ( is_wp_error($result) ) {
 			$this->printError($result);
-			//If the license key exists but the site can't be licensed for some reason,
-			//the API response may include the license details.
-			$this->triedLicense = $result->get_error_data('license');
 		} else {
 			$this->printNotice('Success! This site is now licensed.');
 
@@ -204,8 +201,6 @@ class Wslm_BasicPluginLicensingUI {
 			if ( isset($result['notice']) ) {
 				$this->printNotice($result['notice']['message'], $result['notice']['class']);
 			}
-
-			$this->triedLicense = $result;
 		}
 	}
 
@@ -552,7 +547,7 @@ class Wslm_BasicPluginLicensingUI {
 				$renewalUrl ? '</a>' : ''
 			),
 			'not_found' => 'The current license key or site token is invalid.',
-			'wrong_site' => 'Your site URL has changed. Please re-enter your license key.',
+			'wrong_site' => 'Please re-enter your license key. This is necessary because the site URL has changed.',
 		);
 		$status = $license->getStatus();
 		$notice = isset($messages[$status]) ? $messages[$status] : 'The current license is invalid.';
@@ -652,9 +647,13 @@ class Wslm_BasicPluginLicensingUI {
 	}
 
 	public function autoActivateLicense() {
-		$license = $this->licenseManager->getLicense();
 		$failureFlag = 'wslm_auto_activation_failed-' . $this->slug;
-		if ( !$this->currentUserCanManageLicense() || $license->isValid() || get_site_option($failureFlag) ) {
+		if ( !$this->currentUserCanManageLicense() || get_site_option($failureFlag) ) {
+			return;
+		}
+
+		$license = $this->licenseManager->getLicense();
+		if ( $license->isValid() ) {
 			return;
 		}
 

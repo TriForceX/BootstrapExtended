@@ -3,9 +3,12 @@
 /// <reference path="dashboard-widget-editor.ts" />
 /// <reference path="../../../js/common.d.ts" />
 var __extends = (this && this.__extends) || (function () {
-    var extendStatics = Object.setPrototypeOf ||
-        ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
-        function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
+    var extendStatics = function (d, b) {
+        extendStatics = Object.setPrototypeOf ||
+            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+            function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
+        return extendStatics(d, b);
+    };
     return function (d, b) {
         extendStatics(d, b);
         function __() { this.constructor = d; }
@@ -58,7 +61,7 @@ var AmeDashboardWidget = /** @class */ (function () {
                     var actors = widgetEditor.actorSelector.getVisibleActors();
                     var areAnyActorsEnabled = false, areAnyActorsDisabled = false;
                     for (var index = 0; index < actors.length; index++) {
-                        var hasAccess = _this.actorHasAccess(actors[index].id, actors[index]);
+                        var hasAccess = _this.actorHasAccess(actors[index].getId(), actors[index]);
                         if (hasAccess) {
                             areAnyActorsEnabled = true;
                         }
@@ -79,7 +82,7 @@ var AmeDashboardWidget = /** @class */ (function () {
                     //Enable/disable all.
                     var actors = widgetEditor.actorSelector.getVisibleActors();
                     for (var index = 0; index < actors.length; index++) {
-                        _this.grantAccess.set(actors[index].id, enabled);
+                        _this.grantAccess.set(actors[index].getId(), enabled);
                     }
                 }
             }
@@ -201,6 +204,7 @@ var AmeActorAccessDictionary = /** @class */ (function () {
             this.items[actor](value);
         }
     };
+    // noinspection JSUnusedGlobalSymbols
     AmeActorAccessDictionary.prototype.getAll = function () {
         var result = {};
         for (var actorId in this.items) {
@@ -377,4 +381,3 @@ ko.components.register('ame-widget-property', {
         element: 'ame-widget-property-template'
     }
 });
-//# sourceMappingURL=dashboard-widget.js.map

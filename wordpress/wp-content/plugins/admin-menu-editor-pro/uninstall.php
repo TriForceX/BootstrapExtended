@@ -1,7 +1,7 @@
 <?php
 
 /**
- * @author W-Shadow 
+ * @author W-Shadow
  * @copyright 2012
  *
  * The uninstallation script.
@@ -31,6 +31,14 @@ if( defined( 'ABSPATH') && defined('WP_UNINSTALL_PLUGIN') ) {
 		delete_site_option('ws_ame_meta_boxes');
 	}
 
+	//Remove tweak settings.
+	delete_option('ws_ame_tweak_settings');
+	delete_option('ws_ame_detected_tmce_buttons');
+	if ( function_exists('delete_site_option') ) {
+		delete_site_option('ws_ame_tweak_settings');
+		delete_site_option('ws_ame_detected_tmce_buttons');
+	}
+
 	//Call the uninstaller for the "highlight new menus" module.
 	$highlighterUninstaller = dirname(__FILE__) . '/modules/highlight-new-menus/uninstall.php';
 	if ( file_exists($highlighterUninstaller) ) {
@@ -39,6 +47,8 @@ if( defined( 'ABSPATH') && defined('WP_UNINSTALL_PLUGIN') ) {
 
 	//Remove license data (if any).
 	if ( file_exists(dirname(__FILE__) . '/extras.php') ) {
+		require_once dirname(__FILE__) . '/includes/basic-dependencies.php';
+
 		require_once dirname(__FILE__) . '/extras.php';
 		if ( isset($ameProLicenseManager) ) {
 			$ameProLicenseManager->unlicenseThisSite();

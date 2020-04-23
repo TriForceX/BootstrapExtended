@@ -16,5 +16,10 @@
 		font-size: 20px !important;
 	}
 
+	//Some plugins set the icon as a background image instead of a pseudo-element.
+	& > .wp-menu-image {
+		background-image: none;
+	}
+
 	@import '_dashicons';
 }

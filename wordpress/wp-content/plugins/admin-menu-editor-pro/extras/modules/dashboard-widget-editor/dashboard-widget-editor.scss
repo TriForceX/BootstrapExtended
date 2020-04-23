@@ -1,3 +1,7 @@
+@import "../../../css/boxes";
+
+$widgetBorderColor: $amePostboxBorderColor;
+
 #ame-dashboard-widget-editor #ws_actor_selector {
 	margin-top: 6px;
 }
@@ -44,7 +48,7 @@
 	box-sizing: border-box;
 
 	background: white;
-	border: 1px solid #E5E5E5;
+	border: 1px solid $widgetBorderColor;
 	box-shadow: 0 1px 1px rgba(0, 0, 0, 0.04);
 }
 
@@ -65,7 +69,7 @@ $titleActionWidth: 40px;
 	font-weight: 600;
 	line-height: 1.4em;
 
-	border: 1px solid #E5E5E5;
+	border: 1px solid $widgetBorderColor;
 	box-shadow: 0 1px 1px rgba(0, 0, 0, 0.04);
 
 	h3 {
@@ -94,7 +98,7 @@ $titleActionWidth: 40px;
 
 		text-decoration: none;
 		outline: none;
-		color: #A0A5AA;
+		color: #72777c;
 
 		&:before {
 			display: inline-block;
@@ -111,7 +115,7 @@ $titleActionWidth: 40px;
 		}
 
 		&:hover {
-			color: #777;
+			color: #23282d;
 		}
 	}
 
@@ -169,7 +173,7 @@ $titleActionWidth: 40px;
 
 	padding: 15px;
 
-	border: 1px solid #E5E5E5;
+	border: 1px solid $widgetBorderColor;
 	box-shadow: 0 1px 1px rgba(0, 0, 0, 0.04);
 
 	border-top: none;
@@ -210,6 +214,13 @@ $titleActionWidth: 40px;
 	.ame-widget-top {
 		box-shadow: none;
 	}
+}
+
+@import "../../../css/indeterminate-checkbox";
+
+.ame-widget-access-checkbox,
+input[type="checkbox"].ame-widget-access-checkbox {
+	@include ame-indeterminate-checkbox;
 }
 
 /*

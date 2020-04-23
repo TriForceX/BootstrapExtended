@@ -63,6 +63,7 @@ class ameMetaBoxWrapper extends ameMetaBox {
 	 */
 
 	public function getCallbackFileName() {
+		//TODO: Maybe normalize this to use forward slashes always? Could help with JSON corruption caused by some DB migration plugins.
 		return $this->callbackFileName;
 	}
 

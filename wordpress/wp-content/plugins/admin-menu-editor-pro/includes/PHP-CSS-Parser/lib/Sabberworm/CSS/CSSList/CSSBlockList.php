@@ -65,9 +65,19 @@ abstract class CSSBlockList extends CSSList {
 				if ($sSpecificitySearch === null) {
 					$aResult[] = $oSelector;
 				} else {
-					$sComparison = "\$bRes = {$oSelector->getSpecificity()} $sSpecificitySearch;";
-					eval($sComparison);
-					if ($bRes) {
+					//WSH: The original implementation used eval to compare specificity. I rewrote it
+					//to use version_compare instead to prevent false positives in vulnerability scanners.
+					//It's a bit of a hack, but it's shorter than a big switch statement.
+					$specificity = $oSelector->getSpecificity();
+					$isMatch = false;
+					if ( preg_match(
+						'/^(?P<operator>(?:[<>]=?)|(?:!==?)|={2,3})\s*?(?P<number>\d++)$/',
+						trim($sSpecificitySearch),
+						$matches
+					) ) {
+						$isMatch = version_compare((string)$specificity, $matches['number'], $matches['operator']);
+					}
+					if ($isMatch) {
 						$aResult[] = $oSelector;
 					}
 				}

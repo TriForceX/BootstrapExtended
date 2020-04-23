@@ -295,12 +295,12 @@ var ameTest = {
 		this.waitForSettingsSavedMessage(callback);
 	},
 
-	waitForSettingsSavedMessage: function(callback) {
+	waitForSettingsSavedMessage: function(callback, timeout) {
 		casper.waitForSelector('#setting-error-settings_updated,#message.updated', function() {
 			if (callback) {
 				callback();
 			}
-		});
+		}, null, timeout);
 	},
 
 	thenAddVisibleUser: function(userName) {

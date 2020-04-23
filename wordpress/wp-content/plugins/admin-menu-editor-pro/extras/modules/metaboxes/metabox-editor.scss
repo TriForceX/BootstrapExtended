@@ -1,3 +1,5 @@
+@import "../../../css/boxes";
+
 #ame-meta-box-editor {
 	.ame-mb-check-column {
 		padding: 11px 0 0 3px;
@@ -27,7 +29,7 @@
 @mixin wp-generic-box {
 	background: white;
 
-	border: 1px solid #E5E5E5;
+	border: 1px solid $amePostboxBorderColor;
 	box-shadow: 0 1px 1px rgba(0, 0, 0, 0.04);
 
 	padding: 10px 8px;

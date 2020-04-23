@@ -63,6 +63,7 @@ class AmeSuperUsers {
 		AmeSelectUsersDialog.open({
 			selectedUsers: AmeSuperUsers._.map(this.superUsers(), 'userLogin'),
 			users: AmeSuperUsers._.indexBy(this.superUsers(), 'userLogin'),
+			actorManager: AmeActors,
 
 			currentUserLogin: this.currentUserLogin,
 			alwaysIncludeCurrentUser: false,

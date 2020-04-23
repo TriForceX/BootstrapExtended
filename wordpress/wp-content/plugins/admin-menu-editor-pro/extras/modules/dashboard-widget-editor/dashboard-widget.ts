@@ -40,7 +40,7 @@ abstract class AmeDashboardWidget {
 	propertyTemplate: string = '';
 	protected widgetType: string = null;
 
-	constructor(settings: WidgetPropertyMap, widgetEditor: AmeDashboardWidgetEditor) {
+	protected constructor(settings: WidgetPropertyMap, widgetEditor: AmeDashboardWidgetEditor) {
 		this.rawProperties = settings;
 		this.widgetEditor = widgetEditor;
 
@@ -85,7 +85,7 @@ abstract class AmeDashboardWidget {
 					let areAnyActorsEnabled = false, areAnyActorsDisabled = false;
 
 					for (let index = 0; index < actors.length; index++) {
-						let hasAccess = this.actorHasAccess(actors[index].id, actors[index]);
+						let hasAccess = this.actorHasAccess(actors[index].getId(), actors[index]);
 						if (hasAccess) {
 							areAnyActorsEnabled = true;
 						} else if (hasAccess === false) {
@@ -105,7 +105,7 @@ abstract class AmeDashboardWidget {
 					//Enable/disable all.
 					const actors = widgetEditor.actorSelector.getVisibleActors();
 					for (let index = 0; index < actors.length; index++) {
-						this.grantAccess.set(actors[index].id, enabled);
+						this.grantAccess.set(actors[index].getId(), enabled);
 					}
 				}
 			}
@@ -188,7 +188,7 @@ abstract class AmeDashboardWidget {
 		return properties;
 	}
 
-	protected actorHasAccess(actorId: string, actor?: AmeBaseActor, defaultAccess: boolean = true) {
+	protected actorHasAccess(actorId: string, actor?: IAmeActor, defaultAccess: boolean = true) {
 		//Is there a setting for this actor specifically?
 		let hasAccess = this.grantAccess.get(actorId, null);
 		if (hasAccess !== null) {
@@ -252,6 +252,7 @@ class AmeActorAccessDictionary {
 		}
 	}
 
+	// noinspection JSUnusedGlobalSymbols
 	getAll(): AmeDictionary<boolean> {
 		let result: AmeDictionary<boolean> = {};
 		for (let actorId in this.items) {

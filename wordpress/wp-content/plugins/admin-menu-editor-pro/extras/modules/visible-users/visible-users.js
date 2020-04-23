@@ -8,9 +8,9 @@ window.AmeSelectUsersDialog = (function($, _) {
 		adminAjaxUrl,
 		searchUsersNonce = '';
 
-	var /** @var {AmeUser[]} */
+	var /** @var {IAmeUser[]} */
 		selectedUsers = [],
-		/** @var {AmeUser[]} */
+		/** @var {IAmeUser[]} */
 		loadedUsers = [],
 		searchQuery = '',
 		searchKeywords = [],
@@ -18,6 +18,7 @@ window.AmeSelectUsersDialog = (function($, _) {
 		currentUserLogin = '',
 		alwaysIncludeCurrentUser = false,
 		saveCallback = null,
+		actorManager = null,
 
 		$dialog,
 		$selectedUsersTable,
@@ -27,7 +28,7 @@ window.AmeSelectUsersDialog = (function($, _) {
 
 
 	/**
-	 * @param {AmeUser} user
+	 * @param {IAmeUser} user
 	 */
 	function addSelectedUser(user) {
 		//Don't add the same user twice.
@@ -51,8 +52,8 @@ window.AmeSelectUsersDialog = (function($, _) {
 	}
 
 	/**
-	 * @param {AmeUser} user
-	 * @param {jQuery} tableRow
+	 * @param {IAmeUser} user
+	 * @param {JQuery} tableRow
 	 */
 	function removeSelectedUser(user, tableRow) {
 		//You can't remove the current user, ever.
@@ -108,7 +109,7 @@ window.AmeSelectUsersDialog = (function($, _) {
 						var userIndex = _.indexBy(loadedUsers, 'userLogin');
 						_.forEach(response.users, function(userDetails) {
 							if (!userIndex.hasOwnProperty(userDetails.user_login)) {
-								loadedUsers.push(AmeUser.createFromProperties(userDetails));
+								loadedUsers.push(actorManager.createUserFromProperties(userDetails));
 							}
 						});
 					}
@@ -156,7 +157,7 @@ window.AmeSelectUsersDialog = (function($, _) {
 
 	/**
 	 *
-	 * @param {AmeUser} user
+	 * @param {IAmeUser} user
 	 * @param {string} query
 	 * @param {string[]} keywords
 	 * @returns {number}
@@ -166,7 +167,7 @@ window.AmeSelectUsersDialog = (function($, _) {
 			return 1; //Include all users when there's no query.
 		}
 
-		var haystack = user.userLogin.toLowerCase() + '\n' + user.displayName.toLowerCase();
+		var haystack = user.userLogin.toLowerCase() + '\n' + user.getDisplayName().toLowerCase();
 		if (haystack.indexOf(query) >= 0) {
 			return 2;
 		} else if (_.all(keywords, function(keyword) { return (haystack.indexOf(keyword) >= 0);	})) {
@@ -177,7 +178,7 @@ window.AmeSelectUsersDialog = (function($, _) {
 
 	/**
 	 *
-	 * @param {AmeUser} user
+	 * @param {IAmeUser} user
 	 * @param {string} action
 	 * @returns {*|void}
 	 */
@@ -199,7 +200,7 @@ window.AmeSelectUsersDialog = (function($, _) {
 				'text': user.userLogin + ((user.userLogin === currentUserLogin) ? ' (current user)' : ''),
 				'class': 'ws_user_username_column'
 			})).append($('<td></td>', {
-				'text': user.displayName,
+				'text': user.getDisplayName(),
 				'class': 'ws_user_display_name_column'
 			}));
 	}
@@ -347,16 +348,18 @@ window.AmeSelectUsersDialog = (function($, _) {
 		/**
 		 * @param {Object} options
 		 * @param {String} options.currentUserLogin
-		 * @param {Boolean} options.alwaysIncludeCurrentUser
+		 * @param {Boolean} [options.alwaysIncludeCurrentUser]
 		 * @param {Function} options.save
 		 * @param {String[]} options.selectedUsers
-		 * @param {Object.<String, AmeUser>} options.users
+		 * @param {Object.<String, IAmeUser>} options.users
+		 * @param {AmeActorManagerInterface} options.actorManager
 		 * @param {String} [options.dialogTitle]
 		 */
 		open: function(options) {
 			currentUserLogin = options.currentUserLogin;
 			alwaysIncludeCurrentUser = _.get(options, 'alwaysIncludeCurrentUser', false);
 			saveCallback = options.save;
+			actorManager = options.actorManager;
 
 			var knownUsers = options.users,
 				initialSelectedUsers = [].concat(options.selectedUsers); //Don't modify the input array.
@@ -410,7 +413,8 @@ window.AmeVisibleUserDialog = (function($, _) {
 		 * @param {String} options.currentUserLogin
 		 * @param {Function} options.save
 		 * @param {String[]} options.visibleUsers
-		 * @param {Object.<String, AmeUser>} options.users
+		 * @param {Object.<String, IAmeUser>} options.users
+		 * @param {AmeActorManagerInterface} options.actorManager
 		 */
 		open: function(options) {
 			options = _.assign(
