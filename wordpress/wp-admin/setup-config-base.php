@@ -40,6 +40,7 @@ require_once ABSPATH . 'wp-admin/includes/translation-install.php';
 
 /** Check local enviroment */
 $localhost = preg_match('/(::1|127.0.0.|192.168.|localhost)/i', $_SERVER['HTTP_HOST']);
+$localpath = str_replace('wp-admin','', dirname($_SERVER["REQUEST_URI"]));
 
 /** Load Website Base language */
 if(stripos( $_REQUEST['language'], 'es' ) !== false)
@@ -320,7 +321,7 @@ switch ( $step ) {
 			</tr>
 			<tr>
 				<th scope="row"><label for="directory"><?php _e( 'Main directory', 'websitebase' ); ?></label></th>
-				<td><input name="directory" id="directory" aria-describedby="directory-desc" type="text" size="25" value="/wordpress/" /></td>
+				<td><input name="directory" id="directory" aria-describedby="directory-desc" type="text" size="25" value="<?php echo $localpath; ?>" /></td>
 				<td><?php _e( 'Main site directory in <code>server</code>. If is in root directory write a <code>/</code> symbol', 'websitebase' ); ?>.</td>
 			</tr>
 		</tbody>
@@ -357,7 +358,7 @@ switch ( $step ) {
 			</tr>
 			<tr>
 				<th scope="row"><label for="directory_2"><?php _e( 'Main directory', 'websitebase' ); ?></label></th>
-				<td><input name="directory_2" id="directory_2" aria-describedby="directory_2-desc" type="text" size="25" value="/" /></td>
+				<td><input name="directory_2" id="directory_2" aria-describedby="directory_2-desc" type="text" size="25" value="<?php echo $localpath; ?>" /></td>
 				<td><?php _e( 'Main site directory in <code>server</code>. If is in root directory write a <code>/</code> symbol', 'websitebase'); ?>.</td>
 			</tr>
 		</tbody>
