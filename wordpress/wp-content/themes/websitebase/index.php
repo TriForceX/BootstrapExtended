@@ -63,24 +63,22 @@
 						Bootstrap
 						</a>
 						<div class="dropdown-menu dropdown-overflow-lg" aria-labelledby="navbarDropdown04">
-							<a class="dropdown-item" href="https://getbootstrap.com/docs/4.1/layout/overview/" target="_blank">Layout</a>
-							<a class="dropdown-item" href="https://getbootstrap.com/docs/4.1/layout/grid/" target="_blank">Grid</a>
-							<a class="dropdown-item" href="https://getbootstrap.com/docs/4.1/components/buttons/" target="_blank">Components</a>
+							<a class="dropdown-item" href="https://getbootstrap.com/docs/4.4/layout/overview/" target="_blank">Layout</a>
+							<a class="dropdown-item" href="https://getbootstrap.com/docs/4.4/layout/grid/" target="_blank">Grid</a>
+							<a class="dropdown-item" href="https://getbootstrap.com/docs/4.4/components/buttons/" target="_blank">Components</a>
 							<div class="dropdown-divider"></div>
-							<a class="dropdown-item" href="https://getbootstrap.com/docs/4.1/examples/starter-template/" target="_blank">Starter Template</a>
-							<a class="dropdown-item" href="https://getbootstrap.com/docs/4.1/examples/grid/" target="_blank">Grid</a>
-							<a class="dropdown-item" href="https://getbootstrap.com/docs/4.1/examples/jumbotron/" target="_blank">Jumborton</a>
-							<a class="dropdown-item" href="https://getbootstrap.com/docs/4.1/examples/album/" target="_blank">Album</a>
-							<a class="dropdown-item" href="https://getbootstrap.com/docs/4.1/examples/pricing/" target="_blank">Pricing</a>
-							<a class="dropdown-item" href="https://getbootstrap.com/docs/4.1/examples/checkout/" target="_blank">Checkout</a>
-							<a class="dropdown-item" href="https://getbootstrap.com/docs/4.1/examples/product/" target="_blank">Product</a>
-							<a class="dropdown-item" href="https://getbootstrap.com/docs/4.1/examples/cover/" target="_blank">Cover</a>
-							<a class="dropdown-item" href="https://getbootstrap.com/docs/4.1/examples/carousel/" target="_blank">Carousel</a>
-							<a class="dropdown-item" href="https://getbootstrap.com/docs/4.1/examples/blog/" target="_blank">Blog</a>
-							<a class="dropdown-item" href="https://getbootstrap.com/docs/4.1/examples/dashboard/" target="_blank">Dashboard</a>
-							<a class="dropdown-item" href="https://getbootstrap.com/docs/4.1/examples/sign-in/" target="_blank">Sign-In</a>
-							<a class="dropdown-item" href="https://getbootstrap.com/docs/4.1/examples/sticky-footer/" target="_blank">Sticky Footer</a>
-							<a class="dropdown-item text-truncate" href="https://getbootstrap.com/docs/4.1/examples/sticky-footer-navbar/" target="_blank">Sticky Footer Navbar</a>
+							<a class="dropdown-item" href="https://getbootstrap.com/docs/4.4/examples/album/" target="_blank">Album</a>
+							<a class="dropdown-item" href="https://getbootstrap.com/docs/4.4/examples/pricing/" target="_blank">Pricing</a>
+							<a class="dropdown-item" href="https://getbootstrap.com/docs/4.4/examples/checkout/" target="_blank">Checkout</a>
+							<a class="dropdown-item" href="https://getbootstrap.com/docs/4.4/examples/product/" target="_blank">Product</a>
+							<a class="dropdown-item" href="https://getbootstrap.com/docs/4.4/examples/cover/" target="_blank">Cover</a>
+							<a class="dropdown-item" href="https://getbootstrap.com/docs/4.4/examples/carousel/" target="_blank">Carousel</a>
+							<a class="dropdown-item" href="https://getbootstrap.com/docs/4.4/examples/blog/" target="_blank">Blog</a>
+							<a class="dropdown-item" href="https://getbootstrap.com/docs/4.4/examples/dashboard/" target="_blank">Dashboard</a>
+							<a class="dropdown-item" href="https://getbootstrap.com/docs/4.4/examples/sign-in/" target="_blank">Sign-in</a>
+							<a class="dropdown-item" href="https://getbootstrap.com/docs/4.4/examples/sticky-footer/" target="_blank">Sticky footer</a>
+							<a class="dropdown-item" href="https://getbootstrap.com/docs/4.4/examples/sticky-footer-navbar/" target="_blank">Sticky footer navbar</a>
+							<a class="dropdown-item" href="https://getbootstrap.com/docs/4.4/examples/" target="_blank">More...</a>
 						</div>
 					</li>
 					<li class="nav-item dropdown">
@@ -134,7 +132,7 @@
 			<!--<h1 class="display-4">Resources Examples</h1>
 			<p class="lead">Some useful code functions and improvments in <code>PHP</code> or <code>JS</code> using the included resources in this repository.</p>-->
 			<div class="media d-block d-md-flex">
-				<img class="align-self-center mr-3 mb-2 mb-md-0" src="https://avatars0.githubusercontent.com/u/44783903" alt="Website Base">
+				<img class="align-self-center mr-3 mb-2 mb-md-0" src="https://user-images.githubusercontent.com/16083854/80159281-92a48480-8598-11ea-97eb-b43c34bb9240.png" alt="Website Base">
 				<div class="media-body">
 					<h1 class="display-4">Resources Examples</h1>
 					<p class="lead">Some useful code functions and improvments in <code>PHP</code>, <code>CSS</code> and <code>JS</code> using the included resources in this repository.</p>
@@ -159,28 +157,28 @@
 		<div class="bs-example">
 			<div class="row JSlightGallery" data-lg-item="auto" data-lg-title="auto" data-lg-thumb="false" data-lg-download="false" data-lg-share="true" data-lg-autoplay="true" data-lg-loop="false" data-lg-gallery="false">
 				<div class="col-12 col-md py-2 py-md-0">
-					<a title="My Image 1" href="https://getbootstrap.com/docs/4.1/examples/screenshots/product.png">
-						<img class="img-thumbnail" src="https://getbootstrap.com/docs/4.1/examples/screenshots/product.png">
+					<a title="My Image 1" href="https://getbootstrap.com/docs/4.4/assets/img/examples/album.png">
+						<img class="img-thumbnail" src="https://getbootstrap.com/docs/4.4/assets/img/examples/album.png">
 					</a>
 				</div>
 				<div class="col-12 col-md py-2 py-md-0">
-					<a title="My Image 2" href="https://getbootstrap.com/docs/4.1/examples/screenshots/carousel.png">
-						<img class="img-thumbnail" src="https://getbootstrap.com/docs/4.1/examples/screenshots/carousel.png">
+					<a title="My Image 2" href="https://getbootstrap.com/docs/4.4/assets/img/examples/product.png">
+						<img class="img-thumbnail" src="https://getbootstrap.com/docs/4.4/assets/img/examples/product.png">
 					</a>
 				</div>
 				<div class="col-12 col-md py-2 py-md-0">
-					<a title="My Image 3" href="https://getbootstrap.com/docs/4.1/examples/screenshots/cover.png">
-						<img class="img-thumbnail" src="https://getbootstrap.com/docs/4.1/examples/screenshots/cover.png">
+					<a title="My Image 3" href="https://getbootstrap.com/docs/4.4/assets/img/examples/carousel.png">
+						<img class="img-thumbnail" src="https://getbootstrap.com/docs/4.4/assets/img/examples/carousel.png">
 					</a>
 				</div>
 				<div class="col-12 col-md py-2 py-md-0">
-					<a title="My Image 4" href="https://getbootstrap.com/docs/4.1/examples/screenshots/dashboard.png">
-						<img class="img-thumbnail" src="https://getbootstrap.com/docs/4.1/examples/screenshots/dashboard.png">
+					<a title="My Image 4" href="https://getbootstrap.com/docs/4.4/assets/img/examples/dashboard.png">
+						<img class="img-thumbnail" src="https://getbootstrap.com/docs/4.4/assets/img/examples/dashboard.png">
 					</a>
 				</div>
 				<div class="col-12 col-md py-2 py-md-0">
-					<a title="My Image 5" href="https://getbootstrap.com/docs/4.1/examples/screenshots/album.png">
-						<img class="img-thumbnail" src="https://getbootstrap.com/docs/4.1/examples/screenshots/album.png">
+					<a title="My Image 5" href="https://getbootstrap.com/docs/4.4/assets/img/examples/cover.png">
+						<img class="img-thumbnail" src="https://getbootstrap.com/docs/4.4/assets/img/examples/cover.png">
 					</a>
 				</div>
 			</div>
@@ -196,82 +194,82 @@
 			<div class="row JSlightGallery" data-lg-item="auto" data-lg-title="Gallery Title" data-lg-thumb="true" data-lg-download="true" data-lg-share="true" data-lg-autoplay="true" data-lg-loop="false" data-lg-gallery="true" data-lg-page-total="3" data-lg-page-current="1">
 				<!-- Group 1 -->
 				<div class="col-12 col-md py-2 py-md-0 d-none">
-					<a title="My Image 1" href="https://getbootstrap.com/docs/4.1/examples/screenshots/product.png">
-						<img class="img-thumbnail" src="https://getbootstrap.com/docs/4.1/examples/screenshots/product.png">
+					<a title="My Image 1" href="https://getbootstrap.com/docs/4.4/assets/img/examples/album.png">
+						<img class="img-thumbnail" src="https://getbootstrap.com/docs/4.4/assets/img/examples/album.png">
 					</a>
 				</div>
 				<div class="col-12 col-md py-2 py-md-0 d-none">
-					<a title="My Image 2" href="https://getbootstrap.com/docs/4.1/examples/screenshots/carousel.png">
-						<img class="img-thumbnail" src="https://getbootstrap.com/docs/4.1/examples/screenshots/carousel.png">
+					<a title="My Image 2" href="https://getbootstrap.com/docs/4.4/assets/img/examples/product.png">
+						<img class="img-thumbnail" src="https://getbootstrap.com/docs/4.4/assets/img/examples/product.png">
 					</a>
 				</div>
 				<div class="col-12 col-md py-2 py-md-0 d-none">
-					<a title="My Image 3" href="https://getbootstrap.com/docs/4.1/examples/screenshots/cover.png">
-						<img class="img-thumbnail" src="https://getbootstrap.com/docs/4.1/examples/screenshots/cover.png">
+					<a title="My Image 3" href="https://getbootstrap.com/docs/4.4/assets/img/examples/carousel.png">
+						<img class="img-thumbnail" src="https://getbootstrap.com/docs/4.4/assets/img/examples/carousel.png">
 					</a>
 				</div>
 				<div class="col-12 col-md py-2 py-md-0 d-none">
-					<a title="My Image 4" href="https://getbootstrap.com/docs/4.1/examples/screenshots/dashboard.png">
-						<img class="img-thumbnail" src="https://getbootstrap.com/docs/4.1/examples/screenshots/dashboard.png">
+					<a title="My Image 4" href="https://getbootstrap.com/docs/4.4/assets/img/examples/dashboard.png">
+						<img class="img-thumbnail" src="https://getbootstrap.com/docs/4.4/assets/img/examples/dashboard.png">
 					</a>
 				</div>
 				<div class="col-12 col-md py-2 py-md-0 d-none">
-					<a title="My Image 5" href="https://getbootstrap.com/docs/4.1/examples/screenshots/album.png">
-						<img class="img-thumbnail" src="https://getbootstrap.com/docs/4.1/examples/screenshots/album.png">
+					<a title="My Image 5" href="https://getbootstrap.com/docs/4.4/assets/img/examples/cover.png">
+						<img class="img-thumbnail" src="https://getbootstrap.com/docs/4.4/assets/img/examples/cover.png">
 					</a>
 				</div>
 				<!-- Group 1 -->
 				<!-- Group 2 -->
 				<div class="col-12 col-md py-2 py-md-0 d-none">
-					<a title="My Image 6" href="https://getbootstrap.com/docs/4.1/examples/screenshots/pricing.png">
-						<img class="img-thumbnail" src="https://getbootstrap.com/docs/4.1/examples/screenshots/pricing.png">
+					<a title="My Image 6" href="https://getbootstrap.com/docs/4.4/assets/img/examples/blog.png">
+						<img class="img-thumbnail" src="https://getbootstrap.com/docs/4.4/assets/img/examples/blog.png">
 					</a>
 				</div>
 				<div class="col-12 col-md py-2 py-md-0 d-none">
-					<a title="My Image 7" href="https://getbootstrap.com/docs/4.1/examples/screenshots/blog.png">
-						<img class="img-thumbnail" src="https://getbootstrap.com/docs/4.1/examples/screenshots/blog.png">
+					<a title="My Image 7" href="https://getbootstrap.com/docs/4.4/assets/img/examples/pricing.png">
+						<img class="img-thumbnail" src="https://getbootstrap.com/docs/4.4/assets/img/examples/pricing.png">
 					</a>
 				</div>
 				<div class="col-12 col-md py-2 py-md-0 d-none">
-					<a title="My Image 8" href="https://getbootstrap.com/docs/4.1/examples/screenshots/sign-in.png">
-						<img class="img-thumbnail" src="https://getbootstrap.com/docs/4.1/examples/screenshots/sign-in.png">
+					<a title="My Image 8" href="https://getbootstrap.com/docs/4.4/assets/img/examples/checkout.png">
+						<img class="img-thumbnail" src="https://getbootstrap.com/docs/4.4/assets/img/examples/checkout.png">
 					</a>
 				</div>
 				<div class="col-12 col-md py-2 py-md-0 d-none">
-					<a title="My Image 9" href="https://getbootstrap.com/docs/4.1/examples/screenshots/offcanvas.png">
-						<img class="img-thumbnail" src="https://getbootstrap.com/docs/4.1/examples/screenshots/offcanvas.png">
+					<a title="My Image 9" href="https://getbootstrap.com/docs/4.4/assets/img/examples/floating-labels.png">
+						<img class="img-thumbnail" src="https://getbootstrap.com/docs/4.4/assets/img/examples/floating-labels.png">
 					</a>
 				</div>
 				<div class="col-12 col-md py-2 py-md-0 d-none">
-					<a title="My Image 10" href="https://getbootstrap.com/docs/4.1/examples/screenshots/grid.png">
-						<img class="img-thumbnail" src="https://getbootstrap.com/docs/4.1/examples/screenshots/grid.png">
+					<a title="My Image 10" href="https://getbootstrap.com/docs/4.4/assets/img/examples/offcanvas.png">
+						<img class="img-thumbnail" src="https://getbootstrap.com/docs/4.4/assets/img/examples/offcanvas.png">
 					</a>
 				</div>
 				<!-- Group 2 -->
 				<!-- Group 3 -->
 				<div class="col-12 col-md py-2 py-md-0 d-none">
-					<a title="My Image 11" href="https://getbootstrap.com/docs/4.1/examples/screenshots/jumbotron.png">
-						<img class="img-thumbnail" src="https://getbootstrap.com/docs/3.3/examples/screenshots/offcanvas.jpg">
+					<a title="My Image 11" href="https://getbootstrap.com/docs/4.4/assets/img/examples/navbars.png">
+						<img class="img-thumbnail" src="https://getbootstrap.com/docs/4.4/assets/img/examples/navbars.png">
 					</a>
 				</div>
 				<div class="col-12 col-md py-2 py-md-0 d-none">
-					<a title="My Image 12" href="https://getbootstrap.com/docs/4.1/examples/screenshots/checkout.png">
-						<img class="img-thumbnail" src="https://getbootstrap.com/docs/4.1/examples/screenshots/checkout.png">
+					<a title="My Image 12" href="https://getbootstrap.com/docs/4.4/assets/img/examples/starter-template.png">
+						<img class="img-thumbnail" src="https://getbootstrap.com/docs/4.4/assets/img/examples/starter-template.png">
 					</a>
 				</div>
 				<div class="col-12 col-md py-2 py-md-0 d-none">
-					<a title="My Image 13" href="https://getbootstrap.com/docs/4.1/examples/screenshots/navbars.png">
-						<img class="img-thumbnail" src="https://getbootstrap.com/docs/4.1/examples/screenshots/navbars.png">
+					<a title="My Image 13" href="https://getbootstrap.com/docs/4.4/assets/img/examples/grid.png">
+						<img class="img-thumbnail" src="https://getbootstrap.com/docs/4.4/assets/img/examples/grid.png">
 					</a>
 				</div>
 				<div class="col-12 col-md py-2 py-md-0 d-none">
-					<a title="My Image 14" href="https://getbootstrap.com/docs/4.1/examples/screenshots/navbar-bottom.png">
-						<img class="img-thumbnail" src="https://getbootstrap.com/docs/4.1/examples/screenshots/navbar-bottom.png">
+					<a title="My Image 14" href="https://getbootstrap.com/docs/4.4/assets/img/examples/jumbotron.png">
+						<img class="img-thumbnail" src="https://getbootstrap.com/docs/4.4/assets/img/examples/jumbotron.png">
 					</a>
 				</div>
 				<div class="col-12 col-md py-2 py-md-0 d-none">
-					<a title="My Image 15" href="https://getbootstrap.com/docs/4.1/examples/screenshots/floating-labels.png">
-						<img class="img-thumbnail" src="https://getbootstrap.com/docs/4.1/examples/screenshots/floating-labels.png">
+					<a title="My Image 15" href="https://getbootstrap.com/docs/4.4/assets/img/examples/navbar-static.png">
+						<img class="img-thumbnail" src="https://getbootstrap.com/docs/4.4/assets/img/examples/navbar-static.png">
 					</a>
 				</div>
 				<!-- Group 3 -->

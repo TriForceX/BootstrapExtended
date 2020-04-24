@@ -1,14 +1,12 @@
 # Custom Bootstrap Website Base
-https://websitebase.github.io
-
 Base structure for websites with reusable parts of source code or functions mainly based on **Bootstrap** + **PHP** and another libraries. You can visit the website above for a running example.
 
 # Base
 Name | Version | Info
 ------------ | ------------ | ------------
 Standalone | PHP 5.4+ | [Visit](http://php.net/)
-WordPress  | 5.0.3 | [Visit](https://wordpress.org/)
-Bootstrap | 4.2.1 | [Visit](https://getbootstrap.com/)
+WordPress  | 5.4 | [Visit](https://wordpress.org/)
+Bootstrap | 4.4.1 | [Visit](https://getbootstrap.com/)
 jQuery | 3.3.1 | [Visit](https://jquery.com/)
 
 # Functions & Code Snippets
@@ -103,7 +101,7 @@ jQuery | 3.3.1 | [Visit](https://jquery.com/)
 		- Classic Editor
 		- Duplicate Post
 		- Custom Post Type UI
-		- Enhaced Context Help
+		- Enhanced Context Help
 		- Gutenberg Editor
 		- Loco Translate
 		- Login reCaptcha
@@ -168,4 +166,4 @@ Touch Swipe | [Visit](http://labs.rampinteractive.co.uk/touchSwipe/demos/)
 - [XAMP Server (All)](https://www.apachefriends.org)
 
 # About
-I coded the most of the code snippets and functions *(from scratch or searching the whole internet)*. About the included libraries im not the author, but i try to let other people find the best way to use them *(original authors are mentioned and linked on [resources](https://github.com/TriForceX/WebsiteBase#resources) section)*. If you have any question feel free to contact me at triforce@gznetwork.com
+I coded the most of the code snippets and functions _(from scratch or searching the whole internet)_. About the included libraries im not the author, but i try to let other people find the best way to use them _(original authors are mentioned and linked on [resources](https://github.com/TriForceX/WebsiteBase#resources) section)_. If you have any question feel free to contact me at triforce@gznetwork.com
