@@ -253,7 +253,7 @@
 
 /* Custom file language */
 .custom-file-input:lang(es) ~ .custom-file-label::after {
-    content: "Elejir";
+    content: "Buscar";
 }
 .custom-file-input:lang(en) ~ .custom-file-label::after {
     content: "Browse";
