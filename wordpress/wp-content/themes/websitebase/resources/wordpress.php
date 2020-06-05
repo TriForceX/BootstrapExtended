@@ -336,10 +336,10 @@ function custom_theme_settings($wp_customize)
 		<?php }
 	}
 
-	// Set custom WYSIWIG text editor
-	class WP_Customize_WYSIWIG_Text_Editor_Control extends WP_Customize_Control
+	// Set custom WYSIWYG text editor
+	class WP_Customize_WYSIWYG_Text_Editor_Control extends WP_Customize_Control
 	{
-		public $type = 'wysiwig-text';
+		public $type = 'wysiwyg-text';
 		
 		function enqueue() 
 		{
@@ -431,14 +431,14 @@ function custom_theme_settings($wp_customize)
 						)
 					);
 					break;
-				case 'wysiwig':
+				case 'wysiwyg':
 					$wp_customize->add_control( 
-						new WP_Customize_WYSIWIG_Text_Editor_Control($wp_customize, $key,
+						new WP_Customize_WYSIWYG_Text_Editor_Control($wp_customize, $key,
 							array(
 								'label'   	=> $value['label'],
 								'section' 	=> $key,
 								'settings'	=> $key,
-								'type' 		=> 'wysiwig-text', //improved text editor
+								'type' 		=> 'wysiwyg-text', //improved text editor
 							)
 						)
 					);
