@@ -132,7 +132,15 @@ function get_id_by_slug($slug)
 // Get post_type data (label, name, description, etc...)
 function get_post_type_data($type, $name = null)
 {
-	$post_type = !empty($name) ? $name : !empty(get_post_type()) ? get_post_type() : get_query_var('post_type');
+	if(is_tax()){
+		$tax_current = get_query_var('taxonomy');
+		$tax_obj = get_taxonomy($tax_current);
+		$post_type = $tax_obj->object_type[0];
+	}
+	else{
+		$post_type = !empty($name) ? $name : !empty(get_post_type()) ? get_post_type() : get_query_var('post_type');
+	}
+	
 	$data = get_post_type_object($post_type);
 	return $data->$type;
 }
