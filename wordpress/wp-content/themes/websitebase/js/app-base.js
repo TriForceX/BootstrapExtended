@@ -1876,7 +1876,7 @@ function JShashTag(string)
 		return false;
 	}
 	else{
-		if(textUrl.indexOf(window.location.host) <= 0){
+		if(textUrl.indexOf(window.location.host) >= 0 || textUrl[0] == '#'){
 			// Show alert
 			var section = textUrl.split('#')[1].replace(/-/g,' ');
 			// Check plugin
