@@ -31,6 +31,21 @@ use MatthiasMullie\PathConverter\Converter;
 
 class php
 {
+	// Set default timezone
+	public static function default_timezone()
+	{
+		// Main data
+		global $websitebase;
+		
+		if($websitebase['force_timezone'])
+		{
+			if(class_exists('WP') && !is_admin()) 
+				date_default_timezone_set($websitebase['timezone']);
+			else
+				date_default_timezone_set($websitebase['timezone']);
+		}
+	}
+	
 	// Error handle
 	public static function debug($enable = false)
     {

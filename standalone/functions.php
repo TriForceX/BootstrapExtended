@@ -29,6 +29,7 @@ $websitebase = array(
 	'nav-color' 		=> '#7840a2',
 	'nav-color-apple' 	=> 'black',
 	'timezone' 			=> 'America/New_York',
+	'force_timezone' 	=> true,
 	'local_dir'			=> dirname(__FILE__),
 	'custom_main_url'	=> false,
 	'assets_url'		=> php::get_main_url(),
@@ -42,7 +43,7 @@ $websitebase = array(
 );
 
 // Set default timezone
-date_default_timezone_set($websitebase['timezone']);
+php::default_timezone();
 
 // Rebuild CSS & JS redirect clean
 php::check_rebuild();

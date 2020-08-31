@@ -29,7 +29,8 @@ $websitebase = array(
 	'viewport' 			=> 'width=device-width, initial-scale=1, user-scalable=no, shrink-to-fit=no',
 	'nav-color' 		=> get_option('blognavcolor'),
 	'nav-color-apple' 	=> get_option('blognavcolorapple'),
-	'timezone' 			=> wp_get_timezone_string(), // 'America/New_York',
+	'timezone' 			=> wp_get_timezone_string(), // Prefer date_i18n() instead date()
+	'force_timezone' 	=> false,
 	'local_dir'			=> dirname(__FILE__),
 	'custom_main_url'	=> false,
 	'assets_url'		=> get_bloginfo('template_url'),
@@ -43,7 +44,7 @@ $websitebase = array(
 );
 
 // Set default timezone
-date_default_timezone_set($websitebase['timezone']);
+php::default_timezone();
 
 // Rebuild CSS & JS redirect clean
 php::check_rebuild();
