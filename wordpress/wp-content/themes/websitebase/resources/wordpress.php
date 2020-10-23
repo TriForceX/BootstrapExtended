@@ -55,35 +55,47 @@ if(check_plugin('wp-migrate-db-pro/wp-migrate-db-pro.php') || check_plugin('wp-m
 		if($('#wpmdb-main #migrate-form').length > 0)
 		{
 			var wpmigrateForm 		= $('#wpmdb-main #migrate-form');
+			var wpmigrateOptions 	= wpmigrateForm.find('.option-section .migrate-selection input[type=radio]');
+			var wpmigrateSave 		= wpmigrateForm.find('.option-section #savefile');
 			var wpmigrateGZip 		= wpmigrateForm.find('.option-section #gzip_file');
 			var wpmigrateOldUrl 	= wpmigrateForm.find('.step-two #find-and-replace-sort #old-url');
 			var wpmigrateNewUrl 	= wpmigrateForm.find('.step-two #find-and-replace-sort #new-url');
-			var wpmigrateNewPath 	= wpmigrateForm.find('.step-two #find-and-replace-sort #new-path');
 			var wpmigrateContent	= wpmigrateForm.find('.step-two');
 			var wpmigrateAlert 		= '<?php _e('Due to you are using <strong>Website Base</strong> theme, remember to prepend <strong>http</strong> or <strong>https</strong> to your <i>Local & Production</i> URL', 'websitebase'); ?>';
 
 			wpmigrateContent.prepend('<div class="notification-message warning-notice inline-message">'+wpmigrateAlert+'</div>');
-			wpmigrateNewPath.attr('placeholder', 'New file path or URL');
-			wpmigrateGZip.prop('checked', false);
-
-			if(!(wpmigrateOldUrl.val().indexOf(window.location.protocol) >= 0))
-			{
-				wpmigrateOldUrl.val(window.location.protocol+wpmigrateOldUrl.val());
-			}
 			
-			wpmigrateOldUrl.blur(function(e){
+			var wpmigrateEdit = function()
+			{
 				if(!(wpmigrateOldUrl.val().indexOf('http://') >= 0 || wpmigrateOldUrl.val().indexOf('https://') >= 0))
 				{
-					wpmigrateOldUrl.val(window.location.protocol+'//'+wpmigrateOldUrl.val());
+					wpmigrateOldUrl.val(window.location.protocol+((wpmigrateOldUrl.val().indexOf('//') >= 0) ? '' : '//')+wpmigrateOldUrl.val());
 				}
-			});
-			
-			wpmigrateNewUrl.blur(function(e){
+
 				if(!(wpmigrateNewUrl.val().indexOf('http://') >= 0 || wpmigrateNewUrl.val().indexOf('https://') >= 0))
 				{
-					wpmigrateNewUrl.val(window.location.protocol+'//'+wpmigrateNewUrl.val());
+					wpmigrateNewUrl.val(window.location.protocol+((wpmigrateNewUrl.val().indexOf('//') >= 0) ? '' : '//')+wpmigrateNewUrl.val());
 				}
-			});
+			}
+			
+			var wpmigrateCheck = function()
+			{
+				if(wpmigrateSave.is(':checked'))
+				{
+					wpmigrateGZip.prop('checked', false);
+					wpmigrateEdit();
+					wpmigrateOldUrl.blur(function(e){ wpmigrateEdit() });
+					wpmigrateNewUrl.blur(function(e){ wpmigrateEdit() });
+				}
+				else
+				{
+					wpmigrateOldUrl.unbind();
+					wpmigrateNewUrl.unbind();
+				}
+			}
+			
+			wpmigrateOptions.each(function(){ wpmigrateCheck() });
+			wpmigrateOptions.change(function(){ wpmigrateCheck() });
 		}
 	});
 	</script>
