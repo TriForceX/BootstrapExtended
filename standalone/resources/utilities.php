@@ -558,7 +558,7 @@ class php
 		if($remove != null){
 			$domain = str_replace($remove,'',$domain);
 		}
-		if($websitebase['custom_main_url'] != false){
+		if(isset($websitebase['custom_main_url']) && $websitebase['custom_main_url'] != false){
 			$domain = $websitebase['custom_main_url'];
 		}
 		return rtrim($domain, '/');
