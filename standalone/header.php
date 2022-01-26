@@ -1,4 +1,4 @@
-<?php include('functions.php'); ?>
+<?php require_once('functions.php'); ?>
 <!DOCTYPE html>
 <html lang="<?php echo php::get_data('lang'); ?>">
 <head>
