@@ -8,13 +8,15 @@
  * 
  */
 
+// Check login page
+function is_wplogin(){
+    $ABSPATH_MY = str_replace(array('\\','/'), DIRECTORY_SEPARATOR, ABSPATH);
+    return ((in_array($ABSPATH_MY.'wp-login.php', get_included_files()) || in_array($ABSPATH_MY.'wp-register.php', get_included_files()) ) || (isset($_GLOBALS['pagenow']) && $GLOBALS['pagenow'] === 'wp-login.php') || $_SERVER['PHP_SELF']== '/wp-login.php');
+}
+
 // Custom login logo URL
 add_filter('login_headerurl', 'login_logo_url');
 add_filter('login_headertitle', 'login_logo_url');
-
-// Add custom CSS & JS to admin
-add_action('admin_footer', 'add_custom_admin');
-add_action('login_footer', 'add_custom_admin');
 
 // Disable specific plugin update check 
 add_filter('site_transient_update_plugins', 'disable_plugin_updates');
@@ -32,8 +34,10 @@ if(stripos(get_bloginfo('language'), 'es') !== false)
 }
 
 // Add custom CSS & JS to admin
-if(is_user_logged_in())
+if((is_user_logged_in() && is_admin()) || is_wplogin())
 {
+	add_action('admin_footer', 'add_custom_admin');
+	add_action('login_footer', 'add_custom_admin');
 	add_action('wp_footer', 'add_custom_admin');
 }
 
@@ -107,6 +111,9 @@ function add_custom_admin()
 {
 	echo '<link href="'.get_bloginfo('template_url').'/css/admin/style-base.css" rel="stylesheet">';
 	echo '<link href="'.get_bloginfo('template_url').'/css/admin/style-theme.css" rel="stylesheet">';
+
+	if (is_wplogin()) echo '<script src="'.get_bloginfo('template_url').'/resources/jquery/js/jquery.min.js"></script>';
+
 	echo '<script src="'.get_bloginfo('template_url').'/js/admin/app-base.js"></script>';
 	echo '<script src="'.get_bloginfo('template_url').'/js/admin/app-theme.js"></script>';
 }
