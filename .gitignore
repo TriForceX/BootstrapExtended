@@ -5,31 +5,3 @@
 *.swp
 *.out
 ##
-
-## websitebase files to ignore
-standalone/css/style.css
-standalone/css/*.min.css
-standalone/css/*.dist.css
-standalone/js/app.js
-standalone/js/*.min.js
-standalone/js/*.dist.js
-standalone/css/extras/*.min.css
-standalone/css/extras/*.dist.css
-standalone/js/extras/*.min.js
-standalone/js/extras/*.dist.js
-wordpress/wp-content/themes/websitebase/css/style.css
-wordpress/wp-content/themes/websitebase/css/*.min.css
-wordpress/wp-content/themes/websitebase/css/*.dist.css
-wordpress/wp-content/themes/websitebase/js/app.js
-wordpress/wp-content/themes/websitebase/js/*.min.js
-wordpress/wp-content/themes/websitebase/js/*.dist.js
-wordpress/wp-content/themes/websitebase/css/extras/*.min.css
-wordpress/wp-content/themes/websitebase/css/extras/*.dist.css
-wordpress/wp-content/themes/websitebase/js/extras/*.min.js
-wordpress/wp-content/themes/websitebase/js/extras/*.dist.js
-##
-
-## wordpress files to ignore
-wordpress/wp-config.php
-wordpress/.htaccess
-##
