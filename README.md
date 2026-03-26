@@ -1,6 +1,6 @@
 # Bootstrap Extended
 
-<img align="left" width="139" height="110" src="img/logo.png">
+<img align="left" width="139" height="110" src="assets/img/logo.png">
 
 https://getbootstrap.com
 
